@@ -7,8 +7,6 @@ from threadpoolctl import threadpool_limits
 from billiard.pool import Pool
 from multiprocessing import freeze_support
 import ray
-#ray.init()
-
 import os, time
 import numpy as np
 import matplotlib.pyplot as plt
@@ -21,20 +19,17 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.distributions import Normal, Categorical
 from torch.utils.data.sampler import BatchSampler, SubsetRandomSampler
-#from tensorboardX import SummaryWriter
 
 # Parameters
 gamma = 0.99
 render = False
 seed = 1
 log_interval = 10
-#pool = Pool(4)
 env = Environment(10,10)
 num_state = len(env.reset())
 num_action = len(env.action_space())
 torch.manual_seed(seed)
 
-#env.seed(seed)
 Transition = namedtuple('Transition', ['state', 'action',  'a_log_prob', 'reward', 'next_state'])
 
 class Actor(nn.Module):
@@ -75,13 +70,9 @@ class PPO():
         self.buffer = []
         self.counter = 0
         self.training_step = 0
-        #self.writer = SummaryWriter('../exp')
 
         self.actor_optimizer = optim.Adam(self.actor_net.parameters(), 1e-3)
         self.critic_net_optimizer = optim.Adam(self.critic_net.parameters(), 3e-3)
-        #if not os.path.exists('../param'):
-        #    os.makedirs('../param/net_param')
-        #    os.makedirs('../param/img')
 
     def select_action(self, state):
         state = torch.from_numpy(state).float().unsqueeze(0)
@@ -105,14 +96,11 @@ class PPO():
         self.buffer.append(transition)
         self.counter += 1
 
-
     def update(self, i_ep):
         state = torch.tensor([t.state for t in self.buffer], dtype=torch.float)
         action = torch.tensor([t.action for t in self.buffer], dtype=torch.long).view(-1, 1)
         reward = [t.reward for t in self.buffer]
-        # update: don't need next_state
-        #reward = torch.tensor([t.reward for t in self.buffer], dtype=torch.float).view(-1, 1)
-        #next_state = torch.tensor([t.next_state for t in self.buffer], dtype=torch.float)
+        
         old_action_log_prob = torch.tensor([t.a_log_prob for t in self.buffer], dtype=torch.float).view(-1, 1)
         total_action_loss = 0
         total_value_loss = 0
@@ -174,12 +162,7 @@ def main():
             state_list[s] = np.array(env.reset())
             env_list[s] = env
             score_list[s] = 0
-        #if len(agent_list) <= 4:
-        #    pool = Pool(len(agent_list))
-        #else:
-        #    pool = Pool(4)
-        #print('pool created',pool)
-
+ 
         a = torch.zeros(size=(env.MAX_HOR_VAL+1,env.MAX_VER_VAL+1))
         a[env.food1_loc[0],env.food1_loc[1]] = -200
         a[env.food2_loc[0],env.food2_loc[1]] = -200
@@ -192,11 +175,6 @@ def main():
         food3_collected = False
         
         for cnt in count():
-            
-            #if len(agent_list) <= 4:
-            #    pool = Pool(len(agent_list))
-            #else:
-            #    pool = Pool(4)
 
             output = [cells1.remote(env_list[i], agent_list[i], state_list[i], [i_epoch for x in range(len(agent_list))][i], [cnt for x in range(len(agent_list))][i]) for i in range(len(agent_list))]
 
