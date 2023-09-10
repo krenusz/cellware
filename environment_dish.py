@@ -80,22 +80,11 @@ class Environment:
 
         
         
-        # If agent tries to run out of the grid, penalize -2
+        # If agent tries to run out of the grid, penalize -10
         if all(self.current_state_observation == self.state_observation):
             reward = -10
-        
-        # If agent reached Terminal state, reward = 0
-        #elif (self.x, self.y) == (self.MAX_HOR_VAL-1, self.MAX_VER_VAL) and self.action == 2 and (self.food1_collected == True or self.food2_collected == True):
-        #    reward = 5
-        #    print('only 1 food collected')
-        #elif (self.x, self.y) == (self.MAX_HOR_VAL, self.MAX_VER_VAL-1) and self.action == 3 and (self.food1_collected == True or self.food2_collected == True):
-        #    reward = 5
-        #    print('only 1 food collected')
-        # For all other states, penalize agent with -1
-        
-        #if np.sum(self.current_state_observation) >= np.sum(self.state_observation):
-        #   reward += -5
-        # If agent reaches the food, reward it with 5 at the end of the episode
+   
+        # If agent reaches the food, reward it with 100 
         elif (self.x, self.y) == (self.food1_loc[0], self.food1_loc[1]) and self.food1_collected == False:
             print('food1 collected')
             self.food1_collected = True
@@ -113,8 +102,6 @@ class Environment:
         else:
             reward = -1
 
-        #if self.food1_collected == True and self.food2_collected == True and self.food3_collected == True:
-        #    reward = 200
         return reward
     
     # Method to take action, remain in the same box if agent tries
@@ -143,7 +130,7 @@ class Environment:
                         
         return [self.x, self.y]
     
-    # Method to align the environment
+    # Method to align the environment between agents
     def align(self, food1_collected_align, food2_collected_align, food3_collected_align):
         self.food1_collected = food1_collected_align
         self.food2_collected = food2_collected_align
