@@ -1,18 +1,14 @@
-
-
-
-#env = Environment 
 import ray
-ray.init(ignore_reinit_error=True,address='auto', runtime_env={"working_dir": "C:/Users/User/.conda/envs/mtgat"})
+ray.init(ignore_reinit_error=True,address='auto')
+## Possibly set up exact wd
+#ray.init(ignore_reinit_error=True,address='auto', runtime_env={"working_dir": "C:/Users/..."})
 
 @ray.remote
 def cells1(env, agent, state, i_epoch, cnt):
     from threadpoolctl import threadpool_limits
-    #from environment_dish import Environment
     from collections import namedtuple
 
     Transition = namedtuple('Transition', ['state', 'action',  'a_log_prob', 'reward', 'next_state'])
-    
     
     with threadpool_limits(limits=1, user_api='blas'):
         
