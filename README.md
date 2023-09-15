@@ -46,4 +46,4 @@ Run the program: python ray_parallel_PPO.py
 
 ### License
 
-License is under consideration.
+This project is licensed under the MIT License - see the LICENSE file for details.
