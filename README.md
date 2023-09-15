@@ -43,3 +43,7 @@ Multi-agental Reinforcement Learning solution aiming to reproduce highlevel cell
 Change to the working directory: cd ...
 
 Run the program: python ray_parallel_PPO.py
+
+### License
+
+License is under consideration.
