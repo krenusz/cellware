@@ -7,6 +7,8 @@ from threadpoolctl import threadpool_limits
 from billiard.pool import Pool
 from multiprocessing import freeze_support
 import ray
+#ray.init()
+
 import os, time
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,17 +21,20 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.distributions import Normal, Categorical
 from torch.utils.data.sampler import BatchSampler, SubsetRandomSampler
+#from tensorboardX import SummaryWriter
 
 # Parameters
 gamma = 0.99
 render = False
 seed = 1
 log_interval = 10
+#pool = Pool(4)
 env = Environment(10,10)
 num_state = len(env.reset())
 num_action = len(env.action_space())
 torch.manual_seed(seed)
 
+#env.seed(seed)
 Transition = namedtuple('Transition', ['state', 'action',  'a_log_prob', 'reward', 'next_state'])
 
 class Actor(nn.Module):
@@ -70,9 +75,13 @@ class PPO():
         self.buffer = []
         self.counter = 0
         self.training_step = 0
+        #self.writer = SummaryWriter('../exp')
 
         self.actor_optimizer = optim.Adam(self.actor_net.parameters(), 1e-3)
         self.critic_net_optimizer = optim.Adam(self.critic_net.parameters(), 3e-3)
+        #if not os.path.exists('../param'):
+        #    os.makedirs('../param/net_param')
+        #    os.makedirs('../param/img')
 
     def select_action(self, state):
         state = torch.from_numpy(state).float().unsqueeze(0)
@@ -96,11 +105,14 @@ class PPO():
         self.buffer.append(transition)
         self.counter += 1
 
+
     def update(self, i_ep):
         state = torch.tensor([t.state for t in self.buffer], dtype=torch.float)
         action = torch.tensor([t.action for t in self.buffer], dtype=torch.long).view(-1, 1)
         reward = [t.reward for t in self.buffer]
-        
+        # update: don't need next_state
+        #reward = torch.tensor([t.reward for t in self.buffer], dtype=torch.float).view(-1, 1)
+        #next_state = torch.tensor([t.next_state for t in self.buffer], dtype=torch.float)
         old_action_log_prob = torch.tensor([t.a_log_prob for t in self.buffer], dtype=torch.float).view(-1, 1)
         total_action_loss = 0
         total_value_loss = 0
@@ -152,21 +164,25 @@ class PPO():
 
 def main():
     
-    agent_list = [PPO()]
-    state_list = [np.array(env.reset())]
-    score_list = [0]
-    env_list = [env]
+    agent_list = [PPO(),PPO(),PPO(),PPO()]
+    state_list = [np.array(env.reset()),np.array(env.reset()),np.array(env.reset()),np.array(env.reset())]
+    score_list = [0,0,0,0]
+    env_list = [env,env,env,env]
+    num_food = np.sum(env.lvl_1_reward_table == 90)
+    place_to_take = np.sum(env.lvl_2_reward_table == 90)
+    lvl = 1
     for i_epoch in range(10000):
         print('i_epoch:',i_epoch)
         for s in range(len(state_list)):
             state_list[s] = np.array(env.reset())
-            env_list[s] = env
+            env_list[s] = Environment(10,10)
             score_list[s] = 0
- 
-        a = torch.zeros(size=(env.MAX_HOR_VAL+1,env.MAX_VER_VAL+1))
-        a[env.food1_loc[0],env.food1_loc[1]] = -200
-        a[env.food2_loc[0],env.food2_loc[1]] = -200
-        a[env.food3_loc[0],env.food3_loc[1]] = -200
+        done_list = [False for x in range(len(agent_list))]
+
+
+        
+        a = env.lvl_1_reward_table * 10
+        b = env.lvl_2_reward_table * 10
         if render: 
             env.render()
 
@@ -174,47 +190,95 @@ def main():
         food2_collected = False
         food3_collected = False
         
+        
+        
         for cnt in count():
+            print('Buffer size',[len(x.buffer) for x in agent_list], 'Batch size:',agent_list[0].batch_size)
+            if lvl == 2 and any([len(x.buffer) >= 99 for x in agent_list]):
+                collective_memory = []
+                for i in agent_list:
+                    collective_memory.append(i.buffer)
+            
+                collective_memory = sum(collective_memory, [])
+            
+                for i in range(len(agent_list)):
 
-            output = [cells1.remote(env_list[i], agent_list[i], state_list[i], [i_epoch for x in range(len(agent_list))][i], [cnt for x in range(len(agent_list))][i]) for i in range(len(agent_list))]
-
+                    agent_list[i].buffer = collective_memory
+                print('Collective memory lenght: ',len(collective_memory)) 
+            print('Buffer size',[len(x.buffer) for x in agent_list], 'Batch size:',agent_list[0].batch_size)
+            output = [cells1.remote(env_list[i], agent_list[i], state_list[i], 
+                                    [i_epoch for x in range(len(agent_list))][i],
+                                     [cnt for x in range(len(agent_list))][i], 
+                                     [lvl for x in range(len(agent_list))][i],
+                                     done_list[i]) for i in range(len(agent_list))]
+            
+            for i in range(len(agent_list)):
+                if done_list[i] == True:
+                    for j in range(len(agent_list)):
+                        if i != j:
+                            agent_list[j].buffer.append(agent_list[i].buffer)
             # Retrieve results.
             print('ray output',output, ray.get(output))
             print('output created')
             result = ray.get(output)
             
-        
+            index_align_lvl1 = []
+            index_align_lvl2 = []
             for cell in range(len(agent_list)):
-                    if result[cell][0].food1_collected == True:
-                        #print('food1 collected by:',cell)
-                        food1_collected = True
-                    if result[cell][0].food2_collected == True:
-                        #print('food2 collected by:',cell)
-                        food2_collected = True
-                    if result[cell][0].food3_collected == True:
-                        #print('food3 collected by:',cell)
-                        food3_collected = True
+                    index_align_lvl1.append(list(np.column_stack(np.where(result[cell][0].lvl_1_reward_table==-100))))
+                    index_align_lvl2.append(list(np.column_stack(np.where(result[cell][0].lvl_2_reward_table==-100))))
+                    
 
-
+                    #if result[cell][0].food1_collected == True:
+                    #    #print('food1 collected by:',cell)
+                    #    food1_collected = True
+                    #if result[cell][0].food2_collected == True:
+                    #    #print('food2 collected by:',cell)
+                    #    food2_collected = True
+                    #if result[cell][0].food3_collected == True:
+                    #    #print('food3 collected by:',cell)
+                    #    food3_collected = True
+            
+            lvl1_task_map_index = np.unique(sum(index_align_lvl1, []),axis=0).transpose()
+            lvl2_task_map_index = np.unique(sum(index_align_lvl2, []),axis=0).transpose()
+            print(lvl2_task_map_index)
             for c in range(len(agent_list)):
-                a[state_list[c][0], state_list[c][1]] += 1
-                
-                result[c][0].align(food1_collected,food2_collected,food3_collected)
+                if lvl == 1:
+                    a[state_list[c][0], state_list[c][1]] -= 1
+                else:
+                    b[state_list[c][0], state_list[c][1]] -= 1
+                #result[c][0].align(food1_collected,food2_collected,food3_collected)
+                if len(lvl1_task_map_index) > 0:
+                    result[c][0].align(lvl1_task_map_index[0],lvl1_task_map_index[1])
+                if len(lvl2_task_map_index) > 0:
+                    result[c][0].align(lvl2_task_map_index[0],lvl2_task_map_index[1])
 
 
                 env_list[c] = result[c][0]
                 agent_list[c] = result[c][1]
                 state_list[c] = result[c][2]
                 
-                score_list[c] += result[c][3]
-
-                print('mod env variables and scores ','cell:',c,env_list[c].food1_collected,env_list[c].food2_collected,env_list[c].food3_collected,score_list[c])
+                
+                if lvl == 1:
+                    score_list[c] += result[c][3]
+                    print('mod env variables and scores ','cell:',c,'SCORE',score_list[c])
+                else:
+                    done_list[c] = result[c][3]
+                    print('mod env variables and scores ','cell:',c,'DONE',done_list[c])
             
-            print('collected foods:  1.{} 2.{} 3.{}'.format(food1_collected,food2_collected,food3_collected))
+            if lvl == 1:
+                print('REWARD MAP LVL1: \n', a)
+                best_score_index = score_list.index(max(score_list)) 
+            else:
+                print('REWARD MAP LVL2: \n', b)
 
-            best_score_index = score_list.index(max(score_list))     
-            
-            if max(score_list) == 2:
+
+            if len(agent_list) == 4 and cnt == 150:
+                
+                lvl = 2
+                break
+
+            if lvl == 1 and max(score_list) == 2 and len(agent_list) < 4:
                 print('All food collected! next agent joining...','collecter: Agent',best_score_index)
                 
                 agent_list.append(agent_list[best_score_index])
@@ -222,11 +286,16 @@ def main():
                 score_list.append(0)
                 env_list.append(env)
                 break
-            elif cnt == 150: 
+
+            if cnt == 150: 
                 print('done: No more Steps left')
                 break
-            elif food1_collected  and food2_collected and food3_collected:
-                print('All food collected by separate Agent',best_score_index)
+
+            if len(lvl1_task_map_index) == 3 and lvl == 1:
+                print('All food collected',best_score_index)
+                break
+            if all(done_list) and lvl == 2:
+                print('LEVEL 2 ACHIEVED : All places taken by separate Agent -- juhhuuuuu')
                 break
           
         print(a)
