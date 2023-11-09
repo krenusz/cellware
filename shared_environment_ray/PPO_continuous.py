@@ -126,10 +126,16 @@ class PPO_continuous():
         self.use_adv_norm = args.use_adv_norm
         self.use_collective = args.use_collective
         self.collective_switch = args.collective_switch
+        self.total_actor_loss = 0
+        self.total_critic_loss = 0
+        self.total_advantage = 0
         #self.writer = args.writer
         self.done = False
         self.score = 0
-
+        self.env_name = args.env_name
+        self.lvl = args.lvl
+        self.agent_number = args.agent_number
+        
         if self.policy_dist == "Beta":
             self.actor = Actor_Beta(args)
         else:
@@ -174,6 +180,7 @@ class PPO_continuous():
         if replay_buffer == 0:
             replay_buffer = self.replay_buffer
         s, a, a_logprob, r, s_= replay_buffer.numpy_to_tensor()  # Get training data
+        #replay_buffer.save_memory('runs/PPO_continuous/env_{}_level_{}_dist_{}_numberofagent_{}_collective_{}/{}_{}'.format(self.env_name, self.lvl, self.policy_dist, self.agent_number, self.use_collective, total_steps, self.agent_id))
         """
             Calculate the advantage using GAE
             'dw=True' means dead or win, there is no next state s'
@@ -187,14 +194,16 @@ class PPO_continuous():
             vs_ = self.critic(s_)
             deltas = r + self.gamma * vs_ - vs
             for i, delta in enumerate(reversed(deltas.flatten().numpy())):
-                if self.use_collective:
-                    gae = delta + self.gamma * self.lamda * gae
-                    if i == self.max_episode_steps or i == self.collective_switch-1:
-                        gae = 0
-                else:
-                    gae = delta + self.gamma * self.lamda * gae
-                    if i == self.max_episode_steps:
-                        gae = 0
+                #if self.use_collective:
+                gae = delta + self.gamma * self.lamda * gae
+                #if i == self.max_episode_steps or i == self.collective_switch-1:
+                # counts from 0 for the episode steps
+                if i % self.max_episode_steps - 1 == 0:
+                    gae = 0
+                #else:
+                #    gae = delta + self.gamma * self.lamda * gae
+                #    if i == self.max_episode_steps:
+                #        gae = 0
                 # for collective memory we cannot penalize order of actions
                 
                 adv.insert(0, gae)
@@ -202,7 +211,9 @@ class PPO_continuous():
             v_target = adv + vs
             if self.use_adv_norm:  # Trick 1:advantage normalization
                 adv = ((adv - adv.mean()) / (adv.std() + 1e-5))
-
+        self.total_advantage = sum(adv).item()
+        self.total_actor_loss = 0
+        self.total_critic_loss = 0
         # Optimize policy for K epochs:
         for _ in range(self.K_epochs):
             # Random sampling and no repetition. 'False' indicates that training will continue even if the number of samples in the last time is less than mini_batch_size
@@ -222,7 +233,7 @@ class PPO_continuous():
                 if self.use_grad_clip:  # Trick 7: Gradient clip
                     torch.nn.utils.clip_grad_norm_(self.actor.parameters(), 0.5)
                 self.optimizer_actor.step()
-
+                self.total_actor_loss += actor_loss
                 v_s = self.critic(s[index])
                 critic_loss = F.mse_loss(v_target[index], v_s)
                 # Update critic
@@ -231,10 +242,11 @@ class PPO_continuous():
                 if self.use_grad_clip:  # Trick 7: Gradient clip
                     torch.nn.utils.clip_grad_norm_(self.critic.parameters(), 0.5)
                 self.optimizer_critic.step()
-
+                self.total_critic_loss += critic_loss
+        print('total_actor_loss', self.total_actor_loss, 'total_critic_loss', self.total_critic_loss, 'total_advantage', self.total_advantage)
         if self.use_lr_decay:  # Trick 6:learning rate Decay
             self.lr_decay(total_steps)
-
+        
     def act(self, state, i_epoch, lvl):
         
         from threadpoolctl import threadpool_limits
@@ -295,8 +307,11 @@ class PPO_continuous():
     def get_buffer(self):
         return self.replay_buffer
 
-    def get_attributes(self):
-        return self.replay_buffer
+    def get_losses(self):
+        if type(self.total_actor_loss) != int:
+            return sum(self.total_actor_loss).item(), self.total_critic_loss.item(), self.total_advantage
+        else:
+            return self.total_actor_loss, self.total_critic_loss, self.total_advantage
     
     def clone(self, id_):
         clone_ = copy.deepcopy(self)
