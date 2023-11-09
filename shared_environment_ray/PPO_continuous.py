@@ -198,7 +198,7 @@ class PPO_continuous():
                 gae = delta + self.gamma * self.lamda * gae
                 #if i == self.max_episode_steps or i == self.collective_switch-1:
                 # counts from 0 for the episode steps
-                if i % self.max_episode_steps - 1 == 0:
+                if i % (self.max_episode_steps - 1) == 0:
                     gae = 0
                 #else:
                 #    gae = delta + self.gamma * self.lamda * gae
