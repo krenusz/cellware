@@ -30,19 +30,19 @@ class Environment:
         self.food2_collected = False
         self.food3_collected = False
         self.episode_length = 0
-        self.max_episode_length = 256
+        self.max_episode_length = 128
         self.state_observation = [self.x, self.y]
         self.reward = 0
-        self.lvl_1_reward_table = np.array([ [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-                                        [0, 0, 0, 0, 0, 1, 90, 1, 0, 0],
-                                        [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                        [0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
-                                        [0, 0, 0, 0, 0, 0, 2, 3, 2, 0],
-                                        [0, 0, 3, 0, 0, 2, 3, 90, 3, 2],
-                                        [0, 3, 90, 3, 0, 0, 2, 3, 2, 0],
-                                        [0, 0, 3, 0, 0, 0, 0, 2, 0, 0],
-                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
+        self.lvl_1_reward_table = np.array([ [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
+                                             [5, 5, 5, 5, 10, 20, 90, 20, 10, 5],
+                                             [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
+                                             [5, 5, 5, 5, 5, 5, 10, 5, 5, 5],
+                                             [5, 5, 10, 5, 5, 5, 5, 20, 5, 5],
+                                             [5, 10, 20, 10, 5, 5, 20, 30, 20, 5],
+                                             [10, 20, 30, 20, 10, 20, 30, 90, 30, 20],
+                                             [20, 30, 90, 30, 20, 10, 20, 30, 20, 5],
+                                             [10, 20, 30, 20, 10, 5, 5, 20, 5, 5],
+                                             [5, 10, 20, 10, 5, 5, 5, 5, 5, 5]])
         
         
         self.lvl_2_reward_table = np.array([ [5, 5, 5, 5, 5, 5, 10, 20, 10, 5],
@@ -67,16 +67,16 @@ class Environment:
         self.x, self.y = 0, 0
         self.state_observation = [self.x, self.y]
         self.reward = 0
-        self.lvl_1_reward_table = np.array([ [0, 0, 0, 0, 0, 1, 2, 1, 0, 0],
-                                             [0, 0, 0, 0, 1, 2, 90, 2, 1, 0],
-                                             [0, 0, 0, 0, 0, 1, 2, 1, 0, 0],
-                                             [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-                                             [0, 0, 1, 0, 0, 0, 0, 2, 0, 0],
-                                             [0, 1, 2, 1, 0, 0, 2, 3, 2, 0],
-                                             [1, 2, 3, 2, 1, 2, 3, 90, 3, 2],
-                                             [2, 3, 90, 3, 2, 1, 2, 3, 2, 0],
-                                             [1, 2, 3, 2, 1, 0, 0, 2, 0, 0],
-                                             [0, 1, 2, 1, 0, 0, 0, 0, 0, 0]])
+        self.lvl_1_reward_table = np.array([ [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
+                                             [5, 5, 5, 5, 10, 20, 90, 20, 10, 5],
+                                             [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
+                                             [5, 5, 5, 5, 5, 5, 10, 5, 5, 5],
+                                             [5, 5, 10, 5, 5, 5, 5, 20, 5, 5],
+                                             [5, 10, 20, 10, 5, 5, 20, 30, 20, 5],
+                                             [10, 20, 30, 20, 10, 20, 30, 90, 30, 20],
+                                             [20, 30, 90, 30, 20, 10, 20, 30, 20, 5],
+                                             [10, 20, 30, 20, 10, 5, 5, 20, 5, 5],
+                                             [5, 10, 20, 10, 5, 5, 5, 5, 5, 5]])
         
         
         self.lvl_2_reward_table = np.array([ [5, 5, 5, 5, 5, 5, 10, 20, 10, 5],
@@ -102,47 +102,28 @@ class Environment:
     # Agent takes the step, i.e. take action to interact with 
     #  the environment
     def step(self, action, current_state):
-        # If agent is at terminal state, end the episode, set self.done to be True
-        #if self.state_observation == [self.MAX_HOR_VAL, self.MAX_VER_VAL]:
-        #    self.done = True
-        #    return np.array(self.state_observation), self.reward, self.done, self.episode_length
-        self.reward_lvl1 = 0
-        self.reward_lvl2 = 0
-        if self.food1_collected == True and self.food2_collected == True and self.food3_collected == True:
-            print('all the food collected')
-            self.done = True
-            self.all_food_collected = True
-            return np.array(self.state_observation), self.reward_lvl1, self.reward_lvl2
         
-        elif self.episode_length > self.max_episode_length:
-            self.done = True
-            return np.array(self.state_observation), self.reward_lvl1, self.reward_lvl2
-        
-        self.action = action
-        self.current_state_observation = current_state
-        self.state_observation = self.take_action()
-        self.reward_lvl1, self.reward_lvl2 = self.get_reward()
-        if self.reward_lvl1 == -10 or self.reward_lvl2 == -10:
-            self.state_observation = self.current_state_observation
-        self.episode_length += 1
-               
-        return np.array(self.state_observation), self.reward_lvl1, self.reward_lvl2
+        state_observation = self.take_action(action, current_state)
+        reward_lvl1, reward_lvl2 = self.get_reward(current_state, state_observation)
+                
+        return np.array(state_observation), reward_lvl1, reward_lvl2
     
-    def get_reward(self):
-        
-        reward_lvl1 = self.lvl_1_reward_table[self.x, self.y]
-        reward_lvl2 = self.lvl_2_reward_table[self.x, self.y]
+    def get_reward(self, current_state, state_observation):
+        x = state_observation[0]
+        y = state_observation[1]
+        reward_lvl1 = self.lvl_1_reward_table[x, y]
+        reward_lvl2 = self.lvl_2_reward_table[x, y]
 
-        if all(self.current_state_observation == self.state_observation):
-            reward_lvl1 = -1
-            reward_lvl2 = -1
+        if all(current_state == state_observation):
+            reward_lvl1 = 0
+            reward_lvl2 = 0
 
         if reward_lvl1 == 90 or reward_lvl2 == 90:
             copy = self.lvl_1_reward_table.copy()
             copy2 = self.lvl_2_reward_table.copy()
             
-            copy[self.x, self.y] = -10
-            copy2[self.x, self.y] = -10
+            copy[x, y] = 0
+            copy2[x, y] = 0
 
             self.lvl_1_reward_table = copy
             self.lvl_2_reward_table = copy2
@@ -150,8 +131,8 @@ class Environment:
             copy = self.lvl_1_reward_table.copy()
             copy2 = self.lvl_2_reward_table.copy()
             
-            copy[self.x, self.y] = 1
-            copy2[self.x, self.y] = 1
+            copy[x, y] = 1
+            copy2[x, y] = 1
 
             self.lvl_1_reward_table = copy
             self.lvl_2_reward_table = copy2
@@ -162,28 +143,30 @@ class Environment:
     # Method to take action, remain in the same box if agent tries
     # to run outside the grid, otherwise move one box in the 
     # direction of the action
-    def take_action(self):  
+    def take_action(self, action, current_state):  
+        x = current_state[0]
+        y = current_state[1]
         #if self.x > -1 and self.x <= self.MAX_HOR_VAL:
-        if (self.action == 0 and self.x == 0) or (self.action == 2 and self.x == self.MAX_HOR_VAL):
-            self.x = self.x
-        elif(self.action == 0):
-            self.x -= 1
-        elif(self.action == 2):
-            self.x += 1
+        if (action == 0 and x == 0) or (action == 2 and x == self.MAX_HOR_VAL):
+            x = x
+        elif(action == 0):
+            x -= 1
+        elif(action == 2):
+            x += 1
         else:
-            self.x = self.x
+            x = x
             
         #if self.y > -1 and self.y <= self.MAX_VER_VAL:
-        if (self.action == 1 and self.y == 0) or (self.action == 3 and self.y == self.MAX_HOR_VAL):
-            self.y = self.y
-        elif(self.action == 1):
-            self.y -= 1
-        elif(self.action == 3):
-            self.y += 1
+        if (action == 1 and y == 0) or (action == 3 and y == self.MAX_HOR_VAL):
+            y = y
+        elif(action == 1):
+            y -= 1
+        elif(action == 3):
+            y += 1
         else:
-            self.y = self.y
+            y = y
                         
-        return [self.x, self.y]
+        return [x, y]
     
     # Method to align the environment
     def align(self, x, y):
@@ -191,15 +174,17 @@ class Environment:
             
         copy = self.lvl_1_reward_table.copy()
         copy2 = self.lvl_2_reward_table.copy()
-        copy[x, y] = -10
-        copy2[x, y] = -10
+        copy[x, y] = 0
+        copy2[x, y] = 0
 
         self.lvl_1_reward_table = copy
         self.lvl_2_reward_table = copy2
     
     def get_attributes(self):
-        return self.episode_length, self.state_observation, self.lvl_1_reward_table, self.lvl_2_reward_table, self.max_episode_length
+        return self.lvl_1_reward_table, self.lvl_2_reward_table, self.max_episode_length
     
+
+
 
 
 def get_reward_ooo(self):    
@@ -239,3 +224,27 @@ def get_reward_ooo(self):
         #if self.food1_collected == True and self.food2_collected == True and self.food3_collected == True:
         #    reward = 200
         return reward
+def step_ooo(self, action, current_state):
+        # If agent is at terminal state, end the episode, set self.done to be True
+        #if self.state_observation == [self.MAX_HOR_VAL, self.MAX_VER_VAL]:
+        #    self.done = True
+        #    return np.array(self.state_observation), self.reward, self.done, self.episode_length
+        self.reward_lvl1 = 0
+        self.reward_lvl2 = 0
+        if self.food1_collected == True and self.food2_collected == True and self.food3_collected == True:
+            print('all the food collected')
+            self.done = True
+            self.all_food_collected = True
+            return np.array(self.state_observation), self.reward_lvl1, self.reward_lvl2
+        
+        elif self.episode_length > self.max_episode_length:
+            self.done = True
+            return np.array(self.state_observation), self.reward_lvl1, self.reward_lvl2
+        
+        self.action = action
+        self.current_state_observation = current_state
+        self.state_observation = self.take_action()
+        self.reward_lvl1, self.reward_lvl2 = self.get_reward()
+        #if self.reward_lvl1 == -10 or self.reward_lvl2 == -10:
+        #    self.state_observation = self.current_state_observation
+        self.episode_length += 1

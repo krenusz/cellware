@@ -1,7 +1,7 @@
 from typing import Any
 import torch
 import torch.nn.functional as F
-from torch.utils.data.sampler import BatchSampler, SubsetRandomSampler
+from torch.utils.data.sampler import BatchSampler, SubsetRandomSampler, SequentialSampler
 import torch.nn as nn
 from torch.distributions import Beta, Normal
 from replay_buffer import ReplayBuffer
@@ -135,6 +135,7 @@ class PPO_continuous():
         self.env_name = args.env_name
         self.lvl = args.lvl
         self.agent_number = args.agent_number
+        self.use_shuffle = args.use_shuffle
         
         if self.policy_dist == "Beta":
             self.actor = Actor_Beta(args)
@@ -143,7 +144,7 @@ class PPO_continuous():
         self.critic = Critic(args)
 
         if self.set_adam_eps:  # Trick 9: set Adam epsilon=1e-5
-            self.optimizer_actor = torch.optim.Adam(self.actor.parameters(), lr=self.lr_a, eps=1e-5)
+            self.optimizer_actor = torch.optim.Adam(self.actor.parameters(), lr=self.lr_a, eps=1e-5, maximize=False)
             self.optimizer_critic = torch.optim.Adam(self.critic.parameters(), lr=self.lr_c, eps=1e-5)
         else:
             self.optimizer_actor = torch.optim.Adam(self.actor.parameters(), lr=self.lr_a)
@@ -194,17 +195,12 @@ class PPO_continuous():
             vs_ = self.critic(s_)
             deltas = r + self.gamma * vs_ - vs
             for i, delta in enumerate(reversed(deltas.flatten().numpy())):
-                #if self.use_collective:
+                
                 gae = delta + self.gamma * self.lamda * gae
-                #if i == self.max_episode_steps or i == self.collective_switch-1:
-                # counts from 0 for the episode steps
+                
                 if i % (self.max_episode_steps - 1) == 0:
                     gae = 0
-                #else:
-                #    gae = delta + self.gamma * self.lamda * gae
-                #    if i == self.max_episode_steps:
-                #        gae = 0
-                # for collective memory we cannot penalize order of actions
+                
                 
                 adv.insert(0, gae)
             adv = torch.tensor(adv, dtype=torch.float).view(-1, 1)
@@ -215,9 +211,15 @@ class PPO_continuous():
         self.total_actor_loss = 0
         self.total_critic_loss = 0
         # Optimize policy for K epochs:
-        for _ in range(self.K_epochs):
+        if self.use_shuffle:
+            shuffle_times = self.K_epochs
+            sampler = SubsetRandomSampler(range(self.batch_size))
+        else:
+            shuffle_times = 1
+            sampler = SequentialSampler(range(self.batch_size))
+        for _ in range(shuffle_times):
             # Random sampling and no repetition. 'False' indicates that training will continue even if the number of samples in the last time is less than mini_batch_size
-            for index in BatchSampler(SubsetRandomSampler(range(self.batch_size)), self.mini_batch_size, False):
+            for index in BatchSampler(sampler, self.mini_batch_size, False):
                 dist_now = self.actor.get_dist(s[index])
                 dist_entropy = dist_now.entropy().sum(1, keepdim=True)  # shape(mini_batch_size X 1)
                 a_logprob_now = dist_now.log_prob(a[index])

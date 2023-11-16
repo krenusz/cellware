@@ -1,10 +1,12 @@
 import torch
 import numpy as np
+import pandas as pd
 
 
 class ReplayBuffer:
     def __init__(self, args):
         self.args = args
+        self.batch_size = args.batch_size
         self.s = np.zeros((args.batch_size, args.state_dim))
         self.a = np.zeros((args.batch_size, args.action_dim))
         self.a_logprob = np.zeros((args.batch_size, args.action_dim))
@@ -72,3 +74,13 @@ class ReplayBuffer:
         s_ = torch.tensor(self.s_, dtype=torch.float)
 
         return s, a, a_logprob, r, s_
+    
+    def save_memory(self, path):
+        memory = self.numpy_()
+        df = pd.DataFrame(index=range(self.count),columns=['state', 'actions', 'action_prob', 'reward', 'next_state'])
+        for i,col in enumerate(df.columns):
+            if memory[i].shape[1] == 1:
+                df[col] = memory[i][:self.count]
+            else:
+                df[col] = list(memory[i])[:self.count]
+        df.to_csv('{}_memory.csv'.format(path))
