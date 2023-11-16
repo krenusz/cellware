@@ -118,6 +118,28 @@ class Environment:
             reward_lvl1 = 0
             reward_lvl2 = 0
 
+        copy = self.lvl_1_reward_table.copy()
+        copy2 = self.lvl_2_reward_table.copy()
+        if copy[x, y] > 5:
+            copy[x, y] -= 1
+        if copy2[x, y] > 5:
+            copy2[x, y] -= 1
+
+        self.lvl_1_reward_table = copy
+        self.lvl_2_reward_table = copy2
+
+        return reward_lvl1, reward_lvl2
+    
+    def get_reward1(self, current_state, state_observation):
+        x = state_observation[0]
+        y = state_observation[1]
+        reward_lvl1 = self.lvl_1_reward_table[x, y]
+        reward_lvl2 = self.lvl_2_reward_table[x, y]
+
+        if all(current_state == state_observation):
+            reward_lvl1 = 0
+            reward_lvl2 = 0
+
         if reward_lvl1 == 90 or reward_lvl2 == 90:
             copy = self.lvl_1_reward_table.copy()
             copy2 = self.lvl_2_reward_table.copy()
