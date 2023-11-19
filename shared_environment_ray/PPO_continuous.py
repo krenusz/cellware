@@ -219,7 +219,7 @@ class PPO_continuous():
             sampler = SequentialSampler(range(self.batch_size))
         for _ in range(shuffle_times):
             # Random sampling and no repetition. 'False' indicates that training will continue even if the number of samples in the last time is less than mini_batch_size
-            for index in BatchSampler(sampler, self.mini_batch_size, False):
+            for index in BatchSampler(sampler, self.collective_switch, False):
                 dist_now = self.actor.get_dist(s[index])
                 dist_entropy = dist_now.entropy().sum(1, keepdim=True)  # shape(mini_batch_size X 1)
                 a_logprob_now = dist_now.log_prob(a[index])

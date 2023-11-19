@@ -33,16 +33,16 @@ class Environment:
         self.max_episode_length = 128
         self.state_observation = [self.x, self.y]
         self.reward = 0
-        self.lvl_1_reward_table = np.array([ [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
-                                             [5, 5, 5, 5, 10, 20, 90, 20, 10, 5],
-                                             [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
-                                             [5, 5, 5, 5, 5, 5, 10, 5, 5, 5],
-                                             [5, 5, 10, 5, 5, 5, 5, 20, 5, 5],
-                                             [5, 10, 20, 10, 5, 5, 20, 30, 20, 5],
+        self.lvl_1_reward_table = np.array([ [1, 1, 1, 1, 1, 10, 20, 10, 1, 1],
+                                             [1, 1, 1, 1, 10, 20, 90, 20, 10, 1],
+                                             [1, 1, 1, 1, 1, 10, 20, 10, 1, 1],
+                                             [1, 1, 1, 1, 1, 1, 10, 1, 1, 1],
+                                             [1, 1, 10, 1, 1, 1, 1, 20, 1, 1],
+                                             [1, 10, 20, 10, 1, 1, 20, 30, 20, 1],
                                              [10, 20, 30, 20, 10, 20, 30, 90, 30, 20],
-                                             [20, 30, 90, 30, 20, 10, 20, 30, 20, 5],
-                                             [10, 20, 30, 20, 10, 5, 5, 20, 5, 5],
-                                             [5, 10, 20, 10, 5, 5, 5, 5, 5, 5]])
+                                             [20, 30, 90, 30, 20, 10, 20, 30, 20, 1],
+                                             [10, 20, 30, 20, 10, 1, 1, 20, 1, 1],
+                                             [1, 10, 20, 10, 1, 1, 1, 1, 1, 1]])
         
         
         self.lvl_2_reward_table = np.array([ [5, 5, 5, 5, 5, 5, 10, 20, 10, 5],
@@ -67,17 +67,26 @@ class Environment:
         self.x, self.y = 0, 0
         self.state_observation = [self.x, self.y]
         self.reward = 0
-        self.lvl_1_reward_table = np.array([ [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
-                                             [5, 5, 5, 5, 10, 20, 90, 20, 10, 5],
-                                             [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
-                                             [5, 5, 5, 5, 5, 5, 10, 5, 5, 5],
-                                             [5, 5, 10, 5, 5, 5, 5, 20, 5, 5],
-                                             [5, 10, 20, 10, 5, 5, 20, 30, 20, 5],
+        self.lvl_1_reward_table = np.array([ [1, 1, 1, 1, 1, 10, 20, 10, 1, 1],
+                                             [1, 1, 1, 1, 10, 20, 90, 20, 10, 1],
+                                             [1, 1, 1, 1, 1, 10, 20, 10, 1, 1],
+                                             [1, 1, 1, 1, 1, 1, 10, 1, 1, 1],
+                                             [1, 1, 10, 1, 1, 1, 1, 20, 1, 1],
+                                             [1, 10, 20, 10, 1, 1, 20, 30, 20, 1],
                                              [10, 20, 30, 20, 10, 20, 30, 90, 30, 20],
-                                             [20, 30, 90, 30, 20, 10, 20, 30, 20, 5],
-                                             [10, 20, 30, 20, 10, 5, 5, 20, 5, 5],
-                                             [5, 10, 20, 10, 5, 5, 5, 5, 5, 5]])
-        
+                                             [20, 30, 90, 30, 20, 10, 20, 30, 20, 1],
+                                             [10, 20, 30, 20, 10, 1, 1, 20, 1, 1],
+                                             [1, 10, 20, 10, 1, 1, 1, 1, 1, 1]])
+        #self.lvl_1_reward_table = np.array([ [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
+        #                                     [5, 5, 5, 5, 10, 20, 90, 20, 10, 5],
+        #                                     [5, 5, 5, 5, 5, 10, 20, 10, 5, 5],
+        #                                     [5, 5, 5, 5, 5, 5, 10, 5, 5, 5],
+        #                                     [5, 5, 10, 5, 5, 5, 5, 20, 5, 5],
+        #                                     [5, 10, 20, 10, 5, 5, 20, 30, 20, 5],
+        #                                     [10, 20, 30, 20, 10, 20, 30, 90, 30, 20],
+        #                                     [20, 30, 90, 30, 20, 10, 20, 30, 20, 5],
+        #                                     [10, 20, 30, 20, 10, 5, 5, 20, 5, 5],
+        #                                     [5, 10, 20, 10, 5, 5, 5, 5, 5, 5]])
         
         self.lvl_2_reward_table = np.array([ [5, 5, 5, 5, 5, 5, 10, 20, 10, 5],
                                         [5, 5, 5, 5, 5, 10, 20, 30, 20, 10],
@@ -108,7 +117,7 @@ class Environment:
                 
         return np.array(state_observation), reward_lvl1, reward_lvl2
     
-    def get_reward(self, current_state, state_observation):
+    def get_reward1(self, current_state, state_observation):
         x = state_observation[0]
         y = state_observation[1]
         reward_lvl1 = self.lvl_1_reward_table[x, y]
@@ -130,7 +139,7 @@ class Environment:
 
         return reward_lvl1, reward_lvl2
     
-    def get_reward1(self, current_state, state_observation):
+    def get_reward(self, current_state, state_observation):
         x = state_observation[0]
         y = state_observation[1]
         reward_lvl1 = self.lvl_1_reward_table[x, y]
@@ -144,8 +153,8 @@ class Environment:
             copy = self.lvl_1_reward_table.copy()
             copy2 = self.lvl_2_reward_table.copy()
             
-            copy[x, y] = 0
-            copy2[x, y] = 0
+            copy[x, y] = 1
+            copy2[x, y] = 1
 
             self.lvl_1_reward_table = copy
             self.lvl_2_reward_table = copy2

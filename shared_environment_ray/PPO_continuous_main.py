@@ -22,13 +22,13 @@ def main(args, env_name, number):
     env = Environment.remote(10,10)
     args.env_name = env_name
     args.lvl = 1
-    args.collective_switch = 512
+    args.collective_switch = 256
     args.state_dim = 2
     args.action_dim = 1
     args.max_action = 3
     args.max_episode_steps = args.mini_batch_size#ray.get(env.get_attributes.remote())[2]
     writer = SummaryWriter(log_dir='runs/PPO_continuous/env_{}_level_{}_dist_{}_numberofagent_{}_collective_{}_number_{}'.format(env_name,args.lvl,args.policy_dist, args.agent_number, args.use_collective, number))
-    starting_states = [np.array([0,0]),np.array([0,9]),np.array([9,0]),np.array([9,9])]
+    starting_states = [np.array([0,0]),np.array([0,0]),np.array([0,0]),np.array([0,0])]
     
     agent_list = []
     state_list = []
@@ -167,11 +167,11 @@ if __name__ == '__main__':
     parser.add_argument("--save_freq", type=int, default=20, help="Save frequency")
     parser.add_argument("--agent_number", type=int, default=4, help="Number of agents")
     parser.add_argument("--policy_dist", type=str, default="Gaussian", help="Beta or Gaussian")
-    parser.add_argument("--batch_size", type=int, default=2048, help="Batch size")
-    parser.add_argument("--mini_batch_size", type=int, default=128, help="Minibatch size")
+    parser.add_argument("--batch_size", type=int, default=1024, help="Batch size")
+    parser.add_argument("--mini_batch_size", type=int, default=256, help="Minibatch size")
     parser.add_argument("--hidden_width", type=int, default=64, help="The number of neurons in hidden layers of the neural network")
-    parser.add_argument("--lr_a", type=float, default=3e-3, help="Learning rate of actor")
-    parser.add_argument("--lr_c", type=float, default=3e-3, help="Learning rate of critic")
+    parser.add_argument("--lr_a", type=float, default=3e-4, help="Learning rate of actor")
+    parser.add_argument("--lr_c", type=float, default=3e-4, help="Learning rate of critic")
     parser.add_argument("--gamma", type=float, default=0.99, help="Discount factor")
     parser.add_argument("--lamda", type=float, default=0.95, help="GAE parameter")
     parser.add_argument("--epsilon", type=float, default=0.2, help="PPO clip parameter")
@@ -183,7 +183,7 @@ if __name__ == '__main__':
     parser.add_argument("--entropy_coef", type=float, default=0.01, help="Trick 5: policy entropy")
     parser.add_argument("--use_lr_decay", type=bool, default=True, help="Trick 6:learning rate Decay")
     parser.add_argument("--use_grad_clip", type=bool, default=True, help="Trick 7: Gradient clip")
-    parser.add_argument("--use_orthogonal_init", type=bool, default=True, help="Trick 8: orthogonal initialization")
+    parser.add_argument("--use_orthogonal_init", type=bool, default=False, help="Trick 8: orthogonal initialization")
     parser.add_argument("--set_adam_eps", type=float, default=True, help="Trick 9: set Adam epsilon=1e-5")
     parser.add_argument("--use_tanh", type=float, default=True, help="Trick 10: tanh activation function")
     parser.add_argument("--use_collective", type=bool, default=True, help="Sharing memory across agents")
@@ -192,6 +192,6 @@ if __name__ == '__main__':
 
     env_name = ['Environment Petri Dish']
     env_index = 1
-    main(args, env_name=env_name[0], number=27)
+    main(args, env_name=env_name[0], number=36)
     args.use_collective = False
-    main(args, env_name=env_name[0], number=27)
+    main(args, env_name=env_name[0], number=36)
