@@ -44,7 +44,9 @@ The Up to date version of the solution can be found in folder: PPO_universal
 Change to the working directory: cd ...
 
 Run the program: python PPO_[version]_main.py
+
 version: continous or universal
+
 ### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
