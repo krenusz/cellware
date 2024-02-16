@@ -30,7 +30,7 @@ The environment is Custom desinged to resemble in-vitro cell environment in prim
 
 An additional GRU layer was applied as an Encoder in order to enphasise Delayed Gratification.
 
-Number of parallel Agents can be arbitrarly scaled with the limit of resources. Furthermore a --collective_switch parameter is responsible for sharing memory across Agents.
+Number of parallel Agents can be arbitrarly scaled with the limit of resources. Furthermore a --collective_switch parameter is responsible for sharing memory across Agents.(not yet available)
 
 KL Divergence target was applied for early stopping.
 
