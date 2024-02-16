@@ -42,6 +42,9 @@ class PPO_universal():
         self.total_actor_loss = 0
         self.total_critic_loss = 0
         self.total_advantage = 0
+        self.total_entropy_loss = 0
+        self.target_kl = args.target_kl
+        self.stop_training = False
         #self.writer = args.writer
         self.done = False
         self.score = 0
@@ -154,8 +157,11 @@ class PPO_universal():
 
 
         #self.total_advantage = sum(adv).item()
+        approx_kl_divs = []
         self.total_actor_loss = 0
         self.total_critic_loss = 0
+        self.total_advantage = 0
+        self.total_entropy_loss = 0
         # Optimize policy for K epochs:
         if self.use_shuffle:
             shuffle_times = self.K_epochs
@@ -194,6 +200,15 @@ class PPO_universal():
                 # critic_loss
                 critic_loss = (values_now - batch['r'][index]) ** 2
                 critic_loss = (critic_loss * batch['active'][index]).sum() / batch['active'][index].sum()
+                # Calculate approximate form of reverse KL Divergence for early stopping
+                # see issue #417: https://github.com/DLR-RM/stable-baselines3/issues/417
+                # and discussion in PR #419: https://github.com/DLR-RM/stable-baselines3/pull/419
+                # and Schulman blog: http://joschu.net/blog/kl-approx.html
+                with torch.no_grad():
+                    log_ratio = a_logprob_now - batch['a_logprob'][index]
+                    approx_kl_div = torch.mean((torch.exp(log_ratio) - 1) - log_ratio).numpy()
+                    approx_kl_divs.append(approx_kl_div)
+
                 
                 
                 # Update
@@ -208,8 +223,19 @@ class PPO_universal():
                     torch.nn.utils.clip_grad_norm_(self.encoder.parameters(), 0.5)
                 self.optimizer_actor.step()
                 self.optimizer_critic.step()
-                self.optimizer_encoder.step()    
+                self.optimizer_encoder.step()   
+                self.total_actor_loss += actor_loss
+                self.total_critic_loss += critic_loss
+                self.total_entropy_loss += dist_entropy.mean()
+                self.total_advantage += batch['adv']
                 print('LOSS/K_epoch:',loss, 'Total Reward:', batch['r'][index].sum(), 'Total Resource:', batch['res'][index].sum(), 'Total Adv:', batch['adv'][index].sum(), 'Total Pred Reward:', batch['v_target'][index].sum())
+        explained_var = self.explained_variance(np.asarray(batch['v'][index,:-1]).flatten(), np.asarray(batch['r'][index]).flatten())
+        print('Explained Variance:',explained_var, 'Mean KL Divergence:', np.mean(approx_kl_divs))
+        
+        if self.target_kl is not None and np.mean(approx_kl_divs) > 1.5 * self.target_kl:
+            self.stop_training = True
+            print(f"Early stopping at step {total_steps} due to reaching max kl: {approx_kl_div:.2f}")
+                
         self.reset_rnn_hidden()
         if self.use_lr_decay:  # Trick 6:learning rate Decay
             self.lr_decay(total_steps)
@@ -278,6 +304,7 @@ class PPO_universal():
         self.total_advantage = sum(adv).item()
         self.total_actor_loss = 0
         self.total_critic_loss = 0
+    
         # Optimize policy for K epochs:
         if self.use_shuffle:
             shuffle_times = self.K_epochs
@@ -397,6 +424,7 @@ class PPO_universal():
             if self.replay_buffer.episode_num == self.batch_size-1 and self.replay_buffer.count == self.mini_batch_size*self.batch_size - 1:
                 #print('done: agent getting updated')
                 if self.policy_dist == "Discrete RNN":
+                    print('updating rnn')
                     self.update_rnn(i_epoch)
                     self.replay_buffer.reset_buffer()
                     print('buffer was reseted',self.replay_buffer.episode_num, self.replay_buffer.episode_step)
@@ -414,17 +442,44 @@ class PPO_universal():
 
     def get_buffer(self):
         return self.replay_buffer
+    
+    def explained_variance(self, y_pred: np.ndarray, y_true: np.ndarray) -> np.ndarray:
+        '''
+        Computes fraction of variance that ypred explains about y.
+        Returns 1 - Var[y-ypred] / Var[y]
+
+        interpretation:
+            ev=0  =>  might as well have predicted zero
+            ev=1  =>  perfect prediction
+            ev<0  =>  worse than just predicting zero
+
+        :param y_pred: the prediction
+        :param y_true: the expected value
+        :return: explained variance of ypred and y
+        '''
+        assert y_true.ndim == 1 and y_pred.ndim == 1
+        var_y = np.var(y_true)
+        return np.nan if var_y == 0 else 1 - np.var(y_true - y_pred) / var_y
+
 
     def get_losses(self):
         if type(self.total_actor_loss) != int:
-            return sum(self.total_actor_loss).item(), sum(self.total_actor_loss).item(), self.total_advantage
+            return {'actor_loss':self.total_actor_loss.item(), 
+                    'critic_loss':self.total_critic_loss.item(),
+                    'entropy_loss':self.total_entropy_loss.item()}
         else:
-            return self.total_actor_loss, self.total_actor_loss, self.total_advantage
+            return {'actor_loss':self.total_actor_loss, 
+                    'critic_loss':self.total_critic_loss,
+                    'entropy_loss':self.total_entropy_loss
+                    }
     
     def clone(self, id_):
         clone_ = copy.deepcopy(self)
         clone_.agent_id = id_
         return clone_
+
+    def is_early_stopped(self):
+        return self.stop_training
 
     def lr_decay(self, total_steps):
         lr_a_now = self.lr_a * (1 - total_steps / self.max_train_steps)

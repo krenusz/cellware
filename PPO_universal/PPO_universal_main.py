@@ -16,7 +16,6 @@ from environment_dish import Environment
 
 
 ray.init()
-#ignore_reinit_error=True, address='auto', runtime_env={"working_dir": "C:/Users/User/.conda/envs/mtgat"}a
 def main(args, env_name, number):
 
     env = Environment.remote(10,10)
@@ -55,14 +54,16 @@ def main(args, env_name, number):
         a = ray.get(env.get_attributes.remote())[0].copy() * 10
         b = ray.get(env.get_attributes.remote())[1].copy() * 10
         
-
+        if all([ray.get(x.is_early_stopped.remote()) for x in agent_list]) == True:
+            raise ValueError('Early Stopping')
         
         
         for cnt in count():
-            #print(state_list)
+            
+            
             #print('Buffer size',[ray.get(x.get_buffer.remote()).count for x in agent_list], 'Batch size:',args.batch_size)
             if cnt == args.max_episode_steps: 
-                #print('done: No more Steps left')
+                print('done: No more Steps left')
                 
                 array_list = [ray.get(x.get_buffer.remote()).numpy_() for x in agent_list]
                 #print('array_list',array_list[0])
@@ -94,11 +95,11 @@ def main(args, env_name, number):
                 
                 for i in range(len(agent_list)):
                     #print(ray.get(agent_list[i].get_losses.remote())[0],ray.get(agent_list[i].get_losses.remote())[1],ray.get(agent_list[i].get_losses.remote())[2])
-                    writer.add_scalar('Total actor losses agents {}'.format(i),ray.get(agent_list[i].get_losses.remote())[0] ,i_epoch)
-                    writer.add_scalar('Total critic losses agents {}'.format(i),ray.get(agent_list[i].get_losses.remote())[1] ,i_epoch)
-                    writer.add_scalar('Total advantages agents {}'.format(i),ray.get(agent_list[i].get_losses.remote())[2] ,i_epoch)
+                    writer.add_scalar('Total actor losses agents {}'.format(i),ray.get(agent_list[i].get_losses.remote())['actor_loss'] ,i_epoch)
+                    writer.add_scalar('Total critic losses agents {}'.format(i),ray.get(agent_list[i].get_losses.remote())['critic_loss'] ,i_epoch)
+                    #writer.add_scalar('Total advantages agents {}'.format(i),ray.get(agent_list[i].get_losses.remote())['advantage'] ,i_epoch)
                     writer.add_scalar('Total rewards agents {}'.format(i),np.sum(reward_list[i]),i_epoch)
-
+                    writer.add_scalar('Total entropy agents {}'.format(i),ray.get(agent_list[i].get_losses.remote())['entropy_loss'] ,i_epoch)
                 break
             
             
@@ -169,7 +170,7 @@ def main(args, env_name, number):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("Hyperparameters Setting for PPO-continuous")
-    parser.add_argument("--max_train_steps", type=int, default=1000, help=" Maximum number of training steps")
+    parser.add_argument("--max_train_steps", type=int, default=10000, help=" Maximum number of training steps")
     parser.add_argument("--evaluate_freq", type=float, default=5e3, help="Evaluate the policy every 'evaluate_freq' steps")
     parser.add_argument("--save_freq", type=int, default=20, help="Save frequency")
     parser.add_argument("--agent_number", type=int, default=1, help="Number of agents")
@@ -185,6 +186,7 @@ if __name__ == '__main__':
     parser.add_argument("--lamda", type=float, default=0.95, help="GAE parameter")
     parser.add_argument("--epsilon", type=float, default=0.2, help="PPO clip parameter")
     parser.add_argument("--K_epochs", type=int, default=10, help="PPO parameter")
+    parser.add_argument("--target_kl", type=float, default=0.05, help="KL Divergence target for early stopping")
     parser.add_argument("--use_adv_norm", type=bool, default=True, help="Trick 1:advantage normalization")
     parser.add_argument("--use_state_norm", type=bool, default=True, help="Trick 2:state normalization")
     parser.add_argument("--use_reward_norm", type=bool, default=True, help="Trick 3:reward normalization")
@@ -202,6 +204,6 @@ if __name__ == '__main__':
 
     env_name = ['Environment Petri Dish']
     env_index = 1
-    main(args, env_name=env_name[0], number=4_1)
+    main(args, env_name=env_name[0], number=4_2)
     #args.use_collective = False
     #main(args, env_name=env_name[0], number=1_25)
