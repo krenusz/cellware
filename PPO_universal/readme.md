@@ -40,6 +40,7 @@ Some of the functionalities are not available yet, but it is on it's way.
 ## Initial Setting
 
 2D matrix (10,10) Environment
+
       [[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
