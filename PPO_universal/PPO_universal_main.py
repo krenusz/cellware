@@ -45,7 +45,7 @@ def main(args, env_name, number):
         print('i_epoch:',i_epoch)
         for s in range(len(agent_list)):
             agent_list[s].achievement_reset.remote()
-            state_list[s] = starting_states[s]
+            state_list[s] = starting_states[0]
             score_list[s] = 0
         done_list = [False for x in range(len(agent_list))]
         #time.sleep(2)
