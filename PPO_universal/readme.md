@@ -93,6 +93,8 @@ Positive numbers and 0 represents the discoverable rewards, while -1 is the wall
 6. Install requirements using pip
      
    pip install -r requirements.txt
+   
+7. Create two empty folder named: runs and routes
 ### Usage
 
 Change to the working directory: cd ...
