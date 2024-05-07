@@ -31,7 +31,7 @@ Additionally, Cellware introduces a memory sharing option that allows parallel a
 
 
 ## Key Features
-Policy Options: Cellware supports three different policies: 
+1. Policy Options: Cellware supports three different policies: 
 
 Discrete 
 
@@ -39,15 +39,16 @@ Gaussian Continuous
 
 Discrete RNN (LSTM or GRU) 
 
-Custom Environment: The environment is custom-designed to resemble an in-vitro cell environment in a primitive format. 
+2. Custom Environment: The environment is custom-designed to resemble an in-vitro cell environment in a primitive format. 
 
-Delayed Gratification: An additional GRU layer serves as an encoder to emphasize delayed gratification. 
+3. Delayed Gratification: An additional GRU layer serves as an encoder to emphasize delayed gratification. 
 
-Parallel Agents: The agents are distributed by Ray parallel architecture. The number of parallel agents can be arbitrarily scaled, limited only by available resources. The --collective_switch parameter facilitates memory sharing across agents, making data collection faster by parallelizing the process. In the shared environment, memory sharing also implies knowledge transfer, thereby boosting convergence. 
+4. Parallel Agents: The agents are distributed by Ray parallel architecture. The number of parallel agents can be arbitrarily scaled, limited only by available resources. The --collective_switch parameter facilitates memory sharing across agents, making data collection faster by parallelizing the process. In the shared environment, memory sharing also implies knowledge transfer, thereby boosting convergence. 
 
-GPU support: The architecture allows computation device switch for the neural networks, with mixed precision training. 
+5. GPU support: The architecture allows computation device switch for the neural networks, with mixed precision training. 
 
-Cellfate Optimization: A higher-level network optimizes the right policy to use by the agents. The cellfate network aims to maximize collected rewards per generation by selecting the best policy for the agents. 
+6. Cellfate Optimization: A higher-level network optimizes the right policy to use by the agents. The cellfate network aims to maximize collected rewards per generation by selecting the best policy for the agents.
+   
 ## Initial Environment: 
 
 2D matrix (10×10) 
@@ -71,7 +72,7 @@ The Up to date version of the solution can be found in folder: PPO_universal
 
 1. Create virtual environment
    
-   conda create -n cellware python=3.8.13
+   conda create -n cellware python>=3.8
 
 3. Activate virtual environment
    
@@ -81,16 +82,19 @@ The Up to date version of the solution can be found in folder: PPO_universal
 
    ```bash
    git clone https://github.com/krenusz/cellware/[foldername].git
+   
 6. Install requirements using pip
      
    pip install -r requirements.txt
+   
 ### Usage
 
 Change to the working directory: cd ...
 
 Run the program: python PPO_[version]_main.py
 
-version: continous or universal
+version: continous; universal; evolution network (up to date) 
+
 ## Contact Information
 bence.krenusz@gmail.com
 https://www.linkedin.com/in/kr%C3%A9nusz-bence-85ba6512a/
