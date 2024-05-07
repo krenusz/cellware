@@ -72,7 +72,7 @@ The Up to date version of the solution can be found in folder: PPO_universal
 
 1. Create virtual environment
    
-   conda create -n cellware python>=3.8
+   conda create -n cellware python=3.8
 
 3. Activate virtual environment
    
