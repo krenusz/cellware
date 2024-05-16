@@ -33,11 +33,11 @@ Additionally, Cellware introduces a memory sharing option that allows parallel a
 ## Key Features
 1. Policy Options: Cellware supports three different policies: 
 
-Discrete 
+- Discrete 
 
-Gaussian Continuous 
+- Gaussian Continuous 
 
-Discrete RNN (LSTM or GRU) 
+- Discrete RNN (LSTM or GRU) 
 
 2. Custom Environment: The environment is custom-designed to resemble an in-vitro cell environment in a primitive format. 
 
