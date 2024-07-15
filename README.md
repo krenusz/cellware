@@ -1,4 +1,4 @@
-# Cellware: A Multi-Agent Reinforcement Learning Approach for Simulating Primitive Cellular Behaviour
+# Cellware: A Multi-Agent Reinforcement Learning with JEPA encoding for Simulating Primitive Cellular Behaviour
 
 ## Table of Contents
 
