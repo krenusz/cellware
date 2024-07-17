@@ -1,4 +1,4 @@
-from typing import Any
+
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -148,7 +148,8 @@ class PPO_universal_selfreplicate():
         embedding = torch.tensor(embedding,dtype=self.dtype).view(1,1,-1).to(self.device)
         
         with torch.autocast(device_type=self.device.type, dtype=self.dtype):
-            #print('UPDATE COUNT ENCODER',self.encoder.update_count)
+            
+
             x, _, _, _ = self.encoder.predict(embedding)
 
             if self.policy_dist == "Discrete":
@@ -187,6 +188,12 @@ class PPO_universal_selfreplicate():
         print('Updating Agent with policy:', self.policy_dist, 'Agent:', self.agent_id)
         k_cross = ray.get(self.k_catche.get.remote())
         
+        # get the best action fer all the states based on the reward for it
+        max_indices = batch['r'].argmax(dim=0).to(self.device)
+        col_indices = torch.arange(batch['r'].size(1)).unsqueeze(1).to(self.device)
+        indices = torch.stack([max_indices.flatten(), col_indices.flatten()], dim=1)
+        best_actions = batch['a'][indices[:, 0], indices[:, 1]].reshape(1, self.mini_batch_size).to(self.device)
+
         if k_cross is not None:
             k_cross = k_cross.to(self.device)
             
@@ -217,13 +224,16 @@ class PPO_universal_selfreplicate():
                 embedding_target = state_action_reward_embedding(s_, a_, r_, s, a, r, self.args.env_size, self.args.embed_dim, self.args.action_dim, self.args.max_reward)
                 embedding_target = torch.tensor(embedding_target,dtype=self.dtype).to(self.device)
                 embedding_masked = self.apply_mask(embedding_target)
-                
-               
+                               
                 if self.policy_dist == "Discrete RNN":
                     self.reset_rnn_hidden()
-                
+                if self.args.use_rnn_encoder:
+                    self.encoder.encoder_model.reset_rnn_hidden()
+                    
+
                 with torch.autocast(device_type=self.device.type, dtype=self.dtype):
                     with torch.no_grad():  
+
                         x, _, _, _= self.encoder.predict(embedding_masked)
 
                     if self.policy_dist == "Discrete RNN":
@@ -244,6 +254,7 @@ class PPO_universal_selfreplicate():
                         ratios = torch.exp(a_logprob_now - batch['a_logprob'][index]) 
                     else:
                         dist_entropy = dist_now.entropy() # shape(mini_batch_size, max_episode_len)
+                        #a_logprob_now = dist_now.log_prob(best_actions.repeat(self.iter_batch,1))
                         a_logprob_now = dist_now.log_prob(batch['a'][index])  # shape(mini_batch_size, max_episode_len)
                         ratios = torch.exp(a_logprob_now - batch['a_logprob'][index])
                     # a/b=exp(log(a)-log(b))
@@ -285,6 +296,8 @@ class PPO_universal_selfreplicate():
        
         if self.policy_dist == "Discrete RNN":
             self.reset_rnn_hidden()
+        if self.args.use_rnn_encoder:
+            self.encoder.encoder_model.reset_rnn_hidden()
         if self.use_lr_decay:  # Trick 6:learning rate Decay
             self.lr_decay(total_steps)
 
@@ -356,13 +369,7 @@ class PPO_universal_selfreplicate():
             else:
                 dw = False
                 self.replay_buffer.store_transition(state, value, action, action_prob, reward, reward-cost, cost, dw)
-                
-
-            #if self.replay_buffer.episode_num == self.batch_size-1 and self.replay_buffer.count == self.mini_batch_size*self.batch_size - 1:
-                
-            #self.update(i_epoch)
-            #self.replay_buffer.reset_buffer()
-
+        
         if lvl == 1:
             return next_state, self.score
         else:

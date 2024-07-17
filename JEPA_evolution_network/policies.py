@@ -287,9 +287,14 @@ class RNN_Encoder(nn.Module):
     def __init__(self, args):
         super(RNN_Encoder, self).__init__()  
         self.lin = nn.Linear(args.sar_embed_dim, args.rnn_encoder_embed_dim)
-        self.rnn = nn.GRU(args.sar_embed_dim, args.rnn_encoder_embed_dim, args.n_layers, dropout=args.attn_drop)
+        if args.use_gru:
+            self.rnn = nn.GRU(args.sar_embed_dim, args.rnn_encoder_embed_dim, args.n_layers, dropout=args.attn_drop, batch_first=False)
+        else:
+            self.rnn = nn.LSTM(args.sar_embed_dim, args.rnn_encoder_embed_dim, args.n_layers, dropout=args.attn_drop, batch_first=False)
+        
         self.block = Block(args)
         self.args = args
+        self.encoder_rnn_hidden = None
 
         if args.use_orthogonal_init:
             print("------use orthogonal init------")
@@ -299,19 +304,19 @@ class RNN_Encoder(nn.Module):
     def forward(self, x, k_cross=None, decoder=True):
         
         B, MB, C = x.shape
+        
         if self.args.use_rnn_encoder:
-            dc_out, h_end = self.rnn(x.view(1,-1,C))
-            h_end = h_end[-1]
+            dc_out, self.encoder_rnn_hidden = self.rnn(x, self.encoder_rnn_hidden)
         else:
-            h_end = None
             dc_out = self.lin(x)
-    
+        
         dc_out = dc_out.view(B, MB, -1)
                
         x, attn, k = self.block.forward(dc_out, k_cross, decoder)
-        return x, attn, k, h_end
+        return x, attn, k, self.encoder_rnn_hidden
         
-       
+    def reset_rnn_hidden(self):
+        self.encoder_rnn_hidden = None   
 
     def reinitilize(self, long_weights):
         #self.rnn.all_weights = long_weights[0]
@@ -356,6 +361,11 @@ class Attention(nn.Sequential):
         self.proj_drop = nn.Dropout(args.proj_drop)
         self.use_sdpa = args.use_sdpa
 
+        if args.use_orthogonal_init:
+            print("------use orthogonal init------")
+            orthogonal_init_RNN(self.qkv)
+            orthogonal_init_RNN(self.proj)
+
     def forward(self, x, mask=None):
         B, MB, C = x.shape
         
@@ -397,6 +407,11 @@ class CrossAttention(nn.Module): # ????????
         self.proj_drop = nn.Dropout(args.proj_drop)
         self.use_sdpa = args.use_sdpa
 
+        if args.use_orthogonal_init:
+            print("------use orthogonal init------")
+            orthogonal_init_RNN(self.qkv)
+            orthogonal_init_RNN(self.proj)
+
     def forward(self, x, k_cross=None, mask=None):
         B, MB, C = x.shape
         
@@ -432,6 +447,11 @@ class Block(nn.Sequential):
         self.norm2 = norm_layer(args.predictor_embed_dim)  
         self.mlp = MLP(args, args.predictor_embed_dim, args.projection_embed_dim)
         self.activate_func = [nn.ReLU(), nn.Tanh()][args.use_tanh]
+
+        if args.use_orthogonal_init:
+            print("------use orthogonal init------")
+            orthogonal_init_RNN(self.predictor_embed)
+            
 
     def forward(self, x, k_cross=None, decoder=True):
         x = self.activate_func(self.predictor_embed(x))

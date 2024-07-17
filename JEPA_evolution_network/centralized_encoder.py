@@ -59,6 +59,10 @@ class Encoder():
             
             # Random sampling and no repetition. 'False' indicates that training will continue even if the number of samples in the last time is less than mini_batch_size
             for index in BatchSampler(sampler, self.iter_batch, False):
+                if self.args.use_rnn_encoder:
+                    self.target_encoder_model.reset_rnn_hidden()
+                    self.encoder_model.reset_rnn_hidden()
+
                 if k_cross is not None:
                     k_cross_batch =  k_cross[index]
                 s, a, r = batch['s'][index].cpu().numpy(), batch['a'][index].cpu().numpy(), batch['r'][index].cpu().numpy()
@@ -125,6 +129,14 @@ class Encoder():
         if self.stop_training:
             print(f"Early stopping at update count {self.update_count} due to reaching min kl differences")
         
+        
+        if self.args.use_rnn_encoder:
+            self.target_encoder_model.reset_rnn_hidden()
+            self.encoder_model.reset_rnn_hidden()
+        if self.args.use_lr_decay:  # Trick 6:learning rate Decay
+            self.lr_decay(self.update_count)
+
+
         self.update_count += 1
     @torch.no_grad()
     def predict(self,x):
@@ -154,3 +166,10 @@ class Encoder():
         relative_change = abs(kl_divergences[-1] - kl_divergences[-2])
         print('KL Divergence differences',relative_change, '/ Threshold:', self.args.target_kl)
         return relative_change < self.args.target_kl
+    
+    def lr_decay(self, total_steps):
+        lr_e_now = self.args.lr_e * (1 - total_steps / self.args.max_train_steps/self.args.batch_size)
+        
+        for p in self.optimizer.param_groups:
+            p['lr'] = lr_e_now
+      
