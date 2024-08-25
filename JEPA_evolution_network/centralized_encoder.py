@@ -110,7 +110,7 @@ class Encoder():
                     p = self.softmax(x_target)
                     q = self.softmax(x)
                     ratio = p / q
-                    approx_kl_div = torch.sum(p * torch.log(ratio)).cpu().numpy()
+                    approx_kl_div = torch.sum(p * torch.log(ratio),dtype=torch.float16).cpu().numpy()
                     approx_kl_divs.append(approx_kl_div)
 
             # momentum update of target encoder

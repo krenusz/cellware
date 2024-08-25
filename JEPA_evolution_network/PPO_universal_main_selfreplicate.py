@@ -17,8 +17,8 @@ from centralized_encoder import Encoder
 
 ray.init()
 def main(args, env_name, number):
-    
-    print('Cuda infos 0:',torch.cuda.is_available(), torch.cuda.current_device(), torch.cuda.device_count(), torch.cuda.get_device_name(0))
+    if args.use_cuda:
+        print('Cuda infos 0:',torch.cuda.is_available(), torch.cuda.current_device(), torch.cuda.device_count(), torch.cuda.get_device_name(0))
     env = Environment.remote(args.env_size,args.env_size)
     
     args.env_name = env_name
@@ -34,6 +34,9 @@ def main(args, env_name, number):
     args.action_dim_reprod = 3
     args.max_reward = 90
     args.max_episode_steps = args.mini_batch_size
+    if args.use_cuda:
+        args.use_sdpa = False
+        
     encoder = Encoder(args)
     writer = SummaryWriter(log_dir='runs/PPO_continuous/env_{}_level_{}_dist_{}_numberofagent_{}_collective_{}_number_{}'.format(env_name,args.lvl,args.policy_dist, args.agent_number, args.use_collective, number))
     
@@ -194,8 +197,8 @@ if __name__ == '__main__':
     parser.add_argument("--mini_batch_size", type=int, default=64, help="Minibatch size")
     parser.add_argument("--reprod_batch_size", type=int, default=3, help="Batch size for reproduction network")
     parser.add_argument("--reprod_mini_batch_size", type=int, default=2, help="Minibatch size for reproduction network")
-    parser.add_argument("--hidden_width", type=int, default=128, help="The number of neurons in hidden layers of the neural network")
-    parser.add_argument("--hidden_dim", type=int, default=128, help="The number of neurons in hidden dimension of the RNN")
+    parser.add_argument("--hidden_width", type=int, default=32, help="The number of neurons in hidden layers of the neural network")
+    parser.add_argument("--hidden_dim", type=int, default=32, help="The number of neurons in hidden dimension of the RNN")
     parser.add_argument("--n_layers", type=int, default=5, help="The number of layers in RNN")
     parser.add_argument("--lr_a", type=float, default=3e-4, help="Learning rate of actor")
     parser.add_argument("--lr_c", type=float, default=3e-4, help="Learning rate of critic")
@@ -221,13 +224,13 @@ if __name__ == '__main__':
     parser.add_argument("--use_collective", type=bool, default=False, help="Sharing memory across agents")
     parser.add_argument("--collective_switch", type=int, default=8, help="The number of epoch to switch to collective learning")
     parser.add_argument("--use_shuffle", type=bool, default=False, help="Shuffle updating order")
-    parser.add_argument('--use_cuda', type=bool, default=True, help='Use GPU or not')
+    parser.add_argument('--use_cuda', type=bool, default=False, help='Use GPU or not')
     parser.add_argument('--use_mixprecision', type=bool, default=True, help='Use mixed precision training (Unstable)')
     parser.add_argument("--use_cross_attention", type=bool, default=True, help="Use cross attention")
-    parser.add_argument("--predictor_embed_dim", type=int, default=256, help="Predictor embedding dimension")
-    parser.add_argument("--projection_embed_dim", type=int, default=512, help="Projection embedding dimension")
-    parser.add_argument("--rnn_encoder_embed_dim", type=int, default=128, help="RNN-Encoder embedding dimension, needs to be equal to sum of attribute embeddings")
-    parser.add_argument("--sar_embed_dim", type=int, default=4*8, help="RNN-Encoder output dimension")
+    parser.add_argument("--predictor_embed_dim", type=int, default=64, help="Predictor embedding dimension")
+    parser.add_argument("--projection_embed_dim", type=int, default=128, help="Projection embedding dimension")
+    parser.add_argument("--rnn_encoder_embed_dim", type=int, default=32, help="RNN-Encoder embedding dimension, needs to be equal to sum of attribute embeddings")
+    parser.add_argument("--sar_embed_dim", type=int, default=2*8, help="RNN-Encoder output dimension")
     parser.add_argument("--proj_drop", type=float, default=0.1, help="Dropout probability")
     parser.add_argument("--attn_drop", type=float, default=0.1, help="Dropout probability")
     parser.add_argument("--num_heads", type=int, default=8, help="Number of heads in multihead attention")
@@ -236,10 +239,10 @@ if __name__ == '__main__':
     parser.add_argument("--action_dim_gauss", type=int, default=1, help="Action dimension for gaussian policy")
     parser.add_argument("--dropout_rate", type=float, default=0.1, help="Dropout rate")
     parser.add_argument("--reg_coeff", type=float, default=0.1, help="Regression coefficient for predictor variance")
-    parser.add_argument("--use_sdpa", type=bool, default=True, help="Use scaled_dot_product_attention")
+    parser.add_argument("--use_sdpa", type=bool, default=False, help="Use scaled_dot_product_attention")
     parser.add_argument("--window_size", type=int, default=6, help="Window size of markov chain")
     parser.add_argument("--env_size", type=int, default=10, help="Environment size")
-    parser.add_argument("--embed_dim", type=int, default=4, help="Number of Embed dimensions")
+    parser.add_argument("--embed_dim", type=int, default=2, help="Number of Embed dimensions")
     parser.add_argument("--use_rnn_encoder", type=bool, default=True, help="RNN or Linear primer encoder")
     args = parser.parse_args()
 

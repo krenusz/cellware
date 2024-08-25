@@ -14,7 +14,7 @@ from threadpoolctl import threadpool_limits
 
 from policies import *
 
-@ray.remote(num_gpus=1)
+@ray.remote
 class PPO_universal_selfreplicate():
     def __init__(self, args, env, agent_id, policy_dist, encoder):
         self.encoder = encoder
@@ -67,8 +67,8 @@ class PPO_universal_selfreplicate():
         
         self.dtype = torch.float32 if self.device.type == 'cuda' else torch.bfloat16
         self.scaler = torch.cuda.amp.GradScaler(enabled=torch.cuda.device_count()>0 and args.use_cuda and args.use_mixprecision)
-        
-        print('Cuda infos 1:',torch.cuda.is_available(), torch.cuda.current_device(), torch.cuda.device_count(), self.device, self.dtype)
+        if args.use_cuda:
+            print('Cuda infos 1:',torch.cuda.is_available(), torch.cuda.current_device(), torch.cuda.device_count(), self.device, self.dtype)
 
         if self.policy_dist == "Discrete":
             self.actor = Actor_Discrete(args).to(self.device)
@@ -82,16 +82,19 @@ class PPO_universal_selfreplicate():
         else:
             self.actor = Actor_Gaussian(args).to(self.device)
             self.critic = Critic(args).to(self.device)
-
+            
+        self.linear_embedding = MLP(args, args.state_dim, args.projection_embed_dim).to(self.device)
         self.reproducer = RNN_reprod(args).to(self.device)
         
         if self.set_adam_eps:  # Trick 9: set Adam epsilon=1e-5
             self.optimizer_actor = torch.optim.Adam(self.actor.parameters(), lr=self.lr_a, eps=1e-5, maximize=False)
             self.optimizer_critic = torch.optim.Adam(self.critic.parameters(), lr=self.lr_c, eps=1e-5)
+            self.optimizer_linear_embedding = torch.optim.Adam(self.linear_embedding.parameters(), lr=self.lr_a, eps=1e-5)
             self.optimizer_reproducer = torch.optim.Adam(self.reproducer.parameters(), lr=self.lr_r, eps=1e-5)
         else:
             self.optimizer_actor = torch.optim.Adam(self.actor.parameters(), lr=self.lr_a)
             self.optimizer_critic = torch.optim.Adam(self.critic.parameters(), lr=self.lr_c)
+            self.optimizer_linear_embedding = torch.optim.Adam(self.linear_embedding.parameters(), lr=self.lr_a)
             self.optimizer_reproducer = torch.optim.Adam(self.reproducer.parameters(), lr=self.lr_r)
 
     def upgrade_encoder(self, encoder):
@@ -150,7 +153,10 @@ class PPO_universal_selfreplicate():
         with torch.autocast(device_type=self.device.type, dtype=self.dtype):
             
 
-            x, _, _, _ = self.encoder.predict(embedding)
+            #x, _, _, _ = self.encoder.predict(embedding)
+            x_ = self.linear_embedding(torch.tensor(state, dtype=self.dtype, device=self.device))
+            #x = x + x_
+            x = x_
 
             if self.policy_dist == "Discrete":
                 dist = self.actor.get_dist(x)
@@ -234,8 +240,11 @@ class PPO_universal_selfreplicate():
                 with torch.autocast(device_type=self.device.type, dtype=self.dtype):
                     with torch.no_grad():  
 
-                        x, _, _, _= self.encoder.predict(embedding_masked)
-
+                        #x, _, _, _= self.encoder.predict(embedding_masked)
+                        x_ = self.linear_embedding(torch.tensor(s,device=self.device,dtype=self.dtype))
+                        #x = x + x_
+                        x = x_
+                        
                     if self.policy_dist == "Discrete RNN":
                         now = self.actor.forward(x)
                         dist_now = Categorical(logits=now)
@@ -276,18 +285,22 @@ class PPO_universal_selfreplicate():
                 if self.use_grad_clip:
                     self.scaler.unscale_(self.optimizer_actor)
                     self.scaler.unscale_(self.optimizer_critic)
+                    self.scaler.unscale_(self.optimizer_linear_embedding)
   
                     torch.nn.utils.clip_grad_norm_(self.actor.parameters(), 0.5)
                     torch.nn.utils.clip_grad_norm_(self.critic.parameters(), 0.5)
+                    torch.nn.utils.clip_grad_norm_(self.linear_embedding.parameters(), 0.5)
 
                 self.scaler.step(self.optimizer_actor)
                 self.scaler.step(self.optimizer_critic)
+                self.scaler.step(self.optimizer_linear_embedding)
                 
                 # Update
                 self.scaler.update() 
 
                 self.optimizer_actor.zero_grad()
                 self.optimizer_critic.zero_grad()
+                self.optimizer_linear_embedding.zero_grad()
 
                 self.total_actor_loss += actor_loss
                 self.total_critic_loss += critic_loss

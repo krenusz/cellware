@@ -174,9 +174,9 @@ class Actor_RNN(nn.Module):
         self.softmax = nn.Softmax(dim=-1)
         if args.use_orthogonal_init:
             print("------use orthogonal init------")
-            orthogonal_init_RNN(self.actor_fc1)
+            orthogonal_init(self.actor_fc1)
             orthogonal_init_RNN(self.actor_rnn)
-            orthogonal_init_RNN(self.actor_fc2, gain=0.01)
+            orthogonal_init(self.actor_fc2, gain=0.01)
    
 
     def forward(self, s, h = None):
@@ -218,9 +218,9 @@ class RNN_reprod(nn.Module):
         self.softmax = nn.Softmax(dim=-1)
         if args.use_orthogonal_init:
             print("------use orthogonal init------")
-            orthogonal_init_RNN(self.reprod_fc1)
+            orthogonal_init(self.reprod_fc1)
             orthogonal_init_RNN(self.reprod_rnn)
-            orthogonal_init_RNN(self.reprod_fc2, gain=0.01)
+            orthogonal_init(self.reprod_fc2, gain=0.01)
    
 
     def forward(self, s, h = None):
@@ -262,9 +262,9 @@ class Critic_RNN(nn.Module):
 
         if args.use_orthogonal_init:
             print("------use orthogonal init------")
-            orthogonal_init_RNN(self.critic_fc1)
+            orthogonal_init(self.critic_fc1)
             orthogonal_init_RNN(self.critic_rnn)
-            orthogonal_init_RNN(self.critic_fc2)
+            orthogonal_init(self.critic_fc2)
 
 
     def forward(self, s, h = None):
@@ -299,7 +299,7 @@ class RNN_Encoder(nn.Module):
         if args.use_orthogonal_init:
             print("------use orthogonal init------")
             orthogonal_init_RNN(self.rnn)
-            orthogonal_init_RNN(self.lin)
+            orthogonal_init(self.lin)
 
     def forward(self, x, k_cross=None, decoder=True):
         
