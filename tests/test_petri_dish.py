@@ -119,6 +119,33 @@ def test_shared_dish_depletes_resources_across_agents():
             assert r1[0, n].item() == e1
 
 
+def test_coop_cell_pays_only_when_shared():
+    # (2, 8) holds 50; threshold 50 makes it the only cooperative cell nearby.
+    solo = PetriDish(num_agents=2, coop_threshold=50)
+    solo.state[0, 0] = torch.tensor([2, 3, 7, 7])  # (2,7)=4 and (3,7)=0
+    solo.state[0, 1] = torch.tensor([9, 9, 0, 1])
+    _, r1, _ = solo.step(torch.tensor([[3, 0]]))  # agent 0 moves right onto (2,8)
+    assert r1[0, 0].item() == 0  # (2,8) alone pays nothing, (3,8)=0
+    assert solo.table1[0, 2, 8].item() == 50  # and is not depleted
+
+    pair = PetriDish(num_agents=2, coop_threshold=50)
+    pair.state[0, 0] = torch.tensor([2, 3, 7, 7])
+    pair.state[0, 1] = torch.tensor([2, 2, 8, 9])  # horizontal, already covers (2,8)
+    _, r1, _ = pair.step(torch.tensor([[3, SWAP]]))  # agent 1 rotates to (2,8)+(3,8)
+    assert r1[0].tolist() == [25, 25]
+    assert pair.table1[0, 2, 8].item() == 0
+    assert pair.last_coop_payouts.item() == 1
+
+
+def test_regrowth_refills_depleted_cells():
+    dish = PetriDish(regrow_rate=1.0, seed=0)
+    dish.step(torch.tensor([[SWAP]]))  # collects (0,0) and (0,1)
+    assert dish.table1[0, 0, 0].item() == 1  # refilled in the same step
+    off = PetriDish(regrow_rate=0.0)
+    off.step(torch.tensor([[SWAP]]))
+    assert off.table1[0, 0, 0].item() == 0
+
+
 def test_swap_rotates_body_and_reset_restores_tables():
     dish = PetriDish()
     states, r1, _ = dish.step(torch.tensor([[SWAP]]))

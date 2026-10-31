@@ -60,7 +60,17 @@ class PetriDish:
         num_agents: int = 1,
         size: int = 10,
         device: str | torch.device = "cpu",
+        regrow_rate: float = 0.0,
+        coop_threshold: int | None = None,
+        seed: int | None = None,
     ):
+        """Optional harder variants (both off by default, giving the legacy dynamics):
+
+        - ``regrow_rate``: each step, every depleted resource cell refills to its original
+          value with this probability, so the dish is no longer a fixed, exhaustible pool.
+        - ``coop_threshold``: cells worth at least this much pay out only when two or more
+          agents occupy them in the same step; the value is split between the occupants.
+        """
         if size != len(LEVEL_1_TABLE):
             raise ValueError(
                 f"Only the built-in {len(LEVEL_1_TABLE)}x{len(LEVEL_1_TABLE)} map exists"
@@ -72,6 +82,14 @@ class PetriDish:
         self.device = torch.device(device)
         self._base1 = torch.tensor(LEVEL_1_TABLE, dtype=torch.long, device=self.device)
         self._base2 = torch.tensor(LEVEL_2_TABLE, dtype=torch.long, device=self.device)
+        self.regrow_rate = regrow_rate
+        if coop_threshold is None:
+            self.coop_mask = torch.zeros_like(self._base1, dtype=torch.bool)
+        else:
+            self.coop_mask = self._base1 >= coop_threshold
+        self.generator = torch.Generator(device=self.device)
+        if seed is not None:
+            self.generator.manual_seed(seed)
         self.reset()
 
     def reset(self, start: tuple[int, int, int, int] = DEFAULT_START) -> torch.Tensor:
@@ -82,6 +100,7 @@ class PetriDish:
             .expand(self.batch_size, self.num_agents, 4)
             .clone()
         )
+        self.last_coop_payouts = torch.zeros(self.batch_size, dtype=torch.long, device=self.device)
         return self.state.clone()
 
     def step(self, actions: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
@@ -99,7 +118,50 @@ class PetriDish:
             new = self._move(old, actions[:, n])
             r1[:, n], r2[:, n] = self._collect(old, new)
             self.state[:, n] = new
+        if self.coop_mask.any():
+            c1, c2 = self._collect_coop()
+            r1 += c1
+            r2 += c2
+        if self.regrow_rate > 0:
+            self._regrow()
         return self.state.clone(), r1, r2
+
+    def occupancy(self) -> torch.Tensor:
+        """Number of agents covering each grid cell, ``(B, H, W)``."""
+        occ = torch.zeros(self.batch_size, self.size * self.size, device=self.device)
+        one = torch.ones(self.batch_size, self.num_agents, device=self.device)
+        for rows, cols in (
+            (self.state[..., 0], self.state[..., 2]),
+            (self.state[..., 1], self.state[..., 3]),
+        ):
+            occ.scatter_add_(1, rows * self.size + cols, one)
+        return occ.view(self.batch_size, self.size, self.size)
+
+    def _collect_coop(self) -> tuple[torch.Tensor, torch.Tensor]:
+        occ = self.occupancy()
+        paid = self.coop_mask & (occ >= 2) & (self.table1 > 0)  # (B, H, W)
+        share1 = torch.where(paid, self.table1 / occ.clamp(min=1), 0.0)
+        share2 = torch.where(paid, self.table2 / occ.clamp(min=1), 0.0)
+        b = torch.arange(self.batch_size, device=self.device).unsqueeze(1)
+        r1 = torch.zeros(self.batch_size, self.num_agents, device=self.device)
+        r2 = torch.zeros_like(r1)
+        for rows, cols in (
+            (self.state[..., 0], self.state[..., 2]),
+            (self.state[..., 1], self.state[..., 3]),
+        ):
+            r1 += share1[b, rows, cols]
+            r2 += share2[b, rows, cols]
+        self.table1[paid] = 0
+        self.table2[paid] = 0
+        self.last_coop_payouts = paid.flatten(1).sum(1)
+        return r1.round().long(), r2.round().long()
+
+    def _regrow(self) -> None:
+        depleted = (self.table1 == 0) & (self._base1 > 0)
+        draw = torch.rand(self.table1.shape, generator=self.generator, device=self.device)
+        refill = depleted & (draw < self.regrow_rate)
+        self.table1 = torch.where(refill, self._base1, self.table1)
+        self.table2 = torch.where(refill, self._base2, self.table2)
 
     def _wall(self, rows: torch.Tensor, cols: torch.Tensor) -> torch.Tensor:
         """Wall lookup that is safe for out-of-range indices (callers mask those out)."""
@@ -147,13 +209,17 @@ class PetriDish:
         b = torch.arange(self.batch_size, device=self.device)
         r0, r1, c0, c1 = new.unbind(-1)
         changed = (old != new).any(-1)
-        reward1 = self.table1[b, r0, c0] + self.table1[b, r1, c1]
-        reward2 = self.table2[b, r0, c0] + self.table2[b, r1, c1]
-        reward1 = torch.where(changed, reward1, torch.zeros_like(reward1))
-        reward2 = torch.where(changed, reward2, torch.zeros_like(reward2))
+        # Cooperative cells are left for _collect_coop: no solo payout, no depletion.
+        take_a = changed & ~self.coop_mask[r0, c0]
+        take_b = changed & ~self.coop_mask[r1, c1]
+        zero = torch.zeros_like(r0)
+        reward1 = torch.where(take_a, self.table1[b, r0, c0], zero) + torch.where(
+            take_b, self.table1[b, r1, c1], zero
+        )
+        reward2 = torch.where(take_a, self.table2[b, r0, c0], zero) + torch.where(
+            take_b, self.table2[b, r1, c1], zero
+        )
         for table in (self.table1, self.table2):
-            keep_a = torch.where(changed, torch.zeros_like(r0), table[b, r0, c0])
-            table[b, r0, c0] = keep_a
-            keep_b = torch.where(changed, torch.zeros_like(r1), table[b, r1, c1])
-            table[b, r1, c1] = keep_b
+            table[b, r0, c0] = torch.where(take_a, zero, table[b, r0, c0])
+            table[b, r1, c1] = torch.where(take_b, zero, table[b, r1, c1])
         return reward1, reward2

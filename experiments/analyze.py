@@ -19,6 +19,8 @@ METRICS = {
     "return_cv_across_agents": "CV of returns across agents",
     "logprob_std_across_agents": "Std of action log-probs across agents",
     "policy_js_divergence": "Policy divergence between agents (JS)",
+    "territory_overlap": "Territory overlap between agents",
+    "coop_payouts_per_dish": "Cooperative payouts per dish",
 }
 CONDITIONS = ("individual", "collective")
 
@@ -47,6 +49,8 @@ def main():
     p.add_argument("--window", type=int, default=30)
     args = p.parse_args()
     runs = load(args.results)
+    first = next(iter(runs["individual"].values()))[0]
+    metrics = {k: v for k, v in METRICS.items() if k in first}
 
     lines = [
         "# Collective vs individual memory: results",
@@ -59,7 +63,7 @@ def main():
         "|---|---|---|---|---|",
     ]
     final = {}
-    for metric, label in METRICS.items():
+    for metric, label in metrics.items():
         per_cond = {
             c: np.array([curves(h, metric)[-args.window :].mean() for h in runs[c].values()])
             for c in CONDITIONS
@@ -87,10 +91,10 @@ def main():
         print("matplotlib not installed; skipping plots (uv sync --extra viz)")
         return
 
-    fig, axes = plt.subplots(1, len(METRICS), figsize=(4.2 * len(METRICS), 3.4))
+    fig, axes = plt.subplots(1, len(metrics), figsize=(4.2 * len(metrics), 3.4))
     colors = {"individual": "#4C78A8", "collective": "#E45756"}
     kernel = np.ones(9) / 9
-    for ax, (metric, label) in zip(axes, METRICS.items(), strict=True):
+    for ax, (metric, label) in zip(axes, metrics.items(), strict=True):
         for c in CONDITIONS:
             ys = np.stack([curves(h, metric) for h in runs[c].values()])
             smooth = np.stack([np.convolve(y, kernel, mode="valid") for y in ys])

@@ -25,10 +25,25 @@ from cellware.envs.petri_dish import NUM_ACTIONS, WALL, PetriDish
 MAX_CELL_REWARD = 90.0
 
 
-def observe(env: PetriDish, t: int, horizon: int) -> torch.Tensor:
-    """Per-agent observation (B, N, D): own coordinates, time, and a 3x3 view around each cell."""
+def agent_footprints(env: PetriDish) -> torch.Tensor:
+    """(B, N, H, W) indicator of the two grid cells each agent covers."""
+    fp = torch.zeros(env.batch_size, env.num_agents, env.size * env.size)
+    for rows, cols in ((env.state[..., 0], env.state[..., 2]), (env.state[..., 1], env.state[..., 3])):
+        fp.scatter_(2, (rows * env.size + cols).unsqueeze(-1), 1.0)
+    return fp.view(env.batch_size, env.num_agents, env.size, env.size)
+
+
+def observe(env: PetriDish, t: int, horizon: int, see_others: bool = False) -> torch.Tensor:
+    """Per-agent observation (B, N, D): own coordinates, time, and a 3x3 view around each cell.
+
+    With ``see_others`` the view also shows how many *other* agents cover each nearby cell.
+    """
     table = F.pad(env.table1, (1, 1, 1, 1), value=WALL)  # (B, H+2, W+2)
+    if see_others:
+        fp = agent_footprints(env)
+        others = F.pad(fp.sum(1, keepdim=True) - fp, (1, 1, 1, 1))  # (B, N, H+2, W+2)
     b = torch.arange(env.batch_size).view(-1, 1, 1, 1)
+    n = torch.arange(env.num_agents).view(1, -1, 1, 1)
     offsets = torch.arange(-1, 2)
     dr, dc = torch.meshgrid(offsets, offsets, indexing="ij")
     views = []
@@ -40,6 +55,8 @@ def observe(env: PetriDish, t: int, horizon: int) -> torch.Tensor:
         c = cols.unsqueeze(-1).unsqueeze(-1) + 1 + dc
         patch = table[b, r, c].flatten(-2)
         views += [patch.clamp(min=0) / MAX_CELL_REWARD, (patch == WALL).float()]
+        if see_others:
+            views.append(others[b, n, r, c].flatten(-2))
     coords = env.state.float() / env.max_index
     time_feat = torch.full_like(coords[..., :1], t / horizon)
     return torch.cat([coords, time_feat, *views], dim=-1)
@@ -71,26 +88,31 @@ class AgentNets(torch.nn.Module):
         return h @ self.wpi + self.bpi, (h @ self.wv + self.bv).squeeze(-1)
 
 
-def rollout(env, nets, horizon):
+def rollout(env, nets, horizon, see_others=False):
     env.reset()
     obs, acts, logps, rews = [], [], [], []
+    visits = torch.zeros(env.batch_size, env.num_agents, env.size, env.size)
+    coop = torch.zeros(env.batch_size)
     for t in range(horizon):
-        o = observe(env, t, horizon)  # (B, N, D)
+        o = observe(env, t, horizon, see_others)  # (B, N, D)
         with torch.no_grad():
             logits, _ = nets(o.transpose(0, 1))  # (N, B, A)
         dist = torch.distributions.Categorical(logits=logits)
         a = dist.sample()
         _, r1, _ = env.step(a.T)
+        visits += agent_footprints(env)
+        coop += env.last_coop_payouts.float()
         obs.append(o)
         acts.append(a.T)
         logps.append(dist.log_prob(a).T)
         rews.append(r1.float() / MAX_CELL_REWARD)
+    extras = {"visits": visits, "coop_payouts": coop}
     return (
         torch.stack(obs),
         torch.stack(acts),
         torch.stack(logps),
         torch.stack(rews),
-    )  # (T, B, N, ...)
+    ), extras  # (T, B, N, ...)
 
 
 def gae(rewards, values, gamma, lam):
@@ -149,8 +171,14 @@ def update(nets, opt, data, collective, args):
     return stats
 
 
-def coordination_metrics(nets, obs, logps, rews):
+def coordination_metrics(nets, obs, logps, rews, extras):
     T, B, N, _ = obs.shape
+    # Territory overlap: mean pairwise sum_cells min(p_i, p_j) of agents' visit distributions
+    # (1 = identical territories, 0 = disjoint, i.e. a spatial division of labour).
+    p_visit = extras["visits"].flatten(2)
+    p_visit = p_visit / p_visit.sum(-1, keepdim=True)
+    pair = torch.minimum(p_visit.unsqueeze(1), p_visit.unsqueeze(2)).sum(-1)  # (B, N, N)
+    overlap = pair[:, ~torch.eye(N, dtype=torch.bool)].mean()
     returns = rews.sum(0)  # (B, N)
     total = returns.sum(1)  # (B,)
     cv = (returns.std(1) / returns.mean(1).clamp(min=1e-8)).mean()
@@ -170,6 +198,8 @@ def coordination_metrics(nets, obs, logps, rews):
         "return_cv_across_agents": cv.item(),
         "logprob_std_across_agents": logps.std(2).mean().item(),
         "policy_js_divergence": policy_js.item(),
+        "territory_overlap": overlap.item(),
+        "coop_payouts_per_dish": extras["coop_payouts"].mean().item(),
     }
 
 
@@ -188,13 +218,23 @@ def main():
     p.add_argument("--gae_lambda", type=float, default=0.95)
     p.add_argument("--clip", type=float, default=0.2)
     p.add_argument("--entropy_coef", type=float, default=0.01)
+    p.add_argument("--regrow_rate", type=float, default=0.0)
+    p.add_argument("--coop_threshold", type=int, default=None)
+    p.add_argument("--see_others", action="store_true")
+    p.add_argument("--threads", type=int, default=2, help="CPU threads per run")
     p.add_argument("--out", type=Path, default=Path("experiments/results"))
     args = p.parse_args()
 
     torch.manual_seed(args.seed)
-    torch.set_num_threads(2)
-    env = PetriDish(batch_size=args.dishes, num_agents=args.agents)
-    obs_dim = observe(env, 0, args.horizon).shape[-1]
+    torch.set_num_threads(args.threads)
+    env = PetriDish(
+        batch_size=args.dishes,
+        num_agents=args.agents,
+        regrow_rate=args.regrow_rate,
+        coop_threshold=args.coop_threshold,
+        seed=args.seed,
+    )
+    obs_dim = observe(env, 0, args.horizon, args.see_others).shape[-1]
     nets = AgentNets(args.agents, obs_dim)
     opt = torch.optim.Adam(nets.parameters(), lr=args.lr, eps=1e-5)
     collective = args.condition == "collective"
@@ -202,8 +242,8 @@ def main():
     history = []
     start = time.time()
     for it in range(args.iterations):
-        data = rollout(env, nets, args.horizon)
-        metrics = coordination_metrics(nets, data[0], data[2], data[3])
+        data, extras = rollout(env, nets, args.horizon, args.see_others)
+        metrics = coordination_metrics(nets, data[0], data[2], data[3], extras)
         metrics.update(update(nets, opt, data, collective, args))
         metrics["iteration"] = it
         history.append(metrics)
@@ -214,6 +254,8 @@ def main():
                 f"dish_total {metrics['dish_total_return']:7.1f}  "
                 f"cv {metrics['return_cv_across_agents']:.3f}  "
                 f"js {metrics['policy_js_divergence']:.4f}  "
+                f"overlap {metrics['territory_overlap']:.3f}  "
+                f"coop {metrics['coop_payouts_per_dish']:.2f}  "
                 f"({time.time() - start:.0f}s)",
                 flush=True,
             )

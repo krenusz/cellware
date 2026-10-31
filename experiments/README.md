@@ -31,6 +31,34 @@ Results (2026-10-31, run on commit with this file): [results/summary.md](results
   (CV about 1.05): whoever reaches the rich cells first takes them. Memory sharing did not make
   the split fairer.
 
+## Harder dish: regrowth, cooperative cells, visible neighbours
+
+Same setup, but resources regrow (2% chance per step per depleted cell), the four richest cells
+(50/60/70/90) pay only when two or more agents cover them in the same step (value split), and
+agents see other agents in their 3x3 view.
+
+```bash
+uv run python experiments/collective_vs_individual.py --condition collective --seed 0 \
+    --iterations 300 --regrow_rate 0.02 --coop_threshold 50 --see_others --out experiments/results_hard
+uv run python experiments/analyze.py --results experiments/results_hard
+```
+
+Results: [results_hard/summary.md](results_hard/summary.md),
+[results_hard/curves.png](results_hard/curves.png).
+
+- **No ceiling now, and still no difference in total harvest.** About 1,820 per dish in both
+  conditions (the difference's 95% CI includes zero).
+- **Two different social organisations emerge.**
+  - *Individual* agents split the dish: territory overlap 0.46, policies keep diverging, and
+    rewards are unequal (CV 0.54, with large seed-to-seed spread).
+  - *Collective* agents crowd the same areas: overlap 0.73, near-identical policies, and a
+    fairer split (CV 0.40, very consistent across seeds).
+  - Both reach the same total, so specialisation and sharing are equally efficient here, but
+    they distribute reward differently.
+- **Cooperation is learned in both.** About 6 joint payouts per dish per episode on the rich
+  cells, reached earlier with shared memory (~iteration 70 vs ~150).
+- **Shared memory again learns faster** (return plateau at ~100 iterations vs ~200).
+
 ### Limits and next steps
 
 - The task saturates. Next runs need a harder or scarcer environment (regrowing resources,
