@@ -61,6 +61,9 @@ class TissueConfig:
     # Expose global tissue size and episode time to every cell. Real cells have no such
     # readout; it was on in the first knockout study and let cells ignore local signals.
     global_readout: bool = False
+    # Totipotency window: no cell may commit while the tissue has fewer cells than this
+    # (fate coordinates are held just inside the thresholds). 1 disables the window.
+    min_commit_size: int = 1
 
 
 def shift(t: torch.Tensor, dr: int, dc: int, fill=0) -> torch.Tensor:
@@ -186,9 +189,13 @@ class TissueEnv:
         new_x = torch.where(a == RENEW, 0.5 * new_x, new_x)
         self.x = torch.where(acting, new_x, self.x)
 
-        # 2. irreversible commitment
-        self.fate = torch.where(acting & (self.x > c.commit_threshold), FATE_A, self.fate)
-        self.fate = torch.where(acting & (self.x < -c.commit_threshold), FATE_B, self.fate)
+        # 2. irreversible commitment, only once the tissue is past the totipotency window
+        open_ = (self.occ.sum((1, 2)) >= c.min_commit_size).view(-1, 1, 1)
+        held = 0.99 * c.commit_threshold
+        self.x = torch.where(acting & ~open_, self.x.clamp(-held, held), self.x)
+        can = acting & open_
+        self.fate = torch.where(can & (self.x > c.commit_threshold), FATE_A, self.fate)
+        self.fate = torch.where(can & (self.x < -c.commit_threshold), FATE_B, self.fate)
 
         # 3. division into an empty neighbour site (random direction priority each step)
         dividers = self.agents & (a == DIVIDE) & (self.age >= c.refractory)

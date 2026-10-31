@@ -118,3 +118,31 @@ potential-based reward with a learned baseline, and longer training with more se
 - Individual agents diverge, but it is not yet shown whether that is a division of labour
   (different territories) or noise. Next: measure spatial overlap of agents' visits.
 - 5 seeds and one map. Treat the effect sizes as preliminary.
+
+## Stem-cell tissue: stabilised training (third knockout study)
+
+Two fixes against the collapse: a totipotency window (no cell can commit until the tissue has
+16 cells, `--min_commit_size 16`) and an entropy bonus annealed from 0.05 to 0.005. Same spatial
+target, 5 conditions x 5 seeds x 400 iterations, one run at a time.
+
+```bash
+uv run python experiments/train_tissue.py --spatial --seed 0 --iterations 400 --min_commit_size 16 \
+    --entropy_start 0.05 --entropy_coef 0.005 --out experiments/results_tissue_stable [--no_...]
+uv run python experiments/analyze_tissue.py --results experiments/results_tissue_stable
+```
+
+Results: [results_tissue_stable/summary.md](results_tissue_stable/summary.md),
+[results_tissue_stable/curves.png](results_tissue_stable/curves.png).
+
+- **No collapse in any of the 25 runs.** Full model: 53 cells, 19% stem / 66% A / 15% B,
+  score -1.05, pattern accuracy 0.63, sister concordance 0.88. Too many stem cells and too few
+  B cells; the pattern is only partly formed.
+- **The morphogen matters most.** Without it the score drops by 0.17 and the stem share
+  more than doubles (+0.23): A cells secrete the morphogen, so it is the signal that stops
+  stem cells renewing once enough A cells exist. Its pattern accuracy is higher (+0.11), but only
+  because fewer committed cells are scored.
+- **Gap-junction coupling helps too** (score -0.11, more stem cells, fewer B cells).
+- **Contact signalling and memory inheritance make little difference** to the score; each lowers
+  pattern accuracy slightly (about -0.035). Sister concordance stays high without memory, so the
+  lineage memory is still not what drives sister fates.
+- 5 seeds; treat effect sizes as preliminary.

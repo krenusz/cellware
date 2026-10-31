@@ -110,6 +110,20 @@ def test_score_rewards_target_composition():
     assert math.isclose(env.score().item(), 0.0, abs_tol=1e-6)
 
 
+def test_totipotency_window_blocks_early_commitment():
+    env = TissueEnv(TissueConfig(fate_noise=0.0, min_commit_size=3), seed=0)
+    for _ in range(6):
+        env.step(full(env, BIAS_A))
+    assert env.counts().tolist() == [[1, 0, 0]]  # pushed hard, but still uncommitted
+    assert env.x[env.occ].item() < env.cfg.commit_threshold
+    env.step(full(env, DIVIDE))
+    env.step(full(env, DIVIDE))  # refractory 2: second division round
+    env.step(full(env, DIVIDE))
+    assert env.occ.sum() >= 3
+    env.step(full(env, BIAS_A))
+    assert env.counts()[0, FATE_A] >= 1  # window open: cells near the threshold commit
+
+
 def test_no_global_readout_by_default():
     local = TissueEnv(TissueConfig())
     glob = TissueEnv(TissueConfig(global_readout=True))

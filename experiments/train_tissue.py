@@ -63,7 +63,7 @@ def rollout(env: TissueEnv, net: SharedCellPolicy):
     return {k: torch.stack(v) for k, v in buf.items()}  # leading dim T
 
 
-def update(net, opt, data, args):
+def update(net, opt, data, args, entropy_coef):
     obs, act, logp = data["obs"], data["act"], data["logp"]  # (T, B, H, W, ...)
     agent, alive = data["agent"], data["alive"]
     T = obs.shape[0]
@@ -98,7 +98,7 @@ def update(net, opt, data, args):
             _, v = net(c_obs[idx_c])
             vf = 0.5 * (v - c_ret[idx_c]).pow(2).mean()
             ent = dist.entropy().mean()
-            loss = pg.mean() + vf - args.entropy_coef * ent
+            loss = pg.mean() + vf - entropy_coef * ent
             opt.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(net.parameters(), 0.5)
@@ -132,7 +132,11 @@ def main():
     p.add_argument("--gamma", type=float, default=0.99)
     p.add_argument("--gae_lambda", type=float, default=0.95)
     p.add_argument("--clip", type=float, default=0.2)
-    p.add_argument("--entropy_coef", type=float, default=0.01)
+    p.add_argument("--entropy_coef", type=float, default=0.01, help="final entropy bonus")
+    p.add_argument(
+        "--entropy_start", type=float, default=None, help="initial bonus, annealed linearly"
+    )
+    p.add_argument("--min_commit_size", type=int, default=1, help="totipotency window size")
     p.add_argument("--no_contact", action="store_true")
     p.add_argument("--no_morphogen", action="store_true")
     p.add_argument("--no_gap", action="store_true")
@@ -152,6 +156,7 @@ def main():
         inherit_memory=not args.no_memory,
         spatial_target=args.spatial,
         global_readout=args.global_readout,
+        min_commit_size=args.min_commit_size,
     )
     env = TissueEnv(cfg, batch_size=args.tissues, seed=args.seed)
     net = SharedCellPolicy(env.obs_dim)
@@ -163,7 +168,11 @@ def main():
     for it in range(args.iterations):
         data = rollout(env, net)
         metrics = env.metrics()
-        metrics.update(update(net, opt, data, args))
+        start_coef = args.entropy_coef if args.entropy_start is None else args.entropy_start
+        frac = it / max(1, args.iterations - 1)
+        coef = start_coef + (args.entropy_coef - start_coef) * frac
+        metrics.update(update(net, opt, data, args, coef))
+        metrics["entropy_coef"] = coef
         metrics["iteration"] = it
         history.append(metrics)
         if it % 10 == 0 or it == args.iterations - 1:
