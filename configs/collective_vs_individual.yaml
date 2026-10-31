@@ -1,0 +1,13 @@
+# The 2023 Tufts interim experiment: 4 agents in a shared dish, individual vs shared memory.
+# Run once with collective: false and once with collective: true, over several seeds.
+name: collective_vs_individual
+seed: 0
+num_agents: 4
+num_epochs: 1000
+collective: true
+env:
+  size: 10
+  max_episode_steps: 256
+ppo:
+  k_epochs: 20
+  entropy_coef: 0.001
