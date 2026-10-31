@@ -59,6 +59,36 @@ Results: [results_hard/summary.md](results_hard/summary.md),
   cells, reached earlier with shared memory (~iteration 70 vs ~150).
 - **Shared memory again learns faster** (return plateau at ~100 iterations vs ~200).
 
+## Stem-cell tissue: first knockout study
+
+`train_tissue.py` grows tissues from one stem cell on a 12x12 lattice (`cellware.tissue`). All
+cells share one PPO policy and the tissue-level reward; the target is 60 cells with
+10% stem / 60% A / 30% B. Knockouts remove contact signalling, the morphogen, gap-junction
+coupling, or memory inheritance. 5 seeds per condition, 300 iterations, about 2 minutes per run.
+
+```bash
+uv run python experiments/train_tissue.py --seed 0 [--no_contact|--no_morphogen|--no_gap|--no_memory]
+uv run python experiments/analyze_tissue.py
+```
+
+Results: [results_tissue/summary.md](results_tissue/summary.md),
+[results_tissue/curves.png](results_tissue/curves.png).
+
+- **The cells learn the target.** The full model reaches 65 cells at 6% stem / 62% A / 33% B
+  (score -0.32 from -1.40), within about 150 iterations.
+- **No knockout changes the outcome.** Scores are equal across all five conditions; only small
+  shifts in size and stem share are significant. Removing memory inheritance does not lower
+  sister concordance (0.66 in both), so lineage memory is not being used.
+- **Why: a confound in the observation.** Every cell sees the global tissue size (and the
+  episode time). That broadcast signal is enough to regulate growth and fate proportions
+  without any local communication, so the signalling channels are redundant. Real cells have no
+  such global readout.
+- **No spatial pattern** (segregation ~0), as none is rewarded.
+
+Next version: remove the global size input, so size and proportions must be sensed locally,
+and add a spatial target (e.g. A core, B rim, a French-flag-like pattern) that cannot be met
+without signalling. Then rerun the knockouts.
+
 ### Limits and next steps
 
 - The task saturates. Next runs need a harder or scarcer environment (regrowing resources,
