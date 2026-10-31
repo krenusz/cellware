@@ -137,6 +137,8 @@ def main():
     p.add_argument("--no_morphogen", action="store_true")
     p.add_argument("--no_gap", action="store_true")
     p.add_argument("--no_memory", action="store_true", help="resample memory at division")
+    p.add_argument("--spatial", action="store_true", help="add the A-core / B-rim target")
+    p.add_argument("--global_readout", action="store_true", help="show global size and time")
     p.add_argument("--threads", type=int, default=2, help="CPU threads per run")
     p.add_argument("--out", type=Path, default=Path("experiments/results_tissue"))
     args = p.parse_args()
@@ -148,6 +150,8 @@ def main():
         morphogen=not args.no_morphogen,
         gap_junction=not args.no_gap,
         inherit_memory=not args.no_memory,
+        spatial_target=args.spatial,
+        global_readout=args.global_readout,
     )
     env = TissueEnv(cfg, batch_size=args.tissues, seed=args.seed)
     net = SharedCellPolicy(env.obs_dim)
@@ -167,6 +171,7 @@ def main():
                 f"[{name} s{args.seed}] it {it:4d}  score {metrics['score']:+.3f}  "
                 f"size {metrics['size']:5.1f}  S/A/B {metrics['prop_stem']:.2f}/"
                 f"{metrics['prop_a']:.2f}/{metrics['prop_b']:.2f}  "
+                f"pattern {metrics['pattern_accuracy']:.2f}  "
                 f"sisters {metrics['sister_concordance']:.2f}  "
                 f"segr {metrics['segregation']:+.2f}  ({time.time() - start:.0f}s)",
                 flush=True,

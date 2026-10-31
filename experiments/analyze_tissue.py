@@ -19,6 +19,7 @@ METRICS = {
     "prop_stem": "Stem share (target 0.10)",
     "prop_a": "A share (target 0.60)",
     "prop_b": "B share (target 0.30)",
+    "pattern_accuracy": "Pattern accuracy (A core, B rim)",
     "sister_concordance": "Sister fate concordance",
     "segregation": "Fate segregation",
 }
@@ -51,9 +52,11 @@ def main():
     args = p.parse_args()
     runs = load(args.results)
     conds = [c for c in ORDER if c in runs] + sorted(set(runs) - set(ORDER))
+    first = next(iter(runs[conds[0]].values()))[0]
+    metrics = {k: v for k, v in METRICS.items() if k in first}
 
     vals = {
-        c: {m: np.array([final(h, m, args.window) for h in runs[c].values()]) for m in METRICS}
+        c: {m: np.array([final(h, m, args.window) for h in runs[c].values()]) for m in metrics}
         for c in conds
     }
     lines = [
@@ -62,12 +65,12 @@ def main():
         f"Means over the last {args.window} iterations per run, then mean (sd) across seeds. "
         "Knockout rows show the difference from `full`; * marks a 95% bootstrap CI excluding 0.",
         "",
-        "| Condition | n | " + " | ".join(METRICS.values()) + " |",
-        "|---|---|" + "---|" * len(METRICS),
+        "| Condition | n | " + " | ".join(metrics.values()) + " |",
+        "|---|---|" + "---|" * len(metrics),
     ]
     for c in conds:
         cells = []
-        for m in METRICS:
+        for m in metrics:
             v = vals[c][m]
             if c == "full" or "full" not in vals:
                 cells.append(f"{v.mean():.3f} ({v.std(ddof=1):.3f})")
@@ -87,7 +90,7 @@ def main():
         import matplotlib.pyplot as plt
     except ImportError:
         return
-    shown = ["score", "size", "prop_stem", "sister_concordance"]
+    shown = [m for m in ("score", "size", "pattern_accuracy", "sister_concordance") if m in metrics]
     fig, axes = plt.subplots(1, len(shown), figsize=(4.3 * len(shown), 3.4))
     kernel = np.ones(9) / 9
     for ax, m in zip(axes, shown, strict=True):
@@ -97,7 +100,7 @@ def main():
             sm = np.stack([np.convolve(y, kernel, mode="valid") for y in ys])
             x = np.arange(sm.shape[1]) + len(kernel) // 2
             ax.plot(x, sm.mean(0), label=c, lw=1.6 if c == "full" else 1.0)
-        ax.set_title(METRICS[m], fontsize=9)
+        ax.set_title(metrics[m], fontsize=9)
         ax.set_xlabel("PPO iteration")
     axes[0].legend(fontsize=8)
     fig.tight_layout()

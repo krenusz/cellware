@@ -89,6 +89,28 @@ Next version: remove the global size input, so size and proportions must be sens
 and add a spatial target (e.g. A core, B rim, a French-flag-like pattern) that cannot be met
 without signalling. Then rerun the knockouts.
 
+## Stem-cell tissue: local signals only, spatial target (second knockout study)
+
+Global size and time removed from the observation (`global_readout=False`, the default now;
+the first study corresponds to `--global_readout`), and an A-core / B-rim pattern added to
+the score (`--spatial`). 5 conditions x 5 seeds x 400 iterations, run one at a time.
+
+Results: [results_tissue_spatial/summary.md](results_tissue_spatial/summary.md),
+[results_tissue_spatial/curves.png](results_tissue_spatial/curves.png).
+
+- **Training collapses in many runs.** Tissues first grow to 20-55 cells, then the policy
+  learns to stop dividing: in 2 of 5 `full` runs and 4 of 5 `nomorphogen` runs the tissue ends
+  as the single founding cell, committed to A. That scores -1.78, worse than the growing
+  tissues (best scores -1.1 to -1.4), so it is a local optimum, not a solution.
+- **The knockout comparison is therefore not interpretable yet.** Runs without contact,
+  gap-junction coupling or memory inheritance happened to collapse less and so score better
+  than `full`. That says the training is unstable, not that these channels are harmful.
+- Sister concordance and segregation are undefined in collapsed tissues (no committed pairs).
+
+Before rerunning the knockouts, training has to be made stable, for example by: not letting the
+founder commit until the tissue has grown, a larger entropy bonus or annealing, terminal or
+potential-based reward with a learned baseline, and longer training with more seeds.
+
 ### Limits and next steps
 
 - The task saturates. Next runs need a harder or scarcer environment (regrowing resources,

@@ -55,6 +55,12 @@ class TissueConfig:
     gap_coupling: float = 0.3
     target_size: int = 60
     target_props: tuple[float, float, float] = (0.1, 0.6, 0.3)  # stem, A, B
+    # Spatial target: A cells inside ``core_radius`` of the founding site, B cells outside it.
+    spatial_target: bool = False
+    core_radius: float = 3.4
+    # Expose global tissue size and episode time to every cell. Real cells have no such
+    # readout; it was on in the first knockout study and let cells ignore local signals.
+    global_readout: bool = False
 
 
 def shift(t: torch.Tensor, dr: int, dc: int, fill=0) -> torch.Tensor:
@@ -77,6 +83,9 @@ class TissueEnv:
         if seed is not None:
             self.generator.manual_seed(seed)
         self.target_props = torch.tensor(cfg.target_props)
+        rows = torch.arange(cfg.height).view(-1, 1) - cfg.height // 2
+        cols = torch.arange(cfg.width).view(1, -1) - cfg.width // 2
+        self.core = (rows**2 + cols**2).float().sqrt() <= cfg.core_radius  # (H, W)
         self.reset()
 
     # ----------------------------------------------------------------- state
@@ -113,7 +122,18 @@ class TissueEnv:
         props = counts / n.clamp(min=1).unsqueeze(-1)
         size_err = (n - self.cfg.target_size).abs() / self.cfg.target_size
         prop_err = (props - self.target_props).abs().sum(-1)
-        return -(size_err + prop_err)
+        score = -(size_err + prop_err)
+        if self.cfg.spatial_target:
+            score = score - (1.0 - self.pattern_accuracy())
+        return score
+
+    def pattern_accuracy(self) -> torch.Tensor:
+        """``(B,)`` fraction of committed cells in their target region (A core, B rim)."""
+        a = self.occ & (self.fate == FATE_A)
+        b = self.occ & (self.fate == FATE_B)
+        correct = (a & self.core).sum((1, 2)) + (b & ~self.core).sum((1, 2))
+        committed = (a | b).sum((1, 2))
+        return correct.float() / committed.clamp(min=1).float()
 
     # ----------------------------------------------------------- observation
     def _neighbour_counts(self) -> torch.Tensor:
@@ -134,21 +154,18 @@ class TissueEnv:
         contact = nb[..., :3] * float(c.contact)
         morph = (self.conc * float(c.morphogen)).unsqueeze(-1)
         volt = (self.v * float(c.gap_junction)).unsqueeze(-1)
-        scalars = torch.stack(
-            [
-                self.x,
-                (self.age.float() / c.refractory).clamp(max=2.0),
+        local = [self.x, (self.age.float() / c.refractory).clamp(max=2.0), can_divide.float()]
+        if c.global_readout:
+            local += [
                 torch.full_like(self.x, self.t / c.horizon),
-                can_divide.float(),
                 self.occ.sum((1, 2), keepdim=True).float().expand_as(self.x) / c.target_size,
-            ],
-            -1,
-        )
+            ]
+        scalars = torch.stack(local, -1)
         return torch.cat([scalars, contact, morph, volt, self.mem], -1)
 
     @property
     def obs_dim(self) -> int:
-        return 5 + 3 + 1 + 1 + self.cfg.memory_dim
+        return (5 if self.cfg.global_readout else 3) + 3 + 1 + 1 + self.cfg.memory_dim
 
     # ------------------------------------------------------------------ step
     def step(self, actions: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, bool]:
@@ -257,6 +274,7 @@ class TissueEnv:
             "prop_stem": props[0].item(),
             "prop_a": props[1].item(),
             "prop_b": props[2].item(),
+            "pattern_accuracy": self.pattern_accuracy().mean().item(),
             "sister_concordance": self.sister_concordance(),
             "segregation": self.segregation(),
         }

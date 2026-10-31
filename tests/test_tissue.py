@@ -98,7 +98,7 @@ def test_morphogen_comes_from_a_cells_and_decays_away():
     off = TissueEnv(TissueConfig(fate_noise=0.0, morphogen=False), seed=0)
     for _ in range(4):
         off.step(full(off, BIAS_A))
-    assert (off.observe()[..., 8] == 0).all()  # knocked-out channel is invisible
+    assert (off.observe()[..., 6] == 0).all()  # knocked-out channel is invisible
 
 
 def test_score_rewards_target_composition():
@@ -108,6 +108,28 @@ def test_score_rewards_target_composition():
     env.fate[0, 0, :4] = torch.tensor([STEM, FATE_A, FATE_A, FATE_B])
     env.occ[0, 6, 6] = False
     assert math.isclose(env.score().item(), 0.0, abs_tol=1e-6)
+
+
+def test_no_global_readout_by_default():
+    local = TissueEnv(TissueConfig())
+    glob = TissueEnv(TissueConfig(global_readout=True))
+    assert local.obs_dim == glob.obs_dim - 2
+    assert local.observe().shape[-1] == local.obs_dim
+    assert glob.observe().shape[-1] == glob.obs_dim
+
+
+def test_pattern_accuracy_rewards_a_core_b_rim():
+    cfg = TissueConfig(spatial_target=True, core_radius=1.0)
+    env = TissueEnv(cfg)
+    env.fate[0, 6, 6] = FATE_A  # founding site is in the core
+    env.occ[0, 6, 9] = True
+    env.fate[0, 6, 9] = FATE_B  # 3 sites away: rim
+    assert env.pattern_accuracy().item() == 1.0
+    env.fate[0, 6, 6] = FATE_B
+    assert env.pattern_accuracy().item() == 0.5
+    plain = TissueEnv(TissueConfig(core_radius=1.0))
+    plain.occ, plain.fate = env.occ.clone(), env.fate.clone()
+    assert env.score().item() == plain.score().item() - 0.5
 
 
 def test_episode_reward_telescopes_to_score_change():
