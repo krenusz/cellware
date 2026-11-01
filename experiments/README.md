@@ -146,3 +146,18 @@ Results: [results_tissue_stable/summary.md](results_tissue_stable/summary.md),
   pattern accuracy slightly (about -0.035). Sister concordance stays high without memory, so the
   lineage memory is still not what drives sister fates.
 - 5 seeds; treat effect sizes as preliminary.
+
+## Running sweeps on this PC or in the cloud
+
+Sweeps are plain text files in `sweeps/` (one command per line, with the output file in
+brackets so finished runs are skipped). `experiments/sweep.py` runs them:
+
+```bash
+uv run python experiments/sweep.py sweeps/e7_cue.txt --workers 1   # this PC: one job at a time
+```
+
+For bigger sweeps (more seeds, larger tissues), open
+[notebooks/colab_runner.ipynb](../notebooks/colab_runner.ipynb) in Colab, set `SWEEP`, and run
+all. It clones the `modernize` branch, runs one job per two cores, saves results to Google Drive
+(resuming from there if interrupted) and downloads a zip to unpack into the repo root.
+`sweeps/e5_20seeds.txt` (100 runs) is an example that is too big for this PC.

@@ -65,11 +65,16 @@ def test_stats(c1, c2, min_nm=2, boot=2000, seed=0):
         a, b = c1[c], c2[c]
         if a[0] + a[1] >= min_nm and b[0] + b[1] >= min_nm:
             pairs.append((a[0] / (a[0] + a[1]), b[0] / (b[0] + b[1])))
+    if len(pairs) < 10:  # too few clones to estimate (happens in sparse simulations)
+        return {"clones": len(pairs), "r": 0.0, "r_ci": [0.0, 0.0], "agree": 0.5,
+                "agree_ci": [0.5, 0.5]}
     p = np.array(pairs)
     rng = np.random.default_rng(seed)
 
     def stat(q):
-        return np.corrcoef(q[:, 0], q[:, 1])[0, 1], np.mean((q[:, 0] > 0.5) == (q[:, 1] > 0.5))
+        with np.errstate(invalid="ignore", divide="ignore"):
+            r = np.nan_to_num(np.corrcoef(q[:, 0], q[:, 1])[0, 1])
+        return r, np.mean((q[:, 0] > 0.5) == (q[:, 1] > 0.5))
 
     r, agree = stat(p)
     bs = np.array([stat(p[rng.integers(0, len(p), len(p))]) for _ in range(boot)])

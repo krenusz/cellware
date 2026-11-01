@@ -1,0 +1,11 @@
+# E8 evolution strategies: 5 seeds x {full, no_memory}
+[experiments/results_es/es_seed0.json] python experiments/train_tissue_es.py --seed 0 --spatial --out experiments/results_es
+[experiments/results_es/es_nomemory_seed0.json] python experiments/train_tissue_es.py --seed 0 --spatial --no_memory --out experiments/results_es
+[experiments/results_es/es_seed1.json] python experiments/train_tissue_es.py --seed 1 --spatial --out experiments/results_es
+[experiments/results_es/es_nomemory_seed1.json] python experiments/train_tissue_es.py --seed 1 --spatial --no_memory --out experiments/results_es
+[experiments/results_es/es_seed2.json] python experiments/train_tissue_es.py --seed 2 --spatial --out experiments/results_es
+[experiments/results_es/es_nomemory_seed2.json] python experiments/train_tissue_es.py --seed 2 --spatial --no_memory --out experiments/results_es
+[experiments/results_es/es_seed3.json] python experiments/train_tissue_es.py --seed 3 --spatial --out experiments/results_es
+[experiments/results_es/es_nomemory_seed3.json] python experiments/train_tissue_es.py --seed 3 --spatial --no_memory --out experiments/results_es
+[experiments/results_es/es_seed4.json] python experiments/train_tissue_es.py --seed 4 --spatial --out experiments/results_es
+[experiments/results_es/es_nomemory_seed4.json] python experiments/train_tissue_es.py --seed 4 --spatial --no_memory --out experiments/results_es

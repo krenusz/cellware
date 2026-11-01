@@ -1,0 +1,11 @@
+# E7 lineage-cue task: 5 seeds x {full, no_memory}
+[experiments/results_cue/full_seed0.json] python experiments/train_tissue.py --cue --seed 0 --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/nomemory_seed0.json] python experiments/train_tissue.py --cue --seed 0 --no_memory --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/full_seed1.json] python experiments/train_tissue.py --cue --seed 1 --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/nomemory_seed1.json] python experiments/train_tissue.py --cue --seed 1 --no_memory --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/full_seed2.json] python experiments/train_tissue.py --cue --seed 2 --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/nomemory_seed2.json] python experiments/train_tissue.py --cue --seed 2 --no_memory --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/full_seed3.json] python experiments/train_tissue.py --cue --seed 3 --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/nomemory_seed3.json] python experiments/train_tissue.py --cue --seed 3 --no_memory --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/full_seed4.json] python experiments/train_tissue.py --cue --seed 4 --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
+[experiments/results_cue/nomemory_seed4.json] python experiments/train_tissue.py --cue --seed 4 --no_memory --iterations 400 --min_commit_size 16 --entropy_start 0.05 --entropy_coef 0.005 --threads 2 --out experiments/results_cue
