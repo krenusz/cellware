@@ -503,3 +503,34 @@ cytokine-perturbation experiment, tested on in vivo.
   the policy's push can depend on x and memory. To check before claiming a mechanism.
 - Memory variant makes no clear difference on the fit set (0.49 vs 0.51, overlapping).
 
+### E10 vs E9 diagnosis (2026-11-01, held-out cross-condition test still unseen)
+
+Question: why do the learned policies fit M-CSF (M-only ~0.9) when the E9 equations cannot (0.53)?
+
+1. **Not q.** E10 policies evaluated with q forced to 0.67 / 0.20 / 0.07: M-CSF M-only 0.91 /
+   0.93 / 0.94. Conversely, E9 v8 refit with q fixed at the v6 value (`--fix_q`, sweep
+   e9_v8_fixq, Actions run 41337607689): best resample loss 0.63 (v8: 0.65); one start reaches
+   M-only 0.88 but then over-predicts G-CSF N-only (0.64 vs 0.45) and full-cocktail has-O
+   (0.52 vs 0.36). No start fits all three. q is at most a minor factor.
+2. **Timing of commitment at the day-2 split.** Share of cells undecided / N / M / O at the end
+   of day 2, when the conditions start:
+
+   | | undecided | N | M | O |
+   |---|---|---|---|---|
+   | E9 v8 equations (best resample) | 0.27 | 0.35 | 0.32 | 0.05 |
+   | E10 policies (mean of 10) | 0.75 | 0.02 | 0.17 | 0.05 |
+   | **Data, day-2 cells (cytokine experiment)** | **0.71** | **0.07** | **0.11** | **0.12** |
+
+   The equations commit most cells before the cytokines act, so N-committed cells carry over into
+   M-CSF and the drift term cannot remove them. The policies keep cells undecided until the
+   condition is known (and lean towards M beforehand), which is what lets M-CSF empty the N fate.
+3. **Out-of-sample check (post hoc, not pre-registered, so only supporting evidence).** Day-2
+   cell states were never in any fit set. The data show 71% of day-2 cells still
+   undifferentiated; E10 gives 75%, the equations 27%. The learned rule recovered the real
+   commitment timing from day-4/6 clone composition alone.
+
+**Conclusion.** The E9 failure is structural: in the equation model the fate landscape commits cells
+too early, whatever q or bias. The data-trained rule found "stay undecided until the
+environment is known", which matches day-2 cell states. Next: the held-out cross-condition
+test, E9 (reported as failing its adequacy gate) and E10 together.
+
