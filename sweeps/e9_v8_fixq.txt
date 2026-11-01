@@ -1,0 +1,9 @@
+# E9 v8 diagnostic: q fixed at the E6 v6 value (does the M-CSF misfit come from q?)
+[experiments/results_larry/fit_v8qs0_resample.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory resample --start 0 --maxfev 600
+[experiments/results_larry/fit_v8qs1_resample.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory resample --start 1 --maxfev 600
+[experiments/results_larry/fit_v8qs2_resample.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory resample --start 2 --maxfev 600
+[experiments/results_larry/fit_v8qs3_resample.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory resample --start 3 --maxfev 600
+[experiments/results_larry/fit_v8qs0_inherit.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory inherit --start 0 --maxfev 600
+[experiments/results_larry/fit_v8qs1_inherit.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory inherit --start 1 --maxfev 600
+[experiments/results_larry/fit_v8qs2_inherit.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory inherit --start 2 --maxfev 600
+[experiments/results_larry/fit_v8qs3_inherit.json] python experiments/fit_cytokine.py --version v8 --fix_q --memory inherit --start 3 --maxfev 600

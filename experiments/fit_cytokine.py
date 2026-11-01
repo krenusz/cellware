@@ -42,6 +42,9 @@ VERSION = "v7"
 T0 = {"tF": -0.5, "tG": 0.3, "tM": 0.5}
 
 
+FIX_Q = None  # diagnostic: hold q at the E6 v6 value instead of fitting it
+
+
 def params():
     return PARAMS_V8 if VERSION == "v8" else PARAMS
 
@@ -92,6 +95,7 @@ def cross_stats(cnt, boot=2000):
 def simulate(p, memory, clones=1500, seed=0):
     rng = np.random.default_rng(seed)
     k, sigma, s0, s_mem, theta, f, q, b_g, b_m = (p[n] for n, _, _ in PARAMS)
+    q = q if FIX_Q is None else FIX_Q
     bias = np.array([0.0, b_g, b_m])  # full, G, M
     t_shift = np.array([p.get("tF", 0.0), p.get("tG", 0.0), p.get("tM", 0.0)])
     shape = (clones, 1)
@@ -173,8 +177,9 @@ def main():
     ap.add_argument("--test", action="store_true", help="the single look at the held-out test")
     ap.add_argument("--version", choices=["v7", "v8"], default="v7")
     ap.add_argument("--start", type=int, default=None, help="run only this start (for parallel)")
+    ap.add_argument("--fix_q", action="store_true", help="diagnostic: q fixed at the v6 fit")
     args = ap.parse_args()
-    global VERSION
+    global VERSION, FIX_Q
     VERSION = args.version
     cnt = load_counts()
     obs = condition_stats(cnt)
@@ -197,12 +202,16 @@ def main():
         starts.append(v7)
     if args.start is not None:
         starts, tag = [starts[args.start]], f"{VERSION}s{args.start}"
+    if args.fix_q:
+        FIX_Q, tag = v6["q"], tag.replace(VERSION, VERSION + "q")
     params, best = fit(args.memory, obs, starts, args.maxfev)
     sims = [simulate(params, args.memory, seed=s) for s in range(10, 15)]
     pred = {}
     for key in ("full-G", "full-M", "G-M"):
         vals = [cross_stats(c, boot=1)[key]["r"] for c in sims]
         pred[key] = {"r_mean": float(np.mean(vals)), "r_range": [min(vals), max(vals)]}
+    if FIX_Q is not None:
+        params["q"] = FIX_Q
     result = {"memory": args.memory, "params": params, "loss": best,
               "fit_sim": condition_stats(sims[0]), "pred": pred}
     json.dump(result, open(os.path.join(OUT, f"fit_{tag}_{args.memory}.json"), "w"), indent=1)
