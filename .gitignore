@@ -10,3 +10,4 @@ runs/
 routes/
 .ipynb_checkpoints/
 uv.lock.bak
+data/

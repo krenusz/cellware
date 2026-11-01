@@ -111,11 +111,44 @@ are written before running.
 
 ---
 
+## E6: fit to LARRY clonal data (pre-registered 2026-11-01, before any statistic was computed)
+
+- **Data.** Weinreb et al. 2020 (Science 367:eaaw3381), in vitro haematopoiesis: 130,887 cells,
+  5,864 clones, days 2/4/6, LSK and LK starting populations. After day 2, each clone's cells were
+  split into two sets of wells (`Well` 1 and 2). Only the clone matrix and metadata are used
+  (`data/larry/`, not committed). So far only the column structure and category counts were read.
+- **Reduction.** Mature cells (days 4 and 6) are grouped as N (neutrophil), M (monocyte) and O
+  (all other mature types); undifferentiated cells are ignored. Unit of analysis is a clone.
+- **Fit set (well 1 only).** For clones with >= 2 mature cells in well 1: fraction of clones that
+  are N-only, M-only, mixed N+M, and containing O; distribution of the N fraction N/(N+M).
+- **Held-out test (never used in fitting).** Clones with >= 2 N/M cells in each well. Primary
+  test statistic: Pearson r of the N fraction between well 1 and well 2 across clones (fate bias
+  shared by cells that were separated at day 2). Secondary: fraction of clones whose majority
+  fate (N or M) agrees across wells. 95% CIs by bootstrap over clones.
+- **Model.** Non-spatial version of `cellware.tissue`: founder cells divide (cycle ~ 0.5 day) for
+  6 days; each cell carries a fate state x with pitchfork drift `dx = (x - x^3 + w*m)dt + noise`
+  and commits at |x| > 0.7 (x > 0 -> N, x < 0 -> M; a fixed fraction goes to O); a memory value m
+  is drawn per founder and copied to daughters with noise. At day 2 descendants are split at random
+  into two wells; a fraction of cells is sampled at days 4 and 6. The RL policy is replaced by
+  these fitted parameters: this tests the landscape + memory mechanism, not the learned policy.
+- **Fitting.** Simulation-based: minimise the distance between simulated and observed fit-set
+  statistics (grid search, then Nelder-Mead), 5 simulation seeds per point.
+- **Hypothesis.** Inherited memory (founder bias copied with small noise) explains why sister
+  cells in separate wells keep the same fate bias.
+- **Predictions.** (1) The full model, fitted on well 1 alone, predicts the cross-well r within
+  the observed 95% CI. (2) Null A (no memory, w = 0) predicts r near 0. (3) Null B (memory but
+  resampled at every division) also predicts r near 0. Weinreb reported that fate bias is
+  partly but not fully heritable, so the observed r is expected to be clearly above 0 and below 1.
+- **Budget on the test set.** At most 4 looks: one per model version, each recorded below with its
+  result, failed ones included. Model changes between looks may use only the fit set.
+
+### E6 runs
+(filled in as they happen)
+
+---
+
 ## Planned (write hypothesis before running)
 
-- **E6, data fit (path 3).** Fit fate proportions and clonal statistics (sister concordance,
-  clone-size distribution) to Weinreb 2020 LARRY haematopoiesis. Fix a held-out split before
-  fitting and a counted number of looks at the test set.
 - **E7, memory test.** A task where lineage memory should matter (fate set by an early cue that
   is then removed), to see whether memory inheritance can be used at all.
 - **E8, ES outer loop.** Evolution strategies instead of PPO, same budget; compare stability.
