@@ -365,6 +365,19 @@ cytokine-perturbation experiment, tested on in vivo.
   Predictions 1-4 above carry over unchanged. Adequacy gate before the look: M-CSF M-only and
   full-cocktail has-O each within 0.10 of observed for the `resample` model; if it fails, report
   the misfit and still make no look. One look, both models, `fit_cytokine.py --version v8 --test`.
+- **v8 run 1 discarded (implementation bug).** The O shifts started at exactly 0, where
+  Nelder-Mead's initial simplex steps only 0.00025, so they never moved (all fits had t = 0).
+  Restarted with t_full = -0.5, t_G = 0.3, t_M = 0.5 as starting values; nothing else changed.
+  Run 1 best: resample 0.61 (M-CSF M-only 0.74), inherit 0.72. Raw files kept outside the repo.
+- **v8 result (run 2, GitHub Actions run 41334724959): adequacy gate FAILED, no look.** Best loss:
+  resample 0.65 (start 3), inherit 0.64 (start 2). Full-cocktail has-O is now fitted (resample
+  0.34 vs 0.36) but M-CSF M-only is not (resample 0.53, best over starts 0.61, vs 0.88; gate needs
+  >= 0.78). Even b_M near -1.0 to -1.3 leaves many N-containing clones under M-CSF. Reading:
+  cells already committed before the day-2 split are untouched by an *instructive* drift term,
+  so the model cannot empty N out of M-CSF clones. That points to a *selective* effect (M-CSF
+  fails to support neutrophil survival or expansion), which the model lacks. Nelder-Mead also
+  moves little in 12 dimensions on a noisy loss; a better optimiser is a secondary fix.
+  Test set still unseen; the E9 budget of one look is intact.
 
 ## E10: learn the decision rule from data (pre-registered 2026-11-01)
 

@@ -192,8 +192,9 @@ def main():
     starts = [{**v6, "bG": 0.3, "bM": -0.3}, {**v6, "bG": 0.0, "bM": 0.0},
               {**v6, "bG": 0.8, "bM": -0.8}]
     tag = VERSION
-    if VERSION == "v8":  # also start from the v7 optimum, with the O shifts at 0
-        starts.append({**json.load(open(os.path.join(OUT, f"fit_v7_{args.memory}.json")))["params"]})
+    if VERSION == "v8":  # also start from the v7 optimum (O shifts from T0)
+        v7 = json.load(open(os.path.join(OUT, f"fit_v7_{args.memory}.json")))["params"]
+        starts.append(v7)
     if args.start is not None:
         starts, tag = [starts[args.start]], f"{VERSION}s{args.start}"
     params, best = fit(args.memory, obs, starts, args.maxfev)
