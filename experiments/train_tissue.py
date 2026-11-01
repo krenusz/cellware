@@ -143,6 +143,7 @@ def main():
     p.add_argument("--no_memory", action="store_true", help="resample memory at division")
     p.add_argument("--spatial", action="store_true", help="add the A-core / B-rim target")
     p.add_argument("--global_readout", action="store_true", help="show global size and time")
+    p.add_argument("--cue", action="store_true", help="lineage-cue task (E7)")
     p.add_argument("--threads", type=int, default=2, help="CPU threads per run")
     p.add_argument("--out", type=Path, default=Path("experiments/results_tissue"))
     args = p.parse_args()
@@ -157,6 +158,7 @@ def main():
         spatial_target=args.spatial,
         global_readout=args.global_readout,
         min_commit_size=args.min_commit_size,
+        cue_target=args.cue,
     )
     env = TissueEnv(cfg, batch_size=args.tissues, seed=args.seed)
     net = SharedCellPolicy(env.obs_dim)

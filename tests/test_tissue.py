@@ -158,3 +158,11 @@ def test_episode_reward_telescopes_to_score_change():
     assert torch.allclose(total, env.score() - start, atol=1e-5)
     m = env.metrics()
     assert 0 <= m["prop_a"] <= 1 and m["size"] >= 1
+
+
+def test_cue_target_sets_founder_memory_and_swaps_targets():
+    env = TissueEnv(TissueConfig(cue_target=True), batch_size=64, seed=0)
+    cue = env.mem[:, 6, 6, 0]
+    assert set(cue.tolist()) == {-1.0, 1.0}
+    assert torch.allclose(env.target_props[cue > 0], torch.tensor([0.1, 0.6, 0.3]))
+    assert torch.allclose(env.target_props[cue < 0], torch.tensor([0.1, 0.3, 0.6]))

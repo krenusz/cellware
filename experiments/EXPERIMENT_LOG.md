@@ -284,6 +284,24 @@ from the v3 bests. Look 4, the last, follows.
   6-day culture, so a miss on (2) may reflect the environment rather than the mechanism.
 - **Budget.** One look at the in vivo test per model, all four memory variants in one look.
 
+## E7: can the cells use lineage memory at all? (pre-registered 2026-11-01)
+
+- **Motivation.** In E3-E5, removing memory inheritance never changed the outcome, and E6 found no
+  need for faithful memory in real data. Before concluding that the mechanism is useless, check
+  that the learned policy *can* use it when the task demands it.
+- **Task (`--cue`, `TissueConfig.cue_target`).** Each tissue's founder gets +1 or -1 in memory
+  slot 0, visible through no other channel. For -1 tissues the A and B target shares swap
+  (10/30/60 instead of 10/60/30). No spatial target. Totipotency window 16 cells, so the cue must
+  survive at least four rounds of division before anyone can commit. Entropy 0.05 -> 0.005.
+- **Conditions.** `full` (memory inherited with noise 0.1) vs `nomemory` (resampled at division,
+  so the cue is lost after the first division). 5 seeds x 400 iterations each.
+- **Metrics.** Primary: `score`. Secondary: `cue_accuracy` (share of tissues whose A-vs-B majority
+  matches the cue; 0.5 = chance).
+- **Predictions.** (1) `full` reaches cue accuracy clearly above chance (CI excluding 0.5).
+  (2) `nomemory` stays near 0.5. (3) `full` scores better than `nomemory`, CI excluding 0.
+- **If (1) fails,** the shared PPO policy cannot learn to read and propagate memory in this
+  budget, and the earlier knockout null results for memory say nothing about the mechanism.
+
 ---
 
 ## Planned (write hypothesis before running)

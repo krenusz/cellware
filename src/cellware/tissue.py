@@ -64,6 +64,10 @@ class TissueConfig:
     # Totipotency window: no cell may commit while the tissue has fewer cells than this
     # (fate coordinates are held just inside the thresholds). 1 disables the window.
     min_commit_size: int = 1
+    # Lineage-cue task (E7): each tissue's founder gets a cue of +1 or -1 in memory slot 0, seen
+    # by no other channel; for -1 tissues the A and B target shares are swapped. Cells can meet
+    # the target only by passing the cue down the lineage.
+    cue_target: bool = False
 
 
 def shift(t: torch.Tensor, dr: int, dc: int, fill=0) -> torch.Tensor:
@@ -85,7 +89,6 @@ class TissueEnv:
         self.generator = torch.Generator()
         if seed is not None:
             self.generator.manual_seed(seed)
-        self.target_props = torch.tensor(cfg.target_props)
         rows = torch.arange(cfg.height).view(-1, 1) - cfg.height // 2
         cols = torch.arange(cfg.width).view(1, -1) - cfg.width // 2
         self.core = (rows**2 + cols**2).float().sqrt() <= cfg.core_radius  # (H, W)
@@ -103,6 +106,12 @@ class TissueEnv:
         self.pair = torch.full(shape, -1, dtype=torch.long)
         self.conc = torch.zeros(shape)
         self.v = torch.zeros(shape)
+        self.target_props = torch.tensor(c.target_props).repeat(b, 1)
+        if c.cue_target:
+            cue = torch.randint(0, 2, (b,), generator=self.generator) * 2 - 1
+            self.mem[:, c.height // 2, c.width // 2, 0] = cue.float()
+            flip = cue < 0
+            self.target_props[flip] = self.target_props[flip][:, [0, 2, 1]]
         self.occ[:, c.height // 2, c.width // 2] = True
         self.age[:, c.height // 2, c.width // 2] = c.refractory
         self.t = 0
@@ -284,7 +293,15 @@ class TissueEnv:
             "pattern_accuracy": self.pattern_accuracy().mean().item(),
             "sister_concordance": self.sister_concordance(),
             "segregation": self.segregation(),
-        }
+        } | ({"cue_accuracy": self.cue_accuracy()} if self.cfg.cue_target else {})
+
+    def cue_accuracy(self) -> float:
+        """Fraction of tissues whose majority committed fate (A vs B) matches the cue's target."""
+        counts = self.counts()
+        want_a = self.target_props[:, 1] > self.target_props[:, 2]
+        decided = counts[:, 1] != counts[:, 2]
+        hit = (counts[:, 1] > counts[:, 2]) == want_a
+        return (hit & decided).float().mean().item()
 
     def sister_concordance(self) -> float:
         """Among most-recent sister pairs where both committed, the fraction with equal fate."""

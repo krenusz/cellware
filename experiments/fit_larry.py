@@ -34,25 +34,28 @@ PARAMS = [
     ("f", 0.02, 0.6),       # sampling probability per mature cell
     ("a", 0.0, 1.0),        # memory carried over per division (--memory decay only)
     ("eps", 0.0, 0.25),     # N/M label swap at annotation (--label_noise only)
+    ("q", 0.0, 1.0),        # chance a committed cell still divides (--late only)
 ]
 
 
 LABEL_NOISE = False
 USE_TIME = False  # v5: also fit the day-4 vs day-6 fate-bias correlation within well 1
+LATE = False  # v6: committed cells divide only with probability q
 
 
 def simulate(p, memory, clones=1500, seed=0):
     if not LABEL_NOISE:
         p = {**p, "eps": 0.0}
+    p = {**p, "q": p.get("q", 1.0) if LATE else 1.0}
     rng = np.random.default_rng(seed)
-    k, sigma, s0, s_mem, theta, f, a, eps = (p[n] for n, _, _ in PARAMS)
+    k, sigma, s0, s_mem, theta, f, a, eps, q = (p[n] for n, _, _ in PARAMS)
     if memory == "none":
         s0 = s_mem = 0.0
     shape = (clones, 1)
     m = rng.normal(0, s0, shape)
     o = rng.normal(0, s0, shape)
     x = rng.normal(0, 0.05, shape)
-    fate = np.zeros(shape, dtype=np.int8)  # 0 undecided, 1 N, 2 M, 3 O
+    fate = np.zeros(shape, dtype=np.int8)  # -1 absent, 0 undecided, 1 N, 2 M, 3 O
     well = np.zeros(shape, dtype=np.int8)
     dt = 1.0 / STEPS_PER_DAY
     samples = []
@@ -71,7 +74,11 @@ def simulate(p, memory, clones=1500, seed=0):
             seen[swap] = 3 - seen[swap]  # 1 <-> 2
             samples.append((seen, well.copy(), pick))
         if day < 6:  # divide
-            x, fate, well = (np.repeat(a, 2, axis=1) for a in (x, fate, well))
+            x, fate, well = (np.repeat(v, 2, axis=1) for v in (x, fate, well))
+            if q < 1.0:  # second daughter of a committed cell exists only with probability q
+                second = fate[:, 1::2]
+                skip = (second > 0) & (rng.random(second.shape) >= q)
+                second[skip] = -1
             m, o = np.repeat(m, 2, axis=1), np.repeat(o, 2, axis=1)
             if memory == "inherit":
                 m = m + rng.normal(0, s_mem, m.shape)
@@ -174,9 +181,10 @@ def main():
     ap.add_argument("--maxfev", type=int, default=300)
     ap.add_argument("--label_noise", action="store_true", help="fit an N/M annotation error")
     ap.add_argument("--use_time", action="store_true", help="fit day-4 vs day-6 correlation")
+    ap.add_argument("--late", action="store_true", help="fit q, division of committed cells")
     args = ap.parse_args()
-    global LABEL_NOISE, USE_TIME
-    LABEL_NOISE, USE_TIME = args.label_noise, args.use_time
+    global LABEL_NOISE, USE_TIME, LATE
+    LABEL_NOISE, USE_TIME, LATE = args.label_noise, args.use_time, args.late
     obs = json.load(open(os.path.join(args.out, "larry_fit.json")))
     if args.starts:
         rng = np.random.default_rng(args.seed)
