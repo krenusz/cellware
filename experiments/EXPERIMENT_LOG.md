@@ -607,3 +607,26 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   for any model that commits cells early. Prediction 4 is therefore the informative one.
 - **Budget.** One look, all 10 runs together: `train_clone_e11.py --test`.
 
+### E11 result, fit set only (2026-11-01, held-out Epo/SCF test NOT yet looked at)
+
+10/10 runs (GitHub Actions). Loss levelled off at ~0.8-0.9 by generation ~120 (all ten).
+
+| | loss | G-M r (obs 0.51) | full-G (0.69) | full-M (0.24) | M-CSF M-only (0.88) |
+|---|---|---|---|---|---|
+| inherit (5) | 0.78-1.01 | 0.17-0.29 | 0.61-0.68 | 0.26-0.37 | 0.75-0.85 |
+| resample (5) | 0.65-0.95 | 0.21-0.29 | 0.44-0.69 | 0.26-0.42 | 0.70-0.81 |
+
+- **P1 refuted.** Neither variant reaches the G-M band (0.33-0.65), even with G-M in the loss;
+  resample does as well as inherit. Selection lifts G-M from ~0.1 (E10) to ~0.25, not to 0.51.
+- **P2 refuted.** Distilled inherit rules have tiny memory terms (|coef| <= 0.15). The policy does
+  not use clone memory even when the fitness rewards cross-condition agreement.
+- **Selection is not identifiable:** P(divide) by fate and condition varies wildly across seeds
+  (e.g. M-CSF keeps M cells dividing in some seeds and arrests them in others). Many selection
+  schedules give similar losses.
+- Restoring term weaker than E10 (x coef -0.03 to -0.38), and the M-CSF fit got slightly worse
+  (0.70-0.85 vs 0.87-0.94): adding cross-condition terms traded off against within-condition fit.
+- **Reading.** Either (a) the memory channel as built (2 numbers, noise 0.1 per division, only
+  read by the policy) is too weak a carrier for ES to find, or (b) clone bias in real cells
+  sits in something the model lacks, e.g. heritable differences in division/survival rate
+  rather than in fate choice. These are not distinguishable from the fit set.
+
