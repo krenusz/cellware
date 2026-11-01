@@ -38,6 +38,8 @@ PARAMS = [
 PARAMS_V8 = [*PARAMS[:7], ("bG", -3.0, 3.0), ("bM", -3.0, 3.0),
              ("tF", -2.0, 2.0), ("tG", -2.0, 2.0), ("tM", -2.0, 2.0)]
 VERSION = "v7"
+# nonzero O-shift starts: Nelder-Mead steps only 0.00025 from a zero coordinate
+T0 = {"tF": -0.5, "tG": 0.3, "tM": 0.5}
 
 
 def params():
@@ -153,7 +155,7 @@ def fit(memory, obs, starts, maxfev):
 
     best, best_l = None, np.inf
     for i, st in enumerate(starts):
-        v0 = np.array([st.get(n, 0.0 if n[0] == "t" else (lo + hi) / 2) for n, lo, hi in params()])
+        v0 = np.array([st.get(n, T0.get(n, (lo + hi) / 2)) for n, lo, hi in params()])
         res = minimize(loss, v0, args=(memory, obs), method="Nelder-Mead",
                        options={"maxfev": maxfev, "xatol": 1e-3, "fatol": 1e-5})
         print(f"  start {i}: {res.fun:.4f}", flush=True)
@@ -191,7 +193,7 @@ def main():
               {**v6, "bG": 0.8, "bM": -0.8}]
     tag = VERSION
     if VERSION == "v8":  # also start from the v7 optimum, with the O shifts at 0
-        starts.append(json.load(open(os.path.join(OUT, f"fit_v7_{args.memory}.json")))["params"])
+        starts.append({**json.load(open(os.path.join(OUT, f"fit_v7_{args.memory}.json")))["params"]})
     if args.start is not None:
         starts, tag = [starts[args.start]], f"{VERSION}s{args.start}"
     params, best = fit(args.memory, obs, starts, args.maxfev)
