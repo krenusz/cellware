@@ -485,3 +485,21 @@ cytokine-perturbation experiment, tested on in vivo.
 - **E7, memory test.** A task where lineage memory should matter (fate set by an early cue that
   is then removed), to see whether memory inheritance can be used at all.
 - **E8, ES outer loop.** Evolution strategies instead of PPO, same budget; compare stability.
+
+### E10 result, fit set only (2026-11-01, test unseen)
+
+- 10/10 runs finished (5 seeds x {inherit, resample}, 150 generations, ~345 s each on the PC).
+  Final loss: resample 0.49 (sd 0.10), inherit 0.51 (sd 0.18); best seeds 0.26-0.28. The fitted
+  equations (E9 v8) reach 0.65 at best. The policy has ~1,400 weights against 9-12 equation
+  parameters, so a better fit set score is expected and is not evidence by itself.
+- **Every run passes the E9 adequacy gate:** M-CSF M-only 0.87-0.94 (observed 0.88); full-cocktail
+  has-O 0.24-0.51 (0.36); G-CSF N-only 0.39-0.54 (0.45).
+- **What the policies learned (undecided cells near x = 0):** all 10 respond to the condition
+  input the same way: under G-CSF mostly PUSH_N (0.44-0.78), under M-CSF mostly PUSH_M
+  (0.76-0.97), in full cocktail a mix. A consistent instructive response, discovered with no
+  sign constraint. COMMIT_O stays at 0.00-0.02 per step.
+- **Open question:** why the policy fits M-CSF and the equations do not. Candidates: E10 fixes
+  q from v6 (~0.75, committed cells keep dividing) where the E9 fits drove q to 0.01-0.2; and
+  the policy's push can depend on x and memory. To check before claiming a mechanism.
+- Memory variant makes no clear difference on the fit set (0.49 vs 0.51, overlapping).
+
