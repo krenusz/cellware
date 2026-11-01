@@ -8,11 +8,14 @@ so a sweep can be resumed after an interruption. Logs go to `<logdir>/<line numb
     uv run python experiments/sweep.py sweeps/e7_cue.txt --workers 1
     # Colab / cloud: one worker per core
     python experiments/sweep.py sweeps/e7_cue.txt --workers 8
+    # GitHub Actions: one job per line (.github/workflows/sweep.yml)
+    gh workflow run sweep.yml --ref modernize -f sweep=sweeps/e7_cue.txt
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import subprocess
@@ -51,8 +54,19 @@ def main():
     p.add_argument("--workers", type=int, default=1)
     p.add_argument("--threads", type=int, default=2, help="BLAS/torch threads per job")
     p.add_argument("--logdir", type=Path, default=None)
+    p.add_argument("--lines", default=None, help="only these line numbers, e.g. 3,5,10-20")
+    p.add_argument("--list", action="store_true", help="print pending line numbers as JSON")
     args = p.parse_args()
     jobs = parse(args.sweep)
+    if args.lines:
+        keep = set()
+        for part in args.lines.split(","):
+            a, _, b = part.partition("-")
+            keep.update(range(int(a), int(b or a) + 1))
+        jobs = [j for j in jobs if j[0] in keep]
+    if args.list:
+        print(json.dumps([i for i, out, _ in jobs if not (out and Path(out).exists())]))
+        return
     logdir = args.logdir or Path("experiments/logs_sweep") / args.sweep.stem
     logdir.mkdir(parents=True, exist_ok=True)
     print(f"{len(jobs)} jobs, {args.workers} workers", flush=True)

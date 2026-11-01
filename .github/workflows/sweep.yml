@@ -1,0 +1,84 @@
+# Run a sweep file on GitHub-hosted runners, one job per line (free and unlimited for public repos).
+#   gh workflow run sweep.yml --ref modernize -f sweep=sweeps/e7_cue.txt [-f lines=2-40] [-f larry=true]
+#   gh run download <run id> -n results -D .      # results land at their sweep-file paths
+name: Sweep
+
+on:
+  workflow_dispatch:
+    inputs:
+      sweep:
+        description: sweep file under sweeps/
+        required: true
+      lines:
+        description: optional line filter, e.g. 3,5,10-20
+        default: ""
+      larry:
+        description: download the LARRY datasets (fit_larry / fit_cytokine / clone-ES sweeps)
+        type: boolean
+        default: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      lines: ${{ steps.list.outputs.lines }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        run: |
+          args=""; [ -n "${{ inputs.lines }}" ] && args="--lines ${{ inputs.lines }}"
+          echo "lines=$(python3 experiments/sweep.py '${{ inputs.sweep }}' --list $args)" >> "$GITHUB_OUTPUT"
+
+  run:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        line: ${{ fromJSON(needs.plan.outputs.lines) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Install
+        run: uv sync --extra fit
+      - name: LARRY data
+        if: inputs.larry
+        run: |
+          base=https://kleintools.hms.harvard.edu/paper_websites/state_fate2020/
+          for pair in larry:inVitro larry_invivo:inVivo larry_cytokine:cytokinePerturbation; do
+            dir=data/${pair%%:*}; mkdir -p "$dir"
+            for f in clone_matrix.mtx.gz metadata.txt.gz; do
+              curl -sfL -o "$dir/$f" "${base}stateFate_${pair##*:}_$f"
+            done
+          done
+      - name: Run line ${{ matrix.line }}
+        run: |
+          source .venv/bin/activate  # lines may call plain python or uv run
+          python experiments/sweep.py '${{ inputs.sweep }}' --lines ${{ matrix.line }} --threads 4 --logdir sweep_logs
+          cat sweep_logs/*.log | tail -20
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: line-${{ matrix.line }}
+          path: |
+            experiments/results_*/
+            sweep_logs/
+          retention-days: 14
+
+  collect:
+    needs: run
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: line-*
+          merge-multiple: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: .
+          retention-days: 30
