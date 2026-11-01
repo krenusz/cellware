@@ -649,3 +649,26 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   (3) Within-condition fit no worse than E11 (loss within E11's range).
 - **Held-out test.** Pooled Epo/SCF concordance, through test_oracle.py, only if (1) passes.
 
+### E12 result, fit set only (2026-11-01; Epo/SCF test still unseen)
+
+| | loss | learned s | G-M r (obs 0.51, band 0.33-0.65) | M-CSF M-only (0.88) |
+|---|---|---|---|---|
+| inherit (5) | 0.76-1.17 | 0.38-0.98 | 0.08-0.29 | 0.78-0.90 |
+| resample (5) | 0.62-0.95 | 0.43-1.15 | 0.15-0.31 | 0.74-0.93 |
+
+- **P1 refuted:** 0/10 in the G-M band (E11 0/10); best 0.31.
+- **P2 partly:** s > 0.5 in 7/10 (inherit 3/5, resample 4/5). The trait is used but does not raise G-M.
+- **P3 holds:** loss range comparable to E11 (0.62-1.17 vs 0.65-1.01); M-CSF fit slightly better.
+- **No test look** (pre-registered condition: P1 must pass).
+- **Ceiling check (toy, not a fit).** With clone N-propensity fully shared across conditions
+  (Beta(1,1) across clones, cytokines shifting only the level) and the observed sampling depth
+  (~4-5 mature cells per clone), the G-M r this statistic can reach is only ~0.36 (3 cells) to
+  0.47 (6 cells). The observed 0.51 [0.33, 0.65] is at that ceiling: in real cells the N/M
+  propensity is essentially fully clone-determined before the split and survives opposing
+  cytokines intact, with a broad spread across clones. Our models reach about half of that.
+- **Reading.** What is missing is not a weak extra term but a strong, broad, clone-level fate
+  propensity fixed by day 2 that the cytokines rescale without reshuffling. E9 inherit had memory
+  in the drift but mixed it with fresh noise each division (s_mem) and fixed early commitment;
+  E10-E12 policies ignore memory or use the trait weakly. Next model should make the founder
+  propensity the dominant, exactly inherited variable and let the data set its spread.
+
