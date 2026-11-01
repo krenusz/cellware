@@ -1,0 +1,11 @@
+# E10: ES-trained decision rule on LARRY cytokine clone statistics
+[experiments/results_clone_es/clone_es_inherit_seed0.json] uv run python experiments/train_clone_es.py --seed 0 --memory inherit --generations 150
+[experiments/results_clone_es/clone_es_resample_seed0.json] uv run python experiments/train_clone_es.py --seed 0 --memory resample --generations 150
+[experiments/results_clone_es/clone_es_inherit_seed1.json] uv run python experiments/train_clone_es.py --seed 1 --memory inherit --generations 150
+[experiments/results_clone_es/clone_es_resample_seed1.json] uv run python experiments/train_clone_es.py --seed 1 --memory resample --generations 150
+[experiments/results_clone_es/clone_es_inherit_seed2.json] uv run python experiments/train_clone_es.py --seed 2 --memory inherit --generations 150
+[experiments/results_clone_es/clone_es_resample_seed2.json] uv run python experiments/train_clone_es.py --seed 2 --memory resample --generations 150
+[experiments/results_clone_es/clone_es_inherit_seed3.json] uv run python experiments/train_clone_es.py --seed 3 --memory inherit --generations 150
+[experiments/results_clone_es/clone_es_resample_seed3.json] uv run python experiments/train_clone_es.py --seed 3 --memory resample --generations 150
+[experiments/results_clone_es/clone_es_inherit_seed4.json] uv run python experiments/train_clone_es.py --seed 4 --memory inherit --generations 150
+[experiments/results_clone_es/clone_es_resample_seed4.json] uv run python experiments/train_clone_es.py --seed 4 --memory resample --generations 150

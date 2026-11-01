@@ -354,6 +354,30 @@ cytokine-perturbation experiment, tested on in vivo.
   correlation is therefore fitted for M-CSF only. The model samples days 4 and 6 equally, unlike
   the data; this affects composition statistics, not the test.
 
+## E10: learn the decision rule from data (pre-registered 2026-11-01)
+
+- **Motivation.** So far the learned (PPO/ES) cells were trained on invented targets, and every
+  real-data result came from a few fitted equations. E10 trains the cells' decision rule on the
+  LARRY data itself, so the policy becomes a flexible, data-constrained hypothesis that can be
+  compared with the equation model and then inspected.
+- **Environment (`train_clone_es.py`).** Non-spatial clones as in E9: daily division (committed
+  cells with probability q), pitchfork fate drift with k, sigma, sampling f and q fixed from the
+  E6 v6 `resample` fit (not refitted). Each quarter-day an uncommitted cell sees [x, age, memory
+  (2), condition one-hot] and picks REST / PUSH_N / PUSH_M / COMMIT_O. The cytokine condition is
+  only an input; the response to it is learned. No environment bias is built in.
+- **Training.** ES (8 antithetic pairs, sigma 0.05, Adam 0.03, 150 generations, common random
+  numbers per generation), fitness = minus the E9 fit-set distance (within-condition statistics
+  for full, G-CSF, M-CSF). Memory `inherit` (copy + noise 0.1) vs `resample`. 5 seeds each.
+- **Test.** The same cross-condition sister concordance as E9 (full-G, full-M, G-M), one look,
+  taken together with E9's look so both models face the same unseen data.
+- **Predictions.** (1) The learned policy fits the fit set at least as well as the E9 equation
+  model (loss within 25% of E9's). (2) Its held-out predictions are no worse than E9's (absolute
+  error summed over the three pairs). (3) Inspection: the policy pushes toward N under G-CSF and
+  toward M under M-CSF (it rediscovers the known cytokine roles from clone statistics alone).
+  (4) `inherit` vs `resample`: no difference in held-out error (consistent with E6).
+- **If (2) fails,** the flexible policy overfits the fit set and the equation model is the better
+  scientific description; that will be reported as such.
+
 ## E7: can the cells use lineage memory at all? (pre-registered 2026-11-01)
 
 - **Motivation.** In E3-E5, removing memory inheritance never changed the outcome, and E6 found no
