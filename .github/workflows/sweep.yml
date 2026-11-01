@@ -45,6 +45,12 @@ jobs:
           enable-cache: true
       - name: Install
         run: uv sync --extra fit
+      - name: Cache LARRY data
+        if: inputs.larry
+        uses: actions/cache@v4
+        with:
+          path: data
+          key: larry-data-v1
       - name: LARRY data
         if: inputs.larry
         run: |
@@ -52,7 +58,7 @@ jobs:
           for pair in larry:inVitro larry_invivo:inVivo larry_cytokine:cytokinePerturbation; do
             dir=data/${pair%%:*}; mkdir -p "$dir"
             for f in clone_matrix.mtx.gz metadata.txt.gz; do
-              curl -sfL -o "$dir/$f" "${base}stateFate_${pair##*:}_$f"
+              [ -s "$dir/$f" ] || curl -sfL -o "$dir/$f" "${base}stateFate_${pair##*:}_$f"
             done
           done
       - name: Run line ${{ matrix.line }}
