@@ -284,6 +284,44 @@ from the v3 bests. Look 4, the last, follows.
   6-day culture, so a miss on (2) may reflect the environment rather than the mechanism.
 - **Budget.** One look at the in vivo test per model, all four memory variants in one look.
 
+### E6b result
+
+v6 fits (first attempt crashed when a sparse simulation left < 2 comparable clones; fixed in
+`larry_stats.test_stats` and rerun, same settings):
+
+| Model | Fit loss | q | Mixed (obs 0.12) | r_d4_d6 (obs 0.91) | In vitro cross-well r (obs 0.74, info only) | Predicted cross-split r |
+|---|---|---|---|---|---|---|
+| resample | 0.0088 | 0.67 | 0.13 | 0.97 | 0.70 | 0.70 (0.68-0.73) |
+| decay | 0.0084 | 0.79 | 0.13 | 0.97 | 0.75 | 0.75 |
+| none | 0.0106 | 0.78 | 0.11 | 0.96 | 0.75 | 0.75 |
+| inherit | 0.0074 | 0.73 | 0.12 | 0.96 | 0.76 | 0.76 |
+
+**The single in vivo look:** only 66 clones meet the criterion (>= 2 N+M cells in each of two
+mice). Observed cross-mouse **r = 0.46 (95% CI 0.22-0.68)**, majority agreement **0.61
+(0.48-0.71)**.
+
+- Prediction 1 (v6 matches r_d4_d6 better than v5): **marginally**: 0.96-0.97 vs 0.97-0.99,
+  still far from 0.91. Committed cells fitted to divide less (q ~0.7-0.8), which helps a little.
+- Prediction 2 (best v6 model within the in vivo CI): **not confirmed.** All models predict
+  0.70-0.76, above the upper bound of 0.68 (resample is closest).
+- Prediction 3 (`inherit` higher than observed): true, but now every model is, so it says nothing.
+- Side effect: with q fitted, all four models reproduce the in vitro cross-well r (0.70-0.76 vs
+  0.74). Allowing committed cells to stop dividing made memory variants indistinguishable on that
+  statistic, so the E6 ranking between them was fragile.
+- **Interpretation.** Sister cells transplanted into different mice share fate much less (0.46)
+  than sisters in different culture wells (0.74). A model calibrated on culture cannot know that;
+  the stated caveat (different environment and timescale) is the most likely reason. The data are
+  thin (66 clones, wide CI).
+
+### E6 overall status
+
+The clearest results are negative and robust: faithfully copied memory never fits better than
+alternatives, and fate concordance between sisters falls from culture (0.74) to separate animals
+(0.46), pointing to the environment rather than inheritance as the missing factor. What the model
+still lacks: within-clone change over time (0.91 not reached) and any environment term. Next model
+step, if pursued: a per-split environment bias (well or mouse) fitted on in vitro wells and the
+cytokine-perturbation experiment, tested on in vivo.
+
 ## E7: can the cells use lineage memory at all? (pre-registered 2026-11-01)
 
 - **Motivation.** In E3-E5, removing memory inheritance never changed the outcome, and E6 found no
