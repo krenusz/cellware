@@ -25,6 +25,7 @@ HERE = os.path.dirname(__file__)
 DATA = os.path.join(HERE, "..", "data", "larry_cytokine")
 OUT = os.path.join(HERE, "results_larry")
 CONDS = {"full cocktail": "full", "G-csf": "G", "M-csf": "M"}
+CONDS5 = {**CONDS, "Epo": "Epo", "SCF": "SCF"}  # E11 adds the two conditions E9 left unused
 STEPS_PER_DAY = 20
 # day-4 vs day-6 correlation is fitted only where enough clones have cells on both days
 # (full cocktail: 4 clones, G-CSF: 39, M-CSF: 131)
@@ -50,19 +51,19 @@ def params():
 
 
 # ----------------------------------------------------------------------------- data
-def load_counts():
+def load_counts(conds=CONDS):
     """{cond: {day: {clone: [N, M, O]}}} for days 4 and 6, mature cells only."""
     with gzip.open(os.path.join(DATA, "metadata.txt.gz"), "rt") as f:
         rows = [line.rstrip("\n").split("\t") for line in f][1:]
     with gzip.open(os.path.join(DATA, "clone_matrix.mtx.gz"), "rt") as f:
         m = np.loadtxt(f, comments="%", skiprows=3, dtype=int)  # clones x cells
-    out = {c: {4: {}, 6: {}} for c in CONDS.values()}
+    out = {c: {4: {}, 6: {}} for c in conds.values()}
     for clone, cell in zip(m[:, 0] - 1, m[:, 1] - 1, strict=True):
         day, kind, cond = rows[cell][2], rows[cell][3], rows[cell][4]
-        if day == "2" or kind == "Undifferentiated" or cond not in CONDS:
+        if day == "2" or kind == "Undifferentiated" or cond not in conds:
             continue
         j = 0 if kind == "Neu" else 1 if kind == "Mo" else 2
-        out[CONDS[cond]][int(day)].setdefault(clone, [0, 0, 0])[j] += 1
+        out[conds[cond]][int(day)].setdefault(clone, [0, 0, 0])[j] += 1
     return out
 
 
@@ -89,6 +90,25 @@ def condition_stats(cnt):
 def cross_stats(cnt, boot=2000):
     pairs = [("full", "G"), ("full", "M"), ("G", "M")]
     return {f"{a}-{b}": test_stats(pooled(cnt[a]), pooled(cnt[b]), boot=boot) for a, b in pairs}
+
+
+def pooled_pairs_r(cnt, groups=("Epo", "SCF"), boot=2000):
+    """E11 held-out test: N-fraction concordance pooled over every condition pair that includes
+    Epo or SCF (one row per clone and pair)."""
+    pairs = []
+    names = list(cnt)
+    for i, a in enumerate(names):
+        for b in names[i + 1:]:
+            if a not in groups and b not in groups:
+                continue
+            pa, pb = pooled(cnt[a]), pooled(cnt[b])
+            for c in set(pa) & set(pb):
+                x, y = pa[c], pb[c]
+                if x[0] + x[1] >= 2 and y[0] + y[1] >= 2:
+                    pairs.append((x[0] / (x[0] + x[1]), y[0] / (y[0] + y[1])))
+    a = {i: [p[0], 1 - p[0], 0] for i, p in enumerate(pairs)}  # reuse test_stats on fractions
+    b = {i: [p[1], 1 - p[1], 0] for i, p in enumerate(pairs)}
+    return test_stats(a, b, min_nm=0, boot=boot)
 
 
 # ------------------------------------------------------------------------ simulator

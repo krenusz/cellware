@@ -568,3 +568,42 @@ Bold = inside the observed 95% CI.
   condition-specific selection, tested on the Epo and SCF conditions (never used) or the in vivo
   set.
 
+### E10 distilled (2026-11-01)
+
+Linear fit of each policy's expected push (P(PUSH_N) - P(PUSH_M)) over 20,000 random
+observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per policy. Mean over 10:
+
+    drive = -0.26 - 0.55 x + {full +0.27, G +0.66, M -0.53} (+ small memory terms)
+
+- **Restoring term -0.55 x (negative in all 10 runs, sd 0.24):** cells push against the fate they
+  are drifting towards, which flattens the pitchfork and delays commitment; this is the
+  mechanism behind the 75% undecided at day 2.
+- **Memory terms are small and sign-inconsistent** (|coef| <= 0.34, signs vary across seeds): the
+  learned rule essentially ignores clone memory. That is why sisters split into G-CSF and M-CSF
+  decorrelate in E10 (predicted r ~ 0.1) while the data keep r = 0.51.
+
+## E11: learned rule with selection, five conditions (pre-registered 2026-11-01)
+
+- **Motivation.** E9/E10 test: every model erases clone bias across opposing cytokines; E10
+  ignores memory because nothing in its fitness rewarded it.
+- **Model** (`train_clone_e11.py`). E10 plus: (1) selection: committed cells choose divide or
+  arrest at each daily division via the policy (replaces fixed q), so a cytokine can favour a
+  lineage without redirecting undecided cells; (2) observation adds the committed fate and a
+  five-condition one-hot (full, G-CSF, M-CSF, Epo, SCF); (3) clones 1,500.
+- **Fit set.** Within-condition statistics for all five conditions (Epo 323, SCF 137 clones), M-CSF
+  day-4 vs day-6 r, and the now-spent cross-condition concordances full-G 0.69, full-M 0.24,
+  G-M 0.51 (weight 2).
+- **Held-out test (never fitted, not yet computed).** N-fraction concordance pooled over every
+  condition pair that includes Epo or SCF (55 clone pairs by count; statistic not computed).
+  Bootstrap 95% CI.
+- **Runs.** 5 seeds x {inherit, resample}, 150 generations, 8 antithetic pairs; GitHub Actions.
+- **Predictions.** (1) `inherit` fits G-M concordance (simulated r within 0.33-0.65); `resample`
+  cannot (r < 0.33), i.e. clone memory is needed to keep bias across opposing cytokines.
+  (2) The distilled `inherit` rule has consistent, non-negligible memory terms (|coef| > 0.2,
+  same sign in >= 4 of 5 seeds). (3) `inherit` predicts the pooled Epo/SCF concordance within
+  its 95% CI; (4) `resample` underpredicts it (below the CI).
+- **Caveat recorded before the test.** An untrained smoke-test policy gave pooled r ~0.99: with
+  few N/M cells in Epo/SCF, many pairs are all-N or all-M clones, so this statistic may be high
+  for any model that commits cells early. Prediction 4 is therefore the informative one.
+- **Budget.** One look, all 10 runs together: `train_clone_e11.py --test`.
+
