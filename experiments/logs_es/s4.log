@@ -1,0 +1,12 @@
+[es s4] gen   0  score -1.275  size  42.4  S/A/B 0.33/0.40/0.27  pattern 0.55  (3s)
+[es s4] gen   5  score -1.159  size  38.0  S/A/B 0.14/0.78/0.08  pattern 0.75  (16s)
+[es s4] gen  10  score -1.188  size  59.0  S/A/B 0.16/0.72/0.12  pattern 0.63  (29s)
+[es s4] gen  15  score -1.054  size  58.1  S/A/B 0.27/0.61/0.12  pattern 0.63  (43s)
+[es s4] gen  20  score -1.113  size  36.3  S/A/B 0.15/0.77/0.08  pattern 0.78  (56s)
+[es s4] gen  25  score -1.085  size  54.9  S/A/B 0.30/0.59/0.11  pattern 0.63  (69s)
+[es s4] gen  30  score -1.103  size  43.6  S/A/B 0.14/0.76/0.09  pattern 0.71  (82s)
+[es s4] gen  35  score -1.113  size  43.5  S/A/B 0.10/0.79/0.10  pattern 0.72  (95s)
+[es s4] gen  40  score -1.053  size  45.1  S/A/B 0.14/0.65/0.22  pattern 0.59  (109s)
+[es s4] gen  45  score -0.910  size  50.6  S/A/B 0.13/0.66/0.21  pattern 0.62  (122s)
+[es s4] gen  49  score -0.970  size  53.1  S/A/B 0.13/0.66/0.21  pattern 0.64  (132s)
+saved experiments\results_es\es_seed4.json

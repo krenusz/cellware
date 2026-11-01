@@ -408,6 +408,27 @@ cytokine-perturbation experiment, tested on in vivo.
   stated in advance so that a win is not post-hoc. (3) ES `nomemory` vs ES `full`: no difference,
   as with PPO.
 
+### E8 result (10 ES runs, ~2.2 min each)
+
+| Method | Score | Size | Stem / A / B | Pattern | Min size (late) |
+|---|---|---|---|---|---|
+| PPO (E5 full, seeds 0-4) | -1.049 (sd 0.02) | 53 | 0.19 / 0.66 / 0.15 | 0.63 | 33 |
+| ES full | -1.020 (sd 0.09) | 51 | 0.12 / 0.67 / 0.21 | 0.63 | 44 |
+| ES nomemory | -0.943 (sd 0.04) | 51 | 0.14 / 0.61 / 0.25 | 0.58 | 44 |
+
+- (1) **Confirmed:** no ES run collapsed, with neither of the PPO fixes' entropy schedule needed
+  (the totipotency window is part of the environment and was kept).
+- (2) **Not confirmed:** ES is not worse. ES - PPO = +0.03 (95% CI -0.04 to +0.10): equal at
+  matched episodes, with a stem share closer to the target (0.12 vs 0.19) and more B cells.
+  ES reaches about -0.9 within ~7 generations (900 episodes), then plateaus with noisy evaluation.
+- (3) **Roughly confirmed, with a twist:** ES nomemory scores slightly *better* than ES full
+  (-0.08, CI -0.15 to +0.00, just touching 0). Plausible reason: resampled memory gives cells
+  random but useful individual variation (symmetry breaking), while inherited memory makes
+  neighbours alike. Not established at 5 seeds.
+- **Decision.** ES is a valid alternative trainer: as good as stabilised PPO, more robust, much
+  simpler, and naturally parallel (ideal for Colab). Keep both; the 20-seed reruns use PPO. ES
+  seed-to-seed spread is larger (sd 0.09 vs 0.02), so ES comparisons need more seeds.
+
 ---
 
 ## Planned (write hypothesis before running)
