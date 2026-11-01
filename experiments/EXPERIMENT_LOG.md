@@ -534,3 +534,37 @@ too early, whatever q or bias. The data-trained rule found "stay undecided until
 environment is known", which matches day-2 cell states. Next: the held-out cross-condition
 test, E9 (reported as failing its adequacy gate) and E10 together.
 
+### E9 + E10 held-out test: THE single look (2026-11-01)
+
+`fit_cytokine.py --version v8 --test` (E9: best v8 start per memory variant, copied to
+fit_v8_{memory}.json; E10: mean of the 5 seeds' predictions). Output: cytokine_test_v8.json.
+Test budget for the cytokine cross-condition statistics is now spent.
+
+| Pair | Observed r [95% CI] (clones) | E9 resample | E9 inherit | E10 resample (seed range) | E10 inherit (seed range) |
+|---|---|---|---|---|---|
+| full-G | 0.69 [0.40, 0.92] (29) | -0.08 | 0.07 | **0.46** (0.37-0.51) | **0.56** (0.47-0.69) |
+| full-M | 0.24 [-0.11, 0.55] (84) | **0.15** | **0.17** | **0.20** (0.00-0.36) | **0.07** (0.00-0.18) |
+| G-M | 0.51 [0.33, 0.65] (78) | 0.19 | 0.14 | 0.11 (0.00-0.18) | 0.03 (0.01-0.06) |
+
+Bold = inside the observed 95% CI.
+
+- **P1 (bias signs b_G > 0, b_M < 0): confirmed** for both E9 variants; E10 learned the same
+  directions unconstrained.
+- **P2 (cross-condition r below the in vitro cross-well 0.74): mostly confirmed.** full-M and G-M
+  are clearly lower (CIs end at 0.55 and 0.65); full-G (0.69) is not distinguishable from 0.74.
+- **P3 (resample predicts all three within CI): not confirmed.** E9 resample 1/3; E10 resample
+  2/3 (misses G-M).
+- **P4 (inherit overpredicts): refuted.** Every model *under*predicts, inherit as much as resample.
+- **Main finding.** Sisters sent into opposite cytokines (G-CSF vs M-CSF) still agree on their
+  N/M balance (r = 0.51). Every model predicts near 0-0.2 there: in all of them the opposing
+  cytokines largely erase the clone's inherited bias. In the real cells they do not. The
+  environment shifts the *level* (M-CSF clones are mostly M) but the clone's *rank* among clones
+  survives. Both model families treat cytokine response and inherited bias as competing for the
+  same drift; the data say they act more independently (e.g. bias sets the clone's relative
+  output, cytokine sets the absolute mix).
+- **E10 vs E9.** The data-trained rule is better on the held-out test (4/6 cells inside the CI vs
+  2/6), as well as on the fit set and on day-2 states. Neither family passes.
+- **Next (new held-out data needed for any refit):** a model where clone bias persists under
+  condition-specific selection, tested on the Epo and SCF conditions (never used) or the in vivo
+  set.
+
