@@ -261,6 +261,29 @@ from the v3 bests. Look 4, the last, follows.
   data, and predict the Weinreb in vivo or cytokine-perturbation experiments, which were never
   looked at.
 
+## E6b: late commitment, predicted on in vivo data (pre-registered 2026-11-01)
+
+- **Data.** Weinreb 2020 in vivo experiment (`data/larry_invivo/`, not committed): barcoded
+  progenitors profiled at day 2, transplanted into mice, profiled at days 9 and 16. 23,241 clones;
+  852 clones have cells in more than one recipient mouse. Only structure (clone x mouse x day
+  counts) has been read; no fate statistic has been computed.
+- **Model change (v6, motivated by the fit set only).** In E6, committed cells kept dividing, so
+  early-committed cells dominated later samples and no model could lower the day-4 vs day-6
+  correlation (0.97-0.99 vs 0.91). v6 adds `q`, the probability that a committed cell still
+  divides; with q < 1 later samples are dominated by cells that committed later.
+- **Fit.** In vitro only: the well-1 statistics plus `r_d4_d6` (as v5). The in vitro well 2 is
+  no longer a valid test (its budget is used up) and is reported for information only.
+- **Test (in vivo, never used for fitting).** Clones with >= 2 N+M cells (neutrophil, monocyte)
+  in each of two different mice (days 9 and 16 pooled; for clones in 3+ mice, the two with the most
+  N+M cells). Primary statistic: Pearson r of N/(N+M) across clones between mice; secondary:
+  majority-fate agreement. Bootstrap 95% CI.
+- **Predictions.** (1) v6 matches the in vitro `r_d4_d6` better than v5 (fit set). (2) The best
+  v6 model's cross-split r, simulated with the in vitro parameters (split at day 2), lies inside the
+  in vivo 95% CI. (3) Faithful inheritance (`inherit`) again predicts higher r than observed.
+  Main caveat, stated in advance: the in vivo timescale (9-16 days, in mice) differs from the model's
+  6-day culture, so a miss on (2) may reflect the environment rather than the mechanism.
+- **Budget.** One look at the in vivo test per model, all four memory variants in one look.
+
 ---
 
 ## Planned (write hypothesis before running)
