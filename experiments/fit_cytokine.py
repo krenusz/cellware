@@ -34,6 +34,14 @@ PARAMS = [
     ("theta", -2.0, 2.0), ("f", 0.02, 0.6), ("q", 0.0, 1.0),
     ("bG", -1.5, 1.5), ("bM", -1.5, 1.5),
 ]
+# v8: wider condition biases and a per-condition shift of the O threshold after the split
+PARAMS_V8 = [*PARAMS[:7], ("bG", -3.0, 3.0), ("bM", -3.0, 3.0),
+             ("tF", -2.0, 2.0), ("tG", -2.0, 2.0), ("tM", -2.0, 2.0)]
+VERSION = "v7"
+
+
+def params():
+    return PARAMS_V8 if VERSION == "v8" else PARAMS
 
 
 # ----------------------------------------------------------------------------- data
@@ -83,6 +91,7 @@ def simulate(p, memory, clones=1500, seed=0):
     rng = np.random.default_rng(seed)
     k, sigma, s0, s_mem, theta, f, q, b_g, b_m = (p[n] for n, _, _ in PARAMS)
     bias = np.array([0.0, b_g, b_m])  # full, G, M
+    t_shift = np.array([p.get("tF", 0.0), p.get("tG", 0.0), p.get("tM", 0.0)])
     shape = (clones, 1)
     m, o = rng.normal(0, s0, shape), rng.normal(0, s0, shape)
     x = rng.normal(0, 0.05, shape)
@@ -92,12 +101,13 @@ def simulate(p, memory, clones=1500, seed=0):
     out = {c: {4: {}, 6: {}} for c in ("full", "G", "M")}
     for day in range(1, 7):
         b = np.where(cond >= 0, bias[cond.clip(0)], 0.0)
+        th = theta + np.where(cond >= 0, t_shift[cond.clip(0)], 0.0)
         for _ in range(STEPS_PER_DAY):
             free = fate == 0
             x = np.where(free, x + k * (x - x**3 + m + b) * dt
                          + sigma * np.sqrt(dt) * rng.standard_normal(x.shape), x)
             done = free & (np.abs(x) > THRESH)
-            is_o = rng.random(x.shape) < 1 / (1 + np.exp(-4 * (o - theta)))
+            is_o = rng.random(x.shape) < 1 / (1 + np.exp(-4 * (o - th)))
             fate = np.where(done, np.where(is_o, 3, np.where(x > 0, 1, 2)), fate).astype(np.int8)
         if day in (4, 6):
             pick = (fate > 0) & (rng.random(fate.shape) < f)
@@ -125,7 +135,7 @@ def simulate(p, memory, clones=1500, seed=0):
 
 # --------------------------------------------------------------------------- fitting
 def loss(vec, memory, obs, seeds=(0, 1)):
-    p = {n: float(np.clip(v, lo, hi)) for v, (n, lo, hi) in zip(vec, PARAMS, strict=True)}
+    p = {n: float(np.clip(v, lo, hi)) for v, (n, lo, hi) in zip(vec, params(), strict=True)}
     total = 0.0
     for s in seeds:
         sim = condition_stats(simulate(p, memory, seed=s))
@@ -143,15 +153,15 @@ def fit(memory, obs, starts, maxfev):
 
     best, best_l = None, np.inf
     for i, st in enumerate(starts):
-        v0 = np.array([st.get(n, (lo + hi) / 2) for n, lo, hi in PARAMS])
+        v0 = np.array([st.get(n, 0.0 if n[0] == "t" else (lo + hi) / 2) for n, lo, hi in params()])
         res = minimize(loss, v0, args=(memory, obs), method="Nelder-Mead",
                        options={"maxfev": maxfev, "xatol": 1e-3, "fatol": 1e-5})
         print(f"  start {i}: {res.fun:.4f}", flush=True)
         if res.fun < best_l:
             best, best_l = res.x, res.fun
-    lo, hi = [q[1] for q in PARAMS], [q[2] for q in PARAMS]
+    lo, hi = [q[1] for q in params()], [q[2] for q in params()]
     best = np.clip(best, lo, hi)
-    return {n: float(v) for v, (n, _, _) in zip(best, PARAMS, strict=True)}, float(best_l)
+    return {n: float(v) for v, (n, _, _) in zip(best, params(), strict=True)}, float(best_l)
 
 
 def main():
@@ -159,22 +169,31 @@ def main():
     ap.add_argument("--memory", choices=["resample", "inherit"], default="resample")
     ap.add_argument("--maxfev", type=int, default=200)
     ap.add_argument("--test", action="store_true", help="the single look at the held-out test")
+    ap.add_argument("--version", choices=["v7", "v8"], default="v7")
+    ap.add_argument("--start", type=int, default=None, help="run only this start (for parallel)")
     args = ap.parse_args()
+    global VERSION
+    VERSION = args.version
     cnt = load_counts()
     obs = condition_stats(cnt)
     json.dump(obs, open(os.path.join(OUT, "cytokine_fit.json"), "w"), indent=1)
     if args.test:
         result = {"observed": cross_stats(cnt)}
         for mem in ("resample", "inherit"):
-            r = json.load(open(os.path.join(OUT, f"fit_v7_{mem}.json")))
+            r = json.load(open(os.path.join(OUT, f"fit_{VERSION}_{mem}.json")))
             result[mem] = r["pred"]
-        json.dump(result, open(os.path.join(OUT, "cytokine_test.json"), "w"), indent=1)
+        json.dump(result, open(os.path.join(OUT, f"cytokine_test_{VERSION}.json"), "w"), indent=1)
         print(json.dumps(result, indent=1))
         return
     print("fit set:", {c: s["clones"] for c, s in obs.items()})
     v6 = json.load(open(os.path.join(OUT, f"fit_v6_{args.memory}.json")))["params"]
     starts = [{**v6, "bG": 0.3, "bM": -0.3}, {**v6, "bG": 0.0, "bM": 0.0},
               {**v6, "bG": 0.8, "bM": -0.8}]
+    tag = VERSION
+    if VERSION == "v8":  # also start from the v7 optimum, with the O shifts at 0
+        starts.append(json.load(open(os.path.join(OUT, f"fit_v7_{args.memory}.json")))["params"])
+    if args.start is not None:
+        starts, tag = [starts[args.start]], f"{VERSION}s{args.start}"
     params, best = fit(args.memory, obs, starts, args.maxfev)
     sims = [simulate(params, args.memory, seed=s) for s in range(10, 15)]
     pred = {}
@@ -183,7 +202,7 @@ def main():
         pred[key] = {"r_mean": float(np.mean(vals)), "r_range": [min(vals), max(vals)]}
     result = {"memory": args.memory, "params": params, "loss": best,
               "fit_sim": condition_stats(sims[0]), "pred": pred}
-    json.dump(result, open(os.path.join(OUT, f"fit_v7_{args.memory}.json"), "w"), indent=1)
+    json.dump(result, open(os.path.join(OUT, f"fit_{tag}_{args.memory}.json"), "w"), indent=1)
     print(json.dumps({k: result[k] for k in ("memory", "params", "loss")}, indent=1))
 
 

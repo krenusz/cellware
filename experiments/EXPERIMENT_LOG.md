@@ -354,6 +354,18 @@ cytokine-perturbation experiment, tested on in vivo.
   correlation is therefore fitted for M-CSF only. The model samples days 4 and 6 equally, unlike
   the data; this affects composition statistics, not the test.
 
+- **v7 fits (2026-11-01, test unseen).** Loss: resample 0.74, inherit 0.90. Both are inadequate:
+  M-CSF M-only 0.46 simulated vs 0.88 observed; full-cocktail has-O 0.13 vs 0.36; q collapsed to
+  0.02-0.07; inherit's b_M sits at the -1.5 bound. Prediction 1 (signs) holds for both. The test
+  look is **not** spent on fits that miss the fit set.
+- **v8 (pre-registered 2026-11-01, before fitting, test unseen).** Changes, all motivated only by
+  the fit-set misfit above: (a) b_G, b_M bounds widened to +-3; (b) per-condition shift of the O
+  threshold after the split (t_full, t_G, t_M), since the cocktail makes far more O than M-CSF;
+  (c) 4 Nelder-Mead starts (the three v7 starts plus the v7 optimum), maxfev 600 each.
+  Predictions 1-4 above carry over unchanged. Adequacy gate before the look: M-CSF M-only and
+  full-cocktail has-O each within 0.10 of observed for the `resample` model; if it fails, report
+  the misfit and still make no look. One look, both models, `fit_cytokine.py --version v8 --test`.
+
 ## E10: learn the decision rule from data (pre-registered 2026-11-01)
 
 - **Motivation.** So far the learned (PPO/ES) cells were trained on invented targets, and every

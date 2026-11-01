@@ -1,0 +1,9 @@
+# E9 v8 refit: one start per runner on GitHub Actions (larry=true); pick the best per memory locally
+[experiments/results_larry/fit_v8s0_resample.json] python experiments/fit_cytokine.py --version v8 --memory resample --start 0 --maxfev 600
+[experiments/results_larry/fit_v8s1_resample.json] python experiments/fit_cytokine.py --version v8 --memory resample --start 1 --maxfev 600
+[experiments/results_larry/fit_v8s2_resample.json] python experiments/fit_cytokine.py --version v8 --memory resample --start 2 --maxfev 600
+[experiments/results_larry/fit_v8s3_resample.json] python experiments/fit_cytokine.py --version v8 --memory resample --start 3 --maxfev 600
+[experiments/results_larry/fit_v8s0_inherit.json] python experiments/fit_cytokine.py --version v8 --memory inherit --start 0 --maxfev 600
+[experiments/results_larry/fit_v8s1_inherit.json] python experiments/fit_cytokine.py --version v8 --memory inherit --start 1 --maxfev 600
+[experiments/results_larry/fit_v8s2_inherit.json] python experiments/fit_cytokine.py --version v8 --memory inherit --start 2 --maxfev 600
+[experiments/results_larry/fit_v8s3_inherit.json] python experiments/fit_cytokine.py --version v8 --memory inherit --start 3 --maxfev 600
