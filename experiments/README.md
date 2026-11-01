@@ -161,3 +161,12 @@ For bigger sweeps (more seeds, larger tissues), open
 all. It clones the `modernize` branch, runs one job per two cores, saves results to Google Drive
 (resuming from there if interrupted) and downloads a zip to unpack into the repo root.
 `sweeps/e5_20seeds.txt` (100 runs) is an example that is too big for this PC.
+
+### GitHub Actions (free, parallel)
+
+`.github/workflows/sweep.yml` runs a sweep file with one runner per pending line (free for this public repo; ~2.5x faster per run than the home PC, ~20 in parallel). Lines whose output is already committed are skipped.
+
+    gh workflow run sweep.yml --ref modernize -f sweep=sweeps/e7_cue.txt [-f lines=10-40] [-f larry=true]
+    gh run download <run id> -n results -D <scratch dir>   # then copy new results into experiments/
+
+The workflow must also exist on `main` to be dispatchable; keep that copy in sync when editing it.
