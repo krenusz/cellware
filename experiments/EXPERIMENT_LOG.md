@@ -302,6 +302,24 @@ from the v3 bests. Look 4, the last, follows.
 - **If (1) fails,** the shared PPO policy cannot learn to read and propagate memory in this
   budget, and the earlier knockout null results for memory say nothing about the mechanism.
 
+## E8: evolution strategies instead of PPO (pre-registered 2026-11-01)
+
+- **Motivation.** PPO needed two fixes (E5) to avoid collapse. ES optimises the final tissue score
+  directly, with no credit assignment across cells or steps, and fits the Watson/Levin framing of
+  development as an evolved policy.
+- **Setup (`train_tissue_es.py`).** Same environment as E5 (spatial target, totipotency window
+  16), same network. OpenAI-ES: 8 antithetic pairs per generation, 8 tissues per evaluation,
+  sigma 0.05, Adam lr 0.03, rank-normalised fitness, 50 generations = 6,400 training tissue
+  episodes, the same number PPO used in E5 (400 iterations x 16 tissues). Evaluation each
+  generation on 16 separate tissues (not counted in the budget). 5 seeds. Hyperparameters fixed in
+  advance, no tuning.
+- **Comparison.** ES vs E5 PPO `full`, same seeds. PPO metrics: mean of the last 30 iterations
+  (as before). ES metrics: mean of the last 4 generations (the same share of the budget, ~7.5%).
+- **Predictions.** (1) ES never collapses (min size > 1.5 in all seeds). (2) At matched episodes,
+  ES scores *worse* than stabilised PPO (ES is less sample-efficient for a 64-unit network);
+  stated in advance so that a win is not post-hoc. (3) ES `nomemory` vs ES `full`: no difference,
+  as with PPO.
+
 ---
 
 ## Planned (write hypothesis before running)
