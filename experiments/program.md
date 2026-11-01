@@ -30,3 +30,7 @@ Later: does the model reproduce measured clonal statistics (Weinreb 2020 LARRY)?
 - Changing the metric or the target after seeing results of the same study.
 - Interpreting a knockout comparison where conditions collapse at different rates.
 - Copying copyleft code (VertAX, foambryo, deltaMic): reimplement from papers.
+
+## Test oracle (from 2026-11-01)
+
+Held-out statistics are computed only by `experiments/test_oracle.py look <test> --exp <id>`. It refuses without a pre-registration heading, with uncommitted experiment code, or for a (test, shard) already seen, and logs every look in `experiments/test_ledger.tsv`. Parallel tracks use disjoint clone shards (`--shard i --shards K`) or one joint look. Agents working a track get the oracle, never the raw test statistic code paths.

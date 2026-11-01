@@ -1,0 +1,4 @@
+date	experiment	test	shard	commit	result
+2026-10-31	E6	invitro_crosswell (looks 1-4)	0/1	see log	{"r": 0.74}
+2026-10-31	E6b	invivo_crossmouse	0/1	see log	{"r": 0.46}
+2026-11-01	E9+E10	cytokine_full_G_M_cross	0/1	cf1be9f	{"full-G": 0.69, "full-M": 0.24, "G-M": 0.51}
