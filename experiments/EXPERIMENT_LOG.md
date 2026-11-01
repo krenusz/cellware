@@ -143,7 +143,74 @@ are written before running.
   result, failed ones included. Model changes between looks may use only the fit set.
 
 ### E6 runs
-(filled in as they happen)
+
+**Fit set (well 1), from `larry_stats.py`:** 1,398 clones with >= 2 mature cells; N-only 0.28,
+M-only 0.26, mixed N+M 0.12, containing O 0.35, O share of cells 0.34, mean 7.2 sampled mature
+cells per clone. The N fraction is strongly bimodal (423 clones near 0, 453 near 1, 119 between).
+
+**v1 fits** (`fit_larry.py --tag v1`, 150 random + 150 local evaluations, ~3 min each):
+
+| Model | Fit loss | Mixed N+M (obs 0.12) | Predicted cross-well r | Predicted agreement |
+|---|---|---|---|---|
+| inherit | 0.012 | 0.07 | 0.89 (0.87-0.91) | 0.93 |
+| resample | 0.006 | 0.11 | 0.79 (0.79-0.81) | 0.86 |
+| none | 0.031 | 0.00 | 1.00 | 1.00 |
+
+Before looking at the test set: predictions 2 and 3 are already wrong *in the model*. Neither
+null predicts r near 0. Clonal fate concordance does not need inherited memory: once a cell
+commits, its daughters keep the fate, so a clone that commits before the day-2 split agrees across
+wells anyway. "No memory" fits by committing every founder almost immediately (k = 3.9), which
+gives no mixed clones at all (0.00 vs 0.12 observed). The test can still tell the models apart,
+because they predict different r (0.79 / 0.89 / 1.00).
+
+**Look 1 at the test set (1 of 4):** 291 clones with >= 2 N/M cells in both wells.
+Observed **r = 0.74 (95% CI 0.66-0.80)**, majority-fate agreement **0.82 (0.78-0.86)**.
+- `resample` (0.79, agreement 0.86): inside the r CI, at the upper edge for agreement.
+- `inherit` (0.89, 0.93): outside, overpredicts heritability.
+- `none` (1.00): outside.
+- Prediction 1 (inherited memory predicts r within CI) **not confirmed** for v1. Sisters separated
+  at day 2 share fate bias less than a faithfully copied memory implies, which matches Weinreb's
+  "missing heritability": part of the fate choice happens after the split.
+- Caveat: v1 searches were short, and the inherit fit is worse (0.012 vs 0.006), so part of the
+  gap could be the optimiser.
+
+**v2 (fit set only):** add `--memory decay`, where each division keeps a share a of the parent
+memory and refills the rest (a = 1 is inherit, a = 0 is resample), and refit all four models with
+a longer search (250 random + 300 local). If a lands between 0 and 1 and the fit improves, the
+data favour partly heritable memory.
+
+**v2 outcome (no test look spent):** the search failed for three of four models. `decay`,
+`inherit` and `resample` landed in a worse optimum (loss ~0.03 vs 0.006-0.012 in v1): fast
+commitment, no mixed clones, r ~0.99. Only `none` found a good fit, and a better one than v1
+(loss 0.0085, mixed 0.11, predicted r 0.81, agreement 0.87). The random + local search is
+unreliable, so model comparisons at this stage reflect the optimiser, not the models.
+
+**v3 (fit set only):** Nelder-Mead (scipy) started from every earlier best (v1 and v2, all models)
+plus 2 random starts, 200 evaluations each. The loss is deterministic (fixed simulation seeds), so
+Nelder-Mead is appropriate. Only after this will look 2 be spent.
+
+**v3 outcome:**
+
+| Model | Fit loss | Mixed N+M (obs 0.12) | Predicted r (range over 5 sims) | Agreement |
+|---|---|---|---|---|
+| resample | 0.0042 | 0.11 | 0.80 (0.78-0.82) | 0.87 |
+| decay (a = 0.50) | 0.0043 | 0.08 | 0.81 (0.80-0.82) | 0.87 |
+| inherit | 0.0068 | 0.08 | 0.87 (0.85-0.90) | 0.91 |
+| none | 0.0083 | 0.11 | 0.81 (0.79-0.83) | 0.87 |
+
+**Look 2 (2 of 4), against observed r 0.74 (0.66-0.80), agreement 0.82 (0.78-0.86):** all four
+models overpredict. `resample` is at the edge of the r interval and outside for agreement;
+`inherit` is clearly outside. Differences between `resample`, `decay` and `none` are small (fit
+loss 0.004-0.008, predicted r 0.80-0.81): with this data, inherited memory adds little over
+commitment timing plus noise. The faithful-copy model (`inherit`) is the worst on both fit and
+prediction. Note: Nelder-Mead left `a` at its start value (0.50) in `decay`, so its memory
+share is not well identified.
+
+**v4 (fit set only):** a systematic overprediction suggests something lowers observed
+cross-well agreement that the model lacks. Candidate chosen from the fit set: N/M annotation error
+(each sampled N or M cell is given the other label with probability eps), which also shows up
+within well 1 as stray minority cells in otherwise single-fate clones. Refit all four models with
+`--label_noise`, Nelder-Mead from the v3 bests + 2 random starts. Look 3 follows.
 
 ---
 

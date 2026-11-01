@@ -20,6 +20,9 @@ dependencies = [
 dev = ["pytest>=8", "ruff>=0.6"]
 viz = ["matplotlib>=3.8"]
 legacy = ["ray>=2.10", "pandas>=2.2", "tensorboard", "threadpoolctl", "matplotlib>=3.8"]
+fit = [
+    "scipy>=1.17.1",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cellware"]
