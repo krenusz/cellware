@@ -212,6 +212,55 @@ cross-well agreement that the model lacks. Candidate chosen from the fit set: N/
 within well 1 as stray minority cells in otherwise single-fate clones. Refit all four models with
 `--label_noise`, Nelder-Mead from the v3 bests + 2 random starts. Look 3 follows.
 
+**v4 outcome and look 3 (3 of 4):** label noise improves the fit (loss 0.0022 for `resample`,
+eps ~0.02) but moves the prediction the wrong way: r 0.86 (`resample`), 0.87 (`decay`), 0.88
+(`inherit`), 0.98 (`none`), all outside the observed 0.66-0.80. A better within-well fit gave a
+worse held-out prediction. Lesson: the v1-v4 fit statistics (clone composition) cannot separate
+fate bias that is inherited across the split from bias set later within each sub-lineage, so
+fitting them harder does not constrain heritability.
+
+**v5 (fit set only):** add a statistic that carries heritability information without touching
+well 2: the correlation of the N fraction between day-4 and day-6 cells of the same clone in well 1
+(`r_d4_d6`). Observed 0.91; the v3 models give 0.97-0.99, so the fit set alone already says the
+models are too heritable. Refit all four models with `--use_time` (no label noise), Nelder-Mead
+from the v3 bests. Look 4, the last, follows.
+
+**v5 outcome:**
+
+| Model | Fit loss | Mixed N+M (obs 0.12) | r_d4_d6 (obs 0.91) | Predicted r | Agreement |
+|---|---|---|---|---|---|
+| resample | 0.0075 | 0.13 | 0.98 | 0.76 (0.75-0.77) | 0.84 |
+| decay | 0.0084 | 0.08 | 0.98 | 0.81 (0.79-0.82) | 0.87 |
+| none | 0.0111 | 0.10 | 0.97 | 0.81 (0.80-0.83) | 0.87 |
+| inherit | 0.0106 | 0.08 | 0.99 | 0.86 (0.85-0.89) | 0.91 |
+
+**Look 4 (4 of 4, budget used up):** against observed r 0.74 (0.66-0.80) and agreement 0.82
+(0.78-0.86), `resample` is inside both intervals; `decay` and `none` are just outside on r;
+`inherit` is clearly outside, as in every version.
+
+### E6 conclusion
+
+- **Confirmed across all five versions:** faithfully inherited memory overpredicts how strongly
+  sister cells separated at day 2 share a fate (predicted 0.86-0.89 vs observed 0.74). Lineage
+  memory that is copied intact at every division is ruled out for this system.
+- **Best model:** `resample` (fate bias carried only by the founder's starting state and the
+  timing of commitment; memory redrawn at each division) predicts the held-out cross-well
+  statistics within their 95% CIs (r 0.76, agreement 0.84). No-memory and half-memory models are
+  close behind, so the data do not demand a memory channel beyond commitment timing.
+- **Not cracked:** no model reproduces the within-well day-4 vs day-6 correlation (0.97-0.99 vs
+  0.91). In the model a committed cell's fate passes unchanged to all its descendants, so a clone
+  cannot change composition over time; in the data it does, probably because undifferentiated
+  cells keep committing between day 4 and day 6 under changing conditions. Since v5 also did not
+  match this statistic, its hit on the test set is partly a different optimum (slower commitment,
+  more mixed clones), not a mechanism the fit set confirmed. Treat it as supportive, not decisive.
+- **Original predictions:** (1) inherited memory predicts r within the CI: **not confirmed**;
+  (2) and (3) nulls predict r near 0: **wrong**, because commitment timing alone gives clonal
+  concordance.
+- **Next test (new pre-registration needed, fresh data):** add time-varying commitment (cells
+  can stay undifferentiated and commit late; division slows after commitment), fit on the in vitro
+  data, and predict the Weinreb in vivo or cytokine-perturbation experiments, which were never
+  looked at.
+
 ---
 
 ## Planned (write hypothesis before running)

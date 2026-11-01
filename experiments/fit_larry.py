@@ -38,6 +38,7 @@ PARAMS = [
 
 
 LABEL_NOISE = False
+USE_TIME = False  # v5: also fit the day-4 vs day-6 fate-bias correlation within well 1
 
 
 def simulate(p, memory, clones=1500, seed=0):
@@ -83,10 +84,10 @@ def simulate(p, memory, clones=1500, seed=0):
                 m, o = rng.normal(0, s0, m.shape), rng.normal(0, s0, o.shape)
             if day == 2:
                 well = rng.integers(1, 3, well.shape).astype(np.int8)
-    cnt = {1: {}, 2: {}}
-    for fate_s, well_s, pick in samples:
-        for w in (1, 2):
-            sel = pick & (well_s == w)
+    cnt = {1: {}, 2: {}, "d4": {}, "d6": {}}
+    for (fate_s, well_s, pick), tag in zip(samples, ("d4", "d6"), strict=True):
+        for w in (1, 2, tag):
+            sel = pick & (well_s == (1 if isinstance(w, str) else w))
             for j, name in enumerate((1, 2, 3)):
                 c = ((fate_s == name) & sel).sum(1)
                 for cl in np.nonzero(c)[0]:
@@ -100,6 +101,8 @@ def distance(sim, obs):
     hs, ho = np.array(sim["nfrac_hist"], float), np.array(obs["nfrac_hist"], float)
     d += np.sum((hs / hs.sum() - ho / ho.sum()) ** 2)
     d += ((np.log(sim["mean_size"]) - np.log(obs["mean_size"])) / 2) ** 2
+    if USE_TIME and "r_d4_d6" in sim:
+        d += (sim["r_d4_d6"] - obs["r_d4_d6"]) ** 2
     return float(d)
 
 
@@ -110,7 +113,10 @@ def loss(vec, memory, obs, seeds=(0, 1)):
         cnt = simulate(p, memory, seed=s)
         if len([v for v in cnt[1].values() if sum(v) >= 2]) < 50:
             return 10.0
-        total += distance(fit_stats(cnt[1]), obs)
+        sim = fit_stats(cnt[1])
+        if USE_TIME:
+            sim["r_d4_d6"] = test_stats(cnt["d4"], cnt["d6"], boot=1)["r"]
+        total += distance(sim, obs)
     return total / len(seeds)
 
 
@@ -167,9 +173,10 @@ def main():
                     help="earlier fit JSONs whose params seed Nelder-Mead (with --random starts)")
     ap.add_argument("--maxfev", type=int, default=300)
     ap.add_argument("--label_noise", action="store_true", help="fit an N/M annotation error")
+    ap.add_argument("--use_time", action="store_true", help="fit day-4 vs day-6 correlation")
     args = ap.parse_args()
-    global LABEL_NOISE
-    LABEL_NOISE = args.label_noise
+    global LABEL_NOISE, USE_TIME
+    LABEL_NOISE, USE_TIME = args.label_noise, args.use_time
     obs = json.load(open(os.path.join(args.out, "larry_fit.json")))
     if args.starts:
         rng = np.random.default_rng(args.seed)
@@ -180,7 +187,8 @@ def main():
     else:
         params, best = search(args.memory, obs, args.random, args.local, args.seed)
     sims = [simulate(params, args.memory, seed=s) for s in range(10, 15)]
-    fit = [fit_stats(c[1]) for c in sims]
+    fit = [fit_stats(c[1]) | {"r_d4_d6": test_stats(c["d4"], c["d6"], boot=1)["r"]}
+           for c in sims]
     pred = [test_stats(c[1], c[2], boot=200) for c in sims]
     result = {
         "memory": args.memory, "tag": args.tag, "params": params, "loss": best,

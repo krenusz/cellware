@@ -1,0 +1,40 @@
+  random 0: 0.3979
+  random 2: 0.3273
+  random 5: 0.2463
+  random 10: 0.0862
+  random 11: 0.0853
+  random 15: 0.0597
+D:\projects\cellware\experiments\fit_larry.py:92: RuntimeWarning: invalid value encountered in divide
+  d += np.sum((hs / hs.sum() - ho / ho.sum()) ** 2)
+  random 60: 0.0356
+  random 175: 0.0339
+  local 65: 0.0336
+  local 79: 0.0332
+  local 94: 0.0326
+  local 146: 0.0322
+  local 207: 0.0319
+  local 240: 0.0317
+  local 261: 0.0317
+  local 271: 0.0317
+  local 283: 0.0316
+  local 291: 0.0316
+{
+ "memory": "decay",
+ "params": {
+  "k": 2.7988684442093983,
+  "sigma": 0.9276719865565701,
+  "s0": 1.3517890265279904,
+  "s_mem": 0.4201348843863063,
+  "theta": 0.4634533484028919,
+  "f": 0.334842673678665,
+  "a": 0.08070363087658683
+ },
+ "loss": 0.03161624663433568,
+ "pred_r": [
+  0.9931764879320736,
+  0.9921942041052835,
+  0.9957961147524294,
+  0.9954552829785464,
+  0.9875680388569641
+ ]
+}

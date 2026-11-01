@@ -32,9 +32,9 @@ def load():
     return clone, day, well, fate
 
 
-def counts(clone, day, well, fate, w):
-    """clone id -> (N, M, O) mature-cell counts in well w, days 4 and 6."""
-    keep = (clone >= 0) & (day > 2) & (well == w) & (fate != "U")
+def counts(clone, day, well, fate, w, days=(4.0, 6.0)):
+    """clone id -> (N, M, O) mature-cell counts in well w on the given days."""
+    keep = (clone >= 0) & np.isin(day, days) & (well == w) & (fate != "U")
     out = {}
     for c, f in zip(clone[keep], fate[keep], strict=True):
         out.setdefault(c, [0, 0, 0])["NMO".index(f)] += 1
@@ -87,6 +87,9 @@ def main():
     data = load()
     c1 = counts(*data, w=1)
     fit = fit_stats(c1)
+    # v5: fate-bias correlation between day-4 and day-6 cells of a clone, within well 1
+    fit["r_d4_d6"] = test_stats(counts(*data, w=1, days=(4.0,)), counts(*data, w=1, days=(6.0,)),
+                                boot=200)["r"]
     json.dump(fit, open(os.path.join(OUT, "larry_fit.json"), "w"), indent=1)
     print("fit set:", fit)
     if args.test:

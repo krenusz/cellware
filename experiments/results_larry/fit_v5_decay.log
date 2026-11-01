@@ -1,0 +1,29 @@
+  start 0: 0.0088
+  start 1: 0.0126
+  start 2: 0.0132
+  start 3: 0.0084
+  start 4: 0.0218
+D:\projects\cellware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3037: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+  start 5: 0.0399
+{
+ "memory": "decay",
+ "params": {
+  "k": 0.6738920874935594,
+  "sigma": 0.07963256227895141,
+  "s0": 1.4169353401726836,
+  "s_mem": 0.08969665729400128,
+  "theta": 0.7089714700588181,
+  "f": 0.3337907974308224,
+  "a": 0.5453012195402671,
+  "eps": 0.11243605543963914
+ },
+ "loss": 0.008402424016645267,
+ "pred_r": [
+  0.7906123191129603,
+  0.8179501969318685,
+  0.8140600662600598,
+  0.8076850988759791,
+  0.8043542368043738
+ ]
+}
