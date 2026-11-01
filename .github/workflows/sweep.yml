@@ -31,6 +31,7 @@ jobs:
 
   run:
     needs: plan
+    if: needs.plan.outputs.lines != '[]'
     runs-on: ubuntu-latest
     timeout-minutes: 360
     strategy:
