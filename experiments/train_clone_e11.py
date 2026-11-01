@@ -20,7 +20,6 @@ Observation: [x, age, memory (2), condition one-hot (5), committed fate one-hot 
 from __future__ import annotations
 
 import argparse
-import glob
 import json
 import os
 import sys
@@ -51,8 +50,10 @@ W_CROSS = 2.0  # weight of the cross-condition terms in the loss
 
 
 class Policy(torch.nn.Module):
-    def __init__(self, obs_dim=12, hidden=32):
+    def __init__(self, obs_dim=12, hidden=32, trait=False):
         super().__init__()
+        # E12: strength of a heritable clone trait that tilts N vs M expansion (learned)
+        self.trait_scale = torch.nn.Parameter(torch.tensor(0.5)) if trait else None
         self.net = torch.nn.Sequential(
             torch.nn.Linear(obs_dim, hidden), torch.nn.Tanh(),
             torch.nn.Linear(hidden, hidden), torch.nn.Tanh(),
@@ -81,6 +82,7 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
     fate = torch.zeros(clones, 1, dtype=torch.long)  # -1 absent, 0 undecided, 1 N, 2 M, 3 O
     cond = torch.full((clones, 1), -1, dtype=torch.long)
     age = torch.zeros(clones, 1)
+    trait = torch.randn(clones, 1, generator=g)  # E12: fixed per clone, shared by all its cells
     out = {c: {4: {}, 6: {}} for c in CONDS}
     for day in range(1, 7):
         for _ in range(STEPS_PER_DAY):
@@ -107,7 +109,12 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
                         out[cname][day].setdefault(cl, [0, 0, 0])[j] += int(cnt[cl])
         if day < 6:
             with torch.no_grad():  # selection: committed cells divide or arrest
-                p_div = torch.softmax(net(observe(x, age, mem, cond, fate))[..., 4:], -1)[..., 0]
+                logit = net(observe(x, age, mem, cond, fate))[..., 4:]
+                logit = logit[..., 0] - logit[..., 1]
+                if net.trait_scale is not None:  # high-trait clones expand N, low-trait expand M
+                    tilt = net.trait_scale * trait.expand_as(logit)
+                    logit = logit + tilt * ((fate == 1).float() - (fate == 2).float())
+                p_div = torch.sigmoid(logit)
             divides = torch.rand(p_div.shape, generator=g) < p_div
             x, fate, cond, divides = (v.repeat_interleave(2, 1) for v in (x, fate, cond, divides))
             mem = mem.repeat_interleave(2, 1)
@@ -140,17 +147,7 @@ def fitness_loss(net, landscape, memory, obs, obs_cross, seed):
 
 
 def test_look():
-    files = sorted(glob.glob(os.path.join(OUT, "e11_*_seed*.json")))
-    preds = {}
-    for fpath in files:
-        r = json.load(open(fpath))
-        preds.setdefault(r["config"]["memory"], []).append(r["pred"]["pooled_epo_scf"]["r_mean"])
-    observed = pooled_pairs_r(load_counts(CONDS5))
-    result = {"observed": observed, "pred": {m: {"r_mean": float(np.mean(v)),
-                                                 "r_range": [min(v), max(v)], "n": len(v)}
-                                             for m, v in preds.items()}}
-    json.dump(result, open(os.path.join(OUT, "e11_test.json"), "w"), indent=1)
-    print(json.dumps(result, indent=1))
+    raise SystemExit("the Epo/SCF test is issued only by experiments/test_oracle.py")
 
 
 def main():
@@ -163,6 +160,7 @@ def main():
     p.add_argument("--lr", type=float, default=0.03)
     p.add_argument("--threads", type=int, default=4)
     p.add_argument("--test", action="store_true", help="the single look at the held-out test")
+    p.add_argument("--trait", action="store_true", help="E12: heritable clone expansion trait")
     args = p.parse_args()
     if args.test:
         test_look()
@@ -176,7 +174,7 @@ def main():
     v6 = json.load(open(os.path.join(HERE, "results_larry", "fit_v6_resample.json")))["params"]
     landscape = {n: v6[n] for n in ("k", "sigma", "f")}
 
-    net = Policy()
+    net = Policy(trait=args.trait)
     theta = torch.nn.utils.parameters_to_vector(net.parameters()).detach().requires_grad_()
     opt = torch.optim.Adam([theta], lr=args.lr)
     rng = np.random.default_rng(args.seed)
@@ -211,8 +209,10 @@ def main():
     pred["pooled_epo_scf"] = {"r_mean": float(np.mean(pooled_r)),
                               "r_range": [min(pooled_r), max(pooled_r)]}
     os.makedirs(OUT, exist_ok=True)
-    name = f"e11_{args.memory}_seed{args.seed}"
+    name = f"{'e12' if args.trait else 'e11'}_{args.memory}_seed{args.seed}"
     torch.save(net.state_dict(), os.path.join(OUT, name + ".pt"))
+    if args.trait:
+        pred["trait_scale"] = float(net.trait_scale)
     result = {"config": vars(args), "landscape": landscape, "obs_cross": obs_cross,
               "history": history, "final_loss": history[-1]["loss"],
               "fit_sim": condition_stats(sims[0]), "pred": pred}

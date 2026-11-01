@@ -629,4 +629,23 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   read by the policy) is too weak a carrier for ES to find, or (b) clone bias in real cells
   sits in something the model lacks, e.g. heritable differences in division/survival rate
   rather than in fate choice. These are not distinguishable from the fit set.
+- **Test look withheld (2026-11-01).** P1 and P2 failed on the fit set, and the pooled Epo/SCF
+  statistic is weak (55 pairs; an untrained policy already scores ~0.99), so the look would say
+  little about E11. The Epo/SCF test stays unseen and moves to `test_oracle.py` (one look per
+  pre-registered experiment, logged in test_ledger.tsv); `train_clone_e11.py --test` is disabled.
+
+## E12: heritable clone expansion trait (pre-registered 2026-11-01)
+
+- **Motivation.** E11 reading (b): clone bias may live in heritable differences in how a clone's
+  N vs M cells expand, not in fate choice. If so, the clone's rank survives opposing cytokines.
+- **Model.** E11 (`train_clone_e11.py --trait`) plus one clone-level value u ~ N(0,1), fixed for
+  the clone and shared by all its cells. At each division, a committed cell's divide logit gets
+  `+ s u` if N and `- s u` if M; s is learned with the policy (init 0.5). Nothing else changes.
+- **Fit set.** Same as E11 (five conditions within-condition, M-CSF day-4 vs day-6, full-G /
+  full-M / G-M concordance).
+- **Runs.** 5 seeds x {inherit, resample}, 150 generations, GitHub Actions. Control: E11 runs.
+- **Predictions (fit set).** (1) G-M r reaches the 0.33-0.65 band in >= 3 of 5 runs per memory
+  variant (E11: 0/10). (2) Learned s > 0.5 (the trait is used, not switched off) in >= 4 of 5.
+  (3) Within-condition fit no worse than E11 (loss within E11's range).
+- **Held-out test.** Pooled Epo/SCF concordance, through test_oracle.py, only if (1) passes.
 

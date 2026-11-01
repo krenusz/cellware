@@ -1,0 +1,11 @@
+# E12: E11 + heritable clone expansion trait (GitHub Actions, --larry)
+[experiments/results_clone_e11/e12_inherit_seed0.json] python experiments/train_clone_e11.py --trait --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e12_inherit_seed1.json] python experiments/train_clone_e11.py --trait --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e12_inherit_seed2.json] python experiments/train_clone_e11.py --trait --seed 2 --memory inherit --threads 4
+[experiments/results_clone_e11/e12_inherit_seed3.json] python experiments/train_clone_e11.py --trait --seed 3 --memory inherit --threads 4
+[experiments/results_clone_e11/e12_inherit_seed4.json] python experiments/train_clone_e11.py --trait --seed 4 --memory inherit --threads 4
+[experiments/results_clone_e11/e12_resample_seed0.json] python experiments/train_clone_e11.py --trait --seed 0 --memory resample --threads 4
+[experiments/results_clone_e11/e12_resample_seed1.json] python experiments/train_clone_e11.py --trait --seed 1 --memory resample --threads 4
+[experiments/results_clone_e11/e12_resample_seed2.json] python experiments/train_clone_e11.py --trait --seed 2 --memory resample --threads 4
+[experiments/results_clone_e11/e12_resample_seed3.json] python experiments/train_clone_e11.py --trait --seed 3 --memory resample --threads 4
+[experiments/results_clone_e11/e12_resample_seed4.json] python experiments/train_clone_e11.py --trait --seed 4 --memory resample --threads 4
