@@ -347,6 +347,12 @@ cytokine-perturbation experiment, tested on in vivo.
   each of the three cross-condition r values within its 95% CI. (4) `inherit` overpredicts them.
 - **Budget.** One look at the test, both models together. Any later model change needs a new
   held-out set.
+- **Fit-set note (before fitting, test unseen).** Within-condition clones with >= 2 mature cells:
+  full 1,015, G-CSF 666, M-CSF 1,043. The cytokines shift composition as expected (N-only 0.13 /
+  0.45 / 0.03; M-only 0.39 / 0.20 / 0.88). Day 4 was barely sampled in full cocktail (128 clones),
+  so only 4 clones have cells on both days there (G-CSF 39, M-CSF 131); the day-4 vs day-6
+  correlation is therefore fitted for M-CSF only. The model samples days 4 and 6 equally, unlike
+  the data; this affects composition statistics, not the test.
 
 ## E7: can the cells use lineage memory at all? (pre-registered 2026-11-01)
 

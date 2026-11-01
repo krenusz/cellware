@@ -1,0 +1,12 @@
+[es_nomemory s1] gen   0  score -1.489  size  35.9  S/A/B 0.34/0.39/0.27  pattern 0.53  (2s)
+[es_nomemory s1] gen   5  score -1.086  size  51.7  S/A/B 0.15/0.67/0.18  pattern 0.63  (15s)
+[es_nomemory s1] gen  10  score -1.079  size  68.6  S/A/B 0.12/0.67/0.21  pattern 0.59  (28s)
+[es_nomemory s1] gen  15  score -1.021  size  47.6  S/A/B 0.08/0.78/0.14  pattern 0.65  (41s)
+[es_nomemory s1] gen  20  score -0.970  size  43.9  S/A/B 0.12/0.66/0.22  pattern 0.62  (55s)
+[es_nomemory s1] gen  25  score -0.887  size  48.8  S/A/B 0.14/0.57/0.29  pattern 0.59  (68s)
+[es_nomemory s1] gen  30  score -0.949  size  56.0  S/A/B 0.16/0.59/0.26  pattern 0.60  (81s)
+[es_nomemory s1] gen  35  score -1.113  size  49.9  S/A/B 0.14/0.64/0.22  pattern 0.61  (94s)
+[es_nomemory s1] gen  40  score -0.964  size  46.4  S/A/B 0.12/0.72/0.16  pattern 0.61  (107s)
+[es_nomemory s1] gen  45  score -0.918  size  58.9  S/A/B 0.15/0.61/0.23  pattern 0.53  (120s)
+[es_nomemory s1] gen  49  score -1.017  size  66.3  S/A/B 0.21/0.53/0.26  pattern 0.52  (130s)
+saved experiments\results_es\es_nomemory_seed1.json
