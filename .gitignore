@@ -11,3 +11,4 @@ routes/
 .ipynb_checkpoints/
 uv.lock.bak
 data/
+.sweep_runs/

@@ -167,6 +167,6 @@ all. It clones the `modernize` branch, runs one job per two cores, saves results
 `.github/workflows/sweep.yml` runs a sweep file with one runner per pending line (free for this public repo; ~2.5x faster per run than the home PC, ~20 in parallel). Lines whose output is already committed are skipped.
 
     gh workflow run sweep.yml --ref modernize -f sweep=sweeps/e7_cue.txt [-f lines=10-40] [-f larry=true]
-    gh run download <run id> -n results -D <scratch dir>   # then copy new results into experiments/
+    ./run_sweep.sh sweeps/e7_cue.txt [--larry] [--lines 10-40]   # dispatch, wait, copy new results only
 
 The workflow must also exist on `main` to be dispatchable; keep that copy in sync when editing it.
