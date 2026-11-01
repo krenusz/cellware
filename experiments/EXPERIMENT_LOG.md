@@ -340,6 +340,24 @@ cytokine-perturbation experiment, tested on in vivo.
 - **If (1) fails,** the shared PPO policy cannot learn to read and propagate memory in this
   budget, and the earlier knockout null results for memory say nothing about the mechanism.
 
+### E7 result (10 runs, 0 collapsed; min size over the last 100 iterations 38-52)
+
+| Condition | Score | Cue accuracy | Size | Stem / A / B | Sister conc. |
+|---|---|---|---|---|---|
+| full | -0.640 (sd 0.03) | **0.86** (95% CI 0.82-0.90) | 61 | 0.21 / 0.45 / 0.35 | 0.84 |
+| nomemory | -0.747 (sd 0.02) | 0.50 (0.47-0.53) | 65 | 0.17 / 0.48 / 0.35 | 0.84 |
+| difference | **+0.107 (0.07-0.14)** | **+0.36 (0.31-0.41)** | | | |
+
+(A and B shares are averaged over both cue types, so they sit near 0.45 / 0.45 by design.)
+
+- All three predictions **confirmed.** With memory, 86% of tissues follow a cue that was given
+  only to the founder and passed down at least four divisions; without memory, chance (0.50).
+- So the shared policy *can* learn to read and propagate lineage memory. The null results for
+  memory in E3-E5 mean those tasks did not need it, not that the mechanism or the learner fails.
+  This matches E6: in the LARRY data too, nothing required faithful memory.
+- Sister concordance is the same in both (0.84): it is driven by local signals and the timing of
+  commitment, not by memory, in every study so far. It is therefore not a valid read-out of memory.
+
 ## E8: evolution strategies instead of PPO (pre-registered 2026-11-01)
 
 - **Motivation.** PPO needed two fixes (E5) to avoid collapse. ES optimises the final tissue score

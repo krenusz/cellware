@@ -18,11 +18,13 @@ STUDIES = {
     "E3_tissue_global": ("results_tissue", "4fd1901", "score"),
     "E4_tissue_spatial": ("results_tissue_spatial", "7263c29", "score"),
     "E5_tissue_stable": ("results_tissue_stable", "c1acd59", "score"),
+    "E7_cue": ("results_cue", "607e9ff", "score"),
+    "E8_es": ("results_es", "57862e9", "score"),
 }
 SECONDARY = [
     "size", "prop_stem", "prop_a", "prop_b", "pattern_accuracy", "sister_concordance",
     "segregation", "return_cv_across_agents", "policy_js_divergence", "territory_overlap",
-    "coop_payouts_per_dish",
+    "coop_payouts_per_dish", "cue_accuracy",
 ]
 
 
