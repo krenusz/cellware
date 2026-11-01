@@ -322,6 +322,32 @@ still lacks: within-clone change over time (0.91 not reached) and any environmen
 step, if pursued: a per-split environment bias (well or mouse) fitted on in vitro wells and the
 cytokine-perturbation experiment, tested on in vivo.
 
+## E9: environment vs inheritance, cytokine perturbation (pre-registered 2026-11-01)
+
+- **Motivation.** E6b: sister cells agree on fate much less in separate mice (0.46) than in
+  separate culture wells (0.74). The model has no environment term. Weinreb's third experiment
+  splits each clone's cells after day 2 into different cytokine conditions, which tests directly
+  how far the environment overrides inherited fate bias.
+- **Data.** `data/larry_cytokine/` (not committed): 65,075 cells, 5,257 clones, days 2/4/6;
+  conditions: full cocktail, M-CSF, G-CSF, Epo, SCF. Only column structure and category counts
+  read so far; no fate statistic computed.
+- **Model (v7).** E6 lineage model (memory variant `resample`, the E6 best, plus `inherit` for
+  comparison; q fitted as in v6) with one extra drift term per condition after day 2:
+  `dx = k (x - x^3 + m + b_c) dt + noise`, `b_full = 0` fixed, `b_G` and `b_M` fitted. Cells
+  present at day 2 are split at random across conditions.
+- **Fit set.** Within-condition statistics only, for full cocktail, G-CSF and M-CSF separately:
+  clone composition (N-only, M-only, mixed, has O, O share, N-fraction histogram, size) and the
+  within-condition day-4 vs day-6 correlation.
+- **Held-out test (never fitted).** Cross-condition sister concordance: Pearson r of the N
+  fraction between the same clone's cells in two conditions, for (full, G-CSF), (full, M-CSF) and
+  (G-CSF, M-CSF); clones with >= 2 N+M cells in both; bootstrap 95% CIs. Epo and SCF are not used.
+- **Predictions.** (1) Fitted biases have the expected signs: b_G > 0 (towards N), b_M < 0
+  (towards M). (2) Observed cross-condition r is lower than the in vitro cross-well r (0.74): a
+  changed environment overrides part of the inherited bias. (3) The `resample` v7 model predicts
+  each of the three cross-condition r values within its 95% CI. (4) `inherit` overpredicts them.
+- **Budget.** One look at the test, both models together. Any later model change needs a new
+  held-out set.
+
 ## E7: can the cells use lineage memory at all? (pre-registered 2026-11-01)
 
 - **Motivation.** In E3-E5, removing memory inheritance never changed the outcome, and E6 found no
