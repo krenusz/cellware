@@ -1352,3 +1352,34 @@ QCs, vs 182 analysed in B5 - small design mismatch, noted). Fit by Nelder-Mead o
   state, with fate set almost deterministically by that state. The division-count assumptions
   dominate the prediction; constraining them (division counts / clone ages) is now the limiting
   input, not the model.
+
+### Division counts: literature and data check (2026-11-02)
+
+- Fetal liver HSCs: essentially all cycle, transit ~10-14 h (Nygren et al., JCI; JCB review).
+  Adult mouse HSCs divide rarely (H2B-GFP label retention: Bernitz 2016 Cell; revised upward
+  by Morcos 2020 JEM). LARRY culture timing not stated in what I could access; murine progenitors
+  in cytokines take ~36-40 h to the first division and ~12 h per later division (1997 Blood).
+- DARLIN Camellia induction / sampling stages are not in GEO or accessible full text. Constraint
+  from the design: AGM HSCs carry barcodes, so induction was <= ~E10.5.
+- Note: `large_clone_id` labels are reused across mice (clone_0 in several mice). B5 compared
+  pairs only within mouse|tissue, so sister calls were correct, but "27 clones" was 27 labels:
+  there are 91 (mouse, clone) clones (BM 53, FL 34, AGM 4). B5's clone bootstrap pooled
+  same-label clones across mice (CI slightly conservative-to-misstated; rerun below fixes it).
+- Note: GEO text calls CpG "accessibility" and GpC "methylation"; the sample sheet (met_rate ~0.78
+  on ~1.4 M CpG sites, acc_rate ~0.26 on GpC) confirms CpG = endogenous methylation as used.
+
+## E18b: per-tissue drift test (pre-registered 2026-11-02)
+
+- **Idea.** If the clone state drifts at a constant rate per division, sisters separated by
+  fewer divisions share more state. Camellia FL sisters (induction <= E10.5 to FL sampling
+  ~E14.5) are separated by fewer divisions than BM sisters (adult).
+- **Measure.** Per-tissue sister AUC (BM; FL) with (mouse, clone) clone keys, clone bootstrap,
+  within-mouse permutation null; per-tissue toy calibration (same design, same 0.95-ceiling noise)
+  -> rho_FL, rho_BM.
+- **Division assumptions (from the literature above).** g_FL in [8, 11] (~4 days at 10-14 h);
+  g_BM in [20, 40] (FL expansion + perinatal cycling + few adult divisions).
+- **Predictions.** (1) rho_FL > rho_BM. (2) Constant drift: d from FL (rho_FL^(1/g_FL)) predicts
+  rho_BM = (1 - d)^g_BM; the measured rho_BM lies inside the predicted range (over the g ranges)
+  or its CI overlaps it. (3) E18 refit with d from FL (better constrained than the 3 x 2 grid),
+  g_L in {1, 3}, Nelder-Mead with 3 restarts and 5 common-random-number simulations per loss.
+  The Epo/SCF shard-1 look stays gated by the power rule.
