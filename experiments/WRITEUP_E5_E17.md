@@ -114,6 +114,9 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   methylation and RNA in the same cell, sister cells are recognisable from methylation (AUC 0.63
   [0.57, 0.69], null 0.55) but not from expression (0.51, at its null); difference CI
   [0.01, 0.18]. Pre-registered; all three readouts of the question point the same way.
+  Controlling for global methylation, coverage and proliferation leaves it unchanged (0.62);
+  identical sisters would score 0.95 at this depth, so the shared part is ~28% of the maximum:
+  a real but partial, drifting clone state, not a measurement artefact.
 
 ## Conclusions
 

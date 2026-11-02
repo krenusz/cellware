@@ -1279,3 +1279,22 @@ its own guard at 24 matched cells, no statistic computed; fixed gene alignment a
   observed 0.63 understates the shared state because of sparse coverage.
 - **Decision rule for the simulator.** Build it only if (1) holds; calibrate its clone-state
   drift to the ceiling-adjusted fraction.
+
+### Track B5b result (2026-11-02)
+
+| | AUC [95% CI] | null 95th pct |
+|---|---|---|
+| methylation, as in B5 | 0.63 | 0.55 |
+| methylation, controlled (global met rate, CpG coverage, proliferation score from Mki67, Top2a, Cdk1, Mcm2, Pcna) | **0.62** [0.56, 0.71] | 0.55 |
+| identical-sister ceiling at observed depth (20 draws) | **0.95** [0.94, 0.96] | |
+
+- **P1 and P2 hold:** controlling for global methylation, coverage and proliferation leaves the
+  sister signal unchanged (0.626 -> 0.623). It is not explained by shared age / division state
+  as far as these covariates capture it.
+- **P3 holds:** the ceiling is 0.95, so the observed signal is (0.63 - 0.5) / (0.95 - 0.5) =
+  **~28% of the maximum**. Sparse coverage is *not* why the signal is modest: sisters' methylation
+  genuinely diverges; only part of the profile is clone-shared. (The ceiling is an upper bound:
+  pooled clone rates include the cell itself and carry sampling noise, so 28% is a lower bound.)
+- **Decision (pre-registered rule): build the simulator.** Calibration target: a heritable clone
+  state of which ~30% (lower bound) of the cell-to-cell methylation variance at the measured
+  scale is clone-shared after several divisions, i.e. substantial drift per division.

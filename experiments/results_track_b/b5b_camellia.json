@@ -1,0 +1,128 @@
+{
+ "cells_with_clone": 209,
+ "meth_fetched": 182,
+ "plates": 10,
+ "matched": 182,
+ "common_genes": 9103,
+ "example_cols": {
+  "LL901_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL901_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E6P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL744EP1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ]
+ },
+ "cells": 182,
+ "clones": 27,
+ "bins": 25740,
+ "methylation": {
+  "auc": 0.6259224663866219,
+  "sister_pairs": 215,
+  "null_95": 0.5535483130594446,
+  "null_mean": 0.5146202304764853,
+  "ci": [
+   0.5661619463571264,
+   0.6918360944886536
+  ]
+ },
+ "expression": {
+  "auc": 0.5104643156428308,
+  "sister_pairs": 215,
+  "null_95": 0.5104603658373854,
+  "null_mean": 0.4769352114480307,
+  "ci": [
+   0.4785086002788612,
+   0.5752732215802743
+  ]
+ },
+ "difference_ci": [
+  0.012978994201924693,
+  0.17914143713596326
+ ],
+ "b5b": {
+  "proliferation_genes": [
+   "Mki67",
+   "Top2a",
+   "Cdk1",
+   "Mcm2",
+   "Pcna"
+  ],
+  "controlled": {
+   "auc": 0.6230988892506578,
+   "null_95": 0.5454797679222423,
+   "ci": [
+    0.5575633587465832,
+    0.7144325575740049
+   ]
+  },
+  "ceiling_auc": 0.9517675379368138,
+  "ceiling_range": [
+   0.9357270577685735,
+   0.9619206729614467
+  ]
+ }
+}
