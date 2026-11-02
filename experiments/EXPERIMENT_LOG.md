@@ -1222,3 +1222,20 @@ fetched on GitHub Actions (NCBI blocks this machine). `geo_probe.py` learns the 
   CARLIN reads (SRA) with the DARLIN snakemake pipeline. B4 is withdrawn before any statistic
   was computed. A feasible re-scoped question is "which readout carries clone identity", i.e.
   sister-HSC similarity in methylation vs expression, which needs (2).
+
+## Track B5: which readout carries clone identity? Camellia-seq sisters (pre-registered 2026-11-02)
+
+- **Data.** Clone IDs from DARLIN_tutorial `DARLIN_HSC_sample_sheet.tsv.gz` (`large_clone_id`):
+  27 clones, 272 HSCs (BM 162, FL 96, AGM 14; 6 mice), all with CpG methylation (232 pass
+  metQC) and RNA (244 pass rnaQC). Per-cell CpG (GSE222328) and plate RNA tables (GSE222246)
+  fetched on GitHub Actions. Fate labels cover too few clones (Meg bias 10 vs 40 cells), so the
+  withdrawn B4 fate question is not attempted.
+- **Features.** Methylation: CpG rate in 100-kb bins, bins covered in >= 50% of cells, cell-mean
+  imputed, top-20 PCs. Expression: log-normalised UMI, 2000 most variable genes, top-20 PCs.
+  Cells passing both QCs only.
+- **Statistic.** For every pair of cells from the same mouse and tissue, similarity = Pearson r of
+  their PC vectors; AUC for separating sister pairs (same clone) from non-sister pairs. Bootstrap
+  over clones (2000) for CIs, and a clone-label permutation null (within mouse and tissue).
+- **Predictions.** (1) Methylation AUC > 0.5 beyond its permutation null. (2) Methylation AUC >
+  expression AUC, difference CI excluding 0 (DARLIN reported clonal memory tracks methylation).
+  (3) Expression AUC above its null (weaker signal still present).
