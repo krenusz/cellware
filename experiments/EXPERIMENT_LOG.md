@@ -811,3 +811,23 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   (2) loss <= 1.3 in >= 4 of 5; (3) M-CSF M-only within 0.10 of 0.88 in >= 4 of 5; (4) b > 1.0
   in >= 4 of 5. One whole-test Epo/SCF look via test_oracle.py --exp E16 if (1)-(3) pass for a
   variant; success if the observed r lies within the passing runs' range +/- 0.10.
+
+### E16 result, fit set only (2026-11-02; Epo/SCF test still unseen)
+
+| run | loss | b | G-M r (band 0.33-0.65) | M-CSF M-only (0.88) | tau_M (start 3.25) |
+|---|---|---|---|---|---|
+| inherit s0-s4 | 0.49-0.71 | 0.09-0.88 | 0.28-0.31 | 0.70-0.77 | 3.2-3.8 |
+| resample s0-s4 | 0.59-0.74 | 0.27-1.54 | 0.23-0.34 | 0.70-0.79 | 3.5-4.2 |
+
+- **P1 refuted:** inherit 0/5, resample 1/5 (0.34).
+- **P2 holds:** 10/10; best fits of the series (0.49-0.74).
+- **P3 refuted:** 0/10 (0.70-0.79), even with M-CSF's level near 96% M.
+- **P4 refuted:** b > 1.0 in 2/10; with a fair start ES shrinks the clone rank again.
+- **No test look.**
+- **Reading.** With the levels no longer optimisation-limited, the rank form behaves like E13:
+  the fitness prefers a weak clone bias, and G-M stays ~0.3. Across E11-E16 (60 runs, five
+  mechanisms) G-M reaches the band only when the within-condition fit is sacrificed (E13 s2,
+  E14). Either the within-condition statistics the fit uses conflict with the cross statistic
+  under any shared-rule model of this family, or the cross statistic (55 clones, CI 0.33-0.65)
+  is too thin to pull against five within-condition terms. Next: test that conflict directly
+  (fit only the cross terms and read the within-condition loss), not another mechanism.
