@@ -1,0 +1,17 @@
+# E13 scan: fixed founder strength b x cross weight w (diagnostic, fit set only, --larry)
+[experiments/results_clone_e11/e13scan_b0_w2_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 0 --w_cross 2 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0_w2_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 0 --w_cross 2 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0_w5_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 0 --w_cross 5 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0_w5_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 0 --w_cross 5 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.25_w2_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 0.25 --w_cross 2 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.25_w2_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 0.25 --w_cross 2 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.25_w5_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 0.25 --w_cross 5 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.25_w5_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 0.25 --w_cross 5 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.5_w2_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 0.5 --w_cross 2 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.5_w2_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 0.5 --w_cross 2 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.5_w5_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 0.5 --w_cross 5 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.5_w5_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 0.5 --w_cross 5 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b1_w2_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 1 --w_cross 2 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b1_w2_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 1 --w_cross 2 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b1_w5_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 1 --w_cross 5 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b1_w5_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 1 --w_cross 5 --seed 1 --memory inherit --threads 4

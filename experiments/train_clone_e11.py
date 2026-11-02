@@ -47,6 +47,7 @@ REST, PUSH_N, PUSH_M, COMMIT_O = range(4)
 CONDS = tuple(CONDS5.values())  # full, G, M, Epo, SCF
 TRAIN_PAIRS = ("full-G", "full-M", "G-M")
 W_CROSS = 2.0  # weight of the cross-condition terms in the loss
+FIX_B = None  # E13 scan: fixed founder strength (--fix_b)
 
 
 class Policy(torch.nn.Module):
@@ -98,6 +99,8 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
             noise = torch.randn(x.shape, generator=g)
             if net.founder_scale is not None:  # same bias for every cell of the clone, all days
                 push = push + net.founder_scale.detach() * founder
+            elif FIX_B is not None:  # E13 scan: founder strength fixed, not learned
+                push = push + FIX_B * founder
             x = torch.where(free, x + k * (x - x**3 + push) * dt + sigma * dt**0.5 * noise, x)
             fate = torch.where(free & (act == COMMIT_O), 3, fate)
             free = fate == 0
@@ -167,10 +170,14 @@ def main():
     p.add_argument("--test", action="store_true", help="the single look at the held-out test")
     p.add_argument("--trait", action="store_true", help="E12: heritable clone expansion trait")
     p.add_argument("--founder", action="store_true", help="E13: inherited founder fate propensity")
+    p.add_argument("--fix_b", type=float, default=None, help="E13 scan: fixed founder strength")
+    p.add_argument("--w_cross", type=float, default=W_CROSS)
     args = p.parse_args()
     if args.test:
         test_look()
         return
+    global FIX_B, W_CROSS
+    FIX_B, W_CROSS = args.fix_b, args.w_cross
     torch.manual_seed(args.seed)
     torch.set_num_threads(args.threads)
     cnt_obs = load_counts(CONDS5)
@@ -180,7 +187,7 @@ def main():
     v6 = json.load(open(os.path.join(HERE, "results_larry", "fit_v6_resample.json")))["params"]
     landscape = {n: v6[n] for n in ("k", "sigma", "f")}
 
-    net = Policy(trait=args.trait, founder=args.founder)
+    net = Policy(trait=args.trait, founder=args.founder and FIX_B is None)
     theta = torch.nn.utils.parameters_to_vector(net.parameters()).detach().requires_grad_()
     opt = torch.optim.Adam([theta], lr=args.lr)
     rng = np.random.default_rng(args.seed)
@@ -216,11 +223,13 @@ def main():
                               "r_range": [min(pooled_r), max(pooled_r)]}
     os.makedirs(OUT, exist_ok=True)
     tag = 'e13' if args.founder else 'e12' if args.trait else 'e11'
+    if FIX_B is not None:
+        tag = f"e13scan_b{FIX_B:g}_w{W_CROSS:g}"
     name = f"{tag}_{args.memory}_seed{args.seed}"
     torch.save(net.state_dict(), os.path.join(OUT, name + ".pt"))
     if args.trait:
         pred["trait_scale"] = float(net.trait_scale)
-    if args.founder:
+    if net.founder_scale is not None:
         pred["founder_scale"] = float(net.founder_scale)
     result = {"config": vars(args), "landscape": landscape, "obs_cross": obs_cross,
               "history": history, "final_loss": history[-1]["loss"],

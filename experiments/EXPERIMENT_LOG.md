@@ -708,3 +708,9 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   3 cross pairs at weight 2). Either the drift-bias form is wrong (it distorts clone size / fate
   mix distributions), or the weighting decides. Next diagnostic, no test needed: scan fixed b
   (0, 0.25, 0.5, 1) and W_CROSS, map the loss trade-off frontier.
+
+## E13 scan: founder strength vs cross weight (diagnostic, fit set only, 2026-11-02)
+
+- Fixed b in {0, 0.25, 0.5, 1} x W_CROSS in {2, 5}, inherit, seeds 0-1, 150 generations.
+- Question: the loss cost of raising G-M towards 0.51. Expectation (from E13 s2): G-M rises with
+  b, within-condition loss rises too. No test look in this diagnostic.
