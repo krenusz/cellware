@@ -939,3 +939,23 @@ by clone:
   measured state (e.g. the ridge-predicted N propensity of the founder's day-2 state, sampled
   from the empirical distribution) instead of a latent u, and test whether that closes G-M
   without breaking M-CSF.
+
+### Track B depth check (2026-11-02)
+
+CV r of the PC-ridge prediction by day-2 cells per clone: 1 cell 0.67 (382 clones), 2 cells 0.62
+(118), >= 3 cells 0.68 (71). No rise with depth: the unexplained ~55% is not mainly from sampling
+too few day-2 cells. It is either absent from expression (e.g. epigenetic) or set after day 2.
+
+## Track B2: measured founder propensity (pre-registered 2026-11-02)
+
+- **Model.** E16 (`--rank --tau_obs`) but the clone value is not latent N(0,1): each simulated
+  founder draws a real clone's CV-predicted N propensity from day-2 expression
+  (`results_track_b/propensity.npy`, 571 in vitro clones), used as z = logit(p); N/M assignment
+  logit = 2 sign(x) + b z - tau_c, b learned (init 1). Assumes the in vitro clone-state
+  distribution transfers to the cytokine experiment (same lab, same progenitor population).
+- **Runs.** {inherit, resample} x 10 seeds (`sweeps/track_b2.txt`, outputs b2_*).
+- **Predictions vs E16.** (1) Median G-M higher than E16 (0.30) and in 0.33-0.65 for >= 5 of 10
+  healthy runs per variant. (2) Median within-condition loss <= 0.8. (3) M-CSF M-only median
+  >= 0.80 (E16 0.70-0.79).
+- **Gate.** (1)-(3) pass for a variant: Epo/SCF shard 1 of 2 (`--exp B2`), prediction = healthy-run
+  range, success if the observed shard value is within it +/- 0.10.

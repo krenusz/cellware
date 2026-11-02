@@ -49,6 +49,7 @@ TRAIN_PAIRS = ("full-G", "full-M", "G-M")
 W_CROSS = 2.0  # weight of the cross-condition terms in the loss
 DAY_OBS = False  # track A: the policy also sees the day (commitment can change with time)
 N_CLONES = 1500
+MEASURED = None  # track B2: empirical day-2-expression N propensities (logit), per clone
 CUR_DAY = [0]
 W_WITHIN = 1.0  # E17: weight of the within-condition terms (0 = fit cross terms only)
 FIX_B = None  # E13 scan: fixed founder strength (--fix_b)
@@ -103,6 +104,9 @@ def simulate(net, landscape, memory, clones=None, seed=0):
     age = torch.zeros(clones, 1)
     trait = torch.randn(clones, 1, generator=g)  # E12: fixed per clone, shared by all its cells
     founder = torch.randn(clones, 1, generator=g)  # E13: founder propensity, exactly inherited
+    if MEASURED is not None:  # B2: draw each founder's propensity from the measured ones
+        idx = torch.randint(0, len(MEASURED), (clones,), generator=g)
+        founder = MEASURED[idx][:, None]
     out = {c: {4: {}, 6: {}} for c in CONDS}
     for day in range(1, 7):
         CUR_DAY[0] = day
@@ -209,6 +213,7 @@ def main():
     p.add_argument("--day_obs", action="store_true", help="track A: policy sees the day")
     p.add_argument("--revert", action="store_true", help="track A: committed cells revert")
     p.add_argument("--clones", type=int, default=1500)
+    p.add_argument("--measured", action="store_true", help="B2: measured founder propensity")
     p.add_argument("--name", default=None, help="output name (overrides the tag)")
     p.add_argument("--w_within", type=float, default=1.0, help="E17 conflict test")
     args = p.parse_args()
@@ -218,6 +223,10 @@ def main():
     global FIX_B, W_CROSS, W_WITHIN, DAY_OBS, N_CLONES
     FIX_B, W_CROSS, W_WITHIN = args.fix_b, args.w_cross, args.w_within
     DAY_OBS, N_CLONES = args.day_obs, args.clones
+    global MEASURED
+    if args.measured:
+        prop = np.load(os.path.join(HERE, "results_track_b", "propensity.npy"))
+        MEASURED = torch.tensor(np.log(prop / (1 - prop)), dtype=torch.float32)
     torch.manual_seed(args.seed)
     torch.set_num_threads(args.threads)
     cnt_obs = load_counts(CONDS5)
