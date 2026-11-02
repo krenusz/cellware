@@ -66,6 +66,7 @@ def main():
            "permuted_null": {"cv_r": float(np.corrcoef(p0, y)[0, 1])},
            "composition_only": {"cv_r": float(np.corrcoef(pc, y)[0, 1])},
            "composition_plus_methylation": {"cv_r": float(np.corrcoef(pb, y)[0, 1])}}
+    np.savez(os.path.join(HERE, "results_track_b", "epiclone_m13_pred.npz"), y=y, p=p)
     json.dump(out, open(os.path.join(HERE, "results_track_b", "epiclone_m13.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
 

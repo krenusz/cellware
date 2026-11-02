@@ -1,4 +1,4 @@
-# Cellware E5-E17: what a learned cell rule can and cannot explain about blood-cell fate
+# Cellware E5-E17 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
 
 Write-up of experiments E5-E17 (November 2026). Details, pre-registrations and every run are in
 [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md); held-out test looks are recorded in
@@ -89,6 +89,28 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   draw, with the true value near the ceiling (clone fate essentially fixed before day 2). This is
   an interpretation, not a test.
 
+### 5. Where the clone bias lives (wider programme, tracks A-D and B3)
+
+- **The "time" statistic was noise.** Every model overshot M-CSF's day-4 vs day-6 clone
+  correlation (0.72-0.83 vs 0.32), and track A's late-commitment models did not fix it. A
+  stable-clone simulation at the real sampling depth gives 0.81 [0.03, 0.99]; the observed CI
+  is [-0.02, 0.88]. Under M-CSF almost every clone is pure M, so the statistic hangs on a handful
+  of clones. Perfectly stable clones are compatible with the data.
+- **Robustness (track C, 80 runs).** The ~0.3 limit on G-CSF vs M-CSF agreement holds across
+  seeds, weightings and simulation size; weighting agreement more always costs fit. A stricter
+  convergence check later showed most 150-generation runs were still improving, so key models
+  are being rerun at 250 generations / 4000 clones.
+- **Day-2 expression carries part of the bias (track B).** In LARRY in vitro, the expression of
+  a clone's day-2 cells predicts its later N/M fate with CV r 0.66 (43% of variance; noise allows
+  ~96%). More day-2 cells per clone do not help (r 0.67 / 0.62 / 0.68 for 1 / 2 / >= 3), so
+  the unexplained ~55% is not a sampling artefact. Feeding the measured propensity into the
+  simulator (B2) did not raise agreement (0.31).
+- **Methylation carries more (track B3, EPI-Clone data).** In the same LARRY transplant
+  experiments, with the same design, the methylation of a clone's multipotent cells predicts its
+  myeloid / erythroid bias better than their expression: CV r 0.41 [0.30, 0.52] vs 0.25-0.28
+  [0.13, 0.36], difference CI [0.01, 0.32], at similar noise ceilings, and unlike expression not
+  through subtype composition. Different cells and clones, so suggestive, not a test.
+
 ## Conclusions
 
 1. Learning the cell rule from data beats hand-written equations on held-out lineage statistics,
@@ -100,6 +122,10 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
    both within-condition data and the full observed agreement; the statistic is at its sampling
    ceiling. The cytokine modelling line is closed for this dataset; deeper per-clone sampling
    would be needed to settle it.
+4. The clone-level fate bias is partly visible in day-2 expression (~40%) and, in a second
+   dataset, more visible in DNA methylation than in expression. The working hypothesis is an
+   epigenetically held clone state set before day 2. The decisive test needs methylation,
+   expression and lineage in the same cells (DARLIN Camellia-seq, GSE222246 / GSE222328).
 
 ## Held-out tests
 

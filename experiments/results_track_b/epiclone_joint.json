@@ -1,0 +1,28 @@
+{
+ "clones": 12,
+ "target_agreement_r": 0.17244601033117157,
+ "target_methylation_cells/methylation": {
+  "cv_r": 0.3505325662504882,
+  "r2": -4.996933334077137
+ },
+ "target_methylation_cells/expression": {
+  "cv_r": 0.5288874015186463,
+  "r2": -5.758917125193134
+ },
+ "target_methylation_cells/both": {
+  "cv_r": 0.5064408667053923,
+  "r2": -5.2234826314974026
+ },
+ "target_rna_cells/methylation": {
+  "cv_r": -0.5312647721188974,
+  "r2": -2.0888297113554217
+ },
+ "target_rna_cells/expression": {
+  "cv_r": 0.34541815680951865,
+  "r2": -0.4841505254590148
+ },
+ "target_rna_cells/both": {
+  "cv_r": -0.029891065133581453,
+  "r2": -0.7462778956873211
+ }
+}

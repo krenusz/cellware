@@ -1127,3 +1127,20 @@ Python `rdata` package (installed into the venv, not in pyproject). 5-fold CV by
   This fits track B's finding that ~55% of the clone bias is invisible in expression, and
   DARLIN's report that clonal memory tracks methylation. Caveats: different cells and clone
   sets, no CI on the difference, one lineage axis. A proper test needs both readouts per clone.
+
+### Methylation vs expression: bootstrap (2026-11-02)
+
+`bootstrap_meth_vs_rna.py`, 5000 clone resamples per analysis, independent clone sets:
+methylation CV r 0.41 [0.30, 0.52]; expression 0.25 [0.13, 0.36] (this run's folds; 0.28 in the
+earlier run: the RNA script iterates a Python set, so fold assignment varies between runs);
+difference [0.01, 0.32], P(diff <= 0) = 0.02. The gap is unlikely to be clone-sampling noise,
+but the CI excludes 0 only narrowly and ignores fold-assignment variance. Still suggestive.
+
+### Same-cell multi-omic data located (2026-11-02)
+
+- **DARLIN Camellia-seq** (Li 2023, GEO SuperSeries GSE222486): lineage barcode + DNA methylation
+  + chromatin accessibility + RNA in the same single HSCs across AGM, fetal liver and adult bone
+  marrow. Processed RNA GSE222246; methylation / accessibility GSE222328. The right data for a
+  same-clone test of "the hidden clone bias is epigenetic". Sizes not yet checked.
+- **EPI-Clone X.1** (Figshare 27991574, 10 MB): methylation + 120 targeted genes in the same human
+  CD34+ cells, but clones are defined from methylation itself, so circular for this question.

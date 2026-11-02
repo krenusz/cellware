@@ -63,6 +63,8 @@ def main():
         p = cv_predict(st, y, folds, "ridge", lam=10.0)
         out[name] = {"cv_r": float(np.corrcoef(p, y)[0, 1]),
                      "r2": float(1 - ((y - p) ** 2).mean() / y.var())}
+    p = cv_predict(state, y, folds, "ridge", lam=10.0)
+    np.savez(os.path.join(HERE, "results_track_b", "epiclone_rna_pred.npz"), y=y, p=p)
     json.dump(out, open(os.path.join(HERE, "results_track_b", "epiclone_rna.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
 
