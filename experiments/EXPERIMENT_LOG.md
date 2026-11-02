@@ -1030,3 +1030,36 @@ Healthy runs, median [range] (`summarise_grid.py`); target M-CSF day-4 vs day-6 
   0.99), so it is the right base.
 - Infra: two concurrent `run_sweep.sh` calls picked up the same run id (track A results fetched
   manually); run-id lookup is now locked.
+
+### Day-4/6 sampling ceiling (2026-11-02; resolves track A's target)
+
+`ceiling_d4d6.py`: perfectly stable clones (one N share per clone for both days), share drawn
+from a Beta fitted to the observed clones after removing binomial noise, each clone sampled at
+its observed day-4 / day-6 depth (131 clones, median 3 and 5 N+M cells).
+
+- Observed M-CSF r_d4_d6 = 0.32, 95% bootstrap CI **[-0.02, 0.88]**.
+- Stable-clone ceiling: median **0.81**, 95% range [0.03, 0.99].
+- **Reading.** Under M-CSF almost every clone is pure M (Beta(0.02, 0.92)); r is driven by a
+  handful of clones with any N, so the statistic is almost uninformative. The models' 0.72-0.83
+  match perfectly stable clones; the observed 0.32 is compatible with them. Track A chased noise.
+  This term should be dropped or replaced by a pooled, better-powered time statistic in any
+  future fit (decide in a pre-registration, not post hoc for a test).
+
+### Health re-check with a noise-tolerant convergence rule (2026-11-02)
+
+New rule: loss trend over the last 60 generations must not fall by > 2x its residual noise and
+> 5%. Applied to tracks A, B2, C (all 150 generations): **74/160 healthy**; 80 runs still
+improving (75 only that, 5 with b frozen), 6 with b frozen only. Most 150-generation runs had not
+converged, so A/B2/C medians are pre-convergence and may understate what each model can do.
+Defaults raised: `--generations 250`, `--clones 4000` (C showed lower loss at 4000).
+
+### Track D follow-up: data access (2026-11-02, verified)
+
+- **GSE134242** (Rodriguez-Fraticelli 2020): confirmed on GEO. 90 samples, inDrop v3,
+  barcoded HSC and KIT+ progenitor libraries from 5 primary and secondary recipients, plus
+  CROP-seq and TetO-Tcf15 experiments. Supplementary per sample: counts_norm.csv.gz, genes,
+  barcode lists, cell-barcode maps. GEO did not return file sizes to this machine.
+- **EPI-Clone** (Scherer 2025): data on Figshare as Seurat .rds (needs R or an RDS reader):
+  M.1-M.3 HSC methylation 173 MB (10.6084/m9.figshare.24204750); M.4 LARRY mature myeloid 10 MB
+  (25472467); scRNA-seq of barcoded progenitors 866 MB (24260743); count matrices GSE282971;
+  code github.com/veltenlab/EPI-clone.

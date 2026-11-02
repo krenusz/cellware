@@ -3,8 +3,8 @@
     uv run python experiments/health_check.py "experiments/results_clone_e11/a_*.json"
 
 A run fails if any learned scalar moved < 0.05 from its start (optimisation-limited, as in E9 v8
-and E15), if a condition kept < 50 sampled clones, or if the last 20 generations still improve
-the loss by > 10% (not converged).
+and E15), if a condition kept < 50 sampled clones, or if the loss still trends down over the last 60
+generations by more than 2x its evaluation noise and 5% (not converged).
 """
 
 from __future__ import annotations
@@ -23,9 +23,14 @@ def check(d):
             problems.append(f"{name} did not move")
     if h.get("min_clones", 1e9) < 50:
         problems.append(f"min clones {h['min_clones']}")
-    loss = [g["loss"] for g in d["history"]]
-    if len(loss) >= 40 and np.mean(loss[-20:]) < 0.9 * np.mean(loss[-40:-20]):
-        problems.append("loss still falling")
+    loss = np.array([g["loss"] for g in d["history"]])
+    if len(loss) >= 60:  # noise-tolerant: trend over the last 60 generations vs evaluation noise
+        t = np.arange(60)
+        slope, icpt = np.polyfit(t, loss[-60:], 1)
+        noise = np.std(loss[-60:] - (slope * t + icpt))
+        drop = -slope * 60
+        if drop > 2 * noise and drop > 0.05 * np.mean(loss[-60:]):
+            problems.append("loss still falling")
     return problems
 
 
