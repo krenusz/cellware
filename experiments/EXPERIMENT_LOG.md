@@ -1688,3 +1688,42 @@ Static | Dynamic 0.01 [-0.15, 0.17]; both classes together 0.35 [0.21, 0.48].
   Meg advantage, 11 clones). EPI-Clone says record-marked sites predict fate (B3, B3f). Different
   panels (genome-wide bins vs a 453-CpG targeted panel chosen for clonal and state information),
   different compartments and fate targets. Not resolved.
+
+## Track B3i: is "methylation predicts fate" a clone-size or mouse confound? (pre-registered 2026-11-02)
+
+Motivated by the literature sweep (LITERATURE_SWEEP_2026-11.md): EPI-Clone finds expanded clones
+by their density in static-CpG space, myeloid bias concentrates in expanded clones, and B3's CV
+folds were random by clone, not by mouse.
+- Same B3 design (181 clones, myeloid share, clone-mean top-20 PCs of the multipotent cells),
+  for all / Static / Dynamic CpGs. Mouse = the clone's Experiment|ProcessingBatch (modal).
+  Size = log total cells of the clone; also log multipotent cells.
+- (1) **Leave-one-mouse-out CV** in place of random folds. (2) **Partial r:** CV prediction vs
+  target after regressing both on mouse dummies + the two size terms. (3) Baseline: mouse + size
+  alone, CV r (random folds). Clone bootstrap CIs (2000x).
+- **Readings fixed in advance.** If Static r (and/or all) falls to a CI including 0 under (1) or
+  (2), the B3/B3f "record predicts fate" result was a confound (mouse or clone size), and the
+  Camellia vs EPI-Clone tension dissolves: the record is neutral in both. If it survives both with
+  CI excluding 0, the record carries fate information beyond size and mouse (tension stands).
+  Same reading for Dynamic.
+
+## E19: kin-correlation analysis of fate-state sharing in LARRY in vitro (pre-registered 2026-11-02)
+
+Adopting the kin-correlation idea (Hormoz et al. 2015/2016): the fate-state sharing E18c could
+not pin is measurable from relatives at two kinship distances.
+- Data: LARRY main in vitro (data/larry), mature Neutrophil and Monocyte cells at days 4 and 6,
+  clones with N+M cells in at least two wells. Kinship classes for pairs of a clone's cells:
+  **same well, same day** (common ancestor after the day-2 split) and **different wells**
+  (common ancestor before the split). For each class, a 2x2 N/M pair table, each clone weighted
+  equally (its pair table normalised), and the latent (tetrachoric) correlation r_class with
+  thresholds from the pooled N fraction. Clone bootstrap (1000x).
+- **Link to the model.** In the E18c simulator, the latent correlation is rho_f * K across
+  sister branches and K within a branch (K = beta^2 / total latent variance). So
+  **rho_f_hat = r_cross / r_same** is a data estimate of E18c's rho_f, independent of K.
+- **Readings fixed in advance.** (R1) rho_f_hat with CI. If it falls inside 0.6-0.95, E18c's
+  passing range is confirmed and narrowed by data; outside, E18c is in conflict with LARRY's kin
+  structure. (R2) If the CI includes 1, no detectable loss of fate state between the split and
+  commitment (state fixed by day 2). (R3) As a check, the same ratio computed on the cytokine
+  dataset is not possible (one well per condition), so no cross-dataset check.
+- Caveat stated now: main in vitro culture differs from the cytokine-condition experiment E18c was
+  fitted on; fate is read at commitment, not at sampling, so no per-generation decay rate is
+  claimed.
