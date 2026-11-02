@@ -1747,3 +1747,27 @@ Baseline, mouse + clone size alone: 0.42 [0.29, 0.53].
   effect was confound.
 - Mouse + size alone predict as well as methylation did in B3 (0.42). Every earlier B3-family
   number (B3, B3e, B3f, B3h-b) is inflated by this and should be read with B3i beside it.
+
+### E19 result (2026-11-02)
+
+Synthetic check before the look: latent model with rho 0.70, K 0.60 recovered as rho_f_hat 0.697,
+K ~0.59. LARRY main in vitro, 464 clones with N/M cells in both wells.
+
+| | latent r (95% clone bootstrap) |
+|---|---|
+| same well, same day | 0.94 [0.92, 0.96] |
+| different wells | 0.83 [0.77, 0.87] |
+| **rho_f_hat = ratio** | **0.88 [0.82, 0.92]** |
+
+Secondary (cross-well pairs restricted to the same day, 442 clones): 0.87 [0.82, 0.92].
+- **R1: confirmed and narrowed.** rho_f_hat lies inside E18c's passing range (0.6-0.95) and cuts
+  it to ~0.82-0.92. E18's original cell (rho_L 0.86) is in it.
+- **R2: CI excludes 1.** Sister branches lose a detectable but small part of their fate state
+  between the day-2 split and commitment.
+- **Cross-check, not pre-registered:** the same-well latent r (0.94) is the simulator's K =
+  beta^2 / total latent variance. E18c's fits (beta ~5-6, sigma_w small) imply K ~0.88-0.92.
+  The data and the fitted model agree that fate is near-deterministic given the branch state.
+- **Reading.** LARRY's own kin structure pins the fate-state sharing the model needed. With it,
+  E18c predicts G-M ~0.33-0.39 (its 0.8 and 0.9 cells), still near the bottom of the observed
+  CI. The remaining G-M gap is not a missing-parameter problem.
+- Caveat as pre-registered: main in vitro culture, not the cytokine experiment E18c was fitted on.

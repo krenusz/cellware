@@ -1,6 +1,6 @@
 # Cellware E5-E18 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
 
-Write-up of experiments E5-E18 and tracks A-B6 (November 2026). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
+Write-up of experiments E5-E19 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
 [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md); held-out test looks are recorded in
 [test_ledger.tsv](test_ledger.tsv).
 
@@ -133,8 +133,12 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   record sites conditioned on the other), cell-state-site sharing net of the record is far below
   what the record alone produces (0.59 vs 0.84), so record leakage explains it (B3h). Fate
   information beyond the record at cell-state sites is suggestive but does not clear its
-  benchmark. **Reading:** no evidence for a sister-shared fate state separate from the record.
-  The record itself is readable at both site classes and, in EPI-Clone, carries fate information.
+  benchmark. **Then the confound check (B3i):** with cross-validation leaving one mouse out, or
+  with mouse and clone size removed, the record sites' fate prediction disappears (0.10 and 0.01,
+  CIs include 0). Cell-state sites keep it (0.24-0.25). Mouse and clone size alone predict as
+  well as methylation did (0.42). **Reading:** the heritable record is neutral in both datasets.
+  The fate information sits in cell-state methylation of the multipotent cells, beyond mouse and
+  clone size. Earlier B3-family numbers are inflated by the confound.
 - **Models built on this (E18, E18b, E18c).** E18 tied LARRY sister fate sharing to the Camellia
   signal through a drift rate. One grid cell reproduced all three cross-condition statistics
   (G-M 0.42, the best in the programme), but only with fast drift and near-deterministic fate.
@@ -146,6 +150,11 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   statistics in or at the edge of their CIs (G-M 0.33-0.39). That range includes E18's value
   (0.86), so E18 never needed the Camellia link. LARRY alone does not pin the fate-state sharing,
   and G-M still sits near the bottom of its CI.
+- **Kin correlations pin the missing parameter (E19).** Using two kinship distances in LARRY
+  in vitro (same well vs different wells, kin-correlation idea from Hormoz et al. 2015/2016), the
+  latent fate correlation is 0.94 within a well and 0.83 across wells, so the fate-state sharing
+  between sister branches is 0.88 [0.82, 0.92]. That narrows E18c's range and matches its
+  near-deterministic fits. With it, the model still predicts G-M ~0.33-0.39.
 
 ## Conclusions
 
@@ -158,21 +167,23 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
    both within-condition data and the full observed agreement; the statistic is at its sampling
    ceiling. The cytokine modelling line is closed for this dataset; deeper per-clone sampling
    would be needed to settle it.
-4. The clone-level fate bias is partly visible in day-2 expression (~40%). In a second dataset
-   it is more visible in DNA methylation than in expression, spread across record and
-   cell-state CpGs alike (B3e-B3f). Clones carry a heritable methylation record. In Camellia it
-   looks neutral (large-scale, not at lineage genes, no Meg advantage on 11 clones). In
-   EPI-Clone the record-marked sites predict fate, and there is no sign of a separate,
-   sister-shared fate state (B3h). The two datasets disagree on whether the record is
-   fate-relevant; that tension is the current open question, not a settled result.
+4. The clone-level fate bias is partly visible in day-2 expression (~40%) and in cell-state DNA
+   methylation of multipotent cells (r ~0.25 beyond mouse and clone size, B3i). Clones also
+   carry a heritable methylation record, but it is neutral in both datasets: large-scale,
+   heterochromatic, not at lineage genes, and not fate-predictive once mouse and clone size are
+   controlled. The record part replicates published work (Camellia-seq, EPI-Clone).
+5. Sister branches in culture share ~88% of their latent fate state (E19), and fate is
+   near-deterministic given it. A simulator with these values fits within-condition data. It
+   still underpredicts G-CSF vs M-CSF sister agreement, so that gap is not a missing parameter.
 
 ## Open (deliberately not closed)
 
-- Is the heritable record fate-relevant (EPI-Clone) or neutral (Camellia)? Panels, compartments
-  and fate targets differ between the two datasets.
+- What is the fate-relevant cell-state methylation (B3i survivors), and when is it set?
+- Why does every model underpredict G-CSF vs M-CSF agreement, even with the fate-state sharing
+  pinned (E19)? Sampling ceiling, or a condition-specific response the model lacks?
 - What sets the fate state, and when?
-- Division counts for Camellia and LARRY are not known from the data; any drift model depends
-  on them.
+- Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.
+  preprint). Not yet used.
 - The Epo/SCF shard-1 held-out test is still unseen. It is not powered to separate the
   current models (~24 clones).
 
