@@ -1208,3 +1208,17 @@ Observed pooled Epo/SCF r on shard 0 of 2: **0.44 [0.03, 0.78]**, 24 clones (agr
 and Fig. 5 (tissue-overlap tables) plus snakemake intermediates. **No Camellia-seq data**: the
 same-cell methylation + RNA + lineage test (B4) needs GEO GSE222246 / GSE222328 / GSE222479,
 fetched on GitHub Actions (NCBI blocks this machine). `geo_probe.py` learns the formats first.
+
+### Camellia-seq formats and B4 feasibility (2026-11-02, geo_probe.py on Actions)
+
+- GSE222246: 12 plate-level RNA UMI count tables; all cells annotated "cell type: HSC" (AGM,
+  fetal liver, bone marrow). GSE222328: 1078 cells, per-cell CpG and GpC tables
+  (chr, pos, met_reads, nonmet_reads, rate; GpC ~26 MB per cell). GSE222479: 244 samples, all
+  bulk / single-cell CARLIN *raw reads only* (no processed files), mostly the migration study.
+- **B4 is not feasible as pre-registered.** (1) Every Camellia cell is an HSC: there is no fate
+  readout per clone, so "predict clone fate" cannot be computed; the paper's question was clonal
+  memory (do sister HSCs share methylation / expression), not fate. (2) No processed lineage
+  calls for Camellia cells are deposited: clone identity would have to be rebuilt from raw
+  CARLIN reads (SRA) with the DARLIN snakemake pipeline. B4 is withdrawn before any statistic
+  was computed. A feasible re-scoped question is "which readout carries clone identity", i.e.
+  sister-HSC similarity in methylation vs expression, which needs (2).

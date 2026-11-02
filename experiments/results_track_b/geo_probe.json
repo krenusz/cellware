@@ -1,0 +1,228 @@
+{
+ "GSE222246": {
+  "n": 12,
+  "first": [
+   {
+    "gsm": "GSM6918871",
+    "title": "Camellia_AGM-HSC_LL744EP1_RNA\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6918nnn/GSM6918871/suppl/GSM6918871_LL744EP1_RNA.UMI_counts.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r",
+     "tissue: AGM\r"
+    ]
+   },
+   {
+    "gsm": "GSM6918872",
+    "title": "Camellia_AGM-HSC_LL744EP2_RNA\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6918nnn/GSM6918872/suppl/GSM6918872_LL744EP2_RNA.UMI_counts.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r",
+     "tissue: AGM\r"
+    ]
+   },
+   {
+    "gsm": "GSM6918873",
+    "title": "Camellia_BoneMarrow-HSC_LL731_P1_RNA\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6918nnn/GSM6918873/suppl/GSM6918873_LL731_P1_RNA.UMI_counts.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r",
+     "tissue: Bone Marrow\r"
+    ]
+   }
+  ],
+  "last": [
+   {
+    "gsm": "GSM7808514",
+    "title": "Camellia_BoneMarrow-HSC_LL901_P2_RNA\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7808nnn/GSM7808514/suppl/GSM7808514_LL901_P2_RNA.UMI_counts.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r"
+    ]
+   },
+   {
+    "gsm": "GSM7808515",
+    "title": "Camellia_BoneMarrow-HSC_LL901_P3_RNA\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7808nnn/GSM7808515/suppl/GSM7808515_LL901_P3_RNA.UMI_counts.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r"
+    ]
+   }
+  ],
+  "file_kinds": {
+   "counts.tsv.gz": 12
+  },
+  "heads": {
+   "counts.tsv.gz": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6918nnn/GSM6918871/suppl/GSM6918871_LL744EP1_RNA.UMI_counts.tsv.gz"
+  }
+ },
+ "GSE222328": {
+  "n": 1080,
+  "first": [
+   {
+    "gsm": "GSM6919975",
+    "title": "Camellia_AGM-HSC_LL744EP1_DNA_A1\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6919nnn/GSM6919975/suppl/GSM6919975_LL744EP1_DNA_A1_CpG.tsv.gz",
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6919nnn/GSM6919975/suppl/GSM6919975_LL744EP1_DNA_A1_GpC.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r",
+     "tissue: AGM\r"
+    ]
+   },
+   {
+    "gsm": "GSM6919976",
+    "title": "Camellia_AGM-HSC_LL744EP1_DNA_A10\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6919nnn/GSM6919976/suppl/GSM6919976_LL744EP1_DNA_A10_CpG.tsv.gz",
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6919nnn/GSM6919976/suppl/GSM6919976_LL744EP1_DNA_A10_GpC.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r",
+     "tissue: AGM\r"
+    ]
+   },
+   {
+    "gsm": "GSM6919977",
+    "title": "Camellia_AGM-HSC_LL744EP1_DNA_A11\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6919nnn/GSM6919977/suppl/GSM6919977_LL744EP1_DNA_A11_CpG.tsv.gz",
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6919nnn/GSM6919977/suppl/GSM6919977_LL744EP1_DNA_A11_GpC.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r",
+     "tissue: AGM\r"
+    ]
+   }
+  ],
+  "last": [
+   {
+    "gsm": "GSM7808934",
+    "title": "Camellia_BoneMarrow-HSC_LL901_P3_DNA_H8\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7808nnn/GSM7808934/suppl/GSM7808934_LL901_P3_DNA_H8_CpG.tsv.gz",
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7808nnn/GSM7808934/suppl/GSM7808934_LL901_P3_DNA_H8_GpC.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r"
+    ]
+   },
+   {
+    "gsm": "GSM7808935",
+    "title": "Camellia_BoneMarrow-HSC_LL901_P3_DNA_H9\r",
+    "files": [
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7808nnn/GSM7808935/suppl/GSM7808935_LL901_P3_DNA_H9_CpG.tsv.gz",
+     "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM7808nnn/GSM7808935/suppl/GSM7808935_LL901_P3_DNA_H9_GpC.tsv.gz"
+    ],
+    "chars": [
+     "cell type: HSC\r"
+    ]
+   }
+  ],
+  "file_kinds": {
+   "CpG.tsv.gz": 1078,
+   "GpC.tsv.gz": 1078,
+   "NONE": 2
+  },
+  "heads": {
+   "CpG.tsv.gz": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM6919nnn/GSM6919975/suppl/GSM6919975_LL744EP1_DNA_A1_CpG.tsv.gz",
+   "GpC.tsv.gz": {
+    "bytes": 26308384,
+    "head": [
+     "chr\tpos\tmet_reads\tnonmet_reads\trate",
+     "1\t3021533\t0\t2\t0.0",
+     "1\t3021540\t0\t2\t0.0",
+     "1\t3021565\t0\t2\t0.0",
+     "1\t3022093\t1\t0\t1.0",
+     "1\t3022097\t1\t0\t1.0",
+     "1\t3022116\t1\t0\t1.0",
+     "1\t3024129\t0\t1\t0.0"
+    ]
+   },
+   "NONE": "NONE"
+  }
+ },
+ "GSE222479": {
+  "n": 244,
+  "first": [
+   {
+    "gsm": "GSM6924404",
+    "title": "Blood_migration_induced_at_E10_LL715LF-B-rep1\r",
+    "files": [
+     "NONE"
+    ],
+    "chars": [
+     "cell type: LeftLeg-B-rep1\r",
+     "carlin protocol: Bulk_CARLIN_RNA\r",
+     "carlin locus: TC\r"
+    ]
+   },
+   {
+    "gsm": "GSM6924405",
+    "title": "Blood_migration_induced_at_E10_LL715LF-B-rep2\r",
+    "files": [
+     "NONE"
+    ],
+    "chars": [
+     "cell type: LeftLeg-B-rep2\r",
+     "carlin protocol: Bulk_CARLIN_RNA\r",
+     "carlin locus: TC\r"
+    ]
+   },
+   {
+    "gsm": "GSM6924406",
+    "title": "Blood_migration_induced_at_E10_LL715LF-B-rep3\r",
+    "files": [
+     "NONE"
+    ],
+    "chars": [
+     "cell type: LeftLeg-B-rep3\r",
+     "carlin protocol: Bulk_CARLIN_RNA\r",
+     "carlin locus: TC\r"
+    ]
+   }
+  ],
+  "last": [
+   {
+    "gsm": "GSM7851477",
+    "title": "Blood_migration_Induced_at_Neonate_TA-LL829-SP-Meg\r",
+    "files": [
+     "NONE"
+    ],
+    "chars": [
+     "cell type: SP_Meg\r",
+     "carlin protocol: Bulk_CARLIN_RNA\r",
+     "carlin locus: TA\r"
+    ]
+   },
+   {
+    "gsm": "GSM7851478",
+    "title": "Blood_migration_Induced_at_Neonate_TA-LL829-SP-MyP\r",
+    "files": [
+     "NONE"
+    ],
+    "chars": [
+     "cell type: SP_MyP\r",
+     "carlin protocol: Bulk_CARLIN_RNA\r",
+     "carlin locus: TA\r"
+    ]
+   }
+  ],
+  "file_kinds": {
+   "NONE": 244
+  },
+  "heads": {
+   "NONE": "NONE"
+  }
+ }
+}
