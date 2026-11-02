@@ -1727,3 +1727,23 @@ not pin is measurable from relatives at two kinship distances.
 - Caveat stated now: main in vitro culture differs from the cytokine-condition experiment E18c was
   fitted on; fate is read at commitment, not at sampling, so no per-generation decay rate is
   claimed.
+
+### B3i result (2026-11-02)
+
+181 clones across 6 mice (27-33 each).
+
+| CpGs | random folds (B3) | leave one mouse out | partial r, mouse + size removed |
+|---|---|---|---|
+| all | 0.41 [0.30, 0.52] | 0.24 [0.11, 0.37] | 0.23 [0.11, 0.35] |
+| Static | 0.24 [0.11, 0.36] | 0.10 [-0.04, 0.23] | 0.01 [-0.12, 0.15] |
+| Dynamic | 0.39 [0.25, 0.52] | 0.24 [0.08, 0.39] | 0.25 [0.12, 0.38] |
+
+Baseline, mouse + clone size alone: 0.42 [0.29, 0.53].
+- **Static: confound.** Its fate prediction disappears under both controls (CIs include 0). By the
+  pre-registered reading, the "record predicts fate" result was mouse and clone size. **The
+  Camellia vs EPI-Clone tension dissolves: the heritable record is neutral in both datasets.**
+- **Dynamic survives both** (0.24-0.25, CIs exclude 0). Cell-state methylation of a clone's
+  multipotent cells carries fate information beyond mouse and clone size. About 40% of the B3
+  effect was confound.
+- Mouse + size alone predict as well as methylation did in B3 (0.42). Every earlier B3-family
+  number (B3, B3e, B3f, B3h-b) is inflated by this and should be read with B3i beside it.
