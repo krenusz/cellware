@@ -1,0 +1,13 @@
+# E17 conflict test: E16 model, within-condition weight 0 / 0.25 (diagnostic, --larry)
+[experiments/results_clone_e11/e17_ww0_inherit_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e17_ww0_inherit_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e17_ww0_inherit_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0 --seed 2 --memory inherit --threads 4
+[experiments/results_clone_e11/e17_ww0_resample_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0 --seed 0 --memory resample --threads 4
+[experiments/results_clone_e11/e17_ww0_resample_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0 --seed 1 --memory resample --threads 4
+[experiments/results_clone_e11/e17_ww0_resample_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0 --seed 2 --memory resample --threads 4
+[experiments/results_clone_e11/e17_ww0.25_inherit_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0.25 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e17_ww0.25_inherit_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0.25 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e17_ww0.25_inherit_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0.25 --seed 2 --memory inherit --threads 4
+[experiments/results_clone_e11/e17_ww0.25_resample_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0.25 --seed 0 --memory resample --threads 4
+[experiments/results_clone_e11/e17_ww0.25_resample_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0.25 --seed 1 --memory resample --threads 4
+[experiments/results_clone_e11/e17_ww0.25_resample_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_within 0.25 --seed 2 --memory resample --threads 4

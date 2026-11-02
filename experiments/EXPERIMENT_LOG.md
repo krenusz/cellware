@@ -831,3 +831,16 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   under any shared-rule model of this family, or the cross statistic (55 clones, CI 0.33-0.65)
   is too thin to pull against five within-condition terms. Next: test that conflict directly
   (fit only the cross terms and read the within-condition loss), not another mechanism.
+
+## E17: conflict test, cross terms vs within-condition terms (diagnostic, 2026-11-02)
+
+- **Question.** Is G-M ~0.3 in E11-E16 forced by a conflict between the within-condition
+  statistics and the cross statistic, or is the cross term simply outweighed?
+- **Setup.** E16 model (`--rank --tau_obs`), within-condition weight 0 (cross terms only) and
+  0.25, 3 seeds x {inherit, resample}. Every run also reports the unweighted within-condition
+  loss (`within_loss`, comparable to E16's 0.49-0.74, which includes no cross terms... E16 loss
+  included cross terms at W=2, so compare within_loss to E16 runs re-scored the same way).
+- **Expectation, written before running.** If G-M reaches ~0.5 with weight 0 and within_loss
+  stays near E16, the earlier failure is weighting/optimisation. If G-M reaches ~0.5 only with a
+  large within_loss rise, there is a real conflict for this model family. If G-M stays ~0.3 even
+  with weight 0, the model family cannot produce the concordance at all. No test look.

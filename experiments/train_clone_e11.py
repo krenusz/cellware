@@ -47,6 +47,7 @@ REST, PUSH_N, PUSH_M, COMMIT_O = range(4)
 CONDS = tuple(CONDS5.values())  # full, G, M, Epo, SCF
 TRAIN_PAIRS = ("full-G", "full-M", "G-M")
 W_CROSS = 2.0  # weight of the cross-condition terms in the loss
+W_WITHIN = 1.0  # E17: weight of the within-condition terms (0 = fit cross terms only)
 FIX_B = None  # E13 scan: fixed founder strength (--fix_b)
 RANK_G = 2.0  # E15: weight of the drift side in the N/M assignment logit
 
@@ -153,13 +154,14 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
 def fitness_loss(net, landscape, memory, obs, obs_cross, seed):
     cnt = simulate(net, landscape, memory, seed=seed)
     sim = condition_stats(cnt)
-    total = 0.0
+    within = 0.0
     for c in obs:
         if sim[c]["clones"] < 20:
             return 10.0
-        total += distance(sim[c], obs[c])
+        within += distance(sim[c], obs[c])
         if c in TIME_CONDS:
-            total += (sim[c]["r_d4_d6"] - obs[c]["r_d4_d6"]) ** 2
+            within += (sim[c]["r_d4_d6"] - obs[c]["r_d4_d6"]) ** 2
+    total = W_WITHIN * within
     cross = cross_stats({c: cnt[c] for c in ("full", "G", "M")}, boot=1)
     for key in TRAIN_PAIRS:
         total += W_CROSS * (cross[key]["r"] - obs_cross[key]) ** 2
@@ -186,12 +188,13 @@ def main():
     p.add_argument("--rank", action="store_true", help="E15: clone rank in N/M assignment")
     p.add_argument("--tau_obs", action="store_true", help="E16: start tau from observed N share")
     p.add_argument("--w_cross", type=float, default=2.0)
+    p.add_argument("--w_within", type=float, default=1.0, help="E17 conflict test")
     args = p.parse_args()
     if args.test:
         test_look()
         return
-    global FIX_B, W_CROSS
-    FIX_B, W_CROSS = args.fix_b, args.w_cross
+    global FIX_B, W_CROSS, W_WITHIN
+    FIX_B, W_CROSS, W_WITHIN = args.fix_b, args.w_cross, args.w_within
     torch.manual_seed(args.seed)
     torch.set_num_threads(args.threads)
     cnt_obs = load_counts(CONDS5)
@@ -245,6 +248,8 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     tag = ('e16' if args.tau_obs else 'e15' if args.rank else 'e13' if args.founder
            else 'e12' if args.trait else 'e11')
+    if W_WITHIN != 1.0:
+        tag = f"e17_ww{W_WITHIN:g}"
     if FIX_B is not None:
         tag = f"e13scan_b{FIX_B:g}_w{W_CROSS:g}"
     name = f"{tag}_{args.memory}_seed{args.seed}"
@@ -256,7 +261,10 @@ def main():
         pred["rank_tau"] = net.rank_tau.tolist()
     if net.founder_scale is not None:
         pred["founder_scale"] = float(net.founder_scale)
-    result = {"config": vars(args), "landscape": landscape, "obs_cross": obs_cross,
+    W_WITHIN, W_CROSS = 1.0, 0.0  # E17: unweighted within-condition loss, comparable across runs
+    within_loss = fitness_loss(net, landscape, args.memory, obs, obs_cross, seed=12345)
+    result = {"within_loss": within_loss, "config": vars(args), "landscape": landscape,
+              "obs_cross": obs_cross,
               "history": history, "final_loss": history[-1]["loss"],
               "fit_sim": condition_stats(sims[0]), "pred": pred}
     json.dump(result, open(os.path.join(OUT, name + ".json"), "w"), indent=1)
