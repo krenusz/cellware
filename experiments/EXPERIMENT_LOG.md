@@ -1383,3 +1383,28 @@ QCs, vs 182 analysed in B5 - small design mismatch, noted). Fit by Nelder-Mead o
   or its CI overlaps it. (3) E18 refit with d from FL (better constrained than the 3 x 2 grid),
   g_L in {1, 3}, Nelder-Mead with 3 restarts and 5 common-random-number simulations per loss.
   The Epo/SCF shard-1 look stays gated by the power rule.
+
+### E18b result: per-tissue drift test (2026-11-02)
+
+B5 rerun with (mouse, clone) keys: global methylation AUC 0.63 [0.57, 0.68], expression 0.51,
+difference [0.01, 0.20], controlled 0.62, ceiling 0.96 - B5/B5b conclusions unchanged.
+
+| tissue | cells | clones | sister AUC [95% CI] | null 95th | rho (toy calibration) [CI] |
+|---|---|---|---|---|---|
+| bone marrow | 115 | 44 | 0.62 [0.54, 0.72] | 0.55 | 0.21 [0.08, 0.39] |
+| fetal liver | 58 | 34 | 0.61 [0.54, 0.69] | 0.58 | 0.18 [0.06, 0.33] |
+
+- **P1 refuted:** rho_FL is not larger than rho_BM (0.18 vs 0.21; CIs overlap fully).
+- **P2 refuted:** constant drift calibrated on FL (d = 0.14-0.19 per division over g_FL 8-11)
+  predicts rho_BM = 0.0002-0.014 after 20-40 divisions; measured 0.21 [0.08, 0.39]. Only the
+  extreme corner (FL CI upper end, g_FL 11, g_BM 20 -> 0.13) touches the BM CI.
+- **P3 not run (logged deviation):** the refit was to use d from FL under the constant-drift
+  model that P2 just rejected; running it would calibrate a falsified mechanism.
+- **Reading.** The clone-shared methylation component does not decay with divisions between
+  mid-gestation and adulthood: it is about the same (~20% of the measured variation) in FL and
+  BM. That fits an early-established, then stable clone component (a plateau), not a constant
+  per-division drift. E18's grid (which assumed constant drift) is therefore the wrong form;
+  its one well-fitting cell needed LARRY sisters to share ~86% of the fate state, which a stable
+  ~20% methylation component does not deliver unless the fate-relevant part of the state is
+  much more clone-shared than the genome-wide methylation proxy. That tension is now the open
+  question.

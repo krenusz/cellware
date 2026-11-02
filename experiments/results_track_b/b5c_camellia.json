@@ -1,0 +1,150 @@
+{
+ "cells_with_clone": 209,
+ "meth_fetched": 182,
+ "plates": 10,
+ "matched": 182,
+ "common_genes": 9103,
+ "example_cols": {
+  "LL901_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL901_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E6P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL744EP1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ]
+ },
+ "cells": 182,
+ "clones": 82,
+ "bins": 25740,
+ "methylation": {
+  "auc": 0.6259224663866219,
+  "sister_pairs": 215,
+  "null_95": 0.554889111880908,
+  "null_mean": 0.5145617690858335,
+  "ci": [
+   0.5654943240367069,
+   0.6814944955404172
+  ]
+ },
+ "expression": {
+  "auc": 0.5104643156428308,
+  "sister_pairs": 215,
+  "null_95": 0.5119080229088715,
+  "null_mean": 0.47737000176139976,
+  "ci": [
+   0.4612105902592664,
+   0.5862783036241697
+  ]
+ },
+ "difference_ci": [
+  0.014576370892594954,
+  0.19627633261559344
+ ],
+ "b5b": {
+  "proliferation_genes": [
+   "Mki67",
+   "Top2a",
+   "Cdk1",
+   "Mcm2",
+   "Pcna"
+  ],
+  "controlled": {
+   "auc": 0.6230988892506578,
+   "null_95": 0.542622564064243,
+   "ci": [
+    0.5519321223157543,
+    0.6890447266619533
+   ]
+  },
+  "ceiling_auc": 0.9553869474942754,
+  "ceiling_range": [
+   0.9494382202390166,
+   0.9625270214730639
+  ]
+ },
+ "per_tissue": {
+  "BM": {
+   "auc": 0.6221679012345679,
+   "null_95": 0.5460253497942387,
+   "ci": [
+    0.5434361291100008,
+    0.7234489613372257
+   ],
+   "cells": 115,
+   "clones": 44
+  },
+  "FL": {
+   "auc": 0.6072515212981744,
+   "null_95": 0.5806378585917125,
+   "ci": [
+    0.5360456780167787,
+    0.6911065279770445
+   ],
+   "cells": 58,
+   "clones": 34
+  }
+ }
+}

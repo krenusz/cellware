@@ -35,9 +35,11 @@ def b5_design():
         for r in rows
         if r["large_clone_id"] and r["pass_metQC"] == "True" and r["pass_rnaQC"] == "True"
     ]
-    return np.array([r["large_clone_id"] for r in rows]), np.array(
-        [r["mouse"] + "|" + r["tissue"] for r in rows]
-    )
+    clone = np.array(
+        [r["mouse"] + "|" + r["large_clone_id"] for r in rows]
+    )  # labels repeat across mice
+    group = np.array([r["mouse"] + "|" + r["tissue"] for r in rows])
+    return clone, group, np.array([r["tissue"] for r in rows])
 
 
 def toy_auc(rho, noise, clone, group, rng, dim=20):
@@ -61,7 +63,7 @@ def mean_auc(rho, noise, clone, group, reps=30):
 
 
 def calibrate():
-    clone, group = b5_design()
+    clone, group, _ = b5_design()
     noise = next(n for n in np.arange(0.2, 20, 0.1) if mean_auc(1.0, n, clone, group) <= AUC_CEIL)
     rhos = np.linspace(0.02, 1, 50)
     aucs = np.array([mean_auc(r, noise, clone, group) for r in rhos])
@@ -181,8 +183,115 @@ def fit(rho_cam):
     )
 
 
+def rho_from_auc(a, noise, clone, group):
+    rhos = np.linspace(0.0, 1, 51)
+    aucs = np.array([mean_auc(max(r, 1e-6), noise, clone, group) for r in rhos])
+    return float(np.interp(a, aucs, rhos))
+
+
+def calibrate_tissue(b5c_path):
+    """E18b: per-tissue rho from per-tissue AUC (point and CI ends), same ceiling noise."""
+    b5c = json.load(open(b5c_path))["per_tissue"]
+    noise = json.load(open(os.path.join(OUT, "calibration.json")))["noise"]
+    clone, group, tissue = b5_design()
+    out = {}
+    for t in ("BM", "FL"):
+        k = tissue == t
+        r = b5c[t]
+        out[t] = {
+            "auc": r["auc"],
+            "rho": rho_from_auc(r["auc"], noise, clone[k], group[k]),
+            "rho_ci": [rho_from_auc(a, noise, clone[k], group[k]) for a in r["ci"]],
+        }
+    json.dump(out, open(os.path.join(OUT, "calibration_tissue.json"), "w"), indent=1)
+    print(json.dumps(out, indent=1))
+
+
+def fit_b(g_fl=(8, 11), g_l=(1, 3), restarts=3, sims=5):
+    """E18b refit: d from the FL rho over g_FL, g_L in {1, 3}; restarts + common random numbers."""
+    cal = json.load(open(os.path.join(OUT, "calibration_tissue.json")))
+    cnt = load_counts(CONDS5)
+    fitset = split(cnt, None)
+    obs = within_stats(fitset)
+    conds = list(cnt)
+
+    def loss(x, rho_l):
+        tau = dict(zip(conds, x[2:], strict=True))
+        st = [
+            within_stats(
+                simulate(fitset, abs(x[0]), abs(x[1]), tau, rho_l, np.random.default_rng(s))
+            )
+            for s in range(sims)
+        ]
+        return sum(
+            (np.mean([q[c][j] for q in st]) - obs[c][j]) ** 2 * w
+            for c in conds
+            for j, w in ((0, 1), (1, 4), (2, 1))
+        )
+
+    rho_fl = cal["FL"]["rho"]
+    results = []
+    for g1 in g_fl:
+        d = 1 - max(rho_fl, 1e-6) ** (1 / g1)
+        for gl in g_l:
+            rho_l = (1 - d) ** gl
+            best = None
+            for rs in range(restarts):
+                rng = np.random.default_rng(rs)
+                x0 = [rng.uniform(1, 8), rng.uniform(0.1, 1.5)] + [
+                    float(np.log(obs[c][0] / (1 - obs[c][0]))) for c in conds
+                ]
+                res = minimize(
+                    loss,
+                    x0,
+                    args=(rho_l,),
+                    method="Nelder-Mead",
+                    options={"maxiter": 2000, "xatol": 1e-3, "fatol": 1e-6},
+                )
+                if best is None or res.fun < best.fun:
+                    best = res
+            beta, sigma_w = abs(best.x[0]), abs(best.x[1])
+            tau = dict(zip(conds, best.x[2:], strict=True))
+            cross, pooled_r = [], []
+            for s in range(20):
+                sim = simulate(cnt, beta, sigma_w, tau, rho_l, np.random.default_rng(100 + s))
+                cross.append(
+                    {
+                        f"{a}-{b}": test_stats(pooled(sim[a]), pooled(sim[b]), boot=1)["r"]
+                        for a, b in (("full", "G"), ("full", "M"), ("G", "M"))
+                    }
+                )
+                pooled_r.append(pooled_pairs_r(split(sim, 1), boot=1)["r"])
+            results.append(
+                {
+                    "g_fl": g1,
+                    "g_l": gl,
+                    "d": d,
+                    "rho_l": rho_l,
+                    "loss": float(best.fun),
+                    "beta": beta,
+                    "sigma_w": sigma_w,
+                    "tau": tau,
+                    "cross": {k: float(np.mean([c[k] for c in cross])) for k in cross[0]},
+                    "epo_scf_shard1": [
+                        float(np.mean(pooled_r)),
+                        float(np.percentile(pooled_r, 2.5)),
+                        float(np.percentile(pooled_r, 97.5)),
+                    ],
+                }
+            )
+            print(json.dumps(results[-1]), flush=True)
+    json.dump(
+        {"calibration": cal, "grid": results}, open(os.path.join(OUT, "fit_b.json"), "w"), indent=1
+    )
+
+
 if __name__ == "__main__":
     if sys.argv[1] == "calibrate":
         calibrate()
+    elif sys.argv[1] == "calibrate_tissue":
+        calibrate_tissue(sys.argv[2])
+    elif sys.argv[1] == "fit_b":
+        fit_b()
     else:
         fit(json.load(open(os.path.join(OUT, "calibration.json")))["rho_cam"])
