@@ -1491,3 +1491,48 @@ Same 182 Camellia HSCs and (mouse, clone) keys as B5c; GitHub Actions; Ensembl G
   expression). Both: mixed. Caveat stated now: the Static/Dynamic labels were derived by the
   EPI-Clone authors from these data (clone association / cell-state association), independent of
   our fate target.
+
+### B3e result (2026-11-02)
+
+LARRY mice of M.1-M.3, 304 clones (as B3). CpG counts: 110 Static, 200 Dynamic, 143 NA.
+
+| CpG set | CV r (95% clone bootstrap) | + composition |
+|---|---|---|
+| all 453 | 0.41 [0.30, 0.52] | 0.39 |
+| Static (110) | 0.24 [0.09, 0.36] | 0.25 |
+| Dynamic (200) | 0.39 [0.25, 0.52] | 0.40 |
+
+Static minus Dynamic: [-0.32, 0.01].
+
+- **Reading (pre-registered terms): mixed, leaning Dynamic.** Dynamic CpGs alone recover almost
+  the whole prediction (0.39 vs 0.41). The difference CI only just reaches zero, so this is not a
+  clean "Dynamic >> Static". Static CpGs predict fate above zero on their own (CI excludes 0), so
+  the heritable record carries some fate information, but less.
+- **Caveat (stated after the look, not tested):** Static has about half as many CpGs as Dynamic.
+  Some of the gap could be panel size. A size-matched check (110 random Dynamic CpGs, repeated)
+  is the obvious follow-up.
+- **Consequence for the model:** fate prediction in EPI-Clone mostly comes from cell-state
+  methylation of the multipotent cells. This fits the Camellia result (B6a: the clone record is
+  large-scale and not at lineage genes). The record and the fate state should be modelled as
+  separate variables, with only a weak coupling between them.
+
+## E18c: neutral record plus separate fate state (pre-registered 2026-11-02)
+
+- **Why.** B6a/B6d say the Camellia clone signal is a large-scale, neutral ancestry record. B3e
+  says fate prediction comes mostly from cell-state CpGs. E18 tied LARRY's sister fate sharing
+  (rho_L) to the Camellia record through a drift rate, so it assumed record = fate state. That
+  link is now unsupported.
+- **Model.** Two variables per clone. Record r: stable, heritable, does not affect fate.
+  Camellia fixes its sister correlation at rho_cam 0.21 with no drift (E18b rejected constant
+  drift). Fate state f: unmeasured; sisters share it with correlation rho_f. LARRY counts depend
+  only on f (same simulator as E18 with rho_L = rho_f). So Camellia no longer constrains the
+  LARRY fit. rho_f is profiled over {0.5, 0.6, 0.7, 0.8, 0.9, 0.95}. beta, sigma_w and tau_c are
+  fitted as in E18 (fit set only; 2 restarts, 3 simulations each, common random numbers).
+- **Readings fixed in advance.** (R1) The rho_f range whose cross statistics (full-G, full-M,
+  G-M) all fall inside the observed CIs. If it is narrow, LARRY alone pins the fate-state
+  sharing. If it is wide or empty, the model needs outside information on the fate state.
+  (R2) Compare with E18 (10, 1), the only cell that passed (rho_L 0.86). If the passing range
+  includes 0.86 without the Camellia link, then E18's fit never needed Camellia, and the record
+  calibration was decorative. (R3) The record-fate coupling stays a stated, unfitted quantity.
+  Its only measure is B3e Static r 0.24.
+- No held-out look (shard 1 stays unseen; power rule as E18).
