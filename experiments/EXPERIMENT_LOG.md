@@ -1201,3 +1201,10 @@ Observed pooled Epo/SCF r on shard 0 of 2: **0.44 [0.03, 0.78]**, 24 clones (agr
 - Shard 1 of 2 remains unseen (reserved; E16 / B2 did not pass their gates).
 - Lesson: the Epo/SCF test is too thin (~48 clones in total) to separate models. Future tests
   need a power check (the CI width a model difference would have to beat) before reserving them.
+
+### DARLIN Zenodo archive contents (2026-11-02)
+
+10.8 GB, 6968 files: Fig. 4 (skull 10x scRNA + DARLIN lineage, CA/TA/RA loci, one time point)
+and Fig. 5 (tissue-overlap tables) plus snakemake intermediates. **No Camellia-seq data**: the
+same-cell methylation + RNA + lineage test (B4) needs GEO GSE222246 / GSE222328 / GSE222479,
+fetched on GitHub Actions (NCBI blocks this machine). `geo_probe.py` learns the formats first.
