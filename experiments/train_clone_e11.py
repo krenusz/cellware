@@ -171,7 +171,7 @@ def main():
     p.add_argument("--trait", action="store_true", help="E12: heritable clone expansion trait")
     p.add_argument("--founder", action="store_true", help="E13: inherited founder fate propensity")
     p.add_argument("--fix_b", type=float, default=None, help="E13 scan: fixed founder strength")
-    p.add_argument("--w_cross", type=float, default=W_CROSS)
+    p.add_argument("--w_cross", type=float, default=2.0)
     args = p.parse_args()
     if args.test:
         test_look()
