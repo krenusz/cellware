@@ -974,3 +974,22 @@ too few day-2 cells. It is either absent from expression (e.g. epigenetic) or se
 No public dataset found that repeats LARRY's split-across-cytokines design with deeper clones.
 Caveat for all LARRY-based analyses (Xue 2026, Scherer 2025): barcode homoplasy / multiple
 integrations can merge distinct clones, which inflates "multi-lineage" clones.
+
+### Track B2 result (2026-11-02; fit set only, Epo/SCF shards unseen)
+
+Health: 11/20 healthy (5 runs: b did not move; 6: loss still falling, i.e. 150 generations
+not converged). Healthy runs:
+
+| variant (healthy) | within loss | b | G-M r (band 0.33-0.65) | M-CSF M-only (0.88) |
+|---|---|---|---|---|
+| inherit (4) | 0.49-0.68 | 0.51-0.90 | 0.29-0.33 (median 0.31) | 0.71-0.78 |
+| resample (7) | 0.31-0.73 | 0.79-1.41 | 0.24-0.33 (median 0.31) | 0.72-0.80 |
+
+- **P1 refuted:** median G-M 0.31 (E16 0.30); <= 2 runs per variant reach 0.33.
+- **P2 holds:** within loss <= 0.8 in all healthy runs.
+- **P3 refuted:** median M-only ~0.76 (< 0.80).
+- **No look.**
+- **Reading.** Replacing the latent clone value with the measured day-2 propensity changes
+  nothing: G-M stays ~0.3. Together with E16, the shape of the clone-value distribution is not
+  the limit. 9/20 runs failed health, mostly by not converging: future sweeps should use >= 250
+  generations or the health rule needs a noise-tolerant convergence test.
