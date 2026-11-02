@@ -1426,3 +1426,36 @@ Same 182 Camellia HSCs and (mouse, clone) keys as B5c; GitHub Actions; Ensembl G
   Meg vs nonMeg clones. Underpowered by design (expected < 15 clones): direction only, no claim.
 - **B6c, leave one mouse out.** B5 methylation and expression AUC with each mouse removed.
   **Prediction:** (2) methylation AUC above its null in every leave-one-out set.
+
+### Track B6 result (2026-11-02; two crashed runs before this, no statistics computed in them)
+
+182 cells, 82 (mouse, clone) clones.
+
+| feature set | regions | sister AUC [95% CI] | null 95th |
+|---|---|---|---|
+| lineage windows (40 genes, TSS +/- 50 kb) | 392 | 0.50 [0.47, 0.53] | 0.54 |
+| 50 random gene sets, same windows | ~400 each | median 0.52, 95th pct 0.54 | |
+| promoters (TSS +/- 2 kb) | 16,710 | 0.52 [0.47, 0.58] | 0.54 |
+| gene bodies | 18,743 | 0.53 [0.48, 0.57] | 0.56 |
+| genome-wide 100-kb bins (B5 reference) | 25,704 | **0.63** [0.56, 0.68] | 0.55 |
+
+- **B6a P1 refuted, and the opposite of the hoped-for result:** the clone signal is absent from
+  lineage-gene windows, promoters and gene bodies; it exists only in the genome-wide 100-kb bins.
+  It is a large-scale, mostly non-genic feature, not a local state at fate genes.
+- **B6c P2 holds:** leave-one-mouse-out methylation AUC 0.59-0.63, above its null in all five sets
+  (LL719 not separately listed: its cells sit in the others' sets). Expression stays at its null.
+- **B6b (direction only):** 11 clones (5 Meg-biased): methylation AUC 0.60, expression 0.70.
+  Opposite to the epigenetic-instruction expectation; uninterpretable at n = 11.
+- **New confound to rule out before any interpretation: plate.** Sisters are often on the same
+  plate (134 same-plate vs 117 cross-plate sister pairs); a plate-level, genome-wide methylation
+  batch effect would produce exactly a large-scale, non-genic "clone" signal that is equal in FL
+  and BM (E18b) and absent at genes. B5-B6 compared pairs within mouse|tissue, not within plate.
+
+## Track B6d: plate control (pre-registered 2026-11-02)
+
+- Same B5 pipeline (100-kb bins). Sister AUC computed (a) only over pairs on the same plate,
+  (b) only over pairs on different plates (sisters and non-sisters alike), each with a clone
+  permutation null within the same pair set and a clone bootstrap.
+- **Prediction (if the signal is clonal):** cross-plate AUC above its null and within 0.05 of the
+  same-plate AUC. **If cross-plate AUC is at its null, the B5-B6 methylation "clone" signal is a
+  plate batch effect and the epigenetic-clone-state reading from Camellia is withdrawn.**
