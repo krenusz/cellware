@@ -79,12 +79,19 @@ def by_chrom(regs):
     return {c: tuple(np.array(v) for v in t) for c, t in out.items()}
 
 
+def impute(x):
+    """Cell mean, then region mean, then 0 for cells with no coverage in the set."""
+    x = impute(x)
+    x = np.where(np.isnan(x), np.nanmean(x, 0, keepdims=True), x)
+    return np.nan_to_num(x)
+
+
 def feature_auc(x, clone, group, rng):
     ok = np.mean(~np.isnan(x), 0) >= 0.5
     x = x[:, ok]
     if x.shape[1] < 3:
         return {"regions": int(ok.sum()), "auc": None}
-    x = np.where(np.isnan(x), np.nanmean(x, 1, keepdims=True), x)
+    x = impute(x)
     r = score_one(pcs(x, min(20, x.shape[1] - 1)), clone, group, rng, boot=300, perms=100)
     return {"regions": int(ok.sum()), **r}
 
@@ -175,7 +182,7 @@ def main():
     b6b = {"clones": len(lab), "meg_clones": int(sum(lab.values()))}
     mfull = m[:, cols == "promoters"]
     mfull = mfull[:, np.mean(~np.isnan(mfull), 0) >= 0.5]
-    mfull = np.where(np.isnan(mfull), np.nanmean(mfull, 1, keepdims=True), mfull)
+    mfull = impute(mfull)
     for name, f in (("methylation", pcs(mfull, 10)), ("expression", pcs(e, 10))):
         cl = sorted(lab)
         x = np.stack([f[clone == c].mean(0) for c in cl])
@@ -192,7 +199,7 @@ def main():
     # B6c: leave one mouse out, 100-kb bins as in B5, and expression PCs
     mfull = m[:, cols == "bins100k"]
     mfull = mfull[:, np.mean(~np.isnan(mfull), 0) >= 0.5]
-    mfull = np.where(np.isnan(mfull), np.nanmean(mfull, 1, keepdims=True), mfull)
+    mfull = impute(mfull)
     b6c = {}
     for mo in sorted(set(mouse)):
         k = mouse != mo
