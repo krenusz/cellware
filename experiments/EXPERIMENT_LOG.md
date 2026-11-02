@@ -918,3 +918,24 @@ shards (test_oracle `--shards 2`), one per track that passes its gates.
 Model-knowledge shortlist (unverified, no web search yet): Kucinski 2024 LARRY in vivo,
 SPLINTR 2022 (AML), DARLIN 2023, Rodriguez-Fraticelli 2020, ReDeeM 2024. Verify accessions,
 clone counts and per-clone depth before any download.
+
+### Track B step 1 result (2026-11-02; in vitro fit data, descriptive)
+
+571 clones with day-2 cells (mean 1.5 per clone) and >= 3 later N+M cells (mean 11). 5-fold CV
+by clone:
+
+| state features | kNN CV r (R2) | ridge CV r (R2) |
+|---|---|---|
+| SPRING 2D | 0.61 (0.37) | 0.48 (0.23) |
+| top-50 PCs of expression (2000 most variable genes, log1p) | 0.51 (0.21) | **0.66 (0.43)** |
+
+- **Prediction holds:** PCs reach CV r 0.66 (>= 0.5). SPRING is lower with ridge, close with kNN.
+- **Ceiling:** sampling noise of the target allows R2 up to ~0.96, so ~55% of the across-clone
+  variance in later fate is *not* explained by the day-2 state of 1-2 sampled cells. Part of it
+  is that 1-2 cells are a noisy sample of the clone's state; part may be truly hidden
+  (epigenetic, as DARLIN reports methylation tracks clonal memory better than expression).
+- **Implication for the models.** The "clone bias" our simulators had to invent is largely
+  measurable: a day-2 expression readout carries ~40% of it. Step 2: give the learned rule a
+  measured state (e.g. the ridge-predicted N propensity of the founder's day-2 state, sampled
+  from the empirical distribution) instead of a latent u, and test whether that closes G-M
+  without breaking M-CSF.
