@@ -1658,3 +1658,33 @@ Same cells, pairs and features as B3g / B3 (EPI-Clone M.1-M.3 LARRY, multipotent
   signal beyond the record (i). At or below the benchmark = leakage alone is enough to explain
   it, (ii) not excluded. This is asymmetric: only "above" is informative. The original (a)/(b)
   numbers are reported as well, as descriptive.
+
+### B3h result (2026-11-02)
+
+Same 181 fate clones; 236k same-group pairs (14.6k sister pairs). 20 random Static half-splits.
+
+| | Dynamic test (55 CpGs \| Static half B) | Record-only benchmark (Static half A \| half B) |
+|---|---|---|
+| (a) sister AUC, 50-bin stratified | 0.59 (5-95%: 0.56-0.61) | 0.84 (0.82-0.87) |
+| (b) fate CV r, residualised | 0.16 (0.06-0.23) | 0.06 (-0.01-0.22) |
+
+Descriptive (original design, full panels): (a) Dynamic | Static deciles 0.61 [0.55, 0.63],
+permutation null 0.50; size-matched 0.59. (b) Dynamic | Static r 0.22 [0.06, 0.38];
+Static | Dynamic 0.01 [-0.15, 0.17]; both classes together 0.35 [0.21, 0.48].
+
+- **(a) Leakage is enough.** Dynamic-site sister sharing, net of the record, is far *below* the
+  record-only benchmark. By the amended rule, sharing beyond the record is not shown. The B3g
+  sister sharing at Dynamic sites can be explained by the clone record marking those sites.
+- **(b) Not clearly above the benchmark** (Dynamic median 0.16 < benchmark p95 0.22), so by the
+  pre-registered rule, fate information beyond the record is not shown either. Leaning that way:
+  the median is above the benchmark median, and descriptively the asymmetry is sharp (Dynamic
+  keeps 0.22 after removing Static; Static keeps 0.01 after removing Dynamic). Dynamic sites
+  hold everything the Static sites know about fate, plus possibly more. Not a test result.
+- **Reading.** No evidence for a sister-shared fate state separate from the record. The
+  simplest account consistent with B3e-B3h: one heritable record, readable at both site
+  classes, carrying the clone-shared part, plus possibly some fate information at cell-state
+  sites that sisters do not share. E18c still has no measured rho_f.
+- **Tension to keep open.** Camellia said the record looks neutral (not at lineage genes; no
+  Meg advantage, 11 clones). EPI-Clone says record-marked sites predict fate (B3, B3f). Different
+  panels (genome-wide bins vs a 453-CpG targeted panel chosen for clonal and state information),
+  different compartments and fate targets. Not resolved.

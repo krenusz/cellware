@@ -129,9 +129,12 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   CpGs (0.39 vs 0.24), but at matched panel size the gap disappears (Static at the 22nd
   percentile of size-matched Dynamic sets). Sisters share Static sites very strongly (AUC 0.93)
   and Dynamic sites clearly (0.66 size-matched), yet are no closer in pseudotime than random
-  same-type cells (0.49). **Reading:** the site classes do not cleanly separate record from
-  state, and fate information is spread across both. Whether Dynamic-site sharing is a real
-  shared fate state or the record leaking into those sites is open.
+  same-type cells (0.49). Against a record-only benchmark built from the data (one half of the
+  record sites conditioned on the other), cell-state-site sharing net of the record is far below
+  what the record alone produces (0.59 vs 0.84), so record leakage explains it (B3h). Fate
+  information beyond the record at cell-state sites is suggestive but does not clear its
+  benchmark. **Reading:** no evidence for a sister-shared fate state separate from the record.
+  The record itself is readable at both site classes and, in EPI-Clone, carries fate information.
 - **Models built on this (E18, E18b, E18c).** E18 tied LARRY sister fate sharing to the Camellia
   signal through a drift rate. One grid cell reproduced all three cross-condition statistics
   (G-M 0.42, the best in the programme), but only with fast drift and near-deterministic fate.
@@ -157,16 +160,16 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
    would be needed to settle it.
 4. The clone-level fate bias is partly visible in day-2 expression (~40%). In a second dataset
    it is more visible in DNA methylation than in expression, spread across record and
-   cell-state CpGs alike (B3e-B3f). Clones also carry a heritable, large-scale methylation record
-   (Camellia). That record looks neutral: it is not at lineage genes and does not beat
-   expression on Meg fate. The current picture is two things, a neutral ancestry record and a
-   separate fate state, weakly coupled. It is a working picture, not a settled result.
+   cell-state CpGs alike (B3e-B3f). Clones carry a heritable methylation record. In Camellia it
+   looks neutral (large-scale, not at lineage genes, no Meg advantage on 11 clones). In
+   EPI-Clone the record-marked sites predict fate, and there is no sign of a separate,
+   sister-shared fate state (B3h). The two datasets disagree on whether the record is
+   fate-relevant; that tension is the current open question, not a settled result.
 
 ## Open (deliberately not closed)
 
-- Is the sister sharing at EPI-Clone's cell-state sites a shared fate state, or the clone record
-  leaking into those sites? (Condition on record-site similarity; test whether it predicts
-  sister fate agreement.)
+- Is the heritable record fate-relevant (EPI-Clone) or neutral (Camellia)? Panels, compartments
+  and fate targets differ between the two datasets.
 - What sets the fate state, and when?
 - Division counts for Camellia and LARRY are not known from the data; any drift model depends
   on them.
