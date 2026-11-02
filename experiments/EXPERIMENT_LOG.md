@@ -844,3 +844,26 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   stays near E16, the earlier failure is weighting/optimisation. If G-M reaches ~0.5 only with a
   large within_loss rise, there is a real conflict for this model family. If G-M stays ~0.3 even
   with weight 0, the model family cannot produce the concordance at all. No test look.
+
+### E17 result (2026-11-02; diagnostic, no test look)
+
+Unweighted within-condition loss (E16 re-scored the same way: 0.34-0.61):
+
+| within weight | within loss | G-M r | M-CSF M-only |
+|---|---|---|---|
+| 1 (E16, 10 runs) | 0.34-0.61 | 0.23-0.34 | 0.70-0.79 |
+| 0.25 (6 runs) | 0.66-0.94 | 0.27-0.38 | 0.61-0.71 |
+| 0, cross only (4 of 6; 2 degenerated, no valid clones) | 2.38-2.99 | 0.33-0.46 | 0.28-0.64 |
+
+- **Even optimising only the cross terms, G-M tops out at 0.46** (mean of 5 simulations per run),
+  with the within-condition fit 4-9x worse than E16 and M-CSF broken.
+- **Reading.** Both: (a) a real conflict, since every step towards higher G-M costs
+  within-condition fit; and (b) a hard limit, since this model family barely exceeds ~0.45 even
+  unconstrained, which matches the E12 sampling ceiling (0.36-0.47 at 4-5 cells per clone). The
+  observed 0.51 [0.33, 0.65] sits at or above that ceiling with a wide CI. The likeliest account:
+  the observed value is partly a high draw of a thin statistic (55 clones), and the true
+  concordance is near the ceiling, i.e. clone fate is essentially fixed before day 2. Additional
+  mechanisms in this family will not resolve it; better data (deeper sampling per clone) would.
+- **Status of the modelling line.** E11-E17 close the cytokine question for this dataset: best
+  models fit within-condition data well (loss 0.34-0.61) and predict G-M 0.23-0.34, at or just
+  below the lower CI bound. The Epo/SCF test remains unseen.

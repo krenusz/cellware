@@ -1,0 +1,897 @@
+{
+ "within_loss": NaN,
+ "config": {
+  "seed": 0,
+  "memory": "resample",
+  "generations": 150,
+  "pairs": 8,
+  "sigma": 0.05,
+  "lr": 0.03,
+  "threads": 4,
+  "test": false,
+  "trait": false,
+  "founder": false,
+  "fix_b": null,
+  "rank": true,
+  "tau_obs": true,
+  "w_cross": 2.0,
+  "w_within": 0.0
+ },
+ "landscape": {
+  "k": 0.6648191228856831,
+  "sigma": 0.05136455452891499,
+  "f": 0.6
+ },
+ "obs_cross": {
+  "full-G": 0.6893986987473877,
+  "full-M": 0.23743596016857504,
+  "G-M": 0.5056995021311762
+ },
+ "history": [
+  {
+   "generation": 0,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 1,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 2,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 3,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 4,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 5,
+   "loss": 1.574756774942968,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 6,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 7,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 8,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 9,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 10,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 11,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 12,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 13,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 14,
+   "loss": 1.574756774942968,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 15,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 16,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 17,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 18,
+   "loss": 1.574756774942968,
+   "pop_loss": 1.5747567415237427
+  },
+  {
+   "generation": 19,
+   "loss": 1.574756774942968,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 20,
+   "loss": 1.574756774942968,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 21,
+   "loss": 1.574756774942968,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 22,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 23,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 24,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 25,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 26,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 27,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 28,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 29,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 30,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 31,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 32,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 33,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 34,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 35,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 36,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 37,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 38,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 39,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 40,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 41,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 42,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 43,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 44,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 45,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 46,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 47,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 48,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 49,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 50,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 51,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 52,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 53,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 54,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 55,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 56,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 57,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 58,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 59,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 60,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 61,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 62,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 63,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 64,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 65,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 66,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 67,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 68,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 69,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 70,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 71,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 72,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 73,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 74,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 75,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 76,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 77,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 78,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 79,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 80,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 81,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 82,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 83,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 84,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 85,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 86,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 87,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 88,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 89,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 90,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 91,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 92,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 93,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 94,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 95,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 96,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 97,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 98,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 99,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 100,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 101,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 102,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 103,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 104,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 105,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 106,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 107,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 108,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 109,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 110,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 111,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 112,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 113,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 114,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 115,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 116,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 117,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 118,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 119,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 120,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 121,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 122,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 123,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 124,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 125,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 126,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 127,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 128,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 129,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 130,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 131,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 132,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 133,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 134,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 135,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 136,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 137,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 138,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 139,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 140,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 141,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 142,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 143,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 144,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 145,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 146,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 147,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 148,
+   "loss": NaN,
+   "pop_loss": NaN
+  },
+  {
+   "generation": 149,
+   "loss": NaN,
+   "pop_loss": NaN
+  }
+ ],
+ "final_loss": NaN,
+ "fit_sim": {
+  "full": {
+   "clones": 766,
+   "n_only": 0.0,
+   "m_only": 0.0,
+   "mixed_nm": 0.0,
+   "has_o": 1.0,
+   "o_share": 1.0,
+   "nfrac_hist": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mean_size": 5.929503916449086,
+   "r_d4_d6": 0.0
+  },
+  "G": {
+   "clones": 812,
+   "n_only": 0.0,
+   "m_only": 0.0,
+   "mixed_nm": 0.0,
+   "has_o": 1.0,
+   "o_share": 1.0,
+   "nfrac_hist": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mean_size": 7.225369458128079,
+   "r_d4_d6": 0.0
+  },
+  "M": {
+   "clones": 758,
+   "n_only": 0.0,
+   "m_only": 0.0,
+   "mixed_nm": 0.0,
+   "has_o": 1.0,
+   "o_share": 1.0,
+   "nfrac_hist": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mean_size": 7.029023746701847,
+   "r_d4_d6": 0.0
+  },
+  "Epo": {
+   "clones": 797,
+   "n_only": 0.0,
+   "m_only": 0.0,
+   "mixed_nm": 0.0,
+   "has_o": 1.0,
+   "o_share": 1.0,
+   "nfrac_hist": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mean_size": 7.554579673776662,
+   "r_d4_d6": 0.0
+  },
+  "SCF": {
+   "clones": 830,
+   "n_only": 0.0,
+   "m_only": 0.0,
+   "mixed_nm": 0.0,
+   "has_o": 1.0,
+   "o_share": 1.0,
+   "nfrac_hist": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "mean_size": 7.132530120481928,
+   "r_d4_d6": 0.0
+  }
+ },
+ "pred": {
+  "full-G": {
+   "r_mean": 0.0
+  },
+  "full-M": {
+   "r_mean": 0.0
+  },
+  "G-M": {
+   "r_mean": 0.0
+  },
+  "pooled_epo_scf": {
+   "r_mean": 0.0,
+   "r_range": [
+    0.0,
+    0.0
+   ]
+  },
+  "rank_scale": 0.9009152054786682,
+  "rank_tau": [
+   0.9476146101951599,
+   1.0585124492645264,
+   -0.22723983228206635,
+   3.4131157398223877,
+   -0.29562562704086304,
+   0.28318917751312256
+  ]
+ }
+}
