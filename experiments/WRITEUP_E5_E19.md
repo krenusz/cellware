@@ -1,4 +1,4 @@
-# Cellware E5-E18 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
+# Cellware E5-E19 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
 
 Write-up of experiments E5-E19 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
 [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md); held-out test looks are recorded in
