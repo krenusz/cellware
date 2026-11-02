@@ -48,11 +48,15 @@ CONDS = tuple(CONDS5.values())  # full, G, M, Epo, SCF
 TRAIN_PAIRS = ("full-G", "full-M", "G-M")
 W_CROSS = 2.0  # weight of the cross-condition terms in the loss
 FIX_B = None  # E13 scan: fixed founder strength (--fix_b)
+RANK_G = 2.0  # E15: weight of the drift side in the N/M assignment logit
 
 
 class Policy(torch.nn.Module):
-    def __init__(self, obs_dim=12, hidden=32, trait=False, founder=False):
+    def __init__(self, obs_dim=12, hidden=32, trait=False, founder=False, rank=False):
         super().__init__()
+        # E15: clone rank in the N/M assignment at commitment, cytokine sets the level (learned)
+        self.rank_scale = torch.nn.Parameter(torch.tensor(1.0)) if rank else None
+        self.rank_tau = torch.nn.Parameter(torch.zeros(len(CONDS) + 1)) if rank else None
         # E13: strength of an exactly inherited founder N/M propensity in the fate drift (learned)
         self.founder_scale = torch.nn.Parameter(torch.tensor(1.0)) if founder else None
         # E12: strength of a heritable clone trait that tilts N vs M expansion (learned)
@@ -104,8 +108,16 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
             x = torch.where(free, x + k * (x - x**3 + push) * dt + sigma * dt**0.5 * noise, x)
             fate = torch.where(free & (act == COMMIT_O), 3, fate)
             free = fate == 0
-            fate = torch.where(free & (x > THRESH), 1, fate)
-            fate = torch.where(free & (x < -THRESH), 2, fate)
+            if net.rank_scale is None:
+                fate = torch.where(free & (x > THRESH), 1, fate)
+                fate = torch.where(free & (x < -THRESH), 2, fate)
+            else:  # crossing either threshold commits; N vs M from clone rank and cytokine level
+                tau = net.rank_tau.detach()[cond + 1]  # index 0: before the day-2 split
+                logit = RANK_G * torch.sign(x) + net.rank_scale.detach() * founder - tau
+                is_n = torch.rand(x.shape, generator=g) < torch.sigmoid(logit)
+                cross = free & (x.abs() > THRESH)
+                fate = torch.where(cross, torch.where(is_n, 1, 2), fate)
+                x = torch.where(cross, torch.where(is_n, THRESH + 0.01, -THRESH - 0.01), x)
             age = age + 1
         if day in (4, 6):
             pick = (fate > 0) & (torch.rand(fate.shape, generator=g) < f)
@@ -171,6 +183,7 @@ def main():
     p.add_argument("--trait", action="store_true", help="E12: heritable clone expansion trait")
     p.add_argument("--founder", action="store_true", help="E13: inherited founder fate propensity")
     p.add_argument("--fix_b", type=float, default=None, help="E13 scan: fixed founder strength")
+    p.add_argument("--rank", action="store_true", help="E15: clone rank in N/M assignment")
     p.add_argument("--w_cross", type=float, default=2.0)
     args = p.parse_args()
     if args.test:
@@ -187,7 +200,7 @@ def main():
     v6 = json.load(open(os.path.join(HERE, "results_larry", "fit_v6_resample.json")))["params"]
     landscape = {n: v6[n] for n in ("k", "sigma", "f")}
 
-    net = Policy(trait=args.trait, founder=args.founder and FIX_B is None)
+    net = Policy(trait=args.trait, founder=args.founder and FIX_B is None, rank=args.rank)
     theta = torch.nn.utils.parameters_to_vector(net.parameters()).detach().requires_grad_()
     opt = torch.optim.Adam([theta], lr=args.lr)
     rng = np.random.default_rng(args.seed)
@@ -222,13 +235,16 @@ def main():
     pred["pooled_epo_scf"] = {"r_mean": float(np.mean(pooled_r)),
                               "r_range": [min(pooled_r), max(pooled_r)]}
     os.makedirs(OUT, exist_ok=True)
-    tag = 'e13' if args.founder else 'e12' if args.trait else 'e11'
+    tag = 'e15' if args.rank else 'e13' if args.founder else 'e12' if args.trait else 'e11'
     if FIX_B is not None:
         tag = f"e13scan_b{FIX_B:g}_w{W_CROSS:g}"
     name = f"{tag}_{args.memory}_seed{args.seed}"
     torch.save(net.state_dict(), os.path.join(OUT, name + ".pt"))
     if args.trait:
         pred["trait_scale"] = float(net.trait_scale)
+    if net.rank_scale is not None:
+        pred["rank_scale"] = float(net.rank_scale)
+        pred["rank_tau"] = net.rank_tau.tolist()
     if net.founder_scale is not None:
         pred["founder_scale"] = float(net.founder_scale)
     result = {"config": vars(args), "landscape": landscape, "obs_cross": obs_cross,

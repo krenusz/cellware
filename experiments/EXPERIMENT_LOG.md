@@ -764,3 +764,19 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   within condition while the clone's rank survives across conditions. That points to the bias
   acting on *which* lineage a clone expands relative to its sisters (threshold / rank), with
   the cytokine setting the absolute level, rather than an additive drift that competes with it.
+
+## E15: clone rank in the N/M assignment, cytokine sets the level (pre-registered 2026-11-02)
+
+- **Motivation.** E14: an additive founder bias in the drift buys G-M concordance but competes
+  with the cytokine push (capped at PUSH = 0.6), breaking M-CSF (M-only ~0.7 vs 0.88).
+- **Model.** E11 (`train_clone_e11.py --rank`). An undecided cell commits when |x| crosses the
+  threshold (either side); N vs M is then drawn with p_N = sigmoid(2 sign(x) + b u - tau_c), with
+  u ~ N(0,1) fixed and shared exactly by the clone, b (init 1) and a per-condition level tau_c
+  (6 values incl. pre-split, init 0, unbounded) learned with the policy. The cytokine can set the
+  level as far as the data need; the clone sets the rank. No additive drift bias.
+- **Runs.** 5 seeds x {inherit, resample}, 150 generations, W_CROSS = 2, GitHub Actions.
+- **Predictions (fit set).** (1) G-M r in 0.33-0.65 in >= 3 of 5 per variant. (2) Loss <= 1.3 in
+  >= 4 of 5. (3) M-CSF M-only within 0.10 of 0.88 in >= 4 of 5. (4) Learned b > 1.0 in >= 4 of 5.
+- **Held-out test.** If (1)-(3) pass for a variant: one whole-test look at pooled Epo/SCF via
+  test_oracle.py --exp E15. Prediction = range of that variant's passing runs; success if the
+  observed r lies within it +/- 0.10. If both pass, both ranges are recorded before the look.
