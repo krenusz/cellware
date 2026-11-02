@@ -58,19 +58,20 @@ def meth_bins(raw):
     return {k: met[k] / tot[k] for k in tot}
 
 
-def rna_table(raw):
+def rna_table(raw, barcodes):
+    """Plate UMI table -> (cell barcodes, genes, genes x cells); handles either orientation."""
     lines = gzip.GzipFile(fileobj=io.BytesIO(raw)).read().decode().splitlines()
-    head = lines[0].split("\t")
-    genes, rows = [], []
+    head = lines[0].split("	")
+    names, rows = [], []
     for line in lines[1:]:
-        f = line.split("\t")
-        genes.append(f[0])
+        f = line.split("	")
+        names.append(f[0])
         rows.append([float(v) for v in f[1:]])
-    return (
-        head[1:] if len(head) == len(rows[0]) + 1 else head,
-        genes,
-        np.array(rows),
-    )  # genes x cells
+    cols = head[1:] if len(head) == len(rows[0]) + 1 else head
+    mat = np.array(rows)
+    if len(set(cols) & barcodes) >= len(set(names) & barcodes):
+        return cols, names, mat  # genes x cells
+    return names, cols, mat.T  # cells x genes -> genes x cells
 
 
 def pcs(x, k=20):
@@ -121,7 +122,8 @@ def main():
     for r in keep:
         plate = r["id_rna"].rsplit("_RNA_", 1)[0]
         if plate not in plates and by_rna.get(plate):
-            plates[plate] = rna_table(get(by_rna[plate][0]))
+            wanted = {c["id_rna"].rsplit("_RNA_", 1)[1] for c in keep}
+            plates[plate] = rna_table(get(by_rna[plate][0]), wanted)
     rows, mfeat, efeat = [], [], []
     bins = sorted({k for m in meth for k in m})
     cover = np.array([[m.get(b, np.nan) for b in bins] for m in meth])
@@ -142,6 +144,20 @@ def main():
         rows.append(r)
         mfeat.append(mrow)
         efeat.append(mat[:, cols.index(bc)])
+    diag = {
+        "cells_with_clone": len(cells),
+        "meth_fetched": len(keep),
+        "plates": len(plates),
+        "matched": len(rows),
+        "example_cols": {p: v[0][:5] for p, v in plates.items()},
+    }
+    if len(rows) < 20:  # mapping failed: report what was seen and stop
+        os.makedirs(os.path.join(HERE, "results_track_b"), exist_ok=True)
+        json.dump(
+            diag, open(os.path.join(HERE, "results_track_b", "b5_camellia.json"), "w"), indent=1
+        )
+        print(json.dumps(diag, indent=1))
+        return
     m = np.array(mfeat)
     m = np.where(np.isnan(m), np.nanmean(m, 1, keepdims=True), m)
     e = np.array(efeat)
@@ -151,7 +167,7 @@ def main():
     group = np.array([r["mouse"] + "|" + r["tissue"] for r in rows])
     feats = {"methylation": pcs(m), "expression": pcs(e)}
     rng = np.random.default_rng(0)
-    out = {"cells": len(rows), "clones": int(len(set(clone))), "bins": int(ok_bins.sum())}
+    out = {**diag, "cells": len(rows), "clones": int(len(set(clone))), "bins": int(ok_bins.sum())}
     scores = {}
     for name, f in feats.items():
         s, sis, i, j = pair_scores(f, clone, group)
