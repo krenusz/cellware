@@ -1262,3 +1262,20 @@ its own guard at 24 matched cells, no statistic computed; fixed gene alignment a
   pointing to a heritable, epigenetically held clone state. Caveats: 27 clones; the
   within-clone signal is modest (AUC 0.63); a methylation difference between clones could also
   reflect shared clone age / proliferation history rather than a fate-instructive state.
+
+## Track B5b: confound control and measurement ceiling (pre-registered 2026-11-02)
+
+- **Control.** Before the methylation PCs, regress out of every bin (across cells) the cell's
+  global CpG methylation rate, log CpG coverage and an expression proliferation score (mean
+  log-expression of Mki67, Top2a, Ccnb1, Cdk1, Mcm2, Pcna, present genes only). Recompute AUC,
+  CI and null as in B5.
+- **Ceiling.** Keep each cell's coverage (reads per bin) and replace its methylation with a
+  binomial draw from its clone's pooled bin rate (sisters identical up to sampling). Same
+  pipeline; median AUC over 20 draws = what perfectly identical sisters would score at this
+  depth. Report observed AUC as a fraction of the way from 0.5 to the ceiling.
+- **Predictions.** (1) Controlled methylation AUC stays above its null 95th percentile.
+  (2) Controlled AUC >= 0.58 (keeps >= 60% of the observed excess over 0.5). (3) Ceiling AUC
+  well above observed (>= 0.75): sisters' true methylation is less than identical but the
+  observed 0.63 understates the shared state because of sparse coverage.
+- **Decision rule for the simulator.** Build it only if (1) holds; calibrate its clone-state
+  drift to the ceiling-adjusted fraction.
