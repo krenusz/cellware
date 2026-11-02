@@ -1459,3 +1459,21 @@ Same 182 Camellia HSCs and (mouse, clone) keys as B5c; GitHub Actions; Ensembl G
 - **Prediction (if the signal is clonal):** cross-plate AUC above its null and within 0.05 of the
   same-plate AUC. **If cross-plate AUC is at its null, the B5-B6 methylation "clone" signal is a
   plate batch effect and the epigenetic-clone-state reading from Camellia is withdrawn.**
+
+### Track B6d result: plate control (2026-11-02)
+
+| readout | same-plate pairs: AUC [CI] (null 95th) | cross-plate pairs: AUC [CI] (null 95th) |
+|---|---|---|
+| methylation, 100-kb bins | 0.62 [0.55, 0.69] (0.56), 111 sister pairs | **0.63 [0.56, 0.69] (0.58)**, 104 sister pairs |
+| expression | 0.52 (0.54) | 0.49 (0.51) |
+
+- **Prediction holds:** the cross-plate AUC is above its null and equal to the same-plate AUC.
+  The methylation clone signal is **not a plate batch effect**; the B5 / B5b / E18b readings stand.
+- **Revised reading (B6a + B6d).** Clone identity is carried by large-scale, non-genic methylation
+  (100-kb bins), absent at promoters, gene bodies and lineage genes, equal in FL and BM, and
+  readable across plates. This looks like a heritable, largely neutral epigenetic *record* of
+  ancestry (the same kind of signal EPI-Clone uses as a lineage barcode), not a fate-instructive
+  state at fate genes. So Camellia shows that a clone-level heritable state exists and is
+  invisible in expression; it does not show that this state steers fate. The fate link still
+  rests only on EPI-Clone (methylation of multipotent cells predicts myeloid / erythroid bias,
+  0.41 vs 0.25), where the predictive regions were not localised.

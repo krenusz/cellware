@@ -1,0 +1,192 @@
+{
+ "cells_with_clone": 209,
+ "meth_fetched": 182,
+ "plates": 10,
+ "matched": 182,
+ "common_genes": 9103,
+ "example_cols": {
+  "LL901_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL901_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E6P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL744EP1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ]
+ },
+ "cells": 182,
+ "clones": 82,
+ "bins": 25740,
+ "methylation": {
+  "auc": 0.6259224663866219,
+  "sister_pairs": 215,
+  "null_95": 0.5595265571040454,
+  "null_mean": 0.5150290951209227,
+  "ci": [
+   0.5644579980657068,
+   0.6804220361937229
+  ]
+ },
+ "expression": {
+  "auc": 0.5104643156428308,
+  "sister_pairs": 215,
+  "null_95": 0.511425826390038,
+  "null_mean": 0.4785593693121467,
+  "ci": [
+   0.4607887726125751,
+   0.5881902738758275
+  ]
+ },
+ "difference_ci": [
+  0.017441103179972172,
+  0.19489049517360232
+ ],
+ "b5b": {
+  "proliferation_genes": [
+   "Mki67",
+   "Top2a",
+   "Cdk1",
+   "Mcm2",
+   "Pcna"
+  ],
+  "controlled": {
+   "auc": 0.6230988892506578,
+   "null_95": 0.5465477632892272,
+   "ci": [
+    0.5545253259396808,
+    0.6858688340507666
+   ]
+  },
+  "ceiling_auc": 0.9556452861207039,
+  "ceiling_range": [
+   0.9494382202390166,
+   0.9625270214730639
+  ]
+ },
+ "per_tissue": {
+  "BM": {
+   "auc": 0.6221679012345679,
+   "null_95": 0.5460253497942387,
+   "ci": [
+    0.5434361291100008,
+    0.7234489613372257
+   ],
+   "cells": 115,
+   "clones": 44
+  },
+  "FL": {
+   "auc": 0.6072515212981744,
+   "null_95": 0.5806378585917125,
+   "ci": [
+    0.5360456780167787,
+    0.6911065279770445
+   ],
+   "cells": 58,
+   "clones": 34
+  }
+ },
+ "b6d": {
+  "methylation": {
+   "same_plate": {
+    "auc": 0.6230169878818528,
+    "sister_pairs": 111,
+    "null_95": 0.5579189824191739,
+    "ci": [
+     0.5503582083420603,
+     0.6948361830125189
+    ]
+   },
+   "cross_plate": {
+    "auc": 0.6295606879762243,
+    "sister_pairs": 104,
+    "null_95": 0.5788130727276012,
+    "ci": [
+     0.5553306942831333,
+     0.6872785769261605
+    ]
+   }
+  },
+  "expression": {
+   "same_plate": {
+    "auc": 0.5246577138469031,
+    "sister_pairs": 111,
+    "null_95": 0.5385608063853985,
+    "ci": [
+     0.47630735374379446,
+     0.5965864800467953
+    ]
+   },
+   "cross_plate": {
+    "auc": 0.49042413607765023,
+    "sister_pairs": 104,
+    "null_95": 0.512126647231485,
+    "ci": [
+     0.43413880254173837,
+     0.5870995214728367
+    ]
+   }
+  }
+ }
+}
