@@ -81,7 +81,7 @@ def by_chrom(regs):
 
 def impute(x):
     """Cell mean, then region mean, then 0 for cells with no coverage in the set."""
-    x = impute(x)
+    x = np.where(np.isnan(x), np.nanmean(x, 1, keepdims=True), x)
     x = np.where(np.isnan(x), np.nanmean(x, 0, keepdims=True), x)
     return np.nan_to_num(x)
 
