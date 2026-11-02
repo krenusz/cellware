@@ -214,7 +214,7 @@ def main():
         np.array(mfeat), np.array(rreads), np.array(efeat), genes, rows, clone, group, rng
     )
     os.makedirs(os.path.join(HERE, "results_track_b"), exist_ok=True)
-    json.dump(out, open(os.path.join(HERE, "results_track_b", "b5_camellia.json"), "w"), indent=1)
+    json.dump(out, open(os.path.join(HERE, "results_track_b", "b5b_camellia.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
 
 
