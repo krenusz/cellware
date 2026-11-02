@@ -1322,3 +1322,33 @@ its own guard at 24 matched cells, no statistic computed; fixed gene alignment a
   of 2 inside the grid's predicted range +/- 0.10. Power check before the look: if the shard's
   expected CI half-width exceeds the spread between the grid's extreme predictions, the look is
   skipped as uninformative (lesson from E14).
+
+### E18 result (2026-11-02)
+
+Calibration: rho_cam = 0.21 (toy noise 1.0 reproduces the 0.95 ceiling; 209 cells passing both
+QCs, vs 182 analysed in B5 - small design mismatch, noted). Fit by Nelder-Mead on the fit set
+(Epo/SCF shard-1 clones excluded); held-out clones' N+M depth (not outcomes) used to simulate.
+
+| g_cam | g_L | rho_L | fit loss | beta | sigma_w | full-G (obs 0.69 [0.40, 0.92]) | full-M (0.24 [-0.11, 0.55]) | G-M (0.51 [0.33, 0.65]) | pred. Epo/SCF shard 1 (mean, 95%) |
+|---|---|---|---|---|---|---|---|---|---|
+| 10 | 1 | 0.86 | 0.11 | 6.9 | 0.13 | 0.70 | 0.47 | **0.42** | 0.52 [0.31, 0.69] |
+| 10 | 3 | 0.63 | 0.14 | 4.7 | 0.37 | 0.48 | 0.24 | 0.27 | 0.32 [0.05, 0.53] |
+| 20 | 1 | 0.93 | 0.67* | 1.7 | 0.95 | 0.47 | 0.43 | 0.40 | 0.33 [0.06, 0.60] |
+| 20 | 3 | 0.79 | 0.08 | 7.1 | 0.51 | 0.61 | 0.30 | 0.24 | 0.45 [0.19, 0.67] |
+| 40 | 1 | 0.96 | 0.71* | 1.6 | 1.04 | 0.46 | 0.40 | 0.38 | 0.29 [-0.02, 0.59] |
+| 40 | 3 | 0.89 | 0.47* | 1.9 | 0.12 | 0.51 | 0.42 | 0.34 | 0.33 [0.08, 0.56] |
+
+\* poorly converged (noisy objective; Nelder-Mead stuck) - not interpreted.
+
+- **P1 (consistency, spent data) holds:** cell (10, 1) puts all three cross statistics inside the
+  observed CIs, including G-M 0.42, the highest G-M of any well-fitting model in this programme
+  (E11-E17 well-fitting runs: 0.23-0.34). It needs strong, nearly deterministic clone bias
+  (beta 6.9, tiny per-cell noise) and highly shared sister state (rho_L 0.86).
+- **P2: look skipped (pre-registered power rule).** Shard 1 has ~24 clones; shard 0's CI half-width
+  was ~0.37, larger than the spread of the grid's predicted means (0.29-0.52). The look could
+  not discriminate; shard 1 stays unseen.
+- **Reading.** A Camellia-calibrated, drifting heritable state reproduces the LARRY cross-
+  condition concordance when drift is fast in HSC time but sisters in culture share most of their
+  state, with fate set almost deterministically by that state. The division-count assumptions
+  dominate the prediction; constraining them (division counts / clone ages) is now the limiting
+  input, not the model.
