@@ -1063,3 +1063,20 @@ Defaults raised: `--generations 250`, `--clones 4000` (C showed lower loss at 40
   M.1-M.3 HSC methylation 173 MB (10.6084/m9.figshare.24204750); M.4 LARRY mature myeloid 10 MB
   (25472467); scRNA-seq of barcoded progenitors 866 MB (24260743); count matrices GSE282971;
   code github.com/veltenlab/EPI-clone.
+
+## Converged reruns R: E14, E16, B2 at 250 generations / 4000 clones (pre-registered 2026-11-02)
+
+- **Why these.** Failures that could be training artefacts: E14 (fit broke; ES may not have
+  finished), E16 and B2 (most runs still improving at 150). Not rerun: E11-E13, E15 (superseded
+  by E14/E16), track A (its target is sampling noise), E17 (diagnostic), C (E16 cells are covered).
+- **Grid.** {E14 fixed b 0.35 W 5, E16, B2} x {inherit, resample} x 10 seeds, fit set unchanged
+  (incl. the day-4/6 term, so only training length and simulation size change).
+  `sweeps/reruns_250.txt`, outputs r_e14_*, r_e16_*, r_b2_*.
+- **Predictions.** (1) >= 70% of runs healthy under the noise-tolerant rule. (2) Within loss
+  falls vs the 150-generation runs (median, per model). (3) The G-M limit holds: median G-M of
+  healthy E16 and B2 runs < 0.40. (4) E14's M-CSF M-only median rises to >= 0.80 if its failure
+  was undertraining.
+- **Gates.** Unchanged from the original pre-registrations (E14, E16, B2). A model passing its
+  own gates gets its Epo/SCF shard (E16/B2: shard 1 of 2; E14: shard 0 of 2), one look.
+- **Also from now on:** `--no_d4d6` available; the next new fit set drops the M-CSF day-4/6 term
+  (sampling-dominated). Not used in these reruns.

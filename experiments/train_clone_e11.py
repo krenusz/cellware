@@ -51,6 +51,7 @@ DAY_OBS = False  # track A: the policy also sees the day (commitment can change 
 N_CLONES = 1500
 MEASURED = None  # track B2: empirical day-2-expression N propensities (logit), per clone
 CUR_DAY = [0]
+USE_D4D6 = True  # False drops the M-CSF day-4/6 term (sampling-dominated, see log)
 W_WITHIN = 1.0  # E17: weight of the within-condition terms (0 = fit cross terms only)
 FIX_B = None  # E13 scan: fixed founder strength (--fix_b)
 RANK_G = 2.0  # E15: weight of the drift side in the N/M assignment logit
@@ -181,7 +182,7 @@ def fitness_loss(net, landscape, memory, obs, obs_cross, seed):
         if sim[c]["clones"] < 20:
             return 10.0
         within += distance(sim[c], obs[c])
-        if c in TIME_CONDS:
+        if c in TIME_CONDS and USE_D4D6:
             within += (sim[c]["r_d4_d6"] - obs[c]["r_d4_d6"]) ** 2
     total = W_WITHIN * within
     cross = cross_stats({c: cnt[c] for c in ("full", "G", "M")}, boot=1)
@@ -215,6 +216,7 @@ def main():
     p.add_argument("--clones", type=int, default=4000)
     p.add_argument("--measured", action="store_true", help="B2: measured founder propensity")
     p.add_argument("--name", default=None, help="output name (overrides the tag)")
+    p.add_argument("--no_d4d6", action="store_true", help="drop the M-CSF day-4/6 term")
     p.add_argument("--w_within", type=float, default=1.0, help="E17 conflict test")
     args = p.parse_args()
     if args.test:
@@ -223,6 +225,8 @@ def main():
     global FIX_B, W_CROSS, W_WITHIN, DAY_OBS, N_CLONES
     FIX_B, W_CROSS, W_WITHIN = args.fix_b, args.w_cross, args.w_within
     DAY_OBS, N_CLONES = args.day_obs, args.clones
+    global USE_D4D6
+    USE_D4D6 = not args.no_d4d6
     global MEASURED
     if args.measured:
         prop = np.load(os.path.join(HERE, "results_track_b", "propensity.npy"))
