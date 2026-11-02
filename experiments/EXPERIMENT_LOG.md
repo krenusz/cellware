@@ -1298,3 +1298,27 @@ its own guard at 24 matched cells, no statistic computed; fixed gene alignment a
 - **Decision (pre-registered rule): build the simulator.** Calibration target: a heritable clone
   state of which ~30% (lower bound) of the cell-to-cell methylation variance at the measured
   scale is clone-shared after several divisions, i.e. substantial drift per division.
+
+## E18: drifting heritable clone-state model (pre-registered 2026-11-02)
+
+- **Model.** Each clone has a founder state z ~ N(0,1). The state is inherited with drift: after
+  g divisions two lineages' states correlate rho = (1 - d)^g. In LARRY, each day-2 sister branch
+  b has z_b = sqrt(rho_L) z + sqrt(1 - rho_L) e_b; each mature cell is N with probability
+  sigmoid(beta z_b + tau_c + sigma_w w), w ~ N(0,1) per cell; tau_c per condition. Simulated on
+  the observed clones with their observed N+M counts per condition and day, so sampling depth
+  is exact, and scored with the same statistics as the data.
+- **Calibration of rho_L (not fitted to LARRY).** (a) Camellia: find rho_cam such that a toy with
+  the B5 design (27 clones, observed clone sizes and mouse|tissue groups, 20-dim state, clone-
+  shared variance fraction rho, measurement noise set so rho = 1 gives the 0.95 ceiling) gives
+  AUC 0.63. (b) d from rho_cam = (1 - d)^g_cam with g_cam in {10, 20, 40} divisions separating
+  Camellia sisters (E-stage barcoding to adult HSC). (c) rho_L = (1 - d)^g_L with g_L in {1, 3}
+  (LARRY sisters' common ancestor around day 1-2, fate state set by ~day 2-3). Predictions are
+  reported over this 3 x 2 grid.
+- **Fit (fit set only).** beta, sigma_w and tau_c (5 conditions) by least squares to the
+  within-condition statistics (clone N-share mean and across-clone variance, mixed-clone
+  fraction, per condition), cytokine data, fit-set clones (all clones outside Epo/SCF shard 1).
+- **Predictions.** (P1) Consistency (spent data, not a test): full-G, full-M, G-M cross r inside
+  the observed CIs for at least one grid cell. (P2) The held-out test: pooled Epo/SCF r on shard 1
+  of 2 inside the grid's predicted range +/- 0.10. Power check before the look: if the shard's
+  expected CI half-width exceeds the spread between the grid's extreme predictions, the look is
+  skipped as uninformative (lesson from E14).
