@@ -1144,3 +1144,19 @@ but the CI excludes 0 only narrowly and ignores fold-assignment variance. Still 
   same-clone test of "the hidden clone bias is epigenetic". Sizes not yet checked.
 - **EPI-Clone X.1** (Figshare 27991574, 10 MB): methylation + 120 targeted genes in the same human
   CD34+ cells, but clones are defined from methylation itself, so circular for this question.
+
+## Track B4: same-cell methylation vs expression vs clone fate, DARLIN Camellia-seq (pre-registered 2026-11-02)
+
+- **Data.** DARLIN (Li 2023) Zenodo archive (processed outputs, Figs 4-5) and, if needed, GEO
+  GSE222246 (RNA) / GSE222328 (CpG methylation, GpC accessibility) / GSE222479 (lineage).
+  Design details (which cells, which fate readout) are fixed after inspecting the files and
+  before computing any clone-fate statistic; any change to this plan is logged first.
+- **Question.** For HSCs with lineage barcode + methylation + expression in the same cell, does
+  methylation predict the clone's fate bias better than expression, and does it add to it?
+- **Analysis.** Clone fate bias from the clone's non-HSC / mature cells (as in the paper);
+  state = per-cell methylation (CpG, binned) and expression (log-normalised) PCs, averaged over
+  the clone's HSCs. 5-fold CV by clone, ridge; bootstrap CIs over clones.
+- **Predictions.** (1) Methylation CV r > expression CV r, difference CI excluding 0.
+  (2) Methylation + expression > expression alone (CV r gain >= 0.05).
+  (3) Both above a permuted null.
+- If clones with both readouts number < 50, the test is reported as underpowered and not read.
