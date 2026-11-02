@@ -714,3 +714,22 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
 - Fixed b in {0, 0.25, 0.5, 1} x W_CROSS in {2, 5}, inherit, seeds 0-1, 150 generations.
 - Question: the loss cost of raising G-M towards 0.51. Expectation (from E13 s2): G-M rises with
   b, within-condition loss rises too. No test look in this diagnostic.
+
+### E13 scan result (2026-11-02; fit set only, no test look)
+
+| b | W=2: loss / G-M (s0, s1) | W=5: loss / G-M (s0, s1) |
+|---|---|---|
+| 0 | 0.80 / 0.25, 0.77 / 0.18 | 1.03 / 0.36, 1.06 / 0.26 |
+| 0.25 | 0.94 / 0.26, 0.93 / 0.31 | 0.89 / 0.34, 1.12 / 0.39 |
+| 0.5 | 0.95 / 0.35, 1.79 / 0.54 | 1.19 / 0.45, 2.32 / 0.70 |
+| 1 | 1.33 / 0.36, 1.82 / 0.73 | 1.44 / 0.53, 2.36 / 0.45 |
+
+(Loss includes the weighted cross terms, so W=2 vs W=5 losses are not strictly comparable.)
+- **Frontier.** G-M rises with b and with W. In-band G-M at E11-like loss (<= ~1.2): b 0.25-0.5
+  with W=5 (0.34, 0.39, 0.45). Reaching the observed 0.51 or above costs loss >= 1.4 in every run.
+- **Seed instability.** At b >= 0.5 the seed-1 runs jump to high G-M with high loss (1.8-2.4):
+  a second optimum that buys concordance with a poor within-condition fit.
+- **Reading.** A moderate founder propensity (b ~ 0.25-0.5) plus a higher cross weight gets
+  into the G-M band without wrecking the fit; the full 0.51 is not reachable at acceptable fit
+  in this drift-bias form. The data's clone bias is stronger than this model's form can carry.
+- **Candidate for a pre-registered test model:** b = 0.25-0.5, W = 5 (choose before any look).
