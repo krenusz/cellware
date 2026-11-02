@@ -1408,3 +1408,21 @@ difference [0.01, 0.20], controlled 0.62, ceiling 0.96 - B5/B5b conclusions unch
   ~20% methylation component does not deliver unless the fate-relevant part of the state is
   much more clone-shared than the genome-wide methylation proxy. That tension is now the open
   question.
+
+## Track B6: where the clone signal lives, Meg fate, per mouse (pre-registered 2026-11-02)
+
+Same 182 Camellia HSCs and (mouse, clone) keys as B5c; GitHub Actions; Ensembl GRCm38.102 genes.
+
+- **B6a, genome location.** Feature sets (per-cell CpG rate per region; regions covered in >= 50%
+  of cells; PCs = min(20, regions - 1); sister AUC as in B5):
+  (i) lineage windows: TSS +/- 50 kb of 40 haematopoietic lineage / HSC genes, in 10-kb sub-bins;
+  (ii) all promoters, TSS +/- 2 kb; (iii) gene bodies; (iv) intergenic 100-kb bins.
+  Null for (i): 50 random gene sets of the same size, same windows -> AUC distribution.
+  **Prediction:** (1) lineage-window AUC above the random-set 95th percentile and above the
+  genome-wide 0.63. If it holds, the fate-relevant part of the clone state is more clone-shared
+  than the genome-wide average (resolving the E18b tension); if not, the clone signal is diffuse.
+- **B6b, Meg fate.** Clones with Meg-bias labels (cells labelled Meg / nonMeg; clone label =
+  majority). Clone-mean methylation PCs vs expression PCs, leave-one-clone-out ridge, AUC for
+  Meg vs nonMeg clones. Underpowered by design (expected < 15 clones): direction only, no claim.
+- **B6c, leave one mouse out.** B5 methylation and expression AUC with each mouse removed.
+  **Prediction:** (2) methylation AUC above its null in every leave-one-out set.
