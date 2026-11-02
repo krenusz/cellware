@@ -1160,3 +1160,31 @@ but the CI excludes 0 only narrowly and ignores fold-assignment variance. Still 
   (2) Methylation + expression > expression alone (CV r gain >= 0.05).
   (3) Both above a permuted null.
 - If clones with both readouts number < 50, the test is reported as underpowered and not read.
+
+### Converged reruns R: result (2026-11-02)
+
+| model, memory | healthy | within loss | G-M | M r_d4_d6 | M-only |
+|---|---|---|---|---|---|
+| E14 inherit / resample | 4, 8 | 0.97, 0.86 | 0.41, 0.41 | 0.99, 0.96 | 0.75, 0.75 |
+| E16 inherit / resample | 5, 4 | 0.36, 0.49 | 0.27, 0.29 | 0.73, 0.70 | 0.79, 0.78 |
+| B2 inherit / resample | 6, 7 | 0.46, 0.53 | 0.25, 0.28 | 0.83, 0.81 | 0.81, 0.79 |
+
+- **P1 refuted:** 34/60 healthy (57% < 70%); still 26 not converged or b frozen at 250.
+- **P2 holds:** within loss falls (B2 0.60 -> 0.46-0.53; E16 re-scored 0.34-0.61 -> 0.36-0.49).
+- **P3 holds:** E16 / B2 median G-M < 0.40 (0.25-0.29).
+- **P4 refuted:** E14 M-only 0.75 (< 0.80); longer training does not repair M-CSF.
+- **E14's own gate (E14 pre-registration: G-M in band in >= 3/5 and loss <= 1.3 in >= 4/5 per
+  variant) passes in both variants:** all 20 runs have G-M 0.33-0.59; loss <= 1.3 in 8/10
+  (inherit) and 9/10 (resample); on healthy runs only, 4/4 and 7/8. Per the R pre-registration
+  E14 gets Epo/SCF shard 0 of 2, one look.
+
+#### E14 test predictions, recorded before the look (healthy runs, pooled Epo/SCF r)
+
+| variant | healthy runs | prediction range | median | success band (range +/- 0.10) |
+|---|---|---|---|---|
+| inherit | 4 | 0.538-0.662 | 0.559 | 0.438-0.762 |
+| resample | 8 | 0.441-0.608 | 0.541 | 0.341-0.708 |
+
+Caveats stated before the look: the predictions are for the whole test, the look is shard 0
+(half the clones), so the observed value is noisier; E14 fails the M-CSF prediction, so a hit
+would support concordance-by-founder-bias, not the full model.
