@@ -780,3 +780,21 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
 - **Held-out test.** If (1)-(3) pass for a variant: one whole-test look at pooled Epo/SCF via
   test_oracle.py --exp E15. Prediction = range of that variant's passing runs; success if the
   observed r lies within it +/- 0.10. If both pass, both ranges are recorded before the look.
+
+### E15 result, fit set only (2026-11-02; Epo/SCF test still unseen)
+
+| run | loss | b | G-M r (band 0.33-0.65) | M-CSF M-only (0.88) | tau_M |
+|---|---|---|---|---|---|
+| inherit s0-s4 | 0.66-0.93 | 0.67-1.73 | 0.20-0.31 | 0.65-0.77 | 0.4-1.0 |
+| resample s0-s4 | 0.73-1.24 | 0.38-1.86 | 0.20-0.33 | 0.59-0.74 | 0.4-0.8 |
+
+- **P1 refuted:** inherit 0/5, resample 1/5 (0.33, at the edge).
+- **P2 holds:** loss <= 1.3 in 10/10 (best E11-E15 fits: 0.66).
+- **P3 refuted:** M-CSF M-only 0.59-0.77, 0/10 within 0.10 of 0.88 (worse than E11, 0.78-0.90).
+- **P4 holds:** b > 1.0 in 7/10; the clone rank is used and broad, yet G-M stays low.
+- **No test look.**
+- **Reading.** The rank term is kept (unlike E13) but G-M does not rise, and the M-CSF level tau_M
+  stays small (0.4-1.0, logit units): with ES lr 0.03, the per-condition levels barely move from 0
+  in 150 generations, so M-CSF cannot override the clone rank and pure-M clones fall. E15 is
+  therefore not a clean test of the rank idea: the levels are optimisation-limited. A fair rerun
+  needs tau initialised from the observed per-condition N fractions (or a larger step for tau).
