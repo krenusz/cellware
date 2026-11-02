@@ -689,3 +689,22 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   broad). (3) Loss within E11/E12 range (<= 1.17) in >= 4 of 5.
 - **Held-out test.** Pooled Epo/SCF concordance through test_oracle.py, whole test (1 shard),
   only if (1) passes for both memory variants; else only for a passing variant's runs, one look.
+
+### E13 result, fit set only (2026-11-02; Epo/SCF test still unseen)
+
+| run | loss | learned b | G-M r (obs 0.51) | full-G (0.69) | full-M (0.24) |
+|---|---|---|---|---|---|
+| inherit s0-s4 | 0.60, 0.94, 1.86, 0.77, 1.01 | -0.06, -0.13, 0.43, 0.04, 0.01 | 0.11, 0.28, **0.58**, 0.15, 0.11 | 0.33-0.74 | 0.18-0.60 |
+| resample s0-s4 | 0.98, 0.55, 0.95, 1.07, 0.91 | 0.20, -0.04, -0.06, -0.02, 0.09 | 0.22-0.28 | 0.48-0.64 | 0.28-0.31 |
+
+- **P1 refuted:** 1/5 inherit, 0/5 resample in the G-M band.
+- **P2 refuted:** b > 1.0 in 0/10; ES shrinks the founder term towards zero in 9/10 (|b| <= 0.2).
+- **P3 holds in 9/10** (loss <= 1.17); the exception is the one run that kept b (inherit s2).
+- **No test look** (P1 failed).
+- **Reading (post hoc, one run).** The only run that kept a founder propensity (b = 0.43) is also
+  the only one with G-M in band (0.58), but its within-condition loss is the worst of all (1.86).
+  In this architecture a shared clone fate bias that raises cross-condition concordance costs
+  within-condition fit, and the optimiser prefers the within-condition terms (5 conditions vs
+  3 cross pairs at weight 2). Either the drift-bias form is wrong (it distorts clone size / fate
+  mix distributions), or the weighting decides. Next diagnostic, no test needed: scan fixed b
+  (0, 0.25, 0.5, 1) and W_CROSS, map the loss trade-off frontier.
