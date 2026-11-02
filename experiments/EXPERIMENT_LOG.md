@@ -745,3 +745,22 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   Epo/SCF via test_oracle.py --exp E14, comparing the mean prediction of that variant's passing
   runs with the observed r. Success: observed r inside the runs' prediction range +/- 0.10.
   If both variants pass, both predictions are recorded before the single look.
+
+### E14 result, fit set only (2026-11-02; Epo/SCF test still unseen)
+
+| run | loss | G-M r (band 0.33-0.65) | M-CSF M-only (0.88) |
+|---|---|---|---|
+| inherit s0-s4 | 1.41, 2.26, 1.18, 1.03, 2.05 | 0.41, 0.63, 0.47, 0.44, 0.58 | 0.72, 0.41, 0.73, 0.73, 0.37 |
+| resample s0-s4 | 1.12, 2.46, 1.36, 2.48, 1.44 | 0.45, 0.57, 0.43, 0.69, 0.40 | 0.68, 0.41, 0.71, 0.38, 0.69 |
+
+- **P1 holds:** inherit 5/5, resample 4/5 in the G-M band (E11-E13: 1/30).
+- **P2 refuted:** loss <= 1.3 in inherit 2/5, resample 1/5.
+- **P3 refuted:** M-CSF M-only within 0.10 of 0.88 in 0/10 (best 0.73; bimodal 0.37-0.41 vs ~0.70).
+- **No test look** (P2 failed). Predicted pooled Epo/SCF r recorded in the result files (0.42-0.70);
+  not compared with data.
+- **Reading.** A fixed founder bias reliably buys sister concordance but breaks M-CSF: the clone
+  bias in the drift pulls some cells out of M even in M-CSF, so pure-M clones fall from 0.88 to
+  ~0.7 (or collapse to ~0.4 in a second optimum). In the data, M-CSF overrides the clone bias
+  within condition while the clone's rank survives across conditions. That points to the bias
+  acting on *which* lineage a clone expands relative to its sisters (threshold / rank), with
+  the cytokine setting the absolute level, rather than an additive drift that competes with it.
