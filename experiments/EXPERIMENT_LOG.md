@@ -1188,3 +1188,16 @@ but the CI excludes 0 only narrowly and ignores fold-assignment variance. Still 
 Caveats stated before the look: the predictions are for the whole test, the look is shard 0
 (half the clones), so the observed value is noisier; E14 fails the M-CSF prediction, so a hit
 would support concordance-by-founder-bias, not the full model.
+
+#### E14 shard-0 look: THE single look (2026-11-02, test_oracle, ledger row appended)
+
+Observed pooled Epo/SCF r on shard 0 of 2: **0.44 [0.03, 0.78]**, 24 clones (agreement 0.71).
+
+- **Pre-registered criterion met for both variants**: inside inherit's band (0.438-0.762, at its
+  lower edge) and resample's band (0.341-0.708).
+- **How much it means: little.** 24 clones give a CI spanning 0.03-0.78; E16 and B2 runs predict
+  0.4-0.5 and would also have passed, so this test does not discriminate between our models.
+  The prediction was not refuted; it was not strongly confirmed either.
+- Shard 1 of 2 remains unseen (reserved; E16 / B2 did not pass their gates).
+- Lesson: the Epo/SCF test is too thin (~48 clones in total) to separate models. Future tests
+  need a power check (the CI width a model difference would have to beat) before reserving them.
