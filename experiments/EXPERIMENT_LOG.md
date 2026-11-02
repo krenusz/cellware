@@ -1477,3 +1477,17 @@ Same 182 Camellia HSCs and (mouse, clone) keys as B5c; GitHub Actions; Ensembl G
   invisible in expression; it does not show that this state steers fate. The fate link still
   rests only on EPI-Clone (methylation of multipotent cells predicts myeloid / erythroid bias,
   0.41 vs 0.25), where the predictive regions were not localised.
+
+## Track B3e: which EPI-Clone CpGs carry the fate prediction? (pre-registered 2026-11-02)
+
+- EPI-Clone's own panel annotation (github veltenlab/EPI-clone, infos/cpg_selection.csv): 110
+  "Static" CpGs (clone-informative, not cell-state-associated), 200 "Dynamic" (cell-state
+  associated), 143 unclassified. Same analysis as B3 (m13: myeloid share of committed
+  progenitors from the methylation of the clone's multipotent cells, 5-fold CV ridge,
+  composition baseline, clone bootstrap), run separately on Static-only and Dynamic-only CpGs.
+- **Readings fixed in advance.** Static >> Dynamic: the heritable record itself carries fate
+  information (clone record and fate bias co-inherited). Dynamic >> Static: the prediction comes
+  from cell-state methylation of the multipotent cells (closer to "state predicts fate", like
+  expression). Both: mixed. Caveat stated now: the Static/Dynamic labels were derived by the
+  EPI-Clone authors from these data (clone association / cell-state association), independent of
+  our fate target.
