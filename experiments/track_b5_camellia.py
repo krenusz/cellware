@@ -171,7 +171,8 @@ def main():
     e = np.array(efeat)
     e = np.log1p(e / np.maximum(e.sum(1, keepdims=True), 1) * 1e4)
     e = e[:, np.argsort(e.var(0))[-2000:]]
-    clone = np.array([r["large_clone_id"] for r in rows])
+    # large_clone_id labels repeat across mice: key clones by (mouse, label)
+    clone = np.array([r["mouse"] + "|" + r["large_clone_id"] for r in rows])
     group = np.array([r["mouse"] + "|" + r["tissue"] for r in rows])
     feats = {"methylation": pcs(m), "expression": pcs(e)}
     rng = np.random.default_rng(0)
@@ -214,7 +215,18 @@ def main():
         np.array(mfeat), np.array(rreads), np.array(efeat), genes, rows, clone, group, rng
     )
     os.makedirs(os.path.join(HERE, "results_track_b"), exist_ok=True)
-    json.dump(out, open(os.path.join(HERE, "results_track_b", "b5b_camellia.json"), "w"), indent=1)
+    tissue = np.array([r["tissue"] for r in rows])
+    out["per_tissue"] = {
+        t: {
+            **score_one(
+                feats["methylation"][tissue == t], clone[tissue == t], group[tissue == t], rng
+            ),
+            "cells": int((tissue == t).sum()),
+            "clones": int(len(set(clone[tissue == t]))),
+        }
+        for t in ("BM", "FL")
+    }
+    json.dump(out, open(os.path.join(HERE, "results_track_b", "b5c_camellia.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
 
 
