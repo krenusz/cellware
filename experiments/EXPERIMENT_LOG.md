@@ -1107,3 +1107,23 @@ Python `rdata` package (installed into the venv, not in pyproject). 5-fold CV by
   (43% of N/M variance). It supports the epigenetic-memory reading but does not show that
   methylation carries what expression missed: that needs both readouts in the same cells
   (EPI-Clone's scRNA dataset, 866 MB, is a separate experiment).
+
+### Track B3c-d: methylation vs expression in the same EPI-Clone experiments (2026-11-02)
+
+- **Same-clone comparison not possible:** the methylation (M.1-M.3) and scRNA objects share only
+  ~55 LARRY barcodes (527 vs 606 clones); 12 pass the filters. `track_b_epiclone_joint.py`
+  result (n = 12) is uninterpretable and not used. The scRNA object needs `rds_raw.py` (a
+  raw-tree reader; rdata's converter fails on it).
+- **Parallel comparison, same design, same experiments, separate cells and clones:**
+
+  | readout of multipotent cells | clones | CV r (null) | R2 / noise ceiling R2 | composition only |
+  |---|---|---|---|---|
+  | DNA methylation (m13) | 181 | **0.41** (-0.04) | 0.10 / 0.44 | 0.02 |
+  | expression (scRNA) | 218 | **0.28** (-0.12) | 0.02 / 0.43 | 0.16 |
+
+- **Reading (suggestive, not a test).** With matched design and similar noise ceilings,
+  methylation predicts a clone's myeloid / erythroid bias better than expression (0.41 vs
+  0.28), and unlike expression its signal is not carried by multipotent subtype composition.
+  This fits track B's finding that ~55% of the clone bias is invisible in expression, and
+  DARLIN's report that clonal memory tracks methylation. Caveats: different cells and clone
+  sets, no CI on the difference, one lineage axis. A proper test needs both readouts per clone.
