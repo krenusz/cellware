@@ -1624,3 +1624,25 @@ Dynamic CpGs carry similar fate information. The B3e reading "mostly cell state"
 - **Follow-up that would separate (i) from (ii):** does Dynamic-site sister similarity survive
   after conditioning on Static-site similarity (partial AUC / residualised similarity)? Also,
   does the Dynamic-site sister similarity predict sister fate agreement?
+
+## Track B3h: shared fate state or record leakage at Dynamic sites? (pre-registered 2026-11-02)
+
+Same cells, pairs and features as B3g / B3 (EPI-Clone M.1-M.3 LARRY, multipotent cells).
+- **(a) Sister sharing net of the record.** Bin same-group pairs into 10 deciles of Static-site
+  similarity. Within each decile, AUC of Dynamic-site similarity, sisters vs non-sisters;
+  report the sister-weighted mean, a clone bootstrap CI (300x) and a within-decile permutation
+  null (100x). Size-matched Dynamic (110) as well (20 draws, median).
+- **(b) Fate information net of the other class.** B3 design (181 clones, myeloid share). Clone
+  features = mean top-20 PCs from each class. Residualise one class's clone features on the
+  other's (linear, within each CV training fold, applied to the test fold), then CV ridge as B3.
+  Report CV r and clone-bootstrap CI for Dynamic | Static and Static | Dynamic, and r for both
+  classes together.
+- **Readings fixed in advance.** (a) mean AUC clearly above its null (CI excluding it) and
+  (b) Dynamic | Static r with CI excluding 0: Dynamic sites carry a shared, fate-relevant state
+  beyond the record, favouring explanation (i) (separate fate state). (a) near null and/or (b)
+  Dynamic | Static ~0: the Dynamic sharing is record leakage (ii); one heritable record carries
+  both identity and fate information. Mixed: (a) above null but (b) ~0, i.e. shared beyond the
+  record but not fate-relevant.
+- Caveat stated now: Static similarity measures the record imperfectly (AUC 0.93, not 1), so (a)
+  can leave some record signal in the residual. It is biased towards (i); a weak (a) is more
+  informative than a strong one.
