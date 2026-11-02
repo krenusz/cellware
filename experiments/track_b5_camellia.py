@@ -226,8 +226,43 @@ def main():
         }
         for t in ("BM", "FL")
     }
-    json.dump(out, open(os.path.join(HERE, "results_track_b", "b5c_camellia.json"), "w"), indent=1)
+    plate = np.array([r["plate"] for r in rows])
+    out["b6d"] = {
+        n: plate_split(feats[n], clone, group, plate, rng) for n in ("methylation", "expression")
+    }
+    json.dump(out, open(os.path.join(HERE, "results_track_b", "b6d_camellia.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
+
+
+def plate_split(f, clone, group, plate, rng, perms=300, boot=1000):
+    """B6d: sister AUC over same-plate pairs and over cross-plate pairs (within mouse|tissue)."""
+    s, sis, i, j = pair_scores(f, clone, group)
+    out = {}
+    for name, sel in (("same_plate", plate[i] == plate[j]), ("cross_plate", plate[i] != plate[j])):
+        ss, si, ii, jj = s[sel], sis[sel], i[sel], j[sel]
+        null = []
+        for _ in range(perms):
+            perm = clone.copy()
+            for g in set(group):
+                idx = np.flatnonzero(group == g)
+                perm[idx] = rng.permutation(perm[idx])
+            ps = perm[ii] == perm[jj]
+            if ps.any() and (~ps).any():
+                null.append(auc(ss[ps], ss[~ps]))
+        clones = np.array(sorted(set(clone)))
+        bs = []
+        for _ in range(boot):
+            pick = list(set(rng.choice(clones, len(clones))))
+            k = np.isin(clone[ii], pick) & np.isin(clone[jj], pick)
+            if (k & si).any() and (k & ~si).any():
+                bs.append(auc(ss[k & si], ss[k & ~si]))
+        out[name] = {
+            "auc": float(auc(ss[si], ss[~si])),
+            "sister_pairs": int(si.sum()),
+            "null_95": float(np.percentile(null, 95)),
+            "ci": np.percentile(bs, [2.5, 97.5]).tolist() if bs else None,
+        }
+    return out
 
 
 PROLIF = ("Mki67", "Top2a", "Ccnb1", "Cdk1", "Mcm2", "Pcna")
