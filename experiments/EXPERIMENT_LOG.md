@@ -959,3 +959,18 @@ too few day-2 cells. It is either absent from expression (e.g. epigenetic) or se
   >= 0.80 (E16 0.70-0.79).
 - **Gate.** (1)-(3) pass for a variant: Epo/SCF shard 1 of 2 (`--exp B2`), prediction = healthy-run
   range, success if the observed shard value is within it +/- 0.10.
+
+### Track D result: dataset search (2026-11-02, web-verified where stated)
+
+| Dataset | Design relevant to us | Access | Verdict |
+|---|---|---|---|
+| Rodriguez-Fraticelli 2020 Nature (TCF15), LARRY in transplanted HSCs | sisters across HSC and mature compartments, 16-24 wk | GEO GSE134242 (via OmicsDI; check on GEO) | best next test: clone state (HSC transcriptome) vs fate, in vivo |
+| Scherer 2025 Nature (EPI-Clone), LARRY + single-cell methylation | clone fate vs methylation state: tests the "hidden = epigenetic" reading of track B | Nature / PMC12240852; accession not yet found | high value for B's open question |
+| Singh 2025 Cell Stem Cell, LARRYv2 HSCs +/- leukemic drivers | clonal responses split by mutation | accession not checked | condition split, but leukemic |
+| DARLIN (Li 2023 Cell) | single time point, no sister split | CoSpar link 404; Zenodo 10.8 GB | not a test for our statistics |
+| Xue 2026 Adv Sci, human hematopoietic organoids, LARRY + MAESTER | day 4 vs day 8, human; reports LARRY barcode homoplasy | PMC13042525 | human in vitro time series; check |
+| PolyloxExpress (GSE152555) | in vivo HSC clones | GEO | secondary |
+
+No public dataset found that repeats LARRY's split-across-cytokines design with deeper clones.
+Caveat for all LARRY-based analyses (Xue 2026, Scherer 2025): barcode homoplasy / multiple
+integrations can merge distinct clones, which inflates "multi-lineage" clones.
