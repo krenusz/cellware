@@ -1,0 +1,21 @@
+{
+ "clones": 181,
+ "multipotent_cells_per_clone": 13.817679558011049,
+ "committed_per_clone": 56.83977900552486,
+ "target_mean": 0.5403974735743362,
+ "target_var": 0.025250073976717073,
+ "noise_ceiling_r2": 0.44145034669042715,
+ "methylation": {
+  "cv_r": 0.41399230591125974,
+  "r2": 0.09507420134439726
+ },
+ "permuted_null": {
+  "cv_r": -0.044433121448334605
+ },
+ "composition_only": {
+  "cv_r": 0.02067739005950911
+ },
+ "composition_plus_methylation": {
+  "cv_r": 0.39378849624351075
+ }
+}

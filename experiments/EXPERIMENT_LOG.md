@@ -1080,3 +1080,30 @@ Defaults raised: `--generations 250`, `--clones 4000` (C showed lower loss at 40
   own gates gets its Epo/SCF shard (E16/B2: shard 1 of 2; E14: shard 0 of 2), one look.
 - **Also from now on:** `--no_d4d6` available; the next new fit set drops the M-CSF day-4/6 term
   (sampling-dominated). Not used in these reruns.
+
+### Track B3: EPI-Clone methylation vs clone fate (2026-11-02; exploratory, new dataset)
+
+Data: Scherer 2025 Figshare M.4 (LARRY_mature.RDS, 10 MB) and M.1-M.3 (173 MB), read with the
+Python `rdata` package (installed into the venv, not in pyproject). 5-fold CV by clone, ridge.
+
+- **M.4 (mature tissues; lymphoid share of mature cells from progenitor state):** inconclusive.
+  101 clones, but the target barely varies (mean 0.08, var 0.012): methylation CV r 0.08,
+  protein 0.14, both R2 < 0.
+- **M.1-M.3 (LARRY mice 1-4, progenitor compartment; myeloid share GMP / (GMP + MEP + EryP +
+  MkP) from the methylation of the clone's HSC/MPP1-4 cells):** 181 clones, 14 multipotent and
+  57 committed cells per clone.
+
+  | state | CV r |
+  |---|---|
+  | methylation, top-20 PCs | **0.41** (R2 0.10; noise ceiling R2 0.44) |
+  | permuted null | -0.04 |
+  | multipotent cell-type composition only | 0.02 |
+  | composition + methylation | 0.39 |
+
+- **Reading.** The methylation state of a clone's multipotent cells predicts its later
+  myeloid vs erythroid bias, and not through which multipotent subtypes it contains. It
+  explains ~22% of the explainable variance (0.10 / 0.44). Different lineage axis, tissue and
+  readout from LARRY in vitro, so not directly comparable with track B's expression result
+  (43% of N/M variance). It supports the epigenetic-memory reading but does not show that
+  methylation carries what expression missed: that needs both readouts in the same cells
+  (EPI-Clone's scRNA dataset, 866 MB, is a separate experiment).
