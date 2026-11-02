@@ -1,6 +1,6 @@
-# Cellware E5-E17 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
+# Cellware E5-E18 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
 
-Write-up of experiments E5-E17 (November 2026). Details, pre-registrations and every run are in
+Write-up of experiments E5-E18 and tracks A-B6 (November 2026). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
 [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md); held-out test looks are recorded in
 [test_ledger.tsv](test_ledger.tsv).
 
@@ -110,13 +110,37 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   myeloid / erythroid bias better than their expression: CV r 0.41 [0.30, 0.52] vs 0.25-0.28
   [0.13, 0.36], difference CI [0.01, 0.32], at similar noise ceilings, and unlike expression not
   through subtype composition. Different cells and clones, so suggestive, not a test.
-- **Same cells, same clones (track B5, DARLIN Camellia-seq).** In 182 HSCs from 27 clones with
-  methylation and RNA in the same cell, sister cells are recognisable from methylation (AUC 0.63
-  [0.57, 0.69], null 0.55) but not from expression (0.51, at its null); difference CI
-  [0.01, 0.18]. Pre-registered; all three readouts of the question point the same way.
-  Controlling for global methylation, coverage and proliferation leaves it unchanged (0.62);
-  identical sisters would score 0.95 at this depth, so the shared part is ~28% of the maximum:
-  a real but partial, drifting clone state, not a measurement artefact.
+- **Same cells, same clones (track B5, DARLIN Camellia-seq).** In 182 HSCs from 82 clones
+  (mouse x clone label; labels repeat across mice) with methylation and RNA in the same cell,
+  sister cells are recognisable from methylation (AUC 0.63, null 0.55) but not from expression
+  (0.51, at its null). Pre-registered. Controlling for global methylation, coverage and
+  proliferation leaves it unchanged (0.62). Identical sisters would score 0.95 at this depth, so
+  the shared part is ~28% of the maximum.
+- **What kind of signal it is (B6, B6d, revised reading).** The clone signal sits only in
+  genome-wide 100-kb bins (0.63). Windows around 40 lineage genes (0.50), promoters (0.52), gene
+  bodies (0.53) and random gene sets (~0.52) carry none. It holds when each mouse is left out
+  (0.59-0.63) and across plates as well as within them (0.63 vs 0.62), so it is not a batch
+  effect. On 11 labelled clones, methylation does not predict Meg bias better than expression
+  (0.60 vs 0.70). **Reading:** the Camellia signal looks like a heritable, large-scale,
+  largely neutral record of ancestry, not a fate-instructive state at lineage genes. This
+  replaces the earlier "drifting clone state" reading.
+- **Where EPI-Clone's fate prediction comes from (B3e).** Splitting EPI-Clone's CpGs by the
+  authors' own labels: cell-state ("Dynamic") CpGs predict myeloid bias almost as well as the full
+  panel (r 0.39 vs 0.41). Clone-record ("Static") CpGs predict less (0.24 [0.09, 0.36]) but above
+  zero. Difference CI [-0.32, 0.01]; Static is also the smaller panel, so size may explain part
+  of the gap. **Reading:** the methylation-fate link is mostly cell state. The heritable record
+  carries a weaker share.
+- **Models built on this (E18, E18b, E18c).** E18 tied LARRY sister fate sharing to the Camellia
+  signal through a drift rate. One grid cell reproduced all three cross-condition statistics
+  (G-M 0.42, the best in the programme), but only with fast drift and near-deterministic fate.
+  E18b found fetal-liver and bone-marrow sisters share about the same record (rho 0.18 vs
+  0.21) despite very different division counts, so constant drift was rejected: the record looks
+  stable. E18c drops the link: a neutral
+  record (Camellia) plus a separate, unmeasured fate state.
+  Profiling the fate-state sharing directly, settings from 0.6 to 0.95 put all three cross
+  statistics in or at the edge of their CIs (G-M 0.33-0.39). That range includes E18's value
+  (0.86), so E18 never needed the Camellia link. LARRY alone does not pin the fate-state sharing,
+  and G-M still sits near the bottom of its CI.
 
 ## Conclusions
 
@@ -129,10 +153,21 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
    both within-condition data and the full observed agreement; the statistic is at its sampling
    ceiling. The cytokine modelling line is closed for this dataset; deeper per-clone sampling
    would be needed to settle it.
-4. The clone-level fate bias is partly visible in day-2 expression (~40%) and, in a second
-   dataset, more visible in DNA methylation than in expression. The working hypothesis is an
-   epigenetically held clone state set before day 2. In the same single cells (Camellia-seq),
-   clone identity is readable from DNA methylation and not from expression (track B5).
+4. The clone-level fate bias is partly visible in day-2 expression (~40%). In a second dataset
+   it is more visible in DNA methylation than in expression, and that link comes mostly from
+   cell-state CpGs (B3e). Clones also carry a heritable, large-scale methylation record
+   (Camellia). That record looks neutral: it is not at lineage genes and does not beat
+   expression on Meg fate. The current picture is two things, a neutral ancestry record and a
+   separate fate state, weakly coupled. It is a working picture, not a settled result.
+
+## Open (deliberately not closed)
+
+- Is the record-fate coupling real or a panel-size effect? (size-matched Static vs Dynamic.)
+- What sets the fate state, and when? The only direct handle is EPI-Clone's cell-state CpGs.
+- Division counts for Camellia and LARRY are not known from the data; any drift model depends
+  on them.
+- The Epo/SCF shard-1 held-out test is still unseen. It is not powered to separate the
+  current models (~24 clones).
 
 ## Held-out tests
 
@@ -141,7 +176,8 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
 | In vitro cross-well (E6) | spent |
 | In vivo cross-mouse (E6b) | spent |
 | Cytokine full/G/M cross-condition (E9+E10) | spent |
-| Cytokine Epo/SCF pooled (reserved for a model passing its fit gates) | **unseen** |
+| Cytokine Epo/SCF shard 0 (E14) | spent: 0.44 [0.03, 0.78], non-discriminating |
+| Cytokine Epo/SCF shard 1 | **unseen** (power rule: skipped in E18) |
 
 ## Limits
 

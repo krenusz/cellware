@@ -286,6 +286,70 @@ def fit_b(g_fl=(8, 11), g_l=(1, 3), restarts=3, sims=5):
     )
 
 
+def fit_c(rhos=(0.5, 0.6, 0.7, 0.8, 0.9, 0.95), restarts=2, sims=3):
+    """E18c: fate-state sharing rho_f profiled directly; the Camellia record does not enter."""
+    cnt = load_counts(CONDS5)
+    fitset = split(cnt, None)
+    obs = within_stats(fitset)
+    conds = list(cnt)
+
+    def loss(x, rho_f):
+        tau = dict(zip(conds, x[2:], strict=True))
+        st = [
+            within_stats(
+                simulate(fitset, abs(x[0]), abs(x[1]), tau, rho_f, np.random.default_rng(s))
+            )
+            for s in range(sims)
+        ]
+        return sum(
+            (np.mean([q[c][j] for q in st]) - obs[c][j]) ** 2 * w
+            for c in conds
+            for j, w in ((0, 1), (1, 4), (2, 1))
+        )
+
+    results = []
+    for rho_f in rhos:
+        best = None
+        for rs in range(restarts):
+            rng = np.random.default_rng(rs)
+            x0 = [rng.uniform(1, 8), rng.uniform(0.1, 1.5)] + [
+                float(np.log(obs[c][0] / (1 - obs[c][0]))) for c in conds
+            ]
+            res = minimize(
+                loss,
+                x0,
+                args=(rho_f,),
+                method="Nelder-Mead",
+                options={"maxiter": 1500, "xatol": 1e-3, "fatol": 1e-6},
+            )
+            if best is None or res.fun < best.fun:
+                best = res
+        beta, sigma_w = abs(best.x[0]), abs(best.x[1])
+        tau = dict(zip(conds, best.x[2:], strict=True))
+        cross = []
+        for s in range(20):
+            sim = simulate(cnt, beta, sigma_w, tau, rho_f, np.random.default_rng(100 + s))
+            cross.append(
+                {
+                    f"{a}-{b}": test_stats(pooled(sim[a]), pooled(sim[b]), boot=1)["r"]
+                    for a, b in (("full", "G"), ("full", "M"), ("G", "M"))
+                }
+            )
+        results.append(
+            {
+                "rho_f": rho_f,
+                "loss": float(best.fun),
+                "beta": beta,
+                "sigma_w": sigma_w,
+                "tau": tau,
+                "cross": {k: float(np.mean([c[k] for c in cross])) for k in cross[0]},
+                "cross_sd": {k: float(np.std([c[k] for c in cross])) for k in cross[0]},
+            }
+        )
+        print(json.dumps(results[-1]), flush=True)
+    json.dump({"grid": results}, open(os.path.join(OUT, "fit_c.json"), "w"), indent=1)
+
+
 if __name__ == "__main__":
     if sys.argv[1] == "calibrate":
         calibrate()
@@ -293,5 +357,7 @@ if __name__ == "__main__":
         calibrate_tissue(sys.argv[2])
     elif sys.argv[1] == "fit_b":
         fit_b()
+    elif sys.argv[1] == "fit_c":
+        fit_c()
     else:
         fit(json.load(open(os.path.join(OUT, "calibration.json")))["rho_cam"])

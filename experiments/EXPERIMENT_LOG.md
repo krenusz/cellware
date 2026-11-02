@@ -1494,7 +1494,7 @@ Same 182 Camellia HSCs and (mouse, clone) keys as B5c; GitHub Actions; Ensembl G
 
 ### B3e result (2026-11-02)
 
-LARRY mice of M.1-M.3, 304 clones (as B3). CpG counts: 110 Static, 200 Dynamic, 143 NA.
+LARRY mice of M.1-M.3, 181 clones (as B3). CpG counts: 110 Static, 200 Dynamic, 143 NA.
 
 | CpG set | CV r (95% clone bootstrap) | + composition |
 |---|---|---|
@@ -1536,3 +1536,31 @@ Static minus Dynamic: [-0.32, 0.01].
   calibration was decorative. (R3) The record-fate coupling stays a stated, unfitted quantity.
   Its only measure is B3e Static r 0.24.
 - No held-out look (shard 1 stays unseen; power rule as E18).
+
+### E18c result (2026-11-02)
+
+Fit set only, 2 restarts x 3 simulations, 20 simulations for the cross statistics (mean, sd).
+Observed: full-G 0.69 [0.40, 0.92], full-M 0.24 [-0.11, 0.55], G-M 0.51 [0.33, 0.65].
+
+| rho_f | loss | beta | sigma_w | full-G | full-M | G-M | all three in CI |
+|---|---|---|---|---|---|---|---|
+| 0.50 | 0.148 | 6.2 | 0.12 | 0.37 (0.15) | 0.34 (0.11) | 0.31 (0.10) | no |
+| 0.60 | 0.138 | 5.0 | 0.30 | 0.45 (0.16) | 0.39 (0.11) | 0.37 (0.08) | yes |
+| 0.70 | 0.105 | 5.9 | 0.45 | 0.56 (0.13) | 0.27 (0.07) | 0.28 (0.06) | no |
+| 0.80 | 0.097 | 5.0 | 0.16 | 0.63 (0.13) | 0.45 (0.07) | 0.39 (0.06) | yes |
+| 0.90 | 0.092 | 5.5 | 0.16 | 0.73 (0.09) | 0.35 (0.05) | 0.33 (0.06) | at the G-M edge |
+| 0.95 | 0.070 | 6.6 | 0.03 | 0.81 (0.07) | 0.37 (0.05) | 0.33 (0.06) | at the G-M edge |
+
+- **R1: wide.** Cells from 0.6 to 0.95 pass or sit on the edge. 0.7 fails, which is not
+  monotone: a sign of fit noise (sigma_w jumps to 0.45), not structure. LARRY alone does not pin
+  how much fate state sisters share. Fit loss improves steadily with rho_f (best 0.95), so the
+  within-condition data mildly favour high sharing.
+- **R2: E18's Camellia link was decorative.** The passing range covers E18's rho_L 0.86 without
+  any Camellia input. E18's best G-M (0.42) is in line with these fits (0.33-0.39, sd ~0.06)
+  given simulation noise. The Camellia calibration did not add predictive information.
+- **R3:** record-fate coupling not fitted. Its only measurement stays B3e Static r 0.24.
+- **Reading.** The simulator can be run on a two-variable picture: a neutral record (Camellia,
+  stable, rho 0.21) and a fate state shared by culture sisters at rho_f ~0.6-0.95, with
+  near-deterministic fate given that state (beta ~5-6). The next constraint has to come from data
+  on the fate state itself (e.g. EPI-Clone Dynamic CpGs in sisters), not from the record.
+  G-M still tops out near the bottom of its CI (max 0.39 of 0.51 observed).
