@@ -993,3 +993,40 @@ not converged). Healthy runs:
   nothing: G-M stays ~0.3. Together with E16, the shape of the clone-value distribution is not
   the limit. 9/20 runs failed health, mostly by not converging: future sweeps should use >= 250
   generations or the health rule needs a noise-tolerant convergence test.
+
+### Track A result (2026-11-02; fit set only, no look)
+
+Healthy runs, median [range] (`summarise_grid.py`); target M-CSF day-4 vs day-6 r = 0.32:
+
+| form | healthy | within loss | M r_d4_d6 | G-M | M-only | revert r0 (start -3) |
+|---|---|---|---|---|---|---|
+| day, inherit / resample | 5, 6 | 0.64, 0.54 | 0.79, 0.77 | 0.31, 0.28 | 0.71, 0.73 | - |
+| revert, inherit / resample | 6, 6 | 0.58, 0.57 | 0.79, 0.83 | 0.31, 0.31 | 0.75, 0.75 | -1.9 to -3.7 |
+| day+revert, inherit / resample | 7, 9 | 0.59, 0.59 | 0.72, 0.79 | 0.29, 0.31 | 0.73, 0.73 | -2.2 to -3.2 |
+
+- **P1 refuted:** best median 0.72, far from 0.32 +/- 0.15 (one run reached 0.27).
+- **P2 holds:** within loss <= 0.8.
+- **P3 refuted:** r0 > -2.5 in 3/28 healthy revert runs; reversion is not used.
+- **Reading.** Neither time-aware commitment nor reversion lowers the day-4/6 correlation:
+  the fitness does not reward it enough, or the observed 0.32 is dominated by sampling (few
+  cells per clone per day). Next: compute the sampling ceiling of r_d4_d6 as for G-M (a model
+  with perfectly stable clones, observed depth) before any further mechanism.
+
+### Track C result (2026-11-02; robustness map, no look)
+
+| model, W, clones | healthy | within loss | G-M | M r_d4_d6 | M-only |
+|---|---|---|---|---|---|
+| E11 W2 1500 / 4000 | 9, 10 | 0.71, 0.65 | 0.25, 0.27 | 1.00, 0.99 | 0.78, 0.82 |
+| E11 W5 1500 / 4000 | 7, 9 | 0.88, 0.78 | 0.35, 0.33 | 0.98, 0.99 | 0.72, 0.79 |
+| E16 W2 1500 / 4000 | 6, 8 | 0.55, 0.42 | 0.29, 0.29 | 0.79, 0.75 | 0.73, 0.76 |
+| E16 W5 1500 / 4000 | 7, 8 | 0.60, 0.55 | 0.31, 0.32 | 0.73, 0.77 | 0.72, 0.75 |
+
+- **P1 holds:** median G-M < 0.40 in all 8 cells (max 0.35); the limit is robust to seeds and
+  simulation size.
+- **P2 inconclusive:** ranges at 4000 are not consistently narrower.
+- **P3 holds:** W 5 raises G-M and within loss in both models.
+- **Extra.** 4000 clones improves within loss in all four pairs (simulation noise was part of the
+  loss); E16's rank model fits best (0.42) and is the only family that lowers M r_d4_d6 (0.75 vs
+  0.99), so it is the right base.
+- Infra: two concurrent `run_sweep.sh` calls picked up the same run id (track A results fetched
+  manually); run-id lookup is now locked.

@@ -19,10 +19,16 @@ git fetch -q origin "$branch"
 if [ "$(git rev-parse HEAD)" != "$(git rev-parse "origin/$branch")" ]; then
   echo "push $branch first: the runners check out origin/$branch" >&2; exit 1
 fi
+# lock dispatch + run-id lookup so concurrent launches cannot pick up each other's run
+lock=.sweep_runs/.dispatch.lock
+mkdir -p .sweep_runs
+until mkdir "$lock" 2>/dev/null; do sleep 2; done
+trap 'rmdir "$lock" 2>/dev/null' EXIT
 before=$(gh run list --workflow sweep.yml --limit 1 --json databaseId -q '.[0].databaseId // 0')
 gh workflow run sweep.yml --ref "$branch" "${args[@]}"
 id=$before
 while [ "$id" = "$before" ]; do sleep 3; id=$(gh run list --workflow sweep.yml --limit 1 --json databaseId -q '.[0].databaseId'); done
+rmdir "$lock"
 echo "run $id: https://github.com/$(gh repo view --json nameWithOwner -q .nameWithOwner)/actions/runs/$id"
 gh run watch "$id" --interval 30 > /dev/null || true
 out=.sweep_runs/$id
