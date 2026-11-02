@@ -1,0 +1,11 @@
+# E16: E15 with tau started from observed per-condition N share (--larry)
+[experiments/results_clone_e11/e16_inherit_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e16_inherit_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e16_inherit_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 2 --memory inherit --threads 4
+[experiments/results_clone_e11/e16_inherit_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 3 --memory inherit --threads 4
+[experiments/results_clone_e11/e16_inherit_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 4 --memory inherit --threads 4
+[experiments/results_clone_e11/e16_resample_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 0 --memory resample --threads 4
+[experiments/results_clone_e11/e16_resample_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 1 --memory resample --threads 4
+[experiments/results_clone_e11/e16_resample_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 2 --memory resample --threads 4
+[experiments/results_clone_e11/e16_resample_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 3 --memory resample --threads 4
+[experiments/results_clone_e11/e16_resample_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --seed 4 --memory resample --threads 4

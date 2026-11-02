@@ -184,6 +184,7 @@ def main():
     p.add_argument("--founder", action="store_true", help="E13: inherited founder fate propensity")
     p.add_argument("--fix_b", type=float, default=None, help="E13 scan: fixed founder strength")
     p.add_argument("--rank", action="store_true", help="E15: clone rank in N/M assignment")
+    p.add_argument("--tau_obs", action="store_true", help="E16: start tau from observed N share")
     p.add_argument("--w_cross", type=float, default=2.0)
     args = p.parse_args()
     if args.test:
@@ -201,6 +202,13 @@ def main():
     landscape = {n: v6[n] for n in ("k", "sigma", "f")}
 
     net = Policy(trait=args.trait, founder=args.founder and FIX_B is None, rank=args.rank)
+    if args.tau_obs:  # E16: tau_c = -logit(observed N share among N+M cells in condition c)
+        share = []
+        for c in CONDS:
+            nm = np.array([v[:2] for d in cnt_obs[c].values() for v in d.values()]).sum(0)
+            share.append(nm[0] / nm.sum())
+        share = np.clip([share[0], *share], 0.02, 0.98)  # pre-split uses the full cocktail
+        net.rank_tau.data = torch.tensor(-np.log(share / (1 - share)), dtype=torch.float32)
     theta = torch.nn.utils.parameters_to_vector(net.parameters()).detach().requires_grad_()
     opt = torch.optim.Adam([theta], lr=args.lr)
     rng = np.random.default_rng(args.seed)
@@ -235,7 +243,8 @@ def main():
     pred["pooled_epo_scf"] = {"r_mean": float(np.mean(pooled_r)),
                               "r_range": [min(pooled_r), max(pooled_r)]}
     os.makedirs(OUT, exist_ok=True)
-    tag = 'e15' if args.rank else 'e13' if args.founder else 'e12' if args.trait else 'e11'
+    tag = ('e16' if args.tau_obs else 'e15' if args.rank else 'e13' if args.founder
+           else 'e12' if args.trait else 'e11')
     if FIX_B is not None:
         tag = f"e13scan_b{FIX_B:g}_w{W_CROSS:g}"
     name = f"{tag}_{args.memory}_seed{args.seed}"

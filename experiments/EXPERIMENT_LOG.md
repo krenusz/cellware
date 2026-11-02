@@ -798,3 +798,16 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   in 150 generations, so M-CSF cannot override the clone rank and pure-M clones fall. E15 is
   therefore not a clean test of the rank idea: the levels are optimisation-limited. A fair rerun
   needs tau initialised from the observed per-condition N fractions (or a larger step for tau).
+
+## E16: E15 with cytokine levels started from the data (pre-registered 2026-11-02)
+
+- **Motivation.** E15 was optimisation-limited: tau_c barely moved from 0, so M-CSF could not
+  override the clone rank. E16 is the fair test of the rank idea.
+- **Model.** E15 (`--rank --tau_obs`) with tau_c initialised to -logit(observed N share among
+  N+M cells in condition c); pre-split uses the full cocktail. Start values: full 0.98,
+  G -0.77, M 3.25, Epo -0.20, SCF -0.08 (fit-set statistics; Epo/SCF within-condition shares are
+  fit data, not the held-out cross statistic). Everything else as E15.
+- **Runs, predictions, test.** Identical to E15: (1) G-M in 0.33-0.65 in >= 3 of 5 per variant;
+  (2) loss <= 1.3 in >= 4 of 5; (3) M-CSF M-only within 0.10 of 0.88 in >= 4 of 5; (4) b > 1.0
+  in >= 4 of 5. One whole-test Epo/SCF look via test_oracle.py --exp E16 if (1)-(3) pass for a
+  variant; success if the observed r lies within the passing runs' range +/- 0.10.
