@@ -1239,3 +1239,26 @@ fetched on GitHub Actions (NCBI blocks this machine). `geo_probe.py` learns the 
 - **Predictions.** (1) Methylation AUC > 0.5 beyond its permutation null. (2) Methylation AUC >
   expression AUC, difference CI excluding 0 (DARLIN reported clonal memory tracks methylation).
   (3) Expression AUC above its null (weaker signal still present).
+
+### Track B5 result (2026-11-02; GitHub Actions, run after the gene-alignment fix)
+
+182 HSCs (both QCs, methylation fetched), 27 clones, 215 sister pairs within mouse and tissue;
+25,740 100-kb methylation bins, 9,103 genes common to all 10 RNA plates. (First run stopped by
+its own guard at 24 matched cells, no statistic computed; fixed gene alignment across plates.)
+
+| readout | sister vs non-sister AUC [95% CI, clone bootstrap] | permutation null mean / 95th pct |
+|---|---|---|
+| DNA methylation | **0.63** [0.57, 0.69] | 0.51 / 0.55 |
+| expression | 0.51 [0.48, 0.58] | 0.48 / 0.51 |
+| difference | **[0.01, 0.18]** | |
+
+- **P1 holds:** methylation separates sisters from non-sisters beyond its null.
+- **P2 holds:** methylation > expression, difference CI excludes 0.
+- **P3 not established:** expression sits at its null's 95th percentile (0.51 vs 0.51).
+- **Reading.** In the same single HSCs, clone identity is readable from DNA methylation and
+  essentially not from expression. Together with track B (expression explains ~40% of LARRY
+  clone fate, the rest invisible), B3 (EPI-Clone: methylation predicts clone bias better than
+  expression, 0.41 vs 0.25) and DARLIN's own report, this is now three independent lines
+  pointing to a heritable, epigenetically held clone state. Caveats: 27 clones; the
+  within-clone signal is modest (AUC 0.63); a methylation difference between clones could also
+  reflect shared clone age / proliferation history rather than a fate-instructive state.

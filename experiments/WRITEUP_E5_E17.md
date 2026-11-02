@@ -110,6 +110,10 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   myeloid / erythroid bias better than their expression: CV r 0.41 [0.30, 0.52] vs 0.25-0.28
   [0.13, 0.36], difference CI [0.01, 0.32], at similar noise ceilings, and unlike expression not
   through subtype composition. Different cells and clones, so suggestive, not a test.
+- **Same cells, same clones (track B5, DARLIN Camellia-seq).** In 182 HSCs from 27 clones with
+  methylation and RNA in the same cell, sister cells are recognisable from methylation (AUC 0.63
+  [0.57, 0.69], null 0.55) but not from expression (0.51, at its null); difference CI
+  [0.01, 0.18]. Pre-registered; all three readouts of the question point the same way.
 
 ## Conclusions
 
@@ -124,8 +128,8 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
    would be needed to settle it.
 4. The clone-level fate bias is partly visible in day-2 expression (~40%) and, in a second
    dataset, more visible in DNA methylation than in expression. The working hypothesis is an
-   epigenetically held clone state set before day 2. The decisive test needs methylation,
-   expression and lineage in the same cells (DARLIN Camellia-seq, GSE222246 / GSE222328).
+   epigenetically held clone state set before day 2. In the same single cells (Camellia-seq),
+   clone identity is readable from DNA methylation and not from expression (track B5).
 
 ## Held-out tests
 

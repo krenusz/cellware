@@ -1,0 +1,106 @@
+{
+ "cells_with_clone": 209,
+ "meth_fetched": 182,
+ "plates": 10,
+ "matched": 182,
+ "common_genes": 9103,
+ "example_cols": {
+  "LL901_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL901_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E1P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL653E6P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P2": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL731_P3": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ],
+  "LL744EP1": [
+   "AAACATCG",
+   "AACAACCA",
+   "AACCGAGA",
+   "AACGCTTA",
+   "AACGTGAT"
+  ]
+ },
+ "cells": 182,
+ "clones": 27,
+ "bins": 25740,
+ "methylation": {
+  "auc": 0.6259224663866219,
+  "sister_pairs": 215,
+  "null_95": 0.5502557765904639,
+  "null_mean": 0.5115627458620451,
+  "ci": [
+   0.5663959204646457,
+   0.692548270556595
+  ]
+ },
+ "expression": {
+  "auc": 0.5104643156428308,
+  "sister_pairs": 215,
+  "null_95": 0.5091263457360783,
+  "null_mean": 0.47773734434297127,
+  "ci": [
+   0.4783586980005015,
+   0.5757115439868696
+  ]
+ },
+ "difference_ci": [
+  0.012969831238275085,
+  0.1785875325699984
+ ]
+}
