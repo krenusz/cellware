@@ -1646,3 +1646,15 @@ Same cells, pairs and features as B3g / B3 (EPI-Clone M.1-M.3 LARRY, multipotent
 - Caveat stated now: Static similarity measures the record imperfectly (AUC 0.93, not 1), so (a)
   can leave some record signal in the residual. It is biased towards (i); a weak (a) is more
   informative than a strong one.
+- **Amendment before the look (2026-11-02).** The smoke test on toys showed the decile
+  stratification is biased: with pure leakage and a noisy record measure, the stratified AUC is
+  0.58-0.65 (10 bins) and stays ~0.6 at 50-100 bins, while the permutation null is ~0.5. So
+  "above null" cannot separate (i) from (ii), and the same holds for residualising in (b).
+  Replacement readout: a **record-only benchmark from the data.** Split the 110 Static CpGs at
+  random into halves A and B (55 each; 20 splits). Benchmark = A's result conditioned on B, for
+  (a) stratified sister AUC (50 bins) and (b) fate CV r of A | B. Test = 55 random Dynamic
+  CpGs conditioned on the same B. **Readings:** Dynamic clearly above the benchmark (median of
+  draws above the benchmark's 95th percentile) = Dynamic sites carry a shared or fate-relevant
+  signal beyond the record (i). At or below the benchmark = leakage alone is enough to explain
+  it, (ii) not excluded. This is asymmetric: only "above" is informative. The original (a)/(b)
+  numbers are reported as well, as descriptive.
