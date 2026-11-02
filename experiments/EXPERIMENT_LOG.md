@@ -733,3 +733,15 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   into the G-M band without wrecking the fit; the full 0.51 is not reachable at acceptable fit
   in this drift-bias form. The data's clone bias is stronger than this model's form can carry.
 - **Candidate for a pre-registered test model:** b = 0.25-0.5, W = 5 (choose before any look).
+
+## E14: moderate fixed founder propensity (pre-registered 2026-11-02)
+
+- **Model.** E13 drift-bias founder term with b fixed at 0.35 and W_CROSS = 5, chosen from the
+  E13 scan before any test look. Outputs e13scan_b0.35_w5_{memory}_seed{s}.json.
+- **Runs.** 5 seeds x {inherit, resample}, 150 generations, GitHub Actions.
+- **Predictions (fit set).** (1) G-M r in 0.33-0.65 in >= 3 of 5 per memory variant.
+  (2) Loss <= 1.3 in >= 4 of 5 per variant. (3) M-CSF M-only within 0.10 of 0.88 in >= 4 of 5.
+- **Held-out test.** If (1) and (2) pass for a variant, one whole-test look (1 shard) at pooled
+  Epo/SCF via test_oracle.py --exp E14, comparing the mean prediction of that variant's passing
+  runs with the observed r. Success: observed r inside the runs' prediction range +/- 0.10.
+  If both variants pass, both predictions are recorded before the single look.

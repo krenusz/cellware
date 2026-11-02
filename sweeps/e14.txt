@@ -1,0 +1,11 @@
+# E14: fixed founder b=0.35, W_CROSS=5 (pre-registered, --larry)
+[experiments/results_clone_e11/e13scan_b0.35_w5_inherit_seed0.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 0 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_inherit_seed1.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 1 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_inherit_seed2.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 2 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_inherit_seed3.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 3 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_inherit_seed4.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 4 --memory inherit --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_resample_seed0.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 0 --memory resample --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_resample_seed1.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 1 --memory resample --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_resample_seed2.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 2 --memory resample --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_resample_seed3.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 3 --memory resample --threads 4
+[experiments/results_clone_e11/e13scan_b0.35_w5_resample_seed4.json] python experiments/train_clone_e11.py --fix_b 0.35 --w_cross 5 --seed 4 --memory resample --threads 4
