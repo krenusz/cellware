@@ -1564,3 +1564,25 @@ Observed: full-G 0.69 [0.40, 0.92], full-M 0.24 [-0.11, 0.55], G-M 0.51 [0.33, 0
   near-deterministic fate given that state (beta ~5-6). The next constraint has to come from data
   on the fate state itself (e.g. EPI-Clone Dynamic CpGs in sisters), not from the record.
   G-M still tops out near the bottom of its CI (max 0.39 of 0.51 observed).
+
+## Track B3f / B3g: size-matched sites and sister fate-state sharing (pre-registered 2026-11-02)
+
+- **B3f (size-matched B3e).** Same as B3e, but Dynamic is cut to 110 CpGs (the Static count):
+  200 random draws of 110 Dynamic CpGs, CV r for each. Reading fixed in advance: if Static's r
+  (0.24) is below the 5th percentile of the size-matched Dynamic draws, the B3e gap is not panel
+  size and cell-state CpGs really carry more fate information. If it is within the middle 90%,
+  the B3e gap is panel size, and Static and Dynamic carry similar fate information per site.
+- **B3g (sister fate-state sharing).** EPI-Clone M.1-M.3 LARRY cells, multipotent compartment
+  (HSC/MPP1-4), clone-labelled. Pairs of cells within the same experiment, mouse batch and cell
+  type (so cell-type identity cannot drive similarity); sisters = same LARRY barcode. Feature:
+  top-20 PCs of binary methylation, Pearson r between cells. AUC sisters vs non-sisters for
+  (a) Dynamic CpGs, (b) Static CpGs, (c) Dynamic size-matched to 110 (20 draws, median), and
+  (d) negative |pseudotime difference|. Null: sister labels permuted within group (100x). CI:
+  bootstrap over clones (300x).
+- **Readings fixed in advance.** Dynamic (size-matched) AUC above its null with a CI excluding
+  it: sisters share cell-state methylation, so the fate state is measurable in sisters and
+  could give E18c a rho_f. Static > Dynamic: as expected for a record (sanity check). Dynamic at
+  null: the fate state is not visibly shared at the methylation level within a cell type, and the
+  B3 prediction comes from something set later or from composition within types.
+- Caveat stated now: in vivo transplant HSC/MPPs, not culture sisters, so any rho estimate here
+  is only a rough guide for LARRY in vitro.
