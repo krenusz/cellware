@@ -1,0 +1,44 @@
+{
+ "GSE222246": {
+  "samples": 12,
+  "series_files": "HTTP Error 403: Forbidden",
+  "example_sample_files": {
+   "GSM6918871": "HTTP Error 403: Forbidden",
+   "GSM6918872": {
+    "GSM6918872_LL744EP2_RNA.UMI_counts.tsv.gz": "494K"
+   },
+   "GSM6918873": "HTTP Error 403: Forbidden",
+   "GSM7808514": {
+    "GSM7808514_LL901_P2_RNA.UMI_counts.tsv.gz": "354K"
+   },
+   "GSM7808515": {
+    "GSM7808515_LL901_P3_RNA.UMI_counts.tsv.gz": "384K"
+   }
+  }
+ },
+ "GSE222328": {
+  "samples": 1080,
+  "series_files": "HTTP Error 403: Forbidden",
+  "example_sample_files": {
+   "GSM6919975": "HTTP Error 403: Forbidden",
+   "GSM6919976": "HTTP Error 403: Forbidden",
+   "GSM6919977": "HTTP Error 403: Forbidden",
+   "GSM7808934": "HTTP Error 403: Forbidden",
+   "GSM7808935": {
+    "GSM7808935_LL901_P3_DNA_H9_CpG.tsv.gz": "4.2M",
+    "GSM7808935_LL901_P3_DNA_H9_GpC.tsv.gz": "30M"
+   }
+  }
+ },
+ "GSE222479": {
+  "samples": 244,
+  "series_files": "HTTP Error 403: Forbidden",
+  "example_sample_files": {
+   "GSM6924404": "HTTP Error 403: Forbidden",
+   "GSM6924405": "HTTP Error 404: Not Found",
+   "GSM6924406": "HTTP Error 403: Forbidden",
+   "GSM7851477": "HTTP Error 404: Not Found",
+   "GSM7851478": "HTTP Error 403: Forbidden"
+  }
+ }
+}

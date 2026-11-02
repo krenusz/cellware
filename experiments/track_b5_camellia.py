@@ -129,26 +129,28 @@ def main():
     cover = np.array([[m.get(b, np.nan) for b in bins] for m in meth])
     ok_bins = np.mean(~np.isnan(cover), 0) >= 0.5
     cover = cover[:, ok_bins]
-    genes = None
+    # plates list genes in different orders / sets: align on the genes common to all plates
+    genes = sorted(set.intersection(*(set(v[1]) for v in plates.values())))
+    gidx = {}
+    for p, v in plates.items():
+        pos = {x: k for k, x in enumerate(v[1])}
+        gidx[p] = [pos[x] for x in genes]
     for r, mrow in zip(keep, cover, strict=True):
         plate, bc = r["id_rna"].rsplit("_RNA_", 1)
         if plate not in plates:
             continue
-        cols, g, mat = plates[plate]
+        cols, _, mat = plates[plate]
         if bc not in cols:
-            continue
-        if genes is None:
-            genes = g
-        if g != genes:
             continue
         rows.append(r)
         mfeat.append(mrow)
-        efeat.append(mat[:, cols.index(bc)])
+        efeat.append(mat[gidx[plate], cols.index(bc)])
     diag = {
         "cells_with_clone": len(cells),
         "meth_fetched": len(keep),
         "plates": len(plates),
         "matched": len(rows),
+        "common_genes": len(genes),
         "example_cols": {p: v[0][:5] for p, v in plates.items()},
     }
     if len(rows) < 20:  # mapping failed: report what was seen and stop
