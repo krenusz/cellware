@@ -50,8 +50,10 @@ W_CROSS = 2.0  # weight of the cross-condition terms in the loss
 
 
 class Policy(torch.nn.Module):
-    def __init__(self, obs_dim=12, hidden=32, trait=False):
+    def __init__(self, obs_dim=12, hidden=32, trait=False, founder=False):
         super().__init__()
+        # E13: strength of an exactly inherited founder N/M propensity in the fate drift (learned)
+        self.founder_scale = torch.nn.Parameter(torch.tensor(1.0)) if founder else None
         # E12: strength of a heritable clone trait that tilts N vs M expansion (learned)
         self.trait_scale = torch.nn.Parameter(torch.tensor(0.5)) if trait else None
         self.net = torch.nn.Sequential(
@@ -83,6 +85,7 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
     cond = torch.full((clones, 1), -1, dtype=torch.long)
     age = torch.zeros(clones, 1)
     trait = torch.randn(clones, 1, generator=g)  # E12: fixed per clone, shared by all its cells
+    founder = torch.randn(clones, 1, generator=g)  # E13: founder propensity, exactly inherited
     out = {c: {4: {}, 6: {}} for c in CONDS}
     for day in range(1, 7):
         for _ in range(STEPS_PER_DAY):
@@ -93,6 +96,8 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
                                     generator=g).view(x.shape)
             push = PUSH * ((act == PUSH_N).float() - (act == PUSH_M).float())
             noise = torch.randn(x.shape, generator=g)
+            if net.founder_scale is not None:  # same bias for every cell of the clone, all days
+                push = push + net.founder_scale.detach() * founder
             x = torch.where(free, x + k * (x - x**3 + push) * dt + sigma * dt**0.5 * noise, x)
             fate = torch.where(free & (act == COMMIT_O), 3, fate)
             free = fate == 0
@@ -161,6 +166,7 @@ def main():
     p.add_argument("--threads", type=int, default=4)
     p.add_argument("--test", action="store_true", help="the single look at the held-out test")
     p.add_argument("--trait", action="store_true", help="E12: heritable clone expansion trait")
+    p.add_argument("--founder", action="store_true", help="E13: inherited founder fate propensity")
     args = p.parse_args()
     if args.test:
         test_look()
@@ -174,7 +180,7 @@ def main():
     v6 = json.load(open(os.path.join(HERE, "results_larry", "fit_v6_resample.json")))["params"]
     landscape = {n: v6[n] for n in ("k", "sigma", "f")}
 
-    net = Policy(trait=args.trait)
+    net = Policy(trait=args.trait, founder=args.founder)
     theta = torch.nn.utils.parameters_to_vector(net.parameters()).detach().requires_grad_()
     opt = torch.optim.Adam([theta], lr=args.lr)
     rng = np.random.default_rng(args.seed)
@@ -209,10 +215,13 @@ def main():
     pred["pooled_epo_scf"] = {"r_mean": float(np.mean(pooled_r)),
                               "r_range": [min(pooled_r), max(pooled_r)]}
     os.makedirs(OUT, exist_ok=True)
-    name = f"{'e12' if args.trait else 'e11'}_{args.memory}_seed{args.seed}"
+    tag = 'e13' if args.founder else 'e12' if args.trait else 'e11'
+    name = f"{tag}_{args.memory}_seed{args.seed}"
     torch.save(net.state_dict(), os.path.join(OUT, name + ".pt"))
     if args.trait:
         pred["trait_scale"] = float(net.trait_scale)
+    if args.founder:
+        pred["founder_scale"] = float(net.founder_scale)
     result = {"config": vars(args), "landscape": landscape, "obs_cross": obs_cross,
               "history": history, "final_loss": history[-1]["loss"],
               "fit_sim": condition_stats(sims[0]), "pred": pred}

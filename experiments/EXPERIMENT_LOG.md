@@ -672,3 +672,20 @@ observations (results_clone_es/distil/linear_drive.json). R^2 0.76-0.92 per poli
   E10-E12 policies ignore memory or use the trait weakly. Next model should make the founder
   propensity the dominant, exactly inherited variable and let the data set its spread.
 
+
+## E13: exactly inherited founder fate propensity (pre-registered 2026-11-02)
+
+- **Motivation.** E12 ceiling check: the observed G-M concordance (0.51) is at the ceiling for
+  ~4-5 cells per clone, so the clone's N/M propensity must be broad, fixed before day 2 and
+  rescaled (not reshuffled) by cytokines. E10-E12 lack a strong clone-level fate variable.
+- **Model.** E11 (`train_clone_e11.py --founder`) plus one clone value u ~ N(0,1), shared exactly
+  by every cell of the clone for all six days, added to the undecided cells' fate drift as
+  `b u` (positive pushes N). b is learned with the policy (init 1.0) and sets the spread across
+  clones; the policy still sees the condition and can rescale everything else. No E12 trait.
+- **Fit set, runs, control.** Same as E11/E12: 5 seeds x {inherit, resample}, 150 generations,
+  GitHub Actions; controls E11 and E12.
+- **Predictions (fit set).** (1) G-M r in the 0.33-0.65 band in >= 3 of 5 runs per memory
+  variant (E11 0/10, E12 0/10). (2) Learned b > 1.0 in >= 4 of 5 (the propensity is used and
+  broad). (3) Loss within E11/E12 range (<= 1.17) in >= 4 of 5.
+- **Held-out test.** Pooled Epo/SCF concordance through test_oracle.py, whole test (1 shard),
+  only if (1) passes for both memory variants; else only for a passing variant's runs, one look.
