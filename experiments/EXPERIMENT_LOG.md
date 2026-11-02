@@ -1586,3 +1586,41 @@ Observed: full-G 0.69 [0.40, 0.92], full-M 0.24 [-0.11, 0.55], G-M 0.51 [0.33, 0
   B3 prediction comes from something set later or from composition within types.
 - Caveat stated now: in vivo transplant HSC/MPPs, not culture sisters, so any rho estimate here
   is only a rough guide for LARRY in vitro.
+
+### B3f / B3g results (2026-11-02)
+
+First run crashed in B3g on an empty bootstrap (boot=0 in the size-matched draws; code bug, no
+result read). Fixed and rerun; B3f is deterministic and gave identical numbers.
+Implementation detail not in the pre-registration: B3g keeps every cell in a clone with >= 2
+cells in its group, plus a random 30% of other cells as non-sister background.
+
+**B3f.** Static r 0.24 sits at the **22nd percentile** of 200 size-matched Dynamic draws
+(median 0.29, 5-95%: 0.15-0.40). **Reading: the B3e gap is panel size.** Per site, Static and
+Dynamic CpGs carry similar fate information. The B3e reading "mostly cell state" is withdrawn.
+
+**B3g.** 2,420 multipotent cells, 357 clone x group sets with sisters, 233k same-group pairs
+(14.6k sister pairs).
+
+| Feature | sister AUC (95% clone bootstrap) | null |
+|---|---|---|
+| Static CpGs (110) | 0.93 [0.92, 0.95] | 0.51 |
+| Dynamic CpGs (200) | 0.70 [0.66, 0.74] | 0.51 |
+| Dynamic, size-matched 110 (20 draws) | 0.66 (0.63-0.69) | 0.51 |
+| pseudotime closeness | 0.49 [0.46, 0.51] | 0.50 |
+
+- **Sanity check passes:** Static > Dynamic, as expected for the sites chosen as the record.
+- **Dynamic is well above null.** By the pre-registered reading, sisters share cell-state-class
+  methylation within a cell type.
+- **But pseudotime is not shared at all.** Sisters are no closer in differentiation position than
+  random same-type cells. So the Dynamic-site sharing is not "same point along the
+  differentiation path". Two explanations remain and this test cannot tell them apart:
+  (i) a shared fate state that is orthogonal to pseudotime; (ii) the clone record also
+  marks the "Dynamic" sites (their label comes from association with cell state, which does not
+  exclude clonal association).
+- **Combined reading (B3e-B3g):** EPI-Clone's site classes do not cleanly separate "record" from
+  "state". Fate information is spread across both classes at similar per-site rates. The
+  two-variable picture (neutral record + separate fate state) is not refuted, but is no longer
+  supported by B3e either. No rho_f for E18c can be read off yet.
+- **Follow-up that would separate (i) from (ii):** does Dynamic-site sister similarity survive
+  after conditioning on Static-site similarity (partial AUC / residualised similarity)? Also,
+  does the Dynamic-site sister similarity predict sister fate agreement?
