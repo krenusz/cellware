@@ -1,0 +1,81 @@
+# Track C: robustness map, inherit, 10 seeds (pre-registered, --larry)
+[experiments/results_clone_e11/c_e11_w2_n1500_seed0.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 0 --memory inherit --threads 4 --name c_e11_w2_n1500_seed0
+[experiments/results_clone_e11/c_e11_w2_n1500_seed1.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 1 --memory inherit --threads 4 --name c_e11_w2_n1500_seed1
+[experiments/results_clone_e11/c_e11_w2_n1500_seed2.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 2 --memory inherit --threads 4 --name c_e11_w2_n1500_seed2
+[experiments/results_clone_e11/c_e11_w2_n1500_seed3.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 3 --memory inherit --threads 4 --name c_e11_w2_n1500_seed3
+[experiments/results_clone_e11/c_e11_w2_n1500_seed4.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 4 --memory inherit --threads 4 --name c_e11_w2_n1500_seed4
+[experiments/results_clone_e11/c_e11_w2_n1500_seed5.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 5 --memory inherit --threads 4 --name c_e11_w2_n1500_seed5
+[experiments/results_clone_e11/c_e11_w2_n1500_seed6.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 6 --memory inherit --threads 4 --name c_e11_w2_n1500_seed6
+[experiments/results_clone_e11/c_e11_w2_n1500_seed7.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 7 --memory inherit --threads 4 --name c_e11_w2_n1500_seed7
+[experiments/results_clone_e11/c_e11_w2_n1500_seed8.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 8 --memory inherit --threads 4 --name c_e11_w2_n1500_seed8
+[experiments/results_clone_e11/c_e11_w2_n1500_seed9.json] python experiments/train_clone_e11.py --w_cross 2 --clones 1500 --seed 9 --memory inherit --threads 4 --name c_e11_w2_n1500_seed9
+[experiments/results_clone_e11/c_e11_w2_n4000_seed0.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 0 --memory inherit --threads 4 --name c_e11_w2_n4000_seed0
+[experiments/results_clone_e11/c_e11_w2_n4000_seed1.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 1 --memory inherit --threads 4 --name c_e11_w2_n4000_seed1
+[experiments/results_clone_e11/c_e11_w2_n4000_seed2.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 2 --memory inherit --threads 4 --name c_e11_w2_n4000_seed2
+[experiments/results_clone_e11/c_e11_w2_n4000_seed3.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 3 --memory inherit --threads 4 --name c_e11_w2_n4000_seed3
+[experiments/results_clone_e11/c_e11_w2_n4000_seed4.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 4 --memory inherit --threads 4 --name c_e11_w2_n4000_seed4
+[experiments/results_clone_e11/c_e11_w2_n4000_seed5.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 5 --memory inherit --threads 4 --name c_e11_w2_n4000_seed5
+[experiments/results_clone_e11/c_e11_w2_n4000_seed6.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 6 --memory inherit --threads 4 --name c_e11_w2_n4000_seed6
+[experiments/results_clone_e11/c_e11_w2_n4000_seed7.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 7 --memory inherit --threads 4 --name c_e11_w2_n4000_seed7
+[experiments/results_clone_e11/c_e11_w2_n4000_seed8.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 8 --memory inherit --threads 4 --name c_e11_w2_n4000_seed8
+[experiments/results_clone_e11/c_e11_w2_n4000_seed9.json] python experiments/train_clone_e11.py --w_cross 2 --clones 4000 --seed 9 --memory inherit --threads 4 --name c_e11_w2_n4000_seed9
+[experiments/results_clone_e11/c_e11_w5_n1500_seed0.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 0 --memory inherit --threads 4 --name c_e11_w5_n1500_seed0
+[experiments/results_clone_e11/c_e11_w5_n1500_seed1.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 1 --memory inherit --threads 4 --name c_e11_w5_n1500_seed1
+[experiments/results_clone_e11/c_e11_w5_n1500_seed2.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 2 --memory inherit --threads 4 --name c_e11_w5_n1500_seed2
+[experiments/results_clone_e11/c_e11_w5_n1500_seed3.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 3 --memory inherit --threads 4 --name c_e11_w5_n1500_seed3
+[experiments/results_clone_e11/c_e11_w5_n1500_seed4.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 4 --memory inherit --threads 4 --name c_e11_w5_n1500_seed4
+[experiments/results_clone_e11/c_e11_w5_n1500_seed5.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 5 --memory inherit --threads 4 --name c_e11_w5_n1500_seed5
+[experiments/results_clone_e11/c_e11_w5_n1500_seed6.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 6 --memory inherit --threads 4 --name c_e11_w5_n1500_seed6
+[experiments/results_clone_e11/c_e11_w5_n1500_seed7.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 7 --memory inherit --threads 4 --name c_e11_w5_n1500_seed7
+[experiments/results_clone_e11/c_e11_w5_n1500_seed8.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 8 --memory inherit --threads 4 --name c_e11_w5_n1500_seed8
+[experiments/results_clone_e11/c_e11_w5_n1500_seed9.json] python experiments/train_clone_e11.py --w_cross 5 --clones 1500 --seed 9 --memory inherit --threads 4 --name c_e11_w5_n1500_seed9
+[experiments/results_clone_e11/c_e11_w5_n4000_seed0.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 0 --memory inherit --threads 4 --name c_e11_w5_n4000_seed0
+[experiments/results_clone_e11/c_e11_w5_n4000_seed1.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 1 --memory inherit --threads 4 --name c_e11_w5_n4000_seed1
+[experiments/results_clone_e11/c_e11_w5_n4000_seed2.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 2 --memory inherit --threads 4 --name c_e11_w5_n4000_seed2
+[experiments/results_clone_e11/c_e11_w5_n4000_seed3.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 3 --memory inherit --threads 4 --name c_e11_w5_n4000_seed3
+[experiments/results_clone_e11/c_e11_w5_n4000_seed4.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 4 --memory inherit --threads 4 --name c_e11_w5_n4000_seed4
+[experiments/results_clone_e11/c_e11_w5_n4000_seed5.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 5 --memory inherit --threads 4 --name c_e11_w5_n4000_seed5
+[experiments/results_clone_e11/c_e11_w5_n4000_seed6.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 6 --memory inherit --threads 4 --name c_e11_w5_n4000_seed6
+[experiments/results_clone_e11/c_e11_w5_n4000_seed7.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 7 --memory inherit --threads 4 --name c_e11_w5_n4000_seed7
+[experiments/results_clone_e11/c_e11_w5_n4000_seed8.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 8 --memory inherit --threads 4 --name c_e11_w5_n4000_seed8
+[experiments/results_clone_e11/c_e11_w5_n4000_seed9.json] python experiments/train_clone_e11.py --w_cross 5 --clones 4000 --seed 9 --memory inherit --threads 4 --name c_e11_w5_n4000_seed9
+[experiments/results_clone_e11/c_e16_w2_n1500_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 0 --memory inherit --threads 4 --name c_e16_w2_n1500_seed0
+[experiments/results_clone_e11/c_e16_w2_n1500_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 1 --memory inherit --threads 4 --name c_e16_w2_n1500_seed1
+[experiments/results_clone_e11/c_e16_w2_n1500_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 2 --memory inherit --threads 4 --name c_e16_w2_n1500_seed2
+[experiments/results_clone_e11/c_e16_w2_n1500_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 3 --memory inherit --threads 4 --name c_e16_w2_n1500_seed3
+[experiments/results_clone_e11/c_e16_w2_n1500_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 4 --memory inherit --threads 4 --name c_e16_w2_n1500_seed4
+[experiments/results_clone_e11/c_e16_w2_n1500_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 5 --memory inherit --threads 4 --name c_e16_w2_n1500_seed5
+[experiments/results_clone_e11/c_e16_w2_n1500_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 6 --memory inherit --threads 4 --name c_e16_w2_n1500_seed6
+[experiments/results_clone_e11/c_e16_w2_n1500_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 7 --memory inherit --threads 4 --name c_e16_w2_n1500_seed7
+[experiments/results_clone_e11/c_e16_w2_n1500_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 8 --memory inherit --threads 4 --name c_e16_w2_n1500_seed8
+[experiments/results_clone_e11/c_e16_w2_n1500_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 1500 --seed 9 --memory inherit --threads 4 --name c_e16_w2_n1500_seed9
+[experiments/results_clone_e11/c_e16_w2_n4000_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 0 --memory inherit --threads 4 --name c_e16_w2_n4000_seed0
+[experiments/results_clone_e11/c_e16_w2_n4000_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 1 --memory inherit --threads 4 --name c_e16_w2_n4000_seed1
+[experiments/results_clone_e11/c_e16_w2_n4000_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 2 --memory inherit --threads 4 --name c_e16_w2_n4000_seed2
+[experiments/results_clone_e11/c_e16_w2_n4000_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 3 --memory inherit --threads 4 --name c_e16_w2_n4000_seed3
+[experiments/results_clone_e11/c_e16_w2_n4000_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 4 --memory inherit --threads 4 --name c_e16_w2_n4000_seed4
+[experiments/results_clone_e11/c_e16_w2_n4000_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 5 --memory inherit --threads 4 --name c_e16_w2_n4000_seed5
+[experiments/results_clone_e11/c_e16_w2_n4000_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 6 --memory inherit --threads 4 --name c_e16_w2_n4000_seed6
+[experiments/results_clone_e11/c_e16_w2_n4000_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 7 --memory inherit --threads 4 --name c_e16_w2_n4000_seed7
+[experiments/results_clone_e11/c_e16_w2_n4000_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 8 --memory inherit --threads 4 --name c_e16_w2_n4000_seed8
+[experiments/results_clone_e11/c_e16_w2_n4000_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 2 --clones 4000 --seed 9 --memory inherit --threads 4 --name c_e16_w2_n4000_seed9
+[experiments/results_clone_e11/c_e16_w5_n1500_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 0 --memory inherit --threads 4 --name c_e16_w5_n1500_seed0
+[experiments/results_clone_e11/c_e16_w5_n1500_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 1 --memory inherit --threads 4 --name c_e16_w5_n1500_seed1
+[experiments/results_clone_e11/c_e16_w5_n1500_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 2 --memory inherit --threads 4 --name c_e16_w5_n1500_seed2
+[experiments/results_clone_e11/c_e16_w5_n1500_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 3 --memory inherit --threads 4 --name c_e16_w5_n1500_seed3
+[experiments/results_clone_e11/c_e16_w5_n1500_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 4 --memory inherit --threads 4 --name c_e16_w5_n1500_seed4
+[experiments/results_clone_e11/c_e16_w5_n1500_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 5 --memory inherit --threads 4 --name c_e16_w5_n1500_seed5
+[experiments/results_clone_e11/c_e16_w5_n1500_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 6 --memory inherit --threads 4 --name c_e16_w5_n1500_seed6
+[experiments/results_clone_e11/c_e16_w5_n1500_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 7 --memory inherit --threads 4 --name c_e16_w5_n1500_seed7
+[experiments/results_clone_e11/c_e16_w5_n1500_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 8 --memory inherit --threads 4 --name c_e16_w5_n1500_seed8
+[experiments/results_clone_e11/c_e16_w5_n1500_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 1500 --seed 9 --memory inherit --threads 4 --name c_e16_w5_n1500_seed9
+[experiments/results_clone_e11/c_e16_w5_n4000_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 0 --memory inherit --threads 4 --name c_e16_w5_n4000_seed0
+[experiments/results_clone_e11/c_e16_w5_n4000_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 1 --memory inherit --threads 4 --name c_e16_w5_n4000_seed1
+[experiments/results_clone_e11/c_e16_w5_n4000_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 2 --memory inherit --threads 4 --name c_e16_w5_n4000_seed2
+[experiments/results_clone_e11/c_e16_w5_n4000_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 3 --memory inherit --threads 4 --name c_e16_w5_n4000_seed3
+[experiments/results_clone_e11/c_e16_w5_n4000_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 4 --memory inherit --threads 4 --name c_e16_w5_n4000_seed4
+[experiments/results_clone_e11/c_e16_w5_n4000_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 5 --memory inherit --threads 4 --name c_e16_w5_n4000_seed5
+[experiments/results_clone_e11/c_e16_w5_n4000_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 6 --memory inherit --threads 4 --name c_e16_w5_n4000_seed6
+[experiments/results_clone_e11/c_e16_w5_n4000_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 7 --memory inherit --threads 4 --name c_e16_w5_n4000_seed7
+[experiments/results_clone_e11/c_e16_w5_n4000_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 8 --memory inherit --threads 4 --name c_e16_w5_n4000_seed8
+[experiments/results_clone_e11/c_e16_w5_n4000_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --w_cross 5 --clones 4000 --seed 9 --memory inherit --threads 4 --name c_e16_w5_n4000_seed9

@@ -1,0 +1,61 @@
+# Track A: late commitment / reversion on the E16 model (pre-registered, --larry)
+[experiments/results_clone_e11/a_day_inherit_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 0 --memory inherit --threads 4 --name a_day_inherit_seed0
+[experiments/results_clone_e11/a_day_inherit_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 1 --memory inherit --threads 4 --name a_day_inherit_seed1
+[experiments/results_clone_e11/a_day_inherit_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 2 --memory inherit --threads 4 --name a_day_inherit_seed2
+[experiments/results_clone_e11/a_day_inherit_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 3 --memory inherit --threads 4 --name a_day_inherit_seed3
+[experiments/results_clone_e11/a_day_inherit_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 4 --memory inherit --threads 4 --name a_day_inherit_seed4
+[experiments/results_clone_e11/a_day_inherit_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 5 --memory inherit --threads 4 --name a_day_inherit_seed5
+[experiments/results_clone_e11/a_day_inherit_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 6 --memory inherit --threads 4 --name a_day_inherit_seed6
+[experiments/results_clone_e11/a_day_inherit_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 7 --memory inherit --threads 4 --name a_day_inherit_seed7
+[experiments/results_clone_e11/a_day_inherit_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 8 --memory inherit --threads 4 --name a_day_inherit_seed8
+[experiments/results_clone_e11/a_day_inherit_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 9 --memory inherit --threads 4 --name a_day_inherit_seed9
+[experiments/results_clone_e11/a_day_resample_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 0 --memory resample --threads 4 --name a_day_resample_seed0
+[experiments/results_clone_e11/a_day_resample_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 1 --memory resample --threads 4 --name a_day_resample_seed1
+[experiments/results_clone_e11/a_day_resample_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 2 --memory resample --threads 4 --name a_day_resample_seed2
+[experiments/results_clone_e11/a_day_resample_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 3 --memory resample --threads 4 --name a_day_resample_seed3
+[experiments/results_clone_e11/a_day_resample_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 4 --memory resample --threads 4 --name a_day_resample_seed4
+[experiments/results_clone_e11/a_day_resample_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 5 --memory resample --threads 4 --name a_day_resample_seed5
+[experiments/results_clone_e11/a_day_resample_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 6 --memory resample --threads 4 --name a_day_resample_seed6
+[experiments/results_clone_e11/a_day_resample_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 7 --memory resample --threads 4 --name a_day_resample_seed7
+[experiments/results_clone_e11/a_day_resample_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 8 --memory resample --threads 4 --name a_day_resample_seed8
+[experiments/results_clone_e11/a_day_resample_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --seed 9 --memory resample --threads 4 --name a_day_resample_seed9
+[experiments/results_clone_e11/a_rev_inherit_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 0 --memory inherit --threads 4 --name a_rev_inherit_seed0
+[experiments/results_clone_e11/a_rev_inherit_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 1 --memory inherit --threads 4 --name a_rev_inherit_seed1
+[experiments/results_clone_e11/a_rev_inherit_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 2 --memory inherit --threads 4 --name a_rev_inherit_seed2
+[experiments/results_clone_e11/a_rev_inherit_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 3 --memory inherit --threads 4 --name a_rev_inherit_seed3
+[experiments/results_clone_e11/a_rev_inherit_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 4 --memory inherit --threads 4 --name a_rev_inherit_seed4
+[experiments/results_clone_e11/a_rev_inherit_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 5 --memory inherit --threads 4 --name a_rev_inherit_seed5
+[experiments/results_clone_e11/a_rev_inherit_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 6 --memory inherit --threads 4 --name a_rev_inherit_seed6
+[experiments/results_clone_e11/a_rev_inherit_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 7 --memory inherit --threads 4 --name a_rev_inherit_seed7
+[experiments/results_clone_e11/a_rev_inherit_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 8 --memory inherit --threads 4 --name a_rev_inherit_seed8
+[experiments/results_clone_e11/a_rev_inherit_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 9 --memory inherit --threads 4 --name a_rev_inherit_seed9
+[experiments/results_clone_e11/a_rev_resample_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 0 --memory resample --threads 4 --name a_rev_resample_seed0
+[experiments/results_clone_e11/a_rev_resample_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 1 --memory resample --threads 4 --name a_rev_resample_seed1
+[experiments/results_clone_e11/a_rev_resample_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 2 --memory resample --threads 4 --name a_rev_resample_seed2
+[experiments/results_clone_e11/a_rev_resample_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 3 --memory resample --threads 4 --name a_rev_resample_seed3
+[experiments/results_clone_e11/a_rev_resample_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 4 --memory resample --threads 4 --name a_rev_resample_seed4
+[experiments/results_clone_e11/a_rev_resample_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 5 --memory resample --threads 4 --name a_rev_resample_seed5
+[experiments/results_clone_e11/a_rev_resample_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 6 --memory resample --threads 4 --name a_rev_resample_seed6
+[experiments/results_clone_e11/a_rev_resample_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 7 --memory resample --threads 4 --name a_rev_resample_seed7
+[experiments/results_clone_e11/a_rev_resample_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 8 --memory resample --threads 4 --name a_rev_resample_seed8
+[experiments/results_clone_e11/a_rev_resample_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --revert --seed 9 --memory resample --threads 4 --name a_rev_resample_seed9
+[experiments/results_clone_e11/a_dayrev_inherit_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 0 --memory inherit --threads 4 --name a_dayrev_inherit_seed0
+[experiments/results_clone_e11/a_dayrev_inherit_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 1 --memory inherit --threads 4 --name a_dayrev_inherit_seed1
+[experiments/results_clone_e11/a_dayrev_inherit_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 2 --memory inherit --threads 4 --name a_dayrev_inherit_seed2
+[experiments/results_clone_e11/a_dayrev_inherit_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 3 --memory inherit --threads 4 --name a_dayrev_inherit_seed3
+[experiments/results_clone_e11/a_dayrev_inherit_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 4 --memory inherit --threads 4 --name a_dayrev_inherit_seed4
+[experiments/results_clone_e11/a_dayrev_inherit_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 5 --memory inherit --threads 4 --name a_dayrev_inherit_seed5
+[experiments/results_clone_e11/a_dayrev_inherit_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 6 --memory inherit --threads 4 --name a_dayrev_inherit_seed6
+[experiments/results_clone_e11/a_dayrev_inherit_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 7 --memory inherit --threads 4 --name a_dayrev_inherit_seed7
+[experiments/results_clone_e11/a_dayrev_inherit_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 8 --memory inherit --threads 4 --name a_dayrev_inherit_seed8
+[experiments/results_clone_e11/a_dayrev_inherit_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 9 --memory inherit --threads 4 --name a_dayrev_inherit_seed9
+[experiments/results_clone_e11/a_dayrev_resample_seed0.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 0 --memory resample --threads 4 --name a_dayrev_resample_seed0
+[experiments/results_clone_e11/a_dayrev_resample_seed1.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 1 --memory resample --threads 4 --name a_dayrev_resample_seed1
+[experiments/results_clone_e11/a_dayrev_resample_seed2.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 2 --memory resample --threads 4 --name a_dayrev_resample_seed2
+[experiments/results_clone_e11/a_dayrev_resample_seed3.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 3 --memory resample --threads 4 --name a_dayrev_resample_seed3
+[experiments/results_clone_e11/a_dayrev_resample_seed4.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 4 --memory resample --threads 4 --name a_dayrev_resample_seed4
+[experiments/results_clone_e11/a_dayrev_resample_seed5.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 5 --memory resample --threads 4 --name a_dayrev_resample_seed5
+[experiments/results_clone_e11/a_dayrev_resample_seed6.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 6 --memory resample --threads 4 --name a_dayrev_resample_seed6
+[experiments/results_clone_e11/a_dayrev_resample_seed7.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 7 --memory resample --threads 4 --name a_dayrev_resample_seed7
+[experiments/results_clone_e11/a_dayrev_resample_seed8.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 8 --memory resample --threads 4 --name a_dayrev_resample_seed8
+[experiments/results_clone_e11/a_dayrev_resample_seed9.json] python experiments/train_clone_e11.py --rank --tau_obs --day_obs --revert --seed 9 --memory resample --threads 4 --name a_dayrev_resample_seed9

@@ -47,14 +47,21 @@ REST, PUSH_N, PUSH_M, COMMIT_O = range(4)
 CONDS = tuple(CONDS5.values())  # full, G, M, Epo, SCF
 TRAIN_PAIRS = ("full-G", "full-M", "G-M")
 W_CROSS = 2.0  # weight of the cross-condition terms in the loss
+DAY_OBS = False  # track A: the policy also sees the day (commitment can change with time)
+N_CLONES = 1500
+CUR_DAY = [0]
 W_WITHIN = 1.0  # E17: weight of the within-condition terms (0 = fit cross terms only)
 FIX_B = None  # E13 scan: fixed founder strength (--fix_b)
 RANK_G = 2.0  # E15: weight of the drift side in the N/M assignment logit
 
 
 class Policy(torch.nn.Module):
-    def __init__(self, obs_dim=12, hidden=32, trait=False, founder=False, rank=False):
+    def __init__(self, obs_dim=12, hidden=32, trait=False, founder=False, rank=False,
+                 revert=False):
         super().__init__()
+        obs_dim += DAY_OBS
+        # track A: committed N/M cells revert to undecided, rate logit r0 + r1 (day - 4) (learned)
+        self.revert = torch.nn.Parameter(torch.tensor([-3.0, 0.0])) if revert else None
         # E15: clone rank in the N/M assignment at commitment, cytokine sets the level (learned)
         self.rank_scale = torch.nn.Parameter(torch.tensor(1.0)) if rank else None
         self.rank_tau = torch.nn.Parameter(torch.zeros(len(CONDS) + 1)) if rank else None
@@ -77,12 +84,16 @@ def observe(x, age, mem, cond, fate):
     onehot = onehot * (cond >= 0)[..., None]
     fate_oh = torch.nn.functional.one_hot((fate - 1).clamp(min=0), 3).float()
     fate_oh = fate_oh * (fate > 0)[..., None]
-    return torch.cat([x[..., None], age[..., None] / STEPS_PER_DAY, mem, onehot, fate_oh], -1)
+    parts = [x[..., None], age[..., None] / STEPS_PER_DAY, mem, onehot, fate_oh]
+    if DAY_OBS:
+        parts.append(torch.full_like(x[..., None], CUR_DAY[0] / 6))
+    return torch.cat(parts, -1)
 
 
-def simulate(net, landscape, memory, clones=1500, seed=0):
+def simulate(net, landscape, memory, clones=None, seed=0):
     """Returns {cond: {day: {clone: [N, M, O]}}} like fit_cytokine.load_counts."""
     g = torch.Generator().manual_seed(seed)
+    clones = clones or N_CLONES
     k, sigma, f = (landscape[n] for n in ("k", "sigma", "f"))
     dt = 1.0 / STEPS_PER_DAY
     x = 0.05 * torch.randn(clones, 1, generator=g)
@@ -94,7 +105,14 @@ def simulate(net, landscape, memory, clones=1500, seed=0):
     founder = torch.randn(clones, 1, generator=g)  # E13: founder propensity, exactly inherited
     out = {c: {4: {}, 6: {}} for c in CONDS}
     for day in range(1, 7):
+        CUR_DAY[0] = day
         for _ in range(STEPS_PER_DAY):
+            if net.revert is not None:  # committed N/M cells may become undecided again
+                r = net.revert.detach()
+                p_rev = torch.sigmoid(r[0] + r[1] * (day - 4)) / STEPS_PER_DAY
+                back = ((fate == 1) | (fate == 2)) & (torch.rand(x.shape, generator=g) < p_rev)
+                fate = torch.where(back, 0, fate)
+                x = torch.where(back, torch.zeros_like(x), x)
             free = fate == 0
             with torch.no_grad():
                 logits = net(observe(x, age, mem, cond, fate))[..., :4]
@@ -188,13 +206,18 @@ def main():
     p.add_argument("--rank", action="store_true", help="E15: clone rank in N/M assignment")
     p.add_argument("--tau_obs", action="store_true", help="E16: start tau from observed N share")
     p.add_argument("--w_cross", type=float, default=2.0)
+    p.add_argument("--day_obs", action="store_true", help="track A: policy sees the day")
+    p.add_argument("--revert", action="store_true", help="track A: committed cells revert")
+    p.add_argument("--clones", type=int, default=1500)
+    p.add_argument("--name", default=None, help="output name (overrides the tag)")
     p.add_argument("--w_within", type=float, default=1.0, help="E17 conflict test")
     args = p.parse_args()
     if args.test:
         test_look()
         return
-    global FIX_B, W_CROSS, W_WITHIN
+    global FIX_B, W_CROSS, W_WITHIN, DAY_OBS, N_CLONES
     FIX_B, W_CROSS, W_WITHIN = args.fix_b, args.w_cross, args.w_within
+    DAY_OBS, N_CLONES = args.day_obs, args.clones
     torch.manual_seed(args.seed)
     torch.set_num_threads(args.threads)
     cnt_obs = load_counts(CONDS5)
@@ -204,7 +227,8 @@ def main():
     v6 = json.load(open(os.path.join(HERE, "results_larry", "fit_v6_resample.json")))["params"]
     landscape = {n: v6[n] for n in ("k", "sigma", "f")}
 
-    net = Policy(trait=args.trait, founder=args.founder and FIX_B is None, rank=args.rank)
+    net = Policy(trait=args.trait, founder=args.founder and FIX_B is None, rank=args.rank,
+                 revert=args.revert)
     if args.tau_obs:  # E16: tau_c = -logit(observed N share among N+M cells in condition c)
         share = []
         for c in CONDS:
@@ -213,6 +237,9 @@ def main():
         share = np.clip([share[0], *share], 0.02, 0.98)  # pre-split uses the full cocktail
         net.rank_tau.data = torch.tensor(-np.log(share / (1 - share)), dtype=torch.float32)
     theta = torch.nn.utils.parameters_to_vector(net.parameters()).detach().requires_grad_()
+    theta0 = theta.detach().clone()
+    init_scalars = {n: v.detach().clone().tolist() for n, v in net.named_parameters()
+                    if not n.startswith("net.")}
     opt = torch.optim.Adam([theta], lr=args.lr)
     rng = np.random.default_rng(args.seed)
     history, start = [], time.time()
@@ -252,7 +279,7 @@ def main():
         tag = f"e17_ww{W_WITHIN:g}"
     if FIX_B is not None:
         tag = f"e13scan_b{FIX_B:g}_w{W_CROSS:g}"
-    name = f"{tag}_{args.memory}_seed{args.seed}"
+    name = args.name or f"{tag}_{args.memory}_seed{args.seed}"
     torch.save(net.state_dict(), os.path.join(OUT, name + ".pt"))
     if args.trait:
         pred["trait_scale"] = float(net.trait_scale)
@@ -263,7 +290,14 @@ def main():
         pred["founder_scale"] = float(net.founder_scale)
     W_WITHIN, W_CROSS = 1.0, 0.0  # E17: unweighted within-condition loss, comparable across runs
     within_loss = fitness_loss(net, landscape, args.memory, obs, obs_cross, seed=12345)
-    result = {"within_loss": within_loss, "config": vars(args), "landscape": landscape,
+    health = {"theta_shift": float((theta.detach() - theta0).norm() / theta0.norm()),
+              "scalars": {n: [init_scalars[n], v.detach().tolist()]
+                          for n, v in net.named_parameters() if n in init_scalars},
+              "min_clones": min(v["clones"] for v in condition_stats(sims[0]).values())}
+    if net.revert is not None:
+        pred["revert"] = net.revert.tolist()
+    result = {"health": health, "within_loss": within_loss, "config": vars(args),
+              "landscape": landscape,
               "obs_cross": obs_cross,
               "history": history, "final_loss": history[-1]["loss"],
               "fit_sim": condition_stats(sims[0]), "pred": pred}

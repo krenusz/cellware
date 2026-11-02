@@ -867,3 +867,54 @@ Unweighted within-condition loss (E16 re-scored the same way: 0.34-0.61):
 - **Status of the modelling line.** E11-E17 close the cytokine question for this dataset: best
   models fit within-condition data well (loss 0.34-0.61) and predict G-M 0.23-0.34, at or just
   below the lower CI bound. The Epo/SCF test remains unseen.
+
+---
+
+# Wider programme (2026-11-02): four parallel tracks
+
+Rules for every track: the whole grid is pre-registered with its decision rule; 10 seeds per
+setting; report median and spread, not the best run; `health_check.py` marks runs where a learned
+scalar did not move (< 0.05), a condition kept < 50 clones, or the loss was still falling; failed
+runs are training failures, excluded and counted. Held-out tests: Epo/SCF is split into 2 clone
+shards (test_oracle `--shards 2`), one per track that passes its gates.
+
+## Track A: late commitment / reversion (pre-registered 2026-11-02)
+
+- **Target.** M-CSF day-4 vs day-6 clone N-fraction correlation: observed 0.32, E16 models
+  0.59-0.87 (every model since E6 overshoots: clone composition is too stable over time).
+- **Grid.** E16 model (`--rank --tau_obs`) x {day_obs: policy sees the day; revert: committed
+  N/M cells revert to undecided at learned rate sigmoid(r0 + r1 (day - 4)); both} x {inherit,
+  resample} x 10 seeds = 60 runs (`sweeps/track_a.txt`, outputs a_*).
+- **Predictions.** (1) At least one form brings median M r_d4_d6 within 0.15 of 0.32 (E16
+  median 0.83). (2) That form keeps median within-condition loss <= 0.8 (E16 re-scored 0.34-0.61).
+  (3) revert forms learn a non-trivial rate (r0 > -2.5 in >= 6 of 10 healthy runs).
+- **Gate for a test look.** (1) and (2) pass and median G-M in 0.33-0.65: one look at Epo/SCF
+  shard 0 of 2 (`--exp A`), prediction = that form's healthy-run range, success if the observed
+  shard value lies within it +/- 0.10.
+
+## Track C: robustness map (pre-registered 2026-11-02)
+
+- **Question.** Are the E11/E16 conclusions properties of the model family or of one setting?
+- **Grid.** {E11 base, E16 rank} x W_CROSS {2, 5} x clones {1500, 4000} x 10 seeds, inherit
+  (`sweeps/track_c.txt`, outputs c_*), 80 runs. No test look.
+- **Predictions.** (1) Median G-M stays < 0.40 in every cell (the E17 limit is not an artefact
+  of 5 seeds or 1500 clones). (2) More clones lowers seed spread of G-M (IQR at 4000 < at 1500)
+  in >= 3 of 4 pairs. (3) W_CROSS 5 raises median G-M and raises median within loss in both
+  models (the trade-off is systematic).
+
+## Track B: day-2 expression as the clone state (step 1 pre-registered 2026-11-02)
+
+- **Step 1 (local, descriptive, in vitro fit data only).** For clones with day-2 cells and >= 3
+  day-4/6 N+M cells, predict the clone's later N fraction from its day-2 cells' state, 5-fold
+  cross-validated by clone. State: (a) SPRING coordinates (metadata), (b) top-50 PCs of the
+  normalised expression. Predictors: kNN regression and ridge. Report CV r and the share of
+  across-clone variance explained.
+- **Prediction.** Day-2 state explains a substantial part (CV r >= 0.5 with PCs), and less with
+  SPRING-2D. Weinreb 2020 reported that day-2 state predicts fate only partially; the residual
+  is the "hidden" clone component our models need.
+
+## Track D: dataset search
+
+Model-knowledge shortlist (unverified, no web search yet): Kucinski 2024 LARRY in vivo,
+SPLINTR 2022 (AML), DARLIN 2023, Rodriguez-Fraticelli 2020, ReDeeM 2024. Verify accessions,
+clone counts and per-clone depth before any download.
