@@ -2773,3 +2773,34 @@ The next model must reproduce the pairwise co-presence table before any cross st
   - Nothing passes: the day-2 priming is a broader transcriptional state not captured by these
     genes.
 - Spent data only (the same clones as B7/B9/B11); no held-out data.
+
+### B13 results (2026-11-03)
+
+2222 clones with day-2 cells. Primary (receptor balance = Csf3r - Csf1r, clone mean of
+log1p expression):
+
+| test | Csf3r | Csf1r | **balance** |
+|---|---|---|---|
+| 1. G-only > M-only (one-sided MW p) | 0.53 | 1.00 (opposite: higher in M-only) | **0.006** |
+| 2. N under M-CSF, partial rho given size (p) | 0.11 (0.024) | -0.12 | **0.14 (0.005)** |
+| 3. G-CSF N-share, rho (p) | 0.13 (0.038) | -0.16 | **0.19 (0.006)** |
+
+- **All three pre-registered primaries are supported.** Clones with more G-CSF receptor relative
+  to M-CSF receptor at day 2 are found only under G-CSF more often, keep making neutrophils under
+  M-CSF, and are more neutrophilic under G-CSF. Csf1r (higher in M-only clones, lower in
+  N-makers) carries as much of it as Csf3r. The effects are modest (rho 0.14-0.19).
+- **The receptors carry little of the priming.** The B11 priming-score effect goes from 0.24 to
+  0.21 (p 1e-4) after adding the receptor balance. The day-2 state is broader than receptor levels.
+- **Panel (BH q < 0.1, two-sided).** The neutrophil programme predicts every outcome, and the
+  monocyte programme predicts the reverse.
+  - Neutrophil genes, positive. Cebpa: N under M partial 0.28, G N-share 0.27, G-only > M-only,
+    all q < 0.002. Gfi1: 0.26 / 0.22. Cebpe, Elane, Mpo: G N-share 0.25-0.31, and higher in G-only
+    clones. Kit: 0.22 for N under M.
+  - Monocyte genes, negative. Irf8, Spi1/PU.1, Ccr2, Cebpb, Ly86: about -0.12 to -0.20.
+  - **The strongest single predictor of neutrophils under M-CSF is Cebpa (0.28)**, above the
+    priming score (0.24) and far above the receptors (0.11-0.14).
+- **Reading (pre-registered branch).** The primaries passed, but most of the signal is
+  downstream: the selection state is the clone's day-2 level of the neutrophil transcription
+  programme (Cebpa/Gfi1, then granule genes), with receptor balance a minor part. Measured
+  clone trait for the next model: day-2 Cebpa (or a neutrophil-programme score) as an input in
+  place of the latent z.
