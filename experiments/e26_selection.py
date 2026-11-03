@@ -93,14 +93,14 @@ def main(variant, only=None):
             st.append(within_stats(sim))
             pr.append(presence(sim))
         for c in CONDS:
-            tot += sum(
-                (np.mean([q[c][j] for q in st]) - obs[c][j]) ** 2 * w
-                for j, w in ((0, 1), (1, 4), (2, 1))
-            )
+            for j, w in ((0, 1), (1, 4), (2, 1)):
+                vals = [q[c][j] for q in st if np.isfinite(q[c][j])]
+                # a condition with no present clones has no within stats: fixed penalty
+                tot += (np.mean(vals) - obs[c][j]) ** 2 * w if vals else 1.0
             n_sim = np.mean([q[c][0] for q in pr])
             tot += ((n_sim - obs_p[c][0]) / obs_p[c][0]) ** 2
             tot += 0.25 * (np.mean([q[c][1] for q in pr]) - obs_p[c][1]) ** 2
-        return tot
+        return tot if np.isfinite(tot) else 1e6
 
     starts = []
     for r in range(3):
@@ -125,10 +125,12 @@ def main(variant, only=None):
             loss,
             x0,
             method="Nelder-Mead",
-            options={"maxiter": 4000, "xatol": 1e-4, "fatol": 1e-7, "adaptive": True},
-        )
-        res = minimize(
-            loss, res.x, method="Powell", options={"maxfev": 2000, "xtol": 1e-3, "ftol": 1e-6}
+            options={
+                "maxiter": int(os.environ.get("E26_MAXITER", 4000)),
+                "xatol": 1e-4,
+                "fatol": 1e-7,
+                "adaptive": True,
+            },
         )
         print(json.dumps({"loss": float(res.fun)}), flush=True)
         if best is None or res.fun < best.fun:
