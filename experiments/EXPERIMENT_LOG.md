@@ -1903,3 +1903,41 @@ Epo 5.0, SCF 5.7; sigma_w 0.01.
 - **Reading.** The G-CSF vs M-CSF agreement is a real feature the model family cannot produce,
   even with data-fixed fate-state sharing and per-condition gains. Something links G and M
   outcomes of a clone more strongly than its link to the full cocktail.
+
+## Batch pre-registration 2026-11-03 (2): E21b, E22, B3k
+
+### E21b: E21 refit with a warm-started optimiser
+- E21's nested model scored worse than E20, an optimiser failure. Refit: start at E20's optimum
+  (gains = 1), Nelder-Mead then Powell, 5 simulations per loss with common random numbers. E20's
+  optimum re-scored under the same 5-simulation loss as the reference. Same 200-simulation
+  prediction protocol.
+- **Readings.** Loss must be <= E20's re-scored loss (else the refit failed and is reported as
+  such). Gap closed only if G-M p >= 0.05 with full-G and full-M p >= 0.05. Otherwise E21's
+  conclusion (gain does not close the gap) is confirmed with a proper fit.
+
+### E22: a second clone trait shared by single-cytokine conditions
+- Hypothesis: each clone has a second heritable trait u ~ N(0,1) that shifts N propensity only
+  under single cytokines (G, M, Epo, SCF), not under the full cocktail: logit p = beta*zb + gamma*u
+  [single-cytokine] + tau_c + noise. u is clone-level (shared across the single-cytokine
+  conditions). gamma fitted with beta, sigma_w, tau_c on the within-condition statistics only
+  (fit set; rho_f 0.88; warm start from E20 with gamma 0; Nelder-Mead then Powell; 5 sims, common
+  random numbers). Cross-condition statistics are predictions.
+- **Readings.** Supported if all three cross statistics have p >= 0.05 (G-M included) with loss
+  <= E20's re-scored loss. Not supported if G-M stays at p < 0.05, or if reaching G-M breaks
+  full-G/full-M. Note stated now: u is a structural guess motivated by the E20/E21 pattern, so a
+  pass makes it a candidate, not a finding; it would need its own held-out test (Epo/SCF shard 1
+  would be the place).
+
+### B3k: are clones with more MPP-like multipotent methylation more myeloid?
+- Index per cell = mean methylation over the panel's MPP_high-class CpGs minus mean over its
+  HSC_high-class CpGs (all assay CpGs in those classes, not just B3j's top sites). Cell index
+  centred within cell type and batch (removes cell-type identity), then averaged over the
+  clone's multipotent cells. Target = myeloid share. Covariates: mouse, log sizes, and the clone's
+  multipotent composition (HSC/MPP1, MPP2, MPP3, MPP4 fractions).
+- (1) partial Spearman of index vs target given covariates, clone bootstrap CI (2000x);
+  (2) the same per mouse (sign count across 6 mice); (3) uncentred index for comparison.
+- **Readings.** Positive partial correlation with CI excluding 0 and same sign in >= 5 of 6 mice:
+  within cell types, more MPP-like methylation marks myeloid-biased clones. Otherwise the B3j
+  pattern is not supported beyond composition. Caveat stated now: the pattern was noticed in
+  these data (B3j), so this is a confirmation on a pre-defined whole-class index, not an
+  independent replication.
