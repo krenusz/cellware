@@ -234,6 +234,10 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   E28: modelling each clone's few day-2 founders split across wells (about 0.3 per well) explains
   most of the overlap anomaly (0.62 to 0.22, data 0.14), but G-M falls further (0.15-0.21) and
   B7's G-CSF effect is still not produced.
+  E29 ceiling test: even with the cross statistics fitted and a shared single-cytokine trait up to
+  gamma 5, G-M stays at 0.10-0.15. Every fit reproduces M-CSF by suppressing neutrophils twice
+  (instruction and survival), which leaves no clone signal in the M-CSF N-share. Next diagnostic
+  (B10): is the data's M-CSF neutrophil output a clone property?
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.

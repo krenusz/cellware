@@ -2410,3 +2410,38 @@ candidate nor the structural negative.
 best parameters mapped back through the transforms (checked to reproduce them exactly), with
 gamma 0, +1.46 and -1.46 (x = 0, +0.3, -0.3). Outputs are e29{w,x}warm_s{0,1,2}.json. Same gates;
 E29w's within-only loss for criterion 2 is taken from the warm runs.
+
+### E29 warm-start results (2026-11-03)
+
+| start | loss | within | gamma | full-G (p) | full-M (p) | G-M (p) | B7 G | B7 M |
+|---|---|---|---|---|---|---|---|---|
+| w s0 | 1.99 | 0.34 | 0.00 | 0.70 (0.74) | 0.11 (0.09) | 0.12 (0.00) | -0.05 | 0.00 |
+| w s1 | 1.85 | 0.37 | 1.46 | 0.65 (0.69) | 0.11 (0.09) | 0.14 (0.00) | -0.06 | 0.00 |
+| **w s2 (best)** | **1.66** | 0.36 | -1.44 | 0.66 (0.70) | 0.10 (0.04) | 0.12 (0.00) | -0.06 | 0.00 |
+| x s0 | 8.72 | 0.35 | 0.00 | 0.71 (0.71) | 0.11 (0.03) | 0.14 (0.00) | -0.05 | 0.00 |
+| **x s1 (best)** | **8.10** | 0.35 | 1.48 | 0.65 (0.68) | 0.11 (0.03) | 0.14 (0.00) | -0.06 | 0.00 |
+| x s2 | 8.75 | 0.40 | -1.44 | 0.65 (0.61) | 0.10 (0.04) | 0.12 (0.00) | -0.06 | 0.00 |
+
+- The warm starts beat E28a (1.66 vs 2.98), so the optimiser problem is fixed. gamma stays
+  where each start put it, because the loss is flat in gamma.
+- **E29w:** gamma is not identified (the loss is flat across 0 and ±1.46). This repeats E22.
+- **E29x fails criterion 1.** With the spent cross statistics in the loss, G-M still sits at
+  0.14 (p < 0.005) and full-M at 0.11 (p 0.03). B7 is not reproduced.
+- **Gamma scan (diagnostic, after the gates; e29_gamma_scan.json).** E29w best fit, gamma from -5
+  to +5, 30 simulations each: G-M 0.10-0.15 at every gamma, and within-condition loss
+  0.34-0.42 throughout. Even a huge shared single-cytokine trait does not raise G-M.
+  **Within this family, G-M is capped around 0.15, whatever the fitted structure.** This is a
+  stronger negative than the pre-registered "1 holds, 2 fails": criterion 1 cannot be reached
+  at all.
+- **Why (fitted parameters, all E26-E29 best fits).** M-CSF is fitted by double suppression of
+  neutrophils: instruction tau_M about -3.8 AND survival s_M about 0.025 (E26b: -4.5 and 0.009).
+  Under M-CSF a clone then makes almost no N cells. Its N-share is Poisson noise around zero
+  and carries no clone signal, so any correlation with G-CSF is capped regardless of the latent
+  structure. In the data, clones seen under both cytokines keep a clone-consistent N-share
+  under M-CSF (B7: 0.13 vs 0.05).
+- **Proposed next diagnostic (B10, not yet pre-registered).** In the data, among the 78 G-M
+  clones, how many N cells per clone under M-CSF, and is the M-CSF N-share predicted by the
+  G-CSF N-share beyond what Poisson thinning at the fitted s_M allows? If the data's M-CSF N
+  cells are too many and too clone-consistent for any s_M that fits the within statistics, the
+  missing piece is located: neutrophil output under M-CSF is a clone property, not a uniform
+  survival factor.
