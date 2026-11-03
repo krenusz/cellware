@@ -28,7 +28,7 @@ GATE_PAIRS = ("full-G", "full-M", "G-M")
 
 
 def simulate(clones, prm, rng):
-    """As e29.simulate (gamma 0), but founders per well come from one multinomial split per clone."""
+    """As e29.simulate (gamma 0), but founders per well come from one multinomial split."""
     n = len(clones)
     z = rng.standard_normal(n)
     a = prm["sigma_a"] * rng.standard_normal(n)
@@ -44,6 +44,11 @@ def simulate(clones, prm, rng):
         keep = np.flatnonzero(kn + km > 0)
         out[c] = {4: {clones[i]: [int(kn[i]), int(km[i]), 0] for i in keep}}
     return out
+
+
+def pct(v, q):
+    """Percentiles that tolerate an empty array (a fit with no clones for a statistic)."""
+    return np.percentile(v, q).tolist() if len(v) else [np.nan] * len(q)
 
 
 def copresence(cnt):
@@ -156,11 +161,11 @@ def main(seed, maxiter=300):
     for k, o in OBS.items():
         v = np.array([c[k] for c in cross], float)
         v = v[np.isfinite(v)]
-        hi = float((v >= o).mean())
+        hi = float((v >= o).mean()) if len(v) else 0.0
         rep[k] = {
             "obs": o,
-            "sim_mean": float(v.mean()),
-            "sim_95": np.percentile(v, [2.5, 97.5]).tolist(),
+            "sim_mean": float(v.mean()) if len(v) else np.nan,
+            "sim_95": pct(v, [2.5, 97.5]),
             "p_ge_obs": hi,
             "p_two_sided": float(2 * min(hi, 1 - hi)),
         }
@@ -168,19 +173,19 @@ def main(seed, maxiter=300):
     for k in ("G_mean_both_minus_Gonly", "M_both_minus_Monly"):
         v = np.array([p[k] for p in pres], float)
         v = v[np.isfinite(v)]
-        lo, hi = np.percentile(v, [2.5, 97.5])
+        lo, hi = pct(v, [2.5, 97.5])
         rep[k] = {
             "data": b7[k]["data"],
-            "sim_mean": float(v.mean()),
+            "sim_mean": float(v.mean()) if len(v) else np.nan,
             "sim_95": [float(lo), float(hi)],
             "inside": bool(lo <= b7[k]["data"] <= hi),
         }
     v = np.array(b10, float)
     v = v[np.isfinite(v)]
-    rep["b10_frac_with_N_in_M"] = {"data": 0.205, "sim_mean": float(v.mean())}
+    rep["b10_frac_with_N_in_M"] = {"data": 0.205, "sim_mean": float(v.mean()) if len(v) else None}
     rep["shard1_pred"] = {
         "mean": float(np.nanmean(shard1)),
-        "sim_95": np.nanpercentile(shard1, [2.5, 97.5]).tolist(),
+        "sim_95": pct(np.array(shard1, float)[np.isfinite(shard1)], [2.5, 97.5]),
     }
     rep["passes"] = bool(
         adequate
