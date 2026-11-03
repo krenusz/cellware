@@ -2979,3 +2979,23 @@ future models.** Not confirmed from the methods text.
 - **Reading.** Supported means the day-2 neutrophil/monocyte programme predicts fate across
   experiments (a replication of B13 on independent clones). Not supported means B13 is specific
   to the cytokine experiment.
+
+### B16 results (2026-11-03)
+
+Main in vitro LARRY (one cocktail), 571 clones with day-2 cells and >= 3 day-4/6 N+M cells.
+Partial Spearman with the clone's N-share, given log(N+M) and log(day-2 cells):
+
+| day-2 clone mean | partial rho | p |
+|---|---|---|
+| **Cebpa - Irf8** | **0.30** | 2e-13 |
+| Cebpa | 0.23 | 4e-8 |
+| Irf8 | -0.18 | 2e-5 |
+| Gfi1 | **0.34** | 9e-17 |
+
+- **Supported (pre-registered): B13 replicates on independent clones in a different
+  experiment.** The day-2 neutrophil programme predicts the clone's later neutrophil share
+  with the same signs and similar sizes as in the cytokine experiment (B13: Cebpa 0.27, Irf8
+  -0.20 for the G-CSF N-share). Gfi1 is the strongest single gene here (0.34), matching Olsson
+  2016's Gfi1-Irf8 axis.
+- **Consequence.** The measured day-2 programme is a general clone trait, not a cytokine-experiment
+  artefact. It is a usable measured input for models on both datasets (as E33 does).
