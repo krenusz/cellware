@@ -1882,3 +1882,24 @@ Same-time cross-mouse: ratio 1.02 [0.56, 1.65].
 - **Not confounded** (pre-registered reading: both controlled CIs above 0.5). Starting population,
   library and clone sizes carry some fate information on their own (0.34), but day-2 expression
   predicts well beyond them. "Day-2 state explains ~40%" stands (~36% after covariates).
+
+### E21 result (2026-11-03)
+
+Per-condition gain, rho_f 0.88; best loss 0.083; beta by condition: full 4.5, G 6.6, M 3.7,
+Epo 5.0, SCF 5.7; sigma_w 0.01.
+
+| statistic | observed | simulated mean (sd) | 95% | p |
+|---|---|---|---|---|
+| full-G | 0.69 | 0.68 (0.10) | 0.46-0.88 | 0.98 |
+| full-M | 0.24 | 0.43 (0.07) | 0.30-0.56 | 0.02 |
+| G-M | 0.51 | 0.33 (0.06) | 0.23-0.45 | 0/200 >= 0.51 |
+
+- **Gap not closed** (pre-registered: needs p >= 0.05 and loss no worse). G-M rises from 0.25 to
+  0.33 but stays out of reach, full-M now overshoots, and the fit is worse than E20 (0.083 vs
+  0.058).
+- Caveat: E21 nests E20 (gains = 1), so a worse loss means Nelder-Mead did not reach E20's optimum
+  in the larger space (noisy objective). A better optimiser could narrow it, but the G-M vs full-M
+  trade-off (raising G-M pushes full-M too high) looks structural, as in E15-E17.
+- **Reading.** The G-CSF vs M-CSF agreement is a real feature the model family cannot produce,
+  even with data-fixed fate-state sharing and per-condition gains. Something links G and M
+  outcomes of a clone more strongly than its link to the full cocktail.

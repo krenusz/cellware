@@ -1,6 +1,6 @@
-# Cellware E5-E19 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
+# Cellware E5-E21 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
 
-Write-up of experiments E5-E19 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
+Write-up of experiments E5-E21 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
 [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md); held-out test looks are recorded in
 [test_ledger.tsv](test_ledger.tsv).
 
@@ -102,7 +102,8 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   are being rerun at 250 generations / 4000 clones.
 - **Day-2 expression carries part of the bias (track B).** In LARRY in vitro, the expression of
   a clone's day-2 cells predicts its later N/M fate with CV r 0.66 (43% of variance; noise allows
-  ~96%). More day-2 cells per clone do not help (r 0.67 / 0.62 / 0.68 for 1 / 2 / >= 3), so
+  ~96%). It survives holding out whole libraries (0.67) and removing starting population,
+  library and clone sizes (0.60; B1c). More day-2 cells per clone do not help (r 0.67 / 0.62 / 0.68 for 1 / 2 / >= 3), so
   the unexplained ~55% is not a sampling artefact. Feeding the measured propensity into the
   simulator (B2) did not raise agreement (0.31).
 - **Methylation carries more (track B3, EPI-Clone data).** In the same LARRY transplant
@@ -138,7 +139,11 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   CIs include 0). Cell-state sites keep it (0.24-0.25). Mouse and clone size alone predict as
   well as methylation did (0.42). **Reading:** the heritable record is neutral in both datasets.
   The fate information sits in cell-state methylation of the multipotent cells, beyond mouse and
-  clone size. Earlier B3-family numbers are inflated by the confound.
+  clone size. Earlier B3-family numbers are inflated by the confound. Per site (B3j), three
+  enhancer CpGs pass FDR 10% and 24 reach p < 0.01 (4.5 expected); descriptively, sites the panel
+  picked as MPP-high lean myeloid and HSC-high sites lean erythroid, i.e. clones whose
+  multipotent cells look further along are more myeloid. EPI-Clone's own test calls 93% of the
+  "cell-state" sites clone-associated, confirming the leakage reading.
 - **Models built on this (E18, E18b, E18c).** E18 tied LARRY sister fate sharing to the Camellia
   signal through a drift rate. One grid cell reproduced all three cross-condition statistics
   (G-M 0.42, the best in the programme), but only with fast drift and near-deterministic fate.
@@ -155,6 +160,14 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   latent fate correlation is 0.94 within a well and 0.83 across wells, so the fate-state sharing
   between sister branches is 0.88 [0.82, 0.92]. That narrows E18c's range and matches its
   near-deterministic fits. With it, the model still predicts G-M ~0.33-0.39.
+- **The gap is real (E20, E21).** With fate-state sharing fixed at 0.88, 200 simulations at the
+  observed sampling depth give G-M 0.25 +/- 0.06; none reaches the observed 0.51, while full-G
+  and full-M are reproduced. Letting each condition have its own gain raises G-M to 0.33 but
+  breaks full-M and still never reaches 0.51. The cross-condition limit is not a sampling ceiling.
+- **Clone control is much weaker in vivo (E19b).** In transplanted mice, cells of one clone agree
+  on N vs M only weakly even within the same mouse (latent r 0.22, vs 0.94 in culture), and about
+  as much across mice. The E6b cross-mouse drop is a general loosening in vivo, not a
+  recipient effect.
 
 ## Conclusions
 
@@ -173,14 +186,19 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
    heterochromatic, not at lineage genes, and not fate-predictive once mouse and clone size are
    controlled. The record part replicates published work (Camellia-seq, EPI-Clone).
 5. Sister branches in culture share ~88% of their latent fate state (E19), and fate is
-   near-deterministic given it. A simulator with these values fits within-condition data. It
-   still underpredicts G-CSF vs M-CSF sister agreement, so that gap is not a missing parameter.
+   near-deterministic given it. A simulator with these values fits within-condition data and
+   two of three cross-condition statistics, but G-CSF vs M-CSF agreement is out of its reach
+   (p < 0.005, E20), also with per-condition gains (E21). That gap is a real, unexplained feature.
+6. In vivo, the clone sets the N/M choice far less than in culture (E19b).
 
 ## Open (deliberately not closed)
 
 - What is the fate-relevant cell-state methylation (B3i survivors), and when is it set?
-- Why does every model underpredict G-CSF vs M-CSF agreement, even with the fate-state sharing
-  pinned (E19)? Sampling ceiling, or a condition-specific response the model lacks?
+- What links a clone's G-CSF and M-CSF outcomes more than either to the full cocktail? Not
+  sampling (E20) and not per-condition gain (E21). Candidates: a second clone trait (e.g.
+  survival/expansion under single cytokines), or day-of-split structure.
+- Does the MPP-like methylation pattern predict myeloid bias after controlling cell-type
+  composition? (B3j, unplanned pattern.)
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.
   preprint). Not yet used.
