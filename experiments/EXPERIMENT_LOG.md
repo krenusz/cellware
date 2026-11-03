@@ -2303,3 +2303,26 @@ cytokines is nearly independent or anti-correlated: it depends on the clone's fa
 size. This statistic (presence overlap) has never been in any loss. It is a candidate fit target
 and the sharpest description yet of what the models miss: in the data, the cytokine decides
 whether a clone's cells survive to be sampled, and it does so by the clone's fate.
+
+## E28: founder split across wells + presence overlap (pre-registered 2026-11-03)
+
+- **Motivation.** E27 post hoc: the clones present under both G-CSF and M-CSF, as a share of
+  clones present under G-CSF, are 0.14 in the data (78 / 552). Learned policies give 0.33-0.45,
+  and the best E26 fits give 0.59-0.62 (computed before this entry, from the E26 parameters). E26
+  puts every clone in every condition, scaled by one clone size. In the experiment, a clone's few
+  day-2 cells were divided among five wells, so a clone can have no founder in a well. That is
+  structural and fate-independent, and no model has had it.
+- **Model.** E26b (tau_c and s_c free, fate latent rho_f 0.88, clone expansion trait a), plus
+  founders per condition k_c ~ Poisson(nu) independently. Expected counts are scaled by k_c, and a
+  clone with k_c = 0 is absent from c. nu is free (shared).
+- **Variants.** **E28a**: loss = E26 loss + ((overlap_sim - 0.141) / 0.05)^2.
+  **E28b**: the E26 loss only, testing whether the split alone produces the low overlap.
+  3 starts each, Nelder-Mead, GitHub Actions, best start = lowest loss.
+- **Readings (same gates as E26).** A variant passes if G-M, full-G and full-M p >= 0.05 (as in
+  E20) and both B7 differences fall inside its simulated 95% range. Also reported: the overlap
+  (in E28a it is fitted, so it is a fit check only; in E28b it is a prediction, inside ±0.05 of
+  0.141 or not).
+- **What each outcome means.** If E28a passes, the G-M gap comes from presence structure plus
+  selection, and the Epo/SCF shard-1 look follows after the power rule. If E28a fits the overlap
+  but G-M stays low, the founder split is real but not the missing piece. If E28b reaches about
+  0.14 on its own, the overlap anomaly is a design artefact (well splitting), not biology.
