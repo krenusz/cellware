@@ -2445,3 +2445,29 @@ E29w's within-only loss for criterion 2 is taken from the warm runs.
   cells are too many and too clone-consistent for any s_M that fits the within statistics, the
   missing piece is located: neutrophil output under M-CSF is a clone property, not a uniform
   survival factor.
+
+## B10: is neutrophil output under M-CSF a clone property? (pre-registered 2026-11-03)
+
+- **Motivation.** E29: every fit reproduces M-CSF by suppressing neutrophils twice (tau_M about
+  -3.8, s_M about 0.025). That leaves the M-CSF N-share as Poisson noise around zero and caps
+  G-M at about 0.15. If the data's M-CSF N cells are more frequent or more clone-consistent than
+  that allows, the missing structure is located.
+- **Clones.** The 78 "both" clones (>= 2 N+M under G-CSF and under M-CSF, pooled days), the B7
+  definition. **Statistics** (data, then the same on 200 simulations of the E29w best fit
+  e29wwarm_s2 and of E28a best e28a_s2, the same clone definition per simulation):
+  1. fraction of both-clones with >= 1 N cell under M-CSF;
+  2. mean N cells per both-clone under M-CSF;
+  3. Spearman of G-CSF N-share vs M-CSF N-share among both-clones;
+  4. statistic 3 restricted to both-clones with >= 1 N under M-CSF (the clone signal where N
+     exists).
+- **Readings.**
+  - **"Too many"**: statistic 1 or 2 above the model's 97.5th percentile. The fitted M-CSF
+    suppression is too strong for the G-M clones (in the data, these clones keep making N cells
+    under M-CSF).
+  - **"Too consistent"**: statistic 1 and 2 inside the range, but 3 or 4 above the 97.5th
+    percentile. N counts are right, but which clones make them follows the G-CSF behaviour.
+  - Both point to neutrophil output under M-CSF being a clone property tied to the clone's
+    G-CSF output. That is the structure for the next model (E30).
+  - If all four statistics are inside the model's range, M-CSF neutrophils are not where G-M
+    comes from, and the gradient points elsewhere (the G-CSF side or the full cocktail).
+- Spent data only (B7 clones); no held-out data.

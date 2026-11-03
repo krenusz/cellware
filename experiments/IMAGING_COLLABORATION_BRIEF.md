@@ -1,4 +1,4 @@
-# Imaging collaboration brief (draft, 2026-11-03)
+# Imaging collaboration brief (PARKED 2026-11-03: no outreach; reference only)
 
 Working draft for an outside partner. Nothing has been sent.
 
@@ -93,5 +93,5 @@ pre-registered predictions per readout, and a clear "we do the analysis".
 **What would make it compelling.** Our numbers (G-M 0.51 vs models <= 0.33, B7 selection
 -0.37), and a single readout that decides: sister agreement among survivors only.
 
-**Status.** Nothing drafted to anyone and nothing sent. An email is drafted only when Bence says
-so. Contact names and addresses are to be checked on the lab pages at that point, not guessed.
+**Status.** Parked by decision on 2026-11-03: no one is contacted. Kept as reference for what
+imaging data would decide.
