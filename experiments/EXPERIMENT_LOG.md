@@ -1959,3 +1959,27 @@ Per mouse (centred): 0.27, 0.01, -0.04, 0.26, 0.02, 0.16.
   sites), so this is a confirmation, not a replication.
 - **Reading.** A first biological handle: myeloid-biased clones' multipotent cells look further
   along the HSC-to-MPP methylation axis than their cell-type label says.
+
+### E21b / E22 results (2026-11-03)
+
+E20's optimum re-scored under the 5-simulation loss: 0.062. Both refits beat it (warm start
+worked; the E21 optimiser failure is fixed).
+
+| model | loss | full-G (p) | full-M (p) | G-M sim mean (95%) | G-M p |
+|---|---|---|---|---|---|
+| E21b per-condition gain | 0.011 | 0.58 (0.28) | 0.39 (0.08) | 0.21 (0.12-0.29) | 0/200 |
+| E22 second trait | 0.023 | 0.57 (0.22) | 0.39 (0.09) | 0.21 (0.12-0.29) | 0/200 |
+
+E21b gains: G 1.26, M 1.01, Epo 0.98, SCF 2.21 (beta full 8.2). E22: gamma -0.09, i.e. ~0.
+- **E21b: E21's conclusion confirmed with a proper fit.** Per-condition gains fit the
+  within-condition data far better, and G-M gets *lower* (0.21), not higher.
+- **E22: not supported.** The within-condition data drive the second trait to ~0 (gamma -0.09),
+  so it cannot be identified from them, and G-M stays at 0.21. A trait large enough to raise G-M
+  would have to be imposed, not fitted.
+- **Pattern across E15-E22:** the better a model fits the within-condition statistics, the lower
+  its G-M prediction (E20 0.25 at loss 0.058; E21b/E22 0.21 at 0.011-0.023). The observed
+  within-condition data and the observed G-M agreement pull in opposite directions in every
+  model of this family. Either the G-M statistic carries something the within-condition summary
+  statistics cannot express (e.g. which clones survive into both single-cytokine wells), or the
+  observed G-M is high by chance beyond what sampling explains (E20 says < 0.5% under the
+  model).
