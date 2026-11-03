@@ -212,9 +212,11 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
    near-deterministic given it. A simulator with these values fits within-condition data and
    two of three cross-condition statistics, but G-CSF vs M-CSF agreement is out of its reach
    (p < 0.005, E20), with per-condition gains (E21, E21b), a second clone trait (E22), size
-   coupling (E23), carry-over (E24) or clone types (E25). The likely reason (B7): presence in a
-   condition is selected by fate, and the simulators fix presence. A selection-aware simulator
-   is the next step.
+   coupling (E23), carry-over (E24) or clone types (E25). The reason (B7): presence in a
+   condition is selected by fate, and the simulators fixed presence. A selection-aware simulator
+   driven by measured day-2 state, with literature-signed instruction (E35), reproduces G-M
+   agreement and B7 selection in its best fit; it is not yet seed-stable, and no model so far
+   fits the full-cocktail arm (E36).
 6. In vivo, the clone sets the N/M choice far less than in culture (E19b).
 
 ## Open (deliberately not closed)
@@ -245,6 +247,20 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   **E33 (measured day-2 inputs in place of the free latent): adequate fits reproduce G-M (0.49,
   p 0.87).** B7's G-CSF selection still overshoots (-0.58 vs -0.37), and full-M stays high (the
   full-arm design is not modelled).
+  B17: E33 reached that by selection alone with wrong-sign instruction. **E35 (instruction signs
+  fixed by the literature: G-CSF towards neutrophils, M-CSF towards monocytes): the best fit passes
+  the primary** (G-M 0.46, p 0.33; both B7 differences inside). The fitted biology is modest
+  instruction plus strong selection on the measured day-2 state (neutrophil survival about 4x
+  under G-CSF, about 0.1x under M-CSF). Only 1 of 6 seeds passes, and full-M stays about 0.55.
+  E34 and E36 model the full arm as a separate culture (its own founder rate and expansion trait;
+  E36 also fits full-arm co-presence). **E36 fails its gate in all 6 seeds:** simulated full-arm
+  clones are shared with G and M 1.5-2x as often as in the data while the full arm has too few
+  clones; no seed passes the primary, and B7 G drifts back just outside (-0.21 to -0.26). The
+  instruction-plus-selection estimates are stable across seeds. Every model where the full arm
+  draws from the same clone pool as G and M (E32, E34, E36) overshoots co-presence, which with B12
+  points to the full culture receiving a different subset of clones. That is an inference; the
+  paper's design figure (Science Supp Fig 7) is unread. The G-vs-M part is solved in one fit; the
+  full arm is the open piece.
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.
