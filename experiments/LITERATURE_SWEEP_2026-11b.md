@@ -19,7 +19,15 @@ E20 p < 0.005)? And what did we miss?
   day-4 and day-6 libraries; 16% of day-2 cells are already Neu/Mo before the split, but 77 of the
   78 G-M clones had no committed cell sampled at day 2 (their G-M r alone is 0.52).
 
-## Candidate missing pieces, ranked
+## Update after B7 / E25 (same day)
+
+The data answered it: the 78 G-M clones are a fate-selected subset (B7). Clones seen under both
+G-CSF and M-CSF are monocyte-leaning bipotent clones; neutrophil-pure clones seen under G-CSF
+mostly drop out under M-CSF. That is candidate 2 below (selection, not only instruction), acting
+on presence. Clone types with fixed membership (candidate 1, E25) did not help. See
+EXPERIMENT_LOG.md (B7, E25, proposed E26).
+
+## Candidate missing pieces, ranked (as written before B7)
 
 1. **Clone types, not one continuous bias** (strongest literature support; not yet tested).
    - Dawson lab clone-splitting (SPLINTR barcodes; FASEB 2023, Lorne 2024 abstracts): sister

@@ -1,6 +1,6 @@
-# Cellware E5-E24 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
+# Cellware E5-E25 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
 
-Write-up of experiments E5-E24 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
+Write-up of experiments E5-E25 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
 [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md); held-out test looks are recorded in
 [test_ledger.tsv](test_ledger.tsv).
 
@@ -176,8 +176,17 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   the split (E24; 16% of day-2 cells are Neu/Mo) both fail too: G-M stays at 0.20-0.21.
   The G-M statistic rests on 78 clones. A second literature sweep
   ([LITERATURE_SWEEP_2026-11b.md](LITERATURE_SWEEP_2026-11b.md)) points to clone *types*
-  (intrinsically fated vs cytokine-plastic clones; two monocyte routes) as the best-supported
-  untested explanation.
+  (intrinsically fated vs cytokine-plastic clones; two monocyte routes). Modelled as a mixture
+  (E25), the clone-type shares are not identified and G-M drops to 0.16.
+- **The missing piece: the G-M clones are selected by fate (B7).** Under G-CSF, clones that are
+  also present under M-CSF are monocyte-leaning (mean N-share 0.35, median 0), while clones seen
+  only under G-CSF are neutrophil-pure (0.72, median 1.0); under M-CSF, the clones also seen under
+  G-CSF make more neutrophils (0.13 vs 0.05). The model, which pins each clone's presence to the
+  observed counts and draws fate independently, predicts no difference (95% range about +/-0.1
+  against -0.37 observed). Neutrophil-restricted clones drop out under M-CSF: cytokines act partly
+  by selection, so the G-M statistic is computed on a subset whose membership depends on fate.
+  Every simulator since E9 fixed membership, which explains why within-condition fit and G-M
+  agreement pulled against each other throughout E15-E25.
 - **Clone control is much weaker in vivo (E19b).** In transplanted mice, cells of one clone agree
   on N vs M only weakly even within the same mouse (latent r 0.22, vs 0.94 in culture), and about
   as much across mice. The E6b cross-mouse drop is a general loosening in vivo, not a
@@ -202,8 +211,10 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
 5. Sister branches in culture share ~88% of their latent fate state (E19), and fate is
    near-deterministic given it. A simulator with these values fits within-condition data and
    two of three cross-condition statistics, but G-CSF vs M-CSF agreement is out of its reach
-   (p < 0.005, E20), also with per-condition gains (E21, E21b) or a second clone trait (E22).
-   Better within-condition fits push it further away. That gap is a real, unexplained feature.
+   (p < 0.005, E20), with per-condition gains (E21, E21b), a second clone trait (E22), size
+   coupling (E23), carry-over (E24) or clone types (E25). The likely reason (B7): presence in a
+   condition is selected by fate, and the simulators fix presence. A selection-aware simulator
+   is the next step.
 6. In vivo, the clone sets the N/M choice far less than in culture (E19b).
 
 ## Open (deliberately not closed)
@@ -211,8 +222,9 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
 - What is the fate-relevant cell-state methylation (B3i survivors), and when is it set?
 - What links a clone's G-CSF and M-CSF outcomes more than either to the full cocktail? Not
   sampling (E20), per-condition gain (E21, E21b), a fitted second trait (E22), size coupling
-  (E23) or pre-split carry-over (E24). Next: a mixture of clone types (fixed vs plastic), and
-  whether the 78 G-M clones are a selected subset.
+  (E23), pre-split carry-over (E24) or clone types (E25). B7 shows the G-M clones are a
+  fate-selected subset; next is a simulator where presence emerges from fate (E26), with a
+  same-cocktail negative control (B8) and the day-2 state of the selected clones (B9).
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.
