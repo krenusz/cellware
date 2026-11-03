@@ -57,24 +57,22 @@ def presence(cnt):
 
 
 def unpack(x, variant):
-    i = 0
-    prm = {"beta": abs(x[0]), "sigma_a": abs(x[1])}
+    """Bounded transforms, so no optimiser step can leave the valid region."""
+    th = np.tanh
+    prm = {"beta": 10 / (1 + np.exp(-x[0])), "sigma_a": 3 / (1 + np.exp(-x[1]))}
     i = 2
     if variant == "a":
-        prm["tau"] = dict.fromkeys(CONDS, float(x[i]))
+        prm["tau"] = dict.fromkeys(CONDS, float(10 * th(x[i])))
         i += 1
     else:
-        prm["tau"] = dict(zip(CONDS, x[i : i + 5], strict=True))
+        prm["tau"] = {c: float(10 * th(v)) for c, v in zip(CONDS, x[i : i + 5], strict=True)}
         i += 5
     prm["s"] = {
         "full": 1.0,
-        **{
-            c: float(np.exp(np.clip(v, -20, 20)))
-            for c, v in zip(CONDS[1:], x[i : i + 4], strict=True)
-        },
+        **{c: float(np.exp(6 * th(v))) for c, v in zip(CONDS[1:], x[i : i + 4], strict=True)},
     }
     i += 4
-    prm["mu"] = dict(zip(CONDS, x[i : i + 5], strict=True))
+    prm["mu"] = {c: float(-3 + 7 * th(v)) for c, v in zip(CONDS, x[i : i + 5], strict=True)}
     return prm
 
 
@@ -107,17 +105,27 @@ def main(variant, only=None):
     starts = []
     for r in range(3):
         rng = np.random.default_rng(r)
-        x = [rng.uniform(2, 8), rng.uniform(0.5, 1.5)]
-        x += [0.0] if variant == "a" else [1.0, 1.0, -4.0, 0.0, 0.0]
-        x += list(rng.normal(0, 1, 4))
-        x += [float(np.log(max(obs_p[c][0], 1) / len(clones))) + 1.0 for c in CONDS]
+        x = [rng.uniform(-1, 1), rng.uniform(-1, 1)]
+        x += [0.0] if variant == "a" else [0.1, 0.1, -0.4, 0.0, 0.0]
+        x += list(rng.normal(0, 0.3, 4))
+        x += [
+            float(
+                np.arctanh(
+                    np.clip((np.log(max(obs_p[c][0], 1) / len(clones)) + 2.5 + 3) / 7, -0.95, 0.95)
+                )
+            )
+            for c in CONDS
+        ]
         starts.append(x)
     best = None
     for r, x0 in enumerate(starts):
         if only is not None and r != only:
             continue
         res = minimize(
-            loss, x0, method="Nelder-Mead", options={"maxiter": 2500, "xatol": 1e-3, "fatol": 1e-6}
+            loss,
+            x0,
+            method="Nelder-Mead",
+            options={"maxiter": 4000, "xatol": 1e-4, "fatol": 1e-7, "adaptive": True},
         )
         res = minimize(
             loss, res.x, method="Powell", options={"maxfev": 2000, "xtol": 1e-3, "ftol": 1e-6}
