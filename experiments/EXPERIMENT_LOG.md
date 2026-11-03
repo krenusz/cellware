@@ -1867,3 +1867,18 @@ Same-time cross-mouse: ratio 1.02 [0.56, 1.65].
 - **Check on B3h:** by EPI-Clone's own clone-association test, 98% of Static and 93.5% of Dynamic
   CpGs have p < 0.05. The "Dynamic" sites are almost all clone-associated, which confirms the
   B3h leakage reading directly.
+
+### B1c result (2026-11-03)
+
+571 clones over 7 day-2 libraries (55-116 each), 50% LSK start.
+
+| | r (95% clone bootstrap) |
+|---|---|
+| random folds (B1) | 0.66 [0.62, 0.70] |
+| leave one day-2 library out | 0.67 [0.63, 0.71] |
+| partial, covariates removed | 0.60 [0.55, 0.65] |
+| covariates alone | 0.34 [0.26, 0.41] |
+
+- **Not confounded** (pre-registered reading: both controlled CIs above 0.5). Starting population,
+  library and clone sizes carry some fate information on their own (0.34), but day-2 expression
+  predicts well beyond them. "Day-2 state explains ~40%" stands (~36% after covariates).
