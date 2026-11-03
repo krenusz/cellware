@@ -12,7 +12,7 @@ import os
 
 import numpy as np
 from fit_cytokine import CONDS5, load_counts, pooled
-from scipy.stats import mannwhitneyu, spearmanr
+from scipy.stats import mannwhitneyu, pearsonr, rankdata
 from track_b8_b9 import CYTO, HERE
 
 
@@ -46,14 +46,14 @@ def day2_features():
 
 
 def partial_spearman(x, y, z):
-    """Spearman of x and y after removing a linear fit on z from the ranks of each."""
-    rx, ry, rz = (np.argsort(np.argsort(v)).astype(float) for v in (x, y, z))
+    """Partial Spearman of x and y given z (ranks with ties averaged, z removed linearly)."""
+    rx, ry, rz = (rankdata(v) for v in (x, y, z))  # average ranks for ties
     a = np.c_[np.ones_like(rz), rz]
 
     def res(v):
         return v - a @ np.linalg.lstsq(a, v, rcond=None)[0]
 
-    return spearmanr(res(rx), res(ry))
+    return pearsonr(res(rx), res(ry))  # partial Spearman: Pearson of residualised ranks
 
 
 def main():

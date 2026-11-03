@@ -2585,3 +2585,29 @@ Within-condition statistics (mean N-share / variance / mixed fraction) of the be
 - **Amendment (before any E30 run).** The SE of each per-condition share term (mean, variance, mixed
   fraction) is floored at 0.25 / sqrt(present clones). Epo's mixed fraction is exactly 0 in the
   data, so its bootstrap SE is about 0 and would dominate the loss.
+
+### B11 results (2026-11-03)
+
+321 clones present under M-CSF with day-2 cells. 27 of them made >= 1 neutrophil under M-CSF.
+
+| day-2 feature | median, N under M | median, none | partial Spearman given log size (p) | Mann-Whitney p |
+|---|---|---|---|---|
+| neutrophil-priming score | 742 | 610 | **0.24 (1e-5)** | 2e-5 |
+| day-2 Neu share | 0 | 0 | 0.18 (0.001) | 0.001 |
+
+- **Supported (pre-registered).** Clones that make neutrophils under M-CSF were already more
+  neutrophil-primed at day 2, beyond what their M-CSF clone size explains. Neutrophil output
+  under M-CSF is a clone property set before the split. That is the B10 gradient, confirmed
+  in the cells' own state.
+- **Code fixes made during the run (logged; same conclusion each time).** v1 ranked with
+  argsort-of-argsort, which breaks ties by position, and then re-ranked residuals: primary
+  0.13 (p 0.017), but the secondary was an impossible 0.71. v2 used average-tie ranks but
+  still re-ranked residuals: 0.16 (0.004) / 0.83. v3 is the standard partial Spearman (Pearson
+  of size-residualised average ranks): 0.24 (1e-5) / 0.18 (0.001). The primary was positive with
+  p < 0.05 in all three, so the reading does not depend on the fix. v3 is the reported value.
+- **Together with B7, B9 and B10.** Day-2 neutrophil priming predicts three things: which clones
+  appear only under G-CSF (B9), which clones keep making neutrophils under M-CSF (B11), and,
+  through those, the clones whose G and M outputs agree (B7, G-M 0.51). The G-M agreement rides
+  on a clone state visible at day 2 that keeps a clone's neutrophil output partly independent of
+  the cytokine. The fitted models express priming only as a logit shift, which M-CSF's strong
+  suppression erases.

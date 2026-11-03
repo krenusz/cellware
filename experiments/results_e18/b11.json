@@ -1,0 +1,19 @@
+{
+ "clones": 321,
+ "with_N": 27,
+ "neu_priming_score": {
+  "partial_spearman": 0.24414940545466365,
+  "p": 9.672565441161612e-06,
+  "median_with_N": 741.7481941984256,
+  "median_none": 609.947557406678,
+  "mannwhitney_p": 1.9585500430538666e-05
+ },
+ "day2_neu_share": {
+  "partial_spearman": 0.18273495998613357,
+  "p": 0.0010056920037336916,
+  "median_with_N": 0.0,
+  "median_none": 0.0,
+  "mannwhitney_p": 0.001006842444112274
+ },
+ "supported": true
+}
