@@ -3202,3 +3202,37 @@ whose shard-1 prediction is stable across seeds.
     held-out look follows: a stable shard-1 prediction across the adequate seeds, differing from
     E20's by more than about 0.37.
 - Note: the warm start's rho_a is 0.953, not 0.99, because x is clipped to [-3, 3].
+
+### E35 results (2026-11-03)
+
+500 generations, 6 seeds; 4 adequate. Instruction constrained to the literature signs.
+
+| seed | loss | adequate | tau G / full / M | s_G / s_M | G-M (p) | full-G (p) | full-M (p) | B7 G (data -0.37) | B7 M | B10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **0 (best)** | **22.5** | yes | -4.1 / -4.6 / -5.3 | 4.3 / 0.11 | **0.46 (0.33)** | 0.75 (0.23) | 0.58 (0.00) | **-0.30 (in)** | in | 0.18 |
+| 1 | 204 | no | | 5.8 / 0.05 | 0.32 (0.00) | | 0.46 | -0.46 (in) | in | 0.11 |
+| 2 | 45.5 | yes | -4.7 / -5.3 / -6.6 | 4.4 / 0.15 | 0.44 (0.22) | 0.71 (0.72) | 0.55 (0.00) | -0.22 (out) | in | 0.20 |
+| 3 | 70.5 | yes | -4.5 / -5.6 / -6.2 | 4.1 / 0.11 | 0.41 (0.08) | 0.72 (0.55) | 0.53 (0.00) | -0.27 (out) | in | 0.17 |
+| 4 | 67.3 | yes | -5.0 / -5.7 / -6.3 | 4.1 / 0.12 | 0.44 (0.23) | 0.72 (0.56) | 0.55 (0.00) | -0.26 (out) | in | 0.19 |
+| 5 | 143 | no | | 7.2 / 0.06 | 0.33 (0.00) | | 0.47 | -0.45 (in) | in | 0.11 |
+
+- **Pre-registered primary: PASS in the best adequate fit (seed 0).** It is adequate, G-M 0.46
+  (p 0.33), and both B7 differences are inside the 95% range (G -0.30, M in). It is also the lowest
+  loss of the whole E33 family (22.5 vs E33's 30.5), despite the constraint. **First model to pass
+  the G-M and B7 gates together.**
+- **The over-selection was an identifiability artefact.** With the instruction signs fixed by the
+  literature, B7 G moves from -0.58 (E33) to -0.22 to -0.30, and the fit improves. The fitted
+  biology is **modest instruction** (tau_G about 0.6-1.1 above full, tau_M about 0.6-1.3 below)
+  **plus strong selection** (neutrophil survival about 4x under G-CSF, about 0.1x under M-CSF),
+  acting on a **measured day-2 state** (w 0.1-0.7, kappa 0.9-1.7). Rieger's instruction and B7's
+  selection both hold.
+- **Caveats.**
+  - Stability: only seed 0 passes. Seeds 2-4 are adequate but undershoot B7 G slightly (-0.22 to
+    -0.27, outside the range), so the B7 window is narrow and the pass is not yet seed-stable.
+  - full-M stays at 0.53-0.58 (the full arm is not separate in E35; E36 adds that).
+  - Epo/SCF survival factors run to the bounds in some seeds (about 240-360, unconstrained and
+    ungated).
+- **Power note.** Seed 0's shard-1 prediction is 0.52 [0.25, 0.78]. E36 decides whether a
+  stable prediction exists across seeds.
+- **E36 decision rule applied.** B7 G -0.30 > -0.58, so E36 includes the sign constraint and
+  warm-starts from e35_s0.

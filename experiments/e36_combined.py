@@ -2,7 +2,7 @@
 optionally E35's signed instruction, warm-started from the best earlier fit.
 See the E36 pre-registration in EXPERIMENT_LOG.md.
 
-    uv run python experiments/e36_combined.py seed signed|unsigned
+    uv run python experiments/e36_combined.py seed signed|unsigned [warm_source]
 """
 
 from __future__ import annotations
@@ -65,6 +65,6 @@ if __name__ == "__main__":
     e33.simulate = e34.simulate
     e33.unpack = unpack_signed if signed else e34.unpack
     e33.TARGETS, e33.EXTRA_SE, e33.SIMS = targets, extra_se, 10
-    src = os.environ.get("E36_WARM", "e33_s3")
+    src = sys.argv[3] if len(sys.argv) > 3 else os.environ.get("E36_WARM", "e33_s3")
     x0 = warm_x(src, signed) if seed < 3 else None
     e33.main(seed, maxiter=500, dim=21, name=f"e36{mode[0]}", x0=x0)

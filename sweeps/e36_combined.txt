@@ -1,0 +1,6 @@
+[experiments/results_e18/e36s_s0.json] python experiments/e36_combined.py 0 signed e35_s0
+[experiments/results_e18/e36s_s1.json] python experiments/e36_combined.py 1 signed e35_s0
+[experiments/results_e18/e36s_s2.json] python experiments/e36_combined.py 2 signed e35_s0
+[experiments/results_e18/e36s_s3.json] python experiments/e36_combined.py 3 signed e35_s0
+[experiments/results_e18/e36s_s4.json] python experiments/e36_combined.py 4 signed e35_s0
+[experiments/results_e18/e36s_s5.json] python experiments/e36_combined.py 5 signed e35_s0
