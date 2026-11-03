@@ -2042,3 +2042,20 @@ opposite-sign size coupling, if anything, pulls G and M apart.
   carry-over. (c) supported if all three cross statistics have p >= 0.05 with loss <= E20's
   re-scored loss. If (c) passes, carry-over of pre-committed cells is the leading candidate for the
   G-M gap; it would still need the held-out Epo/SCF shard 1.
+
+### E24 result (2026-11-03)
+
+(a) Uninformative: only 3 (G) and 4 (M) clones have >= 2 day-2 Neu/Mo cells and enough cells in
+the condition. (b) The G-M statistic rests on 78 clones; 77 had no day-2 committed cell sampled,
+and their G-M r alone is 0.52 [0.33, 0.67] (the full effect). (c) E24m: loss 0.014 (E20 re-scored
+0.062); fitted carry-over phi = 0.05 in full, **0.00 in G, M, Epo, SCF**; full-G 0.57 (p 0.28),
+full-M 0.38 (p 0.11), **G-M 0.21, 0/200 >= 0.51. Not supported.** The within-condition data do
+not ask for carry-over, and the G-M clones are not the ones with committed day-2 sisters.
+
+### Summary of the G-M gap tests (E20-E24)
+
+Sampling (E20), per-condition gain (E21, E21b), second single-cytokine trait (E22), clone size
+coupling (E23) and pre-split commitment carry-over (E24) all fail; G-M stays at 0.20-0.25 vs 0.51.
+Literature sweep 2 (LITERATURE_SWEEP_2026-11b.md) points to clone *types* (a mix of
+cytokine-insensitive, intrinsically fated clones and plastic clones; two monocyte routes) as the
+best-supported untested candidate.

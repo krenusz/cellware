@@ -1,6 +1,6 @@
-# Cellware E5-E22 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
+# Cellware E5-E24 and wider programme: what a learned cell rule can and cannot explain about blood-cell fate
 
-Write-up of experiments E5-E22 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
+Write-up of experiments E5-E24 and tracks A-B6 (November 2026). Literature context: [LITERATURE_SWEEP_2026-11.md](LITERATURE_SWEEP_2026-11.md). Working notes, not a paper; the line is open. Details, pre-registrations and every run are in
 [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md); held-out test looks are recorded in
 [test_ledger.tsv](test_ledger.tsv).
 
@@ -171,7 +171,13 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   and G-M drops to 0.21. A second clone trait acting only under single cytokines (E22) is fitted
   to ~0 by the within-condition data and leaves G-M at 0.21. Across E15-E22, the better the
   within-condition fit, the lower the predicted G-M: the two parts of the data pull against each
-  other in every model of this family.
+  other in every model of this family. Clone size coupling (E23; the original paper notes
+  sisters shift clone size and fate together) and carry-over of cells already committed before
+  the split (E24; 16% of day-2 cells are Neu/Mo) both fail too: G-M stays at 0.20-0.21.
+  The G-M statistic rests on 78 clones. A second literature sweep
+  ([LITERATURE_SWEEP_2026-11b.md](LITERATURE_SWEEP_2026-11b.md)) points to clone *types*
+  (intrinsically fated vs cytokine-plastic clones; two monocyte routes) as the best-supported
+  untested explanation.
 - **Clone control is much weaker in vivo (E19b).** In transplanted mice, cells of one clone agree
   on N vs M only weakly even within the same mouse (latent r 0.22, vs 0.94 in culture), and about
   as much across mice. The E6b cross-mouse drop is a general loosening in vivo, not a
@@ -204,9 +210,9 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
 
 - What is the fate-relevant cell-state methylation (B3i survivors), and when is it set?
 - What links a clone's G-CSF and M-CSF outcomes more than either to the full cocktail? Not
-  sampling (E20), per-condition gain (E21, E21b) or a fitted second trait (E22). Next suspects:
-  which clones appear in both single-cytokine wells (selection on presence, not on N-share), and
-  whether the within-condition summary statistics hide clone structure the model gets wrong.
+  sampling (E20), per-condition gain (E21, E21b), a fitted second trait (E22), size coupling
+  (E23) or pre-split carry-over (E24). Next: a mixture of clone types (fixed vs plastic), and
+  whether the 78 G-M clones are a selected subset.
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.

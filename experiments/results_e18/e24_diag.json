@@ -1,0 +1,35 @@
+{
+ "clones_with_day2_neu_mo": 278,
+ "day2_vs_G": {
+  "clones": 3,
+  "rho": -0.5000000000000001,
+  "ci": [
+   NaN,
+   NaN
+  ]
+ },
+ "day2_vs_M": {
+  "clones": 4,
+  "rho": NaN,
+  "ci": [
+   NaN,
+   NaN
+  ]
+ },
+ "GM_no_day2_committed": {
+  "clones": 77,
+  "r": 0.5169496281102954,
+  "ci": [
+   0.328893271526709,
+   0.6656824890033113
+  ]
+ },
+ "GM_with_day2_committed": {
+  "clones": 1,
+  "r": 0.0,
+  "ci": [
+   0.0,
+   0.0
+  ]
+ }
+}
