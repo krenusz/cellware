@@ -2674,3 +2674,8 @@ converged. Adequacy gate (full, G, M: mean N-share inside the data 95% CI, prese
   - If, in (b), full-M is low only with day-6 M-CSF cells while G-M is high with both G-CSF days,
     the ordering may reflect timing (day-6 M-CSF clones drift away), and a two-time-point model is
     the next structure. If there is no day dependence, timing is not it.
+- **Fix before any E31 run.** E30's search space had one dead dimension: 18 for variant a, 19 for b,
+  while the model uses 17 / 18 (16 E26b parameters + nu, + gamma). The model ignored that
+  coordinate, so E30's results are valid; it only made the search slightly larger. It did
+  misplace nu in E31's warm start (smoke-test loss 264 instead of 80.5). Dimensions corrected
+  to 17 / 18; the warm start now reproduces E30a s2's loss (80.5).

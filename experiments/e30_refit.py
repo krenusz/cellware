@@ -96,7 +96,7 @@ def main(variant, seed=0, name="e30", warm=None, maxiter=120):
         tot = float(np.sum(z))
         return tot if np.isfinite(tot) else 1e9
 
-    dim = 19 if variant == "b" else 18
+    dim = 18 if variant == "b" else 17  # 16 E26b params + nu (+ gamma)
     res = differential_evolution(
         lambda x: loss(np.r_[x, 0.0]) if variant == "a" else loss(x),
         [(-3, 3)] * dim,
