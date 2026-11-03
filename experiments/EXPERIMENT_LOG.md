@@ -2833,3 +2833,39 @@ pre-registered rule there is no reading of the cross statistics. Reported for th
   p >= 0.05, but B7 G still overshoots (-0.55 to -0.61 vs -0.37). The direction is consistent
   with B12: the full-M excess in E30a was mostly a co-presence artefact.
 - Held-out shard 1 stays unseen.
+
+## B14: committed-like cells per clone at day 2 (pre-registered 2026-11-03)
+
+- **Motivation.** Literature sweep 3: proNeu1 (Kwok 2020) is a neutrophil-only progenitor
+  that ignores M-CSF and is expanded by G-CSF. Hypothesis: the G-M sister agreement is carried
+  by each clone's committed minority, not by a graded bias of all its cells.
+- **Cell classes (day-2 cells; thresholds fixed before looking at outcomes).**
+  - Per cell: neutrophil-programme score = mean of z-scored log1p(Gfi1, Cebpe, Elane, Mpo);
+    monocyte-programme score = mean of z-scored log1p(Irf8, Ly86, Ccr2, Csf1r). z-scores are
+    over all day-2 cells.
+  - **N-committed-like:** annotated Neu, or Undifferentiated with neutrophil score >= its 90th
+    percentile among Undifferentiated cells and Csf1r = 0.
+  - **M-committed-like:** annotated Mo, or Undifferentiated with monocyte score >= its 90th
+    percentile and Gfi1 = 0.
+  - Per clone: frac_N, frac_M = class share among the clone's day-2 cells.
+- **Tests.**
+  1. **N under M-CSF:** partial Spearman of frac_N vs has-N given log size (the B11 v3 method).
+     Then the joint test: frac_N given log size + clone-mean Cebpa, and Cebpa given log size +
+     frac_N.
+  2. **Presence:** frac_N higher in G-only than M-only clones, frac_M the reverse
+     (one-sided MW).
+  3. **G-M agreement (key).** Among both-clones with day-2 cells: Spearman of G-CSF vs M-CSF
+     N-share, raw and partial given frac_N and frac_M. Also the same partial given clone-mean
+     Cebpa and Irf8 (the graded alternative).
+- **Readings.**
+  - "Committed minority carries the agreement": test 3's partial r drops by >= 30% given frac_N/M,
+    and by more than given Cebpa/Irf8.
+  - "Graded programme carries it": the Cebpa/Irf8 partial drops more.
+  - Neither drops: the agreement is carried by something these day-2 genes do not capture.
+  - n is small (both-clones with day-2 cells, about 39). Report CIs (2000 bootstraps), and read a
+    difference only if the drop CI excludes 0.
+- **For E33.** If the committed reading wins, E33 = a mixture of instructed bipotent cells and
+  cytokine-insensitive committed cells, with the measured frac_N / frac_M per clone as inputs.
+  If the graded reading wins, E33 uses clone-mean Cebpa/Irf8 as a measured bias instead of the
+  latent z.
+- Spent data only.
