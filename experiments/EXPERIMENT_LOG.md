@@ -1983,3 +1983,30 @@ E21b gains: G 1.26, M 1.01, Epo 0.98, SCF 2.21 (beta full 8.2). E22: gamma -0.09
   statistics cannot express (e.g. which clones survive into both single-cytokine wells), or the
   observed G-M is high by chance beyond what sampling explains (E20 says < 0.5% under the
   model).
+
+## B3l: independent replication of B3k — skipped by the power rule (2026-11-03)
+
+Searched the EPI-Clone Figshare collection. Downloaded M.8 (LARRY transplant from an aged donor,
+same 453-CpG panel, identical CpG order) and M.7 (native ageing, two replicates). M.7 carries no
+clone labels (EPI-Clone clones would have to be inferred from the same methylation, circular).
+M.8 has only HSC/MPP1 as multipotent type and **13 eligible clones** (>= 1 HSC/MPP1 cell, >= 5
+GMP + EryP), counted without looking at outcomes. For a true partial r of 0.19, power at n = 13
+is ~10%; the expected CI half-width (~0.55) exceeds the effect. **Look skipped (E18 power rule);
+M.8 outcomes stay unseen.** Human EPI-Clone data use a different panel without the MPP_high /
+HSC_high classes, so they cannot replicate the index directly. B3k stays a single-dataset result.
+
+## E23: does clone size couple to N-share, and does that explain G-M? (pre-registered 2026-11-03)
+
+- **(a) Diagnostic.** Cytokine data, per condition: Spearman of clone N-share vs log(N+M) over
+  clones with >= 2 N+M cells, clone bootstrap CI (2000x). The same statistic in 200 E20
+  simulations (the model draws fate independently of observed counts, so it should sit near 0).
+- **(b) Model E23m, run only if (a) finds a condition whose data CI excludes 0 and whose value lies
+  outside the E20 simulated 95% range.** logit p += delta_c * s_kc, s_kc = the clone's observed
+  log(N+M) in condition c, standardised within c. delta_c fitted per condition; the per-condition
+  share-size correlation is added to the within-condition fit targets (weight 1). rho_f 0.88,
+  warm start from E20 (delta 0), Nelder-Mead then Powell, 5 sims, common random numbers;
+  200-simulation predictions.
+- **Readings.** (a) no coupling beyond the model's range: presence/size structure is not the
+  missing piece. (b) supported if G-M p >= 0.05 with full-G and full-M p >= 0.05; not supported
+  otherwise. A pass would make size coupling a candidate mechanism (clones that expand more under
+  single cytokines skew N/M consistently), still needing a held-out test.
