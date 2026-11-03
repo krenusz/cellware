@@ -227,17 +227,12 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   (B8: same-cocktail presence coupling is small and of opposite sign). A simulator where presence
   emerges from fate and a neutrophil survival factor (E26) still fails: best fits put G-M at
   0.22 / 0.06. Every model so far trades G-M against the within-condition fit.
-  The trained learned-rule policies (E27) do not reproduce B7 either (0/30), and in every model
-  a clone seen under G-CSF is 2-3x more likely to also be seen under M-CSF than in the data
-  (0.33-0.45 vs 0.14). Presence overlap has never been fitted. E19c: rho_f falls with clone size
-  (0.95 small, 0.82 large), so presence selection does not hide a higher sister correlation.
-  E28: modelling each clone's few day-2 founders split across wells (about 0.3 per well) explains
-  most of the overlap anomaly (0.62 to 0.22, data 0.14), but G-M falls further (0.15-0.21) and
-  B7's G-CSF effect is still not produced.
-  E29 ceiling test: even with the cross statistics fitted and a shared single-cytokine trait up to
-  gamma 5, G-M stays at 0.10-0.15. Every fit reproduces M-CSF by suppressing neutrophils twice
-  (instruction and survival), which leaves no clone signal in the M-CSF N-share. Next diagnostic
-  (B10): is the data's M-CSF neutrophil output a clone property?
+  **Correction (fit audit after B10):** the E26-E29 selection-family fits never matched the basic
+  within-condition levels (G-CSF less neutrophilic than full, M-CSF neutrophils about 0), because
+  the loss was badly scaled. Their G-M verdicts are withdrawn. The founder split (E28) does lower
+  presence overlap toward the data's 0.14. Learned-rule policies do not reproduce B7 (E27, 0/30).
+  E19c: rho_f falls with clone size (0.95 small, 0.82 large). Next: E30, an SE-scaled loss with
+  CMA-ES behind an adequacy gate.
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.

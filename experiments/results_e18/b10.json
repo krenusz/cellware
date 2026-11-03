@@ -1,0 +1,116 @@
+{
+ "data": {
+  "n_both": 78,
+  "frac_with_N_in_M": 0.20512820512820512,
+  "mean_N_in_M": 0.358974358974359,
+  "rho_G_vs_M": 0.47713046984455504,
+  "rho_G_vs_M_with_N": 0.5275831358491468
+ },
+ "e29wwarm_s2": {
+  "n_both": {
+   "data": 78,
+   "finite_sims": 200,
+   "sim_mean": 50.16,
+   "sim_95": [
+    36.95,
+    65.0
+   ],
+   "above": true,
+   "below": false
+  },
+  "frac_with_N_in_M": {
+   "data": 0.20512820512820512,
+   "finite_sims": 200,
+   "sim_mean": 0.01704334059840093,
+   "sim_95": [
+    0.0,
+    0.058823529411764705
+   ],
+   "above": true,
+   "below": false
+  },
+  "mean_N_in_M": {
+   "data": 0.358974358974359,
+   "finite_sims": 200,
+   "sim_mean": 0.019560232859580872,
+   "sim_95": [
+    0.0,
+    0.06912817176317505
+   ],
+   "above": true,
+   "below": false
+  },
+  "rho_G_vs_M": {
+   "data": 0.47713046984455504,
+   "finite_sims": 117,
+   "sim_mean": 0.19062565946773832,
+   "sim_95": [
+    -0.0758067232600378,
+    0.32290627582291986
+   ],
+   "above": true,
+   "below": false
+  },
+  "rho_G_vs_M_with_N": {
+   "data": 0.5275831358491468,
+   "finite_sims": 1,
+   "sim_mean": 0.3985266984930429,
+   "sim_95": [
+    0.3985266984930429,
+    0.3985266984930429
+   ],
+   "above": true,
+   "below": false
+  }
+ },
+ "e28a_s2": {
+  "n_both": {
+   "data": 78,
+   "finite_sims": 200,
+   "sim_mean": 62.08,
+   "sim_95": [
+    48.975,
+    76.025
+   ],
+   "above": true,
+   "below": false
+  },
+  "frac_with_N_in_M": {
+   "data": 0.20512820512820512,
+   "finite_sims": 200,
+   "sim_mean": 0.019092103977680158,
+   "sim_95": [
+    0.0,
+    0.05357142857142857
+   ],
+   "above": true,
+   "below": false
+  },
+  "mean_N_in_M": {
+   "data": 0.358974358974359,
+   "finite_sims": 200,
+   "sim_mean": 0.021217159718728517,
+   "sim_95": [
+    0.0,
+    0.06674418604651164
+   ],
+   "above": true,
+   "below": false
+  },
+  "rho_G_vs_M": {
+   "data": 0.47713046984455504,
+   "finite_sims": 145,
+   "sim_mean": 0.17399010038236243,
+   "sim_95": [
+    -0.02851758184256499,
+    0.3024586899215774
+   ],
+   "above": true,
+   "below": false
+  },
+  "rho_G_vs_M_with_N": {
+   "data": 0.5275831358491468,
+   "finite_sims": 0
+  }
+ }
+}

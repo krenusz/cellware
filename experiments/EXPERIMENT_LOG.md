@@ -2471,3 +2471,54 @@ E29w's within-only loss for criterion 2 is taken from the warm runs.
   - If all four statistics are inside the model's range, M-CSF neutrophils are not where G-M
     comes from, and the gradient points elsewhere (the G-CSF side or the full cocktail).
 - Spent data only (B7 clones); no held-out data.
+
+### B10 results (2026-11-03)
+
+Among the 78 both-clones, 200 simulations each:
+
+| statistic | data | E29w best (95%) | E28a best (95%) |
+|---|---|---|---|
+| fraction with >= 1 N under M-CSF | **0.205** | 0.017 (0.00-0.06) | 0.019 (0.00-0.05) |
+| mean N cells under M-CSF | **0.36** | 0.02 (0.00-0.07) | 0.02 (0.00-0.07) |
+| Spearman G vs M N-share | 0.48 | 0.19 (-0.08-0.32) | 0.17 (-0.03-0.30) |
+| same, clones with N under M | 0.53 | finite in 1/200 sims | finite in 0/200 sims |
+
+- **Pre-registered reading: "too many".** The data have about 12x more both-clones with
+  neutrophils under M-CSF than the fits. Post hoc (supporting): M-only clones also carry N
+  cells under M-CSF (7.3% with >= 1 N, pooled N-share 2.6%) against the fit's 1.7% and 0.4%. So
+  the fits under-produce M-CSF neutrophils in all clones, not only in the both-clones.
+
+### Fit audit E26-E29 (post hoc, 2026-11-03): the selection-family fits are inadequate
+
+Prompted by B10. Mean N-share (clones with >= 2 N+M) and number of present clones on the fit set,
+data vs best fits (10 simulations; fit_audit_e26_e29.json):
+
+| | full | G-CSF | M-CSF | Epo | SCF |
+|---|---|---|---|---|---|
+| data | 0.31 / 368 | **0.64** / 277 | 0.05 / 478 | 0.70 / 23 | 0.66 / 39 |
+| E26a | 0.51 / 344 | 0.25 / 292 | 0.01 / 501 | 0.42 / 21 | 0.68 / 41 |
+| E26b | 0.64 / 414 | 0.38 / 262 | 0.00 / 504 | 0.57 / 26 | 0.56 / 36 |
+| E28a | 0.60 / 265 | 0.45 / 189 | 0.01 / 185 | 0.82 / 42 | 0.87 / 97 |
+| E28b | 0.61 / 217 | 0.42 / 119 | 0.01 / 274 | 0.74 / 24 | 0.85 / 64 |
+| E29w | 0.60 / 237 | 0.44 / 175 | 0.01 / 153 | 0.85 / 35 | 0.86 / 76 |
+
+- **Every E26-E29 best fit has G-CSF less neutrophilic than the full cocktail** (the data: 0.64
+  vs 0.31, the opposite), and M-CSF at 0.00-0.01 instead of 0.05. Several miss presence by 2-3x.
+  Their losses (0.3-3) looked fine only because squared differences of proportions are small
+  next to the relative-error presence terms. The loss was badly scaled, and the optimiser found a
+  wrong basin that satisfies presence.
+- **Correction.** The E26, E28 and E29 verdicts ("selection / founder split / shared trait
+  cannot give G-M"; "G-M capped around 0.15"; "M-CSF double suppression") were measured on
+  inadequate fits. **They are withdrawn as statements about the model structures.** They remain
+  true only of those fits. The E28 overlap result (founder split lowers overlap) is a property of
+  the split itself and stands qualitatively. E20-E25 used a within-only loss with adequate fits
+  (E20 loss 0.058) and are not affected. The cause of the B10 gap is therefore probably the
+  misfit itself (M-CSF N-share 0.01 vs 0.05), not a missing structure.
+- **Process lesson.** No cross-statistic reading without an adequacy gate on the basic levels.
+  E20 had such a gate. E26-E29 did not. From now on, every fit must put each condition's mean
+  N-share inside its data 95% CI and presence within ±20% before anything else is read.
+
+**Next (E30, to pre-register):** refit the E28/E29 structure with a loss in which every term is
+divided by its data standard error (clone bootstrap), using a population optimiser (CMA-ES,
+several restarts) instead of Nelder-Mead in 18 noisy dimensions, behind the adequacy gate. Only
+then re-read G-M, B7, overlap and B10.

@@ -54,9 +54,13 @@ def main():
         for k, d in rep["data"].items():
             v = np.array([r[k] for r in runs], float)
             v = v[np.isfinite(v)]
+            if not len(v):  # e.g. too few clones with an N cell under M-CSF in every simulation
+                out[k] = {"data": d, "finite_sims": 0}
+                continue
             lo, hi = np.percentile(v, [2.5, 97.5])
             out[k] = {
                 "data": d,
+                "finite_sims": len(v),
                 "sim_mean": float(v.mean()),
                 "sim_95": [float(lo), float(hi)],
                 "above": bool(d > hi),
