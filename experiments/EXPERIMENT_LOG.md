@@ -2391,3 +2391,22 @@ trait).
     is still missing.
   - A candidate goes to the power rule against E20's shard-1 prediction (difference > ~0.37)
     before any held-out look.
+
+### E29 cold-start results (2026-11-03): optimiser failure, not a reading
+
+| start | loss | within | presence+overlap | cross | gamma | full-M (p) | G-M (p) | B7 G |
+|---|---|---|---|---|---|---|---|---|
+| w s0 | 15.9 | 0.49 | 15.5 | - | 1.17 | 0.59 (0.00) | 0.54 (0.27) | -0.04 |
+| w s2 | 27.0 | 0.46 | 26.6 | - | -2.07 | 0.12 (0.01) | 0.19 (0.00) | -0.06 |
+| x s0 | 30.6 | 0.51 | 20.9 | 9.2 | 1.19 | 0.58 (0.00) | 0.54 (0.21) | -0.04 |
+| x s2 | 22.7 | 0.47 | 15.2 | 7.0 | -2.06 | 0.12 (0.03) | 0.17 (0.00) | -0.08 |
+
+(s1 starts at loss about 540, not shown.) **E29w nests E28a (gamma = 0) but its best loss is 15.9
+against E28a's 2.98.** The fit stalled in presence space, so these starts say nothing about the
+model. By the pre-registered gates, criterion 1 fails everywhere (full-M), so this is neither a
+candidate nor the structural negative.
+
+**Deviation (before any warm result is seen).** Rerun both variants from 3 warm starts: E28a's
+best parameters mapped back through the transforms (checked to reproduce them exactly), with
+gamma 0, +1.46 and -1.46 (x = 0, +0.3, -0.3). Outputs are e29{w,x}warm_s{0,1,2}.json. Same gates;
+E29w's within-only loss for criterion 2 is taken from the warm runs.

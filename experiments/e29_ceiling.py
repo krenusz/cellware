@@ -1,7 +1,7 @@
 """E29: E28 + a clone trait shared by the single-cytokine conditions; ceiling test.
 See the E29 pre-registration in EXPERIMENT_LOG.md.
 
-    uv run python experiments/e29_ceiling.py w|x [start]   # w: E28a loss, x: + cross statistics
+    uv run python experiments/e29_ceiling.py w|x [start] [warm]  # x: + cross stats
 """
 
 from __future__ import annotations
@@ -20,6 +20,7 @@ from fit_cytokine import CONDS5, load_counts, pooled, pooled_pairs_r, test_stats
 from scipy.optimize import minimize
 
 CONDS = e26.CONDS
+WARM = False  # set by the "warm" argument
 PAIRS = (("full", "G"), ("full", "M"), ("G", "M"))
 
 
@@ -47,6 +48,20 @@ def unpack(x):
     prm = e28.unpack(x[:-1])
     prm["gamma"] = float(5 * np.tanh(x[-1]))
     return prm
+
+
+def warm_start(gx):
+    """E28a best-start parameters mapped back through the bounded transforms, plus gamma (x)."""
+    p = json.load(open(os.path.join(OUT, "e28a_s2.json")))["params"]
+
+    def logit(v):
+        return float(np.log(v / (1 - v)))
+
+    x = [logit(p["beta"] / 10), logit(p["sigma_a"] / 3)]
+    x += [float(np.arctanh(p["tau"][c] / 10)) for c in CONDS]
+    x += [float(np.arctanh(np.log(p["s"][c]) / 6)) for c in CONDS[1:]]
+    x += [float(np.arctanh((p["mu"][c] + 3) / 7)) for c in CONDS]
+    return [*x, logit(p["nu"] / 5), gx]
 
 
 def cross_r(sim):
@@ -110,6 +125,8 @@ def main(variant, only=None):
         ]
         x += [rng.uniform(-2, 0), rng.uniform(-0.5, 0.5)]
         starts.append(x)
+    if WARM:  # deviation: warm starts from E28a's best fit, gamma 0 / +-1.5
+        starts = [warm_start(g) for g in (0.0, 0.3, -0.3)]
     best = None
     for r, x0 in enumerate(starts):
         if only is not None and r != only:
@@ -173,10 +190,11 @@ def main(variant, only=None):
     rep["b7_ok"] = bool(
         rep["G_mean_both_minus_Gonly"]["inside"] and rep["M_both_minus_Monly"]["inside"]
     )
-    name = f"e29{variant}" + ("" if only is None else f"_s{only}")
+    name = f"e29{variant}" + ("warm" if WARM else "") + ("" if only is None else f"_s{only}")
     json.dump(rep, open(os.path.join(OUT, f"{name}.json"), "w"), indent=1)
     print(json.dumps(rep, indent=1))
 
 
 if __name__ == "__main__":
+    WARM = "warm" in sys.argv
     main(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else None)

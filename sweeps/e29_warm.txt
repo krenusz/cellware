@@ -1,0 +1,6 @@
+[experiments/results_e18/e29wwarm_s0.json] python experiments/e29_ceiling.py w 0 warm
+[experiments/results_e18/e29wwarm_s1.json] python experiments/e29_ceiling.py w 1 warm
+[experiments/results_e18/e29wwarm_s2.json] python experiments/e29_ceiling.py w 2 warm
+[experiments/results_e18/e29xwarm_s0.json] python experiments/e29_ceiling.py x 0 warm
+[experiments/results_e18/e29xwarm_s1.json] python experiments/e29_ceiling.py x 1 warm
+[experiments/results_e18/e29xwarm_s2.json] python experiments/e29_ceiling.py x 2 warm
