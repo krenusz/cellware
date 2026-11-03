@@ -36,9 +36,10 @@ def simulate(clones, prm, rng):
     for c in CONDS:
         zb = np.sqrt(RHO_F) * z + np.sqrt(1 - RHO_F) * rng.standard_normal(n)
         p = 1 / (1 + np.exp(-(prm["beta"] * zb + prm["tau"][c])))
-        lam = np.exp(prm["mu"][c] + a)
-        kn = rng.poisson(lam * p * prm["s"][c])
-        km = rng.poisson(lam * (1 - p))
+        # optimiser line searches visit extreme values: cap rates so Poisson draws stay valid
+        lam = np.exp(np.clip(prm["mu"][c] + a, -30, 8))
+        kn = rng.poisson(np.minimum(lam * p * min(prm["s"][c], 1e3), 1e4))
+        km = rng.poisson(np.minimum(lam * (1 - p), 1e4))
         keep = np.flatnonzero(kn + km > 0)
         out[c] = {4: {clones[i]: [int(kn[i]), int(km[i]), 0] for i in keep}}
     return out
@@ -65,7 +66,10 @@ def unpack(x, variant):
         i += 5
     prm["s"] = {
         "full": 1.0,
-        **{c: float(np.exp(v)) for c, v in zip(CONDS[1:], x[i : i + 4], strict=True)},
+        **{
+            c: float(np.exp(np.clip(v, -20, 20)))
+            for c, v in zip(CONDS[1:], x[i : i + 4], strict=True)
+        },
     }
     i += 4
     prm["mu"] = dict(zip(CONDS, x[i : i + 5], strict=True))
