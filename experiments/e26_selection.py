@@ -1,8 +1,10 @@
 """E26: selection-aware simulator; counts are simulated, so presence emerges from fate and size.
 See the 2026-11-03 (4) batch pre-registration in EXPERIMENT_LOG.md.
 
-    uv run python experiments/e26_selection.py a    # pure selection (shared tau)
-    uv run python experiments/e26_selection.py b    # instruction + selection
+    uv run python experiments/e26_selection.py a [start]   # pure selection (shared tau)
+    uv run python experiments/e26_selection.py b [start]   # instruction + selection
+With a start index (0-2) only that start is fitted and written to e26{variant}_s{start}.json
+(one GitHub Actions job per start); the best start is picked afterwards.
 """
 
 from __future__ import annotations
@@ -70,7 +72,7 @@ def unpack(x, variant):
     return prm
 
 
-def main(variant):
+def main(variant, only=None):
     cnt = load_counts(CONDS5)
     clones = universe(cnt)
     fitset = split(cnt, None)
@@ -103,7 +105,9 @@ def main(variant):
         x += [float(np.log(max(obs_p[c][0], 1) / len(clones))) + 1.0 for c in CONDS]
         starts.append(x)
     best = None
-    for x0 in starts:
+    for r, x0 in enumerate(starts):
+        if only is not None and r != only:
+            continue
         res = minimize(
             loss, x0, method="Nelder-Mead", options={"maxiter": 2500, "xatol": 1e-3, "fatol": 1e-6}
         )
@@ -163,9 +167,10 @@ def main(variant):
         and rep["G_mean_both_minus_Gonly"]["inside"]
         and rep["M_both_minus_Monly"]["inside"]
     )
-    json.dump(rep, open(os.path.join(OUT, f"e26{variant}.json"), "w"), indent=1)
+    name = f"e26{variant}" + ("" if only is None else f"_s{only}")
+    json.dump(rep, open(os.path.join(OUT, f"{name}.json"), "w"), indent=1)
     print(json.dumps(rep, indent=1))
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else None)
