@@ -3131,3 +3131,22 @@ pairs, so r = 0). Fits of equal quality predict anything from 0 to 0.77. The obs
 half-width is about 0.37. **The held-out statistic cannot separate these models.** Spending it now
 would be uninformative, so the look is skipped by the power rule. It stays unseen for a model
 whose shard-1 prediction is stable across seeds.
+
+## E35: E33 with literature-signed instruction (pre-registered 2026-11-03)
+
+- **Motivation (B17).** E33 fits every condition by selection alone, with instruction of the
+  wrong sign (tau_G -9, tau_M +2.8). Rieger 2009 and Dahl 2003: G-CSF instructs neutrophil and
+  M-CSF monocyte fate.
+- **Model.** E33 unchanged, except tau_G = tau_full + 8 * sigmoid(x_G) and
+  tau_M = tau_full - 8 * sigmoid(x_M). So tau_G >= tau_full >= tau_M; G-CSF instructs toward
+  neutrophils and M-CSF toward monocytes relative to the full cocktail. Epo and SCF taus are
+  free. Survival factors are free as before. 19 parameters, 500 generations, 6 seeds (Actions);
+  runs in parallel with E34.
+- **Readings (E33's gate and readings).**
+  - **Primary pass:** adequate, G-M p >= 0.05, both B7 differences inside the 95% range.
+  - Also: does B7 G move toward -0.37 relative to E33 (-0.58)? And the loss vs E33's best (30.5).
+  - Pass: the over-selection was an identifiability artefact, and literature-signed instruction
+    plus measured state plus selection explains G-M and B7.
+  - B7 fixed but G-M lost: instruction and selection cannot both be right in this structure.
+  - Constraint costs much loss (an inadequate fit): the data prefer selection-dominated fits,
+    against the literature, which would itself be notable.
