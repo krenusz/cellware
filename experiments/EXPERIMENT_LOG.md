@@ -2086,3 +2086,23 @@ best-supported untested candidate.
   less extreme in M) outside the E20 simulated 95% range, presence is coupled to fate and the
   G-M clones are a selected subset: the statistic needs a selection-aware model. If inside, the
   subset is not selected on fate beyond what the model already reproduces.
+
+### B7 result (2026-11-03): the G-M clones are a strongly selected subset
+
+78 clones with >= 2 N+M cells in both G and M; 474 G-only; 931 M-only.
+
+| | in both G and M | in one only | Mann-Whitney p |
+|---|---|---|---|
+| N-share in G (mean / median) | 0.35 / 0.00 | 0.72 / 1.00 (G-only) | 3e-12 |
+| N-share in M (mean / median) | 0.13 / 0.00 | 0.05 / 0.00 (M-only) | 5e-5 |
+
+Median sizes similar (3-4 N+M cells). Data vs 200 E20 simulations (presence fixed to observed):
+mean N-share difference in G, both minus G-only: **-0.37** vs model 0.00 [-0.11, 0.10]; in M:
+**+0.08** vs model 0.00 [-0.04, 0.04]. Both far outside.
+- **Reading (pre-registered): presence is coupled to fate.** Neutrophil-pure clones present
+  under G-CSF are mostly absent (or below 2 N+M cells) under M-CSF; the clones seen in both are
+  monocyte-leaning bipotent clones, and the ones that do make neutrophils under M-CSF are the ones
+  also seen under G-CSF. Cytokines act partly by **selection** of lineage-restricted clones, not
+  only by instruction. The G-M statistic is computed on a subset whose membership depends on fate,
+  and every simulator since E9 pins membership to the observed counts while drawing fate
+  independently of it. **This is the best candidate for the missing piece.**
