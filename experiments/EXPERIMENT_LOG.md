@@ -2059,3 +2059,30 @@ coupling (E23) and pre-split commitment carry-over (E24) all fail; G-M stays at 
 Literature sweep 2 (LITERATURE_SWEEP_2026-11b.md) points to clone *types* (a mix of
 cytokine-insensitive, intrinsically fated clones and plastic clones; two monocyte routes) as the
 best-supported untested candidate.
+
+## Batch pre-registration 2026-11-03 (3): E25 clone types, B7 selection of the G-M clones
+
+### E25: a mixture of clone types
+- E20 model (rho_f 0.88) plus two clone classes drawn per clone (own rng, so the E20 model is
+  nested at pi = 0): **fixed** clones (probability pi_fix) are cytokine-insensitive: in every
+  condition they use the full-cocktail offset tau_full instead of tau_c (intrinsically fated,
+  Dawson-lab type); **M-only** clones (probability pi_M) make no neutrophils in any condition
+  (MDP-route type, Yanez 2017). The rest are plastic as in E20. pi_fix, pi_M fitted (logit
+  scale) with beta, sigma_w, tau_c on the within-condition statistics (fit set; warm start from
+  E20 with pi ~ 0; Nelder-Mead then Powell; 5 sims, common random numbers); 200-simulation
+  predictions of the cross statistics.
+- **Readings.** Supported if all three cross statistics have p >= 0.05 (G-M included) with loss
+  <= E20's re-scored loss. Partial if G-M rises clearly (simulated mean >= 0.33, the observed CI
+  floor) but p < 0.05. Not supported if G-M stays <= 0.25 or the fitted pi are ~0.
+
+### B7: are the 78 G-M clones a selected subset?
+- Compare clones with >= 2 N+M cells in both G and M ("both") with clones that reach >= 2 N+M
+  cells in only one of the two ("G-only", "M-only"; all with a day-2 sample where available).
+  (1) N-share in G: both vs G-only; N-share in M: both vs M-only (Mann-Whitney, medians).
+  (2) Same comparison in 200 E20 simulations (presence is fixed to the observed counts, so any
+  data-vs-model difference is presence-fate coupling the model lacks). (3) Descriptive: day-2
+  cell count, day-2 committed fraction, total size.
+- **Readings.** If the data show a presence-fate difference (e.g. "both" clones more N in G or
+  less extreme in M) outside the E20 simulated 95% range, presence is coupled to fate and the
+  G-M clones are a selected subset: the statistic needs a selection-aware model. If inside, the
+  subset is not selected on fate beyond what the model already reproduces.
