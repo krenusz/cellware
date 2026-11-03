@@ -2010,3 +2010,35 @@ HSC_high classes, so they cannot replicate the index directly. B3k stays a singl
   missing piece. (b) supported if G-M p >= 0.05 with full-G and full-M p >= 0.05; not supported
   otherwise. A pass would make size coupling a candidate mechanism (clones that expand more under
   single cytokines skew N/M consistently), still needing a held-out test.
+
+### E23 result (2026-11-03)
+
+(a) Diagnostic: share-size Spearman per condition, data vs E20 simulations (95%):
+full -0.06 [-0.13, 0.01] vs [-0.06, 0.08]; **G +0.09 [0.02, 0.18]** vs [-0.09, 0.10];
+**M -0.09 [-0.15, -0.02]** vs [-0.01, 0.12] (trigger); Epo, SCF ~0 (wide). Under G-CSF larger
+clones are more N, under M-CSF larger clones are more M: clones that expand more follow the
+cytokine more.
+(b) E23m: loss 0.047 (vs 0.170 at delta = 0 with the added targets); delta G +2.9, M -3.7.
+full-G 0.55 (p 0.12), full-M 0.37 (p 0.13), **G-M 0.20, 0/200 >= 0.51. Not supported.** The
+opposite-sign size coupling, if anything, pulls G and M apart.
+
+## E24: carry-over of cells already committed before the split (pre-registered 2026-11-03)
+
+- **Observation (design check, not an outcome look).** In the cytokine experiment 16% of day-2
+  cells (sampled just before the split, full cocktail) are already annotated Neu (1,058) or Mo
+  (1,648). Their sisters at the split are presumably also committed and carry their fate into
+  every condition regardless of cytokine (cytokines instruct uncommitted GMPs, Rieger et al.
+  2009). The E18-E23 simulator has every cell decide after the split, so it has no carry-over.
+  E10 (learned rule) had estimated ~29% committed by day 2.
+- **(a)** Per clone with >= 2 day-2 Neu+Mo cells: day-2 committed N-share vs N-share in G and in
+  M (Spearman, clone bootstrap). **(b)** G-M r restricted to clones with no day-2 Neu/Mo cells vs
+  clones with >= 1 (descriptive; spent statistic). **(c) Model E24m:** E20 plus carry-over: a
+  fraction phi_c of each clone's N+M cells in condition c are carried-over committed cells whose
+  fate is drawn from the clone's own N-propensity in the full cocktail (latent zb_full with
+  tau_full), not the condition's; the rest decide post-split as in E20. phi_c fitted per
+  condition (bounded 0-1) with the within-condition targets; warm start from E20 (phi 0);
+  Nelder-Mead then Powell; 5 sims, common random numbers; 200-simulation predictions.
+- **Readings.** (a) positive with CI excluding 0 in M (where post-split N is rare) supports
+  carry-over. (c) supported if all three cross statistics have p >= 0.05 with loss <= E20's
+  re-scored loss. If (c) passes, carry-over of pre-committed cells is the leading candidate for the
+  G-M gap; it would still need the held-out Epo/SCF shard 1.
