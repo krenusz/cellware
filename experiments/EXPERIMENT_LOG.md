@@ -2999,3 +2999,24 @@ Partial Spearman with the clone's N-share, given log(N+M) and log(day-2 cells):
   2016's Gfi1-Irf8 axis.
 - **Consequence.** The measured day-2 programme is a general clone trait, not a cytokine-experiment
   artefact. It is a usable measured input for models on both datasets (as E33 does).
+
+### B15 results (2026-11-03)
+
+Out-of-fold performance, 5-fold CV by clone, 20 repeats. Brackets give the bootstrap 95% CI of
+the difference to Cebpa-only.
+
+| target | n (positives) | full expression (30 PCs) | Cebpa only | priming score | full + Cebpa | reading |
+|---|---|---|---|---|---|---|
+| (a) G-only vs M-only, AUC | 420 (138) | **0.81** [+0.20, +0.34] | 0.54 | 0.77 [+0.15, +0.31] | 0.81 | **more readable** |
+| (b) N under M-CSF, AUC | 321 (27) | 0.76 [-0.06, +0.27] | 0.66 | 0.72 | 0.77 | Cebpa enough (underpowered) |
+| (c) G-CSF N-share, r | 177 | 0.36 [-0.01, +0.36] | 0.19 | 0.12 | 0.38 | Cebpa enough (borderline) |
+
+- **(a) Where a clone is seen is well readable from day-2 expression (AUC 0.81), far beyond
+  Cebpa (0.54).** The presence-deciding state is broad. The B9 SPRING priming score already
+  captures most of it (0.77), and B14's committed fractions are part of it.
+- **(b, c) Fate under a given cytokine.** Full expression is numerically better (0.76 vs 0.66;
+  r 0.36 vs 0.19), but the pre-registered rule is not met: the CIs include 0, with only 27
+  positives in (b). By the rule, Cebpa captures the readable part.
+- **Readable ceiling so far.** Presence: AUC about 0.8. Neutrophil output: AUC about 0.75 or
+  r about 0.36. Much of the clone's fate state is visible at day 2, but not all (compare B1c:
+  about half of the variance unexplained).

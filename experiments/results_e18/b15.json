@@ -1,0 +1,66 @@
+{
+ "clones_with_day2": 2222,
+ "a_Gonly_vs_Monly": {
+  "full": 0.8078682290060644,
+  "cebpa": 0.5384417720217906,
+  "priming": 0.7648781991982732,
+  "full_plus_cebpa": 0.8091530475896803,
+  "full_minus_cebpa_ci": [
+   0.19697395386640357,
+   0.3407457959065412
+  ],
+  "priming_minus_cebpa_ci": [
+   0.1500006777287599,
+   0.30670545383646414
+  ],
+  "full_plus_cebpa_minus_cebpa_ci": [
+   0.2046063876205717,
+   0.33637976392611374
+  ],
+  "n": 420,
+  "positives": 138,
+  "more_readable": true
+ },
+ "b_N_under_M": {
+  "full": 0.7553539934492316,
+  "cebpa": 0.6607457797933989,
+  "priming": 0.7183169564121945,
+  "full_plus_cebpa": 0.7679516250944822,
+  "full_minus_cebpa_ci": [
+   -0.0635251142410487,
+   0.26529815821843195
+  ],
+  "priming_minus_cebpa_ci": [
+   -0.0812429813105049,
+   0.22025053515922796
+  ],
+  "full_plus_cebpa_minus_cebpa_ci": [
+   -0.02904741863075201,
+   0.26103733115332173
+  ],
+  "n": 321,
+  "positives": 27,
+  "more_readable": false
+ },
+ "c_G_Nshare": {
+  "full": 0.36373488441224433,
+  "cebpa": 0.1859463463452347,
+  "priming": 0.1180577028746517,
+  "full_plus_cebpa": 0.37579810230891564,
+  "full_minus_cebpa_ci": [
+   -0.006442925494690367,
+   0.3633814468191348
+  ],
+  "priming_minus_cebpa_ci": [
+   -0.24936757023054124,
+   0.12281634219198817
+  ],
+  "full_plus_cebpa_minus_cebpa_ci": [
+   0.016305784627336103,
+   0.3568814448879547
+  ],
+  "n": 177,
+  "positives": null,
+  "more_readable": false
+ }
+}
