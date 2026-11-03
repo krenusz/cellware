@@ -2326,3 +2326,38 @@ whether a clone's cells survive to be sampled, and it does so by the clone's fat
   selection, and the Epo/SCF shard-1 look follows after the power rule. If E28a fits the overlap
   but G-M stays low, the founder split is real but not the missing piece. If E28b reaches about
   0.14 on its own, the overlap anomaly is a design artefact (well splitting), not biology.
+
+### E28 results (2026-11-03)
+
+Run on Actions, 3 starts per variant; best start = lowest loss.
+
+| start | loss | nu | overlap (0.141) | full-G (p) | full-M (p) | G-M (p) | B7 G inside | B7 M inside |
+|---|---|---|---|---|---|---|---|---|
+| a s0 | 11.7 | 1.19 | 0.12 | 0.72 (0.15) | 0.59 (0.00) | 0.52 (0.79) | no (-0.04) | yes |
+| a s1 | 590 | 2.06 | 0.68 | 0.76 (0.00) | 0.38 (0.00) | 0.34 (0.00) | no | no |
+| **a s2 (best)** | **2.98** | 0.32 | 0.16 | 0.71 (0.67) | 0.12 (0.05) | **0.15 (0.000)** | no (-0.05) | no (0.00) |
+| b s0 | 27.6 | 1.54 | 0.62 | 0.72 (0.05) | 0.60 (0.00) | 0.52 (0.58) | no | yes |
+| b s1 | 483 | 2.07 | 0.69 | 0.76 (0.00) | 0.38 (0.00) | 0.34 (0.00) | no | no |
+| **b s2 (best)** | **1.03** | 0.29 | **0.22** | 0.70 (0.96) | 0.16 (0.07) | **0.21 (0.010)** | no (-0.04) | no (0.00) |
+
+- **Both variants fail** the G-M and B7 gates.
+- **The founder split explains most of the overlap anomaly.** Without the overlap in the loss
+  (E28b), fitting the within-condition data alone drives nu to 0.29 founders per well (most
+  clones have 0 or 1 founder in a given well). That brings overlap from E26's 0.62 to 0.22. It
+  is still 0.08 above the data, outside the pre-registered ±0.05, so splitting is most of the
+  anomaly but not all of it. E28a fits it (0.16).
+- **G-M gets lower, not higher** (0.15 / 0.21). With about one founder per well, G-M compares
+  single sister cells. A shared fate latent with rho_f 0.88 still cannot give 0.51 once each
+  side is one founder plus cytokine noise.
+- **B7's G-CSF effect (-0.37) is not produced by splitting** (model -0.04/-0.05). The fate-selected
+  presence under G-CSF remains unexplained.
+- Same trade-off again: the starts that reach G-M ~0.52 (a s0, b s0) break full-M (0.59 vs 0.24).
+- Held-out shard 1 stays unseen.
+
+**Reading across E20-E28.** Every model family with one shared fate latent per clone fits the
+within-condition data only with G-M at 0.06-0.33. Accounting for presence structure (selection
+E26, founder split E28) does not close the gap. What remains: G-CSF and M-CSF outcomes of the
+same clone are linked more than either is to the full cocktail, and B7's G-CSF presence
+selection is large. A latent that couples the G and M responses specifically, without the full
+cocktail, is the next untested structure (for example, a clone-level cytokine-sensitivity
+trait).

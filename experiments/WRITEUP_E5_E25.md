@@ -231,6 +231,9 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   a clone seen under G-CSF is 2-3x more likely to also be seen under M-CSF than in the data
   (0.33-0.45 vs 0.14). Presence overlap has never been fitted. E19c: rho_f falls with clone size
   (0.95 small, 0.82 large), so presence selection does not hide a higher sister correlation.
+  E28: modelling each clone's few day-2 founders split across wells (about 0.3 per well) explains
+  most of the overlap anomaly (0.62 to 0.22, data 0.14), but G-M falls further (0.15-0.21) and
+  B7's G-CSF effect is still not produced.
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.
