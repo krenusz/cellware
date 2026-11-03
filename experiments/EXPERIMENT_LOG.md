@@ -2188,3 +2188,22 @@ full-G 0.55 (p 0.18), full-M 0.35 (p 0.28), **G-M 0.16, 0/200 >= 0.51. Not suppo
   passing variant's predicted shard-1 pooled r and E20's must differ by more than the expected
   shard CI half-width (~0.37 from shard 0); otherwise skipped. Look through test_oracle.py,
   reading: observed value inside the passing variant's 95% predicted range.
+
+### B8 / B9 results (2026-11-03)
+
+**B8 (same cocktail, main in vitro wells).** N-share of clones present in both wells vs one well:
+well 1 0.58 vs 0.49, diff **+0.09 [0.02, 0.15]** (291 vs 672 clones); well 2 0.57 vs 0.50,
+diff **+0.06 [0.00, 0.12]** (291 vs 871).
+- By the pre-registered rule (CI must include 0) **B8 fails, so B7 is weakened**: presence and
+  fate are coupled a little even without a cytokine difference (clones present in two wells lean
+  slightly N). But this coupling is about a quarter of B7's size and of the **opposite sign**
+  (B7 under G-CSF: -0.37), so sampling of this kind cannot produce B7's pattern. E19's
+  same-cocktail kin estimate may carry a small presence bias.
+
+**B9 (day-2 state of the B7 groups; 39 both, 138 G-only, 282 M-only clones with day-2 cells).**
+Neutrophil-priming score (median, SPRING distance to Mo centroid minus to Neu centroid): G-only
+772 > both 739 > M-only 611; Kruskal p 6e-19; **G-only vs both p 0.006**, M-only vs both p 0.002.
+Day-2 Neu share also differs across groups (Kruskal p 0.0006; G-only 3.1%, both 0%, M-only 0.4%).
+- **Supported (pre-registered).** Clones later seen only under G-CSF were already more
+  neutrophil-primed at day 2; clones seen only under M-CSF more monocyte-primed; the clones seen
+  under both sit in between. The selection is on a fate state that already exists at day 2.
