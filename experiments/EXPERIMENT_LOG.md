@@ -1771,3 +1771,49 @@ Secondary (cross-well pairs restricted to the same day, 442 clones): 0.87 [0.82,
   E18c predicts G-M ~0.33-0.39 (its 0.8 and 0.9 cells), still near the bottom of the observed
   CI. The remaining G-M gap is not a missing-parameter problem.
 - Caveat as pre-registered: main in vitro culture, not the cytokine experiment E18c was fitted on.
+
+## Batch pre-registration 2026-11-03: E20, B1c, E19b, B3j, E21
+
+### E20: is the G-CSF vs M-CSF gap real, with rho_f fixed by data?
+- Fit beta, sigma_w, tau_c on the fit set exactly as E18c, with rho_f fixed at E19's 0.88
+  (3 restarts x 3 simulations). Then 200 simulations on all clones at the observed depth, scored
+  with the same statistics (full-G, full-M, G-M).
+- **Readings.** Tail probability p = share of simulations with G-M >= 0.51 (observed point).
+  p < 0.05: the gap is real, the model lacks something (triggers E21). p >= 0.05: the observed
+  G-M is within the model's sampling spread at this depth; the cross-condition "limit" was a
+  sampling ceiling, and that modelling question is closed. Same tail calculation reported for
+  full-G and full-M (two-sided).
+
+### B1c: day-2 expression -> fate, with confounds controlled (re-check of track B1)
+- B1 design (clones with day-2 cells and >= 3 day-4/6 N+M cells; top-50 expression PCs, ridge).
+  Covariates: starting population (LK vs LSK), the clone's modal day-2 library (7 libraries),
+  log late N+M cells, log day-2 cells. (1) Leave-one-day-2-library-out CV. (2) Partial r with the
+  covariates removed from prediction and target. (3) Covariates alone (random folds).
+- **Readings.** B1's r 0.66 holds (CI of (1) and (2) above 0.5) = not confounded. Falls well below
+  (CI upper end < 0.5) = largely confound; all downstream uses of "day-2 state explains ~40%" are
+  restated.
+
+### E19b: kin correlations in vivo (environment vs clone)
+- LARRY in vivo (data/larry_invivo), mature Neu and Mono, days 9 and 16; groups = recipient mouse.
+  Same E19 method: latent r within the same mouse and time point vs across mice; ratio with clone
+  bootstrap (1000x).
+- **Readings.** Ratio well below E19's in vitro 0.88 (CI upper end < 0.82) = the recipient
+  environment breaks fate-state sharing beyond what culture branches show (matches E6b). Ratio
+  overlapping 0.82-0.92 = the in vivo cross-mouse drop (E6b) is not in the latent fate state but
+  elsewhere (e.g. sampling or cell-type mix).
+
+### B3j: which cell-state CpGs carry the fate signal?
+- B3 / B3i design (181 clones). Target residualised on mouse + log sizes. For each of the 453
+  CpGs, clone-mean methylation over multipotent cells vs residual target, Spearman; BH FDR 0.10.
+- **Readings.** Any FDR hits: list them with gene, enhancer annotation, panel selection class and
+  chromatin state, and test whether hits are enriched in Dynamic vs Static (Fisher). No hits: the
+  signal is diffuse across many sites (what ridge on PCs would pick up); no single-site biology
+  claimed. Descriptive only: share of Dynamic vs Static CpGs with EPI-Clone's own clone-association
+  p < 0.05 (column pvals_cloneass), as a check on B3h's "record leaks into Dynamic sites".
+
+### E21 (conditional on E20 p < 0.05): condition-specific gain
+- E20 model plus a per-condition gain: beta_c = beta * g_c, g_full = 1, other g_c free (4 extra
+  parameters), rho_f fixed 0.88, same fit and simulation protocol.
+- **Readings.** Gap closed = G-M simulated mean inside the observed CI (0.33-0.65) and p >= 0.05,
+  with fit loss no worse than E20's. Otherwise the gap survives a condition-specific gain too.
+- Not run if E20 gives p >= 0.05.
