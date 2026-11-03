@@ -59,8 +59,39 @@ Cheapest first step: ask labs 1 and 2 whether existing sister-pair movies under 
 (Rieger 2009 data) can be re-analysed for death and arrest by sister fate. That needs no new
 experiment.
 
-## Before any outreach
+## Outreach plan (elaborated 2026-11-03)
 
-- Employment contract: side business needs written approval and the IP clause is broad. An
-  unpaid academic collaboration on public code is probably fine but should be checked first.
-- No email is drafted or sent until Bence says so.
+**Step 0: contract (mostly settled).** Cellware is covered by the signed Side-Project Agreement
+(effective 13 Nov 2024). Bence keeps the IP in synthetic biology, provided no employer resources
+or confidential information are used. An unpaid academic collaboration on public Cellware code
+fits that. A paid or commercial arrangement (e.g. a CellVoyant pilot) may count as "other
+business" under Cl. 5.1 and would need written approval first. Use a personal email and personal
+hardware.
+
+**Step 1: the free ask (re-analysis of existing movies).** Target: the Schroeder lab (ETH Zurich,
+D-BSSE). Rieger et al. 2009 and later work filmed single GMPs and their progeny under G-CSF and
+M-CSF with continuous tracking. The question to ask: do their archived sister-pair trees allow
+scoring death, arrest and fate per sister by condition? If yes, the analysis is ours, and their
+cost is a data share. Send one short email, attaching the one-page question and this table.
+
+**Step 2: the computational partner.** The Marr lab (Helmholtz Munich) co-authored the
+brightfield fate-prediction work (Buggenthin 2017) on Schroeder-type movies. They may hold
+movies plus tracking already processed. Contact in parallel with step 1, with the same ask.
+
+**Step 3: the new experiment (only if 1-2 give nothing).** A split-sister G-CSF vs M-CSF
+time-lapse from LARRY-like progenitors, 100-150 sister pairs per condition pair. That is a
+wet-lab project, so it needs a host lab. Offer pre-registered predictions plus analysis.
+
+**Step 4: the industry angle (optional).** CellVoyant (Bristol). Bence interviewed there in
+January 2024, and their platform does live-cell fate prediction. Haematopoiesis is not their
+focus, so pitch it as a validation dataset for FateCast-type models. Contract check first
+(step 0, commercial).
+
+**What we send.** A one-page question, the readout table above, a link to the repo, the
+pre-registered predictions per readout, and a clear "we do the analysis".
+
+**What would make it compelling.** Our numbers (G-M 0.51 vs models <= 0.33, B7 selection
+-0.37), and a single readout that decides: sister agreement among survivors only.
+
+**Status.** Nothing drafted to anyone and nothing sent. An email is drafted only when Bence says
+so. Contact names and addresses are to be checked on the lab pages at that point, not guessed.
