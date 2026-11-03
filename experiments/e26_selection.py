@@ -38,8 +38,10 @@ def simulate(clones, prm, rng):
         p = 1 / (1 + np.exp(-(prm["beta"] * zb + prm["tau"][c])))
         # optimiser line searches visit extreme values: cap rates so Poisson draws stay valid
         lam = np.exp(np.clip(prm["mu"][c] + a, -30, 8))
-        kn = rng.poisson(np.minimum(lam * p * min(prm["s"][c], 1e3), 1e4))
-        km = rng.poisson(np.minimum(lam * (1 - p), 1e4))
+        rn = np.nan_to_num(lam * p * min(prm["s"][c], 1e3), nan=0.0, posinf=1e4)
+        rm = np.nan_to_num(lam * (1 - p), nan=0.0, posinf=1e4)
+        kn = rng.poisson(np.clip(rn, 0, 1e4))
+        km = rng.poisson(np.clip(rm, 0, 1e4))
         keep = np.flatnonzero(kn + km > 0)
         out[c] = {4: {clones[i]: [int(kn[i]), int(km[i]), 0] for i in keep}}
     return out
@@ -83,6 +85,8 @@ def main(variant, only=None):
     obs, obs_p = within_stats(fitset), presence(fitset)
 
     def loss(x):
+        if not np.all(np.isfinite(x)):
+            return 1e6
         prm = unpack(x, variant)
         tot = 0.0
         st, pr = [], []
