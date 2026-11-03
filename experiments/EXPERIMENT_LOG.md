@@ -2522,3 +2522,63 @@ data vs best fits (10 simulations; fit_audit_e26_e29.json):
 divided by its data standard error (clone bootstrap), using a population optimiser (CMA-ES,
 several restarts) instead of Nelder-Mead in 18 noisy dimensions, behind the adequacy gate. Only
 then re-read G-M, B7, overlap and B10.
+
+### Fit audit E20-E25 (2026-11-03, post hoc)
+
+Within-condition statistics (mean N-share / variance / mixed fraction) of the best fits vs data,
+10 simulations (fit_audit_e20_e25.json):
+
+| | full | G-CSF | M-CSF | Epo | SCF |
+|---|---|---|---|---|---|
+| data | 0.31/0.179/0.16 | 0.64/0.205/0.13 | 0.05/0.041/0.05 | 0.70/0.212/0.00 | 0.66/0.212/0.05 |
+| E20 | 0.39/0.202/0.16 | 0.51/0.212/0.18 | 0.04/0.033/0.05 | 0.55/0.210/0.14 | 0.52/0.216/0.13 |
+| E21 | 0.40/0.188/0.24 | 0.54/0.211/0.18 | 0.07/0.044/0.12 | 0.51/0.209/0.16 | 0.57/0.207/0.15 |
+| E21b | 0.31/0.183/0.14 | 0.61/0.208/0.14 | 0.05/0.036/0.05 | 0.63/0.196/0.13 | 0.57/0.232/0.05 |
+| E22 | 0.31/0.186/0.13 | 0.62/0.204/0.15 | 0.05/0.037/0.05 | 0.58/0.208/0.13 | 0.51/0.212/0.15 |
+| E24 | 0.31/0.185/0.14 | 0.62/0.203/0.16 | 0.05/0.035/0.05 | 0.63/0.194/0.14 | 0.59/0.211/0.13 |
+| E25 | 0.31/0.184/0.14 | 0.63/0.202/0.15 | 0.04/0.034/0.05 | 0.62/0.195/0.12 | 0.60/0.210/0.11 |
+
+- E21b, E22, E24 and E25 fit the basic levels well (within about 0.03, except the small Epo/SCF
+  sets). E20 and E21 are looser (G-CSF 0.51-0.54 vs 0.64). These models condition on the observed
+  cells per clone, so presence is matched by construction. **The G-M gap stands on adequate fits:**
+  E21b, E22, E24 and E25 give G-M 0.16-0.33 (0.21, 0.21, 0.21, 0.16). E23 is not audited (needs its
+  size inputs; it is the same simulator family as E20).
+
+## Batch pre-registration 2026-11-03 (6): E30, B11 (written before either was run)
+
+### E30: presence-aware model refitted properly (SE-scaled loss, population optimiser, adequacy gate)
+- **Model.** E29 structure: E26b instruction + selection, founders per well k_c ~ Poisson(nu),
+  clone expansion trait, fate latent rho_f 0.88, plus the shared single-cytokine trait gamma u.
+  **E30a**: gamma fixed at 0 (= E28). **E30b**: gamma free.
+- **Loss.** Every term divided by its data standard error, then squared and summed. The terms
+  are: per condition mean N-share, variance and mixed fraction (clone-bootstrap SE, 500
+  bootstraps of the fit set); number of present clones (SE sqrt(n)); mean log size of present
+  clones (bootstrap SE); and the G/M presence overlap (bootstrap SE). No cross statistics.
+  Simulation mean over 5 simulations with common random numbers.
+- **Optimiser.** scipy differential evolution on the bounded transform space, x in [-3, 3]^d,
+  population 6 x d, up to 120 generations, no polish. 3 seeds per variant (6 GitHub Actions
+  jobs). Best = lowest loss among adequate fits.
+- **Adequacy gate (before anything else is read).** Every condition's simulated mean N-share
+  inside the data's 95% CI (±1.96 SE), and present clones within ±20% of the data, for full,
+  G and M. Epo and SCF are reported, not gated (23 and 39 clones).
+- **Readings (adequate fits only).** As E26: a pass needs G-M, full-G and full-M p >= 0.05 and
+  both B7 differences inside the 95% range. B10's fraction of both-clones with N under M-CSF
+  (data 0.205) and the overlap (fitted) are reported.
+  - If an adequate fit passes, it is a candidate: power rule, then the shard-1 look.
+  - If adequate fits fail G-M, the presence-aware family fails when measured correctly (this
+    replaces the withdrawn E26-E29 verdicts).
+  - If no fit is adequate, this structure cannot match the basic levels. That is itself a
+    finding about the structure.
+
+### B11: are clones that make neutrophils under M-CSF neutrophil-primed at day 2?
+- **Clones.** Present under M-CSF (>= 2 N+M, pooled days) with day-2 cells. Group "N under M" =
+  >= 1 N cell under M-CSF; otherwise "none".
+- **Primary.** B9's day-2 neutrophil-priming score (SPRING distance to the Mo centroid minus
+  distance to the Neu centroid, clone mean). Partial Spearman of score vs has-N, controlling for
+  log M-CSF clone size (residualise both on log size). Supported if positive with p < 0.05.
+- **Secondary.** Mann-Whitney of the score between groups; the same partial test with day-2
+  Neu share instead of the score.
+- **Reading.** Supported means neutrophil output under M-CSF is set by a fate state already present
+  at day 2 (a clone property, the B10 gradient), and E30 should be judged on whether it can
+  express that. Not supported means M-CSF neutrophils look random with respect to the day-2
+  state.
