@@ -39,8 +39,9 @@ def main():
         for c, g, v in chunk.itertuples(index=False):
             expr.at[int(c), col[int(g)]] = np.log1p(v)
     expr["clone"] = cid[d2 - 1]
-    per = expr.groupby("clone").agg({**{g: "mean" for g in GENES}, "Cebpa": ["mean", "size"]})
-    per.columns = [*GENES, "n2"]
+    per = expr.groupby("clone").agg(
+        Cebpa=("Cebpa", "mean"), Irf8=("Irf8", "mean"), Gfi1=("Gfi1", "mean"), n2=("Cebpa", "size")
+    )
     late = (day > 2) & (cid >= 0)
     n = np.bincount(cid[late & (ctype == "Neutrophil")], minlength=cid.max() + 1)
     m = np.bincount(cid[late & (ctype == "Monocyte")], minlength=cid.max() + 1)
