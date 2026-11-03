@@ -2744,3 +2744,32 @@ The next model must reproduce the pairwise co-presence table before any cross st
   - If yes, the ordering anomaly is explained by founder allocation plus selection, and the
     power rule and the shard-1 look follow.
   - If the co-presence fits but full-M stays high, allocation is not the cause of the ordering.
+
+## B13: cytokine receptors and fate regulators at day 2 (pre-registered 2026-11-03)
+
+- **Question.** Is the day-2 selection state (B9, B11) carried by the cytokine receptors
+  themselves? G-CSF signals through Csf3r and M-CSF through Csf1r. Downstream fate regulators:
+  Cebpa and Cebpe (neutrophil), Spi1/PU.1 and Irf8 (monocyte).
+- **Data.** The cytokine experiment's normalised counts (stateFate_cytokinePerturbation, same
+  LARRY source), day-2 cells only, clone mean of log1p(normalised expression) over each
+  clone's day-2 cells. The same clone groups as B7/B9/B11.
+- **Genes.** Primary: Csf3r and Csf1r, plus the receptor balance Csf3r - Csf1r (difference of the
+  clone means). Secondary panel: Csf2rb, Il3ra, Kit, Stat3, Cebpa, Cebpb, Cebpe, Gfi1, Spi1,
+  Irf8, Klf4, Mafb, Elane, Mpo, Ly86, Ccr2.
+- **Predictions (primary, each one-sided at p < 0.05).**
+  1. Receptor balance is higher in G-only clones than in M-only clones (Mann-Whitney).
+  2. Csf3r is higher in clones that make >= 1 neutrophil under M-CSF than in M-present clones that
+     do not: partial Spearman given log M-CSF clone size, the B11 v3 method.
+  3. Among clones present under G-CSF, receptor balance correlates positively with the G-CSF
+     N-share (Spearman).
+- **Secondary.** The same three tests for every panel gene, with BH correction within each test
+  (FDR 10%). Also: does the B11 priming-score effect survive after controlling for the receptor
+  balance (partial on log size + balance)? If it drops a lot, the receptors carry the priming.
+- **Readings.**
+  - Primary 1-3 supported: the selection runs through cytokine receptor levels that are set
+    per clone before the split. That gives a measurable clone trait for the next model
+    (receptor balance as an input instead of a latent).
+  - Primaries fail but regulators pass: the state is set downstream of the receptors.
+  - Nothing passes: the day-2 priming is a broader transcriptional state not captured by these
+    genes.
+- Spent data only (the same clones as B7/B9/B11); no held-out data.
