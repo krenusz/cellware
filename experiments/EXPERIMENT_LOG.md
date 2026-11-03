@@ -2207,3 +2207,28 @@ Day-2 Neu share also differs across groups (Kruskal p 0.0006; G-only 3.1%, both 
 - **Supported (pre-registered).** Clones later seen only under G-CSF were already more
   neutrophil-primed at day 2; clones seen only under M-CSF more monocyte-primed; the clones seen
   under both sit in between. The selection is on a fate state that already exists at day 2.
+
+### E26 results (2026-11-03)
+
+**Deviations from pre-registration (made before any result was seen).** Powell stage dropped and
+parameters put through bounded transforms; empty conditions (no present clones, Epo/SCF) give a
+fixed loss penalty instead of NaN. Two earlier Actions runs returned only the NaN/1e6 penalty and
+were discarded as failed runs, not looks. Run on Actions, 3 starts per variant as separate jobs;
+best start = lowest loss.
+
+| start | loss | full-G (p) | full-M (p) | G-M (p) | B7 G inside | B7 M inside |
+|---|---|---|---|---|---|---|
+| a s0 | 9.95 | 0.70 (0.48) | 0.74 (0.00) | 0.71 (0.00) | no (-0.07) | no (0.21) |
+| a s1 | 223 | 0.75 (0.00) | 0.64 (0.00) | 0.60 (0.00) | yes (-0.36) | no |
+| **a s2 (best)** | **0.34** | 0.63 (0.18) | 0.21 (0.60) | **0.22 (0.000)** | no (-0.28) | no (0.00) |
+| b s0 | 12.2 | 0.70 (0.51) | 0.59 (0.00) | 0.50 (0.37) | no (-0.07) | no (0.14) |
+| b s1 | 247 | 0.75 (0.00) | 0.36 (0.00) | 0.32 (0.00) | no | no |
+| **b s2 (best)** | **0.33** | 0.64 (0.10) | 0.04 (0.00) | **0.06 (0.000)** | no (-0.03) | no (0.00) |
+
+Data: G-M 0.51, full-M 0.24, B7 G -0.37, M +0.08.
+- **Fails (both variants).** The best fits reproduce the within-condition data and full-G but put
+  G-M at 0.22 and 0.06, and do not reproduce B7. Presence-coupled selection of this simple form
+  (neutrophil survival factor per condition + clone expansion trait) does not explain G-M either.
+- Same pattern as E21-E25: poorly fitting starts (a s0, b s0) can reach G-M 0.5-0.7 but only by
+  breaking full-M or the within statistics. G-M and within-condition fit still trade off.
+- Held-out shard 1 stays unseen (no variant passed; no look spent).
