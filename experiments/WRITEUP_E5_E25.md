@@ -237,6 +237,14 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   G-M 0.72 (no longer too low) and reproduces B10's M-CSF neutrophils, but full-M becomes 0.59
   (data 0.24). The open question is now the ordering: G and M agree strongly (0.51) while full
   and M agree weakly (0.24).
+  Converged E31: all 6 adequate fits keep that pattern (G-M 0.70, full-M 0.60), so it is a property
+  of the latent-only family. B12-B16: the full arm is a separate, mostly day-6 culture; day-2
+  receptor balance (Csf3r-Csf1r) and especially the Cebpa/Gfi1 vs Irf8/PU.1 programme predict
+  presence and neutrophil output (replicated on the main in vitro data: Cebpa-Irf8 0.30, Gfi1
+  0.34, 571 clones). Presence is readable from day-2 expression (AUC 0.81).
+  **E33 (measured day-2 inputs in place of the free latent): adequate fits reproduce G-M (0.49,
+  p 0.87).** B7's G-CSF selection still overshoots (-0.58 vs -0.37), and full-M stays high (the
+  full-arm design is not modelled).
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.

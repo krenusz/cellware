@@ -3020,3 +3020,38 @@ the difference to Cebpa-only.
 - **Readable ceiling so far.** Presence: AUC about 0.8. Neutrophil output: AUC about 0.75 or
   r about 0.36. Much of the clone's fate state is visible at day 2, but not all (compare B1c:
   about half of the variance unexplained).
+
+### E33 results (2026-11-03)
+
+300 generations, 6 seeds. 5 of 6 adequate. Measured inputs identified in every fit.
+
+| seed | loss | adequate | w (graded) | kappa (committed) | G-M (p) | full-G (p) | full-M (p) | B7 G (data -0.37) | B7 M in | B10 (0.205) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 79.0 | yes | 0.49 | 1.01 | 0.54 (0.67) | 0.81 (0.00) | 0.61 (0.00) | -0.60 | no | 0.26 |
+| 1 | 100.4 | yes | 0.44 | 0.91 | 0.51 (0.98) | 0.78 (0.04) | 0.56 (0.00) | -0.54 | no | 0.27 |
+| 2 | 97.0 | yes | 0.76 | 0.13 | 0.54 (0.75) | 0.70 (0.67) | 0.53 (0.01) | -0.58 | yes | 0.25 |
+| **3 (best)** | **30.5** | yes | 0.59 | 0.94 | **0.49 (0.87)** | 0.80 (0.00) | 0.57 (0.00) | **-0.58** (out) | yes | 0.25 |
+| 4 | 109.2 | no | 0.42 | 1.21 | 0.56 | 0.81 | 0.62 | -0.62 | no | 0.24 |
+| 5 | 96.0 | yes | 0.71 | 0.18 | 0.38 (0.20) | 0.70 (0.80) | 0.49 (0.02) | -0.53 | yes | 0.24 |
+
+- **Measured inputs identified (pre-registered).** w is 0.42-0.76 and kappa 0.13-1.21 in every
+  fit, and the best adequate loss is 30.5 against E30a's 79.2 on the same loss. The fit uses the
+  measured day-2 state. Two solutions appear: committed-heavy (kappa about 1, w about 0.5) and
+  graded-heavy (w about 0.75, kappa about 0.15).
+- **G-M is now right on the data.** All adequate fits give 0.38-0.54, against 0.51
+  (p 0.20-0.98). E30a/E31 without measured inputs overshot (0.69-0.72). **This is the first
+  presence-aware model whose adequate fits reproduce the G-M agreement**, and it does so through
+  measured day-2 Cebpa/Irf8 and committed-cell fractions rather than a free latent.
+- **Primary pass: no.** B7's G difference still overshoots in every fit (-0.53 to -0.60 vs
+  -0.37). B7 M is inside in three fits. B10 is close (0.24-0.27 vs 0.205).
+- **Secondary (full arm, caveat).** full-M stays at 0.49-0.61 (data 0.24). This is consistent
+  with the full arm being a separate culture (design note above), which the model still treats
+  as a split well.
+- Held-out shard 1 stays unseen (no pass). The shard-1 predictions vary from 0.0 to 0.77 across
+  seeds, so the Epo/SCF pooled statistic is unstable under this model. Power is poor whatever
+  the model, so it is a weak test.
+
+**Where this leaves the G-M question.** Measured day-2 fate state plus cytokine-dependent
+survival of neutrophils (s_c) and clone-specific founder presence reproduces the G-CSF vs M-CSF
+sister agreement. What remains wrong: (1) the model over-selects under G-CSF (B7 G); (2) it treats
+the full arm as a sister well.
