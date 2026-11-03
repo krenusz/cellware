@@ -1,0 +1,4 @@
+[experiments/results_e18/e27_e11.json] python experiments/e27_policy_b7.py e11
+[experiments/results_e18/e27_e12.json] python experiments/e27_policy_b7.py e12
+[experiments/results_e18/e27_r_e16.json] python experiments/e27_policy_b7.py r_e16
+[experiments/results_e18/e19c_kin.json] python experiments/kin_corr_e19c.py

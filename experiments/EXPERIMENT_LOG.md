@@ -2232,3 +2232,32 @@ Data: G-M 0.51, full-M 0.24, B7 G -0.37, M +0.08.
 - Same pattern as E21-E25: poorly fitting starts (a s0, b s0) can reach G-M 0.5-0.7 but only by
   breaking full-M or the within statistics. G-M and within-condition fit still trade off.
 - Held-out shard 1 stays unseen (no variant passed; no look spent).
+
+## Batch pre-registration 2026-11-03 (5): E19c, E27 (written before either script was run)
+
+### E19c: is rho_f 0.88 biased by which clones are present?
+- E19 uses clones present in both in vitro wells; B8 showed presence and fate couple slightly
+  (+0.06/+0.09). If presence selects clones, the selected set's sister agreement may differ from
+  the whole population's. Clone size is the handle: large clones are present almost regardless of
+  fate, small clones only when their fate makes enough sampled N+M cells.
+- **Test.** E19 primary estimator (same/cross-well tetrachoric ratio, any day), run separately in
+  clone-size tertiles (total N+M cells over all days and wells), 1000 bootstraps each.
+  Secondary: clones with >= 3 N+M cells in each well (stricter presence).
+- **Reading.** No presence bias if every tertile's rho_f point estimate lies inside E19's 95% CI
+  [0.82, 0.92] and the smallest vs largest tertile difference has a bootstrap CI that includes 0.
+  A rising trend with size (small clones lower) would mean selection inflates disagreement in
+  small clones, i.e. E19 is a lower bound; a falling trend the opposite.
+
+### E27: do the trained learned-rule policies reproduce B7?
+- E11, E12 and the converged E16 rerun (r_e16) policies have cell-level divide/arrest actions
+  (selection) and were trained without B7. B7 (spent data): under G-CSF, clones also present
+  under M-CSF have mean N-share 0.37 lower than G-only clones; under M-CSF, +0.08. E20 predicts ~0.
+- **Test.** For each saved policy (10 per family: 5 inherit + 5 resample seeds), 20 simulations
+  (seeds 100-119) at the trained clone number; B7 statistics with e25_clone_types.presence_stats.
+  Runs on GitHub Actions, one job per family.
+- **Reading.** A family reproduces B7 if, in >= 6 of its 10 policies, both data values
+  (G -0.37, M +0.08) fall inside that policy's simulated 95% range. Also reported: whether the
+  G difference is negative in the family mean (the qualitative sign).
+- If a family reproduces B7 but still misses G-M (all did: 0.17-0.30), selection on presence is
+  shown to be necessary but not sufficient; if none does, the learned selection schedules are
+  not the selection seen in the data. No held-out data are used.
