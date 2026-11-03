@@ -2106,3 +2106,44 @@ mean N-share difference in G, both minus G-only: **-0.37** vs model 0.00 [-0.11,
   only by instruction. The G-M statistic is computed on a subset whose membership depends on fate,
   and every simulator since E9 pins membership to the observed counts while drawing fate
   independently of it. **This is the best candidate for the missing piece.**
+
+### E25 result (2026-11-03)
+
+Three starts (pi ~0; fixed-heavy; M-only-heavy) reached similar losses (0.015, 0.017, 0.017;
+E20 re-scored 0.062) with very different pi (0.04/0.04, 0.30/0.12, 0.02/0.15): the clone-type
+shares are **not identified** by the within-condition statistics. Best: pi_fix 0.04, pi_M 0.04;
+full-G 0.55 (p 0.18), full-M 0.35 (p 0.28), **G-M 0.16, 0/200 >= 0.51. Not supported.**
+- Like every earlier variant, clone types with membership pinned to the observed counts cannot
+  produce the G-M agreement. B7 says why: what matters is *which clones are present*, and that
+  is set by fate in the data but fixed in the simulator.
+
+## Proposed next experiments after B7 (not yet pre-registered)
+
+1. **E26: selection-aware simulator (counts simulated, presence emergent).** Per clone: fate
+   latent (rho_f 0.88 across conditions), expansion trait (log-normal clone size). In each
+   condition, cells choose N/M by instruction (tau_c) and then each lineage expands/survives by a
+   condition-specific factor (s_c^N, s_c^M: selection). Observed counts are Poisson thinned at
+   each condition's depth, so whether a clone is seen in a condition depends on its fate. Fit on
+   within-condition statistics plus per-condition presence (clones with >= 2 N+M) and size
+   distribution. Two variants: pure selection (shared tau) vs instruction + selection.
+   Predictions: G-M, full-G, full-M and the B7 presence-fate differences (spent, used as
+   consistency checks). If it passes, it makes the first model-based prediction worth spending
+   the last held-out test on (Epo/SCF shard 1, after a power check).
+2. **B8: negative control for B7.** Same presence-fate comparison between the two wells of the
+   main in vitro experiment (same cocktail). No selection expected: the "both wells" vs
+   "one well" N-share difference should be ~0 there. If not, B7 partly reflects sampling depth.
+3. **B9: what marks the "both" clones at day 2?** Day-2 state (SPRING position / expression PCs)
+   of clones later seen in both single-cytokine wells vs G-only vs M-only. Prediction under
+   selection: "both" clones are bipotent / earlier in the GMP state at day 2; G-only clones are
+   already neutrophil-primed. Tests the mechanism, not only the statistic.
+4. **Re-read E9-E17 in this light.** The "within-condition fit vs cross-condition agreement" tug
+   of war across E15-E25 is what selection on presence would produce. Check whether the E10
+   learned rule (the only model with cell-level survival/arrest actions) reproduces the B7
+   pattern.
+5. **Kin correlations with selection (E19c).** E19's same-well vs cross-well ratio used clones
+   present in both wells; repeat with presence-weighting to see whether rho_f 0.88 is biased by
+   selection (in vitro wells share a condition, so the bias should be small).
+6. **Outside data/collaboration (cannot do locally):** sister-pair time-lapse under G-CSF vs
+   M-CSF (Rieger/Schroeder-type imaging) would show selection vs instruction per sister directly.
+   CellVoyant does live-cell fate imaging commercially; the Schroeder lab (ETH) does it
+   academically.
