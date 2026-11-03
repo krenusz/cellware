@@ -2147,3 +2147,44 @@ full-G 0.55 (p 0.18), full-M 0.35 (p 0.28), **G-M 0.16, 0/200 >= 0.51. Not suppo
    M-CSF (Rieger/Schroeder-type imaging) would show selection vs instruction per sister directly.
    CellVoyant does live-cell fate imaging commercially; the Schroeder lab (ETH) does it
    academically.
+
+## Batch pre-registration 2026-11-03 (4): B8, B9, E26
+
+### B8: negative control for B7 (same cocktail)
+- LARRY main in vitro, wells 1 and 2 (same cytokine cocktail), N/M cells pooled over days 4 and 6.
+  N-share in well 1 for clones with >= 2 N+M in both wells vs clones with >= 2 in well 1 only
+  (and the same for well 2). Mean difference with clone-bootstrap CI (2000x).
+- **Reading.** |difference| < 0.10 with CI including 0 in both wells: presence is not coupled to
+  fate without a cytokine difference, so B7 reflects cytokine selection (and E19's same-cocktail
+  kin estimate is not biased by it). Otherwise B7 partly reflects sampling, and B7's reading is
+  weakened.
+
+### B9: day-2 state of the selected clones
+- Cytokine experiment, clones with day-2 cells, grouped as in B7 (both / G-only / M-only). Per
+  clone, over its day-2 cells: share Undifferentiated, share Neu, share Mo, and a priming score
+  = mean distance (SPRING) to the day-2 Mo centroid minus distance to the Neu centroid (higher =
+  closer to Neu). Kruskal-Wallis across groups, pairwise Mann-Whitney.
+- **Prediction under selection.** G-only clones are more neutrophil-primed (higher score, more
+  Neu) than "both" clones; M-only clones are more monocyte-primed; "both" clones are the most
+  undifferentiated or intermediate. Supported if G-only > both on the priming score (p < 0.05).
+
+### E26: selection-aware simulator (presence emerges from fate)
+- Universe: every clone seen anywhere in the cytokine experiment. Per clone: fate latent z, branch
+  latent per condition (rho_f 0.88), expansion trait a ~ N(0, sigma_a). In condition c:
+  p = sigmoid(beta * zb + tau_c); expected N = exp(mu_c + a) * p * s_c, expected M =
+  exp(mu_c + a) * (1 - p); counts Poisson. s_c = relative neutrophil survival/expansion (s_full =
+  1). Presence (>= 2 N+M) is therefore set by fate and size.
+- Two variants: **E26a pure selection** (one shared tau for all conditions; log s_c free);
+  **E26b instruction + selection** (tau_c and log s_c free). Fit on the fit set (Epo/SCF shard 1
+  excluded) to the within-condition statistics plus, per condition, the number of present clones
+  (relative error) and the mean log size of present clones. Nelder-Mead then Powell from 3
+  starts, 5 simulations, common random numbers.
+- **Predictions (200 simulations):** full-G, full-M, G-M (p as in E20), and B7's presence-fate
+  differences (G and M), all spent data used as consistency gates.
+- **Readings.** A variant passes if G-M p >= 0.05, full-G and full-M p >= 0.05, and both B7
+  differences fall inside its simulated 95% range. If neither passes, presence-coupled selection
+  of this simple form does not explain G-M either.
+- **Held-out look (Epo/SCF shard 1), only if a variant passes.** Power rule before the look: the
+  passing variant's predicted shard-1 pooled r and E20's must differ by more than the expected
+  shard CI half-width (~0.37 from shard 0); otherwise skipped. Look through test_oracle.py,
+  reading: observed value inside the passing variant's 95% predicted range.
