@@ -2261,3 +2261,45 @@ Data: G-M 0.51, full-M 0.24, B7 G -0.37, M +0.08.
 - If a family reproduces B7 but still misses G-M (all did: 0.17-0.30), selection on presence is
   shown to be necessary but not sufficient; if none does, the learned selection schedules are
   not the selection seen in the data. No held-out data are used.
+
+### E19c results (2026-11-03)
+
+| clones | size (N+M cells) | n | rho_f [95% CI] | r same well | r cross well |
+|---|---|---|---|---|---|
+| small tertile | 2-4 | 84 | 0.95 [0.85, 1.00] | 0.98 | 0.93 |
+| middle tertile | 5-11 | 199 | 0.89 [0.81, 0.95] | 0.96 | 0.85 |
+| large tertile | 12-143 | 181 | 0.82 [0.72, 0.90] | 0.89 | 0.73 |
+| >= 3 N+M in each well | | 185 | 0.83 [0.73, 0.90] | 0.93 | 0.77 |
+
+Large minus small: **-0.13 [-0.25, -0.01]**.
+- **By the pre-registered rule there is a size (presence) dependence.** The CI excludes 0, and the
+  large tertile's point estimate (0.817) sits just below E19's CI [0.82, 0.92]. The trend is falling:
+  small clones agree more across wells.
+- **What it means for G-M.** The clones least affected by presence selection (large ones) share
+  less across wells (about 0.82), not more. Using 0.82 instead of 0.88 in E20 would lower the
+  predicted G-M, so the gap widens. Selection on presence does not hide a higher rho_f.
+- Caveat (not tested): large clones contribute more day-4 versus day-6 pairs, so within-clone drift
+  over time can also lower their cross-well r. Size and time are confounded here.
+
+### E27 results (2026-11-03)
+
+**0 of 30 policies reproduce B7 (E11 0/10, E12 0/10, r_e16 0/10). Fails.** Family means for the G
+difference are -0.02 / -0.04 / -0.03 (data -0.37). For M they are -0.01 / -0.02 / -0.00 (data
++0.08). One policy (E12 inherit seed 0) gets the sign and a third of the size (-0.17
+[-0.24, -0.08]). The learned divide/arrest schedules are not the selection seen in the data.
+
+**Post-hoc observation (not pre-registered; supporting only).** Clone overlap between G-CSF and
+M-CSF presence is far higher in every model than in the data. Clones present under both, as a
+share of clones present under G-CSF:
+
+| | both | G-only | M-only | both / (present under G) |
+|---|---|---|---|---|
+| data | 78 | 474 | 931 | **0.14** |
+| E11 policies | 130-255 | 267-446 | 342-411 | 0.33-0.42 |
+| r_e16 policies | 497-781 | 848-1010 | 1076-1248 | 0.37-0.45 |
+
+In the data, a clone seen under G-CSF is rarely seen under M-CSF. Presence across the two
+cytokines is nearly independent or anti-correlated: it depends on the clone's fate, not only its
+size. This statistic (presence overlap) has never been in any loss. It is a candidate fit target
+and the sharpest description yet of what the models miss: in the data, the cytokine decides
+whether a clone's cells survive to be sampled, and it does so by the clone's fate.

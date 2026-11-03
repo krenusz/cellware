@@ -227,6 +227,10 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   (B8: same-cocktail presence coupling is small and of opposite sign). A simulator where presence
   emerges from fate and a neutrophil survival factor (E26) still fails: best fits put G-M at
   0.22 / 0.06. Every model so far trades G-M against the within-condition fit.
+  The trained learned-rule policies (E27) do not reproduce B7 either (0/30), and in every model
+  a clone seen under G-CSF is 2-3x more likely to also be seen under M-CSF than in the data
+  (0.33-0.45 vs 0.14). Presence overlap has never been fitted. E19c: rho_f falls with clone size
+  (0.95 small, 0.82 large), so presence selection does not hide a higher sister correlation.
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.
