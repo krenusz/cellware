@@ -231,8 +231,12 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
   within-condition levels (G-CSF less neutrophilic than full, M-CSF neutrophils about 0), because
   the loss was badly scaled. Their G-M verdicts are withdrawn. The founder split (E28) does lower
   presence overlap toward the data's 0.14. Learned-rule policies do not reproduce B7 (E27, 0/30).
-  E19c: rho_f falls with clone size (0.95 small, 0.82 large). Next: E30, an SE-scaled loss with
-  CMA-ES behind an adequacy gate.
+  E19c: rho_f falls with clone size (0.95 small, 0.82 large). B11: clones that keep making
+  neutrophils under M-CSF were neutrophil-primed at day 2 (partial rho 0.24, p 1e-5).
+  E30, a properly scaled refit with an adequacy gate: the one adequate presence-aware fit gives
+  G-M 0.72 (no longer too low) and reproduces B10's M-CSF neutrophils, but full-M becomes 0.59
+  (data 0.24). The open question is now the ordering: G and M agree strongly (0.51) while full
+  and M agree weakly (0.24).
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.

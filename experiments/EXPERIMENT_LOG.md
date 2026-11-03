@@ -2611,3 +2611,37 @@ Within-condition statistics (mean N-share / variance / mixed fraction) of the be
   on a clone state visible at day 2 that keeps a clone's neutrophil output partly independent of
   the cytokine. The fitted models express priming only as a logit shift, which M-CSF's strong
   suppression erases.
+
+### E30 results (2026-11-03)
+
+Differential evolution, 120 generations; every run hit the generation cap, so none is fully
+converged. Adequacy gate (full, G, M: mean N-share inside the data 95% CI, present clones ±20%):
+
+| run | loss | adequate | gamma | nu | full-G (p) | full-M (p) | G-M (p) | B7 G (data -0.37) | B7 M (0.08) | B10 (0.205) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| a s0 | 174 | no (M mean 0.01) | 0 | 4.7 | 0.74 (0.18) | 0.32 (0.71) | 0.36 (0.60) | -0.75 | 0.02 | 0.06 |
+| a s1 | 233 | no | 0 | 1.6 | 0.74 (0.24) | 0.15 (0.67) | 0.12 (0.26) | -0.67 | 0.01 | 0.03 |
+| **a s2** | **79** | **yes** | 0 | 3.9 | 0.75 (0.22) | **0.59 (0.00)** | **0.72 (0.05)** | -0.64 (out) | 0.14 (in) | **0.27** |
+| b s0 | 260 | no (G mean 0.79) | 2.5 | 3.8 | 0.67 (0.67) | 0.57 (0.00) | 0.69 (0.03) | -0.62 | 0.27 | 0.40 |
+| b s1 | 477 | no | -4.9 | 4.2 | 0.03 (0.00) | 0.42 (0.02) | 0.06 (0.00) | 0.00 | 0.44 | 0.60 |
+| b s2 | 107 | no (G mean 0.71) | 4.9 | 4.7 | 0.61 (0.14) | 0.46 (0.00) | 0.77 (0.00) | -0.67 | 0.20 | 0.31 |
+
+- **One adequate fit (E30a s2, gamma 0).** It matches the basic levels for full, G and M (N-share
+  0.29/0.64/0.04 vs 0.31/0.64/0.05; present clones within 10%). Epo is not fitted (mean 1.00 vs
+  0.70, 7 vs 23 clones; ungated).
+- **Pre-registered reading: no pass.** full-M is 0.59 (data 0.24, p < 0.005) and B7's G difference
+  overshoots (-0.64 vs -0.37). The presence-aware family, measured on an adequate fit, fails, but
+  **in the opposite direction from E20-E25.**
+  - **G-M is no longer too low.** The adequate fit gives 0.72 (data 0.51, p 0.05, borderline
+    high), and B10's fraction of both-clones with N under M-CSF is 0.27 (data 0.205; the
+    inadequate fits gave 0.02).
+  - Presence-coupled selection on an adequate fit can produce strong G-M agreement and the B10
+    neutrophils. It then also links the full cocktail to M-CSF too strongly.
+- **New anomaly.** The tension has moved. Before: G-M too low on adequate fits without presence
+  (E20-E25). Now: full-M too high on an adequate fit with presence. In the data, full and M-CSF
+  outcomes agree weakly (0.24) while G and M agree strongly (0.51). Neither family reproduces
+  that ordering (G-M > full-M).
+- gamma (E30b) did not help: the free-gamma runs were all inadequate (G-CSF N-share too high).
+- Converged? No: all runs stopped at 120 generations, and 4 of 6 are far from adequate. A longer
+  run is needed before claiming the family's best.
+- Held-out shard 1 stays unseen (no pass).
