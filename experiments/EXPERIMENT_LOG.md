@@ -2869,3 +2869,51 @@ pre-registered rule there is no reading of the cross statistics. Reported for th
   If the graded reading wins, E33 uses clone-mean Cebpa/Irf8 as a measured bias instead of the
   latent z.
 - Spent data only.
+
+### B14 results (2026-11-03)
+
+2222 clones with day-2 cells; 2026 N-committed-like and 2730 M-committed-like day-2 cells.
+
+- **Test 1 (N under M-CSF, 321 clones).** frac_N partial 0.18 (p 0.001); Cebpa 0.28 (2e-7). Joint:
+  frac_N given Cebpa 0.14 (0.01); **Cebpa given frac_N 0.26 (2e-6)**. The graded Cebpa level
+  carries more than the committed fraction, though both contribute.
+- **Test 2 (presence).** **frac_N: G-only 0.25 vs M-only 0.05 (p 3e-10); frac_M: M-only 0.16 vs
+  G-only 0.04 (p 1e-5).** Committed-like cells strongly mark which single-cytokine well a clone
+  is seen in. This is the strongest presence predictor so far.
+- **Test 3 (G-M agreement, 39 both-clones with day-2 cells; only 14 have any committed cell).**
+  Raw 0.39. Partial given committed fractions 0.30 (drop 0.08, CI -0.06 to 0.33). Partial given
+  Cebpa/Irf8 0.28 (drop 0.11, CI -0.04 to 0.31). **Pre-registered reading: "neither"**: both
+  drops are about 20-30% and their CIs include 0. Underpowered (n 39).
+- **Summary.** Committed cells decide *where* a clone is seen (presence). The graded neutrophil
+  programme (Cebpa) decides *how many* neutrophils it makes under M-CSF. Neither alone explains
+  the G-M agreement within the 39 measurable clones.
+
+## E33: measured day-2 inputs in the presence-aware model (pre-registered 2026-11-03)
+
+- **Design from B14 (B14 reading "neither", so both measured inputs go in, as nested terms).**
+  Base: E30a (E26b instruction + selection, founders k_c ~ Poisson(nu), expansion trait,
+  rho_f 0.88, gamma 0; SE-scaled loss, differential evolution, adequacy gate).
+  - **Graded bias, measured.** The clone latent becomes z = w * m + sqrt(1 - w^2) * e. Here m is
+    the clone's standardised day-2 score (clone-mean Cebpa minus clone-mean Irf8, from
+    b14_clone_day2.csv), and w in [0, 1] is fitted. w = 0 is E30a.
+  - **Committed cells, measured.** A share kappa * frac_N of each founder's output is neutrophil
+    regardless of cytokine, and kappa * frac_M is monocyte regardless (shares capped at 1 in
+    total). frac_N and frac_M are the B14 per-clone fractions; kappa in [0, 2] is fitted.
+    kappa = 0 is E30a. Committed N still gets the condition's survival factor s_c.
+  - Clones without day-2 cells (1656 of 3878) draw (m, frac_N, frac_M) jointly from the
+    measured clones.
+- **Full-cocktail caveat (E32).** The full well's clone set is not reproducible by founder
+  splitting. Full stays in the loss, but its present-clone count and co-presence are
+  **not gated**, and full-G / full-M are secondary readings.
+- **Gate.** Mean N-share inside the data 95% CI for full, G and M; present clones within ±20% for
+  G and M.
+- **Readings (adequate fits, best of 6 seeds, 300 generations, Actions).**
+  - **Primary pass:** G-M p >= 0.05, and both B7 differences inside the 95% range.
+  - Reported: B10, full-G, full-M, the fitted w and kappa.
+  - **"Measured inputs identified":** w > 0.2 or kappa > 0.2 in the best adequate fit, with
+    the loss below E30a's best (79.2, same scale).
+  - A pass with identified inputs is the first model in which measured day-2 state, not a free
+    latent, carries the G-M agreement. Power rule, then the shard-1 look.
+  - If inputs are identified but G-M or B7 fail, the measured state is relevant but
+    insufficient. If w and kappa go to about 0, the day-2 measurements add nothing beyond the
+    latent at this level.
