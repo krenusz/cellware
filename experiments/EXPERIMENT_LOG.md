@@ -1941,3 +1941,21 @@ Epo 5.0, SCF 5.7; sigma_w 0.01.
   pattern is not supported beyond composition. Caveat stated now: the pattern was noticed in
   these data (B3j), so this is a confirmation on a pre-defined whole-class index, not an
   independent replication.
+
+### B3k result (2026-11-03)
+
+181 clones; index over 58 MPP_high and 82 HSC_high assay CpGs.
+
+| index | partial Spearman (95% clone bootstrap) | positive mice |
+|---|---|---|
+| centred within cell type x batch | 0.19 [0.04, 0.33] | 5 of 6 |
+| uncentred | 0.18 [0.03, 0.33] | 3 of 6 |
+
+Per mouse (centred): 0.27, 0.01, -0.04, 0.26, 0.02, 0.16.
+- **Meets the pre-registered bar, narrowly.** Within cell types and beyond mouse, clone size and
+  multipotent composition, clones whose multipotent cells carry a more MPP-like methylation
+  profile are more myeloid-biased. Two of the five positive mice are near zero, so the effect is
+  carried mainly by three mice. Same data as the B3j discovery (whole-class index, not the top
+  sites), so this is a confirmation, not a replication.
+- **Reading.** A first biological handle: myeloid-biased clones' multipotent cells look further
+  along the HSC-to-MPP methylation axis than their cell-type label says.

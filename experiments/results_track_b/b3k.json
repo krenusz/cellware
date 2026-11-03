@@ -1,0 +1,37 @@
+{
+ "clones": 181,
+ "mpp_high_cpgs": 58,
+ "hsc_high_cpgs": 82,
+ "centred": {
+  "partial_spearman": 0.18973954222573006,
+  "ci": [
+   0.03706768502284568,
+   0.33446190091755734
+  ],
+  "per_mouse": {
+   "LARRY main experiment|LARRY_mouse1": 0.27389162561576347,
+   "LARRY main experiment|LARRY_mouse2": 0.006231671554252198,
+   "LARRY main experiment|LARRY_mouse3": -0.03907203907203907,
+   "LARRY main experiment|LARRY_mouse4": 0.2647058823529412,
+   "LARRY replicate|LK_LSK_stained": 0.021674876847290636,
+   "LARRY replicate|LK_LSK_unstained": 0.15645161290322582
+  },
+  "positive_mice": 5
+ },
+ "uncentred": {
+  "partial_spearman": 0.17992026389816446,
+  "ci": [
+   0.027833356349063938,
+   0.32592779100227964
+  ],
+  "per_mouse": {
+   "LARRY main experiment|LARRY_mouse1": 0.3034482758620689,
+   "LARRY main experiment|LARRY_mouse2": -0.006231671554252198,
+   "LARRY main experiment|LARRY_mouse3": -0.056776556776556776,
+   "LARRY main experiment|LARRY_mouse4": 0.2212566844919786,
+   "LARRY replicate|LK_LSK_stained": -0.02118226600985221,
+   "LARRY replicate|LK_LSK_unstained": 0.16088709677419355
+  },
+  "positive_mice": 3
+ }
+}
