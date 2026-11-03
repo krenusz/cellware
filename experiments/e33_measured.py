@@ -75,7 +75,7 @@ def pct(v, q):
     return np.percentile(v, q).tolist() if len(v) else [np.nan] * len(q)
 
 
-def main(seed, maxiter=300):
+def main(seed, maxiter=300, dim=19, name="e33"):
     cnt = load_counts(CONDS5)
     clones = e26.universe(cnt)
     meas = measured(clones, np.random.default_rng(77))
@@ -103,7 +103,7 @@ def main(seed, maxiter=300):
 
     res = differential_evolution(
         loss,
-        [(-3, 3)] * 19,
+        [(-3, 3)] * dim,
         popsize=6,
         maxiter=int(os.environ.get("E33_MAXITER", maxiter)),
         seed=seed,
@@ -181,7 +181,7 @@ def main(seed, maxiter=300):
         and rep["G_mean_both_minus_Gonly"]["inside"]
         and rep["M_both_minus_Monly"]["inside"]
     )
-    json.dump(rep, open(os.path.join(OUT, f"e33_s{seed}.json"), "w"), indent=1)
+    json.dump(rep, open(os.path.join(OUT, f"{name}_s{seed}.json"), "w"), indent=1)
     print(
         json.dumps(
             {k: rep[k] for k in ("loss", "adequate", "passes", "inputs_identified", "G-M")},

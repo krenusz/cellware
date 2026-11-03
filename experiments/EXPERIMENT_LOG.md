@@ -3055,3 +3055,39 @@ the difference to Cebpa-only.
 survival of neutrophils (s_c) and clone-specific founder presence reproduces the G-CSF vs M-CSF
 sister agreement. What remains wrong: (1) the model over-selects under G-CSF (B7 G); (2) it treats
 the full arm as a sister well.
+
+## Batch pre-registration 2026-11-03 (9): E34, B17 (written before either was run)
+
+### E34: E33 with the full arm as a separate culture
+- **Motivation.** E32 and the library names: the full arm (labelled "all", almost only day 6)
+  does not behave like a well from the same founder split. E33 still treats it as one, and
+  full-M stays at about 0.55 (data 0.24).
+- **Model.** E33 (measured w, kappa; instruction + selection; rho_f 0.88), except for the full
+  arm:
+  - its own founder rate nu_full (k_full ~ Poisson(nu_full)), independent of the others;
+  - its own expansion trait a_full = rho_a * a + sqrt(1 - rho_a^2) * e, with rho_a in [0, 1]
+    fitted.
+  The fate latent is still shared, because it is the same clone. 21 parameters.
+- **Fit.** E33's loss, gate and readings; differential evolution, 500 generations, 6 seeds
+  (Actions).
+- **Readings.**
+  - **Primary pass:** adequate, G-M p >= 0.05, both B7 differences inside the 95% range.
+  - **Full-arm reading (new, primary for this question):** in adequate fits, is full-M back
+    inside the data range (p >= 0.05)? Supported if full-M p >= 0.05 in the best adequate fit,
+    with G-M still p >= 0.05. Then the G-M > full-M ordering is explained by the full arm's
+    design, not by fate biology.
+  - If full-M stays high, the full arm's separate presence is not enough. The full-M anomaly is
+    then a fate effect of the full cocktail (for example, the cocktail dilutes the clone bias
+    more than single cytokines do).
+
+### B17: why does the model over-select under G-CSF (B7 G -0.58 vs -0.37)?
+- **Comparison.** Data vs E33 best fit (e33_s3), 200 simulations, G-present clones (>= 2 N+M):
+  - number of G-only and both clones;
+  - mean and SD of G-CSF N-share in each group;
+  - the fraction of G-only clones that are all-N;
+  - mean log size under G-CSF per group.
+  Each component is flagged when the data fall outside the model's 95% range.
+- **Reading.** The flagged components say whether the overshoot comes from G-only clones being
+  too neutrophilic (survival s_G or committed-N too strong), from both-clones being too
+  monocytic, or from presence (group sizes). That says which E33 term to change. Diagnostic
+  only; no held-out data.
