@@ -3236,3 +3236,36 @@ whose shard-1 prediction is stable across seeds.
   stable prediction exists across seeds.
 - **E36 decision rule applied.** B7 G -0.30 > -0.58, so E36 includes the sign constraint and
   warm-starts from e35_s0.
+
+### E36 results (2026-11-03)
+
+Signed instruction (decision rule applied), 500 generations, 10 simulations per evaluation, 6 seeds
+(0-2 warm from e35_s0, 3-5 cold). 5 of 6 pass E33's gate; **0 of 6 pass the full-arm co-presence
+gate**. Co-presence is computed from the saved z-scores (sim = obs + z * sqrt(max(obs, 4))) against
+the fit set's counts: full-G 16, full-M 33.
+
+| seed | loss | E33 gate | co full-G (data 16) | co full-M (data 33) | full-G (p) | full-M (p) | G-M (p) | B7 G (data -0.37) | B7 M | rho_a | shard-1 pred |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 113.5 | yes | 31 (+95%) | 55 (+67%) | 0.73 (0.49) | 0.59 (0.01) | 0.48 (0.57) | -0.21 (out) | in | 0.09 | 0.70 |
+| 1 | 83.5 | yes | 33 (+106%) | 56 (+68%) | 0.72 (0.63) | 0.54 (0.02) | 0.45 (0.40) | -0.23 (out) | in | 0.06 | 0.63 |
+| 2 | 81.1 | yes | 30 (+89%) | 51 (+55%) | 0.67 (0.91) | 0.52 (0.04) | 0.43 (0.25) | -0.22 (out) | in | 0.10 | 0.77 |
+| 3 | 219.1 | no | 32 (+100%) | 51 (+55%) | 0.69 (0.99) | 0.41 (0.19) | 0.34 (0.00) | -0.45 (in) | in | 0.05 | 0.77 |
+| 4 | 161.7 | yes | 30 (+84%) | 51 (+54%) | 0.68 (0.99) | 0.51 (0.02) | 0.43 (0.18) | -0.22 (out) | in | 0.05 | 0.00 (degenerate) |
+| 5 | 88.3 | yes | 31 (+92%) | 56 (+71%) | 0.70 (0.86) | 0.46 (0.09) | 0.39 (0.08) | -0.26 (out) | in | 0.06 | 0.77 |
+
+- **Gate: fail in all 6 seeds.** Simulated full-arm clones are shared with G and M about 1.5-2x
+  as often as in the data, although co-presence was in the loss. At the same time the full arm has
+  too few clones (full_n z about -4.5 in every seed, the largest single loss term). The model
+  cannot make a full arm that is both well populated and separate from G/M.
+- **Primary: no pass in any seed.** full-M fails (p 0.01-0.04) in 4 of 5 gate-adequate seeds. Seed 5
+  passes all three cross statistics but undershoots B7 G (-0.26). B7 G is outside in every
+  gate-adequate seed (-0.21 to -0.26); E35's s0 pass (-0.30) did not survive the added full-arm terms.
+- **Stability rule: not met** (no result to be stable). The held-out look stays unspent; shard-1
+  predictions (0.63-0.77, one degenerate) also fail the power rule.
+- **Consistent across seeds:** rho_a collapses to 0.05-0.10 (the full arm's expansion trait
+  decouples from G/M), and instruction plus selection stay as in E35 (s_G 3.9-5.2, s_M 0.09-0.17).
+- **Reading.** Every model in which the full arm draws its clones from the same day-2 universe
+  overshoots full-arm co-presence (E32, E34, E36). Together with B12 (co-presence 0.3-0.4x
+  independence), this points to the full arm sampling a **different subset of clones** from the
+  G/M arms, for example a separate split of the day-2 pool, rather than to a different fate rule.
+  This is an inference from structure; the paper's design (Science Supp Fig 7) is still unread.
