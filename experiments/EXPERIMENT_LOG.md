@@ -2917,3 +2917,65 @@ pre-registered rule there is no reading of the cross statistics. Reported for th
   - If inputs are identified but G-M or B7 fail, the measured state is relevant but
     insufficient. If w and kappa go to about 0, the day-2 measurements add nothing beyond the
     latent at this level.
+
+### E31 results (2026-11-03)
+
+E30a for 500 generations (still not formally converged), 6 seeds. **All 6 are adequate** (basic
+levels and present clones match for full, G and M).
+
+| seed | warm | loss | full-G (p) | full-M (p) | G-M (p) | B7 G (data -0.37) | B7 M in | B10 (0.205) |
+|---|---|---|---|---|---|---|---|---|
+| 0 | yes | 41.2 | 0.76 (0.10) | 0.60 (0.00) | 0.72 (0.01) | -0.63 | no | 0.29 |
+| 1 | yes | 42.1 | 0.75 (0.13) | 0.58 (0.00) | 0.69 (0.06) | -0.66 | yes | 0.22 |
+| 2 | yes | 41.3 | 0.76 (0.12) | 0.59 (0.00) | 0.70 (0.02) | -0.66 | yes | 0.25 |
+| 3 | no | 90.2 | 0.77 (0.04) | 0.60 (0.00) | 0.72 (0.04) | -0.66 | yes | 0.26 |
+| 4 | no | 46.7 | 0.75 (0.12) | 0.62 (0.00) | 0.72 (0.01) | -0.64 | no | 0.26 |
+| **5 (best)** | no | **23.8** | 0.75 (0.10) | **0.61 (0.00)** | **0.70 (0.05)** | **-0.66** (out) | no | 0.27 |
+
+- **Pre-registered reading: the ordering anomaly is confirmed on adequate, near-converged fits.**
+  Every adequate fit has full-M about 0.6 (data 0.24, p < 0.005), G-M 0.69-0.72 (data 0.51),
+  and B7's G difference about -0.65 (data -0.37). It is identical across 6 seeds, so it is a
+  property of the model family, not of the optimiser. **E30a fails.** The presence-aware family
+  over-links all conditions and over-selects.
+
+### Cytokine design read from the data (2026-11-03)
+
+The supplement (Supp Fig 7) could not be retrieved (PMC placeholder, Science 403). Library names
+in the metadata show the design:
+- Day 2: six libraries, all "full cocktail" (the pre-split pool).
+- G-CSF and M-CSF: three day-4 and two day-6 libraries each. Epo: two day-4 and three day-6.
+  SCF: three day-4 only.
+- Full cocktail after day 2: one small day-4 library (802 cells, named "all") and four day-6
+  libraries ("d6_all_1-4").
+
+The full arm is labelled differently and sampled almost only at day 6, consistent with a
+continued bulk culture rather than a well from the same split as the single cytokines. That fits
+E32 (its clone set cannot come from the same founder split). **Treat "full" as a separate arm in
+future models.** Not confirmed from the methods text.
+
+## Batch pre-registration 2026-11-03 (8): B15, B16 (written before either was run)
+
+### B15: how much of the selection state is readable from day-2 expression?
+- **Data.** Cytokine experiment, day-2 cells. Top 2000 variable genes (log1p normalised), 30
+  PCs, clone mean. Targets:
+  - (a) G-only vs M-only presence (138 vs 282 clones with day-2 cells);
+  - (b) >= 1 N under M-CSF among M-present clones (321, 27 positive);
+  - (c) G-CSF N-share among G-present clones (177; regression).
+- **Models.** L2 logistic regression (or ridge for c), 5-fold CV by clone, repeated 20 times.
+  Compared with Cebpa-only and with the B9 priming score alone.
+- **Metric.** AUC (a, b) or Pearson r (c) of the out-of-fold predictions, with bootstrap 95% CI
+  of the difference to Cebpa-only (2000).
+- **Reading.** "More is readable": full-expression AUC/r exceeds Cebpa-only by >= 0.05 with the CI
+  of the difference excluding 0. Otherwise "Cebpa captures the readable part".
+
+### B16: does the Cebpa - Irf8 day-2 score replicate in the main in vitro LARRY data?
+- **Data.** In vitro LARRY (one cocktail, two wells), day-2 cells
+  (day2_normed_triplets.txt.gz). Clones with >= 1 day-2 cell and >= 3 day-4/6 N+M cells.
+- **Test.** Partial Spearman (rank residuals) of the clone-mean Cebpa - Irf8 score with the
+  clone's day-4/6 N-share, given log(N+M) and log(day-2 cells). Secondary: Cebpa alone, Irf8
+  alone, Gfi1 alone.
+- **Prediction.** Positive with p < 0.05. Effect reported next to the cytokine data's (B13:
+  Cebpa 0.27 and Irf8 -0.20 for the G-CSF N-share).
+- **Reading.** Supported means the day-2 neutrophil/monocyte programme predicts fate across
+  experiments (a replication of B13 on independent clones). Not supported means B13 is specific
+  to the cytokine experiment.
