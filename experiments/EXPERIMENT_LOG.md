@@ -2804,3 +2804,32 @@ log1p expression):
   programme (Cebpa/Gfi1, then granule genes), with receptor balance a minor part. Measured
   clone trait for the next model: day-2 Cebpa (or a neutrophil-programme score) as an input in
   place of the latent z.
+
+### E32 results (2026-11-03)
+
+300 generations, 6 seeds; none reported converged. **No fit is adequate**, so by the
+pre-registered rule there is no reading of the cross statistics. Reported for the record:
+
+| seed | loss | lambda_K | w (full, G, M, Epo, SCF) | present full / G / M (data 368/277/478) | co-presence full-G / full-M / G-M (data 29/84/78) | full-G / full-M / G-M (p) | B7 G |
+|---|---|---|---|---|---|---|---|
+| 0 | 150 | 2.1 | .09 .30 .27 .07 .28 | 288 / 251 / 426 | 71 / 116 / 53 | 0.75 (.42) / 0.56 (.06) / 0.78 (.05) | -0.55 |
+| 2 | 131 | 4.7 | .04 .17 .57 .18 .05 | 243 / 260 / 446 | 66 / 107 / 64 | 0.76 (.35) / 0.55 (.21) / 0.78 (.07) | -0.60 |
+| 5 | 177 | 4.5 | .03 .16 .32 .27 .21 | 243 / 217 / 435 | 55 / 104 / 47 | 0.76 (.38) / 0.47 (.28) / 0.76 (.16) | -0.61 |
+| 1, 3, 4 | 150-225 | | | | | | |
+
+- **Why it fails the gate.** Multinomial allocation cuts co-presence with the full well
+  (full-G from E30a's 189 to 52-71; full-M from 264 to 101-116), but only by giving the full
+  well a tiny share of founders (w_full 0.03-0.09). Then the full well has too few present
+  clones (243-288 vs 368). The model cannot have both many full-well clones and few clones
+  shared with G/M from one shared founder pool.
+- **What that implies about the data.** The full-cocktail well's clones are largely a
+  *different set* from those in the single-cytokine wells, more than any split of a clone's
+  founders can produce. Candidate: the full condition drew from a different or larger pool of
+  founders, for example sampled from the bulk culture at day 6 rather than from the same day-2
+  split. This is a design question about the experiment, not a fate mechanism. It needs the
+  methods text of Weinreb 2020 (supplement not retrieved).
+- **Side observation (inadequate fits, so not a reading).** With co-presence closer to the data,
+  full-M drops from 0.59 (E30a) to 0.47-0.56. In three seeds all three cross statistics have
+  p >= 0.05, but B7 G still overshoots (-0.55 to -0.61 vs -0.37). The direction is consistent
+  with B12: the full-M excess in E30a was mostly a co-presence artefact.
+- Held-out shard 1 stays unseen.
