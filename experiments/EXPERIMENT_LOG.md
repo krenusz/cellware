@@ -3091,3 +3091,43 @@ the full arm as a sister well.
   too neutrophilic (survival s_G or committed-N too strong), from both-clones being too
   monocytic, or from presence (group sizes). That says which E33 term to change. Diagnostic
   only; no held-out data.
+
+### B17 results (2026-11-03)
+
+Data vs the E33 best fit (e33_s3), 200 simulations; flagged when outside the model's 95% range.
+
+| component | data | model (95%) | flag |
+|---|---|---|---|
+| G-only clones | 474 | 410 (381-440) | data above |
+| both clones | 78 | 113 (92-135) | data below |
+| G-only mean N-share | 0.72 | 0.79 (0.75-0.83) | data below |
+| G-only all-N fraction | 0.62 | 0.72 (0.68-0.76) | data below |
+| both mean N-share | **0.35** | **0.21** (0.14-0.28) | data above |
+| both all-N fraction | 0.24 | 0.15 (0.09-0.22) | data above |
+| log size (either group) | | | in range |
+
+- **The overshoot comes from both groups.** G-only clones are too neutrophilic in the model, and
+  both-clones too monocytic, so the gap between them is too wide (-0.58 vs -0.37). There are also
+  too many both-clones.
+- **Cause, read from the fitted parameters: instruction and selection traded off to extremes.**
+  - G-CSF: survival s_G = 9.2 with instruction tau_G = -9.0. The instruction pushes toward
+    monocytes, and survival then rescues the neutrophils.
+  - M-CSF: s_M = 0.03 with tau_M = +2.8. Neutrophil-directed instruction, then neutrophil death.
+  - Epo and SCF: the same pattern (tau about -7 to -9, s about 5-6).
+
+  The model reproduces each condition's N-share by selection alone. The instruction terms have
+  the **opposite sign** to the literature: G-CSF and M-CSF instruct their own lineages in single
+  GMPs (Rieger 2009) and through the PU.1:Cebpa ratio (Dahl 2003). Selection that strong makes
+  presence too fate-dependent, which is the B7 overshoot.
+- **Implication.** Instruction (tau) and selection (s) are not separately identified by these
+  statistics. The fit chose a biologically wrong corner. Next: constrain the instruction signs
+  from the literature (tau_G >= tau_full >= tau_M) and see whether B7 falls into range (E35).
+
+### Power check for the held-out look (2026-11-03)
+
+E33's predicted shard-1 statistic (pooled Epo/SCF concordance) by seed: 0.43, 0.00 [0, 0],
+0.03, 0.77, 0.00 [0, 0], 0.00. Several fits make the statistic degenerate (too few Epo/SCF clone
+pairs, so r = 0). Fits of equal quality predict anything from 0 to 0.77. The observed shard-0 CI
+half-width is about 0.37. **The held-out statistic cannot separate these models.** Spending it now
+would be uninformative, so the look is skipped by the power rule. It stays unseen for a model
+whose shard-1 prediction is stable across seeds.
