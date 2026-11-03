@@ -3177,3 +3177,28 @@ whose shard-1 prediction is stable across seeds.
   in full-M is partly optimiser noise.
 - **Remaining blocker: B7 G, the over-selection under G-CSF (B17).** E35 (signed instruction) is
   running.
+
+## E36: combined model (pre-registered 2026-11-03, before E35's results are seen)
+
+- **Model.** E34 (E33's measured inputs, full arm with its own founder rate and expansion trait)
+  plus:
+  - (a) **full-arm co-presence in the loss.** Clones present in both full and G (29 in the
+    whole data), and in both full and M (84), counted on the fit set, with SE
+    sqrt(max(n, 4)). These are structural statistics (B12), not the cross r we test on.
+  - (b) 10 simulations per loss evaluation (was 5).
+  - (c) warm starts. Seeds 0-2 start from the best earlier fit mapped into the 21-dim space
+    (rho_a 0.99, nu_full = nu); seeds 3-5 are cold. Differential evolution, 500 generations.
+- **Decision rule for the instruction-sign constraint, fixed now.** Include E35's constraint
+  (tau_G >= tau_full >= tau_M) **if and only if** E35's best adequate fit has a B7 G difference
+  closer to the data (-0.37) than E33's best (-0.58), i.e. above -0.58. If included, warm-start
+  from that E35 fit; otherwise from e33_s3.
+- **Gate.** E33's gate, plus full-G and full-M co-presence within ±30% of the data (29, 84).
+- **Readings (best adequate fit).**
+  - **Primary pass:** G-M, full-G and full-M all p >= 0.05, and both B7 differences inside the
+    95% range.
+  - **Stability:** a result counts only if at least 3 of 6 seeds are adequate and agree, with
+    every cross statistic's pass/fail the same in each of them.
+  - A stable pass is the first model consistent with all the structure. The power check for the
+    held-out look follows: a stable shard-1 prediction across the adequate seeds, differing from
+    E20's by more than about 0.37.
+- Note: the warm start's rho_a is 0.953, not 0.99, because x is clipped to [-3, 3].

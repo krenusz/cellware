@@ -75,18 +75,27 @@ def pct(v, q):
     return np.percentile(v, q).tolist() if len(v) else [np.nan] * len(q)
 
 
-def main(seed, maxiter=300, dim=19, name="e33"):
+TARGETS = None  # hook: loss targets (default e30.targets); E36 adds full-arm co-presence
+EXTRA_SE = None  # hook: {target: SE} for targets not covered by the bootstrap
+SIMS = None  # hook: simulations per loss evaluation (default e30.SIMS)
+
+
+def main(seed, maxiter=300, dim=19, name="e33", x0=None):
     cnt = load_counts(CONDS5)
     clones = e26.universe(cnt)
     meas = measured(clones, np.random.default_rng(77))
     fitset = split(cnt, None)
-    obs = e30.targets(fitset)
+    targets = TARGETS or e30.targets
+    sims = SIMS or e30.SIMS
+    obs = targets(fitset)
     se = e30.bootstrap_se(fitset, np.random.default_rng(seed))
+    if EXTRA_SE:
+        se.update(EXTRA_SE(obs))
 
     def sim_targets(prm):
         ts = [
-            e30.targets(split(simulate(clones, prm, np.random.default_rng(s), meas), None))
-            for s in range(e30.SIMS)
+            targets(split(simulate(clones, prm, np.random.default_rng(s), meas), None))
+            for s in range(sims)
         ]
         return {
             k: float(np.nanmean([t[k] for t in ts]))
@@ -110,6 +119,7 @@ def main(seed, maxiter=300, dim=19, name="e33"):
         polish=False,
         tol=1e-6,
         init="latinhypercube",
+        x0=x0,
     )
     prm = unpack(res.x)
     st = sim_targets(prm)
