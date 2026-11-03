@@ -2720,3 +2720,27 @@ single-cytokine wells. Candidate mechanisms, all fate-independent at the allocat
 - **The full well seeded or sampled differently.** It is almost all day 6.
 
 The next model must reproduce the pairwise co-presence table before any cross statistic is read.
+
+## E32: multinomial founder allocation + pairwise co-presence (pre-registered 2026-11-03)
+
+- **Data diagnostic it must explain (retro rule).** B12: N/M co-presence between the full
+  cocktail and the single-cytokine wells is 0.3-0.4x of independence in the data, and the E30a
+  fit gives 3-6x too much.
+- **Why E28/E30 cannot do it.** Independent Poisson founders per well are the Poisson thinning
+  of a Poisson total, so presence is independent across wells. Exclusivity needs a total that is
+  under-dispersed: a clone with one day-2 founder cell can only be in one well.
+- **Model.** E30a (E26b instruction + selection, rho_f 0.88, expansion trait, gamma 0) with
+  founders allocated per clone: K = 1 + Poisson(lambda_K) day-2 founders, each placed in well c
+  with probability w_c (softmax; full fixed as reference). Each founder's output is as in E30.
+  Parameters: 16 + lambda_K + 4 well logits = 21.
+- **Loss.** E30's SE-scaled targets plus the 10 pairwise co-presence counts (>= 2 N+M in both;
+  SE sqrt(max(n, 4))). Differential evolution, population 6 x d, up to 300 generations, 6 seeds
+  (Actions).
+- **Adequacy gate.** E30's gate (full, G, M mean N-share in the data CI; present clones ±20%),
+  plus full-G, full-M and G-M co-presence each within ±30% of the data (29, 84, 78).
+- **Readings (adequate fits only, as E30).** A pass needs G-M, full-G and full-M p >= 0.05
+  and both B7 differences inside the 95% range; B10 is reported. The key test is whether getting
+  co-presence right also brings full-M down to the data (0.24) while keeping G-M near 0.51.
+  - If yes, the ordering anomaly is explained by founder allocation plus selection, and the
+    power rule and the shard-1 look follow.
+  - If the co-presence fits but full-M stays high, allocation is not the cause of the ordering.
