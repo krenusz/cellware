@@ -2645,3 +2645,32 @@ converged. Adequacy gate (full, G, M: mean N-share inside the data 95% CI, prese
 - Converged? No: all runs stopped at 120 generations, and 4 of 6 are far from adequate. A longer
   run is needed before claiming the family's best.
 - Held-out shard 1 stays unseen (no pass).
+
+## Batch pre-registration 2026-11-03 (7): E31, B12 (written before either was run)
+
+### E31: E30a converged
+- E30 stopped every run at 120 generations. E31 runs E30a (the same model, loss, gate and
+  readings; gamma 0) for up to 500 generations. Seeds 0-2 are warm-started (DE x0) from E30a s2,
+  the only adequate fit; seeds 3-5 are cold. 6 GitHub Actions jobs. Best = lowest loss among
+  adequate fits.
+- **Readings as E30.** In addition: if the best E31 fit keeps full-M above the data's range
+  (p < 0.05) while G-M passes, the "G-M > full-M ordering" anomaly is confirmed on a converged
+  adequate fit.
+
+### B12: what makes full-M low in the data?
+- **Facts noted before running.** The full cocktail is almost all day-6 cells (3002 N+M at day 6,
+  129 at day 4). G-CSF is split evenly (1312 / 1232). M-CSF is mostly day 6 (864 / 4640). The
+  simulators have one time point.
+- **(a) Components, data vs the E30a s2 fit (200 simulations).** For each pair (full-M, G-M,
+  full-G), among the clones with >= 2 N+M in both conditions: the number of such clones, the
+  mean and variance of N-share in each condition, and the pair r. Each data value is flagged if
+  outside the model's 95% range.
+- **(b) Day split (data only, descriptive).** full-M r with M-CSF day-4 cells only vs day-6
+  cells only. G-M r with G-CSF day-4 only vs day-6 only. Each needs >= 15 clones; bootstrap 95%
+  CI (2000).
+- **Readings.**
+  - The full-M components that fall outside E30a's range say where the model over-links full and
+    M (for example, too little N-share variance in full, or too many full-M clones).
+  - If, in (b), full-M is low only with day-6 M-CSF cells while G-M is high with both G-CSF days,
+    the ordering may reflect timing (day-6 M-CSF clones drift away), and a two-time-point model is
+    the next structure. If there is no day dependence, timing is not it.

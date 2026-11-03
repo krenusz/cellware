@@ -71,7 +71,7 @@ def unpack(x, variant):
     return prm
 
 
-def main(variant, seed=0):
+def main(variant, seed=0, name="e30", warm=None, maxiter=120):
     cnt = load_counts(CONDS5)
     clones = e26.universe(cnt)
     fitset = split(cnt, None)
@@ -101,11 +101,12 @@ def main(variant, seed=0):
         lambda x: loss(np.r_[x, 0.0]) if variant == "a" else loss(x),
         [(-3, 3)] * dim,
         popsize=6,
-        maxiter=int(os.environ.get("E30_MAXITER", 120)),
+        maxiter=int(os.environ.get("E30_MAXITER", maxiter)),
         seed=seed,
         polish=False,
         tol=1e-6,
         init="latinhypercube",
+        x0=None if warm is None else np.clip(e29.warm_start(0.0, warm)[:dim], -3, 3),
     )
     xbest = np.r_[res.x, 0.0] if variant == "a" else res.x
     prm = unpack(xbest, variant)
@@ -127,6 +128,8 @@ def main(variant, seed=0):
         "seed": seed,
         "loss": float(res.fun),
         "generations": int(res.nit),
+        "converged": bool(res.success),
+        "warm": warm,
         "params": prm,
         "z": {k: float((st[k] - obs[k]) / se[k]) for k in obs},
         "gate": gate,
@@ -180,7 +183,7 @@ def main(variant, seed=0):
         and rep["G_mean_both_minus_Gonly"]["inside"]
         and rep["M_both_minus_Monly"]["inside"]
     )
-    json.dump(rep, open(os.path.join(OUT, f"e30{variant}_s{seed}.json"), "w"), indent=1)
+    json.dump(rep, open(os.path.join(OUT, f"{name}{variant}_s{seed}.json"), "w"), indent=1)
     print(json.dumps({k: rep[k] for k in ("loss", "adequate", "passes", "G-M")}, indent=1))
 
 

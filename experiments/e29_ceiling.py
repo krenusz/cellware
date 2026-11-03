@@ -50,9 +50,10 @@ def unpack(x):
     return prm
 
 
-def warm_start(gx):
-    """E28a best-start parameters mapped back through the bounded transforms, plus gamma (x)."""
-    p = json.load(open(os.path.join(OUT, "e28a_s2.json")))["params"]
+def warm_start(gx, src="e28a_s2"):
+    """A fit's parameters (default E28a best) mapped back through the bounded transforms, plus
+    gamma (x)."""
+    p = json.load(open(os.path.join(OUT, f"{src}.json")))["params"]
 
     def logit(v):
         return float(np.log(v / (1 - v)))
