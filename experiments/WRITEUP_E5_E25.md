@@ -223,8 +223,10 @@ G-CSF and M-CSF push in opposite directions, yet sisters in them agree (G-M r = 
 - What links a clone's G-CSF and M-CSF outcomes more than either to the full cocktail? Not
   sampling (E20), per-condition gain (E21, E21b), a fitted second trait (E22), size coupling
   (E23), pre-split carry-over (E24) or clone types (E25). B7 shows the G-M clones are a
-  fate-selected subset; next is a simulator where presence emerges from fate (E26), with a
-  same-cocktail negative control (B8) and the day-2 state of the selected clones (B9).
+  fate-selected subset, and B9 shows the selection acts on a fate state already present at day 2
+  (B8: same-cocktail presence coupling is small and of opposite sign). A simulator where presence
+  emerges from fate and a neutrophil survival factor (E26) still fails: best fits put G-M at
+  0.22 / 0.06. Every model so far trades G-M against the within-condition fit.
 - Does the MPP-like methylation axis (B3k) replicate in independent data?
 - What sets the fate state, and when?
 - Division counts: Camellia barcodes were induced at E10.0 and sampled ~9 weeks later (Li et al.
