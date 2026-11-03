@@ -1,0 +1,196 @@
+{
+ "clones": 181,
+ "cpgs_tested": 451,
+ "fdr10_hits": 3,
+ "min_q": 0.01969870221288896,
+ "p_lt_0.01": 24,
+ "expected_p_lt_0.01": 4.5,
+ "top15": [
+  {
+   "cpg": "AMPL390597",
+   "type": "Dynamic",
+   "rho": 0.29896110230228234,
+   "p": 4.3484993847437e-05,
+   "q": 0.01969870221288896,
+   "gene": "Synpo",
+   "enhancer": "Intergenic",
+   "class": "MPP_high",
+   "chrom_state": "strong enhancer"
+  },
+  {
+   "cpg": "AMPL366042",
+   "type": "Dynamic",
+   "rho": 0.26046309722464633,
+   "p": 0.00039828544204308444,
+   "q": 0.09021165262275863,
+   "gene": "NA",
+   "enhancer": "Intergenic",
+   "class": "MPP_high",
+   "chrom_state": "strong enhancer"
+  },
+  {
+   "cpg": "AMPL371668",
+   "type": "NA",
+   "rho": -0.2519411672151434,
+   "p": 0.0006230009266646791,
+   "q": 0.09407313992636655,
+   "gene": "NA",
+   "enhancer": "NA",
+   "class": "HSC_high",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL371555",
+   "type": "Static",
+   "rho": -0.23698479394363245,
+   "p": 0.0013176952036924058,
+   "q": 0.10737829610204967,
+   "gene": "Specc1",
+   "enhancer": "intron (NM_001281818, intron 4 of 14)",
+   "class": "WSH",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL388351",
+   "type": "Dynamic",
+   "rho": -0.23523477386256314,
+   "p": 0.0014341580073942042,
+   "q": 0.10737829610204967,
+   "gene": "NA",
+   "enhancer": "Intergenic",
+   "class": "IMR",
+   "chrom_state": "strong enhancer"
+  },
+  {
+   "cpg": "AMPL371418",
+   "type": "Dynamic",
+   "rho": -0.23311589719100043,
+   "p": 0.001587727425177735,
+   "q": 0.10737829610204967,
+   "gene": "Fam155a",
+   "enhancer": "intron (NM_173446, intron 1 of 2)",
+   "class": "HSC_high",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL371137",
+   "type": "Dynamic",
+   "rho": -0.230600596908868,
+   "p": 0.0017894376205101546,
+   "q": 0.10737829610204967,
+   "gene": "Ap1s3",
+   "enhancer": "intron (NM_183027, intron 3 of 4)",
+   "class": "HSC_high",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL371420",
+   "type": "Dynamic",
+   "rho": 0.2269668174032463,
+   "p": 0.0021222315326204053,
+   "q": 0.10737829610204967,
+   "gene": "NA",
+   "enhancer": "Intergenic",
+   "class": "MPP_high",
+   "chrom_state": "strong enhancer"
+  },
+  {
+   "cpg": "AMPL371589",
+   "type": "Dynamic",
+   "rho": 0.22614696537348467,
+   "p": 0.002204699826981363,
+   "q": 0.10737829610204967,
+   "gene": "NA",
+   "enhancer": "NA",
+   "class": "MPP_high",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL376447",
+   "type": "NA",
+   "rho": -0.2245808032106094,
+   "p": 0.0023703818124072777,
+   "q": 0.10737829610204967,
+   "gene": "Tec",
+   "enhancer": "NA",
+   "class": "HSC_high",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL366000",
+   "type": "Dynamic",
+   "rho": -0.2216353312420306,
+   "p": 0.002712917136866808,
+   "q": 0.11111205928784247,
+   "gene": "Gm20388,Banp",
+   "enhancer": "intron (NM_016812, intron 12 of 13)",
+   "class": "HSC_high",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL388770",
+   "type": "Dynamic",
+   "rho": -0.21983800813453125,
+   "p": 0.0029433658089494698,
+   "q": 0.11111205928784247,
+   "gene": "2610015P09Rik",
+   "enhancer": "intron (NM_027801, intron 12 of 15)",
+   "class": "IMR",
+   "chrom_state": "weak enhancer"
+  },
+  {
+   "cpg": "AMPL388787",
+   "type": "Dynamic",
+   "rho": 0.21546477188683227,
+   "p": 0.0035798222412305562,
+   "q": 0.12474303655980323,
+   "gene": "NA",
+   "enhancer": "NA",
+   "class": "IMR",
+   "chrom_state": "heterochromatin"
+  },
+  {
+   "cpg": "AMPL371600",
+   "type": "Dynamic",
+   "rho": 0.20819217614797725,
+   "p": 0.004917053217374553,
+   "q": 0.148184749219832,
+   "gene": "Ppp2r5e",
+   "enhancer": "intron (NM_012024, intron 2 of 13)",
+   "class": "MPP_high",
+   "chrom_state": "transcription"
+  },
+  {
+   "cpg": "AMPL366060",
+   "type": "Dynamic",
+   "rho": -0.20690325107092844,
+   "p": 0.005196100534685792,
+   "q": 0.148184749219832,
+   "gene": "Nup107",
+   "enhancer": "NA",
+   "class": "HSC_high",
+   "chrom_state": "weak enhancer"
+  }
+ ],
+ "hits_dynamic_vs_static_fisher": {
+  "table": [
+   [
+    2,
+    0
+   ],
+   [
+    198,
+    110
+   ]
+  ],
+  "p": 0.5406618644952499
+ },
+ "cloneass_p_lt_0.05_Static": {
+  "n": 110,
+  "share": 0.9818181818181818
+ },
+ "cloneass_p_lt_0.05_Dynamic": {
+  "n": 200,
+  "share": 0.935
+ }
+}

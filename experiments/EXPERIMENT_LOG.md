@@ -1817,3 +1817,53 @@ Secondary (cross-well pairs restricted to the same day, 442 clones): 0.87 [0.82,
 - **Readings.** Gap closed = G-M simulated mean inside the observed CI (0.33-0.65) and p >= 0.05,
   with fit loss no worse than E20's. Otherwise the gap survives a condition-specific gain too.
 - Not run if E20 gives p >= 0.05.
+
+### E20 result (2026-11-03)
+
+rho_f fixed 0.88; 3 restarts; best loss 0.058 (lowest of any E18-family fit); beta 8.0, sigma_w
+1.05. 200 simulations on all clones at the observed depth:
+
+| statistic | observed | simulated mean (sd) | 95% of simulations | p |
+|---|---|---|---|---|
+| full-G | 0.69 | 0.70 (0.10) | 0.50-0.89 | 0.90 (two-sided) |
+| full-M | 0.24 | 0.32 (0.07) | 0.18-0.44 | 0.17 (two-sided) |
+| G-M | 0.51 | 0.25 (0.06) | 0.15-0.34 | **0/200 >= 0.51** |
+
+- **The G-M gap is real** (p < 0.005). It is not a sampling ceiling: at the observed depth the
+  model's G-M never reaches 0.51. full-G and full-M are reproduced. **E21 triggered.**
+- Note: beta ended at 8.0, the top of the restart range; noted, not interpreted.
+
+### E19b result (2026-11-03)
+
+LARRY in vivo, 252 clones with Neu/Mono cells in >= 2 recipient mice.
+
+| | latent r (95% clone bootstrap) |
+|---|---|
+| same mouse, same time | 0.22 [0.14, 0.30] |
+| different mice | 0.19 [0.10, 0.28] |
+| ratio | 0.88 [0.44, 1.53] |
+
+Same-time cross-mouse: ratio 1.02 [0.56, 1.65].
+- **Reading (pre-registered terms): the ratio overlaps 0.82-0.92**, so a mouse-specific break of
+  the fate state is not shown; the CI is too wide to say more.
+- **The striking number is not the ratio but the level** (not pre-registered as a reading): in
+  vivo, even cells of one clone in the same mouse agree on N vs M only weakly (latent r 0.22,
+  vs 0.94 in vitro). In vivo, the clone sets the N/M choice much less than in culture, and
+  cross-mouse agreement is about as high as within-mouse. The E6b cross-mouse drop is
+  therefore a general loosening of clone control in vivo, not a recipient-specific effect.
+
+### B3j result (2026-11-03)
+
+181 clones, 451 CpGs tested (2 constant). Target and CpG residualised on mouse + log sizes.
+- **3 FDR-10% hits** (q 0.02-0.09): AMPL390597 (Dynamic, intergenic strong enhancer near Synpo,
+  panel class MPP_high, rho +0.30), AMPL366042 (Dynamic, intergenic strong enhancer, MPP_high,
+  +0.26), AMPL371668 (unclassified, weak enhancer, HSC_high, -0.25). 24 CpGs at p < 0.01 vs 4.5
+  expected: the signal is spread over many sites, with a few standing out.
+- Hits vs class: 2 Dynamic, 0 Static (Fisher p 0.54; too few hits to test enrichment).
+- **Unplanned pattern (descriptive, needs its own test):** in the top 15, every MPP_high-class
+  site has positive rho (more methylation, more myeloid; 5/5) and every HSC_high-class site has
+  negative rho (6/6). Clones whose multipotent cells carry a more MPP-like methylation profile
+  are more myeloid-biased. Composition was not in the B3i/B3j covariates.
+- **Check on B3h:** by EPI-Clone's own clone-association test, 98% of Static and 93.5% of Dynamic
+  CpGs have p < 0.05. The "Dynamic" sites are almost all clone-associated, which confirms the
+  B3h leakage reading directly.
