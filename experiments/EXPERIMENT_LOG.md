@@ -2679,3 +2679,44 @@ converged. Adequacy gate (full, G, M: mean N-share inside the data 95% CI, prese
   coordinate, so E30's results are valid; it only made the search slightly larger. It did
   misplace nu in E31's warm start (smoke-test loss 264 instead of 80.5). Dimensions corrected
   to 17 / 18; the warm start now reproduces E30a s2's loss (80.5).
+
+### B12 results (2026-11-03)
+
+**(a) Components vs the E30a s2 fit (200 simulations; flagged when outside the 95% range).**
+
+| pair | clones in both (model 95%) | N-share, 1st condition | N-share var, 1st | N-share, M or G | r (model 95%) |
+|---|---|---|---|---|---|
+| full-M | **84** (230-290) below | full 0.14 (0.04-0.08) above | 0.074 above | M 0.043 below | **0.24** (0.43-0.74) below |
+| G-M | 78 (78-114) | G 0.35 (0.07-0.19) above | 0.185 above | M 0.13 (in range) | 0.51 (0.51-0.87) |
+| full-G | **29** (161-212) below | full 0.40 below | 0.179 below | G 0.37 below | 0.69 (in range) |
+
+- **The largest misfit is how many clones are co-present with the full cocktail:** 3x too
+  many in the model for full-M and 6x too many for full-G, while G-M is about right. The
+  full-cocktail well and the single-cytokine wells share far fewer N/M-producing clones in the
+  data than the model's independent founder placement (k_c ~ Poisson(nu) per well) allows.
+- The co-present clones are also a selected set in the data: the full-M clones are more
+  neutrophilic in full (0.14 vs 0.04-0.08). B7-type selection applies to the full cocktail too.
+
+**(b) Day split.** full-M: day-4 M-CSF cells give 19 clones (r 0, degenerate); day-6 cells give 80
+clones, r 0.25 [-0.12, 0.58]. G-M: G-CSF day 4 gives 53 clones, r 0.40 [0.14, 0.59]; day 6 gives
+21 clones, r 0.64 [0.38, 0.87]. No timing effect can be read (the CIs overlap; full has no day-4
+cells). **Timing is not supported as the explanation.**
+
+**Post-hoc checks (supporting).** Co-presence among all 5 conditions (>= 2 N+M), data vs
+expected under independence (n_a n_b / 3878) vs the E30a fit:
+full-G 29 / 105 / 189; full-M 84 / 192 / 264; G-M 78 / 144 / 98; G-SCF 15 / 11 / 58; M-SCF 18 / 21 / 27.
+In the data, clones with N/M output in the full cocktail are depleted among those with N/M output
+in G-CSF or M-CSF (about 0.3-0.4x of independence). Counted with any cell, overlaps are near or
+above independence (full-G 182 vs 105). An "other-fate" explanation (G/M clones making non-N/M
+cells in full) is **not** supported: full-cocktail clones co-present with M-CSF have a *lower*
+other-fate share in full (0.04 vs 0.31, p 1e-9).
+
+**Reading.** The G-M > full-M ordering comes with a structural fact the models lack: which
+clones show N/M output in the full well is anti-associated with N/M presence in the
+single-cytokine wells. Candidate mechanisms, all fate-independent at the allocation step:
+- **Multinomial founder allocation.** A clone's few day-2 cells are divided among the wells, so
+  being in one well makes being in another less likely. E28's independent Poisson draws have no
+  such exclusivity.
+- **The full well seeded or sampled differently.** It is almost all day 6.
+
+The next model must reproduce the pairwise co-presence table before any cross statistic is read.
