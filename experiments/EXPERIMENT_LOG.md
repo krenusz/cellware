@@ -2361,3 +2361,33 @@ same clone are linked more than either is to the full cocktail, and B7's G-CSF p
 selection is large. A latent that couples the G and M responses specifically, without the full
 cocktail, is the next untested structure (for example, a clone-level cytokine-sensitivity
 trait).
+
+## E29: ceiling test, shared single-cytokine trait with the cross statistics fitted (pre-registered 2026-11-03)
+
+- **Motivation.** E20-E28: every one-latent model that fits the within-condition data predicts
+  G-M 0.06-0.33. E22 tried a second clone trait u shared by the single-cytokine conditions, fitted
+  to within-condition data only, and u went to ~0 (not identifiable). A multiplicative
+  cytokine-sensitivity trait (logit shift tau_c * exp(kappa v)) is not tested. Its sign is wrong
+  by construction (a high-v clone goes more N under G-CSF and more M under M-CSF, which lowers
+  G-M), and this is stated before any run. E29 asks the remaining question directly: **can this
+  model family fit the within-condition data AND the cross statistics at once, and does B7 then
+  follow without being fitted?**
+- **Model.** E28 (founder split k_c ~ Poisson(nu), E26b instruction + selection, rho_f 0.88)
+  plus u ~ N(0,1) per clone: logit p += gamma * u in G, M, Epo, SCF (not full). gamma in
+  [-5, 5], free.
+- **Variants.** **E29w**: loss = E28a loss (within + presence + overlap). The E22 identifiability
+  question in the E28 setting. **E29x**: E29w loss + sum over full-G, full-M, G-M of
+  ((r_sim - r_obs) / 0.1)^2 (spent statistics used as fit targets). 3 starts each, Nelder-Mead,
+  GitHub Actions, best start = lowest loss. The within-only part of the loss is reported
+  separately.
+- **Readings.**
+  - E29w: gamma identified if |gamma| > 0.5 in the best start. Otherwise it repeats E22.
+  - E29x is a **candidate** only if all of the following hold:
+    1. all three cross statistics reach p >= 0.05 (a fit check);
+    2. its within-only loss is <= 1.5x E29w's;
+    3. both B7 differences fall inside its 95% range (B7 is not fitted, so this is the real test).
+  - If 1 holds and 2 fails, the family cannot fit both: a structural negative, the strongest
+    statement so far. If 1 and 2 hold but 3 fails, G-M is reachable but the presence selection
+    is still missing.
+  - A candidate goes to the power rule against E20's shard-1 prediction (difference > ~0.37)
+    before any held-out look.

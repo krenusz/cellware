@@ -1,0 +1,6 @@
+[experiments/results_e18/e29w_s0.json] python experiments/e29_ceiling.py w 0
+[experiments/results_e18/e29w_s1.json] python experiments/e29_ceiling.py w 1
+[experiments/results_e18/e29w_s2.json] python experiments/e29_ceiling.py w 2
+[experiments/results_e18/e29x_s0.json] python experiments/e29_ceiling.py x 0
+[experiments/results_e18/e29x_s1.json] python experiments/e29_ceiling.py x 1
+[experiments/results_e18/e29x_s2.json] python experiments/e29_ceiling.py x 2
