@@ -3150,3 +3150,30 @@ whose shard-1 prediction is stable across seeds.
   - B7 fixed but G-M lost: instruction and selection cannot both be right in this structure.
   - Constraint costs much loss (an inadequate fit): the data prefer selection-dominated fits,
     against the literature, which would itself be notable.
+
+### E34 results (2026-11-03)
+
+500 generations, 6 seeds; 5 adequate.
+
+| seed | loss | adequate | nu_full | rho_a | full-G (p) | full-M (p) | G-M (p) | B7 G | B7 M in | B10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 91.7 | yes | 2.1 | 0.23 | 0.82 (0.02) | 0.55 (0.09) | 0.59 (0.43) | -0.61 | yes | 0.21 |
+| 1 | 89.5 | yes | 1.5 | 0.68 | 0.77 (0.10) | 0.52 (0.03) | 0.44 (0.47) | -0.54 | yes | 0.27 |
+| 2 | 30.4 | no | 1.0 | 0.85 | 0.83 (0.00) | 0.59 (0.00) | 0.54 (0.75) | -0.61 | yes | 0.24 |
+| 3 | 96.1 | yes | 4.6 | 0.23 | **0.72 (0.70)** | **0.39 (0.30)** | **0.35 (0.07)** | -0.49 | yes | 0.24 |
+| 4 | 83.6 | yes | 1.3 | 0.94 | 0.82 (0.00) | 0.54 (0.05) | 0.46 (0.62) | -0.59 | yes | 0.24 |
+| **5 (best adequate)** | **51.6** | yes | 4.7 | 0.81 | 0.79 (0.01) | **0.55 (0.00)** | 0.47 (0.67) | -0.55 | yes | 0.26 |
+
+- **Primary pass: no.** B7 G overshoots in every fit (-0.49 to -0.61).
+- **Full-arm reading (pre-registered on the best adequate fit): not supported.** Seed 5 keeps
+  full-M at 0.55 (p < 0.005). One higher-loss seed (3) has all three cross statistics inside the
+  data range, with the ordering G-M 0.35 / full-M 0.39 / full-G 0.72, by decoupling the full
+  arm's expansion trait (rho_a 0.23). That shows the structure can produce the ordering, but the
+  best fit does not choose it. Not a result.
+- **Gains over E33.** B7 M is now inside in all fits, B10 is right (0.21-0.27), and G-M stays on
+  the data (0.44-0.59).
+- **Convergence.** E34 nests E33 (rho_a = 1, nu_full = nu), but most seeds reach losses (84-96)
+  far above E33's 30.5. The 21-dimensional search is not converged, so the seed-to-seed spread
+  in full-M is partly optimiser noise.
+- **Remaining blocker: B7 G, the over-selection under G-CSF (B17).** E35 (signed instruction) is
+  running.
