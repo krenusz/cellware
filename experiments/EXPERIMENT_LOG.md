@@ -2582,3 +2582,6 @@ Within-condition statistics (mean N-share / variance / mixed fraction) of the be
   at day 2 (a clone property, the B10 gradient), and E30 should be judged on whether it can
   express that. Not supported means M-CSF neutrophils look random with respect to the day-2
   state.
+- **Amendment (before any E30 run).** The SE of each per-condition share term (mean, variance, mixed
+  fraction) is floored at 0.25 / sqrt(present clones). Epo's mixed fraction is exactly 0 in the
+  data, so its bootstrap SE is about 0 and would dominate the loss.

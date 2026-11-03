@@ -55,8 +55,12 @@ def bootstrap_se(cnt, rng, boots=500):
         }
         draws.append(targets(bc))
     se = {k: float(np.nanstd([d[k] for d in draws])) for k in draws[0]}
+    t = targets(cnt)
     for c in CONDS:
-        se[f"{c}_n"] = float(np.sqrt(max(targets(cnt)[f"{c}_n"], 1)))
+        se[f"{c}_n"] = float(np.sqrt(max(t[f"{c}_n"], 1)))
+        # amendment: floor for share terms (Epo's mixed fraction is exactly 0, bootstrap SE ~0)
+        for s in ("mean", "var", "mixed"):
+            se[f"{c}_{s}"] = max(se[f"{c}_{s}"], 0.25 / np.sqrt(max(t[f"{c}_n"], 1)))
     return {k: max(v, 1e-3) for k, v in se.items()}
 
 
