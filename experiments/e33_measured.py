@@ -191,7 +191,7 @@ def main(seed, maxiter=300, dim=19, name="e33", x0=None):
     for s in range(200):
         sim = simulate(clones, prm, np.random.default_rng(1000 + s), meas)
         cross.append(e29.cross_r(sim))
-        pres.append(presence_stats(sim))
+        pres.append(presence_stats(split(sim, None)))  # fit set only (audit 2026-11-04)
         shard1.append(pooled_pairs_r(split(sim, 1), boot=1)["r"])
         b10.append(b10_stats(sim)["frac_with_N_in_M"])
     for k, o in OBS.items():
@@ -205,7 +205,7 @@ def main(seed, maxiter=300, dim=19, name="e33", x0=None):
             "p_ge_obs": hi,
             "p_two_sided": float(2 * min(hi, 1 - hi)),
         }
-    b7 = json.load(open(os.path.join(OUT, "b7_selection.json")))
+    b7 = {k: {"data": v} for k, v in presence_stats(fitset).items()}  # fit set (audit 2026-11-04)
     for k in ("G_mean_both_minus_Gonly", "M_both_minus_Monly"):
         v = np.array([p[k] for p in pres], float)
         v = v[np.isfinite(v)]

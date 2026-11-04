@@ -3967,3 +3967,76 @@ Fit set; reference best gated E38 fit (e38_s1), 200 simulations.
   It takes the run's file when the local one is missing or empty, and when they differ beyond
   line endings it keeps both (`<file>.run<id>`) and says so. Cause of B23's "0 new result
   files": a smoke test had left an empty `b23_gfi1.json`.
+
+### Correction to B24's audit note (2026-11-04)
+
+B24 said the simulation side of B7 used the fit set. **Wrong.** In E26-E41b (`presence_stats(sim)`
+in e26, e28, e29, e30, e32, e33 and everything built on e33) the simulated B7 interval is also
+computed on all clones. Data and simulation were compared like for like, so the misfit is not an
+artefact of the comparison. The remaining issue is hygiene: B7 used the G-CSF and M-CSF wells of
+the held-out shard-1 clones, which also supply half of each held-out (Epo/SCF) pair. It entered
+no fitting loss, only the B7 pass/fail checks. `audit_b7_fitset.py` re-scores every saved fit on
+the fit set only (results below).
+
+### E42 design probe (2026-11-04): clone dropout under G-CSF abandoned before pre-registration
+
+- **Design probed.** E38 plus G-CSF founder survival q = exp(-h * softplus(z0 - z)), which drops
+  monocyte-biased clones from the G-CSF well (h = 0 is E38 exactly; checked bit-identical).
+- **Probe.** E38's best gated parameters (e38_s1), z0 = -1, h = 0/1/3/6, 30 simulations each, fit
+  set: shared clones 57 / 41 / 24 / 13 (data 39); B7 G -0.28 / -0.27 / -0.25 / -0.17 (data -0.38);
+  D3 0.025 / 0.021 / 0.016 / 0.011 (data 0.15).
+- **Reading.** Whole-clone dropout fixes the shared-clone count but moves B7 G and D3 the wrong
+  way: it removes exactly the M-biased clones from the shared group, while the data keeps them
+  present with 2-3 monocytes. Not run. No fit was made, so no look was spent. A mechanism has to
+  shrink M-biased clones under G-CSF to a few cells without removing them.
+- **Second probe (same day).** Same q applied to G-CSF expansion instead of founders, z0 = -1 / 0,
+  h = 1/3/6: B7 G -0.25 to -0.07, D3 0.021 to 0. Same wrong direction: shrinking pushes M-biased
+  clones below the 2-cell presence threshold, so they leave the shared group too. **Neither
+  "G-CSF punishes M-biased clones" form can make D3.** The data needs clones that stay *present*
+  under G-CSF with 2-3 monocytes while being large under M-CSF: a monocyte-committed class that
+  expands under M-CSF only. E39's continuous version of that failed (G-M overshoot); a discrete
+  class is untested. Probing stops here to avoid tuning against the fit-set statistics; any next
+  model is pre-registered before any fit.
+
+### B7 fit-set audit results (2026-11-04): B7 G was weaker than reported; several verdicts change
+
+`audit_b7_fitset.py` re-simulated every saved fit E33-E41b (132 fits, 200 simulations each, same
+seeds; the old all-clone path reproduces the stored intervals exactly) and recomputed both B7
+checks on the fit set only. Fit-set data: B7 G -0.382 (all clones -0.373), **B7 M 0.044 (all
+clones 0.084)**.
+
+| family | gated | B7 G pass, gated: old -> new | B7 M pass, gated | primary pass, gated |
+|---|---|---|---|---|
+| E33 | 5 | 0 -> 0 | 3 -> 2 | 0 -> 0 |
+| E34 | 5 | 0 -> 0 | 5 -> 3 | 0 -> 0 |
+| E35 | 4 | 1 -> 2 | 4 -> 4 | 1 -> 2 |
+| E37 | 2 | 0 -> 1 | 2 -> 2 | 0 -> 1 |
+| **E38** | 9 | **2 -> 5** | 9 -> 9 | **1 -> 3** (s8, s11, s12) |
+| E39 | 1 | 1 -> 1 | 0 -> 0 | 0 -> 0 |
+| **E40** | 7 | **0 -> 2** (both s_G 4) | 6 -> 7 | 0 -> 0 |
+| E41 | 1 | 0 -> 0 | 1 -> 1 | 0 -> 0 |
+| E41b | 9 | 0 -> 0 | 9 -> 9 | 0 -> 0 |
+
+- **Why it moves.** Half the clones means a wider simulated interval: E38's B7 G 95% interval is
+  0.25 wide on the fit set against 0.18 on all clones, while the data value barely moves. The old
+  comparison was like for like and more powerful. But that extra power came from the held-out
+  clones, which the protocol keeps out.
+- **What changes in the record.**
+  - **B7 G is a marginal misfit, not a firm one.** Under the protocol E38 is inside in 5/9 gated
+    seeds (stability needs 6/9). The claim "B7 G fails in every model" was wrong on the fit set:
+    E38 and E40 at s_G 4 can pass it.
+  - E38 primary: 3/9 gated seeds pass (was 1/9). Still not stable (G-M splits 5/4 and B7 G 5/9),
+    so E38's verdict, "not stable", stands.
+  - E40: B7 G passes at s_G 4 (2 of 3 seeds), fails at 2.5 and 6.5. That slightly favours the
+    middle of the ridge.
+  - E41b: unchanged (G-M fails in all 9); its discard stands. E39: unchanged.
+  - E33/E34: B7 M is harder on the fit set (data 0.044); some former passes fail. Those models
+    were already rejected.
+- **What does not change.** B24's D2/D3 patterns were computed on the fit set: the excess of
+  M-large / G-tiny clones (0.15 vs 0.02) and too many shared clones (57 vs 39) stand.
+- **Fix.** `e33_measured.py` now computes both B7 checks on the fit set (data and simulation).
+  Every model built on e33 inherits it. The older scripts (e26-e32) are left as they are, with
+  their results superseded by this audit.
+- **Held-out status.** Shard-1 clones' G-CSF and M-CSF wells entered these descriptive checks.
+  The held-out statistic itself (shard-1 Epo/SCF pairs) was never computed or looked at.
+  The test stays usable, but this exposure is noted for whoever reads the eventual result.

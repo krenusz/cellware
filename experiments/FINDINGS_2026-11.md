@@ -134,3 +134,14 @@ Done on 2026-11-04: the ridge profile (E40), the fluctuation analysis (B21) and 
    M-CSF replicate agreement is sampling (null 0.37 [0.11, 0.64], observed 0.28), so the M-CSF
    statistics need no down-weighting.
 3. **Held-out test:** still unspent; spend it only on a model whose shard-1 prediction is stable.
+
+## Correction (2026-11-04, fit-set audit of B7)
+
+B7's data value and simulated interval had both been computed on all clones, held-out shard
+included. Re-scored on the fit set only, **B7 G is a marginal misfit**: E38 passes it in 5/9
+gated seeds (was 2/9) and the full primary in 3/9 (was 1/9); E40 passes it at s_G 4. Earlier
+statements that "B7 G fails at every grid point / in every model" are withdrawn. E38 is still not
+stable, and E41b's discard stands. B24's fit-set patterns (M-large / G-tiny clones 0.15 vs 0.02;
+57 vs 39 shared clones) stand. E42 probes: neither clone dropout nor shrinkage of M-biased clones
+under G-CSF can produce them (both move B7 G the wrong way).
+
