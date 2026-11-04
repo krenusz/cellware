@@ -37,6 +37,9 @@ SEEDS = {
     "Olsson 2016 (mixed-lineage states)": "10.1038/nature19348",
     "Buggenthin 2017 (prospective fate)": "10.1038/nmeth.4182",
     "Bonham-Carter 2024 (proliferation bias)": "10.1093/bioinformatics/btae483",
+    "Endele 2017 (CSF-1 instructs)": "10.1182/blood-2016-05-714329",
+    "Sierra 2010 (Gfi1 gates G-CSF)": "10.1182/blood-2009-10-246967",
+    "LCL 2024 (lineage contrastive)": "10.1101/2024.10.28.620670",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -81,6 +84,15 @@ TOPICS = {
         r"single-cell lineage",
     ],
     "fate_memory": [r"memory", r"heritab", r"fluctuation", r"transient", r"inherit"],
+    "imaging_ssl": [
+        r"time-lapse",
+        r"timelapse",
+        r"live imaging",
+        r"self-supervised",
+        r"contrastive",
+        r"dino",
+        r"world model",
+    ],
     "inference_identifiability": [
         r"identifiab",
         r"inference",

@@ -25,6 +25,49 @@
   "score": 18,
   "groups": [
    "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "fate_memory",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1182/blood.2020008386",
+  "title": "Cytokine combinations for human blood stem cell expansion induce cell-type\u2013 and cytokine-specific signaling dynamics",
+  "year": 2021,
+  "cites": 29,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 18,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1074/jbc.m115.668871",
+  "title": "Role of Erk1/2 Signaling in the Regulation of Neutrophil Versus Monocyte Development in Response to G-CSF and M-CSF",
+  "year": 2015,
+  "cites": 24,
+  "status": "open",
+  "url": "http://www.jbc.org/article/S0021925820446824/pdf",
+  "pub": "Elsevier BV",
+  "read": true
+ },
+ {
+  "score": 18,
+  "groups": [
+   "instruction_vs_selection",
    "neutrophil_monocyte",
    "clonal_tracing",
    "fate_memory",
@@ -66,6 +109,26 @@
   "read": false
  },
  {
+  "score": 17,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Buggenthin 2017 (prospective fate)"
+  ],
+  "doi": "10.1097/cm9.0000000000000349",
+  "title": "Prospect of using deep learning for predicting differentiation of myeloid progenitor cells after sepsis",
+  "year": 2019,
+  "cites": 3,
+  "status": "open",
+  "url": "https://doi.org/10.1097/cm9.0000000000000349",
+  "pub": "Lippincott Williams & Wilkins",
+  "read": false
+ },
+ {
   "score": 16,
   "groups": [
    "instruction_vs_selection",
@@ -73,16 +136,17 @@
    "neutrophil_monocyte"
   ],
   "via": [
+   "cites Endele 2017 (CSF-1 instructs)",
    "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
+   "cites Olsson 2016 (mixed-lineage states)"
   ],
-  "doi": "10.1074/jbc.m115.668871",
-  "title": "Role of Erk1/2 Signaling in the Regulation of Neutrophil Versus Monocyte Development in Response to G-CSF and M-CSF",
-  "year": 2015,
-  "cites": 24,
+  "doi": "10.1042/cs20170238",
+  "title": "Transcriptional mechanisms that control expression of the macrophage colony-stimulating factor receptor locus",
+  "year": 2017,
+  "cites": 60,
   "status": "open",
-  "url": "http://www.jbc.org/article/S0021925820446824/pdf",
-  "pub": "Elsevier BV",
+  "url": "https://hdl.handle.net/20.500.11820/b45e1ec7-8e2f-4cfa-92f3-2ee1836ea3ed",
+  "pub": "Portland Press",
   "read": false
  },
  {
@@ -150,6 +214,27 @@
   "score": 15,
   "groups": [
    "instruction_vs_selection",
+   "clonal_tracing",
+   "fate_memory",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1038/s41467-024-47158-y",
+  "title": "Gene-expression memory-based prediction of cell lineages from scRNA-seq datasets",
+  "year": 2024,
+  "cites": 26,
+  "status": "open",
+  "url": "https://www.nature.com/articles/s41467-024-47158-y.pdf",
+  "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 15,
+  "groups": [
+   "instruction_vs_selection",
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -164,6 +249,46 @@
   "cites": 25,
   "status": "open",
   "url": "https://www.frontiersin.org/articles/10.3389/fcell.2019.00104/pdf",
+  "pub": "Frontiers Media",
+  "read": false
+ },
+ {
+  "score": 15,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte",
+   "imaging_ssl",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1111/j.1742-4658.2012.08664.x",
+  "title": "Multi\u2010scale modeling of GMP differentiation based on single\u2010cell genealogies",
+  "year": 2012,
+  "cites": 21,
+  "status": "open",
+  "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1742-4658.2012.08664.x",
+  "pub": "Wiley",
+  "read": true
+ },
+ {
+  "score": 15,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)",
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.3389/fimmu.2018.02048",
+  "title": "Mathematical Analysis of Cytokine-Induced Differentiation of Granulocyte-Monocyte Progenitor Cells",
+  "year": 2018,
+  "cites": 18,
+  "status": "open",
+  "url": "https://www.frontiersin.org/articles/10.3389/fimmu.2018.02048/pdf",
   "pub": "Frontiers Media",
   "read": false
  },
@@ -231,20 +356,21 @@
   "score": 14,
   "groups": [
    "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
+   "neutrophil_monocyte",
+   "clonal_tracing",
+   "fate_memory"
   ],
   "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Olsson 2016 (mixed-lineage states)"
+   "cites Endele 2017 (CSF-1 instructs)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
   ],
-  "doi": "10.1042/cs20170238",
-  "title": "Transcriptional mechanisms that control expression of the macrophage colony-stimulating factor receptor locus",
-  "year": 2017,
-  "cites": 60,
+  "doi": "10.1038/s41586-024-08250-x",
+  "title": "Long-term lineage commitment in haematopoietic stem cell gene therapy",
+  "year": 2024,
+  "cites": 53,
   "status": "open",
-  "url": "https://hdl.handle.net/20.500.11820/b45e1ec7-8e2f-4cfa-92f3-2ee1836ea3ed",
-  "pub": "Portland Press",
+  "url": "https://doi.org/10.1038/s41586-024-08250-x",
+  "pub": "Nature Portfolio",
   "read": false
  },
  {
@@ -336,15 +462,16 @@
    "neutrophil_monocyte"
   ],
   "via": [
-   "cites Buggenthin 2017 (prospective fate)"
+   "cited by Endele 2017 (CSF-1 instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
   ],
-  "doi": "10.1097/cm9.0000000000000349",
-  "title": "Prospect of using deep learning for predicting differentiation of myeloid progenitor cells after sepsis",
-  "year": 2019,
-  "cites": 3,
+  "doi": "10.1189/jlb.2a1214-619r",
+  "title": "Instructive role of M-CSF on commitment of bipotent myeloid cells involves ERK-dependent positive and negative signaling",
+  "year": 2015,
+  "cites": 4,
   "status": "open",
-  "url": "https://doi.org/10.1097/cm9.0000000000000349",
-  "pub": "Lippincott Williams & Wilkins",
+  "url": "https://jlb.onlinelibrary.wiley.com/doi/pdfdirect/10.1189/jlb.2A1214-619R",
+  "pub": "Oxford University Press",
   "read": false
  },
  {
@@ -443,7 +570,7 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/15199",
   "pub": "National Academy of Sciences",
-  "read": false
+  "read": true
  },
  {
   "score": 13,
@@ -488,45 +615,6 @@
  {
   "score": 13,
   "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte",
-   "fate_memory"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1182/blood.2020008386",
-  "title": "Cytokine combinations for human blood stem cell expansion induce cell-type\u2013 and cytokine-specific signaling dynamics",
-  "year": 2021,
-  "cites": 29,
-  "status": "paywalled",
-  "url": null,
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 13,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1182/blood-2016-05-714329",
-  "title": "CSF-1\u2013induced Src signaling can instruct monocytic lineage choice",
-  "year": 2017,
-  "cites": 29,
-  "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/5364337",
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 13,
-  "groups": [
    "csf_signalling",
    "neutrophil_monocyte",
    "clonal_tracing"
@@ -548,26 +636,6 @@
   "score": 13,
   "groups": [
    "instruction_vs_selection",
-   "clonal_tracing",
-   "fate_memory",
-   "inference_identifiability"
-  ],
-  "via": [
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1038/s41467-024-47158-y",
-  "title": "Gene-expression memory-based prediction of cell lineages from scRNA-seq datasets",
-  "year": 2024,
-  "cites": 26,
-  "status": "open",
-  "url": "https://www.nature.com/articles/s41467-024-47158-y.pdf",
-  "pub": "Nature Portfolio",
-  "read": false
- },
- {
-  "score": 13,
-  "groups": [
-   "instruction_vs_selection",
    "neutrophil_monocyte",
    "inference_identifiability"
   ],
@@ -582,25 +650,44 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41467-018-05037-3.pdf",
   "pub": "Nature Portfolio",
-  "read": false
+  "read": true
  },
  {
   "score": 13,
   "groups": [
    "csf_signalling",
    "neutrophil_monocyte",
-   "inference_identifiability"
+   "clonal_tracing"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1046/j.1365-2141.2000.01952.x",
+  "title": "Exclusive expression of G\u2010CSF receptor on myeloid progenitors in bone marrow CD34+ cells",
+  "year": 2000,
+  "cites": 23,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Wiley",
+  "read": false
+ },
+ {
+  "score": 13,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte",
+   "imaging_ssl"
   ],
   "via": [
    "cites Rieger 2009 (cytokines instruct)"
   ],
-  "doi": "10.3389/fimmu.2018.02048",
-  "title": "Mathematical Analysis of Cytokine-Induced Differentiation of Granulocyte-Monocyte Progenitor Cells",
-  "year": 2018,
-  "cites": 18,
+  "doi": "10.1093/bioinformatics/btv040",
+  "title": "Factor graph analysis of live cell\u2013imaging data reveals mechanisms of cell fate decisions",
+  "year": 2015,
+  "cites": 11,
   "status": "open",
-  "url": "https://www.frontiersin.org/articles/10.3389/fimmu.2018.02048/pdf",
-  "pub": "Frontiers Media",
+  "url": "https://academic.oup.com/bioinformatics/article-pdf/31/11/1816/17122141/btv040.pdf",
+  "pub": "Oxford University Press",
   "read": false
  },
  {
@@ -640,6 +727,25 @@
   "status": "open",
   "url": "https://dr.ntu.edu.sg//bitstream/10356/88034/1/Thesis_Irene%20Soncin.pdf",
   "pub": "unknown",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "fate_memory"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.4049/jimmunol.147.1.22",
+  "title": "Characterization and regulation of RB6-8C5 antigen expression on murine bone marrow cells",
+  "year": 1991,
+  "cites": 460,
+  "status": "paywalled",
+  "url": null,
+  "pub": "American Association of Immunologists",
   "read": false
  },
  {
@@ -689,6 +795,25 @@
    "neutrophil_monocyte"
   ],
   "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1182/blood-2008-11-190215",
+  "title": "Gfi1 regulates miR-21 and miR-196b to control myelopoiesis",
+  "year": 2009,
+  "cites": 163,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2680372",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
    "cites Mossadegh-Keller 2013 (M-CSF instructs)",
    "cites Rieger 2009 (cytokines instruct)"
   ],
@@ -723,40 +848,20 @@
  {
   "score": 12,
   "groups": [
-   "instruction_vs_selection",
    "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cited by Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1182/blood-2009-10-246967",
-  "title": "The transcription factor Gfi1 regulates G-CSF signaling and neutrophil development through the Ras activator RasGRP1",
-  "year": 2010,
-  "cites": 54,
-  "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2869559",
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 12,
-  "groups": [
-   "instruction_vs_selection",
    "neutrophil_monocyte",
-   "clonal_tracing",
-   "fate_memory"
+   "imaging_ssl"
   ],
   "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+   "cites Rieger 2009 (cytokines instruct)"
   ],
-  "doi": "10.1038/s41586-024-08250-x",
-  "title": "Long-term lineage commitment in haematopoietic stem cell gene therapy",
-  "year": 2024,
-  "cites": 53,
+  "doi": "10.1182/blood-2009-04-216390",
+  "title": "The transcription factors STAT5A/B regulate GM-CSF\u2013mediated granulopoiesis",
+  "year": 2009,
+  "cites": 70,
   "status": "open",
-  "url": "https://doi.org/10.1038/s41586-024-08250-x",
-  "pub": "Nature Portfolio",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2780307",
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -781,20 +886,21 @@
  {
   "score": 12,
   "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte",
-   "inference_identifiability"
+   "clonal_tracing",
+   "fate_memory",
+   "imaging_ssl"
   ],
   "via": [
-   "cites Rieger 2009 (cytokines instruct)"
+   "cited by Weinreb 2020 (LARRY)",
+   "cites Olsson 2016 (mixed-lineage states)"
   ],
-  "doi": "10.1111/j.1742-4658.2012.08664.x",
-  "title": "Multi\u2010scale modeling of GMP differentiation based on single\u2010cell genealogies",
-  "year": 2012,
-  "cites": 21,
+  "doi": "10.1016/j.celrep.2018.02.046",
+  "title": "DiSNE Movie Visualization and Assessment of Clonal Kinetics Reveal Multiple Trajectories of Dendritic Cell Development",
+  "year": 2018,
+  "cites": 43,
   "status": "open",
-  "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1742-4658.2012.08664.x",
-  "pub": "Wiley",
+  "url": "http://www.cell.com/article/S2211124718302274/pdf",
+  "pub": "Cell Press",
   "read": false
  },
  {
@@ -860,19 +966,40 @@
   "score": 12,
   "groups": [
    "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
+   "clonal_tracing",
+   "fate_memory",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Buggenthin 2017 (prospective fate)"
+  ],
+  "doi": "10.1038/s41598-018-36508-8",
+  "title": "A single-cell micro-trench platform for automatic monitoring of cell division and apoptosis after chemotherapeutic drug administration",
+  "year": 2018,
+  "cites": 5,
+  "status": "open",
+  "url": "https://www.nature.com/articles/s41598-018-36508-8.pdf",
+  "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing",
+   "imaging_ssl",
+   "inference_identifiability"
   ],
   "via": [
    "cites Rieger 2009 (cytokines instruct)"
   ],
-  "doi": "10.1189/jlb.2a1214-619r",
-  "title": "Instructive role of M-CSF on commitment of bipotent myeloid cells involves ERK-dependent positive and negative signaling",
+  "doi": "10.1186/s12918-015-0208-5",
+  "title": "Inference of spatiotemporal effects on cellular state transitions from time-lapse microscopy",
   "year": 2015,
-  "cites": 4,
+  "cites": 3,
   "status": "open",
-  "url": "https://jlb.onlinelibrary.wiley.com/doi/pdfdirect/10.1189/jlb.2A1214-619R",
-  "pub": "Oxford University Press",
+  "url": "https://bmcsystbiol.biomedcentral.com/counter/pdf/10.1186/s12918-015-0208-5",
+  "pub": "Springer Science+Business Media",
   "read": false
  },
  {
@@ -918,6 +1045,26 @@
   "score": 11,
   "groups": [
    "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Buggenthin 2017 (prospective fate)",
+   "cited by Endele 2017 (CSF-1 instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1038/nature18320",
+  "title": "Early myeloid lineage choice is not initiated by random PU.1 to GATA1 protein ratios",
+  "year": 2016,
+  "cites": 202,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "instruction_vs_selection",
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -951,6 +1098,26 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/4539021",
   "pub": "Wiley",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cited by Bonham-Carter 2024 (proliferation bias)",
+   "cited by LCL 2024 (lineage contrastive)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1038/s41587-022-01209-1",
+  "title": "CoSpar identifies early cell fate biases from single-cell transcriptomic and lineage information",
+  "year": 2022,
+  "cites": 112,
+  "status": "open",
+  "url": "https://www.biorxiv.org/content/biorxiv/early/2021/05/07/2021.05.06.443026.full.pdf",
+  "pub": "Nature Portfolio",
   "read": false
  },
  {
@@ -1033,6 +1200,25 @@
  {
   "score": 11,
   "groups": [
+   "instruction_vs_selection",
+   "imaging_ssl",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1016/j.cels.2016.11.001",
+  "title": "Analysis of Cell Lineage Trees by Exact Bayesian Inference Identifies Negative Autoregulation of Nanog in Mouse Embryonic Stem Cells",
+  "year": 2016,
+  "cites": 27,
+  "status": "open",
+  "url": "http://www.cell.com/article/S2405471216303659/pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte",
    "fate_memory"
@@ -1105,6 +1291,25 @@
   "status": "open",
   "url": "https://link.springer.com/content/pdf/10.1007/s43152-020-00001-0.pdf",
   "pub": "Springer Science+Business Media",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1039/c4ib00158c",
+  "title": "Marker-free detection of progenitor cell differentiation by analysis of Brownian motion in micro-wells",
+  "year": 2014,
+  "cites": 4,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Oxford University Press",
   "read": false
  },
  {
@@ -1246,6 +1451,26 @@
  {
   "score": 10,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1101/cshperspect.a021857",
+  "title": "CSF-1 Receptor Signaling in Myeloid Cells",
+  "year": 2014,
+  "cites": 809,
+  "status": "open",
+  "url": "http://cshperspectives.cshlp.org/content/6/6/a021857.full.pdf",
+  "pub": "Cold Spring Harbor Laboratory Press",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
    "instruction_vs_selection",
    "csf_signalling",
    "neutrophil_monocyte"
@@ -1278,6 +1503,42 @@
   "cites": 247,
   "status": "open",
   "url": "https://ashpublications.org/blood/article-pdf/115/13/2610/1324089/zh801310002610.pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1084/jem.190.4.497",
+  "title": "Novel Point Mutation in the Extracellular Domain of the Granulocyte Colony-Stimulating Factor (G-Csf) Receptor in a Case of Severe Congenital Neutropenia Hyporesponsive to G-Csf Treatment",
+  "year": 1999,
+  "cites": 83,
+  "status": "open",
+  "url": "https://rupress.org/jem/article-pdf/190/4/497/1122949/99-0161.pdf",
+  "pub": "Rockefeller University Press",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1182/blood-2006-07-037572",
+  "title": "Protein kinase B (c-akt) regulates hematopoietic lineage choice decisions during myelopoiesis",
+  "year": 2007,
+  "cites": 73,
+  "status": "open",
+  "url": "https://ashpublications.org/blood/article-pdf/111/1/112/1219895/zh800108000112.pdf",
   "pub": "Elsevier BV",
   "read": false
  },
@@ -1336,6 +1597,25 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41467-019-13666-5.pdf",
   "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Olsson 2016 (mixed-lineage states)"
+  ],
+  "doi": "10.1371/journal.pbio.2001867",
+  "title": "Integrated time-lapse and single-cell transcription studies highlight the variable and dynamic nature of human hematopoietic cell fate commitment",
+  "year": 2017,
+  "cites": 52,
+  "status": "open",
+  "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.2001867&type=printable",
+  "pub": "Public Library of Science",
   "read": false
  },
  {
@@ -1550,6 +1830,25 @@
  {
   "score": 10,
   "groups": [
+   "instruction_vs_selection",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1101/2022.09.12.507691",
+  "title": "Pyro-Velocity: Probabilistic RNA Velocity inference from single-cell data",
+  "year": 2022,
+  "cites": 24,
+  "status": "open",
+  "url": "https://www.biorxiv.org/content/biorxiv/early/2022/10/14/2022.09.12.507691.full.pdf",
+  "pub": "Cold Spring Harbor Laboratory",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -1626,24 +1925,6 @@
   "score": 10,
   "groups": [
    "instruction_vs_selection",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1093/bioinformatics/btv040",
-  "title": "Factor graph analysis of live cell\u2013imaging data reveals mechanisms of cell fate decisions",
-  "year": 2015,
-  "cites": 11,
-  "status": "open",
-  "url": "https://academic.oup.com/bioinformatics/article-pdf/31/11/1816/17122141/btv040.pdf",
-  "pub": "Oxford University Press",
-  "read": false
- },
- {
-  "score": 10,
-  "groups": [
-   "instruction_vs_selection",
    "clonal_tracing",
    "fate_memory"
   ],
@@ -1657,6 +1938,26 @@
   "status": "open",
   "url": "https://www.biorxiv.org/content/biorxiv/early/2022/05/12/2022.05.12.491602.full.pdf",
   "pub": "Cold Spring Harbor Laboratory",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)",
+   "cites Rieger 2009 (cytokines instruct)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1182/blood.2024028195",
+  "title": "Clonal tracing of blood stem cells across mouse and human lifespans",
+  "year": 2025,
+  "cites": 4,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -1733,6 +2034,25 @@
   "status": "open",
   "url": "https://reference-global.com/2/v2/download/article/10.2478/jvetres-2024-0012.pdf",
   "pub": "De Gruyter Open",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "fate_memory"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.4049/jimmunol.2001146",
+  "title": "Severe Inflammatory Reactions in Mice Expressing a GFI1P2A Mutant Defective in Binding to the Histone Demethylase KDM1A (LSD1)",
+  "year": 2021,
+  "cites": 2,
+  "status": "paywalled",
+  "url": null,
+  "pub": "American Association of Immunologists",
   "read": false
  },
  {
@@ -1817,6 +2137,24 @@
    "neutrophil_monocyte"
   ],
   "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1182/blood.v84.6.1737.1737",
+  "title": "Mice lacking granulocyte colony-stimulating factor have chronic neutropenia, granulocyte and macrophage progenitor cell deficiency, and impaired neutrophil mobilization",
+  "year": 1994,
+  "cites": 956,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
    "cited by Mossadegh-Keller 2013 (M-CSF instructs)",
    "cited by Rieger 2009 (cytokines instruct)"
   ],
@@ -1827,6 +2165,25 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2200848",
   "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Rieger 2009 (cytokines instruct)",
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1016/s1074-7613(00)80504-x",
+  "title": "Impaired Production and Increased Apoptosis of Neutrophils in Granulocyte Colony-Stimulating Factor Receptor\u2013Deficient Mice",
+  "year": 1996,
+  "cites": 504,
+  "status": "open",
+  "url": "http://www.cell.com/article/S107476130080504X/pdf",
+  "pub": "Cell Press",
   "read": false
  },
  {
@@ -1850,25 +2207,6 @@
  {
   "score": 9,
   "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cited by Buggenthin 2017 (prospective fate)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1038/nature18320",
-  "title": "Early myeloid lineage choice is not initiated by random PU.1 to GATA1 protein ratios",
-  "year": 2016,
-  "cites": 202,
-  "status": "paywalled",
-  "url": null,
-  "pub": "Nature Portfolio",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
    "csf_signalling",
    "neutrophil_monocyte",
    "clonal_tracing"
@@ -1883,6 +2221,25 @@
   "status": "paywalled",
   "url": null,
   "pub": "National Institutes of Health",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1084/jem.20021417",
+  "title": "The Transcriptional Repressor Gfi1 Affects Development of Early, Uncommitted c-Kit+ T Cell Progenitors and CD4/CD8 Lineage Decision in the Thymus",
+  "year": 2003,
+  "cites": 165,
+  "status": "open",
+  "url": "https://rupress.org/jem/article-pdf/197/7/831/1144293/jem1977831.pdf",
+  "pub": "Rockefeller University Press",
   "read": false
  },
  {
@@ -1982,25 +2339,6 @@
   "score": 9,
   "groups": [
    "instruction_vs_selection",
-   "clonal_tracing"
-  ],
-  "via": [
-   "cited by Bonham-Carter 2024 (proliferation bias)",
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1038/s41587-022-01209-1",
-  "title": "CoSpar identifies early cell fate biases from single-cell transcriptomic and lineage information",
-  "year": 2022,
-  "cites": 112,
-  "status": "open",
-  "url": "https://www.biorxiv.org/content/biorxiv/early/2021/05/07/2021.05.06.443026.full.pdf",
-  "pub": "Nature Portfolio",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
-   "instruction_vs_selection",
    "clonal_tracing",
    "fate_memory"
   ],
@@ -2020,18 +2358,19 @@
   "score": 9,
   "groups": [
    "csf_signalling",
-   "neutrophil_monocyte"
+   "clonal_tracing",
+   "imaging_ssl"
   ],
   "via": [
    "cites Rieger 2009 (cytokines instruct)"
   ],
-  "doi": "10.1182/blood-2009-04-216390",
-  "title": "The transcription factors STAT5A/B regulate GM-CSF\u2013mediated granulopoiesis",
-  "year": 2009,
-  "cites": 70,
+  "doi": "10.1073/pnas.1312509110",
+  "title": "Incomplete cytokinesis and re-fusion of small mononucleated Hodgkin cells lead to giant multinucleated Reed\u2013Sternberg cells",
+  "year": 2013,
+  "cites": 85,
   "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2780307",
-  "pub": "Elsevier BV",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/3870723",
+  "pub": "National Academy of Sciences",
   "read": false
  },
  {
@@ -2149,25 +2488,6 @@
  {
   "score": 9,
   "groups": [
-   "clonal_tracing",
-   "fate_memory"
-  ],
-  "via": [
-   "cited by Weinreb 2020 (LARRY)",
-   "cites Olsson 2016 (mixed-lineage states)"
-  ],
-  "doi": "10.1016/j.celrep.2018.02.046",
-  "title": "DiSNE Movie Visualization and Assessment of Clonal Kinetics Reveal Multiple Trajectories of Dendritic Cell Development",
-  "year": 2018,
-  "cites": 43,
-  "status": "open",
-  "url": "http://www.cell.com/article/S2211124718302274/pdf",
-  "pub": "Cell Press",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
    "instruction_vs_selection",
    "csf_signalling",
    "neutrophil_monocyte"
@@ -2182,6 +2502,25 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/22719",
   "pub": "National Academy of Sciences",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1016/j.yexcr.2014.07.011",
+  "title": "Instruction of hematopoietic lineage choice by cytokine signaling",
+  "year": 2014,
+  "cites": 40,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -2262,6 +2601,24 @@
  {
   "score": 9,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.2741/2160",
+  "title": "Src kinases in G-CSF Receptor Signaling",
+  "year": 2006,
+  "cites": 25,
+  "status": "open",
+  "url": "https://article.imrpress.com/bri/Landmark/articles/pdf/Landmark2160.pdf",
+  "pub": "Frontiers in Bioscience",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
    "clonal_tracing",
    "fate_memory"
   ],
@@ -2313,6 +2670,62 @@
   "status": "open",
   "url": "https://doi.org/10.15252/emmm.202317694",
   "pub": "Springer Nature",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.2741/2085",
+  "title": "Activation of mitogen-activated protein kinase pathways by the granulocyte colony-stimulating factor receptor: mechanisms and functional consequences",
+  "year": 2006,
+  "cites": 18,
+  "status": "open",
+  "url": "https://article.imrpress.com/bri/Landmark/articles/pdf/Landmark2085.pdf",
+  "pub": "Frontiers in Bioscience",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1182/blood.2021012918",
+  "title": "Nf\u03baB signaling dynamics and their target genes differ between mouse blood cell types and induce distinct cell behavior",
+  "year": 2022,
+  "cites": 16,
+  "status": "open",
+  "url": "https://ashpublications.org/blood/article-pdf/140/2/99/1906708/bloodbld2021012918.pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)",
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.5772/53589",
+  "title": "Regulation of Teleost Macrophage and Neutrophil Cell Development by Growth Factors and Transcription Factors",
+  "year": 2012,
+  "cites": 16,
+  "status": "open",
+  "url": "https://www.intechopen.com/citation-pdf-url/41565",
+  "pub": "InTech eBooks",
   "read": false
  },
  {
@@ -2374,6 +2787,24 @@
  {
   "score": 9,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1038/s41598-018-37402-z",
+  "title": "Gfi1-Mediated Repression of c-Fos, Egr-1 and Egr-2, and Inhibition of ERK1/2 Signaling Contribute to the Role of Gfi1 in Granulopoiesis",
+  "year": 2019,
+  "cites": 15,
+  "status": "open",
+  "url": "https://www.nature.com/articles/s41598-018-37402-z.pdf",
+  "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
    "neutrophil_monocyte",
    "clonal_tracing"
   ],
@@ -2406,6 +2837,25 @@
   "status": "open",
   "url": "https://doi.org/10.1093/nar/gkae913",
   "pub": "Oxford University Press",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1038/srep27100",
+  "title": "Quantifying intrinsic and extrinsic control of single-cell fates in cancer and stem/progenitor cell pedigrees with competing risks analysis",
+  "year": 2016,
+  "cites": 13,
+  "status": "open",
+  "url": "https://www.nature.com/articles/srep27100.pdf",
+  "pub": "Nature Portfolio",
   "read": false
  },
  {
@@ -2504,25 +2954,6 @@
   "score": 9,
   "groups": [
    "instruction_vs_selection",
-   "clonal_tracing",
-   "fate_memory"
-  ],
-  "via": [
-   "cites Buggenthin 2017 (prospective fate)"
-  ],
-  "doi": "10.1038/s41598-018-36508-8",
-  "title": "A single-cell micro-trench platform for automatic monitoring of cell division and apoptosis after chemotherapeutic drug administration",
-  "year": 2018,
-  "cites": 5,
-  "status": "open",
-  "url": "https://www.nature.com/articles/s41598-018-36508-8.pdf",
-  "pub": "Nature Portfolio",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
-   "instruction_vs_selection",
    "csf_signalling"
   ],
   "via": [
@@ -2536,25 +2967,6 @@
   "status": "open",
   "url": "https://www.mdpi.com/2306-5354/8/5/67/pdf?version=1621067634",
   "pub": "Multidisciplinary Digital Publishing Institute",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
-   "instruction_vs_selection",
-   "clonal_tracing",
-   "inference_identifiability"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1186/s12918-015-0208-5",
-  "title": "Inference of spatiotemporal effects on cellular state transitions from time-lapse microscopy",
-  "year": 2015,
-  "cites": 3,
-  "status": "open",
-  "url": "https://bmcsystbiol.biomedcentral.com/counter/pdf/10.1186/s12918-015-0208-5",
-  "pub": "Springer Science+Business Media",
   "read": false
  },
  {
@@ -2598,24 +3010,6 @@
  {
   "score": 9,
   "groups": [
-   "clonal_tracing",
-   "fate_memory"
-  ],
-  "via": [
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1101/2024.10.28.620670",
-  "title": "Leveraging Lineage Barcodes as Natural Augmentations for Contrastive Learning of Cell Fate in scRNA-seq Data",
-  "year": 2024,
-  "cites": 1,
-  "status": "open",
-  "url": "http://dx.doi.org/10.1101/2024.10.28.620670",
-  "pub": "Cold Spring Harbor Laboratory",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -2647,6 +3041,25 @@
   "cites": 0,
   "status": "paywalled",
   "url": null,
+  "pub": "unknown",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.21248/gups.7533",
+  "title": "The functional and molecular role of transglutaminase 2 in hematopoietic stem and progenitor cells",
+  "year": 2023,
+  "cites": 0,
+  "status": "open",
+  "url": "http://publikationen.ub.uni-frankfurt.de/files/75332/Yu_Weijia_Dissertation.pdf",
   "pub": "unknown",
   "read": false
  },
@@ -2685,25 +3098,6 @@
   "status": "open",
   "url": "http://www.cell.com/article/S0092867417313855/pdf",
   "pub": "Cell Press",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1101/cshperspect.a021857",
-  "title": "CSF-1 Receptor Signaling in Myeloid Cells",
-  "year": 2014,
-  "cites": 809,
-  "status": "open",
-  "url": "http://cshperspectives.cshlp.org/content/6/6/a021857.full.pdf",
-  "pub": "Cold Spring Harbor Laboratory Press",
   "read": false
  },
  {
@@ -2763,6 +3157,24 @@
  {
   "score": 8,
   "groups": [
+   "neutrophil_monocyte",
+   "fate_memory"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1182/blood-2015-06-655043",
+  "title": "From cytopenia to leukemia: the role of Gfi1 and Gfi1b in blood formation",
+  "year": 2015,
+  "cites": 110,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/4671106",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
    "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
@@ -2800,6 +3212,24 @@
  {
   "score": 8,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1074/jbc.m607613200",
+  "title": "The Transcriptional Repressor GFI-1 Antagonizes PU.1 Activity through Protein-Protein Interaction",
+  "year": 2007,
+  "cites": 93,
+  "status": "open",
+  "url": "http://www.jbc.org/article/S0021925820522576/pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
    "clonal_tracing",
    "fate_memory"
   ],
@@ -2813,6 +3243,24 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41587-023-01931-4.pdf",
   "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1161/atvbaha.120.315255",
+  "title": "Local M-CSF (Macrophage Colony-Stimulating Factor) Expression Regulates Macrophage Proliferation and Apoptosis in Atherosclerosis",
+  "year": 2020,
+  "cites": 83,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/7769919",
+  "pub": "Lippincott Williams & Wilkins",
   "read": false
  },
  {
@@ -2874,6 +3322,42 @@
  {
   "score": 8,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1182/blood-2007-03-081448",
+  "title": "Transcription factor Gfi-1 induced by G-CSF is a negative regulator of CXCR4 in myeloid cells",
+  "year": 2007,
+  "cites": 68,
+  "status": "open",
+  "url": "https://ashpublications.org/blood/article-pdf/110/7/2276/483576/zh801907002276.pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1182/blood.v91.6.1924",
+  "title": "Proliferation Signaling and Activation of Shc, p21Ras, and Myc Via Tyrosine 764 of Human Granulocyte Colony-Stimulating Factor Receptor",
+  "year": 1998,
+  "cites": 67,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
    "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
@@ -2906,6 +3390,24 @@
   "status": "open",
   "url": "https://doi.org/10.1097/moh.0000000000000250",
   "pub": "Lippincott Williams & Wilkins",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1182/blood-2014-11-612465",
+  "title": "GATA2 is critical for the maintenance of cellular identity in differentiated mast cells derived from mouse bone marrow",
+  "year": 2015,
+  "cites": 51,
+  "status": "open",
+  "url": "https://tsukuba.repo.nii.ac.jp/record/39413/files/DB02776.pdf",
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -3039,24 +3541,6 @@
   "score": 8,
   "groups": [
    "instruction_vs_selection",
-   "inference_identifiability"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1016/j.cels.2016.11.001",
-  "title": "Analysis of Cell Lineage Trees by Exact Bayesian Inference Identifies Negative Autoregulation of Nanog in Mouse Embryonic Stem Cells",
-  "year": 2016,
-  "cites": 27,
-  "status": "open",
-  "url": "http://www.cell.com/article/S2405471216303659/pdf",
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
-   "instruction_vs_selection",
    "csf_signalling"
   ],
   "via": [
@@ -3069,24 +3553,6 @@
   "status": "open",
   "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1000518&type=printable",
   "pub": "Public Library of Science",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
-   "instruction_vs_selection",
-   "inference_identifiability"
-  ],
-  "via": [
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1101/2022.09.12.507691",
-  "title": "Pyro-Velocity: Probabilistic RNA Velocity inference from single-cell data",
-  "year": 2022,
-  "cites": 24,
-  "status": "open",
-  "url": "https://www.biorxiv.org/content/biorxiv/early/2022/10/14/2022.09.12.507691.full.pdf",
-  "pub": "Cold Spring Harbor Laboratory",
   "read": false
  },
  {
@@ -3167,6 +3633,25 @@
   "score": 8,
   "groups": [
    "instruction_vs_selection",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1039/d0lc00687d",
+  "title": "An automated microfluidic system for efficient capture of rare cells and rapid flow-free stimulation",
+  "year": 2020,
+  "cites": 15,
+  "status": "open",
+  "url": "https://pubs.rsc.org/en/content/articlepdf/2020/lc/d0lc00687d",
+  "pub": "Royal Society of Chemistry",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "instruction_vs_selection",
    "csf_signalling"
   ],
   "via": [
@@ -3216,6 +3701,24 @@
   "status": "open",
   "url": "https://doi.org/10.1016/j.crmeth.2024.100763",
   "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1021/acsptsci.5c00007",
+  "title": "Role of Colony Stimulating Factor 1 (CSF-1) and Its Receptor CSF1R: Macrophage Repolarization for Glioblastoma Treatment",
+  "year": 2025,
+  "cites": 12,
+  "status": "open",
+  "url": "https://doi.org/10.1021/acsptsci.5c00007",
+  "pub": "American Chemical Society",
   "read": false
  },
  {
@@ -3514,43 +4017,6 @@
  {
   "score": 8,
   "groups": [
-   "instruction_vs_selection",
-   "clonal_tracing"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)",
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1182/blood.2024028195",
-  "title": "Clonal tracing of blood stem cells across mouse and human lifespans",
-  "year": 2025,
-  "cites": 4,
-  "status": "paywalled",
-  "url": null,
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1039/c4ib00158c",
-  "title": "Marker-free detection of progenitor cell differentiation by analysis of Brownian motion in micro-wells",
-  "year": 2014,
-  "cites": 4,
-  "status": "paywalled",
-  "url": null,
-  "pub": "Oxford University Press",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -3788,6 +4254,24 @@
  {
   "score": 7,
   "groups": [
+   "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cited by Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1182/blood.v96.2.719",
+  "title": "Insertion of enhanced green fluorescent protein into the lysozyme gene creates mice with green fluorescent granulocytes and macrophages",
+  "year": 2000,
+  "cites": 739,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
    "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
@@ -3806,24 +4290,6 @@
  {
   "score": 7,
   "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cited by Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1016/s1074-7613(00)80504-x",
-  "title": "Impaired Production and Increased Apoptosis of Neutrophils in Granulocyte Colony-Stimulating Factor Receptor\u2013Deficient Mice",
-  "year": 1996,
-  "cites": 504,
-  "status": "open",
-  "url": "http://www.cell.com/article/S107476130080504X/pdf",
-  "pub": "Cell Press",
-  "read": false
- },
- {
-  "score": 7,
-  "groups": [
    "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
@@ -3837,6 +4303,24 @@
   "status": "open",
   "url": "https://rupress.org/jem/article-pdf/206/3/595/1199335/jem_20081385.pdf",
   "pub": "Rockefeller University Press",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)"
+  ],
+  "doi": "10.1016/j.ccell.2021.05.005",
+  "title": "Single-cell lineage tracing of metastatic cancer reveals selection of hybrid EMT states",
+  "year": 2021,
+  "cites": 373,
+  "status": "open",
+  "url": "http://www.cell.com/article/S1535610821002713/pdf",
+  "pub": "Cell Press",
   "read": false
  },
  {
@@ -3986,6 +4470,60 @@
  {
   "score": 7,
   "groups": [
+   "neutrophil_monocyte",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1084/jem.168.1.389",
+  "title": "Relationships between B cell and myeloid differentiation. Studies with a B lymphocyte progenitor line, HAFTL-1.",
+  "year": 1988,
+  "cites": 104,
+  "status": "open",
+  "url": "https://rupress.org/jem/article-pdf/168/1/389/1668663/389.pdf",
+  "pub": "Rockefeller University Press",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "imaging_ssl",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)"
+  ],
+  "doi": "10.1093/bib/bbac377",
+  "title": "Self-supervised contrastive learning for integrative single cell RNA-seq data analysis",
+  "year": 2022,
+  "cites": 95,
+  "status": "open",
+  "url": "https://academic.oup.com/bib/article-pdf/23/5/bbac377/45937750/bbac377.pdf",
+  "pub": "Oxford University Press",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "fate_memory",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)"
+  ],
+  "doi": "10.1186/s12859-021-04210-8",
+  "title": "Contrastive self-supervised clustering of scRNA-seq data",
+  "year": 2021,
+  "cites": 93,
+  "status": "open",
+  "url": "https://bmcbioinformatics.biomedcentral.com/track/pdf/10.1186/s12859-021-04210-8",
+  "pub": "BioMed Central",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
    "instruction_vs_selection",
    "csf_signalling"
   ],
@@ -4022,6 +4560,42 @@
  {
   "score": 7,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "",
+  "title": "Uncoupling of the proliferation and differentiation signals mediated by the murine macrophage colony-stimulating factor receptor expressed in myeloid FDC-P1 cells.",
+  "year": 1995,
+  "cites": 73,
+  "status": "paywalled",
+  "url": null,
+  "pub": "National Institutes of Health",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "imaging_ssl",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)"
+  ],
+  "doi": "10.1038/s42256-022-00518-z",
+  "title": "Contrastive learning enables rapid mapping to multimodal single-cell atlas of multimillion scale",
+  "year": 2022,
+  "cites": 64,
+  "status": "open",
+  "url": "https://www.nature.com/articles/s42256-022-00518-z.pdf",
+  "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
    "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
@@ -4053,6 +4627,24 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/8212828",
   "pub": "The Journal of Pathology",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1074/jbc.m610938200",
+  "title": "c-Fms Tyrosine 559 Is a Major Mediator of M-CSF-induced Proliferation of Primary Macrophages",
+  "year": 2007,
+  "cites": 60,
+  "status": "open",
+  "url": "https://doi.org/10.1074/jbc.m610938200",
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -4148,19 +4740,19 @@
  {
   "score": 7,
   "groups": [
-   "instruction_vs_selection",
-   "clonal_tracing"
+   "csf_signalling",
+   "neutrophil_monocyte"
   ],
   "via": [
-   "cites Olsson 2016 (mixed-lineage states)"
+   "cited by Endele 2017 (CSF-1 instructs)"
   ],
-  "doi": "10.1371/journal.pbio.2001867",
-  "title": "Integrated time-lapse and single-cell transcription studies highlight the variable and dynamic nature of human hematopoietic cell fate commitment",
-  "year": 2017,
-  "cites": 52,
+  "doi": "10.1074/jbc.m610937200",
+  "title": "M-CSF Regulates the Cytoskeleton via Recruitment of a Multimeric Signaling Complex to c-Fms Tyr-559/697/721",
+  "year": 2007,
+  "cites": 49,
   "status": "open",
-  "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.2001867&type=printable",
-  "pub": "Public Library of Science",
+  "url": "https://doi.org/10.1074/jbc.m610937200",
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -4197,24 +4789,6 @@
   "status": "open",
   "url": "http://www.cell.com/article/S2211124724001013/pdf",
   "pub": "Cell Press",
-  "read": false
- },
- {
-  "score": 7,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1016/j.yexcr.2014.07.011",
-  "title": "Instruction of hematopoietic lineage choice by cytokine signaling",
-  "year": 2014,
-  "cites": 40,
-  "status": "paywalled",
-  "url": null,
-  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -4287,6 +4861,24 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/6252173",
   "pub": "Lippincott Williams & Wilkins",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "instruction_vs_selection",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1021/acs.analchem.8b00312",
+  "title": "Automated Microfluidic System for Dynamic Stimulation and Tracking of Single Cells",
+  "year": 2018,
+  "cites": 29,
+  "status": "paywalled",
+  "url": null,
+  "pub": "American Chemical Society",
   "read": false
  },
  {
@@ -4395,24 +4987,6 @@
   "status": "open",
   "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/joa.12479",
   "pub": "Wiley",
-  "read": false
- },
- {
-  "score": 7,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.5772/53589",
-  "title": "Regulation of Teleost Macrophage and Neutrophil Cell Development by Growth Factors and Transcription Factors",
-  "year": 2012,
-  "cites": 16,
-  "status": "open",
-  "url": "https://www.intechopen.com/citation-pdf-url/41565",
-  "pub": "InTech eBooks",
   "read": false
  },
  {
@@ -4854,6 +5428,24 @@
    "neutrophil_monocyte"
   ],
   "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1002/ptr.70026",
+  "title": "IL \u201023 Receptor Agonism by Mulberroside C Activates the RASGRP1 / RAS / ERK Pathway Contributing to Leukopenia Treatments",
+  "year": 2025,
+  "cites": 1,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Wiley",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
    "cites Rieger 2009 (cytokines instruct)"
   ],
   "doi": "10.26481/dis.20241213ml",
@@ -5066,6 +5658,24 @@
  {
   "score": 6,
   "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1128/mcb.16.8.4024",
+  "title": "Gfi -1 Encodes a Nuclear Zinc Finger Protein That Binds DNA and Functions as a Transcriptional Repressor",
+  "year": 1996,
+  "cites": 303,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/231398",
+  "pub": "Taylor & Francis",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "neutrophil_monocyte",
    "clonal_tracing"
   ],
@@ -5078,6 +5688,42 @@
   "cites": 276,
   "status": "paywalled",
   "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "neutrophil_monocyte",
+   "fate_memory"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1182/blood-2009-06-229443",
+  "title": "Constitutively active AKT depletes hematopoietic stem cells and induces leukemia in mice",
+  "year": 2009,
+  "cites": 272,
+  "status": "open",
+  "url": "https://ashpublications.org/blood/article-pdf/115/7/1406/1459734/zh800710001406.pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "clonal_tracing",
+   "fate_memory"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)"
+  ],
+  "doi": "10.1016/j.cels.2021.04.005",
+  "title": "Hotspot identifies informative gene modules across modalities of single-cell genomics",
+  "year": 2021,
+  "cites": 258,
+  "status": "open",
+  "url": "http://www.cell.com/article/S2405471221001149/pdf",
   "pub": "Elsevier BV",
   "read": false
  },
@@ -5157,6 +5803,42 @@
   "score": 6,
   "groups": [
    "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cited by Buggenthin 2017 (prospective fate)"
+  ],
+  "doi": "10.1073/pnas.0602548103",
+  "title": "High-resolution video monitoring of hematopoietic stem cells cultured in single-cell arrays identifies new features of self-renewal",
+  "year": 2006,
+  "cites": 120,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/1461403",
+  "pub": "National Academy of Sciences",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1128/mcb.10.6.2703",
+  "title": "Macrophage Lineage Switching of Murine Early Pre-B Lymphoid Cells Expressing Transduced fms Genes",
+  "year": 1990,
+  "cites": 118,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/360630",
+  "pub": "Taylor & Francis",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "neutrophil_monocyte",
    "fate_memory"
   ],
   "via": [
@@ -5187,6 +5869,42 @@
   "status": "open",
   "url": "https://www.frontiersin.org/articles/10.3389/fimmu.2020.01540/pdf",
   "pub": "Frontiers Media",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1182/blood-2004-10-3916",
+  "title": "Phosphorylation of RasGRP3 on threonine 133 provides a mechanistic link between PKC and Ras signaling systems in B cells",
+  "year": 2005,
+  "cites": 109,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "fate_memory",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1242/dev.074591",
+  "title": "The role of Pax6 in regulating the orientation and mode of cell division of progenitors in the mouse cerebral cortex",
+  "year": 2011,
+  "cites": 107,
+  "status": "paywalled",
+  "url": null,
+  "pub": "The Company of Biologists",
   "read": false
  },
  {
@@ -5223,6 +5941,24 @@
   "status": "open",
   "url": "https://link.springer.com/content/pdf/10.1007/s40778-018-0139-3.pdf",
   "pub": "Springer Science+Business Media",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1128/mcb.20.18.6779-6798.2000",
+  "title": "Both Src-Dependent and -Independent Mechanisms Mediate Phosphatidylinositol 3-Kinase Regulation of Colony-Stimulating Factor 1-Activated Mitogen-Activated Protein Kinases in Myeloid Progenitors",
+  "year": 2000,
+  "cites": 101,
+  "status": "open",
+  "url": "http://europepmc.org/articles/PMC86204",
+  "pub": "Taylor & Francis",
   "read": false
  },
  {
@@ -5318,19 +6054,19 @@
  {
   "score": 6,
   "groups": [
-   "csf_signalling",
+   "instruction_vs_selection",
    "clonal_tracing"
   ],
   "via": [
-   "cites Rieger 2009 (cytokines instruct)"
+   "cited by LCL 2024 (lineage contrastive)"
   ],
-  "doi": "10.1073/pnas.1312509110",
-  "title": "Incomplete cytokinesis and re-fusion of small mononucleated Hodgkin cells lead to giant multinucleated Reed\u2013Sternberg cells",
-  "year": 2013,
-  "cites": 85,
+  "doi": "10.1182/hematology.2019000045",
+  "title": "Inflammatory bone marrow microenvironment",
+  "year": 2019,
+  "cites": 84,
   "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/3870723",
-  "pub": "National Academy of Sciences",
+  "url": "https://ashpublications.org/hematology/article-pdf/2019/1/294/1546194/hem2019000045c.pdf",
+  "pub": "American Society of Hematology",
   "read": false
  },
  {
@@ -5349,6 +6085,24 @@
   "status": "open",
   "url": "https://ashpublications.org/blood/article-pdf/128/14/1829/1396067/1829.pdf",
   "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1042/bst0340858",
+  "title": "Regulation of Ras in lymphocytes: get a GRP",
+  "year": 2006,
+  "cites": 79,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Portland Press",
   "read": false
  },
  {
@@ -5373,6 +6127,24 @@
   "score": 6,
   "groups": [
    "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1002/jlb.1ru1219-504rr",
+  "title": "Transcriptional regulation of neutrophil differentiation and function during inflammation",
+  "year": 2020,
+  "cites": 67,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Oxford University Press",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
    "fate_memory"
   ],
   "via": [
@@ -5385,6 +6157,42 @@
   "status": "paywalled",
   "url": null,
   "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "fate_memory"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1242/jcs.075309",
+  "title": "Phosphorylation of CSF-1R Y721 mediates its association with PI3K to regulate macrophage motility and enhancement of tumor cell invasion",
+  "year": 2011,
+  "cites": 66,
+  "status": "open",
+  "url": "https://journals.biologists.com/jcs/article-pdf/124/12/2021/1446903/2021.pdf",
+  "pub": "The Company of Biologists",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "neutrophil_monocyte",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1002/stem.2282",
+  "title": "DNA-damage response gene GADD45A induces differentiation in hematopoietic stem cells without inhibiting cell cycle or survival",
+  "year": 2016,
+  "cites": 62,
+  "status": "open",
+  "url": "https://academic.oup.com/stmcls/article-pdf/34/3/699/42050916/stmcls_34_3_699.pdf",
+  "pub": "Oxford University Press",
   "read": false
  },
  {
@@ -5408,6 +6216,24 @@
  {
   "score": 6,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.1074/jbc.m314170200",
+  "title": "A Juxtamembrane Tyrosine in the Colony Stimulating Factor-1 Receptor Regulates Ligand-induced Src Association, Receptor Kinase Function, and Down-regulation",
+  "year": 2004,
+  "cites": 62,
+  "status": "open",
+  "url": "https://doi.org/10.1074/jbc.m314170200",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "instruction_vs_selection",
    "csf_signalling"
   ],
@@ -5421,6 +6247,24 @@
   "status": "open",
   "url": "https://www.nature.com/articles/ncomms9928.pdf",
   "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1074/jbc.m802320200",
+  "title": "Ajuba Functions as a Histone Deacetylase-dependent Co-repressor for Autoregulation of the Growth Factor-independent-1 Transcription Factor",
+  "year": 2008,
+  "cites": 56,
+  "status": "open",
+  "url": "http://www.jbc.org/article/S0021925820569494/pdf",
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -5457,6 +6301,24 @@
   "status": "open",
   "url": "https://www.mdpi.com/2073-4409/12/6/896/pdf?version=1678802869",
   "pub": "Multidisciplinary Digital Publishing Institute",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "imaging_ssl",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Buggenthin 2017 (prospective fate)"
+  ],
+  "doi": "10.1371/journal.pcbi.1005927",
+  "title": "Inferring cell state by quantitative motility analysis reveals a dynamic state system and broken detailed balance",
+  "year": 2018,
+  "cites": 51,
+  "status": "open",
+  "url": "https://doi.org/10.1371/journal.pcbi.1005927",
+  "pub": "Public Library of Science",
   "read": false
  },
  {
@@ -5804,6 +6666,42 @@
  {
   "score": 6,
   "groups": [
+   "instruction_vs_selection",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cited by Buggenthin 2017 (prospective fate)"
+  ],
+  "doi": "10.1159/000114540",
+  "title": "Exploring Hematopoiesis at Single Cell Resolution",
+  "year": 2008,
+  "cites": 27,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Cells Tissues Organs",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1016/j.stemcr.2018.04.019",
+  "title": "Inductive and Selective Effects of GSK3 and MEK Inhibition on Nanog Heterogeneity in Embryonic Stem Cells",
+  "year": 2018,
+  "cites": 25,
+  "status": "open",
+  "url": "http://www.cell.com/article/S2213671118301875/pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -5822,6 +6720,78 @@
  {
   "score": 6,
   "groups": [
+   "fate_memory",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1039/d0lc00165a",
+  "title": "Microfluidic platform for 3D cell culture with live imaging and clone retrieval",
+  "year": 2020,
+  "cites": 24,
+  "status": "open",
+  "url": "https://pubs.rsc.org/en/content/articlepdf/2020/lc/d0lc00165a",
+  "pub": "Royal Society of Chemistry",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "imaging_ssl",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Olsson 2016 (mixed-lineage states)"
+  ],
+  "doi": "10.1093/bib/bbac586",
+  "title": "Inferring gene regulatory networks from single-cell gene expression data via deep multi-view contrastive learning",
+  "year": 2022,
+  "cites": 24,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Oxford University Press",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "fate_memory"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.31083/j.fbl2910349",
+  "title": "Nanoengineered Platform-Based Microenvironment-Triggered Immunotherapy in Cancer Treatment",
+  "year": 2024,
+  "cites": 24,
+  "status": "open",
+  "url": "https://storage.imrpress.com/IMR/FBL23124/application/2768-6698-29-10-349.pdf",
+  "pub": "IMR Press",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1007/s12185-012-1078-x",
+  "title": "Gfi-1 inhibits the expression of eosinophil major basic protein (MBP) during G-CSF-induced neutrophilic differentiation",
+  "year": 2012,
+  "cites": 24,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/3376173",
+  "pub": "Springer Science+Business Media",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -5835,6 +6805,24 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41418-021-00866-0.pdf",
   "pub": "Springer Nature",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1002/jcb.22273",
+  "title": "Analyzing cell fate control by cytokines through continuous single cell biochemistry",
+  "year": 2009,
+  "cites": 21,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Wiley",
   "read": false
  },
  {
@@ -5876,6 +6864,24 @@
  {
   "score": 6,
   "groups": [
+   "csf_signalling",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1242/bio.027730",
+  "title": "Cell tracking in vitro reveals that the extracellular matrix glycoprotein Tenascin-C modulates cell cycle length and differentiation in neural stem/progenitor cells of the developing mouse spinal cord",
+  "year": 2018,
+  "cites": 18,
+  "status": "open",
+  "url": "https://bio.biologists.org/content/biolopen/7/7/bio027730.full.pdf",
+  "pub": "The Company of Biologists",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
@@ -5889,6 +6895,24 @@
   "status": "open",
   "url": "http://www.jci.org/articles/view/172087/files/pdf",
   "pub": "American Society for Clinical Investigation",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by LCL 2024 (lineage contrastive)"
+  ],
+  "doi": "10.1093/stmcls/sxab007",
+  "title": "Microbial Sensing by Hematopoietic Stem and Progenitor Cells",
+  "year": 2022,
+  "cites": 18,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/9072977",
+  "pub": "Oxford University Press",
   "read": false
  },
  {
@@ -6015,24 +7039,6 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41375-021-01267-5.pdf",
   "pub": "Springer Nature",
-  "read": false
- },
- {
-  "score": 6,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1038/srep27100",
-  "title": "Quantifying intrinsic and extrinsic control of single-cell fates in cancer and stem/progenitor cell pedigrees with competing risks analysis",
-  "year": 2016,
-  "cites": 13,
-  "status": "open",
-  "url": "https://www.nature.com/articles/srep27100.pdf",
-  "pub": "Nature Portfolio",
   "read": false
  },
  {
@@ -6309,6 +7315,24 @@
   "score": 6,
   "groups": [
    "instruction_vs_selection",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Buggenthin 2017 (prospective fate)"
+  ],
+  "doi": "10.1109/tcbb.2020.3019042",
+  "title": "Deep Reinforcement Learning-Based Progressive Sequence Saliency Discovery Network for Mitosis Detection In Time-Lapse Phase-Contrast Microscopy Images",
+  "year": 2020,
+  "cites": 9,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Institute of Electrical and Electronics Engineers",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
    "clonal_tracing"
   ],
   "via": [
@@ -6429,6 +7453,24 @@
   "status": "open",
   "url": "http://www.cell.com/article/S2211124724005552/pdf",
   "pub": "Cell Press",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "clonal_tracing",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3389/fcell.2021.643060",
+  "title": "Sulfation of Glycosaminoglycans Modulates the Cell Cycle of Embryonic Mouse Spinal Cord Neural Stem Cells",
+  "year": 2021,
+  "cites": 6,
+  "status": "open",
+  "url": "https://www.frontiersin.org/articles/10.3389/fcell.2021.643060/pdf",
+  "pub": "Frontiers Media",
   "read": false
  },
  {
@@ -6650,6 +7692,24 @@
  {
   "score": 6,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Sierra 2010 (Gfi1 gates G-CSF)"
+  ],
+  "doi": "10.1101/2024.08.22.609132",
+  "title": "Zfp263 is a transcriptional checkpoint of neutrophil development",
+  "year": 2024,
+  "cites": 4,
+  "status": "open",
+  "url": "https://www.biorxiv.org/content/biorxiv/early/2024/08/22/2024.08.22.609132.full.pdf",
+  "pub": "Cold Spring Harbor Laboratory",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "instruction_vs_selection",
    "inference_identifiability"
   ],
@@ -6771,6 +7831,42 @@
   "status": "open",
   "url": "https://doi.org/10.1016/j.isci.2023.107941",
   "pub": "Cell Press",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)"
+  ],
+  "doi": "10.4236/abb.2012.35077",
+  "title": "The role of Src family kinases in mediating M-CSF receptor signaling and monocytic cell survival",
+  "year": 2012,
+  "cites": 2,
+  "status": "open",
+  "url": "https://content.scirp.org/pdf/abb20120500004_38007233.pdf",
+  "pub": "Scientific Research Publishing",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "imaging_ssl",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1038/s41598-026-51809-z",
+  "title": "Lineage topology, replication kinetics and cell cycle synchronization reveal regulated growth dynamics in human bone marrow stromal cell colonies",
+  "year": 2026,
+  "cites": 1,
+  "status": "open",
+  "url": "https://www.nature.com/articles/s41598-026-51809-z.pdf",
+  "pub": "Nature Portfolio",
   "read": false
  },
  {
@@ -6938,24 +8034,6 @@
  {
   "score": 6,
   "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.21248/gups.7533",
-  "title": "The functional and molecular role of transglutaminase 2 in hematopoietic stem and progenitor cells",
-  "year": 2023,
-  "cites": 0,
-  "status": "open",
-  "url": "http://publikationen.ub.uni-frankfurt.de/files/75332/Yu_Weijia_Dissertation.pdf",
-  "pub": "unknown",
-  "read": false
- },
- {
-  "score": 6,
-  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -7113,6 +8191,24 @@
   "status": "open",
   "url": "https://doi.org/10.1016/j.crmeth.2026.101539",
   "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Buggenthin 2017 (prospective fate)"
+  ],
+  "doi": "10.64898/2026.10.06.757119",
+  "title": "Single-Cell Behavioromics Enables Fate Prediction of Individual Hematopoietic Stem Cells",
+  "year": 2026,
+  "cites": 0,
+  "status": "open",
+  "url": "https://www.biorxiv.org/content/biorxiv/early/2026/10/07/2026.10.06.757119.full.pdf",
+  "pub": "Cold Spring Harbor Laboratory",
   "read": false
  },
  {
