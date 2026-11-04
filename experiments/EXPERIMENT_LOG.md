@@ -3269,3 +3269,31 @@ the fit set's counts: full-G 16, full-M 33.
   independence), this points to the full arm sampling a **different subset of clones** from the
   G/M arms, for example a separate split of the day-2 pool, rather than to a different fate rule.
   This is an inference from structure; the paper's design (Science Supp Fig 7) is still unread.
+
+## E37: full arm drawn from a separate split of the clone pool (pre-registered 2026-11-04)
+
+- **Data diagnostic it must explain.** Full-arm clones are co-present with G and M at 0.3-0.4x
+  independence (B12), and every model drawing all arms from one pool overshoots full-arm
+  co-presence by 55-106% while under-filling the full arm (E32, E34, E36; full_n z about -4.5).
+- **Model.** E36 (signed instruction, full arm with its own founder rate nu_full and expansion
+  trait rho_a, full-arm co-presence in the loss, 10 simulations per evaluation) plus a clone-level
+  pool indicator u ~ Bernoulli(phi). A clone with u = 1 seeds the full culture at rate nu_full and
+  the G/M/Epo/SCF cultures at rate nu * eps; a clone with u = 0 seeds the full culture at
+  nu_full * eps and the others at nu. Two new parameters, phi and eps in (0, 1); 23 dimensions.
+  eps = 1 recovers E36 exactly, so the model nests it. Fate, instruction and selection are unchanged.
+- **Fit.** Differential evolution, 500 generations, 6 seeds. Seeds 0-2 warm-start from e36s_s2
+  (the lowest-loss E36 fit passing E33's gate) with phi 0.5 and eps at the upper clip (0.95);
+  seeds 3-5 cold.
+- **Gate (as E36).** E33's gate, plus full-G and full-M co-presence within ±30% of the fit set's
+  counts (16, 33). Co-presence is recovered from the saved z-scores, sim = obs + z * sqrt(max(obs, 4)),
+  as in the E36 analysis.
+- **Readings (best gated fit).**
+  - **Primary pass:** G-M, full-G and full-M all p >= 0.05, and both B7 differences inside the
+    95% range.
+  - **Stability:** a result counts only if at least 3 of 6 seeds pass the gate and agree, with every
+    cross statistic's pass/fail the same in each.
+  - **Mechanism reading:** "separate pool supported" if the gated seeds have eps <= 0.5;
+    "not supported" if eps >= 0.8 in them (the leak is near 1 and the indicator does nothing).
+  - **Secondary (not gating):** full-arm clone count within ±20% of the data.
+- **Power check, if a stable pass:** the held-out look follows only if the shard-1 prediction is
+  stable across the gated seeds and differs from E20's by more than about 0.37.

@@ -1,0 +1,6 @@
+[experiments/results_e18/e37_s0.json] python experiments/e37_pool.py 0 e36s_s2
+[experiments/results_e18/e37_s1.json] python experiments/e37_pool.py 1 e36s_s2
+[experiments/results_e18/e37_s2.json] python experiments/e37_pool.py 2 e36s_s2
+[experiments/results_e18/e37_s3.json] python experiments/e37_pool.py 3 e36s_s2
+[experiments/results_e18/e37_s4.json] python experiments/e37_pool.py 4 e36s_s2
+[experiments/results_e18/e37_s5.json] python experiments/e37_pool.py 5 e36s_s2
