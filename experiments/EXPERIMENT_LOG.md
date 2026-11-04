@@ -4228,3 +4228,32 @@ them on the fit set with the same simulation seeds. **E38 under the protocol: 9/
   (+68 to +117 nats each); under G-CSF, pure-N clones it expects to be monocytic. E38's steep
   fate curve (beta about 9) makes near-deterministic per-clone calls. It matches population
   statistics but is **not calibrated per clone**. Reported, not a test (R2 is spent).
+
+### S2 results (2026-11-04): day-2 transcriptome beats a constant; E38 and DINO-sister add nothing proven
+
+1,127 fit-set clones with 1,927 day-2 cells (most clones have **one** day-2 cell, so true sister
+views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
+
+| | full (236 clones) | G (175) | M (237) | **primary pooled** |
+|---|---|---|---|---|
+| null (constant) | 0.533 | 0.641 | 0.146 | 0.357 |
+| m3 (E38's 3 inputs, GLM) | 0.523 | 0.587 | 0.125 | 0.331 |
+| PCA-50 | 0.436 | 0.632 | 0.113 | 0.314 |
+| DINO-sister | 0.433 | 0.642 | 0.108 | **0.313** |
+| E38 (latent predictive) | 0.538 | **0.557** | 0.249 | 0.392 |
+
+- **R1 (best learned minus E38): -0.079, 95% CI [-0.183, +0.008]. Not supported**: the CI crosses 0.
+- **R2 (m3 minus E38): -0.061 [-0.155, +0.014]. Spent** (seen in the smoke test); reported only.
+- **R3 (DINO-sister minus PCA): -0.001 [-0.026, +0.024]. Not supported.** With mostly
+  single-cell clones, the sister objective reduces to noise augmentation, so a tie is expected.
+- **Versus the constant:** PCA -0.043 [-0.077, -0.007], DINO -0.044 [-0.083, -0.000],
+  m3 -0.026 [-0.044, -0.004]. All learned predictors carry real but modest information (about 12%
+  of the null deviance). E38 +0.035 [-0.047, +0.134]: no better than a constant per clone.
+- **Per condition.** E38 is the best predictor under G-CSF (0.557, where its selection term
+  works) and the worst under M-CSF (0.249 vs 0.146: the confident misses on large M-pure
+  clones, as in the R2-side observation). The full-cocktail gain comes from the whole
+  transcriptome (PCA/DINO 0.43 vs m3 0.52): there, day-2 state beyond Cebpa-Irf8 matters.
+- **Reading.** No pre-registered claim passes. Descriptively: (1) the day-2 transcriptome holds
+  fate information beyond E38's three inputs in the full cocktail; (2) E38 is miscalibrated per
+  clone under M-CSF, in the same direction as B24/B26, which supports E44's target; (3) DINO-style
+  pretraining needs more cells per clone than this experiment has (LCL's own stated limitation).
