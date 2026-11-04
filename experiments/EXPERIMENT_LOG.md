@@ -3808,3 +3808,30 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
   co-present G clones that are too neutrophilic, B20).
 - **Decision: discard.** Next candidates come from the literature triage: day-2 Gfi1 as a G-CSF
   responsiveness covariate (Sierra 2010), tested first as a data diagnostic (B23).
+
+## B23: does day-2 Gfi1 gate the G-CSF response beyond Cebpa-Irf8? (pre-registered 2026-11-04)
+
+- **Source.** Sierra 2010 (Blood, PMC2869559): Gfi1-null progenitors proliferate under G-CSF but
+  make almost no neutrophils (>90% CFU-M), because Gfi1 -> RasGRP1 is needed for G-CSF Erk
+  signalling. If day-2 Gfi1 varies between clones, G-CSF should reward low-Gfi1 clones with growth
+  but not neutrophils. That is one candidate for B7 G: clones shared between the G and M wells
+  are much less neutrophilic under G-CSF than G-only clones (data -0.37; E38-E41 give -0.1 to -0.25).
+- **Already known (B13), not re-tested:** day-2 Gfi1 alone predicts G-CSF N-share (rho 0.22).
+- **Data.** All clones with day-2 cells. Clone mean log1p normalised expression over day-2 cells
+  (B13 method). m = Cebpa - Irf8 (the model's measured input). G-present = at least 2 mature N+M
+  cells under G-CSF; shared and G-only as in B7 (e25 groups).
+- **Tests (one look each):**
+  - **T1 (primary).** G-present clones: partial Spearman of Gfi1 vs G-CSF N-share given m and log
+    G-CSF size. Prediction positive, one-sided p < 0.05.
+  - **T2 (primary).** B7 G on rank residuals: residualise G-CSF N-share on m (rank regression),
+    then compute mean(shared) - mean(G-only) of the residuals; repeat with m + Gfi1. Prediction:
+    adding Gfi1 shrinks the m-only residual B7 G by at least one third. Bootstrap CI (2000 clone
+    resamples) for the shrink.
+  - **T3 (secondary).** G-present clones: partial Spearman of Gfi1 vs log G-CSF size given m.
+    Sierra predicts negative (low Gfi1, more proliferation).
+  - **T4 (secondary).** T1 and T3 for Rasgrp1 and Csf3r, reported, BH across the four secondaries.
+- **Readings, fixed now.**
+  - T1 and T2 pass: Gfi1 is a second measured input. Next model = E38 with m2 = Gfi1 on the
+    G-CSF selection term, pre-registered separately.
+  - T1 passes, T2 fails: Gfi1 adds to fate but not to the B7 G misfit. Note it and do not build.
+  - T1 fails: Cebpa-Irf8 already carries the Gfi1 information. Close the Gfi1 lead.
