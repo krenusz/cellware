@@ -3329,3 +3329,30 @@ full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 
   0.58-0.95), failing the gate as E36 did. Future runs on this model should start cold.
 - **Remaining misfit:** B7 G sits at -0.18 to -0.27 in every E36/E37 fit, slightly too little
   selection under G-CSF (E35's lone pass had -0.30).
+
+## E38: E37's model, 18 cold seeds (pre-registered 2026-11-04, after E37's results)
+
+- **Why.** E37's three cold seeds all found a separate-pool basin (eps 0.08-0.10, phi 0.20-0.24),
+  two passed the gate, and the best gated fit failed the primary only on B7 G, by 0.004. The warm
+  seeds stayed in E36's basin. E38 asks whether the cold-start result is stable.
+- **Model.** E37 unchanged (e37_pool.simulate and unpack, 23 dimensions).
+- **Fit.** Differential evolution, up to 500 generations, **18 seeds, all cold**. New fitting code
+  (cca1cc8): each generation evaluated in parallel on 4 forked workers ("deferred" updating), and
+  early stopping when the best loss improves by less than 0.1% over 50 generations. The objective,
+  the bounds and the population are unchanged.
+- **Gate (as E37).** E33's gate, plus full-G and full-M co-presence within ±30% of the fit set's
+  counts (16, 33), recovered from the saved z-scores.
+- **Readings.**
+  - **Primary pass (best gated fit):** G-M, full-G and full-M all p >= 0.05, and both B7
+    differences inside the 95% range.
+  - **Stability (rule changed for 18 seeds, fixed now):** a result counts only if at least 9 of
+    18 seeds pass the gate, and the gated seeds agree on every primary component's pass/fail in at
+    least 2/3 of them.
+  - **Mechanism:** separate pool supported if the median eps of gated seeds is <= 0.5; not supported
+    if >= 0.8.
+  - **Reported, not gating:** the fraction of gated seeds passing the primary; full-arm clone
+    count within ±20%; whether full-M's simulated mean is within 0.15 of the data (0.24), since
+    E37's full-M passed only through a wide range.
+- **Power check, if a stable pass:** the held-out look follows only if the gated seeds' shard-1
+  predictions agree (interquartile range < 0.2) and their median differs from E20's by more than
+  about 0.37.
