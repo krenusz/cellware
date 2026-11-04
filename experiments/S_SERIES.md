@@ -27,7 +27,7 @@ None of the public time-lapse sets found so far has several cytokine conditions.
 
 | dataset | what | access | fit |
 |---|---|---|---|
-| **Buggenthin 2017 exemplary data** (Helmholtz Nefeli, doi via nmeth.4182) | 2 positions of experiment 3, ~10 GB raw brightfield time-lapse of primary mouse progenitors, for cell detection and lineage prediction (GM vs MegE marker onset) | **open, CC-BY 4.0, 1.1 GB zip**; downloaded to `data/imaging/buggenthin2017/` | best image start: frozen-DINO probe vs their CNN; one condition only, so no action term |
+| **Buggenthin 2017 exemplary data** (Helmholtz Nefeli, doi via nmeth.4182) | **Checked 2026-11-04: a demo, not a training set.** 1,536 brightfield PNG frames from 2 positions of experiment 3, backgrounds, and `demoTracks.mat` with **2 tracked cells** (cellNr 82 and 96, 810 time points, marker channel and a 0/1 type label) | open, CC-BY 4.0, 1.1 GB; downloaded and md5-verified to `data/imaging/buggenthin2017/buggenthin2017_try1.zip` | enough to build and test a pipeline (patch extraction along tracks, frozen-DINO features), **not** to measure fate prediction; the full set (thousands of tracked cells) is not public |
 | HSPC2 (Zenodo 22163254) | 421 brightfield images of human HSPCs with instance masks | open, 381 MB | segmentation only; no tracks or fates |
 | RPE1 FUCCI time-lapse (Zenodo 14774038) | 5,188 full cell-cycle tracks, brightfield + H2B, cell-cycle labels | open | pipeline testbed for a next-state predictor (cell cycle as "fate"); not haematopoiesis |
 | Schroeder lab 2025 (Nat Commun s41467-025-57096-y), Moussy 2017, Rieger 2009, Endele 2017 | tracked HSPC / GMP movies, some under G-CSF / M-CSF | not found as public downloads; "on request" = out of scope | would be ideal (cytokine as action), but not available |
@@ -58,7 +58,8 @@ h5ad/rds files. Those closest to our design:
 
 ## Proposed S experiments (each pre-registered in EXPERIMENT_LOG.md before running)
 
-- **S1: frozen-DINO fate probe on Buggenthin.** Use frozen DINOv2 ViT-S/14 features of
+- **S1: frozen-DINO fate probe on Buggenthin.** *Blocked as a test: the public data has only 2
+  labelled cells. Can run as a pipeline demo only (no claims).* Use frozen DINOv2 ViT-S/14 features of
   brightfield patches over the generations before marker onset. A linear or small temporal
   model predicts the later lineage. Benchmark: their CNN+RNN AUC by generation. Question: does
   a generic frozen encoder see lineage choice as early as a trained CNN? CPU is enough
