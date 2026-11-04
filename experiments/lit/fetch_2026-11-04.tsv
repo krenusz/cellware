@@ -1,0 +1,41 @@
+rank	doi	result	source	title
+1	10.11575/prism/26264	have		Gene expression pattern in individual multipotent hematopoietic progenitor cells: population dynamics in cell fate decision
+2	10.1101/2024.03.28.587126	have		A multi-track landscape of haematopoiesis informed by cellular barcoding and agent-based modelling
+3	10.1371/journal.pcbi.1009779	have		Data-driven modeling predicts gene regulatory network dynamics during the differentiation of multipotential hematopoietic progenitors
+4	10.1074/jbc.m115.668871	html	https://www.ncbi.nlm.nih.gov/pmc/articles/4591835	Role of Erk1/2 Signaling in the Regulation of Neutrophil Versus Monocyte Development in Response to G-CSF and M-CSF
+5	10.1016/j.celrep.2012.01.007	failed	HTTPError	Transient Noise Amplification and Gene Expression Synchronization in a Bistable Mammalian Cell-Fate Switch
+6	10.1038/s41590-022-01385-x	have		SHP-2 and PD-1-SHP-2 signaling regulate myeloid cell differentiation and antitumor responses
+7	10.7554/elife.66922	have		Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells
+8	10.3389/fcell.2019.00104	have		Modeling the Hematopoietic Landscape
+9	10.3390/ijms21072362	have		Towards a New Understanding of Decision-Making by Hematopoietic Stem Cells
+10	10.1371/journal.pcbi.1006664	have		Mutation, drift and selection in single-driver hematologic malignancy: Example of secondary myelodysplastic syndrome following treatment of inherited neutropenia
+11	10.1084/jem.20021843	have		Enforced Granulocyte/Macrophage Colony-stimulating Factor Signals Do Not Support Lymphopoiesis, but Instruct Lymphoid to Myelomonocytic Lineage Conversion
+12	10.1042/cs20170238	failed	HTTPError	Transcriptional mechanisms that control expression of the macrophage colony-stimulating factor receptor locus
+13	10.1073/pnas.2000238117	have		Lineage reconstruction from clonal correlations
+14	10.1084/jem.173.5.1267	have		Premature expression of the macrophage colony-stimulating factor receptor on a multipotential stem cell line does not alter differentiation lineages controlled by stromal cells used for coculture.
+15	10.1016/j.cels.2024.11.001	failed	not-pdf	Tracking the gene expression programs and clonal relationships that underlie mast, myeloid, and T lineage specification from stem cells
+16	10.3324/haematol.2015.133637	html	https://www.ncbi.nlm.nih.gov/pmc/articles/4815720	Mathematical modeling reveals differential effects of erythropoietin on proliferation and lineage commitment of human hematopoietic progenitors in early erythroid culture
+17	10.1097/cm9.0000000000000349	have		Prospect of using deep learning for predicting differentiation of myeloid progenitor cells after sepsis
+18	10.1097/hs9.0000000000000669	have		The EHA Research Roadmap: Normal Hematopoiesis
+19		no-doi		Characterisation of the chicken mononuclear phagocyte system
+20	10.1084/jem.20050075	have		PU.1 regulates the commitment of adult hematopoietic progenitors and restricts granulopoiesis
+21	10.1111/j.0105-2896.2009.00877.x	paywalled	Wiley	Instructive cytokine signals in dendritic cell lineage commitment
+22	10.1073/pnas.96.2.698	html	https://www.ncbi.nlm.nih.gov/pmc/articles/15199	Permissive role of thrombopoietin and granulocyte colony-stimulating factor receptors in hematopoietic cell fate decisions in vivo
+23	10.1182/blood-2018-02-832998	failed	HTTPError	Inflammatory signals directly instruct PU.1 in HSCs via TNF
+24	10.1016/j.celrep.2017.03.035	html	https://www.ncbi.nlm.nih.gov/pmc/articles/5408750	Structure of Nascent Chromatin Is Essential for Hematopoietic Lineage Specification
+25	10.1182/blood.2020008386	paywalled	Elsevier BV	Cytokine combinations for human blood stem cell expansion induce cell-type– and cytokine-specific signaling dynamics
+26	10.1182/blood-2016-05-714329	html	https://www.ncbi.nlm.nih.gov/pmc/articles/5364337	CSF-1–induced Src signaling can instruct monocytic lineage choice
+27	10.1084/jem.20230088	have		Secretory MPP3 reinforce myeloid differentiation trajectory and amplify myeloid cell production
+28	10.1038/s41467-024-47158-y	have		Gene-expression memory-based prediction of cell lineages from scRNA-seq datasets
+29	10.1038/s41467-018-05037-3	have		Lineage marker synchrony in hematopoietic genealogies refutes the PU.1/GATA1 toggle switch paradigm
+30	10.3389/fimmu.2018.02048	have		Mathematical Analysis of Cytokine-Induced Differentiation of Granulocyte-Monocyte Progenitor Cells
+31	10.1097/moh.0000000000000587	paywalled	Lippincott Williams & Wilkins	In-vivo differentiation of adult hematopoietic stem cells from a single-cell point of view
+32	10.32657/10220/46940	failed	HTTPError	Ontogeny of intestinal intratumoural macrophages and their contribution in cancer regulation
+33	10.1073/pnas.1320753111	html	https://www.ncbi.nlm.nih.gov/pmc/articles/3964061	Circulating hematopoietic stem and progenitor cells are myeloid-biased in cancer patients
+34	10.1016/j.cels.2017.08.009	have		Stem Cell Differentiation as a Non-Markov Stochastic Process
+35	10.1084/jem.20131189	have		Erythropoietin guides multipotent hematopoietic progenitor cells toward an erythroid fate
+36	10.4049/jimmunol.2000835	have		A Transgenic Line That Reports CSF1R Protein Expression Provides a Definitive Marker for the Mouse Mononuclear Phagocyte System
+37	10.1182/blood-2009-10-246967	html	https://www.ncbi.nlm.nih.gov/pmc/articles/2869559	The transcription factor Gfi1 regulates G-CSF signaling and neutrophil development through the Ras activator RasGRP1
+38	10.1038/s41586-024-08250-x	have		Long-term lineage commitment in haematopoietic stem cell gene therapy
+39	10.1084/jem.20151975	have		M-CSF improves protection against bacterial and fungal infections after hematopoietic stem/progenitor cell transplantation
+40	10.1111/j.1742-4658.2012.08664.x	failed	HTTPError	Multi‐scale modeling of GMP differentiation based on single‐cell genealogies

@@ -12,3 +12,6 @@ routes/
 uv.lock.bak
 data/
 .sweep_runs/
+
+# OA full texts fetched by experiments/lit_fetch.py (free to read, not all redistributable)
+papers/lit/
