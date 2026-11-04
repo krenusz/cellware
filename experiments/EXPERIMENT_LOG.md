@@ -3388,3 +3388,60 @@ full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 
   full arm is mostly day-6 libraries while G and M are mostly day-4 (B12), so sampling time is the
   first candidate. Per the rule (no new simulator without a data diagnostic it must explain), the
   next step is a diagnostic: does cross-condition agreement fall with the gap in library day?
+
+## B18: does cross-condition agreement fall with the gap in sampling day? (pre-registered 2026-11-04)
+
+- **Why.** E38 fits G-M and the full arm's clone pool, but full-M stays about 0.48 against 0.24.
+  The full arm is mostly day-6 libraries; G and M are split between day 4 and day 6 (B12). If a
+  clone's N-share drifts between day 4 and day 6, pairs sampled on different days agree less, which
+  could make full-M low with no difference in fate rule.
+- **Data.** Cytokine experiment, full / G-CSF / M-CSF only (no Epo or SCF, so the held-out shard is
+  not touched), mature N and M counts by library day. Agreement statistic as in OBS: Pearson r of
+  clone N-shares, clones with >= 2 N+M cells on each side. 95% CIs by bootstrapping clones (2000).
+- **Tests.**
+  - **T1 (primary): G-M same-day vs different-day.** Rows for (G4, M4) and (G6, M6) form the
+    same-day set; (G4, M6) and (G6, M4) the different-day set. A clone contributes every row it
+    qualifies for; the bootstrap resamples clones with all their rows. Statistic: r_same - r_diff.
+  - **T2: within-condition day-4 vs day-6 agreement** for G, M and full (how much a clone's N-share
+    drifts in two days in the same medium).
+  - **T3: full-M and full-G by partner day,** using day-6 full libraries only: r(full6, M6) vs
+    r(full6, M4), and the same for G.
+- **Readings, fixed now.**
+  - **Timing effect supported** if T1's r_same - r_diff > 0 with a 95% CI excluding 0, **and** T3
+    shows r(full6, M6) > r(full6, M4).
+  - **Timing explains full-M** if, in addition, r(full6, M6) reaches 0.40 or more (G-M's level),
+    i.e. day-matched full and M agree like G and M do. If r(full6, M6) stays below 0.30, timing is
+    not the explanation and the full culture's cells really differ.
+  - **No timing effect** if T1's CI includes 0 and T3 shows no day-matched gain.
+  - All clone counts are reported; any comparison with fewer than 30 clones is descriptive only.
+
+### B18 results (2026-11-04)
+
+| comparison | r | 95% CI | clones |
+|---|---|---|---|
+| **T1 G-M same day** (G4-M4, G6-M6 rows) | 0.50 | | 41 |
+| **T1 G-M different day** (G4-M6, G6-M4 rows) | 0.23 | | 44 |
+| **T1 difference** | **+0.27** | **-0.12 to 0.74** | |
+| G4-M4 / G6-M6 / G4-M6 / G6-M4 | 0.32 / 0.63 / 0.23 / n.a. | | 22 / 20 / 42 / 3 |
+| T2 G day 4 vs day 6 | 0.60 | 0.35 to 0.80 | 39 |
+| T2 M day 4 vs day 6 | 0.32 | -0.02 to 0.88 | 131 |
+| T2 full day 4 vs day 6 | n.a. | | 4 |
+| **T3 full6-M6** | **0.04** | **-0.13 to 0.43** | **76** |
+| T3 full6-M4 | undefined (no N-share variation among these M4 clones) | | 18 |
+| T3 full6-G6 | 0.92 | 0.78 to 0.99 | 12 |
+| T3 full6-G4 | 0.15 | -0.33 to 0.91 | 14 |
+
+- **Timing effect: not supported** by the pre-registered rule. Same-day G-M agreement is higher
+  than different-day (0.50 vs 0.23), in the predicted direction, but the CI of the difference
+  includes 0 (about 40 clones a side). T3 cannot show a day-matched gain for full-M (full6-M4 is
+  undefined).
+- **Timing does not explain full-M.** Day-matched full6-M6 is 0.04 on 76 clones (upper CI 0.43),
+  below the pre-registered 0.30. Even sampled on the same day, full and M-CSF clones barely agree.
+- **Descriptive (under 30 clones):** day-matched full6-G6 is 0.92 (12 clones), against 0.15 for
+  full6-G4. The full culture agrees closely with G-CSF on the same day, not with M-CSF.
+- **A caveat that shapes the next step.** M-CSF libraries contain very few neutrophils (M6: 114 N
+  vs 4,526 M cells), so most M-CSF clones have N-share 0. Low full-M may come from **which**
+  M-CSF clones carry the rare neutrophils, not from day effects. E38 matches how many M-CSF clones
+  have any neutrophil (B10, 0.20 vs 0.205) but still predicts full-M 0.48. In the model, the
+  M-CSF clones with neutrophils are the full arm's neutrophil-heavy clones; in the data, they
+  apparently are not.
