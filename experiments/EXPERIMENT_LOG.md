@@ -3297,3 +3297,35 @@ the fit set's counts: full-G 16, full-M 33.
   - **Secondary (not gating):** full-arm clone count within ±20% of the data.
 - **Power check, if a stable pass:** the held-out look follows only if the shard-1 prediction is
   stable across the gated seeds and differs from E20's by more than about 0.37.
+
+### E37 results (2026-11-04)
+
+500 generations, 6 seeds (0-2 warm from e36s_s2, 3-5 cold). All 6 pass E33's gate; **2 pass the
+full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 33.
+
+| seed | loss | co full-G / full-M | gate | phi | eps | nu_full | full clones (data 368) | full-G (p) | full-M (p) | G-M (p) | B7 G (data -0.37) | B7 M | shard-1 pred |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 (warm) | 81.0 | 26 / 51 | no | 0.46 | 0.72 | 0.40 | 257 | 0.69 (1.00) | 0.53 (0.00) | 0.41 (0.06) | -0.19 (out) | in | 0.74 |
+| 1 (warm) | 79.5 | 31 / 53 | no | 0.73 | 0.95 | 0.32 | 273 | 0.69 (0.98) | 0.50 (0.07) | 0.41 (0.12) | -0.22 (out) | in | 0.78 |
+| 2 (warm) | 82.6 | 28 / 50 | no | 0.24 | 0.58 | 0.41 | 273 | 0.71 (0.80) | 0.46 (0.05) | 0.35 (0.00) | -0.18 (out) | in | 0.75 |
+| 3 (cold) | 92.3 | 19 / 30 | **yes** | 0.22 | **0.08** | 4.76 | 356 | 0.70 (0.81) | 0.48 (0.24) | 0.41 (0.02) | -0.23 (out) | in | 0.03 |
+| 4 (cold) | 89.3 | 24 / 39 | no (full-G +50%) | 0.20 | **0.10** | 4.68 | 357 | 0.68 (0.90) | 0.51 (0.07) | 0.42 (0.07) | -0.26 (out) | in | 0.24 |
+| **5 (cold, best gated)** | **49.8** | 20 / 30 | **yes** | 0.24 | **0.09** | 4.51 | 361 | 0.70 (0.79) | 0.50 (0.15) | 0.44 (0.24) | **-0.27 (out; range -0.37 to -0.19)** | in | 0.72 |
+
+- **Primary (best gated fit, seed 5): fail, on B7 G only.** All three cross statistics pass
+  (p 0.79 / 0.15 / 0.24) and B7 M is inside; B7 G (-0.27) misses its 95% range by about 0.004.
+  Caveat on full-M: its simulated mean stays about 0.50 against 0.24; it passes because the
+  separate pool leaves few full-arm-co-present clones, so its range widens (0.00-0.79), not because
+  the model matches it.
+- **Stability: not met** (2 gated seeds, rule needs 3). Held-out look unspent; shard-1 predictions
+  are unstable across the separate-pool seeds (0.03, 0.24, 0.72).
+- **Mechanism reading: separate pool supported.** Both gated seeds have eps <= 0.5 (0.08, 0.09),
+  and so does seed 4. All three cold seeds found the same basin: about 20-24% of clones seed the full
+  culture, with about 10% leak each way, and a high full-arm founder rate.
+- **Secondary: full arm filled for the first time.** Cold seeds reach 356-361 full-arm clones
+  (data 368; E36 about 260-290). The full_n misfit that dominated E36's loss is gone; seed 5 has
+  the lowest loss of the E34-E37 line (49.8).
+- **The warm starts were a trap.** Seeds 0-2 started at eps 0.95 and stayed in E36's basin (eps
+  0.58-0.95), failing the gate as E36 did. Future runs on this model should start cold.
+- **Remaining misfit:** B7 G sits at -0.18 to -0.27 in every E36/E37 fit, slightly too little
+  selection under G-CSF (E35's lone pass had -0.30).
