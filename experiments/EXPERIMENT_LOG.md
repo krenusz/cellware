@@ -3701,3 +3701,32 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
   what separates them is the same Cebpa/Irf8 axis already in the models. The low full-M is not
   explained by an MDP sub-population (with the caveat that a 5-gene score is a coarse MDP marker
   in day-2 LARRY progenitors).
+
+### E40 results (2026-11-04)
+
+| s_G fixed | best loss | gated seeds | instruction tau_G - tau_full (best gated) | G-M (p), best gated | B7 G | G-CSF mean N-share |
+|---|---|---|---|---|---|---|
+| 1 (no G-CSF selection) | 108.2 | **0/3** | (6.1-7.5 in all seeds) | 0.21-0.29 (0.00) | -0.06 to -0.08 | 0.61-0.64 |
+| 1.5 | 119.1 | **0/3** | (5.4-6.9) | 0.27-0.33 (0.00) | -0.06 to -0.16 | 0.63-0.64 |
+| 2.5 | 91.8 | 2/3 | 3.70 | 0.30 (0.00) | -0.09 (out) | 0.62-0.64 |
+| 4 | 55.4 | 3/3 | 0.58 | 0.43 (0.12) | -0.25 (out) | 0.64-0.66 |
+| 6.5 | **37.1** | 2/3 | 0.48 | 0.42 (0.05) | -0.26 (out) | 0.68-0.69 |
+| 10 | 128.0 | **0/3** | (0.4-0.6) | 0.41-0.42 | -0.24 to -0.28 | 0.72 (too high) |
+
+- **Ridge: supported, and bounded.** Compatible points are s_G 2.5, 4 and 6.5 (a 2.6x range), and
+  instruction compensates exactly: Spearman(s_G, instruction) = -1.0 across them (3.7 logits at
+  s_G 2.5, about 0.5 at 4-6.5). Selection and instruction trade off along a ridge, as Xu et al.'s
+  identifiability result predicts. But the ridge has ends.
+- **Pure instruction under G-CSF excluded.** At s_G = 1 (and 1.5) no seed passes the gate, even
+  with very strong instruction (6-7.5 logits). Without a G-CSF neutrophil survival advantage, G-M
+  agreement collapses (0.21-0.33 vs 0.51) and the fate-selected presence pattern disappears (B7 G
+  about -0.07 vs -0.37). Too much selection is also excluded: at s_G = 10 the G-CSF wells become
+  too neutrophilic (0.72 vs 0.636).
+- **Where the fit is good.** The loss is lowest at s_G 4-6.5 (37-58), where instruction is small
+  (about 0.4-1.1 logits) and G-M passes or nearly passes (p 0.01-0.12). At s_G 2.5, gated fits
+  exist but are poor (G-M 0.30-0.36, p 0.00).
+- **Primary: no grid point passes.** B7 G is outside its range everywhere (best -0.29); this
+  misfit is not a ridge effect.
+- **Headline.** Under G-CSF, neutrophils need a survival/expansion advantage of roughly 2.5-6.5x
+  (best fits 4-6.5x); the matching instruction is between about 0.5 and 3.7 logits, smaller at the
+  better-fitting end. Selection is necessary; instruction alone cannot produce the data.
