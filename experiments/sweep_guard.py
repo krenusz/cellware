@@ -47,7 +47,7 @@ def main():
     run, need = sys.argv[1], int(sys.argv[3])
     outs = {str(i): out for i, out, _ in parse(Path(sys.argv[2]))}
     co = e32.copresence(e33.split(e33.load_counts(e33.CONDS5), None))
-    seen, fails = set(), 0
+    seen, fails, tries = set(), 0, 0
     tmp = tempfile.mkdtemp(prefix="guard_")
     while True:
         r = gh("run", "view", run, "--json", "status,jobs")
@@ -55,6 +55,7 @@ def main():
             time.sleep(60)  # network blips: keep waiting
             continue
         info = json.loads(r.stdout)
+        final = info["status"] == "completed"  # snapshot before judging, so no job is skipped
         jobs = [j for j in info["jobs"] if j["name"].startswith("run (")]
         for j in jobs:
             line = j["name"][5:-1]
@@ -73,8 +74,13 @@ def main():
                 print(f"stability rule ({need}/{len(jobs)}) can no longer be met: cancelling {run}")
                 gh("run", "cancel", run)
                 return
-        if info["status"] == "completed":
-            print(f"run finished: {len(seen) - fails}/{len(jobs)} gated")
+        if final:
+            done = [j for j in jobs if j["conclusion"] == "success"]
+            if len(seen) < len(done) and tries < 10:
+                tries += 1  # artifacts of the last jobs can lag the run's completion
+                time.sleep(30)
+                continue
+            print(f"run finished: {len(seen) - fails}/{len(jobs)} gated ({len(seen)} judged)")
             return
         time.sleep(60)
 

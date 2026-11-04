@@ -119,10 +119,12 @@ with both read out. Per the project rule, no outreach: this is recorded, not pur
 Done on 2026-11-04: the ridge profile (E40), the fluctuation analysis (B21) and the MDP check
 (B22). Remaining:
 
-1. **E41: fading fate memory.** E38 plus a day-dependent loss of fate memory, with B21's
-   intra-clone correlations and day-4 vs day-6 ratio as targets. It is the one mechanism with its
-   own data diagnostic, and it may relieve the B7 G misfit, since G and M are sampled at days 4
-   and 6 in different proportions.
+1. **E41b (done, negative):** fading fate memory is not needed (median r46 0.915) and does not
+   fix B7 G (0/9 gated seeds). Near-full memory already reproduces B21's day-4 vs day-6 ratio once
+   17-clone sampling noise is simulated, so B21's 0.68 is not evidence of real fading. s_G stays
+   on the ridge (median 5.1). G-M agreement now fails in all 9. **Next: B23**, testing whether
+   day-2 Gfi1 predicts the G-CSF benefit beyond Cebpa-Irf8 (Sierra 2010: Gfi1 gates G-CSF
+   responsiveness), as a data diagnostic before any model.
 2. **Down-weight M-CSF agreement statistics** in future gates (B21: replicate M-CSF libraries
    agree at 0.28), pre-registered before use.
 3. **Held-out test:** still unspent; spend it only on a model whose shard-1 prediction is stable.

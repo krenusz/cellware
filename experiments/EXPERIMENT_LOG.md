@@ -3783,3 +3783,28 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
 
 - Identical to E41 in model, target, seeds, warm starts, gate, primary, stability and readings,
   except that early stopping cannot fire before generation 200. Early-stop guard on (9/18).
+
+### E41b results (2026-11-04): negative, fading memory is not needed and does not fix B7 G
+
+- **Gate:** 9/18 gated, exactly the stability minimum. The warm starts now search (212-500
+  generations). The guard logged 8 gated / 7 failed and stopped polling before the last 3 seeds
+  finished (guard bug, fixed below); scored offline from all 18 result files.
+- **Parameters (gated seeds, all agree):** s_G 4.4-5.8 (median 5.1), s_M 0.12-0.20,
+  phi 0.17-0.24, eps 0.084-0.097, r46 0.86-0.95 (median 0.915).
+- **Primary fails in every gated seed.** full-G 9/9, full-M 9/9 and B7 M 9/9 pass. **G-M fails
+  0/9** (sim about 0.38 vs observed 0.51; E38 split 5/4). **B7 G fails 0/9** (sim -0.12 to -0.25
+  vs data -0.37).
+- **Readings (pre-registered):**
+  - Fading memory relieves B7 G: **no** (0/9 vs the needed 6/9).
+  - Fade used: **no**, median r46 0.915 >= 0.9.
+  - Ridge consistency: **yes**, median s_G 5.1 inside E40's 2.5-6.5. Memory does not substitute
+    for selection.
+  - Memory estimate: best gated fit (seed 6, loss 28.5) has r_G46 z -0.10, so simulated day-4 vs
+    day-6 agreement is about 0.68 against the data's 0.70.
+- **What it means.** Near-full memory (r46 about 0.92) already reproduces B21's day-4 vs day-6
+  ratio once the sampling noise of 17 clones is simulated, so B21's 0.68 is not evidence of
+  real fading. The extra day-6 noise costs G-M agreement, which now fails everywhere. E41's model
+  is discarded; E38/E40 stay the reference. B7 G remains the one unexplained misfit (too many
+  co-present G clones that are too neutrophilic, B20).
+- **Decision: discard.** Next candidates come from the literature triage: day-2 Gfi1 as a G-CSF
+  responsiveness covariate (Sierra 2010), tested first as a data diagnostic (B23).
