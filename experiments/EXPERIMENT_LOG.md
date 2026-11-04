@@ -3445,3 +3445,47 @@ full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 
   have any neutrophil (B10, 0.20 vs 0.205) but still predicts full-M 0.48. In the model, the
   M-CSF clones with neutrophils are the full arm's neutrophil-heavy clones; in the data, they
   apparently are not.
+
+## B19: which M-CSF clones make the rare neutrophils, in data vs model? (pre-registered 2026-11-04)
+
+- **Why.** M-CSF wells hold few neutrophils, so full-M agreement depends on which M-CSF clones
+  carry them. E38 matches how many M-CSF clones have any neutrophil (B10) but predicts full-M 0.48
+  against 0.24 (B18: 0.04 even day-matched). Hypothesis: in the model the neutrophil-carrying M-CSF
+  clones are the full culture's neutrophil-heavy clones; in the data they are not.
+- **Data.** Cytokine experiment, full / G-CSF / M-CSF (no Epo/SCF), mature N and M counts pooled
+  over days. Clones with >= 2 N+M cells in both arms of a pair. In the M-CSF arm a clone is "N+"
+  if it has any neutrophil.
+- **Tests.**
+  - **T1 (primary), full vs M:** d_full = mean full N-share of N+ M-CSF clones minus that of
+    N0 M-CSF clones; also the AUC of full N-share for separating N+ from N0.
+  - **T2 (reference), G vs M:** the same with G-CSF N-share in place of full (B7/B11 found the
+    G-M link).
+  - **Model:** the same statistics on 200 simulations of the best gated E38 fit (e38_s1), the whole
+    simulated data set, same filters. Robustness: 50 simulations of each of the other 8 gated E38
+    seeds, reporting the range of their model means.
+- **Readings, fixed now.**
+  - **Model mislocates the rare neutrophils** if the data's d_full is below the 2.5th percentile
+    of e38_s1's simulated d_full.
+  - **Consistent** if inside the 95% range; then the full-M misfit lies elsewhere.
+  - T2 is read the same way and shows whether the problem is specific to the full arm.
+  - Data CIs by bootstrapping clones (2000). Fewer than 30 clones in either group: descriptive only.
+
+### B19 results (2026-11-04)
+
+| test | data d (95% CI) | AUC | N+ / N0 clones | model e38_s1 mean [95%] | data percentile | other gated seeds' means |
+|---|---|---|---|---|---|---|
+| **T1 full vs M** | 0.19 (-0.09 to 0.51) | 0.63 | **8** / 76 | 0.55 [0.09, 0.92] | 7th | 0.51-0.61 |
+| T2 G vs M | 0.51 (0.28 to 0.71) | 0.79 | 16 / 62 | 0.53 [0.38, 0.65] | 39th | 0.51-0.54 |
+
+- **Pre-registered reading, T1: consistent** (data at the 7th percentile, inside the model's 95%
+  range), and **descriptive only**: just 8 M-CSF clones that are also in the full arm carry any
+  neutrophil. The hypothesis is not confirmed.
+- **Direction.** In the data, the full culture's N-share barely separates the neutrophil-carrying
+  M-CSF clones (0.19); the model separates them strongly (0.55, all 9 gated seeds 0.51-0.61). G-CSF
+  N-share separates them equally well in data and model (0.51 vs 0.53). So the misfit, if real, is
+  specific to the full arm, but 8 clones cannot show it.
+- **Implication.** Full-M rests on a handful of informative clones (B18: 0.04 on 76 clones, most
+  with M-CSF N-share 0). The full-M discrepancy is at or below the data's resolution, and no
+  diagnostic on this data set can settle it. The G-vs-M structure, which is well powered, matches
+  the model (T2 here, G-M and B7 M in E38). The one well-powered misfit left is B7 G
+  (about -0.27 vs -0.37, failing in 7/9 gated E38 seeds).
