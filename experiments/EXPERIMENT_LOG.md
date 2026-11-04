@@ -4079,3 +4079,26 @@ them on the fit set with the same simulation seeds. **E38 under the protocol: 9/
   pi_M 0 / 0.1 with g_up 0 / 2: D3 0.021 -> **0.114** (data 0.154); shared clones 56 -> 58
   (data 39); B7 G -0.28 -> -0.30 (data -0.38); D2 G-size-2 -0.23 -> -0.24 (data -0.47). D3 rises,
   so the pre-registered rule says run. The shared-clone excess is not addressed at these values.
+
+### E43 results (2026-11-04): negative. The class is used to the cap but breaks the Epo/SCF wells
+
+- **Guard cancelled the run** after 10 finished seeds had all failed the gate (rule: more than 9
+  fails). 11 result files were recovered (seeds 0-4, 6, 7, 11, 12, 15, 16); none gated.
+- **Class used, maximally.** pi_M 0.25-0.29 in every seed (upper bound 0.3), g_up 0.9-3.0.
+  Readings: "class used" yes; "explains B24" and "better than E38" cannot be assessed (no gated
+  fit).
+- **Why the gate fails.** Gate failures are mostly Epo and SCF (mean and n) and G mean; the
+  largest misfits are SCF var (z -5.3), SCF mean (+4.5), Epo var (-4.1), M n (-3 to -7). The
+  pre-registered class makes monocytes only **in every condition**, but under Epo and SCF
+  nearly every mature cell is a neutrophil, so a quarter of clones committed to monocytes
+  everywhere is incompatible with those wells. A design error in the pre-registration (the
+  Epo/SCF consequence was not checked); recorded, not patched.
+- **What the fit was telling us anyway (descriptive, no gated fit).** With the class, B7 G
+  passes in 7 of 11 seeds and full-G/full-M co-presence lands near the data (17-24 / 30-39 vs
+  16 / 33). Best seed (s4: loss 72, adequate, fails only the Epo gate) has pi_M 0.26,
+  g_up 0.86 and s_G 3.6. The G/M/full wells want a large, persistent, monocyte-leaning
+  clone class; the Epo/SCF wells forbid it being monocyte-only there.
+- **Decision: discard E43 as specified.** The candidate that remains is a clone class whose
+  monocyte commitment applies under the myeloid cytokines (G, M, full) and not under Epo/SCF.
+  That is close to a condition-specific fate term, which E38's tau already provides, so it must
+  be argued from data before any pre-registration. Not started.
