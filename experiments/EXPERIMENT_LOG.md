@@ -4159,3 +4159,72 @@ them on the fit set with the same simulation seeds. **E38 under the protocol: 9/
   judged on the same gate and primary plus this table (A size distribution) and B24's D3.
   Pre-registration deferred to the next session, with a minimum-count rule for every reading.
 - **Lesson (process).** Every pre-registered reading gets a minimum sample size from now on.
+
+## S2: learned action predictor on LARRY vs E38 (pre-registered 2026-11-04)
+
+- **Question.** Does a flexible predictor that sees a clone's whole day-2 transcriptome, plus the
+  cytokine (the "action"), predict the clone's neutrophil share per condition better than E38,
+  which sees only three day-2 numbers (m, fn, fm)? If yes, E38 misses fate information in the
+  day-2 state. A second question: does a DINO-style encoder trained with **sister cells as views**
+  beat plain PCA?
+- **Prior art (abstract and discussion read).** LCL (Yang, Wang & Lin, bioRxiv 2024 v2,
+  PMC13228636) uses lineage barcodes as natural augmentations: SimCLR-style contrastive learning
+  with sister cells as positives and negatives from other lineages. It is tested on LARRY
+  (41,093 cells, which subset is not stated) and CellTag for predicting future cell-type
+  composition, and beats scVI (LARRY top-200 lineages: KL 0.335 vs 0.549). It does not
+  condition on cytokine and is not compared with a mechanistic model. Its stated limitation is
+  that small lineages predict poorly. New here: a negative-free (DINO) objective, the cytokine as
+  action, and a head-to-head with E38.
+- **Units.** Fit-set clones (held-out shard untouched) with at least 1 day-2 cell. For each
+  condition (full, G, M primary; Epo, SCF reported), a clone enters if it has at least 1 mature N+M
+  cell there. A condition is scored only if at least 50 clones enter it.
+- **Encoders (day-2 state of a clone).**
+  - (i) **m3:** E38's own inputs (m, fn, fm).
+  - (ii) **PCA:** 2000 most variable genes (log1p normalised), PCA-50 fitted on training-fold
+    day-2 cells, clone mean.
+  - (iii) **DINO-sister:** DINO-style student/teacher MLP (50 -> 128 -> 64 backbone, 64-prototype
+    head, teacher EMA 0.996, temperatures 0.1 / 0.04, centre momentum 0.9). Input is the PCA-50 of
+    a cell. The two views are two different day-2 cells of the same clone (the same cell if the
+    clone has one), each with Gaussian noise of 0.1 x the feature SD. 30 epochs, batch 256,
+    Adam 1e-3, trained on training-fold cells only. Embedding = teacher backbone, clone mean.
+  - The pretrained foundation-model encoder is dropped. No mouse model runs on this CPU within
+    the session, so it is recorded as not done.
+- **Predictor.** For each condition, a weighted ridge logistic regression on standardised
+  features (cell-weighted mean BCE + 0.01 ||w||^2), LBFGS. Fixed hyperparameters, no tuning.
+- **E38 reference.** Best gated E38 fit (e38_s1), 300 simulations. A clone's predicted N-share
+  per condition is (sum N + 0.5) / (sum N+M + 1) over simulations. E38's parameters were fitted to
+  summary statistics of these same clones, so it gets a mild in-sample advantage. Noted, not
+  corrected.
+- **Null.** The training-fold pooled N-share of each condition.
+- **CV and metric.** 5 folds by clone (seed 0). Score = held-out per-cell binomial deviance,
+  pooled over the primary conditions (lower is better). Paired clone bootstrap (2000) of
+  differences.
+- **Readings, fixed now.**
+  - **R1:** best of PCA / DINO-sister minus E38: 95% CI below 0 means E38 misses day-2
+    information.
+  - **R2:** m3 minus E38: CI below 0 means E38's mechanism loses information it has.
+    CI above 0 means the mechanism adds structure beyond a GLM on the same inputs.
+  - **R3:** DINO-sister minus PCA: CI below 0 means sister-shared structure carries fate
+    information that PCA misses.
+  - Anything with fewer than 50 clones in a condition is not read.
+- **Amendment before the real run (2026-11-04).** The smoke test (real counts, synthetic
+  expression) showed that the pre-registered E38 estimator, which pools cells over simulations,
+  is dominated by simulations where a clone expands hugely under selection. That pushes
+  per-clone predictions to the extremes (E38 0.38 nats/cell worse than null), although E38's
+  average calibration is fine (G clone-mean 0.55 vs 0.57). **Changed to E38's native
+  predictive:** for each clone, the mixture likelihood of its observed (k, n), averaged over the
+  simulations in which it is present. **Disclosure:** the smoke test used real counts for m3 and
+  E38, so **R2 (m3 vs E38) has been seen and is spent**: it will be reported, not read as a test.
+  R1 and R3 need the real day-2 expression and have not been seen.
+- **Second amendment, same reason, before the real run.** The mixture score still sampled each
+  simulation's cells twice (shares from a few simulated cells). Replaced it with E38's latent
+  rates: e38_latent() mirrors e37.simulate, and its expected counts match the simulator (G
+  neutrophils 1,587 vs 1,614; M 167 vs 169 over 40 runs). The predictive is
+  sum_s w_s Binom(k | n, q_s), with q_s = lamN / (lamN + lamM) and w_s proportional to Poisson(n | lamN + lamM).
+- **Observation from the spent R2 side (real counts, no expression).** Even with the corrected
+  predictive, E38's per-clone fate deviance on the fit set is worse than a constant (G 0.94 vs
+  0.63, M 0.52 vs 0.17, full 1.00 vs 0.60 nats/cell). The excess comes from confident misses:
+  under M-CSF, pure-monocyte clones of 10-17 cells that E38 expects to be neutrophil-rich
+  (+68 to +117 nats each); under G-CSF, pure-N clones it expects to be monocytic. E38's steep
+  fate curve (beta about 9) makes near-deterministic per-clone calls. It matches population
+  statistics but is **not calibrated per clone**. Reported, not a test (R2 is spent).
