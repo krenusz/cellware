@@ -7,6 +7,7 @@ See the E33 pre-registration in EXPERIMENT_LOG.md.
 from __future__ import annotations
 
 import json
+import multiprocessing as mp
 import os
 import sys
 
@@ -79,6 +80,30 @@ TARGETS = None  # hook: loss targets (default e30.targets); E36 adds full-arm co
 EXTRA_SE = None  # hook: {target: SE} for targets not covered by the bootstrap
 SIMS = None  # hook: simulations per loss evaluation (default e30.SIMS)
 
+# Speed (2026-11-04, from E38): evaluate each generation in parallel on forked workers, and stop
+# when the best loss improves by less than PATIENCE_REL over PATIENCE generations. Set
+# E33_WORKERS=1 and E33_PATIENCE=0 to reproduce E33-E37 (serial, immediate updating, full run).
+PATIENCE_REL = 1e-3
+_LOSS = None  # the loss closure, inherited by forked workers
+
+
+def _call(x):
+    return _LOSS(x)
+
+
+class _Stop:
+    def __init__(self, patience):
+        self.patience, self.hist, self.early = patience, [], False
+
+    def __call__(self, intermediate_result):
+        self.hist.append(float(intermediate_result.fun))
+        if self.patience and len(self.hist) > self.patience:
+            old = self.hist[-1 - self.patience]
+            if old - self.hist[-1] < PATIENCE_REL * abs(old):
+                self.early = True
+                return True
+        return False
+
 
 def main(seed, maxiter=300, dim=19, name="e33", x0=None):
     cnt = load_counts(CONDS5)
@@ -110,8 +135,15 @@ def main(seed, maxiter=300, dim=19, name="e33", x0=None):
         tot = float(np.sum(z))
         return tot if np.isfinite(tot) else 1e9
 
+    global _LOSS
+    _LOSS = loss
+    workers = int(os.environ.get("E33_WORKERS", os.cpu_count() or 1))
+    pool = None
+    if workers > 1 and "fork" in mp.get_all_start_methods():
+        pool = mp.get_context("fork").Pool(workers)
+    stop = _Stop(int(os.environ.get("E33_PATIENCE", 50)))
     res = differential_evolution(
-        loss,
+        _call if pool else loss,
         [(-3, 3)] * dim,
         popsize=6,
         maxiter=int(os.environ.get("E33_MAXITER", maxiter)),
@@ -120,7 +152,12 @@ def main(seed, maxiter=300, dim=19, name="e33", x0=None):
         tol=1e-6,
         init="latinhypercube",
         x0=x0,
+        workers=pool.map if pool else 1,
+        updating="deferred" if pool else "immediate",
+        callback=stop,
     )
+    if pool:
+        pool.close()
     prm = unpack(res.x)
     st = sim_targets(prm)
     gate = {
@@ -142,6 +179,8 @@ def main(seed, maxiter=300, dim=19, name="e33", x0=None):
         "loss": float(res.fun),
         "generations": int(res.nit),
         "converged": bool(res.success),
+        "stopped_early": stop.early,
+        "workers": workers if pool else 1,
         "params": prm,
         "z": {k: float((st[k] - obs[k]) / se[k]) for k in obs},
         "gate": gate,

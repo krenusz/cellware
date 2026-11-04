@@ -1,0 +1,3 @@
+# timing check for e33.main workers (2026-11-04); outputs are discarded
+s=$(date +%s); E33_MAXITER=5 E33_PATIENCE=0 E33_WORKERS=1 python experiments/e37_pool.py 3 > /dev/null; echo "serial elapsed $(( $(date +%s) - s ))s"
+s=$(date +%s); E33_MAXITER=5 E33_PATIENCE=0 python experiments/e37_pool.py 3 > /dev/null; echo "parallel elapsed $(( $(date +%s) - s ))s"; nproc
