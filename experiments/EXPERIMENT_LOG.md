@@ -3536,3 +3536,25 @@ full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 
   monocytes. In the data such clones are missing from M-CSF wells altogether: under M-CSF, whole
   neutrophil-leaning clones fail to expand. This fits B13, where day-2 Csf1r vs Csf3r balance
   predicted presence.
+
+## E39: clone-level expansion under M-CSF depends on fate state (pre-registered 2026-11-04)
+
+- **Data diagnostic it must explain (B20).** E38 has too many G-M co-present clones (114 vs 78),
+  and they are too neutrophilic under G-CSF (0.45 vs 0.35), while G-only clones fit. This is where
+  B7 G's shortfall comes from.
+- **Model.** E38 (E37's model, separate clone pool) plus one parameter g_M in (0, 3): under M-CSF
+  a clone's expansion is multiplied by exp(-g_M * z), where z is the clone's latent fate state
+  (which loads on the measured day-2 Cebpa-Irf8 score). Neutrophil-leaning clones expand less as a
+  whole under M-CSF, not only in their neutrophil output. g_M = 0 recovers E38. 24 dimensions.
+- **Fit.** As E38: 18 cold seeds, up to 500 generations, parallel workers, early stopping.
+- **Gate, primary and stability: as E38.** Gate = E33's gate plus full-G / full-M co-presence
+  ±30%. Primary on the best gated fit: G-M, full-G, full-M p >= 0.05 and both B7 differences
+  inside. Stability: >= 9/18 gated, and the gated seeds agree on each primary component in >= 2/3.
+- **Mechanism readings.**
+  - **Clone-level M-CSF selection supported** if the gated seeds' median g_M >= 0.5 **and** B7 G
+    passes in >= 2/3 of gated seeds (E38: 2/9).
+  - **Not supported** if median g_M < 0.2 (the fit does not use it) or B7 G still fails in >= 2/3.
+  - Reported: B20's C1 (both clones' G N-share) and C3 (number of both clones) in the best gated
+    fit, against the data (0.35, 78).
+- **Power check, if a stable pass:** as E38 (gated shard-1 IQR < 0.2, median differing from E20's
+  by more than about 0.37).
