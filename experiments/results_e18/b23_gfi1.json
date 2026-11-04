@@ -1,0 +1,56 @@
+{
+ "genes_found": [
+  "Csf3r",
+  "Gfi1",
+  "Rasgrp1"
+ ],
+ "n_G_present": 177,
+ "n_shared": 39,
+ "n_G_only": 138,
+ "frac_zero": {
+  "Csf3r": 0.576271186440678,
+  "Gfi1": 0.632768361581921,
+  "Rasgrp1": 1.0
+ },
+ "raw_B7G_mean_share": -0.34913976924846485,
+ "T1_Gfi1_Nshare_given_m": {
+  "partial_rho": 0.17440484656745647,
+  "p_one_sided": 0.010124867024488546
+ },
+ "T2_B7G_rank_resid": {
+  "given_m": -30.957332555742532,
+  "given_m_Gfi1": -30.326622862971146,
+  "shrink": 0.020373515438893652,
+  "shrink_95": [
+   -0.055222232769327285,
+   0.16031382558987708
+  ],
+  "pass": false
+ },
+ "T3_Gfi1_Gsize_given_m": {
+  "partial_rho": -0.07155374497924676,
+  "p_one_sided": 0.17196475296006114
+ },
+ "T4_secondary": {
+  "Rasgrp1": {
+   "T1_partial_rho": -0.0008044347738522859,
+   "T1_p": 0.9915214536014787,
+   "T3_partial_rho": NaN,
+   "T3_p": NaN,
+   "T1_bh_q": NaN,
+   "T3_bh_q": NaN
+  },
+  "Csf3r": {
+   "T1_partial_rho": 0.13905424914176143,
+   "T1_p": 0.06491153175262233,
+   "T3_partial_rho": 0.02443721122207697,
+   "T3_p": 0.7468007684330407,
+   "T1_bh_q": NaN,
+   "T3_bh_q": NaN
+  }
+ },
+ "readings": {
+  "T1_pass": true,
+  "T2_pass": false
+ }
+}

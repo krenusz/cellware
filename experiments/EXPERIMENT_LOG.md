@@ -3835,3 +3835,24 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
     G-CSF selection term, pre-registered separately.
   - T1 passes, T2 fails: Gfi1 adds to fate but not to the B7 G misfit. Note it and do not build.
   - T1 fails: Cebpa-Irf8 already carries the Gfi1 information. Close the Gfi1 lead.
+
+### B23 results (2026-11-04): Gfi1 adds to neutrophil share, does not explain B7 G
+
+177 G-present clones with day-2 cells (39 shared with M-CSF, 138 G-only). Day-2 Gfi1 is
+undetected in 63% of them; Rasgrp1 is undetected in all (so its secondary tests are empty).
+
+| test | result | prediction |
+|---|---|---|
+| T1 Gfi1 vs G-CSF N-share, partial given m and size | rho **0.17**, one-sided p **0.010** | pass |
+| T2 B7 G on rank residuals, shrink from adding Gfi1 | **2%** (95% CI -6% to 16%) | fail (needed >= 33%) |
+| T3 Gfi1 vs G-CSF size, given m | rho -0.07, p 0.17 | not supported |
+| T4 Csf3r vs N-share given m | rho 0.14, p 0.065 (nominal) | - |
+
+- **Reading (pre-registered branch: T1 passes, T2 fails).** Day-2 Gfi1 carries fate information
+  that Cebpa-Irf8 does not: Gfi1-high clones are more neutrophilic under G-CSF. But it does not
+  separate shared from G-only clones, so it does not explain B7 G. Recorded; **no model built**.
+- No support for Sierra's proliferation side (T3): low-Gfi1 clones do not grow more under G-CSF.
+- B7 G stays unexplained by every day-2 measure tried (Cebpa-Irf8 in the model, receptors B13,
+  MDP B22, Gfi1 B23). Remaining candidate: it is not a day-2 trait. Shared clones may be the ones
+  whose M-CSF-well sister cells left a less neutrophilic G-CSF well sample (a sampling or
+  co-occurrence effect), which needs a design check rather than a new mechanism.
