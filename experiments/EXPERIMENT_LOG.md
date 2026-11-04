@@ -3856,3 +3856,38 @@ undetected in 63% of them; Rasgrp1 is undetected in all (so its secondary tests 
   MDP B22, Gfi1 B23). Remaining candidate: it is not a day-2 trait. Shared clones may be the ones
   whose M-CSF-well sister cells left a less neutrophilic G-CSF well sample (a sampling or
   co-occurrence effect), which needs a design check rather than a new mechanism.
+
+## B24: is B7 G an artefact? Design check (pre-registered 2026-11-04)
+
+- **Why.** B7 G (G-CSF N-share of clones shared with the M-CSF well minus that of G-only clones;
+  fit set -0.38) is the one misfit that survives every model (E38-E41) and every day-2 measure
+  (m, receptors B13, MDP B22, Gfi1 B23). The median gap is -1.0: G-only clones are mostly pure N
+  under G-CSF, shared clones mostly pure M. One artefact would produce exactly this, with no day-2
+  trait involved: **cross-contamination**, where cells or barcodes from a clone that is large in
+  the M-CSF well show up as a few "monocytes" in the G-CSF library.
+- **Audit already done.** The stored data value (b7_selection.json, -0.373) is computed on all
+  clones, including the held-out shard 1. The simulation side uses the fit set (-0.382). The
+  values are close, so this does not explain the misfit, but from now on B7 is compared on the
+  fit set. No held-out statistic beyond this already-stored descriptive value was seen.
+- **Data.** Fit set (split(cnt, None)). G-present / M-present = at least 2 mature N+M cells in that
+  well, pooled over days (as B7). Reference simulation: best gated E38 fit (lowest loss), 200
+  simulations, same statistics.
+- **Tests (one look each):**
+  - **D1 dose response.** G-present clones: Spearman of G N-share vs M-well cell count (0 for
+    absent), partial given log G size. Data vs simulated 95% interval.
+  - **D2 strata.** B7 G within G-well size strata 2, 3-5, 6+. Data vs simulated 95%.
+  - **D3 contamination signature.** Share of shared clones whose G sample is small and pure M
+    (G size <= 3, no N) while the M well holds at least 5x as many cells. Data vs simulated 95%.
+  - **D4 same day vs other day (data only).** For G cells of day d, call a clone shared-same if
+    it has at least 2 M-well cells on day d, shared-other if it has them only on the other day.
+    B7 G (mean N-share of the day-d G sample) of shared-same and of shared-other minus G-only,
+    pooled over d with at least 2 G cells on day d. Contamination needs the same
+    library and day; the model has no day dependence for co-presence.
+- **Readings, fixed now.**
+  - **Contamination-like:** the data falls outside the simulated 95% only in the G-size-2 stratum
+    (D2), D3 data above the simulated 95%, and D4 same-day gap at least twice the other-day gap.
+    Then B7 G is dropped from the primary pending a cleaned statistic (G samples >= 3 cells).
+  - **Biology:** the data falls outside in the 6+ stratum and the D4 gaps are similar. Then B7 G
+    stays as a real misfit, pointing to M-CSF-well presence that depends on the clone more strongly
+    than the model allows.
+  - Anything else: mixed. Report it, and keep B7 G with the caveat.
