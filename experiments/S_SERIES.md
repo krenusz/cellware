@@ -78,3 +78,23 @@ h5ad/rds files. Those closest to our design:
 
 - No GPU on this PC; C: is nearly full. Data goes on D:, under `data/` (gitignored).
 - Downloads are authorised. Licences are recorded per dataset. Nothing is redistributed.
+
+## DINO papers: abstract and conclusions read (2026-11-04)
+
+| paper | what makes it work | scale | lesson for us |
+|---|---|---|---|
+| DINO (Caron 2021, arXiv 2104.14294) | EMA teacher, centring + sharpening against collapse, multi-crop views, no negatives | ImageNet-1k, 2x8 GPUs x 3 days | the recipe is modality-agnostic, but its views (crops) are image-specific; elsewhere the views must be designed, as our sister cells are |
+| DINOv2 (Oquab 2023, 2304.07193) | DINO + iBOT patch loss, KoLeo, curated 142M images, distil to small models | 22k A100-h for ViT-g | for small or specialised data, **start from DINOv2 weights**; do not train from scratch |
+| DINOv3 (Siméoni 2025, 2508.10104) | 7B ViT, Gram anchoring keeps dense features from degrading, distilled ViT-S/ConvNeXt | 61k H100-h | the small distilled models are the CPU-feasible option for images |
+| DINO-WM (Zhou 2024, 2411.04983) | frozen DINOv2 + transition model on patch features, action MLP per token, CEM planning | offline simulated trajectories | needs **known actions and state-action coverage**; this is exactly why S3 needs multi-cytokine time-lapse |
+| DINO-world (Baldassarre 2025, 2507.19468) | frozen DINOv2 + cross-attention predictor, timestamps as RoPE, action blocks added later | 66M videos; H100 nodes | irregular time steps suit time-lapse; action conditioning can be fine-tuned on little data **after** large action-free pretraining |
+| scDINO (Pfaendler 2023, bioRxiv) | DINO on five-channel immune-cell microscopy | abstract only; full text rate-limited (429) | off-the-shelf ss-ViTs already separate stem-cell states |
+| Cell-DINO (PLoS CB 2025) | DINOv2 with channel-aware augmentations (no blur/solarise), init from DINOv2 | 0.2-5M cell images, 32-64 V100s | gains are at large unlabelled scale; batch effects remain |
+
+**Net for the S series.** Every DINO success relies on large unlabelled data or on pretrained
+weights, plus views that preserve the signal. S2's tie between DINO-sister and PCA (1,127 clones,
+mostly one day-2 cell each) is what these papers predict at our scale. Two practical routes:
+(1) images: frozen pretrained DINOv2/v3-small features, no training; (2) transcriptomes:
+pretrain on all LARRY cells (about 130k, every time point; unlabelled, so the held-out shard's
+clone labels are not used), then fit only the action head on the fit set (the DINO-world
+recipe). Route 2 is the candidate S4.
