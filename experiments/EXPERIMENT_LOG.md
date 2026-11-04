@@ -4257,3 +4257,37 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
   fate information beyond E38's three inputs in the full cocktail; (2) E38 is miscalibrated per
   clone under M-CSF, in the same direction as B24/B26, which supports E44's target; (3) DINO-style
   pretraining needs more cells per clone than this experiment has (LCL's own stated limitation).
+
+## E44: monocyte-committed class acting only in the myeloid wells (pre-registered 2026-11-04)
+
+- **Data diagnostics it must explain (fit set).** B24 D3: 15% of shared clones are large under
+  M-CSF with only 2-3 monocytes under G-CSF (E38: 2%). B26: monocyte-pure clones with 16+ myeloid
+  cells, 5 in the data vs 0.8 in E38. S2 side observation: E38 is miscalibrated per clone
+  under M-CSF. E43 showed the fit wants such a class (pi_M at its cap) but broke Epo/SCF, because
+  the class also acted there. B26 showed Epo/SCF and the myeloid wells share almost no clones,
+  so a class confined to the myeloid wells is not contradicted by any data seen so far.
+- **Model.** E43 with one change: the class (monocytes only, M-CSF expansion x exp(g_up)) acts
+  only under full, G and M. Under Epo/SCF a committed clone behaves like any other. pi_M in
+  (0, 0.5) (E43's cap of 0.3 was binding), g_up in (0, 4). 25 dimensions.
+- **Every-condition check before registration (the new rule).** At e38_s1's parameters,
+  pi_M 0.27, g_up 2, 30 simulations: Epo/SCF targets barely move (Epo mean 0.68 -> 0.71, data
+  0.70; SCF mean 0.68 -> 0.69, data 0.66; Epo/SCF n 22/42 -> 20/43, data 23/39); D3 0.02 -> 0.26
+  (data 0.15); 16+ monocyte-pure clones 0.9 -> 29 (data 5); shared clones 56 -> 57 (data 39,
+  not addressed by this mechanism).
+- **Fit.** As E43: 18 cold seeds, 500 generations max, early stopping not before 200, E38
+  targets/loss/SE, B7 on the fit set. **Guard on (cancel after more than 9 gate failures).**
+  The local guard stops while this PC sleeps; the run itself continues on Actions.
+- **Gate, primary, stability: as E38** (gated >= 9/18; each primary component agrees in >= 2/3
+  of gated seeds).
+- **Readings, fixed now, each with its minimum count.**
+  - **Class used:** median pi_M > 0.02 and median g_up > 0.5 over gated seeds (at least 5
+    gated seeds, otherwise not read).
+  - **Explains the diagnostics:** for the best gated fit, all of the following lie inside the
+    simulated 95%: B24 D3 (39 shared clones in the data), B24 D2 2-cell stratum (18 shared),
+    B26 count of 16+ monocyte-pure clones (5), and the shared-clone count (39). Read only if a
+    gated fit exists.
+  - **Better than E38:** stability met. Then E44 becomes the reference and the held-out power
+    check comes next.
+  - Class used but the diagnostics not explained: report it; no reference change.
+  - The S2 per-clone comparison (E44 vs E38 latent predictive) is **not** part of this
+    registration. It needs its own.
