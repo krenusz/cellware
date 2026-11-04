@@ -3681,3 +3681,23 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
 - **Readings.** **MDP-origin supported** if T1 is positive with p < 0.05 **and** T2 is positive
   with p < 0.05. **Not supported** if T1 has p >= 0.05. Either way, report the fraction of M-only
   clones in the top quartile of the MDP score.
+
+### B22 results (2026-11-04)
+
+246 clones with day-2 cells and >= 2 M-CSF cells: 177 M-only, 69 M-shared.
+
+| test | partial rho | p | clones |
+|---|---|---|---|
+| **T1 day-2 MDP score vs M-only** (controls: Cebpa - Irf8, log M-CSF size) | **-0.01** | **0.90** | 246 |
+| T2 DC-like score of M-CSF monocytes vs M-only | 0.12 | 0.07 | 240 |
+
+- **MDP-origin: not supported** (T1 p >= 0.05). M-only clones do not carry a stronger day-2
+  monocyte-DC progenitor signature (mean score -0.10 vs -0.14 in M-shared clones). Unadjusted,
+  M-only clones are 81% of the top MDP quartile against 72% overall; the difference disappears once
+  the Cebpa - Irf8 axis and clone size are controlled.
+- T2 shows a weak trend: M-only clones' monocytes are slightly more DC-like (p 0.07). This is not
+  significant, and could follow from their monocytes having matured further in M-CSF alone.
+- **Reading.** Clones that appear only under M-CSF are not a separate MDP-type lineage at day 2;
+  what separates them is the same Cebpa/Irf8 axis already in the models. The low full-M is not
+  explained by an MDP sub-population (with the caveat that a 5-gene score is a coarse MDP marker
+  in day-2 LARRY progenitors).

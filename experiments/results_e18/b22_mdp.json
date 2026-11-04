@@ -1,0 +1,24 @@
+{
+ "genes": [
+  "Flt3",
+  "Cd74",
+  "H2-Aa",
+  "H2-Ab1",
+  "H2-Eb1"
+ ],
+ "n_M_only": 177,
+ "n_M_shared": 69,
+ "T1_day2_MDP": {
+  "partial_rho": -0.007837413265032974,
+  "p": 0.9026607846424645
+ },
+ "T2_mono_DClike": {
+  "partial_rho": 0.1165596915926047,
+  "p": 0.0714736620566648,
+  "clones": 240
+ },
+ "frac_M_only_in_top_quartile": 0.8064516129032258,
+ "frac_M_only_overall": 0.7195121951219512,
+ "MDP_mean_M_only": -0.10454164356714597,
+ "MDP_mean_M_shared": -0.14272693302592074
+}
