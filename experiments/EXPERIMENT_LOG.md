@@ -3356,3 +3356,35 @@ full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 
 - **Power check, if a stable pass:** the held-out look follows only if the gated seeds' shard-1
   predictions agree (interquartile range < 0.2) and their median differs from E20's by more than
   about 0.37.
+
+### E38 results (2026-11-04)
+
+18 cold seeds, parallel fitting with early stopping (11 stopped early, 249-492 generations).
+**9 of 18 pass the gate** (E33's gate plus full-arm co-presence ±30%): seeds 1, 3, 4, 6, 8, 11,
+12, 14, 15.
+
+| component (gated seeds) | pass | reading |
+|---|---|---|
+| G-M p >= 0.05 | 5/9 | **no agreement** (needs >= 6/9 either way); sim 0.36-0.42 vs data 0.51 |
+| full-G | 9/9 | agrees, pass |
+| full-M | 9/9 | agrees, pass; but simulated mean 0.40-0.52 vs 0.24 in 9/9 (none within 0.15) |
+| B7 G inside | 2/9 | **agrees, fail**; sim -0.23 to -0.31 vs data -0.37 |
+| B7 M inside | 9/9 | agrees, pass |
+
+- **Primary (best gated fit, seed 1, loss 26.2, the lowest of the E34-E38 line): fail** on G-M
+  (0.40, p 0.02) and B7 G (-0.27). One gated seed (8) passes all five components (G-M 0.42 p 0.09,
+  B7 G -0.30); 1/9 is not a result.
+- **Stability: not met.** The gate count reaches 9/18, but G-M splits 5/4. Stable verdicts: the
+  full-arm statistics pass, B7 M passes, B7 G fails.
+- **Mechanism: separate pool supported, and stable.** Median eps of gated seeds 0.09; 15 of 18
+  seeds land in the same basin (phi 0.19-0.28, eps 0.08-0.12). The full arm's clone count is
+  right in 9/9 gated seeds. Selection estimates are also stable across all 18 seeds: neutrophil
+  survival s_G 3.8-7.4 (gated 4.1-5.3) under G-CSF, s_M 0.07-0.15 under M-CSF.
+- **Power check: fails.** Gated shard-1 predictions have median 0.52 and IQR 0.65 (several
+  degenerate at 0). The held-out look stays unspent.
+- **What is left.** Three misfits, all stable across seeds: G-M a little low (about 0.40 vs 0.51),
+  B7 G a little weak (about -0.27 vs -0.37), and full-M far too high (about 0.48 vs 0.24). E37/E38
+  fixed which clones the full culture holds, but not how differently its clones' cells behave. The
+  full arm is mostly day-6 libraries while G and M are mostly day-4 (B12), so sampling time is the
+  first candidate. Per the rule (no new simulator without a data diagnostic it must explain), the
+  next step is a diagnostic: does cross-condition agreement fall with the gap in library day?
