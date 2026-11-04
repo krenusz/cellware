@@ -3891,3 +3891,53 @@ undetected in 63% of them; Rasgrp1 is undetected in all (so its secondary tests 
     stays as a real misfit, pointing to M-CSF-well presence that depends on the clone more strongly
     than the model allows.
   - Anything else: mixed. Report it, and keep B7 G with the caveat.
+
+### B24 results (2026-11-04): mixed. B7 G lives in 2-cell G samples, but it is not same-day contamination
+
+Fit set; reference best gated E38 fit (e38_s1), 200 simulations.
+
+| statistic | data | sim mean [95%] | |
+|---|---|---|---|
+| B7 G, all | -0.38 | -0.27 [-0.38, -0.13] | edge |
+| D2, G size 2 (18 shared) | **-0.47** | -0.22 [-0.40, 0.00] | **outside** |
+| D2, G size 3-5 (18 shared) | -0.31 | -0.25 [-0.45, -0.07] | inside |
+| D2, G size 6+ (3 shared) | +0.01 | -0.09 [-0.42, 0.07] | inside (3 clones) |
+| D3, small pure-M G sample, M well >= 5x | **0.15** (6/39) | 0.02 [0, 0.07] | **outside** |
+| D1, G N-share vs M-well size | -0.30 | -0.19 [-0.31, -0.07] | inside |
+| shared clones (n) | **39** | 57 [44, 72] | **outside** |
+| D4 gap, same day / other day (data) | -0.39 (20) / -0.33 (16) | - | similar |
+
+- **Pre-registered reading: mixed.** The misfit is confined to the smallest G samples (D2) and
+  carried by a contamination-like pattern (D3: 6 shared clones whose 2-3 G-CSF cells are all
+  monocytes while the clone is at least 5x larger in the M-CSF well; the model makes 0-3). But the
+  D4 gap is as large when the M-well cells come from the other day, and same-library
+  contamination needs the same day. So the signature is not same-library contamination.
+- **What else fits.** A real minority of clones that are strongly M-biased and expand under
+  M-CSF but barely survive under G-CSF (a few monocytes left). That is selection against M-biased
+  clones under G-CSF, stronger at the extreme than the model's logistic gives. A second,
+  independent misfit fits this too: the model makes too many shared clones (57 vs 39). M-biased
+  clones are present in the G well too often in the model.
+- **Decision.** Per the rule, B7 G stays in the primary with a caveat: it rests on 18 + 18 small
+  clones. From now on it is computed on the fit set. A model that drops G-CSF presence of strongly
+  M-biased clones (survival, not just fate) is a candidate, pre-registered separately and tested
+  on D2, D3 and shared-clone count together.
+
+## B25: is the low M-CSF replicate agreement just sampling? (pre-registered 2026-11-04)
+
+- **Why.** The plan was to down-weight M-CSF agreement statistics because B21's replicate
+  libraries agree at 0.28 under M-CSF on day 6 (305 clones), against 0.85-0.91 for G-CSF and the
+  full cocktail. But M-CSF day-6 samples are nearly pure monocyte, so N-share has almost no spread
+  and binomial sampling alone can push the correlation down. The model already samples cells
+  binomially. If sampling explains the 0.28, down-weighting would count the same noise twice.
+- **Test (data only, one look).** For each condition and day with at least 2 libraries, use the
+  B21 pairing (clones with at least 2 mature cells in both libraries). Null: within each clone,
+  pool its cells over its libraries and re-deal N/M labels to the libraries at their observed
+  cell counts (hypergeometric), 1000 times. This gives the agreement expected if the libraries
+  differ only by sampling. Compare the observed r with the null 95%.
+- **Readings, fixed now.**
+  - M6 observed r inside the null 95%: sampling explains it. **No down-weighting**; the plan is
+    dropped.
+  - M6 observed r below the null 2.5%: extra library-level noise under M-CSF. The next model's
+    loss inflates the SE of every statistic using the M-CSF well by sqrt(null r / observed r),
+    pre-registered with that model.
+  - G4, G6 and full6 serve as checks: they should lie inside their own nulls.
