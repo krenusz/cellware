@@ -4130,3 +4130,32 @@ them on the fit set with the same simulation seeds. **E38 under the protocol: 9/
     with at least 10 A clones. Then the next model needs clone-level survival that differs
     between myeloid and Epo/SCF conditions.
   - Otherwise: mixed. Report it.
+
+### B26 results (2026-11-04): formally "condition-dependent", but it rests on 1 clone; the real finding is that Epo/SCF barely share clones with the myeloid wells
+
+| statistic (fit set) | data | E38 sim mean [95%] |
+|---|---|---|
+| A: M-pure clones in >= 2 myeloid wells | **38** | 55 [41, 69] (out) |
+| B: mixed/N clones in >= 2 myeloid wells | 38 | 49 [36, 63] |
+| A clones also present in Epo/SCF | **1** | 1 [0, 3] |
+| that clone's Epo/SCF N-share | 0.5 | 0.01 [0, 0] (out) |
+| A clones by myeloid size, 2-5 / 6-15 / 16+ | 9 / 24 / **5** | 17 / 37 / **0.8 [0, 3]** |
+| present in Epo/SCF, A vs B, 2-5 cells | 0.11 vs 0.25 | 0.02 vs 0.06 |
+| present in Epo/SCF, A vs B, 6-15 cells | 0 vs 0.08 | 0.02 vs 0.05 |
+
+- **Pre-registered reading: "condition-dependent; E38 misses it; class warranted".** That is
+  formally what the rule gives. **It rests on one clone** (the only A clone seen under Epo/SCF,
+  N-share 0.5). The rule set no minimum count, which was a flaw; the reading is uninformative.
+- **What the data does say.**
+  1. Epo/SCF wells and myeloid wells share very few clones (A 1/38; B a few per stratum), so the
+     Epo/SCF data cannot tell whether monocyte commitment depends on the condition.
+  2. E43 broke the Epo/SCF statistics because its class also applied to the (mostly separate)
+     clones seen only under Epo/SCF. A class acting only in the myeloid wells is not ruled out by
+     anything here.
+  3. E38's M-pure clones have the wrong size distribution: too many small ones (2-15 cells:
+     33 vs 54) and too few large ones (16+: **5 vs 0.8**). This is the same signal as B24's D3:
+     large, persistent, monocyte-only clones that E38 cannot make.
+- **Decision.** Candidate E44 = E43 with the class acting in the myeloid wells only (full, G, M),
+  judged on the same gate and primary plus this table (A size distribution) and B24's D3.
+  Pre-registration deferred to the next session, with a minimum-count rule for every reading.
+- **Lesson (process).** Every pre-registered reading gets a minimum sample size from now on.
