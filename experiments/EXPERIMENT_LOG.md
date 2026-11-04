@@ -3489,3 +3489,50 @@ full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 
   diagnostic on this data set can settle it. The G-vs-M structure, which is well powered, matches
   the model (T2 here, G-M and B7 M in E38). The one well-powered misfit left is B7 G
   (about -0.27 vs -0.37, failing in 7/9 gated E38 seeds).
+
+## B20: where does the model's B7 G shortfall come from? (pre-registered 2026-11-04)
+
+- **Why.** B7 G (mean G-CSF N-share of clones also present under M-CSF minus that of G-only
+  clones; data -0.37) is the one well-powered misfit left: E38's gated fits give -0.23 to -0.31
+  and fail it in 7/9. A model change must be aimed at the part that misfits.
+- **Data and model.** Cytokine full / G / M only, pooled over days, presence = >= 2 N+M cells
+  (as B7). Model: 200 simulations of e38_s1 and 50 of each other gated E38 seed.
+- **Components.**
+  - C1: mean G N-share of "both" clones. C2: mean G N-share of G-only clones.
+  - C3: number of both clones; C4: number of G-only clones.
+  - C5: fraction of G-only clones that are N-pure (share 1); C6: fraction of both clones with
+    G N-share 0.
+  - C7: B7 G within small G clones (2-3 N+M cells) and C8: within larger clones (>= 4).
+  - C9: day-2 state of the selection: mean measured m (standardised Cebpa-Irf8) of both clones minus
+    G-only clones, among clones with day-2 measurements (the model uses the same measured m).
+- **Readings, fixed now.** For each component, the data's percentile in e38_s1's simulations. A
+  component is **misfit** if outside the 2.5-97.5% range, and **robustly misfit** if, in addition,
+  at least 7 of the 8 other gated seeds' means lie on the same side of the data. The B7 G shortfall
+  is attributed to the robustly misfit components. If none is, the shortfall is diffuse and no
+  targeted change is justified.
+
+### B20 results (2026-11-04)
+
+| component | data | e38_s1 mean [95%] | pct | robustly misfit |
+|---|---|---|---|---|
+| B7 G | -0.373 | -0.266 [-0.354, -0.176] | 1% | yes (8/8 seeds above) |
+| **C1 both clones, mean G N-share** | **0.348** | 0.454 [0.381, 0.535] | 1% | **yes** (8/8 above) |
+| C2 G-only clones, mean G N-share | 0.721 | 0.720 [0.688, 0.756] | 53% | no |
+| **C3 number of both clones** | **78** | 114 [95, 133] | 0% | **yes** (8/8 above) |
+| C4 number of G-only clones | 474 | 434 [398, 473] | 97% | yes (0/8 above) |
+| C5 G-only clones N-pure | 0.62 | 0.65 [0.61, 0.70] | 12% | no |
+| **C6 both clones with G N-share 0** | **0.56** | 0.46 [0.37, 0.54] | 99% | **yes** (0/8 above) |
+| C7 B7 G, small G clones (2-3 cells) | -0.41 | -0.25 [-0.35, -0.15] | 0% | yes |
+| C8 B7 G, larger clones (>= 4) | -0.23 | -0.16 [-0.30, -0.03] | 18% | no |
+| C9 day-2 m, both minus G-only | -0.64 | -0.55 [-0.85, -0.13] | 30% | no |
+
+- **The shortfall is in the clones present under both cytokines, not in the G-only clones.** The
+  model's G-only clones match the data (C2, C5). Its "both" clones are too many (114 vs 78) and too
+  neutrophilic under G-CSF (0.45 vs 0.35; too few with no neutrophils), so too few G-only clones
+  are left (C4). Concentrated in small clones (C7). The day-2 state separating the two groups is
+  right (C9).
+- **Mechanistic reading.** In the model, M-CSF selection acts only on neutrophil output (s_M
+  multiplies N cells), so a neutrophil-leaning clone still shows up under M-CSF through its few
+  monocytes. In the data such clones are missing from M-CSF wells altogether: under M-CSF, whole
+  neutrophil-leaning clones fail to expand. This fits B13, where day-2 Csf1r vs Csf3r balance
+  predicted presence.
