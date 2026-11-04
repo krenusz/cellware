@@ -1,7 +1,7 @@
 """E41: E38 (separate clone pool) with day-resolved sampling and fading fate memory.
 See the E41 pre-registration in EXPERIMENT_LOG.md.
 
-    uv run python experiments/e41_memory.py seed [warm_source]
+    uv run python experiments/e41_memory.py seed [name]
 """
 
 from __future__ import annotations
@@ -91,4 +91,5 @@ if __name__ == "__main__":
     e33.simulate, e33.unpack = simulate, unpack
     e33.TARGETS, e33.EXTRA_SE, e33.SIMS = targets, extra_se, 10
     x0 = warm_x(WARM[seed]) if seed < len(WARM) else None
-    e33.main(seed, maxiter=500, dim=24, name="e41", x0=x0)
+    name = sys.argv[2] if len(sys.argv) > 2 else "e41"
+    e33.main(seed, maxiter=500, dim=24, name=name, x0=x0)

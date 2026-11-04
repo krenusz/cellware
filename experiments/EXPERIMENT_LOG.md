@@ -3759,3 +3759,27 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
   - **Ridge consistency:** gated seeds' median s_G inside E40's compatible range 2.5-6.5 means
     consistent; outside means memory substitutes for selection.
   - **Fade used:** median r46 of gated seeds < 0.9; otherwise the fit does not need it.
+
+### E41 results (2026-11-04): inconclusive, methods bug
+
+- **The early-stop guard cancelled the run** after 11 of 18 seeds had finished, 10 of them failing
+  the gate (first use of the guard; it worked as designed).
+- **But the warm-started seeds did not search.** All 9 (seeds 0-8) stopped at generation 51:
+  early stopping fires when the best loss improves by less than 0.1% over 50 generations, and a
+  good warm start already is the population's best, so the rule fires before the rest of the
+  population can catch up. Their parameters stayed at the starting values (r46 0.90, s_G exactly
+  2.5 / 4 / 6.5). Only 2 cold seeds finished (13 and 17: 403 and 335 generations).
+- **What can be read.** At E40's ridge fits with r46 0.9, pooled G-M agreement drops to
+  0.28-0.38 (E40: 0.36-0.43), and full-G co-presence rises 25-50% above the data: day-6 memory loss
+  lowers cross-condition agreement. The two cold seeds settle at r46 0.87 and 0.94. B7 G fails in
+  every finished seed (-0.08 to -0.28). Weak evidence that the fit does not want fading memory.
+- **Verdict: inconclusive, not a negative.** The guard's cancellation rested mostly on seeds that
+  had not searched. Re-run as E41b with the bug fixed.
+- **Fix (in e33.main):** early stopping is not checked before generation 200 (PATIENCE_MIN).
+  E38-E40 were all cold-started and ran 249-500 generations, so they are unaffected; only warm
+  starts were exposed.
+
+## E41b: E41 re-run with the early-stopping fix (pre-registered 2026-11-04)
+
+- Identical to E41 in model, target, seeds, warm starts, gate, primary, stability and readings,
+  except that early stopping cannot fire before generation 200. Early-stop guard on (9/18).

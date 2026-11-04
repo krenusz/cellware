@@ -84,6 +84,7 @@ SIMS = None  # hook: simulations per loss evaluation (default e30.SIMS)
 # when the best loss improves by less than PATIENCE_REL over PATIENCE generations. Set
 # E33_WORKERS=1 and E33_PATIENCE=0 to reproduce E33-E37 (serial, immediate updating, full run).
 PATIENCE_REL = 1e-3
+PATIENCE_MIN = 200  # no early stop before this generation (E41: warm starts stopped at 51)
 _LOSS = None  # the loss closure, inherited by forked workers
 
 
@@ -97,7 +98,7 @@ class _Stop:
 
     def __call__(self, intermediate_result):
         self.hist.append(float(intermediate_result.fun))
-        if self.patience and len(self.hist) > self.patience:
+        if self.patience and len(self.hist) > max(self.patience, PATIENCE_MIN):
             old = self.hist[-1 - self.patience]
             if old - self.hist[-1] < PATIENCE_REL * abs(old):
                 self.early = True
