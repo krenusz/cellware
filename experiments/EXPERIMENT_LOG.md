@@ -3609,3 +3609,75 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
   - **s_G identified** if compatible points cover at most two adjacent values.
   - **Pure instruction under G-CSF excluded** if s_G = 1 is not compatible.
   - Reported: the profile of best loss, and where B7 G and G-M pass along it.
+
+## B21: fluctuation-test analysis of fate memory, no simulator (pre-registered 2026-11-04)
+
+- **Why.** The Luria-Delbrück fluctuation test separates pre-existing from induced change by the
+  variance between replicate cultures; its extension to cell states (Singh & Saint-Antoine 2023)
+  reads switching timescales off that variance. Our sister wells and replicate libraries are such
+  replicates. This gives estimates that do not depend on any of our simulators.
+- **Data.** Cytokine experiment, full / G-CSF / M-CSF only (no Epo/SCF), mature N and M cells by
+  library. Clones need >= 2 N+M cells in each compartment compared. Libraries of the same condition
+  and day are treated as replicate samples (whether they are separate wells is not stated in the
+  metadata; caveat). Bootstrap over clones, 1000 resamples.
+- **Tests.**
+  - **T1, overdispersion:** for each condition x day (libraries pooled), fit a beta-binomial to
+    clone N counts by maximum likelihood; rho is the intra-clone correlation. Cells deciding
+    independently with a condition-wide probability (pure induction, no heritable state) give
+    rho = 0.
+  - **T2, replicate libraries:** Pearson r of clone N-share between different libraries of the
+    same condition and day (G4, M4, G6, M6, full6), rows pooled over library pairs.
+  - **T3, memory across days:** R = r(day 4 vs day 6, same condition) / r(replicate libraries,
+    same day), for G and M. Under exponential loss of memory over the two days, the half-life is
+    2 * ln 2 / (-ln R) days.
+  - **T4, descriptive:** same-day G-M agreement against the replicate-library agreement of G and M.
+- **Readings, fixed now.**
+  - **Pure induction excluded** in a condition x day if rho's 95% CI lower bound is above 0.05.
+  - **Memory stable over days 4-6** in a condition if R's 95% CI includes 1; otherwise the
+    half-life and its CI are reported.
+  - Comparisons with fewer than 30 clones are descriptive only.
+
+### B21 results (2026-11-04)
+
+| test | G-CSF | M-CSF | full |
+|---|---|---|---|
+| T1 rho, day 4 (clones) | 0.79 [0.73, 0.85] (330) | 0.86 [0.73, 0.96] (194) | n.a. (11) |
+| T1 rho, day 6 (clones) | 0.67 [0.58, 0.75] (238) | 0.62 [0.44, 0.75] (881) | 0.72 [0.68, 0.77] (709) |
+| T2 replicate libraries, day 4 | 0.91 [0.82, 0.97] (51) | undefined (18) | |
+| T2 replicate libraries, day 6 | 0.85 [0.76, 0.91] (74) | 0.28 [-0.02, 0.58] (305) | 0.84 [0.74, 0.91] (122) |
+| T3 day 4 vs day 6 | 0.60 (39); R 0.68 [0.40, 0.92] | 0.32 (131); R uninformative | |
+| T4 same-day G-M | G4-M4 0.32 (22), G6-M6 0.63 (20) | | |
+
+- **Pure induction excluded in every condition and day** (rho 0.62-0.86, all CIs far above
+  0.05). Cells of a clone do not decide independently with a condition-wide probability:
+  N-share is mostly set per clone. Caveat from the fluctuation-test logic: this also holds if
+  decisions are induced but made by a few founder cells right after plating and then expanded. It
+  excludes cell-by-cell induction late in culture, not induction at the first divisions.
+- **Replicate libraries agree closely** in G-CSF (0.85-0.91) and the full cocktail (0.84), about
+  the E19 sister level (rho_f 0.88). Under M-CSF they agree weakly (0.28, 305 clones), because
+  N-share is near 0 for almost every clone. M-CSF data cannot carry fate-agreement statistics.
+- **Fate memory is not perfectly stable from day 4 to day 6 under G-CSF:** R 0.68 [0.40, 0.92],
+  CI excludes 1, a half-life of about 3.6 days [1.5, 16]. Over the 2-4 days of the experiment, most
+  of the clone's fate is kept. Under M-CSF, R is uninformative.
+- **Implication for the models.** Same-day G6-M6 agreement (0.63, 20 clones) approaches the
+  replicate ceiling, and G4-M4 (0.32, 22 clones) is lower; descriptive only. A day-dependent memory
+  loss of this size is not in any simulator so far (they use one draw per clone, rho_f 0.88).
+
+## B22: do M-CSF-only clones come from monocyte-DC progenitors? (pre-registered 2026-11-04)
+
+- **Why.** GMPs and MDPs give distinct monocytes (Yáñez et al. 2017). If many M-CSF-only clones
+  are MDP-type, they make only monocytes under any cytokine, which would lower full-M and inflate
+  "selection" with no cytokine effect.
+- **Data.** Cytokine experiment, normalised expression. Clones with day-2 cells and >= 2 mature
+  cells under M-CSF. **M-only:** no mature cells under G-CSF or the full cocktail.
+  **M-shared:** >= 2 mature cells under G-CSF or the full cocktail.
+- **Scores (gene sets fixed now).** MDP score = mean z (over day-2 cells) of log1p expression of
+  Flt3, Cd74, H2-Aa, H2-Ab1, H2-Eb1, averaged per clone over its day-2 cells. DC-like monocyte score
+  = the same five genes over the clone's mature monocytes under M-CSF (days 4 and 6).
+- **Tests.**
+  - **T1 (primary):** partial Spearman between day-2 MDP score and M-only (1) vs M-shared (0),
+    controlling for the Cebpa - Irf8 day-2 score and the clone's log number of M-CSF cells.
+  - **T2:** the same with the DC-like score of the clone's M-CSF monocytes.
+- **Readings.** **MDP-origin supported** if T1 is positive with p < 0.05 **and** T2 is positive
+  with p < 0.05. **Not supported** if T1 has p >= 0.05. Either way, report the fraction of M-only
+  clones in the top quartile of the MDP score.
