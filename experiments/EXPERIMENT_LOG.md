@@ -3730,3 +3730,32 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
 - **Headline.** Under G-CSF, neutrophils need a survival/expansion advantage of roughly 2.5-6.5x
   (best fits 4-6.5x); the matching instruction is between about 0.5 and 3.7 logits, smaller at the
   better-fitting end. Selection is necessary; instruction alone cannot produce the data.
+
+## E41: fading fate memory between day 4 and day 6 (pre-registered 2026-11-04)
+
+- **Data diagnostic it must explain (B21).** Under G-CSF, a clone's day-4 vs day-6 agreement is
+  0.68 of its same-day replicate agreement (CI 0.40-0.92): fate memory fades over the culture. All
+  simulators so far give each clone one fate draw per condition, and pool days 4 and 6.
+- **Model.** E38's (E37 model, separate clone pool) with day-resolved sampling. Each condition's
+  expected cells are split between day 4 and day 6 by the fit set's observed day-4 share of
+  mature N+M cells (full 0.041, G 0.504, M 0.155, Epo 0.938, SCF 1.0; fixed, not fitted). Day-4 cells use the clone's
+  branch state zb; day-6 cells use zb6 = r46 * zb + sqrt(1 - r46^2) * noise, so r46 in (0, 1) is
+  the memory kept from day 4 to day 6. One new parameter; r46 = 1 recovers E38 for every pooled
+  statistic. 24 dimensions.
+- **New target.** G-CSF day-4 vs day-6 agreement on the fit set: 0.70 (17 clones; SE 0.16 from
+  the bootstrap CI). Weakly informative by construction; B21's whole-data value is 0.60.
+- **Fit.** 18 seeds, up to 500 generations, parallel workers, early stopping. Seeds 0-8 start
+  from E40's gated fits along the ridge (s_G 2.5: e40g2.5_s0, s1, s0; s_G 4: e40g4_s0, s1, s2;
+  s_G 6.5: e40g6.5_s0, s2, s0), with r46 starting at 0.9; seeds 9-17 cold. s_G is free.
+  **Early-stop guard on:** cancel once more than 9 seeds fail the gate.
+- **Gate, primary, stability: as E38.** Gate = E33's gate plus full-G / full-M co-presence ±30%.
+  Primary (best gated fit): G-M, full-G, full-M p >= 0.05 and both B7 differences inside.
+  Stability: >= 9/18 gated, and gated seeds agree on each primary component in >= 2/3.
+- **Readings, fixed now.**
+  - **Fading memory relieves B7 G** if B7 G passes in >= 2/3 of gated seeds (E38 2/9; E40 at no
+    grid point).
+  - **Memory estimate:** median r46 of gated seeds, and the simulated day-4 vs day-6 agreement of
+    the best gated fit against the data's 0.70 (fit set).
+  - **Ridge consistency:** gated seeds' median s_G inside E40's compatible range 2.5-6.5 means
+    consistent; outside means memory substitutes for selection.
+  - **Fade used:** median r46 of gated seeds < 0.9; otherwise the fit does not need it.
