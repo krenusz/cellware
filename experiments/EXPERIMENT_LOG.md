@@ -4102,3 +4102,31 @@ them on the fit set with the same simulation seeds. **E38 under the protocol: 9/
   monocyte commitment applies under the myeloid cytokines (G, M, full) and not under Epo/SCF.
   That is close to a condition-specific fate term, which E38's tau already provides, so it must
   be argued from data before any pre-registration. Not started.
+
+## B26: what do monocyte-committed-looking clones make under Epo and SCF? (pre-registered 2026-11-04)
+
+- **Why.** E43 wanted about 27% of clones committed to monocytes in the G-CSF, M-CSF and full
+  wells, but the Epo/SCF wells forbid those clones being monocyte-only there. Two readings
+  differ in what comes next: (a) the same clones make neutrophils under Epo/SCF, so commitment
+  depends on the condition; (b) the same clones are rarely present under Epo/SCF, so the
+  problem is presence, not fate.
+- **Data.** Fit set. Myeloid wells = full, G, M. Present = at least 2 mature N+M cells in that
+  well, pooled over days.
+  - **A (M-pure):** present in at least 2 myeloid wells, with no neutrophil in any of them.
+  - **B (mixed or N):** present in at least 2 myeloid wells, with at least one neutrophil.
+- **Statistics, each reported for data and for the best gated E38 fit (e38_s1, 200
+  simulations, 95% interval).**
+  - C0: number of A clones, and A / (A + B).
+  - C1: share of A and of B clones present (at least 2 cells) in Epo or SCF, within strata of
+    total myeloid size (2-5, 6-15, 16+ cells).
+  - C2: mean N-share in Epo/SCF of A clones present there, and of B clones.
+- **Readings, fixed now.**
+  - **Condition-dependent commitment:** data C2 for A at least 0.5 (they make mostly
+    neutrophils under Epo/SCF). Then, if E38 reproduces C2 for A (data inside the simulated 95%)
+    and only C0 is off, E38's per-condition fate term already handles it and the issue is how
+    many such clones there are. If E38 misses C2 too, a myeloid-only commitment class is
+    warranted (pre-registered separately).
+  - **Presence problem:** A's presence in Epo/SCF is below half of B's in every size stratum
+    with at least 10 A clones. Then the next model needs clone-level survival that differs
+    between myeloid and Epo/SCF conditions.
+  - Otherwise: mixed. Report it.
