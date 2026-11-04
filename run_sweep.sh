@@ -31,7 +31,7 @@ id=$before
 while [ "$id" = "$before" ]; do sleep 3; id=$(gh run list --workflow sweep.yml --limit 1 --json databaseId -q '.[0].databaseId'); done
 rmdir "$lock"
 echo "run $id: https://github.com/$(gh repo view --json nameWithOwner -q .nameWithOwner)/actions/runs/$id"
-[ -n "${guard:-}" ] && (cd experiments && uv run python sweep_guard.py "$id" "../$sweep" "$guard" > "../.sweep_runs/guard_$id.log" 2>&1 &)
+[ -n "${guard:-}" ] && (cd experiments && uv run python -u sweep_guard.py "$id" "../$sweep" "$guard" > "../.sweep_runs/guard_$id.log" 2>&1 &)
 gh run watch "$id" --interval 30 > /dev/null || true
 out=.sweep_runs/$id
 rm -rf "$out"; gh run download "$id" -n results -D "$out" || { echo "no results artifact" >&2; exit 1; }

@@ -26,6 +26,16 @@ Later: does the model reproduce measured clonal statistics (Weinreb 2020 LARRY)?
 6. A health check (no collapse: min size over the last 100 iterations > 1.5) must pass
    before knockouts are interpreted.
 
+## Retro (standing steps, from 2026-11-04)
+1. Write `RETRO_<date>.md`: what went well, what went badly, decisions.
+2. **Literature gap map:** run `uv run python experiments/lit_gap.py`. It maps the citation
+   neighbourhood of the core papers (SEEDS in the script) through the free OpenAlex API, ranks
+   unread papers by how many open questions they touch, and marks each open access or paywalled
+   (by publisher). Read the top open-access ones, add DOIs read to `experiments/lit/read.txt`,
+   and record in the retro which paywalled papers matter and behind which publisher. Add new
+   core papers to SEEDS when the project adopts them.
+3. Sweeps run with `--guard N`; status updates show `./sweep_status.sh`.
+
 ## Out of bounds
 - Changing the metric or the target after seeing results of the same study.
 - Interpreting a knockout comparison where conditions collapse at different rates.
