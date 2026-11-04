@@ -4040,3 +4040,42 @@ clones 0.084)**.
 - **Held-out status.** Shard-1 clones' G-CSF and M-CSF wells entered these descriptive checks.
   The held-out statistic itself (shard-1 Epo/SCF pairs) was never computed or looked at.
   The test stays usable, but this exposure is noted for whoever reads the eventual result.
+
+## E38 under the fixed B7: no re-run needed (2026-11-04)
+
+B7 is not in the fitting loss; it is scored after the fit with 200 simulations on fixed seeds. A
+re-run of E38 with the same seeds reaches the same parameters, and the audit already re-scored
+them on the fit set with the same simulation seeds. **E38 under the protocol: 9/18 gated, B7 G
+5/9, B7 M 9/9, primary 3/9 (s8, s11, s12), G-M 5/4. Not stable.** Recorded as E38's verdict.
+
+## E43: a discrete monocyte-committed clone class (pre-registered 2026-11-04)
+
+- **Data diagnostic it must explain (B24, fit set).** 15% of shared clones are large under M-CSF
+  (at least 5x their G-CSF count) with only 2-3 cells under G-CSF, all monocytes; E38 makes 2%
+  [0, 7%]. E38 also makes too many shared clones (57 [44, 72] vs 39), and its 2-cell-stratum B7 G
+  is -0.22 vs -0.47. Two E42 probes showed that dropping or shrinking M-biased clones under
+  G-CSF moves all of these the wrong way.
+- **Model.** E38 plus a discrete class. Each clone is monocyte-committed with probability pi_M.
+  A committed clone makes only monocytes in every condition, and its expansion under M-CSF is
+  multiplied by exp(g_up). Everything else is E38. Two parameters: pi_M in (0, 0.3),
+  g_up in (0, 4). Their lower bounds approach E38. 25 dimensions.
+- **Fit.** Targets, loss and SE as E38 (B24's statistics are not targets, so they test the model
+  out of fit). 18 cold seeds, up to 500 generations, parallel workers, early stopping not before
+  generation 200. Early-stop guard on: cancel once more than 9 seeds fail the gate.
+- **Direction check before dispatch.** At E38's best gated parameters, set pi_M = 0.1 and
+  g_up = 2 for 30 simulations and record D3, the shared count and B7 G. It is reported whatever
+  it shows. It is not used to choose values; it only decides whether the run is worth spending.
+  If D3 does not rise and the shared count does not fall, E43 is abandoned unrun, like E42.
+- **Gate, primary, stability: as E38, with B7 on the fit set.**
+- **Readings, fixed now.**
+  - **Class used:** median pi_M of gated seeds > 0.02 and median g_up > 0.5.
+  - **Explains B24:** for the best gated fit, D2 (G size 2), D3 and the shared count all inside
+    the simulated 95% (track_b24 statistics, fit set, 200 simulations).
+  - **Better than E38:** stability met (>= 9/18 gated, each primary component in >= 2/3 of
+    gated seeds). If met, E43 becomes the reference, and the held-out power check is next.
+  - Class used but B24 not explained: the class is absorbing something else. Report it; no
+    reference change.
+- **Direction check result (before dispatch).** e38_s1 parameters, 30 simulations, fit set.
+  pi_M 0 / 0.1 with g_up 0 / 2: D3 0.021 -> **0.114** (data 0.154); shared clones 56 -> 58
+  (data 39); B7 G -0.28 -> -0.30 (data -0.38); D2 G-size-2 -0.23 -> -0.24 (data -0.47). D3 rises,
+  so the pre-registered rule says run. The shared-clone excess is not addressed at these values.
