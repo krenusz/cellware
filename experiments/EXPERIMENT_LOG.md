@@ -3941,3 +3941,29 @@ Fit set; reference best gated E38 fit (e38_s1), 200 simulations.
     loss inflates the SE of every statistic using the M-CSF well by sqrt(null r / observed r),
     pre-registered with that model.
   - G4, G6 and full6 serve as checks: they should lie inside their own nulls.
+
+### B25 results (2026-11-04): sampling explains the low M-CSF replicate agreement
+
+| condition/day | clones | mean N-share | observed r | sampling null mean [95%] |
+|---|---|---|---|---|
+| G4 | 51 | 0.72 | 0.91 | 0.82 [0.71, 0.91] |
+| G6 | 74 | 0.85 | 0.85 | 0.76 [0.64, 0.86] |
+| full6 | 122 | 0.18 | 0.84 | 0.81 [0.75, 0.86] |
+| **M6** | 305 | **0.008** | **0.28** | **0.37 [0.11, 0.64]** |
+| M4 | 18 | 0 | undefined | - |
+
+- **Reading (pre-registered): sampling explains it. No down-weighting.** M-CSF day-6 samples are
+  99% monocytes. With so little spread in N-share, binomial sampling alone puts replicate
+  agreement anywhere from 0.1 to 0.6. The model already samples cells binomially, so the M-CSF
+  statistics are weighted correctly as they are. The "down-weight M-CSF" plan is dropped.
+- Checks pass: G4, G6 and full6 sit inside (at the top of) their own nulls. Replicate libraries
+  differ by sampling alone, with no sign of library-level technical noise anywhere.
+- Side note for B21's "replicate agreement" numbers: they are mostly sampling ceilings. Read them
+  against these nulls, not as biological reproducibility.
+
+### Tooling (2026-11-04)
+
+- `run_sweep.sh` no longer skips a run's result silently when a local file of that name exists.
+  It takes the run's file when the local one is missing or empty, and when they differ beyond
+  line endings it keeps both (`<file>.run<id>`) and says so. Cause of B23's "0 new result
+  files": a smoke test had left an empty `b23_gfi1.json`.

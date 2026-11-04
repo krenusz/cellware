@@ -1,0 +1,58 @@
+{
+ "G4": {
+  "clones": 51,
+  "observed_r": 0.908419621310991,
+  "null_mean": 0.8156705413363168,
+  "null_95": [
+   0.7077402516827161,
+   0.9117006967310834
+  ],
+  "below_null": false,
+  "mean_Nshare": 0.7166666666666667
+ },
+ "G6": {
+  "clones": 74,
+  "observed_r": 0.8459219232778443,
+  "null_mean": 0.7609041180657058,
+  "null_95": [
+   0.6367294425519823,
+   0.8648569603876569
+  ],
+  "below_null": false,
+  "mean_Nshare": 0.8516570141570141
+ },
+ "M4": {
+  "clones": 18,
+  "observed_r": NaN,
+  "null_mean": null,
+  "null_95": [
+   NaN,
+   NaN
+  ],
+  "below_null": false,
+  "mean_Nshare": 0.0
+ },
+ "M6": {
+  "clones": 305,
+  "observed_r": 0.2770558622567428,
+  "null_mean": 0.3740837433879433,
+  "null_95": [
+   0.10775883335649834,
+   0.6368141894589511
+  ],
+  "below_null": false,
+  "mean_Nshare": 0.007948335817188274
+ },
+ "full6": {
+  "clones": 122,
+  "observed_r": 0.8353205609329215,
+  "null_mean": 0.8090917496994452,
+  "null_95": [
+   0.754409536407935,
+   0.8637357379909724
+  ],
+  "below_null": false,
+  "mean_Nshare": 0.18320647931303669
+ },
+ "reading": "sampling explains it: no down-weighting"
+}

@@ -35,9 +35,13 @@ echo "run $id: https://github.com/$(gh repo view --json nameWithOwner -q .nameWi
 gh run watch "$id" --interval 30 > /dev/null || true
 out=.sweep_runs/$id
 rm -rf "$out"; gh run download "$id" -n results -D "$out" || { echo "no results artifact" >&2; exit 1; }
-new=0
+new=0; diff=0
 while IFS= read -r f; do
   rel=${f#"$out"/}
-  if [ ! -e "$rel" ]; then mkdir -p "$(dirname "$rel")"; cp "$f" "$rel"; echo "new: $rel"; new=$((new+1)); fi
+  if [ ! -s "$rel" ]; then  # missing or empty (e.g. left by a smoke test): take the run's file
+    mkdir -p "$(dirname "$rel")"; cp "$f" "$rel"; echo "new: $rel"; new=$((new+1))
+  elif ! diff -q --strip-trailing-cr "$f" "$rel" > /dev/null; then  # never overwrite silently: keep both and say so
+    cp "$f" "$rel.run$id"; echo "DIFFERS (local kept, run copy at $rel.run$id): $rel"; diff=$((diff+1))
+  fi
 done < <(find "$out/experiments" -type f -name '*.json' -o -type f -name '*.pt' | grep -v '^$')
-echo "$new new result files; conclusion: $(gh run view "$id" --json conclusion -q .conclusion)"
+echo "$new new, ${diff} differing result files; conclusion: $(gh run view "$id" --json conclusion -q .conclusion)"

@@ -125,6 +125,12 @@ Done on 2026-11-04: the ridge profile (E40), the fluctuation analysis (B21) and 
    on the ridge (median 5.1). G-M agreement now fails in all 9. **Next: B23**, testing whether
    day-2 Gfi1 predicts the G-CSF benefit beyond Cebpa-Irf8 (Sierra 2010: Gfi1 gates G-CSF
    responsiveness), as a data diagnostic before any model.
-2. **Down-weight M-CSF agreement statistics** in future gates (B21: replicate M-CSF libraries
-   agree at 0.28), pre-registered before use.
+2. **B23-B25 (done).** B23: day-2 Gfi1 adds to G-CSF N-share beyond Cebpa-Irf8 (partial
+   rho 0.17, p 0.01) but does not explain B7 G (2% shrink). B24: B7 G sits entirely in 2-cell
+   G-CSF samples (-0.47 vs sim -0.22) and in a small set of clones that are large under M-CSF
+   with only 2-3 monocytes under G-CSF (15% vs 2%). Not same-day contamination (the other-day gap
+   is as large), and the model makes too many shared clones (57 vs 39). Best candidate:
+   M-biased clones are dropped (die) under G-CSF more often than the model allows. B25: the low
+   M-CSF replicate agreement is sampling (null 0.37 [0.11, 0.64], observed 0.28), so the M-CSF
+   statistics need no down-weighting.
 3. **Held-out test:** still unspent; spend it only on a model whose shard-1 prediction is stable.
