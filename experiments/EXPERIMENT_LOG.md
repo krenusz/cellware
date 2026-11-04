@@ -3558,3 +3558,30 @@ full co-presence gate (seeds 3 and 5)**. Fit-set co-presence: full-G 16, full-M 
     fit, against the data (0.35, 78).
 - **Power check, if a stable pass:** as E38 (gated shard-1 IQR < 0.2, median differing from E20's
   by more than about 0.37).
+
+### E39 results (2026-11-04)
+
+18 cold seeds. **1 of 18 passes the gate** (seed 0); 17 fail E33's gate, almost all because the
+G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.04).
+
+- **The fits use the new mechanism strongly:** g_M 0.98-1.45 in 17/18 seeds (one seed 0.27).
+  But they trade it against the old one: per-cell M-CSF neutrophil selection weakens (s_M
+  0.34-0.88, against about 0.1 in E38), and G-M agreement overshoots (0.62-0.75 vs 0.51, p < 0.05
+  in most seeds). B7 G now tends to overshoot (-0.42 to -0.50 in 12/18; E38 undershot at about
+  -0.27), and B7 M fails in 10/18.
+- **Best (only) gated fit, seed 0:** G-M 0.73 (p 0.00), full-M 0.81 (p 0.01), B7 G -0.45 (inside),
+  B7 M outside. Primary: fail. B20 targets: both-clone G N-share 0.34 [0.28, 0.41] (data 0.35, now
+  matched) but 146 both clones [122, 169] (data 78; worse than E38's 114), because the weaker s_M
+  lets more clones appear under M-CSF.
+- **Stability: not met** (1/18 gated). **Mechanism reading:** g_M median 1.31 and B7 G passes in
+  the single gated seed, so the pre-registered criterion is formally met on n = 1. That is not a
+  result. **Power check:** not applicable.
+- **Seed 11**, the one fit that keeps g_M low (0.27) and s_M at 0.13, passes all five primary
+  components (G-M 0.41 p 0.06, B7 G -0.32) but fails the gate on the G-CSF mean (0.693). This is the
+  E38 solution with a little g_M.
+- **Reading.** Clone-level M-CSF selection fixes the composition of the both clones (C1) but the
+  fit uses it as a substitute for per-cell selection, which breaks G-M, the G-CSF level and the
+  number of both clones. Within this model family, G-M agreement, B7 G and the within-condition
+  levels pull against each other, and fits land in one corner or another (E35 s0, E38 s8 and
+  E39 s11 are the rare points that satisfy all of them). Adding mechanisms now changes which
+  corner the optimiser finds more than it reveals biology. The best-supported model remains E38's.
