@@ -3585,3 +3585,27 @@ G-CSF arm is too neutrophilic (mean N-share 0.69-0.73 vs data 0.636 ± about 0.0
   levels pull against each other, and fits land in one corner or another (E35 s0, E38 s8 and
   E39 s11 are the rare points that satisfy all of them). Adding mechanisms now changes which
   corner the optimiser finds more than it reveals biology. The best-supported model remains E38's.
+
+## E40: profile along G-CSF selection, to map the instruction:selection ridge (pre-registered 2026-11-04)
+
+- **Why.** E35-E39 fits land in different corners, and the literature (Xu et al. 2018) shows
+  death-type and differentiation-type rates are often identifiable only as a ratio. If the seed
+  scatter is a ridge, the honest result is the range of compatible instruction:selection
+  combinations, not one point.
+- **Model.** E38's (E37 model: measured day-2 inputs, signed instruction, separate clone pool,
+  full-arm co-presence in the loss). Neutrophil survival under G-CSF, s_G, is **fixed** at one of
+  six values, 1, 1.5, 2.5, 4, 6.5, 10 (s_G = 1 means no G-CSF selection); every other parameter is
+  refitted. The s_G coordinate is left in the search vector but ignored.
+- **Fit.** 3 cold seeds per value (18 jobs), up to 500 generations, parallel workers, early
+  stopping. No early-stop guard: a profile has no stability rule.
+- **Per grid point:** best loss; whether any seed passes E38's gate (E33's gate plus full-arm
+  co-presence ±30%); the instruction shift tau_G - tau_full of the best gated seed; the primary
+  components (G-M, full-G, full-M, B7 G, B7 M) of the best gated seed.
+- **Readings, fixed now.**
+  - **Compatible** grid points: at least one gated seed.
+  - **Ridge supported** if compatible points span at least a 2.5x range of s_G (three or more
+    points) **and** instruction compensates: the Spearman correlation between s_G and
+    tau_G - tau_full across compatible points is <= -0.6.
+  - **s_G identified** if compatible points cover at most two adjacent values.
+  - **Pure instruction under G-CSF excluded** if s_G = 1 is not compatible.
+  - Reported: the profile of best loss, and where B7 G and G-M pass along it.
