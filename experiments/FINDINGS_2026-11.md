@@ -184,3 +184,34 @@ E38 0.320), so by the registered rule **E47 is the reference**. But the B7 G cen
 from -0.27 (E38) to -0.29 (data -0.38; E46 -0.41): E46's one real gain does not survive a
 plausible cap. Instruction estimates are back to E38's (G and M shifts ~0.5 each). M presence,
 D3 and B26 remain unexplained by all three models.
+
+## Correction and update (2026-11-05, evening): E46 best fit, E48 plausible alternative, held-out test cannot decide
+
+- **Correction to the E47 entry above.** E47 won the registered comparison only through the
+  summed CRPS, and that sum was decided by full-M, the statistic with almost no information
+  (simulated range ~1.0 of a ~1.1 scale). On the data E46 is better: lower fit loss (median 62.5
+  vs 90.7), more seeds through the gate (16 vs 9), B7 G centred on the data. Prompted by Bence's
+  question. **E46 is the best-fitting model.** CRPS comparisons now use only B7 G + B7 M
+  (E46 0.041, E47 0.077, E38 0.089).
+- **How strong selection can plausibly be (Rieger 2009 supplement).** In sorted GMPs, early death
+  is the same in M-CSF and G-CSF (~19%); growth is ~2 doublings on day 1 and slows on day 2
+  (48 h: M-CSF ~11x, G-CSF ~6x); ~75% of cell families commit by the first division. If the most
+  biased clones are to stay under a ceiling of ~4-4.5 doublings in 48 h, the selection strength
+  is limited to gamma ~0.3-0.6. E46 needs 1.3.
+- **E48 (selection capped at 0.6, the generous end).** Stable and passing; gamma again sits at
+  the cap (0.56); B7 G centre -0.34 (data -0.38), B7 CRPS 0.044, in practice tied with E46.
+  **E48 is the plausible alternative.** Its best fit still leaves the G-M co-presence lift too
+  high (0.31 below [0.34, 0.52]), which E46's best fit got right.
+- **What this means.**
+  - The B7 G pattern (G-M clones monocyte-leaning under G-CSF) is explained by lineage-matched
+    selection at a biologically plausible strength.
+  - The co-presence pattern needs selection stronger than the biology allows, or a different
+    mechanism.
+  - The instruction estimates (~0.5 logits each way) hardly move across E38, E47 and E48: in
+    these models instruction and selection act together, not as substitutes.
+- **Held-out test (B30): look skipped, shard 1 sealed.** The models' predictions for the
+  Epo/SCF shard-1 concordance differ by at most 0.07, against a spread of ~0.7 within each model.
+  That statistic measures N-share agreement, which all models share; it cannot see selection.
+  A held-out statistic aimed at presence/size (B7-type) on shard-1 clones is the remaining option.
+- **Still unexplained by every model:** the co-presence lift (at plausible strength), the number
+  of M-present clones, D3 (large M-CSF clones with few cells under G-CSF) and B26.
