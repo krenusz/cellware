@@ -5469,3 +5469,27 @@ Sources: 277 G clones, 478 M clones (>= 2 N+M cells). E48 best gated s0, 200 sim
   so the look is independent of every fit but not of everything ever computed. On the fit set the
   same statistics already favoured E48 over E46 (P(G | M 6+): data 0.11, E46 0.04); the look is a
   replication on clones no fit has used.
+
+### B37 result: the held-out look (2026-11-05, ledger: presence_heldout 0/1, commit 77b8276)
+
+Shard-1 clones (275 / 168 / 152 in the denominators):
+
+| statistic | observed | E38 | E46 | E47 | E48 |
+|---|---|---|---|---|---|
+| lift >= 2 | **0.29** | out [0.38, 0.59] | **in** [0.25, 0.45] | out [0.34, 0.57] | out [0.34, 0.59] |
+| lift >= 3 | **0.18** | out [0.19, 0.39] (just) | in [0.05, 0.22] | in [0.14, 0.34] | in [0.14, 0.38] |
+| P(G \| M 6+) | **0.09** | in [0.08, 0.22] | in [0.01, 0.10] | in [0.05, 0.19] | in [0.05, 0.20] |
+
+- **Reading (as registered): not decisive.** E46 is inside on all three, but E48 is outside on
+  only one (lift >= 2), short of the "at least 2" needed for "strong selection favoured". Strong
+  selection is not rejected on held-out clones either.
+- **What replicates.** The low G-M lift with presence at >= 2 cells (fit set 0.31, held-out 0.29)
+  is reproduced on independent clones; at >= 3 cells all plausible models fit (0.18). This is the
+  small-clone privacy effect of B31/B32, now replicated. On the fit set E46 matched lift >= 2 only
+  through compensating errors (B31); on the held-out clones its P(G | M 6+) prediction (0.05) is
+  also close to the data (0.09; fit set 0.11).
+- **Consequence for the answer.** The held-out data cannot choose between strong (E46) and
+  plausible (E48) selection; the case against E46 rests on biology (Rieger bound, about twice the
+  plausible gamma) and on the B31 decomposition, not on held-out evidence. The instruction
+  estimate differs between them only for M-CSF (E46 on a ridge). Shard 1 is now spent for these
+  statistics.

@@ -93,9 +93,12 @@ Medians over gated seeds, [min, max].
   is a fitted property, not the design. An alternative is that stem-like cells grow mainly in the
   full cocktail. Like Epo, the arm may look separate because it supports lineages the G/M wells
   do not.
-- **Held-out test not yet spent.** The original held-out statistic (Epo/SCF concordance) cannot
-  separate the models (B30). A presence-based shard-1 look can separate strong selection (E46)
-  from plausible or none (B33). It cannot separate plausible selection from none.
+- **Held-out test (B37, spent once).** On clones no fit used, strong selection (E46) is inside
+  its predicted range on all three presence statistics; the plausible model (E48) misses one
+  (G-M lift at >= 2 cells: 0.29, the small-clone effect, replicated). By the registered rule this
+  is not decisive. The case for plausible over strong selection therefore rests on biology
+  (Rieger's bound) and on the fit-set decomposition (B31), not on held-out evidence; the M-CSF
+  instruction estimate is the only number that depends on that choice.
 - **No absolute rates.** Division and death rates per cytokine are bounded from the literature,
   not measured here.
 
@@ -106,8 +109,6 @@ of M-CSF wells, or sister splits read out at matched times. Recorded only: no ou
 
 ## Next
 
-1. The held-out look (strong vs plausible/no selection), pre-registered with E46 and E48
-   predictions.
-2. Choose the next conditional data set (other progenitor systems or perturbations), reusing the
+1. Choose the next conditional data set (other progenitor systems or perturbations), reusing the
    protocol: fit-set scoring, every-condition checks, the stopping rule and the discoveries
    register.
