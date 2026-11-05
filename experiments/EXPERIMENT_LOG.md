@@ -5373,3 +5373,25 @@ otherwise it is recorded in DISCOVERIES.md. DISCOVERIES.md started with 12 findi
 methodological lessons, each with a literature cross-check status. Applies first to E50's result
 (running, run 42101864316): E50 is judged on its pre-registered readings, and then on whether it
 moves the instruction shifts or gamma.
+
+## B36: is the Epo/SCF over-sharing a cell-type counting effect? (pre-registered 2026-11-05)
+
+- **Data diagnostic.** B32: data clones present in G or M are seen in the Epo and SCF wells about
+  half as often as E48 predicts (e.g. G 3-5-cell clones in Epo 0.02 vs 0.12). Grover 2014: Epo
+  pushes multipotent progenitors toward erythroid fate. Our presence counts use only neutrophils
+  and monocytes, but Epo wells are 11% N+M (902 of 8,491 day 4-6 cells: erythroid 3,687, basophil
+  1,676, undifferentiated 1,081, megakaryocyte 975), and SCF wells 21% N+M (mostly undifferentiated
+  4,317 of 6,113). A clone diverted to other lineages would look absent.
+- **Statistics (fit set, days pooled).** For clones present with >= 2 N+M cells in G, and
+  separately in M: share present in Epo, and in SCF, counting (a) N+M cells only (as the models
+  do) and (b) any cell of any type. Compared with E48's best gated fit (s0, 200 simulations; the
+  model only produces N+M, so its value is the N+M prediction).
+- **Minimum counts.** Source groups have >= 30 clones (G 277, M 478).
+- **Readings.**
+  - **Counting effect:** the data's any-cell sharing for Epo is inside E48's 95% for both G and M
+    sources. The model's N/M presence in Epo then stands for "any cell", and the fix is in how
+    Epo/SCF presence is measured, not in the model. Same reading for SCF.
+  - **Partial:** the any-cell value closes at least half the gap between the N/M-only data value
+    and E48's mean.
+  - **No:** less than half the gap closed.
+  - Descriptive: cell-type composition of Epo cells in clones shared with G or M.
