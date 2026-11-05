@@ -4842,3 +4842,27 @@ Logged openly; the E47 entry above is left as registered.
   - **Explains B27 (best gated fit, 200 simulations):** G-M count, lift, M-present count inside
     the simulated 95%.
   - **Side readings:** D3, B26 16+ M-pure, instruction shifts (descriptive).
+
+### E48 result (run 42075538007, analysed 2026-11-05)
+
+- **Run.** Completed, 18/18 seeds, results downloaded by the launcher (its exit 1 is the known
+  wrapper quirk). Guard not triggered. Scoring: analyze_e48.py, `b29_rescore.py e48`
+  (results_e18/rescore_e48.json).
+- **Gate 9/18** (E46 16, E47 9). Fit loss of gated seeds median 89.9, best 17.2 (E46 62.5 / 18.8).
+- **Cap binds: yes.** Median gamma 0.558 >= 0.54 (8 of 9 at 0.53-0.57).
+- **Recovers most of E46's gain: yes.** B7 G centre -0.343 <= -0.34 (data -0.38; E46 -0.41,
+  E47 -0.29, E38 -0.27) and median B7 G CRPS 0.026 <= 0.05 (E46 0.024).
+- **Status (as registered): E46 stays the best fit; E48 replaces E47 as the plausible
+  alternative.** Stable and passing on the fit set (all five components 9/9) with B7 CRPS sum
+  0.044, between E46's 0.041 and E47's 0.077. The margin to E46 (0.003) is far below anything
+  these 9-16 seeds can resolve: on B7, E46 and E48 are in practice tied.
+- **Explains B27: no.** Best gated fit (s0): G-M co-present 39 below [41, 66], lift 0.31 below
+  [0.34, 0.52], M-present 478 just above [412, 476]. E46's best fit got count and lift inside.
+- **Side readings.** D3 out (0.15 vs [0, 0.07]); B26 16+ M-pure out (5 vs [0, 4]); D2 and
+  n shared now out as well. Instruction shifts 0.50 / 0.56 (E38 0.49 / 0.47): "not absorbed".
+- **Conclusion.** Selection at the generous end of the Rieger range (one extra doubling per SD
+  over 48 h) reproduces E46's B7 G fit, and the data again push gamma to the cap. What it does
+  not reproduce is E46's co-presence fit: the lift that motivated E46 stays too high in the best
+  plausible fit. So the B7 G evidence for lineage-matched selection is compatible with biology;
+  the co-presence evidence needs more than biology allows, or another mechanism. Instruction
+  estimates are unchanged across E38, E47 and E48 (~0.5 each way).
