@@ -5738,3 +5738,33 @@ hit them (before any recovery run).
   a label nuisance and a W-vs-C population difference. Within-clone instruction can only be
   bounded, and any W-vs-C label difference passes straight into it. The fit should report gamma
   as the main result and tau with an explicit label-difference sensitivity.
+
+## B41: does the sisters' RNA before the split predict DC fate? SIS-seq (pre-registered 2026-11-05)
+
+- **Go-ahead.** Bence, "go all" (fit, calibration, RNA link). Plan step 6, brought forward: it
+  does not depend on the SIS-skew baseline problem.
+- **Data diagnostic.** B38: fate is largely fixed in the clone (H 0.71). If so, a molecular state
+  should be readable in the sisters sequenced at day 2.5 (GEO GSE119097 gene counts, Entrez IDs,
+  mapped with the authors' mart_export.txt).
+- **Units.** Fit-set clones (H2) with > 3 cells in both sister wells and >= 1 cell sequenced and
+  >= 5,000 counts. Expression: log1p(counts per 10^4); each gene z-scored within batch (removes
+  batch level differences). Fate: clone logit per fate (one vs rest), sisters pooled,
+  logit((k + 0.5)/(n - k + 0.5)), centred within batch.
+- **Pre-chosen programmes (from the literature, not from these data).** pDC: Tcf4 (E2-2), Spib,
+  Siglech, Runx2, Ly6d, Bst2. cDC1: Id2, Batf3, Nfil3, Zbtb46. cDC2: Irf4, Klf4, Relb, Notch2.
+  Irf8 left out (shared by cDC1 and pDC). Genes found by the authors in these data (e.g. Six5,
+  Naaa, Plac8) are excluded to avoid circularity. Score = mean of the set's within-batch z-scores
+  (genes detected in >= 10% of clones).
+- **Statistics.**
+  - A. Spearman rho(programme score, own fate logit) for each fate; 95% CI by bootstrap (1,000).
+    Also the 3 x 3 table (each score vs each fate), descriptive.
+  - B. Unsupervised: PCA of the 2,000 most variable genes (within-batch z-scores); leave-one-out
+    R^2 of a linear regression of each fate logit on PC1-3.
+  - C. Ceiling: the share of fate-logit variance that is clone-level, from the sister covariance
+    (B38 method): cov(l1, l2) / var(pooled l), per fate.
+- **Minimum sample.** >= 40 clones; else underpowered.
+- **Readings.**
+  - **Pre-chosen programmes predict fate:** A's CI excludes 0 (positive) for >= 2 fates.
+  - **Unsupervised state predicts fate:** B's LOO R^2 > 0.1 for at least one fate.
+  - **Nothing readable:** neither; then the clone fate state of B38 is not visible in day-2.5
+    bulk RNA of a few sisters (or the measurement is too noisy), recorded as such.
