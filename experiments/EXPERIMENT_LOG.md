@@ -4640,3 +4640,36 @@ Fit-set data: G-M 0.37, full-G 0.90, full-M 0.43; B7 G -0.38, B7 M 0.04.
   papers most likely to hold division/death rates by cytokine. To be downloaded by hand.
 - **So far no absolute rates to pin.** Both mechanisms are documented in the literature at
   different stages: instruction (M-CSF on HSCs) and growth/survival control (GM-CSF on GMPs).
+
+### Rieger 2009 and Endele 2017, read by hand (2026-11-05)
+
+PDFs saved locally in papers/rates/ (not committed: publisher copyright).
+
+- **Rieger et al. 2009 (Science 325:217), read.** Time-lapse of sorted mouse GMPs in only M-CSF or
+  only G-CSF (375 and 318 pedigrees, 3 experiments), LysM::GFP as the commitment marker.
+  - **88 ± 2% (M-CSF) and 87 ± 6% (G-CSF) of pedigrees had no cell death at all** before becoming
+    all-M or all-G.
+  - At most 23% (M) and 53% (G) of the sorted GMPs could have been unilineage already; so M-CSF and
+    G-CSF **instruct at least 65% and 34%** of bipotent GMPs. About 90% of the same population goes
+    to either lineage depending on the cytokine.
+  - Both cytokines also speed up commitment (earlier LysM::GFP onset).
+  - Cloning efficiency is high in both cytokines (figs S4-S5, in the online supplement, not read).
+    No division times or death rates per cytokine in the main text.
+- **Endele et al. 2017 (Blood 129:1691), read.** Mechanism (Src signalling carries the CSF-1
+  instructive signal). Only rate-like facts: GMPs divide about twice in the first ~24 h, after which
+  most are committed; CSF-1R mutants change survival but not average cycle time (data not shown).
+  Nothing to pin.
+- **What this means for E46 (reading, not a test).**
+  - Selective **death** is ruled out as the main mechanism at the GMP stage: at most ~12% of
+    pedigrees lose any cell.
+  - E46's selection therefore has to be differential **proliferation**. E46's gamma (1.21-1.35)
+    gives a G/M expansion ratio of exp(2 gamma) ~ 11-15x for a clone one SD along zb, i.e. about
+    3.5-3.9 extra doublings in one well over day 2 to day 4. With a GMP cycle of ~12 h (at most ~4
+    doublings in 48 h), that needs the disfavoured well to nearly stop dividing for a typical biased
+    clone, which time-lapse with high cloning efficiency in both cytokines would have shown.
+  - So E46's gamma is at or beyond the biological ceiling. A plausible bound is about one doubling
+    difference per SD (gamma <= ln2/2 = 0.35).
+  - Caveats: LARRY founders are LSK/LK, not sorted GMPs, and its expansion runs day 2 to day 4 in
+    wells with several cytokines; zb is a per-cell draw. The bound is a prior, not a measurement.
+- **Still missing:** Rieger 2009 online supplement (figs S4-S5: cloning efficiency, possibly
+  cycle times).
