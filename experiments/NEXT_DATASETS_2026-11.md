@@ -181,3 +181,22 @@ median 4.5).
   is pre-registered with a sealed held-out set.
 - Small: 2 of 4 batches have under 12 cells per well, so their fractions are noisy; readings
   must weight by cell count or use the two larger batches.
+
+## Check 2c: everything in GEO GSE153676 downloaded (2026-11-05)
+
+All GEO files of the SuperSeries and its two SubSeries are in `data/sis_seq/geo/` (gitignored,
+17 MB): family SOFT files for GSE153676/GSE153675/GSE119097, all series matrices, GSE119097 gene
+counts, GSE153675 barcode annotation, plate layout (xlsx) and RAW.tar (the GSE153676 and
+GSE153675 RAW.tar files are byte-identical), extracted to `raw153675/`.
+
+- **GSE153675 (Bcor-KO scRNA-seq, CEL-seq2):** 6 plates (RPI2/4/6/7/8/10) x 384 wells, about
+  18-20k genes each. The layout xlsx (sheet "Sample & Index") gives per well the plate, a
+  condition label (e.g. `Cas9_1`), and FACS index values (FSC, SSC, marker channels). Same data
+  as Mendeley `BcorKO_scRNAseq/`, plus the well annotation.
+- **Not in GEO:** the SIS-skew barcode counts (ST072) are only on Mendeley (already have them).
+- **Raw reads (SRA, via ENA):** SIS-seq PRJNA488094, 158 runs, 12.1 GB; Bcor-KO PRJNA643628,
+  6 runs, 20.2 GB; 32.2 GB in all. Not downloaded: every processed table we need is in hand,
+  and raw reads would only matter for re-aligning.
+
+So the full public SIS data are now local: SIS-seq (158 clones: RNA + two sister fate wells +
+background), SIS-skew (Bcor-KO vs WT sister barcode counts), Bcor-KO scRNA-seq, CRISPR screen.
