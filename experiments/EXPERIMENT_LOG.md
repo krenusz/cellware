@@ -5768,3 +5768,22 @@ hit them (before any recovery run).
   - **Unsupervised state predicts fate:** B's LOO R^2 > 0.1 for at least one fate.
   - **Nothing readable:** neither; then the clone fate state of B38 is not visible in day-2.5
     bulk RNA of a few sisters (or the measurement is too noisy), recorded as such.
+
+### B41 result (2026-11-05; results_sis/b41.json): fate is readable in day-2.5 RNA, not via classic markers
+
+- 65 fit clones (D9JS27 12, ILSGR0260r 22, JS91 15, JS96 16). Genes detected and used: pDC Ly6d,
+  Runx2, Tcf4, Spib, Siglech, Bst2; cDC1 Id2, Nfil3 (Batf3, Zbtb46 below 10% detection); cDC2
+  Notch2, Klf4, Relb (Irf4 undetected).
+- **A. Pre-chosen programmes: not met.** Own-fate rho: pDC 0.10 [-0.16, 0.34], cDC1 0.12
+  [-0.11, 0.35], cDC2 0.02 [-0.22, 0.27]. Descriptive: the cDC1 score (Id2, Nfil3) runs against
+  pDC fate (rho -0.28), as expected if Id2 antagonises E2-2, but this is not a registered reading.
+- **B. Unsupervised state: met.** Leave-one-out R^2 on PC1-3: pDC **0.38**, cDC2 **0.27**, cDC1
+  0.06. PCs explain 5.7%, 3.4%, 2.7% of expression variance; the fate signal sits mainly on PC3.
+- **C. Ceiling:** clone-level share of fate-logit variance 0.66 (cDC1), 0.84 (cDC2), 0.83 (pDC).
+  So the RNA state explains about 45% (pDC) and 32% (cDC2) of the clone-level, heritable part.
+- **Descriptive (not registered): what the predictive axis is.** Genes weighted toward pDC fate:
+  Satb1, Tox, Lrmp, Arpp21, St7l, Gimap5 (lymphoid-associated); toward cDC2: Csf1r, Grn, H2-Aa,
+  Spn, Ctsg, Anxa2 (myeloid-associated). One lymphoid-vs-myeloid priming axis separates pDC from
+  cDC2 clones at day 2.5, before any marker of the final type is expressed.
+- **Reading overall.** The clone fate state of B38 is partly visible in the sisters' RNA as a
+  broad priming programme, not as early expression of lineage-defining factors.
