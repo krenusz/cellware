@@ -4314,3 +4314,33 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
 - **Decision: discard E44 as specified.** Shared-clone excess (now 66 vs 39) remains the
   misfit no class fixes; it points at presence (how many founders a clone puts into each
   well), not fate. The next step is a data diagnostic on presence, not another class.
+
+## B27: how clones spread across wells (presence), data vs E38 (pre-registered 2026-11-05)
+
+- **Why.** Every class model (E43, E44) leaves the same misfit: too many clones shared between
+  G-CSF and M-CSF (E38 57, E44 66, data 39). That is about presence (how a clone's founders are
+  split between wells and whether they survive), not fate. The data has to say what is wrong
+  before any model is built.
+- **Data.** Fit set. A clone is present in a well with at least 2 mature N+M cells (pooled
+  days). Myeloid wells: full, G, M. Day-2 size n2 = number of the clone's sampled day-2 cells
+  (b14 table; 0 if none). Reference: best gated E38 fit (e38_s1), 200 simulations, same
+  statistics, same clone ids (n2 taken from the data for both).
+- **Statistics (each: data vs simulated 95%).**
+  - **P1 spread.** Among clones present in at least one myeloid well: the fraction present in
+    exactly 1, 2 and 3 myeloid wells.
+  - **P2 lift.** For G-M, full-G and full-M: co-present count / expected count if presence were
+    independent across wells (product of marginal rates x clones present anywhere).
+  - **P3 day-2 size.** Presence rate in G and in M by n2 = 0, 1, 2+ (strata with at least 30
+    clones only).
+  - **P4 marginal presence.** Number of clones present in each myeloid well.
+- **Readings, fixed now (minimum: a statistic is read only if its data count is at least 30).**
+  - **Too much shared presence:** data G-M lift below the simulated 95%, with P4 G and M counts
+    inside. E38's cross-well sharing (shared expansion a, pool u) is too strong. Next model:
+    weaker cross-well coupling.
+  - **Missing founder heterogeneity:** presence rises with n2 in the data (2+ vs 0 differs by at
+    least 0.1 in G or M) while E38's simulated rates do not. Next model: founder rate tied to
+    day-2 clone size.
+  - **Marginals wrong:** a P4 count outside the simulated 95%. The excess is marginal, not a
+    coupling; fix presence per well first.
+  - Several can hold; report all. None holding means the shared-clone excess is not localised
+    by these statistics.
