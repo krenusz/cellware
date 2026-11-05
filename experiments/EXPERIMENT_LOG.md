@@ -4344,3 +4344,33 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
     coupling; fix presence per well first.
   - Several can hold; report all. None holding means the shared-clone excess is not localised
     by these statistics.
+
+### B27 results (2026-11-05): G and M wells avoid sharing clones more than E38 allows; M presence too low
+
+| statistic (fit set) | data | E38 sim [95%] |
+|---|---|---|
+| present in full / G / M | 368 / 277 / **478** | 365 / 271 / **428 [395, 457]** (M out) |
+| in 1 / 2 / 3 myeloid wells | **0.927 / 0.067** / 0.006 | 0.891 / 0.105 / 0.004 (1, 2 out) |
+| G-M co-present (lift) | **39 (0.31)** | 57 (0.47 [0.38, 0.56]) (out) |
+| full-G co-present (lift) | 16 (0.16) | 21 (0.20), inside |
+| full-M co-present (lift) | 33 (0.20) | 34 (0.21), inside |
+| presence in G by day-2 cells 0 / 1 / 2+ | 0.17 / 0.14 / 0.18 | 0.21 / 0.22 / 0.22 |
+| presence in M by day-2 cells 0 / 1 / 2+ | 0.29 / 0.23 / 0.32 | 0.34 / 0.33 / 0.34 |
+
+- **Pre-registered reading: "marginals wrong"** (M presence 478 vs 428 [395, 457]). The "too much
+  shared presence" reading did not formally fire, because its condition required the G and M
+  marginals to be inside, and M is not.
+- **Descriptive (not a pre-registered reading).** The marginal error goes the *other* way from the
+  shared excess. E38 has fewer M-present clones yet more G-M shared clones, so raising M
+  presence would make the excess worse. The G-M coupling is too strong: the data's lift is 0.31
+  vs 0.47. The full-arm lifts are right (E37's separate pool fixed those).
+- **No founder-size signal.** Presence does not rise with the number of sampled day-2 cells in
+  the data (G 0.17 / 0.14 / 0.18), so sampled day-2 size is not a usable founder proxy.
+- **What this points to.** Within the main pool, G and M founders behave as if they compete:
+  a clone that seeds the G well is less likely to seed the M well. That is what splitting a
+  finite number of sister cells between wells (multinomial allocation) produces, unlike E38's
+  independent Poisson founders per well. E32 tried multinomial allocation for all wells and
+  failed on the full arm; with E37's separate full pool, allocation within the main pool only
+  (G, M, Epo, SCF) is untested. **Candidate E45: E38 with multinomial founder allocation within
+  the main pool and a free M-presence rate.** It must be checked against every condition before
+  registration.
