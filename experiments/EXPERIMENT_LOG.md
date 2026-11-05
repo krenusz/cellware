@@ -4374,3 +4374,35 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
   (G, M, Epo, SCF) is untested. **Candidate E45: E38 with multinomial founder allocation within
   the main pool and a free M-presence rate.** It must be checked against every condition before
   registration.
+
+## E45: limited sister cells split between the main-pool wells (pre-registered 2026-11-05)
+
+- **Data diagnostic it must explain (B27, fit set).** G-M co-presence lift 0.31 in the data vs
+  0.47 [0.38, 0.56] in E38 (39 vs 57 clones), while E38 has too *few* M-present clones (428
+  [395, 457] vs 478). Full-arm lifts are already right.
+- **Why this mechanism.** E38 draws founders independently per well. Splitting a Poisson
+  number of founders is mathematically the same thing (Poisson splitting), so competition
+  between wells needs a *limited* number of sisters per clone at the split. E45: each clone has
+  K = 1 + Poisson(lam_K) sister cells; each goes to G, Epo or SCF with probability r, to M with
+  r * w_M, or is lost. r = nu / (1 + lam_K), capped at 0.999 / (3 + w_M); u clones (full pool)
+  use nu * eps. The full arm keeps E37's separate pool. lam_K in (0, 20), w_M in (0.25, 4).
+  25 dimensions. lam_K large with w_M = 1 recovers E38 (checked: lam_K 20 gives lift 0.48,
+  E38 0.47).
+- **Every-condition check (e38_s1 parameters, 30 simulations).** lam_K 2 / 0.5 / 0.2 (w_M 1-1.4):
+  G-M lift 0.43 / 0.20-0.23 / 0.10 (data 0.31); full-G and full-M lifts unchanged (0.20-0.22);
+  at fixed nu, presence in G, M, Epo and SCF falls (G 275 -> 145-198, data 277) because the cap
+  limits founders per well, so the fit has to compensate through expansion (mu) and w_M. The
+  targets that move off at fixed parameters (G/M/Epo/SCF n) are all in the loss. D3 falls
+  (0.02 -> 0.00-0.01; data 0.15): **this mechanism does not address D3**, and that is expected.
+- **Fit.** As E44: 18 cold seeds, 500 generations max, early stopping not before 200, E38
+  targets/loss/SE, B7 on the fit set. Guard on (more than 9 gate fails). The PC stays awake for
+  the run.
+- **Gate, primary, stability: as E38.**
+- **Readings, fixed now (minimum counts in brackets).**
+  - **Competition used:** median lam_K over gated seeds < 5 (at least 5 gated seeds).
+  - **Explains B27:** for the best gated fit, the G-M co-present count (39) and lift, and the
+    M-present count (478), all inside the simulated 95% (track_b27 statistics, 200 simulations).
+  - **Better than E38:** stability met. Then E45 becomes the reference, and the held-out power
+    check comes next.
+  - **Side readings, reported:** B24 D3 and B26's 16+ M-pure count for the best gated fit. They
+    are not expected to be fixed by this mechanism.
