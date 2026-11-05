@@ -67,28 +67,6 @@
  {
   "score": 18,
   "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte",
-   "clonal_tracing",
-   "fate_memory",
-   "inference_identifiability"
-  ],
-  "via": [
-   "cites Olsson 2016 (mixed-lineage states)",
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1101/2024.03.28.587126",
-  "title": "A multi-track landscape of haematopoiesis informed by cellular barcoding and agent-based modelling",
-  "year": 2024,
-  "cites": 8,
-  "status": "open",
-  "url": "https://www.biorxiv.org/content/biorxiv/early/2024/03/30/2024.03.28.587126.full.pdf",
-  "pub": "Cold Spring Harbor Laboratory",
-  "read": false
- },
- {
-  "score": 18,
-  "groups": [
    "csf_signalling",
    "neutrophil_monocyte",
    "fate_memory",
@@ -106,6 +84,72 @@
   "status": "open",
   "url": "https://doi.org/10.1371/journal.pcbi.1009779",
   "pub": "Public Library of Science",
+  "read": false
+ },
+ {
+  "score": 17,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "clonal_tracing",
+   "fate_memory"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.7554/elife.66922",
+  "title": "Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
+  "year": 2022,
+  "cites": 34,
+  "status": "open",
+  "url": "https://doi.org/10.7554/elife.66922",
+  "pub": "eLife Sciences Publications Ltd",
+  "read": true
+ },
+ {
+  "score": 17,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Olsson 2016 (mixed-lineage states)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3389/fcell.2019.00104",
+  "title": "Modeling the Hematopoietic Landscape",
+  "year": 2019,
+  "cites": 25,
+  "status": "open",
+  "url": "https://www.frontiersin.org/articles/10.3389/fcell.2019.00104/pdf",
+  "pub": "Frontiers Media",
+  "read": false
+ },
+ {
+  "score": 17,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.3390/ijms21072362",
+  "title": "Towards a New Understanding of Decision-Making by Hematopoietic Stem Cells",
+  "year": 2020,
+  "cites": 8,
+  "status": "open",
+  "url": "https://www.mdpi.com/1422-0067/21/7/2362/pdf?version=1585480003",
+  "pub": "Multidisciplinary Digital Publishing Institute",
   "read": false
  },
  {
@@ -153,6 +197,28 @@
   "score": 16,
   "groups": [
    "instruction_vs_selection",
+   "neutrophil_monocyte",
+   "clonal_tracing",
+   "fate_memory"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)",
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+  ],
+  "doi": "10.1038/s41586-024-08250-x",
+  "title": "Long-term lineage commitment in haematopoietic stem cell gene therapy",
+  "year": 2024,
+  "cites": 53,
+  "status": "open",
+  "url": "https://doi.org/10.1038/s41586-024-08250-x",
+  "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 16,
+  "groups": [
+   "instruction_vs_selection",
    "clonal_tracing",
    "fate_memory",
    "inference_identifiability"
@@ -167,6 +233,28 @@
   "status": "open",
   "url": "http://www.cell.com/article/S2211124712000447/pdf",
   "pub": "Cell Press",
+  "read": false
+ },
+ {
+  "score": 16,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3324/haematol.2015.133637",
+  "title": "Mathematical modeling reveals differential effects of erythropoietin on proliferation and lineage commitment of human hematopoietic progenitors in early erythroid culture",
+  "year": 2015,
+  "cites": 7,
+  "status": "open",
+  "url": "http://www.haematologica.org/content/haematol/101/3/286.full.pdf",
+  "pub": "Ferrata Storti Foundation",
   "read": false
  },
  {
@@ -192,22 +280,22 @@
  {
   "score": 15,
   "groups": [
+   "instruction_vs_selection",
    "csf_signalling",
-   "neutrophil_monocyte",
-   "clonal_tracing",
-   "fate_memory"
+   "neutrophil_monocyte"
   ],
   "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
    "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Weinreb 2020 (LARRY)"
+   "cites Rieger 2009 (cytokines instruct)"
   ],
-  "doi": "10.7554/elife.66922",
-  "title": "Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
-  "year": 2022,
-  "cites": 34,
+  "doi": "10.1016/j.celrep.2017.03.035",
+  "title": "Structure of Nascent Chromatin Is Essential for Hematopoietic Lineage Specification",
+  "year": 2017,
+  "cites": 45,
   "status": "open",
-  "url": "https://doi.org/10.7554/elife.66922",
-  "pub": "eLife Sciences Publications Ltd",
+  "url": "https://doi.org/10.1016/j.celrep.2017.03.035",
+  "pub": "Cell Press",
   "read": false
  },
  {
@@ -229,27 +317,6 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41467-024-47158-y.pdf",
   "pub": "Nature Portfolio",
-  "read": false
- },
- {
-  "score": 15,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Olsson 2016 (mixed-lineage states)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3389/fcell.2019.00104",
-  "title": "Modeling the Hematopoietic Landscape",
-  "year": 2019,
-  "cites": 25,
-  "status": "open",
-  "url": "https://www.frontiersin.org/articles/10.3389/fcell.2019.00104/pdf",
-  "pub": "Frontiers Media",
   "read": false
  },
  {
@@ -297,27 +364,6 @@
   "groups": [
    "instruction_vs_selection",
    "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)",
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.3390/ijms21072362",
-  "title": "Towards a New Understanding of Decision-Making by Hematopoietic Stem Cells",
-  "year": 2020,
-  "cites": 8,
-  "status": "open",
-  "url": "https://www.mdpi.com/1422-0067/21/7/2362/pdf?version=1585480003",
-  "pub": "Multidisciplinary Digital Publishing Institute",
-  "read": false
- },
- {
-  "score": 15,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
    "neutrophil_monocyte",
    "fate_memory"
   ],
@@ -355,22 +401,22 @@
  {
   "score": 14,
   "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte",
    "clonal_tracing",
-   "fate_memory"
+   "fate_memory",
+   "imaging_ssl"
   ],
   "via": [
-   "cites Endele 2017 (CSF-1 instructs)",
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)",
+   "cited by Weinreb 2020 (LARRY)",
+   "cites Olsson 2016 (mixed-lineage states)"
   ],
-  "doi": "10.1038/s41586-024-08250-x",
-  "title": "Long-term lineage commitment in haematopoietic stem cell gene therapy",
-  "year": 2024,
-  "cites": 53,
+  "doi": "10.1016/j.celrep.2018.02.046",
+  "title": "DiSNE Movie Visualization and Assessment of Clonal Kinetics Reveal Multiple Trajectories of Dendritic Cell Development",
+  "year": 2018,
+  "cites": 43,
   "status": "open",
-  "url": "https://doi.org/10.1038/s41586-024-08250-x",
-  "pub": "Nature Portfolio",
+  "url": "http://www.cell.com/article/S2211124718302274/pdf",
+  "pub": "Cell Press",
   "read": false
  },
  {
@@ -431,27 +477,6 @@
   "status": "open",
   "url": "https://doi.org/10.1016/j.cels.2024.11.001",
   "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 14,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte",
-   "inference_identifiability"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3324/haematol.2015.133637",
-  "title": "Mathematical modeling reveals differential effects of erythropoietin on proliferation and lineage commitment of human hematopoietic progenitors in early erythroid culture",
-  "year": 2015,
-  "cites": 7,
-  "status": "open",
-  "url": "http://www.haematologica.org/content/haematol/101/3/286.full.pdf",
-  "pub": "Ferrata Storti Foundation",
   "read": false
  },
  {
@@ -561,6 +586,27 @@
    "neutrophil_monocyte"
   ],
   "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3390/ijms18061115",
+  "title": "The Cytokine Flt3-Ligand in Normal and Malignant Hematopoiesis",
+  "year": 2017,
+  "cites": 126,
+  "status": "open",
+  "url": "https://www.mdpi.com/1422-0067/18/6/1115/pdf?version=1495641851",
+  "pub": "Multidisciplinary Digital Publishing Institute",
+  "read": false
+ },
+ {
+  "score": 13,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
    "cited by Rieger 2009 (cytokines instruct)"
   ],
   "doi": "10.1073/pnas.96.2.698",
@@ -590,26 +636,6 @@
   "status": "open",
   "url": "https://ashpublications.org/blood/article-pdf/133/8/816/1557734/blood832998.pdf",
   "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 13,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1016/j.celrep.2017.03.035",
-  "title": "Structure of Nascent Chromatin Is Essential for Hematopoietic Lineage Specification",
-  "year": 2017,
-  "cites": 45,
-  "status": "open",
-  "url": "https://doi.org/10.1016/j.celrep.2017.03.035",
-  "pub": "Cell Press",
   "read": false
  },
  {
@@ -713,6 +739,27 @@
  {
   "score": 13,
   "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1007/s43152-020-00001-0",
+  "title": "Vitamin D and Haematopoiesis",
+  "year": 2020,
+  "cites": 5,
+  "status": "open",
+  "url": "https://link.springer.com/content/pdf/10.1007/s43152-020-00001-0.pdf",
+  "pub": "Springer Science+Business Media",
+  "read": false
+ },
+ {
+  "score": 13,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte",
    "clonal_tracing"
@@ -792,6 +839,26 @@
   "groups": [
    "instruction_vs_selection",
    "csf_signalling",
+   "neutrophil_monocyte",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1182/blood-2016-10-696005",
+  "title": "Myeloproliferative neoplasm stem cells",
+  "year": 2017,
+  "cites": 179,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/5413298",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling",
    "neutrophil_monocyte"
   ],
   "via": [
@@ -804,26 +871,6 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2680372",
   "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 12,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1084/jem.20131189",
-  "title": "Erythropoietin guides multipotent hematopoietic progenitor cells toward an erythroid fate",
-  "year": 2014,
-  "cites": 155,
-  "status": "open",
-  "url": "http://jem.rupress.org/content/jem/211/2/181.full.pdf",
-  "pub": "Rockefeller University Press",
   "read": false
  },
  {
@@ -862,7 +909,7 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2780307",
   "pub": "Elsevier BV",
-  "read": false
+  "read": true
  },
  {
   "score": 12,
@@ -886,21 +933,81 @@
  {
   "score": 12,
   "groups": [
-   "clonal_tracing",
-   "fate_memory",
-   "imaging_ssl"
+   "instruction_vs_selection",
+   "csf_signalling",
+   "neutrophil_monocyte"
   ],
   "via": [
-   "cited by Weinreb 2020 (LARRY)",
-   "cites Olsson 2016 (mixed-lineage states)"
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
   ],
-  "doi": "10.1016/j.celrep.2018.02.046",
-  "title": "DiSNE Movie Visualization and Assessment of Clonal Kinetics Reveal Multiple Trajectories of Dendritic Cell Development",
-  "year": 2018,
+  "doi": "10.3390/ijms18051037",
+  "title": "Selective Expression of Flt3 within the Mouse Hematopoietic Stem Cell Compartment",
+  "year": 2017,
+  "cites": 45,
+  "status": "open",
+  "url": "https://www.mdpi.com/1422-0067/18/5/1037/pdf?version=1494571529",
+  "pub": "Multidisciplinary Digital Publishing Institute",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing",
+   "fate_memory"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1016/j.cels.2024.01.004",
+  "title": "Clonally heritable gene expression imparts a layer of diversity within cell types",
+  "year": 2024,
   "cites": 43,
   "status": "open",
-  "url": "http://www.cell.com/article/S2211124718302274/pdf",
-  "pub": "Cell Press",
+  "url": "https://doi.org/10.1016/j.cels.2024.01.004",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1073/pnas.1613316113",
+  "title": "Permissive roles of cytokines interleukin-7 and Flt3 ligand in mouse B-cell lineage commitment",
+  "year": 2016,
+  "cites": 30,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/5167207",
+  "pub": "National Academy of Sciences",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1007/s00005-016-0411-0",
+  "title": "Antagonizing Retinoic Acid Receptors Increases Myeloid Cell Production by Cultured Human Hematopoietic Stem Cells",
+  "year": 2016,
+  "cites": 26,
+  "status": "open",
+  "url": "https://link.springer.com/content/pdf/10.1007%2Fs00005-016-0411-0.pdf",
+  "pub": "Springer Science+Business Media",
   "read": false
  },
  {
@@ -986,6 +1093,27 @@
   "score": 12,
   "groups": [
    "instruction_vs_selection",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Endele 2017 (CSF-1 instructs)",
+   "cites Lin/Naik 2024 (restricted progenitors, small clones)",
+   "cites Rieger 2009 (cytokines instruct)",
+   "cites Weinreb 2020 (LARRY)"
+  ],
+  "doi": "10.1182/blood.2024028195",
+  "title": "Clonal tracing of blood stem cells across mouse and human lifespans",
+  "year": 2025,
+  "cites": 4,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 12,
+  "groups": [
+   "instruction_vs_selection",
    "clonal_tracing",
    "imaging_ssl",
    "inference_identifiability"
@@ -1019,6 +1147,26 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/19554",
   "pub": "National Academy of Sciences",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Grover 2014 (Epo guides MPPs to erythroid)",
+   "cited by Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cited by Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1182/blood-2007-03-079681",
+  "title": "Hematopoietic cytokines",
+  "year": 2008,
+  "cites": 527,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2200848",
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -1059,26 +1207,6 @@
   "status": "paywalled",
   "url": null,
   "pub": "Nature Portfolio",
-  "read": false
- },
- {
-  "score": 11,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3390/ijms18061115",
-  "title": "The Cytokine Flt3-Ligand in Normal and Malignant Hematopoiesis",
-  "year": 2017,
-  "cites": 126,
-  "status": "open",
-  "url": "https://www.mdpi.com/1422-0067/18/6/1115/pdf?version=1495641851",
-  "pub": "Multidisciplinary Digital Publishing Institute",
   "read": false
  },
  {
@@ -1182,6 +1310,26 @@
   "score": 11,
   "groups": [
    "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cited by Endele 2017 (CSF-1 instructs)",
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.1016/j.yexcr.2014.07.011",
+  "title": "Instruction of hematopoietic lineage choice by cytokine signaling",
+  "year": 2014,
+  "cites": 40,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "instruction_vs_selection",
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -1258,6 +1406,26 @@
   "score": 11,
   "groups": [
    "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3109/10408363.2015.1021412",
+  "title": "Versatility of stem and progenitor cells and the instructive actions of cytokines on hematopoiesis.",
+  "year": 2015,
+  "cites": 19,
+  "status": "open",
+  "url": "https://research.birmingham.ac.uk/en/publications/211cc719-e349-4d17-99d6-4829b43ff2aa",
+  "pub": "National Institutes of Health",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "instruction_vs_selection",
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -1271,26 +1439,6 @@
   "status": "open",
   "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/eji.201546200",
   "pub": "Wiley",
-  "read": false
- },
- {
-  "score": 11,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1007/s43152-020-00001-0",
-  "title": "Vitamin D and Haematopoiesis",
-  "year": 2020,
-  "cites": 5,
-  "status": "open",
-  "url": "https://link.springer.com/content/pdf/10.1007/s43152-020-00001-0.pdf",
-  "pub": "Springer Science+Business Media",
   "read": false
  },
  {
@@ -1310,6 +1458,26 @@
   "status": "paywalled",
   "url": null,
   "pub": "Oxford University Press",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3390/bioengineering8050067",
+  "title": "Hematopoietic Stem Cells: Nature and Niche Nurture",
+  "year": 2021,
+  "cites": 3,
+  "status": "open",
+  "url": "https://www.mdpi.com/2306-5354/8/5/67/pdf?version=1621067634",
+  "pub": "Multidisciplinary Digital Publishing Institute",
   "read": false
  },
  {
@@ -1407,6 +1575,26 @@
   "cites": 0,
   "status": "open",
   "url": "http://www.theses.fr/2023UPASL113/document",
+  "pub": "unknown",
+  "read": false
+ },
+ {
+  "score": 11,
+  "groups": [
+   "csf_signalling",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.70675/14e6fe50z33afz4da1zaaf2z21b8df629ec0",
+  "title": "The single-cell kinetics of hematopoietic stem cell differentiation after transplantation-the steady state and the effect of erythropoietin : the steady state and the effect of erythropoietin",
+  "year": 2019,
+  "cites": 0,
+  "status": "open",
+  "url": "http://www.theses.fr/2019PSLET040/document",
   "pub": "unknown",
   "read": false
  },
@@ -1565,6 +1753,25 @@
   "score": 10,
   "groups": [
    "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)",
+   "cites Olsson 2016 (mixed-lineage states)"
+  ],
+  "doi": "10.1182/blood-2018-06-857789",
+  "title": "Epigenetic control of early dendritic cell lineage specification by the transcription factor IRF8 in mice",
+  "year": 2019,
+  "cites": 60,
+  "status": "open",
+  "url": "https://ashpublications.org/blood/article-pdf/133/17/1803/1557173/blood857789.pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "instruction_vs_selection",
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -1660,25 +1867,6 @@
   "score": 10,
   "groups": [
    "instruction_vs_selection",
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
-  ],
-  "doi": "10.3390/ijms18051037",
-  "title": "Selective Expression of Flt3 within the Mouse Hematopoietic Stem Cell Compartment",
-  "year": 2017,
-  "cites": 45,
-  "status": "open",
-  "url": "https://www.mdpi.com/1422-0067/18/5/1037/pdf?version=1494571529",
-  "pub": "Multidisciplinary Digital Publishing Institute",
-  "read": false
- },
- {
-  "score": 10,
-  "groups": [
-   "instruction_vs_selection",
    "csf_signalling"
   ],
   "via": [
@@ -1691,25 +1879,6 @@
   "cites": 44,
   "status": "open",
   "url": "http://www.cell.com/article/S2213671114001519/pdf",
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 10,
-  "groups": [
-   "instruction_vs_selection",
-   "clonal_tracing",
-   "fate_memory"
-  ],
-  "via": [
-   "cites Weinreb 2020 (LARRY)"
-  ],
-  "doi": "10.1016/j.cels.2024.01.004",
-  "title": "Clonally heritable gene expression imparts a layer of diversity within cell types",
-  "year": 2024,
-  "cites": 43,
-  "status": "open",
-  "url": "https://doi.org/10.1016/j.cels.2024.01.004",
   "pub": "Elsevier BV",
   "read": false
  },
@@ -1735,6 +1904,26 @@
  {
   "score": 10,
   "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3389/fcell.2023.1182204",
+  "title": "Retinoic acid receptor regulation of decision-making for cell differentiation",
+  "year": 2023,
+  "cites": 41,
+  "status": "open",
+  "url": "https://www.frontiersin.org/articles/10.3389/fcell.2023.1182204/pdf",
+  "pub": "Frontiers Media",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte",
    "fate_memory"
@@ -1749,25 +1938,6 @@
   "status": "open",
   "url": "https://www.frontiersin.org/articles/10.3389/fimmu.2021.621333/pdf",
   "pub": "Frontiers Media",
-  "read": false
- },
- {
-  "score": 10,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1073/pnas.1613316113",
-  "title": "Permissive roles of cytokines interleukin-7 and Flt3 ligand in mouse B-cell lineage commitment",
-  "year": 2016,
-  "cites": 30,
-  "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/5167207",
-  "pub": "National Academy of Sciences",
   "read": false
  },
  {
@@ -1806,25 +1976,6 @@
   "status": "open",
   "url": "https://link.springer.com/content/pdf/10.1186/s12915-022-01264-9.pdf",
   "pub": "BioMed Central",
-  "read": false
- },
- {
-  "score": 10,
-  "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1007/s00005-016-0411-0",
-  "title": "Antagonizing Retinoic Acid Receptors Increases Myeloid Cell Production by Cultured Human Hematopoietic Stem Cells",
-  "year": 2016,
-  "cites": 26,
-  "status": "open",
-  "url": "https://link.springer.com/content/pdf/10.1007%2Fs00005-016-0411-0.pdf",
-  "pub": "Springer Science+Business Media",
   "read": false
  },
  {
@@ -1906,6 +2057,26 @@
   "score": 10,
   "groups": [
    "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
+  ],
+  "doi": "10.3390/ijms19072122",
+  "title": "The Making of Hematopoiesis: Developmental Ancestry and Environmental Nurture",
+  "year": 2018,
+  "cites": 14,
+  "status": "open",
+  "url": "https://www.mdpi.com/1422-0067/19/7/2122/pdf?version=1532147059",
+  "pub": "Multidisciplinary Digital Publishing Institute",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
   "via": [
@@ -1920,6 +2091,26 @@
   "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0217580&type=printable",
   "pub": "Public Library of Science",
   "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)",
+   "cited by Weinreb 2020 (LARRY)",
+   "cites Olsson 2016 (mixed-lineage states)"
+  ],
+  "doi": "10.1101/403113",
+  "title": "SIS-seq, a molecular \u2018time machine\u2019, connects single cell fate with gene programs",
+  "year": 2018,
+  "cites": 10,
+  "status": "open",
+  "url": "https://www.biorxiv.org/content/biorxiv/early/2018/08/29/403113.full.pdf",
+  "pub": "Cold Spring Harbor Laboratory",
+  "read": true
  },
  {
   "score": 10,
@@ -1944,20 +2135,20 @@
   "score": 10,
   "groups": [
    "instruction_vs_selection",
-   "clonal_tracing"
+   "csf_signalling"
   ],
   "via": [
-   "cites Endele 2017 (CSF-1 instructs)",
-   "cites Rieger 2009 (cytokines instruct)",
-   "cites Weinreb 2020 (LARRY)"
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
+   "cites Rieger 2009 (cytokines instruct)"
   ],
-  "doi": "10.1182/blood.2024028195",
-  "title": "Clonal tracing of blood stem cells across mouse and human lifespans",
-  "year": 2025,
-  "cites": 4,
-  "status": "paywalled",
-  "url": null,
-  "pub": "Elsevier BV",
+  "doi": "10.3390/ijms23095063",
+  "title": "The Social Norm of Hematopoietic Stem Cells and Dysregulation in Leukemia",
+  "year": 2022,
+  "cites": 6,
+  "status": "open",
+  "url": "https://www.mdpi.com/1422-0067/23/9/5063/pdf?version=1651551131",
+  "pub": "Multidisciplinary Digital Publishing Institute",
   "read": false
  },
  {
@@ -2060,6 +2251,25 @@
   "groups": [
    "neutrophil_monocyte",
    "clonal_tracing",
+   "imaging_ssl"
+  ],
+  "via": [
+   "cites Lin/Naik 2024 (restricted progenitors, small clones)"
+  ],
+  "doi": "10.3390/therapeutics2040018",
+  "title": "Advancements in Hematopoietic Stem Cell Therapy: From Biological Pathways to Emerging Therapeutic Strategies",
+  "year": 2025,
+  "cites": 2,
+  "status": "open",
+  "url": "https://www.mdpi.com/2813-9909/2/4/18/pdf?version=1760507758",
+  "pub": "Therapeutics",
+  "read": false
+ },
+ {
+  "score": 10,
+  "groups": [
+   "neutrophil_monocyte",
+   "clonal_tracing",
    "fate_memory"
   ],
   "via": [
@@ -2155,25 +2365,6 @@
    "neutrophil_monocyte"
   ],
   "via": [
-   "cited by Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cited by Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1182/blood-2007-03-079681",
-  "title": "Hematopoietic cytokines",
-  "year": 2008,
-  "cites": 527,
-  "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2200848",
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
    "cited by Rieger 2009 (cytokines instruct)",
    "cited by Sierra 2010 (Gfi1 gates G-CSF)"
   ],
@@ -2184,6 +2375,24 @@
   "status": "open",
   "url": "http://www.cell.com/article/S107476130080504X/pdf",
   "pub": "Cell Press",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1182/blood.v73.1.117.117",
+  "title": "Serum granulocyte colony-stimulating factor levels in healthy volunteers and patients with various disorders as estimated by enzyme immunoassay",
+  "year": 1989,
+  "cites": 352,
+  "status": "open",
+  "url": "https://ashpublications.org/blood/article-pdf/73/1/117/599202/117.pdf",
+  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -2357,6 +2566,25 @@
  {
   "score": 9,
   "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+  ],
+  "doi": "10.1097/moh.0000000000000149",
+  "title": "Regulation of stress-induced hematopoiesis",
+  "year": 2015,
+  "cites": 88,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/4573392",
+  "pub": "Lippincott Williams & Wilkins",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
    "csf_signalling",
    "clonal_tracing",
    "imaging_ssl"
@@ -2507,25 +2735,6 @@
  {
   "score": 9,
   "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cited by Endele 2017 (CSF-1 instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.1016/j.yexcr.2014.07.011",
-  "title": "Instruction of hematopoietic lineage choice by cytokine signaling",
-  "year": 2014,
-  "cites": 40,
-  "status": "paywalled",
-  "url": null,
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
    "neutrophil_monocyte",
    "clonal_tracing",
    "fate_memory"
@@ -2633,25 +2842,6 @@
   "status": "open",
   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/6161781",
   "pub": "Wiley",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3109/10408363.2015.1021412",
-  "title": "Versatility of stem and progenitor cells and the instructive actions of cytokines on hematopoiesis.",
-  "year": 2015,
-  "cites": 19,
-  "status": "open",
-  "url": "https://research.birmingham.ac.uk/en/publications/211cc719-e349-4d17-99d6-4829b43ff2aa",
-  "pub": "National Institutes of Health",
   "read": false
  },
  {
@@ -2861,6 +3051,25 @@
  {
   "score": 9,
   "groups": [
+   "neutrophil_monocyte",
+   "clonal_tracing",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)"
+  ],
+  "doi": "10.1007/s41109-019-0225-1",
+  "title": "Penalized inference of the hematopoietic cell differentiation network via high-dimensional clonal tracking",
+  "year": 2019,
+  "cites": 12,
+  "status": "open",
+  "url": "https://appliednetsci.springeropen.com/track/pdf/10.1007/s41109-019-0225-1",
+  "pub": "Springer Nature",
+  "read": false
+ },
+ {
+  "score": 9,
+  "groups": [
    "instruction_vs_selection",
    "clonal_tracing",
    "fate_memory"
@@ -2948,25 +3157,6 @@
   "status": "paywalled",
   "url": null,
   "pub": "Lippincott Williams & Wilkins",
-  "read": false
- },
- {
-  "score": 9,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3390/bioengineering8050067",
-  "title": "Hematopoietic Stem Cells: Nature and Niche Nurture",
-  "year": 2021,
-  "cites": 3,
-  "status": "open",
-  "url": "https://www.mdpi.com/2306-5354/8/5/67/pdf?version=1621067634",
-  "pub": "Multidisciplinary Digital Publishing Institute",
   "read": false
  },
  {
@@ -3064,25 +3254,6 @@
   "read": false
  },
  {
-  "score": 9,
-  "groups": [
-   "csf_signalling",
-   "clonal_tracing"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.70675/14e6fe50z33afz4da1zaaf2z21b8df629ec0",
-  "title": "The single-cell kinetics of hematopoietic stem cell differentiation after transplantation-the steady state and the effect of erythropoietin : the steady state and the effect of erythropoietin",
-  "year": 2019,
-  "cites": 0,
-  "status": "open",
-  "url": "http://www.theses.fr/2019PSLET040/document",
-  "pub": "unknown",
-  "read": false
- },
- {
   "score": 8,
   "groups": [
    "csf_signalling",
@@ -3097,6 +3268,25 @@
   "cites": 1100,
   "status": "open",
   "url": "http://www.cell.com/article/S0092867417313855/pdf",
+  "pub": "Cell Press",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)",
+   "cited by Olsson 2016 (mixed-lineage states)"
+  ],
+  "doi": "10.1016/j.cell.2015.11.013",
+  "title": "Transcriptional Heterogeneity and Lineage Commitment in Myeloid Progenitors",
+  "year": 2015,
+  "cites": 1052,
+  "status": "open",
+  "url": "http://www.cell.com/article/S0092867415014932/pdf",
   "pub": "Cell Press",
   "read": false
  },
@@ -3134,6 +3324,25 @@
   "status": "open",
   "url": "https://www.ahajournals.org/doi/pdf/10.1161/CIRCRESAHA.113.301086",
   "pub": "Lippincott Williams & Wilkins",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Grover 2014 (Epo guides MPPs to erythroid)",
+   "cited by Mossadegh-Keller 2013 (M-CSF instructs)"
+  ],
+  "doi": "10.1128/iai.56.1.247-251.1988",
+  "title": "Production of colony-stimulating factors (CSFs) during infection: separate determinations of macrophage-, granulocyte-, granulocyte-macrophage-, and multi-CSFs",
+  "year": 1988,
+  "cites": 217,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/259264",
+  "pub": "American Society for Microbiology",
   "read": false
  },
  {
@@ -3358,24 +3567,6 @@
  {
   "score": 8,
   "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Olsson 2016 (mixed-lineage states)"
-  ],
-  "doi": "10.1182/blood-2018-06-857789",
-  "title": "Epigenetic control of early dendritic cell lineage specification by the transcription factor IRF8 in mice",
-  "year": 2019,
-  "cites": 60,
-  "status": "open",
-  "url": "https://ashpublications.org/blood/article-pdf/133/17/1803/1557173/blood857789.pdf",
-  "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
    "neutrophil_monocyte",
    "clonal_tracing"
   ],
@@ -3395,6 +3586,25 @@
  {
   "score": 8,
   "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+  ],
+  "doi": "10.3390/cells12060896",
+  "title": "In Vitro Human Haematopoietic Stem Cell Expansion and Differentiation",
+  "year": 2023,
+  "cites": 52,
+  "status": "open",
+  "url": "https://www.mdpi.com/2073-4409/12/6/896/pdf?version=1678802869",
+  "pub": "Multidisciplinary Digital Publishing Institute",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
    "instruction_vs_selection",
    "neutrophil_monocyte"
   ],
@@ -3407,6 +3617,25 @@
   "cites": 51,
   "status": "open",
   "url": "https://tsukuba.repo.nii.ac.jp/record/39413/files/DB02776.pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+  ],
+  "doi": "10.1182/blood.2019000495",
+  "title": "Bone marrow CX3CR1+ mononuclear cells relay a systemic microbiota signal to control hematopoietic progenitors in mice",
+  "year": 2019,
+  "cites": 50,
+  "status": "open",
+  "url": "https://ashpublications.org/blood/article-pdf/134/16/1312/1248548/bloodbld2019000495.pdf",
   "pub": "Elsevier BV",
   "read": false
  },
@@ -3444,25 +3673,6 @@
   "status": "open",
   "url": "https://www.sciencedirect.com/science/article/pii/S1084952114000214/pdf",
   "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
-   "instruction_vs_selection",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3389/fcell.2023.1182204",
-  "title": "Retinoic acid receptor regulation of decision-making for cell differentiation",
-  "year": 2023,
-  "cites": 41,
-  "status": "open",
-  "url": "https://www.frontiersin.org/articles/10.3389/fcell.2023.1182204/pdf",
-  "pub": "Frontiers Media",
   "read": false
  },
  {
@@ -3577,6 +3787,25 @@
  {
   "score": 8,
   "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+  ],
+  "doi": "10.1084/jem.20150618",
+  "title": "Insulin\u2013InsR signaling drives multipotent progenitor differentiation toward lymphoid lineages",
+  "year": 2015,
+  "cites": 20,
+  "status": "open",
+  "url": "https://rupress.org/jem/article-pdf/212/13/2305/1013158/jem_20150618.pdf",
+  "pub": "Rockefeller University Press",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -3651,25 +3880,6 @@
  {
   "score": 8,
   "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3390/ijms19072122",
-  "title": "The Making of Hematopoiesis: Developmental Ancestry and Environmental Nurture",
-  "year": 2018,
-  "cites": 14,
-  "status": "open",
-  "url": "https://www.mdpi.com/1422-0067/19/7/2122/pdf?version=1532147059",
-  "pub": "Multidisciplinary Digital Publishing Institute",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -3720,25 +3930,6 @@
   "url": "https://doi.org/10.1021/acsptsci.5c00007",
   "pub": "American Chemical Society",
   "read": false
- },
- {
-  "score": 8,
-  "groups": [
-   "instruction_vs_selection",
-   "clonal_tracing"
-  ],
-  "via": [
-   "cited by Weinreb 2020 (LARRY)",
-   "cites Olsson 2016 (mixed-lineage states)"
-  ],
-  "doi": "10.1101/403113",
-  "title": "SIS-seq, a molecular \u2018time machine\u2019, connects single cell fate with gene programs",
-  "year": 2018,
-  "cites": 10,
-  "status": "open",
-  "url": "https://www.biorxiv.org/content/biorxiv/early/2018/08/29/403113.full.pdf",
-  "pub": "Cold Spring Harbor Laboratory",
-  "read": true
  },
  {
   "score": 8,
@@ -3902,25 +4093,6 @@
   "status": "open",
   "url": "https://doi.org/10.1016/j.stem.2026.05.001",
   "pub": "Elsevier BV",
-  "read": false
- },
- {
-  "score": 8,
-  "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)",
-   "cites Rieger 2009 (cytokines instruct)"
-  ],
-  "doi": "10.3390/ijms23095063",
-  "title": "The Social Norm of Hematopoietic Stem Cells and Dysregulation in Leukemia",
-  "year": 2022,
-  "cites": 6,
-  "status": "open",
-  "url": "https://www.mdpi.com/1422-0067/23/9/5063/pdf?version=1651551131",
-  "pub": "Multidisciplinary Digital Publishing Institute",
   "read": false
  },
  {
@@ -4234,6 +4406,61 @@
   "read": false
  },
  {
+  "score": 8,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)",
+   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+  ],
+  "doi": "10.1016/j.stemcr.2026.102795",
+  "title": "Erythropoietin exposure disrupts B cell development and drives the emergence of myeloid-biased biphenotypic progenitors",
+  "year": 2026,
+  "cites": 0,
+  "status": "open",
+  "url": "https://doi.org/10.1016/j.stemcr.2026.102795",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "neutrophil_monocyte",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.21203/rs.3.rs-10935487/v2",
+  "title": "Neutrophil-monocyte progenitor trans-differentiation is a source of type 2 myelopoiesis and developmental basophil heterogeneity.",
+  "year": 2026,
+  "cites": 0,
+  "status": "open",
+  "url": "https://doi.org/10.21203/rs.3.rs-10935487/v2",
+  "pub": "Research Square",
+  "read": false
+ },
+ {
+  "score": 8,
+  "groups": [
+   "neutrophil_monocyte",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.21203/rs.3.rs-10935487/v1",
+  "title": "Neutrophil-monocyte progenitor trans-differentiation is a source of type 2 myelopoiesis and developmental basophil heterogeneity.",
+  "year": 2026,
+  "cites": 0,
+  "status": "open",
+  "url": "https://www.researchsquare.com/article/rs-10935487/latest.pdf",
+  "pub": "Research Square",
+  "read": false
+ },
+ {
   "score": 7,
   "groups": [
    "instruction_vs_selection",
@@ -4434,6 +4661,24 @@
  {
   "score": 7,
   "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1038/emboj.2011.390",
+  "title": "FOG\u20101 and GATA\u20101 act sequentially to specify definitive megakaryocytic and erythroid progenitors",
+  "year": 2011,
+  "cites": 117,
+  "status": "open",
+  "url": "https://doi.org/10.1038/emboj.2011.390",
+  "pub": "Springer Nature",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -4524,24 +4769,6 @@
  {
   "score": 7,
   "groups": [
-   "instruction_vs_selection",
-   "csf_signalling"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
-  ],
-  "doi": "10.1097/moh.0000000000000149",
-  "title": "Regulation of stress-induced hematopoiesis",
-  "year": 2015,
-  "cites": 88,
-  "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/4573392",
-  "pub": "Lippincott Williams & Wilkins",
-  "read": false
- },
- {
-  "score": 7,
-  "groups": [
    "neutrophil_monocyte",
    "clonal_tracing"
   ],
@@ -4573,6 +4800,24 @@
   "status": "paywalled",
   "url": null,
   "pub": "National Institutes of Health",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "neutrophil_monocyte",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1016/j.celrep.2015.05.016",
+  "title": "Single-Cell Network Analysis Identifies DDIT3 as a Nodal Lineage Regulator in Hematopoiesis",
+  "year": 2015,
+  "cites": 70,
+  "status": "open",
+  "url": "https://doi.org/10.1016/j.celrep.2015.05.016",
+  "pub": "Cell Press",
   "read": false
  },
  {
@@ -4744,6 +4989,24 @@
    "neutrophil_monocyte"
   ],
   "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1080/08923973.2017.1392564",
+  "title": "Improvement of icaritin on hematopoietic function in cyclophosphamide-induced myelosuppression mice",
+  "year": 2017,
+  "cites": 51,
+  "status": "paywalled",
+  "url": null,
+  "pub": "Taylor & Francis",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
    "cited by Endele 2017 (CSF-1 instructs)"
   ],
   "doi": "10.1074/jbc.m610937200",
@@ -4789,6 +5052,24 @@
   "status": "open",
   "url": "http://www.cell.com/article/S2211124724001013/pdf",
   "pub": "Cell Press",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "csf_signalling",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1021/acs.jafc.8b06073",
+  "title": "Study of the Effects and Mechanisms of Ginsenoside Compound K on Myelosuppression",
+  "year": 2019,
+  "cites": 39,
+  "status": "paywalled",
+  "url": null,
+  "pub": "American Chemical Society",
   "read": false
  },
  {
@@ -5113,6 +5394,24 @@
   "status": "open",
   "url": "https://cmjournal.biomedcentral.com/counter/pdf/10.1186/s13020-021-00544-w",
   "pub": "BioMed Central",
+  "read": false
+ },
+ {
+  "score": 7,
+  "groups": [
+   "neutrophil_monocyte",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)"
+  ],
+  "doi": "10.1073/pnas.2317929121",
+  "title": "Clonal barcoding of endogenous adult hematopoietic stem cells reveals a spectrum of lineage contributions",
+  "year": 2024,
+  "cites": 9,
+  "status": "open",
+  "url": "https://doi.org/10.1073/pnas.2317929121",
+  "pub": "National Academy of Sciences",
   "read": false
  },
  {
@@ -5551,24 +5850,6 @@
   "score": 6,
   "groups": [
    "instruction_vs_selection",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cited by Olsson 2016 (mixed-lineage states)"
-  ],
-  "doi": "10.1016/j.cell.2015.11.013",
-  "title": "Transcriptional Heterogeneity and Lineage Commitment in Myeloid Progenitors",
-  "year": 2015,
-  "cites": 1052,
-  "status": "open",
-  "url": "http://www.cell.com/article/S0092867415014932/pdf",
-  "pub": "Cell Press",
-  "read": false
- },
- {
-  "score": 6,
-  "groups": [
-   "instruction_vs_selection",
    "inference_identifiability"
   ],
   "via": [
@@ -5598,6 +5879,42 @@
   "cites": 569,
   "status": "open",
   "url": "http://www.cell.com/article/S1934590920302873/pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "clonal_tracing",
+   "fate_memory"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)"
+  ],
+  "doi": "10.1101/gad.4.2.220",
+  "title": "Clonal and systemic analysis of long-term hematopoiesis in the mouse.",
+  "year": 1990,
+  "cites": 545,
+  "status": "open",
+  "url": "http://genesdev.cshlp.org/content/4/2/220.full.pdf",
+  "pub": "Cold Spring Harbor Laboratory Press",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cited by Lin/Naik 2024 (restricted progenitors, small clones)"
+  ],
+  "doi": "10.1182/blood-2008-08-078220",
+  "title": "The origins of the identification and isolation of hematopoietic stem cells, and their capability to induce donor-specific transplantation tolerance and treat autoimmune diseases",
+  "year": 2008,
+  "cites": 478,
+  "status": "open",
+  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2574516",
   "pub": "Elsevier BV",
   "read": false
  },
@@ -5736,24 +6053,6 @@
   "via": [
    "cited by Mossadegh-Keller 2013 (M-CSF instructs)"
   ],
-  "doi": "10.1128/iai.56.1.247-251.1988",
-  "title": "Production of colony-stimulating factors (CSFs) during infection: separate determinations of macrophage-, granulocyte-, granulocyte-macrophage-, and multi-CSFs",
-  "year": 1988,
-  "cites": 217,
-  "status": "open",
-  "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/259264",
-  "pub": "American Society for Microbiology",
-  "read": false
- },
- {
-  "score": 6,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cited by Mossadegh-Keller 2013 (M-CSF instructs)"
-  ],
   "doi": "10.1016/j.cell.2009.04.057",
   "title": "MafB Restricts M-CSF-Dependent Myeloid Commitment Divisions of Hematopoietic Stem Cells",
   "year": 2009,
@@ -5797,6 +6096,24 @@
   "status": "paywalled",
   "url": null,
   "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "fate_memory"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.12688/f1000research.26648.1",
+  "title": "Erythropoietin regulation of red blood cell production: from bench to bedside and back",
+  "year": 2020,
+  "cites": 123,
+  "status": "open",
+  "url": "https://f1000research.com/articles/9-1153/v1/pdf",
+  "pub": "Faculty of 1000",
   "read": false
  },
  {
@@ -6031,6 +6348,24 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41467-018-04188-7.pdf",
   "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1084/jem.20170396",
+  "title": "Iron modulation of erythropoiesis is associated with Scribble-mediated control of the erythropoietin receptor",
+  "year": 2017,
+  "cites": 86,
+  "status": "open",
+  "url": "https://doi.org/10.1084/jem.20170396",
+  "pub": "Rockefeller University Press",
   "read": false
  },
  {
@@ -6288,24 +6623,6 @@
  {
   "score": 6,
   "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
-  ],
-  "doi": "10.3390/cells12060896",
-  "title": "In Vitro Human Haematopoietic Stem Cell Expansion and Differentiation",
-  "year": 2023,
-  "cites": 52,
-  "status": "open",
-  "url": "https://www.mdpi.com/2073-4409/12/6/896/pdf?version=1678802869",
-  "pub": "Multidisciplinary Digital Publishing Institute",
-  "read": false
- },
- {
-  "score": 6,
-  "groups": [
    "imaging_ssl",
    "inference_identifiability"
   ],
@@ -6319,24 +6636,6 @@
   "status": "open",
   "url": "https://doi.org/10.1371/journal.pcbi.1005927",
   "pub": "Public Library of Science",
-  "read": false
- },
- {
-  "score": 6,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
-  ],
-  "doi": "10.1182/blood.2019000495",
-  "title": "Bone marrow CX3CR1+ mononuclear cells relay a systemic microbiota signal to control hematopoietic progenitors in mice",
-  "year": 2019,
-  "cites": 50,
-  "status": "open",
-  "url": "https://ashpublications.org/blood/article-pdf/134/16/1312/1248548/bloodbld2019000495.pdf",
-  "pub": "Elsevier BV",
   "read": false
  },
  {
@@ -6612,6 +6911,24 @@
  {
   "score": 6,
   "groups": [
+   "instruction_vs_selection",
+   "neutrophil_monocyte"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1182/bloodadvances.2020002842",
+  "title": "KAT2A complexes ATAC and SAGA play unique roles in cell maintenance and identity in hematopoiesis and leukemia",
+  "year": 2021,
+  "cites": 28,
+  "status": "open",
+  "url": "https://ashpublications.org/bloodadvances/article-pdf/6/1/165/1857663/advancesadv2020002842.pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "neutrophil_monocyte",
    "clonal_tracing"
   ],
@@ -6792,6 +7109,24 @@
  {
   "score": 6,
   "groups": [
+   "neutrophil_monocyte",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1038/s41588-024-01754-2",
+  "title": "Cell-type-specific consequences of mosaic structural variants in hematopoietic stem and progenitor cells",
+  "year": 2024,
+  "cites": 24,
+  "status": "open",
+  "url": "https://doi.org/10.1038/s41588-024-01754-2",
+  "pub": "Nature Portfolio",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
    "csf_signalling",
    "neutrophil_monocyte"
   ],
@@ -6805,6 +7140,24 @@
   "status": "open",
   "url": "https://www.nature.com/articles/s41418-021-00866-0.pdf",
   "pub": "Springer Nature",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "csf_signalling"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1016/j.celrep.2021.109548",
+  "title": "Brain erythropoietin fine-tunes a counterbalance between neurodifferentiation and microglia in the adult hippocampus",
+  "year": 2021,
+  "cites": 22,
+  "status": "open",
+  "url": "http://www.cell.com/article/S2211124721009827/pdf",
+  "pub": "Cell Press",
   "read": false
  },
  {
@@ -6847,18 +7200,18 @@
   "score": 6,
   "groups": [
    "instruction_vs_selection",
-   "neutrophil_monocyte"
+   "inference_identifiability"
   ],
   "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
   ],
-  "doi": "10.1084/jem.20150618",
-  "title": "Insulin\u2013InsR signaling drives multipotent progenitor differentiation toward lymphoid lineages",
-  "year": 2015,
+  "doi": "10.1002/psp4.12459",
+  "title": "Quantifying Drug\u2010Induced Bone Marrow Toxicity Using a Novel Haematopoiesis Systems Pharmacology Model",
+  "year": 2019,
   "cites": 20,
   "status": "open",
-  "url": "https://rupress.org/jem/article-pdf/212/13/2305/1013158/jem_20150618.pdf",
-  "pub": "Rockefeller University Press",
+  "url": "https://ascpt.onlinelibrary.wiley.com/doi/pdfdirect/10.1002/psp4.12459",
+  "pub": "Nature Portfolio",
   "read": false
  },
  {
@@ -7381,6 +7734,24 @@
   "status": "open",
   "url": "https://doi.org/10.1097/hs9.0000000000000270",
   "pub": "Wolters Kluwer",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "csf_signalling",
+   "inference_identifiability"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1089/ten.tea.2021.0028",
+  "title": "A Spatiotemporal Microenvironment Model to Improve Design of a Three-Dimensional Bioreactor for Red Cell Production",
+  "year": 2021,
+  "cites": 8,
+  "status": "open",
+  "url": "https://eprints.qut.edu.au/210657/1/AllenbyEPrint.pdf",
+  "pub": "Mary Ann Liebert, Inc.",
   "read": false
  },
  {
@@ -7999,6 +8370,42 @@
   "score": 6,
   "groups": [
    "clonal_tracing",
+   "fate_memory"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1016/j.exphem.2026.105456",
+  "title": "Cytotoxic and Genotoxic Stress Transiently Increase the Contribution of Platelet-Biased Hematopoietic Stem Cells to Platelet Production",
+  "year": 2026,
+  "cites": 1,
+  "status": "open",
+  "url": "https://www.exphem.org/article/S0301-472X(26)00089-5/pdf",
+  "pub": "Elsevier BV",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "instruction_vs_selection",
+   "clonal_tracing"
+  ],
+  "via": [
+   "cites Grover 2014 (Epo guides MPPs to erythroid)"
+  ],
+  "doi": "10.1186/s13046-025-03620-3",
+  "title": "Revealing erythropoietin variant EV-3 as novel driving force and immunotherapeutic target in human glioblastoma",
+  "year": 2025,
+  "cites": 1,
+  "status": "open",
+  "url": "https://doi.org/10.1186/s13046-025-03620-3",
+  "pub": "BioMed Central",
+  "read": false
+ },
+ {
+  "score": 6,
+  "groups": [
+   "clonal_tracing",
    "inference_identifiability"
   ],
   "via": [
@@ -8047,24 +8454,6 @@
   "status": "open",
   "url": "https://doi.org/10.1093/brain/awag149",
   "pub": "Oxford University Press",
-  "read": false
- },
- {
-  "score": 6,
-  "groups": [
-   "csf_signalling",
-   "neutrophil_monocyte"
-  ],
-  "via": [
-   "cites Mossadegh-Keller 2013 (M-CSF instructs)"
-  ],
-  "doi": "10.1016/j.stemcr.2026.102795",
-  "title": "Erythropoietin exposure disrupts B cell development and drives the emergence of myeloid-biased biphenotypic progenitors",
-  "year": 2026,
-  "cites": 0,
-  "status": "open",
-  "url": "https://doi.org/10.1016/j.stemcr.2026.102795",
-  "pub": "Elsevier BV",
   "read": false
  },
  {

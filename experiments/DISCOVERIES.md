@@ -17,18 +17,18 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | 3 | **Instruction is modest and stable**: about 0.5 logits each way under G-CSF and M-CSF, almost unchanged across E38, E47, E48, E49 whatever selection is added. | E38-E49 | moderate | Rieger 2009, Mossadegh-Keller 2013 (M-CSF instructs HSCs), Endele 2017 (CSF-1/Src instructs) | consistent |
 | 4 | G-CSF gives neutrophil-leaning clones a **2.5-6.5x survival/expansion advantage**, trading off against instruction along a ridge. | E40 | moderate | Kimura 2009 (GM-CSF/STAT5 controls GMP proliferation and survival) | consistent (qualitative) |
 | 5 | **Lineage-matched selection at a plausible strength** (gamma ~0.3-0.6: at most about one extra doubling per SD of bias over 48 h) fits B7 G; the fit pushes gamma to whatever cap is set. E46's unbounded 1.3 is about twice the plausible bound. | E46, E47, E48 | moderate | Rieger 2009 supplement: ~19% early death in both M-CSF and G-CSF, ~2 doublings on day 1, slower on day 2 | consistent (bound derived from it) |
-| 6 | **Fate memory is near-full over 2 days**; the apparent fading (B21) is sampling noise. | E41b, B21 | moderate | not yet checked (state memory in LARRY / Weinreb 2020) | not yet checked |
+| 6 | **Fate memory is near-full over 2 days**; the apparent fading (B21) is sampling noise. | E41b, B21 | moderate | Naik 2013 (heritable lineage imprinting in sister progenitors); Nat Commun 2026 (clonal memory of division in human HSPCs, >= 2 divisions) | consistent |
 
 ## Clonal structure of the experiment
 
 | # | discovery | evidence | strength | literature | check |
 |---|---|---|---|---|---|
-| 7 | The **full-cocktail culture was seeded from a largely separate set of clones** (about 22% of clones mainly there). | B12, E37, E38 | moderate (design inference) | Weinreb 2020 SI design text does not describe it | not confirmed |
+| 7 | The **full-cocktail culture was seeded from a largely separate set of clones** (about 22% of clones mainly there). | B12, E37, E38 | moderate (fitted structure) | Weinreb 2020 SI 8.1 and Supp Fig 7: day-2 cells split evenly into four wells, Mix included, so not a separate seeding; alternative: LSK-like cells expand mainly in the full cocktail (SCF, TPO) | **in tension** |
 | 8 | **Detection does not differ by cell type** (neutrophil/monocyte barcode capture ratio 0.91 [0.72, 1.20]); sister competition at the split cannot explain co-presence. | B28 | moderate | Weinreb 2020 SI (design, capture) | consistent |
 | 9 | **Small M-CSF clones are private to the M-CSF well**: 2-cell clones seen in any other well 21% (model 51%); real cells spread over libraries, not an artefact; half as often seen at day 2. They explain the M-presence and low G-M co-presence misfits. | B31, B32, B34 | strong (descriptive) | Lin/Naik 2024: restricted downstream progenitors (MDPs, CMPs) make small clones | consistent (candidate explanation, untested) |
 | 10 | **G-CSF-private clones are neutrophil-committed at every size** (70% neutrophils vs 41% in shared clones; privacy grows with size). | B34 | moderate | Weinreb 2020 Supp Fig 7g (neutrophil-only clones expand more in G-CSF) | consistent |
-| 11 | **A clone's day-2 abundance predicts how many wells it reaches**, beyond independent seeding (gradient 0.13 vs model [-0.09, 0.09]). Clones differ in how many cells they had at the split. | B35 | moderate | not yet checked | not yet checked |
-| 12 | Every model **over-shares clones with the Epo and SCF wells** (about 2x). | B32 | moderate (descriptive) | Eisele 2022 (Epo remodels clonal output in vivo; does not explain this) | not yet checked |
+| 11 | **A clone's day-2 abundance predicts how many wells it reaches**, beyond independent seeding (gradient 0.13 vs model [-0.09, 0.09]). Clones differ in how many cells they had at the split. | B35 | moderate | no direct reference found; follows from splitting each clone's day-2 cells into wells (Weinreb SI: day-2 sample measures clone size at the split) | expected from design |
+| 12 | Every model **over-shares clones with the Epo and SCF wells** (about 2x). | B32 | moderate (descriptive) | Grover 2014 (Epo pushes multipotent progenitors toward erythroid fate): clones diverted to erythroid cells look absent in N/M-only presence counts. Untested | candidate explanation |
 
 ## Methodological lessons (how not to fool ourselves)
 
@@ -39,3 +39,7 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | M3 | A good fit to an aggregate statistic can come from compensating errors; decompose it (e.g. by clone size) before crediting it. | B31 (E46 co-presence) |
 | M4 | A held-out test must be powered for the question: the Epo/SCF concordance cannot see selection. | B30, B33 |
 | M5 | Check every model change against every condition before registering it; two designs were rejected this way before any fit. | E49 restricted class, E43 |
+
+## Cross-check log
+
+- 2026-11-05 (RETRO_2026-11-05b): entries 6, 7, 11, 12 cross-checked; 7 moved to "in tension".
