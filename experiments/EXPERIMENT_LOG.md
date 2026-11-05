@@ -5573,3 +5573,56 @@ instruction from fate-specific proliferation inside a clone).
   - Report each term's share of the KO pDC shift.
 - **Synthetic check first:** same as B38 (no-memory and full-memory sisters, no KO effect),
   expecting near-zero terms in B.
+
+### H2 / B38 / B39 results (2026-11-05, commit 3a68531; results_sis/b38.json, b39.json)
+
+**Synthetic checks (scratchpad).** Full-memory sisters: H 0.98-1.00, CIs tight; logit SD 1.5-2.8
+(the ceiling given the real clone fractions). No-memory sisters: H's CI includes 0 as it should,
+but the point estimate is unstable (denominator D_rand - D_noise near 0): read H only via its CI.
+Within-clone term about 0 in both. Batch differences alone give a nonzero logit SD (syn0 all
+batches, pDC 1.1), so B is read against the large-batch sensitivity too.
+
+**B38 (SIS-seq, 69 fit clones with both sister wells; large batches 41).**
+
+| | D_sis | D_rand | D_noise | H [95%] | logit SD cDC1 / cDC2 / pDC |
+|---|---|---|---|---|---|
+| all | 0.17 | 0.47 | 0.05 | **0.71 [0.59, 0.78]** | 1.48 / 2.03 / 2.70 |
+| large batches | 0.12 | 0.45 | 0.04 | **0.81 [0.72, 0.86]** | 1.44 / 2.11 / 2.80 |
+
+- **Reading: fate largely fixed in the clone** (H >= 0.7, lower bound > 0.5, in both).
+- **Cross-check with LARRY: consistent** (logit SD >= 2 for cDC2 and pDC). The real values sit at
+  the full-memory ceiling for these clone fractions.
+- **Well environment: no effect** (all three correlations' CIs include 0, e.g. pDC -0.09
+  [-0.32, 0.16]).
+
+**B39 (SIS-skew; KO wells 831 fit clones, 399 both-arm; null wells 454, 205): powered.**
+
+| | KO wells | null wells |
+|---|---|---|
+| H [95%] | 0.37 [0.29, 0.44] | 0.50 [0.39, 0.60] |
+| within-clone, cDC1 / cDC2 / pDC | +0.02 / +0.01 / -0.02 (all CIs include 0) | **-0.12 / +0.08 / +0.04** (all exclude 0) |
+| reweighting | **-0.05** [-0.10, -0.01] / +0.06 / -0.01 | **-0.06** / **+0.05** / 0.00 |
+| interaction | +0.05 / **-0.12** [-0.23, -0.04] / **+0.07** [0.02, 0.11] | **+0.06** / -0.02 / **-0.04** |
+| total shift | +0.02 / -0.05 / +0.03 (all include 0) | **-0.13 / +0.12** / +0.01 |
+| size ratio vs WT fate (rho) | -0.09 / +0.06 / +0.03 (all include 0) | **-0.18 / +0.23 / -0.18** |
+| one-arm share by size 2-5 / 6-20 / 21-100 / >100 | 0.97 / 0.64 / 0.32 / 0.08 | 0.79 / 0.27 / 0.09 / 0.02 |
+
+- **Readings as registered.** Clone-level selection by Bcor: **not met** (the one KO term whose CI
+  excludes 0, cDC1 reweighting, equals the null's; no size-ratio correlation). Within-clone change
+  by Bcor: **not met** (no KO within-clone CI excludes 0). Sister disagreement: **not met** (H CIs
+  overlap).
+- **The null wells are not null.** Control-vector (Cherry+) sisters differ from their Cherry-
+  sisters: less cDC1, more cDC2 and pDC within clones, and their size ratio tracks fate. Either the
+  vector, transduction or sorting changes fate output, or W and C wells differ in more than Bcor
+  (W = WT HSPC, C = Cas9 LSK: different starting population and Cas9). Against this baseline the
+  KO arms look *different*: the null's label shift is absent in KO wells (KO within-clone CIs
+  exclude the null's values for cDC1 and pDC). Not a registered reading.
+- **Descriptive, not registered.** (1) In KO wells the pDC gain and cDC2 loss sit in the
+  interaction term: clones whose KO arm expands are the ones whose KO arm shifts toward pDC, i.e.
+  fate-specific expansion inside clones or instruction in expanding clones (not separable from
+  endpoints). (2) Presence: one-arm clones are 2-4x commoner in KO wells at every size; small KO
+  clones are mostly WT-only (0.69 at 2-5 cells), large ones more often KO-only (0.07 vs 0.01).
+  Bcor loss changes whether a clone's sisters persist at all, the strongest KO signal here.
+- **Consequence for the plan.** The SIS-skew conditional comparison has no clean baseline: the
+  model step must include an arm (label) effect estimated from W wells and a W-vs-C population
+  difference, or restrict to KO-vs-WT arms within C wells with the label effect as a nuisance.

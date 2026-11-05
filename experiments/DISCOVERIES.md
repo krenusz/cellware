@@ -30,7 +30,17 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | 11 | **A clone's day-2 abundance predicts how many wells it reaches**, beyond independent seeding (gradient 0.13 vs model [-0.09, 0.09]). Clones differ in how many cells they had at the split. | B35 | moderate | no direct reference found; follows from splitting each clone's day-2 cells into wells (Weinreb SI: day-2 sample measures clone size at the split) | expected from design |
 | 12 | Every model **over-shares clones with the Epo and SCF wells** (about 2x). For SCF it is a counting artefact: SCF wells are 71% undifferentiated, and counting all cell types fixes it. For Epo it is real: the erythroid cells come from clones absent from the G/M wells; clones shared with G/M make myeloid/basophil cells in Epo. | B32, B36 | moderate | Grover 2014 (Epo pushes multipotent progenitors to erythroid fate): diversion of shared clones tested and not supported; an erythroid-lineage clone subset fits the data | SCF explained; Epo in tension with diversion |
 
+## Chapter 2: SIS-seq / SIS-skew (Tian et al. 2021; Flt3L DC cultures)
+
+| # | discovery | evidence | strength | literature | check |
+|---|---|---|---|---|---|
+| 13 | **DC fate is largely fixed in the clone before the split.** Sisters in separate wells agree on cDC1/cDC2/pDC split far beyond chance: heritable share H 0.71 [0.59, 0.78] (large batches 0.81); clone-level logit SD 2.0 (cDC2) and 2.7 (pDC). No effect of the well's background on sister differences. A second system showing LARRY's strong clone fate state (#1). | B38 | strong (69 clones) | Naik 2013 Nature (single progenitors imprinted for DC subtypes); Tian 2021 (SIS-seq sister concordance) | consistent |
+| 14 | **Bcor loss acts on whether sister clones persist, not detectably on their fate split.** One-arm clones are 2-4x commoner in KO wells at every size; no KO within-clone or clone-reweighting fate term beyond the null. The KO pDC gain sits in clones that both expand and shift (interaction term). | B39 | moderate (399 both-arm KO clones; baseline problem, #15) | Tian 2021 (Bcor restrains emergency DC expansion; skew toward pDC/cDC2 in some clones) | not yet checked in detail |
+| 15 | **The SIS-skew null wells are not null:** control-vector sisters shift away from cDC1 toward cDC2/pDC within clones (-0.12 / +0.08 / +0.04), and their size ratio tracks fate. Vector/transduction/sorting effect, or W (WT HSPC) vs C (Cas9 LSK) population difference. | B39 | strong (CIs exclude 0) | not reported by Tian 2021 as far as checked | not yet checked |
+
 ## Methodological lessons (how not to fool ourselves)
+
+- **M6 (2026-11-05).** A sister-agreement ratio (H) is unstable when there is no memory (its denominator goes to 0); read it only through its CI. Check a "null" arm before using it as baseline: in SIS-skew it was not null (#15).
 
 | # | lesson | evidence |
 |---|---|---|
