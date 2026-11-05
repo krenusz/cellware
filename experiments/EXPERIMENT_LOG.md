@@ -5022,3 +5022,39 @@ Best gated fits: E46 s11, E48 s0; 200 simulations each. All denominators >= 44 c
   - **Library-local:** (iii) same-library share above both baselines by at least 0.15: small
     clones are disproportionately confined to one library (one well or one capture), supporting
     an artefact or well-local origin. Descriptive.
+
+### B32 result (2026-11-05)
+
+E48 best gated fit s0, 200 simulations. All groups >= 112 clones; 139-205 same-day 2-cell clones.
+
+| clones | n (data / E48) | in G or M | in full | in Epo | in SCF | in any other |
+|---|---|---|---|---|---|---|
+| M-CSF, 2 cells | 172 / 117 | 0.10 vs 0.28 **out** | 0.11 vs 0.17 **out** | 0.03 vs 0.08 **out** | 0.03 vs 0.10 **out** | **0.21 vs 0.51 out** |
+| M-CSF, 3-5 | 160 / 206 | 0.20 vs 0.26 out | 0.16 vs 0.17 in | 0.03 vs 0.07 out | 0.04 vs 0.10 out | 0.38 vs 0.49 out |
+| G-CSF, 2 cells | 112 / 110 | 0.23 vs 0.35 **out** | 0.12 vs 0.17 in | 0.06 vs 0.10 in | 0.08 vs 0.13 in | 0.38 vs 0.59 out |
+| G-CSF, 3-5 | 121 / 115 | 0.22 vs 0.29 in | 0.14 vs 0.17 in | 0.02 vs 0.12 out | 0.05 vs 0.16 out | 0.35 vs 0.57 out |
+
+- **2-cell M-CSF clones: whole-clone private (as registered).** Only 21% are seen in any other
+  well (E48 51%), with the shortfall in full, Epo and SCF as well as G. They are also less often
+  seen at day 2: 22% vs 36% for 3-5-cell M clones (difference CI -0.24 to -0.05). And there are
+  more of them than the model makes (172 vs 117) while 3-5-cell M clones are fewer (160 vs 206).
+  **This is the M-presence misfit (478 vs ~420-460 in every model): the extra M-present clones are
+  small and private to the M-CSF well.**
+- **2-cell G-CSF clones: cytokine-specific (as registered).** Short only in M-CSF (0.23 vs 0.35);
+  full, Epo and SCF inside. No day-2 difference (0.29 vs 0.30).
+- **Library-local: no.** Same-library share of 2-cell clones is 0.49 (M-CSF; expected 0.46,
+  3-5-cell pairs 0.49) and 0.35 (G-CSF; 0.40, 0.37). The two cells of a small private clone are
+  spread over libraries like cells of any clone, so a capture or library artefact is unlikely;
+  they look like real cells of real (small) clones.
+- **Side finding:** in every group, data clones are seen in Epo and SCF wells about half as often
+  as E48 predicts (e.g. G 3-5: Epo 0.02 vs 0.12). The models over-share clones with Epo/SCF.
+- **Conclusion.** There is a population of small clones that live only in the M-CSF well: real
+  cells, not library artefacts, less often visible at day 2, absent from every other well. They
+  are not part of the sister-split pool the models assume. Candidates: clones seeded into the M
+  well only (cells with too few sisters at the split), or rare cells that survive and divide only
+  in M-CSF (e.g. a monocyte/macrophage precursor fraction that the other cytokines do not
+  support). Their excess inflates M presence and deflates G-M co-presence, which is what E46's
+  strong selection was compensating for. As registered, presence statistics should move to
+  >= 3 cells; B31(a) already shows both E46 and E48 fit the G-M lift at >= 3 and >= 5 cells.
+  A full re-fit with >= 3-cell presence targets (or an explicit M-private clone class) is the
+  candidate for E49, to be pre-registered separately.
