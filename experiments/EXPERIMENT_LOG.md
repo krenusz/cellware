@@ -5422,3 +5422,22 @@ Sources: 277 G clones, 478 M clones (>= 2 N+M cells). E48 best gated s0, 200 sim
   wells do not support may look like a "separate pool" in N+M-only statistics.
 - **Stopping rule:** Epo/SCF statistics are not part of the instruct-vs-select estimate (tau and
   gamma are identified from G, M and full). Recorded in DISCOVERIES; no model change.
+
+### E50 result (run 42101864316, analysed 2026-11-05)
+
+- **Run.** The guard cancelled it at 10/18 seeds: 0 gated, 10 failed (watcher exit 1 = cancel).
+- **Working model: no (as registered).** No gated seed, so no stability, B7 or private-clone
+  readings. E48 stays the working model.
+- **Why the fits fail (descriptive, from the stored z-scores).** 7 of 10 fits are inadequate on the
+  loss. The recurring misfit is G_mixed (share of G-CSF clones making both cell types) at
+  z -3.8 to -6.0: a neutrophil-only class large enough to make G-private clones also strips the
+  G well of mixed clones. Overlap (z +3 to +5) and Epo/SCF mean/variance misfits recur as well.
+  The fits that did use the class took phi_C 0.03-0.20 with d_C 1.3-4 (large clones).
+- **Instruction in these fits is unstable** (G shift 0.5-7.6, M shift 0.5-7.2), with no gated fit
+  to interpret. Not read.
+- **Stopping rule (program.md), applied.** E49 and E50 both failed their working-model rules, and
+  no gated fit of either moved the instruction or selection estimates beyond the spread of the
+  standing plausible models (E38/E47/E48: G shift 0.47-0.50, M shift 0.47-0.62). The private-clone
+  features are recorded in DISCOVERIES.md as properties of the data. **LARRY cytokine modelling
+  stops here.** Remaining LARRY steps: the held-out look and the write-up
+  (WRITEUP_LARRY_CYTOKINE.md).

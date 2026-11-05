@@ -1,6 +1,6 @@
 # Do G-CSF and M-CSF instruct or select myeloid fate? An answer from LARRY clonal data
 
-Working write-up, 2026-11-05. Not a paper. Every test was pre-registered in EXPERIMENT_LOG.md;
+Working write-up, 2026-11-05 (final for this data set: modelling stopped under the stopping rule after E49/E50). Not a paper. Every test was pre-registered in EXPERIMENT_LOG.md;
 discoveries and their literature checks are in DISCOVERIES.md; earlier work is in
 WRITEUP_E5_E25.md and FINDINGS_2026-11.md.
 
@@ -81,7 +81,9 @@ Medians over gated seeds, [min, max].
 
 - **One model family, one data set.** The ratio is an estimate within this family.
 - **Presence features the model does not reproduce** (each recorded in DISCOVERIES.md, none
-  moves the instruction estimate under the stopping rule):
+  moves the instruction estimate under the stopping rule). Two targeted models failed: a limited
+  sister split (E49, 6/18 gated) and a neutrophil-committed G-only class (E50, 0/10 gated; it
+  removes too many mixed G clones):
   - small M-CSF clones private to the M-CSF well (B32, B34);
   - neutrophil-committed G-CSF clones private to the G-CSF well (B34);
   - clones that were rare at day 2 reach fewer wells (B35);
