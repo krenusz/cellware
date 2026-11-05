@@ -18,6 +18,7 @@ import e34_fullarm as e34
 import e37_pool as e37
 import e46_selexp as e46
 import e47_capsel as e47
+import e48_capsel6 as e48
 import numpy as np
 from clone_state_model import OUT, split
 from sweep_guard import gated
@@ -85,7 +86,7 @@ def main(nsim=200, names=("e38", "e46")):
     meas = e33.measured(clones, np.random.default_rng(77))
     data = {**e29.cross_r(fit), **{k: v for k, v in e33.presence_stats(fit).items() if k in B7}}
     rep = {"data_fit_set": data, "models": {}}
-    MODS = {"e38": e37, "e46": e46, "e47": e47}
+    MODS = {"e38": e37, "e46": e46, "e47": e47, "e48": e48}
     for name in names:
         mod = MODS[name]
         res = [json.load(open(f)) for f in glob.glob(os.path.join(OUT, f"{name}_s*.json"))]

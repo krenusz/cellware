@@ -4786,3 +4786,59 @@ rendered pages; values read off plots, so about +-10%.
     on division rather than death.
   - Caveats as before: sorted GMPs, single cytokines, population-level counts (not per lineage);
     LARRY founders are LSK/LK in mixed media.
+
+## Amendment to the E47 reference decision (2026-11-05, prompted by Bence: "why is E46 not the best model?")
+
+Logged openly; the E47 entry above is left as registered.
+
+- **The E47 rule was flawed.** It compared summed CRPS over five statistics, three of which (the
+  concordances) B29 had already shown carry almost no information: their simulated 95% widths are
+  0.32-0.61 (G-M), 0.56-0.67 (full-G) and 0.95-1.00 (full-M) on a scale of about -0.1 to 1, and
+  the data halves disagree by up to 0.35. E46 lost the sum (0.376 vs 0.340) entirely through
+  full-M (0.173 vs 0.083); on every other statistic it was level or better.
+- **On the data, E46 is the better model:** fit loss of gated seeds median 62.5 vs 90.7 (best 18.8
+  vs 40.4), gate 16/18 vs 9/18, B7 G centred on the data (-0.41 vs -0.29; data -0.38), B26
+  inside vs outside. Both miss M presence and D3.
+- **Corrected status.** **E46 = best-fitting model.** **E47 = biologically constrained
+  alternative** (selection within the Rieger bound; the supplement puts that bound at gamma
+  ~0.3-0.6, E46 needs 1.3).
+- **Protocol change from now on.** Model comparisons by CRPS use only B7 G + B7 M (widths
+  0.13-0.27, and B7 G is the statistic that separates models); concordances are still reported
+  with pass/fail but left out of CRPS sums. Under this rule: E46 0.041, E47 0.077, E38 0.089.
+
+## E48: selection capped at the generous plausible bound (pre-registered 2026-11-05)
+
+- **Data diagnostic it must explain.** As E46/E47: B27 co-presence lift 0.31 and B7 G (-0.38),
+  under the Rieger-supplement bound gamma ~0.3-0.6. E47 tested the strict end (0.35) and recovered
+  ~15% of E46's B7 G shift; E48 tests the generous end.
+- **Mechanism.** E46 unchanged (e46.simulate), gamma = 0.6 sigmoid(x23) in (0, 0.6]. 24 dimensions.
+  Script experiments/e48_capsel6.py; sweep sweeps/e48_capsel6.txt.
+- **Every-condition check (E38 best parameters, 30 simulations; scratchpad e47chk/chk48.py).**
+
+  | gamma | lift | n G-M | B7 G | D3 | presence full/G/M/Epo/SCF | N share G / M / full |
+  |---|---|---|---|---|---|---|
+  | data | 0.31 | 39 | -0.38 | 0.15 | 368/277/478/23/39 | 0.67 / 0.040 / 0.28 |
+  | 0 | 0.48 | 57 | -0.25 | 0.02 | 371/269/422/22/44 | 0.67 / 0.042 / 0.29 |
+  | 0.35 | 0.43 | 52 | -0.31 | 0.04 | 371/274/426/21/40 | 0.77 / 0.027 / 0.29 |
+  | 0.45 | 0.41 | 50 | -0.29 | 0.05 | 371/277/424/21/41 | 0.79 / 0.022 / 0.29 |
+  | 0.6 | 0.39 | 47 | -0.29 | 0.04 | 371/278/417/21/43 | 0.82 / 0.019 / 0.29 |
+
+  Lift keeps moving toward the data; at fixed parameters B7 G saturates near -0.29 and the G
+  N-share overshoots, which tau/s must absorb in the fit. Full, Epo and SCF do not move.
+- **Fit.** As E47: 18 cold seeds, 500 generations max, E38 targets/loss/SE, guard 9, PC awake.
+- **Scoring (amended protocol).** Gate as before; primary and stability on the fit set
+  (`b29_rescore.py e46 e48`, 200 simulations per gated seed); CRPS comparison on B7 G + B7 M only.
+- **Readings (minimum 9 gated seeds, except B27).**
+  - **Cap binds:** median gamma over gated seeds >= 0.54.
+  - **Recovers most of E46's gain:** median simulated B7 G centre <= -0.34 (at least half of
+    E46's shift from E38's -0.27 toward -0.41) **and** median B7 G CRPS <= 0.05.
+  - **Status:**
+    - If E48 is stable and passing and its B7 CRPS sum (G + M) <= E46's 0.041: plausible
+      selection explains the data as well as E46; **E48 becomes the best model**.
+    - If E48 is stable and passing with B7 CRPS sum between 0.041 and E47's 0.077: E46 stays the
+      best fit; E48 replaces E47 as the plausible alternative.
+    - Otherwise: plausible selective expansion does not explain B7 G; E46's gain rests on an
+      implausible strength, and a different mechanism is needed.
+  - **Explains B27 (best gated fit, 200 simulations):** G-M count, lift, M-present count inside
+    the simulated 95%.
+  - **Side readings:** D3, B26 16+ M-pure, instruction shifts (descriptive).
