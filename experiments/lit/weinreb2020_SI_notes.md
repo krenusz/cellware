@@ -36,3 +36,21 @@ papers/weinreb2020_supp/weinreb2020_SI.pdf (gitignored). Read: Supp Methods 2.4-
    in the full cocktail (it has SCF and TPO) would behave as this pool.
 4. **Day-2 sampling is a measurement of K.** The 25% sample gives each clone's day-2 count (n2),
    which constrains clone size at the split directly.
+
+## Supplementary Figure 7 (figures PDF, saved 2026-11-05 as papers/weinreb2020_supp/weinreb2020_suppfigs.pdf)
+
+- Design panel: day 2 sample plus four wells (Mix, EPO, M-CSF, G-CSF), sampled at days 4 and 6.
+  **SCF is again absent**, although the data has three day-4 SCF libraries. Unresolved; we keep
+  treating SCF as a fifth well, as the data do.
+- Counts: 65,075 cells; 25,749 in multi-cell clones; 5,257 clones; 1,601 state-fate clones;
+  958 multi-condition clones (all match our files).
+- Panel f, clones seen in both G-CSF and M-CSF: monocyte-only in both 65%, neutrophil-only in both
+  10%, monocytes in M-CSF and neutrophils in G-CSF ("fate switching") 11%.
+- Panel g: **monocyte-only clones expand more in M-CSF than G-CSF (73% vs 10% of clones), and
+  neutrophil-only clones the reverse (68% vs 7%).** Authors' conclusion: cytokines act by regulating
+  proliferation or survival of committed cells, plus possibly biasing uncommitted cells; "we cannot
+  rule out that these data result from changes in survival alone".
+- **Relation to E46.** E46 (lineage-matched selective expansion) was pre-registered before this
+  figure was read. Panel g is the same data seen descriptively (all clones, held-out shard
+  included), so it supports the mechanism's plausibility but is **not independent evidence** and
+  is not a test of E46.
