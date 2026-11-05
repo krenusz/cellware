@@ -4756,3 +4756,33 @@ PDFs saved locally in papers/rates/ (not committed: publisher copyright).
   than selective expansion, or the Rieger GMP constraint does not carry over to LARRY's LSK/LK
   founders. Formally E47 is the reference; in substance the three models are close, and the M
   presence, D3 and B26 misfits are shared and unexplained.
+
+### Rieger 2009 online supplement, read (2026-11-05)
+
+PDF and movies saved locally (papers/rates/rieger2009_som.pdf; not committed). Figures read from
+rendered pages; values read off plots, so about +-10%.
+
+- **Fig S4, immediate death** (GMP or both daughters dead within 48 h): no cytokine ~68%,
+  **M-CSF ~19%, G-CSF ~19%**. No difference in early death between the two cytokines.
+- **Fig S5, population growth** (enzymatic assay, 3 experiments): relative counts ~1.6 (day 0),
+  ~7 in both (day 1), **M-CSF ~17.5 and G-CSF ~10** (day 2). Day 0-1: ~2.1 doublings in both
+  (cycle ~11 h). Day 1-2: ~1.3 doublings in M-CSF, ~0.6 in G-CSF. Over 48 h: M-CSF ~11x
+  (~3.5 doublings), G-CSF ~6x (~2.6 doublings).
+- **Fig S12, commitment timing:** ~75% of pedigrees switch on LysM::GFP at the founder cell or its
+  daughters (P or F1); 60% within 24 h in M-CSF or G-CSF. Commitment is early, so most of the
+  48 h is spent by committed cells.
+- **Fig S3:** 71% of sorted GMPs form colonies; of these 21% GM, 23% M, 53% G.
+- **What this means for the selection strength (reading, not a test).**
+  - The fastest observed growth is ~2 doublings per day (day 0-1), so ~4-4.5 doublings in 48 h is
+    a practical ceiling for any clone; the population means are ~3.5 (M-CSF) and ~2.6 (G-CSF).
+  - In E46/E47, a clone at +k SD of bias grows exp(gamma k) times the average clone in its
+    favoured well. Keeping a +1 SD clone (top ~16%) under the ceiling allows about one extra
+    doubling, gamma <= ~0.6; keeping a +2 SD clone (top ~2%) under it gives gamma <= ~0.3.
+  - So the plausible range is **gamma ~0.3-0.6**. E47's 0.35 cap sits at the strict end;
+    **E46's 1.3 is still about twice the generous bound** (a +1 SD clone would need ~5.4
+    doublings in 48 h, a ~9 h cycle sustained through differentiation, while growth in fact slows
+    on day 2).
+  - Early death does not differ between M-CSF and G-CSF, consistent with selection, if any, acting
+    on division rather than death.
+  - Caveats as before: sorted GMPs, single cytokines, population-level counts (not per lineage);
+    LARRY founders are LSK/LK in mixed media.
