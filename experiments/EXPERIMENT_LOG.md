@@ -4887,3 +4887,24 @@ Logged openly; the E47 entry above is left as registered.
     next step is a sharper held-out statistic (to be pre-registered separately).
   - If a pair passes: the look is proposed (not taken) with a separate pre-registration naming the
     reading for each model.
+
+### B30 result (2026-11-05)
+
+| model | gated | predicted shard-1 r, mean | 95% of draws | half-width | median clones |
+|---|---|---|---|---|---|
+| E38 | 9 | 0.37 | [0.00, 0.92] | 0.71 | 37 |
+| E46 | 16 | 0.39 | [0.00, 0.89] | 0.66 | 48 |
+| E47 | 9 | 0.28 | [0.00, 0.90] | 0.67 | 36 |
+| E48 | 9 | 0.32 | [0.00, 0.91] | 0.73 | 43 |
+
+- **No pair discriminates.** Mean differences 0.02 (E38-E46), 0.05 (E38-E48), 0.07 (E46-E48)
+  against a required 0.71-0.73. The models' predictions differ by about a tenth of the spread of
+  any single model's prediction. No draw hit the <10-clone sentinel (the 0.00 lower bounds are
+  undefined correlations, e.g. all-N clones, set to 0 by test_stats).
+- **Decision (as registered): the look is skipped; shard 1 stays sealed.** For reference, shard 0
+  (E14) gave 0.44, inside every model's range.
+- **Reading.** The pooled Epo/SCF concordance cannot test what separates these models: they all
+  share the same instruction structure (shifts ~0.5) and differ in selection, which acts on clone
+  size and G/M presence, not on N-fraction agreement between Epo/SCF and other wells. A useful
+  held-out statistic has to target presence/size (B7-type) on shard-1 clones; to be designed and
+  pre-registered separately, with its own power check, before shard 1 is spent.
