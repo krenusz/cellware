@@ -145,3 +145,10 @@ stable, and E41b's discard stands. B24's fit-set patterns (M-large / G-tiny clon
 57 vs 39 shared clones) stand. E42 probes: neither clone dropout nor shrinkage of M-biased clones
 under G-CSF can produce them (both move B7 G the wrong way).
 
+
+## Update (2026-11-05): E43-E45 negative; a presence vs B7 G trade-off
+
+E43 and E44 (an M-committed clone class) and E45 (limited sister cells split between wells) all
+fail the protocol; E38 stays the reference. E45 fixes most of B27's presence misfit (G-M lift
+0.47 -> 0.31-0.39, M-present clones right) but gates only 3/13 seeds and loses B7 G in all of
+them. Shared G/M presence and the B7 G difference trade against each other in every model tried.

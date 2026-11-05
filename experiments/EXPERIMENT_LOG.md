@@ -4406,3 +4406,24 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
     check comes next.
   - **Side readings, reported:** B24 D3 and B26's 16+ M-pure count for the best gated fit. They
     are not expected to be fixed by this mechanism.
+
+### E45 result (run 41998556690, analysed 2026-11-05)
+
+- **Run.** The guard cancelled at 3 gated / 10 failed; 13 of 18 seeds finished (s10, s11, s13,
+  s17, s18 cancelled). The watcher's exit 1 is the cancel, not an error.
+- **Gate 3/13** (s3, s14, s16; E38 9/18). **Primary 0/3.** All three pass G-M, full-G and
+  full-M; B7 G fails in all three (E38 5/9) and B7 M passes in 2/3. **Not stable** (fewer than 9
+  gated). **Worse than E38.**
+- **Competition used: not readable** (3 gated seeds, at least 5 required). For the record, gated
+  lam_K is 0.99 / 1.94 / 16.25 (median 1.94); 7 of the 13 seeds fitted lam_K < 2.5.
+- **Explains B27: no, narrowly.** Best gated fit (s14, lam_K 0.99, w_M 1.27): G-M co-present 39
+  inside [39, 69], M-present 478 inside [448, 517], lift 0.307 just below [0.313, 0.482]. The lift
+  moved most of the way from E38 (0.47) toward the data (0.31), and the M-presence count is now
+  right.
+- **Side readings.** D3 0.15 vs 0.03 [0, 0.08] and 16+ M-pure clones 5 vs 1.7 [0, 4]: still out,
+  as expected. B7 G -0.38 vs -0.24 [-0.38, -0.09] is now just out.
+- **Conclusion.** Limited sisters per clone do what B27 asked (fewer shared G/M clones, enough
+  M-present clones) at small lam_K, but the fit then loses the gate on most seeds and B7 G on the
+  gated ones. As registered, E45 is negative and E38 stays the reference. The trade-off between
+  shared presence and the B7 G difference is itself a lead: both are statistics of the same
+  G/M sister pairs.

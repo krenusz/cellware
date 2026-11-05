@@ -1,0 +1,318 @@
+{
+ "fits": 13,
+ "gated": 3,
+ "rows": [
+  {
+   "seed": 1,
+   "loss": 115.05976397658733,
+   "gens": 500,
+   "gated": false,
+   "lam_K": 7.486522046159806,
+   "w_M": 0.2628521163496154,
+   "s_G": 5.2486454203320685,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": true,
+    "M_both_minus_Monly": false
+   },
+   "primary": false
+  },
+  {
+   "seed": 12,
+   "loss": 83.58846338114941,
+   "gens": 483,
+   "gated": false,
+   "lam_K": 5.428428694304409,
+   "w_M": 0.2819363662385663,
+   "s_G": 4.707271398434022,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  },
+  {
+   "seed": 14,
+   "loss": 85.78237580399202,
+   "gens": 471,
+   "gated": true,
+   "lam_K": 0.9895136825293149,
+   "w_M": 1.2699477160998134,
+   "s_G": 4.7169837876706655,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  },
+  {
+   "seed": 15,
+   "loss": 173.00861974129847,
+   "gens": 500,
+   "gated": false,
+   "lam_K": 1.3954870029846902,
+   "w_M": 0.9580379108550575,
+   "s_G": 3.421312961156513,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": true,
+    "M_both_minus_Monly": true
+   },
+   "primary": true
+  },
+  {
+   "seed": 16,
+   "loss": 105.4136708680984,
+   "gens": 500,
+   "gated": true,
+   "lam_K": 16.249745977552077,
+   "w_M": 0.26262108224200187,
+   "s_G": 5.308887222658373,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": false
+   },
+   "primary": false
+  },
+  {
+   "seed": 2,
+   "loss": 69.61406899772135,
+   "gens": 500,
+   "gated": false,
+   "lam_K": 1.224908036626497,
+   "w_M": 1.4040324627842558,
+   "s_G": 4.373669657738435,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": true,
+    "M_both_minus_Monly": true
+   },
+   "primary": true
+  },
+  {
+   "seed": 3,
+   "loss": 122.47116023680748,
+   "gens": 500,
+   "gated": true,
+   "lam_K": 1.9400765129236375,
+   "w_M": 0.7897153409168038,
+   "s_G": 4.520971461808202,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  },
+  {
+   "seed": 4,
+   "loss": 136.40179683683908,
+   "gens": 500,
+   "gated": false,
+   "lam_K": 11.914634250087634,
+   "w_M": 0.5178824254572194,
+   "s_G": 4.419632101584875,
+   "comp": {
+    "G-M": false,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  },
+  {
+   "seed": 5,
+   "loss": 31.346271026028756,
+   "gens": 500,
+   "gated": false,
+   "lam_K": 0.9888057277064883,
+   "w_M": 1.1785165175852066,
+   "s_G": 5.055848711463117,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": false,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  },
+  {
+   "seed": 6,
+   "loss": 201.21085237704287,
+   "gens": 326,
+   "gated": false,
+   "lam_K": 3.6532537471603224,
+   "w_M": 0.46356622793983,
+   "s_G": 4.2475780303458395,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": false,
+    "G_mean_both_minus_Gonly": true,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  },
+  {
+   "seed": 7,
+   "loss": 138.70654223799326,
+   "gens": 500,
+   "gated": false,
+   "lam_K": 14.682727245909692,
+   "w_M": 0.25587163995201384,
+   "s_G": 5.121704553690853,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": true,
+    "M_both_minus_Monly": false
+   },
+   "primary": false
+  },
+  {
+   "seed": 8,
+   "loss": 176.3365504790346,
+   "gens": 292,
+   "gated": false,
+   "lam_K": 12.319260669452513,
+   "w_M": 0.2733946185647375,
+   "s_G": 3.3591544915037943,
+   "comp": {
+    "G-M": false,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  },
+  {
+   "seed": 9,
+   "loss": 108.5233347580039,
+   "gens": 500,
+   "gated": false,
+   "lam_K": 1.3749750872920228,
+   "w_M": 1.0246900719079985,
+   "s_G": 4.6119081246502835,
+   "comp": {
+    "G-M": true,
+    "full-G": true,
+    "full-M": true,
+    "G_mean_both_minus_Gonly": false,
+    "M_both_minus_Monly": true
+   },
+   "primary": false
+  }
+ ],
+ "component_pass_in_gated": {
+  "G-M": 3,
+  "full-G": 3,
+  "full-M": 3,
+  "G_mean_both_minus_Gonly": 0,
+  "M_both_minus_Monly": 2
+ },
+ "primary_pass_gated": 0,
+ "stable": false,
+ "stable_and_passing": false,
+ "median_lam_K": 1.9400765129236375,
+ "median_w_M": 0.7897153409168038,
+ "median_s_G": 4.7169837876706655,
+ "competition_used": null,
+ "explains_B27": false,
+ "best_gated": 14,
+ "B24_best": {
+  "n_shared": {
+   "data": 39,
+   "sim_mean": 53.955,
+   "sim_95": [
+    39.0,
+    69.05000000000001
+   ],
+   "inside": true
+  },
+  "B7G": {
+   "data": -0.3815486450990653,
+   "sim_mean": -0.2351855232042132,
+   "sim_95": [
+    -0.37626450390727223,
+    -0.08876698418852282
+   ],
+   "inside": false
+  },
+  "D2_2": {
+   "data": -0.47163120567375894,
+   "sim_mean": -0.20904423998127883,
+   "sim_95": [
+    -0.38237524124620903,
+    -0.03678264133995974
+   ],
+   "inside": false
+  },
+  "D3_frac": {
+   "data": 0.15384615384615385,
+   "sim_mean": 0.027690299103654236,
+   "sim_95": [
+    0.0,
+    0.0757867132867133
+   ],
+   "inside": false
+  },
+  "B26_16plus_Mpure": {
+   "data": 5,
+   "sim_mean": 1.715,
+   "sim_95": [
+    0.0,
+    4.0
+   ],
+   "inside": false
+  },
+  "P2_n_G-M": {
+   "data": 39,
+   "sim_mean": 53.955,
+   "sim_95": [
+    39.0,
+    69.05000000000001
+   ],
+   "inside": true
+  },
+  "P2_lift_G-M": {
+   "data": 0.3066250774134103,
+   "sim_mean": 0.3945484849010875,
+   "sim_95": [
+    0.31304293316408616,
+    0.48227246738507146
+   ],
+   "inside": false
+  },
+  "P4_M": {
+   "data": 478,
+   "sim_mean": 481.925,
+   "sim_95": [
+    447.975,
+    517.025
+   ],
+   "inside": true
+  }
+ },
+ "explains_diagnostics": false
+}
