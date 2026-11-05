@@ -4673,3 +4673,47 @@ PDFs saved locally in papers/rates/ (not committed: publisher copyright).
     wells with several cytokines; zb is a per-cell draw. The bound is a prior, not a measurement.
 - **Still missing:** Rieger 2009 online supplement (figs S4-S5: cloning efficiency, possibly
   cycle times).
+
+## E47: E46 with selection capped at a plausible strength (pre-registered 2026-11-05)
+
+- **Data diagnostic it must explain.** Same as E46 (B27 co-presence lift 0.31; B7 G), plus the
+  Rieger 2009 constraint: GMP pedigrees in single M-CSF or G-CSF are 87-88% death-free with a
+  cycle of ~12 h, so selection must act through proliferation, and E46's fitted gamma (1.21-1.35,
+  11-15x G/M expansion per SD of bias) is at or beyond what ~4 doublings in 48 h allow.
+- **Mechanism.** E46 unchanged (e46.simulate) except gamma = 0.35 sigmoid(x23), in (0, 0.35]: at
+  most about one extra doubling per SD of bias between the G and M wells (2 gamma <= ln 2).
+  24 dimensions. Script experiments/e47_capsel.py.
+- **Every-condition check (30 simulations; scratchpad e47chk).**
+
+  | parameters | lift | n G-M | B7 G | D3 | presence full/G/M/Epo/SCF | N share G / M / full |
+  |---|---|---|---|---|---|---|
+  | data (fit set) | 0.31 | 39 | -0.38 | 0.15 | 368/277/478/23/39 | 0.67 / 0.040 / 0.28 |
+  | E38 best, gamma 0 | 0.48 | 57 | -0.25 | 0.02 | 371/269/422/22/44 | 0.67 / 0.042 / 0.29 |
+  | E38 best, gamma 0.175 | 0.45 | 54 | -0.27 | 0.03 | 371/272/427/21/41 | 0.72 / 0.035 / 0.29 |
+  | E38 best, gamma 0.35 | 0.43 | 52 | -0.31 | 0.04 | 371/274/426/21/40 | 0.77 / 0.027 / 0.29 |
+  | E46 s11, gamma 1.31 | 0.37 | 44 | -0.42 | 0.02 | 376/276/435/25/45 | 0.68 / 0.045 / 0.31 |
+  | E46 s11, gamma 0.35 | 0.71 | 51 | -0.12 | 0.00 | 376/182/317/27/46 | 0.31 / 0.18 / 0.31 |
+
+  At the cap, lift, B7 G and D3 move toward the data by about a third of E46's movement; full,
+  Epo and SCF do not move. E46's fitted parameters break at the cap (they compensate for strong
+  selection), so E47 must be fitted from cold, not started from E46.
+- **Fit.** As E46: 18 cold seeds, 500 generations max, E38 targets/loss/SE, guard on (more than 9
+  gate fails), PC kept awake.
+- **Scoring (B29 protocol).** Gate as before; primary and stability on the fit set
+  (b29_rescore.py extended to E47, 200 simulations per gated seed); CRPS reported next to
+  pass/fail.
+- **Readings (minimum: at least 9 gated seeds for every reading except the B27 one).**
+  - **Cap binds:** median gamma over gated seeds >= 0.9 x 0.35 = 0.315 (the data push selection
+    to or past the plausible ceiling).
+  - **B7 G gain survives the cap:** B7 G inside its range in at least 2/3 of gated seeds **and**
+    median B7 G CRPS <= 0.05 (halfway between E46 0.024 and E38 0.077).
+  - **Reference decision:** if E47 is stable and passing on the fit set **and** its summed median
+    CRPS is <= E46's (0.376), E47 replaces E46 as the reference (same fit, plausible biology).
+    If E47 is stable and passing but its CRPS is worse, E46 stays the reference with the flag
+    "needs implausibly strong selection". If E47 is not stable and passing, the plausible version
+    of selective expansion does not explain the data, and E46's gain is attributed to an
+    implausible parameter.
+  - **Explains B27 (best gated fit, 200 simulations):** G-M co-present count and lift, and
+    M-present count, inside the simulated 95%.
+  - **Side readings:** D3; median instruction shifts tau_G - tau_full and tau_full - tau_M
+    (descriptive only).
