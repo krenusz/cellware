@@ -4291,3 +4291,26 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
   - Class used but the diagnostics not explained: report it; no reference change.
   - The S2 per-clone comparison (E44 vs E38 latent predictive) is **not** part of this
     registration. It needs its own.
+
+### E44 results (2026-11-05): negative. 2/18 gated; the class is used heavily, but the gate breaks on Epo and G means
+
+- **Run.** All 18 seeds completed on Actions (run 41921619454). The local watcher died while the
+  PC slept, so the guard judged only 7 seeds (all fails) and never cancelled; line artifacts were
+  fetched afterwards. Scored with analyze_e44.py (fixed from E43's script plus the B26 16+ count).
+- **Gate: 2/18** (s6, s17). Stability not met. Gate failures over 18 seeds: **Epo mean 15**,
+  **G mean 14**, SCF mean 9, Epo n 4, SCF n 4, full n 3, M n 3. Although the class does not act
+  under Epo/SCF, the shared parameters shift to fit a large class (pi_M 0.31-0.47, median 0.36;
+  g_up median 1.6), and the Epo/G means move off.
+- **Readings.**
+  - Class used: **not read** (2 gated seeds, minimum 5). Descriptively, every seed uses it
+    (pi_M >= 0.31).
+  - Explains the diagnostics (best gated, s17): **no.** B26 16+ M-pure 5 vs 2.6 [0, 6] inside;
+    B7 G inside; but D3 0.15 vs 0.05 [0, 0.11], D2 2-cell -0.47 vs -0.27 [-0.45, -0.08], and
+    shared clones 39 vs 66 [52, 81] are all outside.
+  - Better than E38: **no** (stability not met).
+- **Worth noting (one seed, no claim).** s17 (pi_M 0.31, g_up 1.0, s_G 4.2) is gated and passes
+  the whole primary, G-M included. s6 passes 4/5. A moderate class may be compatible with the
+  gate; large ones are not, and the optimiser prefers large ones.
+- **Decision: discard E44 as specified.** Shared-clone excess (now 66 vs 39) remains the
+  misfit no class fixes; it points at presence (how many founders a clone puts into each
+  well), not fate. The next step is a data diagnostic on presence, not another class.
