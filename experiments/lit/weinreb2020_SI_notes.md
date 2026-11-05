@@ -54,3 +54,22 @@ papers/weinreb2020_supp/weinreb2020_SI.pdf (gitignored). Read: Supp Methods 2.4-
   figure was read. Panel g is the same data seen descriptively (all clones, held-out shard
   included), so it supports the mechanism's plausibility but is **not independent evidence** and
   is not a test of E46.
+
+## Weinreb PNAS papers (abstract, discussion and section titles read 2026-11-05)
+
+- **Fundamental limits on dynamic inference from single-cell snapshots** (PNAS 2018,
+  10.1073/pnas.1714723115). Population balance analysis (PBA). A snapshot fixes dynamics only if
+  the cell density *and* the rates of entry, exit, proliferation and death across states are known;
+  different dynamics can give the same snapshot. Assumes memoryless dynamics and warns that hidden
+  variables (chromatin and the like) break that. **Lesson for us:** at the level of end counts, a
+  change in fate choice (instruction) and a change in growth or death by state (selection) are the
+  same kind of confound. Separating them needs measured or pinned growth/death rates, which is why
+  the instruction vs selection reading in E46 stays descriptive until such rates are anchored
+  (candidate: literature division and death rates of GMP-stage cells under G-CSF / M-CSF).
+- **Lineage reconstruction from clonal correlations** (PNAS 2020, 10.1073/pnas.2000238117).
+  CLiNC: barcode co-occurrence between cell types (second moments of a branching process) encodes
+  the hierarchy. It excludes cell death and feedback, and shows co-occurrence depends on sampling
+  depth and on mature-cell division/death kinetics. Barcode analysis is "hypothesis-generating".
+  **Lesson for us:** B27's co-presence lift is such a second moment, so it is sensitive to
+  expansion and death after the split, which agrees with B28's conclusion that the low G-M
+  co-presence arises after the split (the E46 hypothesis).
