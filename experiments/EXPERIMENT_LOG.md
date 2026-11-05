@@ -4717,3 +4717,42 @@ PDFs saved locally in papers/rates/ (not committed: publisher copyright).
     M-present count, inside the simulated 95%.
   - **Side readings:** D3; median instruction shifts tau_G - tau_full and tau_full - tau_M
     (descriptive only).
+
+### E47 result (run 42039247503, analysed 2026-11-05)
+
+- **Run.** Completed, 18/18 seeds; the guard did not trigger (9 fails is its limit, not over it).
+  The local launcher died before downloading, so results were fetched by hand from the run's
+  artifact. Scoring: analyze_e47.py (E46 analysis, parametrised) and `b29_rescore.py e47`
+  (fit-set primary + CRPS, 200 simulations per gated seed; results_e18/rescore_e47.json).
+- **Gate 9/18** (E46 16/18, E38 9/18): exactly the minimum for every reading.
+- **Cap binds: not met, by a hair.** Median gamma 0.312 vs the 0.315 threshold; 8 of 9 gated
+  seeds sit at 0.29-0.33 (one at 0.22). The data use nearly all the selection the cap allows.
+- **B7 G gain survives the cap: no.** B7 G inside in 9/9 gated seeds, but median CRPS 0.059 > 0.05.
+  The simulated centre is -0.29 (E38 -0.27, E46 -0.41, data -0.38; widths 0.25 / 0.25 / 0.27), so
+  at a plausible strength selection recovers only ~15% of E46's shift. The 9/9 passes sit near the
+  edge of the range.
+- **Reference decision (as registered): E47 becomes the reference.** Stable and passing on the
+  fit set (all five components 9/9, primary 9/9) and summed median CRPS 0.340 <= E46's 0.376.
+
+  | fit set | E38 | E46 | E47 |
+  |---|---|---|---|
+  | gated | 9 | 16 | 9 |
+  | primary pass | 5 | 13 | 9 |
+  | stable and passing | no | yes | yes |
+  | CRPS G-M / full-G / full-M | 0.026 / 0.126 / 0.079 | 0.054 / 0.108 / 0.173 | 0.048 / 0.132 / 0.083 |
+  | CRPS B7 G / B7 M | 0.077 / 0.012 | **0.024** / 0.017 | 0.059 / 0.018 |
+  | summed CRPS | **0.320** | 0.376 | 0.340 |
+
+  E47's win over E46 comes from the concordances, which B29 showed carry little information; it
+  still scores worse than E38 overall (0.340 vs 0.320). E38 is excluded only by its 5/9 B7 G.
+- **Explains B27: no** (best gated fit s9): G-M count 39 inside [36, 64], lift 0.31 inside
+  [0.29, 0.48], M-present 478 above [398, 462].
+- **Side readings.** D3 still out (0.15 vs [0, 0.09]); B26 16+ M-pure clones now out (5 vs [0, 4];
+  E46 was inside); n shared and D2 inside. Instruction shifts: tau_G - tau_full 0.47,
+  tau_full - tau_M 0.62 (E38 0.49 / 0.47): "not absorbed", and the M shift is no longer on a ridge.
+- **Conclusion.** Lineage-matched selection at a biologically plausible strength fits about as well
+  as E38 and keeps E38's instruction estimates; E46's clear B7 G improvement needs selection about
+  four times stronger than ~4 doublings in 48 h allow. Either B7 G is driven by something other
+  than selective expansion, or the Rieger GMP constraint does not carry over to LARRY's LSK/LK
+  founders. Formally E47 is the reference; in substance the three models are close, and the M
+  presence, D3 and B26 misfits are shared and unexplained.

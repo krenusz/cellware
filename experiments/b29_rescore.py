@@ -17,6 +17,7 @@ import e33_measured as e33
 import e34_fullarm as e34
 import e37_pool as e37
 import e46_selexp as e46
+import e47_capsel as e47
 import numpy as np
 from clone_state_model import OUT, split
 from sweep_guard import gated
@@ -75,7 +76,7 @@ def verdict(rows):
     }
 
 
-def main(nsim=200):
+def main(nsim=200, names=("e38", "e46")):
     e34.e33.unpack_base = e33.unpack
     cnt = e33.load_counts(e33.CONDS5)
     fit = split(cnt, None)
@@ -84,7 +85,9 @@ def main(nsim=200):
     meas = e33.measured(clones, np.random.default_rng(77))
     data = {**e29.cross_r(fit), **{k: v for k, v in e33.presence_stats(fit).items() if k in B7}}
     rep = {"data_fit_set": data, "models": {}}
-    for name, mod in (("e38", e37), ("e46", e46)):
+    MODS = {"e38": e37, "e46": e46, "e47": e47}
+    for name in names:
+        mod = MODS[name]
         res = [json.load(open(f)) for f in glob.glob(os.path.join(OUT, f"{name}_s*.json"))]
         rows = []
         for r in sorted((r for r in res if gated(r, co)), key=lambda r: r["seed"]):
@@ -94,12 +97,16 @@ def main(nsim=200):
         v = verdict(rows)
         v["sum_median_crps"] = float(sum(v["median_crps"].values()))
         rep["models"][name] = {"verdict": v, "rows": rows}
-    e46v = rep["models"]["e46"]["verdict"]
-    rep["full_M_heldout_artefact"] = bool(e46v["component_pass"]["full-M"] >= 2 * e46v["gated"] / 3)
-    json.dump(rep, open(os.path.join(OUT, "b29_rescore.json"), "w"), indent=1)
-    print(json.dumps({"data_fit_set": data, "full_M_heldout_artefact": rep["full_M_heldout_artefact"],
+    out_name = "b29_rescore.json" if tuple(names) == ("e38", "e46") else f"rescore_{'_'.join(names)}.json"
+    if "e46" in rep["models"]:
+        e46v = rep["models"]["e46"]["verdict"]
+        rep["full_M_heldout_artefact"] = bool(e46v["component_pass"]["full-M"] >= 2 * e46v["gated"] / 3)
+    json.dump(rep, open(os.path.join(OUT, out_name), "w"), indent=1)
+    print(json.dumps({"data_fit_set": data, "full_M_heldout_artefact": rep.get("full_M_heldout_artefact"),
                       **{m: rep["models"][m]["verdict"] for m in rep["models"]}}, indent=1))
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main(names=tuple(sys.argv[1:]) or ("e38", "e46"))

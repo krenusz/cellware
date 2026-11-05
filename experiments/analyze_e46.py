@@ -26,11 +26,11 @@ PRIMARY = ("G-M", "full-G", "full-M")
 B7 = ("G_mean_both_minus_Gonly", "M_both_minus_Monly")
 
 
-def main(nsim=200):
+def main(nsim=200, name="e46", sim_mod=e43):
     cnt = e33.load_counts(e33.CONDS5)
     fit = split(cnt, None)
     co = e32.copresence(fit)
-    reps = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(OUT, "e46_s*.json")))]
+    reps = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(OUT, f"{name}_s*.json")))]
     rows = []
     for r in reps:
         comp = {k: r[k]["p_two_sided"] >= 0.05 for k in PRIMARY}
@@ -71,7 +71,7 @@ def main(nsim=200):
             "shift_M": float(np.median([r["params"]["tau"]["full"] - r["params"]["tau"]["M"] for r in e38])),
         }
         t46 = {k: float(np.median([x[k] for x in g])) for k in ("shift_G", "shift_M")}
-        out["instruction"] = {"e38_gated_n": len(e38), "e38": t38, "e46": t46}
+        out["instruction"] = {"e38_gated_n": len(e38), "e38": t38, name: t46}
         if len(g) >= 5 and len(e38) >= 5:
             absorbs = out["selection_used"] and all(t46[k] <= 2 / 3 * t38[k] for k in t38)
             out["instruction"]["reading"] = (
@@ -83,7 +83,7 @@ def main(nsim=200):
         meas = e33.measured(clones, np.random.default_rng(77))
         data = b24.stats(fit)
         sims = [
-            b24.stats(split(e43.simulate(clones, prm, np.random.default_rng(1000 + s), meas), None))
+            b24.stats(split(sim_mod.simulate(clones, prm, np.random.default_rng(1000 + s), meas), None))
             for s in range(nsim)
         ]
         b = {}
@@ -95,7 +95,7 @@ def main(nsim=200):
             b[k]["inside"] = bool(lo <= data[k] <= hi)
         d26 = b26.stats(fit)
         s26 = [
-            b26.stats(split(e43.simulate(clones, prm, np.random.default_rng(1000 + s), meas), None))
+            b26.stats(split(sim_mod.simulate(clones, prm, np.random.default_rng(1000 + s), meas), None))
             for s in range(nsim)
         ]
         v = np.array([x["C1_16+_nA"] for x in s26], float)
@@ -111,7 +111,7 @@ def main(nsim=200):
         d27 = b27.stats(fit, n2)
         s27 = [
             b27.stats(
-                split(e43.simulate(clones, prm, np.random.default_rng(1000 + s), meas), None), n2
+                split(sim_mod.simulate(clones, prm, np.random.default_rng(1000 + s), meas), None), n2
             )
             for s in range(nsim)
         ]
@@ -130,7 +130,7 @@ def main(nsim=200):
         out["explains_diagnostics"] = all(
             b[k]["inside"] for k in ("n_shared", "D2_2", "D3_frac", "B26_16plus_Mpure")
         )
-    json.dump(out, open(os.path.join(OUT, "e46_analysis.json"), "w"), indent=1)
+    json.dump(out, open(os.path.join(OUT, f"{name}_analysis.json"), "w"), indent=1)
     print(json.dumps({k: v for k, v in out.items() if k != "rows"}, indent=1))
     for x in rows:
         flags = "".join("1" if v else "0" for v in x["comp"].values())
