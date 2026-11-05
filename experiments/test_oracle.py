@@ -48,10 +48,22 @@ def epo_scf_pooled(shard, shards):
     return pooled_pairs_r(keep_shard(load_counts(CONDS5), shard, shards))
 
 
+def presence_heldout(shard, shards):
+    """B37: B31 presence statistics on Epo/SCF clone shard 1 of 2 (whole test; shard args unused)."""
+    import b31_copresence as b31
+    from clone_state_model import split
+
+    s = b31.stats(split(load_counts(CONDS5), 1), {})
+    keys = ("a_lift_ge2", "a_den_ge2", "a_lift_ge3", "a_den_ge3", "b_PG_given_M6+", "b_den_M6+")
+    return {k: float(s[k]) for k in keys}
+
+
 # name -> (function, description). Tests already spent elsewhere are recorded in the ledger.
 TESTS = {
     "epo_scf_pooled": (epo_scf_pooled, "cytokine expt: N-fraction concordance pooled over every "
                                        "condition pair with Epo or SCF"),
+    "presence_heldout": (presence_heldout, "cytokine expt: G-M lift (>= 2, >= 3 cells) and "
+                                           "P(G | M size 6+) on clone shard 1 of 2 (B37)"),
 }
 
 

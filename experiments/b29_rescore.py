@@ -79,7 +79,8 @@ def verdict(rows):
     }
 
 
-def main(nsim=200, names=("e38", "e46")):
+def main(nsim=200, names=("e38", "e46"), extra=None):
+    """extra: {name: simulator module} for families not listed below."""
     e34.e33.unpack_base = e33.unpack
     cnt = e33.load_counts(e33.CONDS5)
     fit = split(cnt, None)
@@ -88,7 +89,7 @@ def main(nsim=200, names=("e38", "e46")):
     meas = e33.measured(clones, np.random.default_rng(77))
     data = {**e29.cross_r(fit), **{k: v for k, v in e33.presence_stats(fit).items() if k in B7}}
     rep = {"data_fit_set": data, "models": {}}
-    MODS = {"e38": e37, "e46": e46, "e47": e47, "e48": e48, "e49": e49, "e50": e50}
+    MODS = {"e38": e37, "e46": e46, "e47": e47, "e48": e48, "e49": e49, "e50": e50, **(extra or {})}
     for name in names:
         mod = MODS[name]
         res = [json.load(open(f)) for f in glob.glob(os.path.join(OUT, f"{name}_s*.json"))]

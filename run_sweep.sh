@@ -24,7 +24,7 @@ fi
 lock=.sweep_runs/.dispatch.lock
 mkdir -p .sweep_runs
 until mkdir "$lock" 2>/dev/null; do sleep 2; done
-trap 'rmdir "$lock" 2>/dev/null' EXIT
+trap 'rmdir "$lock" 2>/dev/null || true' EXIT
 before=$(gh run list --workflow sweep.yml --limit 1 --json databaseId -q '.[0].databaseId // 0')
 gh workflow run sweep.yml --ref "$branch" "${args[@]}"
 id=$before
@@ -44,4 +44,7 @@ while IFS= read -r f; do
     cp "$f" "$rel.run$id"; echo "DIFFERS (local kept, run copy at $rel.run$id): $rel"; diff=$((diff+1))
   fi
 done < <(find "$out/experiments" -type f -name '*.json' -o -type f -name '*.pt' | grep -v '^$')
-echo "$new new, ${diff} differing result files; conclusion: $(gh run view "$id" --json conclusion -q .conclusion)"
+concl=$(gh run view "$id" --json conclusion -q .conclusion)
+echo "$new new, ${diff} differing result files; conclusion: $concl"
+# exit codes: 0 success, 3 cancelled (e.g. by the guard), 1 anything else
+case $concl in success) exit 0 ;; cancelled) exit 3 ;; *) exit 1 ;; esac

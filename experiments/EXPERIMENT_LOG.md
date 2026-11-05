@@ -5441,3 +5441,31 @@ Sources: 277 G clones, 478 M clones (>= 2 N+M cells). E48 best gated s0, 200 sim
   features are recorded in DISCOVERIES.md as properties of the data. **LARRY cytokine modelling
   stops here.** Remaining LARRY steps: the held-out look and the write-up
   (WRITEUP_LARRY_CYTOKINE.md).
+
+## B37: the held-out presence look, strong vs plausible selection (pre-registered 2026-11-05)
+
+- **Go-ahead.** Bence, 2026-11-05 ("1 2 3", answering the proposed held-out look).
+- **What is looked at, once.** Test `presence_heldout` in test_oracle.py (new, whole test, ledger
+  shard 0/1): on Epo/SCF clone shard 1 of 2 (`split(cnt, 1)`, never used in any fit), the three
+  B31 statistics B33 found able to separate strong selection from plausible or none:
+  (1) G-M lift with presence >= 2 cells, (2) the same at >= 3 cells, (3) P(present in G | M-clone
+  size 6+). Definitions exactly as b31_copresence.stats.
+- **Predictions (fixed now, from results_e18/b33_power.json: gated seeds x 20 simulations, pooled
+  95% of draws).**
+
+  | statistic | E38 | E46 | E47 | E48 |
+  |---|---|---|---|---|
+  | lift >= 2 | 0.49 [0.38, 0.59] | 0.34 [0.25, 0.45] | 0.45 [0.34, 0.57] | 0.47 [0.34, 0.59] |
+  | lift >= 3 | 0.28 [0.19, 0.39] | 0.13 [0.05, 0.22] | 0.23 [0.14, 0.34] | 0.25 [0.14, 0.38] |
+  | P(G \| M 6+) | 0.15 [0.08, 0.22] | 0.05 [0.01, 0.10] | 0.12 [0.05, 0.19] | 0.12 [0.05, 0.20] |
+
+- **Readings.** For each model and statistic: observed inside the model's 95% or not.
+  - **Strong selection rejected on held-out clones:** E46 outside on at least 2 of 3 and E48
+    inside on all 3.
+  - **Strong selection favoured:** E46 inside on all 3 and E48 outside on at least 2.
+  - **Not decisive:** anything else (including all models inside on all three).
+  - E38 vs E48 is not separable by these statistics (B33) and is not read.
+- **Caveat (from B33).** Shard-1 clones' G, M and full data entered earlier all-clone statistics,
+  so the look is independent of every fit but not of everything ever computed. On the fit set the
+  same statistics already favoured E48 over E46 (P(G | M 6+): data 0.11, E46 0.04); the look is a
+  replication on clones no fit has used.
