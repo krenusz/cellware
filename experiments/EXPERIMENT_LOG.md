@@ -4987,3 +4987,38 @@ Best gated fits: E46 s11, E48 s0; 200 simulations each. All denominators >= 44 c
   strong selection in E46 is not needed for it, and in fact distorts large clones. Next: a data
   check of the 2-cell well-private clones (do they appear anywhere else, at day 2 or in the full
   arm; their barcode/UMI quality if available), before any model.
+
+## B32: are the 2-cell well-private clones real? (pre-registered 2026-11-05)
+
+- **Data diagnostic.** B31: clones with exactly 2 N+M cells under M-CSF are present under G-CSF in
+  4% of cases (7/172) against 13-15% in E46/E48; 2-cell G clones similarly (16% vs E48 26%).
+  Larger clones fit. Question: are these small clones private to their well altogether (spurious
+  barcodes, late-arriving or non-clonal events), or only missing from the other cytokine?
+- **Not possible:** a barcode-sequence check (one-mismatch neighbours of large clones). The
+  public cytokine-experiment files hold a clone x cell matrix, not barcode sequences. Recorded,
+  not pursued.
+- **Statistics (fit set; presence elsewhere = at least 1 N+M cell, days pooled).**
+  - (i) For M-CSF clones of size 2 and of size 3-5 (control), and the mirror for G-CSF clones:
+    the share present in each other simulated condition (G or M, full, Epo, SCF) and in any of
+    them. Compared with E48's best gated fit (s0, 200 simulations, the same statistic).
+  - (ii) Data only: share of those clones with any day-2 cell (n2 > 0), size 2 vs size 3-5,
+    with a bootstrap 95% CI of the difference.
+  - (iii) Data only: for same-day 2-cell clones, the share whose two cells come from the same
+    library, against (a) the share expected if cells fell into libraries in proportion to library
+    size and (b) the same-library share of random cell pairs within 3-5-cell clones of the same
+    condition and day.
+- **Minimum counts.** (i) and (ii) are read only for groups of at least 30 clones; (iii) only
+  with at least 30 same-day 2-cell clones per cytokine.
+- **Readings.**
+  - **Whole-clone private:** for 2-cell M (or G) clones, the data share present in any other
+    condition lies below E48's 95% **and** the shortfall shows in at least two of full / Epo / SCF
+    (not only the other cytokine). Supported further if (ii) the day-2 share is lower for size 2
+    than for 3-5 (CI excludes 0). Implication: a share of small clones is not part of the shared
+    clone pool the models assume; presence statistics move to at least 3 cells (B31 showed E48
+    fits there), and E46/E48 are re-scored on that basis.
+  - **Cytokine-specific absence:** shortfall only in the other cytokine (G for M clones, M for G
+    clones), with full / Epo / SCF inside E48's range: a real G-vs-M exclusion of small clones
+    that the models miss (biology, e.g. fate-restricted small clones).
+  - **Library-local:** (iii) same-library share above both baselines by at least 0.15: small
+    clones are disproportionately confined to one library (one well or one capture), supporting
+    an artefact or well-local origin. Descriptive.
