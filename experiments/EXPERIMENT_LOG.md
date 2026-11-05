@@ -5278,3 +5278,23 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
   from this; options for the next design: fate-linked presence under G-CSF (stronger at large
   size, e.g. a neutrophil-committed class), and clone-level variation in the number of cells at
   the split.
+
+## B35: does a clone's day-2 abundance predict how widely it is seeded? (pre-registered 2026-11-05)
+
+- **Data diagnostic.** B32/B34: well-private clones are captured at day 2 about half as often as
+  shared ones (0.23 vs 0.40-0.43), in both cytokines. If clones differ in how many cells they had
+  at the split, clones with more day-2 cells should be present in more wells. E48 has no such
+  link: founders are Poisson(nu) per well, the same for every main-pool clone.
+- **Statistics (fit set; clones present with >= 1 N+M cell in any of full/G/M/Epo/SCF).** Group
+  clones by day-2 cell count n2 = 0, 1, 2+ (b14_clone_day2.csv; clones absent there have n2 = 0).
+  Per group: (a) mean number of the five wells the clone is present in; (b) share present in G;
+  (c) share present in M; (d) share present in at least two wells. Data vs E48's best gated fit
+  (s0, 200 simulations), with n2 attached to simulated clones by clone id.
+- **Minimum counts.** Groups with >= 30 clones only.
+- **Readings.**
+  - **Abundance-linked seeding:** in the data, (a) rises from n2 = 0 to n2 = 2+ by more than the
+    upper end of E48's simulated rise (95% of the simulated difference), i.e. the data gradient is
+    steeper than the model's. Implication: a measured, clone-level founder rate (from n2) is a
+    candidate model term, like the measured fate score m.
+  - **No link beyond the model:** the data gradient lies inside E48's simulated range.
+  - (b)-(d) reported as supporting detail.
