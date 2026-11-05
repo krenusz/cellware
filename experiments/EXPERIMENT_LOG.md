@@ -5182,3 +5182,26 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
   - **Selection:** median gamma reported; "cap binds" if >= 0.54.
   - **Side readings:** D3, B26, Epo/SCF sharing (G 3-5 in Epo/SCF), instruction shifts.
   - If E49 fails the working-model rule, E48 stays the working model and E46 the best fit.
+
+### E49 result (run 42090317872, analysed 2026-11-05)
+
+- **Run.** The guard cancelled it at 16/18 seeds: 6 gated, 10 failed, so the 9-gated minimum could
+  no longer be met (watcher exit 1 = cancel). 16 result files downloaded by the launcher.
+- **Working model: no (as registered).** 6 gated seeds, below the minimum of 9; not stable.
+  E48 stays the working model and E46 the best fit.
+- **Best-fit readings (allowed below 9 seeds; best gated s8, loss 76.4 vs E48's 17.2):**
+  - **Explains B27: no.** G-M co-present 39 below [45, 71], lift 0.31 below [0.35, 0.51];
+    M-present 478 inside [433, 504] (E48 missed this one).
+  - **Explains B32: no.** P(G | M2) 0.04 vs 0.13 [0.07, 0.19]; 2-cell M clones seen elsewhere
+    0.21 vs 0.49 [0.42, 0.56]; 2-cell M count 172 vs 131 [107, 156]. Lift at >= 2 cells out.
+  - B7 G inside (B7 CRPS sum 0.054 over the 6 gated seeds; B7 G 0.028); B26 inside; D3 and D2 out.
+    Epo/SCF over-sharing unchanged (G 3-5 in Epo 0.11 vs data 0.02).
+- **Sisters used: no.** Median lam_K 13.6 (> 10): when fitted to all targets, the split drifts to
+  many sisters, i.e. back toward E48's independent founders, and the presence structure that E45's
+  s14 parameters produced is lost. Median gamma 0.55 (cap binds). Instruction shifts 0.42 / 0.63
+  (not absorbed).
+- **Conclusion.** A limited sister split does not explain the small-clone privacy once the whole
+  loss is fitted; the fit prefers independent seeding. Two designs (a restricted M-only class and
+  a sister split) have now failed to make small clones private while keeping the other wells
+  right. Next: a data diagnostic of the private clones' size distribution and of how private
+  vs shared clones differ at day 2, before any further model.
