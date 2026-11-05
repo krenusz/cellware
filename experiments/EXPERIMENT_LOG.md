@@ -5890,3 +5890,54 @@ hit them (before any recovery run).
 | KO -absent vs + cDC1 | [-0.097, 0.143] |
 | KO -absent vs + cDC2 | [-0.092, 0.127] |
 | KO -absent vs + pDC | [0.041, 0.338] |
+
+### E51 held-out look (2026-11-05, test skew_heldout 0/1, commit 5eab427, taken once)
+
+Held-out shard: 218 null and 461 KO clones (predicted at 227 / 415).
+
+| statistic | held-out | 95% predictive | |
+|---|---|---|---|
+| KO within cDC1 | -0.085 | [-0.063, 0.140] | **out** |
+| KO within cDC2 | 0.023 | [-0.144, 0.068] | in |
+| KO within pDC | 0.062 | [-0.053, 0.072] | in |
+| KO reweighting cDC1 | 0.019 | [-0.122, 0.079] | in |
+| KO reweighting cDC2 | 0.071 | [-0.120, 0.125] | in |
+| KO reweighting pDC | -0.091 | [-0.055, 0.116] | **out** |
+| KO interaction cDC1 | 0.026 | [-0.069, 0.059] | in |
+| KO interaction cDC2 | 0.007 | [-0.060, 0.076] | in |
+| KO interaction pDC | -0.033 | [-0.049, 0.040] | in |
+| null rho cDC1 | -0.127 | [-0.196, 0.227] | in |
+| null rho cDC2 | 0.136 | [-0.233, 0.193] | in |
+| null rho pDC | -0.058 | [-0.247, 0.217] | in |
+| KO rho cDC1 | -0.054 | [-0.369, 0.218] | in |
+| KO rho cDC2 | 0.155 | [-0.263, 0.298] | in |
+| KO rho pDC | -0.119 | [-0.209, 0.298] | in |
+| null one-arm 2-5 | 0.806 | [0.658, 0.941] | in |
+| null one-arm 6-20 | 0.208 | [0.240, 0.512] | **out** |
+| null one-arm 21-100 | 0.014 | [0.042, 0.309] | **out** |
+| null one-arm >100 | 0.028 | [0.000, 0.300] | in |
+| KO one-arm 2-5 | 0.984 | [0.760, 1.000] | in |
+| KO one-arm 6-20 | 0.742 | [0.373, 0.815] | in |
+| KO one-arm 21-100 | 0.282 | [0.133, 0.398] | in |
+| KO one-arm >100 | 0.062 | [0.028, 0.186] | in |
+| KO +abs vs - cDC1 | -0.068 | [-0.076, 0.209] | in |
+| KO +abs vs - cDC2 | 0.068 | [-0.096, 0.160] | in |
+| KO +abs vs - pDC | 0.270 | [0.071, 0.429] | in |
+| KO -abs vs + cDC1 | 0.085 | [-0.097, 0.143] | in |
+| KO -abs vs + cDC2 | 0.166 | [-0.092, 0.127] | **out** |
+| KO -abs vs + pDC | 0.075 | [0.041, 0.338] | in |
+
+- **Reading: model adequate on held-out clones** (24 of 29 inside; bar >= 24, met exactly).
+- **Misses (5):** null one-arm share at 6-20 and 21-100 cells (the model makes too many one-arm
+  null clones at mid sizes); KO within-clone cDC1 (-0.085, below range); KO reweighting pDC
+  (-0.091, below range); KO "- absent vs + arm cDC2" (+0.17, above).
+- **Replication of fit-set patterns.** The KO interaction terms that the model missed on the fit
+  set are inside on held-out clones (pDC fit +0.066, held-out -0.033): **the expand-and-shift
+  pattern (B39) does not replicate.** B40's persistence-by-fate correlation (KO-only clones
+  cDC1-poor, fit -0.17) is +0.09 on held-out clones: **does not replicate**; the held-out sign
+  is opposite. Both were fit-set patterns of about one CI width.
+- **Answer for chapter 2 so far.** Bcor loss expands the KO arm of every clone about 10x
+  (lam_K 2.3 [1.5, 3.2]) and changes whether arms persist (one-arm odds 6x, partly a lower
+  transduction rate in C wells: t_C 0.35 vs t_W 0.61). Fate-linked clone selection is not
+  detected and is not excluded (gamma intervals about +-0.4); within-clone fate change is not
+  shown and cannot be separated from the vector-label difference.

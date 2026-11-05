@@ -277,3 +277,17 @@ D3 and B26 remain unexplained by all three models.
   within-clone instruction (tau) only roughly; tau is biased by any W-vs-C label difference.
 - **Next:** fit the SIS-skew model with gamma as the main result and tau as a bounded,
   sensitivity-tested quantity; then the held-out look (plan step 5).
+
+## Update (2026-11-05, late): B41, R2, E51 and the held-out look
+
+- **B41.** The clone fate state is readable in the sisters' day-2.5 RNA: PC1-3 predict pDC
+  (leave-one-out R^2 0.38) and cDC2 (0.27), about 45% / 32% of the heritable part. Pre-chosen
+  marker programmes do not predict fate. The predictive axis is lymphoid (Satb1, Tox, Lrmp) vs
+  myeloid (Csf1r, Grn, H2-Aa) priming.
+- **R2.** Improved simulator (group transduction rates, line extinction, fate-vector effects),
+  semi-automatic ABC on 20,000 simulations: clone-level selection gamma recoverable (RMSE about
+  0.25, coverage 0.94-0.95); within-clone instruction tau not (RMSE 0.6-0.7, calibrated but wide).
+- **E51.** Adequate fit (84%) and adequate on held-out clones (24/29, bar met exactly). Bcor loss:
+  uniform KO-arm expansion about 10x, lower transduction in C wells, no detected fate-linked
+  selection (gamma about 0 +- 0.4), within-clone change not shown. Two fit-set patterns (B39
+  interaction, B40 persistence-by-fate) did not replicate; DISCOVERIES #16 withdrawn, lesson M8.
