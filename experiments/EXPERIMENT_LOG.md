@@ -4944,3 +4944,46 @@ Logged openly; the E47 entry above is left as registered.
     the measured day-2 state.
   - **Day structure (descriptive):** day-matched lift >= 0.2 higher than cross-day suggests
     sampling time contributes.
+
+### B31 result (2026-11-05)
+
+Best gated fits: E46 s11, E48 s0; 200 simulations each. All denominators >= 44 clones except
+(c), where expected co-present counts are 23 and 21 (>= 10, read).
+
+| statistic | data | E46 (95%) | E48 (95%) |
+|---|---|---|---|
+| (a) lift, >= 1 cell | 0.60 | 0.83 [0.77, 0.89] **out** | 0.77 [0.69, 0.84] **out** |
+| (a) lift, >= 2 | 0.31 | 0.35 [0.27, 0.45] in | 0.43 [0.34, 0.52] **out** |
+| (a) lift, >= 3 | 0.18 | 0.12 [0.04, 0.20] in | 0.21 [0.12, 0.30] in |
+| (a) lift, >= 5 | 0.03 | 0.01 [0.00, 0.06] in | 0.04 [0.00, 0.12] in |
+| (b) P(M \| G size 2), n 112 | 0.16 | 0.21 [0.14, 0.28] in | 0.26 [0.18, 0.33] **out** |
+| (b) P(M \| G 3-5), n 121 | 0.15 | 0.14 in | 0.18 in |
+| (b) P(M \| G 6+), n 44 | 0.07 | 0.02 [0.00, 0.08] in | 0.10 in |
+| (b) P(G \| M size 2), n 172 | **0.04** | 0.13 [0.08, 0.19] **out** | 0.15 [0.09, 0.21] **out** |
+| (b) P(G \| M 3-5), n 160 | 0.10 | 0.11 in | 0.12 in |
+| (b) P(G \| M 6+), n 146 | 0.11 | 0.04 [0.01, 0.07] **out** | 0.09 [0.04, 0.15] in |
+| (c) lift, m below median | 0.48 | 0.52 in | 0.54 in |
+| (c) lift, m above median | 0.39 | 0.43 in | 0.49 in |
+
+(d) Data only: G4-M4 lift 0.86 (13 clones), G4-M6 0.35 (25), G6-M4 0.28 (3), G6-M6 0.14 (7).
+
+- **Small-clone artefact: yes (as registered).** E48 misses the lift at >= 1 and >= 2 cells and
+  fits it at >= 3 and >= 5. The whole deficit sits in the smallest clones.
+- **Located precisely in (b):** clones with exactly 2 cells under M-CSF are almost never present
+  under G-CSF (7 of 172, 4%), against 13-15% in both models; the same, weaker, for 2-cell G clones
+  (16% vs E48 26%). Larger clones fit E48 in every bin.
+- **Size-linked exclusion: no.** The data do not show big clones missing from the other well more
+  than E48 predicts. **E46 gets the overall lift right for the wrong reason:** it under-predicts
+  co-presence of large M clones (P(G | M 6+) 0.04 vs data 0.11, out) to compensate for
+  over-predicting it in small ones.
+- **Carried by the measured state: no reading.** Within halves of the day-2 score both models fit,
+  and the data lift is similar in both halves (0.48, 0.39).
+- **Day structure (descriptive, small counts):** day-4 G vs day-4 M presence is near independence
+  (0.86, 13 clones); everything involving day 6 is low. Not interpretable at these counts.
+- **Conclusion.** The co-presence deficit that motivated E46 is a small-clone phenomenon: 2-cell
+  clones in one cytokine are private to that well far more often than any fate or selection model
+  predicts. That is the signature of something acting on tiny clones only: candidates are
+  spurious or error barcodes (low-count, well-private), late-arriving clones, or detection. The
+  strong selection in E46 is not needed for it, and in fact distorts large clones. Next: a data
+  check of the 2-cell well-private clones (do they appear anywhere else, at day 2 or in the full
+  arm; their barcode/UMI quality if available), before any model.
