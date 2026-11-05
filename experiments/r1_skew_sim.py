@@ -23,11 +23,11 @@ N_NULL, N_KO = 454, 831  # fit-set clone counts (B39)
 PDC = 2
 
 NUIS = {  # name: (low, high) for the calibration search
-    "mu_cDC2_W": (-2.0, 2.0), "mu_pDC_W": (-3.0, 1.5),  # W (HSPC) and C (LSK) differ in
-    "mu_cDC2_C": (-2.0, 2.0), "mu_pDC_C": (-3.0, 1.5),  # starting population: own fate mix
+    "mu_cDC2_W": (-2.0, 2.0), "mu_pDC_W": (-4.5, 1.5),  # W (HSPC) and C (LSK) differ in
+    "mu_cDC2_C": (-2.0, 3.5), "mu_pDC_C": (-4.5, 1.5),  # starting population: own fate mix
     "c0": (0.5, 6.0), "t": (0.1, 0.6),
-    "m_g": (0.0, 4.0), "s_g": (0.2, 2.0), "s_line": (0.2, 2.0), "s_eps": (0.1, 1.5),
-    "lam_L": (-1.5, 1.5), "lam_K": (-1.0, 3.0), "delta": (-1.0, 1.0),
+    "m_g": (0.0, 4.0), "s_g": (0.2, 2.0), "s_line": (0.2, 2.0), "s_eps": (0.1, 3.0),
+    "lam_L": (-2.5, 2.5), "lam_K": (-1.0, 4.0), "delta": (-1.0, 1.0),
     "tau": (-1.5, 1.5), "gamma": (-1.0, 1.0),
 }
 
@@ -145,11 +145,11 @@ def observed():
     return out
 
 
-def calibrate(n_draws=3000, n_local=1500, seed=11):
+def calibrate(n_draws=6000, n_local=6000, seed=11):
     rng = np.random.default_rng(seed)
     obs = observed()
     tgt = np.concatenate([obs["null"][CAL_IDX], obs["KO"][CAL_IDX]])
-    scale = np.where(np.arange(len(tgt)) % len(CAL_IDX) == 14, 1.0, 0.1)  # log ratio on its own scale
+    scale = np.where(np.arange(len(tgt)) % len(CAL_IDX) == 14, 0.3, 0.1)  # log ratio on its own scale
 
     def loss(p):
         Pn, Nn, Pk, Nk = both_groups(p, rng)
