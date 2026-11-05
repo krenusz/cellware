@@ -5493,3 +5493,83 @@ Shard-1 clones (275 / 168 / 152 in the denominators):
   plausible gamma) and on the B31 decomposition, not on held-out evidence. The instruction
   estimate differs between them only for M-CSF (E46 on a ridge). Shard 1 is now spent for these
   statistics.
+
+## Programme note (2026-11-05): chapter 2, SIS-seq and SIS-skew
+
+Bence agreed the chapter plan ("Yes, write it"), now in program.md ("Chapter 2 plan"), and asked
+for both diagnostics ("go 2 also"). Question: does the LARRY model family generalise to a second
+system with a measured clone state and a within-clone perturbation? Every reading names its
+level: clone-level selection vs within-clone change (endpoint counts cannot split within-clone
+instruction from fate-specific proliferation inside a clone).
+
+## H2: held-out split for chapter 2 (pre-registered 2026-11-05)
+
+- Clone keys: SIS-seq `seq:<GEO sample title>`; SIS-skew `skew:<well>:<barcode ID>` (a barcode is
+  a clone only within a well). Shard = `test_oracle.shard_of(key, 3)` (fixed salt). **Shard 0 of 3
+  is held out** for the model step (plan step 5) and enters no B-series statistic; shards 1-2 are
+  the fit set. One third, not one half, because SIS-seq is small (105 clones with both sister
+  wells; about 70 in the fit set).
+- Loaders in `sis_data.py` apply the split; no script reads shard 0 except through test_oracle.
+
+## B38: is DC fate fixed in the clone before the split? SIS-seq (pre-registered 2026-11-05)
+
+- **Data diagnostic.** LARRY's main discovery: a clone-level fate state worth 7-8 logits per SD
+  drives the outcome (selection acts on it). SIS-seq measures fate in two sister wells per clone
+  (GEO GSE119097 metadata: cDC1/cDC2/pDC cells in sis1, sis2) plus each well's filler-cell fate
+  (background). If fate is fixed in the clone, sisters agree beyond chance.
+- **Units.** Fit-set clones with > 3 cells in both sister wells. Counts rounded to integers.
+- **Statistics.**
+  - A. Sister distance D_sis = mean total-variation distance between the two wells' fate
+    fractions. Baselines: D_rand, sister 1 of clone i vs sister 2 of a random other clone in the
+    same batch (2,000 permutations); D_noise, the same distance when both wells are multinomial
+    draws, at their observed cell counts, from the clone's pooled fractions (500 draws).
+    Heritable share H = (D_rand - D_sis) / (D_rand - D_noise).
+  - B. Between-clone SD of fate logits per fate (one vs rest), from the sister covariance
+    cov(l1, l2) across clones, l = logit((k + 0.5)/(n + 1)); sigma = sqrt(max(cov, 0)).
+  - C. Environment: Spearman correlation, per fate, between the sisters' fraction difference
+    (sis1 - sis2) and their wells' background difference (fill1 - fill2).
+  - 95% CIs by bootstrap over clones (1,000). Sensitivity: the two large batches (ILSGR0260r,
+    JS96; median > 40 cells per well) alone.
+- **Minimum sample.** >= 40 fit clones; else "underpowered", no reading.
+- **Readings.**
+  - **Fate largely fixed in the clone:** H >= 0.7 and CI lower bound > 0.5.
+  - **Partly fixed:** CI excludes 0 but not the first reading.
+  - **No clone memory:** CI includes 0.
+  - **Cross-check with LARRY (B):** sigma >= 2 logits for at least two fates = consistent with a
+    strong clone state; all sigma < 1 = in tension.
+  - **Well environment matters (C):** any fate's correlation CI excludes 0 (an instruction-like
+    effect of the well, at the within-clone level).
+- **Synthetic check first** (scratchpad): sisters drawn from the batch's population fractions
+  (expect H about 0) and from clone-specific fractions (expect H about 1).
+
+## B39: what does Bcor loss do to sister clones? SIS-skew (pre-registered 2026-11-05)
+
+- **Data diagnostic.** In KO wells, Bcor-KO sisters (Cherry+) make about 5x more cells than their
+  WT sisters (Cherry-) and show pDC more often; one-arm clones are commoner than in null wells
+  (NEXT_DATASETS check 1). Null wells (W1, W2: both arms WT, Cherry+ = control vector) give the
+  baseline for every statistic.
+- **Units.** Authors' pipeline (SIS_skew_analysis.rmd): reads to cells with sorted cell numbers
+  and the Cherry adjustment, keep barcodes seen in both PCR replicates, sum replicates, clone size
+  > 1. W3 dropped (authors: low cell numbers). Fit set only. "Both-arm" = > 3 cells in each arm.
+- **Statistics, KO wells (C1-C3) and null wells (W1, W2) separately.**
+  - A. Sister disagreement: H as in B38 (Cherry+ vs Cherry- arm of each clone; random pairs within
+    well).
+  - B. **Decomposition of the population fate shift** (Cherry+ minus Cherry-, both-arm clones),
+    per fate: with w = clone share of the arm's cells and p = clone fate fraction,
+    f+ - f- = sum w-(p+ - p-) [within-clone change] + sum (w+ - w-) p- [clone reweighting by the
+    WT sister's fate: clone-level selection] + sum (w+ - w-)(p+ - p-) [interaction].
+  - C. Size ratio vs fate: Spearman correlation of log(cells+ / cells-) with the WT arm's fraction
+    of each fate, clones with > 10 cells in the WT arm.
+  - D. One-arm clones: share of clones present (> 1 cell) in one arm only, by total size (2-5,
+    6-20, 21-100, > 100 cells); in KO wells, KO-only vs WT-only.
+  - 95% CIs by bootstrap over clones (1,000).
+- **Minimum sample.** >= 150 both-arm fit clones in KO wells and >= 100 in null wells.
+- **Readings (each against the null wells).**
+  - **Clone-level selection by Bcor:** for some fate, the KO reweighting term's CI excludes 0
+    and excludes the null wells' value; or C's KO correlation CI excludes 0 and the null's value.
+  - **Within-clone change by Bcor:** for some fate, the KO within-clone term's CI excludes 0 and
+    the null's value. (Within-clone instruction or fate-specific proliferation; not split here.)
+  - **Sister disagreement:** H_KO's CI below H_null's CI = KO sisters diverge beyond the label.
+  - Report each term's share of the KO pDC shift.
+- **Synthetic check first:** same as B38 (no-memory and full-memory sisters, no KO effect),
+  expecting near-zero terms in B.
