@@ -5837,3 +5837,56 @@ hit them (before any recovery run).
   size-ratio rho (6), one-arm shares by size (8), KO persistence-by-fate rho (6). Test
   `skew_heldout` (new, in test_oracle.py) then computes the same statistics on shard 0, once.
   **Model adequate on held-out clones:** >= 80% of those 29 statistics inside their ranges.
+
+### E51 fit result and held-out predictions (2026-11-05, written before the look)
+
+- **R2 recovery (300 tests):** gamma_cDC2 RMSE 0.24, coverage 0.94; gamma_pDC 0.26, 0.95: both
+  **recoverable**. tau_cDC2 RMSE 0.58, tau_pDC 0.72 (coverage 0.95, mean interval width 2.1-2.5):
+  **not recoverable** (calibrated but wide).
+- **E51 posterior (fit set), median [95%]:** gamma_cDC2 0.05 [-0.38, 0.43], gamma_pDC 0.19
+  [-0.24, 0.61]; tau_cDC2 + label diff -0.97 [-1.85, 0.11], tau_pDC + label diff -0.19
+  [-1.40, 1.22]; lam_K (KO-arm growth, all clones) **2.28 [1.45, 3.20]**; label delta_cDC2 0.61
+  [-0.11, 1.31], delta_pDC 0.05 [-0.92, 1.11]; transduction t_W 0.61 [0.48, 0.70] vs t_C 0.35
+  [0.23, 0.50]; line extinction q 0.20 [0.00, 0.43]; full table in results_sis/e51_fit.json.
+- **Readings.** Selection: **undetermined** (both gamma intervals include 0 but exceed +-0.25).
+  Within-clone change (tau + label difference): **not shown** (both include 0). Fit adequacy:
+  **adequate**, 84% of 76 statistics inside (64 of 76).
+- **Misses (12):** null: pooled - arm pDC fraction; size-ratio rho cDC1, cDC2; + absent vs - arm
+  pDC; size-bin shares 6-20, 21-100. KO: **all three interaction terms**; - absent vs + arm cDC2;
+  size-bin shares 2-5, 21-100. The model cannot make clones whose KO arm both expands and shifts
+  fate: a within-clone, fate-specific expansion it does not contain.
+- **Held-out predictions** (posterior predictive, 400 draws, at the expected held-out sizes
+  227 null / 415 KO clones; 95% ranges). Model adequate on held-out clones if
+  >= 24 of these 29 are inside:
+
+| statistic | 95% predictive range |
+|---|---|
+| KO within cDC1 | [-0.063, 0.140] |
+| KO within cDC2 | [-0.144, 0.068] |
+| KO within pDC | [-0.053, 0.072] |
+| KO reweighting cDC1 | [-0.122, 0.079] |
+| KO reweighting cDC2 | [-0.120, 0.125] |
+| KO reweighting pDC | [-0.055, 0.116] |
+| KO interaction cDC1 | [-0.069, 0.059] |
+| KO interaction cDC2 | [-0.060, 0.076] |
+| KO interaction pDC | [-0.049, 0.040] |
+| null size-ratio rho cDC1 | [-0.196, 0.227] |
+| null size-ratio rho cDC2 | [-0.233, 0.193] |
+| null size-ratio rho pDC | [-0.247, 0.217] |
+| KO size-ratio rho cDC1 | [-0.369, 0.218] |
+| KO size-ratio rho cDC2 | [-0.263, 0.298] |
+| KO size-ratio rho pDC | [-0.209, 0.298] |
+| null one-arm 2-5 | [0.658, 0.941] |
+| null one-arm 6-20 | [0.240, 0.512] |
+| null one-arm 21-100 | [0.042, 0.309] |
+| null one-arm >100 | [0.000, 0.300] |
+| KO one-arm 2-5 | [0.760, 1.000] |
+| KO one-arm 6-20 | [0.373, 0.815] |
+| KO one-arm 21-100 | [0.133, 0.398] |
+| KO one-arm >100 | [0.028, 0.186] |
+| KO +absent vs - cDC1 | [-0.076, 0.209] |
+| KO +absent vs - cDC2 | [-0.096, 0.160] |
+| KO +absent vs - pDC | [0.071, 0.429] |
+| KO -absent vs + cDC1 | [-0.097, 0.143] |
+| KO -absent vs + cDC2 | [-0.092, 0.127] |
+| KO -absent vs + pDC | [0.041, 0.338] |
