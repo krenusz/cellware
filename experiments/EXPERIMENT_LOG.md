@@ -5130,3 +5130,55 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
   proliferation or survival rates. **Bearing:** cytokines can reshape which clones contribute
   without changing who is restricted, but the in vivo setting does not explain the Epo/SCF
   over-sharing in the LARRY wells. Low relevance.
+
+## E49: limited sister split plus plausible selection (pre-registered 2026-11-05)
+
+- **Design check that rejected the first candidate (not registered, not run).** A class of
+  monocyte-restricted clones that grow only in the M-CSF well (experiments/e49_restricted.py;
+  scratchpad e49chk*.py, from E48's best fit, 30 simulations each). At fixed parameters it barely
+  moves the G-M lift (0.43-0.46). With the founder rate rescaled, or lowered so the class supplies
+  the M-well count, P(G | M size 2) never fell below 0.10 (data 0.04), and lowering the lift cost
+  G, Epo and SCF presence (G 138-192 vs 277). The class cannot produce "small clones are private,
+  shared clones are big" on its own. Dropped before any fit.
+- **Data diagnostic it must explain.** B31/B32: small clones are private to one well (2-cell M
+  clones seen elsewhere 21%, E48 51%), shared clones are larger, G-M lift 0.31 at >= 2 cells.
+  E45 (a limited number of sisters split between wells) reproduced the presence structure but
+  lost B7 G; E48 (selection, gamma <= 0.6) fits B7 G but leaves small clones too shared.
+- **Mechanism.** E45's founder split (K = 1 + Poisson(lam_K) sisters per clone, each sent to G,
+  Epo, SCF with probability r or to M with r w_M, or lost) plus E46's lineage-matched selection,
+  gamma = 0.6 sigmoid(x25). 26 dimensions. Script experiments/e49_sisters_sel.py; sweep
+  sweeps/e49_sisters_sel.txt.
+- **Every-condition check (gated E45 fits with gamma added; 30 simulations; scratchpad
+  e49chk4.py).**
+
+  | parameters | lift | n G-M | B7 G | D3 | P(G\|M2) | M2 n | M2 seen elsewhere | M2 in Epo | presence full/G/M/Epo/SCF | N share G / M |
+  |---|---|---|---|---|---|---|---|---|---|---|
+  | data | 0.31 | 39 | -0.38 | 0.15 | 0.04 | 172 | 0.21 | 0.03 | 368/277/478/23/39 | 0.67 / 0.040 |
+  | E48 best (reference) | 0.44 | 54 | -0.31 | 0.03 | 0.15 | 115 | 0.52 | 0.08 | 359/267/445/26/41 | 0.68 / 0.051 |
+  | E45 s14, gamma 0 | 0.40 | 55 | -0.23 | 0.03 | 0.12 | 117 | 0.36 | 0.03 | 347/287/479/24/48 | 0.69 / 0.047 |
+  | E45 s14, gamma 0.3 | 0.36 | 50 | -0.26 | 0.04 | 0.13 | 101 | 0.38 | 0.03 | 347/291/480/23/47 | 0.77 / 0.034 |
+  | E45 s14, gamma 0.6 | 0.31 | 42 | -0.27 | 0.06 | 0.13 | 83 | 0.36 | 0.03 | 347/289/474/23/47 | 0.84 / 0.022 |
+  | E45 s3, gamma 0.6 | 0.36 | 49 | -0.33 | 0.09 | 0.14 | 83 | 0.44 | 0.01 | 321/296/440/5/35 | 0.80 / 0.020 |
+  | E45 s16, gamma 0.6 | 0.43 | 61 | -0.29 | 0.08 | 0.20 | 74 | 0.53 | 0.07 | 388/360/417/20/43 | 0.83 / 0.017 |
+
+  From E45's best fit (s14), selection brings lift, co-present count, M presence and Epo
+  over-sharing to the data, and moves "M2 seen elsewhere" and D3 partly toward it. Full presence
+  is slightly low and the G N-share overshoots (tau/s are fitted). **Not reached at fixed
+  parameters:** P(G | M2) (0.13 vs 0.04) and the number of 2-cell M clones (83 vs 172). These are
+  the hard tests.
+- **Fit.** 18 cold seeds, 500 generations max, E38 targets/loss/SE, guard 9, launcher as a
+  background task, PC awake.
+- **Scoring.** Gate as before; fit-set primary, stability and B7 CRPS via `b29_rescore.py e49`;
+  analyze_e49.py for B27, B24/B26, the B31/B32 statistics (best gated fit, 200 simulations),
+  lam_K and gamma.
+- **Readings (minimum 9 gated seeds, except best-fit readings).**
+  - **Working model:** E49 replaces E48 if it is stable and passing on the fit set, its B7 CRPS
+    sum (G + M) is <= 0.054 (E48 0.044 + 0.01), and its best gated fit explains B27 (G-M count,
+    lift and M-present count inside the simulated 95%), which E48 failed.
+  - **Explains B32:** best gated fit has "M2 seen elsewhere" and P(G | M2) inside its 95%.
+  - **Lift at >= 2 cells inside** (B31(a)), reported.
+  - **Sisters used:** median lam_K over gated seeds <= 10 (a genuinely limited split; large lam_K
+    approaches E48's independent founders).
+  - **Selection:** median gamma reported; "cap binds" if >= 0.54.
+  - **Side readings:** D3, B26, Epo/SCF sharing (G 3-5 in Epo/SCF), instruction shifts.
+  - If E49 fails the working-model rule, E48 stays the working model and E46 the best fit.
