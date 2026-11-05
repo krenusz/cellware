@@ -5205,3 +5205,32 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
   a sister split) have now failed to make small clones private while keeping the other wells
   right. Next: a data diagnostic of the private clones' size distribution and of how private
   vs shared clones differ at day 2, before any further model.
+
+## B34: what are the well-private clones? (pre-registered 2026-11-05)
+
+- **Data diagnostic.** B32: small M-CSF clones are private to that well (2-cell: 21% seen in any
+  other well, E48 51%); E49 and a restricted-class design failed to reproduce it. Before another
+  model, describe the private clones. B22 (2026-11-04) already found no day-2 MDP signature
+  (Flt3, Cd74, MHC-II) in M-only vs M-shared clones; not repeated.
+- **Definitions (fit set, N+M cells, days pooled unless stated).** For each M-CSF clone:
+  "private" = no N+M cell in full, G, Epo or SCF; "shared" = at least one. Mirror for G-CSF clones.
+  Size-matched comparisons use clones of 2-5 cells in the source well.
+- **Statistics.**
+  - (1) **Privacy by size:** share private for M-clone size bins 1, 2, 3-5, 6-15, 16+, data vs
+    E48's best gated fit (s0, 200 simulations, same statistic). Mirror for G.
+  - (2) **Day structure (size 2-5):** share of the clone's M-well cells from day 6, private vs
+    shared, bootstrap 95% CI of the difference; share of clones seen on both days.
+  - (3) **Day 2 (size 2-5):** share with any day-2 cell (repeats B32 at this size), day-2 cell
+    count n2 among those seen, and day-2 score m (Cebpa - Irf8), private vs shared (Mann-Whitney).
+  - (4) **Composition (size 2-5):** neutrophil share in the M well, private vs shared.
+- **Minimum counts.** A comparison is read only with >= 30 clones in each group ((3)'s day-2
+  tests: >= 30 private clones with day-2 cells).
+- **Readings.**
+  - **Privacy is a small-clone effect only:** data private share is above E48's 95% in bins 1-2
+    and inside it for 6-15 and 16+.
+  - **Late arrival:** private clones' day-6 share exceeds shared clones' by >= 0.15 with the CI
+    excluding 0. Late-expanding clones would appear only at the later sampling.
+  - **Distinct day-2 state:** private and shared differ in m or n2 at p < 0.05. If neither,
+    the private clones are not distinguishable at day 2 by the measured axis.
+  - **Composition (descriptive):** a lower neutrophil share in private clones would fit
+    monocyte restriction.
