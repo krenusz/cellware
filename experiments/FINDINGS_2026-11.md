@@ -215,3 +215,24 @@ D3 and B26 remain unexplained by all three models.
   A held-out statistic aimed at presence/size (B7-type) on shard-1 clones is the remaining option.
 - **Still unexplained by every model:** the co-presence lift (at plausible strength), the number
   of M-present clones, D3 (large M-CSF clones with few cells under G-CSF) and B26.
+
+## Update (2026-11-05, night): the co-presence and M-presence misfits are small M-CSF-private clones
+
+- **B31.** The G-M co-presence deficit sits entirely in the smallest clones: 2-cell M-CSF clones
+  are present under G-CSF in 4% of cases (models 13-15%); from 3 cells up, the plausible model
+  (E48) fits. E46 matched the overall number for the wrong reason (too little co-presence for
+  large M clones, too much for small ones).
+- **B32.** The 2-cell M-CSF clones are private to the M-CSF well altogether: only 21% appear in
+  any other well (E48 51%), short in full, Epo and SCF too, and fewer are visible at day 2 (22% vs
+  36% for 3-5-cell clones). There are more of them than any model makes (172 vs 117). Their two
+  cells are spread over libraries like any clone's, so a library or capture artefact is unlikely.
+- **What it means.** A set of small, real clones grows only in M-CSF and is not part of the
+  sister-split pool the models assume. They account for the "too few M-present clones" misfit
+  and for the low G-M co-presence. **Neither needs strong selection.** With them set aside, the
+  plausible-strength selection model (E48) fits B7 G and co-presence, and the instruction
+  estimates stay at about 0.5 logits each way.
+- **Candidates (not yet tested):** cells seeded only into the M-CSF well, or a precursor fraction
+  that survives and divides only in M-CSF. Also found: every model over-shares clones with the
+  Epo and SCF wells (about 2x).
+- **Next:** a model with an explicit M-private clone class, or presence targets at >= 3 cells
+  (E49, to be pre-registered).
