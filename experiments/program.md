@@ -2,7 +2,24 @@
 
 How experiments are run and logged here. An agent or a person follows these rules for every run.
 
-## Question
+## Goal (set by Bence, 2026-11-05)
+- **Long term:** model stem-cell fate behaviour in general, and eventually answer embryo
+  morphogenesis questions (how cells sharing local rules build a patterned tissue).
+- **Current step:** show that the model can fit conditional data, i.e. perturbation experiments
+  where the same clones are split across conditions. First data set: Weinreb 2020 LARRY cytokine
+  experiment.
+- **Short-term question:** do G-CSF and M-CSF instruct or select neutrophil vs monocyte fate, and
+  in what proportion (instruction shifts tau, selection s and gamma)?
+- **Along the way:** every discovery goes into `DISCOVERIES.md` with its evidence and a
+  literature cross-check (consistent / in tension / not yet checked).
+
+### Stopping rule for model iterations (from 2026-11-05)
+A misfit gets a new model only if a quick check shows that fixing it could move the short-term
+answer (instruction shifts or selection strength) by more than their current spread across
+standing models. Otherwise it is recorded in DISCOVERIES.md as a property of the data or a known
+limitation, and the project moves on (write-up, held-out check, next data set).
+
+## Original question (2023-24 programme)
 Can cells that share one learned policy, and see only local signals, grow a tissue with target
 size, fate proportions and spatial pattern, and which signalling channels does that rely on?
 Later: does the model reproduce measured clonal statistics (Weinreb 2020 LARRY)?

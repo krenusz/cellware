@@ -5362,3 +5362,14 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
   - **Reported, not expected to change:** B27 (lift, count, M presence), P(G | M2), D3, B26,
     instruction shifts.
   - If E50 fails the working-model rule, E48 stays the working model.
+
+## Programme note (2026-11-05): goal hierarchy, stopping rule, discoveries register
+
+Set by Bence. Long term: model stem-cell fate in general and eventually embryo morphogenesis.
+Current step: fit conditional (perturbation) data, LARRY cytokine experiment first. Short term:
+instruct vs select. New rule (program.md): a misfit gets a new model only if fixing it could move
+the instruction or selection estimates by more than their spread across standing models;
+otherwise it is recorded in DISCOVERIES.md. DISCOVERIES.md started with 12 findings and 5
+methodological lessons, each with a literature cross-check status. Applies first to E50's result
+(running, run 42101864316): E50 is judged on its pre-registered readings, and then on whether it
+moves the instruction shifts or gamma.
