@@ -58,12 +58,31 @@ def presence_heldout(shard, shards):
     return {k: float(s[k]) for k in keys}
 
 
+def skew_heldout(shard, shards):
+    """E51: SIS-skew statistics on the H2 held-out shard (shard 0 of 3; shard args unused)."""
+    import numpy as np
+
+    import sis_data as sd
+    from b39_sisskew import GROUPS
+    from r2_skew_sbi import heldout_index, svec
+
+    d = sd.load_skew("heldout")
+    blocks, n = [], {}
+    for g in ("null", "KO"):
+        m = np.isin(d["well"], GROUPS[g])
+        n[g] = int(m.sum())
+        blocks.append(svec(d["P"][m], d["N"][m]))
+    s = np.concatenate(blocks)
+    return {"n": n, "index": heldout_index(), "values": [float(s[i]) for i in heldout_index()]}
+
+
 # name -> (function, description). Tests already spent elsewhere are recorded in the ledger.
 TESTS = {
     "epo_scf_pooled": (epo_scf_pooled, "cytokine expt: N-fraction concordance pooled over every "
                                        "condition pair with Epo or SCF"),
     "presence_heldout": (presence_heldout, "cytokine expt: G-M lift (>= 2, >= 3 cells) and "
                                            "P(G | M size 6+) on clone shard 1 of 2 (B37)"),
+    "skew_heldout": (skew_heldout, "SIS-skew: 29 B39/B40 statistics on H2 held-out shard 0 of 3 (E51)"),
 }
 
 
