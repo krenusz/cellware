@@ -5626,3 +5626,66 @@ batches, pDC 1.1), so B is read against the large-batch sensitivity too.
 - **Consequence for the plan.** The SIS-skew conditional comparison has no clean baseline: the
   model step must include an arm (label) effect estimated from W wells and a W-vs-C population
   difference, or restrict to KO-vs-WT arms within C wells with the label effect as a nuisance.
+
+## Note (2026-11-05): what is known about the SIS-skew null wells
+
+Go-ahead: Bence, "go all" (recovery check, null-well investigation, persistence). Tian 2021
+(Immunity 54:1338) is paywalled and not in Europe PMC; no preprint of the SIS-skew part was
+found. From the authors' own script (SIS_skew_analysis.rmd): W wells = "WT HSPC", Cherry+ =
+control vector; C wells = "Cas9 LSK", Cherry+ = Bcor sgRNA, Cherry- = untransduced; the analysis
+uses W only as the false-positive baseline for its symmetric SkewID call (KL of forward vs
+reverse densities), never as a directional baseline. So the W-arm fate shift found in B39 is not
+addressed in the available sources, and W differs from C in starting population (HSPC vs LSK)
+and Cas9 as well as the vector. Treated from here as: label effect plus population difference,
+both nuisances.
+
+## B40: does Bcor loss select clones by persistence, and by fate? SIS-skew (pre-registered 2026-11-05)
+
+- **Data diagnostic.** B39 D: one-arm clones are 2-4x commoner in KO wells at every size; small KO
+  clones mostly lose the KO arm, large ones more often keep only the KO arm.
+- **Units.** As B39 (fit set, authors' pipeline, W3 dropped). Present = > 1 cell in an arm.
+- **Statistics, KO wells and null wells separately; 95% CIs by bootstrap over clones (1,000).**
+  - A. One-arm odds: logistic regression of one-arm on log(total cells); odds ratio KO vs null
+    at the pooled median size.
+  - B. Direction: share of one-arm clones that are +-only, by the B39 size bins.
+  - C. **Persistence by fate (clone-level selection on persistence):** clones with > 10 cells in
+    the - arm: Spearman correlation between the - arm's fraction of each fate and the + arm being
+    absent (<= 1 cell). Mirror: clones with > 10 cells in the + arm, - arm absence vs the + arm's
+    fractions.
+- **Minimum sample.** C needs >= 100 clones with - arm > 10 cells in KO wells and >= 60 in null.
+- **Readings.**
+  - **Bcor selects on persistence by fate:** for some fate, the KO correlation in C (either
+    direction) has a CI excluding 0 and excluding the null's value.
+  - **Persistence effect without fate link:** A's odds ratio CI excludes 1 and C's reading fails.
+- **Caveat.** Arm absence also depends on how many sisters were transduced (Cherry+ founders);
+  the transduction rate may differ between W (HSPC) and C (LSK), so A is not attributable to Bcor
+  alone. C compares clones within a group and is robust to a group-wide rate.
+
+## R1: can instruction and selection be recovered from SIS-skew statistics? (pre-registered 2026-11-05)
+
+- **Why.** Before any fit (plan step 4): with the real sample size and a label nuisance, do the
+  B39/B40 statistics identify (i) KO instruction tau (logit shift toward pDC in the KO arm) and
+  (ii) KO selection gamma (KO-arm log-growth per SD of the clone's pDC logit)? LARRY lacked this
+  check (E46 vs E48 stayed open).
+- **Simulator `r1_skew_sim.py` (new; diagnostics it must reproduce: B39 one-arm shares by size
+  and arm fate fractions, null and KO).** Per clone: fate logits z ~ N(mu, diag(sigma^2)) with
+  sigma from B38 (1.5, 2.0, 2.7); split size c ~ 1 + Poisson(c0); Cherry+ founders ~ Binomial(c,
+  t); each founder line grows to exp(g + noise) cells, g ~ N(m_g, s_g) per clone; arm fate
+  fractions softmax(z + arm effects + eps), eps ~ N(0, s_eps) per arm; counts multinomial.
+  + arm effects: label delta (logit shift on pDC) and growth lambda_L, both groups; KO wells add
+  tau (pDC logit), lambda_K, and gamma x standardised z_pDC on log-growth. Nuisance values
+  (mu, c0, t, m_g, s_g, s_eps, lambda_L, lambda_K) are calibrated by hand to the fit-set
+  marginals (arm fate fractions, cells per arm, one-arm shares) and recorded before the recovery
+  run.
+- **Recovery protocol.** Draw (tau, gamma, delta) uniform on [-1.5, 1.5] x [-1, 1] x [-1, 1];
+  simulate a null group (tau = gamma = 0) and a KO group at the fit-set sizes (454 and 831
+  clones); summary statistics = B39 A-D minus H, plus B40 A-C, per group. 4,000 training and 300
+  test simulations; estimator = ridge regression of each parameter on standardised statistics
+  (pre-chosen; no tuning on test).
+- **Readings.**
+  - **Recoverable:** test R^2 >= 0.7 and RMSE <= 0.3 for tau and for gamma.
+  - **Confounded:** the correlation of tau-hat errors with true gamma (or gamma-hat with tau)
+    exceeds 0.3 in magnitude.
+  - **Misspecification:** with the KO-group label shift 0.5 larger than the null's (W vs C
+    difference), bias in tau-hat > 0.3 = the null cannot serve as baseline for tau.
+- **Minimum.** Fixed by design (simulations); results reported whatever they are.
