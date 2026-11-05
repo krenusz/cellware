@@ -5395,3 +5395,30 @@ moves the instruction shifts or gamma.
     and E48's mean.
   - **No:** less than half the gap closed.
   - Descriptive: cell-type composition of Epo cells in clones shared with G or M.
+
+### B36 result (2026-11-05)
+
+Sources: 277 G clones, 478 M clones (>= 2 N+M cells). E48 best gated s0, 200 simulations.
+
+| sharing | data, N+M only | data, any cell | E48 (95%) | gap closed |
+|---|---|---|---|---|
+| G clones in Epo | 0.040 | 0.076 | 0.122 [0.088, 0.170] out | 44% |
+| M clones in Epo | 0.025 | 0.033 | 0.074 [0.053, 0.096] out | 17% |
+| G clones in SCF | 0.079 | 0.199 | 0.153 [0.113, 0.199] **in** | 163% |
+| M clones in SCF | 0.048 | 0.140 | 0.097 [0.070, 0.124] out (above) | 189% |
+
+- **Epo: no counting effect (as registered).** Counting every cell type closes 17-44% of the gap.
+  The Epo cells of clones shared with G or M are mostly monocytes, basophils, undifferentiated
+  cells and neutrophils (25/23/16/13); only 3 erythroid cells. **The erythroid output of the Epo
+  wells comes from clones that are not in the G/M wells at all.** Grover-type diversion of shared
+  clones is not the explanation; the Epo wells are dominated by a different, erythroid-lineage set
+  of clones.
+- **SCF: "partial" by the registered rule, in substance a counting effect.** Counting all cell
+  types (SCF wells are 71% undifferentiated) brings G-sharing inside E48's range and pushes
+  M-sharing above it. The SCF "over-sharing" was an artefact of counting only N+M.
+- **Reading.** Epo and SCF fail for different reasons. SCF clones are the same myeloid clones,
+  still undifferentiated at days 4-6. Epo clones are largely a separate, erythroid-lineage subset.
+  The second pattern resembles the full arm (discovery 7): a well dominated by lineages the G/M
+  wells do not support may look like a "separate pool" in N+M-only statistics.
+- **Stopping rule:** Epo/SCF statistics are not part of the instruct-vs-select estimate (tau and
+  gamma are identified from G, M and full). Recorded in DISCOVERIES; no model change.

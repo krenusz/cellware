@@ -28,7 +28,7 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | 9 | **Small M-CSF clones are private to the M-CSF well**: 2-cell clones seen in any other well 21% (model 51%); real cells spread over libraries, not an artefact; half as often seen at day 2. They explain the M-presence and low G-M co-presence misfits. | B31, B32, B34 | strong (descriptive) | Lin/Naik 2024: restricted downstream progenitors (MDPs, CMPs) make small clones | consistent (candidate explanation, untested) |
 | 10 | **G-CSF-private clones are neutrophil-committed at every size** (70% neutrophils vs 41% in shared clones; privacy grows with size). | B34 | moderate | Weinreb 2020 Supp Fig 7g (neutrophil-only clones expand more in G-CSF) | consistent |
 | 11 | **A clone's day-2 abundance predicts how many wells it reaches**, beyond independent seeding (gradient 0.13 vs model [-0.09, 0.09]). Clones differ in how many cells they had at the split. | B35 | moderate | no direct reference found; follows from splitting each clone's day-2 cells into wells (Weinreb SI: day-2 sample measures clone size at the split) | expected from design |
-| 12 | Every model **over-shares clones with the Epo and SCF wells** (about 2x). | B32 | moderate (descriptive) | Grover 2014 (Epo pushes multipotent progenitors toward erythroid fate): clones diverted to erythroid cells look absent in N/M-only presence counts. Untested | candidate explanation |
+| 12 | Every model **over-shares clones with the Epo and SCF wells** (about 2x). For SCF it is a counting artefact: SCF wells are 71% undifferentiated, and counting all cell types fixes it. For Epo it is real: the erythroid cells come from clones absent from the G/M wells; clones shared with G/M make myeloid/basophil cells in Epo. | B32, B36 | moderate | Grover 2014 (Epo pushes multipotent progenitors to erythroid fate): diversion of shared clones tested and not supported; an erythroid-lineage clone subset fits the data | SCF explained; Epo in tension with diversion |
 
 ## Methodological lessons (how not to fool ourselves)
 
@@ -42,4 +42,4 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 
 ## Cross-check log
 
-- 2026-11-05 (RETRO_2026-11-05b): entries 6, 7, 11, 12 cross-checked; 7 moved to "in tension".
+- 2026-11-05 (RETRO_2026-11-05b): entries 6, 7, 11, 12 cross-checked; 7 moved to "in tension". B36 tested 12's candidate: SCF explained, Epo not.
