@@ -163,3 +163,14 @@ clones and too few large M-pure clones under G-CSF (D3). E38 stays the formal re
 Supp Fig 7g shows the same pattern descriptively (read after E46 was registered). The Weinreb
 supplement also fixes the design: B28 shows sister competition at the split cannot explain
 co-presence, and that detection does not differ materially by cell type.
+
+## Correction (2026-11-05, B29): the primary concordances had held-out clones and little power
+
+Prompted by Bence's question, an audit found that the primary concordances (G-M, full-G, full-M)
+used all clones, held-out shard included, and that pass/fail at p >= 0.05 rewards wider
+predictions. Re-scored on the fit set: the concordances pass for every seed of both models (they
+carry little information), E38 is still unstable (B7 G 5/9), and **E46 is stable and passing (13/16
+primary)**. By the registered rule E46 is the new reference. A proper score (CRPS) shows its only
+clear gain is B7 G; on the concordances E38 scores better. Held-out test still unspent; the power
+check comes first. From now on the primary concordances use the fit set and comparisons report
+CRPS.

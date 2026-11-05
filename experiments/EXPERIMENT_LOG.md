@@ -4556,3 +4556,87 @@ observed targets. E46's running sweep (run 42012020382) uses the earlier commit;
   rate, B7 G and co-presence together, and it is consistently identified. What remains: the
   full-M primary component (unstable across seeds), too few M-present clones, and D3. The M-side
   instruction parameter sits on a ridge. Next: a data diagnostic for full-M before any E47.
+
+## Audit of the primary test (2026-11-05, prompted by Bence: "isn't this test suspicious?")
+
+Checked before any re-scoring:
+
+1. **Not circular.** The primary concordances (G-M, full-G, full-M r) are not loss targets
+   (e36.targets: within-condition stats, presence, overlap, full-arm co-presence counts).
+2. **Pass/fail rewards vague models.** A component "passes" when p >= 0.05, i.e. when the observed
+   value is inside the simulated spread. E46's G-M pass rate rose (E38 p median 0.06 -> E46 0.35)
+   with **no change in the simulated centre** (0.42 -> 0.41, data 0.51): the 95% width grew from
+   0.22 to 0.40. B7 G is a genuine improvement (centre -0.27 -> -0.41, data -0.38) but also wider
+   (0.18 -> 0.27). A normal-approximation CRPS (lower is better; descriptive, not registered):
+   E38 sum 0.33, E46 0.49; E46 better on B7 G (0.023 vs 0.080), equal on G-M, worse on full-M
+   (0.36 vs 0.15). **"E46 is the best model so far" was overstated** and is withdrawn.
+3. **The primary uses held-out shard-1 clones**, the same flaw the B7 audit fixed. OBS (e20_gap:
+   G-M 0.51, full-G 0.69, full-M 0.24) and the simulated cross_r are both computed on all clones.
+   On the fit set the data values are G-M 0.37, full-G 0.90, full-M 0.43; on shard 1 they are
+   0.62 / 0.47 / 0.08. The two halves disagree by 0.25-0.43, so these statistics (16-39 clones
+   each) are very noisy, and the full-M "misfit" (0.24) is largely shard 1's 0.08.
+4. The "fewer than 10 clones -> r = 0" sentinel in test_stats is rare here (0-2% of simulations).
+
+## B29: re-score the primary on the fit set with a proper score (pre-registered 2026-11-05)
+
+- **What.** For every gated seed of E38 (9) and E46 (16): 200 simulations (rng 1000+s, as in
+  e33), the three concordances computed on the **fit set**, and B7 G / B7 M (already fit set).
+- **Scores.** (a) The old rule re-done on the fit set: two-sided p >= 0.05 for the three r's,
+  B7 inside the 95% range; gate unchanged; stability and primary recomputed exactly as the
+  protocol defines them. (b) Empirical CRPS per statistic from the 200 draws
+  (mean |X - y| - 0.5 mean |X - X'|), median over gated seeds; (c) 95% widths.
+- **Readings (minimum: at least 9 gated seeds per model, as the stability rule already needs).**
+  - **"full-M misfit was a held-out artefact"** if E46's fit-set full-M passes in at least 2/3 of
+    its gated seeds.
+  - **Protocol verdicts** (stable / primary counts) for E38 and E46 are replaced by the fit-set
+    versions, as was done for B7.
+  - **Model comparison (descriptive):** which model has the lower summed median CRPS over the five
+    statistics, and on which statistics.
+- **Protocol change from now on (registered here, before E47):** primary concordances are computed
+  on the fit set, and model comparisons report CRPS next to pass/fail, so that a wider predictive
+  spread cannot count as a better fit.
+
+### B29 result (2026-11-05)
+
+Fit-set data: G-M 0.37, full-G 0.90, full-M 0.43; B7 G -0.38, B7 M 0.04.
+
+| | E38 (9 gated) | E46 (16 gated) |
+|---|---|---|
+| G-M / full-G / full-M pass | 9 / 9 / 9 | 16 / 16 / 16 |
+| B7 G / B7 M inside | 5 / 9 | 16 / 13 |
+| primary (all five) | 5/9 | 13/16 |
+| **stable (protocol)** | **no** (B7 G 5/9) | **yes, and passing** |
+| median 95% width, G-M / full-G / full-M | 0.32 / 0.56 / 0.95 | 0.61 / 0.67 / 1.00 |
+| median CRPS G-M / full-G / full-M / B7G / B7M | 0.026 / 0.126 / 0.079 / 0.077 / 0.012 | 0.054 / 0.108 / 0.173 / 0.024 / 0.017 |
+| summed median CRPS | **0.320** | 0.376 |
+
+- **"full-M misfit was a held-out artefact": yes** (fit-set full-M passes in 16/16 E46 seeds).
+- **Protocol verdict on the fit set: E46 is stable and passing; E38 is not** (it still fails B7 G in
+  4 of 9). By E46's registered reading ("stability met: E46 becomes the reference, and the
+  held-out power check comes next"), **E46 is now the reference.**
+- **But the concordance tests carry almost no information on the fit set.** Their simulated 95%
+  ranges span 0.3-1.0 of a scale that runs from about -0.1 to 1; every seed of both models passes
+  all three. The only primary component that separates the models is B7 G, where E46 is
+  genuinely better (CRPS 0.024 vs 0.077, centre on the data). On the three concordances the proper
+  score favours E38 (sharper and closer), so E46's overall CRPS is worse (0.376 vs 0.320).
+- **Net:** E46 earns the reference status by the registered rule through a real B7 G improvement;
+  the "passes" on the concordances are not evidence for either model. The held-out power check is
+  therefore essential before spending shard 1: it must show the shard-1 test can tell E38 and E46
+  apart.
+
+### Literature for pinning growth and death rates (2026-11-05)
+
+- **Mossadegh-Keller 2013 (Nature, PMC3679883), read.** M-CSF induces PU.1 in single HSCs
+  (SCF + TPO culture, 100 ng/ml M-CSF); time-lapse n = 39 vs 42 cells; PU.1+ cells all arose from
+  PU.1- cells, not by division of PU.1+ cells; no proliferation or survival advantage in M-CSF
+  (their Supp Fig 5a). Evidence for **instruction at the HSC stage**, before the first division.
+  No division times or death rates given.
+- **Kimura, Rieger et al. 2009 (Blood, PMC2780307), read.** GM-CSF via STAT5A/B controls GMP
+  **proliferation and survival**: in Stat5-null GMPs, generation times are 16-37% longer and death
+  rises to 5-24% per generation (controls: negligible death); more than 30 pedigrees per
+  experiment, 3 experiments. Only relative times; no G-CSF or M-CSF arms.
+- **Not obtained (publisher blocks automated access):** Rieger 2009 Science 325:217
+  (10.1126/science.1171461) and Endele 2017 Blood 129:1691 (10.1182/blood-2016-05-714329), the two
+  papers most likely to hold division/death rates by cytokine. To be downloaded by hand.
+- **So far no absolute rates to pin.** Both mechanisms are documented in the literature at
+  different stages: instruction (M-CSF on HSCs) and growth/survival control (GM-CSF on GMPs).
