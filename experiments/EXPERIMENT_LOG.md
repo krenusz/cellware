@@ -5316,3 +5316,49 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
   measures it. A measured, clone-level founder rate (nu scaled by a function of n2, like the
   measured fate score) is a model term with data behind it; candidate for a later experiment
   (E51), separate from E50's G-only neutrophil class.
+
+## E50: neutrophil-committed clones that grow only under G-CSF (pre-registered 2026-11-05)
+
+- **Data diagnostic it must explain.** B34: G-CSF clones private to that well are
+  neutrophil-dominated (0.70 vs 0.41 in shared clones), and privacy grows with size (3-5 cells:
+  0.65, E48 0.43; 6-15: 0.75, E48 0.42). B7 G (-0.38; E48 -0.34) is the same pattern seen from the
+  shared side. Not targeted: the M-CSF small-clone excess (B32) and the day-2 abundance link (B35,
+  candidate E51).
+- **Mechanism.** E48 plus class C: a clone is neutrophil-committed with probability
+  logistic(logit(phi_C) + b_C z), rising with its latent fate state z (built from the measured
+  day-2 score, as in E33). A class-C clone has no founders in the full, M, Epo or SCF wells; in the
+  G well it draws Poisson(nu) founders, expands with mu_G + a + d_C, and makes neutrophils only.
+  New parameters: phi_C in (0.001, 0.3), b_C in (0, 3), d_C in (-4, 4). 27 dimensions. Script
+  experiments/e50_gneu.py; sweep sweeps/e50_gneu.txt.
+- **Every-condition check (E48 best s0, nu rescaled by 1/(1 - phi_C); 30 simulations; scratchpad
+  e50chk.py).**
+
+  | phi_C, b_C, d_C | lift | n G-M | B7 G | G private 3-5 / 6-15 (n 6-15) | P(G\|M2) | presence full/G/M/Epo/SCF | N share G / M |
+  |---|---|---|---|---|---|---|---|
+  | data | 0.31 | 39 | -0.38 | 0.65 / 0.75 (40) | 0.04 | 368/277/478/23/39 | 0.67 / 0.040 |
+  | ~0 (E48) | 0.44 | 54 | -0.31 | 0.41 / 0.42 (44) | 0.15 | 358/267/450/27/41 | 0.69 / 0.050 |
+  | 0.05, 0, 0 | 0.42 | 56 | -0.35 | 0.47 / 0.45 (47) | 0.15 | 341/295/442/26/41 | 0.72 / 0.050 |
+  | 0.1, 0, 0 | 0.40 | 58 | -0.35 | 0.52 / 0.47 (50) | 0.17 | 323/325/436/26/41 | 0.74 / 0.050 |
+  | 0.1, 1.5, 0 | 0.40 | 56 | **-0.37** | 0.60 / 0.56 (35) | 0.16 | 300/307/442/20/32 | 0.70 / 0.040 |
+  | 0.1, 1.5, 1 | 0.34 | 55 | -0.42 | 0.64 / 0.83 (92) | 0.16 | 300/370/440/19/30 | 0.80 / 0.040 |
+  | 0.2, 1.5, 1 | 0.32 | 61 | -0.51 | 0.72 / 0.91 (141) | 0.18 | 262/463/440/20/31 | 0.85 / 0.034 |
+
+  The class moves B7 G and G-side privacy to the data; with d_C > 0 it overshoots G presence and
+  the 6-15 count, which mu_G and tau (fitted) must absorb. Full presence falls with phi_C (fewer
+  pool clones; nu_full is fitted). M-side statistics (P(G | M2), M presence) do not move, as
+  expected. Epo/SCF fall slightly at b_C 1.5.
+- **Fit.** 18 cold seeds, 500 generations max, E38 targets/loss/SE, guard 9, launcher as a
+  background task, PC awake.
+- **Scoring.** Gate as before; `b29_rescore.py e50` (fit-set primary, stability, B7 CRPS);
+  analyze_e50.py (B27, B24/B26, instruction, and for the best gated fit B34 privacy by size and the
+  B31/B32 statistics, 200 simulations).
+- **Readings (minimum 9 gated seeds, except best-fit readings).**
+  - **Working model:** E50 replaces E48 if it is stable and passing on the fit set, its B7 CRPS sum
+    is <= 0.044 (E48), and its best gated fit has G privacy at 3-5 and 6-15 cells inside its 95%
+    (E48 fails both).
+  - **Class used:** median phi_C >= 0.02 over gated seeds; median b_C and d_C reported.
+  - **Selection vs class (descriptive):** median gamma compared with E48's 0.56; if the class takes
+    over, gamma should fall.
+  - **Reported, not expected to change:** B27 (lift, count, M presence), P(G | M2), D3, B26,
+    instruction shifts.
+  - If E50 fails the working-model rule, E48 stays the working model.
