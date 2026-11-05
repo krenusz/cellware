@@ -5111,3 +5111,22 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
   (data 0.11; E46 0.04 out, E48 0.09 in), so the look would be a replication on independent
   clones, with the B33 contamination caveat. It cannot separate plausible selection from none;
   that question stays open.
+
+### Literature: the two retro "read next" papers (2026-11-05)
+
+- **Lin, Zhang, ... Weber, Naik 2024 (bioRxiv 10.1101/2024.03.28.587126), discussion and model
+  sections read.** In vivo barcoding of LT-HSC to MDP populations after transplantation. Claims:
+  commitment to reduced-potency "tracks" is often early and hard-wired; "common" progenitors are
+  often highly restricted; **restricted downstream progenitors (CMPs, CLPs, MDPs) have low potency
+  and smaller clones** than upstream cells. The agent-based model folds division and death into one
+  effective proliferation rate per cell type (cell counts only), so no usable division or death
+  rates. **Bearing on B32:** a fraction of LSK/LK founders that are already monocyte-restricted
+  (MDP/cMoP-like) and make small clones is a documented biology, consistent with the small
+  M-CSF-private clones. It supports an explicit restricted-clone class in E49.
+- **Eisele ... Perie 2022 (eLife 11:e66922), abstract, results and legends read** (discussion and
+  methods only via summary, unverified). Ex vivo EPO (16 h) before transplantation: the number of
+  lineage-biased clones is unchanged, but biased clones contribute more output. The authors call it
+  clonal remodelling and say they cannot separate a transient fate change from selection. No
+  proliferation or survival rates. **Bearing:** cytokines can reshape which clones contribute
+  without changing who is restricted, but the in vivo setting does not explain the Epo/SCF
+  over-sharing in the LARRY wells. Low relevance.
