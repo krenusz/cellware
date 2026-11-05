@@ -5085,3 +5085,29 @@ E48 best gated fit s0, 200 simulations. All groups >= 112 clones; 139-205 same-d
 - **Caveat recorded now.** Shard-1 clones' G, M and full data were used in earlier all-clone
   statistics (cross r, B7, B12-type co-presence), so even unseen statistics on them are not
   independent of everything seen. A pass makes the look informative, not pristine.
+
+### B33 result (2026-11-05)
+
+Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
+
+| statistic | E38 | E46 | E47 | E48 |
+|---|---|---|---|---|
+| G-M lift, >= 2 cells | 0.49 | 0.34 | 0.45 | 0.47 |
+| G-M lift, >= 3 cells | 0.28 | 0.13 | 0.23 | 0.25 |
+| P(G \| M size 6+) | 0.15 | 0.05 | 0.12 | 0.12 |
+| P(M \| G size 6+) | 0.15 | 0.05 | 0.13 | 0.13 |
+| P(G \| M size 2) | 0.15 | 0.13 | 0.16 | 0.15 |
+
+- **E38 vs E46: discriminable** on three statistics (lift >= 2: difference 0.14 vs needed 0.10;
+  lift >= 3: 0.16 vs 0.11; P(G | M 6+): 0.10 vs 0.07).
+- **E46 vs E48: just short** on every statistic (best: lift >= 2, 0.125 vs 0.127; lift >= 3,
+  0.122 vs 0.125).
+- **E38 vs E48: not discriminable** on any (differences <= 0.03): plausible selection changes
+  presence statistics very little.
+- **Decision (as registered): a look is informative, for strong selection (E46) against weak or
+  none (E38/E48).** It is proposed, not taken; it needs its own pre-registration (statistics:
+  lift >= 2, lift >= 3, P(G | M 6+); a reading per model) and Bence's go.
+- **Caveat.** On the fit set these statistics already favour E38/E48 over E46 for P(G | M 6+)
+  (data 0.11; E46 0.04 out, E48 0.09 in), so the look would be a replication on independent
+  clones, with the B33 contamination caveat. It cannot separate plausible selection from none;
+  that question stays open.
