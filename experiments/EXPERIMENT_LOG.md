@@ -5234,3 +5234,47 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
     the private clones are not distinguishable at day 2 by the measured axis.
   - **Composition (descriptive):** a lower neutrophil share in private clones would fit
     monocyte restriction.
+
+### B34 result (2026-11-05)
+
+(1) Share of clones private to their well, by size (E48 best gated fit s0, 200 simulations):
+
+| size | M-CSF: n, data vs E48 | G-CSF: n, data vs E48 |
+|---|---|---|
+| 1 | 155: 0.61 vs 0.45 [0.37, 0.52] **out** | 181: 0.44 vs 0.41 in |
+| 2 | 172: 0.79 vs 0.49 [0.40, 0.57] **out** | 112: 0.62 vs 0.42 [0.32, 0.52] **out** |
+| 3-5 | 160: 0.62 vs 0.51 [0.45, 0.58] **out** | 121: 0.65 vs 0.43 [0.34, 0.51] **out** |
+| 6-15 | 121: 0.52 vs 0.54 in | 40: 0.75 vs 0.42 [0.29, 0.58] **out** |
+| 16+ | 25: 0.52 vs 0.59 in | 4: too few |
+
+(2)-(4), clones of 2-5 cells (M: 235 private / 97 shared; G: 148 / 85):
+
+| | M private | M shared | G private | G shared |
+|---|---|---|---|---|
+| day-6 share of cells | 0.86 | 0.83 (diff 0.03 [-0.03, 0.10]) | 0.42 | 0.30 (diff 0.13 [0.02, 0.24]) |
+| seen on both days | 0.20 | 0.29 | 0.19 | 0.25 |
+| neutrophil share in the well | 0.06 | 0.09 | **0.70** | **0.41** |
+| any day-2 cell | 0.23 | 0.43 | 0.23 | 0.40 |
+| day-2 cells, if seen (n 54/42; 34/34) | 1.50 | 1.74 (p 0.26) | 1.68 | 1.74 (p 0.55) |
+| day-2 score m, if seen | -0.49 | -0.14 (p 0.16) | +0.58 | +0.14 (p 0.23) |
+
+- **Privacy is a small-clone effect only: yes for M-CSF** (above E48 at 1-5 cells, inside at
+  6-15 and 16+). **Not for G-CSF:** G privacy is above E48 at 2-15 cells and grows with size
+  (0.75 at 6-15). The two cytokines differ.
+- **Late arrival: no** for M (difference 0.03, CI includes 0); for G the difference is 0.13
+  (CI 0.02-0.24), below the registered 0.15. Not read as late arrival.
+- **Distinct day-2 state: no.** Private and shared clones do not differ in day-2 cell count or in
+  m at p < 0.05. The direction is consistent with fate (M-private more monocyte-primed, G-private
+  more neutrophil-primed), but not significant at these counts.
+- **Composition:** G-private clones are neutrophil-dominated (0.70 vs 0.41); M-private clones
+  slightly more monocytic (0.06 vs 0.09 neutrophils).
+- **Common to both:** private clones are about half as often seen at day 2 (0.23 vs 0.40-0.43),
+  with the same count when seen.
+- **Reading.** Two different things. (a) G-CSF: private clones are neutrophil-committed clones of
+  any size that appear only under G-CSF; this is fate-linked presence (the same pattern as B7 G),
+  stronger than E48's selection makes. (b) M-CSF: an excess of small private clones with no
+  distinguishing day-2 state, less often captured at day 2. Low day-2 representation is shared by
+  both and points to clones that were few cells at the split. No model change is registered
+  from this; options for the next design: fate-linked presence under G-CSF (stronger at large
+  size, e.g. a neutrophil-committed class), and clone-level variation in the number of cells at
+  the split.

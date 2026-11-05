@@ -236,3 +236,15 @@ D3 and B26 remain unexplained by all three models.
   Epo and SCF wells (about 2x).
 - **Next:** a model with an explicit M-private clone class, or presence targets at >= 3 cells
   (E49, to be pre-registered).
+
+## Update (2026-11-05, late): E49 negative; B34 describes the private clones
+
+- **E49** (limited sister split + plausible selection) gated only 6/18 and its best fit did not
+  reproduce the private small clones; the split drifted back to many sisters. E48 stays the
+  working model.
+- **B34.** Clones private to one well behave differently by cytokine. Under G-CSF, private clones
+  are neutrophil-dominated (70% vs 41% in shared clones) and privacy grows with clone size: a
+  fate-linked presence pattern stronger than the plausible-selection model produces. Under M-CSF,
+  only small clones are in excess, with no distinguishing day-2 state. In both, private clones
+  are about half as often captured at day 2, so they likely started from few cells at the split.
+  No late-arrival signal.
