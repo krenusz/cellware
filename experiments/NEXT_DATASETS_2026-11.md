@@ -151,3 +151,33 @@ the split (state predicts fate = substrate for selection), with SIS-skew then as
 loss does on top. **Limit:** 85 clones support a state-to-fate map with only a few predictors
 (e.g. 2-3 principal components or a pre-chosen gene score), not a genome-wide fit. Minimum
 sample for any reading: all 85, with clones split into fit and held-out sets by batch.
+
+## Check 2b: the sister fate tables are in GEO GSE119097 (2026-11-05)
+
+GSE153676 is a SuperSeries: GSE119097 = SIS-seq (158 clones), GSE153675 = Bcor-KO CEL-seq2.
+Downloaded to `data/sis_seq/geo/` (gitignored): `GSE119097_family.soft.gz` (30 KB) and
+`GSE119097_gene_counts.csv.gz` (1.5 MB, raw counts, 158 clones). Parsed per-clone table:
+`sisseq_clones.csv` (parser kept in the session scratchpad, to be moved into experiments/ with B38).
+
+**Per clone, in the sample metadata:** cell counts of cDC1, cDC2 and pDC in **two sister wells**
+(sis1, sis2), the filler cells' fate fractions in each well (`*_fill_sis1/2`: the non-clonal
+cells in the same well, a per-well background), and how many sisters went to RNA-seq (0-11,
+median 4.5).
+
+| batch | clones | both sister wells > 3 cells | one only | median cells per well | RNA |
+|---|---|---|---|---|---|
+| ILSGR0260r | 40 | 35 | 2 | 111 / 94 | 40 |
+| D9JS27 | 39 | 22 | 2 | 7 / 11 | 39 |
+| JS91 | 40 | 21 | 4 | 6 / 7 | 40 |
+| JS96 | 39 | 27 | 1 | 41 / 46 | 39 |
+
+- **105 clones have both sister wells with > 3 cells, and all 158 have RNA counts** (JS96's
+  RNA, absent from the Mendeley tables, is here). So each clone gives: pre-split state, two
+  independent sister fate readouts, and a per-well background.
+- This is what the instruction-vs-selection logic needs within one condition: sister-sister
+  fate agreement beyond the background measures how much fate is fixed in the clone before the
+  split; the RNA says what fixes it.
+- **No fate statistic was computed** (sister agreement included), so nothing is spent before B38
+  is pre-registered with a sealed held-out set.
+- Small: 2 of 4 batches have under 12 cells per well, so their fractions are noisy; readings
+  must weight by cell count or use the two larger batches.
