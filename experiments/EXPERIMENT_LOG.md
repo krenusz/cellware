@@ -5787,3 +5787,53 @@ hit them (before any recovery run).
   cDC2 clones at day 2.5, before any marker of the final type is expressed.
 - **Reading overall.** The clone fate state of B38 is partly visible in the sisters' RNA as a
   broad priming programme, not as early expression of lineage-defining factors.
+
+## R2: improved SIS-skew simulator and recovery with every nuisance varied (pre-registered 2026-11-05)
+
+- **Go-ahead.** Bence, "go all" (tighten calibration, rerun recovery, then fit).
+- **Diagnostics the simulator must explain.** R1's misses: the + / - cell ratio (about 0.6 log
+  units high in both groups) and too few small clones; B39/B40: one-arm shares by size and their
+  direction, decomposition terms, size-ratio correlations, persistence-by-fate.
+- **Changes from R1 (`r2_skew_sbi.py`, reuses R1's simulator logic and statistics).**
+  - Transduction rate per group (t_W for HSPC + vector, t_C for LSK + sgRNA): fixes the cell
+    ratio and allows different one-arm rates without Bcor.
+  - Founder-line extinction probability q (both groups): makes small clones and lost arms.
+  - Effects as vectors over (cDC2, pDC), relative to cDC1: label delta (both groups), KO
+    instruction tau (logit shift of the KO arm), KO selection gamma (KO-arm log-growth per SD of
+    the clone's standardised cDC2 and pDC logits relative to cDC1).
+  - 20 parameters; priors uniform: mu_cDC2_W (-2, 2), mu_pDC_W (-5, 1), mu_cDC2_C (-1, 4),
+    mu_pDC_C (-4, 1), c0 (0.5, 6), t_W and t_C (0.1, 0.7), q (0, 0.6), m_g (-0.5, 3), s_g (0.2, 2),
+    s_line (0.2, 2), s_eps (0.3, 2), lam_L (-2, 2), lam_K (-1, 4), delta (-1.5, 1.5)^2,
+    tau (-2, 2)^2, gamma (-1, 1)^2.
+- **Inference (fixed now).** Semi-automatic ABC (Fearnhead and Prangle 2012): 20,000 prior
+  simulations at fit-set sizes; summary statistics = R1's 38 per group (76); ridge regression
+  (alpha 1) of each parameter on standardised statistics gives the projection; accept the 2% of
+  simulations nearest the target in the standardised projected space; local-linear regression
+  adjustment (Beaumont 2002); 95% interval = 2.5-97.5 percentiles of the adjusted sample.
+- **Identifiability.** tau and a W-vs-C label difference enter the model identically (both shift
+  the + arm in KO wells only), so tau is estimated under delta_C = delta_W and is reported as
+  "tau + (delta_C - delta_W)".
+- **Recovery protocol.** 300 test simulations from the prior, each inferred as above.
+- **Readings.** Per parameter (gamma_cDC2, gamma_pDC, tau_cDC2, tau_pDC):
+  **recoverable** if RMSE <= 0.3 and the 95% interval covers the truth in 90-99% of tests;
+  **miscalibrated** if coverage < 90%. Results reported whatever they are.
+
+## E51: SIS-skew model fit, clone-level selection by Bcor (pre-registered 2026-11-05)
+
+- **Runs only after R2**, on the fit set (H2 shards 1-2), with R2's simulator, priors and
+  inference unchanged.
+- **Outputs.** Posterior medians and 95% intervals for all 20 parameters; main results gamma
+  (clone-level selection) and tau + label difference (within-clone change, bounded).
+- **Readings.**
+  - **Clone-level selection by Bcor on fate:** a gamma interval excludes 0 (only for parameters
+    R2 calls recoverable).
+  - **No clone-level fate selection:** both gamma intervals inside [-0.25, 0.25].
+  - **Within-clone change (tau + label difference):** an interval excludes 0; reported with the
+    caveat that it cannot be split from a W-vs-C label difference.
+- **Fit adequacy.** Posterior predictive (200 draws from the accepted sample): the share of the
+  76 fit-set statistics inside their 95% predictive ranges; adequate if >= 80%. Misses are listed.
+- **Held-out look (plan step 5).** After the fit and before the look, the posterior predictive
+  ranges at held-out sizes are written into this log for: KO decomposition terms (9), KO and null
+  size-ratio rho (6), one-arm shares by size (8), KO persistence-by-fate rho (6). Test
+  `skew_heldout` (new, in test_oracle.py) then computes the same statistics on shard 0, once.
+  **Model adequate on held-out clones:** >= 80% of those 29 statistics inside their ranges.
