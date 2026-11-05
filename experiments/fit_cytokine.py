@@ -68,6 +68,8 @@ def load_counts(conds=CONDS):
 
 
 def pooled(by_day):
+    if len(by_day) == 1:  # one day (all simulations): a copy, same result as the loop below
+        return {c: list(v) for c, v in next(iter(by_day.values())).items()}
     tot = {}
     for d in by_day.values():
         for c, v in d.items():

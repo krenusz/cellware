@@ -4521,3 +4521,12 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
     each). If gamma >= 0.5 and both shifts fall by at least a third, report "selection absorbs part
     of the instruction signal". This is descriptive until a stable model exists.
   - **Side readings:** B24 D3 and B26 16+ M-pure count for the best gated fit.
+
+### Tooling (2026-11-05): fit speed-up, results unchanged
+
+Profiled one E46 loss evaluation (10 simulations): 0.26 s, of which 45% was SHA-256 shard hashing
+repeated for every clone on every call. Changes: `shard_of` cached (pure function), a one-day
+fast path in `pooled`, and the count dictionaries in e37/e46 built from lists instead of numpy
+scalars. Now 0.125 s (2.1x). Checked byte-identical against the previous commit on all 28 fit
+statistics for 24 simulations (E38 best parameters; E46 at gamma 0, 0.7, 1.5, 2.5) and on the
+observed targets. E46's running sweep (run 42012020382) uses the earlier commit; same results.

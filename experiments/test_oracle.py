@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import functools
 import hashlib
 import json
 import os
@@ -30,6 +31,7 @@ COLUMNS = ["date", "experiment", "test", "shard", "commit", "result"]
 SALT = "cellware-test-v1"  # fixed forever: changing it would reshuffle sealed shards
 
 
+@functools.lru_cache(maxsize=None)  # pure; the hash dominated fit time before caching
 def shard_of(clone, shards):
     return int(hashlib.sha256(f"{SALT}:{clone}".encode()).hexdigest(), 16) % shards
 

@@ -34,6 +34,7 @@ def simulate(clones, prm, rng, meas):
     u = rng.random(n) < prm["phi"]
     eps = prm["eps"]
     out = {}
+    cl = np.asarray(clones)
     for c in CONDS:
         full = c == "full"
         rate = prm["nu_full"] * np.where(u, 1.0, eps) if full else prm["nu"] * np.where(u, eps, 1.0)
@@ -44,7 +45,8 @@ def simulate(clones, prm, rng, meas):
         kn = rng.poisson(np.clip(lam * (free * p + cn) * prm["s"][c], 0, 1e4))
         km = rng.poisson(np.clip(lam * (free * (1 - p) + cm), 0, 1e4))
         keep = np.flatnonzero(kn + km > 0)
-        out[c] = {4: {clones[i]: [int(kn[i]), int(km[i]), 0] for i in keep}}
+        ids, xn, xm = cl[keep].tolist(), kn[keep].tolist(), km[keep].tolist()
+        out[c] = {4: {k: [x, y, 0] for k, x, y in zip(ids, xn, xm)}}  # lists: same values, faster
     return out
 
 
