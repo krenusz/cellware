@@ -118,3 +118,36 @@ loci files). Listing seen, nothing downloaded.
 pass from founder mESC to sister gastruloids (related founders, similar compositions)? Getting
 there means re-running the authors' cell-to-gastruloid step from their tape files, then a
 gastruloid x cell-type table plus a founder tree. Not a perturbation design. After SIS-skew.
+
+## Check 2: SIS-seq proper, the rest of the Mendeley zip (2026-11-05)
+
+Full zip downloaded (281,734,989 bytes, sha256 813795b4... matches Mendeley) to
+`data/sis_seq/full/` and extracted (gitignored; the bundled .git folder was deleted).
+
+**Design (clone_split/).** Each sample is one clone: a few sister cells (2-10 sorted) were
+RNA-sequenced as a mini-bulk, while their other sisters were cultured and their DC fate measured
+(fractions cDC1 / cDC2 / pDC; the files label cDC1 as CD8+ cDC, cDC2 as CD8- cDC). This pairs
+**each clone's state before differentiation with its fate**, the quantity LARRY gave us only at
+day 2 (our beta, 7-8 logits per SD).
+
+| batch | clones | with fate | with RNA (data_table.csv) |
+|---|---|---|---|
+| ILSGR0260r | 40 | 36 | 33 |
+| D9JS27 (JS86) | 40 | 28 | 28 |
+| JS91 | 40 | 24 | 24 |
+| JS96 | 40 | 27 | 0 |
+
+- **85 clones have both** RNA (11,448 genes after the authors' processing; raw, denoised and
+  batch-corrected versions all present) and fate. Dominant fate: pDC 40, cDC2 32, cDC1 13; 22 of
+  85 are restricted (>= 90% one type).
+- **Missing from the zip:** the per-clone sister-vs-sister fate tables (`fate_anno/*/
+  *_all_fate_anno.csv`) and the "Revised" annotations; the Rmd reads them from the authors'
+  Dropbox. Possibly in GEO GSE153676; not checked yet.
+- Also present: Bcor-KO vs WT scRNA-seq (CEL-seq2, 6 plates, gene_count.csv per plate) and the
+  CRISPR screen counts.
+
+**What it can answer.** How much of DC fate is already written in a clone's transcriptome before
+the split (state predicts fate = substrate for selection), with SIS-skew then asking what Bcor
+loss does on top. **Limit:** 85 clones support a state-to-fate map with only a few predictors
+(e.g. 2-3 principal components or a pre-chosen gene score), not a genome-wide fit. Minimum
+sample for any reading: all 85, with clones split into fit and held-out sets by batch.
