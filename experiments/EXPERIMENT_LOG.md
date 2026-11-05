@@ -4427,3 +4427,97 @@ views were rare). Held-out (5-fold by clone) per-cell binomial deviance:
   gated ones. As registered, E45 is negative and E38 stays the reference. The trade-off between
   shared presence and the B7 G difference is itself a lead: both are statistics of the same
   G/M sister pairs.
+
+## B28: barcode detection by cell type, and a design check of the day-2 split (pre-registered 2026-11-05)
+
+- **Why.** The critique of 2026-11-04 flagged detection bias: neutrophils carry little mRNA, so
+  their LARRY barcode (a GFP transcript) may be captured less often than monocytes'. Every E-series
+  statistic counts barcoded cells only, so a per-type capture difference would bias N shares,
+  presence and B7 G directly. The Weinreb SI (read 2026-11-05) gives the design: about 6,000
+  barcoded founders (20,000 x 30%), about 3 divisions by day 2, 25% of day-2 cells sequenced,
+  18.75% to each well. All later cells were GFP+ sorted, so a profiled cell without a barcode is a
+  capture failure, not an unbarcoded cell.
+- **Data.** data/larry_cytokine metadata (all profiled cells, barcoded or not) and clone matrix.
+  Fit-set restriction does not apply: Part A uses no clone identity, and Part B uses counts only.
+- **Part A, detection.** For day 4 and 6 cells in full, G and M: the fraction of cells with a
+  clone barcode, by annotation (Neu, Mo, and other types), per condition and pooled; 95% CI by
+  bootstrap over libraries. Statistic: ratio Neu / Mo detection.
+  - **Reading "detection bias":** pooled ratio CI entirely outside [0.8, 1.25], at least 300 cells
+    of each type. Then the E series must model per-type capture before any further fate claim.
+  - **Reading "no material bias":** pooled ratio CI inside [0.8, 1.25].
+  - Otherwise "unresolved". Per-condition ratios are reported (at least 300 cells per type).
+- **Part B, design check (calibration, no pass/fail).** Report: barcoded day-2 cells and clones;
+  the n2 distribution; the share of clones seen at day 4/6 in full/G/M that were also seen at day 2.
+  From that share, solve for the per-cell day-2 capture d assuming K ~ 1 + Poisson(K0 - 1) cells
+  per clone at day 2, for K0 = 4, 8, 16. Then report the post-split survival implied by E38's
+  fitted founders per well (nu, median over gated seeds): s = nu / (0.1875 K0). Also report the
+  libraries and conditions present at days 4 and 6, to settle whether an SCF well exists.
+- **Use.** Part B sets fixed design inputs for E46 (pre-registered after B28). Part A decides
+  whether E46 needs a capture term.
+
+### B28 result (2026-11-05)
+
+- **Part A, detection: formally "unresolved"; no sign that neutrophils are missed.** Pooled
+  Neu/Mo detection ratio 0.91 [0.72, 1.20] (6,035 Neu, 16,619 Mo; 15 libraries), which crosses
+  0.8. By condition: full 1.38 [1.19, 1.47] (Neu detected *more*), G 1.12 [0.98, 1.20], M 0.69
+  [0.58, 1.05] (only 572 Neu). The pooled ratio below 1 is a mix effect: most Neu are in G wells,
+  whose libraries capture barcodes less (Neu 0.40, Mo 0.36) than M wells (Mo 0.54). **Detection
+  differs more by library/condition than by cell type.** Per-condition capture is binomial thinning
+  of Poisson counts, so the existing per-condition terms (mu, s) already absorb it. **No capture
+  term is needed in E46.**
+- **Part B, design check.** Day 2: 15,728 cells profiled, 3,776 barcoded (24%), 2,222 clones;
+  n2 = 1/2/3/4 in 1,063/845/233/81 clones (none above 4), mean 1.70 when seen. 3,835 clones seen
+  later in full/G/M; 34.6% of them were seen at day 2. Implied per-cell day-2 capture d and
+  post-split survival (from E38's gated median nu 0.546, 9 seeds):
+
+  | K0 (cells per clone at day 2) | d | survival s = nu / (0.1875 K0) |
+  |---|---|---|
+  | 4 | 0.42 | 0.73 |
+  | 8 | 0.21 | 0.36 |
+  | 16 | 0.11 | 0.18 |
+
+  Cross-check at K0 8: 20,000 x 8 x 25% = 40,000 cells sent to sequencing, 15,728 profiled (0.39),
+  times barcode capture about 0.5 (Part A) gives d about 0.20, matching 0.21.
+- **Conditions present:** full (days 2/4/6), G, M, Epo (4/6), **SCF (day 4 only)**. The SI text
+  omits the SCF well; the data has it.
+- **Consequence for E45 and B27.** With K0 4-16 and 18.75% per well, founders per well are close
+  to independent Poisson (E45's check: lam_K 2 already gives lift 0.43). **Sister competition at
+  the split cannot produce the data's low G-M co-presence (0.31) under the actual design.** It must
+  arise after the split, from clone-specific outcomes in each well.
+
+## E46: lineage-matched selective expansion (pre-registered 2026-11-05)
+
+- **Data diagnostic it must explain.** B27: G-M co-presence lift 0.31 vs E38 0.47 [0.38, 0.56];
+  B28 rules out split competition as the cause. Secondary: B24 D3 (0.15 vs 0.02) and B7 G.
+- **Mechanism.** In the G-CSF well, a clone's log expansion gains +gamma * zb; in the M-CSF well
+  it gains -gamma * zb (zb = the clone's fate bias in that well, positive = neutrophil-leaning).
+  Full, Epo and SCF unchanged. Biologically: each cytokine expands the clones whose progeny depend
+  on it, which is clone-level **selection**. One new parameter, gamma in (0, 3):
+  gamma = 3 sigmoid(x23). 24 dimensions; everything else as E38 (e37 simulator).
+- **Every-condition check (e38_s1 parameters, 30 simulations; scratchpad e46chk).**
+
+  | gamma | G-M lift | n G-M | presence full/G/M/Epo/SCF | B7 G | D3 | N share G / M / full |
+  |---|---|---|---|---|---|---|
+  | data | 0.31 | 39 | 368/277/478/23/39 | -0.38 | 0.15 | 0.64 / 0.054 / 0.31 |
+  | 0 (E38) | 0.48 | 57 | 371/269/422/22/44 | -0.25 | 0.02 | 0.64 / 0.044 / 0.29 |
+  | 1 | 0.36 | 43 | 371/280/416/23/41 | -0.28 | 0.06 | 0.74 / 0.021 / 0.29 |
+  | 2 | 0.32 | 37 | 371/285/393/21/42 | -0.29 | 0.08 | 0.74 / 0.026 / 0.29 |
+
+  Lift, B7 G and D3 all move toward the data; full, Epo and SCF do not move. At fixed parameters
+  the G N-share rises and the M N-share and M presence fall; tau_G, tau_M, s and nu/mu, all fitted,
+  can compensate. Checked first and rejected: decorrelating expansion between wells (sigma_a is
+  0.19, so it changes nothing: lift 0.47 at every correlation).
+- **Fit.** As E45: 18 cold seeds, 500 generations max, E38 targets/loss/SE, B7 on the fit set,
+  guard on (more than 9 gate fails), PC kept awake.
+- **Gate, primary, stability: as E38.**
+- **Readings (minimum counts in brackets).**
+  - **Selection used:** median gamma over gated seeds >= 0.5 (at least 5 gated seeds).
+  - **Explains B27:** for the best gated fit, G-M co-present count and lift, and M-present count,
+    inside the simulated 95% (track_b27 statistics, 200 simulations).
+  - **Better than E38:** stability met; E46 becomes the reference and the held-out power check
+    comes next.
+  - **Instruction vs selection (the project question), reported:** median instruction shifts
+    tau_G - tau_full and tau_full - tau_M over gated seeds, E46 vs E38 (at least 5 gated seeds in
+    each). If gamma >= 0.5 and both shifts fall by at least a third, report "selection absorbs part
+    of the instruction signal". This is descriptive until a stable model exists.
+  - **Side readings:** B24 D3 and B26 16+ M-pure count for the best gated fit.
