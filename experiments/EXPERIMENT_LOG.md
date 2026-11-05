@@ -4530,3 +4530,29 @@ fast path in `pooled`, and the count dictionaries in e37/e46 built from lists in
 scalars. Now 0.125 s (2.1x). Checked byte-identical against the previous commit on all 28 fit
 statistics for 24 simulations (E38 best parameters; E46 at gamma 0, 0.7, 1.5, 2.5) and on the
 observed targets. E46's running sweep (run 42012020382) uses the earlier commit; same results.
+
+### E46 result (run 42012020382, analysed 2026-11-05)
+
+- **Run.** Completed, 18/18 seeds (the watcher's exit 1 was not a run failure).
+- **Gate 16/18** (E38 9/18; E45 3/13). **Primary 6/16** (E38 3/9): G-M 12/16, full-G 16/16,
+  **full-M 7/16**, B7 G 16/16 (E38 5/9), B7 M 13/16.
+- **Stability: not met**, only because full-M splits 7 pass / 9 fail (needs 2/3 agreement, i.e.
+  at least 11 of 16). Every other component meets it. **As registered, E46 is not "better than
+  E38"; E38 stays the reference** and the held-out test stays unspent.
+- **Selection used: yes.** gamma is tightly identified: 1.21-1.35 in all 16 gated seeds (median
+  1.29). With it, s_G (the uniform N-output boost under G-CSF) drops from about 4.7 (E38) to a
+  median 0.63. The selection effect moves from "G-CSF scales neutrophil output for every clone"
+  to "each cytokine expands the clones of its own lineage".
+- **Instruction vs selection: "not absorbed".** Median instruction shifts, E38 (9 gated) vs E46
+  (16 gated): tau_G - tau_full 0.49 vs 0.86; tau_full - tau_M 0.47 vs 4.79. The M shift is
+  poorly identified in E46 (0.6-7.5 across seeds), so it is a ridge, not an estimate. No
+  instruction claim is made.
+- **Explains B27: no, on one of three.** Best gated fit (s11): G-M co-present 39 inside [31, 54],
+  lift 0.31 inside [0.27, 0.45], but M-present clones 478 above [406, 465] (E38's old shortfall
+  remains).
+- **Side readings.** B7 G inside (-0.38 vs [-0.55, -0.26]); B24 D2 inside; B26 16+ M-pure clones
+  inside (5 vs [0, 6]); **D3 still out** (0.15 vs [0, 0.08]).
+- **Conclusion.** Lineage-matched selective expansion is the first mechanism that fixes the gate
+  rate, B7 G and co-presence together, and it is consistently identified. What remains: the
+  full-M primary component (unstable across seeds), too few M-present clones, and D3. The M-side
+  instruction parameter sits on a ridge. Next: a data diagnostic for full-M before any E47.

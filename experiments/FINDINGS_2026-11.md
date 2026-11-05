@@ -152,3 +152,14 @@ E43 and E44 (an M-committed clone class) and E45 (limited sister cells split bet
 fail the protocol; E38 stays the reference. E45 fixes most of B27's presence misfit (G-M lift
 0.47 -> 0.31-0.39, M-present clones right) but gates only 3/13 seeds and loses B7 G in all of
 them. Shared G/M presence and the B7 G difference trade against each other in every model tried.
+
+## Update (2026-11-05, later): E46, selective expansion fits much better
+
+E46 adds one parameter: each cytokine expands the clones whose fate bias matches its lineage
+(G-CSF neutrophil-leaning, M-CSF monocyte-leaning). It gates 16/18 seeds (E38 9/18), passes B7 G
+in all gated seeds, fits G/M co-presence, and gamma is consistent (1.2-1.35) in every seed. It
+misses the stability rule only on the full-M component (7/16), and still has too few M-present
+clones and too few large M-pure clones under G-CSF (D3). E38 stays the formal reference. Weinreb's
+Supp Fig 7g shows the same pattern descriptively (read after E46 was registered). The Weinreb
+supplement also fixes the design: B28 shows sister competition at the split cannot explain
+co-presence, and that detection does not differ materially by cell type.
