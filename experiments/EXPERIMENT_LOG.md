@@ -5298,3 +5298,21 @@ Predicted shard-1 means (gated seeds x 20 simulations; all denominators >= 30):
     candidate model term, like the measured fate score m.
   - **No link beyond the model:** the data gradient lies inside E48's simulated range.
   - (b)-(d) reported as supporting detail.
+
+### B35 result (2026-11-05)
+
+| day-2 cells | clones (data / E48) | wells present, mean | in >= 2 wells | in G | in M |
+|---|---|---|---|---|---|
+| 0 | 947 / 927 | 1.22 vs 1.37 [1.33, 1.41] **out** | 0.19 vs 0.31 **out** | 0.30 vs 0.32 in | 0.42 vs 0.41 in |
+| 1 | 347 / 332 | 1.25 vs 1.37 [1.30, 1.44] **out** | 0.20 vs 0.31 **out** | 0.28 vs 0.33 out | 0.38 vs 0.40 in |
+| 2+ | 229 / 189 **out** | 1.35 vs 1.37 in | 0.29 vs 0.31 in | 0.35 vs 0.33 in | 0.46 vs 0.41 in |
+
+- **Abundance-linked seeding: yes (as registered).** Data gradient (wells at 2+ minus 0) 0.13,
+  above E48's simulated range [-0.09, 0.09]; all groups >= 229 clones.
+- The model seeds clones that were rare at day 2 too widely (in >= 2 wells: 0.19-0.20 in the data
+  vs 0.31), and it makes too few present clones with 2+ day-2 cells (229 vs 189). Clones that were
+  abundant at day 2 fit.
+- **Implication.** Clones differ in how many cells they had at the split, and the day-2 count
+  measures it. A measured, clone-level founder rate (nu scaled by a function of n2, like the
+  measured fate score) is a model term with data behind it; candidate for a later experiment
+  (E51), separate from E50's G-only neutrophil class.
