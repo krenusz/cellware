@@ -4866,3 +4866,24 @@ Logged openly; the E47 entry above is left as registered.
   plausible fit. So the B7 G evidence for lineage-matched selection is compatible with biology;
   the co-presence evidence needs more than biology allows, or another mechanism. Instruction
   estimates are unchanged across E38, E47 and E48 (~0.5 each way).
+
+## B30: power check for the held-out Epo/SCF shard-1 look (pre-registered 2026-11-05)
+
+- **Why.** The only unspent held-out test is `epo_scf_pooled` shard 1 of 2 (test_oracle.py):
+  N-fraction concordance r pooled over every condition pair that includes Epo or SCF, clones in
+  shard 1 only (never fitted). Shard 0 (E14) had 24 clones and a 95% CI half-width of ~0.37. The
+  standing power rule (E18, E26) says: look only if the candidate models' predicted shard-1 r
+  differ by more than the expected CI half-width.
+- **What.** Models E38, E46, E47, E48; every gated seed; 50 simulations per seed (rng 3000+s) with
+  the model's own simulator on the full clone universe, restricted to Epo/SCF shard 1
+  (`split(sim, 1)`), statistic `pooled_pairs_r` (boot 1, only r used). No observed shard-1
+  outcome is touched. Script experiments/b30_power.py; output results_e18/b30_power.json.
+- **Reported per model:** mean, 2.5-97.5% of the pooled draws, median clone count, share of draws
+  hitting the <10-clone sentinel (r = 0), and the simulated half-width (1.96 x SD of draws).
+- **Decision rule (registered now).** For each pair among E46, E48 and E38 (E47 reported only):
+  the look can discriminate the pair if |mean difference| > max(0.37, the larger of the two
+  simulated half-widths). Minimum: at least 9 gated seeds per model (all have 9-16).
+  - If no pair passes: **the look is skipped as uninformative**, shard 1 stays sealed, and the
+    next step is a sharper held-out statistic (to be pre-registered separately).
+  - If a pair passes: the look is proposed (not taken) with a separate pre-registration naming the
+    reading for each model.
