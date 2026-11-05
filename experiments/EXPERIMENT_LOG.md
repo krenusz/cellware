@@ -5058,3 +5058,30 @@ E48 best gated fit s0, 200 simulations. All groups >= 112 clones; 139-205 same-d
   >= 3 cells; B31(a) already shows both E46 and E48 fit the G-M lift at >= 3 and >= 5 cells.
   A full re-fit with >= 3-cell presence targets (or an explicit M-private clone class) is the
   candidate for E49, to be pre-registered separately.
+
+## B33: power check for a selection-sensitive held-out statistic on shard-1 clones (pre-registered 2026-11-05)
+
+- **Why not B7 G.** Bence asked for a power check of B7 G on shard-1 clones. That value is not
+  clean: B7 G was computed on all clones (-0.373) and on the fit set (-0.382) in the 2026-11-04
+  audit, so the shard-1 value follows almost exactly from the two. The same holds for B7 M and
+  for the concordances (B29 printed their shard-1 values). These are excluded as held-out
+  statistics.
+- **Candidates instead.** The B31 statistics, computed so far only on the fit set (2026-11-05),
+  never on all clones or on shard 1, are the ones that separate the selection models:
+  (1) G-M lift at >= 2 cells; (2) G-M lift at >= 3 cells; (3) P(present in G | M-clone size 6+);
+  (4) P(present in M | G-clone size 6+); (5) P(present in G | M-clone size 2). Computed on
+  shard-1 clones only (`split(cnt, 1)`), same definitions as B31 (universe = clones present in any
+  of full/G/M on shard 1).
+- **What.** E38, E46, E47, E48: every gated seed, 20 simulations each (rng 4000+s), statistic on
+  the simulated shard-1 clones. No observed shard-1 value is computed. Script
+  experiments/b33_power.py; output results_e18/b33_power.json.
+- **Decision rule (as B30).** For each statistic and each pair among E38, E46 and E48: the look
+  can discriminate the pair if |mean difference| > the larger of the two simulated half-widths
+  (1.96 x SD of draws). Minimum: the statistic's simulated denominator has a median of at least
+  30 clones (for (3)-(5), the bin size; for (1)-(2), the smaller presence count).
+  - If no statistic discriminates any pair: no shard-1 look is proposed; shard 1 stays unused.
+  - If some do: a look is proposed (not taken) in a separate pre-registration listing the
+    discriminating statistics and the reading for each model. The look itself needs Bence's go.
+- **Caveat recorded now.** Shard-1 clones' G, M and full data were used in earlier all-clone
+  statistics (cross r, B7, B12-type co-presence), so even unseen statistics on them are not
+  independent of everything seen. A pass makes the look informative, not pristine.
