@@ -174,3 +174,13 @@ primary)**. By the registered rule E46 is the new reference. A proper score (CRP
 clear gain is B7 G; on the concordances E38 scores better. Held-out test still unspent; the power
 check comes first. From now on the primary concordances use the fit set and comparisons report
 CRPS.
+
+## Update 2026-11-05: E47, selection capped at a plausible strength
+
+Rieger 2009 (GMPs almost death-free in single M-CSF or G-CSF, ~12 h cycle) implies E46's
+selection strength is about four times too large. E47 caps it at about one doubling per SD of
+bias. Result: stable and passing on the fit set (9/9 gated seeds), summed CRPS 0.340 (E46 0.376,
+E38 0.320), so by the registered rule **E47 is the reference**. But the B7 G centre moves only
+from -0.27 (E38) to -0.29 (data -0.38; E46 -0.41): E46's one real gain does not survive a
+plausible cap. Instruction estimates are back to E38's (G and M shifts ~0.5 each). M presence,
+D3 and B26 remain unexplained by all three models.
