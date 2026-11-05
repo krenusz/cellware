@@ -248,3 +248,18 @@ D3 and B26 remain unexplained by all three models.
   only small clones are in excess, with no distinguishing day-2 state. In both, private clones
   are about half as often captured at day 2, so they likely started from few cells at the split.
   No late-arrival signal.
+
+## Closing (2026-11-05): LARRY cytokine modelling stopped
+
+- **Answer.** G-CSF and M-CSF act mostly by selection on clones' existing fate state (about
+  7-8 logits per SD), with modest instruction (about 0.5 logits each way) in every plausible
+  model (E38, E47, E48). Only E46, whose selection strength is implausible (gamma 1.29), moves the
+  M instruction. Full answer, evidence and limits: WRITEUP_LARRY_CYTOKINE.md.
+- **Last results.** E50 (G-only neutrophil-committed class) gated 0 seeds. B36: the Epo/SCF
+  over-sharing is a counting artefact for SCF; Epo holds a separate erythroid clone set. B37, the
+  held-out presence look, was not decisive: E46 fell inside all three statistics, E48 missed
+  G-M lift at >= 2 cells, so the small M-private clone effect replicates on unseen clones.
+- **Why stop.** The stopping rule (program.md): no remaining misfit could move the instruction
+  or selection estimates by more than their spread across standing models.
+- **Discoveries and literature checks:** DISCOVERIES.md. **Next data:** SIS-skew (Tian 2021,
+  Bcor KO vs WT sisters, cDC1/cDC2/pDC), checked usable (NEXT_DATASETS_2026-11.md, check 1).

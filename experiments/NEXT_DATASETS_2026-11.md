@@ -44,3 +44,77 @@ original 2023-24 multi-agent tissue simulator in this repo.
 - Monoclonal gastruloids, GSE291244: https://www.omicsdi.org/dataset/geo/GSE291244
 - ReSisTrace, Dai et al. 2024: https://www.nature.com/articles/s41467-024-45478-7.pdf
 - scDynaBar (Figshare): https://figshare.com/articles/dataset/_b_scDynaBar_b_Using_CRISPR_barcoding_as_a_molecular_clock_to_capture_dynamic_processes_at_single-cell_resolution/27627303
+
+## Check 1: SIS-skew processed data (2026-11-05)
+
+Read without downloading the whole 282 MB Mendeley zip: the zip's file list came from its last
+1 MB, and four files were pulled by byte range into `data/sis_seq/fig5/` (uncommitted, like all
+raw data): `ST072_Counts.txt`, `ST072_Sorted_cell_number.txt`, `SIS_skew_analysis.rmd` (the
+authors' Fig 5 analysis, T. Weber 2020) and a README.
+
+**What the counts are.** 2,607 barcodes x 108 samples, barcode reads per sample (96k-1.1M
+reads). Each sample is one well x one sibling arm x one sorted DC type x one PCR replicate:
+
+- Wells W1-W3: wild-type HSPC, Cherry+ = control vector. This is the null: siblings that differ
+  only by the label. Wells C1-C3: Cas9 LSK, Cherry+ = Bcor sgRNA (KO siblings), Cherry- =
+  untransduced siblings (WT). (Z1-Z3 wells exist; the authors' script ignores them; unknown.)
+- Arms: Cherry+ and Cherry-, i.e. **sister cells of one clone under two conditions**.
+- Fates: cDC1, cDC2, pDC, sorted; sorted cell numbers given, so reads convert to cells.
+- Replicates a/b: the authors keep a barcode only if both replicates see it.
+
+**Per well, after the authors' filters (both replicates, > 1 cell):**
+
+| well | clones | both arms | Cherry+ only | Cherry- only | cells + / - | median size |
+|---|---|---|---|---|---|---|
+| W1 (null) | 377 | 283 | 50 | 44 | 11.3k / 12.9k | 16 |
+| W2 (null) | 295 | 245 | 38 | 12 | 7.5k / 6.1k | 12 |
+| W3 (null) | 129 | 121 | 5 | 3 | 0.7k / 0.5k | 3 (authors drop it) |
+| C1 (KO) | 436 | 244 | 86 | 106 | 92.7k / 16.3k | 28 |
+| C2 (KO) | 420 | 241 | 62 | 117 | 88.5k / 18.1k | 38 |
+| C3 (KO) | 436 | 239 | 102 | 95 | 80.2k / 16.8k | 26 |
+
+- KO siblings make about 5x more cells than their WT sisters; null-well arms are balanced. pDC
+  presence is higher in KO arms (0.20-0.33 vs 0.08-0.22).
+- One-arm clones are far commoner in KO wells (about 45% vs 15-25% in the null): the same
+  presence question LARRY raised.
+- **Caution:** about a quarter of barcodes recur across wells, so the library is small and a
+  barcode is a clone only within one well.
+
+**Verdict: usable.** It is the conditional design we need: clone-level sister counts per
+condition, three fates, a built-in null (W wells), about 720 both-arm KO clones and 530 null
+clones. The LARRY question becomes: does Bcor loss instruct fate (changes each clone's
+cDC1/cDC2/pDC split relative to its sisters) or select (expands clones by their existing bias)?
+
+**Before any model:** pre-register a data diagnostic (B38) with a held-out clone shard sealed
+first, exactly as for LARRY: sister concordance of fate fractions in null vs KO wells, KO/WT size
+ratio against the clone's WT fate, and one-arm presence by size. Minimum sample: 200 both-arm
+clones per arm type.
+
+## Check 3: monoclonal gastruloids, GSE291244 (2026-11-05)
+
+Paper: Shendure lab, "Lineage recording in monoclonal gastruloids reveals heritable modes of
+early development" (bioRxiv 10.1101/2025.05.23.655664, PMC12139830; GEO title "A fluctuation
+test for gastruloid heterogeneity", PMID 40475526). Code: github.com/shendurelab/DTT (scripts
+only, Sections 1-4). Two small annotation files were downloaded to
+`data/gastruloid_gse291244/` (uncommitted).
+
+**What GEO holds (processed).**
+
+- sci-RNA-seq3 of pooled monoclonal gastruloids (6 plates, about 144 gastruloids per plate):
+  247,064 cells with QC and 16 annotated cell types (hindbrain, somites, spinal cord, NMPs,
+  PSC-like, notochord, endoderm, cardiac mesoderm, ...). Matrix 439 MB.
+- "tree_of_trees" 10x (106 gastruloids): 66,978 cells, cell type per cell. Matrix 444 MB.
+- 10x monoclonal L1-L12 and polyclonal L1-L4 matrices (about 100-190 MB each), mESC multiome
+  L1-L4 (about 300 MB each), RAW.tar 560 MB.
+
+**What GEO does not hold:** which gastruloid each cell belongs to, and the DNA Typewriter
+lineage. The cell annotations carry no gastruloid id. The authors assign cells to gastruloids
+from tape barcodes (DTT `Step3_cell_to_gastruloid.R`), using intermediate files on their lab
+server: https://shendure-web.gs.washington.edu/content/members/cxqiu/public/nobackup/sam_tape/
+(DebrisSeqTAPE per-gastruloid tape calls, `Tape_cell_uniq.txt`, CellByTape 10x tables,
+loci files). Listing seen, nothing downloaded.
+
+**Verdict: usable, with work.** The question it can answer is the long-term one: does fate bias
+pass from founder mESC to sister gastruloids (related founders, similar compositions)? Getting
+there means re-running the authors' cell-to-gastruloid step from their tape files, then a
+gastruloid x cell-type table plus a founder tree. Not a perturbation design. After SIS-skew.
