@@ -4908,3 +4908,39 @@ Logged openly; the E47 entry above is left as registered.
   size and G/M presence, not on N-fraction agreement between Epo/SCF and other wells. A useful
   held-out statistic has to target presence/size (B7-type) on shard-1 clones; to be designed and
   pre-registered separately, with its own power check, before shard 1 is spent.
+
+## B31: where does the G-M co-presence deficit live? (pre-registered 2026-11-05)
+
+- **Data diagnostic.** G-M co-presence lift (B27: clones with >= 2 cells in both G and M, over the
+  count expected if presence were independent, universe = clones present in any of full/G/M,
+  fit set) is 0.31. E46's best fit reproduces it; the plausible E48 best fit leaves it at
+  0.34-0.52. Before any E49, locate the deficit, without assuming a mechanism.
+- **Statistics (fit set; data and simulations computed identically on pooled days):**
+  - (a) **Threshold curve:** G-M lift with presence defined as >= 1, 2, 3 and 5 cells.
+  - (b) **Cross-presence by size:** P(present in M | G-clone size bin 2, 3-5, 6+) and
+    P(present in G | M-clone size bin 2, 3-5, 6+), presence >= 2 cells.
+  - (c) **By measured day-2 state:** G-M lift within the clones with a measured day-2 score m
+    (Cebpa - Irf8), separately below and above the median m (expected count computed within each
+    half).
+  - (d) **Data only, descriptive:** lift for day-matched (G4-M4, G6-M6) vs cross-day (G4-M6,
+    G6-M4) presence; the simulators produce one pooled day, so no model comparison.
+- **Models.** Best gated fits (lowest loss) of E46 and E48, 200 simulations each (rng 1000+s).
+  Script experiments/b31_copresence.py; output results_e18/b31_copresence.json.
+- **Minimum counts.** A statistic is read only if its data denominator has >= 30 clones
+  ((a) the smaller of G and M presence counts; (b) the bin size; (c) expected co-present count
+  >= 10). Otherwise reported as "too few".
+- **Readings (each: data inside or outside the model's simulated 95%).**
+  - **Small-clone artefact:** E48 misses the lift at >= 2 but not at >= 3 and >= 5 -> the
+    deficit lives in 2-cell samples (as B24 found for B7 G), pointing at detection/sampling of
+    the smallest clones, not at fate.
+  - **Size-linked exclusion:** in (b), the data's P(M | G size) falls with G size and lies below
+    E48's range in the 6+ bin (or the mirror for P(G | M size)) -> clones that expand strongly in
+    one cytokine are missing from the other, the signature of strong lineage-matched expansion.
+  - **Size-independent exclusion:** (b) below E48 in all bins by a similar margin -> a
+    presence-level factor (clone-level seeding or survival) unrelated to expansion.
+  - **Carried by the measured state:** in (c), the data lift within each half is closer to 1
+    than the overall lift, and E48 fits within halves -> the deficit is fate-state structure the
+    model under-couples (w); if the data lift stays as low within halves, it is not carried by
+    the measured day-2 state.
+  - **Day structure (descriptive):** day-matched lift >= 0.2 higher than cross-day suggests
+    sampling time contributes.
