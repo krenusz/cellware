@@ -263,3 +263,17 @@ D3 and B26 remain unexplained by all three models.
   or selection estimates by more than their spread across standing models.
 - **Discoveries and literature checks:** DISCOVERIES.md. **Next data:** SIS-skew (Tian 2021,
   Bcor KO vs WT sisters, cDC1/cDC2/pDC), checked usable (NEXT_DATASETS_2026-11.md, check 1).
+
+## Chapter 2 start (2026-11-05): SIS-seq / SIS-skew diagnostics and recovery check
+
+- **B38.** DC fate is largely fixed in the clone before the split (sister heritable share 0.71
+  [0.59, 0.78]; clone logit SD 2.0-2.7): LARRY's strong clone fate state, replicated in a second
+  system.
+- **B39.** No Bcor fate effect beyond the null wells, but the null wells are not null (vector or
+  HSPC-vs-LSK difference). The strongest KO signal is persistence: one-arm clones far commoner.
+- **B40.** Persistence odds 6.2x the null's; clones that survive only with Bcor lost are
+  cDC1-poor (weak, registered reading met).
+- **R1.** At this sample size the statistics identify clone-level selection (gamma) well and
+  within-clone instruction (tau) only roughly; tau is biased by any W-vs-C label difference.
+- **Next:** fit the SIS-skew model with gamma as the main result and tau as a bounded,
+  sensitivity-tested quantity; then the held-out look (plan step 5).

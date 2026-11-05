@@ -5689,3 +5689,52 @@ both nuisances.
   - **Misspecification:** with the KO-group label shift 0.5 larger than the null's (W vs C
     difference), bias in tau-hat > 0.3 = the null cannot serve as baseline for tau.
 - **Minimum.** Fixed by design (simulations); results reported whatever they are.
+
+### B40 and R1 results (2026-11-05; results_sis/b40.json, r1_calibration.json, r1_recovery.json)
+
+**B40 (fit set; KO 831 clones, 352 with - arm > 10 cells; null 454, 171): powered.**
+
+- **A. One-arm odds, KO vs null at the median size: 6.2 [4.1, 11.1].** (Caveat stands: the
+  transduction rate may differ between W and C.)
+- **B. Direction.** In KO wells the +-only (KO-only) share of one-arm clones rises with size:
+  0.30 (2-5 cells), 0.46, 0.61, 0.85 (> 100). Null wells: 0.51, 0.66, 0.60 (few large ones).
+  Small KO clones lose their KO arm; large one-arm KO clones exist only as KO.
+- **C. Persistence by fate.**
+
+  | rho | KO | null |
+  |---|---|---|
+  | + absent vs - arm cDC1 / cDC2 / pDC | -0.06 / -0.04 / 0.00 (all include 0) | +0.07 / -0.06 / -0.01 (all include 0) |
+  | - absent vs + arm cDC1 / cDC2 / pDC | **-0.17 [-0.25, -0.08]** / -0.03 / +0.07 [-0.02, 0.16] | +0.05 / +0.01 / **-0.19 [-0.32, -0.04]** |
+
+- **Reading: Bcor selects on persistence by fate (met, weakly).** Clones that exist only in the
+  KO arm are cDC1-poor (rho -0.17; CI excludes 0 and the null's +0.05). Whether a KO arm
+  persists does not depend on the WT sister's fate. So Bcor loss lets non-cDC1 (cDC2/pDC-making)
+  clones persist that otherwise do not, consistent with Bcor restraining cDC2/pDC expansion
+  (Tian 2021). Effect small; it is one fate in one direction.
+- The null wells again show their own fate-linked pattern (pDC-rich control-arm clones more
+  often lack a WT arm, -0.19), absent in KO wells: more evidence that W is not a clean baseline.
+
+**R1 calibration (nuisance search, 6,000 random + 6,000 local draws; final loss 30).** Matched
+roughly: arm fate fractions (W cDC1-rich, C cDC2-rich, so the fate mix is group-specific),
+one-arm shares by size (null 0.79 / 0.27 / 0.09 / 0.02 observed vs 0.79 / 0.31 / 0.17 / 0.08
+simulated; KO 0.97 / 0.64 / 0.32 / 0.08 vs 0.93 / 0.58 / 0.30 / 0.14), sister TV (0.27 vs 0.26
+null; 0.28 vs 0.22 KO). Missed: the + / - cell ratio runs about 0.6 log units high in both groups,
+and the simulated size distribution has too few small clones. Deviation from the registration:
+the search was automated, not by hand, and bounds were widened once after the first search
+hit them (before any recovery run).
+
+**R1 recovery (4,000 train / 300 test, ridge alpha 1, at fit-set sizes).**
+
+| parameter | test R^2 | RMSE | error vs true others | bias if C label shift is 0.5 larger than W |
+|---|---|---|---|---|
+| tau (KO instruction, pDC logit) | 0.84 | **0.36** | gamma -0.06, delta **+0.36** | **+0.48** |
+| gamma (KO selection, log-growth per SD) | **0.96** | **0.11** | tau 0.01, delta -0.05 | 0.01 |
+| delta (label effect) | 0.78 | 0.27 | tau 0.25 | 0.01 |
+
+- **Readings.** gamma: **recoverable**. tau: **not recoverable** by the registered bar (R^2
+  passes, RMSE 0.36 > 0.3). Confounded (tau vs gamma): **no** (|r| <= 0.06). Misspecification:
+  **tau bias 0.48 > 0.3, so the W wells cannot serve as the baseline for tau**; gamma is immune.
+- **Consequence.** A SIS-skew fit can estimate clone-level selection by Bcor reliably, even with
+  a label nuisance and a W-vs-C population difference. Within-clone instruction can only be
+  bounded, and any W-vs-C label difference passes straight into it. The fit should report gamma
+  as the main result and tau with an explicit label-difference sensitivity.
