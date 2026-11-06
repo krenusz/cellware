@@ -6278,3 +6278,15 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   fractions either. Numbers are the 2021 preprint's (published version may differ).
 - No competition or shared leaderboard exists for this task (checked 2026-11-06); the Arc Virtual
   Cell Challenge 2026 scores perturbation responses, not clone fate.
+
+### E55 fit-shard CV (2026-11-06, 374 clones, 5-fold nested ridge, written before the look)
+
+| features | CV r | CV R^2 |
+|---|---|---|
+| PCA-50 | 0.64 | 0.35 |
+| marker (Cebpa - Irf8) | 0.21 | 0.04 |
+| Geneformer V1-10M | 0.44 | 0.19 |
+| Geneformer V2-316M | 0.61 | 0.38 |
+
+- **Best foundation candidate (named before the look): gf_V2-316M.** On the fit shard it ties
+  PCA-50 (r 0.61 vs 0.64; R^2 0.38 vs 0.35). Target ceiling R^2 0.96. The look follows.
