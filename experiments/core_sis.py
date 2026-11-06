@@ -51,6 +51,8 @@ def simulate(p, n, ko, rng):
     gn = gn_u + gn_e
     delta = np.array([0.0, p["delta_cDC2"], p["delta_pDC"]])
     tau = np.array([0.0, p["tau_cDC2"], p["tau_pDC"]]) if ko else np.zeros(3)
+    if ko and p.get("dlabel_C", 0.0):  # S1: extra label shift of the + arm in C wells only
+        delta = delta + np.array([0.0, p["dlabel_C"], p["dlabel_C"]])
     sf = np.array([0.0, p.get("sfate_cDC2", 0.0), p.get("sfate_pDC", 0.0)]) if ko else None
     lp = z + delta + p["s_eps"] * rng.standard_normal((m, 3))                  # 4. output
     ln = z + p["s_eps"] * rng.standard_normal((m, 3))
@@ -92,14 +94,20 @@ def equiv(nsim=300, seed=31):
 
 # ------------------------------------------------------------------ R3 / E52
 
-def bank(n=20000, seed=32):
+def tag(d):
+    return "" if d is None else f"_d{'+' if d > 0 else '-'}{abs(d):.1f}"
+
+
+def bank(n=20000, seed=32, d=None):
     rng = np.random.default_rng(seed)
     th, S = np.zeros((n, len(NAMES))), []
     for i in range(n):
         p = draw(rng)
         th[i] = [p[k] for k in NAMES]
+        if d is not None:
+            p["dlabel_C"] = d
         S.append(sim_stats(p, rng))
-    np.savez_compressed(BANK, theta=th, S=np.array(S))
+    np.savez_compressed(BANK.replace(".npz", tag(d) + ".npz"), theta=th, S=np.array(S))
     print("bank", th.shape)
 
 
@@ -130,8 +138,8 @@ def summarise(adj, wts):
     return out
 
 
-def load_abc():
-    z = np.load(BANK)
+def load_abc(d=None):
+    z = np.load(BANK.replace(".npz", tag(d) + ".npz"))
     return ABC3(z["theta"], z["S"])
 
 
@@ -169,13 +177,13 @@ def predictive(adj, wts, rng, n_draws, n_null=N_NULL, n_ko=N_KO, override=None, 
     return np.array(out)
 
 
-def fit(seed=34):
+def fit(seed=34, d=None):
     rng = np.random.default_rng(seed)
-    abc = load_abc()
+    abc = load_abc(d)
     s = r2.observed_fit()
     adj, wts, _ = abc.posterior(s)
     post = summarise(adj, wts)
-    sims = predictive(adj, wts, rng, 200)
+    sims = predictive(adj, wts, rng, 200, override=None if d is None else {"dlabel_C": d})
     lo, hi = np.percentile(sims, 2.5, axis=0), np.percentile(sims, 97.5, axis=0)
     inside = (s >= lo) & (s <= hi)
     g = {nm: post[nm] for nm in ("gamma_cDC2", "gamma_pDC")}
@@ -184,8 +192,9 @@ def fit(seed=34):
            "reading_selection": ("selection" if any(v["lo"] > 0 or v["hi"] < 0 for v in g.values())
                                  else "none (negligible)" if all(-0.25 <= v["lo"] and v["hi"] <= 0.25 for v in g.values())
                                  else "undetermined")}
-    np.savez_compressed(os.path.join(OUT, "e52_posterior.npz"), adj=adj, wts=wts)
-    json.dump(res, open(os.path.join(OUT, "e52_fit.json"), "w"), indent=1)
+    name = "e52" if d is None else "s1" + tag(d)
+    np.savez_compressed(os.path.join(OUT, f"{name}_posterior.npz"), adj=adj, wts=wts)
+    json.dump(res, open(os.path.join(OUT, f"{name}_fit.json"), "w"), indent=1)
     print(json.dumps({"posterior": post, "adequacy": res["fit_adequacy_share_inside"],
                       "misses": res["misses"], "reading_selection": res["reading_selection"]}, indent=1))
 
@@ -203,17 +212,19 @@ def gain_stats(p, rng, n_null=N_NULL, n_ko=N_KO):
     return np.concatenate([pdc_gain(*simulate(p, n_null, False, rng)), pdc_gain(*simulate(p, n_ko, True, rng))])
 
 
-def b42(seed=42, n_draws=400):
+def b42(seed=42, n_draws=400, d=None):
     import sis_data as sd
     from b39_sisskew import GROUPS
     rng = np.random.default_rng(seed)
     d = sd.load_skew("fit")
     obs = np.concatenate([pdc_gain(d["P"][np.isin(d["well"], GROUPS[g])], d["N"][np.isin(d["well"], GROUPS[g])])
                           for g in ("null", "KO")])
-    z = np.load(os.path.join(OUT, "e52_posterior.npz"))
-    full = predictive(z["adj"], z["wts"], rng, n_draws, fn=gain_stats)
+    name = "e52" if d is None else "s1" + tag(d)
+    extra = {} if d is None else {"dlabel_C": d}
+    z = np.load(os.path.join(OUT, f"{name}_posterior.npz"))
+    full = predictive(z["adj"], z["wts"], rng, n_draws, fn=gain_stats, override=extra or None)
     nofate = predictive(z["adj"], z["wts"], rng, n_draws, fn=gain_stats,
-                        override={"tau_cDC2": 0.0, "tau_pDC": 0.0, "sfate_cDC2": 0.0, "sfate_pDC": 0.0})
+                        override={"tau_cDC2": 0.0, "tau_pDC": 0.0, "sfate_cDC2": 0.0, "sfate_pDC": 0.0, **extra})
     lab = ["null_G", "null_L", "null_Net", "KO_G", "KO_L", "KO_Net"]
     res = {}
     for j, nm in enumerate(lab):
@@ -225,12 +236,16 @@ def b42(seed=42, n_draws=400):
     in_f = inn("KO_G", "full_95") and inn("KO_Net", "full_95")
     res["reading"] = ("expansion plus sampling explains it" if in_nf
                       else "needs a fate effect" if in_f else "unexplained")
-    json.dump(res, open(os.path.join(OUT, "b42.json"), "w"), indent=1)
+    json.dump(res, open(os.path.join(OUT, "b42.json" if d is None else f"b42_{name}.json"), "w"), indent=1)
     print(json.dumps(res, indent=1))
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["equiv", "bank", "recover", "fit", "b42"])
+    ap.add_argument("--d", type=float, default=None, help="S1: fixed C-well label shift")
     a = ap.parse_args()
-    {"equiv": equiv, "bank": bank, "recover": recover, "fit": fit, "b42": b42}[a.cmd]()
+    if a.cmd in ("bank", "fit", "b42"):
+        {"bank": bank, "fit": fit, "b42": b42}[a.cmd](d=a.d)
+    else:
+        {"equiv": equiv, "recover": recover}[a.cmd]()
