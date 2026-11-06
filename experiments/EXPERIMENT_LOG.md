@@ -6245,3 +6245,14 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   directory, no code from it executed); ortholog table into `data/orthologs/`; Python reading
   either runs with `-I`. CPU first; GitHub Actions if a run passes about 1 hour. Smoke tests in
   the scratchpad.
+
+### E55 deviations before any fate statistic (2026-11-06)
+
+- **scGPT dropped.** The tdc/scGPT safetensors repo has no gene vocabulary and needs its own model
+  code (custom `ScGPTModel`); the official weights live outside Hugging Face. Candidates are the
+  two Geneformer models: V1-10M (6 layers, 2,048 tokens) and V2-316M (18 layers, 4,096).
+- **Implementation.** Geneformer's tokenisation and embedding were reimplemented from its code
+  (read, not run): normalised counts / total x 1e4 / gene median, nonzero genes ranked, V2 adds
+  <cls>/<eos>; embedding = mean of gene tokens in the penultimate layer. Dictionaries read with a
+  whitelist unpickler. 14,792 of 25,289 mouse genes map one-to-one to Geneformer's vocabulary.
+- **Sizes.** 571 clones (374 fit, 197 held-out), 868 day-2 cells; target sampling ceiling R^2 0.96.

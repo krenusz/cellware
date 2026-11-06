@@ -83,10 +83,19 @@ def sisseq_rna_heldout(shard, shards):
     return core_sisseq.heldout_stat()
 
 
+def larry_fm_heldout(shard, shards):
+    """E55: Geneformer vs PCA-50 clone-fate prediction on LARRY in vitro e55 shard 0 of 3."""
+    import e55_fm
+
+    return e55_fm.heldout_stat()
+
+
 # name -> (function, description). Tests already spent elsewhere are recorded in the ledger.
 TESTS = {
     "epo_scf_pooled": (epo_scf_pooled, "cytokine expt: N-fraction concordance pooled over every "
                                        "condition pair with Epo or SCF"),
+    "larry_fm_heldout": (larry_fm_heldout, "LARRY in vitro: Geneformer vs PCA-50 day-2 state -> clone N "
+                                           "fraction, e55 shard 0 of 3 (E55)"),
     "presence_heldout": (presence_heldout, "cytokine expt: G-M lift (>= 2, >= 3 cells) and "
                                            "P(G | M size 6+) on clone shard 1 of 2 (B37)"),
     "sisseq_rna_heldout": (sisseq_rna_heldout, "SIS-seq: RNA score vs sister fate logit, H2 held-out shard 0 of 3 (E54)"),
