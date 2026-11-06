@@ -1,5 +1,5 @@
 {
- "s_eps": 0.8,
+ "s_eps": 0.7000000000000001,
  "sigma": [
   1.360867936212348,
   1.8274424977860588,
@@ -11,18 +11,18 @@
   0.7426713291338326
  ],
  "cDC1": {
-  "RMSE": 0.24918310275010994,
-  "coverage95": 0.54,
-  "reading": "not recoverable"
+  "RMSE": 0.1965754396088872,
+  "coverage95": 0.9533333333333334,
+  "reading": "recoverable"
  },
  "cDC2": {
-  "RMSE": 0.17286175381862484,
-  "coverage95": 0.68,
-  "reading": "not recoverable"
+  "RMSE": 0.15422342279756637,
+  "coverage95": 0.92,
+  "reading": "recoverable"
  },
  "pDC": {
-  "RMSE": 0.12075034246655246,
-  "coverage95": 0.88,
-  "reading": "not recoverable"
+  "RMSE": 0.12238410658249918,
+  "coverage95": 0.9133333333333333,
+  "reading": "recoverable"
  }
 }

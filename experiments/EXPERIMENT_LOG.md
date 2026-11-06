@@ -6136,3 +6136,23 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   bootstrap CI is divided by the same k_f. R4 is re-run on the corrected estimator with fresh
   simulations (seed 58) and the registered bar. Readings, predictions and the held-out look then
   proceed exactly as registered, using a_corr (the simulator's own scale).
+
+### E54 fit-set result and held-out predictions (2026-11-06, written before the look)
+
+- **R4 (corrected estimator, 300 fresh tests, seed 58):** cDC1 RMSE 0.20, coverage 0.95; cDC2
+  0.15, 0.92; pDC 0.12, 0.91: all **recoverable**. s_eps recalibrated 0.70.
+- **Fit set (65 clones), loading a_f [95%] and share a_f^2:**
+
+| fate | a (corrected) | a^2 (share of clone state read from RNA) | sigma (clone logit SD) |
+|---|---|---|---|
+| cDC1 | 0.65 [0.39, 1.14] | 0.42 [0.15, 1.30] | 1.36 |
+| cDC2 | **0.80 [0.61, 1.06]** | 0.64 [0.38, 1.12] | 1.83 |
+| pDC | **0.75 [0.66, 0.93]** | 0.57 [0.43, 0.86] | 2.52 |
+
+- **Reading: the RNA axis carries the hidden state** (CI excludes 0 for pDC and cDC2; cDC1 too).
+  The day-2.5 RNA score reads about 55-65% of the clone fate state, against 90% for LARRY's day-2
+  Cebpa-Irf8 score (w = 0.95). CIs above 1 come from the correction and sampling noise.
+- **Held-out predictions** (core simulator, 1,000 draws over bootstrap parameters, expected 32
+  held-out clones; corr(r_f, pooled logit_f), 95%): cDC1 [0.03, 0.74]; **cDC2 [0.35, 0.87]**;
+  **pDC [0.44, 0.88]**. Link replicates if the held-out correlations for pDC and cDC2 are inside
+  these ranges and > 0.

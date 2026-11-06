@@ -76,12 +76,20 @@ def skew_heldout(shard, shards):
     return {"n": n, "index": heldout_index(), "values": [float(s[i]) for i in heldout_index()]}
 
 
+def sisseq_rna_heldout(shard, shards):
+    """E54: corr(RNA score, pooled sister logit) per fate on SIS-seq H2 held-out clones."""
+    import core_sisseq
+
+    return core_sisseq.heldout_stat()
+
+
 # name -> (function, description). Tests already spent elsewhere are recorded in the ledger.
 TESTS = {
     "epo_scf_pooled": (epo_scf_pooled, "cytokine expt: N-fraction concordance pooled over every "
                                        "condition pair with Epo or SCF"),
     "presence_heldout": (presence_heldout, "cytokine expt: G-M lift (>= 2, >= 3 cells) and "
                                            "P(G | M size 6+) on clone shard 1 of 2 (B37)"),
+    "sisseq_rna_heldout": (sisseq_rna_heldout, "SIS-seq: RNA score vs sister fate logit, H2 held-out shard 0 of 3 (E54)"),
     "skew_heldout": (skew_heldout, "SIS-skew: 29 B39/B40 statistics on H2 held-out shard 0 of 3 (E51)"),
 }
 
