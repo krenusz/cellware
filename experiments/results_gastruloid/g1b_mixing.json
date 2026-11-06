@@ -1,0 +1,95 @@
+{
+ "ratios": [
+  {
+   "file": "ratios_1_1_clone1clone3_11042024.csv",
+   "clone1:clone3": "1:1",
+   "f_anterior": 0.5,
+   "date": "11042024",
+   "crossing": 35.61470234611455,
+   "crossing_ci": [
+    32.00866172611938,
+    39.075574388259994
+   ],
+   "frac_draws_without_crossing": 0.0
+  },
+  {
+   "file": "ratios_1_2_clone1clone3_04292024.csv",
+   "clone1:clone3": "1:2",
+   "f_anterior": 0.6666666666666666,
+   "date": "04292024",
+   "crossing": 53.686623196603996,
+   "crossing_ci": [
+    0.3097762009276522,
+    52.33977011772726
+   ],
+   "frac_draws_without_crossing": 0.0
+  },
+  {
+   "file": "ratios_1_2_clone1clone3_11042024.csv",
+   "clone1:clone3": "1:2",
+   "f_anterior": 0.6666666666666666,
+   "date": "11042024",
+   "crossing": 39.345667977136685,
+   "crossing_ci": [
+    0.1497824887808694,
+    42.591091151029055
+   ],
+   "frac_draws_without_crossing": 0.0
+  },
+  {
+   "file": "ratios_1_4_clone1clone3_11042024.csv",
+   "clone1:clone3": "1:4",
+   "f_anterior": 0.8,
+   "date": "11042024",
+   "crossing": 40.70283945003527,
+   "crossing_ci": [
+    0.23552927809915428,
+    46.523032308087146
+   ],
+   "frac_draws_without_crossing": 0.0
+  },
+  {
+   "file": "ratios_2_1_clone1clone3_04292024.csv",
+   "clone1:clone3": "2:1",
+   "f_anterior": 0.3333333333333333,
+   "date": "04292024",
+   "crossing": 38.89725261942705,
+   "crossing_ci": [
+    1.0143067079482828,
+    45.73376914367248
+   ],
+   "frac_draws_without_crossing": 0.0
+  },
+  {
+   "file": "ratios_2_1_clone1clone3_11042024.csv",
+   "clone1:clone3": "2:1",
+   "f_anterior": 0.3333333333333333,
+   "date": "11042024",
+   "crossing": 34.573383746566364,
+   "crossing_ci": [
+    26.148553138851845,
+    40.13344807454096
+   ],
+   "frac_draws_without_crossing": 0.0
+  },
+  {
+   "file": "ratios_4_1_clone1clone3_11042024.csv",
+   "clone1:clone3": "4:1",
+   "f_anterior": 0.2,
+   "date": "11042024",
+   "crossing": 35.501503710107244,
+   "crossing_ci": [
+    6.383283836668531,
+    36.890402136914204
+   ],
+   "frac_draws_without_crossing": 0.0
+  }
+ ],
+ "n_with_crossing": 7,
+ "slope": 0.16559575843292587,
+ "slope_ci": [
+  -0.395859349849652,
+  0.42334033080214206
+ ],
+ "reading": "fixed domains"
+}

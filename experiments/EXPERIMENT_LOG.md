@@ -6462,3 +6462,34 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   (parametric bootstrap, 2,000). Fit-set reading: clone state (clone > replicate, CI excludes 0).
 - Held-out intervals per clone x replicate in `results_gastruloid/g1a_fit.json`; 7 cells will
   have >= 4 held-out gastruloids (reading applies: >= 6 qualifying).
+
+### G1a held-out look (2026-11-06, test gastruloid_polarity_heldout 0/1, taken once)
+
+- 53 held-out gastruloids. **7 of 7 qualifying cells (>= 4 gastruloids) inside their intervals**
+  (11 of 11 overall). Held-out variance shares: clone 0.69, replicate 0.04, residual 0.26.
+- **Reading: replicated.** A clone's A-P propensity is a stable clone property: the clone sets
+  most of the variance in polarity, replicate batches add little, and fit-shard means predict
+  held-out gastruloids.
+
+### G1b result (2026-11-06; 7 ratio curves, two dates, 2,000 draws)
+
+| clone1:clone3 | f anterior | date | crossing x* (rank sorting predicts 100 f) |
+|---|---|---|---|
+| 4:1 | 0.20 | 11/04 | 35.5 |
+| 2:1 | 0.33 | 11/04 | 34.6 |
+| 2:1 | 0.33 | 04/29 | 38.9 |
+| 1:1 | 0.50 | 11/04 | 35.6 |
+| 1:2 | 0.67 | 11/04 | 39.3 |
+| 1:2 | 0.67 | 04/29 | 53.7 |
+| 1:4 | 0.80 | 11/04 | 40.7 |
+
+- **Slope 0.17 [-0.40, 0.42]** (date intercepts). CI includes 0, excludes 1: **fixed domains**
+  (registered reading). Rank sorting by clone state is rejected; agrees with the paper's claim
+  (crossing insensitive to ratio).
+- Caveat on the statistic: the "first crossing" in independent per-position draws sometimes
+  falls at the noisy anterior edge, so per-ratio CIs reach x = 0 (and the 1:2 04/29 observed
+  value lies outside its draw CI). This widens the slope CI (conservative); it still excludes 1.
+- **Implication for the core model (chapter 3):** clone state sets *which end* a clone prefers
+  (G1a), but domain size is set by the gastruloid, not by starting composition. The local rule
+  cannot be "sort by state"; it needs a feedback that sizes domains (growth compensation, as the
+  paper's competition data suggest, or fate switching at the boundary).
