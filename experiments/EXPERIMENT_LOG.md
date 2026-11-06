@@ -6794,3 +6794,51 @@ sign-adjusted polarity; scans smoothed as the parent lines, Savitzky-Golay 5/2, 
   pure-vs-mixed elongation difference from clone states plus local rules (sorting, proportion
   feedback, per-passage memory), with elongation by a descriptive rescue rule. The rescue
   mechanism is candidate chapter 4.
+
+### Chapter 3 audit (2026-11-06, Bence: "did you use the holdout? testing can only go through oracle")
+
+- Only **G1a** went through the oracle (ledger: gastruloid_polarity_heldout 0/1). G1b, G2, G2b,
+  G3, G4 and G5 were pre-registered readings on **open data with no sealed set**: fit-set-level
+  results. Discoveries #21-#25 relabelled "unconfirmed" (they had been "moderate").
+- **Rule breach:** `g5_memory.py` (parent polarity) and `g5_gastruloid.py calibrate` (target
+  means) called `g1_gastruloid.polarity()`, which returned all G1a gastruloids, the 53 sealed
+  ones included, outside the oracle. The G1a look was already spent, so no test result is
+  contaminated, but the rule was broken. **Fix:** `polarity()` now drops sealed gastruloids by
+  default; only `fit` (counts, for interval widths) and `heldout_stat` (oracle) pass
+  `include_heldout=True`. G5 numbers stay as logged (computed before the fix); reruns will
+  differ slightly.
+- **Remedy:** seal the authors' untouched per-gastruloid raw files as confirmation sets and test
+  #20, #23 and #25 through the oracle (next entry). #21 and #22 have no untouched data of the
+  same design in this source.
+
+## G6: sealed confirmation of chapter-3 memory and propensity (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, after the audit: "if we have backup then its good" (seal untouched files,
+  test through the oracle).
+- **Sealed sets (whole files, read only by the oracle; structure checked: tags, channels,
+  counts; no intensities read).** Raj Dropbox `raw_data/linescans`, in
+  `data/gastruloid_raj/raw_ls2/`:
+  - **S-P4 (clone + bulk, passage 4):** `clone1+bulk_3+bulk_5+bulk_pass4_12042024.xlsx` (tags
+    1+WT 29, 3+WT 25, 5+WT 24) and `clone1+bulk_3+bulk_5+bulk_6+bulk_pass4_01272025.xlsx` (0.01
+    clone 1: 22, 0.03 clone 3: 20, 0.05 clone 5: 20, 0.06 clone 6: 20).
+  - **S-Jan24 (clone 1 + 3 pairs, separate series):** `clone1+3_pass1_01172024.xlsx` (20) and
+    `clone1+3_clone1+6_pass4_01272024.xlsx` (tag 1+3: 35; 1+6 not used).
+  - Excluded after checking: all passage-1 clone + bulk files are the raw source of G1a
+    (authors' `add_normalized_lines` calls), so not untouched.
+  - Channels (authors' notebooks): clone 1 and 6 green Channel 0; clone 3 and 5 red Channel 2.
+- **Statistics.** Clone + bulk: per gastruloid polarity P as G1a (z-normalise the line,
+  Savitzky-Golay 5/2, first half minus second half; 30 points). Pairs: separation S as G3
+  (relative enrichment, red minus green).
+- **G6a (memory, primary; test `gastruloid_p4_memory`).** Sign-adjusted passage-4 polarity per
+  clone divided by the G1a fit-shard passage-1 mean (clone 1 -0.922, 3 +0.881, 5 +1.051, 6
+  -1.132); pooled ratio = mean over the four clones. **Prediction** (G3 per-passage retention
+  0.60 [0.50, 0.68], three passages; same as the G5 simulator): **r^3 = 0.22 [0.13, 0.31]**.
+  - Reading: pooled ratio CI (bootstrap over gastruloids within clone x file, 2,000) overlaps
+    [0.13, 0.31]: **confirmed**; CI above 0.31: fades slower than G3 (G3 rate not general); CI
+    below 0.13: faster.
+  - Secondary: per clone ratios; sign kept (ratio > 0) per clone.
+- **G6b (new series; test `gastruloid_jan24_pairs`).** Passage 1: **share of gastruloids with
+  clone 3 anterior of clone 1 (S > 0) >= 0.80** (#20 in a new batch; G3 passage 1: 1.00, passage
+  2: 0.94). Passage 4 / passage 1 mean S: **prediction 0.22 [0.13, 0.31]**, same reading as G6a.
+- **Minimum.** >= 15 gastruloids per clone x passage-4 file (met), >= 15 per passage in G6b
+  (met). One look per test.
