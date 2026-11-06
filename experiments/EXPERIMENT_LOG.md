@@ -6528,3 +6528,28 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 - **Model link.** A division-of-labour reading means elongation needs both an anterior and a
   posterior state population (a tissue-level requirement the simulator must encode); a generic
   rescue means diversity itself helps (e.g. clone-specific defects complemented by any partner).
+
+### G2 result (2026-11-06; 171 rows, 26 dates, 3,597 gastruloids; cluster bootstrap over dates, 2,000)
+
+- Data fix before the fit: one row (Index 80, 100% clone 6) has an empty Elongated count and is
+  dropped (the first run returned NaN because of it).
+- Gastruloids per class: complementary pairs 487, same-propensity 318, pairs with clone 2/4 or
+  the triple 578 (all >= 40).
+- M3 (logits, added to the additive competence model): **delta_comp +1.47 [0.96, 1.92]**,
+  **delta_same +1.01 [0.42, 1.74]**, delta_unl +0.93 [0.26, 1.93]; **comp - same +0.46 [-0.18,
+  1.02]**. NLL 1996 (M0) -> 1923 (M3).
+- **Reading: generic mixing rescue** (registered). Any 50:50 mix of two different clones
+  elongates more than the clones' own competences predict, about +1 logit, whether the two
+  clones prefer opposite ends or the same end. Complementary pairs trend higher (+0.46) but the
+  difference is not resolved; division of labour is not shown.
+- Pairs observed vs M0: 1+3 0.80 vs 0.60; 1+6 (both posterior) 0.76 vs 0.66; 6+7 0.93 vs 0.78;
+  3+7 (both anterior) 0.71 vs 0.73.
+- Secondary: clone + bulk chimeras sit near M0 (bulk is itself a mixture), largest misses 50%
+  clone 4 (0.79 vs 0.51) and 25% clone 1 (0.58 vs 0.77).
+- **Model link:** elongation needs heterogeneity, not specifically an anterior + a posterior
+  population. In the simulator, a pure clone should be treated as a deficient tissue that any
+  second state population can complement; the A-P division-of-labour mechanism (paper's
+  framing) is at most part of it.
+- Literature check (paper text, 2026-11-06): the authors report elongation in most pairs
+  "regardless of whether" both anterior, both posterior or opposite; G2 agrees and adds the
+  effect sizes. Discovery #22: consistent.
