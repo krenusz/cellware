@@ -150,3 +150,27 @@ Later: does the model reproduce measured clonal statistics (Weinreb 2020 LARRY)?
 ## Test oracle (from 2026-11-01)
 
 Held-out statistics are computed only by `experiments/test_oracle.py look <test> --exp <id>`. It refuses without a pre-registration heading, with uncommitted experiment code, or for a (test, shard) already seen, and logs every look in `experiments/test_ledger.tsv`. Parallel tracks use disjoint clone shards (`--shard i --shards K`) or one joint look. Agents working a track get the oracle, never the raw test statistic code paths.
+
+
+## Hold-out rules (Bence, 2026-11-06: "be really careful with the holdout data")
+
+Enforced by `experiments/check_sealed.py` (registry `experiments/sealed.py`); the oracle runs it
+before every look and refuses on any failure.
+- **H1 Seal first.** Before the first statistic on any data set, register it in `sealed.py` with
+  its hold-out (hash shard or untouched files). A data set without a sealed part supports only
+  "exploratory / unconfirmed" results.
+- **H2 Oracle only.** Held-out data is read only inside test_oracle test functions and the
+  approved loaders in `HELDOUT_READERS`; every loader excludes sealed data by default.
+- **H3 Named readers.** A sealed file's name may appear only in its listed reader module.
+- **H4 Integrity.** Record the sha256 when sealing a file; a changed file cannot be looked at.
+- **H5 Provenance.** Before calling a file untouched, check whether any processed table already
+  used (the authors' or ours) was built from it.
+- **H6 One look.** Predictions, readings and code are committed before the look; one look per
+  test; the result is reported as it comes, with no re-analysis of the sealed data afterwards.
+- **H7 Spent is spent.** A looked-at set never serves as confirmation again; reusing it for fitting
+  is disclosed in the log.
+- **H8 Labels.** "moderate" or "strong" in DISCOVERIES only for oracle-confirmed results; open-data
+  results are "unconfirmed".
+- **H9 Blind format checks.** Inspecting a new file shows columns, tags and counts only, never
+  rates, means or other outcome summaries (G2 lesson).
+- **H10 When unsure, ask.** If it is not clear whether data is held out, stop and ask Bence.

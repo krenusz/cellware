@@ -179,6 +179,10 @@ def main():
         sys.exit(f"refused: {args.test} is already split into a different number of shards")
     if not preregistered(args.exp):
         sys.exit(f"refused: no '## {args.exp}: ... (pre-registered ...)' heading in the log")
+    import check_sealed  # hold-out guard (rules H1-H10, program.md)
+    problems = check_sealed.check()
+    if problems:
+        sys.exit("refused: hold-out guard failed:\n  " + "\n  ".join(problems))
     dirty = subprocess.run(["git", "status", "--porcelain", "--", "experiments/*.py"],
                            capture_output=True, text=True).stdout.strip()
     if dirty:
