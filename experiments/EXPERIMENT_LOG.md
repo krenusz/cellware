@@ -5994,3 +5994,53 @@ Held-out shard: 218 null and 461 KO clones (predicted at 227 / 415).
   - **Expansion plus sampling explains it:** observed G and Net inside (ii)'s 95% ranges.
   - **Needs a fate effect:** outside (ii), inside (i).
   - **Unexplained:** outside both.
+
+### C1, R3, E52, B42 results (2026-11-06; results_sis/c1_equiv_*.json, r3_recovery.json, e52_fit.json, b42.json)
+
+**C1: one core model. Equivalent for both data sets.** core_larry vs e48 simulate at E48's
+best fit: 28 of 28 targets within 3 MC SE (300 sims each). core_sis (e = 1, sfate = 0) vs R2's
+simulator at the E51 median: 76 of 76. LARRY and SIS-skew now run through the same five-step
+generative core (core_model.py). Refitting LARRY through the core is still to do (Actions).
+
+**R3 recovery (editing-aware, 23 parameters, 20,000 bank, 300 tests).**
+
+| parameter | RMSE | coverage | mean width | R^2 | reading |
+|---|---|---|---|---|---|
+| gamma_cDC2 | 0.44 | 0.94 | 1.37 | 0.49 | not recoverable |
+| gamma_pDC | 0.44 | 0.91 | 1.42 | 0.41 | not recoverable |
+| tau_cDC2 | 0.94 | 0.94 | 3.15 | 0.29 | not recoverable |
+| tau_pDC | 1.06 | 0.92 | 3.31 | 0.16 | not recoverable |
+| sfate_cDC2 | 0.71 | 0.94 | 2.26 | 0.33 | not recoverable |
+| sfate_pDC | 0.78 | 0.90 | 2.40 | 0.25 | not recoverable |
+| e (editing) | 0.11 | 0.90 | 0.34 | **0.06** | "recoverable" by the bar, but R^2 0.06: the RMSE equals the prior SD; e is not learned |
+
+- **Reading.** Once editing efficiency and fate-specific expansion are in the model, no fate
+  parameter is recoverable at the SIS-skew sample size. Intervals stay calibrated (coverage
+  0.90-0.94) but wide. R2's "gamma recoverable" depended on assuming every KO-arm cell edited.
+
+**E52 (fit set).** Fit adequacy **89.5%** (68 of 76; E51 84%); the KO interaction terms that E51
+missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 0.34 [-0.28,
+0.89], gamma_pDC 0.10 [-0.54, 0.78]: **undetermined**; tau + label difference: cDC2 -1.18
+[-2.00, 0.71], pDC -0.32 [-1.93, 1.45]: not shown; sfate cDC2 -0.07 [-1.25, 1.25], pDC 0.19
+[-1.02, 1.50]; e 0.34 [0.19, 0.50] (prior-like); lam_K 3.30 [2.00, 4.00] (edited lines about
+27x; at the prior's upper edge); t_C 0.41 vs t_W 0.63.
+- **Stopping-rule check.** gamma medians moved 0.29 (cDC2) and 0.09 (pDC), less than E51's
+  interval widths (0.81, 0.85): the E51 answer is not overturned. But R3 shows neither fit can
+  identify gamma once editing is modelled, so the chapter-2 answer for Bcor becomes: **expansion
+  of edited sister lines, yes; any fate-level mechanism (selection or instruction) not
+  identifiable from SIS-skew at this size.**
+
+**B42 (fit set, KO wells; null as check).**
+
+| statistic | observed | E52 full 95% | E52 without fate effects (tau = sfate = 0) 95% |
+|---|---|---|---|
+| KO pDC gain G | 0.213 | [0.080, 0.235] | [0.079, **0.2126**] (observed 0.2126: inside by 0.0001) |
+| KO pDC loss L | 0.056 | [0.044, 0.120] | [0.048, 0.135] |
+| KO net gain | **0.156** | [-0.020, 0.173] | [-0.047, **0.149**] (outside) |
+| null net gain | 0.000 | [-0.120, 0.040] | [-0.109, 0.038] |
+
+- **Reading as registered: "needs a fate effect"** (net gain outside the no-fate range, inside
+  the full one). **Marginal:** net gain exceeds the no-fate limit by 0.007, the gain share sits
+  on its limit, and the full and no-fate ranges barely differ (fate parameters not identifiable,
+  R3). Most of Tian 2021's "gain of pDC fate potential" is reproduced by expansion of edited
+  lines plus sampling; a small excess remains, consistent with a modest pDC-directed effect.

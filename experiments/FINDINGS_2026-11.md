@@ -291,3 +291,16 @@ D3 and B26 remain unexplained by all three models.
   uniform KO-arm expansion about 10x, lower transduction in C wells, no detected fate-linked
   selection (gamma about 0 +- 0.4), within-clone change not shown. Two fit-set patterns (B39
   interaction, B40 persistence-by-fate) did not replicate; DISCOVERIES #16 withdrawn, lesson M8.
+
+## Update (2026-11-06): one core model; editing efficiency changes the SIS-skew answer
+
+- **C1.** A single generative core (core_model.py) reproduces both E48 (LARRY, 28/28 targets)
+  and the SIS-skew simulator (76/76). The chapter-2 question can now be asked of one model.
+- **R3/E52.** With Tian 2021's 40% editing efficiency and fate-specific expansion added, the fit
+  improves (89.5% vs 84%) but no fate parameter is recoverable: Bcor's fate-level mechanism is
+  not identifiable from SIS-skew at this size. What stands: edited lines expand strongly; the
+  E51 "selection undetermined" reading is unchanged in substance.
+- **B42.** Tian's "gain of pDC fate potential" is mostly expansion plus sampling (marginal
+  excess: net gain 0.156 vs 0.149 limit without fate effects).
+- **Next:** refit LARRY through the core (Actions); chapter 3 = Raj-lab clonal gastruloids
+  (space + clones + mixing), per program.md "Plan toward space".
