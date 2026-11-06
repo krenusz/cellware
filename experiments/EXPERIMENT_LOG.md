@@ -6728,3 +6728,34 @@ dates.
 - **For G5 (model):** use the descriptive structure (clone competence + generic mixing bonus +
   complementarity bonus) as a phenomenological rule; the mechanism stays open (literature
   candidates in the sweep; none supported here).
+
+## G5: a gastruloid simulator from clone states plus local rules, and is clone memory lost per division or per passage? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "go 1 2" then "put 24 as a possible next chapter ... then": build the
+  gastruloid model with a descriptive rescue rule (mechanism deferred to candidate chapter 4).
+- **Simulator (cell-based, 1D axis; `g5_gastruloid.py`).** Each cell carries an A-P state s.
+  Aggregate ~300 cells by composition; growth with **proportion feedback**: final anterior-
+  propensity fraction F = (1 - g) f_A + g a* (G1b); cells **sort by rank** of s + sorting noise
+  (G1a); clone state means from G1a; memory of s from G3; elongation by the **descriptive rescue
+  rule** (G2 Mgen: clone competences + generic and complementary mixing bonuses). Calibration to
+  G1a means, G1b crossings, G3 and G2 is a consistency check, not a test (fitted).
+- **Out-of-sample test: memory per division vs per passage.** Data: `all_normalized_scans.csv`
+  (authors' per-gastruloid z-normalised scans of subclones in chimeras with bulk): head_p1 (3
+  subclones, 32 scans), head_p2 (4, 25), tail_p1 (3, 29), tail_p2 (24). Mapping (paper Fig 3C
+  text + naming): head = subclones of anterior clone 3, tail = of posterior clone 1; p1/p2 =
+  isolated at passage 1 / 2. Polarity P per scan as in G1a; sign-adjusted toward the parent
+  (head +, tail -). Not yet computed; the paper's text says p1 subclones "retained the spatial
+  propensity of their parent line" and p2 subclones "lacked clear spatial propensities"
+  (disclosed prior).
+  - **Per-division memory** (G3's retention spread over divisions, rho 0.84-0.92 per division):
+    expanding one cell to an aggregation stock (>= 13 divisions, >= 10^4 cells) leaves <= 0.92^13
+    = 0.34 of the state: predicts p1 subclone polarity / parent polarity (G1a: clone 1 -0.92,
+    clone 3 +0.88) **<= 0.34**.
+  - **Per-passage-event memory** (loss at passaging, not at division): predicts the p1 ratio
+    **about 1** and the p2 / p1 ratio about G3's r = 0.60 [0.50, 0.68].
+  - **Readings.** (1) p1 / parent ratio CI (bootstrap over scans within subclone, 2,000) excludes
+    0.34 and includes 1: memory is lost per passage event (per-division rejected); CI includes
+    0.34 and excludes 1: per division. (2) p2 / p1 ratio vs [0.50, 0.68]: inside = consistent
+    with G3's per-passage rate; below = loss at the subcloning bottleneck exceeds the population
+    rate (cells within a lineage diversify). Minimum 20 scans per condition (met).
+- The memory rule that wins (1) is the one the simulator uses.
