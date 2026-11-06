@@ -131,3 +131,12 @@ significance: complementary pairs +0.09 [0.001, 0.17] over same-propensity pairs
 beat their better member. So H1 (buffering) alone is not enough; the model needs a generic term
 plus an A-P complementarity term, and H2/H3 must explain both. Clone 4 (severe defect, partly
 rescued) is the cleanest single test case.
+
+## Update after G4 (2026-11-06)
+
+Tested on the pair table by held-out prediction: H1 (window on averaged latent state) and H2
+(OR/AND complementation) both predict unseen mixtures worse than the additive model; strict
+complementation is contradicted (clone 4 pairs below their better member); T+ fraction (H3) does
+not explain pure-clone elongation. The rescue is real but its mechanism is not identified by
+elongation counts. Needs per-clone cell-type composition (e.g. the Shendure monoclonal data,
+GSE291244) or time-resolved T dynamics (Oriola-style) to separate the mechanisms.

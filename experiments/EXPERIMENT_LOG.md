@@ -6700,3 +6700,31 @@ dates.
 - **H3 T+ window (descriptive; n too small to test).** (a) pure-clone mean T+ "overall" vs pure
   elongation and vs bulk; (b) pairs: observed T+ vs the mean of their pure clones and vs bulk
   (is T+ pulled toward bulk by mixing?).
+
+### G4 result (2026-11-06; 171 rows; leave-one-composition-out CV over 61 non-pure, non-bulk compositions)
+
+| model | parameters | CV log-lik (held-out) | full-fit log-lik |
+|---|---|---|---|
+| **Mgen (descriptive bonuses)** | 11 | **-1248.6** | -1923.1 |
+| M0 additive | 8 | -1282.8 | -1996.4 |
+| H1 buffering, d = 1 | 9 | -1299.4 | -1958.3 |
+| H2 complementation, K = 2 | 18 | -1343.5 | -1918.3 |
+| H1 buffering, d = 2 | 17 | -1370.4 | -1914.8 |
+
+- **Reading: Mgen wins** (by 34 over M0, 51 over H1 d = 1). Neither mechanism, as formulated,
+  predicts unseen mixtures as well as the additive model: H1 and H2 fit the training rows well
+  (d = 2 and H2 near Mgen in full fit) but generalise worse (overfit or wrong form). The rescue
+  is real (#22) but its mechanism is **not identified** by these data.
+- **H2 strict complementation contradicted:** 4+5 (0.73 vs better member 0.94, p 4e-5) and 4+6
+  (0.27 vs 0.57, p 2e-5) are below their better member.
+- **H1 axis vs G1a polarity:** Spearman -0.6 (5 clones; under the 0.9 bar): the fitted buffering
+  axis is not the A-P propensity axis.
+- **H3 descriptive.** Pure-clone T+ area: posterior clones high (1: 0.38, 6: 0.44), anterior low
+  (3: 0.14, 5: 0.14, 7: 0.10), bulk 0.19. T+ does not track pure elongation (clones 3 and 5:
+  same T+, 0.38 vs 0.94 elongated). In pairs T+ moves toward bulk in 6 of 9 (e.g. 1+7 0.12 vs
+  pure mean 0.24; 6+7 0.14 vs 0.27; 1+6 0.30 vs 0.41); 1+3 rises (0.36 vs 0.26). n per pair
+  2-9 gastruloids: descriptive. Consistent with the proportion regulation of #21 in a second
+  readout.
+- **For G5 (model):** use the descriptive structure (clone competence + generic mixing bonus +
+  complementarity bonus) as a phenomenological rule; the mechanism stays open (literature
+  candidates in the sweep; none supported here).
