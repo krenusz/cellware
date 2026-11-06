@@ -6044,3 +6044,22 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   on its limit, and the full and no-fate ranges barely differ (fate parameters not identifiable,
   R3). Most of Tian 2021's "gain of pDC fate potential" is reproduced by expansion of edited
   lines plus sampling; a small excess remains, consistent with a modest pDC-directed effect.
+
+## E53: the LARRY answer refitted through the core model (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "go 1" (refit LARRY through the core on GitHub Actions).
+- **Why.** C1 showed core_larry reproduces E48's simulator in distribution (28/28 targets). E53
+  refits LARRY with the core in place of e46/e48's simulate, everything else unchanged (E48's
+  unpack with gamma <= 0.6, targets e36.targets, 10 sims per evaluation, CMA-ES maxiter 500,
+  dim 24, 18 seeds s0-s17, `run_sweep.sh sweeps/e53_core.txt --larry --guard 9`). Results to
+  results_e18/e53_s*.json; analysis with `analyze_model.py e53 e53_core`.
+- **E48's gated ranges (min / median / max over 9 gated seeds), fixed now:** instruction shift
+  G 0.38 / 0.50 / 0.70, M 0.40 / 0.56 / 0.92; gamma 0.482 / 0.558 / 0.568; s_G 1.64 / 2.10 /
+  2.85; s_M 0.18 / 0.23 / 0.28; beta 6.9 / 7.8 / 9.5.
+- **Readings.**
+  - **Core reproduces the LARRY answer:** >= 9 gated seeds (stability rule) and the E53 gated
+    medians of shift_G, shift_M, gamma, s_G, s_M and beta all inside E48's min-max ranges above.
+  - **Partly:** stable, but one or two medians outside; listed and explained.
+  - **Not reproduced:** < 9 gated seeds or three or more medians outside: the core differs from
+    E48 in a way the C1 equivalence test missed (C1 compared one parameter point).
+- No held-out look (LARRY's held-out tests are spent).
