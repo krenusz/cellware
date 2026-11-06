@@ -70,6 +70,19 @@ LARRY's answer is also clone-level.
 across SIS-skew wells; the 25% transduction adjustment in the authors' cell conversion; batch
 effects. Each pre-registration states its minimum sample.
 
+## Plan toward space (agreed direction 2026-11-06; RETRO_2026-11-06)
+The clone-level core model (`core_model.py`: clone state, instruction shift, selection on state,
+split, growth, sampling) becomes the **cell-level prior of the tissue simulator**:
+- each cell agent carries its clone state z (inherited with the fate memory rho the core fits);
+- the cell's fate logits are the core's (B z + tau), with tau now a function of the local signal
+  the agent sees (instruction becomes local);
+- growth and survival follow the core's selection term, also allowed to depend on position;
+- the 2023-24 learned-policy simulator supplies the spatial layer (neighbour signals, movement).
+First spatial test (chapter 3): Raj-lab gastruloids (NEXT_DATASETS, spatial rank 1). Pure clones
+carry anterior or posterior biases; mixtures restore the axis. The model must reproduce clone
+spatial propensities and the pure-vs-mixed elongation difference from clone states plus local
+rules. Data download stepwise, when the chapter starts.
+
 ## Original question (2023-24 programme)
 Can cells that share one learned policy, and see only local signals, grow a tissue with target
 size, fate proportions and spatial pattern, and which signalling channels does that rely on?

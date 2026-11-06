@@ -200,3 +200,19 @@ GSE153675 RAW.tar files are byte-identical), extracted to `raw153675/`.
 
 So the full public SIS data are now local: SIS-seq (158 clones: RNA + two sister fate wells +
 background), SIS-skew (Bcor-KO vs WT sister barcode counts), Bcor-KO scRNA-seq, CRISPR screen.
+
+## Spatial candidates for the long-term goal (2026-11-06; RETRO_2026-11-06 decision 4)
+
+Criterion added: positions (or a spatial readout) together with clone identity, so that a model
+with local interactions can be tested, not only clone-level fate.
+
+| rank | data set | design | why | access |
+|---|---|---|---|---|
+| 1 | **Gastruloid clonal division of labour**, Arjun Raj lab, bioRxiv 2025.07.12.664536 ("Gastruloid patterning reflects division of labor among biased stem cell clones") | Fluorescent lineage tracing + spatial transcriptomics in mouse gastruloids; single clones isolated from one population; pure clones vs clone mixtures; signalling perturbations; RNA-seq/ATAC per clone | Clones have consistent anterior or posterior spatial propensities (a heritable clone state with a *spatial* readout); pure clones elongate less often and co-express anterior and posterior markers; **mixing clones restores the axis**. A conditional design (mixing ratio, perturbation) whose outcome is a pattern: the bridge between the clone-level core model and the 2023-24 tissue simulator | Raw, processed data and code: public Dropbox folder linked in the preprint's "Data and code availability" (not downloaded) |
+| 2 | **PEtracer mouse embryo lineage map**, bioRxiv 2026.05.07.722278 ("Comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis") | Lineage trees for > 1.5 million cells from 16 embryos, E7.5-E10.0 at half-day steps, with transcriptomes | In vivo fate trees at embryo scale and in time; fate bias inherited across clades | Preprint; data accession not checked |
+| 3 | Monoclonal gastruloids with DNA Typewriter (GSE291244; check 3 above) | Lineage trees within single-founder gastruloids | Founder-to-gastruloid inheritance of composition; no positions | GEO + authors' tape files |
+| ref | Spatiotemporal atlas of mouse gastrulation (Cell Reports 2025) | Spatial transcriptomics E7.25-E7.5 with gastruloid projection | Reference coordinates for placing gastruloid cells | web portal |
+
+**Recommendation.** Chapter 3 = the Raj-lab gastruloid set (rank 1) rather than the DNA
+Typewriter set: it has space, clones and a mixing "condition", so it tests the step from
+clone-level fate to patterning. The DNA Typewriter set stays as the inheritance check.
