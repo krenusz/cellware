@@ -6063,3 +6063,20 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   - **Not reproduced:** < 9 gated seeds or three or more medians outside: the core differs from
     E48 in a way the C1 equivalence test missed (C1 compared one parameter point).
 - No held-out look (LARRY's held-out tests are spent).
+
+### E53 result (2026-11-06; run 42203864786, 18/18 seeds, 40 min; results_e18/e53_analysis.json)
+
+| quantity (gated median) | E53 (core) | E48 gated range | |
+|---|---|---|---|
+| instruction shift G | 0.52 | 0.38-0.70 (median 0.50) | in |
+| instruction shift M | 0.70 | 0.40-0.92 (median 0.56) | in |
+| gamma | 0.560 | 0.482-0.568 | in |
+| s_G | 2.11 | 1.64-2.85 | in |
+| s_M | 0.25 | 0.18-0.28 | in |
+| beta | 7.38 | 6.9-9.5 | in |
+
+- Gated seeds 9 of 18 (0, 1, 4, 9, 10, 14, 15, 16, 17): **stable**.
+- **Reading: core reproduces the LARRY answer.** LARRY and SIS-skew now come from one model
+  code; the chapter-2 question "does the same model family fit both?" is answered **yes** for
+  the fit. (What it can identify differs by data set: LARRY identifies instruction and
+  selection; SIS-skew with editing modelled identifies neither fate parameter, R3.)

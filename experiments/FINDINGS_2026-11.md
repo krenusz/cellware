@@ -304,3 +304,6 @@ D3 and B26 remain unexplained by all three models.
   excess: net gain 0.156 vs 0.149 limit without fate effects).
 - **Next:** refit LARRY through the core (Actions); chapter 3 = Raj-lab clonal gastruloids
   (space + clones + mixing), per program.md "Plan toward space".
+
+- **E53 (2026-11-06).** LARRY refitted through the core: 9/18 gated, instruction shifts 0.52 / 0.70,
+  gamma 0.56, s_G 2.1, beta 7.4, all inside E48's ranges. One model code now fits both data sets.
