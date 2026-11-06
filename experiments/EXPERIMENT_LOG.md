@@ -6156,3 +6156,23 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   held-out clones; corr(r_f, pooled logit_f), 95%): cDC1 [0.03, 0.74]; **cDC2 [0.35, 0.87]**;
   **pDC [0.44, 0.88]**. Link replicates if the held-out correlations for pDC and cDC2 are inside
   these ranges and > 0.
+
+### E54 held-out look (2026-11-06, test sisseq_rna_heldout 0/1, commit 3d01ff9, taken once)
+
+| fate | held-out corr (n = 34) | predicted 95% | |
+|---|---|---|---|
+| cDC1 | 0.31 | [0.03, 0.74] | in |
+| cDC2 | **0.25** | [0.35, 0.87] | **below** |
+| pDC | **0.29** | [0.44, 0.88] | **below** |
+
+- **Reading: the link does not replicate at the predicted strength** (pDC and cDC2 below range).
+  The sign replicates for all three fates, but at n = 34 none is individually significant
+  (r = 0.29 gives p about 0.09). Back-of-envelope, the held-out values imply a loading of about
+  0.35-0.45 (share about 15-20% of the clone state), half the fit-set estimate.
+- **Why the fit set overstated it.** The RNA score was chosen on the fit set (PCA on fit clones,
+  then regression on fate); leave-one-out predictions remove in-sample fitting of the weights but
+  not the selection of the PC space from the same clones. The held-out clones are the honest
+  estimate.
+- **Consequence for the goal.** The day-2.5 RNA of a few sisters carries a weak, positive trace of
+  the clone fate state; most of the state that sisters share (B38, H 0.71) is not readable from
+  this RNA at this depth. The hidden state stays mostly hidden.
