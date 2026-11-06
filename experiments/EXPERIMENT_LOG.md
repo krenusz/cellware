@@ -6667,3 +6667,36 @@ dates.
   difference (+0.46 [-0.18, 1.02]) points the same way.
 - Exception: clone 4 (5% alone) is only partly rescued (2+4 0.48, 4+6 0.28; 4+5 0.73, 4+7 0.69);
   a severe defect is not fully buffered.
+
+## G4: what mechanism explains mixing rescue: buffering, complementation or a T+ window? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "go 1 2" (G4 tests H1-H3 from LITERATURE_SWEEP_2026-11e; then the model).
+- **Data.** Morphology table (G2; all compositions); `T_overlap - Sheet1.csv` (T+ area per
+  gastruloid, "overall" and per clone; pure clones 1, 3, 5, 6, 7 n = 3-17, bulk 19, 9 pairs).
+  Prior exposure: G2/G2b results; T_overlap structure and counts only.
+- **Models of P(elongated) per row** (components: bulk, clones 1-7; f_i = starting fractions):
+  - **M0 additive:** logit p = sum f_i e_i (8 parameters).
+  - **Mgen (descriptive baseline, = G2 M3):** M0 + delta_comp, delta_same, delta_unl for clone
+    pairs (11).
+  - **H1 buffering (window on an averaged latent state):** each component has z_i in R^d; the
+    aggregate state is Z = sum f_i z_i; logit p = a - |Z|^2 (optimum at 0, unit curvature;
+    scale absorbed in z). d = 1 (9 parameters) and d = 2 (17). A mix of two clones on opposite
+    sides of the optimum lands nearer it: rescue; same side: none.
+  - **H2 complementation (presence OR, needs AND):** each component has capacities c_ik in (0, 1),
+    K = 2; the aggregate has C_k = max over components with f_i >= 0.2 of c_ik; logit p = a + b
+    sum_k log C_k (18). Strict implication: a mix is never worse than its better member.
+  - Fitting: maximum likelihood, 10 random restarts for H1/H2, small ridge (1e-3).
+- **Primary test.** Leave-one-composition-out CV over every non-pure, non-bulk composition (pure
+  clones and bulk always in training); score = summed held-out binomial log-likelihood.
+  - **Reading:** the best model wins if its CV log-likelihood exceeds every other model's by
+    >= 2; models within 2 of the best are "not distinguished". H1 and H2 are read against Mgen
+    (does a mechanism predict unseen mixtures as well as the descriptive bonus model?).
+- **H2 diagnostic.** Pairs whose elongation is below their better pure member (one-sided
+  binomial p < 0.05 against the better member's pooled rate): >= 2 such pairs contradict strict
+  complementation.
+- **H1 emergent check (descriptive).** Fitted d = 1 positions of clones 1, 3, 5, 6, 7 vs G1a
+  polarity (Spearman; 5 points). |rho| >= 0.9: the buffering axis is the A-P propensity axis,
+  which would explain the complementarity bonus without a separate term.
+- **H3 T+ window (descriptive; n too small to test).** (a) pure-clone mean T+ "overall" vs pure
+  elongation and vs bulk; (b) pairs: observed T+ vs the mean of their pure clones and vs bulk
+  (is T+ pulled toward bulk by mixing?).
