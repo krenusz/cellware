@@ -6176,3 +6176,23 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 - **Consequence for the goal.** The day-2.5 RNA of a few sisters carries a weak, positive trace of
   the clone fate state; most of the state that sisters share (B38, H 0.71) is not readable from
   this RNA at this depth. The hidden state stays mostly hidden.
+
+### S1 result (2026-11-06; banks 20,000 each, fits and B42 as E52)
+
+| | E52 (d = 0) | d = +0.5 | d = -0.5 |
+|---|---|---|---|
+| gamma_cDC2 | 0.34 [-0.28, 0.89] | 0.28 [-0.32, 0.80] | 0.36 [-0.22, 0.96] |
+| gamma_pDC | 0.10 [-0.54, 0.78] | 0.27 [-0.38, 1.00] | -0.12 [-0.75, 0.51] |
+| tau_cDC2 | -1.18 [-2.0, 0.71] | -1.38 [-2.0, 0.60] | 0.10 [-1.42, 1.95] |
+| e (editing) | 0.34 [0.19, 0.50] | 0.40 [0.23, 0.55] | 0.42 [0.24, 0.55] |
+| selection reading | undetermined | undetermined | undetermined |
+| B42 KO net pDC gain (obs 0.156) vs no-fate 95% upper | 0.149 | 0.182 | 0.165 |
+| B42 reading | needs a fate effect | expansion plus sampling | expansion plus sampling |
+
+- **gamma: robust** (undetermined under both shifts).
+- **B42: sensitive.** The marginal "needs a fate effect" (#18) flips to "expansion plus sampling
+  explains it" under both shifts, so it was within the noise of the model choices, not a finding.
+- tau moved asymmetrically (+0.5: -0.2; -0.5: +1.3), not the -d expected by construction; tau sits
+  on its prior bound at d = 0 and +0.5, so the bound absorbs the shift. Reported, not read.
+- Bug fixed before the B42 runs: `b42()` reused `d` for the data and the shift (TypeError, no
+  output); renamed the data `D`. E52's b42.json was produced with d = None and is unaffected.

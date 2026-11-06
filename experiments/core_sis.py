@@ -216,8 +216,8 @@ def b42(seed=42, n_draws=400, d=None):
     import sis_data as sd
     from b39_sisskew import GROUPS
     rng = np.random.default_rng(seed)
-    d = sd.load_skew("fit")
-    obs = np.concatenate([pdc_gain(d["P"][np.isin(d["well"], GROUPS[g])], d["N"][np.isin(d["well"], GROUPS[g])])
+    D = sd.load_skew("fit")
+    obs = np.concatenate([pdc_gain(D["P"][np.isin(D["well"], GROUPS[g])], D["N"][np.isin(D["well"], GROUPS[g])])
                           for g in ("null", "KO")])
     name = "e52" if d is None else "s1" + tag(d)
     extra = {} if d is None else {"dlabel_C": d}
