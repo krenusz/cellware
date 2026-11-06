@@ -6842,3 +6842,25 @@ sign-adjusted polarity; scans smoothed as the parent lines, Savitzky-Golay 5/2, 
   2: 0.94). Passage 4 / passage 1 mean S: **prediction 0.22 [0.13, 0.31]**, same reading as G6a.
 - **Minimum.** >= 15 gastruloids per clone x passage-4 file (met), >= 15 per passage in G6b
   (met). One look per test.
+
+### G6 looks (2026-11-06; oracle, one look each)
+
+**G6a `gastruloid_p4_memory`** (passage 4, clone + bulk, 160 gastruloids, two files).
+- Pooled ratio (passage 4 / G1a passage 1, sign-adjusted) **0.44 [0.27, 0.61]**; prediction
+  [0.13, 0.31]. **Registered reading: confirmed** (CIs overlap), but the point is twice the
+  prediction and only the lower tail overlaps.
+- Per clone: **clone 1 -0.06 [-0.37, 0.24]** (propensity gone), clone 3 0.35 [0.00, 0.70],
+  clone 6 0.60 [0.18, 1.00], **clone 5 0.87 [0.58, 1.12]** (nearly kept).
+
+**G6b `gastruloid_jan24_pairs`** (separate Jan 2024 series, clone 1 + 3).
+- Passage 1: clone 3 anterior of clone 1 in **0.95** of 20 gastruloids: **propensity replicated**
+  (#20, new batch, sealed).
+- Passage 4 / 1 mean S **0.68 [0.37, 1.11]** (S 0.111 -> 0.075; 0.74 still ordered at passage
+  4): **fades slower than G3** (CI above 0.31).
+
+**Reading.** Propensity is a replicated clone state (#20 now confirmed in a second, sealed
+series). Fading over passages happens (clone 1 loses it in every data set: G5 subclones, G6a), but
+**the rate is clone- and series-specific**: G3's 0.60 per passage (April 2024 1+3 series) does not
+generalise; the Jan 2024 1+3 series and clones 5 and 6 fade much less. #23 revised: direction
+confirmed, single rate rejected. The simulator's single retention parameter is replaced by
+clone-specific retention (to be fitted only on non-sealed data).
