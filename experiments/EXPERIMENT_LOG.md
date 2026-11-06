@@ -6310,3 +6310,24 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   pretrained model's zero-shot embedding. Replicates Kedzierska et al. 2025 (zero-shot
   foundation embeddings no better than HVG/PCA) on a clone-fate target. The fit-shard CV
   (0.61 vs 0.64) predicted the held-out ordering.
+
+### E55 SIS-seq exploratory (2026-11-06; 65 fit clones, leave-one-out, nested ridge; held-out shard spent in E54)
+
+| features | cDC1 r | cDC2 r | pDC r |
+|---|---|---|---|
+| PCA-3 (E54 recipe, inside LOO) | -0.49 | 0.11 | -0.01 |
+| Geneformer V1-10M | 0.30 | 0.31 | 0.22 |
+| Geneformer V2-316M | 0.37 | **0.74** | **0.95** |
+
+- **Leak checks (all after the result, scratchpad scripts sischeck.py, sischeck2.py):**
+  no duplicate profiles; label-shuffle LOO r -0.2 to -0.8 (V1 and V2); within-batch shuffle
+  r -0.10, 0.11, 0.28; fate logit vs library size r 0.10, vs genes detected 0.14. Target
+  reliability (split-half sister wells): pDC rho 0.89 -> max r 0.97; cDC2 0.75 -> 0.93; cDC1
+  0.65 -> 0.89. V2 pDC prediction vs each well separately: 0.89, 0.94 (sister-well rho 0.89).
+- **Reading: exploratory hypothesis, not a discovery.** V2 embeddings of the pooled sister
+  profile predict pDC and cDC2 fate almost to the target's reliability on the fit clones. No leak
+  found, but: n = 65; one look at two models after E54; the PCA-3 baseline here (-0.01 for pDC)
+  does not reproduce E54's fit-set LOO (R^2 0.38) because the preprocessing differs (global vs
+  per-batch scaling), so "V2 beats PCA" is not established; the only sealed SIS-seq clones were
+  spent in E54. Opposite of the LARRY result (#19), where V2 did not beat PCA on 197 held-out
+  clones. Confirmation needs clones the choice has not seen.
