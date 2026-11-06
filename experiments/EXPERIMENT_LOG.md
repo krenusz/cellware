@@ -6120,3 +6120,19 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 - **Readings.** tau moves by about -d by construction (reported, not read). **Robust:** gamma
   intervals and the B42 reading unchanged in substance (gamma still undetermined, B42 net gain
   on the same side of the no-fate limit) under both shifts. **Sensitive:** otherwise, listed.
+
+### E54 amendment (2026-11-06, before any reading or held-out look): attenuation-corrected estimator
+
+- **R4 as registered failed for all fates:** cDC1 RMSE 0.25 / coverage 0.54; cDC2 0.17 / 0.68;
+  pDC 0.12 / 0.88 (bar: RMSE <= 0.2, coverage >= 0.90). So no fit-set reading is made from the
+  raw estimator.
+- **Disclosure.** A smoke test printed the raw fit-set estimates (a = 0.37 / 0.58 / 0.66) before
+  R4 ran. Fit set only; the held-out shard is untouched.
+- **Diagnosis (600 calibration simulations, seed 57).** The raw estimator is attenuated, linear,
+  no offset: est = 0.58 x true (cDC1), 0.73 x true (cDC2), 0.88 x true (pDC); residual SD
+  0.10-0.12. Cause: one-vs-rest logits of a three-fate softmax state carry only part of each
+  fate's state.
+- **Amended estimator (fixed now).** a_corr,f = a_raw,f / k_f with k = (0.58, 0.73, 0.88); the
+  bootstrap CI is divided by the same k_f. R4 is re-run on the corrected estimator with fresh
+  simulations (seed 58) and the registered bar. Readings, predictions and the held-out look then
+  proceed exactly as registered, using a_corr (the simulator's own scale).

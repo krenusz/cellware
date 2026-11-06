@@ -24,6 +24,7 @@ import sis_data as sd
 
 OUT = os.path.join(os.path.dirname(__file__), "results_sis")
 FATES = sd.FATES
+K_ATTEN = np.array([0.58, 0.73, 0.88])  # E54 amendment: raw estimator = K x true (calibration, seed 57)
 
 
 def _cells_sorted():
@@ -95,7 +96,7 @@ def estimate(r, l1, l2):
     lp = (l1 + l2) / 2
     sig = np.sqrt(np.maximum([np.cov(l1[:, j], l2[:, j])[0, 1] for j in range(3)], 1e-9))
     a = np.array([np.cov(r[:, j], lp[:, j])[0, 1] / (r[:, j].std(ddof=1) * sig[j]) for j in range(3)])
-    return a, sig
+    return a / K_ATTEN, sig
 
 
 def simulate(a, sig, mu, s_eps, n1, n2, r, rng):
@@ -140,7 +141,7 @@ def base_params():
     return F, standardise(r), l1, l2, mu
 
 
-def recover(n_test=300, seed=54, boot=300):
+def recover(n_test=300, seed=58, boot=300):
     rng = np.random.default_rng(seed)
     F, r, l1, l2, mu = base_params()
     _, sig = estimate(r, l1, l2)
