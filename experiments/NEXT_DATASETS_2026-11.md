@@ -216,3 +216,41 @@ with local interactions can be tested, not only clone-level fate.
 **Recommendation.** Chapter 3 = the Raj-lab gastruloid set (rank 1) rather than the DNA
 Typewriter set: it has space, clones and a mixing "condition", so it tests the step from
 clone-level fate to patterning. The DNA Typewriter set stays as the inheritance check.
+
+## Check 4: independent sister-RNA + DC fate data, to test the E55 SIS-seq V2 signal (2026-11-06)
+
+Need: same clone with early RNA (cells or sisters) and a later DC fate count, clones not seen by
+E55.
+
+- **Tomei et al. 2025 bioRxiv 10.1101/2025.07.28.667115** ("The hidden predictors of human
+  haematopoietic clonal fate", Naik-lab design): human cord-blood CD34+, SPLINTR barcodes, SIS-seq
+  style (sister aliquots: scRNA-seq + HaemaTONIC organoid fate), fates include cDC1, cDC2, pDC.
+  ~1,064 barcoded cells matched to the fate time series; ~112 HSC barcodes in the factor
+  analysis. Reports RNA predicts held-out (20%) clone fate, no numeric metric. **No accession or
+  data-availability statement found** (preprint, supplementary = figures only). Best match in
+  design and species (Geneformer is human-trained); not usable until data are deposited. Watch.
+- **GSE193733** (Immunity 2022, clonal tracing of cDC/pDC shared origin; mouse, 112 samples,
+  barcode amplicons + CITE-seq): barcodes are read in sorted mature populations; CITE-seq is
+  separate. No early-state RNA per clone linked to its fate, so it cannot test RNA -> fate.
+- Result: **no public independent data set** for the confirmation today. The E55 SIS signal stays
+  a hypothesis.
+
+## Chapter 3 step 1: Raj-lab gastruloid data (2026-11-06)
+
+- Link verified on the bioRxiv page (v1 "Data and code availability"): public Dropbox folder
+  "Paper" (raw_data, extracted_data, extraction_scripts, plot_scripts, Figures). extracted_data:
+  ATAC, bootstrapping_rainbow, Differentiation Assay, IOU, linescans, RNAseq, SG_kit1 (seqFISH),
+  SG_Lmetric, SGanalysis_visualizations, Tobias.
+- Downloaded **linescans** only (1.2 MB zip, 49 CSVs) to `data/gastruloid_raj/linescans/`
+  (gitignored, no code executed). Contents:
+  - `normalized_smoothed_individual_lines.csv`: per-gastruloid A-P intensity profile (30
+    positions) of a labelled clone in a bulk chimera. Clone 1: 3 reps, 62 gastruloids; clone 3:
+    3/64; clone 5: 2/43; clone 6: 2/48; clone 7: 1/13.
+  - `all_normalized_scans.csv`: head/tail subclones at passage 1-2 (25-32 scans each).
+  - `fluorescence_directionality_summary.csv`: clone 1 (green) vs clone 3 (red) anterior share
+    by passage: red anterior 100% -> 81% -> 75% -> 65%, green posterior 100% -> 63% -> 38% -> 58%
+    (propensity erodes over passages: a clone-memory decay readout).
+  - mixing ratios (clone 1:3 at 4:1 ... 1:4), drug conditions (RA, SB, AGN, ctrl) for clone pairs,
+    co-culture before aggregation.
+- Next download candidates (one at a time): Differentiation Assay (elongation per clone), then
+  SG_kit1 (seqFISH positions) if the clone-level test needs cell positions.

@@ -6354,3 +6354,16 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
      revises #17 from "weak trace" to "trace hidden by the feature choice".
 - **Minimum sample.** 65 clones: r resolution about +-0.25 (95%); differences under that are not
   read.
+
+### B43 amendment (2026-11-06, after step 1-3 output, before any reading is logged): leak found
+
+- Shuffle control for step 2 (top-200 genes, within-batch label shuffles): r 0.19-0.72, not
+  about 0. **Leak:** features and fate logits were batch-centred over all 65 clones including the
+  left-out one, so within a batch both sum to zero and a well-fitting model predicts the
+  left-out clone from its batch-mates (batches of 12-22). The same centring was used in the E55
+  SIS-seq run (V2 0.95), so that result is presumed inflated.
+- **Fix:** batch means (of features and of raw logits) computed from training clones only inside
+  each LOO fold; the left-out clone is centred with them. Rerun: PCA-3 (per-batch z inside LOO),
+  genes top-50/200, V1, V2; within-batch shuffle controls (3 each) for genes top-200 and V2.
+  Readings as registered in B43 apply to the fixed pipeline only. E54's held-out look is not
+  affected (its held-out clones were centred with fit-set statistics).
