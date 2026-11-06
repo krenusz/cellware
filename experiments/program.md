@@ -85,6 +85,13 @@ First spatial test (chapter 3): Raj-lab gastruloids (NEXT_DATASETS, spatial rank
 carry anterior or posterior biases; mixtures restore the axis. The model must reproduce clone
 spatial propensities and the pure-vs-mixed elongation difference from clone states plus local
 rules. Data download stepwise, when the chapter starts.
+**Chapter 3 status (2026-11-06):** G1 (#20 clone A-P propensity is a stable state; #21 the
+gastruloid sets domain size), G2 (#22 mixing any two clones rescues elongation), G3 (#23
+propensity fades over passages). **Priority question (Bence): division of labour.** Sweep in
+LITERATURE_SWEEP_2026-11e.md: rescue is generic in our data; three explanations to test before
+the model (H1 buffering of clone extremes, H2 complementation of missing capacities, H3
+proportion feedback on the starting T+ fraction). Model architecture from the literature:
+sorting on clone state (positions) + a communication feedback (proportions).
 
 ## Original question (2023-24 programme)
 Can cells that share one learned policy, and see only local signals, grow a tissue with target
