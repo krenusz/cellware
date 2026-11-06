@@ -6553,3 +6553,31 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 - Literature check (paper text, 2026-11-06): the authors report elongation in most pairs
   "regardless of whether" both anterior, both posterior or opposite; G2 agrees and adds the
   effect sizes. Discovery #22: consistent.
+
+## G3: does a gastruloid clone's A-P propensity fade over passages? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "go 1" (the memory-fade test), before the division-of-labour literature
+  sweep and the model.
+- **Data.** Raj Dropbox `raw_data/linescans`, per-gastruloid raw scans of clone 1 + clone 3 50:50
+  chimeras ("EX") aggregated at passages 1-4 (04/22, 04/24, 04/27, 04/29/2024): 13, 16, 32, 31
+  gastruloids. Mapping from the authors' `Clone_Passaging.ipynb` (read, not run): green Channel
+  0 = clone 1 (posterior), red Channel 2 = clone 3 (anterior); line tagged "Phase line", values
+  ordered from the line's start (taken as anterior, as in the ratio curves).
+- **Prior exposure, disclosed:** the authors' summary (`fluorescence_directionality_summary.csv`):
+  red anterior in 100 / 81 / 75 / 65% of gastruloids at passages 1-4, green posterior 100 / 63 /
+  38 / 58%. Structure and counts of the raw files only; no profile statistic computed.
+- **Statistic per gastruloid.** Each channel resampled to 30 points; relative enrichment E_c =
+  (mean first half - mean second half) / mean whole line. Separation S = E_red - E_green
+  (positive = clone 3 anterior of clone 1; amplitude kept, unlike the z-scored curves).
+- **Readings.**
+  - **Fades:** OLS slope of S on passage number with CI below 0 (bootstrap over gastruloids within
+    passage, 2,000) and S(4)/S(1) CI below 1.
+  - **Stable:** ratio CI includes 1.
+  - Rate: S(t) = S1 r^(t-1) fitted by least squares on passage means; retention r per passage and
+    half-life in passages with bootstrap CI. Derived per-division memory rho = r^(1/g) for g = 3,
+    4.5, 6 divisions per passage (mES doubling about 12-16 h, passages 2-3 days; an assumption,
+    reported as a range).
+  - Check: share of gastruloids with E_red > E_green per passage, against the authors' summary.
+- **Caveat registered:** one aggregation per passage, so passage and batch are confounded. G1a
+  measured batch (replicate) variance at 0.04-0.07 of polarity variance; a fade far beyond that
+  is read as the clone's, not the batch's. Minimum 13 gastruloids per passage (met).
