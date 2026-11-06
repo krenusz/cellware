@@ -272,9 +272,70 @@ def heldout_stat(n_boot=5000, seed=56):
             "ceiling_R2": ceiling(yh, tot[ho])}
 
 
+# ------------------------------------------------------------------ SIS-seq (exploratory)
+
+def sis_data():
+    import pandas as pd
+    import b41_rna_fate as b41
+    import core_sisseq as cs
+    g = pd.read_csv(b41.GENES, index_col=0)
+    F = cs._clones("fit", g, g.sum(0), cs._cells_sorted())
+    mart = pd.read_csv(b41.MART).dropna(subset=["EntrezGene ID"])
+    sym = dict(zip(mart["EntrezGene ID"].astype(int), mart["Associated Gene Name"]))
+    genes = [sym.get(int(e), f"entrez{e}") for e in g.index]
+    C = scipy.sparse.csr_matrix(g[F["title"]].to_numpy(float).T)
+    L = cs.logits(F["k1"] + F["k2"], F["batch"])
+    return C, genes, F, L
+
+
+def sis_embed():
+    C, genes, F, L = sis_data()
+    for m in MODELS:
+        embed(m, rows=np.arange(C.shape[0]), X=C, genes=genes, out=os.path.join(OUT, f"sis_emb_{m}.npz"))
+
+
+def _batch_centre(A, batch):
+    A = A.copy()
+    for b in np.unique(batch):
+        A[batch == b] -= A[batch == b].mean(0)
+    return A
+
+
+def sis():
+    """Leave-one-out with the whole pipeline inside: PCA-3 (E54 recipe) vs Geneformer embeddings."""
+    C, genes, F, L = sis_data()
+    Cd = C.toarray()
+    det = (Cd > 0).mean(0) >= 0.10
+    E = np.log1p(Cd / Cd.sum(1, keepdims=True) * 1e4)[:, det]
+    Zall = _batch_centre(E, F["batch"])
+    n = len(L)
+    feats = {f"gf_{m}": _batch_centre(np.load(os.path.join(OUT, f"sis_emb_{m}.npz"))["emb"].astype(float), F["batch"])
+             for m in MODELS}
+    pred = {k: np.zeros_like(L) for k in ["pca3", *feats]}
+    for i in range(n):
+        tr = np.arange(n) != i
+        Z = Zall[tr] / (Zall[tr].std(0) + 1e-9)
+        top = np.argsort(Z.var(0))[::-1][:2000]
+        mu = Z[:, top].mean(0)
+        _, _, vt = np.linalg.svd(Z[:, top] - mu, full_matrices=False)
+        zi = Zall[i] / (Zall[tr].std(0) + 1e-9)
+        P, pi = (Z[:, top] - mu) @ vt[:3].T, (zi[top] - mu) @ vt[:3].T
+        X1 = np.c_[np.ones(n - 1), P]
+        pred["pca3"][i] = np.r_[1, pi] @ np.linalg.lstsq(X1, L[tr], rcond=None)[0]
+        for k, A in feats.items():
+            for j in range(L.shape[1]):
+                pred[k][i, j] = nested_ridge(A[tr], L[tr, j], A[i:i + 1])[0]
+    import sis_data as sd
+    res = {"n": int(n), "note": "exploratory; fit clones only; held-out shard spent in E54"}
+    for k, p in pred.items():
+        res[k] = {f: float(np.corrcoef(p[:, j], L[:, j])[0, 1]) for j, f in enumerate(sd.FATES)}
+    json.dump(res, open(os.path.join(OUT, "e55_sis.json"), "w"), indent=1)
+    print(json.dumps(res, indent=1))
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["embed", "cv"])
+    ap.add_argument("cmd", choices=["embed", "cv", "sis-embed", "sis"])
     ap.add_argument("model", nargs="?")
     a = ap.parse_args()
-    embed(a.model) if a.cmd == "embed" else cv()
+    {"embed": lambda: embed(a.model), "cv": cv, "sis-embed": sis_embed, "sis": sis}[a.cmd]()
