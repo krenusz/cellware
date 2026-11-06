@@ -6080,3 +6080,43 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   code; the chapter-2 question "does the same model family fit both?" is answered **yes** for
   the fit. (What it can identify differs by data set: LARRY identifies instruction and
   selection; SIS-skew with editing modelled identifies neither fate parameter, R3.)
+
+## E54: does the measured RNA axis carry the clone state the sister fates imply? SIS-seq (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "go both in order" (state-RNA link, then label sensitivity). Plan step 6.
+- **Model (core SIS-seq configuration, `core_sisseq.py`).** Per clone, fate state z over (cDC1,
+  cDC2, pDC); for each fate f, z_f = mu_f(batch) + sigma_f (a_f r_f + sqrt(1 - a_f^2) xi_f), where
+  r_f is the clone's measured RNA score for fate f (standardised) and a_f its loading on the
+  hidden state (LARRY's analogue: w = 0.95 for the day-2 Cebpa-Irf8 score). Each sister well:
+  counts ~ Poisson per fate from softmax(z + s_eps noise) at the observed cell numbers (the core's
+  state + sampling steps; no split or growth needed).
+- **RNA score, defined on the fit set only.** As B41: log1p(CP10k), genes detected in >= 10%,
+  z-scored within batch with fit-set batch means and SDs, PCA of the 2,000 most variable genes
+  (fit set), linear regression of each fate's pooled logit on PC1-3. Fit-set r_f = leave-one-out
+  predictions (no in-sample optimism); held-out r_f = held-out clones projected with fit-set
+  means, SDs, PC loadings and regression weights.
+- **Estimator (method of moments, errors-in-variables).** sigma_f^2 = cov(l1, l2) across clones
+  (sister logits, l = logit((k + 0.5)/(n - k + 0.5)), centred within batch);
+  a_f = cov(r_f, (l1 + l2)/2) / (sd(r_f) sigma_f). 95% CI by bootstrap over clones.
+- **Recovery check first (R4).** Core SIS-seq simulator at the fit-set size (65 clones, observed
+  well sizes), true a_f uniform on [-0.9, 0.9], 300 tests: recoverable if RMSE <= 0.2 and the
+  bootstrap CI covers the truth in >= 90%.
+- **Fit-set readings (for fates where R4 says recoverable).**
+  - **The RNA axis carries the hidden state:** a_f CI excludes 0 for pDC or cDC2.
+  - **Share of the clone state read from RNA:** a_f^2 with CI, compared with LARRY's w^2 = 0.90.
+- **Held-out look (test `sisseq_rna_heldout`, H2 shard 0 of SIS-seq, taken once).** Before the
+  look, the posterior predictive 95% range of corr(r_f, pooled logit_f) at the held-out size is
+  computed from the fit-set estimates (core simulator, 1,000 draws, parameter uncertainty from
+  the bootstrap) and written into this log. **Link replicates on held-out clones:** the observed
+  correlation is inside its predictive range and > 0, for pDC and cDC2.
+
+## S1: how far can a W-vs-C label difference move the Bcor readings? (pre-registered 2026-11-06)
+
+- **Why.** tau and a W-vs-C label difference are confounded (R2/E51 note); the null wells differ
+  from KO wells in population (cKit+ vs LSK) as well as vector (Tian 2021).
+- **Runs.** E52 repeated twice with an extra fixed label shift d added to the + arm's cDC2 and
+  pDC logits in C wells only, d = +0.5 and d = -0.5 (same priors, bank size, inference); then
+  B42 on each posterior.
+- **Readings.** tau moves by about -d by construction (reported, not read). **Robust:** gamma
+  intervals and the B42 reading unchanged in substance (gamma still undetermined, B42 net gain
+  on the same side of the no-fate limit) under both shifts. **Sensitive:** otherwise, listed.
