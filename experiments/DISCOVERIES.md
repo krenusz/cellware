@@ -74,6 +74,7 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | M5 | Check every model change against every condition before registering it; two designs were rejected this way before any fit. | E49 restricted class, E43 |
 | M11 | Name the best candidate on the fit shard before the look; a held-out ordering then tests the choice, not just the winner. Fit-shard CV ordering predicted the held-out ordering in E55. | E55 |
 | M12 | Batch-centring features and target over all units, the left-out one included, leaks in leave-one-out (batch sums are zero, so a well-fitting model recovers the left-out unit from its batch-mates). Centre inside folds; a shuffle control can miss it when the model fits shuffled labels poorly, so run it on the most flexible model. | E55 SIS (V2 0.95 -> 0.77), B43 |
+| M13 | When a chapter starts on open data, seal a confirmation set (untouched files or a hash shard) before the first statistic, and route every later test through the oracle; check provenance before calling a file untouched (the passage-1 raw files were G1a's source). Chapter 3 ran five tests unsealed; the sealed check (G6) kept the direction of #23 but rejected its rate. | Chapter 3 audit, G6 |
 
 ## Cross-check log
 
