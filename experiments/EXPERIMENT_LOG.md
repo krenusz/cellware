@@ -6290,3 +6290,23 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 
 - **Best foundation candidate (named before the look): gf_V2-316M.** On the fit shard it ties
   PCA-50 (r 0.61 vs 0.64; R^2 0.38 vs 0.35). Target ceiling R^2 0.96. The look follows.
+
+### E55 held-out look (2026-11-06, test larry_fm_heldout 0/1, taken once)
+
+197 held-out clones (above the 150 minimum). Target ceiling R^2 0.96.
+
+| features | held-out r |
+|---|---|
+| PCA-50 | 0.64 |
+| marker (Cebpa - Irf8) | 0.29 |
+| Geneformer V2-316M (named best) | 0.58 |
+| PCA-50 + V2-316M | 0.60 |
+
+- **delta = r(V2) - r(PCA) = -0.064 [-0.130, -0.0001]** (paired bootstrap, 5,000). CI is below 0:
+  by the registered reading, **PCA better**. The upper edge touches 0 and |delta| is under the
+  0.08 resolution, so the safe statement is "no gain; if anything worse".
+- **Secondary:** concatenation adds nothing (delta -0.047 [-0.106, +0.011]).
+- **Reading.** The ~55% of LARRY clone fate bias that day-2 RNA misses is not recovered by a
+  pretrained model's zero-shot embedding. Replicates Kedzierska et al. 2025 (zero-shot
+  foundation embeddings no better than HVG/PCA) on a clone-fate target. The fit-shard CV
+  (0.61 vs 0.64) predicted the held-out ordering.

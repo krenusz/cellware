@@ -18,6 +18,7 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | 4 | G-CSF gives neutrophil-leaning clones a **2.5-6.5x survival/expansion advantage**, trading off against instruction along a ridge. | E40 | moderate | Kimura 2009 (GM-CSF/STAT5 controls GMP proliferation and survival) | consistent (qualitative) |
 | 5 | **Lineage-matched selection at a plausible strength** (gamma ~0.3-0.6: at most about one extra doubling per SD of bias over 48 h) fits B7 G; the fit pushes gamma to whatever cap is set. E46's unbounded 1.3 is about twice the plausible bound. | E46, E47, E48 | moderate | Rieger 2009 supplement: ~19% early death in both M-CSF and G-CSF, ~2 doublings on day 1, slower on day 2 | consistent (bound derived from it) |
 | 6 | **Fate memory is near-full over 2 days**; the apparent fading (B21) is sampling noise. | E41b, B21 | moderate | Naik 2013 (heritable lineage imprinting in sister progenitors); Nat Commun 2026 (clonal memory of division in human HSPCs, >= 2 divisions) | consistent |
+| 19 | **A pretrained single-cell model does not read more of the clone fate state than PCA.** Geneformer V2-316M zero-shot embeddings predict LARRY clone N/(N+M) from day-2 cells at r 0.58 vs PCA-50 0.64 on 197 held-out clones (delta -0.06 [-0.13, -0.0001]); concatenating adds nothing. The fate bias day-2 RNA misses is not a feature-extraction problem these models solve. | E55 | moderate (held-out, one look; delta under the 0.08 resolution) | Kedzierska et al. 2025 Genome Biology (zero-shot Geneformer/scGPT no better than HVG/PCA); Weinreb 2020 (fate bias partly invisible in day-2 RNA) | consistent |
 
 ## Clonal structure of the experiment
 
@@ -60,6 +61,7 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | M3 | A good fit to an aggregate statistic can come from compensating errors; decompose it (e.g. by clone size) before crediting it. | B31 (E46 co-presence) |
 | M4 | A held-out test must be powered for the question: the Epo/SCF concordance cannot see selection. | B30, B33 |
 | M5 | Check every model change against every condition before registering it; two designs were rejected this way before any fit. | E49 restricted class, E43 |
+| M11 | Name the best candidate on the fit shard before the look; a held-out ordering then tests the choice, not just the winner. Fit-shard CV ordering predicted the held-out ordering in E55. | E55 |
 
 ## Cross-check log
 
