@@ -6331,3 +6331,26 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   per-batch scaling), so "V2 beats PCA" is not established; the only sealed SIS-seq clones were
   spent in E54. Opposite of the LARRY result (#19), where V2 did not beat PCA on 197 held-out
   clones. Confirmation needs clones the choice has not seen.
+
+## B43: what carries the SIS-seq V2 signal? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "go all 3" (probe the SIS signal; then independent data search; then
+  chapter 3).
+- **Data.** The 65 SIS-seq fit clones of E55 only (held-out shard spent in E54). Descriptive
+  diagnostics; no sealed data, no new claim beyond "hypothesis" without unseen clones.
+- **Steps.**
+  1. *Baseline reproduced:* E54's own recipe (`core_sisseq.scores("fit")`, per-batch z, PCA
+     chosen on all fit clones, LOO only on the regression) and the same with PCA refitted inside
+     LOO. Reports r per fate.
+  2. *Is the signal in plain RNA?* Gene-selection ridge with selection inside LOO: per fold, top
+     k genes (k = 20, 50, 200) by |corr| with the fold's training logits, ridge with nested
+     lambda. If pDC r >= 0.8, the signal is in the RNA and V2 is one way of reading it; if
+     <= 0.4, V2 adds something plain genes do not.
+  3. *Attribution:* correlate the V2 LOO pDC and cDC2 predictions with each gene's batch-centred
+     log expression; list the top 30 genes; mark known terminal pDC genes (Siglech, Bst2, Ly6d,
+     Ccr9, Cox6a2, Klk1, Ly6c2, Tcf4, Spib, Runx2) and cDC2 genes (Sirpa, Itgam, Irf4, Klf4,
+     Esam, Clec4a4). **Reading:** >= 3 terminal pDC genes in the top 30 for pDC = the sisters
+     already carry pDC-lineage transcripts at day 2.5 (early commitment visible in RNA), which
+     revises #17 from "weak trace" to "trace hidden by the feature choice".
+- **Minimum sample.** 65 clones: r resolution about +-0.25 (95%); differences under that are not
+  read.
