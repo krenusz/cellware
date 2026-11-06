@@ -5941,3 +5941,56 @@ Held-out shard: 218 null and 461 KO clones (predicted at 227 / 415).
   transduction rate in C wells: t_C 0.35 vs t_W 0.61). Fate-linked clone selection is not
   detected and is not excluded (gamma intervals about +-0.4); within-clone fate change is not
   shown and cannot be separated from the vector-label difference.
+
+## C1: one core model for LARRY and SIS (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "go 1 2 3" (editing-aware fit + B42; shared core model; spatial plan),
+  answering RETRO_2026-11-06 decisions 1-4.
+- **Why.** Chapter 2 asked whether *the same* model generalises; it used a stand-alone simulator.
+  `core_model.py` (new) holds one generative model; each data set is a configuration.
+- **Core generative steps (per clone).**
+  1. Clone state z in R^d; per-condition (or per-arm) state z_c = sqrt(rho) z + sqrt(1 - rho) noise
+     (fate memory). Fate logits = B z_c + tau_c (instruction), K fates, softmax.
+  2. Split: either independent Poisson founders per condition with class-specific rates (LARRY:
+     wells, separate-pool class) or a partition of c founder cells across arms (SIS:
+     transduction).
+  3. Each founder line grows to exp(mu_c + a + gamma_c . s(z) + s_line noise), dies with
+     probability q; a fraction e of lines in a perturbed arm carry the perturbation (editing
+     efficiency; LARRY e = 1).
+  4. Output per fate: mean = growth x (free x p_f + committed_f) x exp(sfate_c,f) (sfate =
+     fate-specific cell-level expansion; LARRY's s_G), Poisson or multinomial counts.
+- **Equivalence test (fixed now).** LARRY config at E48's best gated parameters vs
+  `e48_capsel6.simulate`; SIS config (e = 1, sfate = 0) vs `r2_skew_sbi.simulate` at the E51
+  posterior median. 300 simulations each; for every summary statistic (LARRY: e36.targets;
+  SIS: the 76 R2 statistics), |mean difference| <= 3 Monte Carlo SE (or <= 0.01 absolute).
+  **Equivalent** if >= 95% of statistics pass. Only then are R3/E52 run on the core.
+- **Not in this step:** refitting LARRY through the core (needs GitHub Actions); proposed next.
+
+## R3 / E52: editing-aware SIS-skew fit (pre-registered 2026-11-06)
+
+- **Diagnostic it must explain.** Tian 2021: Bcor indel efficiency 40%; "major clonal expansion
+  in a proportion of Bcor-/Y clones". E51 assumed every KO-arm cell edited.
+- **Model = core SIS config.** R2 plus: each Cherry+ founder line in C wells edited with
+  probability e, prior uniform (0.15, 0.55) (40% indels is an upper bound on functional loss;
+  Bcor is X-linked, so one allele); KO effects (lam_K, gamma, tau) act on edited lines only;
+  fate-specific cell-level expansion in edited lines, sfate_pDC and sfate_cDC2 (prior uniform
+  (-1.5, 1.5)), the mechanism E51 lacked. 23 parameters; other priors as R2.
+- **Inference, recovery and readings:** as R2/E51 (20,000-simulation bank, semi-automatic ABC,
+  300 recovery tests; recoverable if RMSE <= 0.3 and coverage 90-99%), for gamma, tau, sfate
+  and e. E52 on the fit set: selection reading as E51; **fit adequacy >= 80%**. The SIS-skew
+  held-out shard is spent (E51), so E52 has no held-out look; it is judged on the fit set and B42.
+- **Stopping-rule check.** If E52's gamma intervals move by more than their E51 width, the
+  chapter-2 answer is rewritten from E52; otherwise E51 stands with E52 as sensitivity.
+
+## B42: is Tian's "gain of pDC fate potential" expansion plus sampling? (pre-registered 2026-11-06)
+
+- **Claim tested.** Tian 2021: 78% of SkewID-skewed KO clones gained pDC output (binary).
+- **Statistic (fit set, KO wells; null wells as check).** Among clones present (> 1 cell) in
+  both arms: G = share with pDC present (> 1 cell) in the + arm and absent in the - arm;
+  L = the reverse; Net = G - L.
+- **Predictions.** Posterior predictive (400 draws) of G and Net from (i) E52's posterior and
+  (ii) E52's posterior with tau and sfate set to 0 (expansion, editing and sampling only).
+- **Readings.**
+  - **Expansion plus sampling explains it:** observed G and Net inside (ii)'s 95% ranges.
+  - **Needs a fate effect:** outside (ii), inside (i).
+  - **Unexplained:** outside both.
