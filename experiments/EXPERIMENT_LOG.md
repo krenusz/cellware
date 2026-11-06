@@ -6196,3 +6196,52 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   on its prior bound at d = 0 and +0.5, so the bound absorbs the shift. Reported, not read.
 - Bug fixed before the B42 runs: `b42()` reused `d` for the data and the shift (TypeError, no
   output); renamed the data `D`. E52's b42.json was produced with d = None and is unaffected.
+
+## E55: do pretrained single-cell RNA models read more of the clone fate state than PCA? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "Yes, register E55" (after E54 found only a weak RNA trace of the SIS clone
+  state).
+- **Question.** Is the part of a clone's fate bias that day-2 RNA misses (track B: about 55% in
+  LARRY; E54: most of it in SIS-seq) a feature problem that a pretrained model fixes, or absent
+  from the RNA? Literature prior: zero-shot Geneformer/scGPT embeddings often do no better than
+  highly-variable genes or PCA (Kedzierska et al. 2025 Genome Biology), so the expected answer is
+  "no gain".
+- **Primary data: LARRY in vitro (Weinreb 2020).** Clones with >= 1 day-2 cell and >= 3 day-4/6
+  neutrophil + monocyte cells (571 clones, track B). Target: the clone's later N / (N + M). Clone
+  state = mean of its day-2 cells' features.
+- **Sealing.** New clone shard for this question: `shard_of("e55:<clone>", 3) == 0` is held out
+  (about 190 clones), read once through the oracle (test `larry_fm_heldout`). **Prior exposure,
+  disclosed:** track B already used all 571 clones (PCA-50 ridge, 5-fold CV r 0.66) and B16 used
+  this data; no foundation-model feature has been computed on it.
+- **Features (all label-free, computed per cell).**
+  1. **PCA-50 baseline:** log1p of normalised counts, 2,000 most variable genes and PCs fitted on
+     fit-shard day-2 cells only; held-out cells projected.
+  2. **Marker score:** day-2 Cebpa minus Irf8 (z-scored), as B16.
+  3. **Geneformer** (ctheodoris/Geneformer, Apache-2.0, safetensors; default model, plus the
+     smaller V1 model if the repo carries it): mouse symbols mapped to one-to-one human orthologs
+     (Ensembl BioMart), rank-value tokenisation with Geneformer's gene medians, cell embedding =
+     mean over genes of the penultimate layer (the authors' recommended setting).
+  4. **scGPT** (tdc/scGPT safetensors, MIT; human gene vocabulary via the same orthologs): cell
+     embedding as its authors' `embed_data`. Dropped and logged if it will not run on CPU.
+  At most 4 foundation candidates; no fine-tuning (65-571 clones are too few).
+- **Prediction model.** Ridge on standardised clone features; lambda chosen by inner 5-fold CV
+  inside each outer fold (nested). PCA is refitted inside each outer fold.
+- **Choice on the fit shard only.** 5-fold CV r on fit-shard clones for every candidate; the best
+  foundation candidate is named in this log before the look.
+- **Held-out readings (one look; minimum 150 held-out clones, else descriptive only).** Fit on
+  all fit-shard clones, predict held-out clones. delta = r(best foundation) - r(PCA-50), 95% CI by
+  paired bootstrap over held-out clones (5,000).
+  - **Foundation model reads more of the state:** delta CI above 0.
+  - **No gain:** CI includes 0. **PCA better:** CI below 0.
+  - **Secondary (same look):** r of PCA-50 + best foundation concatenated vs PCA-50 alone (does it
+    add information?); each r reported against the target's sampling-noise ceiling.
+  - Resolution: with about 190 clones the paired CI half-width is about 0.08; smaller differences
+    cannot be read.
+- **Secondary, exploratory: SIS-seq.** Same features for the 65 fit clones (each clone's pooled
+  sister profile treated as one cell: outside these models' training distribution), whole
+  pipeline inside leave-one-out, against the E54 PCA score. The SIS-seq held-out shard is spent
+  (E54) and is not used again.
+- **Hygiene.** Weights only as safetensors from the named repos, into `data/fm_weights/` (own
+  directory, no code from it executed); ortholog table into `data/orthologs/`; Python reading
+  either runs with `-I`. CPU first; GitHub Actions if a run passes about 1 hour. Smoke tests in
+  the scratchpad.
