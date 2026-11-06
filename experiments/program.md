@@ -93,6 +93,16 @@ the model (H1 buffering of clone extremes, H2 complementation of missing capacit
 proportion feedback on the starting T+ fraction). Model architecture from the literature:
 sorting on clone state (positions) + a communication feedback (proportions).
 
+**Candidate chapter 4 (Bence, 2026-11-06): the mechanism of mixing rescue / division of labour
+(#22, #24).** Mixing any two gastruloid clones rescues elongation, with a modest bonus for
+opposite A-P propensities; buffering, strict complementation and a T+ window do not explain it
+from elongation counts (G4). Search for data that can: per-clone cell-type composition of pure
+and mixed gastruloids (Shendure monoclonal gastruloids GSE291244 / Cell 2026 "A fluctuation test
+for gastruloid heterogeneity"; needs the cell-to-gastruloid assignment from tape files),
+time-resolved T+ and pluripotency fractions (Oriola 2024 style), per-clone signalling
+(Wnt/Nodal/RA) and adhesion. Literature start: LITERATURE_SWEEP_2026-11e.md. Not started; chapter
+3 first finishes with the gastruloid model (G5) using a descriptive rescue rule.
+
 ## Original question (2023-24 programme)
 Can cells that share one learned policy, and see only local signals, grow a tissue with target
 size, fate proportions and spatial pattern, and which signalling channels does that rely on?
