@@ -6395,3 +6395,42 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 - **For #17:** the weak E54 held-out link used top-variance PCA features, which are weak here too
   (pDC 0.13). With genes selected by fate, the fit clones show pDC ~0.77 cleanly; unconfirmed on
   sealed clones (spent). No public independent data set exists (NEXT_DATASETS check 4).
+
+## G1: is a gastruloid clone's A-P propensity a stable clone state, and do mixed clones sort by rank or into fixed domains? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "yes go with recomm" (register chapter 3's first test; plain features, no
+  foundation model).
+- **Data.** Raj lab (Ayyappan et al. 2025 bioRxiv 2025.07.12.664536), Dropbox `extracted_data/
+  linescans`, downloaded 2026-11-06 to `data/gastruloid_raj/linescans/`. Profiles are 30
+  positions along the A-P axis (x = 0-100), intensity z-normalised per gastruloid. Prior
+  exposure: file headers, row counts and the per-clone gastruloid counts only; no profile
+  statistic computed.
+- **G1a: propensity as a clone state (sealed).** `normalized_smoothed_individual_lines.csv`: one
+  labelled clone (clones 1, 3, 5, 6, 7) in a bulk chimera, 230 gastruloids in 11 clone x
+  replicate cells. Per gastruloid polarity P = mean intensity at x < 50 minus x >= 50 (positive
+  = enriched toward x = 0).
+  - Sealing: `shard_of("g1:<gastruloid_id>", 3) == 0` held out (about 77 gastruloids), read once
+    via the oracle (test `gastruloid_polarity_heldout`).
+  - Fit-shard model: P = mu_clone + u_(clone, replicate) + e; method-of-moments variance shares
+    (clone, replicate within clone, residual).
+  - Predictions (logged before the look): for each clone x replicate cell, the held-out mean
+    95% interval mean_fit +- 1.96 sqrt(s_e^2 / n_fit + s_e^2 / n_ho).
+  - **Readings.** Clone state: clone share of variance > replicate share and its CI excludes 0.
+    Replication: >= 90% of cells with >= 4 held-out gastruloids inside their interval (fewer
+    cells than 6 qualifying: descriptive). Minimum 4 held-out gastruloids per cell for its
+    reading.
+- **G1b: rank sorting vs fixed domains (open data, readings set before computing).** Clone 1 :
+  clone 3 mixes at 4:1, 2:1, 1:1, 1:2, 1:4 (`ratios_*_clone1clone3_*.csv`, mean and 95% band per
+  position, two dates). Assumption to verify from `extraction_scripts` before computing: red =
+  clone 3 (anterior), green = clone 1; f = anterior-clone (clone 3) fraction.
+  - Statistic: crossing point x* where mean_red = mean_green (linear interpolation; the first
+    crossing from x = 0); uncertainty by drawing curves within their bands (normal, SE =
+    half-band / 1.96, 2,000 draws, independent per position: conservative).
+  - Models: **rank sorting** (cells sort by state; the anterior clone fills [0, f]; z-normalised
+    step profiles cross at x* = 100 f) predicts slope dx*/d(100 f) = 1; **fixed domains**
+    (position set by the axis, not by composition) predicts slope 0.
+  - **Readings.** Slope CI includes 1 and excludes 0: rank sorting. Includes 0 and excludes 1:
+    fixed domains. Both or neither: unresolved; between 0 and 1 excluding both: partial
+    proportion regulation. Minimum: >= 4 ratios with a crossing.
+- **Next (not this entry).** Clone-memory decay over passages (`clone*_passage_rep*.csv`,
+  directionality summary) as a core-model state-decay test.
