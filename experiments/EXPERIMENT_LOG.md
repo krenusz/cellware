@@ -6324,6 +6324,7 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   r -0.10, 0.11, 0.28; fate logit vs library size r 0.10, vs genes detected 0.14. Target
   reliability (split-half sister wells): pDC rho 0.89 -> max r 0.97; cDC2 0.75 -> 0.93; cDC1
   0.65 -> 0.89. V2 pDC prediction vs each well separately: 0.89, 0.94 (sister-well rho 0.89).
+- **WITHDRAWN (B43 amendment): leak from batch centring incl. the left-out clone; clean V2 = 0.34 / 0.53 / 0.77.**
 - **Reading: exploratory hypothesis, not a discovery.** V2 embeddings of the pooled sister
   profile predict pDC and cDC2 fate almost to the target's reliability on the fit clones. No leak
   found, but: n = 65; one look at two models after E54; the PCA-3 baseline here (-0.01 for pDC)
@@ -6367,3 +6368,30 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   genes top-50/200, V1, V2; within-batch shuffle controls (3 each) for genes top-200 and V2.
   Readings as registered in B43 apply to the fixed pipeline only. E54's held-out look is not
   affected (its held-out clones were centred with fit-set statistics).
+
+### B43 result (2026-11-06, clean pipeline; 65 SIS-seq fit clones, LOO with batch centring inside folds)
+
+| features | cDC1 r | cDC2 r | pDC r |
+|---|---|---|---|
+| PCA-3 (top-variance genes) | -0.21 | 0.20 | 0.13 |
+| genes top-50 (selected inside LOO) | 0.02 | 0.56 | 0.75 |
+| genes top-200 | 0.15 | 0.57 | 0.78 |
+| Geneformer V1-10M | 0.15 | 0.23 | 0.18 |
+| Geneformer V2-316M | 0.34 | 0.53 | 0.77 |
+
+- Shuffle controls now behave: genes top-200 r -0.48 to +0.38, V2 -0.41 to +0.16 (3 within-batch
+  shuffles each; spread about +-0.25, matching the registered +-0.25 resolution).
+- **E55 SIS-seq numbers withdrawn:** V2 0.95 / 0.74 were leak-inflated; clean 0.77 / 0.53.
+  **V2 adds nothing over plain selected genes** (differences far under the resolution), the same
+  answer as on LARRY (#19).
+- **Step 2 reading:** pDC 0.78 is between the registered branches (>= 0.8 "in the RNA"; <= 0.4
+  "V2 adds something"); read as: a fate signal is in plain RNA for pDC and cDC2, not cDC1, and
+  plain genes read it as well as V2.
+- **Step 3 reading (attribution on the first, leaky predictions; the gene axis, not the size,
+  is what is read):** 0 of 10 terminal pDC genes in the top 30, so the registered "early pDC
+  commitment" reading is not met. The genes are a lymphoid-primed vs myeloid-primed progenitor
+  axis: toward pDC Dntt, Satb1, Notch1, Lrmp, Gimap9, Arpp21, Hmga2; toward cDC2 Ccr2, Ms4a6c,
+  Csf1r, Mpo, Prtn3, Ctsg. Same axis as B41.
+- **For #17:** the weak E54 held-out link used top-variance PCA features, which are weak here too
+  (pDC 0.13). With genes selected by fate, the fit clones show pDC ~0.77 cleanly; unconfirmed on
+  sealed clones (spent). No public independent data set exists (NEXT_DATASETS check 4).

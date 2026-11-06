@@ -66,6 +66,10 @@ tables).
    state (loading 0.75-0.80; LARRY's day-2 score: 0.95). On 34 held-out clones the correlations
    were 0.25-0.31: positive for all three fates, but below the predicted range for pDC and cDC2.
    Pre-chosen marker programmes (Tcf4, Spib, Id2, Klf4) did not predict fate at all.
+   **Update (B43, E55):** the weakness was partly the feature choice. With genes selected by fate
+   inside a clean leave-one-out, the fit clones show pDC r 0.77 and cDC2 0.55 along a
+   lymphoid-primed (Dntt, Satb1, Notch1) vs myeloid-primed (Ccr2, Csf1r, Mpo) axis; Geneformer V2
+   reads it no better. Unconfirmed on sealed clones, and no public data set can confirm it yet.
 7. **One core model (C1, E53).** `core_model.py` (state, split, growth, sampling) reproduces the
    chapter-1 LARRY fit (instruction 0.52 / 0.70, gamma 0.56, beta 7.4, all inside E48's ranges)
    and the SIS-skew fits. This is the clone-level prior planned for the tissue simulator.
