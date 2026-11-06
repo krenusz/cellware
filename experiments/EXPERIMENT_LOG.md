@@ -6256,3 +6256,22 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   <cls>/<eos>; embedding = mean of gene tokens in the penultimate layer. Dictionaries read with a
   whitelist unpickler. 14,792 of 25,289 mouse genes map one-to-one to Geneformer's vocabulary.
 - **Sizes.** 571 clones (374 fit, 197 held-out), 868 day-2 cells; target sampling ceiling R^2 0.96.
+
+### E55 external reference: published fate prediction on the same data (2026-11-06, added before results)
+
+| source | unit and target | method | score |
+|---|---|---|---|
+| Weinreb 2020 Science, Fig 5 (PMC7608074) | each day-2 cell (early progenitors, CD34-thresholded) vs the N/(N+M) fraction of its clonal relatives | PBA, Waddington-OT, FateID (no clonal training) | Pearson R < 0.26 for all (FateID slightly best) |
+| same | same | top 10 most fate-correlated genes | "easily outperformed" the algorithms (no number) |
+| same | same | smoothed held-out clonal data (their upper bound) | R = 0.5 ("low overall because of noise in the fate outcomes of single cells") |
+| Weinreb 2020, Fig 3 | clone's dominant fate from a day-2 profile, all conditions | logistic regression / MLP | 60% accuracy in vitro (late-time prediction 76%) |
+| CoSpar (Wang 2022 Nat Biotechnol) | day-2 progenitor N vs M bias | CoSpar, WOT | numbers are in main Fig 4g (paywalled); the authors' supplement (read) gives legends only. Not used |
+| this project, track B | clone mean of day-2 cells vs clone N/(N+M), clones with >= 3 later N+M cells | PCA-50 + ridge, supervised, 5-fold CV | r 0.66 (R^2 0.43; ceiling 0.96) |
+
+- **Not directly comparable.** Weinreb scores single cells against all their relatives (noisier
+  target: their own ceiling is R 0.5); track B and E55 score clones with >= 3 later cells and
+  average 1-2 day-2 cells, and train on clonal labels. The shared message: supervised use of
+  day-2 expression beats unsupervised dynamic inference, and a large share of fate stays
+  unexplained (Weinreb: "lower bound for the cell-autonomous influence of transcriptional state").
+- No competition or shared leaderboard exists for this task (checked 2026-11-06); the Arc Virtual
+  Cell Challenge 2026 scores perturbation responses, not clone fate.
