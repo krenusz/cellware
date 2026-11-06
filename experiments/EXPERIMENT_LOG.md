@@ -6434,3 +6434,31 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
     proportion regulation. Minimum: >= 4 ratios with a crossing.
 - **Next (not this entry).** Clone-memory decay over passages (`clone*_passage_rep*.csv`,
   directionality summary) as a core-model state-decay test.
+
+### G1 amendment (2026-11-06, before any profile statistic)
+
+- **Channels verified** (paper text): "clone 1 (green, posterior propensity) and clone 3 (red,
+  anterior propensity)". Authors' notebook `Clone_Ratios.ipynb` (read as text, not run): red =
+  Channel 2, green = Channel 0; x = 0-100 "% distance along A-P axis".
+- **Bands are +-1 SEM** of the raw mean (then z-scored with the mean profile's mean and SD), not
+  95%: draws use SE = half-band. Each ratio file's curve is the z-scored mean of its gastruloids.
+- **Batch:** files come from two aggregation dates (04/29/2024: 2:1, 1:2; 11/04/2024: 4:1, 2:1,
+  1:1, 1:2, 1:4). The slope is fitted with a date intercept (common slope). An undated
+  `ratios_2_1_clone1clone3.csv` is excluded (duplicate of a dated file or unknown batch).
+- **Prior disclosed:** the paper states the crossing "was not sensitive to the ratio" with
+  batch-to-batch variation (Supp Fig 5); G1b quantifies that claim with a CI against the rank-
+  sorting prediction (slope 1).
+- **G1a:** `normalized_smoothed_individual_lines.csv` profiles are normalised per gastruloid
+  (authors' `normalize_series`); x = 0 is the anterior end in the ratio files; the polarity sign
+  is read relative to position index only.
+
+### G1a fit shard and held-out predictions (2026-11-06, written before the look)
+
+- 177 fit gastruloids, 53 held-out (23%, hash chance; registered "about 77" was 1/3 of 230).
+- Fit-shard clone means of polarity P (positive = toward x = 0, anterior): clone 1 -0.92, clone 6
+  -1.13 (posterior); clone 3 +0.88, clone 5 +1.05, clone 7 +0.73 (anterior). Matches the paper's
+  3 anterior / 2 posterior.
+- Variance shares: **clone 0.56 [0.08, 0.80]**, replicate 0.07 [0, 0.25], residual 0.37
+  (parametric bootstrap, 2,000). Fit-set reading: clone state (clone > replicate, CI excludes 0).
+- Held-out intervals per clone x replicate in `results_gastruloid/g1a_fit.json`; 7 cells will
+  have >= 4 held-out gastruloids (reading applies: >= 6 qualifying).

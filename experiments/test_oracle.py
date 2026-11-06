@@ -90,10 +90,19 @@ def larry_fm_heldout(shard, shards):
     return e55_fm.heldout_stat()
 
 
+def gastruloid_polarity_heldout(shard, shards):
+    """G1a: per clone x replicate held-out polarity means vs fit-shard intervals (g1 shard 0 of 3)."""
+    import g1_gastruloid
+
+    return g1_gastruloid.heldout_stat()
+
+
 # name -> (function, description). Tests already spent elsewhere are recorded in the ledger.
 TESTS = {
     "epo_scf_pooled": (epo_scf_pooled, "cytokine expt: N-fraction concordance pooled over every "
                                        "condition pair with Epo or SCF"),
+    "gastruloid_polarity_heldout": (gastruloid_polarity_heldout, "Raj gastruloids: clone A-P polarity, "
+                                                                 "g1 shard 0 of 3 (G1a)"),
     "larry_fm_heldout": (larry_fm_heldout, "LARRY in vitro: Geneformer vs PCA-50 day-2 state -> clone N "
                                            "fraction, e55 shard 0 of 3 (E55)"),
     "presence_heldout": (presence_heldout, "cytokine expt: G-M lift (>= 2, >= 3 cells) and "
