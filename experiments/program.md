@@ -93,6 +93,11 @@ the model (H1 buffering of clone extremes, H2 complementation of missing capacit
 proportion feedback on the starting T+ fraction). Model architecture from the literature:
 sorting on clone state (positions) + a communication feedback (proportions).
 
+**Chapter 3 model (G5, 2026-11-06):** `g5_gastruloid.py`, cell-based 1D simulator: clone
+state + rank sorting (positions) + proportion feedback g 0.83, a* 0.38 (domain sizes) +
+memory lost per passage event, retention 0.60 (#25) + descriptive elongation rescue rule.
+Reproduces #20-#23 (calibrated); misses 3+7 and 4+6 elongation. Next for chapter 3: write-up.
+
 **Candidate chapter 4 (Bence, 2026-11-06): the mechanism of mixing rescue / division of labour
 (#22, #24).** Mixing any two gastruloid clones rescues elongation, with a modest bonus for
 opposite A-P propensities; buffering, strict complementation and a T+ window do not explain it

@@ -1,0 +1,29 @@
+{
+ "crossing_vs_ratio_clone1_clone3_passage1": {
+  "clone1 0.80": 31.3,
+  "clone1 0.67": 29.8,
+  "clone1 0.50": 33.9,
+  "clone1 0.33": 33.2,
+  "clone1 0.20": 35.6
+ },
+ "passage_fade_clone1_clone3_1to1": {
+  "passage 1: clone 1 polarity in bulk": -0.964,
+  "passage 2: clone 1 polarity in bulk": -0.628,
+  "passage 3: clone 1 polarity in bulk": -0.427,
+  "passage 4: clone 1 polarity in bulk": -0.286
+ },
+ "elongation": {
+  "pure clone 1": 0.444,
+  "pure clone 2": 0.578,
+  "pure clone 3": 0.439,
+  "pure clone 4": 0.108,
+  "pure clone 5": 0.907,
+  "pure clone 6": 0.564,
+  "pure clone 7": 0.757,
+  "1+3": 0.775,
+  "1+6": 0.737,
+  "3+7": 0.811,
+  "4+6": 0.5,
+  "5+6": 0.94
+ }
+}

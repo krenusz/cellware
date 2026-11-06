@@ -1,0 +1,58 @@
+{
+ "mu_state": {
+  "Clone 1": -0.661,
+  "Clone 3": 0.588,
+  "Clone 5": 0.827,
+  "Clone 6": -0.912,
+  "Clone 7": 0.359
+ },
+ "polarity_target": {
+  "Clone 1": -0.977,
+  "Clone 3": 0.902,
+  "Clone 5": 1.128,
+  "Clone 6": -1.179,
+  "Clone 7": 0.606
+ },
+ "polarity_model": {
+  "Clone 1": -0.971,
+  "Clone 3": 0.916,
+  "Clone 5": 1.151,
+  "Clone 6": -1.193,
+  "Clone 7": 0.619
+ },
+ "proportion_feedback_g": 0.8344042415670742,
+ "a_star": 0.3772810871975433,
+ "memory_retention_per_passage": [
+  0.5996238344253012,
+  0.502063402430691,
+  0.678585873638007
+ ],
+ "memory_rule": "per passage event (G5: p1 subclones keep 1.21 [1.01, 1.50] of parent; per-division <= 0.34 rejected)",
+ "memory_by_clone_p2_over_p1": {
+  "clone3": [
+   0.6058971483173116,
+   0.41650697444232393,
+   0.8042195499443116
+  ],
+  "clone1": [
+   0.09046149583544114,
+   -0.12183140808583891,
+   0.30838173515034134
+  ]
+ },
+ "elongation_rule_Mgen": {
+  "competence_logit": {
+   "bulk": 1.649,
+   "c1": -0.224,
+   "c2": 0.316,
+   "c3": -0.247,
+   "c4": -2.113,
+   "c5": 2.278,
+   "c6": 0.259,
+   "c7": 1.135
+  },
+  "bonus_comp": 1.4746425917096013,
+  "bonus_same": 1.0111368331550925,
+  "bonus_unlabelled": 0.9263996105895989
+ }
+}

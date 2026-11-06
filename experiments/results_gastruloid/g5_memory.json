@@ -1,0 +1,78 @@
+{
+ "n_scans": {
+  "head_p1": 93,
+  "head_p2": 60,
+  "tail_p1": 84,
+  "tail_p2": 85
+ },
+ "n_subclones": {
+  "head_p1": 3,
+  "head_p2": 4,
+  "tail_p1": 3,
+  "tail_p2": 4
+ },
+ "means_sign_adjusted": {
+  "head_p1": 1.2350473797874806,
+  "head_p2": 0.7483116854500022,
+  "head_parent": 0.9021467681915994,
+  "tail_p1": 1.0483678884640983,
+  "tail_p2": 0.09483692737630525,
+  "tail_parent": 0.9774218914350632
+ },
+ "subclone_means": {
+  "head_p1_subclone 1": 1.108,
+  "head_p1_subclone 2": 1.232,
+  "head_p1_subclone 3": 1.365,
+  "head_p2_subclone 1": 0.785,
+  "head_p2_subclone 2": 0.828,
+  "head_p2_subclone 3": 0.467,
+  "head_p2_subclone 4": 0.913,
+  "tail_p1_subclone 1": 1.127,
+  "tail_p1_subclone 2": 0.852,
+  "tail_p1_subclone 3": 1.167,
+  "tail_p2_subclone 1": -0.267,
+  "tail_p2_subclone 2": -0.08,
+  "tail_p2_subclone 3": 0.669,
+  "tail_p2_subclone 4": 0.057
+ },
+ "ratios": {
+  "head": {
+   "p1_over_parent": [
+    1.3690093711283784,
+    1.032604749146628,
+    1.9697352256589533
+   ],
+   "p2_over_p1": [
+    0.6058971483173116,
+    0.41650697444232393,
+    0.8042195499443116
+   ]
+  },
+  "tail": {
+   "p1_over_parent": [
+    1.072584825090086,
+    0.8116105866538375,
+    1.4191292092360748
+   ],
+   "p2_over_p1": [
+    0.09046149583544114,
+    -0.12183140808583891,
+    0.30838173515034134
+   ]
+  },
+  "both": {
+   "p1_over_parent": [
+    1.2148613228660303,
+    1.0053298189462567,
+    1.501924091283029
+   ],
+   "p2_over_p1": [
+    0.3692489161079798,
+    0.23191187132909954,
+    0.5100549428446794
+   ]
+  }
+ },
+ "reading_1": "other (described)",
+ "reading_2": "consistent with G3 per-passage rate"
+}

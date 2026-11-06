@@ -6759,3 +6759,38 @@ dates.
     with G3's per-passage rate; below = loss at the subcloning bottleneck exceeds the population
     rate (cells within a lineage diversify). Minimum 20 scans per condition (met).
 - The memory rule that wins (1) is the one the simulator uses.
+
+### G5 result (2026-11-06)
+
+**Out-of-sample: memory per division vs per passage** (subclones in chimeras with bulk;
+sign-adjusted polarity; scans smoothed as the parent lines, Savitzky-Golay 5/2, as in the authors'
+`Clone_Propensity_Passaging.ipynb`; bootstrap over scans within subclone, 2,000).
+
+| | clone 3 subclones (head) | clone 1 subclones (tail) | both |
+|---|---|---|---|
+| p1 subclone / parent (G1a) | 1.37 [1.03, 1.97] | 1.07 [0.81, 1.42] | **1.21 [1.005, 1.50]** |
+| p2 / p1 subclone | 0.61 [0.42, 0.80] | 0.09 [-0.12, 0.31] | **0.37 [0.23, 0.51]** |
+
+- Scans: 93 / 60 / 84 / 85 (head p1, head p2, tail p1, tail p2), 3-4 subclones each.
+- **Reading 1: per-division memory rejected** (CI far above 0.34). Formally "other": the CI sits
+  just above 1 (registered "per passage" needed it to include 1): single-cell subclones at
+  passage 1 are at least as polarised as their parents (a bottleneck may pick strongly biased
+  cells). Expansion from one cell (>= 13 divisions) does not erase the state; one passage does.
+- **Reading 2:** p2 / p1 0.37 [0.23, 0.51] touches G3's [0.50, 0.68]: consistent (registered
+  rule), but clone-specific: clone 3 keeps 0.61, clone 1 loses almost all (0.09).
+- **Simulator rule chosen:** memory lost per passage event, retention 0.60 per passage (G3),
+  clone-specific rates noted.
+
+**Simulator (`g5_gastruloid.py`, calibrated; consistency checks, not tests).**
+- State means (unit within-clone SD, sorting noise 1): clone 1 -0.66, 3 +0.59, 5 +0.83, 6 -0.91,
+  7 +0.36 reproduce G1a polarities (-0.97 / 0.92 / 1.15 / -1.19 / 0.62 vs targets -0.98 / 0.90 /
+  1.13 / -1.18 / 0.61).
+- Proportion feedback g = 0.83, a* = 0.38 (from G1b): simulated 1+3 crossing at 30-36 for clone 1
+  shares 0.2-0.8 (observed 35-54).
+- Memory: clone 1 polarity in bulk -0.96 / -0.63 / -0.43 / -0.29 over passages 1-4.
+- Elongation (descriptive rule): pure clones 0.11-0.91; pairs 1+3 0.78 (obs 0.80), 1+6 0.74
+  (0.76), 5+6 0.94 (0.94); misses 3+7 0.81 (0.71) and 4+6 0.50 (0.27), the rule's known limits.
+- **Chapter 3 goal status:** the model reproduces clone spatial propensities and the
+  pure-vs-mixed elongation difference from clone states plus local rules (sorting, proportion
+  feedback, per-passage memory), with elongation by a descriptive rescue rule. The rescue
+  mechanism is candidate chapter 4.
