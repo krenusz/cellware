@@ -6637,3 +6637,33 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   - Complementary vs same difference re-read under N2 (G2's +0.46 was unresolved).
 - **Minimum.** Date-matched test needs >= 10 rows and >= 150 gastruloids per class read; else
   pooled over classes only.
+
+### G2b result (2026-11-06; pure-clone rates: 1 0.43, 2 0.57, 3 0.38, 4 0.05, 5 0.93, 6 0.57, 7 0.75)
+
+Excess = pooled pair elongation minus pooled null (probability scale); cluster bootstrap over
+dates.
+
+| test | complementary | same-propensity | all pairs |
+|---|---|---|---|
+| 1 vs N1 (mean logit) | +0.29 [0.17, 0.39] | +0.20 [0.07, 0.34] | +0.24 [0.16, 0.34] |
+| 1 vs N2 (mean probability) | **+0.30 [0.18, 0.41]** | **+0.21 [0.09, 0.35]** | +0.24 [0.16, 0.34] |
+| 1 vs N3 (better member) | +0.20 [0.08, 0.32] | +0.10 [-0.04, 0.26] | +0.10 [-0.01, 0.21] |
+| 2 date-matched vs N2 | +0.30 [0.15, 0.42] (10 rows, 217) | +0.24 [0.13, 0.32] (4 rows, 85: under minimum) | **+0.19 [0.10, 0.31]** (23 rows, 517) |
+| 2 date-matched vs N3 | +0.18 [-0.01, 0.35] | +0.13 [0.06, 0.18] (under minimum) | +0.00 [-0.12, 0.20] |
+
+- Leave-one-clone-out (N2): every run keeps comp, same and all above 0 (lowest lower bound:
+  same, dropping clone 6, +0.04).
+- **comp - same under N2: +0.09 [0.001, 0.17]** (1,978 valid bootstrap draws of 2,000; draws
+  missing a class dropped). Under N3: +0.10 [-0.02, 0.22].
+- Bug fixed before reading: the first run printed a NaN CI for comp - same (np.percentile over
+  draws with missing classes); nanpercentile used.
+- **Reading.** **#22 stands**: both classes exceed the probability-average null, the pooled
+  date-matched test agrees, and no single clone drives it (the same-propensity date-matched test
+  is under its minimum and is read only pooled). **Strong form not shown** for all pairs: mixes
+  do not reliably beat their better member (+0.10 [-0.01, 0.21]).
+- **New, on the edge:** complementary pairs rescue more than same-propensity pairs (+0.09
+  [0.001, 0.17]); and only complementary pairs beat their better member (+0.20 [0.08, 0.32],
+  exploratory). So: a generic mixing effect plus a smaller complementarity bonus. G2's logit
+  difference (+0.46 [-0.18, 1.02]) points the same way.
+- Exception: clone 4 (5% alone) is only partly rescued (2+4 0.48, 4+6 0.28; 4+5 0.73, 4+7 0.69);
+  a severe defect is not fully buffered.

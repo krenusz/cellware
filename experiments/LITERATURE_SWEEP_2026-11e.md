@@ -123,3 +123,11 @@ peaks at an intermediate composition and falls on both sides.
   Ayyappan 2025 and Regalado 2025 should be added as gap-map seeds at the next retro.
 - No paper tests division of labour against generic mixing with an effect size; G2 is the first
   such estimate we know of.
+
+## Update after G2b (2026-11-06)
+
+The retest (G2b) keeps "any mixing rescues" but adds a complementarity bonus at the edge of
+significance: complementary pairs +0.09 [0.001, 0.17] over same-propensity pairs, and only they
+beat their better member. So H1 (buffering) alone is not enough; the model needs a generic term
+plus an A-P complementarity term, and H2/H3 must explain both. Clone 4 (severe defect, partly
+rescued) is the cleanest single test case.
