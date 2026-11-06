@@ -6265,7 +6265,7 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 | same | same | top 10 most fate-correlated genes | "easily outperformed" the algorithms (no number) |
 | same | same | smoothed held-out clonal data (their upper bound) | R = 0.5 ("low overall because of noise in the fate outcomes of single cells") |
 | Weinreb 2020, Fig 3 | clone's dominant fate from a day-2 profile, all conditions | logistic regression / MLP | 60% accuracy in vitro (late-time prediction 76%) |
-| CoSpar (Wang 2022 Nat Biotechnol) | day-2 progenitor N vs M bias | CoSpar, WOT | numbers are in main Fig 4g (paywalled); the authors' supplement (read) gives legends only. Not used |
+| CoSpar preprint (Wang & Klein 2021 bioRxiv 2021.05.06.443026, Fig 4) | day-2 progenitor N vs M bias vs a *smoothed* ground-truth bias map built from all clonal data (Weinreb's method) | OT/state only before coherence+sparsity; CoSpar state only; CoSpar with day-6 clones only | R 0.51-0.54; **R 0.69**; R 0.68; upper bound (cross-validated ground truth) **R 0.72** |
 | this project, track B | clone mean of day-2 cells vs clone N/(N+M), clones with >= 3 later N+M cells | PCA-50 + ridge, supervised, 5-fold CV | r 0.66 (R^2 0.43; ceiling 0.96) |
 
 - **Not directly comparable.** Weinreb scores single cells against all their relatives (noisier
@@ -6273,5 +6273,8 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   average 1-2 day-2 cells, and train on clonal labels. The shared message: supervised use of
   day-2 expression beats unsupervised dynamic inference, and a large share of fate stays
   unexplained (Weinreb: "lower bound for the cell-autonomous influence of transcriptional state").
+- **CoSpar's R is against a smoothed, state-diffused ground truth**, so state-only methods are
+  partly scored against their own smoothing; its 0.69/0.72 are not comparable with raw clone
+  fractions either. Numbers are the 2021 preprint's (published version may differ).
 - No competition or shared leaderboard exists for this task (checked 2026-11-06); the Arc Virtual
   Cell Challenge 2026 scores perturbation responses, not clone fate.
