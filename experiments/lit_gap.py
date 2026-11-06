@@ -42,6 +42,11 @@ SEEDS = {
     "LCL 2024 (lineage contrastive)": "10.1101/2024.10.28.620670",
     "Lin/Naik 2024 (restricted progenitors, small clones)": "10.1101/2024.03.28.587126",
     "Grover 2014 (Epo guides MPPs to erythroid)": "10.1084/jem.20131189",
+    "Tian 2021 (SIS-seq/SIS-skew, Bcor)": "10.1016/j.immuni.2021.03.012",
+    "Naik 2013 (heritable lineage imprinting)": "10.1038/nature12013",
+    "Lin 2021 (Flt3L clonal tuning)": "10.1038/s41556-021-00636-7",
+    "Rodrigues 2018 (pDC lymphoid origin)": "10.1038/s41590-018-0136-9",
+    "Dress 2019 (pDC from Ly6D+ lymphoid progenitors)": "10.1038/s41590-019-0420-3",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -95,6 +100,9 @@ TOPICS = {
         r"dino",
         r"world model",
     ],
+    "dendritic_cells": [r"dendritic", r"pdc", r"cdc1", r"cdc2", r"flt3"],
+    "genetic_perturbation": [r"crispr", r"knockout", r"perturb", r"bcor", r"deletion"],
+    "morphogenesis_long_term": [r"gastruloid", r"embryo", r"morphogen", r"organoid", r"self-organi"],
     "inference_identifiability": [
         r"identifiab",
         r"inference",
