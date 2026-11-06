@@ -254,3 +254,19 @@ E55.
     co-culture before aggregation.
 - Next download candidates (one at a time): Differentiation Assay (elongation per clone), then
   SG_kit1 (seqFISH positions) if the clone-level test needs cell positions.
+
+## Chapter 3 data map (2026-11-06; all under data/gastruloid_raj/, gitignored)
+
+- `linescans/` (extracted, z-scored mean profiles + per-gastruloid chimera lines): G1.
+- `morph_csv/` (raw_data/Morphology CSVs): elongation counts per composition and date: G2.
+  `T_overlap - Sheet1.csv` (T+ area per clone) not used yet.
+- `iou/`: per-gastruloid clone overlap / A-P clone fractions under drugs (RA, SB, AGN) for 1+3
+  and 1+6 chimeras (`AP_CloneFraction_Drug`).
+- `diff_assay/`: confluency time courses per clone in differentiation media (growth, not
+  elongation).
+- `rainbow/`: per-gastruloid JSONs (120 h aggregates, elongated vs not).
+- `raw_linescans/`, `raw_ls2/` (raw_data/linescans): **per-gastruloid raw xlsx** behind every
+  summary curve: passages 1-4 for clone 1 / clone 3 / clone 1+3, ratios, drugs, subclones,
+  clone+bulk chimeras. Needed for the memory-fade test (raw amplitude, not z-scored) and a
+  per-gastruloid redo of G1b. Formats differ by file (Condition = clone fraction or E/X/EX
+  labels; 2-3 channels); channel mapping must be read from the authors' notebooks first.
