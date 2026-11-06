@@ -8,7 +8,7 @@ How experiments are run and logged here. An agent or a person follows these rule
 - **Current step:** show that the model can fit conditional data, i.e. perturbation experiments
   where the same clones are split across conditions. First data set: Weinreb 2020 LARRY cytokine
   experiment (closed 2026-11-05, WRITEUP_LARRY_CYTOKINE.md). Second: SIS-seq / SIS-skew
-  (chapter 2 below).
+  (chapter 2 below; closed 2026-11-06, WRITEUP_SIS.md).
 - **Short-term question (chapter 1, answered):** do G-CSF and M-CSF instruct or select neutrophil
   vs monocyte fate, and in what proportion (instruction shifts tau, selection s and gamma)?
   Answer: mostly clone-level selection on a strong fate state, modest instruction.
@@ -21,7 +21,10 @@ answer (instruction shifts or selection strength) by more than their current spr
 standing models. Otherwise it is recorded in DISCOVERIES.md as a property of the data or a known
 limitation, and the project moves on (write-up, held-out check, next data set).
 
-## Chapter 2 plan: SIS-seq and SIS-skew (agreed 2026-11-05)
+## Chapter 2 plan: SIS-seq and SIS-skew (agreed 2026-11-05; closed 2026-11-06)
+**Outcome (WRITEUP_SIS.md):** clone fate state replicates strongly; Bcor acts on growth and
+persistence, no identifiable fate term; RNA carries only a weak trace of the state (held-out).
+
 Data: Tian et al. 2021 Immunity (Naik lab), all public files local in `data/sis_seq/`
 (see NEXT_DATASETS_2026-11.md, checks 1-2c). Downloads go stepwise, as each step needs them.
 

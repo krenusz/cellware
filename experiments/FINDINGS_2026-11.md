@@ -307,3 +307,12 @@ D3 and B26 remain unexplained by all three models.
 
 - **E53 (2026-11-06).** LARRY refitted through the core: 9/18 gated, instruction shifts 0.52 / 0.70,
   gamma 0.56, s_G 2.1, beta 7.4, all inside E48's ranges. One model code now fits both data sets.
+
+## Closing (2026-11-06): chapter 2 (SIS-seq / SIS-skew) stopped
+
+Write-up: WRITEUP_SIS.md. The strong clone fate state replicates in a second system (H 0.71).
+Bcor KO expands the KO arm and raises one-arm persistence; a fate-linked term is not identifiable,
+and B42's marginal pDC-gain excess disappears under a +-0.5 label shift (S1; #18 withdrawn as a
+fate claim). The day-2.5 RNA link to the clone state replicates in sign only, at half strength
+(E54; #17 downgraded; M10). One core model covers LARRY and SIS (C1, E53). Next: chapter 3,
+Raj-lab gastruloids.
