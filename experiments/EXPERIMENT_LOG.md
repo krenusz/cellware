@@ -6581,3 +6581,27 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
 - **Caveat registered:** one aggregation per passage, so passage and batch are confounded. G1a
   measured batch (replicate) variance at 0.04-0.07 of polarity variance; a fade far beyond that
   is read as the clone's, not the batch's. Minimum 13 gastruloids per passage (met).
+
+### G3 result (2026-11-06; 92 gastruloids, passages 1-4)
+
+| passage | n | mean S | share clone 3 anterior of clone 1 |
+|---|---|---|---|
+| 1 | 13 | 0.221 | 1.00 |
+| 2 | 16 | 0.178 | 0.94 |
+| 3 | 32 | 0.048 | 0.69 |
+| 4 | 31 | 0.054 | 0.74 |
+
+- Parsing check passed: per-channel shares reproduce the authors' summary exactly (red anterior
+  1.00 / 0.81 / 0.75 / 0.65; green posterior 1.00 / 0.63 / 0.38 / 0.58).
+- **Slope -0.060 [-0.076, -0.043] per passage; S(4)/S(1) 0.25 [0.12, 0.39]. Reading: fades.**
+- Retention r 0.60 [0.50, 0.68] per passage, half-life 1.4 [1.0, 1.8] passages. Per-division
+  memory rho 0.84 [0.79, 0.88] (g = 3), 0.89 [0.86, 0.92] (g = 4.5), 0.92 [0.89, 0.94] (g = 6).
+- Shape: the drop is between passages 2 and 3, and passages 3-4 are level (0.048, 0.054), still
+  above 0 (69-74% ordered): a residual propensity, not decay to zero. The exponential is a
+  summary, not a tested shape.
+- Batch confounding: the passage 2 -> 3 drop (0.13) is 1-1.6 within-passage SDs and far above
+  G1a's replicate share; read as the clones', with one aggregation per passage as a stated limit.
+- **Model link.** The gastruloid clone state is much less stable than LARRY's fate state (#6:
+  near-full memory over 2 days in vitro): in pluripotency culture it loses about 40% per passage,
+  then holds a residue. For the simulator: clone state needs a memory parameter per context
+  (pluripotent drift vs committed progenitor), and the passage at aggregation matters.
