@@ -97,10 +97,27 @@ def gastruloid_polarity_heldout(shard, shards):
     return g1_gastruloid.heldout_stat()
 
 
+def gastruloid_p4_memory(shard, shards):
+    """G6a: sealed passage-4 clone + bulk polarity / G1a passage-1 means vs r^3 (whole files)."""
+    import g6_confirm
+
+    return g6_confirm.p4_memory()
+
+
+def gastruloid_jan24_pairs(shard, shards):
+    """G6b: sealed Jan 2024 clone 1+3 pairs, passage 1 propensity and passage 4 / 1 fade."""
+    import g6_confirm
+
+    return g6_confirm.jan24_pairs()
+
+
 # name -> (function, description). Tests already spent elsewhere are recorded in the ledger.
 TESTS = {
     "epo_scf_pooled": (epo_scf_pooled, "cytokine expt: N-fraction concordance pooled over every "
                                        "condition pair with Epo or SCF"),
+    "gastruloid_jan24_pairs": (gastruloid_jan24_pairs, "Raj gastruloids: sealed Jan 2024 clone 1+3 pairs, "
+                                                       "passage 1 and 4 (G6b)"),
+    "gastruloid_p4_memory": (gastruloid_p4_memory, "Raj gastruloids: sealed passage-4 clone + bulk files (G6a)"),
     "gastruloid_polarity_heldout": (gastruloid_polarity_heldout, "Raj gastruloids: clone A-P polarity, "
                                                                  "g1 shard 0 of 3 (G1a)"),
     "larry_fm_heldout": (larry_fm_heldout, "LARRY in vitro: Geneformer vs PCA-50 day-2 state -> clone N "

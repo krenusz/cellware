@@ -27,14 +27,16 @@ os.makedirs(OUT, exist_ok=True)
 
 # ---------- G1a ----------
 
-def polarity():
+def polarity(include_heldout=False):
+    """Per-gastruloid polarity. Held-out (G1a sealed) gastruloids are dropped unless
+    include_heldout=True, which only heldout_stat (via test_oracle) may pass."""
     d = pd.read_csv(os.path.join(DATA, "normalized_smoothed_individual_lines.csv"))
     x = d["position"] * 100 / d["position"].max()
     d["half"] = np.where(x < 50, "a", "p")
     m = d.groupby(["clone", "replicate", "gastruloid_id", "half"])["normalized_intensity"].mean().unstack()
     P = (m["a"] - m["p"]).rename("P").reset_index()
     P["heldout"] = [shard_of(f"g1:{g}", 3) == 0 for g in P["gastruloid_id"]]
-    return P
+    return P if include_heldout else P[~P["heldout"]].copy()
 
 
 def components(P):
@@ -57,7 +59,7 @@ def components(P):
 
 
 def fit(boot=2000, seed=61):
-    P = polarity()
+    P = polarity(include_heldout=True)  # held-out rows used for counts only (interval widths)
     F, H = P[~P["heldout"]], P[P["heldout"]]
     est = components(F)
     rng = np.random.default_rng(seed)
@@ -89,7 +91,7 @@ def fit(boot=2000, seed=61):
 
 def heldout_stat():
     """Called by test_oracle only."""
-    P = polarity()
+    P = polarity(include_heldout=True)
     H = P[P["heldout"]]
     pred = json.load(open(os.path.join(OUT, "g1a_fit.json")))["predictions"]
     cells, inside = [], []
