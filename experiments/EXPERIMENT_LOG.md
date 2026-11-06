@@ -6605,3 +6605,35 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   near-full memory over 2 days in vitro): in pluripotency culture it loses about 40% per passage,
   then holds a residue. For the simulator: clone state needs a memory parameter per context
   (pluripotent drift vs committed progenitor), and the passage at aggregation matters.
+
+## G2b: does "any mixing rescues" (#22) survive stricter nulls? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence: "retest this if we build hypos on it". #22 rests on one null (the joint
+  additive-logit model fitted to all rows, pairs included). Same data as G2.
+- **Why it could be an artefact.** (a) The additive-logit null may be too harsh: averaging two
+  clones on the logit scale predicts less than averaging probabilities when clones differ a lot.
+  (b) Pure clones and pairs were often scored on different dates; date effects could pose as
+  rescue. (c) One clone (e.g. 5, elongating 94% alone; or 4, under 10%) could drive the class
+  means.
+- **Tests (50:50 two-clone pairs; complementary and same-propensity classes as in G2, plus all
+  pairs).**
+  1. **Pure-only nulls.** Competences from pure-clone rows only (pooled, Wilson or logit), then
+     pair excess over three nulls: N1 mean logit, N2 mean probability, N3 **best partner**
+     (max of the two pure probabilities: the strictest; beating it means the mix does better
+     than its better member).
+  2. **Date-matched.** Pair rows whose two pure clones were scored on the same date (25 of 62
+     rows): within-date excess over N2 and N3.
+  3. **Leave-one-clone-out.** Repeat test 1 (N2) dropping every pair that contains clone k,
+     k = 1..7.
+  CIs: cluster bootstrap over dates (2,000), excess = pooled pair rate minus pooled null, per
+  class.
+- **Readings.**
+  - **#22 stands** if, for both complementary and same-propensity pairs, the excess over N2 has
+    CI above 0 in test 1 and in the date-matched test 2, and stays above 0 in every
+    leave-one-clone-out run.
+  - **Strong form** ("the mix beats its better member"): excess over N3 CI above 0 (all pairs).
+  - **#22 weakened** if the N2 excess loses CI > 0 in test 2 or in any leave-one-out run (rescue
+    is then date- or clone-driven); **withdrawn** if test 1 N2 excess CI includes 0.
+  - Complementary vs same difference re-read under N2 (G2's +0.46 was unresolved).
+- **Minimum.** Date-matched test needs >= 10 rows and >= 150 gastruloids per class read; else
+  pooled over classes only.
