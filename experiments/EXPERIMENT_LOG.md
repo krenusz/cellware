@@ -6493,3 +6493,38 @@ missed now fit (fate-specific expansion of edited lines). Posterior: gamma_cDC2 
   (G1a), but domain size is set by the gastruloid, not by starting composition. The local rule
   cannot be "sort by state"; it needs a feedback that sizes domains (growth compensation, as the
   paper's competition data suggest, or fate switching at the boundary).
+
+## G2: do mixed clones elongate by division of labour (anterior + posterior) or by any mixing? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence, "cool lets go next steps" (G2 next; chapter 3's second goal: the
+  pure-vs-mixed elongation difference).
+- **Data.** Raj lab Dropbox `raw_data/Morphology CSVs/Morphologies_1_2_3_4_5_6_7.csv` (171 rows:
+  composition, replicate, date, total and elongated gastruloids): bulk, 7 pure clones, clone +
+  bulk at 25/50%, all 21 clone pairs at 50:50, one triple. Downloaded 2026-11-06 to
+  `data/gastruloid_raj/morph_csv/`.
+- **Prior exposure, disclosed:** while checking the format I printed the pooled elongated
+  fraction per composition (all rows). No model was fitted. The `morph_08312026` folder holds
+  annotations of new subclones (5s2, 6a), not these compositions, so no sealed confirmation set
+  exists: G2 is an open-data test with readings fixed here.
+- **Propensity labels (from G1a, before G2):** anterior 3, 5, 7; posterior 1, 6; clones 2 and 4
+  unlabelled (excluded from G1 by the authors). Complementary pairs: 1+3, 1+5, 1+7, 6+3, 6+5,
+  6+7 (6). Same-propensity pairs: 1+6, 3+5, 3+7, 5+7 (4). Pairs with 2 or 4: own indicator,
+  not read.
+- **Model.** Binomial per row, logit p = sum_i f_i e_i (+ terms), e_i one elongation competence
+  per component (clones 1-7, bulk), fitted jointly with:
+  - M0 additive: no extra term.
+  - M3: + delta_comp [complementary pair] + delta_same [same-propensity pair] + delta_unl
+    [pair with 2 or 4] (+ the triple gets delta_unl).
+  CIs by cluster bootstrap over dates (2,000).
+- **Readings (M3).**
+  - **Division of labour:** delta_comp - delta_same CI above 0.
+  - **Generic mixing rescue:** delta_comp and delta_same both CI above 0 and their difference CI
+    includes 0.
+  - **Additive (no mixing effect):** both CIs include 0.
+  - Other patterns: described, no claim.
+  - Secondary: does M0 already explain clone + bulk chimeras (25/50%)? Observed vs M0 predicted
+    per composition, pooled.
+- **Minimum.** >= 40 gastruloids in each pair class; otherwise descriptive.
+- **Model link.** A division-of-labour reading means elongation needs both an anterior and a
+  posterior state population (a tissue-level requirement the simulator must encode); a generic
+  rescue means diversity itself helps (e.g. clone-specific defects complemented by any partner).
