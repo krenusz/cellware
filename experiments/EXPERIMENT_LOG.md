@@ -6924,3 +6924,37 @@ clone-specific retention (to be fitted only on non-sealed data).
     Anything less: report which part failed; no refit on sealed data.
 - **Minimum.** >= 10 gastruloids per pair, >= 15 per memory condition (met; small n for the pairs
   disclosed).
+
+### G7 looks (2026-11-06; oracle, one look each, commit 0dbf867)
+
+**G7a `gastruloid_g7_pairs`: pass.**
+- 3+7 (n 14): clone 3 anterior in **0.50** (predicted 0.61 [0.36, 0.86]); mean D 0.17 [-0.40, 0.76]
+  (predicted 0.33 [-0.26, 0.97]). Two anterior clones barely sort, as the states predict.
+- 6+7 (n 12): clone 7 anterior in **12 of 12** (predicted ~1.00). Mean D **-1.60 [-2.03, -1.16]**
+  vs predicted -2.67 [-2.89, -2.35]: right sign, the simulator sorts this pair **too strongly**
+  (on open 1+3 pairs it was ~15% too weak, so the scale error is pair-specific).
+
+**G7b `gastruloid_g7_memory`: fail (neither v2 nor v1).**
+
+| condition | n | observed signed P | v2 | v1 |
+|---|---|---|---|---|
+| clone 1 passage 2 (primary) | 16 | **0.99 [0.55, 1.33]** | 0.09 [-0.17, 0.35] | 0.55 [0.31, 0.77] |
+| clone 3 passage 2 | 15 | 0.82 [0.49, 1.11] | 0.53 [0.30, 0.73] | 0.50 [0.27, 0.72] |
+| clone 3 passage 3 | 20 | 0.44 [0.13, 0.76] | 0.32 [0.16, 0.46] (inside) | inside |
+| clone 3 passage 4 | 32 | 0.65 [0.49, 0.82] | 0.20 [0.04, 0.38] | 0.17 [-0.01, 0.34] |
+
+- In the July 2024 series **neither clone fades much**: clone 1 at passage 2 keeps about all of its
+  passage-1 polarity (G1a mean 0.92), clone 3 keeps ~0.7 at passage 4. Primary reading "neither";
+  clone 3 inside v2 in 1 of 3 (needed 2). **Simulator v2 fails G7** (memory part).
+- **Unverified, disclosed:** usable n is below the structure counts for clone 3 (passage 2: 15 of
+  21; passage 3: 20 of 48; passage 4: 32 of 35). The reader drops lines whose polarity is not
+  finite (e.g. constant lines); I have not checked why, because that means reading sealed values
+  outside the oracle (H2, H10: ask first). The clone 1 primary (16 of 16) is unaffected, and its
+  miss is large.
+
+**Reading.** The sorting part of the simulator (clone states plus rank sorting) predicts unseen
+pairs' order: passed in a sealed test, with magnitude off for 6+7. The memory part fails: clone 1
+lost its propensity fast in April 2024 (G3), in subclones (G5) and in Dec 2024 / Jan 2025 (G6a), but
+kept it in July 2024; clone 3 keeps more than predicted. Fade rate is **not a clone property we can
+predict**; it varies by series (batch / culture history). No refit on sealed data. Simulator status:
+sorting validated; memory module = unknown batch factor.
