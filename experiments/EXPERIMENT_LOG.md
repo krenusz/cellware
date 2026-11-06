@@ -6864,3 +6864,63 @@ series). Fading over passages happens (clone 1 loses it in every data set: G5 su
 generalise; the Jan 2024 1+3 series and clones 5 and 6 fade much less. #23 revised: direction
 confirmed, single rate rejected. The simulator's single retention parameter is replaced by
 clone-specific retention (to be fitted only on non-sealed data).
+
+## G7: does the gastruloid simulator (v2) predict sealed data it never saw? (pre-registered 2026-11-06)
+
+- **Go-ahead.** Bence: "what thats it for chapter 3?? why so early? did the simulator passed?", then
+  "go with recomm next steps". Answer so far: no. G5 only calibrated the simulator (fitted); its one
+  sealed prediction (G6) showed the single memory rate is wrong.
+- **Simulator v2 (`g7_model.py`, open data only).** Changes from G5:
+  1. Clone states refitted on the **G1a fit shard only** (G5 had read sealed rows; audit): mu clone
+     1 -0.615, 3 +0.565, 5 +0.735, 6 -0.843, 7 +0.452.
+  2. **Clone-specific memory** per passage from open data: clone 1 0.09 [-0.12, 0.31], clone 3
+     0.61 [0.42, 0.80] (G5 subclone p2/p1); clones 5, 6, 7: G3 pooled 0.60 [0.50, 0.68]. (v1 =
+     0.60 for all.) Open support: in the G3 1+3 series clone 1's pair polarity goes -1.41 / -0.34 /
+     +0.34 / 0.00 over passages 1-4, clone 3's 1.61 / 1.17 / 0.67 / 0.59.
+  3. **Gastruloid-level state noise tau = 0.26**, fitted on open 1+3 pairs at passage 1 (G3 file,
+     n 13): v1 (tau 0) gave the right mean difference (D = P3 - P1: 2.64 vs observed 3.01) but
+     half the spread (SD 0.25 vs 0.55); tau 0.26 gives SD 0.54. Known bias: simulated |D| about
+     15% below observed in that check.
+  - Disclosed: G6's spent per-clone results (clone 1 fades fully, clone 3 partly by passage 4) are
+    known to me; v2's retention values come from G5 (open), not G6.
+- **Sealed sets (registered in `sealed.py` with sha256 before any statistic; never read before,
+  names listed only; structure check H9: tags, headers, conditions, counts).**
+  - **G7a pairs:** `3+7_6+7_linescan_5032025.csv` (3+7: 14 gastruloids; 6+7: 12). Channels from the
+    authors' convention in 3-channel files: red = Channel 2, green = Channel 0; clone 7 is green
+    (its only labelled file, notebook cell 66), so red = clone 3 in 3+7 and clone 6 in 6+7.
+    **Risk, disclosed:** no notebook covers this file; if clone 6 were green, 6+7 would read as a
+    failure.
+  - **G7b memory:** July 2024 clone-in-bulk series (authors' `Clone_Propensity_Passaging.ipynb`):
+    clone 1 passage 2 (`clone1%_pass2`, green Channel 0); clone 3 passages 2, 3, 4 (`clone3%_pass2/3/4`,
+    red Channel 1). Fractions 0.25 and 0.5 only (0 = no clone, 1.0 = pure). Passage 1 of this series
+    is in G1a (open/spent), so not used. `clone1%_pass3` has 1 usable gastruloid: not used.
+    `clone3_pass3_07112024.xlsx`: sealed as reserve, untested.
+  - Reader `g7_confirm.py`, oracle only.
+- **Statistics.** G1a polarity P per channel (z-normalise, Savitzky-Golay 5/2, first half minus
+  second half, 30 points). Pairs: D = P_red - P_green per gastruloid. Memory: P sign-adjusted toward
+  the parent (clone 1 -, clone 3 +), pooled over fractions.
+- **Predictions** (`results_gastruloid/g7_predictions.json`; 95% interval of the observed mean / share
+  for the actual n, simulator draws plus parameter uncertainty):
+
+| test | n | v2 prediction | v1 (single rate) |
+|---|---|---|---|
+| 3+7 share clone 3 anterior | 14 | 0.61 [0.36, 0.86] (weak sorting) | same |
+| 3+7 mean D | 14 | 0.33 [-0.26, 0.97] | same |
+| 6+7 share clone 7 anterior | 12 | 1.00 [1.00, 1.00] | same |
+| 6+7 mean D | 12 | -2.67 [-2.89, -2.35] | same |
+| clone 1 passage 2, signed P | 16 | **0.09 [-0.17, 0.35]** | **0.55 [0.31, 0.77]** |
+| clone 3 passage 2 | 21 | 0.53 [0.30, 0.73] | 0.50 [0.27, 0.72] |
+| clone 3 passage 3 | 48 | 0.32 [0.16, 0.46] | 0.31 [0.17, 0.45] |
+| clone 3 passage 4 | 35 | 0.20 [0.04, 0.38] | 0.17 [-0.01, 0.34] |
+
+- **Readings (one look per test).**
+  - G7a (`gastruloid_g7_pairs`): 6+7 **pass** if clone 7 is anterior (D < 0) in >= 0.75 of
+    gastruloids; 3+7 **pass** if the share with clone 3 anterior lies in [0.36, 0.86]. Mean D is
+    secondary (the intervals ignore the ~15% scale bias).
+  - G7b (`gastruloid_g7_memory`), primary = clone 1 passage 2: inside v2 and outside v1 ->
+    **clone-specific memory confirmed**; inside v1 only -> single rate; both / neither described.
+    Secondary: clone 3 passages 2-4 inside the v2 interval in >= 2 of 3.
+  - **Simulator v2 passes G7** if all of: 6+7 pass, 3+7 pass, clone 1 primary = v2, clone 3 >= 2/3.
+    Anything less: report which part failed; no refit on sealed data.
+- **Minimum.** >= 10 gastruloids per pair, >= 15 per memory condition (met; small n for the pairs
+  disclosed).

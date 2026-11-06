@@ -33,6 +33,21 @@ SEALED_FILES = {
         (None, ["g6_confirm.py"], "spent G6b 2026-11-06"),
     "data/gastruloid_raj/raw_ls2/clone1+3_clone1+6_pass4_01272024.xlsx":
         (None, ["g6_confirm.py"], "spent G6b 2026-11-06 (tag 1+3); tag 1+6 unread"),
+    # G7 (sealed 2026-11-06 before any statistic; never read before: names listed only; structure check H9)
+    "data/gastruloid_raj/raw_ls2/3+7_6+7_linescan_5032025.csv":
+        ("c8d6b96bb0fa1379ff149ec40ba6f3fb3e97e90750658ab6e747a5d153d48ab2", ["g7_confirm.py"], "sealed G7a"),
+    "data/gastruloid_raj/raw_ls2/clone1%_pass2_07092024.xlsx":
+        ("a4e5ef2cda603f374808b3c8c0a6b4d2395a61cda07cb1c8c29248c603055758", ["g7_confirm.py"], "sealed G7b"),
+    "data/gastruloid_raj/raw_ls2/clone1%_pass3_07112024.xlsx":
+        ("9348f950373e5b971a15d9a5510dc58cf9973e8fdd89f4df15ee3f6d110c6f04", ["g7_confirm.py"], "sealed G7b"),
+    "data/gastruloid_raj/raw_ls2/clone3%_pass2_07092024.xlsx":
+        ("85c078982b3891b08bc739f1b7de10e3007dc5a766a5dd721b7c5d977a14054d", ["g7_confirm.py"], "sealed G7b"),
+    "data/gastruloid_raj/raw_ls2/clone3%_pass3_07112024.xlsx":
+        ("a9f6a9f5b0a6d8b4f255aa3ede837b51e0d7b61b37c7860e3a7319040e3fd979", ["g7_confirm.py"], "sealed G7b"),
+    "data/gastruloid_raj/raw_ls2/clone3%_pass4_7132024.xlsx":
+        ("58b439d2d61b8561b6710dbd57c38e6cdf1cf6a4f1f94a026d2966f41db14baa", ["g7_confirm.py"], "sealed G7b"),
+    "data/gastruloid_raj/raw_ls2/clone3_pass3_07112024.xlsx":
+        ("011939d615af3d5ddab28427655b2e455847946f387489822cae38573d1865b2", [], "sealed reserve (untested)"),
 }
 
 # modules allowed to contain held-out access patterns (each reviewed; reason stated)
@@ -43,6 +58,7 @@ HELDOUT_READERS = {
     "e55_fm.py": "split() marks held-out clones; heldout_stat (E55)",
     "g1_gastruloid.py": "polarity(include_heldout=True) only in fit (counts) and heldout_stat (G1a)",
     "g6_confirm.py": "G6 sealed-file readers",
+    "g7_confirm.py": "G7 sealed-file readers (oracle only)",
     "clone_state_model.py": "split() excludes shard 1 for fitting",
     "b32_small_clones.py": "excludes held-out shard",
     "b36_celltypes.py": "excludes held-out shard",

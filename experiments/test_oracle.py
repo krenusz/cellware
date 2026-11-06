@@ -111,10 +111,27 @@ def gastruloid_jan24_pairs(shard, shards):
     return g6_confirm.jan24_pairs()
 
 
+def gastruloid_g7_pairs(shard, shards):
+    """G7a: sealed 3+7 / 6+7 pair ordering vs simulator v2."""
+    import g7_confirm
+
+    return g7_confirm.g7a_pairs()
+
+
+def gastruloid_g7_memory(shard, shards):
+    """G7b: sealed July 2024 clone-in-bulk passages 2-4 vs simulator v2 / v1 memory."""
+    import g7_confirm
+
+    return g7_confirm.g7b_memory()
+
+
 # name -> (function, description). Tests already spent elsewhere are recorded in the ledger.
 TESTS = {
     "epo_scf_pooled": (epo_scf_pooled, "cytokine expt: N-fraction concordance pooled over every "
                                        "condition pair with Epo or SCF"),
+    "gastruloid_g7_memory": (gastruloid_g7_memory, "Raj gastruloids: sealed July 2024 clone 1/3 in bulk, "
+                                                   "passages 2-4 vs simulator v2 (G7b)"),
+    "gastruloid_g7_pairs": (gastruloid_g7_pairs, "Raj gastruloids: sealed 3+7 / 6+7 pairs vs simulator v2 (G7a)"),
     "gastruloid_jan24_pairs": (gastruloid_jan24_pairs, "Raj gastruloids: sealed Jan 2024 clone 1+3 pairs, "
                                                        "passage 1 and 4 (G6b)"),
     "gastruloid_p4_memory": (gastruloid_p4_memory, "Raj gastruloids: sealed passage-4 clone + bulk files (G6a)"),
