@@ -7286,3 +7286,48 @@ sorting validated; memory module = unknown batch factor.
 - **Net:** with public data, chapter 4 has no question that can reach a sealed confirmation. Options
   for Bence: exploratory memory analysis on the 8 deep trees (unconfirmed by design), another
   lineage + morphogenesis data set with many independent units, or pause chapter 4.
+
+## C3-S1: the gastruloid simulator as a configuration of the core model (pre-registered 2026-11-08)
+
+- **Serves: C3-S1** (FOCUS.json). Goal element: program.md "Plan toward space": the clone-level core
+  model becomes the cell-level prior of the tissue simulator. Chapter-3 test: reproduce clone spatial
+  propensities (#20), fade (#23) and sorting of unseen pairs (#26) from clone states plus local rules.
+  Changes the chapter answer because chapter 3 is currently closed on a simulator (g5/g7_model) that
+  shares no code or parameters with the core; if the core configuration cannot reproduce #20/#23/#26,
+  the "one model across chapters" claim fails for space. Bence: "so chapt3 wasnt completed properly so
+  yes if we need this go 1".
+- **Pre-flight:**
+  1. Unit: gastruloid (one line scan per gastruloid; G1a `gastruloid_id`), clone = biological clone.
+  2. Readout: polarity P per gastruloid (G1a statistic, `g1_gastruloid.polarity()`, fit shard only);
+     pair separation D (G3 open; G7a spent ledger summaries). Structure known from G1-G7.
+  3. Used data only: G1a fit shard (open), G1a sealed-shard per-replicate means (spent, ledger),
+     G3 open passages, G7a spent summaries. No sealed data; no look in this step.
+  4. Power: no sealed look, so H14 not applicable; checks are against existing estimates with their SEs.
+  5. Exposure: all targets are already-seen numbers (this is a model-equivalence and consistency
+     check, not a confirmation); stated as such.
+  6. Literature: none new needed (core model: C1; gastruloid: G1-G7).
+- **Script:** `c3s1_core_gastruloid.py`. Mapping onto the core's five steps (core_model.py):
+  1. **State:** clone state z_c; each gastruloid sees a copy zb = sqrt(rho_g) z_c + sqrt(1 - rho_g) e
+     (the core's per-condition fate memory, as RHO_F in core_larry); each passage event is one more
+     copy with rho_P (memory per passage, #25).
+  2-3. **Split / growth:** founders by mixing ratio; growth = 1 (no selection term: clone fractions
+     are not measured per gastruloid here; gamma = 0, disclosed).
+  4. **Output (local rules):** each cell's anterior score = beta zb + cell noise (the core's logit
+     map, beta fixed 1, cell noise SD 1 as in G5); cells sort by rank of score (positions);
+     proportion feedback g, a* from G1b for domain sizes (pairs).
+  5. **Sampling:** line-scan density per bin, G1a polarity statistic.
+- **Fitted (open data only):** z_c per clone (G1a fit-shard clone means); rho_g from the
+  within-clone between-gastruloid SD of P (G1a fit shard); rho_P from G3 open 1+3 passage fade.
+- **Pass criteria (all on used data):**
+  - (a) **Equivalence:** with rho_g = 1 and sqrt(rho_P) = G5 retention, mean P per clone equals G5
+    (g5_gastruloid) within Monte Carlo error (|diff| < 0.05).
+  - (b) **#20:** simulated clone mean P within 2 SE of the G1a fit-shard mean for all 5 clones, and
+    within 2 SE of the spent sealed-shard clone means (ledger); simulated within-clone SD of P within
+    +/- 25% of observed (this ties rho_g; G5/G7 had no such constraint).
+  - (c) **#26:** with z from G1a only, predicted 6+7 share of clone 7 anterior >= 0.75 (obs 12/12) and
+    3+7 share inside its observed binomial 95% CI (obs 7/14); report predicted D vs observed (v2 missed
+    6+7: -2.67 vs -1.60).
+  - (d) **#23:** one rho_P reproduces the G3 open 1+3 fade (passage 1-4 means within 2 SE); series
+    dependence (G8) remains a disclosed limitation.
+  - Reading: all of (a)-(d) pass = chapter 3's spatial claims hold under the core model; any failure is
+    reported as the core model's limit in space.
