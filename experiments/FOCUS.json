@@ -1,9 +1,9 @@
 {
  "chapter": "4",
- "step": "C4-S4",
- "question": "Chapter 4: C4-S4 = run the pre-registered C4-S2a rescue test (5s2+6a vs member mean, Y = 1 - circularity) as ONE oracle look on the union of mixture partitions A+B (power 0.80); partition C stays sealed.",
+ "step": "C4-S5",
+ "question": "Close chapter 4: write-up (WRITEUP_RESCUE.md) and retro (lit_gap.py map + process failures). Mixture partition C (raj_morph_0831) stays sealed as a reserve for a same-plate design.",
  "next_steps": [
-  "C4-S5: write up chapter 4 (rescue confirmed or not; mechanism untested with public data) (needs Bence's OK)"
+  "Next chapter: to be chosen with Bence after the retro (no work before his OK)"
  ],
  "allowed_scripts": [],
  "parked": [
@@ -12,7 +12,7 @@
   "GSE291244 founder memory / founder state",
   "#28 dominance"
  ],
- "approved_by": "Bence 2026-11-07: \"1\" (spend A+B on the rescue test, C stays sealed)",
+ "approved_by": "Bence 2026-11-07: \"1 leave c sealed\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
