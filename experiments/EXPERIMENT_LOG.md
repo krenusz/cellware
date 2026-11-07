@@ -7433,3 +7433,25 @@ sorting validated; memory module = unknown batch factor.
   rule is replaced by the sorting index (one parameter kappa), with the subset and clone + bulk misses
   recorded as limits. Chapter 3 closes; the mechanism behind "sorting strength enables elongation"
   (C4) needs per-clone composition data.
+
+## C4-S1: data search for the rescue mechanism (search, no statistic; 2026-11-07)
+
+- **Serves: C4-S1** (FOCUS.json). Bence: "ok go chpt4". Requirement: gastruloids from pure clones/lines
+  AND their mixtures, with per-population cell-type or spatial-expression readout and elongation.
+  Question it would answer: does mixing rescue elongation through sorting (C3-S2), i.e. do mixtures
+  segregate A-P programmes that pure clones co-express, in proportion to the sorting index H?
+- **Pre-flight (H15), per candidate:**
+
+| candidate | pure + mixed? | per-population readout | elongation | unit / n | exposure | verdict |
+|---|---|---|---|---|---|---|
+| Raj seqFISH (Ayyappan 2025; same Dropbox: `SG_kit1`, `SG_Lmetric`) | pure 1 (5), 3 (5), 6 (2), bulk (2); chimeras 1+3 (2), 1+6 (3), bulk (2) | ~20-gene seqFISH per cell; clone 1 GFP per cell in chimeras; A-P co-expression (L-metric), Moran's I | not on the same gastruloids | gastruloid, 2-5 per condition | authors report chimeras segregate better than pure clones (Fig 2E); 1+3 vs 1+6 not reported as a contrast | **descriptive only** (n far below any H14 power) |
+| Braccioli 2025 Dev Cell (WT + Msgn1 KO chimeras; sciATAC GSE217905, GSE217903) | pure WT/KO; chimeras 1:1 | per-genotype in chimeras unconfirmed (GEO pages behind a bot check, E-utilities returned empty) | chimera elongation = WT | unknown | paper summary only | **fails Serves**: genetic complementation, not clone-state sorting; availability unresolved |
+| Chimeric 3D gastruloids 2022 (Development; Bra-/- + WT ratios) | yes | imaging | yes | unknown | abstract | **fails**: no public per-population data found; genetic |
+| GSE291244 (Cell 2026, mono + poly) | yes | per-founder composition | none | founder cluster | parked | **fails**: no elongation; parked |
+
+- **Outcome: no candidate allows a confirmable test.** The only one that serves the question is the
+  Raj seqFISH set, and only descriptively. Its one testable-in-kind prediction from C3-S2: segregation
+  of A-P markers graded by H, chimera 1+3 (H 0.46) > 1+6 (H 0.23) > pure clones (H 0); n = 2-3
+  gastruloids per chimera. Download size to be checked before any download.
+- Decision for Bence (C4-S2): run that descriptive check (labelled exploratory, no claim), or close
+  chapter 4 as data-limited with the mechanism stated as the sorting-index hypothesis.
