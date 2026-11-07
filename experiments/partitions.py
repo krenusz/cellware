@@ -22,6 +22,12 @@ PARTITIONED = {
                 "coarser, re-partition first); 10x cells (tot_cell_annotation): experiment_id",
         "sealed_on": "2026-11-07",
     },
+    "raj_wnt": {
+        "salt": "cellware-rajwnt-v1",
+        "unit": "Annotation ID (one line scan = one gastruloid), Wnt hi/lo files of Apr/May 2025",
+        "files": ["clone1_Wnt_04262025.csv", "clone3_Wnt_04262025.csv"],
+        "sealed_on": "2026-11-07",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

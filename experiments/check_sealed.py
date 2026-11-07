@@ -71,6 +71,12 @@ def check(py_dir=HERE, data_dir=None):
                 continue
             if "train_only(" not in src:
                 errors.append(f"{name} reads partitioned data {ds} without partitions.train_only (H11)")
+        for fname in partitions.PARTITIONED[ds].get("files", []):
+            for name, src in py.items():
+                if name in SELF or name in sealed.HELDOUT_READERS:
+                    continue
+                if fname in src and f'train_only("{ds}"' not in src:
+                    errors.append(f"{name} names {fname} without train_only(\"{ds}\", ...) (H11)")
     return errors
 
 

@@ -22,6 +22,37 @@ DATASETS = {
     "imaging": "exploratory only (no confirmation claims without a new sealed shard)",
     "fm_weights": "model weights, not data",
     "orthologs": "reference table, not data",
+    # G9 mechanism set (sealed 2026-11-07 before any statistic; structure check only). Drug series
+    # partitioned by experiment series (dates from scan IDs): train = Dec 2024 + Feb/Mar 2025 files;
+    # A = May 3 2025, B = July 28 2025, C = May 24 2025 (iou metrics only). Locked = not analysed yet.
+    "data/gastruloid_raj/raw_ls2/1+3_ctrl_ra_sb_05032025.csv":
+        ("470b61595fbee65c56241fdb511a2a5cf508d2fba6075cc8c06cd9ecbeddfb2b", ["g9_confirm.py"], "sealed drug partition A"),
+    "data/gastruloid_raj/linescans/Ctrl_clone1_clone3_050325.csv":
+        ("a656940ec9e01923d355cbb5589da3826b7b59e4619ff7fde8abd003a536d2b8", ["g9_confirm.py"], "sealed drug partition A"),
+    "data/gastruloid_raj/linescans/RA_clone1_clone3_050325.csv":
+        ("63c232806320e90982446459087172aef2d6abe2f6eff8d97fd565c0adcabf68", ["g9_confirm.py"], "sealed drug partition A"),
+    "data/gastruloid_raj/linescans/SB_clone1_clone3_050325.csv":
+        ("0db3dd9caccda6b2087cf0cf5b4a406b360126f97f432f0497c72de841d56f74", ["g9_confirm.py"], "sealed drug partition A"),
+    "data/gastruloid_raj/iou/gastruloid_analysis_results_1+3_05032025.csv":
+        ("ea05a57d37bc8f5e07078262c19c11bae6e1e16bdab677ee3f9aaf3ac6f75d20", ["g9_confirm.py"], "sealed drug partition A"),
+    "data/gastruloid_raj/raw_linescans/07282025/linescan_drug_07282025.csv":
+        ("9bcb7b94c8a51c97212114bb45a3d806391a194b28819f62b8874ef8448ba305", ["g9_confirm.py"], "sealed drug partition B"),
+    "data/gastruloid_raj/iou/gastruloid_analysis_results_1+3_07282025.csv":
+        ("df090b9fb63ab4ef9670440fe4da99e784e66fe7aa6ca3e988b6a809626a3485", ["g9_confirm.py"], "sealed drug partition B"),
+    "data/gastruloid_raj/iou/gastruloid_analysis_results_1+3_05242025.csv":
+        ("33021182b4e2f1f3e0ec44572b838573c84263f8cd04a37c8665bc7662fb2c4d", ["g9_confirm.py"], "sealed drug partition C"),
+    "data/gastruloid_raj/iou/gastruloid_analysis_results_1+6_05242025.csv":
+        ("e155320d42fdd32a2e2d0aa23220da8f3d409559e546a4a996b65861c0c13dde", ["g9_confirm.py"], "sealed drug partition C"),
+    "data/gastruloid_raj/iou/AP_CloneFraction_Drug - Sheet1.csv":
+        ("ff0da43e8815901506a9dcc6f673b45471dec97d07182a229afc36fc4501517e", [], "locked (series unknown; could overlap a sealed series)"),
+    "data/gastruloid_raj/diff_assay/DiffAssay_Oct212024.csv":
+        ("cde7a581ca9431de95cec9dcbb47c724495c897a5a325d48808149b3ca1390c4", [], "locked: partition before any statistic (option 3, #21)"),
+    "data/gastruloid_raj/raw_linescans/07162025/line_scan_GFPspike.csv":
+        ("22e11f6a1519c290659ba854453d81ede6d5a19c92202f13f99b0a8b7ae0126e", [], "locked (design unknown)"),
+    "data/gastruloid_raj/raw_linescans/07162025/line_scan_GFP%spike_1.csv":
+        ("6f09bfd7c68c30d70644c1e2834c6ba52a6368e038ab9b7ca5d7f755a172f8ba", [], "locked (design unknown)"),
+    "data/gastruloid_raj/raw_linescans/08052025/line_scan_sgbc2_50%.csv":
+        ("696361308f340a2e7558a77d1ea43addfb207cff31344a8220b64fbdb519d3ea", [], "locked (design unknown)"),
 }
 
 # sealed files: path relative to repo root -> (sha256 or None, allowed reader modules, status)
@@ -60,6 +91,7 @@ HELDOUT_READERS = {
     "g1_gastruloid.py": "polarity(include_heldout=True) only in fit (counts) and heldout_stat (G1a)",
     "g6_confirm.py": "G6 sealed-file readers",
     "g7_confirm.py": "G7 sealed-file readers (oracle only)",
+    "g9_confirm.py": "G9 sealed drug partitions A/B/C (oracle only)",
     "clone_state_model.py": "split() excludes shard 1 for fitting",
     "b32_small_clones.py": "excludes held-out shard",
     "b36_celltypes.py": "excludes held-out shard",
