@@ -7001,3 +7001,111 @@ sorting validated; memory module = unknown batch factor.
   new series. **No G9, the Raj reserve stays sealed** (H12/H13). No `selection/` file written.
 - Fitted M4: clone retention 1: 0.27, 3: 0.67, 5: 0.91, 6: 0.81 per passage; series multipliers
   (Apr 2024 = 1) Jan 2024 1.62, July 2024 1.33, late 2024 1.05, Sep 2024 subclones 0.84.
+
+## G9: does signalling set the clones' division of labour along the axis? Train-partition model selection (pre-registered 2026-11-07)
+
+- **Go-ahead.** Bence, "go 1 and 2" (option 1: division-of-labour mechanism with untouched chapter-3
+  data, new partition rules; option 2: sorting refit, G10).
+- **Scope, disclosed.** The untouched Raj files have **no elongation readout**, so they cannot test
+  why mixing rescues elongation (#22/#24 stay open). They test what sets the anterior/posterior split
+  between clones: RA (retinoic acid), SB (SB431542, Nodal/TGF-beta inhibitor), AGN (RAR antagonist,
+  presumably AGN193109) and Wnt "hi"/"lo" (tags only; presumably CHIR dose, undocumented).
+- **Partitions (commit 45bbdb9, before any statistic; structure only seen).**
+  - Drug series by date (scan-ID timestamps): **train** = Dec 2024 (`clone1+3_clone1+6_drugtx_11282024`:
+    1+3 ctrl/RA/SB/AGN 8/8/6/8, 1+6 ctrl/RA/SB 8/7/7) and Feb/Mar 2025 (`clone1+3_drugtx_02112024`:
+    1+3 control/RA/SB/AGN 16/23/11/9; `clone1+6_drugtx_02142024`: 1+6 nodrug/RA/SB/AGN 22/10/31/20).
+    **Sealed A** = May 3 2025 (1+3 ctrl/RA/SB raw + processed + overlap metrics); **B** = July 28 2025;
+    **C** = May 24 2025 (overlap metrics only). Locked: AP_CloneFraction (series unknown),
+    DiffAssay, GFP-spike and sgbc2 scans.
+  - Wnt: hash of Annotation ID (`raj_wnt`): train clone 1 bulk / hi / lo 12 / 7 / 2, clone 3 4 / 4 / 4.
+  - Prior exposure: headers / first rows of a few processed drug means (Ctrl_clone1_clone3_112024)
+    during the 2026-11-06 format check; no statistic.
+- **Statistic.** Per gastruloid D = P_red - P_green (G1a polarity, raw line resampled to 30 points).
+  Channels: green Channel 0 = clone 1; red Channel 2 = clone 3 (1+3) or clone 6 (1+6) (authors'
+  overlap files name YFP + CY3 for 1+3 and YFP + A594 for 1+6, so clone 6 is red in 1+6). Wnt bulk
+  files: P of the clone channel (clone 1 Channel 0, clone 3 Channel 2; disclosed assumption),
+  sign-adjusted toward the clone's propensity.
+- **G9a drug models** (per series x pair x condition mean D with SE; leave-one-series-out CV over
+  the 2 train series, Gaussian log-likelihood of the held-out series' condition means):
+  - D0 no drug effect (pair mean only).
+  - D1 each drug **scales** the separation: D = g_drug x D_pair(control) (one g per drug, shared by
+    1+3 and 1+6): signalling sets how strongly clones divide the axis.
+  - D2 each drug **shifts** D additively, shared across pairs.
+  - D3 drug effect specific to each pair (pair x drug means; for a held-out series, the training
+    series' value).
+- **G9b Wnt models** (bulk clone P, leave-one-gastruloid-out CV on train): W0 no Wnt effect; W1 one
+  dose factor per level (hi, lo) scaling every clone's propensity; W2 clone-specific dose response.
+- **Selection (H12):** best CV = chosen, if every train condition mean lies within 2.5 SE of its
+  fit. Written to `selection/G9a.json` / `G9b.json`. **No sealed look in this run**; a look at drug
+  partition A is a separate step after Bence sees the selection.
+- **Minimum.** >= 5 gastruloids per train condition (met for drugs; Wnt clone 1 "lo" has 2:
+  reported, low weight through its SE).
+
+## G10: is pair sorting a transitive 1D ranking of clone states? Sorting refit (pre-registered 2026-11-07)
+
+- **Why.** G7a: the simulator ordered unseen pairs right, but 6+7 separated less than predicted and
+  1+3 more. Question: do pairs need their own states (one consistent ranking learned from pairs),
+  or do bulk-derived states (G1a) with a gain suffice?
+- **Data (no sealed file):** per-gastruloid D, control conditions only. 1+3: April 2024 p1 (G3,
+  open, n 13), Dec 2024 ctrl and Feb 2025 control (G9 train); 1+6: Dec 2024 ctrl, Feb/Mar 2025
+  nodrug (G9 train); 3+7 and 6+7: G7a summaries from the ledger (spent).
+- **Models** (simulator v2 map from state difference to mean D, grid over the difference, tau 0.26):
+  - S0: bulk states (G1a fit shard), no free parameter.
+  - S1: bulk states x one gain k.
+  - S2: **pair-derived states**: clone 1 fixed at 0; free states for 3, 6, 7, fitted to pair means
+    (a transitive 1D ranking).
+- **Train fit:** leave-one-pair-type-out CV (hold out 1+3, 1+6, 3+7 or 6+7; S2 predicts the held-out
+  pair through the cycle 1-3-7-6-1). Selection rule as G9. If S2 wins: sorting is a consistent
+  ranking, but bulk polarity is not its scale; if S0/S1 win: bulk states suffice.
+- **Sealed test later (not in this run):** candidates are the Raj reserve (Jan 2024 1+6 pairs at
+  passage 1, 21 gastruloids; last Raj sealed data, needs Bence's H13 OK) and drug partition A's
+  1+3 control.
+
+### G9 result (2026-11-07; train partitions only; `results_gastruloid/g9_mech.json`)
+
+**G9a drugs** (condition means of D; leave-one-series-out over Dec 2024 / Feb-Mar 2025):
+
+| model | CV log-lik | consistency misses |
+|---|---|---|
+| D0 no drug effect | **-31.4** | 1 (Feb 2025 1+3 ctrl, z 2.80) |
+| D1 drug scales separation (g RA 0.37, SB 0.57, AGN 0.31) | -45.1 | 1 (Dec 2024 1+6 SB, z -2.53) |
+| D2 drug shifts D | -45.8 | 1 |
+| D3 pair x drug means | -66.4 | 0 |
+
+- **Pre-registered reading: no model qualifies** (best CV, D0, misses a control mean). No
+  `selection/G9a.json`; no sealed look. D0 wins CV because the control level differs strongly between
+  the two series (1+6 ctrl -1.41 vs -0.34), which no model transfers.
+- **Exploratory (train only, not a test):** every drug reduces the clone separation |D| relative to
+  its own series' control in **11 of 11** drug x pair x series comparisons (1+3 ctrl 1.31 / 1.79 vs
+  drugs 0.49-0.83; 1+6 ctrl -1.41 / -0.34 vs drugs -0.66 to +0.20). RA and its antagonist AGN both
+  compress: perturbing RA or Nodal signalling in either direction erodes the division of labour.
+
+**G9b Wnt** (bulk clone P, leave-one-gastruloid-ID-out):
+
+| model | CV log-lik | consistency misses |
+|---|---|---|
+| W0 no Wnt effect | **-46.4** | 2 |
+| W1 one dose factor (hi 0.06, lo 0.42) | -47.9 | 1 (clone 1 lo, n 2) |
+| W2 clone-specific dose response | -48.9 | 0 |
+
+- **No model qualifies** (best CV misses). Train condition means (signed P, n): clone 1 normal 0.50
+  (12), hi 0.06 (7), lo 0.78 (2); clone 3 normal 1.24 (4), hi 0.05 (4), lo 0.40 (4).
+  **Exploratory:** high Wnt erases both clones' propensity (consistent with Suppinger 2023: early
+  cells respond to Wnt all-or-none, so saturating Wnt removes clone differences). n is small.
+
+### G10 result (2026-11-07; `results_gastruloid/g10_sorting.json`)
+
+| model | CV log-lik (leave one pair type out) | consistency misses |
+|---|---|---|
+| S0 bulk states (no free parameter) | **-22.0** | 3 (1+3 Apr 2024 3.01 vs 2.52; 1+3 Feb 2025 1.79 vs 2.52; 6+7 -1.60 vs -2.65) |
+| S1 bulk states x gain (0.87) | -55.0 | 2 |
+| S2 pair-derived states (transitive ranking) | -220.0 | 2 |
+
+- **No model qualifies.** Bulk-derived states predict unseen pair types better than states learned
+  from the other pairs; the **order** is consistent across all pairs (6 < 1 < 3 ~ 7), the
+  **magnitude** is not: 1+3 separation 3.01 / 1.31 / 1.79 in three series.
+- **Cross-reading of G8-G10 (exploratory, not pre-registered):** the experiment series changes how
+  strongly clones express their propensity: in sorting (G10), in memory (G8), and under signalling
+  perturbation (G9: every drug and high Wnt compress it). A single **series gain** (the culture's
+  signalling state scaling all clone differences) would explain the three at once. To be
+  pre-registered as G11 (train data first, H12) before any sealed look.
