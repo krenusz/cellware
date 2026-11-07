@@ -7591,3 +7591,28 @@ sorting validated; memory module = unknown batch factor.
 - **Readout validity (stated before running):** the sorting index is a between-population share; T/Igfbp5
   separation is a fate-domain readout present in any polarised gastruloid, pure clones included. C4-S2b's
   prediction "pure lowest" was an added step, not a direct consequence of the model.
+
+### C4-S2b-R result (2026-11-07; `results_gastruloid/c4s2b_ap_separation_robust.json`)
+
+1. **Implementation: exact.** Our per-gastruloid EMD equals the authors' (20/20, r = 1.00, max diff 0.000).
+2. **Background:** with the 5th-percentile background the medians move (6: 21.2, bulk+5: 15.7, 5+6: 10.4,
+   bulk+6: 8.0, 5: 4.1) but the order is the same; "not consistent", Spearman -0.10.
+3. **Confounds:** EMD vs scan length rho -0.29 (no length confound; pure 6 is the shortest yet separates
+   most). **Pure clone 6 is the only condition with Igfbp5 saturation** (median 14% of points at 65535; all
+   others 0): clipped peaks flatten its Igfbp5 profile, which can inflate its EMD. The top value of the
+   ordering is therefore suspect.
+4. **Power of the ordering check: very low.** Pooled within-condition SD of EMD 8.5 (% length), n 2-4. Chance
+   of "consistent" if the sorting index is true with 5+6 above pure by 1 SD: **0.20** (2 SD: 0.49); with no
+   effect: 0.04. So "not consistent" has probability 0.80 under a real 1-SD effect and 0.96 under none: a
+   likelihood ratio of 0.84, i.e. **almost no evidence either way.**
+
+- **Pre-registered reading: C4-S2b is reclassified "uninformative".** The robustness rule required >= 0.5
+  chance of "consistent" at d = 1; it is 0.20. The C4-S2b sentence "the sorting index is not supported as the
+  mechanism by this readout" is **withdrawn**: these 20 gastruloids cannot support or contradict it.
+- Readout validity (stated in the pre-registration): domain separation of two fate markers exists in any
+  polarised gastruloid, pure clones included, so even a well-powered version would test the sorting index only
+  indirectly. A direct test needs per-cell clone identity with positions (seqFISH chimeras) or the elongation
+  test C4-S2a.
+- Process lesson: I reported a descriptive look with n 2-4 as a conclusion without computing its power first
+  (H14 applies in spirit to descriptive checks too). Added to the C4 pre-flight habit: compute the chance of the
+  predicted pattern before reading any descriptive result.

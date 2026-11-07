@@ -1,0 +1,54 @@
+{
+ "1_implementation": {
+  "n_matched": 20,
+  "pearson_EMD": 1.0,
+  "max_abs_diff": 0.0
+ },
+ "2_background_p05": {
+  "medians": {
+   "5": 4.12,
+   "5+6": 10.36,
+   "6": 21.15,
+   "bulk+5": 15.69,
+   "bulk+6": 8.03
+  },
+  "consistent": false,
+  "spearman_EH": -0.103
+ },
+ "3_confounds": {
+  "spearman_EMD_len": -0.286,
+  "spearman_EMD_sat": 0.172,
+  "median_len_by_cond": {
+   "5": 1987.0,
+   "5+6": 2144.0,
+   "6": 1302.0,
+   "bulk": 1521.0,
+   "bulk+5": 1575.0,
+   "bulk+6": 1813.0
+  },
+  "median_sat_by_cond": {
+   "5": 0.0,
+   "5+6": 0.0,
+   "6": 0.144,
+   "bulk": 0.0,
+   "bulk+5": 0.0,
+   "bulk+6": 0.0
+  }
+ },
+ "4_power_ordering": {
+  "pooled_within_sd_EMD": 8.51,
+  "n": {
+   "5": 3,
+   "5+6": 2,
+   "6": 3,
+   "bulk+5": 2,
+   "bulk+6": 4
+  },
+  "P_consistent": {
+   "d=0": 0.036,
+   "d=0.5": 0.094,
+   "d=1": 0.195,
+   "d=2": 0.491
+  }
+ }
+}
