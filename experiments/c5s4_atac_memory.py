@@ -172,6 +172,41 @@ def test(part):
             "forecast": sel["forecast"], "chosen": sel["chosen"]}
 
 
+def _ub(a, b, rng, nboot=2000):
+    n = len(a)
+    i = rng.integers(0, n, (nboot, n))
+    bm = b[i].mean(1)
+    r = a[i].mean(1)[bm > 0] / bm[bm > 0]
+    return np.quantile(r, 0.95)
+
+
+def power(nsim=1000, seed=55):
+    """Power amendment (train only): exact test on simulated passage-2 S, bivariate lognormal around passage-1 S."""
+    tr = json.load(open(OUT, encoding="utf-8"))
+    s1 = {c: v["S"] for c, v in tr["p1"].items()}
+    cl = ["clone 1", "clone 2", "clone 3", "clone 4", "clone 6", "clone 7"]  # >= 2 replicates at passage 2
+    ls1 = np.log([s1[c] for c in cl])
+    mu, sd = ls1.mean(), ls1.std(ddof=1)
+    rng = np.random.default_rng(seed)
+    res = {"clones": cl, "log_sd_S1": round(float(sd), 4), "grid": {}}
+    for R in (0.6, 0.83):
+        for rho in (0.0, 0.5, 0.8, 0.9, 0.95):
+            hit, logr = 0, []
+            for _ in range(nsim):
+                z1 = rng.standard_normal(len(cl))
+                z2 = rho * z1 + np.sqrt(1 - rho ** 2) * rng.standard_normal(len(cl))
+                a1, a2 = np.exp(mu + sd * z1), np.exp(mu + sd * z2 + np.log(R))
+                hit += _ub(a2, a1, rng) < 1
+                logr.append(np.log(a2.mean() / a1.mean()))
+            res["grid"][f"R={R}|rho={rho}"] = {"power": round(float(hit) / nsim, 3),
+                                               "sd_logR": round(float(np.std(logr)), 4)}
+    g = res["grid"]["R=0.6|rho=0.0"]
+    res["gate"] = {"rule": "power >= 0.8 at R=0.6, rho=0", "power": g["power"], "pass": bool(g["power"] >= 0.8)}
+    res["oracle_sd"] = round(g["sd_logR"] * np.sqrt(len(cl)), 4)
+    json.dump(res, open(OUT.replace("_train", "_power"), "w"), indent=1)
+    print(json.dumps(res, indent=1))
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    train()
+    power() if "--power" in sys.argv else train()

@@ -7856,3 +7856,12 @@ sorting validated; memory module = unknown batch factor.
   matches the simulation. The old block stays in git history (2bd278b).
 - If the gate fails, A stays sealed. C5-S4 is then closed as underpowered at clone level, unless Bence chooses
   otherwise.
+- **Power amendment result (train only):** log-sd of S(c,1) over 6 clones = 0.40. Simulated power of the exact test:
+
+| R_true | rho 0 | rho 0.5 | rho 0.8 | rho 0.9 |
+|---|---|---|---|---|
+| 0.60 | **0.77** | 0.95 | 1.00 | 1.00 |
+| 0.83 (train forecast) | 0.29 | 0.39 | 0.61 | 0.83 |
+
+  **Gate fails (0.77 < 0.8 at R 0.6, rho 0). Partition A NOT spent.** The oracle's power block is updated to
+  sd 0.573, and the oracle now refuses as well (analytic power 0.70). A and B stay sealed.

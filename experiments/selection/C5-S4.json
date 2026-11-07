@@ -11,12 +11,12 @@
  "chosen": "M3_train_ratio",
  "forecast": 0.8307641557537689,
  "power": {
-  "sd": 0.0979,
+  "sd": 0.5729,
   "effect": 0.5108,
   "alpha": 0.05,
   "one_sided": true,
   "min_power": 0.8,
   "weights": {},
-  "source": "sd of per-clone log D_btw ratio p0->p1 (train); effect |log 0.6|; n = clones with >= 2 QC-passing replicates at the sealed passage and at passage 1"
+  "source": "power amendment 2026-11-07: sd(log R | rho 0) 0.2339 x sqrt(6), from the simulation of the exact S-ratio test on train passage-1 S (results_gastruloid/c5s4_atac_power.json); old D_btw-based sd 0.0979 in 2bd278b"
  }
 }

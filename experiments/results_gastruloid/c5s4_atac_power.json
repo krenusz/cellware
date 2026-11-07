@@ -1,0 +1,59 @@
+{
+ "clones": [
+  "clone 1",
+  "clone 2",
+  "clone 3",
+  "clone 4",
+  "clone 6",
+  "clone 7"
+ ],
+ "log_sd_S1": 0.3971,
+ "grid": {
+  "R=0.6|rho=0.0": {
+   "power": 0.77,
+   "sd_logR": 0.2339
+  },
+  "R=0.6|rho=0.5": {
+   "power": 0.945,
+   "sd_logR": 0.1639
+  },
+  "R=0.6|rho=0.8": {
+   "power": 0.998,
+   "sd_logR": 0.109
+  },
+  "R=0.6|rho=0.9": {
+   "power": 1.0,
+   "sd_logR": 0.0742
+  },
+  "R=0.6|rho=0.95": {
+   "power": 1.0,
+   "sd_logR": 0.0575
+  },
+  "R=0.83|rho=0.0": {
+   "power": 0.287,
+   "sd_logR": 0.2294
+  },
+  "R=0.83|rho=0.5": {
+   "power": 0.39,
+   "sd_logR": 0.1712
+  },
+  "R=0.83|rho=0.8": {
+   "power": 0.613,
+   "sd_logR": 0.1068
+  },
+  "R=0.83|rho=0.9": {
+   "power": 0.834,
+   "sd_logR": 0.0744
+  },
+  "R=0.83|rho=0.95": {
+   "power": 0.966,
+   "sd_logR": 0.0548
+  }
+ },
+ "gate": {
+  "rule": "power >= 0.8 at R=0.6, rho=0",
+  "power": 0.77,
+  "pass": false
+ },
+ "oracle_sd": 0.5729
+}
