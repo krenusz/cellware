@@ -7838,3 +7838,21 @@ sorting validated; memory module = unknown batch factor.
   (a small difference, between-clone CV about 0.5 at passage 1). If S at passages 1 and 2 were uncorrelated
   across clones, sd of log R would be about 0.29 and power about 0.55 at effect log 0.6. At the chosen forecast
   (0.83), power would be about 0.1. Waiting for Bence before spending partition A.
+
+### C5-S4 power amendment (2026-11-07, before any look; Bence: "1")
+
+- **Serves: C5-S4.** Why: the pre-registered gate used the noise of log D_btw (sd 0.098), but the test statistic
+  is R = mean S(c,2) / mean S(c,1) with a clone bootstrap. S is a small margin, and its between-clone spread is
+  much larger (passage-1 CV about 0.5).
+- **New noise model (train only, `c5s4_atac_memory.py --power`):** log S(c,1) is taken from the observed passage-1
+  values of the 6 testable clones (1, 2, 3, 4, 6, 7). Simulated passage-2 values:
+  log S(c,2) = log S(c,1) + log R_true + e, where e ~ N(0, sd_e^2(1 - rho^2))... implemented as a bivariate
+  lognormal with the train log-sd for both passages and clone correlation rho. For each scenario, 1,000
+  simulated data sets are run through the exact test (2,000-draw clone bootstrap, one-sided 95% upper bound < 1).
+- **Gate (decided now):** look at A only if power >= 0.8 at R_true = 0.6 with **rho = 0** (conservative: no
+  assumed clone-to-clone persistence of distinctness). Also reported, not gating: power at rho 0.5 and 0.8, at
+  R_true 0.83 (the train forecast), and the rho at which power reaches 0.8.
+- The selection power block is updated to sd = sd(log R | rho 0) x sqrt(6), so the oracle's analytic gate
+  matches the simulation. The old block stays in git history (2bd278b).
+- If the gate fails, A stays sealed. C5-S4 is then closed as underpowered at clone level, unless Bence chooses
+  otherwise.
