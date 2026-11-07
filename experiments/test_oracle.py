@@ -21,6 +21,8 @@ import os
 import subprocess
 import sys
 
+import numpy as np
+
 sys.path.insert(0, os.path.dirname(__file__))
 from fit_cytokine import CONDS5, load_counts, pooled_pairs_r  # noqa: E402
 
@@ -154,7 +156,20 @@ def _g11_drug(part):
     return g9_confirm.g11_drug(part)
 
 
+def _g12_drug(part):
+    import g9_confirm
+
+    return g9_confirm.g12_drug(part)
+
+
+def _g12_counts(part):
+    import g9_confirm
+
+    return g9_confirm.g12_counts(part)
+
+
 PARTITION_TESTS = {
+    "gastruloid_g12_drug": (_g12_drug, "raj_drug", "G12: pooled drugs vs control, one-sided, drug partition B"),
     "gastruloid_g11_drug": (_g11_drug, "raj_drug", "G11: drug compression ratio RA/SB vs control on sealed drug "
                                                    "series (A = May 3 2025), one partition per look"),
 }
@@ -178,6 +193,29 @@ def selection_gate(exp, test):
     best = (max if s.get("higher_is_better", True) else min)(cands, key=cands.get)
     if s["chosen"] != best:
         return f"chosen {s['chosen']} is not the best train fit ({best}) (H12)"
+    return None
+
+
+PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
+
+
+def power_gate(exp, test, part):
+    """H14: power of the pre-registered contrast from counts only; refuse below the minimum."""
+    from scipy.stats import norm
+
+    s = json.load(open(os.path.join(SELECTION_DIR, f"{exp}.json"), encoding="utf-8"))
+    p = s.get("power")
+    if not p or test not in PARTITION_COUNTS:
+        return f"no power block in selection/{exp}.json or no count function for {test} (H14)"
+    n = PARTITION_COUNTS[test](part)
+    if min(n.values()) < 2:
+        return f"partition {part} counts {n}: a group is empty (H14)"
+    se = p["sd"] * np.sqrt(sum(1 / v for v in n.values()))
+    z = norm.ppf(1 - p["alpha"]) if p.get("one_sided") else norm.ppf(1 - p["alpha"] / 2)
+    power = float(1 - norm.cdf(z - p["effect"] / se))
+    print(f"H14 power: counts {n}, sd {p['sd']}, effect {p['effect']}, power {power:.2f} (min {p['min_power']})")
+    if power < p["min_power"]:
+        return f"power {power:.2f} < {p['min_power']} for partition {part} (counts {n}); partition NOT spent (H14)"
     return None
 
 
@@ -213,7 +251,14 @@ def main():
     lk.add_argument("--shards", type=int, default=1)
     lk.add_argument("--partition", choices=["A", "B", "C"], help="sealed partition (partitioned tests)")
     lk.add_argument("--last-ok", default="", help="Bence's verbatim OK to spend the LAST partition (H13)")
+    ct = sub.add_parser("count", help="structure only: units per tag in a sealed drug partition (H9/H14)")
+    ct.add_argument("--partition", choices=["A", "B"], required=True)
     args = ap.parse_args()
+    if args.cmd == "count":
+        import g9_confirm
+
+        print(json.dumps(g9_confirm.tag_counts(args.partition), indent=1))
+        return
     ledger = read_ledger()
 
     if args.cmd == "look" and args.test in PARTITION_TESTS:
@@ -234,6 +279,9 @@ def main():
         gate = selection_gate(args.exp, args.test)
         if gate:
             sys.exit("refused: " + gate)
+        pw = power_gate(args.exp, args.test, args.partition)
+        if pw:
+            sys.exit("refused: " + pw)
         import check_sealed
         problems = check_sealed.check()
         if problems:

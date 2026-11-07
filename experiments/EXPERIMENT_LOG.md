@@ -7183,3 +7183,21 @@ sorting validated; memory module = unknown batch factor.
   (counts only, no statistic) and pick the partition that meets the minimum.
 - Remaining: drug partitions B (July 28 2025, structure not yet checked) and C (overlap metrics only,
   different statistic). B would be the last same-statistic partition; C the last of the source (H13).
+
+## G12: pooled one-sided drug compression on drug partition B, behind a power gate (pre-registered 2026-11-07)
+
+- **Go-ahead.** Bence, "go 1 2" (1: power gate H14 + counts of B, look only if powered and OK'd;
+  2: if not, close drug compression and write up chapter 3).
+- **H14 added** (program.md, oracle `power_gate`, `test_oracle.py count`). Counts of B (structure
+  only, H9): tags AP_control 22, AP_ra 8, AP_sb 3, AP_agn 3 gastruloid IDs; channels 0/1/2. Pair
+  not in the tags; taken as 1+3 from the partition's overlap file name (`..._1+3_07282025`), disclosed.
+- **Statistic (if the gate passes).** Per gastruloid ID (lines averaged) D = P(Channel 2) -
+  P(Channel 0); delta = mean D_control - mean D_drug, drugs pooled (G11 R2: one shared factor).
+  One-sided; **pass** if the bootstrap (IDs within group) 95% one-sided lower bound of delta > 0.
+  Secondary: pooled ratio vs 0.348 (|z| <= 2.5).
+- **Power block** (from train only): SD 1.58 = mean per-line SD of the 8 train 1+3 conditions;
+  effect = (1 - 0.348) x 1.44 = 0.94, 1.44 = mean 1+3 control D of Dec 2024, Feb 2025 and spent A;
+  one-sided alpha 0.05; minimum power 0.80. Groups: control vs pooled drugs.
+- **Expected:** se = 1.58 x sqrt(1/22 + 1/14) = 0.54, power about 0.54, so the oracle should refuse
+  and B stays sealed. If so, drug compression is closed as "consistent, not testable with these
+  data" (option 2).

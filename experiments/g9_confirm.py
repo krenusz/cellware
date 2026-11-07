@@ -67,3 +67,54 @@ def g11_drug(part):
     out["primary_reading"] = {2: "pass", 1: "partial", 0: "fail"}[passes]
     out["underpowered"] = any(v < 4 for v in out["n_ids"].values())
     return out
+
+
+# ---------- structure counts (H9/H14: units per tag only, never outcomes) ----------
+
+DRUG_FILES = {"A": "1+3_ctrl_ra_sb_05032025.csv",
+              "B": os.path.join("..", "raw_linescans", "07282025", "linescan_drug_07282025.csv")}
+
+
+def tag_counts(part):
+    """Per tag: gastruloid IDs, lines, and which channel headers exist. No values are summarised."""
+    d = pd.read_csv(os.path.join(RAW, DRUG_FILES[part]), usecols=["Annotation ID", "Tags", "Header"])
+    out = {}
+    for tag, g in d.groupby("Tags"):
+        out[str(tag)] = {"ids": int(g["Annotation ID"].nunique()),
+                         "headers": sorted(map(str, g["Header"].unique()))}
+    return out
+
+
+G12_TAGS = {"AP_control": "ctrl", "AP_ra": "drug", "AP_sb": "drug", "AP_agn": "drug"}
+
+
+def g12_counts(part):
+    """Units per pre-registered group (counts only)."""
+    if part != "B":
+        raise SystemExit("G12 is pre-registered for partition B only")
+    c = tag_counts(part)
+    return {"ctrl": c["AP_control"]["ids"], "drug": sum(c[t]["ids"] for t, g in G12_TAGS.items() if g == "drug")}
+
+
+def g12_drug(part):
+    if part != "B":
+        raise SystemExit("G12 is pre-registered for partition B only")
+    d = pd.read_csv(os.path.join(RAW, DRUG_FILES[part]))
+    rows = []
+    for aid, tag, h in lines(d[d["Tags"].isin(G12_TAGS)]):
+        if "Channel 2" in h and "Channel 0" in h:
+            D = pol(resample(h["Channel 2"])) - pol(resample(h["Channel 0"]))
+            if np.isfinite(D):
+                rows.append({"grp": G12_TAGS[tag], "id": aid, "D": D})
+    x = pd.DataFrame(rows).groupby(["grp", "id"])["D"].mean().reset_index()
+    c, dr = x[x["grp"] == "ctrl"]["D"].to_numpy(), x[x["grp"] == "drug"]["D"].to_numpy()
+    rng = np.random.default_rng(1212)
+    bd = np.array([rng.choice(c, len(c)).mean() - rng.choice(dr, len(dr)).mean() for _ in range(4000)])
+    lo = float(np.percentile(bd, 5))
+    g = 0.348
+    se_c, se_d = c.std(ddof=1) / np.sqrt(len(c)), dr.std(ddof=1) / np.sqrt(len(dr))
+    z = (dr.mean() - g * c.mean()) / np.sqrt(se_d ** 2 + g ** 2 * se_c ** 2)
+    return {"n": {"ctrl": int(len(c)), "drug": int(len(dr))}, "D_ctrl": round(float(c.mean()), 3),
+            "D_drug": round(float(dr.mean()), 3), "delta": round(float(c.mean() - dr.mean()), 3),
+            "delta_lower95_one_sided": round(lo, 3), "primary": "pass" if lo > 0 else "fail",
+            "ratio": round(float(dr.mean() / c.mean()), 3), "z_vs_R2": round(float(z), 2)}

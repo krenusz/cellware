@@ -1,0 +1,9 @@
+{
+ "test": "gastruloid_g12_drug",
+ "candidates": {"R2": -1.99, "R1": -3.35, "R4": -3.41, "R0": -18.97, "R3": -33.74},
+ "higher_is_better": true,
+ "chosen": "R2",
+ "params": {"all": 0.348},
+ "power": {"sd": 1.58, "effect": 0.94, "alpha": 0.05, "one_sided": true, "min_power": 0.8},
+ "note": "G12: model choice from G11 train CV; power block from train data (H14)"
+}

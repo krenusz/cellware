@@ -187,3 +187,9 @@ before every look and refuses on any failure.
 - **H13 Keep a reserve.** At most one partition per look. The last unspent partition of a source
   (or the last sealed file of an unpartitioned source, e.g. the Raj reserve) needs Bence's verbatim
   OK (`--last-ok`), logged in the ledger.
+- **H14 Power before a look.** (G11 lesson: drug partition A was spent with 3 controls, about 15%
+  power.) A sealed look needs a power block in `selection/<exp>.json` (effect size and SD from
+  train / open / spent data, one- or two-sided alpha, minimum power 0.8). The oracle first reads
+  **counts only** from the partition (units per group, H9), computes power, and refuses the look
+  below 0.8 without computing any statistic or spending the partition. `test_oracle.py count`
+  shows a partition's tag counts (structure only, never outcomes).
