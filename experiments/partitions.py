@@ -49,6 +49,15 @@ PARTITIONED = {
         "sealed_on": "2026-11-07",
         "prior_exposure": "tags and counts per tag/well only; pure plate unread until C4-S2a pre-registration",
     },
+    "raj_atac": {
+        "fixed": {"0": "train", "1": "train", "2": "A", "3": "B"},  # forecasting split by passage; B = last (H13)
+        "unit": "passage (atac_peaks/Sorted_V*_rg_nodup_*.narrowPeak; sample sheet atac_meta/align.txt: "
+                "V# -> clone, replicate, passage)",
+        "files": ["atac_peaks/ passages 2-3 (V33-V64), locked per file in sealed.DATASETS"],
+        "sealed_on": "2026-11-07",
+        "prior_exposure": "sample sheet, file names and sizes; paper's peak totals (p1 44,540; p3 41,593) and "
+                          "passage-1 anterior/posterior shared-peak shares",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

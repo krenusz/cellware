@@ -124,6 +124,7 @@ HELDOUT_READERS = {
     "e55_fm.py": "split() marks held-out clones; heldout_stat (E55)",
     "g1_gastruloid.py": "polarity(include_heldout=True) only in fit (counts) and heldout_stat (G1a)",
     "g6_confirm.py": "G6 sealed-file readers",
+    "c5s4_atac_memory.py": "C5-S4: sealed passages 2-3 read only in test(part)/counts(part) via test_oracle",
     "c4s2a_morph_confirm.py": "C4-S2a: mixture plate read only in test(part) via test_oracle; counts(part) counts only",
     "g7_confirm.py": "G7 sealed-file readers (oracle only)",
     "g9_confirm.py": "G9 sealed drug partitions A/B/C (oracle only)",

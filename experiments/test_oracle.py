@@ -180,7 +180,20 @@ def _c4s2a_counts(part):
     return c4s2a_morph_confirm.counts(part)
 
 
+def _c5s4(part):
+    import c5s4_atac_memory
+
+    return c5s4_atac_memory.test(part)
+
+
+def _c5s4_counts(part):
+    import c5s4_atac_memory
+
+    return c5s4_atac_memory.counts(part)
+
+
 PARTITION_TESTS = {
+    "gastruloid_c5s4_atac": (_c5s4, "raj_atac", "C5-S4: clone chromatin distinctness ratio sealed passage / passage 1"),
     "gastruloid_c4s2a_rescue": (_c4s2a, "raj_morph_0831", "C4-S2a: 5s2+6a rescue over member mean, Aug 2026 plates"),
     "gastruloid_g12_drug": (_g12_drug, "raj_drug", "G12: pooled drugs vs control, one-sided, drug partition B"),
     "gastruloid_g11_drug": (_g11_drug, "raj_drug", "G11: drug compression ratio RA/SB vs control on sealed drug "
@@ -209,7 +222,7 @@ def selection_gate(exp, test):
     return None
 
 
-PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
+PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts, "gastruloid_c5s4_atac": _c5s4_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
 
 
 def power_gate(exp, test, part):
@@ -307,7 +320,11 @@ def main():
         tag = f"{dataset}:{args.partition}"
         if any(f"{dataset}:{ch}" in used for ch in args.partition):
             sys.exit(f"refused: partition {tag} (or part of it) already spent (H11)")
-        unspent = [p for p in partitions.SEALED if f"{dataset}:{p}" not in used]
+        fixed = partitions.PARTITIONED[dataset].get("fixed")
+        exists = sorted(set(fixed.values()) - {"train"}) if fixed else list(partitions.SEALED)  # fixed splits may lack C
+        if any(ch not in exists for ch in args.partition):
+            sys.exit(f"refused: {dataset} has sealed partitions {exists} only")
+        unspent = [p for p in exists if f"{dataset}:{p}" not in used]
         if len(args.partition) > 1 and len(unspent) - len(args.partition) < 1:
             sys.exit("refused: a union look may not spend the last sealed partition (H13)")
         left = unspent  # union looks already keep >= 1 partition (checked above)
