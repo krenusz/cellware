@@ -90,3 +90,6 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
   models; series gain and drug effect multiply). Sealed drug partition A (May 2025): RA 0.24, SB 0.33
   of control, on the prediction, but only 3 control gastruloids, CIs include 1: **not confirmed
   (underpowered)**. Status: unconfirmed, consistent.
+- **#27 closed (G12, 2026-11-07).** Drug partition B refused by the power gate (0.54 < 0.80; 22
+  controls, 14 treated); B and C stay sealed. Final status: unconfirmed, consistent, not testable with
+  these data (needs ~24 controls + 48 treated in one series).

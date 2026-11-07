@@ -7201,3 +7201,10 @@ sorting validated; memory module = unknown batch factor.
 - **Expected:** se = 1.58 x sqrt(1/22 + 1/14) = 0.54, power about 0.54, so the oracle should refuse
   and B stays sealed. If so, drug compression is closed as "consistent, not testable with these
   data" (option 2).
+
+### G12 gate (2026-11-07; commit after H14)
+
+- Oracle `look gastruloid_g12_drug --exp G12 --partition B`: **refused by H14**, power 0.54 < 0.80
+  (counts control 22, drug 14). No statistic computed; **partition B not spent** (no ledger row).
+- Per option 2: drug compression (#27) closed as "consistent, not testable with these data";
+  chapter 3 written up in `WRITEUP_GASTRULOID.md`.
