@@ -15,11 +15,23 @@ import functools
 import hashlib
 
 PARTITIONED = {
-    "gastruloid_gse291244": {
-        "salt": "cellware-gse291244-v1",
-        "unit": "sci-RNA-seq3 cells: plate + RT barcode well (one gastruloid per RT well, to be "
-                "confirmed from the GEO sample sheet BEFORE any statistic; if the true unit is "
-                "coarser, re-partition first); 10x cells (tot_cell_annotation): experiment_id",
+    # "gastruloid_gse291244" (sealed 2026-11-07 by RT well / 10x lane) is VOID: the paper pools and
+    # dissociates gastruloids before RT, so an RT well or lane is not a gastruloid and every gastruloid
+    # fell into every partition. No statistic was ever computed on it. Replaced by the entries below.
+    "gse291244_founders": {
+        "salt": "cellware-gse291244-founders-v2",
+        "unit": "founder clone cluster (`well_cluster`, authors' Debris-seq clustering; 28 clusters in "
+                "multiome/monoclonal_gas/cell_well_cluster_assignment.rds and multiome/"
+                "cell_well_cluster_assignment.rds; gastruloid cells and mESC cells of a cluster go together)",
+        "sealed_on": "2026-11-07",
+        "prior_exposure": "Regalado/Qiu Cell 2026 Fig. 5 read: published DE (Tet1, Meg3/Rian, Peg10 in "
+                          "PSC-biased subclones) and fate-bias categories of the 26 clusters with >= 200 cells",
+    },
+    "raj_diffassay": {
+        "fixed": {"1": "train", "2": "A"},
+        "files": ["DiffAssay_Oct212024.csv"],  # 2 replicates only: replicate 1 train, replicate 2 = one sealed partition
+        "unit": "replicate (DiffAssay_Oct212024.csv: 9 clones x 4 conditions x 4 times x 2 replicates; "
+                "too small for 4 hash partitions)",
         "sealed_on": "2026-11-07",
     },
     "raj_wnt": {
@@ -41,6 +53,9 @@ def bucket(dataset, unit):
 
 
 def partition_of(dataset, unit):
+    fixed = PARTITIONED[dataset].get("fixed")
+    if fixed is not None:
+        return fixed[str(unit)]
     b = bucket(dataset, unit)
     if b in TRAIN:
         return "train"
@@ -61,9 +76,3 @@ def sealed_rows(dataset, df, unit_col, part):
     return df[keep]
 
 
-def gse291244_unit(cell_id):
-    """Unit id from a cell name. sci-RNA-seq3: 'P1-01A.LIG-P1-F03_RT-P3-H02' -> 'RT-P3-H02' joined
-    with its plate column by the caller; 10x: 'mGASv5_1_<barcode>' -> 'mGASv5_1'."""
-    if "_RT-" in cell_id:
-        return cell_id.split("_RT-")[1]
-    return cell_id.rsplit("_", 1)[0]

@@ -14,8 +14,10 @@ DATASETS = {
     "sis_seq": "hash shard H2 0 of 3 (skew_heldout, sisseq_rna_heldout) - spent",
     "gastruloid_raj": "G1a hash shard g1:<gastruloid> 0 of 3 (spent); G6 sealed files (spent); "
                       "all other files: OPEN data, results 'unconfirmed' (M13)",
-    "gastruloid_gse291244": "PARTITIONED 2026-11-07 (partitions.py): train 40% + sealed A, B, C; "
-                            "unit = plate + RT well / 10x sample; one look per partition (H11-H13)",
+    "gastruloid_gse291244": "first partition (RT well / 10x lane) VOID 2026-11-07: wrong unit (gastruloids pooled "
+                            "before RT); never read. Founder experiment re-partitioned as gse291244_founders "
+                            "(unit = founder clone cluster); sci-RNA-seq3 and two-epoch sets: partition by "
+                            "gastruloid / first-epoch clade once the authors' cell-to-gastruloid tables are rebuilt",
     "camellia": "exploratory only (no confirmation claims without a new sealed shard)",
     "darlin": "exploratory only (no confirmation claims without a new sealed shard)",
     "epiclone": "exploratory only (no confirmation claims without a new sealed shard)",
@@ -45,8 +47,7 @@ DATASETS = {
         ("e155320d42fdd32a2e2d0aa23220da8f3d409559e546a4a996b65861c0c13dde", ["g9_confirm.py"], "sealed drug partition C"),
     "data/gastruloid_raj/iou/AP_CloneFraction_Drug - Sheet1.csv":
         ("ff0da43e8815901506a9dcc6f673b45471dec97d07182a229afc36fc4501517e", [], "locked (series unknown; could overlap a sealed series)"),
-    "data/gastruloid_raj/diff_assay/DiffAssay_Oct212024.csv":
-        ("cde7a581ca9431de95cec9dcbb47c724495c897a5a325d48808149b3ca1390c4", [], "locked: partition before any statistic (option 3, #21)"),
+    # DiffAssay_Oct212024.csv: moved to partitions.raj_diffassay (replicate 1 train, 2 sealed A), 2026-11-07
     "data/gastruloid_raj/raw_linescans/07162025/line_scan_GFPspike.csv":
         ("22e11f6a1519c290659ba854453d81ede6d5a19c92202f13f99b0a8b7ae0126e", [], "locked (design unknown)"),
     "data/gastruloid_raj/raw_linescans/07162025/line_scan_GFP%spike_1.csv":

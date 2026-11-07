@@ -7208,3 +7208,27 @@ sorting validated; memory module = unknown batch factor.
   (counts control 22, drug 14). No statistic computed; **partition B not spent** (no ledger row).
 - Per option 2: drug compression (#27) closed as "consistent, not testable with these data";
   chapter 3 written up in `WRITEUP_GASTRULOID.md`.
+
+### Partitioning fixes (2026-11-07; not an experiment; Bence "go 1 2 3"; no statistic computed)
+
+- **GSE291244 partition VOID.** The GEO sample sheet and the paper (Regalado/Qiu, Cell 2026,
+  open access; preprint PMC12139830) say the 144 gastruloids per sci-RNA-seq3 experiment were
+  **pooled and dissociated before reverse transcription**; RT wells index nuclei, not gastruloids.
+  10x `experiment_id` is a lane. So the partition sealed this morning (unit = RT well / lane) put
+  every gastruloid in every partition. It was never read (no `train_only` call on it).
+- **New: `gse291244_founders`** (unit = founder clone cluster, the authors' Debris-seq `well_cluster`,
+  28 clusters; files `multiome/monoclonal_gas/cell_well_cluster_assignment.rds` (47,491 gastruloid
+  cells), `multiome/cell_well_cluster_assignment.rds` (26,876 mESC cells), `obj_batchelor_pd.rds`
+  (cell types), from the authors' public server). Hash salt v2: train 9 clusters, A 5, B 9, C 5.
+  Gastruloid and mESC cells of a cluster go together. **Prior exposure:** paper Fig. 5 read (fate
+  categories of 26 clusters; PSC-biased subclones low Tet1, Meg3/Rian, high Peg10).
+- **Sci-RNA-seq3 (121 gastruloids) and two-epoch "tree of trees" (106 gastruloids):** not
+  partitioned yet; needs the authors' cell-to-gastruloid step rebuilt from their tape files
+  (`Tape_cell_uniq.txt` 95 MB, `Step1File_DebrisSeqTAPE_*`, `loci*.csv`). Unit then = gastruloid
+  (sci) and first-epoch clade (two-epoch, related founders together).
+- **DiffAssay is not a domain-size assay.** Structure (columns and counts only): 2D confluency of 9
+  ES clones (incl. bulk, "clone 3, late") x 4 conditions (neural, mesoderm, endoderm, 2i) x 4 times x
+  2 replicates = 72 curves. Partitioned by replicate (`raj_diffassay`, fixed): replicate 1 train,
+  replicate 2 = one sealed partition (any look at it is the last of this source: H13 OK needed).
+  #21 (domain size) has no further data here.
+- **Unchanged and sealed:** Raj reserve (clone3% passage 3), drug partitions B and C, Wnt A-C.
