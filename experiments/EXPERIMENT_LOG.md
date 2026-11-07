@@ -6958,3 +6958,46 @@ lost its propensity fast in April 2024 (G3), in subclones (G5) and in Dec 2024 /
 kept it in July 2024; clone 3 keeps more than predicted. Fade rate is **not a clone property we can
 predict**; it varies by series (batch / culture history). No refit on sealed data. Simulator status:
 sorting validated; memory module = unknown batch factor.
+
+## G8: which memory model earns the last Raj reserve? Train fit on open + spent data only (pre-registered 2026-11-07)
+
+- **Go-ahead.** Bence, "do a retro with literature map and goal realignment ... the direction here
+  i like: 1 and 2" (build a new memory model on open + spent data; compare by training fit and
+  consistency before any sealed data). No sealed file is read: spent results enter as recorded in
+  `test_ledger.tsv` (G6a, G6b, G7b); open results recomputed (G3 pair series, G5 subclones).
+- **Observations** (ratio of sign-adjusted polarity at passage k to passage 1, with SE from the
+  CI / 3.92): April 2024 1+3 pair series (G3, per clone, passages 2-4, bootstrap); Sep 2024
+  subclones (G5: clone 3 0.61, clone 1 0.09, one passage); late 2024 / Jan 2025 clone + bulk (G6a,
+  passage 4, clones 1, 3, 5, 6); Jan 2024 1+3 pairs (G6b, passage 4, pair S ratio 0.68); July 2024
+  clone in bulk (G7b, clone 1 p2, clone 3 p2-p4, divided by the G1a fit-shard passage-1 means).
+  A pair observation is modelled as the mean of its two clones' predicted ratios.
+- **Models** (per-passage retention r; predicted ratio r^(k-1)):
+  M0 no fade (r = 1); M1 one r; M2 one r per clone (v2's structure, refitted); M3 one r per
+  series (new series drawn from the spread of fitted series); M4 clone r x series multiplier
+  (multiplier random for a new series).
+- **Train fit (H12).** Leave-one-series-out cross-validation (5 series): Gaussian log-likelihood
+  of each held-out series' ratios; random-effect models predict a new series by Monte Carlo over
+  the training series' spread (variance added to the SE). Best summed CV log-likelihood = chosen
+  model, written to `selection/G9.json` only if it also passes the consistency check.
+- **Consistency check (H12, "agree with every spent result").** Full fit: every observation within
+  2.5 SE of its fitted value; any miss is reported and disqualifies the model.
+- **Then (not in G8):** if a model qualifies and differs from the others on the reserve (Jan 2024
+  1+6 pairs, passage 1 -> 4; clone 3 passage-3 reserve file), pre-register G9 with its predictions
+  and ask Bence for the H13 OK before the look. If none qualifies, the reserve stays sealed.
+
+### G8 result (2026-11-07; 15 observations, 5 series; `results_gastruloid/g8_memory.json`)
+
+| model | leave-one-series-out CV log-lik | consistency misses (> 2.5 SE) |
+|---|---|---|
+| M3 rate per series | **-11.9** | 4 (clone 1 in Apr 2024, Sep 2024, late 2024; clone 5 late 2024) |
+| M4 clone rate x series multiplier | -18.3 | **1** (clone 1 July 2024: 1.07 observed vs 0.36) |
+| M2 rate per clone (v2 structure) | -37.3 | 2 |
+| M1 one rate (v1) | -64.7 | 4 |
+| M0 no fade | -164.4 | 11 |
+
+- **Reading (pre-registered): no model qualifies.** The series explains most of the fade (M3 best
+  CV), clone identity adds to it (M4 fewest misses), but clone 1 fades fully in three series and
+  not at all in July 2024: a clone x series interaction no model with these data can predict for a
+  new series. **No G9, the Raj reserve stays sealed** (H12/H13). No `selection/` file written.
+- Fitted M4: clone retention 1: 0.27, 3: 0.67, 5: 0.91, 6: 0.81 per passage; series multipliers
+  (Apr 2024 = 1) Jan 2024 1.62, July 2024 1.33, late 2024 1.05, Sep 2024 subclones 0.84.

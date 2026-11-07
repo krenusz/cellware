@@ -47,6 +47,13 @@ SEEDS = {
     "Lin 2021 (Flt3L clonal tuning)": "10.1038/s41556-021-00636-7",
     "Rodrigues 2018 (pDC lymphoid origin)": "10.1038/s41590-018-0136-9",
     "Dress 2019 (pDC from Ly6D+ lymphoid progenitors)": "10.1038/s41590-019-0420-3",
+    # chapter 3 (gastruloids), added 2026-11-07
+    "Ayyappan 2025 (gastruloid clone division of labour)": "10.1101/2025.07.12.664536",
+    "Regalado 2025 (monoclonal gastruloids, GSE291244)": "10.1101/2025.05.23.655664",
+    "Oriola 2024 (gastruloid symmetry breaking)": "10.1101/2024.12.16.628776",
+    "Beccari 2018 (gastruloid multi-axial)": "10.1038/s41586-018-0578-0",
+    "van den Brink 2014 (gastruloid symmetry breaking)": "10.1242/dev.113001",
+    "Shaffer 2020 (MemorySeq, heritable expression)": "10.1016/j.cell.2020.07.003",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -90,7 +97,10 @@ TOPICS = {
         r"sister",
         r"single-cell lineage",
     ],
-    "fate_memory": [r"memory", r"heritab", r"fluctuation", r"transient", r"inherit"],
+    "fate_memory": [r"memory", r"heritab", r"fluctuation", r"transient", r"inherit", r"passag",
+                    r"epigenetic", r"clonal variab"],
+    "sorting_patterning": [r"cell sorting", r"segregat", r"differential adhesion", r"anterior.posterior",
+                           r"axial", r"symmetry breaking", r"pattern"],
     "imaging_ssl": [
         r"time-lapse",
         r"timelapse",

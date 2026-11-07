@@ -1,0 +1,468 @@
+{
+ "observations": [
+  {
+   "series": "apr24_pair",
+   "clones": [
+    3
+   ],
+   "k": 1,
+   "ratio": 0.728,
+   "se": 0.157
+  },
+  {
+   "series": "apr24_pair",
+   "clones": [
+    3
+   ],
+   "k": 2,
+   "ratio": 0.418,
+   "se": 0.098
+  },
+  {
+   "series": "apr24_pair",
+   "clones": [
+    3
+   ],
+   "k": 3,
+   "ratio": 0.365,
+   "se": 0.129
+  },
+  {
+   "series": "apr24_pair",
+   "clones": [
+    1
+   ],
+   "k": 1,
+   "ratio": 0.241,
+   "se": 0.265
+  },
+  {
+   "series": "apr24_pair",
+   "clones": [
+    1
+   ],
+   "k": 2,
+   "ratio": -0.242,
+   "se": 0.138
+  },
+  {
+   "series": "apr24_pair",
+   "clones": [
+    1
+   ],
+   "k": 3,
+   "ratio": -0.001,
+   "se": 0.157
+  },
+  {
+   "series": "sep24_subclone",
+   "clones": [
+    3
+   ],
+   "k": 1,
+   "ratio": 0.606,
+   "se": 0.099
+  },
+  {
+   "series": "sep24_subclone",
+   "clones": [
+    1
+   ],
+   "k": 1,
+   "ratio": 0.09,
+   "se": 0.11
+  },
+  {
+   "series": "late24_bulk",
+   "clones": [
+    1
+   ],
+   "k": 3,
+   "ratio": -0.062,
+   "se": 0.154
+  },
+  {
+   "series": "late24_bulk",
+   "clones": [
+    3
+   ],
+   "k": 3,
+   "ratio": 0.353,
+   "se": 0.177
+  },
+  {
+   "series": "late24_bulk",
+   "clones": [
+    5
+   ],
+   "k": 3,
+   "ratio": 0.87,
+   "se": 0.137
+  },
+  {
+   "series": "late24_bulk",
+   "clones": [
+    6
+   ],
+   "k": 3,
+   "ratio": 0.604,
+   "se": 0.208
+  },
+  {
+   "series": "jan24_pair",
+   "clones": [
+    1,
+    3
+   ],
+   "k": 3,
+   "ratio": 0.676,
+   "se": 0.189
+  },
+  {
+   "series": "jul24_bulk",
+   "clones": [
+    1
+   ],
+   "k": 1,
+   "ratio": 1.072,
+   "se": 0.218
+  },
+  {
+   "series": "jul24_bulk",
+   "clones": [
+    3
+   ],
+   "k": 1,
+   "ratio": 0.927,
+   "se": 0.18
+  },
+  {
+   "series": "jul24_bulk",
+   "clones": [
+    3
+   ],
+   "k": 2,
+   "ratio": 0.495,
+   "se": 0.183
+  },
+  {
+   "series": "jul24_bulk",
+   "clones": [
+    3
+   ],
+   "k": 3,
+   "ratio": 0.733,
+   "se": 0.095
+  }
+ ],
+ "models": {
+  "M0 no fade": {
+   "cv_loglik_total": -164.38,
+   "cv_by_heldout_series": {
+    "apr24_pair": -90.64,
+    "sep24_subclone": -39.59,
+    "late24_bulk": -29.18,
+    "jan24_pair": -0.72,
+    "jul24_bulk": -4.25
+   },
+   "params": [
+    0.0
+   ],
+   "series_order": [
+    "apr24_pair",
+    "jan24_pair",
+    "jul24_bulk",
+    "late24_bulk",
+    "sep24_subclone"
+   ],
+   "consistency_misses": [
+    [
+     "apr24_pair",
+     "(3,)",
+     "2",
+     "0.418",
+     "1.0",
+     "-5.93"
+    ],
+    [
+     "apr24_pair",
+     "(3,)",
+     "3",
+     "0.365",
+     "1.0",
+     "-4.93"
+    ],
+    [
+     "apr24_pair",
+     "(1,)",
+     "1",
+     "0.241",
+     "1.0",
+     "-2.87"
+    ],
+    [
+     "apr24_pair",
+     "(1,)",
+     "2",
+     "-0.242",
+     "1.0",
+     "-9.03"
+    ],
+    [
+     "apr24_pair",
+     "(1,)",
+     "3",
+     "-0.001",
+     "1.0",
+     "-6.38"
+    ],
+    [
+     "sep24_subclone",
+     "(3,)",
+     "1",
+     "0.606",
+     "1.0",
+     "-3.98"
+    ],
+    [
+     "sep24_subclone",
+     "(1,)",
+     "1",
+     "0.09",
+     "1.0",
+     "-8.29"
+    ],
+    [
+     "late24_bulk",
+     "(1,)",
+     "3",
+     "-0.062",
+     "1.0",
+     "-6.89"
+    ],
+    [
+     "late24_bulk",
+     "(3,)",
+     "3",
+     "0.353",
+     "1.0",
+     "-3.65"
+    ],
+    [
+     "jul24_bulk",
+     "(3,)",
+     "2",
+     "0.495",
+     "1.0",
+     "-2.76"
+    ],
+    [
+     "jul24_bulk",
+     "(3,)",
+     "3",
+     "0.733",
+     "1.0",
+     "-2.8"
+    ]
+   ]
+  },
+  "M1 one rate": {
+   "cv_loglik_total": -64.69,
+   "cv_by_heldout_series": {
+    "apr24_pair": -20.57,
+    "sep24_subclone": -14.61,
+    "late24_bulk": -10.14,
+    "jan24_pair": -1.33,
+    "jul24_bulk": -18.04
+   },
+   "params": [
+    0.675
+   ],
+   "series_order": [
+    "apr24_pair",
+    "jan24_pair",
+    "jul24_bulk",
+    "late24_bulk",
+    "sep24_subclone"
+   ],
+   "consistency_misses": [
+    [
+     "apr24_pair",
+     "(1,)",
+     "2",
+     "-0.242",
+     "0.455",
+     "-5.07"
+    ],
+    [
+     "sep24_subclone",
+     "(1,)",
+     "1",
+     "0.09",
+     "0.675",
+     "-5.32"
+    ],
+    [
+     "late24_bulk",
+     "(5,)",
+     "3",
+     "0.87",
+     "0.307",
+     "4.12"
+    ],
+    [
+     "jul24_bulk",
+     "(3,)",
+     "3",
+     "0.733",
+     "0.307",
+     "4.46"
+    ]
+   ]
+  },
+  "M2 rate per clone": {
+   "cv_loglik_total": -37.33,
+   "cv_by_heldout_series": {
+    "apr24_pair": -2.67,
+    "sep24_subclone": -1.83,
+    "late24_bulk": -14.18,
+    "jan24_pair": -2.07,
+    "jul24_bulk": -16.58
+   },
+   "params": [
+    0.227,
+    0.773,
+    0.955,
+    0.845
+   ],
+   "series_order": [
+    "apr24_pair",
+    "jan24_pair",
+    "jul24_bulk",
+    "late24_bulk",
+    "sep24_subclone"
+   ],
+   "consistency_misses": [
+    [
+     "jul24_bulk",
+     "(1,)",
+     "1",
+     "1.072",
+     "0.227",
+     "3.88"
+    ],
+    [
+     "jul24_bulk",
+     "(3,)",
+     "3",
+     "0.733",
+     "0.462",
+     "2.84"
+    ]
+   ]
+  },
+  "M3 rate per series": {
+   "cv_loglik_total": -11.86,
+   "cv_by_heldout_series": {
+    "apr24_pair": -3.94,
+    "sep24_subclone": -4.68,
+    "late24_bulk": -1.55,
+    "jan24_pair": -0.3,
+    "jul24_bulk": -1.4
+   },
+   "params": [
+    0.515,
+    0.878,
+    0.885,
+    0.772,
+    0.375
+   ],
+   "series_order": [
+    "apr24_pair",
+    "jan24_pair",
+    "jul24_bulk",
+    "late24_bulk",
+    "sep24_subclone"
+   ],
+   "consistency_misses": [
+    [
+     "apr24_pair",
+     "(1,)",
+     "2",
+     "-0.242",
+     "0.265",
+     "-3.69"
+    ],
+    [
+     "sep24_subclone",
+     "(1,)",
+     "1",
+     "0.09",
+     "0.375",
+     "-2.59"
+    ],
+    [
+     "late24_bulk",
+     "(1,)",
+     "3",
+     "-0.062",
+     "0.459",
+     "-3.38"
+    ],
+    [
+     "late24_bulk",
+     "(5,)",
+     "3",
+     "0.87",
+     "0.459",
+     "3.0"
+    ]
+   ]
+  },
+  "M4 clone rate x series multiplier": {
+   "cv_loglik_total": -18.32,
+   "cv_by_heldout_series": {
+    "apr24_pair": -1.94,
+    "sep24_subclone": -1.65,
+    "late24_bulk": -3.88,
+    "jan24_pair": -1.66,
+    "jul24_bulk": -9.19
+   },
+   "params": [
+    0.27,
+    0.668,
+    0.909,
+    0.805,
+    1.62,
+    1.329,
+    1.05,
+    0.84
+   ],
+   "series_order": [
+    "apr24_pair",
+    "jan24_pair",
+    "jul24_bulk",
+    "late24_bulk",
+    "sep24_subclone"
+   ],
+   "consistency_misses": [
+    [
+     "jul24_bulk",
+     "(1,)",
+     "1",
+     "1.072",
+     "0.359",
+     "3.28"
+    ]
+   ]
+  }
+ },
+ "ranking_by_cv": [
+  "M3 rate per series",
+  "M4 clone rate x series multiplier",
+  "M2 rate per clone",
+  "M1 one rate",
+  "M0 no fade"
+ ],
+ "best_qualifying": null
+}
