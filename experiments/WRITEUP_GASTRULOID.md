@@ -95,3 +95,14 @@ descriptive rule; its mechanism is open.
 Raj reserve (clone3% passage 3, Jul 2024; last Raj sealed file, needs Bence's OK); drug partitions
 B (Jul 2025) and C (May 2025 overlap metrics); Wnt partitions A-C; GSE291244 partitions A-C (chapter
 4 candidate); locked: DiffAssay, AP_CloneFraction, GFP-spike, sgbc2.
+
+## Addendum 2026-11-07: the simulator on the core model (C3-S1)
+
+The chapter's simulator is now a configuration of `core_model.py` (`c3s1_core_gastruloid.py`): clone
+state z with the core's per-condition copy as memory (per gastruloid rho_g 0.06, per passage rho_P
+0.21) and the core's state-to-logit map as each cell's anterior score; rank sorting and proportion
+feedback are the local rules. It reproduces all clone means (incl. the spent sealed shard), the order of
+unseen pairs (6+7, 3+7) and the fade direction; it misses clone 7's spread (n 8), the April 2024 1+3
+passage-1 separation and the 6+7 magnitude, all series-level magnitudes (G8/G10). Gastruloid-level
+variation in a clone's propensity is large: one gastruloid's copy correlates ~0.24 with the clone's
+long-run state. The "one core model across chapters 1-3" claim now holds for space, qualitatively.

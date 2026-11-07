@@ -7333,3 +7333,27 @@ sorting validated; memory module = unknown batch factor.
     dependence (G8) remains a disclosed limitation.
   - Reading: all of (a)-(d) pass = chapter 3's spatial claims hold under the core model; any failure is
     reported as the core model's limit in space.
+
+### C3-S1 result (2026-11-07; `results_gastruloid/c3s1_core_gastruloid.json`; used data only)
+
+- **(a) Equivalence: PASS.** With rho_g = 1 the core configuration gives G5's clone means
+  (largest gap 0.045, clone 7).
+- **Fitted:** rho_g = 0.06 (cell noise alone gives within-clone SD 0.25, observed 0.87, so most
+  gastruloid-to-gastruloid spread is the per-gastruloid copy of the clone state: a clone's propensity
+  in one gastruloid correlates only ~0.24 with its long-run state, while the long-run state is large,
+  z = -5.3 (clone 6) to +5.1 (clone 5)); rho_P = 0.21 per passage (retention 0.46, G5 had 0.60).
+- **(b) #20: FAIL on one of 15 checks.** All 5 clone means match the fit shard (within 2 SE) and the
+  spent sealed shard (within 2 SE); within-clone SD matches for clones 1, 3, 5, 6, not clone 7
+  (sim 0.96 vs obs 0.51, n = 8).
+- **(c) #26: PASS.** 6+7: clone 7 anterior in 93% (obs 12/12); 3+7: share 0.52 (obs 0.50, CI
+  0.26-0.74). Magnitude miss persists: 6+7 D -2.64 vs -1.60 (same as v2).
+- **(d) #23: FAIL at passage 1.** One rho_P fits passages 2-4 (D 1.53 / 0.47 / 0.42 vs 1.51 / 0.33 /
+  0.58) but under-predicts passage 1 (2.59 vs 3.01, 2 SE 0.30): the April 2024 1+3 pairs separate
+  more than bulk states predict (as G10 found).
+- **Pre-registered reading: not all pass.** The core model carries chapter 3's spatial claims
+  qualitatively (clone means incl. spent sealed data, pair order, fade direction) with one memory
+  structure (per-gastruloid and per-passage state copies). Its limits are three magnitude misses,
+  all of the kind G8/G10 already traced to series-level differences (pair separation, fade rate).
+- **Stopping rule:** fixing these needs a series term, which G8-G11 showed cannot be predicted for
+  a new series; it would not change the chapter answer (state + sorting + memory). Recorded as limits;
+  no new model.

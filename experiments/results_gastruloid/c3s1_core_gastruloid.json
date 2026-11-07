@@ -1,0 +1,195 @@
+{
+ "fit_shard": {
+  "1": {
+   "n": 51,
+   "mean": -0.922,
+   "sd": 0.789
+  },
+  "3": {
+   "n": 54,
+   "mean": 0.881,
+   "sd": 1.067
+  },
+  "5": {
+   "n": 34,
+   "mean": 1.051,
+   "sd": 0.892
+  },
+  "6": {
+   "n": 30,
+   "mean": -1.132,
+   "sd": 0.614
+  },
+  "7": {
+   "n": 8,
+   "mean": 0.726,
+   "sd": 0.513
+  }
+ },
+ "pooled_within_clone_sd": 0.871,
+ "a_equivalence_rho1_core_vs_g5": {
+  "1": [
+   -0.974,
+   -0.966
+  ],
+  "3": [
+   0.865,
+   0.896
+  ],
+  "5": [
+   1.103,
+   1.111
+  ],
+  "6": [
+   -1.183,
+   -1.183
+  ],
+  "7": [
+   0.564,
+   0.609
+  ]
+ },
+ "a_pass": true,
+ "rho_g": 0.059,
+ "sim_sd_at_rho1": 0.249,
+ "states_z": {
+  "1": -4.026,
+  "3": 4.15,
+  "5": 5.084,
+  "6": -5.333,
+  "7": 3.378
+ },
+ "b_clone_propensity": {
+  "1": {
+   "sim_mean": -0.989,
+   "fit_mean": -0.922,
+   "fit_2se": 0.221,
+   "spent_sealed_mean": -1.233,
+   "spent_n": 11,
+   "sealed_2se": 0.476,
+   "sim_sd": 0.822,
+   "obs_sd": 0.789,
+   "mean_ok": true,
+   "sealed_ok": true,
+   "sd_ok": true
+  },
+  "3": {
+   "sim_mean": 0.837,
+   "fit_mean": 0.881,
+   "fit_2se": 0.29,
+   "spent_sealed_mean": 1.018,
+   "spent_n": 10,
+   "sealed_2se": 0.675,
+   "sim_sd": 0.891,
+   "obs_sd": 1.067,
+   "mean_ok": true,
+   "sealed_ok": true,
+   "sd_ok": true
+  },
+  "5": {
+   "sim_mean": 1.004,
+   "fit_mean": 1.051,
+   "fit_2se": 0.306,
+   "spent_sealed_mean": 1.42,
+   "spent_n": 9,
+   "sealed_2se": 0.595,
+   "sim_sd": 0.801,
+   "obs_sd": 0.892,
+   "mean_ok": true,
+   "sealed_ok": true,
+   "sd_ok": true
+  },
+  "6": {
+   "sim_mean": -1.205,
+   "fit_mean": -1.132,
+   "fit_2se": 0.224,
+   "spent_sealed_mean": -1.259,
+   "spent_n": 18,
+   "sealed_2se": 0.289,
+   "sim_sd": 0.677,
+   "obs_sd": 0.614,
+   "mean_ok": true,
+   "sealed_ok": true,
+   "sd_ok": true
+  },
+  "7": {
+   "sim_mean": 0.676,
+   "fit_mean": 0.726,
+   "fit_2se": 0.363,
+   "spent_sealed_mean": 0.413,
+   "spent_n": 5,
+   "sealed_2se": 0.459,
+   "sim_sd": 0.956,
+   "obs_sd": 0.513,
+   "mean_ok": true,
+   "sealed_ok": true,
+   "sd_ok": false
+  }
+ },
+ "b_pass": false,
+ "c_pairs": {
+  "3+7": {
+   "pred_share_red_anterior": 0.523,
+   "obs_share": 0.5,
+   "obs_ci95": [
+    0.259,
+    0.741
+   ],
+   "pred_D": 0.125,
+   "obs_D": [
+    0.17,
+    -0.4,
+    0.755
+   ]
+  },
+  "6+7": {
+   "pred_share_red_anterior": 0.07,
+   "obs_share": 0.0,
+   "obs_ci95": [
+    0.0,
+    0.185
+   ],
+   "pred_D": -2.639,
+   "obs_D": [
+    -1.598,
+    -2.03,
+    -1.16
+   ]
+  }
+ },
+ "c_pass": true,
+ "d_fade": {
+  "passage 1": {
+   "obs_D": 3.014,
+   "obs_2se": 0.303,
+   "n": 13,
+   "pred_D": 2.59,
+   "ok": false
+  },
+  "passage 2": {
+   "obs_D": 1.509,
+   "obs_2se": 0.711,
+   "n": 16,
+   "pred_D": 1.527,
+   "ok": true
+  },
+  "passage 3": {
+   "obs_D": 0.331,
+   "obs_2se": 0.357,
+   "n": 32,
+   "pred_D": 0.473,
+   "ok": true
+  },
+  "passage 4": {
+   "obs_D": 0.584,
+   "obs_2se": 0.329,
+   "n": 31,
+   "pred_D": 0.421,
+   "ok": true
+  }
+ },
+ "rho_P": 0.208,
+ "d_pass": false,
+ "retention_per_passage_equiv": 0.456,
+ "all_pass": false
+}
