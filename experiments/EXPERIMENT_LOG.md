@@ -7562,3 +7562,32 @@ sorting validated; memory module = unknown batch factor.
   "co-expressing" relative to mixes. **The sorting index is not supported as the mechanism by this readout.**
 - Limits: 2-6 gastruloids per condition; one experiment; EMD is scale-free but sensitive to background
   (per-channel minimum). No claim either way; the data set is spent.
+
+## C4-S2b-R: is the C4-S2b conclusion robust? (pre-registered 2026-11-07)
+
+- **Serves: C4-S2** (FOCUS.json). Bence: "this collusion is crutial" (C4-S2b: "does not support the sorting
+  idea"). Before anything is built on it, check implementation, sensitivity, confounds and power. Same 20
+  gastruloids (already spent); no new data.
+- **Pre-flight:**
+  1. Unit: gastruloid (Annotation ID).
+  2. Readout: EMD / overlap as in C4-S2b; plus scan length (arc length, px) and Igfbp5 saturation share.
+  3. Used data only: `T_Igfbp5_09022026` (spent) and, for implementation check only, the authors'
+     `rev_T_Igfbp5_sep/separation_metrics.csv` (same 20 gastruloids; unlocked for this comparison).
+  4. Power: this block computes it (check 4).
+  5. Exposure: C4-S2b result known.
+  6. Literature: none.
+- **Checks (script `c4s2b_ap_separation.py --robust`):**
+  1. **Implementation:** per-gastruloid EMD vs the authors' EMD (Pearson r, max abs diff). r < 0.95 = our C4-S2b
+     numbers are not trusted.
+  2. **Background:** reading with the 5th-percentile background (authors' sensitivity) instead of the minimum.
+  3. **Confounds:** Spearman of EMD with scan length (a gastruloid-length proxy: a longer, more elongated
+     gastruloid separates domains in absolute terms) and with saturation; condition medians of length.
+  4. **Power of the ordering check:** simulate conditions with true means following E[H] (5+6 above pure by
+     d pooled within-condition SDs, d = 0.5, 1, 2), the observed n per condition and normal noise; share of
+     simulations giving "consistent", and under no effect (d = 0).
+- **Reading:** C4-S2b's "not consistent" is kept as evidence against the sorting index only if checks 1-2 hold,
+  3 shows no strong length confound (|rho| < 0.5), and check 4 gives >= 0.5 chance of "consistent" at d = 1.
+  Otherwise it is reclassified **"uninformative"** (the data cannot tell).
+- **Readout validity (stated before running):** the sorting index is a between-population share; T/Igfbp5
+  separation is a fate-domain readout present in any polarised gastruloid, pure clones included. C4-S2b's
+  prediction "pure lowest" was an added step, not a direct consequence of the model.

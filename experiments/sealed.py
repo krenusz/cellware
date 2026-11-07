@@ -64,7 +64,7 @@ DATASETS = {
     "data/gastruloid_raj/T_Igfbp5_09022026/gastruloid_T_Igfbp5.csv":
         ("2359f56ecf021477efc5b32e166c1b6a49aafb5f693fce45c59eb96656267899", ["c4s2b_ap_separation.py"], "spent exploratory (C4-S2b, 2026-11-07): T/Igfbp5 line scans, 20 gastruloids"),
     "data/gastruloid_raj/rev_T_Igfbp5_sep/separation_metrics.csv":
-        ("dd375aa3091e1dfaf28364d3532daf2c245568e98f8be55322669d068dae32f6", [], "locked (authors' summary of the T/Igfbp5 set)"),
+        ("dd375aa3091e1dfaf28364d3532daf2c245568e98f8be55322669d068dae32f6", ["c4s2b_ap_separation.py"], "spent with the T/Igfbp5 data (C4-S2b-R implementation check)"),
     "data/gastruloid_raj/rev_T_Igfbp5_sep/shape_features.csv":
         ("f9ad79435751e6351aa7a6681f28ac5d78a9e742889f904dca85f294ce7f65b0", [], "locked (authors' summary)"),
     "data/gastruloid_raj/rev_T_Igfbp5_sep/structure_vs_level.csv":
