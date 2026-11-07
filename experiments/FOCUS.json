@@ -1,10 +1,9 @@
 {
  "chapter": "5",
- "step": "C5-S2",
- "question": "Chapter 5 (clone memory). C5-S2: a memory law in core_model.py (heritable state copied at events, event-type-specific retention, no per-division loss, plus non-heritable per-context noise) checked against used data only: blood #6 (LARRY) and #13 (SIS-seq), gastruloid #25 (subclones), G3/C3-S1 passage fade. No sealed data. Raj ATAC (7 clones x passages 0-3) stays the planned mechanism line (not downloaded yet).",
+ "step": "C5-S4",
+ "question": "Chapter 5 (clone memory). C5-S4: does a clone's chromatin distinctness fade over passages like its A-P propensity (Raj ATAC, 7 clones + bulk, passages 0-3)? Passages 0-1 = train (open); passage 2 = sealed A, passage 3 = sealed B (last, H13). Lock passages 2-3 by hash on arrival; train-only analysis and H14 power gate before any look.",
  "next_steps": [
-  "C5-S3: sealed confirmation of the law on the Raj reserve file (needs Bence's OK, H13)",
-  "C5-S4: Raj ATAC over passages: does chromatin distinctness fade with propensity? (download + passage-sealed design, needs OK)"
+  "C5-S3: Raj reserve confirmation (needs Bence's OK, H13), after C5-S4 shows whether a series covariate exists"
  ],
  "allowed_scripts": [],
  "parked": [
@@ -14,7 +13,7 @@
   "GSE291244 founder state (not memory)",
   "chapter 4 rescue (closed; partition C reserve)"
  ],
- "approved_by": "Bence 2026-11-07: \"1 / and still keep in mind the Raj lab's chromatin (ATAC-seq) data\"",
+ "approved_by": "Bence 2026-11-07: \"1\" (C5-S4 chromatin over passages)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
