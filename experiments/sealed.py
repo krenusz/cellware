@@ -54,6 +54,39 @@ DATASETS = {
         ("6f09bfd7c68c30d70644c1e2834c6ba52a6368e038ab9b7ca5d7f755a172f8ba", [], "locked (design unknown)"),
     "data/gastruloid_raj/raw_linescans/08052025/line_scan_sgbc2_50%.csv":
         ("696361308f340a2e7558a77d1ea43addfb207cff31344a8220b64fbdb519d3ea", [], "locked (design unknown)"),
+    # C4-S1 Dropbox re-crawl (2026-11-07): revision-era sets, locked before any statistic. Exposure: file names,
+    # column headers, condition labels/counts; the authors' README for clone+bulk elongation (its results were
+    # read: elongation falls with % pure clone) and the T/Igfbp5 script header (methods). No values read.
+    "data/gastruloid_raj/morph_08312026/bulk_5s2_6a.json":
+        ("1cb311fcbf764e400f7668d6ef186656a77ddaad8669abc59a2b95ea6cbf8a5a", [], "locked (pure bulk/5s2/6a elongation; never read)"),
+    "data/gastruloid_raj/morph_08312026/bulk+5s2_bulk+6a_5s2+6a.json":
+        ("3a64a6c9a02885f0ea3e5637f79bd5b6fff93766e35bc4c45c5ce661de308fd6", [], "locked (mixtures incl. 5s2+6a; never read)"),
+    "data/gastruloid_raj/T_Igfbp5_09022026/gastruloid_T_Igfbp5.csv":
+        ("2359f56ecf021477efc5b32e166c1b6a49aafb5f693fce45c59eb96656267899", [], "locked (T/Igfbp5 line scans, 20 gastruloids: bulk, 5, 6, 5+6, bulk+5, bulk+6)"),
+    "data/gastruloid_raj/rev_T_Igfbp5_sep/separation_metrics.csv":
+        ("dd375aa3091e1dfaf28364d3532daf2c245568e98f8be55322669d068dae32f6", [], "locked (authors' summary of the T/Igfbp5 set)"),
+    "data/gastruloid_raj/rev_T_Igfbp5_sep/shape_features.csv":
+        ("f9ad79435751e6351aa7a6681f28ac5d78a9e742889f904dca85f294ce7f65b0", [], "locked (authors' summary)"),
+    "data/gastruloid_raj/rev_T_Igfbp5_sep/structure_vs_level.csv":
+        ("e0cc1bf865a5f408de4db4ea6929b0a199fb1758a9a60b42b62861bec4c34eaf", [], "locked (authors' summary)"),
+    "data/gastruloid_raj/rev_T_Igfbp5_sep/correlation_ci.csv":
+        ("7b42950ea00663b5b9686ef6f3c4c9dd29b13119265ce329caac430a6721d1bf", [], "locked (authors' summary)"),
+    "data/gastruloid_raj/rev_T_Igfbp5_sep/profile_correlation.csv":
+        ("660479963b8a03dcbd3ed97ce24fa0077a7654d51f00eb1d40d9d66bba01ac9b", [], "locked (authors' summary)"),
+    "data/gastruloid_raj/rev_chimera_elong/data/geo_metrics.csv":
+        ("c369d926e8797e6aa1249d8bc067082503ef19981eb779ed51b577e59e9172db", [], "locked (clone+bulk 20/50/80% geodesic elongation, 218 gastruloids; authors' result read)"),
+    "data/gastruloid_raj/clone_bulk_chimera_08232026/5+bulk.csv":
+        ("5f8e69d5429eef4522bb56319612cb20988cb8f4807d96ec482beb3fec6dce43", [], "locked (source of geo_metrics)"),
+    "data/gastruloid_raj/clone_bulk_chimera_08232026/5+bulk.json":
+        ("e6509a94fb04d146727d83bce2aebdda7422b488d052bf218426ebc9d2c240a2", [], "locked (source of geo_metrics)"),
+    "data/gastruloid_raj/clone_bulk_chimera_08232026/6a+bulk.csv":
+        ("d8f35cb4dddf23a8d21b05aafd4bcc7a79c52d5f9003643a6f91e976660146aa", [], "locked (source of geo_metrics)"),
+    "data/gastruloid_raj/clone_bulk_chimera_08232026/6a+bulk.json":
+        ("04ec09408ac39913f4d015542a47021282314a77da3b8a67141ff3c2e5620643", [], "locked (source of geo_metrics)"),
+    "data/gastruloid_raj/clone_bulk_chimera_08232026/1s2+bulk.csv":
+        ("8955b9f5491517b38fedfce571c706e8666629491d5408c03019b9d286cc6f6b", [], "locked (source of geo_metrics)"),
+    "data/gastruloid_raj/clone_bulk_chimera_08232026/1s2+bulk.json":
+        ("9a1e13f904cc1012f27ff43a818c2283a046b112136d6e7f9c0538e7e7c67164", [], "locked (source of geo_metrics)"),
 }
 
 # sealed files: path relative to repo root -> (sha256 or None, allowed reader modules, status)

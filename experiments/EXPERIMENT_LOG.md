@@ -7455,3 +7455,30 @@ sorting validated; memory module = unknown batch factor.
   gastruloids per chimera. Download size to be checked before any download.
 - Decision for Bence (C4-S2): run that descriptive check (labelled exploratory, no claim), or close
   chapter 4 as data-limited with the mechanism stated as the sorting-index hypothesis.
+
+### C4-S1 addendum: full Raj Dropbox re-crawl (2026-11-07, Bence: "check the full 120GB of G data whether you missed something")
+
+- Listing only (Dropbox folder-listing calls from the built-in browser, rate-limited, 36 folders retried):
+  **12,049 files, 226 GB** (ATAC raw 102 GB + BAMs 45 GB, RNA-seq 35 GB, Weber object 1 GB; the rest small).
+  Our 2026-11-06 map covered the paper's figure data; the **revision-era data (Aug-Sep 2026) were missed**.
+- Downloaded (small, new folders, untrusted; scripts read as text only) and **locked in sealed.py before any
+  statistic**: `morph_08312026` (already on disk since 11-06, names only), `T_Igfbp5_09022026`,
+  `rev_T_Igfbp5_sep`, `rev_chimera_elong`, `clone_bulk_chimera_08232026`. Exposure: names, headers,
+  condition labels; the authors' clone+bulk README (its result was read: elongation falls with % pure
+  clone, 1s2/5s2/6a, plate-position confounded); the T/Igfbp5 script header (methods).
+
+| data | design | readout | n | serves C4? |
+|---|---|---|---|---|
+| **morph_08312026** (Aug 2026) | pure bulk, 5s2, 6a + bulk+5s2, bulk+6a, **5s2+6a** | elongation annotations (Nimbus JSON) | unread (counts at pre-registration) | **yes: unseen pure + mixed elongation; out-of-sample test of the C3-S2 sorting index (5s2+6a = complementary pair)** |
+| **T_Igfbp5_09022026** (Sep 2026) | bulk, pure 5, pure 6, **5+6**, bulk+5, bulk+6 | per-gastruloid T and Igfbp5 line scans (A-P domain separation) | 20 (2-6 per condition) | yes: the mechanism readout (do mixes separate A-P programmes more, graded by H?); descriptive at this n |
+| rev_chimera_elong / clone_bulk_chimera_08232026 (+ 3s1 08162026, not downloaded) | clone+bulk at 20/50/80% for 1s2, 3s1, 5s2, 6A | geodesic elongation per gastruloid | 218 | partly: dose-response of mixing; result already read and % confounded with plate |
+| SG seqFISH, 11 dates (12/2024-08/2025; 08212025 = 6 ROIs T/Igfbp5) | pure clones, 1+3, 1+6 chimeras | ~20-gene seqFISH per cell | 2-6 per condition | descriptive only |
+| Incucyte 09152025 | clone5 / clone6 Bra-GFP time-lapse, 3 wells | images, 0-4.5 d | 3 | exploratory |
+| Immunofluorescence blob / intensity (2024-25) | pure 6, WT, 1+3, 1+6, 3+6, 50% 7 | T+ blobs per gastruloid | small | already summarised in `T_overlap` (G4 H3) |
+| RNAseq_03192026 | bulk, 1s2, 5s2, 6a pure, 48 h, 2 reps | bulk RNA | 8 | no (no mixtures); could give subclone states |
+| ATAC, RNAseq (2024), Weber, drug data | pure clones / embryo / drugs | | | no (or parked #27) |
+
+- **Outcome revised:** a confirmable candidate exists after all: **morph_08312026** (pure + mixed elongation,
+  never read). Second, the T/Igfbp5 data give the mechanism readout descriptively. Next (C4-S2, needs
+  Bence's OK): structure check + counts of morph_08312026 (H14 power from counts only), then pre-register
+  the sorting-index prediction for 5s2+6a, bulk+5s2, bulk+6a with z from parents 5 and 6 (C3-S1).
