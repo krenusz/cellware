@@ -1,0 +1,36 @@
+{
+ "test": "gastruloid_c4s2a_rescue",
+ "experiment": "C4-S2a",
+ "candidates": {
+  "Mgen": -1248.63,
+  "S": -1248.9,
+  "M0": -1282.84
+ },
+ "higher_is_better": true,
+ "chosen": "Mgen",
+ "note": "train-CV log-lik over 61 held-out compositions (C3-S2, G2 data); Mgen and S both predict a complementary-pair rescue (1.47 / 1.54 logit); M0 predicts none",
+ "power": {
+  "sd": 0.0843,
+  "effect": 0.0683,
+  "alpha": 0.05,
+  "one_sided": true,
+  "min_power": 0.8,
+  "weights": {
+   "mix": 1.0,
+   "m5s2": 0.5,
+   "m6a": 0.5
+  }
+ },
+ "train": {
+  "means": {
+   "5s2": 0.1742,
+   "6a": 0.0417,
+   "bulk": 0.2222
+  },
+  "n": {
+   "bulk": 16,
+   "5s2": 14,
+   "6a": 10
+  }
+ }
+}

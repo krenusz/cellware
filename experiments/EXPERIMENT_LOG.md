@@ -7482,3 +7482,62 @@ sorting validated; memory module = unknown batch factor.
   never read). Second, the T/Igfbp5 data give the mechanism readout descriptively. Next (C4-S2, needs
   Bence's OK): structure check + counts of morph_08312026 (H14 power from counts only), then pre-register
   the sorting-index prediction for 5s2+6a, bulk+5s2, bulk+6a with z from parents 5 and 6 (C3-S1).
+
+## C4-S2a: does mixing rescue elongation in new subclones? Out-of-sample test on the Aug 2026 plates (pre-registered 2026-11-07)
+
+- **Serves: C4-S2** (FOCUS.json). Chapter 4 asks why mixing rescues elongation; before a mechanism can be
+  tested, the rescue + complementarity prediction (G2/G2b #22; C3-S2 sorting index) must hold on clones and a
+  readout it was not fitted on. Bence: "yes 1 2 / be precious about the holdout sets, better keep more".
+- **Pre-flight:**
+  1. Unit: gastruloid = one Nimbus polygon = one well (one gastruloid per XY, checked).
+  2. Readout: **Y = 1 - Circularity** (Nimbus blob metric computed by the authors' pipeline from the polygon;
+     bend-robust; higher = more elongated). Continuous (the authors' README: elongation metrics are unimodal,
+     no natural cutoff). Structure checked: tags and property names only.
+  3. Used data first: G2/G2b/G4/C3-S2 fitted the rescue on the 2024-25 morphology table; this is new data.
+  4. Power (H14, counts only): see selection/C4-S2a.json. Effect prior: Mgen's complementary bonus
+     delta_comp = 1.47 logit (G2; the best train-CV model, C3-S2 table; the sorting index predicts 1.54 for a
+     5+6 pair) mapped to the latent scale (logistic SD 1.81): **0.81 SD of Y**. sd = pooled within-condition
+     SD of Y on the pure plate (train, read for this). Contrast weights: mix 1, each pure member 1/2.
+  5. Exposure: tags/counts only; nothing of the mixture plate's values. The authors' clone+bulk README
+     (other plates) was read.
+  6. Literature: none new.
+- **Data split (keep more, Bence):** pure plate `bulk_5s2_6a.json` (bulk 16, 5s2 14, 6a 10) = train, open.
+  Mixture plate gastruloids hashed into thirds A/B/C (`partitions.raj_morph_0831`, no train share: the
+  model was selected on G2). **Disclosed confound:** pure and mixed gastruloids are on different plates
+  (one JSON each); a plate shift in Y adds to or hides the contrast and cannot be separated here.
+- **Primary (T2, rescue over the member mean):** T2 = mean Y(5s2+6a, partition) - (mean Y(5s2) + mean Y(6a)) / 2
+  (pure from train). **Pass:** one-sided 95% lower bound > 0 (bootstrap over gastruloids, 4,000). Reported
+  standardised (by the train sd) against the predicted 0.81 SD.
+- **Secondary (described, no claim):** better-member contrast (5s2+6a vs max of the two pure means);
+  bulk+5s2 and bulk+6a vs their member means; **T1, sorting-index specific, within the mixture plate**:
+  Y(5s2+6a) - (Y(5s2+bulk) + Y(6a+bulk))/2 minus the M0 part (pure plate: ((Y5s2+Y6a)/2 - Ybulk)/2); sorting
+  index predicts > 0 (E[H] 0.55 vs 0.30), Mgen predicts the comp-vs-unlabelled-bulk difference unknown.
+- **Look:** test `gastruloid_c4s2a_rescue`, script `c4s2a_morph_confirm.py`. One look; partitions to spend
+  decided by H14 and Bence (see power table at pre-registration commit); the rest stay sealed.
+- **Stopping rule:** pass = #22 confirmed out of sample (first confirmation of rescue); fail = rescue not
+  confirmed on new subclones, chapter 4 mechanism work stops at the descriptive level. No re-test on the
+  spent partition.
+
+## C4-S2b: are head and tail programmes more separated in mixed gastruloids, graded by the sorting index? (pre-registered 2026-11-07)
+
+- **Serves: C4-S2** (FOCUS.json). The mechanism readout: C3-S2 says elongation follows the share of state
+  variance that sorting can turn into domains; then T (tail) and Igfbp5 (head) domains should be further apart
+  in mixes, most in the complementary 5+6 mix. Bence: "yes 1 2".
+- **Pre-flight:**
+  1. Unit: gastruloid (Annotation ID; one line scan each).
+  2. Readout: per gastruloid, T (Channel 1) and Igfbp5 (Channel 2) profiles along the scan (arc length from X, Y,
+     200-point grid), background = per-channel minimum, each normalised to unit area; **EMD** (% of length) =
+     100 x integral |CDF_T - CDF_Igfbp5|, plus overlap = integral min(p_T, p_I). Same definitions as the
+     authors' script header (methods read, their values not read; their summary CSVs stay locked).
+  3. Used data: none before; all 20 gastruloids are read and the set is **spent as exploratory**.
+  4. Power: n 2-6 per condition: descriptive only, no test, no claim (stated).
+  5. Exposure: condition labels and counts only (bulk 6, 5 3, 6 3, 5+6 2, bulk+5 2, bulk+6 4).
+  6. Literature: none new.
+- **Prediction (E[H] from C3-S2: pure 0, bulk+5 0.30, bulk+6 0.31, 5+6 0.55; bulk itself not predicted):**
+  median EMD ordered 5+6 > bulk+5, bulk+6 > pure 5, pure 6. **Reading:** "consistent" if 5+6 has the highest
+  median among the five non-bulk conditions and both pure clones the lowest two; "not consistent" otherwise.
+  Spearman between E[H] and condition median EMD reported (5 points).
+- **Script:** `c4s2b_ap_separation.py`; reads only `T_Igfbp5_09022026/gastruloid_T_Igfbp5.csv`.
+- **H14 power at pre-registration (counts only; train sd of Y 0.084, effect 0.81 SD):** A 0.59 (5s2+6a n 7),
+  B 0.66 (9), C 0.72 (11), A+B 0.80 (16), all 0.89 (27). **No single third passes.** The look waits for
+  Bence: spend A+B as one pre-registered union (power 0.80, C kept), or keep all three sealed.

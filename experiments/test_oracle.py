@@ -168,7 +168,20 @@ def _g12_counts(part):
     return g9_confirm.g12_counts(part)
 
 
+def _c4s2a(part):
+    import c4s2a_morph_confirm
+
+    return c4s2a_morph_confirm.test(part)
+
+
+def _c4s2a_counts(part):
+    import c4s2a_morph_confirm
+
+    return c4s2a_morph_confirm.counts(part)
+
+
 PARTITION_TESTS = {
+    "gastruloid_c4s2a_rescue": (_c4s2a, "raj_morph_0831", "C4-S2a: 5s2+6a rescue over member mean, Aug 2026 plates"),
     "gastruloid_g12_drug": (_g12_drug, "raj_drug", "G12: pooled drugs vs control, one-sided, drug partition B"),
     "gastruloid_g11_drug": (_g11_drug, "raj_drug", "G11: drug compression ratio RA/SB vs control on sealed drug "
                                                    "series (A = May 3 2025), one partition per look"),
@@ -196,7 +209,7 @@ def selection_gate(exp, test):
     return None
 
 
-PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
+PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
 
 
 def power_gate(exp, test, part):
@@ -210,7 +223,8 @@ def power_gate(exp, test, part):
     n = PARTITION_COUNTS[test](part)
     if min(n.values()) < 2:
         return f"partition {part} counts {n}: a group is empty (H14)"
-    se = p["sd"] * np.sqrt(sum(1 / v for v in n.values()))
+    w = p.get("weights", {})  # contrast weights per group (default 1): se = sd * sqrt(sum w^2 / n)
+    se = p["sd"] * np.sqrt(sum(w.get(g, 1.0) ** 2 / v for g, v in n.items()))
     z = norm.ppf(1 - p["alpha"]) if p.get("one_sided") else norm.ppf(1 - p["alpha"] / 2)
     power = float(1 - norm.cdf(z - p["effect"] / se))
     print(f"H14 power: counts {n}, sd {p['sd']}, effect {p['effect']}, power {power:.2f} (min {p['min_power']})")

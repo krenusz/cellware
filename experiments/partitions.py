@@ -40,6 +40,15 @@ PARTITIONED = {
         "files": ["clone1_Wnt_04262025.csv", "clone3_Wnt_04262025.csv"],
         "sealed_on": "2026-11-07",
     },
+    "raj_morph_0831": {
+        "salt": "cellware-rajmorph0831-v1",
+        "buckets": 3,  # mixtures only, thirds A/B/C; the pure plate (bulk_5s2_6a.json) is the train data
+        "unit": "Nimbus annotation _id (one polygon = one gastruloid = one well) in "
+                "morph_08312026/bulk+5s2_bulk+6a_5s2+6a.json (5s2+6a 27, 5s2+bulk 14, 6a+bulk 29)",
+        "files": ["bulk+5s2_bulk+6a_5s2+6a.json"],
+        "sealed_on": "2026-11-07",
+        "prior_exposure": "tags and counts per tag/well only; pure plate unread until C4-S2a pre-registration",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)
@@ -49,7 +58,7 @@ SEALED = {"A": 2, "B": 3, "C": 4}
 @functools.lru_cache(maxsize=None)
 def bucket(dataset, unit):
     salt = PARTITIONED[dataset]["salt"]
-    return int(hashlib.sha256(f"{salt}:{unit}".encode()).hexdigest(), 16) % BUCKETS
+    return int(hashlib.sha256(f"{salt}:{unit}".encode()).hexdigest(), 16) % PARTITIONED[dataset].get("buckets", BUCKETS)
 
 
 def partition_of(dataset, unit):
@@ -57,6 +66,8 @@ def partition_of(dataset, unit):
     if fixed is not None:
         return fixed[str(unit)]
     b = bucket(dataset, unit)
+    if PARTITIONED[dataset].get("buckets") == 3:
+        return "ABC"[b]
     if b in TRAIN:
         return "train"
     return next(k for k, v in SEALED.items() if v == b)
