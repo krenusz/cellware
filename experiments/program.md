@@ -193,3 +193,9 @@ before every look and refuses on any failure.
   **counts only** from the partition (units per group, H9), computes power, and refuses the look
   below 0.8 without computing any statistic or spending the partition. `test_oracle.py count`
   shows a partition's tag counts (structure only, never outcomes).
+- **H15 Pre-flight before pre-registering.** (Retro 2026-11-07b: wrong unit, mislabelled file,
+  unpowered look, sealed data proposed where used data sufficed.) Every pre-registration has a
+  `Pre-flight:` block covering (1) unit verified from the source, quoted; (2) readout verified by a
+  structure check; (3) used data first: open / train / spent data tried before any sealed look;
+  (4) power (H14); (5) exposure: any count or summary already seen that is an outcome for this
+  question; (6) literature access checked. The oracle refuses a look whose section lacks the block.

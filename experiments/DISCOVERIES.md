@@ -93,3 +93,9 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 - **#27 closed (G12, 2026-11-07).** Drug partition B refused by the power gate (0.54 < 0.80; 22
   controls, 14 treated); B and C stay sealed. Final status: unconfirmed, consistent, not testable with
   these data (needs ~24 controls + 48 treated in one series).
+- **#28 (observation, 2026-11-07b; literature + exposed counts, not a test).** Rescue in mixed
+  gastruloids may be clonal takeover rather than cooperation: in Regalado/Qiu 2026, polyclonal
+  gastruloids are 82% one founder (clone 29), and clone 29 also has the most cells among monoclonal
+  founder clusters (8,100 of 47,491, seen during a structure check). n = 1 winner; per-gastruloid
+  polyclonal assignment not public; clone 29 sits in sealed partition C. **Unconfirmed; not testable
+  with these data.** Bears on #22/#24.

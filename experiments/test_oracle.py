@@ -235,9 +235,25 @@ def append_ledger(row):
         f.write("\t".join(str(row[c]) for c in COLUMNS) + "\n")
 
 
+PREFLIGHT_FROM = "2026-11-08"  # H15 applies to pre-registrations dated from this day on
+
+
 def preregistered(exp):
-    with open(LOG, encoding="utf-8") as f:
-        return any(line.startswith(f"## {exp}:") and "pre-registered" in line for line in f)
+    """Heading '## <exp>: ... (pre-registered <date>)'; from PREFLIGHT_FROM on, the section must
+    also hold a 'Pre-flight:' block (H15)."""
+    import re
+
+    text = open(LOG, encoding="utf-8").read()
+    m = re.search(rf"^## {re.escape(exp)}:.*pre-registered (\d{{4}}-\d{{2}}-\d{{2}}).*$", text, re.M)
+    if not m:
+        return False
+    if m.group(1) < PREFLIGHT_FROM:
+        return True
+    nxt = re.search(r"^## ", text[m.end():], re.M)
+    section = text[m.end(): m.end() + nxt.start()] if nxt else text[m.end():]
+    if "Pre-flight:" not in section:
+        sys.exit(f"refused: {exp} pre-registration has no 'Pre-flight:' block (H15)")
+    return True
 
 
 def main():

@@ -54,10 +54,16 @@ SEEDS = {
     "Beccari 2018 (gastruloid multi-axial)": "10.1038/s41586-018-0578-0",
     "van den Brink 2014 (gastruloid symmetry breaking)": "10.1242/dev.113001",
     "Shaffer 2020 (MemorySeq, heritable expression)": "10.1016/j.cell.2020.07.003",
+    # chapter 4 (monoclonal gastruloids, founder memory), added 2026-11-07b
+    "Regalado/Qiu 2026 Cell (fluctuation test, gastruloids)": "10.1016/j.cell.2026.09.057",
+    "Choi 2022 (DNA Typewriter)": "10.1038/s41586-022-04922-8",
+    "Emert 2021 (Rewind, clonal memory of rare states)": "10.1038/s41587-021-00837-3",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
 TOPICS = {
+    "clonal_dominance": [r"clonal dominance", r"cell competition", r"chimer", r"take ?over", r"winner"],
+    "imprinting_potency": [r"imprint", r"dlk1", r"meg3", r"tet1", r"methylation"],
     "instruction_vs_selection": [
         r"instruct",
         r"selecti",
