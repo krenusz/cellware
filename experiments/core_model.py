@@ -29,6 +29,13 @@ def softmax(x):
     return e / e.sum(-1, keepdims=True)
 
 
+def state_copy(z, rho, rng):
+    """Step 1 fate memory: a condition's copy of the clone state, corr(copy, z) = sqrt(rho) per unit
+    variance (core_larry's RHO_F per well; gastruloid: per gastruloid and per passage event)."""
+    z = np.asarray(z, float)
+    return np.sqrt(rho) * z + np.sqrt(1 - rho) * rng.standard_normal(z.shape)
+
+
 def split_poisson(rate, rng):
     """Independent founders per condition: rate is an array (clones,)."""
     return rng.poisson(rate)
