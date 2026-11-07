@@ -7261,3 +7261,28 @@ sorting validated; memory module = unknown batch factor.
   clone 6 (posterior) and clone 3 (anterior) look alike on every measure. With n = 5 and one curve per
   clone x condition, this only rules out a strong, clean relation. Unconfirmed, negative.
 - Replicate 2 stays sealed; not worth a look on this result.
+
+### Chapter 4 pre-flight (2026-11-07b; H15 applied to the agreed steps; Bence "go 1 2 3 if still holds")
+
+- **Step 1, rescue = clonal dominance: dropped** (retro 2026-11-07b section 5): answer published
+  (82% clone 29), monoclonal cell counts already seen, n = 1 winner, clone 29 in sealed C,
+  per-gastruloid polyclonal assignment not public. Kept as observation #28.
+- **Step 2, memory per division: no confirmable form with public data.**
+  - Two-epoch "tree of trees" (106 gastruloids): the authors' cell-to-gastruloid table
+    (`tree_sanjay/assignment/assignment_cell.rds`) is not on their public server; the well-level
+    Debris-seq tree is (`Step1File_DebrisSeqTAPE_mGASv5_uncollapsed.csv`, 263 MB). Their own effect is
+    tiny: lineage vs transcriptome distance rho 0.052 over 3,828 pairs of 88 gastruloids
+    (Section_3/Step5 comment). Partitioned by first-epoch clade, a sealed partition (~18 gastruloids)
+    has no power for an effect that size. Fails (1) and (4).
+  - "Eight gastruloids" (Section 2): public cell assignment (`data_mGASv3/cell_assign.rds`), loci per
+    clone and Debris-seq; deep within-gastruloid trees. But the 8 gastruloids come from **3 founder
+    clones** (05: wells 14/17/25; 25: 01/03/21; 32: 16/28), so independent units = 3: no partitions
+    possible; the authors already ran PATH (phylogenetic autocorrelation / transition rates of cell
+    types) on these trees. Exploratory only.
+- **Step 3, founder state on train clusters: fails power.** `g14_founders.py` (train only, 9 clusters,
+  12,028 cells): one PSC/epiblast-biased cluster (cluster 8, epiblast 0.61); others hindbrain
+  (cluster 21, 0.42) or somite-leaning (19, 0.56; 6, 0.42) or mixed. A Tet1 / Dlk1-Dio3 check would be
+  1 cluster vs 8. Stopped; no expression data downloaded.
+- **Net:** with public data, chapter 4 has no question that can reach a sealed confirmation. Options
+  for Bence: exploratory memory analysis on the 8 deep trees (unconfirmed by design), another
+  lineage + morphogenesis data set with many independent units, or pause chapter 4.

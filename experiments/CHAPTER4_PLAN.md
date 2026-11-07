@@ -30,3 +30,11 @@ trees", oligoclonal founder multiome).
 1. Read the authors' Section 1-3 scripts (text only) and list the exact tape files needed.
 2. Rebuild cell-to-gastruloid for the two-epoch set; partition by first-epoch clade before any statistic.
 3. Pre-register Q1 with a power block (H14) from simulated decay curves.
+
+## Pre-flight outcome (2026-11-07b, H15)
+
+None of the three questions passes pre-flight for a confirmable test with public data (details in
+EXPERIMENT_LOG "Chapter 4 pre-flight"): rescue-as-dominance is already answered and n = 1; the
+two-epoch memory question lacks the public cell assignment and its published effect (rho 0.05) is
+too small for a sealed partition; the 8 deep-tree gastruloids come from 3 founders (no partitions);
+the founder-state check has 1 PSC-biased train cluster. Decision needed from Bence.
