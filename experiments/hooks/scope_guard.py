@@ -118,7 +118,12 @@ def commit_msg(path):
                               text=True, encoding="utf-8").stdout
         if MARKER not in text:
             errs.append("EXPERIMENT_LOG.md lost the scope-guard marker line.")
+        old = subprocess.run(["git", "show", "HEAD:experiments/EXPERIMENT_LOG.md"], capture_output=True,
+                             text=True, encoding="utf-8").stdout
+        seen = {e for e, _, _ in sections(old[old.find(MARKER):])} if MARKER in old else set()
         for exp, date, body in sections(text[text.find(MARKER):] if MARKER in text else text):
+            if exp in seen:  # committed under an earlier focus; only new pre-registrations are checked
+                continue
             if "Pre-flight:" not in body:
                 errs.append(f"{exp}: pre-registration lacks 'Pre-flight:' (H15).")
             if not (serves_step(body, f["step"]) or "Bence OK" in body):

@@ -7357,3 +7357,47 @@ sorting validated; memory module = unknown batch factor.
 - **Stopping rule:** fixing these needs a series term, which G8-G11 showed cannot be predicted for
   a new series; it would not change the chapter answer (state + sorting + memory). Recorded as limits;
   no new model.
+
+## C3-S2: elongation rescue from the core configuration's local rules (pre-registered 2026-11-07)
+
+- **Serves: C3-S2** (FOCUS.json). Goal element: chapter 3 asked for the gastruloid outcome "from clone
+  states plus local rules"; elongation rescue (#22) is still a descriptive bonus (G2 Mgen) in the
+  simulator. Bence: "1" (move focus to C3-S2).
+- **Candidate (one, from the C3-S1 configuration, no new state):** elongation needs a sorting-driven
+  symmetry break, whose strength is the **sorting index** H = B / (1 + B): B = between-population
+  variance of the cells' anterior scores, sum_i f_i (zb_i - zbar)^2, with zb_i the per-gastruloid copy
+  of clone state z_i (core step 1, rho_g) and cell noise variance 1 (C3-S1). H is the share of score
+  variance that population identity carries, i.e. what rank sorting can turn into a domain boundary.
+  A pure clone has H = 0; any mix has H > 0 because each gastruloid's copies differ (generic rescue);
+  clones with distant z have larger H (complementarity bonus). Literature: sorting/differential adhesion
+  in gastruloid symmetry breaking (LITERATURE_SWEEP_2026-11e).
+  - Fixed from C3-S1 (polarity data, no elongation data): z = 1: -4.03, 3: 4.15, 5: 5.08, 6: -5.33,
+    7: 3.38; rho_g = 0.059. Bulk cells: score mean 0 (as in C3-S1). Clones 2 and 4 (no polarity
+    estimate): z = 0, disclosed; sensitivity run without rows containing them.
+  - **Model S:** logit p = sum_i f_i e_i + kappa * E[H] (E over copy noise, Monte Carlo 4,000 draws,
+    fixed seed): M0's 8 competences + 1 parameter (9; Mgen has 11).
+- **Pre-flight:**
+  1. Unit: gastruloid (binomial counts per composition row, 171 rows, 26 dates; G2).
+  2. Readout: elongated / total per row (`Morphologies_1_2_3_4_5_6_7.csv`, structure known from G2).
+  3. Used data only: G2/G2b/G4 open morphology table; z and rho_g from C3-S1 (G1a fit shard). No sealed
+     data; no look.
+  4. Power: no sealed look (H14 n/a); G2 minimum (>= 40 gastruloids per pair class) met.
+  5. Exposure: G2, G2b and G4 results are known (rescue size, comp-same difference, Mgen wins G4 CV);
+     the candidate's structure is fixed before fitting and only kappa touches elongation data.
+  6. Literature: no new search (G4 candidates tested; sorting candidate from the 2026-11e sweep).
+- **Script:** `c3s2_rescue_sorting.py`. Primary test = G4's leave-one-composition-out CV (same 61
+  held-out compositions, same likelihood), S against M0 and Mgen (G4 values recomputed in the same run).
+- **Readings (primary):**
+  - **Rescue from local rules:** CV(S) >= CV(Mgen) - 2 and CV(S) >= CV(M0) + 2. The simulator's
+    descriptive rescue rule is replaced by S.
+  - **Partial:** CV(S) >= CV(M0) + 2 but < CV(Mgen) - 2: the sorting index explains part of rescue;
+    the descriptive term stays.
+  - **Fails:** CV(S) < CV(M0) + 2.
+  - kappa reported with a cluster bootstrap over dates (1,000); a negative kappa means S fails
+    whatever its CV.
+- **Secondary (described, no claim):** S's predicted complementary minus same-propensity excess over
+  the probability-average null (G2b test 1) vs observed +0.09 [0.001, 0.17]; clone + bulk chimeras
+  (G2: near M0), S predicted vs observed; sensitivity without clones 2/4.
+- **Stopping rule:** one candidate only. If S passes, chapter 3 closes with rescue from local rules; if
+  partial or fails, rescue stays a descriptive rule, recorded as chapter 3's limit, and the mechanism
+  question goes to C4 (FOCUS next step). No further C3 variants on these data.
