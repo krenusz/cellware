@@ -7820,3 +7820,21 @@ sorting validated; memory module = unknown batch factor.
 - **Stopping rule:** fading confirmed = chromatin carries the passaging loss (mechanism candidate for C5); not
   confirmed = the loss is not visible in peak sets at this resolution; partition B stays sealed either way unless
   Bence OKs it.
+
+### C5-S4 train result (2026-11-07; passages 0-1 only; passages 2-3 locked by sha256 before any read, a84436f)
+
+- Data: 51 duprem narrowPeak files (Dropbox folder zip downloaded by Bence after the scripted download hit a
+  captcha page; sizes match the listing exactly). All samples pass QC (>= 20,000 peaks).
+- Passage 1: S = J_rep - J_btw > 0 for all 7 clones (0.089-0.269; clone 3 highest, 0.269). Clones are
+  chromatin-distinct one passage after cloning.
+- Passage 0 -> 1 (clones 1, 2, 4, 6, 7): between-clone distance D_btw fell in all 5 (log ratios -0.11 to -0.36;
+  mean ratio 0.83). Caveat: passage 0 has single replicates, so part of the drop may be technical (noisier
+  passage-0 libraries) rather than convergence.
+- Selection (H12): M3 train ratio (LOO -SSE -0.016) > M2 no fade (-0.068) > M1 G3 rate 0.6 (-0.095). Forecast R = 0.83.
+- Secondary: Spearman S(c,1) vs |z| (5 clones) = -0.10. Described only.
+- H14 gate (counts only): 6 clones with 2 replicates at passage 2 and at passage 3; power 1.00 with the
+  pre-registered sd (0.098, from D_btw log ratios).
+- **Look NOT taken.** Validity concern: the gate's sd comes from D_btw, but the test statistic is a ratio of S
+  (a small difference, between-clone CV about 0.5 at passage 1). If S at passages 1 and 2 were uncorrelated
+  across clones, sd of log R would be about 0.29 and power about 0.55 at effect log 0.6. At the chosen forecast
+  (0.83), power would be about 0.1. Waiting for Bence before spending partition A.
