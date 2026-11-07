@@ -7401,3 +7401,35 @@ sorting validated; memory module = unknown batch factor.
 - **Stopping rule:** one candidate only. If S passes, chapter 3 closes with rescue from local rules; if
   partial or fails, rescue stays a descriptive rule, recorded as chapter 3's limit, and the mechanism
   question goes to C4 (FOCUS next step). No further C3 variants on these data.
+
+### C3-S2 result (2026-11-07; `results_gastruloid/c3s2_rescue_sorting.json`; open data only)
+
+| model | parameters (elongation-fitted) | CV log-lik (61 held-out compositions) | full fit |
+|---|---|---|---|
+| Mgen (descriptive bonuses) | 11 | -1248.6 | -1923.2 |
+| **S (sorting index)** | **9** | **-1248.9** | -1930.2 |
+| M0 additive | 8 | -1282.8 | -1996.4 |
+
+- **kappa = 2.82 [1.89, 3.61]** (cluster bootstrap over dates, 1,000): positive.
+- **Pre-registered reading: rescue from local rules.** S is within 2 of Mgen (0.3 below) and 34 above
+  M0, with one elongation parameter instead of three class bonuses; the class structure (generic
+  rescue + complementarity bonus) comes from the C3-S1 clone states and per-gastruloid copies, which
+  were fitted on polarity data only. E[H]: pure 0; same-propensity pairs 0.23-0.24; complementary
+  0.42-0.55; pairs with clones 2/4 (z = 0) 0.23-0.34.
+- **Secondary (described):**
+  - Complementary minus same excess over N2: S predicts +0.13, observed +0.09 (G2b CI 0.001-0.17):
+    inside. Per class: comp 0.29 vs 0.30, same 0.16 vs 0.21, unl 0.19 vs 0.19.
+  - Clone + bulk chimeras: S does not improve on M0 (mean abs error 0.090 vs 0.084); it predicts a
+    bonus for clone + bulk that the data do not show consistently (50% clone 4 obs 0.79 vs S 0.50;
+    50% clone 5 0.81 vs 0.92). Bulk, itself polyclonal, is not well described as one score-0 population.
+  - **Sensitivity without clones 2/4 (z unknown): S -804.6, Mgen -795.7, M0 -841.5**: S is 8.9 below
+    Mgen, i.e. **partial** on this subset. The primary reading leans on rows where clones 2/4 were given
+    z = 0.
+- **Limits.** Open, already-analysed data (G2/G2b/G4 seen): an unconfirmed, consistency-level result,
+  not a confirmation. Not separated: how much of S's gain is the generic part (every mix has H > 0)
+  versus the z-dependent part; the comp-same prediction (+0.13 vs +0.09) is the only direct read of
+  the z-dependent part.
+- **Stopping rule applied.** One candidate, primary reading met: the simulator's descriptive rescue
+  rule is replaced by the sorting index (one parameter kappa), with the subset and clone + bulk misses
+  recorded as limits. Chapter 3 closes; the mechanism behind "sorting strength enables elongation"
+  (C4) needs per-clone composition data.

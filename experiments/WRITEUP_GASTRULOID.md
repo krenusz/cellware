@@ -37,7 +37,7 @@ gastruloid, a line scan along the axis gives each clone's signal profile.
 | 23 | Preference fades over passages, but the rate depends on series x clone; no model predicts a new series | G3, G6, G7b sealed, G8 | moderate (direction); **rate unpredictable** |
 | 27 | Perturbing signalling erodes the division of labour: conditional on a series' own control, drugs multiply clone separation by ~0.35 (one shared factor); high Wnt erases propensity | G9, G11 (train + sealed A), G12 (gate) | **unconfirmed: consistent, not testable with these data** |
 | 21 | Domain size is set by the gastruloid, not the clone mix | G1b open | unconfirmed |
-| 22 | Any mixing rescues elongation (+0.2-0.3), small complementarity bonus | G2, G2b open | unconfirmed |
+| 22 | Any mixing rescues elongation (+0.2-0.3), small complementarity bonus; both follow from the sorting index of clone states (C3-S2) | G2, G2b, C3-S2 open | unconfirmed |
 | 24 | Rescue is not buffering, strict complementation or T+ area | G4 open | unconfirmed (negative) |
 | 25 | Memory is lost at passaging, not per division | G5 open | unconfirmed |
 
@@ -106,3 +106,16 @@ unseen pairs (6+7, 3+7) and the fade direction; it misses clone 7's spread (n 8)
 passage-1 separation and the 6+7 magnitude, all series-level magnitudes (G8/G10). Gastruloid-level
 variation in a clone's propensity is large: one gastruloid's copy correlates ~0.24 with the clone's
 long-run state. The "one core model across chapters 1-3" claim now holds for space, qualitatively.
+
+## Addendum 2026-11-07: elongation rescue from the sorting rule (C3-S2)
+
+The descriptive rescue rule is replaced by one quantity from the C3-S1 configuration: the **sorting
+index** H, the share of a gastruloid's cell-score variance carried by population identity (what rank
+sorting can turn into a domain boundary). Pure clones have H = 0; any mix has H > 0 because each
+gastruloid's copy of a clone state differs (generic rescue); clones with distant states have larger H
+(complementarity bonus). With clone states and rho_g fixed from polarity data and one elongation
+parameter (kappa 2.8 [1.9, 3.6]), it predicts held-out compositions as well as the 3-bonus descriptive
+model (CV -1248.9 vs -1248.6; additive -1282.8) and the complementary-minus-same excess (+0.13 vs
+observed +0.09). Limits: weaker without clones 2/4 (8.9 below the descriptive model), no gain on
+clone + bulk chimeras, open data only (unconfirmed). Chapter 3 now runs end to end on the core model:
+clone state with memory, rank sorting, proportion feedback and sorting-driven elongation.
