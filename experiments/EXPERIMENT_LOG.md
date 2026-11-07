@@ -7778,3 +7778,45 @@ sorting validated; memory module = unknown batch factor.
   `import <name>`, `-m <name>`), so reading a result file such as `results_gastruloid/<name>.json` is no longer
   blocked. My first edit wrote literal backspace characters into the regex and briefly disabled blocking; caught by
   a two-way test (result read allowed, off-focus run blocked) and repaired before any other command ran.
+
+## C5-S4: does a clone's chromatin distinctness fade over passages like its A-P propensity? (pre-registered 2026-11-07)
+
+- **Serves: C5-S4** (FOCUS.json). Bence: "1" (chromatin line). Chapter 5 found (C5-S2) that ES clones keep their
+  state while expanding and lose about half per passage at a series-specific rate; this step asks whether the
+  chromatin of a clone loses its clone-specific part at passaging too, and at what rate.
+- **Pre-flight:**
+  1. Unit: **clone** (7 clones; bulk as reference only). Samples: clone x passage x replicate (sample sheet
+     `alignments_clones_gastr_101214.txt`: 51 samples; passage 0 has 1 replicate for clones 1, 2, 4, 6, 7 and none
+     for 3, 5; passages 1-3 mostly 2).
+  2. Readout: the authors' MACS2 peaks after duplicate removal (`extracted_data/ATAC/MACS2_output/
+     Oct1224_shifted_duprem/*.narrowPeak`, 51 files, 1.7 GB, text). Per sample, the **top 20,000 peaks by signal
+     value**, mapped to 500-bp genome bins (depth-robust: a fixed number of peaks per sample). Samples with fewer than
+     20,000 peaks: QC fail, excluded (decided from peak counts only).
+  3. Used data first: none of this is used; the authors' contrasts (Homer p1 vs p3, DESeq2 AvP / AvBulk) are not
+     read.
+  4. Power: H14 gate from train-derived noise (below); look only if power >= 0.8.
+  5. Exposure: sample sheet only; the paper reports peak numbers (44,540 at passage 1, 41,593 at passage 3) and
+     shared/unique shares between anterior and posterior clones at passage 1.
+  6. Literature: paper's ATAC section (read 2026-11-07).
+- **Partitions (by passage; a forecasting split, fixed now):** passages 0-1 = **train** (open); passage 2 =
+  **sealed A**; passage 3 = **sealed B (last; H13: Bence's OK)**. Files of passages 2-3 are locked by sha256 in
+  sealed.py on arrival, before any value is read, readable only through the oracle.
+- **Statistic.** For clone c at passage p: J_rep(c,p) = Jaccard between its replicates' top-peak bin sets (noise
+  ceiling); J_btw(c,p) = mean Jaccard between c's replicates and every other clone's replicates at the same passage.
+  **Clone-specific signal S(c,p) = J_rep - J_btw** (how much more a clone resembles itself than other clones).
+  Memory fading predicts S(c,p) shrinking with passage.
+- **Train work (passages 0-1 only):** S(c,1) for 7 clones; passage 0 single replicates give J_btw only, so the
+  train fade estimate uses D_btw(c,p) = 1 - J_btw(c,p) for p = 0, 1 (clones 1, 2, 4, 6, 7). Candidate models for the
+  passage-2 forecast, scored on train (H12; selection/C5-S4.json): (M1) S(c,2) = 0.6 x S(c,1) (fades at the
+  propensity rate, G3); (M2) no fade, S(c,2) = S(c,1); (M3) the train p0->p1 ratio of D_btw. Chosen = best train
+  fit of p1 from p0.
+- **Primary test (one look, partition A = passage 2):** R = mean_c S(c,2) / mean_c S(c,1) over clones with >= 2
+  QC-passing replicates at both passages. **Fading:** one-sided 95% upper bound of R (bootstrap over clones) < 1.
+  Reported against the chosen model's forecast. Power gate: sd of per-clone log change from train (p0->p1 D_btw
+  log ratios), effect log(0.6), n = clones with replicates at passage 2 (counts only).
+- **Secondary (described):** does S(c,1) rank the clones like their A-P propensity strength |z| (C3-S1; clones 1,
+  3, 5, 6, 7)? Spearman, 5 points, no claim.
+- **Script:** `c5s4_atac_memory.py` (train functions; sealed reads only in `test(part)` via test_oracle).
+- **Stopping rule:** fading confirmed = chromatin carries the passaging loss (mechanism candidate for C5); not
+  confirmed = the loss is not visible in peak sets at this resolution; partition B stays sealed either way unless
+  Bence OKs it.
