@@ -1,9 +1,9 @@
 {
  "chapter": "4",
- "step": "C4-S1",
- "question": "Chapter 4: why does mixing (sorting strength, C3-S2) rescue elongation? Step C4-S1: data search restricted to its requirement: gastruloids (or embryoid aggregates) from pure clones/lines AND their mixtures, with per-clone (per-population) cell-type composition and an elongation/morphology readout; pre-flight (H15) each candidate before any download.",
+ "step": "C4-S2",
+ "question": "Chapter 4: why does mixing rescue elongation? C4-S2: (1) out-of-sample test of the C3-S2 sorting index on the unseen Aug 2026 elongation data (morph_08312026: pure bulk/5s2/6a train; mixtures 5s2+6a, bulk+5s2, bulk+6a partitioned A/B/C, one look at A only, B/C kept); (2) descriptive look at T/Igfbp5 A-P domain separation by composition (T_Igfbp5_09022026; exploratory).",
  "next_steps": [
-  "C4-S2: pre-register a mechanism test on the best candidate that passes pre-flight (or report that none does)"
+  "C4-S3: decided from C4-S2 results (needs Bence's OK)"
  ],
  "allowed_scripts": [],
  "parked": [
@@ -12,10 +12,11 @@
   "GSE291244 founder memory / founder state",
   "#28 dominance"
  ],
- "approved_by": "Bence 2026-11-07: \"ok go chpt4\"",
+ "approved_by": "Bence 2026-11-07: \"yes 1 2 / be precious about the holdout sets, better keep more\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
-  "C3-S2 (2026-11-07): sorting index replaces descriptive rescue rule (CV within 0.3 of Mgen, +34 over M0); partial without clones 2/4; open data only"
+  "C3-S2 (2026-11-07): sorting index replaces descriptive rescue rule (CV within 0.3 of Mgen, +34 over M0); partial without clones 2/4; open data only",
+  "C4-S1 (2026-11-07, 6ab785a): data search + full Raj Dropbox re-crawl (12,049 files, 226 GB); revision-era data locked"
  ]
 }
