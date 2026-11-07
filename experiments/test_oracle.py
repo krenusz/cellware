@@ -235,11 +235,10 @@ def append_ledger(row):
         f.write("\t".join(str(row[c]) for c in COLUMNS) + "\n")
 
 
-PREFLIGHT_FROM = "2026-11-08"  # H15 applies to pre-registrations dated from this day on
 
 
 def preregistered(exp):
-    """Heading '## <exp>: ... (pre-registered <date>)'; from PREFLIGHT_FROM on, the section must
+    """Heading '## <exp>: ... (pre-registered <date>)'; below the scope-guard marker line, the section must
     also hold a 'Pre-flight:' block (H15)."""
     import re
 
@@ -247,7 +246,10 @@ def preregistered(exp):
     m = re.search(rf"^## {re.escape(exp)}:.*pre-registered (\d{{4}}-\d{{2}}-\d{{2}}).*$", text, re.M)
     if not m:
         return False
-    if m.group(1) < PREFLIGHT_FROM:
+    marker = text.find("<!-- scope-guard:")
+    if marker < 0:
+        sys.exit("refused: EXPERIMENT_LOG.md lost the scope-guard marker (H15/H16)")
+    if m.start() < marker:
         return True
     nxt = re.search(r"^## ", text[m.end():], re.M)
     section = text[m.end(): m.end() + nxt.start()] if nxt else text[m.end():]

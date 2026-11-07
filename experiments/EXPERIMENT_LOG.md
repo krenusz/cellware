@@ -7287,7 +7287,9 @@ sorting validated; memory module = unknown batch factor.
   for Bence: exploratory memory analysis on the 8 deep trees (unconfirmed by design), another
   lineage + morphogenesis data set with many independent units, or pause chapter 4.
 
-## C3-S1: the gastruloid simulator as a configuration of the core model (pre-registered 2026-11-08)
+<!-- scope-guard: every pre-registration below this line needs Pre-flight: and Serves: (H15, H16) -->
+
+## C3-S1: the gastruloid simulator as a configuration of the core model (pre-registered 2026-11-07)
 
 - **Serves: C3-S1** (FOCUS.json). Goal element: program.md "Plan toward space": the clone-level core
   model becomes the cell-level prior of the tissue simulator. Chapter-3 test: reproduce clone spatial

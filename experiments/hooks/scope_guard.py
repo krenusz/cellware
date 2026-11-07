@@ -9,7 +9,7 @@ Modes
                  - writing a NEW experiment script before such a pre-registration exists.
   claude-prompt  Claude Code UserPromptSubmit hook: in Cellware sessions, injects the current focus.
   commit-msg F   git commit-msg hook: FOCUS.json changes need 'Bence:' in the message; new
-                 pre-registrations (dated >= 2026-11-08) need `Pre-flight:` and a `Serves:` line naming
+                 pre-registrations (below the scope-guard marker in EXPERIMENT_LOG) need `Pre-flight:` and a `Serves:` line naming
                  the current step (or quoting 'Bence OK').
 
 Stdlib only; run with -I.
@@ -28,7 +28,7 @@ FOCUS = os.path.join(EXP, "FOCUS.json")
 LOG = os.path.join(EXP, "EXPERIMENT_LOG.md")
 SCRIPT_RE = re.compile(r"\b([a-z]+\d+[a-z0-9]*_[a-z0-9_]+)(?:\.py)?\b")
 HEAD_RE = re.compile(r"^## (\S+?):.*\(pre-registered (\d{4}-\d{2}-\d{2})", re.M)
-FROM = "2026-11-08"
+MARKER = "<!-- scope-guard:"
 
 
 def focus():
@@ -116,9 +116,9 @@ def commit_msg(path):
                                       text=True).stdout or open(FOCUS, encoding="utf-8").read())
         text = subprocess.run(["git", "show", ":experiments/EXPERIMENT_LOG.md"], capture_output=True,
                               text=True, encoding="utf-8").stdout
-        for exp, date, body in sections(text):
-            if date < FROM:
-                continue
+        if MARKER not in text:
+            errs.append("EXPERIMENT_LOG.md lost the scope-guard marker line.")
+        for exp, date, body in sections(text[text.find(MARKER):] if MARKER in text else text):
             if "Pre-flight:" not in body:
                 errs.append(f"{exp}: pre-registration lacks 'Pre-flight:' (H15).")
             if not (serves_step(body, f["step"]) or "Bence OK" in body):
