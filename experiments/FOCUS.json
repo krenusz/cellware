@@ -1,9 +1,9 @@
 {
  "chapter": "4",
- "step": "C4-S3",
- "question": "Chapter 4: why does mixing rescue elongation? C4-S3: pre-flight the seqFISH chimera data (raw_data/SG, 11 dates) for a DIRECT sorting readout: per-cell clone identity + position + A-P markers. Structure, conditions and counts only; power from counts before reading any value. Aug 2026 mixture plate stays sealed (A/B/C).",
+ "step": "C4-S4",
+ "question": "Chapter 4: C4-S4 = run the pre-registered C4-S2a rescue test (5s2+6a vs member mean, Y = 1 - circularity) as ONE oracle look on the union of mixture partitions A+B (power 0.80); partition C stays sealed.",
  "next_steps": [
-  "C4-S4: pre-register the direct sorting test if C4-S3 pre-flight passes (needs Bence's OK)"
+  "C4-S5: write up chapter 4 (rescue confirmed or not; mechanism untested with public data) (needs Bence's OK)"
  ],
  "allowed_scripts": [],
  "parked": [
@@ -12,7 +12,7 @@
   "GSE291244 founder memory / founder state",
   "#28 dominance"
  ],
- "approved_by": "Bence 2026-11-07: \"2\" (keep all sealed; look in the seqFISH chimeras for per-cell clone identity with positions)",
+ "approved_by": "Bence 2026-11-07: \"1\" (spend A+B on the rescue test, C stays sealed)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
