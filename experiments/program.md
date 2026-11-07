@@ -205,3 +205,9 @@ before every look and refuses on any failure.
   serves, and how its result could change that chapter's answer (stopping rule). Work outside the
   current chapter question needs Bence's OK in chat, quoted in the entry. The oracle refuses a look
   without `Serves:`. Current chapter and order of work: GOAL_CHECK_2026-11-07.md section 5.
+  **Enforced by hooks** (Bence 2026-11-07: "create hooks to defense us from drifting like this again!"):
+  `experiments/FOCUS.json` holds the current step; `experiments/hooks/scope_guard.py` runs as a Claude
+  Code PreToolUse hook (blocks running or creating an experiment script not named in a pre-registration
+  whose `Serves:` names the current step), as a UserPromptSubmit hook (injects the focus into every
+  Cellware turn), and as the git commit-msg hook (`.githooks/`, `core.hooksPath`): FOCUS.json changes
+  need a quoted `Bence:` OK; new pre-registrations need `Pre-flight:` and `Serves: <step>`.
