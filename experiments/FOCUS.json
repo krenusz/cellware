@@ -1,9 +1,10 @@
 {
  "chapter": "5",
- "step": "C5-S1",
- "question": "Chapter 5 (clone memory): is clone memory one mechanism (event-triggered loss + stable residue), shared across blood and gastruloid clones, that predicts the fade of an unseen series (G8 failure)? C5-S1: pre-flight only: (A) GSE291244 lineage memory (cell-to-gastruloid assignment rebuildable? effect size? units), (B) Raj ATAC passage 1 vs 3 (samples, clones, reps, power), (C) can used passage data separate one-rate vs two-part memory. Metadata and counts only; no download beyond metadata; no statistic on sealed data; every sealed set stays sealed.",
+ "step": "C5-S2",
+ "question": "Chapter 5 (clone memory). C5-S2: a memory law in core_model.py (heritable state copied at events, event-type-specific retention, no per-division loss, plus non-heritable per-context noise) checked against used data only: blood #6 (LARRY) and #13 (SIS-seq), gastruloid #25 (subclones), G3/C3-S1 passage fade. No sealed data. Raj ATAC (7 clones x passages 0-3) stays the planned mechanism line (not downloaded yet).",
  "next_steps": [
-  "C5-S2: pre-register the first memory test that passes pre-flight (needs Bence's OK)"
+  "C5-S3: sealed confirmation of the law on the Raj reserve file (needs Bence's OK, H13)",
+  "C5-S4: Raj ATAC over passages: does chromatin distinctness fade with propensity? (download + passage-sealed design, needs OK)"
  ],
  "allowed_scripts": [],
  "parked": [
@@ -13,7 +14,7 @@
   "GSE291244 founder state (not memory)",
   "chapter 4 rescue (closed; partition C reserve)"
  ],
- "approved_by": "Bence 2026-11-07: \"1 and carefule with sealed stuff\" (open chapter 5 on memory, pre-flights first)",
+ "approved_by": "Bence 2026-11-07: \"1 / and still keep in mind the Raj lab's chromatin (ATAC-seq) data\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -23,6 +24,7 @@
   "C4-S2a (2026-11-07): pre-registered + partitioned; NOT run (no single third has power; Bence chose to keep all sealed)",
   "C4-S3 (2026-11-07): seqFISH chimeras fail pre-flight (5 control gastruloids, 1+3 n2 vs 1+6 n3: min p 0.10); no download",
   "C4-S4 (2026-11-07): rescue NOT confirmed on 5s2+6a (T2 +0.25 SD vs predicted 0.81, lower bound < 0); A+B spent, C sealed",
-  "C4-S5 (2026-11-07): chapter 4 closed, data-limited (WRITEUP_RESCUE.md, RETRO_2026-11-07c.md); C sealed"
+  "C4-S5 (2026-11-07): chapter 4 closed, data-limited (WRITEUP_RESCUE.md, RETRO_2026-11-07c.md); C sealed",
+  "C5-S1 (2026-11-07): pre-flights; GSE291244 fails; Raj ATAC passes structure (7 clones x passages 0-3, 51 samples); blood memory already answered (#6, #13)"
  ]
 }
