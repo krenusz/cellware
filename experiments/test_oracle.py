@@ -310,7 +310,7 @@ def main():
         unspent = [p for p in partitions.SEALED if f"{dataset}:{p}" not in used]
         if len(args.partition) > 1 and len(unspent) - len(args.partition) < 1:
             sys.exit("refused: a union look may not spend the last sealed partition (H13)")
-        left = unspent if len(args.partition) == 1 else ["more than one"]
+        left = unspent  # union looks already keep >= 1 partition (checked above)
         if len(left) == 1 and len(args.last_ok.strip()) < 10:
             sys.exit(f"refused: {tag} is the LAST sealed partition; needs --last-ok with Bence's verbatim OK (H13)")
         if not preregistered(args.exp):
