@@ -7662,3 +7662,25 @@ sorting validated; memory module = unknown batch factor.
   for A+B; exposure: pure plate means and sd only; no literature needed).
 - Oracle change for this: `--partition AB` spends both partitions in one ledger row (`raj_morph_0831:AB`); a
   later look at A or B is refused; C then is the last partition (H13).
+
+### C4-S4 result (2026-11-07; oracle ledger `raj_morph_0831:AB`; C still sealed)
+
+- Gate: H14 power 0.80 (5s2+6a n 16; pure 5s2 14, 6a 10); selection, sealed-data and pre-registration checks
+  passed. One oracle bug fixed before the look (a union was treated as the last partition; commit before the
+  look).
+- **Primary T2 (5s2+6a vs mean of its pure members, Y = 1 - circularity): +0.021, one-sided 95% lower bound
+  -0.037: FAIL.** Standardised +0.25 SD against the predicted +0.81 SD. Rough SE 0.035 (from the bound), so the
+  predicted size (0.068) is about 1.4 SE above the estimate: not excluded, not supported.
+- Secondary (described): 5s2+6a vs its better member (5s2) -0.045 [-0.128, 0.041]; bulk+5s2 vs members
+  +0.017 [-0.069, 0.119]; **bulk+6a vs members +0.077 [0.016, 0.141]**; T1 (sorting-index contrast within the
+  mixture plate) -0.026 [-0.107, 0.066].
+- Pure plate (train): bulk 0.222, 5s2 0.174, 6a 0.042 (6a forms round gastruloids, as the authors' README
+  says).
+- **Pre-registered reading: rescue not confirmed on new subclones.** The complementary 5s2+6a mix is not more
+  elongated than the average of its members, and not more than 5s2 alone. The only positive contrast is
+  bulk+6a (a severely defective clone helped by bulk), which fits "a defect is partly complemented by a
+  diverse partner" more than "two complementary clones rescue each other". Disclosed confound: pure and mixed
+  gastruloids are on different plates; a plate shift could hide or create T2.
+- **Stopping rule applied:** #22's complementary-pair rescue is not confirmed out of sample; chapter 4's
+  mechanism work stops at the descriptive level. No re-test on A or B. C stays sealed for any future design
+  that can remove the plate confound (same-plate pure and mixed wells).

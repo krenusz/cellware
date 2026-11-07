@@ -20,6 +20,7 @@
   "C4-S1 (2026-11-07, 6ab785a): data search + full Raj Dropbox re-crawl (12,049 files, 226 GB); revision-era data locked",
   "C4-S2b (+R, 2026-11-07): T/Igfbp5 separation UNINFORMATIVE (power of the ordering check 0.20 at a 1-SD effect; pure 6 saturated); earlier 'not supported' withdrawn",
   "C4-S2a (2026-11-07): pre-registered + partitioned; NOT run (no single third has power; Bence chose to keep all sealed)",
-  "C4-S3 (2026-11-07): seqFISH chimeras fail pre-flight (5 control gastruloids, 1+3 n2 vs 1+6 n3: min p 0.10); no download"
+  "C4-S3 (2026-11-07): seqFISH chimeras fail pre-flight (5 control gastruloids, 1+3 n2 vs 1+6 n3: min p 0.10); no download",
+  "C4-S4 (2026-11-07): rescue NOT confirmed on 5s2+6a (T2 +0.25 SD vs predicted 0.81, lower bound < 0); A+B spent, C sealed"
  ]
 }

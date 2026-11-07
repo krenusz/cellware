@@ -37,7 +37,7 @@ gastruloid, a line scan along the axis gives each clone's signal profile.
 | 23 | Preference fades over passages, but the rate depends on series x clone; no model predicts a new series | G3, G6, G7b sealed, G8 | moderate (direction); **rate unpredictable** |
 | 27 | Perturbing signalling erodes the division of labour: conditional on a series' own control, drugs multiply clone separation by ~0.35 (one shared factor); high Wnt erases propensity | G9, G11 (train + sealed A), G12 (gate) | **unconfirmed: consistent, not testable with these data** |
 | 21 | Domain size is set by the gastruloid, not the clone mix | G1b open | unconfirmed |
-| 22 | Any mixing rescues elongation (+0.2-0.3), small complementarity bonus; both follow from the sorting index of clone states (C3-S2) | G2, G2b, C3-S2 open | unconfirmed |
+| 22 | Any mixing rescues elongation (+0.2-0.3), small complementarity bonus; both follow from the sorting index of clone states (C3-S2) | G2, G2b, C3-S2 open; C4-S4 sealed (Aug 2026, 5s2+6a): **not replicated** | unconfirmed |
 | 24 | Rescue is not buffering, strict complementation or T+ area | G4 open | unconfirmed (negative) |
 | 25 | Memory is lost at passaging, not per division | G5 open | unconfirmed |
 
@@ -119,3 +119,18 @@ model (CV -1248.9 vs -1248.6; additive -1282.8) and the complementary-minus-same
 observed +0.09). Limits: weaker without clones 2/4 (8.9 below the descriptive model), no gain on
 clone + bulk chimeras, open data only (unconfirmed). Chapter 3 now runs end to end on the core model:
 clone state with memory, rank sorting, proportion feedback and sorting-driven elongation.
+
+## Addendum 2026-11-07: chapter 4, the rescue mechanism (C4-S1 to C4-S4)
+
+- **Data search** (C4-S1): every public route checked, including a full crawl of the Raj data store (12,076
+  files, 226 GB, `DATA_MAP_RAJ.md`), which found the authors' Aug-Sep 2026 revision data.
+- **Head/tail-marker separation by composition** (C4-S2b, 20 gastruloids): uninformative (C4-S2b-R: the
+  ordering check had power 0.20; pure clone 6 saturated). An earlier "not supported" was withdrawn.
+- **seqFISH chimeras** (C4-S3): only 5 clone-labelled control gastruloids; no test can pass. Not used.
+- **First out-of-sample test of rescue** (C4-S4, Aug 2026 plates, partitions A+B, power 0.80): the
+  complementary 5s2+6a mix was **not** more elongated than its members' mean (+0.25 SD vs the predicted 0.81;
+  lower bound below 0). Only bulk+6a improved on its members. Pure and mixed gastruloids were on different
+  plates (disclosed confound); partition C stays sealed.
+- **Status:** #22 (any mixing rescues; complementarity bonus) stays **unconfirmed**: it fits the 2024-25
+  table (G2/G2b/C3-S2) but did not replicate in new subclones on the one powered test. The sorting-index
+  mechanism is untested beyond C3-S2. Public data cannot settle the mechanism.
