@@ -1,0 +1,183 @@
+{
+ "per_condition": [
+  {
+   "cond": "5",
+   "n": 3,
+   "EMD_median": 3.01,
+   "EMD_min": 1.622,
+   "EMD_max": 17.734,
+   "overlap_median": 0.916
+  },
+  {
+   "cond": "5+6",
+   "n": 2,
+   "EMD_median": 8.332,
+   "EMD_min": 8.225,
+   "EMD_max": 8.438,
+   "overlap_median": 0.876
+  },
+  {
+   "cond": "6",
+   "n": 3,
+   "EMD_median": 15.947,
+   "EMD_min": 14.867,
+   "EMD_max": 35.866,
+   "overlap_median": 0.615
+  },
+  {
+   "cond": "bulk",
+   "n": 6,
+   "EMD_median": 12.433,
+   "EMD_min": 1.31,
+   "EMD_max": 28.404,
+   "overlap_median": 0.794
+  },
+  {
+   "cond": "bulk+5",
+   "n": 2,
+   "EMD_median": 13.051,
+   "EMD_min": 2.763,
+   "EMD_max": 23.34,
+   "overlap_median": 0.779
+  },
+  {
+   "cond": "bulk+6",
+   "n": 4,
+   "EMD_median": 5.717,
+   "EMD_min": 5.271,
+   "EMD_max": 6.041,
+   "overlap_median": 0.883
+  }
+ ],
+ "nonbulk_order_by_median_EMD": [
+  "6",
+  "bulk+5",
+  "5+6",
+  "bulk+6",
+  "5"
+ ],
+ "reading": "not consistent",
+ "spearman_EH_vs_median_EMD": -0.103,
+ "per_gastruloid": [
+  {
+   "id": "6a98716d9b2ce18425dd3030",
+   "cond": "5+6",
+   "EMD": 8.225,
+   "overlap": 0.885
+  },
+  {
+   "id": "6a9871c3c2bc0178c6841658",
+   "cond": "5+6",
+   "EMD": 8.438,
+   "overlap": 0.867
+  },
+  {
+   "id": "6a9871ff27ff75f908840804",
+   "cond": "bulk",
+   "EMD": 5.638,
+   "overlap": 0.903
+  },
+  {
+   "id": "6a987350c2bc0178c684169e",
+   "cond": "bulk+5",
+   "EMD": 2.763,
+   "overlap": 0.932
+  },
+  {
+   "id": "6a98737ac2bc0178c68416c1",
+   "cond": "bulk+5",
+   "EMD": 23.34,
+   "overlap": 0.626
+  },
+  {
+   "id": "6a9873d145f31df1656c5576",
+   "cond": "bulk+6",
+   "EMD": 5.271,
+   "overlap": 0.922
+  },
+  {
+   "id": "6a987400c2bc0178c6841736",
+   "cond": "bulk+6",
+   "EMD": 5.986,
+   "overlap": 0.909
+  },
+  {
+   "id": "6a98740bc2bc0178c684173b",
+   "cond": "bulk+6",
+   "EMD": 5.449,
+   "overlap": 0.837
+  },
+  {
+   "id": "6a98740fc2bc0178c6841740",
+   "cond": "bulk+6",
+   "EMD": 6.041,
+   "overlap": 0.857
+  },
+  {
+   "id": "6a98741e27ff75f90884089e",
+   "cond": "bulk",
+   "EMD": 22.196,
+   "overlap": 0.652
+  },
+  {
+   "id": "6a98745bc2bc0178c6841744",
+   "cond": "bulk",
+   "EMD": 1.31,
+   "overlap": 0.92
+  },
+  {
+   "id": "6a9874678be006905a1c556f",
+   "cond": "bulk",
+   "EMD": 17.11,
+   "overlap": 0.724
+  },
+  {
+   "id": "6a9874bf9b2ce18425dd3041",
+   "cond": "bulk",
+   "EMD": 7.756,
+   "overlap": 0.864
+  },
+  {
+   "id": "6a9874dfc2bc0178c6841747",
+   "cond": "bulk",
+   "EMD": 28.404,
+   "overlap": 0.528
+  },
+  {
+   "id": "6a9874f28be006905a1c5572",
+   "cond": "5",
+   "EMD": 3.01,
+   "overlap": 0.916
+  },
+  {
+   "id": "6a9875079b2ce18425dd3044",
+   "cond": "5",
+   "EMD": 1.622,
+   "overlap": 0.934
+  },
+  {
+   "id": "6a98753427ff75f9088408a1",
+   "cond": "5",
+   "EMD": 17.734,
+   "overlap": 0.768
+  },
+  {
+   "id": "6a9875429b2ce18425dd3047",
+   "cond": "6",
+   "EMD": 35.866,
+   "overlap": 0.374
+  },
+  {
+   "id": "6a98754d45f31df1656c5579",
+   "cond": "6",
+   "EMD": 15.947,
+   "overlap": 0.615
+  },
+  {
+   "id": "6a987560c2bc0178c684174a",
+   "cond": "6",
+   "EMD": 14.867,
+   "overlap": 0.727
+  }
+ ]
+}

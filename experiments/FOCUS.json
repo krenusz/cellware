@@ -17,6 +17,7 @@
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
   "C3-S2 (2026-11-07): sorting index replaces descriptive rescue rule (CV within 0.3 of Mgen, +34 over M0); partial without clones 2/4; open data only",
-  "C4-S1 (2026-11-07, 6ab785a): data search + full Raj Dropbox re-crawl (12,049 files, 226 GB); revision-era data locked"
+  "C4-S1 (2026-11-07, 6ab785a): data search + full Raj Dropbox re-crawl (12,049 files, 226 GB); revision-era data locked",
+  "C4-S2b (2026-11-07): T/Igfbp5 separation not graded by sorting index (pure 6 highest, 5+6 middle); exploratory, spent"
  ]
 }

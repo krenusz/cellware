@@ -7541,3 +7541,24 @@ sorting validated; memory module = unknown batch factor.
 - **H14 power at pre-registration (counts only; train sd of Y 0.084, effect 0.81 SD):** A 0.59 (5s2+6a n 7),
   B 0.66 (9), C 0.72 (11), A+B 0.80 (16), all 0.89 (27). **No single third passes.** The look waits for
   Bence: spend A+B as one pre-registered union (power 0.80, C kept), or keep all three sealed.
+
+### C4-S2b result (2026-11-07; `results_gastruloid/c4s2b_ap_separation.json`; 20 gastruloids, spent as exploratory)
+
+| condition | n | EMD median (range), % length | overlap median | E[H] |
+|---|---|---|---|---|
+| pure 6 | 3 | **15.9** (14.9-35.9) | 0.62 | 0 |
+| bulk+5 | 2 | 13.1 (2.8-23.3) | 0.78 | 0.30 |
+| bulk | 6 | 12.4 (1.3-28.4) | 0.79 | n/a |
+| 5+6 | 2 | 8.3 (8.2-8.4) | 0.88 | 0.55 |
+| bulk+6 | 4 | 5.7 (5.3-6.0) | 0.88 | 0.31 |
+| pure 5 | 3 | 3.0 (1.6-17.7) | 0.92 | 0 |
+
+- **Pre-registered reading: not consistent.** Order of non-bulk medians 6 > bulk+5 > 5+6 > bulk+6 > 5;
+  Spearman(E[H], median EMD) = -0.10. Pure clone 6 separates T and Igfbp5 the most, pure 5 the least; the
+  complementary 5+6 mix is in the middle.
+- Reading of the pattern (descriptive, n 2-6): separation of the two markers looks like a property of the
+  clone (6 high, 5 low) with mixes in between, not a function of mixing. This matches the paper's seqFISH
+  remark that pure clone 6 differs from bulk, but our metric (domain distance) does not show pure clones as
+  "co-expressing" relative to mixes. **The sorting index is not supported as the mechanism by this readout.**
+- Limits: 2-6 gastruloids per condition; one experiment; EMD is scale-free but sensitive to background
+  (per-channel minimum). No claim either way; the data set is spent.
