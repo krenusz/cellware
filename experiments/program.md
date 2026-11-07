@@ -114,6 +114,7 @@ size, fate proportions and spatial pattern, and which signalling channels does t
 Later: does the model reproduce measured clonal statistics (Weinreb 2020 LARRY)?
 
 ## Fixed setup
+(Applies to the 2023-24 PPO tissue runs only; not to chapters 1-3, which use likelihood fits.)
 - Primary metric, tissue studies: `score` (0 = perfect; size error + proportion error + pattern
   error when `--spatial`). Dish studies: `dish_total_return`. Reported as the mean of the last
   30 iterations per run, then mean and bootstrap 95% CI across seeds.
@@ -199,3 +200,8 @@ before every look and refuses on any failure.
   structure check; (3) used data first: open / train / spent data tried before any sealed look;
   (4) power (H14); (5) exposure: any count or summary already seen that is an outcome for this
   question; (6) literature access checked. The oracle refuses a look whose section lacks the block.
+- **H16 Scope guard.** (Bence 2026-11-07: "now you are drifting! ... biology is really wide topic".)
+  Every pre-registration has a `Serves:` line: the goal element and the current chapter question it
+  serves, and how its result could change that chapter's answer (stopping rule). Work outside the
+  current chapter question needs Bence's OK in chat, quoted in the entry. The oracle refuses a look
+  without `Serves:`. Current chapter and order of work: GOAL_CHECK_2026-11-07.md section 5.

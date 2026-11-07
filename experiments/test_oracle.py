@@ -253,6 +253,8 @@ def preregistered(exp):
     section = text[m.end(): m.end() + nxt.start()] if nxt else text[m.end():]
     if "Pre-flight:" not in section:
         sys.exit(f"refused: {exp} pre-registration has no 'Pre-flight:' block (H15)")
+    if "Serves:" not in section:
+        sys.exit(f"refused: {exp} pre-registration has no 'Serves:' line (H16 scope guard)")
     return True
 
 
