@@ -15,6 +15,7 @@
  "approved_by": "Bence 2026-11-07: \"1\" (answer to \"Move the focus to C3-S2 (elongation rescue from local rules)?\")",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
-  "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits"
+  "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
+  "C3-S2 (2026-11-07): sorting index replaces descriptive rescue rule (CV within 0.3 of Mgen, +34 over M0); partial without clones 2/4; open data only"
  ]
 }
