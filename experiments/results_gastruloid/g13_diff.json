@@ -1,0 +1,125 @@
+{
+ "time": 72.0,
+ "n_rows": 144,
+ "per_clone": [
+  {
+   "clone": "bulk",
+   "2i": 23.438,
+   "endoderm": 15.398,
+   "mesoderm": 10.676,
+   "neural": 10.013,
+   "meso_vs_neural": 0.064,
+   "endo_vs_neural": 0.43
+  },
+  {
+   "clone": "clone 1",
+   "2i": 34.488,
+   "endoderm": 9.652,
+   "mesoderm": 10.494,
+   "neural": 12.88,
+   "meso_vs_neural": -0.205,
+   "endo_vs_neural": -0.289
+  },
+  {
+   "clone": "clone 2",
+   "2i": 38.795,
+   "endoderm": 19.143,
+   "mesoderm": 10.913,
+   "neural": 9.939,
+   "meso_vs_neural": 0.093,
+   "endo_vs_neural": 0.656
+  },
+  {
+   "clone": "clone 3",
+   "2i": 38.851,
+   "endoderm": 32.646,
+   "mesoderm": 7.265,
+   "neural": 11.387,
+   "meso_vs_neural": -0.449,
+   "endo_vs_neural": 1.053
+  },
+  {
+   "clone": "clone 3, late",
+   "2i": 18.662,
+   "endoderm": 3.165,
+   "mesoderm": 6.162,
+   "neural": 4.292,
+   "meso_vs_neural": 0.362,
+   "endo_vs_neural": -0.304
+  },
+  {
+   "clone": "clone 4",
+   "2i": 54.476,
+   "endoderm": 54.689,
+   "mesoderm": 22.5,
+   "neural": 28.055,
+   "meso_vs_neural": -0.221,
+   "endo_vs_neural": 0.667
+  },
+  {
+   "clone": "clone 5",
+   "2i": 67.155,
+   "endoderm": 36.696,
+   "mesoderm": 9.352,
+   "neural": 16.918,
+   "meso_vs_neural": -0.593,
+   "endo_vs_neural": 0.774
+  },
+  {
+   "clone": "clone 6",
+   "2i": 31.888,
+   "endoderm": 34.16,
+   "mesoderm": 7.991,
+   "neural": 11.515,
+   "meso_vs_neural": -0.365,
+   "endo_vs_neural": 1.087
+  },
+  {
+   "clone": "clone 7",
+   "2i": 23.174,
+   "endoderm": 8.263,
+   "mesoderm": 4.502,
+   "neural": 5.542,
+   "meso_vs_neural": -0.208,
+   "endo_vs_neural": 0.399
+  }
+ ],
+ "tests": {
+  "meso_vs_neural": {
+   "x": {
+    "1": -0.205,
+    "3": -0.449,
+    "5": -0.593,
+    "6": -0.365,
+    "7": -0.208
+   },
+   "spearman": -0.7,
+   "exact_p": 0.233,
+   "separates_anterior_from_posterior": false
+  },
+  "endo_vs_neural": {
+   "x": {
+    "1": -0.289,
+    "3": 1.053,
+    "5": 0.774,
+    "6": 1.087,
+    "7": 0.399
+   },
+   "spearman": -0.1,
+   "exact_p": 0.95,
+   "separates_anterior_from_posterior": false
+  },
+  "2i": {
+   "x": {
+    "1": 34.488,
+    "3": 38.851,
+    "5": 67.155,
+    "6": 31.888,
+    "7": 23.174
+   },
+   "spearman": 0.7,
+   "exact_p": 0.233,
+   "separates_anterior_from_posterior": false
+  }
+ }
+}

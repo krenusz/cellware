@@ -7248,3 +7248,16 @@ sorting validated; memory module = unknown batch factor.
 - **Power, stated up front.** n = 5 clones: only a perfect ordering reaches p < 0.05 (2/120 =
   0.017). Exploratory whatever the outcome; results are "unconfirmed" (H8), and no sealed data is
   spent.
+
+### G13 result (2026-11-07; replicate 1, 72 h; `results_gastruloid/g13_diff.json`)
+
+| growth measure | clone 1 / 6 (posterior) | clone 3 / 5 / 7 (anterior) | Spearman with P | exact p | anterior vs posterior separate? |
+|---|---|---|---|---|---|
+| log(mesoderm / neural) | -0.21 / -0.37 | -0.45 / -0.59 / -0.21 | -0.70 | 0.23 | no |
+| log(endoderm / neural) | -0.29 / 1.09 | 1.05 / 0.77 / 0.40 | -0.10 | 0.95 | no |
+| 2i confluency (plain growth) | 34 / 32 | 39 / 67 / 23 | +0.70 | 0.23 | no |
+
+- **No relation.** Flat-dish growth bias does not predict head-to-tail preference in these 5 clones;
+  clone 6 (posterior) and clone 3 (anterior) look alike on every measure. With n = 5 and one curve per
+  clone x condition, this only rules out a strong, clean relation. Unconfirmed, negative.
+- Replicate 2 stays sealed; not worth a look on this result.
