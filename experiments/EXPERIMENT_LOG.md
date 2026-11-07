@@ -7165,3 +7165,21 @@ sorting validated; memory module = unknown batch factor.
   drugs are indistinguishable on train.
 - **Prediction for partition A:** D_RA = D_SB = 0.348 x D_ctrl(A); directional criterion ratio CI
   upper bound < 1 for each drug.
+
+### G11 look (2026-11-07; oracle, partition `raj_drug:A` spent; commit babbd50)
+
+| | n gastruloids | mean D | ratio to control (95% CI) | predicted D (R2) | z |
+|---|---|---|---|---|---|
+| control | **3** | 1.23 | - | - | - |
+| RA | 5 | 0.29 | 0.24 (-1.10 to 1.73) | 0.43 | -0.15 |
+| SB | 10 | 0.40 | 0.33 (-0.40 to 1.15) | 0.43 | -0.05 |
+
+- **Pre-registered reading: primary FAIL, flagged UNDERPOWERED** (control has 3 gastruloids, below the
+  pre-registered minimum of 4). Neither ratio CI excludes 1, so drug compression is **not confirmed**.
+- Secondary (quantitative): both drugs land on the R2 prediction (|z| <= 0.15); point ratios 0.24 and
+  0.33 vs predicted 0.35. With n = 3 controls this is weak support, not a confirmation.
+- Lesson: the n per condition of a sealed series was not checked at sealing (only the 18 IDs in
+  total). Before the next look, count gastruloids per condition in the partition's structure check
+  (counts only, no statistic) and pick the partition that meets the minimum.
+- Remaining: drug partitions B (July 28 2025, structure not yet checked) and C (overlap metrics only,
+  different statistic). B would be the last same-statistic partition; C the last of the source (H13).

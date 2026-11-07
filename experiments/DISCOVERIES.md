@@ -84,3 +84,9 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 
 - 2026-11-05 (RETRO_2026-11-05b): entries 6, 7, 11, 12 cross-checked; 7 moved to "in tension". B36 tested 12's candidate: SCF explained, Epo not.
 - 2026-11-05 (B37): held-out look replicated discovery 9's small-clone co-presence deficit; strong vs plausible selection not decided.
+
+- **#27 update (G11, 2026-11-07).** Train: conditional on a series' own control, every drug
+  multiplies clone separation by ~0.35 (one shared factor beats drug-specific, additive and no-effect
+  models; series gain and drug effect multiply). Sealed drug partition A (May 2025): RA 0.24, SB 0.33
+  of control, on the prediction, but only 3 control gastruloids, CIs include 1: **not confirmed
+  (underpowered)**. Status: unconfirmed, consistent.
