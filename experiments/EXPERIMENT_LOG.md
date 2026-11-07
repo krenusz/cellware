@@ -7109,3 +7109,42 @@ sorting validated; memory module = unknown batch factor.
   perturbation (G9: every drug and high Wnt compress it). A single **series gain** (the culture's
   signalling state scaling all clone differences) would explain the three at once. To be
   pre-registered as G11 (train data first, H12) before any sealed look.
+
+## G11: one series gain behind the clones' division of labour, and do drugs compress it on sealed data? (pre-registered 2026-11-07)
+
+- **Go-ahead.** Bence, "go try both" (after G9/G10: G11 series gain, plus the directional sealed
+  test of drug compression on drug partition A).
+- **Idea.** Clone separation D in a series = (series gain) x (clone difference) x (perturbation
+  factor). The series gain is unknown for a new series but is **observed through that series' own
+  control**. So the testable consequence is conditional: given a series' control D, drug D is
+  predicted as a *multiple* of it (series gain cancels), not as a fixed *shift*. G9's D1/D2 failed
+  because they had to transfer the control level across series; G11 conditions on it.
+- **Data for selection (train only):** G9 train drug series (Dec 2024, Feb/Mar 2025), per series x
+  pair x condition mean D and SE (G9 `drug_D`, per line, SE floor 0.05). No sealed file.
+- **Models** (predict each drug condition mean from its own series x pair control mean):
+  - R0 no drug effect: D_drug = D_ctrl.
+  - R1 drug-specific gain: D_drug = g_drug x D_ctrl (g RA, SB, AGN shared by pairs).
+  - R2 one common gain: D_drug = g x D_ctrl ("any perturbation compresses").
+  - R3 additive: D_drug = D_ctrl + s_drug (series gain does not scale the drug effect).
+  - R4 pair x drug gain: D_drug = g_(pair,drug) x D_ctrl.
+  - Likelihood: Gaussian, variance se_drug^2 + g^2 se_ctrl^2 (R3: se_drug^2 + se_ctrl^2).
+- **Train fit:** leave-one-series-out CV (fit on one series, predict the other's drug means given
+  its controls). Selection (H12): best CV is chosen if every train drug mean lies within 2.5
+  combined SE of the full-data fit; then `selection/G11.json` is written and committed. If the
+  chosen model is R0, or none qualifies, **no sealed look**.
+- **Sealed look (only if a gain model R1/R2/R4 is chosen):** test `gastruloid_g11_drug`, dataset
+  `raj_drug`, **partition A only** (May 3 2025 raw file `1+3_ctrl_ra_sb_05032025.csv`, tags clone1+3 /
+  _RA / _SB, structure seen at sealing; processed linescans and overlap files of A are not read).
+  B and C stay sealed; this is not the last partition (no H13 OK needed).
+  - Same statistic as train: D = P(Channel 2) - P(Channel 0) per line (clone 3 red, clone 1 green).
+  - **Primary (directional):** for RA and for SB, ratio r = mean D_drug / mean D_ctrl with a 95%
+    bootstrap CI resampling gastruloid IDs within condition. Pass for a drug if the CI upper bound
+    < 1. **Pass** = both drugs; partial = one; fail = neither.
+  - **Secondary (quantitative):** chosen model's prediction given A's control, |z| <= 2.5 with the
+    combined SE, per drug.
+  - Also reported: per-ID (lines averaged) version of r; n per condition.
+- **Minimum n:** >= 4 gastruloid IDs per A condition; otherwise the look is reported as
+  underpowered (still spent).
+- **What it says:** pass = drug compression of the clones' division of labour replicates on an
+  unseen series, and scales with that series' own control (G11's series gain). It does **not** test
+  memory or sorting; a series-gain link to those (G8, G10) stays exploratory.
