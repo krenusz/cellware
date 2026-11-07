@@ -60,7 +60,7 @@ DATASETS = {
     "data/gastruloid_raj/morph_08312026/bulk_5s2_6a.json":
         ("1cb311fcbf764e400f7668d6ef186656a77ddaad8669abc59a2b95ea6cbf8a5a", ["c4s2a_morph_confirm.py"], "train (C4-S2a, open from 2026-11-07)"),
     "data/gastruloid_raj/morph_08312026/bulk+5s2_bulk+6a_5s2+6a.json":
-        ("3a64a6c9a02885f0ea3e5637f79bd5b6fff93766e35bc4c45c5ce661de308fd6", ["c4s2a_morph_confirm.py"], "partitioned raj_morph_0831 A/B/C (C4-S2a); read only via test_oracle"),
+        ("3a64a6c9a02885f0ea3e5637f79bd5b6fff93766e35bc4c45c5ce661de308fd6", ["c4s2a_morph_confirm.py"], "partitioned raj_morph_0831: A+B spent (C4-S4, 2026-11-07); C sealed reserve, last partition (H13: Bence's OK)"),
     "data/gastruloid_raj/T_Igfbp5_09022026/gastruloid_T_Igfbp5.csv":
         ("2359f56ecf021477efc5b32e166c1b6a49aafb5f693fce45c59eb96656267899", ["c4s2b_ap_separation.py"], "spent exploratory (C4-S2b, 2026-11-07): T/Igfbp5 line scans, 20 gastruloids"),
     "data/gastruloid_raj/rev_T_Igfbp5_sep/separation_metrics.csv":

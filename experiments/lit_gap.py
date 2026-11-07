@@ -58,10 +58,15 @@ SEEDS = {
     "Regalado/Qiu 2026 Cell (fluctuation test, gastruloids)": "10.1016/j.cell.2026.09.057",
     "Choi 2022 (DNA Typewriter)": "10.1038/s41586-022-04922-8",
     "Emert 2021 (Rewind, clonal memory of rare states)": "10.1038/s41587-021-00837-3",
+    # chapter 4 (mixing rescue of elongation), added 2026-11-07c
+    "Chimeric 3D gastruloids 2022 (Bra-/- + WT)": "10.1242/dev.200812",
+    "Braccioli 2025 Dev Cell (cross-lineage dependencies)": "10.1016/j.devcel.2025.02.013",
+    "Triandafillou 2025 (gastruloid spatial cell-type map)": "10.1101/2025.07.14.664617",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
 TOPICS = {
+    "mixing_rescue": [r"chimer", r"rescue", r"non-autonomous", r"complement", r"elongat", r"mixed population"],
     "clonal_dominance": [r"clonal dominance", r"cell competition", r"chimer", r"take ?over", r"winner"],
     "imprinting_potency": [r"imprint", r"dlk1", r"meg3", r"tet1", r"methylation"],
     "instruction_vs_selection": [

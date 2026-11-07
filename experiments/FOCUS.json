@@ -1,5 +1,5 @@
 {
- "chapter": "4",
+ "chapter": "4 closed",
  "step": "C4-S5",
  "question": "Close chapter 4: write-up (WRITEUP_RESCUE.md) and retro (lit_gap.py map + process failures). Mixture partition C (raj_morph_0831) stays sealed as a reserve for a same-plate design.",
  "next_steps": [
@@ -21,6 +21,7 @@
   "C4-S2b (+R, 2026-11-07): T/Igfbp5 separation UNINFORMATIVE (power of the ordering check 0.20 at a 1-SD effect; pure 6 saturated); earlier 'not supported' withdrawn",
   "C4-S2a (2026-11-07): pre-registered + partitioned; NOT run (no single third has power; Bence chose to keep all sealed)",
   "C4-S3 (2026-11-07): seqFISH chimeras fail pre-flight (5 control gastruloids, 1+3 n2 vs 1+6 n3: min p 0.10); no download",
-  "C4-S4 (2026-11-07): rescue NOT confirmed on 5s2+6a (T2 +0.25 SD vs predicted 0.81, lower bound < 0); A+B spent, C sealed"
+  "C4-S4 (2026-11-07): rescue NOT confirmed on 5s2+6a (T2 +0.25 SD vs predicted 0.81, lower bound < 0); A+B spent, C sealed",
+  "C4-S5 (2026-11-07): chapter 4 closed, data-limited (WRITEUP_RESCUE.md, RETRO_2026-11-07c.md); C sealed"
  ]
 }
