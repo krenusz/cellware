@@ -7232,3 +7232,19 @@ sorting validated; memory module = unknown batch factor.
   replicate 2 = one sealed partition (any look at it is the last of this source: H13 OK needed).
   #21 (domain size) has no further data here.
 - **Unchanged and sealed:** Raj reserve (clone3% passage 3), drug partitions B and C, Wnt A-C.
+
+## G13: does flat-dish growth bias predict a clone's head-to-tail preference? DiffAssay replicate 1 only (pre-registered 2026-11-07)
+
+- **Go-ahead.** Bence: "not on the sealed one but we could test on stuff we already used".
+- **Data.** DiffAssay replicate 1 (`train_only("raj_diffassay")`); replicate 2 stays sealed.
+  Head-to-tail preference: G1a fit-shard clone means (already used; P, positive = anterior):
+  clone 1 -0.92, 3 +0.88, 5 +1.05, 6 -1.13, 7 +0.73. Clones 2, 4, bulk and "clone 3, late" have no
+  preference from used data and are reported but not tested.
+- **Statistic.** Growth bias per clone = log(confluency mesoderm / confluency neural) at the last
+  time point. Primary: Spearman rho between growth bias and P over the 5 clones, exact permutation p
+  (120 orders), two-sided. Secondary: separation, i.e. whether the 3 anterior clones (3, 5, 7) all
+  lie on one side of the 2 posterior ones (1, 6) (chance 2/10). Also reported: endoderm vs neural,
+  and 2i confluency (plain growth) vs P.
+- **Power, stated up front.** n = 5 clones: only a perfect ordering reaches p < 0.05 (2/120 =
+  0.017). Exploratory whatever the outcome; results are "unconfirmed" (H8), and no sealed data is
+  spent.
