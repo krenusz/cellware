@@ -7684,3 +7684,34 @@ sorting validated; memory module = unknown batch factor.
 - **Stopping rule applied:** #22's complementary-pair rescue is not confirmed out of sample; chapter 4's
   mechanism work stops at the descriptive level. No re-test on A or B. C stays sealed for any future design
   that can remove the plate confound (same-plate pure and mixed wells).
+
+## C5-S1: chapter 5 (clone memory) pre-flights (search and counts only, no statistic; 2026-11-07)
+
+- **Serves: C5-S1** (FOCUS.json). Bence: "1 and carefule with sealed stuff". Chapter question: is clone memory
+  one mechanism (event-triggered loss + stable residue), shared across systems, that predicts the fade of an
+  unseen series (the G8 failure)?
+- **Pre-flight:** unit / readout / used data / power / exposure / literature are given per candidate below.
+- **Sealed memory data inventory:** the only untouched memory file is the **Raj reserve** `clone3_pass3_07112024.xlsx`
+  (last Raj sealed file; H13, Bence's OK). G6a/G6b/G7b are spent. Nothing was opened.
+
+| candidate | unit, n | readout | power / verdict |
+|---|---|---|---|
+| **A. GSE291244 lineage memory** (Cell 2026 two-epoch "tree of trees"; 8 deep trees) | gastruloid (two-epoch, 88-106) / founder (deep trees, 3) | composition vs lineage distance | **fails** (unchanged from the 2026-11-07b pre-flight): cell-to-gastruloid table not public; authors' own effect rho 0.052 over 3,828 pairs, too small for any sealed partition (~18 gastruloids); deep trees = 3 founders. Rebuilding the assignment would not fix the power. |
+| **B. Raj ATAC-seq over passages** (`raw_data/ATAC`, sample sheet `extracted_data/ATAC/alignments_clones_gastr_101214.txt`, read) | **clone**: 7 clones + bulk; passages 0, 1, 2, 3; 1-2 replicates; **51 samples** (13 of 64 dropped by the authors) | per-sample accessibility (bigwig 5 GB, or MACS2 peaks; BAMs 69 GB not needed) | **passes structure.** The memory question in chromatin: do clone-specific accessibility differences fade over passages, at the rate the A-P propensity fades (G3 retention 0.60 per passage), with a residue? Never analysed by us; the authors ran per-clone p1 vs p3 contrasts (not read). Power depends on an effect we have no prior for; with clone as unit (n 7) a paired one-sided test needs d >= about 1.2 for 0.8. |
+| **C. Shape of memory on used passage data** (G3 1+3 pairs, passages 1-4) | gastruloid, 13-32 per passage, one series | S per passage (g3_fade.json) | **fails alone**: one-rate (r 0.6) vs plateau differs mainly in passage 4 vs 3; difference 0.032 against SE 0.020, power about 0.47; one series, so series effects (G8) cannot be separated. |
+| Blood (LARRY, chapters 1-2) | clone | fate memory over 2 days | already fitted (core_larry RHO_F); serves the "shared across systems" comparison as a fixed reference, no new test |
+
+- **Verdict:** only **B** can carry chapter 5. Proposed design for C5-S2 (needs Bence's OK; nothing downloaded):
+  1. **Seal by passage before any statistic:** train = passages 0-1 (open), sealed = passages 2 and 3 (two
+     partitions, held by sample ID in sealed.py; passage 3 last, H13). This is a forecasting split: memory is
+     about the future, so the model is fitted on early passages and must predict later ones.
+  2. **Download** the 51 bigwigs (about 5 GB; D: has 445 GB free) into a new folder; lock passage-2 and passage-3
+     files by hash on arrival, before reading any value.
+  3. **Train-only work:** per clone, clone-specific accessibility (distance to bulk at the same passage, at
+     consensus peaks) at passages 0-1; replicate noise; fit one-rate and two-part fade; power for the passage-2
+     forecast from train noise and counts (H14). Look only if power >= 0.8.
+  4. Cross-modal check (described): does chromatin distinctness track the A-P propensity strength of clones 1, 3,
+     5, 6, 7 (C3-S1 z)?
+- Guard note: the scope guard blocked reading `results_gastruloid/g3_fade.json` with Python because the name
+  matches a script; a false positive (reading results is not running an experiment). To fix: match only
+  `<name>.py` invocations.
