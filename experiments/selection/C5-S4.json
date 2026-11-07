@@ -1,0 +1,22 @@
+{
+ "experiment": "C5-S4",
+ "test": "gastruloid_c5s4_atac",
+ "higher_is_better": true,
+ "score": "-SSE of D_btw(p1) forecast from D_btw(p0), train clones; M3 leave-one-clone-out",
+ "candidates": {
+  "M1_fade_G3": -0.09473187316299159,
+  "M2_no_fade": -0.0684334341907139,
+  "M3_train_ratio": -0.01570201147247538
+ },
+ "chosen": "M3_train_ratio",
+ "forecast": 0.8307641557537689,
+ "power": {
+  "sd": 0.0979,
+  "effect": 0.5108,
+  "alpha": 0.05,
+  "one_sided": true,
+  "min_power": 0.8,
+  "weights": {},
+  "source": "sd of per-clone log D_btw ratio p0->p1 (train); effect |log 0.6|; n = clones with >= 2 QC-passing replicates at the sealed passage and at passage 1"
+ }
+}
