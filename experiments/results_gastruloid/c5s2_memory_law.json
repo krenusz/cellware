@@ -1,0 +1,96 @@
+{
+ "K1": {
+  "d=3": {
+   "blood_rho_div": [
+    0.9032,
+    0.9521,
+    0.9965
+   ],
+   "gastruloid_rho_div_lower": 1.0,
+   "overlap": false
+  },
+  "d=4": {
+   "blood_rho_div": [
+    0.9265,
+    0.9639,
+    0.9974
+   ],
+   "gastruloid_rho_div_lower": 1.0,
+   "overlap": false
+  },
+  "d=5": {
+   "blood_rho_div": [
+    0.9408,
+    0.971,
+    0.9979
+   ],
+   "gastruloid_rho_div_lower": 1.0,
+   "overlap": false
+  },
+  "d=6": {
+   "blood_rho_div": [
+    0.9504,
+    0.9758,
+    0.9982
+   ],
+   "gastruloid_rho_div_lower": 1.0,
+   "overlap": false
+  }
+ },
+ "K1_sim": {
+  "d=3": {
+   "rho_div": 0.9521,
+   "sim_ratio": 0.8666,
+   "target_ratio": 0.8632
+  },
+  "d=4": {
+   "rho_div": 0.9639,
+   "sim_ratio": 0.8671,
+   "target_ratio": 0.8632
+  },
+  "d=5": {
+   "rho_div": 0.971,
+   "sim_ratio": 0.8664,
+   "target_ratio": 0.8632
+  },
+  "d=6": {
+   "rho_div": 0.9758,
+   "sim_ratio": 0.8653,
+   "target_ratio": 0.8632
+  }
+ },
+ "K1_pass_at_d4": false,
+ "K2": {
+  "G3_r": [
+   0.6,
+   0.5,
+   0.68
+  ],
+  "G5_p2_over_p1": [
+   0.37,
+   0.23,
+   0.51
+  ],
+  "C3S1_retention": 0.456,
+  "common_interval": [
+   0.5,
+   0.51
+  ],
+  "C3S1_inside": false
+ },
+ "K2_pass": false,
+ "K3_described": {
+  "LARRY_cross_well": [
+   0.88,
+   0.82,
+   0.92
+  ],
+  "SIS_heritable_share": [
+   0.71,
+   0.59,
+   0.78
+  ],
+  "note": "SIS lower than LARRY; consistent with per-division loss over a longer culture, not testable without SIS division counts"
+ },
+ "reading": "per-division memory differs between blood progenitors and pluripotent cells; passaging loss is series-specific (G8)"
+}

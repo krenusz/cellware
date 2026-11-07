@@ -7752,3 +7752,29 @@ sorting validated; memory module = unknown batch factor.
 - **Stopping rule:** whatever the reading, the law (with its failures as stated limits) goes into core_model.py;
   the sealed confirmation (C5-S3, Raj reserve) and the chromatin line (C5-S4, Raj ATAC) are separate steps
   needing Bence's OK.
+
+### C5-S2 result (2026-11-07; `results_gastruloid/c5s2_memory_law.json`; used estimates only)
+
+- **Law in the core model:** `core_model.memory_through(z, n_div, events, rho_div, rho_event, rng)`; simulated
+  check reproduces E19c's large/small sharing ratio (0.867 vs 0.863) with rho_div 0.964 over 4 divisions.
+- **K1, one per-division retention: FAIL.** Blood (LARRY E19c, d = 4 extra divisions): rho_div 0.964 [0.927,
+  0.997] (d 3-6: 0.95-0.98, upper bounds 0.996-0.998). Gastruloid subclones (G5): the passage-1 ratio's lower bound
+  (1.005) is above 1, so no per-division shrink at all is allowed (rho_div >= 1.00). The intervals do not overlap
+  for any d. Caveats: E19c's size gradient is confounded with time (noted in E19c); G5's ratio > 1 may include
+  selection of strongly polarised subclones and a parent value from another series.
+- **K2, one passaging retention: FAIL.** G3 [0.50, 0.68] and G5 [0.23, 0.51] overlap only at 0.50-0.51; C3-S1's
+  0.46 lies outside. Passaging loss differs by series (as G8).
+- **K3 (described):** SIS-seq heritable share 0.71 [0.59, 0.78] is below LARRY's 0.88 [0.82, 0.92], the direction a
+  per-division loss over SIS's longer culture would give; not testable without SIS division counts.
+- **Pre-registered reading:** one memory law does not hold on used data. **Committed blood progenitors lose a
+  little state per division (about 3-4%); pluripotent clones lose none while expanding and lose about half at each
+  passage, at a series-specific rate.** The law stays in core_model.py with rho_div and rho_event as
+  cell-state-specific parameters (stated limit), not one shared value.
+- **What it means for the chapter:** memory is not one mechanism across systems in its simplest form. The open
+  part is the passaging loss in ES cells: what it is (chromatin?) and what sets its series-specific rate. That is
+  exactly what the Raj ATAC data over passages (C5-S4) can address; the Raj reserve (C5-S3) can only confirm the
+  passage-3 level of one series.
+- Guard fix (2026-11-07): the scope guard now counts a script only when the command runs it (`<name>.py`,
+  `import <name>`, `-m <name>`), so reading a result file such as `results_gastruloid/<name>.json` is no longer
+  blocked. My first edit wrote literal backspace characters into the regex and briefly disabled blocking; caught by
+  a two-way test (result read allowed, off-focus run blocked) and repaired before any other command ran.

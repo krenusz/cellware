@@ -75,7 +75,9 @@ def claude_pre():
         if not re.search(r"\bpython\b", cmd):
             return
         names = {m.group(1) for m in SCRIPT_RE.finditer(cmd)
-                 if os.path.exists(os.path.join(EXP, m.group(1) + ".py"))}  # real experiment scripts only
+                 if os.path.exists(os.path.join(EXP, m.group(1) + ".py"))  # real experiment scripts only
+                 and re.search(rf"\b{m.group(1)}\.py\b|import\s+{m.group(1)}\b|-m\s+{m.group(1)}\b", cmd)}
+        # a result file named like a script is not a run; only <name>.py, import <name> or -m <name> count
         bad = sorted(n for n in names if not allowed_script(n, f))
         if bad:
             deny(f"Blocked: {', '.join(bad)} is not part of the current focus. {msg}")

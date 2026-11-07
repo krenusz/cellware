@@ -36,6 +36,20 @@ def state_copy(z, rho, rng):
     return np.sqrt(rho) * z + np.sqrt(1 - rho) * rng.standard_normal(z.shape)
 
 
+def memory_through(z, n_div, events, rho_div, rho_event, rng):
+    """Step 1 memory law (C5-S2): the heritable state after n_div divisions and a sequence of events.
+
+    Each division copies the state with retention rho_div; each event e in `events` (e.g. "split", "passage")
+    copies it with rho_event[e]. Non-heritable context noise (a well, a gastruloid) is applied separately with
+    state_copy(..., rho_ctx) and is not passed on."""
+    z = np.asarray(z, float)
+    for _ in range(int(n_div)):
+        z = state_copy(z, rho_div, rng)
+    for e in events:
+        z = state_copy(z, rho_event[e], rng)
+    return z
+
+
 def split_poisson(rate, rng):
     """Independent founders per condition: rate is an array (clones,)."""
     return rng.poisson(rate)
