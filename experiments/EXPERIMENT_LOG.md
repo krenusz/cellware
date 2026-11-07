@@ -7148,3 +7148,20 @@ sorting validated; memory module = unknown batch factor.
 - **What it says:** pass = drug compression of the clones' division of labour replicates on an
   unseen series, and scales with that series' own control (G11's series gain). It does **not** test
   memory or sorting; a series-gain link to those (G8, G10) stays exploratory.
+
+### G11 train selection (2026-11-07; `results_gastruloid/g11_gain.json`; no sealed file read)
+
+| model | CV log-lik (leave one series out) | consistency misses |
+|---|---|---|
+| R2 one common gain (g 0.35) | **-2.0** | 0 |
+| R1 drug-specific gain (RA 0.31, SB 0.37, AGN 0.34) | -3.4 | 0 |
+| R4 pair x drug gain | -3.4 | 0 |
+| R0 no drug effect | -19.0 | 2 |
+| R3 additive shift | -33.7 | 2 |
+
+- **Chosen: R2** (best CV, qualifies). `selection/G11.json` committed with the code before the look.
+  Reading: conditional on a series' own control, every drug multiplies the clone separation by about
+  a third; scaling beats shifting by a wide margin (series gain and drug effect multiply). The three
+  drugs are indistinguishable on train.
+- **Prediction for partition A:** D_RA = D_SB = 0.348 x D_ctrl(A); directional criterion ratio CI
+  upper bound < 1 for each drug.

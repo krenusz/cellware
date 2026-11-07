@@ -148,7 +148,16 @@ TESTS = {
 
 # Partitioned tests (H11-H13): name -> (function(partition), dataset, description). One look
 # spends one sealed partition of the dataset for every test; the last one needs Bence's OK.
-PARTITION_TESTS = {}
+def _g11_drug(part):
+    import g9_confirm
+
+    return g9_confirm.g11_drug(part)
+
+
+PARTITION_TESTS = {
+    "gastruloid_g11_drug": (_g11_drug, "raj_drug", "G11: drug compression ratio RA/SB vs control on sealed drug "
+                                                   "series (A = May 3 2025), one partition per look"),
+}
 SELECTION_DIR = os.path.join(HERE, "selection")
 
 

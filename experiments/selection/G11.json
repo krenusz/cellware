@@ -1,0 +1,16 @@
+{
+ "test": "gastruloid_g11_drug",
+ "candidates": {
+  "R2": -1.99,
+  "R1": -3.35,
+  "R4": -3.41,
+  "R0": -18.97,
+  "R3": -33.74
+ },
+ "higher_is_better": true,
+ "chosen": "R2",
+ "params": {
+  "all": 0.348
+ },
+ "note": "G11: leave-one-series-out CV on train drug series, conditional on each series' control; consistency within 2.5 combined SE"
+}
