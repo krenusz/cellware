@@ -12,7 +12,7 @@ DATASETS = {
     "larry": "hash shard e55:<clone> 0 of 3 (larry_fm_heldout) - spent",
     "larry_invivo": "exploratory only (no confirmation claims without a new sealed shard)",
     "sis_seq": "hash shard H2 0 of 3 (skew_heldout, sisseq_rna_heldout) - spent",
-    "gastruloid_raj": "G1a hash shard g1:<gastruloid> 0 of 3 (spent); G6 sealed files (spent); "
+    "gastruloid_raj": "atac_peaks/: passages 0-1 train, 2-3 sealed (SEALED_FILES, raj_atac); G1a hash shard g1:<gastruloid> 0 of 3 (spent); G6 sealed files (spent); "
                       "all other files: OPEN data, results 'unconfirmed' (M13)",
     "gastruloid_gse291244": "first partition (RT well / 10x lane) VOID 2026-11-07: wrong unit (gastruloids pooled "
                             "before RT); never read. Founder experiment re-partitioned as gse291244_founders "
@@ -114,6 +114,63 @@ SEALED_FILES = {
         ("58b439d2d61b8561b6710dbd57c38e6cdf1cf6a4f1f94a026d2966f41db14baa", ["g7_confirm.py"], "sealed G7b"),
     "data/gastruloid_raj/raw_ls2/clone3_pass3_07112024.xlsx":
         ("011939d615af3d5ddab28427655b2e455847946f387489822cae38573d1865b2", [], "sealed reserve (untested); LAST Raj sealed data: Bence OK needed (H13)"),
+    # C5-S4 ATAC (raj_atac, by passage; locked 2026-11-07 on arrival, before any value was read)
+    "data/gastruloid_raj/atac_peaks/Sorted_V33_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("1be31bd765e9f06b2675ba0c702d0432cc9e6b81e7bd8fdeaf34984bd6cde5ae", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V34_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("5d92aa6bf2724002e2290e09fe77b18584f53198c548939f9cae3b813614bce4", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V35_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("ee32d1cddd0840f44bb6bf272b54d08983fdfeab60ac00cda0e73a9ed7eb1370", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V36_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("361e0aa1c0e16bfd0d9520dd7b2158d71a66f327eedca6139a0ff3f0ac85f636", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V38_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("8839293387ebbebe0f56678173d28c0db30f3e2bcd6bdcbcc35040430c1f815e", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V39_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("f2ffaa856e9db93b73ffee282cdf22899b054350d3040eae4ed1e24510c4cc88", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V40_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("0bf5a0da28a50ad746ac4a8b5338ab51c346969559e52c3f62a188bacf10c6fd", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V41_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("d766d6add44c699962f9af47dd81646b550e518adfa06bb5a0e60970900b4d29", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V42_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("db82389f74feb5f024092128a55e2803d1652fe70d4a01337ce6c7fd6e19ce9b", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V43_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("85c011a2a744db8376b1d5ba33568edfc5691f31ab1fa4e137542194e16208fa", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V44_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("481587f1dd01d89d3fac648bba79007d9a2b8f6735739e202b273355c7188fcb", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V45_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("ea7512b8df1fc3f7c36c92cd6630af584bb7ae46698d73a3d31c78a41c531525", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V46_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("81c81d71a7deef8a358cb2914a3fe6491168b9ef62900f265ac652276323c0a6", ["c5s4_atac_memory.py"], "sealed raj_atac A, passage 2"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V49_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("ddb454bc9d1a317ffb9ae491bffdfdbddfa20327d221b9faa38e61e0eae52e02", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V50_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("ff52980e079cbec41902a77c782415f07b32416109d27af8c8fe57850d3cfbaf", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V51_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("b946838d73972ba3eb9bb588d01e2f41775e1e4dc1e5cff663d75b7d31dbb63a", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V52_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("1e7ddfe82a103370a76286a297353d5c5ab8123d20f876e6b24b1977962118d1", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V53_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("cbd1cd7cbc1b5ffb91f12f13d59a65510311cbcf6fa0444783ec96c952d91a33", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V54_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("10334ea2a6500c9122750dbb53b610e5a2d787388f6574dab91227675b59fd18", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V55_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("d687c8d20d26b90fa413012a77087f1855ad6b3d733369d454eddc3859516d58", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V56_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("83b59647222abe580f2192c99441d6a1c8d1d6f0b4a3bd87e08c097424c79c32", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V57_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("667f45bbe46aa84c7e98909c5f13ae646bcf5af98a16ca9c4a69a937d7ea2838", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V58_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("a795a12530bda3aaa3042c8658bd97a74b464f4adba15c8927955b06543cd7e5", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V59_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("4c8ab1a6fca5183e29c8c11292c5c126fdef11e3d38ba2054a45485ee18217a0", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V60_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("c7d02e294316bd65620cd335f1984616d3e94c3159a62c1b9f1a998e8e209fae", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V62_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("2f27d09cef805dd54ec072ff010fd92571ecda93ad21403f84995cc33db486bd", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V63_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("877ede99f1a1f9ed9afaba91889706c3a2d27e8bdca11e5119f7a4bab2289274", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    "data/gastruloid_raj/atac_peaks/Sorted_V64_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
+        ("9c6653d9977a4437a78b0e8208377e2e8760fd13339e43ec7b628bc081b19d30", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
 }
 
 # modules allowed to contain held-out access patterns (each reviewed; reason stated)
