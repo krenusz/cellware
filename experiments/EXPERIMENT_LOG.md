@@ -7616,3 +7616,38 @@ sorting validated; memory module = unknown batch factor.
 - Process lesson: I reported a descriptive look with n 2-4 as a conclusion without computing its power first
   (H14 applies in spirit to descriptive checks too). Added to the C4 pre-flight habit: compute the chance of the
   predicted pattern before reading any descriptive result.
+
+## C4-S3: pre-flight of the seqFISH chimeras for a direct sorting readout (search, no statistic; 2026-11-07)
+
+- **Serves: C4-S3** (FOCUS.json). Bence: "2" (keep the Aug 2026 mixture plate sealed; look for per-cell clone
+  identity with positions). Sources: Dropbox listing (`DATA_MAP_RAJ.md`) and the authors' plot scripts
+  (`plot_scripts/SG (Figure 2 and Supplementary)`, R read as text; their CSV outputs not read). No seqFISH
+  data downloaded.
+- **Pre-flight:**
+  1. Unit: gastruloid (one ROI = one gastruloid section).
+  2. Readout: per-cell seqFISH counts (~20 genes) + nuclear centroid; clone identity only for **clone 1
+     (GFP)**: each DAPI nucleus is called GFP+ if a GFP-segmented nucleus lies within 5 px (`match_gfp_to_dapi`).
+     The partner clone is "GFP-" (not separately labelled).
+  3. Chimera ROIs with a GFP segmentation on the Dropbox: 01292025 ROI1 (control), 02142025 ROI2-4 (control)
+     + ROI5 (RA), 02172025 ROI2 (control), 05232025 ROI2-4 (RA, drug: parked #27), 08182025 ROI4 + ROI6
+     (condition not stated in any script). **Usable controls: 5 gastruloids** (+2 of unknown condition).
+     The paper's Fig 2E legend gives the chimera controls as 1+3 (n 2) and 1+6 (n 3), matching the 5.
+  4. Power:
+     - **Graded sorting-index test** (segregation larger in 1+3, E[H] 0.46, than in 1+6, 0.23): 2 vs 3
+       gastruloids; the smallest achievable one-sided rank p is 1/10 = 0.10, so **no test can pass**: power 0.
+       Cell-level statistics would be pseudo-replication (cells are not independent units).
+     - Pure clones in seqFISH have no clone label, so the sorting index (a between-population share) is 0 by
+       construction and cannot be measured there.
+     - The one question with any power, "at the same A-P position, do clone 1 and partner cells express
+       different fate markers?" (clone-intrinsic vs position-set fate), needs 5/5 gastruloids agreeing
+       (sign test p 0.031); power 0.59 even if 90% of gastruloids show the effect. Below 0.8, and it is not a
+       test of the sorting index.
+  5. Exposure: the authors' scripts (plot code, ROI labels); their outputs (`moran_*`, `coexpr_*`,
+     `L_dataframe_clonecombo`) not read.
+  6. Literature: the paper's seqFISH section (read 2026-11-07).
+- **Verdict: fails pre-flight.** The public seqFISH data cannot test the sorting index directly. No download,
+  no statistic.
+- **Where chapter 4 stands:** every public route to the mechanism is now checked (C4-S1, C4-S2b-R, C4-S3).
+  The only powered test left is C4-S2a (rescue on new subclones, A+B, power 0.80), which confirms the
+  rescue, not the mechanism. The mechanism ("mixing rescues because sorting can separate head and tail
+  programmes") stays a model-level hypothesis, consistent with G2/C3-S2 and untested beyond them.

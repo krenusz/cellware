@@ -19,6 +19,7 @@
   "C3-S2 (2026-11-07): sorting index replaces descriptive rescue rule (CV within 0.3 of Mgen, +34 over M0); partial without clones 2/4; open data only",
   "C4-S1 (2026-11-07, 6ab785a): data search + full Raj Dropbox re-crawl (12,049 files, 226 GB); revision-era data locked",
   "C4-S2b (+R, 2026-11-07): T/Igfbp5 separation UNINFORMATIVE (power of the ordering check 0.20 at a 1-SD effect; pure 6 saturated); earlier 'not supported' withdrawn",
-  "C4-S2a (2026-11-07): pre-registered + partitioned; NOT run (no single third has power; Bence chose to keep all sealed)"
+  "C4-S2a (2026-11-07): pre-registered + partitioned; NOT run (no single third has power; Bence chose to keep all sealed)",
+  "C4-S3 (2026-11-07): seqFISH chimeras fail pre-flight (5 control gastruloids, 1+3 n2 vs 1+6 n3: min p 0.10); no download"
  ]
 }
