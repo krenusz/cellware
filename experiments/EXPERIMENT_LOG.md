@@ -7651,3 +7651,14 @@ sorting validated; memory module = unknown batch factor.
   The only powered test left is C4-S2a (rescue on new subclones, A+B, power 0.80), which confirms the
   rescue, not the mechanism. The mechanism ("mixing rescues because sorting can separate head and tail
   programmes") stays a model-level hypothesis, consistent with G2/C3-S2 and untested beyond them.
+
+## C4-S4: the C4-S2a look on mixture partitions A+B (pre-registered 2026-11-07)
+
+- **Serves: C4-S4** (FOCUS.json). Bence: "1" (answer to "Spend A+B on the rescue test, or close chapter 4 with
+  the mechanism untested?"). Amendment to C4-S2a, fixed before the look: the look spends **A and B together
+  as one look** (5s2+6a n 16, power 0.80 by H14 from counts); **C stays sealed**. Everything else (readout,
+  primary T2, pass rule, secondaries, script `c4s2a_morph_confirm.py`, selection/C4-S2a.json) is unchanged.
+- **Pre-flight:** as C4-S2a (unit gastruloid/well; Y = 1 - Circularity; used data first: G2-C3-S2; power 0.80
+  for A+B; exposure: pure plate means and sd only; no literature needed).
+- Oracle change for this: `--partition AB` spends both partitions in one ledger row (`raj_morph_0831:AB`); a
+  later look at A or B is refused; C then is the last partition (H13).

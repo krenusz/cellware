@@ -283,7 +283,8 @@ def main():
     lk.add_argument("--exp", required=True, help="experiment id with a pre-registration, e.g. E12")
     lk.add_argument("--shard", type=int, default=0)
     lk.add_argument("--shards", type=int, default=1)
-    lk.add_argument("--partition", choices=["A", "B", "C"], help="sealed partition (partitioned tests)")
+    lk.add_argument("--partition", choices=["A", "B", "C", "AB"],
+                    help="sealed partition (partitioned tests); AB = pre-registered union spent as one look")
     lk.add_argument("--last-ok", default="", help="Bence's verbatim OK to spend the LAST partition (H13)")
     ct = sub.add_parser("count", help="structure only: units per tag in a sealed drug partition (H9/H14)")
     ct.add_argument("--partition", choices=["A", "B"], required=True)
@@ -301,11 +302,15 @@ def main():
         func, dataset, _ = PARTITION_TESTS[args.test]
         if not args.partition:
             sys.exit("refused: partitioned test needs --partition A|B|C (H11)")
-        used = {r["shard"] for r in ledger if r["shard"].startswith(f"{dataset}:")}
+        used = {f"{dataset}:{ch}" for r in ledger if r["shard"].startswith(f"{dataset}:")
+                for ch in r["shard"].split(":", 1)[1]}  # a union row (e.g. :AB) spends each letter
         tag = f"{dataset}:{args.partition}"
-        if tag in used:
-            sys.exit(f"refused: partition {tag} already spent (H11)")
-        left = [p for p in partitions.SEALED if f"{dataset}:{p}" not in used]
+        if any(f"{dataset}:{ch}" in used for ch in args.partition):
+            sys.exit(f"refused: partition {tag} (or part of it) already spent (H11)")
+        unspent = [p for p in partitions.SEALED if f"{dataset}:{p}" not in used]
+        if len(args.partition) > 1 and len(unspent) - len(args.partition) < 1:
+            sys.exit("refused: a union look may not spend the last sealed partition (H13)")
+        left = unspent if len(args.partition) == 1 else ["more than one"]
         if len(left) == 1 and len(args.last_ok.strip()) < 10:
             sys.exit(f"refused: {tag} is the LAST sealed partition; needs --last-ok with Bence's verbatim OK (H13)")
         if not preregistered(args.exp):
