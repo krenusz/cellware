@@ -7715,3 +7715,40 @@ sorting validated; memory module = unknown batch factor.
 - Guard note: the scope guard blocked reading `results_gastruloid/g3_fade.json` with Python because the name
   matches a script; a false positive (reading results is not running an experiment). To fix: match only
   `<name>.py` invocations.
+
+## C5-S2: one memory law across blood and gastruloid clones? (pre-registered 2026-11-07)
+
+- **Serves: C5-S2** (FOCUS.json). Bence: "1 / and still keep in mind the Raj lab's chromatin (ATAC-seq) data".
+  Chapter 5 question: is memory one mechanism across systems? This step writes the law into `core_model.py` and
+  checks it against already-used estimates only (no sealed data; no new data).
+- **Pre-flight:**
+  1. Unit: clone (blood: sister wells of a LARRY clone; gastruloid: subclone / clone x passage).
+  2. Readout: published-in-log estimates with CIs: E19 / E19c (LARRY cross-well fate sharing, by clone size),
+     E41b (day 4 vs 6), B38 / #13 (SIS-seq heritable share), G5 / #25 (subclone polarity ratios), G3 (passage
+     retention), C3-S1 (rho_P, rho_g).
+  3. Used data only; nothing recomputed from sealed files.
+  4. Power: an interval-consistency check, no new test; resolution limited by the stated CIs.
+  5. Exposure: all inputs are known numbers; this is a consistency check, not a confirmation.
+  6. Literature: none new (Naik 2013, Nat Commun 2026 HSPC division memory in DISCOVERIES #6).
+- **The law (core_model.memory_through):** heritable state z; each division copies it with retention rho_div
+  (correlation with the mother, mean shrink sqrt(rho_div)); each event of type e (blood well split, ES passaging)
+  copies it with rho_e; the context (well, gastruloid) adds non-heritable noise (rho_ctx), which is not passed on.
+- **Checks (interval logic; division counts are assumptions, varied):**
+  - **K1, per-division retention shared?** Blood: E19c large-minus-small cross-well sharing (0.82 vs 0.95,
+    difference -0.13 [-0.25, -0.01]) read as extra divisions after the split (small clones 2-4 cells, about 1.5
+    divisions; large 12-143, about 5.5; difference d = 4, sensitivity 3-6): rho_div = (r_large / r_small)^(1/d).
+    Gastruloid: G5 passage-1 subclone / parent polarity 1.21 [1.005, 1.50] after >= 13 divisions:
+    sqrt(rho_div)^13 >= lower bound. **Pass** = the two implied rho_div intervals overlap.
+  - **K2, passaging retention one value?** G3 r 0.60 [0.50, 0.68] per passage; G5 passage 2 / passage 1 0.37
+    [0.23, 0.51]; C3-S1 sqrt(rho_P) 0.46 (point). **Pass** = a common value inside all intervals.
+  - **K3, blood split events:** LARRY cross-well 0.88 [0.82, 0.92] vs SIS-seq heritable share 0.71 [0.59, 0.78]
+    (different readouts and culture lengths): described only, no pass rule (not comparable without division
+    counts for SIS).
+- **Reading:** K1 and K2 pass = one law (no per-division loss, event-specific loss) holds on used data; K1 fails =
+  per-division memory differs between committed blood progenitors and pluripotent cells (the law needs a
+  cell-state-dependent rho_div); K2 fails = passaging loss is series-specific (as G8), the law cannot predict a
+  new series' fade without a series covariate.
+- **Script:** `c5s2_memory_law.py` (reads numbers recorded in this log and result JSONs of used steps only).
+- **Stopping rule:** whatever the reading, the law (with its failures as stated limits) goes into core_model.py;
+  the sealed confirmation (C5-S3, Raj reserve) and the chromatin line (C5-S4, Raj ATAC) are separate steps
+  needing Bence's OK.
