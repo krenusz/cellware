@@ -1,0 +1,13 @@
+{
+ "chapter": "3",
+ "step": "C3-S1",
+ "question": "Rebuild the gastruloid simulator on core_model.py (clone state z with memory rho from the core; core state-to-logit map for A-P propensity; rank sorting + proportion feedback as local rules) and check it reproduces #20, #23, #26 on open and spent data.",
+ "next_steps": [
+  "C3-S2: elongation rescue from local rules (G2/G4 open data)",
+  "C4: mixing-rescue mechanism (data search restricted to per-clone composition of pure and mixed gastruloids)"
+ ],
+ "allowed_scripts": [],
+ "parked": ["#27 series gain / drug compression", "G13 DiffAssay", "GSE291244 founder memory / founder state", "#28 dominance"],
+ "approved_by": "Bence 2026-11-07: \"so chapt3 wasnt completed properly so yes if we need this go 1\"",
+ "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:')."
+}

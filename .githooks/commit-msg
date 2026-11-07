@@ -1,0 +1,6 @@
+#!/bin/sh
+# Cellware scope guard (program.md H15/H16): FOCUS.json changes need "Bence:" in the message;
+# new pre-registrations need "Pre-flight:" and "Serves: <current step>".
+PY="/c/Users/Bence/AppData/Roaming/uv/python/cpython-3.12.13-windows-x86_64-none/python.exe"
+[ -x "$PY" ] || PY=python3
+exec "$PY" -I experiments/hooks/scope_guard.py commit-msg "$1"
