@@ -174,3 +174,16 @@ before every look and refuses on any failure.
 - **H9 Blind format checks.** Inspecting a new file shows columns, tags and counts only, never
   rates, means or other outcome summaries (G2 lesson).
 - **H10 When unsure, ask.** If it is not clear whether data is held out, stop and ask Bence.
+- **H11 Several sealed partitions, never one hold-out.** Bence (2026-11-07): "you cannot use up
+  the holdout set ... we need several sealed partition". Every new data set is split before any
+  statistic by a salted hash of its biological unit (`partitions.py`): train 40% (the only data
+  analysis code reads, via `train_only`) + sealed partitions A, B, C (20% each). One look spends
+  one partition; it is never redrawn or reused.
+- **H12 The train fit decides what earns a look.** Candidate models are compared by cross-validation
+  on the train partition only; the winner is recorded in `selection/<exp>.json` (test, >= 2
+  candidates with scores, chosen = best), committed before the look. The oracle refuses otherwise.
+  A model must also be consistent with every open and spent result first (G7 lesson: a memory
+  rule already undermined by G6 was spent on the last Raj files).
+- **H13 Keep a reserve.** At most one partition per look. The last unspent partition of a source
+  (or the last sealed file of an unpartitioned source, e.g. the Raj reserve) needs Bence's verbatim
+  OK (`--last-ok`), logged in the ledger.

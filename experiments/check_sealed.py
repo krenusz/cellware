@@ -1,4 +1,4 @@
-"""Hold-out guard. Fails (exit 1) if any rule in sealed.py / program.md (H1-H8) is broken.
+"""Hold-out guard. Fails (exit 1) if any rule in sealed.py / program.md (H1-H13) is broken.
 
     uv run python experiments/check_sealed.py
 
@@ -25,8 +25,8 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import sealed  # noqa: E402
 
-PATTERN = re.compile(r"""["']heldout["']|include_heldout\s*=\s*True|heldout_stat\(|shard_of\(""")
-SELF = {"check_sealed.py", "sealed.py"}
+PATTERN = re.compile(r"""["']heldout["']|include_heldout\s*=\s*True|heldout_stat\(|shard_of\(|sealed_rows\(""")
+SELF = {"check_sealed.py", "sealed.py", "partitions.py"}
 
 
 def check(py_dir=HERE, data_dir=None):
@@ -64,6 +64,13 @@ def check(py_dir=HERE, data_dir=None):
                 if "include_heldout=True" in line and not line.lstrip().startswith(("def ", "#", '"""')) \
                         and "include_heldout=True, which" not in line and func not in ("fit", "heldout_stat"):
                     errors.append(f"{name}:{i} include_heldout=True outside fit/heldout_stat (H2)")
+    import partitions  # H11: partitioned data sets are read only through train_only (or the oracle)
+    for ds in partitions.PARTITIONED:
+        for name, src in py.items():
+            if name in SELF or name in sealed.HELDOUT_READERS or ds not in src:
+                continue
+            if "train_only(" not in src:
+                errors.append(f"{name} reads partitioned data {ds} without partitions.train_only (H11)")
     return errors
 
 

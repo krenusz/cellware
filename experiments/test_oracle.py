@@ -146,6 +146,32 @@ TESTS = {
 }
 
 
+# Partitioned tests (H11-H13): name -> (function(partition), dataset, description). One look
+# spends one sealed partition of the dataset for every test; the last one needs Bence's OK.
+PARTITION_TESTS = {}
+SELECTION_DIR = os.path.join(HERE, "selection")
+
+
+def selection_gate(exp, test):
+    """H12: a look needs experiments/selection/<exp>.json, committed, choosing the test's model as
+    the best train-fit (cross-validated on the train partition) among the candidates."""
+    path = os.path.join(SELECTION_DIR, f"{exp}.json")
+    if not os.path.exists(path):
+        return f"no train-fit selection file selection/{exp}.json (H12)"
+    tracked = subprocess.run(["git", "ls-files", "--error-unmatch", path], capture_output=True).returncode == 0
+    dirty = subprocess.run(["git", "status", "--porcelain", "--", path], capture_output=True, text=True).stdout.strip()
+    if not tracked or dirty:
+        return f"selection/{exp}.json must be committed before the look (H12)"
+    s = json.load(open(path, encoding="utf-8"))
+    cands = s.get("candidates", {})
+    if s.get("test") != test or len(cands) < 2 or s.get("chosen") not in cands:
+        return f"selection/{exp}.json must name test={test}, >= 2 candidates with train scores, and chosen (H12)"
+    best = (max if s.get("higher_is_better", True) else min)(cands, key=cands.get)
+    if s["chosen"] != best:
+        return f"chosen {s['chosen']} is not the best train fit ({best}) (H12)"
+    return None
+
+
 def read_ledger():
     if not os.path.exists(LEDGER):
         return []
@@ -172,12 +198,49 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("status")
     lk = sub.add_parser("look")
-    lk.add_argument("test", choices=sorted(TESTS))
+    lk.add_argument("test", choices=sorted(TESTS) + sorted(PARTITION_TESTS))
     lk.add_argument("--exp", required=True, help="experiment id with a pre-registration, e.g. E12")
     lk.add_argument("--shard", type=int, default=0)
     lk.add_argument("--shards", type=int, default=1)
+    lk.add_argument("--partition", choices=["A", "B", "C"], help="sealed partition (partitioned tests)")
+    lk.add_argument("--last-ok", default="", help="Bence's verbatim OK to spend the LAST partition (H13)")
     args = ap.parse_args()
     ledger = read_ledger()
+
+    if args.cmd == "look" and args.test in PARTITION_TESTS:
+        import partitions
+
+        func, dataset, _ = PARTITION_TESTS[args.test]
+        if not args.partition:
+            sys.exit("refused: partitioned test needs --partition A|B|C (H11)")
+        used = {r["shard"] for r in ledger if r["shard"].startswith(f"{dataset}:")}
+        tag = f"{dataset}:{args.partition}"
+        if tag in used:
+            sys.exit(f"refused: partition {tag} already spent (H11)")
+        left = [p for p in partitions.SEALED if f"{dataset}:{p}" not in used]
+        if len(left) == 1 and len(args.last_ok.strip()) < 10:
+            sys.exit(f"refused: {tag} is the LAST sealed partition; needs --last-ok with Bence's verbatim OK (H13)")
+        if not preregistered(args.exp):
+            sys.exit(f"refused: no '## {args.exp}: ... (pre-registered ...)' heading in the log")
+        gate = selection_gate(args.exp, args.test)
+        if gate:
+            sys.exit("refused: " + gate)
+        import check_sealed
+        problems = check_sealed.check()
+        if problems:
+            sys.exit("refused: hold-out guard failed:\n  " + "\n  ".join(problems))
+        if subprocess.run(["git", "status", "--porcelain", "--", "experiments/*.py"],
+                          capture_output=True, text=True).stdout.strip():
+            sys.exit("refused: commit experiment code first, so the look maps to a commit")
+        commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True,
+                                text=True).stdout.strip()
+        result = func(args.partition)
+        if args.last_ok:
+            result = {"last_partition_ok": args.last_ok, **result}
+        append_ledger({"date": datetime.date.today().isoformat(), "experiment": args.exp,
+                       "test": args.test, "shard": tag, "commit": commit, "result": json.dumps(result)})
+        print(json.dumps(result, indent=1))
+        return
 
     if args.cmd == "status":
         for name, (_, desc) in TESTS.items():
@@ -196,7 +259,10 @@ def main():
         sys.exit(f"refused: {args.test} is already split into a different number of shards")
     if not preregistered(args.exp):
         sys.exit(f"refused: no '## {args.exp}: ... (pre-registered ...)' heading in the log")
-    import check_sealed  # hold-out guard (rules H1-H10, program.md)
+    gate = selection_gate(args.exp, args.test)  # H12 applies to every look from 2026-11-07
+    if gate:
+        sys.exit("refused: " + gate)
+    import check_sealed  # hold-out guard (rules H1-H13, program.md)
     problems = check_sealed.check()
     if problems:
         sys.exit("refused: hold-out guard failed:\n  " + "\n  ".join(problems))

@@ -14,7 +14,8 @@ DATASETS = {
     "sis_seq": "hash shard H2 0 of 3 (skew_heldout, sisseq_rna_heldout) - spent",
     "gastruloid_raj": "G1a hash shard g1:<gastruloid> 0 of 3 (spent); G6 sealed files (spent); "
                       "all other files: OPEN data, results 'unconfirmed' (M13)",
-    "gastruloid_gse291244": "NOT SEALED YET - seal before any statistic (rule H1)",
+    "gastruloid_gse291244": "PARTITIONED 2026-11-07 (partitions.py): train 40% + sealed A, B, C; "
+                            "unit = plate + RT well / 10x sample; one look per partition (H11-H13)",
     "camellia": "exploratory only (no confirmation claims without a new sealed shard)",
     "darlin": "exploratory only (no confirmation claims without a new sealed shard)",
     "epiclone": "exploratory only (no confirmation claims without a new sealed shard)",
@@ -47,7 +48,7 @@ SEALED_FILES = {
     "data/gastruloid_raj/raw_ls2/clone3%_pass4_7132024.xlsx":
         ("58b439d2d61b8561b6710dbd57c38e6cdf1cf6a4f1f94a026d2966f41db14baa", ["g7_confirm.py"], "sealed G7b"),
     "data/gastruloid_raj/raw_ls2/clone3_pass3_07112024.xlsx":
-        ("011939d615af3d5ddab28427655b2e455847946f387489822cae38573d1865b2", [], "sealed reserve (untested)"),
+        ("011939d615af3d5ddab28427655b2e455847946f387489822cae38573d1865b2", [], "sealed reserve (untested); LAST Raj sealed data: Bence OK needed (H13)"),
 }
 
 # modules allowed to contain held-out access patterns (each reviewed; reason stated)
