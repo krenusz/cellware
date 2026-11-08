@@ -8087,3 +8087,23 @@ sorting validated; memory module = unknown batch factor.
   5. Sealed: replicate 2 is the only and last partition (H13).
   6. Memory angle: "clone 3, late" (a later passage of clone 3) is the only over-time sample: n = 1, no test.
 - **Pre-flight fails. Not unparked; replicate 2 stays sealed.** FOCUS unchanged.
+
+## C6-S1: chapter 6 (cells into space) plan and pre-flight (counts only, no statistic; 2026-11-08)
+
+- **Serves: C6-S1** (FOCUS.json). Bence: "alright now lets go with your first choice for next cpt / 1. Cells into
+  space (my pick)." Plan: `CHAPTER6_PLAN.md`.
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readouts: line-scan polarity (G1a), 1 - circularity (C4-S2a), geodesic aspect ratio (authors' chimera metric).
+  3. Used data first: all fit targets are open or spent (G1a fit, G1b, G2, G3, G7/G10, 0831 pure + A+B, chimeras).
+  4. Power from counts: S1 Jan 2024 1+6 passage 4 (34 gastruloids): one-sided binomial 0.50 / 0.69 / 0.91 at true
+     share 0.66 / 0.70 / 0.76. S2 morph 0831 C (6a+bulk 13, 5s2+6a 11, 5s2+bulk 6): 6a+bulk over member mean 0.39 /
+     0.66 / 0.84 at +0.04 / +0.06 / +0.077. Final gate after the model is fixed (H14).
+  5. Exposure: the clone+bulk chimera set (175 gastruloids) is exposed (authors' README results read 11-07; one data
+     row of `5+bulk.csv` printed by a header check on 11-08). It is relabelled open, for fitting only, never a test.
+     S1: tag counts + channel names only. S2: counts only.
+  6. Literature: Oriola 2024, Mongera 2018, monoclonal and chimeric gastruloids; rule-3 methods to read before coding.
+- **Constraint carried in:** complementary clone-clone rescue (#22) failed out of sample (C4-S4), so the model gets no
+  rescue term. Mixing effects must emerge from the local rules.
+- **Result:** the plan is written. No statistic has been computed and no sealed values have been read. Next: C6-S2
+  simulator build, with its own pre-registered checks.
