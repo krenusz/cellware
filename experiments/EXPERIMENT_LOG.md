@@ -8071,3 +8071,19 @@ sorting validated; memory module = unknown batch factor.
   ClonMapper cardiac preprint 10.64898/2025.12.12.694049 (engineering, not passage-resolved molecular data).
 - **Reading:** no public dataset beats the Raj ATAC set for clone-resolved chromatin over passages in
   pluripotent cells. The hESC set would (hundreds of clones, sister splits, multiome) once released.
+
+### C5-S7 pre-flight: unpark G13 DiffAssay as a memory-carrier test? (2026-11-08; no data read)
+
+- Bence: "Unpark DiffAssay". Pre-flight (H15) on what is already recorded (G13, 2026-11-07):
+  1. **Readout: correction.** DiffAssay is 2D confluency (cell growth) of 9 lines in neural, mesoderm,
+     endoderm and 2i media at 4 times. It has no differentiation or marker readout, so "differentiation tempo"
+     (my C5 candidate wording) is not measured; only growth tempo per medium is.
+  2. Unit: clone with A-P preference, n = 5 (1, 3, 5, 6, 7). Exact Spearman over 120 orders: only a perfect
+     ordering gives p < 0.05.
+  3. Used data: replicate 1 already used (G13): growth bias vs A-P preference rho -0.70 / -0.10 / +0.70 by
+     measure, no anterior-posterior separation; clone 3 and clone 6 look alike on every measure.
+  4. Power: even at the replicate-1 rho of 0.7 taken as true, a perfect ordering in replicate 2 is unlikely;
+     a 5-clone single-replicate look cannot reach 0.8.
+  5. Sealed: replicate 2 is the only and last partition (H13).
+  6. Memory angle: "clone 3, late" (a later passage of clone 3) is the only over-time sample: n = 1, no test.
+- **Pre-flight fails. Not unparked; replicate 2 stays sealed.** FOCUS unchanged.
