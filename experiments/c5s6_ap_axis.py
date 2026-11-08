@@ -159,10 +159,77 @@ def contrast(g1, g2, g3):
     return float(L), float(se), float(L / se)
 
 
-def pooled_power(nsim=4000):
+def _vals(v):
+    """C5-S6b R2/R3: {bin: within-sample percentile of signalValue}, all peaks, max per bin."""
+    best = {}
+    with open(m4._path(v), encoding="utf-8") as f:
+        for line in f:
+            p = line.split("\t")
+            k = (p[0], (int(p[1]) + int(p[9])) // m4.BIN)
+            s = float(p[6])
+            if s > best.get(k, -1.0):
+                best[k] = s
+    keys = list(best)
+    sig = np.array([best[k] for k in keys])
+    pct = (np.argsort(np.argsort(sig, kind="stable"), kind="stable") + 1) / len(sig)
+    return dict(zip(keys, pct.tolist()))
+
+
+def scorer(kind, fold):
+    """fold: {clone: sample repr}. Returns sample repr -> score."""
+    if kind == "R0":
+        a = set.intersection(*[fold[c] for c in ANT]) - set.union(*[fold[c] for c in POS])
+        p = set.intersection(*[fold[c] for c in POS]) - set.union(*[fold[c] for c in ANT])
+        return lambda b: len(b & a) / len(a) - len(b & p) / len(p)
+    if kind == "R1":
+        allb = set.union(*fold.values())
+        w = {}
+        for k in allb:
+            d = np.mean([k in fold[c] for c in ANT]) - np.mean([k in fold[c] for c in POS])
+            if abs(d) >= 0.5:
+                w[k] = d
+        tot = sum(abs(x) for x in w.values())
+        return lambda b: sum(x for k, x in w.items() if k in b) / tot
+    n = {"R2": 2000, "R3": 5000}[kind]
+    allb = set().union(*[set(fold[c]) for c in AP])
+    w = {k: np.mean([fold[c].get(k, 0.0) for c in ANT]) - np.mean([fold[c].get(k, 0.0) for c in POS]) for k in allb}
+    top = sorted(w, key=lambda k: -abs(w[k]))[:n]
+    tot = sum(abs(w[k]) for k in top)
+    return lambda x: sum(w[k] * x.get(k, 0.0) for k in top) / tot
+
+
+def readout_search():
+    """C5-S6b (train only): cross-fitted p1 D/SE per candidate readout; pooled power for the winner."""
+    rows = [r for r in m4.sheet() if r["passage"] == 1 and r["clone"] in AP]
+    rows = [r for r in rows if m4._n_peaks(r["v"]) >= m4.TOP]
+    reps = {"bins": {r["v"]: m4._bins(r["v"]) for r in rows}, "vals": {r["v"]: _vals(r["v"]) for r in rows}}
+    res = {}
+    for kind in ("R0", "R1", "R2", "R3"):
+        rep = reps["bins"] if kind in ("R0", "R1") else reps["vals"]
+        sc = []
+        for k in sorted({r["rep"] for r in rows}):
+            fold = {r["clone"]: rep[r["v"]] for r in rows if r["rep"] != k}
+            f = scorer(kind, fold)
+            sc += [(r["clone"], r["rep"], 1, f(rep[r["v"]])) for r in rows if r["rep"] == k]
+        g = gap(sc)
+        res[kind] = {"D": round(g["D"], 4), "se": round(g["se"], 4), "s_rep": round(g["s_rep"], 4),
+                     "D_over_se": round(g["D"] / g["se"], 2), "g": g}
+    win = max(res, key=lambda k: res[k]["D_over_se"])
+    pw = pooled_power(g1=res[win]["g"], save=False)
+    out = {"candidates": {k: {x: y for x, y in v.items() if x != "g"} for k, v in res.items()},
+           "clone_means": {k: {c: round(m, 4) for c, m in v["g"]["clone_mean"].items()} for k, v in res.items()},
+           "winner": win, "margin_over_R0": round(res[win]["D_over_se"] / res["R0"]["D_over_se"], 2),
+           "pooled_power": pw["power"], "gate": pw["gate"],
+           "marginal": bool(pw["gate"]["pass"] and pw["gate"]["power"] < 0.85)}
+    json.dump(out, open(OUT.replace("_train", "_readout"), "w"), indent=1)
+    print(json.dumps(out, indent=1))
+
+
+def pooled_power(nsim=4000, g1=None, save=True):
     """Amendment (train only): power of L/SE(L) > 1.645 over passages 1-3."""
     rng = np.random.default_rng(SEED + 1)
-    g1 = gap(scored(samples({1}), axes(samples({1})), cross_fit=True))
+    if g1 is None:
+        g1 = gap(scored(samples({1}), axes(samples({1})), cross_fit=True))
     mu = g1["clone_mean"]
     mid = (np.mean([mu[c] for c in ANT]) + np.mean([mu[c] for c in POS])) / 2
     nrep = {p: {c: sum(1 for r in m4.sheet() if r["passage"] == p and r["clone"] == c) for c in AP} for p in (2, 3)}
@@ -180,8 +247,10 @@ def pooled_power(nsim=4000):
     res = {"nrep_sheet": nrep, "power": out,
            "gate": {"rule": "power >= 0.8 at R=0.6 with 1.5 s", "power": out["R=0.6|s_x1.5"],
                     "pass": bool(out["R=0.6|s_x1.5"] >= 0.8)}}
-    json.dump(res, open(OUT.replace("_train", "_pooled_power"), "w"), indent=1)
-    print(json.dumps(res, indent=1))
+    if save:
+        json.dump(res, open(OUT.replace("_train", "_pooled_power"), "w"), indent=1)
+        print(json.dumps(res, indent=1))
+    return res
 
 
 def test_pooled():
@@ -196,4 +265,9 @@ def test_pooled():
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    pooled_power() if "--pooled-power" in sys.argv else train()
+    if "--pooled-power" in sys.argv:
+        pooled_power()
+    elif "--readout" in sys.argv:
+        readout_search()
+    else:
+        train()

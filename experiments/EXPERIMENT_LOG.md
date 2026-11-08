@@ -8044,3 +8044,13 @@ sorting validated; memory module = unknown batch factor.
   recomputed with the winner, same simulation and **same gate (0.8 at fade 0.6 with 1.5 s)**.
 - **Optimism guard:** 4 candidates picked on the same 10 samples. Reported: the winner's margin over R0, and the
   gate result. If the winner passes only narrowly (< 0.85), report as marginal and ask Bence before any look.
+
+#### C5-S6b result (2026-11-08; passage 1 only; A and B sealed and unread)
+
+- Cross-fitted D / SE: R0 5.59 (D 0.38, s 0.106); R1 2.43 (D 0.12, s 0.078); R2 0.09; R3 0.07. The continuous
+  readouts lose the axis: with one sample per clone per fold, the top-|w| bins are dominated by single-sample
+  intensity noise.
+- **Winner R0 (the C5-S6 readout); pooled power unchanged, 0.53 at the gate. Gate fails; no look.**
+- Diagnostic (described, no rule derived): the replicate noise is spread, not one bad library. Largest splits:
+  clone 1 (0.01 vs 0.25) and clone 5 (0.33 vs 0.51). Peak counts range 75k-391k with no clean outlier.
+- Reading: the limit is the data (5 clones x 2 replicates), not the readout.
