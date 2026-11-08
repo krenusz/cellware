@@ -7995,3 +7995,23 @@ sorting validated; memory module = unknown batch factor.
   the same set; clone 6 (posterior) scores above clone 7 (anterior) at passage 0. Taken at face value the axis
   is weaker at passage 0 than at passage 1, the opposite of a fade from passage 0. Not used: single
   replicates, possible batch difference (C5-S4 caveat), 3 clones.
+
+### C5-S6 amendment: pooled passages 1-3 fade contrast (pre-registered 2026-11-08, before any power number)
+
+- **Serves: C5-S6.** Bence: "alright next steps cellware" (after the proposal: compute the passages 1-3 pooled
+  power on train first). Train-only power; A and B stay sealed.
+- **Why:** the ratio test at A alone has power 0.14. Under the G3 fade the gap should be 0.6 x D(1) at passage 2
+  and 0.36 x D(1) at passage 3, so a contrast using both sealed passages is much stronger.
+- **Statistic (would spend A and B together, one look; B is the last partition, so the look needs Bence's verbatim
+  OK, H13):**
+  - Same readout, axes and clone scores as C5-S6. D(p) for p = 1, 2, 3 on the 5 A-P clones.
+  - L = D(1) - (0.385 D(2) + 0.615 D(3)). Weights are proportional to the G3-expected drop (0.4, 0.64) over
+    equal variances, normalised to 1; fixed now.
+  - SE(L) from the per-passage SE(D) (pooled within-clone replicate variance per passage, fixed clones).
+  - **Primary: fading confirmed if L / SE(L) > 1.645 (one-sided 5%).**
+  - Secondary (described): per-passage retention r from a weighted fit of log D on passage (if all D > 0), with
+    90% CI vs G3 0.6; the replicate-Jaccard quality control (all replicate pairs incl. bulk) at passages 2 and 3
+    vs 1.
+- **Gate (same rule as C5-S6):** power >= 0.8 at a true fade of 0.6 per passage with 1.5 s, 4,000 simulations,
+  sheet replicate counts (passage 2: clone 5 has 1; passage 3: 2 each). Also reported: s x 1, and fade 0.83.
+- **If the gate fails:** no look; chapter 5 chromatin work stops at the train result.
