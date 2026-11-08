@@ -175,7 +175,7 @@ SEALED_FILES = {
     # C5 candidate carriers (2026-11-08): subclone RNA (Mar 2026, 48 h; bulk, 1s2, 5s2, 6a x 2), locked on arrival
     # before any value read. Exposure: file names, methods text, mapping stats. PCA / heatmap = authors' result, unopened.
     "data/gastruloid_raj/rna_subclone/F8MWB5-expression-matrix.tsv":
-        ("3b06b138e1060adb66e7955be358b7f9b6b9f92fea117e46f02029682af7ae44", [], "locked: candidate single-look test set (subclone memory)"),
+        ("3b06b138e1060adb66e7955be358b7f9b6b9f92fea117e46f02029682af7ae44", ["c5s5_subclone_expr.py"], "locked C5-S5 single-look test set; train power gate FAILED 2026-11-08 (0.19), unread; read only via oracle after Bence verbatim OK"),
     "data/gastruloid_raj/rna_subclone/F8MWB5-pca-scatter.html":
         ("c651e5518d88a070cb553f5ad6466349e95d25892f3eb2c85efdb309182ddc5b", [], "locked: authors' PCA of the test set; never open"),
     "data/gastruloid_raj/rna_subclone/F8MWB5-correlation-heatmap.png":
