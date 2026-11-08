@@ -8107,3 +8107,49 @@ sorting validated; memory module = unknown batch factor.
   rescue term. Mixing effects must emerge from the local rules.
 - **Result:** the plan is written. No statistic has been computed and no sealed values have been read. Next: C6-S2
   simulator build, with its own pre-registered checks.
+
+## C6-S2: 2-D cell-level gastruloid simulator on the core model; build, smoke tests, qualitative checks (pre-registered 2026-11-08)
+
+- **Serves: C6-S2** (FOCUS.json; CHAPTER6_PLAN.md). Bence: "yes and after put it to sleep" (go for the C6-S2 build).
+  Script: `c6s2_space.py` (new). It reuses `core_model.py` (state_copy, clone states z and rho_g from C3-S1) and the
+  readout helpers in `g5_gastruloid.py` / `g1_gastruloid.py` (polarity from a profile) and `g1b` (boundary
+  crossing). No sealed file is read.
+- **Pre-flight:**
+  1. Unit: simulated gastruloid. Data targets are per-clone or per-condition summaries already computed on open
+     or spent data (C3-S1 json, G1b json, G2 json).
+  2. Readouts: polarity from a 1-D profile of clone share along the simulated body's long axis (same polarity_of
+     as G1a); boundary crossing as in G1b; elongation = 1 - circularity and the geodesic aspect ratio of the
+     rasterised outline.
+  3. Used data first: yes, summaries only.
+  4. Power: not a test (qualitative build checks, as in C3-S1); no claim.
+  5. Exposure: as in C6-S1.
+  6. Literature: Oriola 2024 (poles from mechanics), Mongera 2018. Rule 3 is a minimal convergent-extension
+     stand-in, disclosed as such.
+- **Model (fixed before any run):**
+  - About 400 off-lattice soft-disc cells in 2-D, starting as a random disc.
+  - Each cell carries its clone's state z' (the core's state_copy per gastruloid, rho_g 0.059, z from C3-S1) and a
+    second clone trait, competence c (step 4 of the plan; in C6-S2 it is set by hand for synthetic clones only).
+  - Rule 1, differential adhesion: neighbour attraction scales with exp(-|s_i - s_j| / w), with
+    s = z' + N(0, 1) per cell.
+  - Rule 2, proportion feedback: the posterior (P) fraction of cells is q = (1 - g) * mean(sigmoid(-s)) + g * a*,
+    with g and a* from G5 (0.83, 0.38). The q lowest-s cells are P.
+  - Rule 3, posterior-driven extension: the axis is the line from the A centroid to the P centroid. P cells push
+    their P neighbours apart along that axis with strength k * c_i * coherence, where coherence is the separation
+    of the A and P centroids over the body radius. Unsorted or one-identity bodies get no consistent axis.
+  - Fixed seeds; a set number of steps.
+- **Smoke tests (synthetic; must pass before the data checks):**
+  - S-a: sorting index (A-P centroid separation) rises with the adhesion contrast (smaller w).
+  - S-b: elongation rises with k for a sorted 50:50 mix and stays near round at k = 0.
+  - S-c: a body with c = 0 in every cell stays round.
+  - S-d: run time under 5 s per gastruloid.
+- **Data checks (pre-registered criteria, open/spent summaries):**
+  - Q1 (T-a): 50% clone-in-bulk polarity per clone (1, 3, 5, 6, 7), 100 sims each. Pass: sign matches the C3-S1
+    fit-shard mean for 5/5 clones, and Spearman rank of the sim means vs fit means >= 0.9.
+  - Q2 (T-c): clone 1+3 at the G1b ratios (1:4 to 4:1). Pass: the slope of the boundary crossing vs anterior
+    fraction lies inside the G1b CI (g1b_mixing.json).
+  - Q3 (T-d/T-e direction, qualitative): a low-competence clone (c 0.2, bulk c 1) at 20/50/80% in bulk.
+    Elongation falls monotonically with the clone fraction. Read for its form (linear vs buffered); no claim,
+    because the authors' result for this direction is exposed.
+- **Stopping rule:** if S-a to S-c fail after the stated model, record the failure and stop C6-S2. Do not add
+  rules. If Q1/Q2 fail, the 2-D local rules do not reproduce what the 1-D C3-S1 did, which is a chapter-level
+  negative. Fitting competences to G2 is C6-S3, not here.
