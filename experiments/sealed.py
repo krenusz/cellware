@@ -171,6 +171,14 @@ SEALED_FILES = {
         ("877ede99f1a1f9ed9afaba91889706c3a2d27e8bdca11e5119f7a4bab2289274", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
     "data/gastruloid_raj/atac_peaks/Sorted_V64_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak":
         ("9c6653d9977a4437a78b0e8208377e2e8760fd13339e43ec7b628bc081b19d30", ["c5s4_atac_memory.py"], "sealed raj_atac B (LAST, H13: Bence's OK), passage 3"),
+    # C5 candidate carriers (2026-11-08): subclone RNA (Mar 2026, 48 h; bulk, 1s2, 5s2, 6a x 2), locked on arrival
+    # before any value read. Exposure: file names, methods text, mapping stats. PCA / heatmap = authors' result, unopened.
+    "data/gastruloid_raj/rna_subclone/F8MWB5-expression-matrix.tsv":
+        ("3b06b138e1060adb66e7955be358b7f9b6b9f92fea117e46f02029682af7ae44", [], "locked: candidate single-look test set (subclone memory)"),
+    "data/gastruloid_raj/rna_subclone/F8MWB5-pca-scatter.html":
+        ("c651e5518d88a070cb553f5ad6466349e95d25892f3eb2c85efdb309182ddc5b", [], "locked: authors' PCA of the test set; never open"),
+    "data/gastruloid_raj/rna_subclone/F8MWB5-correlation-heatmap.png":
+        ("2fea022dc3cbd56db3d4f18ab5d6e4292bb91c6eee7ae735a512268396efeb37", [], "locked: authors' correlation heatmap of the test set; never open"),
 }
 
 # modules allowed to contain held-out access patterns (each reviewed; reason stated)
