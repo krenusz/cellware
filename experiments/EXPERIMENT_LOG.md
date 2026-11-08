@@ -8153,3 +8153,31 @@ sorting validated; memory module = unknown batch factor.
 - **Stopping rule:** if S-a to S-c fail after the stated model, record the failure and stop C6-S2. Do not add
   rules. If Q1/Q2 fail, the 2-D local rules do not reproduce what the 1-D C3-S1 did, which is a chapter-level
   negative. Fitting competences to G2 is C6-S3, not here.
+
+### C6-S2 result (2026-11-08; synthetic + calibration only; Q1-Q3 NOT run; no data statistic)
+
+- **Formal smoke tests (stated DEFAULT model, `results_gastruloid/c6s2_smoke.json`): all four pass by the letter,
+  none in substance.**
+  - S-a: polar sorting index 0.099 (w 5) to 0.109 (w 0.5). Homotypic contacts 0.55 to 0.59 (random about 0.52).
+    Two clean poles would give about 0.85.
+  - S-b: 1 - circularity 0.40 / 0.46 / 0.47 at k 0 / 0.6 / 1.2. This is mostly an outline artefact: the jagged
+    raster reads 0.40 for a round body, and the moment elongation stays at 0.02-0.08.
+  - S-c: passes (0.39 vs 0.40).
+  - S-d: 0.36 s per gastruloid.
+- **Calibration probes (disclosed; scratch scripts, synthetic 50:50, states +-2):**
+  - Longer runs, stronger adhesion, more motility noise, and heterotypic repulsion plus cohesion were all tried.
+  - With strong adhesion (k_adh 8, 4,000 steps) cells **do** sort locally: 0.88 homotypic contacts. They form
+    many patches, though, not one A-P axis (polar index 0.06).
+  - With rule 3 switched on, the posterior push makes the outline ragged and breaks up the sorting. It does not
+    extend the body (moment elongation 0.04).
+  - The outline readout needs smoothing: a Gaussian density threshold reads more truly than the disc raster.
+- **Reading (pre-registered stopping rule applied): rules 1-3 as stated do not build an A-P axis.** Differential
+  adhesion plus proportion feedback gives local domains without symmetry breaking into two poles. This matches
+  the literature claim that something beyond adhesion sets the poles (Oriola 2024: signalling sets proportions,
+  mechanics sets poles). Q1-Q3 were not run: without poles, polarity and boundary readouts are undefined, so they
+  would fail by construction. No rule was added within C6-S2.
+- **Next (C6-S3 redesign, its own pre-registration, Bence's go):** one symmetry-breaking local rule. Candidates:
+  (a) local posterior self-recruitment with longer-range inhibition (Wnt/T reaction-diffusion on the cell
+  graph); (b) a Cellular Potts implementation, where surface tension coarsens domains to two poles. Plus the
+  smoothed outline readout. The smoke tests will be re-specified with substantive thresholds (polar index >= 0.5,
+  moment elongation rising with k) so they cannot pass trivially.
