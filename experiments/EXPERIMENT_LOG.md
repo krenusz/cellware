@@ -8023,3 +8023,24 @@ sorting validated; memory module = unknown batch factor.
 - **Gate fails. No look; A and B stay sealed.** Per the pre-registration, chapter 5 chromatin work stops at the
   train result: the A-P chromatin axis exists at passage 1 (D 0.38, ~5.6 SE out of fold); whether it fades is
   untestable with 5 clones x 2 replicates.
+
+### C5-S6b: a less noisy A-P chromatin readout (pre-registered 2026-11-08, train only)
+
+- **Serves: C5-S6.** Bence: "no we need to investigate more" (after both C5-S6 gates failed on noise).
+- **Why:** the gates fail because the replicate noise (s = 0.106) is large against the gap (D = 0.38). The
+  C5-S6 readout is binary presence over about 300 strict bins per fold; a continuous, wider readout should
+  cut s. This changes the readout only; the tests, weights and gates stay as pre-registered.
+- **Pre-flight:** unit clone (3, 5, 7 vs 1, 6); data passage 1 only (cross-fit by replicate fold), passage 0 not
+  used for selection; A and B unread; power from train only.
+- **Candidates (fixed now):**
+  - R0: C5-S6 readout (binary, strict A-only / P-only bins).
+  - R1: binary presence, all bins with |fraction anterior - fraction posterior| >= 0.5 in the fold, weighted by
+    that difference.
+  - R2: continuous. Each sample's peaks (all, not top 20,000) mapped to 500-bp summit bins; value = within-sample
+    percentile of signalValue (0 if absent). Fold weight w = mean anterior - mean posterior clone value; score =
+    sum(w x) / sum|w| over the 2,000 bins with largest |w|.
+  - R3: R2 with 5,000 bins.
+- **Selection score:** cross-fitted passage-1 D / SE(D) (largest wins). Then the pooled contrast power is
+  recomputed with the winner, same simulation and **same gate (0.8 at fade 0.6 with 1.5 s)**.
+- **Optimism guard:** 4 candidates picked on the same 10 samples. Reported: the winner's margin over R0, and the
+  gate result. If the winner passes only narrowly (< 0.85), report as marginal and ask Bence before any look.
