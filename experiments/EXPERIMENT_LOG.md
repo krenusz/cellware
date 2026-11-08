@@ -7981,3 +7981,17 @@ sorting validated; memory module = unknown batch factor.
 - **Stopping:** confirmed = chromatin carries the fading A-P memory. Not confirmed with power = the A-P chromatin
   difference persists while propensity fades (chromatin is not the fading carrier). Gate fails = no look; A and
   B stay sealed.
+
+### C5-S6 train result (2026-11-08; passages 0-1 only; A and B sealed and unread)
+
+- Axis: 249-342 A-bins and 293-296 P-bins per fold.
+- Cross-fitted passage-1 clone scores: clone 3 0.54, clone 5 0.42, clone 7 0.41 (anterior); clone 1 0.13,
+  clone 6 0.02 (posterior). D(1) = 0.38, SE 0.069 (replicate sd 0.106, 5 df). The A-P chromatin axis is real
+  at passage 1 out of fold (about 5.6 SE).
+- Power of the pre-registered ratio test at A: **0.14** at R = 0.6 with 1.5 s (gate); 0.38 at R = 0.6 with s;
+  0.17 / 0.09 at R = 0.83. **Gate fails. No look; A and B stay sealed.** Reason: R = D(2)/D(1) carries the
+  noise of both gaps over 5 clones with 2 replicates (clone 5 has 1 at passage 2).
+- Passage 0, described only (single replicates, matched set {7} vs {1, 6}): D(0) = 0.05 vs D(1) = 0.34 on
+  the same set; clone 6 (posterior) scores above clone 7 (anterior) at passage 0. Taken at face value the axis
+  is weaker at passage 0 than at passage 1, the opposite of a fade from passage 0. Not used: single
+  replicates, possible batch difference (C5-S4 caveat), 3 clones.
