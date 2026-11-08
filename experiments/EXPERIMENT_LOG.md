@@ -7928,3 +7928,56 @@ sorting validated; memory module = unknown batch factor.
 - Reading: clone identity in bulk expression is not reproducible enough at passage 1 (1-2 shallow libraries,
   2 failed) to carry a 3-subclone memory test. Possible clone 2 library issue (rep 1 matches clone 4) noted,
   not acted on.
+
+## C5-S6: does a clone's position on the passage-1 A-P chromatin axis fade over passages? (pre-registered 2026-11-08)
+
+- **Serves: C5-S6** (FOCUS.json; Bence: "1", i.e. pre-register the A-P-axis chromatin test and run its power gate
+  on passages 0-1). Script: `c5s6_ap_axis.py`.
+- **Why (replaces C5-S4 on the same partitions):** C5-S4 measured how distinct a clone's chromatin is overall.
+  The memory in question is A-P propensity, so the sharper readout is signed: where each clone sits on an
+  anterior-vs-posterior chromatin axis. If C5-S6 passes its gate, the C5-S4 look is dropped (one look per
+  partition).
+- **Pre-flight:**
+  1. Unit: **clone** (anterior 3, 5, 7; posterior 1, 6; groups from C3-S1 propensity z). Clones 2, 4 have no
+     propensity and are not used in the axis or the statistic.
+  2. Readout:
+     - Per sample: the C5-S4 summit-bin set (top 20,000 peaks by signalValue, 500-bp summit bins; samples with
+       fewer than 20,000 peaks fail QC).
+     - Axis folds: passage-1 replicate index k = 1, 2. Fold-k axis is built from the passage-1 samples with
+       replicate != k (one sample per A-P clone).
+     - A-bins = bins present in all 3 anterior samples and absent from both posterior samples; P-bins the
+       reverse. No tuning parameter.
+     - Score(sample) = fraction of A-bins present - fraction of P-bins present.
+     - Passage-1 samples are scored only with the axis of the other fold (cross-fit, so no selection bias).
+       Passage-0 and sealed samples are scored with the mean of both fold axes.
+     - Clone score = mean over its QC-passing samples. Gap D(p) = mean anterior clone score - mean posterior
+       clone score. A global shift at a passage cancels in D.
+  3. Used data: passages 0-1 (C5-S4 train). Sealed passage 2 (A) and passage 3 (B) are unread.
+  4. Power: train only (below), decided before the look.
+  5. Exposure: sample sheet (clone, replicate, passage per file). The authors' p1-vs-p3 Homer and differential
+     tables stay unopened.
+  6. Technical confound: a passage-wide drop in library quality would shrink D and look like fading. Control at
+     the look (pre-registered, described): mean replicate Jaccard over all replicate pairs, including bulk
+     (no clone memory), at passage p vs passage 1. A drop of more than 10% flags the result as possibly
+     technical.
+- **Statistic (partition A, passage 2):**
+  - R2 = D(2) / D(1). Inference treats the 5 clones as fixed (the question is whether these clones' A-P
+    chromatin difference fades, as G3 was about these clones), with replicate noise only.
+  - Var(clone score) = pooled within-clone replicate variance at that passage / n replicates.
+    Var(D) = sum over each group of Var(clone)/|group|^2. SE of log R2 by the delta method.
+  - **Primary (one look at A): fading confirmed if the one-sided 95% upper bound of R2 < 1.**
+  - Secondary (described): R2 vs the G3 forecast 0.60 (inside or outside the 90% CI); per-clone signed
+    deviation from the group midpoint at passages 1 and 2; the quality control above.
+- **Passage 0 (train, described only):** D(0) on the matched set {7} vs {1, 6} (single replicates), and the
+  ratio D(1)/D(0) on the same set.
+- **Train power (H14, decided now):**
+  - From passage 1: true clone scores = observed cross-fit clone means; replicate sd s = pooled within-clone sd.
+  - Simulate passage 1 (2 replicates per clone) and passage 2 with the sheet's replicate counts (clone 5: 1;
+    others 2), true passage-2 deviations from the midpoint = R x passage-1 deviations.
+  - Power = P(upper bound < 1), 4,000 simulations, at R = 0.6 and 0.83, with s and 1.5 s.
+  - **Look at A only if power >= 0.8 at R = 0.6 with 1.5 s** (pessimistic: s comes from 5 df).
+- **Partition B (passage 3, last, H13):** not requested now. A pooled slope over passages 1-3 would need its
+  own pre-registration and Bence's verbatim OK.
+- **Stopping:** confirmed = chromatin carries the fading A-P memory. Not confirmed with power = the A-P chromatin
+  difference persists while propensity fades (chromatin is not the fading carrier). Gate fails = no look; A and
+  B stay sealed.
