@@ -150,6 +150,50 @@ def test(part):
             "G3_inside_90ci": bool(lb is not None and lb <= G3_R ** (p - 1) <= ub)}
 
 
+W2, W3 = 0.385, 0.615
+
+
+def contrast(g1, g2, g3):
+    L = g1["D"] - (W2 * g2["D"] + W3 * g3["D"])
+    se = np.sqrt(g1["se"] ** 2 + W2 ** 2 * g2["se"] ** 2 + W3 ** 2 * g3["se"] ** 2)
+    return float(L), float(se), float(L / se)
+
+
+def pooled_power(nsim=4000):
+    """Amendment (train only): power of L/SE(L) > 1.645 over passages 1-3."""
+    rng = np.random.default_rng(SEED + 1)
+    g1 = gap(scored(samples({1}), axes(samples({1})), cross_fit=True))
+    mu = g1["clone_mean"]
+    mid = (np.mean([mu[c] for c in ANT]) + np.mean([mu[c] for c in POS])) / 2
+    nrep = {p: {c: sum(1 for r in m4.sheet() if r["passage"] == p and r["clone"] == c) for c in AP} for p in (2, 3)}
+    out = {}
+    for R in (0.6, 0.83):
+        for k in (1.0, 1.5):
+            s, hit = g1["s_rep"] * k, 0
+            for _ in range(nsim):
+                gs = [gap([(c, r, 1, mu[c] + s * rng.standard_normal()) for c in AP for r in (1, 2)])]
+                for p in (2, 3):
+                    gs.append(gap([(c, r, p, mid + R ** (p - 1) * (mu[c] - mid) + s * rng.standard_normal())
+                                   for c in AP for r in range(nrep[p][c])]))
+                hit += contrast(*gs)[2] > 1.645
+            out[f"R={R}|s_x{k}"] = round(hit / nsim, 3)
+    res = {"nrep_sheet": nrep, "power": out,
+           "gate": {"rule": "power >= 0.8 at R=0.6 with 1.5 s", "power": out["R=0.6|s_x1.5"],
+                    "pass": bool(out["R=0.6|s_x1.5"] >= 0.8)}}
+    json.dump(res, open(OUT.replace("_train", "_pooled_power"), "w"), indent=1)
+    print(json.dumps(res, indent=1))
+
+
+def test_pooled():
+    """One look at A+B together (via test_oracle, Bence's verbatim OK for B): L/SE(L) > 1.645."""
+    p1 = samples({1})
+    ax = axes(p1)
+    g = [gap(scored(p1, ax, cross_fit=True))] + [gap(scored(samples({p}, allow_sealed=True), ax, cross_fit=False))
+                                                 for p in (2, 3)]
+    L, se, z = contrast(*g)
+    return {"D": [x["D"] for x in g], "SE": [x["se"] for x in g], "L": L, "SE_L": se, "z": z, "fading": bool(z > 1.645)}
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    train()
+    pooled_power() if "--pooled-power" in sys.argv else train()

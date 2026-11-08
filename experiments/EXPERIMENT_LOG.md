@@ -8015,3 +8015,11 @@ sorting validated; memory module = unknown batch factor.
 - **Gate (same rule as C5-S6):** power >= 0.8 at a true fade of 0.6 per passage with 1.5 s, 4,000 simulations,
   sheet replicate counts (passage 2: clone 5 has 1; passage 3: 2 each). Also reported: s x 1, and fade 0.83.
 - **If the gate fails:** no look; chapter 5 chromatin work stops at the train result.
+
+#### C5-S6 amendment result (2026-11-08; train only; A and B sealed and unread)
+
+- Power of L / SE(L) > 1.645: **0.53** at fade 0.6 with 1.5 s (gate); 0.79 with the measured s; 0.34 / 0.21 at
+  fade 0.83.
+- **Gate fails. No look; A and B stay sealed.** Per the pre-registration, chapter 5 chromatin work stops at the
+  train result: the A-P chromatin axis exists at passage 1 (D 0.38, ~5.6 SE out of fold); whether it fades is
+  untestable with 5 clones x 2 replicates.
