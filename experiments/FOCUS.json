@@ -1,9 +1,10 @@
 {
  "chapter": "6",
- "step": "C6-S0",
- "question": "Chapter 5 (clone memory) parked 2026-11-08, data-limited (WRITEUP_MEMORY.md, RETRO_2026-11-08.md). C6-S0: choose chapter 6 with Bence. No experiment runs until Bence picks the chapter question.",
+ "step": "C6-S1",
+ "question": "Chapter 6: cells into space. Can cells that each carry the core model's clone state (core_model.py), plus local rules (adhesion sorting, proportion feedback), build a gastruloid's A-P domains and its elongation, and predict an unseen spatial/elongation readout? C6-S1: plan + pre-flight (CHAPTER6_PLAN.md); no statistic on sealed data.",
  "next_steps": [
-  "C6-S0: choose the chapter 6 question with Bence"
+  "C6-S1: chapter 6 plan + pre-flight (targets, sealed test, power from counts)",
+  "C6-S2: cell-level simulator on core_model + cellware.tissue, checked on open/spent data"
  ],
  "allowed_scripts": [],
  "parked": [
@@ -14,7 +15,7 @@
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)"
  ],
- "approved_by": "Bence 2026-11-08: \"close (park) cpt5\"",
+ "approved_by": "Bence 2026-11-08: \"alright now lets go with your first choice for next cpt / 1. Cells into space (my pick).\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -32,6 +33,7 @@
   "C5-S6 (2026-11-08, 0aea3b0/eb3d1e4/ce49fd9): A-P chromatin axis real at p1 (gap 0.38, ~5.6 SE); fade power 0.14 / 0.53 < 0.8; no look",
   "C5-S6c (2026-11-08, 8e69e7b): public data search; best match (hESC sister-well multiome) not yet public",
   "C5-S7 (2026-11-08, 65d8565): DiffAssay pre-flight fails (growth only, n 5, rep 1 null); rep 2 sealed",
-  "C5 parked (2026-11-08): WRITEUP_MEMORY.md, RETRO_2026-11-08.md, lit/gap_2026-11-08.md"
+  "C5 parked (2026-11-08): WRITEUP_MEMORY.md, RETRO_2026-11-08.md, lit/gap_2026-11-08.md",
+  "C6-S0 (2026-11-08): Bence chose chapter 6 = cells into space"
  ]
 }
