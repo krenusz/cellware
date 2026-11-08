@@ -1,0 +1,116 @@
+{
+ "n_genes_panel": 2000,
+ "clones_split": [
+  "clone_1",
+  "clone_2",
+  "clone_3",
+  "clone_5",
+  "clone_6",
+  "clone_7"
+ ],
+ "self_rank": {
+  "clone_1": 1,
+  "clone_2": 7,
+  "clone_3": 3,
+  "clone_5": 2,
+  "clone_6": 1,
+  "clone_7": 1
+ },
+ "self_minus_other_corr": {
+  "clone_1": 0.4781,
+  "clone_2": -0.4795,
+  "clone_3": 0.3254,
+  "clone_5": 0.341,
+  "clone_6": 0.8914,
+  "clone_7": 0.537
+ },
+ "split_corr": {
+  "clone_1": {
+   "clone_1": 0.441,
+   "clone_2": -0.0555,
+   "clone_3": -0.2387,
+   "clone_4": -0.034,
+   "clone_5": 0.248,
+   "clone_6": -0.1043,
+   "clone_7": -0.0379
+  },
+  "clone_2": {
+   "clone_1": -0.6031,
+   "clone_2": -0.7276,
+   "clone_3": -0.2111,
+   "clone_4": 0.5967,
+   "clone_5": -0.7032,
+   "clone_6": -0.0635,
+   "clone_7": -0.5041
+  },
+  "clone_3": {
+   "clone_1": -0.5281,
+   "clone_2": -0.5651,
+   "clone_3": 0.0795,
+   "clone_4": 0.4444,
+   "clone_5": -0.602,
+   "clone_6": 0.2082,
+   "clone_7": -0.4331
+  },
+  "clone_5": {
+   "clone_1": 0.3238,
+   "clone_2": -0.1346,
+   "clone_3": -0.223,
+   "clone_4": -0.0609,
+   "clone_5": 0.2959,
+   "clone_6": -0.0514,
+   "clone_7": -0.1241
+  },
+  "clone_6": {
+   "clone_1": -0.4464,
+   "clone_2": -0.5528,
+   "clone_3": -0.0012,
+   "clone_4": 0.2865,
+   "clone_5": -0.4982,
+   "clone_6": 0.6005,
+   "clone_7": -0.5332
+  },
+  "clone_7": {
+   "clone_1": -0.0373,
+   "clone_2": -0.0319,
+   "clone_3": 0.1657,
+   "clone_4": 0.1292,
+   "clone_5": -0.0654,
+   "clone_6": -0.2275,
+   "clone_7": 0.5258
+  }
+ },
+ "T_critical": 5,
+ "p_at_critical": 0.029154518950437316,
+ "power": {
+  "gap_x1.0": 0.4136,
+  "gap_x0.5": 0.18625
+ },
+ "gate": {
+  "rule": "power >= 0.8 with the train gap halved",
+  "pass": false
+ },
+ "parent_sig_corr_between_clones": {
+  "clone_1|clone_2": -0.05,
+  "clone_1|clone_3": -0.27,
+  "clone_1|clone_4": -0.376,
+  "clone_1|clone_5": 0.795,
+  "clone_1|clone_6": -0.147,
+  "clone_1|clone_7": 0.286,
+  "clone_2|clone_3": 0.205,
+  "clone_2|clone_4": 0.396,
+  "clone_2|clone_5": -0.106,
+  "clone_2|clone_6": 0.033,
+  "clone_2|clone_7": 0.124,
+  "clone_3|clone_4": 0.263,
+  "clone_3|clone_5": -0.27,
+  "clone_3|clone_6": 0.431,
+  "clone_3|clone_7": 0.027,
+  "clone_4|clone_5": -0.513,
+  "clone_4|clone_6": 0.176,
+  "clone_4|clone_7": -0.239,
+  "clone_5|clone_6": -0.126,
+  "clone_5|clone_7": 0.335,
+  "clone_6|clone_7": -0.29
+ }
+}

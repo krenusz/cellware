@@ -7914,3 +7914,17 @@ sorting validated; memory module = unknown batch factor.
   - **Look only if power >= 0.8 under the halved gap.**
 - **Stopping:** confirmed = memory is carried in expression through a bottleneck (C5 mechanism). Not confirmed
   = not visible at 48 h. Underpowered = no look; the set stays locked.
+
+### C5-S5 train result (2026-11-08; VA only; subclone matrix locked and unread, 12b369d)
+
+- Panel: the 2,000 most variable expressed genes. Transcript-to-gene mapping from Ensembl 112 cDNA headers.
+- Split-replicate self-match (same batch, independent bulk references): self rank 1 for clones 1, 6, 7; rank 2
+  for clone 5; rank 3 for clone 3; rank 7 for clone 2 (its replicates anti-correlate, -0.73; clone 2 split 1
+  matches clone 4 best, +0.60). Self-minus-other correlation gap: median 0.41.
+- Exact test: T <= 5 needed (p 0.029). Simulated power: **0.41** at the train gap, **0.19** at half the gap.
+- **Gate fails (needs 0.8). No look; the subclone matrix stays locked.** Caveat, not used to override: the
+  real test averages 2 replicates on each side, so single-replicate splits understate the signal. Even so, the
+  unshrunk power is 0.41, and the test also crosses batch and cell state (ESC vs 48 h).
+- Reading: clone identity in bulk expression is not reproducible enough at passage 1 (1-2 shallow libraries,
+  2 failed) to carry a 3-subclone memory test. Possible clone 2 library issue (rep 1 matches clone 4) noted,
+  not acted on.

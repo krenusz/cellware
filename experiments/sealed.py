@@ -24,6 +24,7 @@ DATASETS = {
     "imaging": "exploratory only (no confirmation claims without a new sealed shard)",
     "fm_weights": "model weights, not data",
     "orthologs": "reference table, not data",
+    "ensembl_ref": "reference table, not data (Ensembl 112 GRCm39 cDNA headers -> tx2gene.tsv, for C5-S5)",
     # G9 mechanism set (sealed 2026-11-07 before any statistic; structure check only). Drug series
     # partitioned by experiment series (dates from scan IDs): train = Dec 2024 + Feb/Mar 2025 files;
     # A = May 3 2025, B = July 28 2025, C = May 24 2025 (iou metrics only). Locked = not analysed yet.
