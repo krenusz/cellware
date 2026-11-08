@@ -8054,3 +8054,20 @@ sorting validated; memory module = unknown batch factor.
 - Diagnostic (described, no rule derived): the replicate noise is spread, not one bad library. Largest splits:
   clone 1 (0.01 vs 0.25) and clone 5 (0.33 vs 0.51). Peak counts range 75k-391k with no clean outlier.
 - Reading: the limit is the data (5 clones x 2 replicates), not the readout.
+
+### C5-S6c: public data search for a stronger clone-over-passages set (2026-11-08; search only, nothing downloaded)
+
+- **Serves: C5-S6.** Bence: "Search public data for a stronger set. That means clone-resolved chromatin or
+  expression measured over passages, with more clones or replicates."
+- **Best design match, data not public:** Linneberg-Agerholm et al. 2026 bioRxiv 10.64898/2026.09.02.748863
+  (hESC, lentiviral barcodes, about 981 analysed clones, same-well vs sister-well split at passage 2, scRNA at
+  hESC p2/p3, primitive streak, definitive endoderm; multiome at p3/PS/DE, 1,333 clones). Sister agreement
+  0.77 vs 0.54 random at p3 (n 343); mesoderm-biased clones carry pre-existing accessibility at mesoderm
+  enhancers (LRP6, Wnt). Decay over passages not quantified. Data "deposited to GEO, public at publication":
+  no accession yet.
+- **Weaker fits:** scRIPT (Cetin et al. 2026, 10.64898/2026.10.14.759042: mESC, barcoding D0 to D7 of
+  differentiation, not passages; fate-independent clonal memory enriched in imprinted genes). Mold et al. 2024
+  Cell Systems (human T-cell clones, RNA + ATAC, over a year in vivo; GEO not found; a different system). hiPSC
+  ClonMapper cardiac preprint 10.64898/2025.12.12.694049 (engineering, not passage-resolved molecular data).
+- **Reading:** no public dataset beats the Raj ATAC set for clone-resolved chromatin over passages in
+  pluripotent cells. The hESC set would (hundreds of clones, sister splits, multiome) once released.
