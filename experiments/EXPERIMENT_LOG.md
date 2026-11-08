@@ -7865,3 +7865,52 @@ sorting validated; memory module = unknown batch factor.
 
   **Gate fails (0.77 < 0.8 at R 0.6, rho 0). Partition A NOT spent.** The oracle's power block is updated to
   sd 0.573, and the oracle now refuses as well (analytic power 0.70). A and B stay sealed.
+
+## C5-S5: do subclones carry their parent clone's expression signature through a single-cell bottleneck? (pre-registered 2026-11-08)
+
+- **Serves: C5-S5** (FOCUS.json; Bence: "download all the data for possible other candidates and reinvestigate best
+  candidate"). Script: `c5s5_subclone_expr.py`.
+- **Candidate ranking (why this one):**
+  - The Raj store's other memory-carrier candidates are bulk RNA, passage 1 only (VA_1..18), subclone RNA
+    (F8MWB5), and Wnt line scans.
+  - Only the subclone set tests memory across an event: a single-cell bottleneck plus the passages since.
+  - Wnt, Incucyte, seqFISH and IF measure readouts, not carriers, and were not downloaded.
+- **Pre-flight:**
+  1. Unit: **subclone** (n = 3: 1s2, 5s2, 6a). Parents: clones 1, 5, 6 among 7 candidate clones.
+  2. Readout:
+     - Test set: within-batch signature = log2 CPM(subclone) - log2 CPM(bulk), mean of 2 replicates each,
+       from F8MWB5 (48 h, Mar 2026).
+     - Train set: parent signature = log2 TPM(clone) - log2 TPM(bulk reference), passage-1 ESC (kallisto,
+       VA_1..18), summed to gene level.
+     - Genes: the train-defined panel, the 2,000 most variable genes across the VA clone means (expressed:
+       mean TPM >= 10), mapped by gene id.
+     - Failed libraries are excluded on QC already read: VA_1 (0.75 M reads) and VA_11 (23% aligned).
+     - Bulk reference: VA_2, VA_5, VA_9 (bulk + rainbow).
+  3. Used data: none. G5 (subclone polarity kept, ratio 1.21) is phenotype, not expression.
+  4. Power: from train only, by split replicates in VA (below).
+  5. Exposure: file names, methods text, mapping stats. The authors' PCA and heatmap are locked and unopened.
+  6. Batch / state confound: the test is 48 h (likely pre-CHIR aggregates), the train is ESC, and the
+     batches differ (2025 vs 2026). Within-batch signatures relative to bulk cancel batch offsets, not
+     state changes; a state shift weakens matching and does not create false matches.
+- **Statistic:**
+  - For each subclone, the Spearman correlation of its signature with each of the 7 clone signatures.
+  - rank_s = rank of its parent among the 7 (1 = best).
+  - T = sum of the 3 parent ranks.
+  - p = P(T <= observed) under independent uniform ranks (exact, 343 cases; minimum p = 1/343 = 0.003).
+- **Primary (one look, the last of its set; needs Bence's verbatim OK, H13):** clone memory in expression is
+  confirmed if p < 0.05 (T <= 5 of 3..21).
+- **Secondary (described):**
+  - Does each subclone rank its parent above the parent's propensity-group mates? Posterior: 1, 6; anterior:
+    3, 5, 7. That separates clone-specific memory from A-P-state memory.
+  - Mean parent correlation vs mean non-parent correlation.
+- **Train power (H14 analogue, decided now):**
+  - In VA, split replicates for clones 1, 2, 3, 5, 6, 7 (2 good libraries each).
+  - Split 1 signatures use VA_5 as bulk; split 2 use mean(VA_2, VA_9). Independent bulk references avoid
+    shared-noise matches.
+  - Self-match rank of each clone's split-1 signature among the 7 split-2 signatures, with clone 4 (VA_12)
+    included as a candidate in split 2.
+  - Power = simulated P(p < 0.05) when 3 subclones draw ranks from the empirical self-match rank
+    distribution, degraded by a state shift. A pessimistic version uses the train correlation gap halved.
+  - **Look only if power >= 0.8 under the halved gap.**
+- **Stopping:** confirmed = memory is carried in expression through a bottleneck (C5 mechanism). Not confirmed
+  = not visible at 48 h. Underpowered = no look; the set stays locked.
