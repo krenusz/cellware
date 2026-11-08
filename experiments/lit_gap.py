@@ -62,12 +62,16 @@ SEEDS = {
     "Chimeric 3D gastruloids 2022 (Bra-/- + WT)": "10.1242/dev.200812",
     "Braccioli 2025 Dev Cell (cross-lineage dependencies)": "10.1016/j.devcel.2025.02.013",
     "Triandafillou 2025 (gastruloid spatial cell-type map)": "10.1101/2025.07.14.664617",
+    # chapter 5 (clone memory carriers), added 2026-11-08
+    "Linneberg-Agerholm 2026 (hESC clonal memory, sister wells, multiome)": "10.64898/2026.09.02.748863",
+    "Mold 2024 (clonally heritable expression, RNA + ATAC)": "10.1016/j.cels.2024.01.004",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
 TOPICS = {
-    "mixing_rescue": [r"chimer", r"rescue", r"non-autonomous", r"complement", r"elongat", r"mixed population"],
+    "mixing_rescue": [r"chimer", r"non-autonomous", r"gastruloid.{0,40}(rescue|mix)", r"elongat", r"mixed population"],
     "clonal_dominance": [r"clonal dominance", r"cell competition", r"chimer", r"take ?over", r"winner"],
+    "chromatin_memory": [r"chromatin accessib", r"atac", r"epigenetic memory", r"enhancer.{0,30}prim", r"clonal.{0,20}(signature|fingerprint)"],
     "imprinting_potency": [r"imprint", r"dlk1", r"meg3", r"tet1", r"methylation"],
     "instruction_vs_selection": [
         r"instruct",

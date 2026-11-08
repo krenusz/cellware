@@ -1,10 +1,9 @@
 {
- "chapter": "5",
- "step": "C5-S6",
- "question": "Chapter 5 (clone memory). C5-S6: does a clone's position on the passage-1 anterior-posterior chromatin axis fade over passages like its A-P propensity (G3, ~0.6 per passage)? Axis = summit bins differing between anterior (3, 5, 7) and posterior (1, 6) clones at passage 1, cross-fitted by replicate. Train = ATAC passages 0-1 (open); test = passage 2 (A) and passage 3 (B, last: Bence's verbatim OK, H13). Power gate on train before any look; replaces the C5-S4 distinctness look on the same partitions.",
+ "chapter": "6",
+ "step": "C6-S0",
+ "question": "Chapter 5 (clone memory) parked 2026-11-08, data-limited (WRITEUP_MEMORY.md, RETRO_2026-11-08.md). C6-S0: choose chapter 6 with Bence. No experiment runs until Bence picks the chapter question.",
  "next_steps": [
-  "C5-S4 (superseded if C5-S6 passes its gate; same sealed partitions)",
-  "C5-S3: Raj reserve confirmation (needs Bence's OK, H13)"
+  "C6-S0: choose the chapter 6 question with Bence"
  ],
  "allowed_scripts": [],
  "parked": [
@@ -12,9 +11,10 @@
   "G13 DiffAssay",
   "#28 dominance",
   "GSE291244 founder state (not memory)",
-  "chapter 4 rescue (closed; partition C reserve)"
+  "chapter 4 rescue (closed; partition C reserve)",
+  "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)"
  ],
- "approved_by": "Bence 2026-11-08: \"1\" (pre-register the A-P-axis chromatin test and run its power gate on passages 0-1)",
+ "approved_by": "Bence 2026-11-08: \"close (park) cpt5\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -28,6 +28,10 @@
   "C5-S1 (2026-11-07): pre-flights; GSE291244 fails; Raj ATAC passes structure (7 clones x passages 0-3, 51 samples); blood memory already answered (#6, #13)",
   "C5-S2 (2026-11-07, 05efd3b): no single memory law; blood rho_div ~0.96, ES expansion rho_div 1 + passaging loss series-specific; law in core_model.memory_through",
   "C5-S4 train (2026-11-08, 34b224b): clones chromatin-distinct at p1; S-ratio power 0.77 < 0.8, A and B sealed; paused",
-  "C5-S5 (2026-11-08, 8530880): subclone expression memory; split-replicate power 0.41 (0.19 at half gap) < 0.8; F8MWB5 stays locked"
+  "C5-S5 (2026-11-08, 8530880): subclone expression memory; split-replicate power 0.41 (0.19 at half gap) < 0.8; F8MWB5 stays locked",
+  "C5-S6 (2026-11-08, 0aea3b0/eb3d1e4/ce49fd9): A-P chromatin axis real at p1 (gap 0.38, ~5.6 SE); fade power 0.14 / 0.53 < 0.8; no look",
+  "C5-S6c (2026-11-08, 8e69e7b): public data search; best match (hESC sister-well multiome) not yet public",
+  "C5-S7 (2026-11-08, 65d8565): DiffAssay pre-flight fails (growth only, n 5, rep 1 null); rep 2 sealed",
+  "C5 parked (2026-11-08): WRITEUP_MEMORY.md, RETRO_2026-11-08.md, lit/gap_2026-11-08.md"
  ]
 }
