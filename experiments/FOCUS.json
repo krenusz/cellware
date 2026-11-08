@@ -1,9 +1,9 @@
 {
  "chapter": "5",
- "step": "C5-S5",
- "question": "Chapter 5 (clone memory). C5-S5: is clone memory carried in gene expression through a single-cell bottleneck? Do subclones 1s2, 5s2, 6a (RNA 48 h, Mar 2026, vs bulk) carry their own parent clone's expression signature (passage-1 ESC RNA, VA_1..18) better than the other clones'? Train = VA (open); test = F8MWB5 expression matrix, locked, ONE look, last of its set (H13: Bence's verbatim OK).",
+ "step": "C5-S6",
+ "question": "Chapter 5 (clone memory). C5-S6: does a clone's position on the passage-1 anterior-posterior chromatin axis fade over passages like its A-P propensity (G3, ~0.6 per passage)? Axis = summit bins differing between anterior (3, 5, 7) and posterior (1, 6) clones at passage 1, cross-fitted by replicate. Train = ATAC passages 0-1 (open); test = passage 2 (A) and passage 3 (B, last: Bence's verbatim OK, H13). Power gate on train before any look; replaces the C5-S4 distinctness look on the same partitions.",
  "next_steps": [
-  "C5-S4 (paused): ATAC 3-passage slope design + batch check; A+B pooled look needs Bence's verbatim OK",
+  "C5-S4 (superseded if C5-S6 passes its gate; same sealed partitions)",
   "C5-S3: Raj reserve confirmation (needs Bence's OK, H13)"
  ],
  "allowed_scripts": [],
@@ -14,7 +14,7 @@
   "GSE291244 founder state (not memory)",
   "chapter 4 rescue (closed; partition C reserve)"
  ],
- "approved_by": "Bence 2026-11-08: \"download all the data for possible other candidates and reinvestigate best candidate\"",
+ "approved_by": "Bence 2026-11-08: \"1\" (pre-register the A-P-axis chromatin test and run its power gate on passages 0-1)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -27,6 +27,7 @@
   "C4-S5 (2026-11-07): chapter 4 closed, data-limited (WRITEUP_RESCUE.md, RETRO_2026-11-07c.md); C sealed",
   "C5-S1 (2026-11-07): pre-flights; GSE291244 fails; Raj ATAC passes structure (7 clones x passages 0-3, 51 samples); blood memory already answered (#6, #13)",
   "C5-S2 (2026-11-07, 05efd3b): no single memory law; blood rho_div ~0.96, ES expansion rho_div 1 + passaging loss series-specific; law in core_model.memory_through",
-  "C5-S4 train (2026-11-08, 34b224b): clones chromatin-distinct at p1; S-ratio power 0.77 < 0.8, A and B sealed; paused"
+  "C5-S4 train (2026-11-08, 34b224b): clones chromatin-distinct at p1; S-ratio power 0.77 < 0.8, A and B sealed; paused",
+  "C5-S5 (2026-11-08, 8530880): subclone expression memory; split-replicate power 0.41 (0.19 at half gap) < 0.8; F8MWB5 stays locked"
  ]
 }
