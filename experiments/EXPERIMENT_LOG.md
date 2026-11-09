@@ -8429,3 +8429,26 @@ sorting validated; memory module = unknown batch factor.
      is why Q1 is a prediction; still not an unseen test. T-e exposed.
   6. Literature: read in full before code (C6-S6 notes); unverified items listed there (Guan kernel, McNamara
      cadherin LOF).
+
+### C6-S7 result (2026-11-09; `results_gastruloid/c6s7_sort.json`; synthetic only, no clone data used)
+
+- **Step 0: FAIL, no point passes** -> no data checks (pre-registered). Synthetic +-2 mixes, 6 reps each:
+  - **Elongation works:** same-type crawling lam_F 2 gives moment elongation 0.51-0.53 (lam_F 0: 0.06), and
+    competence 0 stays round (0.05-0.07): S0-b and S0-c pass at lam_F 2 for every beta. lam_F 0.5 is too weak
+    (+0.03 to +0.06).
+  - **One pole fails everywhere:** polar index 0.08-0.16, multipolar rate 0.83-1.00 at all 9 points (S0-a).
+    beta 0 fails as Guan predicts, but so do beta 0.05 and 0.2 with range R 8.
+  - Runtime 0.7-2.5 s per gastruloid (S0-d passes).
+- **Diagnostic (disclosed, synthetic only, after the failure; `scratchpad/diag_c6s7.py`):** beta 0.2: R 8 -> 40
+  and 1,500 -> 5,000 steps leave polar at 0.11-0.12 (multipolar 0.83-1.00). **beta 1.0 with R 40: multipolar 0.00
+  but polar 0.10**: posterior cells merge into one cluster in the **centre**, with anterior cells around it
+  (core-shell engulfment), not a pole.
+- **Reading:** the design merges the posterior cells but places them inside. The cause is my mapping, not the
+  literature: I gave both types equal cohesion (like weight 1). Guan's top settings are **asymmetric**: strong
+  cohesion in the majority type, moderate in the attracting type, weak between types, with long-range attraction
+  in the type that must gather at the surface. With that asymmetry the attracting type forms a surface cap
+  (= one pole); with equal cohesion it forms a core. McNamara's live imaging (a Wnt-high ring that pushes out a
+  Wnt-low domain) is also a surface-cap route, not a core.
+- **Consequence:** C6-S7 fails at step 0 as registered. A corrected mapping (asymmetric cohesion as in Guan)
+  is an amendment that needs Bence's OK and its own pre-registration (C6-S7a); nothing has been fitted to
+  clone data.

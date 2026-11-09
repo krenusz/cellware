@@ -1,0 +1,122 @@
+{
+ "base": {
+  "steps": 1500,
+  "dt": 0.05,
+  "noise": 0.3,
+  "k_rep": 4.0,
+  "k_adh": 3.0,
+  "r_adh": 2.6,
+  "unlike": 0.3333333333333333,
+  "R_lr": 8.0,
+  "t_int": 20,
+  "n_links": 3,
+  "cone": 45.0,
+  "memory": 0.99,
+  "g": 0.834,
+  "a_star": 0.377
+ },
+ "step0": {
+  "(0.0, 0.0)": {
+   "polar": 0.11701513324465453,
+   "multipolar_rate": 0.8333333333333334,
+   "elong": 0.05654864373215287,
+   "elong_c0": 0.049814554631700626,
+   "sec": 0.6579784552256266,
+   "S0a": false,
+   "S0b": false,
+   "S0c": false,
+   "S0d": true
+  },
+  "(0.0, 0.5)": {
+   "polar": 0.08898329887523126,
+   "multipolar_rate": 1.0,
+   "elong": 0.08739141914048924,
+   "elong_c0": 0.07071191827257615,
+   "sec": 0.819342295328776,
+   "S0a": false,
+   "S0b": false,
+   "S0c": true,
+   "S0d": true
+  },
+  "(0.0, 2.0)": {
+   "polar": 0.1114088953499064,
+   "multipolar_rate": 1.0,
+   "elong": 0.5125847298899705,
+   "elong_c0": 0.0674234272178277,
+   "sec": 1.1717028617858887,
+   "S0a": false,
+   "S0b": true,
+   "S0c": true,
+   "S0d": true
+  },
+  "(0.05, 0.0)": {
+   "polar": 0.08047708890266005,
+   "multipolar_rate": 1.0,
+   "elong": 0.06287080162405582,
+   "elong_c0": 0.058569862286892184,
+   "sec": 1.444058855374654,
+   "S0a": false,
+   "S0b": false,
+   "S0c": false,
+   "S0d": true
+  },
+  "(0.05, 0.5)": {
+   "polar": 0.11108015500149655,
+   "multipolar_rate": 1.0,
+   "elong": 0.09792668462518139,
+   "elong_c0": 0.052979769065597336,
+   "sec": 1.7041140794754028,
+   "S0a": false,
+   "S0b": false,
+   "S0c": true,
+   "S0d": true
+  },
+  "(0.05, 2.0)": {
+   "polar": 0.14647646960432517,
+   "multipolar_rate": 1.0,
+   "elong": 0.5301313412452271,
+   "elong_c0": 0.05382183999922596,
+   "sec": 2.1516166528066,
+   "S0a": false,
+   "S0b": true,
+   "S0c": true,
+   "S0d": true
+  },
+  "(0.2, 0.0)": {
+   "polar": 0.08454179676814916,
+   "multipolar_rate": 1.0,
+   "elong": 0.06813193912988424,
+   "elong_c0": 0.10404240249827335,
+   "sec": 1.4470296303431194,
+   "S0a": false,
+   "S0b": false,
+   "S0c": false,
+   "S0d": true
+  },
+  "(0.2, 0.5)": {
+   "polar": 0.11101751291116345,
+   "multipolar_rate": 1.0,
+   "elong": 0.12258899960407488,
+   "elong_c0": 0.061810870723977805,
+   "sec": 1.7944477399190266,
+   "S0a": false,
+   "S0b": false,
+   "S0c": true,
+   "S0d": true
+  },
+  "(0.2, 2.0)": {
+   "polar": 0.15695019607135527,
+   "multipolar_rate": 1.0,
+   "elong": 0.5258331735703404,
+   "elong_c0": 0.06975234854725093,
+   "sec": 2.5178699096043906,
+   "S0a": false,
+   "S0b": true,
+   "S0c": true,
+   "S0d": true
+  }
+ },
+ "step0_passing": [],
+ "note": "no step-0 point passes: model fails, no data checks (pre-registered)",
+ "minutes": 0.5402312477429708
+}
