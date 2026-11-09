@@ -1,15 +1,16 @@
 {
  "chapter": "6",
- "step": "C6-S4",
+ "step": "C6-S5",
  "question": "Chapter 6: cells into space. Can cells that each carry the core model's clone state (core_model.py), plus local rules (adhesion sorting, proportion feedback), build a gastruloid's A-P domains and its elongation, and predict an unseen spatial/elongation readout? C6-S1: plan + pre-flight (CHAPTER6_PLAN.md); no statistic on sealed data.",
  "next_steps": [
-  "C6-S4: fit clone-to-pole coupling (Wnt bias b0, taxis chi) of variant A4 to the open G1a fit-shard polarities (fraction readout) by leave-one-clone-out CV; then Q2/Q3 out of fit; then fixed-model predictions + H14 power for S1/S2",
-  "C6-S5: sealed look(s) only if a prediction clears H14 power 0.8 and Bence OKs the partition (S2 is the last partition, H13)"
+  "C6-S5: one new rule (single disclosed exception to the stopping rule): adhesion independent of clone state; clones sort only by taxis on the Wnt pole; same step-0 trim + LOCO CV as C6-S4; S1 power ceiling from the 1-D core recorded",
+  "C6-S6: if CV fails -> close chapter 6 (write-up + retro); if it passes -> fixed-model predictions, H14 for S2 (last partition, Bence's OK)"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
   "c6s3_break.py",
-  "c6s4_fit.py"
+  "c6s4_fit.py",
+  "c6s5_rule.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -19,7 +20,7 @@
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)"
  ],
- "approved_by": "Bence 2026-11-09: \"Yes, C6-S4\" (answer to: go ahead with C6-S4, fitting how strongly clone state couples to the pole?)",
+ "approved_by": "Bence 2026-11-09: \"1\" (answer to: add one new rule to fix the trade-off, or close chapter 6?)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -41,6 +42,7 @@
   "C6-S0 (2026-11-08): Bence chose chapter 6 = cells into space",
   "C6-S1 (2026-11-08, 942cd4e): plan + pre-flight; chimera set exposed (fit only); sealed S1 Jan24 1+6 p4 (34), S2 morph C; neither powered yet",
   "C6-S2 (2026-11-08, d5f50a8): 2-D adhesion model sorts locally (0.88 homotypic) but no A-P axis; Q1-Q3 not run",
-  "C6-S3 (2026-11-09, 1466865): Wnt/T (A4/A5, amended) builds one axis + elongation; Potts fails P1/P2; Q1 fails (density artefact; fraction readout ~0), Q2 passes, Q3 falls"
+  "C6-S3 (2026-11-09, 1466865): Wnt/T (A4/A5, amended) builds one axis + elongation; Potts fails P1/P2; Q1 fails (density artefact; fraction readout ~0), Q2 passes, Q3 falls",
+  "C6-S4 (2026-11-09, f72980e): LOCO-CV coupling fit FAILS (signs 3/5, rho 0.6); pole formation vs clone coupling trade-off; S1/S2 sealed, no prediction"
  ]
 }
