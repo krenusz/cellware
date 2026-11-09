@@ -8381,3 +8381,51 @@ sorting validated; memory module = unknown batch factor.
   the model is not supported.
 - **Pre-registered consequence:** no further rule. No fixed model, no S2 prediction (S1 already dropped for power).
   Chapter 6 closes (C6-S6: write-up + retro), pending Bence's OK to move FOCUS.
+
+## C6-S7: state-first sorting redesign (exploratory under H17) (pre-registered 2026-11-09)
+
+- **Serves: C6-S7** (FOCUS.json, 2d9a72d). Bence: "Yes, C6-S7". Script: `c6s7_sort.py` (new; imports
+  `c6s2_space.py`, `c6s3_break.py` readouts and builders, `c6s4_fit.py` fraction readout). Design source:
+  `lit/reading_c6_mechanism.md` (de Jong 2024, Guan/Hormoz 2025, McNamara 2024).
+- **Label: EXPLORATORY (H17)** unless the S2 power computed below from this model's own prediction is >= 0.8.
+  S1 is unpowerable under the core (<= 0.20) and is not a test here.
+- **Model (particle, n 300, 1,500 steps, dt 0.05, noise 0.3):**
+  1. *Identity from state, no Wnt field:* posterior (P) = the q lowest-s cells, q by G5 proportion feedback
+     (`c6s2_space.identities`), s = clone state copy (rho_g 0.059) + cell noise. Fixed from the start.
+  2. *Binary sorting:* repulsion below contact (k_rep 4); attraction spring k_adh 3 within 2.0-2.6, weight 1 for
+     like pairs and 1/3 for unlike pairs (de Jong J 10 vs 30).
+  3. *Long-range posterior attraction (Guan):* each P cell is pulled toward P cells within R 8 with total force
+     beta x (unit vector to their centroid).
+  4. *Same-type crawling (de Jong best variant):* each cell has a polarity (random start). Every 20 steps it links
+     to up to 3 same-type neighbours within 2.6 inside a +-45 degree double cone around its polarity; each link
+     pulls both cells together with force lam_F x competence c. Polarity update every 20 steps: 0.99 own + 0.01
+     mean of linked neighbours' polarities (Vicsek).
+- **Step 0 (synthetic +-2 mixes, 50:50, c = 1; 6 reps per point):** grid beta {0, 0.05, 0.2} x lam_F {0, 0.5, 2}.
+  Criteria: **S0-a one pole**: polar index >= 0.5 and multipolar rate <= 20% (multipolar = more than one
+  connected P cluster, contact 2.6, holding >= 10% of P cells); **S0-b elongation**: moment elongation >= 0.15
+  above the lam_F 0 run at the same beta; **S0-c competence**: same point with c = 0 within 0.05 of lam_F 0;
+  **S0-d** runtime <= 10 s per gastruloid. **Chosen setting** = the passing point with the smallest beta, then
+  the smallest lam_F (parsimony). Expected from Guan: beta 0 fails S0-a. If no point passes: model fails,
+  reported, no data checks.
+- **Data checks at the chosen setting (no parameter is fitted to clone data, so these are predictions, not CV):**
+  - **Q1 clone placement** (clone+bulk 50:50, 40 per clone, fraction readout as C6-S4): pass = signs 5/5 and
+    Spearman >= 0.9 vs the G1a fit-shard means (1 -0.92, 3 0.88, 5 1.05, 6 -1.13, 7 0.73). Magnitude reported
+    vs targets (pooled within-clone SD 0.87). Also reported: multipolar rate (benchmark McNamara 0/34).
+  - **Q2 fixed boundary** (3 vs 1 at 5 ratios, 20 each): fraction-crossing slope inside the G1b CI
+    [-0.396, 0.423].
+  - **Q3** (low-competence clone c 0.2, z 0, at 0/20/50/80/100% in bulk, 20 each): moment elongation falls
+    monotonically. Exposed target (T-e): described only.
+- **H17 / S2 prediction:** 6a+bulk 1 - circularity over the member mean (100 each of pure bulk, pure 6a, 50:50
+  mix; c 6a 0.2; z 0 primary, z = clone 6 sensitivity), as a fraction of the pure gap x the spent pure-plate gap
+  0.180 (C4-S4: bulk 0.222, 6a 0.042); power one-sided at alpha 0.05 with SE 0.0292 (C6-S1 table). >= 0.8 ->
+  S2 look proposable to Bence (H13, last partition); otherwise C6-S7 stays exploratory.
+- **Stopping:** no parameter is tuned after the step-0 choice; failures are reported.
+- **Pre-flight:**
+  1. Unit: gastruloid; clones are model inputs.
+  2. Readout: fraction line scan (C6-S4), moment elongation, 1 - circularity (S2, as C4-S2a).
+  3. Used data first: only open/spent summaries (G1a fit shard, G1b, C4-S4 pure plate).
+  4. Power: H17 block above; S1 dropped (core ceiling 0.20).
+  5. Exposure: the 5 Q1 targets were seen and used (C3-S1, C6-S3..S5); here no parameter is fitted to them, which
+     is why Q1 is a prediction; still not an unseen test. T-e exposed.
+  6. Literature: read in full before code (C6-S6 notes); unverified items listed there (Guan kernel, McNamara
+     cadherin LOF).
