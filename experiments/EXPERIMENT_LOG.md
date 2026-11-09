@@ -8181,3 +8181,39 @@ sorting validated; memory module = unknown batch factor.
   graph); (b) a Cellular Potts implementation, where surface tension coarsens domains to two poles. Plus the
   smoothed outline readout. The smoke tests will be re-specified with substantive thresholds (polar index >= 0.5,
   moment elongation rising with k) so they cannot pass trivially.
+
+## C6-S3: two symmetry-breaking rules for the 2-D gastruloid, (A) Wnt/T polarity and (B) Cellular Potts (pre-registered 2026-11-09)
+
+- **Serves: C6-S3** (FOCUS.json). Bence: "test both". C6-S2 showed that adhesion plus proportion feedback gives
+  patches, not one A-P axis. Script: `c6s3_break.py` (new; numba for B). It reuses the readouts in
+  `c6s2_space.py`, now with the smoothed outline. No sealed file is read.
+- **Pre-flight:** as C6-S2 (unit simulated gastruloid; open/spent summaries only; no power, since these are build
+  checks; exposure as C6-S1). Literature: wave-pinning polarity (Mori 2008; mass-conserved reaction-diffusion
+  gives one domain); Cellular Potts sorting (Graner & Glazier 1992); Oriola 2024.
+- **Variant A, Wnt/T polarity on the C6-S2 particle model:**
+  - Each cell has a Wnt level u. On the contact graph:
+    du/dt = D L u + (b_s + u^2 / (1 + u^2)) * V - u, where V is a global pool (wave-pinning; total Wnt fixed, which
+    is also the proportion feedback).
+  - b_s = b0 * sigmoid(-s): posterior-leaning cells activate more easily.
+  - P identity: u > 0.5 * max(u).
+  - Movement: rule 1 adhesion (s-based) plus taxis up the local u gradient, with weight chi * (-s) (posterior
+    cells move toward high Wnt, anterior cells away).
+  - Rule 3 extension as in C6-S2, with the axis from the A to the P centroid.
+- **Variant B, Cellular Potts (2-D lattice, numba):**
+  - Each cell is about 20 pixels with an area constraint. Contact energy J_ij = J0 + Jd * |s_i - s_j| between
+    cells, J_cm with the medium. Metropolis at temperature T.
+  - P identity: the same rank rule as C6-S2 (proportion feedback).
+  - Rule 3 as a bias: copies by P cells along the A->P axis, away from the body centre, are favoured with energy
+    -k * c * coherence.
+- **Substantive smoke tests (synthetic 50:50, states +2/-2, 6 runs each; must pass before any data check):**
+  - P1: k = 0 gives polar index >= 0.5 and homotypic contacts >= 0.75.
+  - P2: a pure body (one clone, state 0) still forms one P pole (polar index >= 0.5). Pure gastruloids polarise.
+  - E1: moment elongation at the chosen k minus at k = 0 >= 0.15.
+  - E2: c = 0 in every cell keeps moment elongation within 0.05 of k = 0.
+  - R: <= 20 s per gastruloid.
+  - Parameters may be calibrated on these synthetic tests only (disclosed). Each variant is tried at most 3
+    calibration settings per test; then pass or fail is final.
+- **Data checks (each variant that passes all five):** Q1 and Q2 with the C6-S2 criteria; reps 40 (Q1) and 20 per
+  ratio (Q2), fewer than C6-S2's 100/40 because of run time. Q3 qualitative, as in C6-S2.
+- **Stopping rule:** a variant failing P1 or P2 is dropped. If both fail, chapter 6 records that neither rule builds
+  an axis in this implementation, and Bence decides. If both pass Q1/Q2, model selection by CV is C6-S4.
