@@ -8601,3 +8601,26 @@ sorting validated; memory module = unknown batch factor.
   2. Crawling in both types destroys polarity. de Jong's posterior-only ("yellow-yellow") crawling variant
      also fit their shapes and would not stretch the anterior domain.
 - No clone data used, nothing sealed touched. No further amendment without Bence.
+
+## C6-S7f: Potts cluster-count check and posterior-only crawling (pre-registered 2026-11-09)
+
+- **Serves: C6-S7** (amendment within the step; exploratory under H17 unless S2 power >= 0.8). Bence: "1"
+  (answer to: C6-S7f, check the Potts cluster count, then posterior-only crawling at 100,000 MCS). Scripts:
+  `c6s7f_potts_pcrawl.py` (new), `c6s7c_potts.py` (two additions that leave earlier runs unchanged: optional
+  prm "crawl" = "P" restricts links to P-P pairs, default both types; the final lattice and its contact pairs
+  are kept in a module variable for readouts), `c6s7_checks.py` (unchanged).
+- **Part A, measurement check (synthetic, no clone data):** rerun the C6-S7d lam_F 0, 100,000 MCS arm with
+  the same seeds (50100-50105; reproduces polar 0.45). For each run, count P domains two ways: (i) as before
+  (centroid distance < 6.5), (ii) **by contact** (P cells sharing a lattice boundary, Moore-free 4-neighbour
+  pixel contacts, as b._contacts). A domain is a connected group with >= 10% of P cells, as before. Save one
+  picture of the lattice coloured by type (results_gastruloid/c6s7f_lattice.png) for Bence.
+  **Decision rule, fixed now:** from C6-S7f on, the Potts multipolar readout is the contact count (cells in a
+  CPM have real boundaries; the distance cut was carried over from the particle model). Earlier Potts results
+  are not re-scored or re-judged.
+- **Part B, posterior-only crawling (de Jong's "yellow-yellow" variant, which also fit their shapes):** links
+  only between P cells; everything else as C6-S7d. Grid: 100,000 MCS x lam_F {20, 80}; the lam_F 0 reference is
+  Part A. Criteria S0-a..d as C6-S7d (multipolar by contact; S0-d <= 300 s). Choice and data checks as C6-S7
+  (Q1 signs 5/5 and Spearman >= 0.9; Q2; Q3; S2 power from the model, H17). No pass -> report; no further
+  amendment without Bence.
+- **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; the 5 open clone targets are used only if
+  step 0 passes. Downstream would take ~6 h (overnight).
