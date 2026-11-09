@@ -8489,3 +8489,41 @@ sorting validated; memory module = unknown batch factor.
   and its exact form sits in their separate "Biophysical model" file, which C6-S6 could not read. **The kernel was
   my guess, so this tests my guess, not their mechanism.** The state-first design is not refuted; this particle
   implementation of it fails.
+
+## C6-S7b and C6-S7c: Guan's exact force law, and de Jong's Potts model (pre-registered 2026-11-09)
+
+- **Serves: C6-S7** (FOCUS.json; amendments within the step, both exploratory under H17 unless S2 power >= 0.8).
+  Bence: "go both 1 2" (answer to: C6-S7b, Guan's force law exactly, or de Jong's Potts?). Scripts:
+  `c6s7_checks.py` (new; step-0 job and the C6-S7a data checks copied unchanged, simulator passed by module
+  name), `c6s7b_guan.py` (new), `c6s7c_potts.py` (new).
+- **Source read (C6-S7b):** Guan et al. "Biophysical model" supplement (bioRxiv 2025.09.27.678924, file 14;
+  read in the browser as text, saved nowhere in git). Two-type, pre-differentiated case: cell radius l 1;
+  contact force for d < 2l, F_m = (1 - d/(2 l alpha_mn)) * (r_m - r_n)/d (repulsive close, attractive between
+  2l alpha and 2l; lower alpha = stronger adhesion), alpha = 0.95 - K_alpha x (0..1), K_alpha 0.175; long-range
+  force for d > 2l, F_m = -(beta_mn / d^2) * (r_m - r_n)/d (1/d^2 pull toward sender n), K_beta 0.125;
+  overdamped, dt 0.2, T 150 (750 steps), eta 1, position noise kappa_r 0.1 (sqrt(dt kappa_r) N(0,1)). Their gene
+  network is replaced by our identity rule (P from clone state via proportion feedback), as in C6-S7.
+- **C6-S7b model:** exactly the above in 2-D, N 300, same disc start as C6-S7; P = their attracting minority
+  type ("outer"). Grid (step 0): alpha_AA 0.775 (strong majority cohesion, Guan's best), alpha_PP {0.8625, 0.95},
+  alpha_AP {0.8625, 0.95}, beta_PP {0.125, 0.5}, receivers {P only (outer-outer), all cells (sender-only form,
+  their Eq. 5)} = 16 points. Elongation: same-type crawling from C6-S7 (links to contacts d < 2.2, Vicsek 0.99,
+  t_int 20 steps), lam_F {0.05, 0.2} x competence (their forces are ~0.1-0.3, so smaller than C6-S7's 2).
+  **Two-stage step 0:** stage 1 runs all 16 points with lam_F 0 (6 reps); points with polar >= 0.5 and
+  multipolar <= 20% go to stage 2, which runs each with both lam_F values and applies S0-a..d exactly as C6-S7
+  (S0-d <= 10 s). If stage 1 has no such point, step 0 fails at stage 1 (nothing more run).
+- **C6-S7c model (de Jong port, numba CPM):** binary types from the same identity rule; J cell-medium 10,
+  like-like 10, unlike 30, T 25, Moore (8) neighbourhood for energy and copies, area constraint lambda 5 with
+  target area 25 px (de Jong 100; scaled down for run time), no length constraint (simplification, stated);
+  1 MCS = lattice-size copy attempts. Crawling: every 20 MCS each cell links to up to 3 same-type contact
+  neighbours inside +-45 deg of its polarity (double cone), polarity 0.99 own + 0.01 mean of linked; link energy
+  dH = lam_F x c_owner x change in link length (centroid distance; pulling). Grid (step 0): MCS {3000, 10000} x
+  lam_F {20, 80}, lam_F 0 arm per MCS. Criteria S0-a..d as C6-S7, except S0-d <= 60 s per run (CPM); multipolar
+  uses r 6.5 (1.3 x cell spacing 5, the same 1.3 x spacing rule as the particle r 2.6 / spacing 2).
+- **Choice and data checks (both):** the passing point with the highest polar index; then Q1 (prediction: signs
+  5/5 and Spearman >= 0.9 vs the G1a fit-shard polarities), Q2 (slope in G1b CI), Q3 (monotone, described), S2
+  power from the model's own predicted 6a+bulk effect (H17), exactly as pre-registered for C6-S7. No step-0
+  pass -> report; no further amendment without Bence.
+- **Pre-flight:** unchanged from C6-S7 (items 1-6): unit = the 5 open clones' fit-shard polarities (exposed, CV
+  not claimed); readout = fraction line scan; nothing sealed read; S1 unpowerable (<= 0.20), S2 power computed
+  from the model; exposure: all C6-S2..S7a runs used these same 5 clone targets only in Q-checks that did not
+  run in S7/S7a (step 0 failed), so no fit to them since C6-S5.
