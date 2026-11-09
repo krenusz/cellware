@@ -8337,3 +8337,29 @@ sorting validated; memory module = unknown batch factor.
   (fixed boundary, C6-S3 Q2) and the direction of T-e (C6-S3 Q3, exposed) but not T-a. Adding a rule for this
   misfit (e.g. decoupling adhesion from s, or a pole-anchored sorting cue) would be a new rule per misfit and needs
   Bence's decision, not a silent extension.
+
+## C6-S5: one new rule, s-independent adhesion (taxis-only clone sorting) (pre-registered 2026-11-09)
+
+- **Serves: C6-S5** (FOCUS.json, a5427a2). Bence: "1" (add one rule rather than close). Scripts: `c6s5_rule.py`
+  (new), `c6s4_fit.py` (reused via env overrides), `c6s3_break.py`, `c6s2_space.py`.
+- **Single disclosed exception to the stopping rule.** C6-S4 found that s-dependent adhesion makes low-s cells
+  clump in patches, so any clone-biased Wnt splits the pole. **New rule:** adhesion is the same for all pairs
+  (w -> infinity in exp(-|ds|/w)); clone state acts only through Wnt production bias b0 and taxis chi up the Wnt
+  gradient. Everything else as C6-S4 (A4 kinetics, k_ext 1.0, u0 0.1, fraction readout, targets, n 300 cells).
+  If CV fails, no further rule is added: chapter 6 closes (C6-S6 write-up + retro).
+- **Step 0 (synthetic +-2 mix only):** grid b0 {0, 0.05, 0.15} x chi {1, 4, 16}, 5 reps; keep points with
+  polar >= 0.5. Reported with the result.
+- **LOCO CV:** identical to C6-S4 (40 per clone per point; pass = held-out signs 5/5 AND Spearman >= 0.9 AND
+  MSE < null). Then, only on pass: Q2 (fraction crossing slope in G1b CI), Q3 monotone, smoke P1/E1, S1/S2
+  predictions + H14, exactly as `c6s4_fit.main`.
+- **Pre-flight:**
+  1-3. Unit, readout, used data: as C6-S4 (open G1a fit shard; fraction readout; nothing sealed read).
+  4. **Power (new, recorded before the run): S1 cannot be powered by any model consistent with the core.** The
+     1-D core model (C3-S1: rho_g 0.059, z1 -4.03, z6 -5.33) predicts a share of clone 1 anterior of clone 6 of
+     0.59 with no passage fade (H14 power 0.20 at n 34, k_crit 23) and 0.51-0.53 at passage 4 with retention
+     0.46-0.68 (power 0.04-0.06). The C6-S1 power table gave power for assumed shares without asking what the
+     core predicts: a pre-flight miss, recorded here. S1 is therefore dropped as a chapter-6 test (stays sealed).
+     Only S2 (last partition, H13) remains, and needs a predicted +0.077 for power 0.84.
+  5. Exposure: the 5 targets have now been used in C3-S1, C6-S3 (post hoc) and C6-S4; CV is out-of-clone only.
+  6. Literature: differential adhesion vs chemotactic sorting in gastruloids/aggregates (Oriola 2024 mechanics
+     sets poles; Steinberg DAH) - this step tests the chemotaxis-only alternative.
