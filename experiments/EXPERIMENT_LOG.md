@@ -8527,3 +8527,27 @@ sorting validated; memory module = unknown batch factor.
   not claimed); readout = fraction line scan; nothing sealed read; S1 unpowerable (<= 0.20), S2 power computed
   from the model; exposure: all C6-S2..S7a runs used these same 5 clone targets only in Q-checks that did not
   run in S7/S7a (step 0 failed), so no fit to them since C6-S5.
+
+### C6-S7bc result (2026-11-09; `results_gastruloid/c6s7b_guan.json`, `c6s7c_potts.json`; synthetic only, no clone data used)
+
+- First attempt ran both pools at once and ran out of memory (OpenBLAS threads x 20 workers); both rerun one after
+  the other with BLAS at 1 thread. Same seeds, so the numbers reproduce the partial first run exactly.
+- **C6-S7b (Guan exact force law): step 0 FAILS at stage 1** (no stage 2 run).
+  - Polar index 0.03-0.18 at all 16 points (needs 0.5). Best: alpha_PP 0.95, alpha_AP 0.8625, beta 0.5, P-only
+    receivers (0.18, multipolar 0).
+  - P-only long-range pull keeps one P cluster (multipolar 0 at beta 0.5) but central, as in C6-S7a. Pull on all
+    cells (their Eq. 5 form) breaks P into several clusters (multipolar 0.17-1.0) and stretches the body (0.25-0.58)
+    without a pole.
+  - Run time ~11 s per run with 10 workers (S0-d limit 10 s; moot).
+- **C6-S7c (de Jong Potts port): step 0 FAILS.**
+  - Polar 0.12-0.26, multipolar 83-100% at all points: types are still in many patches at 10,000 MCS.
+  - **Sorting is still coarsening:** with lam_F 0, polar goes 0.12 (3,000 MCS) -> 0.20 (10,000). de Jong ran
+    100,000 MCS; this run is not converged.
+  - Crawling adds little elongation: +0.13 at most (lam_F 80, 10,000 MCS), short of +0.15; competence 0 differs
+    by 0.09 there (S0-c fails).
+- **Reading:**
+  - Guan's force law, now exact, still gives no cap from a random mixed start in 2-D. Their paper does not report
+    random starts (initial condition ambiguous, "outer" type may start outside). Their sims are 3-D, where the
+    1/d^2 sum differs. So this does not refute their mechanism, but it rules it out as a drop-in fix here.
+  - The Potts result is under-run, not a clean fail; the trend with MCS is the one live lead.
+- No clone data used, nothing sealed touched. No further amendment without Bence.
