@@ -8260,3 +8260,56 @@ sorting validated; memory module = unknown batch factor.
 - **Next (C6-S4, own pre-registration):** fit the clone-to-pole coupling (b0, chi) to the open G1a fit-shard
   polarities by CV, with the fraction readout. Then check Q2 and Q3 hold out of fit, and only then write
   predictions for the sealed S1 / S2.
+
+## C6-S4: fit clone-to-pole coupling by CV, then fixed-model predictions for S1/S2 (pre-registered 2026-11-09)
+
+- **Serves: C6-S4** (FOCUS.json, 63c6e75). Bence: "Yes, C6-S4". Scripts: `c6s4_fit.py` (new), `c6s3_break.py`,
+  `c6s2_space.py`; scratch feasibility `feas_c6s4.py` (synthetic only).
+- **Question:** C6-S3 variant A (Wnt/T wave-pinning + s-taxis) builds one axis, but clone state barely decides
+  where a clone sits (fraction-readout polarity ~0 for all 5 clones). Can the coupling of clone state to the pole be
+  fitted so the model reproduces clone polarities **out of fit** (leave-one-clone-out), without breaking Q2/Q3?
+- **Model:** A4 (C6-S3 amended setting: D 0.3, mass 2.9, w_sub 10, dt_u 0.1, k_ext 1.0) with two free coupling
+  parameters: **b0** (Wnt production bias, b = b0 * sigmoid(-s)) and **chi** (taxis up the Wnt gradient,
+  chi * tanh(-s/2)). Nothing else is free. No rescue term.
+- **Step 0, feasibility (synthetic only, before any clone data):** synthetic +-2 mixes over b0 {0.05, 0.3, 1.0} x
+  chi {1, 8} x u0 {0.5, 0.1}, 5 reps. It fixes (a) u0 (initial Wnt noise) and (b) the grid bounds: the fit grid
+  keeps only points with polar >= 0.5 on the synthetic mix. Reported with the result.
+- **Fit grid (after step 0):** b0 {0.05, 0.15, 0.4, 1.0} x chi {1, 4, 16}, trimmed by the step-0 rule; 40
+  clone+bulk 50:50 gastruloids per clone per point (n 300 cells, as C6-S3 Q1).
+- **Readout:** clone **fraction** per bin along the Wnt-oriented axis (30 bins), z-normalised per gastruloid,
+  polarity = mean first 15 bins - mean last 15 (`polarity_of`). Rationale: a midline line scan measures local
+  label intensity, i.e. the clone's local share, not its cell count per bin (C6-S3 artefact). Disclosed: this
+  readout was chosen after C6-S3's post-hoc look at the same 5 targets.
+- **Targets (open, used):** G1a fit-shard mean polarity per clone (C3-S1): 1 -0.922 (n 51), 3 0.881 (54),
+  5 1.051 (34), 6 -1.132 (30), 7 0.726 (8). Loss: sum over clones of n-weighted squared error.
+- **CV (leave-one-clone-out):** for each held-out clone, pick the grid point minimising loss on the other 4,
+  predict the held-out clone. **Pass (all three):** (i) held-out signs 5/5; (ii) held-out MSE < MSE of the
+  clone-agnostic null (held-out predicted by the mean of the other 4 targets); (iii) Spearman of held-out
+  predictions vs targets >= 0.9. Fail -> the coupling cannot be fitted on this data; no S1 prediction, S1 stays
+  sealed untested, and the stopping rule (CHAPTER6_PLAN) is weighed for the polarity half of the chapter.
+- **Fix:** if CV passes, the full-data best grid point is the fixed model. **Out of fit:** Q2 crossing slope inside
+  the G1b CI [-0.396, 0.423] (20 reps x 5 ratios); Q3 moment elongation falls monotonically 0 -> 100% low clone
+  (20 reps); smoke P1 (polar >= 0.5) and E1 (elongation gain >= 0.15) still pass. A failure is reported, not tuned.
+- **Predictions (fixed model, written before any sealed look; no sealed file is opened in this step):**
+  - **S1 (Jan 2024 1+6 pairs, passage 4, n 34):** 400 simulated 1+6 50:50 gastruloids; prediction = share with
+    clone-1 polarity > clone-6 polarity. Clone states carried to passage 4 with `memory_through` (no division
+    loss; passage retention r per passage over k passages from the fit-shard passage to passage 4, k read from G1a
+    metadata, never from the S1 file). r over {0.46, 0.60, 0.68} (C3-S1, G3, G5 used estimates); the **lowest**
+    share across r is the prediction used for H14. H14: one-sided binomial power at alpha 0.05, n 34, must be
+    >= 0.8 (share >= ~0.72) for a look to be proposed.
+  - **S2 (0831 partition C, 6a+bulk):** predicted 6a+bulk 1 - circularity over the member mean, from the fixed model
+    with competence c 6a 0.2, bulk 1.0 (as Q3), expressed as a fraction of the pure bulk - pure 6a gap and
+    converted to data units with the spent A+B pure-plate gap. H14 power from the C6-S1 table (0.84 needs
+    +0.077). S2 is the last partition: any look also needs Bence's verbatim OK (H13).
+  - Passing H14 only makes a look proposable (C6-S5); it is not run in C6-S4.
+- **Pre-flight:**
+  1. Unit: gastruloid; clones are model inputs.
+  2. Readout: fraction line-scan polarity (above); moment elongation / 1 - circularity for Q3 and S2.
+  3. Used data first: all targets are open or spent (G1a fit shard, G1b, C3-S1, C5-S2, 0831 A+B).
+  4. Power: CV has 5 targets only, so a pass is weak evidence (stated); S1/S2 power is computed from the
+     fixed prediction before any look (H14).
+  5. Exposure: the 5 targets were seen in C3-S1 and C6-S3 (post-hoc readout); stated as the reason the test is
+     out-of-clone CV, not in-sample fit. S1/S2: counts only, unchanged.
+  6. Oracle/sealed: no sealed file is read; `test_oracle.py` is not called in this step.
+- **Run budget:** about 12 grid points x 200 gastruloids ~ 2,400 sims at ~1 s on 10 workers (~5-10 min), plus
+  Q2/Q3/S1/S2 (~1,000 sims). One job at a time on this PC.
