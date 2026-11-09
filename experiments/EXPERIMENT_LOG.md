@@ -8313,3 +8313,27 @@ sorting validated; memory module = unknown batch factor.
   6. Oracle/sealed: no sealed file is read; `test_oracle.py` is not called in this step.
 - **Run budget:** about 12 grid points x 200 gastruloids ~ 2,400 sims at ~1 s on 10 workers (~5-10 min), plus
   Q2/Q3/S1/S2 (~1,000 sims). One job at a time on this PC.
+
+### C6-S4 result (2026-11-09; `results_gastruloid/c6s4_fit.json`; open data only, nothing sealed read)
+
+- **Step 0 (synthetic +-2 mixes, before any clone data):** u0 0.1 chosen (keeps one axis at more points than
+  0.5: polar 0.80 vs 0.43 at b0 0.05, chi 1). Trim rule (polar >= 0.5) keeps **2 of the 12** grid points:
+  (b0 0.05, chi 1) 0.80 and (0.05, 4) 0.57. Every stronger coupling breaks the single pole (polar 0.12-0.24):
+  the Wnt domain follows the low-s cells, which sit in adhesion patches, so it splits. In the same runs the share
+  of Wnt-high cells that are low-s rises from 0.62 to 0.97. **Pole formation and clone-to-pole coupling trade off
+  in this model.**
+- **Clone polarities on the 2 surviving points (fraction readout, 40 per clone):** (0.05, 1): 1 -0.19, 3 -0.02,
+  5 0.03, 6 -0.06, 7 0.11; (0.05, 4): 1 -0.07, 3 0.12, 5 0.04, 6 -0.07, 7 -0.12. Targets are about +-1.
+- **LOCO CV: FAIL.** Held-out signs 3/5 (pass needs 5/5), Spearman 0.6 (needs >= 0.9). Held-out MSE 0.88 is below
+  the null's 1.40, but that criterion is weak here: the leave-one-out mean of the other four is always pulled
+  against the held-out clone, so the null is worse than 0. All three criteria were needed.
+- **Pre-registered consequence:** the clone-to-pole coupling cannot be fitted on this data with this model. No
+  fixed model, no Q2/Q3 re-check, **no S1/S2 prediction; S1 and S2 stay sealed and untested.**
+- **Reading:** variant A gives cells a shared axis (one Wnt pole, elongation) but cannot also place clones on it
+  by their state: weak coupling leaves placement at chance, strong coupling breaks the pole. The 1-D rank-sorting
+  model (C3-S1) placed clones well because it imposes the axis; the 2-D model has to build it, and with
+  s-dependent adhesion plus s-biased Wnt the two goals conflict.
+- **Stopping rule (CHAPTER6_PLAN):** applies to the polarity half (T-a, T-b): the rule set reproduces T-c
+  (fixed boundary, C6-S3 Q2) and the direction of T-e (C6-S3 Q3, exposed) but not T-a. Adding a rule for this
+  misfit (e.g. decoupling adhesion from s, or a pole-anchored sorting cue) would be a new rule per misfit and needs
+  Bence's decision, not a silent extension.
