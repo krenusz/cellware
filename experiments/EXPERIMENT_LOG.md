@@ -8573,3 +8573,31 @@ sorting validated; memory module = unknown batch factor.
     points; two-stage step 0 and criteria exactly as C6-S7b (S0-d <= 10 s, lam_F {0.05, 0.2} in stage 2).
 - **Order:** C6-S7e first, then C6-S7d, one at a time (memory), BLAS 1 thread. If both pass, Q-checks for each.
 - **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; clone targets used only in the Q-checks.
+
+### C6-S7de result (2026-11-09; `results_gastruloid/c6s7e_guan3d.json`, `c6s7d_potts_long.json`; synthetic only, no clone data used)
+
+- **Reading first (a9d0e22, committed before these results were looked at):** in the standard protocol,
+  T/Bra+ cells do sit on the outside at ~60-72 h (Hashmi 2022 Fig 3C, n 7; Suppinger 2023; Sagy 2019 in
+  embryoid bodies), but as a patchy layer, not a full ring; reversed without CHIR (Oriola 2024). So the outer
+  start is legitimate for our protocol, not a worst case (lit/reading_c6_outer_start.md).
+- **C6-S7e: step 0 FAILS at stage 1** (no stage 2).
+  - 3-D, random mix: one P cluster (multipolar 0 at all 8 points), polar 0.20-0.36. Best: alpha_PP 0.95,
+    alpha_AP 0.8625, beta 0.125 (0.36). Better than 2-D random (C6-S7b <= 0.18), still no cap.
+  - 2-D outer start: polar 0.09-0.26. Weak pull (beta 0.125) breaks the ring into several clusters
+    (multipolar 1.0); strong pull (0.5) gives one cluster (multipolar 0) but it is not at one end (<= 0.26).
+    (The single smoke run that gave 0.37/0.53 was one seed; the 6-rep means are lower.)
+- **C6-S7d: step 0 FAILS.**
+  - Without crawling, sorting keeps improving with run length: polar 0.12 (3k MCS), 0.20 (10k), 0.36 (30k),
+    **0.45 (100k)**, but multipolar stays 100%.
+  - Crawling elongates strongly (0.69-0.91, +0.4 to +0.8 over lam_F 0; competence 0 stays near lam_F 0 at
+    lam_F 80) **but lowers polarity to 0.24-0.29**: crawling in both types stretches the body before the
+    types finish sorting.
+  - Run time 57-270 s per run (within the 300 s limit).
+- **Reading:** none of the three mechanisms makes one posterior cap from these starts within the run lengths
+  tested. Two leads, neither tested yet:
+  1. The Potts lam_F 0 runs reach polar 0.45 yet score 100% multipolar. That is either real (several
+     same-type domains along one side) or the r 6.5 centroid-distance criterion splitting one domain. Must be
+     checked by contact-based domain counting before reading it either way.
+  2. Crawling in both types destroys polarity. de Jong's posterior-only ("yellow-yellow") crawling variant
+     also fit their shapes and would not stretch the anterior domain.
+- No clone data used, nothing sealed touched. No further amendment without Bence.
