@@ -8217,3 +8217,46 @@ sorting validated; memory module = unknown batch factor.
   ratio (Q2), fewer than C6-S2's 100/40 because of run time. Q3 qualitative, as in C6-S2.
 - **Stopping rule:** a variant failing P1 or P2 is dropped. If both fail, chapter 6 records that neither rule builds
   an axis in this implementation, and Bence decides. If both pass Q1/Q2, model selection by CV is C6-S4.
+
+### C6-S3 amendment a (2026-11-09; logged before the re-run)
+
+- **Variant A settings 1-3 were outside the rule's regime.** In the wave-pinning kinetics
+  du = (b + u^2/(1+u^2)) V - u, a high-Wnt state exists only when the pool V > 2. Settings 1-3 had mass 1.6, so
+  V <= 1.6, and no domain could form. Their smoke failures (polar 0.07-0.16; `c6s3_smoke_A{1,2,3}.json`) say
+  nothing about the rule and are recorded as void for A.
+- **Diagnostic (static synthetic body, no movement):**
+  - D 0.3, mass 2.9: one posterior domain, 39% of cells, polar 0.76, homotypic 0.985.
+  - D 0.1 or a different mass gives a spot or an over-large domain (the six combinations are in the run log).
+- **Amended variant A:** settings 4-6 (D 0.3, mass 2.9, u0 0.5; chi 1 / 2 / 4). Same smoke tests and pass rules, at
+  most these 3 settings, then final. Variant B unchanged (settings 1-3).
+
+### C6-S3 result (2026-11-09; synthetic + open/spent summaries only; no sealed data)
+
+- **Variant B (Cellular Potts) fails P1/P2 in all 3 settings and is dropped.** Polar index 0.11-0.14 (needs
+  >= 0.5); homotypic contacts 0.72-0.86; pure bodies do not polarise (0.10-0.13). It sorts locally, like C6-S2, but
+  never coarsens into poles within 1,500-4,000 MCS. Longer runs were not tried (the limit was 3 settings).
+  `c6s3_smoke_B{1,2,3}.json`.
+- **Variant A (Wnt/T wave-pinning + taxis), amended settings 4-6:**
+  - Settings 4 and 5 pass all five smoke tests in substance. A4: polar 0.93, homotypic 0.99, pure-body polar 1.12,
+    moment elongation 0.05 -> 0.27 with extension on, c = 0 stays round (0.055), 0.9 s per gastruloid.
+  - A6 fails E1 (0.035 -> 0.156).
+  - **First 2-D model here that builds one A-P axis and elongates from local rules.**
+- **Data checks on A4 / A5 (pre-registered criteria):**
+  - **Q1 FAIL** (both). Polarity is positive for every clone (A4: 1 +0.81, 3 +1.08, 5 +1.22, 6 +0.70, 7 +1.09);
+    posterior clones 1 and 6 have the wrong sign. Sign matches 3/5, Spearman 0.9 / 1.0.
+  - **Q2 PASS** (both). Boundary slope -0.21 / -0.14, inside the G1b CI [-0.40, 0.42]: fixed domains, as in the data.
+  - **Q3** (qualitative): moment elongation falls monotonically with the low-competence clone fraction (A4 0.30 /
+    0.30 / 0.25 / 0.21 / 0.15 at 0/20/50/80/100%). It is roughly linear, not buffered. No claim (direction exposed).
+- **Post hoc diagnostic (labelled; not a test; `c6s3_q1_fraction_posthoc.json`):**
+  - The all-positive Q1 is a readout artefact. Cells per bin follow body width, and the extended posterior is thin,
+    so any label looks anterior. Line scans measure intensity, i.e. local clone fraction.
+  - With the fraction readout, polarity is about 0 for every clone (A4: -0.02 / 0.01 / 0.13 / -0.04 / -0.12;
+    signs 4/5 by chance, Spearman 0.7; A5 Spearman 0.3).
+- **Reading:**
+  - Variant A breaks symmetry and elongates, but its clone states barely decide where cells end up. Wnt bias
+    b0 = 0.05 and taxis chi 1-2 are too weak a coupling between s and the pole.
+  - The C6-S2 readout (density per bin) must be replaced by fraction per bin before any data check. This is now
+    fixed in the plan.
+- **Next (C6-S4, own pre-registration):** fit the clone-to-pole coupling (b0, chi) to the open G1a fit-shard
+  polarities by CV, with the fraction readout. Then check Q2 and Q3 hold out of fit, and only then write
+  predictions for the sealed S1 / S2.
