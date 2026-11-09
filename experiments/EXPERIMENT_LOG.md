@@ -8490,7 +8490,7 @@ sorting validated; memory module = unknown batch factor.
   my guess, so this tests my guess, not their mechanism.** The state-first design is not refuted; this particle
   implementation of it fails.
 
-## C6-S7b and C6-S7c: Guan's exact force law, and de Jong's Potts model (pre-registered 2026-11-09)
+## C6-S7bc: C6-S7b Guan exact force law and C6-S7c de Jong Potts port (pre-registered 2026-11-09)
 
 - **Serves: C6-S7** (FOCUS.json; amendments within the step, both exploratory under H17 unless S2 power >= 0.8).
   Bence: "go both 1 2" (answer to: C6-S7b, Guan's force law exactly, or de Jong's Potts?). Scripts:
