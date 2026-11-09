@@ -19,6 +19,7 @@
   "c6s7e_guan3d.py",
   "c6s7f_potts_pcrawl.py",
   "c6s7g_potts_wet.py",
+  "c6s7h_potts_lr.py",
   "lit_gap.py"
  ],
  "parked": [
@@ -29,7 +30,7 @@
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)"
  ],
- "approved_by": "Bence 2026-11-09: \"1\" (answer to: C6-S7g, Potts with energies chosen to keep the types attached)",
+ "approved_by": "Bence 2026-11-09: \"yes\" (answer to: C6-S7h, long-range posterior attraction in the attached Potts model)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",

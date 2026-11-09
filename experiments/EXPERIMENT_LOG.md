@@ -8684,3 +8684,21 @@ sorting validated; memory module = unknown batch factor.
 - **Literature check on detachment (asked by Bence):** no source reports posterior tissue detaching in
   gastruloids; Oriola 2024 heterotypic T+/T- aggregate fusion shows the two tissues fuse (interfacial tension
   below the sum of surface tensions), i.e. the partial-wetting range used here.
+
+## C6-S7h: long-range posterior attraction in the attached Potts model (pre-registered 2026-11-09)
+
+- **Serves: C6-S7** (amendment within the step; exploratory under H17 unless S2 power >= 0.8). Bence: "yes"
+  (answer to: pre-register C6-S7h, Guan's long-range posterior attraction in this Potts model, or run longer?).
+  Scripts: `c6s7h_potts_lr.py` (new), `c6s7c_potts.py` (kernel gains a per-cell force term; zero force
+  reproduces earlier runs), `c6s7g_potts_wet.py` (energy tables and readouts reused), `c6s7f_potts_pcrawl.py`,
+  `c6s7_checks.py`.
+- **Force (Guan's law, P senders and P receivers only):** every 20 MCS, for each P cell i, F_i = beta x sum over
+  P cells j with centroid distance d > 2 r_cell (r_cell = sqrt(25/pi) = 2.8 px) of (c_j - c_i)/d^3 (a 1/d^2 pull
+  toward j). In the copy step, a move of a P cell's centroid by dc adds dH = -F_i . dc (standard CPM force
+  term). Anterior cells feel nothing.
+- **Grid (stage 1, no crawling, 100,000 MCS, 6 reps):** energy tables W1 and W4 (C6-S7g's best) x beta {300,
+  1000, 3000} (energy x px; brackets a pull per cell comparable to the crawling link forces, 20-80 per px).
+  Pass: polar >= 0.5, multipolar (contact) <= 20%, attached >= 0.95. Stage 2 for passes: crawling in both
+  types, lam_F {20, 80}; S0-a..d as C6-S7g (S0-d <= 300 s). Choice and data checks as C6-S7. No stage-1 pass ->
+  report; no further amendment without Bence.
+- **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; clone targets only if step 0 passes.
