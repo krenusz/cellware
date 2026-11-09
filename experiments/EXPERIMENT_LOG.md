@@ -8644,3 +8644,26 @@ sorting validated; memory module = unknown batch factor.
   |gamma_Am - gamma_Pm| < gamma_AP < gamma_Am + gamma_Pm, where two types stay attached and the minority forms
   a cap. None of the Potts runs so far (C6-S3 B, C6-S7c/d/f) were chosen by that rule. No further amendment
   without Bence.
+
+## C6-S7g: Potts with energies in the partial-wetting range (pre-registered 2026-11-09)
+
+- **Serves: C6-S7** (amendment within the step; exploratory under H17 unless S2 power >= 0.8). Bence: "1"
+  (answer to: C6-S7g, rerun the Potts model with energies chosen to keep the types attached). Scripts:
+  `c6s7g_potts_wet.py` (new), `c6s7c_potts.py` (optional per-type energies J_AA, J_PP, J_Am, J_Pm, J_AP;
+  defaults reproduce earlier runs), `c6s7f_potts_pcrawl.py` (contact domain count reused), `c6s7_checks.py`.
+- **Rule (Steinberg; tensions gamma_Am = J_Am - J_AA/2, gamma_Pm = J_Pm - J_PP/2, gamma_AP = J_AP -
+  (J_AA + J_PP)/2):** two types stay attached as two lobes / a cap when |gamma_Am - gamma_Pm| < gamma_AP <
+  gamma_Am + gamma_Pm. All four points satisfy it (J_AA = J_PP = 10, T 25, everything else as C6-S7c):
+  - W1: J_Am = J_Pm = 20, J_AP = 20 (gammas 15 / 15 / 10)
+  - W2: J_Am = J_Pm = 20, J_AP = 30 (15 / 15 / 20)
+  - W3: J_Am = 20, J_Pm = 25, J_AP = 25 (15 / 20 / 15; P less cohesive with medium)
+  - W4: J_Am = 25, J_Pm = 20, J_AP = 25 (20 / 15 / 15)
+- **Two-stage step 0 (synthetic +-2, 6 reps):**
+  - Stage 1, no crawling, MCS {30000, 100000} x W1-W4 (8 points). Pass: polar >= 0.5, multipolar (by contact)
+    <= 20%, and **attached**: mean share of cells in the largest contact-connected piece >= 0.95.
+  - Stage 2, for stage-1 passes: crawling in both types (de Jong's best; posterior-only did not elongate in
+    C6-S7f), lam_F {20, 80}; S0-a..d as C6-S7d (S0-a now also needs attached >= 0.95; S0-d <= 300 s).
+  - No stage-1 pass -> step 0 fails; nothing more run.
+- **Choice and data checks as C6-S7** (Q1 signs 5/5 and Spearman >= 0.9; Q2; Q3; S2 power from the model, H17).
+  Downstream ~6 h if reached.
+- **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; clone targets only if step 0 passes.
