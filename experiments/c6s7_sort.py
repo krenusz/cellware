@@ -49,7 +49,9 @@ def simulate_S(s, c, prm, rng):
         d = x[j] - x[i]
         dist = np.linalg.norm(d, axis=1) + 1e-9
         e = d / dist[:, None]
-        wgt = np.where(P[i] == P[j], 1.0, prm["unlike"])
+        # cohesion per type pair (C6-S7a); defaults reproduce C6-S7 (like 1, unlike prm["unlike"])
+        wgt = np.where(P[i] & P[j], prm.get("w_PP", 1.0),
+                       np.where(~P[i] & ~P[j], prm.get("w_AA", 1.0), prm.get("w_AP", prm["unlike"])))
         fm = np.where(dist < 2.0, -prm["k_rep"] * (2.0 - dist), prm["k_adh"] * wgt * (dist - 2.0))
         F = np.zeros_like(x)
         np.add.at(F, i, fm[:, None] * e)

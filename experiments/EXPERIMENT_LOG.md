@@ -8474,3 +8474,18 @@ sorting validated; memory module = unknown batch factor.
   Spearman >= 0.9; Q2 slope in G1b CI; Q3 monotone, described; S2 power from the model's prediction; exploratory
   unless >= 0.8).
 - **Pre-flight:** unchanged from C6-S7 (items 1-6); exposure adds the C6-S7 synthetic diagnostic (no clone data).
+
+### C6-S7a result (2026-11-09; `results_gastruloid/c6s7a_sort.json`; synthetic only, no clone data used)
+
+- **Step 0: FAIL, no point passes** -> no data checks (pre-registered); no further amendment without Bence.
+  - One cluster: beta 1.0 gives multipolar 0.00 at all four cohesion pairs (beta 0.2: 0.17-0.50).
+  - **No pole: polar index 0.14-0.28** (best w_PP 0.6, w_AP 0.33, beta 1.0: 0.28; needs 0.5). Asymmetric
+    cohesion moves the posterior cluster off centre (C6-S7: 0.10-0.16) but not to a surface cap.
+  - Elongation still works (0.28-0.42 vs 0.05-0.11 without crawling; competence 0 stays round), except w_PP 0.3 /
+    w_AP 0.33 / beta 0.2 (+0.10).
+- **Reading:** the long-range term as I implemented it (unit pull toward the centroid of all posterior cells
+  within R) points at the body centre whenever posterior cells are spread around it, so it fights the cap that
+  asymmetric cohesion would make. Guan's force is "gravitation-like" (distance-weighted: near cells dominate),
+  and its exact form sits in their separate "Biophysical model" file, which C6-S6 could not read. **The kernel was
+  my guess, so this tests my guess, not their mechanism.** The state-first design is not refuted; this particle
+  implementation of it fails.
