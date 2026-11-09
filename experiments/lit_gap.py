@@ -65,6 +65,13 @@ SEEDS = {
     # chapter 5 (clone memory carriers), added 2026-11-08
     "Linneberg-Agerholm 2026 (hESC clonal memory, sister wells, multiome)": "10.64898/2026.09.02.748863",
     "Mold 2024 (clonally heritable expression, RNA + ATAC)": "10.1016/j.cels.2024.01.004",
+    # chapter 6 (cells into space: symmetry breaking, sorting, elongation), added 2026-11-09
+    "Mori 2008 (wave-pinning polarity)": "10.1529/biophysj.107.120824",
+    "Graner & Glazier 1992 (Potts cell sorting)": "10.1103/PhysRevLett.69.2013",
+    "Mongera 2018 (fluid-to-solid jamming, axis elongation)": "10.1038/s41586-018-0479-2",
+    "McNamara 2024 (recording morphogen signals, gastruloid symmetry breaking)": "10.1038/s41556-024-01521-9",
+    "Hashmi 2022 (collective movement, endoderm-like region in gastruloids)": "10.7554/eLife.59371",
+    "Turner 2017 (gastruloid A-P polarity and elongation)": "10.1242/dev.150391",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -127,6 +134,8 @@ TOPICS = {
     ],
     "dendritic_cells": [r"dendritic", r"pdc", r"cdc1", r"cdc2", r"flt3"],
     "genetic_perturbation": [r"crispr", r"knockout", r"perturb", r"bcor", r"deletion"],
+    "spatial_mechanism": [r"chemota", r"wave.pinning", r"potts", r"vertex model", r"agent-based", r"jamming",
+                          r"convergent extension", r"collective (cell )?migration", r"reaction.diffusion", r"tissue mechanic"],
     "morphogenesis_long_term": [r"gastruloid", r"embryo", r"morphogen", r"organoid", r"self-organi"],
     "inference_identifiability": [
         r"identifiab",
