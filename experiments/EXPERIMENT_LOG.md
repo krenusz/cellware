@@ -8452,3 +8452,25 @@ sorting validated; memory module = unknown batch factor.
 - **Consequence:** C6-S7 fails at step 0 as registered. A corrected mapping (asymmetric cohesion as in Guan)
   is an amendment that needs Bence's OK and its own pre-registration (C6-S7a); nothing has been fitted to
   clone data.
+
+## C6-S7a: amendment, asymmetric cohesion as in Guan/Hormoz (pre-registered 2026-11-09)
+
+- **Serves: C6-S7** (FOCUS.json, 2d9a72d; amendment within the step). Bence: "Yes, C6-S7a" (answer to:
+  pre-register amendment C6-S7a with Guan's asymmetric cohesion?). Scripts: `c6s7a_sort.py` (new), `c6s7_sort.py`
+  (simulate_S gains per-type-pair cohesion weights; defaults reproduce C6-S7).
+- **Why:** C6-S7 step 0 failed; a synthetic diagnostic showed posterior cells merging into a central core with
+  equal cohesion. Guan's top settings: strong cohesion in the majority type, moderate in the attracting minority
+  type, weak between types, long-range attraction in the minority type. Posterior (P) is the minority here
+  (q ~0.39 on synthetic mixes, ~0.38 in clone+bulk), as Guan's outer type (25%).
+- **Change (only this):** adhesion weight w_AA 1.0 (anterior-anterior), w_PP and w_AP from the step-0 grid;
+  long-range P attraction range R 40 (whole body; Guan's kernel is long-range, C6-S7 R 8 was my choice).
+  Everything else as C6-S7, crawling lam_F 2 (the C6-S7 value that elongates).
+- **Step 0 (synthetic +-2, 6 reps):** grid w_PP {0.3, 0.6} x w_AP {0.1, 0.33} x beta {0.2, 1.0}. Criteria as
+  C6-S7: S0-a polar >= 0.5 and multipolar <= 20%; S0-b elongation >= 0.15 above the same point with lam_F 0;
+  S0-c competence 0 within 0.05 of lam_F 0; S0-d <= 10 s. **Choice:** the passing point with the highest polar
+  index. No point passes -> the state-first design fails in this particle model; report; no further amendment
+  without Bence.
+- **Data checks, H17 S2 power, labels:** exactly as pre-registered for C6-S7 (Q1 prediction signs 5/5 and
+  Spearman >= 0.9; Q2 slope in G1b CI; Q3 monotone, described; S2 power from the model's prediction; exploratory
+  unless >= 0.8).
+- **Pre-flight:** unchanged from C6-S7 (items 1-6); exposure adds the C6-S7 synthetic diagnostic (no clone data).
