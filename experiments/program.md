@@ -211,3 +211,11 @@ before every look and refuses on any failure.
   whose `Serves:` names the current step), as a UserPromptSubmit hook (injects the focus into every
   Cellware turn), and as the git commit-msg hook (`.githooks/`, `core.hooksPath`): FOCUS.json changes
   need a quoted `Bence:` OK; new pre-registrations need `Pre-flight:` and `Serves: <step>`.
+- **H17 Power from the model's own prediction, at chapter opening.** (Retro 2026-11-09; Bence: "1 ok!".
+  C6-S1 tabulated S1 power at assumed shares 0.66-0.76; the core model itself predicts 0.51-0.59, power <= 0.20,
+  so chapter 6's clone-placement claim had no possible test from day 1.) At a chapter's opening pre-flight, every
+  candidate sealed test gets its power from the **current model's predicted effect** (simulate the exact test
+  statistic at the sealed n), not from assumed or hoped-for effect sizes. If the chapter's central claim has no
+  test reaching 0.8 under its own model, the chapter is reframed, or its work is labelled exploratory in every
+  pre-registration and summary until a powered test exists (new data or a sharper prediction). Re-run the power
+  block whenever the model changes.
