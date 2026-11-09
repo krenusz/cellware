@@ -1,13 +1,14 @@
 {
  "chapter": "6",
- "step": "C6-S2",
+ "step": "C6-S3",
  "question": "Chapter 6: cells into space. Can cells that each carry the core model's clone state (core_model.py), plus local rules (adhesion sorting, proportion feedback), build a gastruloid's A-P domains and its elongation, and predict an unseen spatial/elongation readout? C6-S1: plan + pre-flight (CHAPTER6_PLAN.md); no statistic on sealed data.",
  "next_steps": [
-  "C6-S2: 2-D cell-level simulator on core_model (adhesion sorting, proportion feedback, posterior-driven extension; no rescue term); smoke tests + pre-registered qualitative checks on open/spent data",
-  "C6-S3: rule selection by CV on open data, fix model, predictions for S1/S2"
+  "C6-S3: test both symmetry-breaking rules: (A) Wnt/T wave-pinning polarity + s-dependent taxis on the particle model, (B) Cellular Potts with s-dependent adhesion; substantive smoke tests, then Q1-Q3 on passing variants",
+  "C6-S4: rule selection by CV on open data, fix model, predictions for S1/S2"
  ],
  "allowed_scripts": [
-  "c6s2_space.py"
+  "c6s2_space.py",
+  "c6s3_break.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -17,7 +18,7 @@
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)"
  ],
- "approved_by": "Bence 2026-11-08: \"yes and after put it to sleep\" (answer to: start C6-S2 2-D simulator build?)",
+ "approved_by": "Bence 2026-11-09: \"test both\" (answer to: which symmetry-breaking rule for C6-S3, Wnt/T feedback or Cellular Potts?)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -37,6 +38,7 @@
   "C5-S7 (2026-11-08, 65d8565): DiffAssay pre-flight fails (growth only, n 5, rep 1 null); rep 2 sealed",
   "C5 parked (2026-11-08): WRITEUP_MEMORY.md, RETRO_2026-11-08.md, lit/gap_2026-11-08.md",
   "C6-S0 (2026-11-08): Bence chose chapter 6 = cells into space",
-  "C6-S1 (2026-11-08, 942cd4e): plan + pre-flight; chimera set exposed (fit only); sealed S1 Jan24 1+6 p4 (34), S2 morph C; neither powered yet"
+  "C6-S1 (2026-11-08, 942cd4e): plan + pre-flight; chimera set exposed (fit only); sealed S1 Jan24 1+6 p4 (34), S2 morph C; neither powered yet",
+  "C6-S2 (2026-11-08, d5f50a8): 2-D adhesion model sorts locally (0.88 homotypic) but no A-P axis; Q1-Q3 not run"
  ]
 }
