@@ -1,0 +1,91 @@
+{
+ "mcs": 100000,
+ "lams": [
+  20.0,
+  80.0
+ ],
+ "partA": [
+  {
+   "polar": 0.49436175208013844,
+   "multipolar_dist": true,
+   "n_domains_contact": 4,
+   "multipolar_contact": true,
+   "elong": 0.18005631484887485
+  },
+  {
+   "polar": 0.6353871329651244,
+   "multipolar_dist": true,
+   "n_domains_contact": 3,
+   "multipolar_contact": true,
+   "elong": 0.1660462952485523
+  },
+  {
+   "polar": 0.3394588587324982,
+   "multipolar_dist": true,
+   "n_domains_contact": 4,
+   "multipolar_contact": true,
+   "elong": 0.10328137395115777
+  },
+  {
+   "polar": 0.3148410962586402,
+   "multipolar_dist": true,
+   "n_domains_contact": 4,
+   "multipolar_contact": true,
+   "elong": 0.06022849745532022
+  },
+  {
+   "polar": 0.5264326876960079,
+   "multipolar_dist": true,
+   "n_domains_contact": 3,
+   "multipolar_contact": true,
+   "elong": 0.051992502642338234
+  },
+  {
+   "polar": 0.4059274712566395,
+   "multipolar_dist": true,
+   "n_domains_contact": 3,
+   "multipolar_contact": true,
+   "elong": 0.1190252450521232
+  }
+ ],
+ "partA_mean": {
+  "polar": 0.4527348331648415,
+  "multipolar_dist": 1.0,
+  "n_domains_contact": 3.5,
+  "multipolar_contact": 1.0,
+  "elong": 0.11343837153306109
+ },
+ "step0": {
+  "{\"mcs\": 100000, \"lam_F\": 20.0, \"crawl\": \"P\"}": {
+   "polar": 0.361003413878392,
+   "multipolar_rate": 1.0,
+   "elong": 0.1638394370130903,
+   "sec": 179.28296101093292,
+   "elong_c0": 0.26113827683399876,
+   "elong_lam0": 0.11343837153306109,
+   "polar_lam0": 0.4527348331648415,
+   "multipolar_lam0": 1.0,
+   "S0a": false,
+   "S0b": false,
+   "S0c": false,
+   "S0d": true
+  },
+  "{\"mcs\": 100000, \"lam_F\": 80.0, \"crawl\": \"P\"}": {
+   "polar": 0.4899512206942527,
+   "multipolar_rate": 1.0,
+   "elong": 0.17300385187663972,
+   "sec": 173.0758115053177,
+   "elong_c0": 0.10482221174107514,
+   "elong_lam0": 0.11343837153306109,
+   "polar_lam0": 0.4527348331648415,
+   "multipolar_lam0": 1.0,
+   "S0a": false,
+   "S0b": false,
+   "S0c": true,
+   "S0d": true
+  }
+ },
+ "step0_passing": [],
+ "note": "no step-0 point passes (pre-registered)",
+ "minutes": 14.498023903369903
+}

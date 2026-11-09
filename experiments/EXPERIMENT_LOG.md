@@ -8624,3 +8624,23 @@ sorting validated; memory module = unknown batch factor.
   amendment without Bence.
 - **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; the 5 open clone targets are used only if
   step 0 passes. Downstream would take ~6 h (overnight).
+
+### C6-S7f result (2026-11-09; `results_gastruloid/c6s7f_potts_pcrawl.json`, `c6s7f_lattice.png`; synthetic only, no clone data used)
+
+- **Part A (cluster count):** the distance rule was not the problem. By contact, the 6 runs have 3-4 posterior
+  domains each (polar 0.31-0.64, mean 0.45, reproduced). **The picture shows why: the aggregate falls apart.**
+  Posterior cells leave the anterior body and sit as separate floating clumps, with no A-P contact at all.
+- **Cause (read in de Jong's code as text, ca.cpp DeltaH, cell.cpp EnergyDifference, J.dat):** the
+  Hamiltonian is the standard one, as in my port. Their J.dat gives medium-cell 10, like 10, unlike 30, so the
+  interface tensions are gamma_AP = 30 - 10 = 20 and gamma_Am = gamma_Pm = 10 - 5 = 5. Since gamma_AP >
+  gamma_Am + gamma_Pm, **complete separation of the two types is the energy minimum (Steinberg)**. My cells are
+  4x smaller (area 25 vs 100), so they sort faster and reach that end state within 100k MCS; their runs
+  likely stop short of it (consistent with their "snowman" shapes). Their table is therefore not a gastruloid
+  pole model at long times.
+- **Part B (posterior-only crawling): step 0 FAILS.** lam_F 20: polar 0.36; lam_F 80: polar 0.49; multipolar
+  100% at both; elongation 0.16-0.17, no gain over lam_F 0 (0.11 -> +0.05/+0.06, needs +0.15). Posterior-only
+  crawling does not stretch the body, because the posterior clumps are detached.
+- **Reading:** chapter 6's Potts arm needs an energy table in the partial-wetting range,
+  |gamma_Am - gamma_Pm| < gamma_AP < gamma_Am + gamma_Pm, where two types stay attached and the minority forms
+  a cap. None of the Potts runs so far (C6-S3 B, C6-S7c/d/f) were chosen by that rule. No further amendment
+  without Bence.

@@ -27,6 +27,7 @@ BASE = dict(side=5, A0=25.0, lam_a=5.0, T=25.0, J_like=10.0, J_unlike=30.0, J_me
 GRID = [dict(mcs=m, lam_F=l) for m in (3000, 10000) for l in (20.0, 80.0)]
 
 _K = None
+LAST = {}
 
 
 def _kernel():
@@ -116,6 +117,8 @@ def multipolar(x, P):
 def _links(lat, n, P, pol, prm, rng, cen):
     pr = b._contacts(lat)  # 0-based cell index pairs
     same = P[pr[:, 0]] == P[pr[:, 1]]
+    if prm.get("crawl", "both") == "P":  # C6-S7f: posterior-only crawling
+        same &= P[pr[:, 0]]
     ci, cj = pr[same, 0], pr[same, 1]
     e = cen[cj] - cen[ci]
     e /= np.linalg.norm(e, axis=1)[:, None] + 1e-9
@@ -179,6 +182,7 @@ def simulate(s, c, prm, rng):
         lat = sweep(lat, area, sx, sy, typ, J, prm["T"], prm["lam_a"], prm["A0"], inc, ninc, la.astype(np.int64),
                     lb.astype(np.int64), lw.astype(np.float64), int(prm["t_int"]), int(rng.integers(2 ** 31)))
     xy, _ = b._cells(lat, n)
+    LAST["lat"], LAST["pairs"] = lat, b._contacts(lat)  # C6-S7f readouts
     return xy, P, b.shape_from_mask(lat > 0)
 
 
