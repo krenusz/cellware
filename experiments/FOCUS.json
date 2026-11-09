@@ -15,6 +15,8 @@
   "c6s7_sort.py",
   "c6s7b_guan.py",
   "c6s7c_potts.py",
+  "c6s7d_potts_long.py",
+  "c6s7e_guan3d.py",
   "lit_gap.py"
  ],
  "parked": [
@@ -25,7 +27,7 @@
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)"
  ],
- "approved_by": "Bence 2026-11-09: \"go both 1 2\" (answer to: C6-S7b, Guan force law exactly, or de Jong Potts?)",
+ "approved_by": "Bence 2026-11-09: \"1 2\" (answer to: 1 longer Potts runs, 2 Guan 3-D / outer start)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",

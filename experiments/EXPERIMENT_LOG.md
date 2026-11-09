@@ -8551,3 +8551,25 @@ sorting validated; memory module = unknown batch factor.
     1/d^2 sum differs. So this does not refute their mechanism, but it rules it out as a drop-in fix here.
   - The Potts result is under-run, not a clean fail; the trend with MCS is the one live lead.
 - No clone data used, nothing sealed touched. No further amendment without Bence.
+
+## C6-S7de: C6-S7d long Potts runs and C6-S7e Guan in 3-D or with outer start (pre-registered 2026-11-09)
+
+- **Serves: C6-S7** (amendments within the step; exploratory under H17 unless S2 power >= 0.8). Bence: "1 2"
+  (answer to options: 1 run the Potts model 3-10x longer; 2 Guan in 3-D or with posterior cells starting
+  outside). Scripts: `c6s7d_potts_long.py` (new; reuses c6s7c_potts.simulate unchanged), `c6s7e_guan3d.py` (new),
+  `c6s7_checks.py` (unchanged).
+- **C6-S7d:** de Jong port exactly as C6-S7c; MCS {30000, 100000} x lam_F {20, 80}, lam_F 0 arm per MCS, 6 reps.
+  Criteria S0-a..d as C6-S7c, except **S0-d <= 300 s per run** (100,000 MCS takes ~150 s; the downstream checks,
+  ~1,100 runs, then take ~5 h). Choice and data checks as C6-S7.
+- **C6-S7e:** Guan force law exactly as C6-S7b (P-only receivers; their all-cell form split P in C6-S7b), two
+  geometries:
+  - **3-D:** random mixed start in a ball (radius 1.1 x N^(1/3)); crawling polarity is a 3-D unit vector
+    (same Vicsek rule). Readouts on a 2-D view: positions projected on the plane of the P-A centroid axis and
+    the largest remaining spread (a gastruloid lying flat); multipolar computed in 3-D (r 2.6).
+  - **2-D outer start:** the same disc start, but P cells take the outermost radii (Guan's radial prepattern,
+    their "outer" type). Caveat stated in advance: McNamara 2024 sees unbiased Wnt patches before the pole, so
+    this start has weak biological support; a pass here needs that caveat in any claim.
+  - Grid: alpha_PP {0.8625, 0.95} x alpha_AP {0.8625, 0.95} x beta {0.125, 0.5} x geometry {3-D, outer} = 16
+    points; two-stage step 0 and criteria exactly as C6-S7b (S0-d <= 10 s, lam_F {0.05, 0.2} in stage 2).
+- **Order:** C6-S7e first, then C6-S7d, one at a time (memory), BLAS 1 thread. If both pass, Q-checks for each.
+- **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; clone targets used only in the Q-checks.
