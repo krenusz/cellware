@@ -24,6 +24,11 @@ N = 300
 U0 = 0.1  # step 0: u0 0.1 keeps one axis at more grid points than 0.5 (synthetic only)
 # step 0 trim (synthetic +-2 mix, polar >= 0.5): only these 2 of the 12 pre-registered points survive
 GRID = [(0.05, 1.0), (0.05, 4.0)]
+# C6-S5 reuse: env overrides (inherited by spawned workers)
+EXTRA = json.loads(os.environ.get("C6_EXTRA", "{}"))
+if os.environ.get("C6_GRID"):
+    GRID = [tuple(g) for g in json.loads(os.environ["C6_GRID"])]
+TAG = os.environ.get("C6_TAG", "c6s4_fit")
 STEP0 = {"(0.05,1)": 0.80, "(0.05,4)": 0.57, "(0.05,16)": 0.24, "(0.15,1)": 0.21, "(0.15,4)": 0.15, "(0.15,16)": 0.17,
          "(0.4,1)": 0.13, "(0.4,4)": 0.15, "(0.4,16)": 0.19, "(1,1)": 0.12, "(1,4)": 0.15, "(1,16)": 0.16}
 FS = c2.C3S1["fit_shard"]
@@ -35,7 +40,7 @@ S2_SE = 0.077 / (norm.ppf(0.95) + norm.ppf(0.84))  # SE implied by the C6-S1 pow
 
 
 def prm_of(b0, chi, k_ext=1.0):
-    return {**b.params("A", "4", k_ext), "b0": b0, "chi": chi, "u0": U0}
+    return {**b.params("A", "4", k_ext), "b0": b0, "chi": chi, "u0": U0, **EXTRA}
 
 
 def frac_profile(t, mask):
@@ -89,7 +94,7 @@ def loss(sim, ks):
 
 def main():
     t0 = time.time()
-    res = {"grid": GRID, "u0": U0, "step0_polar_synthetic": STEP0, "targets": TGT}
+    res = {"grid": GRID, "u0": U0, "extra": EXTRA, "step0_polar_synthetic": STEP0, "targets": TGT}
     pool = Pool(10)
     sims, sds = {}, {}
     for gi, (b0, chi) in enumerate(GRID):
@@ -115,7 +120,7 @@ def main():
     if not res["CV"]["pass"]:
         res["note"] = "CV failed: no fixed model, no S1/S2 prediction (pre-registered)."
         res["minutes"] = (time.time() - t0) / 60
-        json.dump(res, open(os.path.join(OUT, "c6s4_fit.json"), "w"), indent=1)
+        json.dump(res, open(os.path.join(OUT, TAG + ".json"), "w"), indent=1)
         return res
     g = min(sims, key=lambda g: loss(sims[g], KS))
     b0, chi = GRID[g]
@@ -146,7 +151,7 @@ def main():
     y = [q3[str(f)]["moment_elong"] for f in (0.0, 0.2, 0.5, 0.8, 1.0)]
     res["Q3"] = {"by_fraction": q3, "pass": bool(all(a >= c for a, c in zip(y, y[1:])))}
     # smoke P1/E1 regression at the fixed coupling
-    b.A_SETTINGS["fit"] = {**b.A_SETTINGS["4"], "b0": b0, "chi": chi, "u0": U0}
+    b.A_SETTINGS["fit"] = {**b.A_SETTINGS["4"], "b0": b0, "chi": chi, "u0": U0, **EXTRA}
     sm = b.smoke("A", "fit")
     res["smoke"] = {k: sm[k] for k in ("P1", "P2", "E1", "E2")}
     res["smoke_P1_E1_pass"] = bool(sm["P1"]["polar"] >= 0.5 and sm["E1"]["pass"])
@@ -178,7 +183,7 @@ def main():
     res["S2"] = {"by_state": s2, "se": S2_SE, "prediction": s2["z0_as_Q3"]["effect_data_units"],
                  "power": s2["z0_as_Q3"]["power"], "H14_pass": bool(s2["z0_as_Q3"]["power"] >= 0.8)}
     res["minutes"] = (time.time() - t0) / 60
-    json.dump(res, open(os.path.join(OUT, "c6s4_fit.json"), "w"), indent=1)
+    json.dump(res, open(os.path.join(OUT, TAG + ".json"), "w"), indent=1)
     print(json.dumps({k: res[k] for k in ("fixed", "Q2", "Q3", "smoke_P1_E1_pass", "S1", "S2")}, indent=1))
     return res
 

@@ -8363,3 +8363,21 @@ sorting validated; memory module = unknown batch factor.
   5. Exposure: the 5 targets have now been used in C3-S1, C6-S3 (post hoc) and C6-S4; CV is out-of-clone only.
   6. Literature: differential adhesion vs chemotactic sorting in gastruloids/aggregates (Oriola 2024 mechanics
      sets poles; Steinberg DAH) - this step tests the chemotaxis-only alternative.
+
+### C6-S5 result (2026-11-09; `results_gastruloid/c6s5_step0.json`, `c6s5_rule.json`; open data only)
+
+- **Step 0 (synthetic):** with uniform adhesion the pole survives stronger coupling than in C6-S4: 3 of 9 points
+  keep one axis (b0 0.05 with chi 1 / 4 / 16: polar 1.21 / 0.91 / 0.54; elongation 0.40 / 0.32 / 0.17). b0 0
+  gives no Wnt domain at all (polar 0); b0 0.15 breaks the pole again (0.19-0.37). The trade-off is eased, not
+  removed.
+- **Clone polarities (fraction readout, 40 per clone):** at (0.05, 1) **all five signs are right in sample**
+  (1 -0.11, 3 +0.12, 5 +0.06, 6 -0.09, 7 +0.04; Spearman 0.8), but **about 10x smaller than the data (+-0.7 to
+  1.1)**. (0.05, 4) and (0.05, 16) are similar in size with one or two sign errors.
+- **LOCO CV: FAIL.** Held-out signs 4/5 (clone 3 wrong: its fold picked chi 16), Spearman 0.8 (< 0.9); MSE 0.80 vs
+  null 1.40 (weak criterion, see C6-S4).
+- **Reading:** removing state-dependent adhesion turns clone placement from chance (C6-S4) into the right
+  direction, so taxis on a self-made pole is a workable mechanism in principle. It is far too weak: clones barely
+  separate along the axis, because any coupling strong enough to separate them fragments the pole. Out of sample
+  the model is not supported.
+- **Pre-registered consequence:** no further rule. No fixed model, no S2 prediction (S1 already dropped for power).
+  Chapter 6 closes (C6-S6: write-up + retro), pending Bence's OK to move FOCUS.
