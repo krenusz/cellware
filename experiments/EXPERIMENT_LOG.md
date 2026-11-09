@@ -8667,3 +8667,20 @@ sorting validated; memory module = unknown batch factor.
 - **Choice and data checks as C6-S7** (Q1 signs 5/5 and Spearman >= 0.9; Q2; Q3; S2 power from the model, H17).
   Downstream ~6 h if reached.
 - **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; clone targets only if step 0 passes.
+
+### C6-S7g result (2026-11-09; `results_gastruloid/c6s7g_potts_wet.json`, `c6s7g_lattice.png`; synthetic only, no clone data used)
+
+- **Step 0 FAILS at stage 1** (no stage 2, no data checks), but on one criterion only.
+  - **Attached: 1.00 at all 8 points.** Partial-wetting energies fix the break-up seen in C6-S7f.
+  - **Polar reaches the bar at 100k MCS:** W1 0.60, W4 0.58, W2 0.52 (W3 0.36). At 30k MCS: 0.29-0.43.
+  - **Multipolar 83-100% everywhere:** the posterior cells form 2-3 separate caps on one attached body (picture),
+    not one cap. Caps merge only by travelling around the surface, which is slow.
+  - Elongation without crawling 0.12-0.35.
+- **Reading:** short-range adhesion gets sorted, attached caps but not a single one, which is exactly Guan's
+  finding for adhesion alone (best asymmetry 0.83, no robust single axis) and their fix is long-range
+  posterior attraction. In a Potts model that would be an energy term pulling P cells toward other P cells;
+  untested. Longer runs may also merge caps (polar rose 0.29-0.43 -> 0.52-0.60 from 30k to 100k). No further
+  amendment without Bence.
+- **Literature check on detachment (asked by Bence):** no source reports posterior tissue detaching in
+  gastruloids; Oriola 2024 heterotypic T+/T- aggregate fusion shows the two tissues fuse (interfacial tension
+  below the sum of surface tensions), i.e. the partial-wetting range used here.

@@ -151,9 +151,13 @@ def simulate(s, c, prm, rng):
     s, c = s[:n], c[:n]
     P = c2.identities(s, prm["g"], prm["a_star"])
     typ = np.r_[2, P.astype(np.int64)]  # 0 anterior, 1 posterior, 2 medium
-    J = np.array([[prm["J_like"], prm["J_unlike"], prm["J_med"]],
-                  [prm["J_unlike"], prm["J_like"], prm["J_med"]],
-                  [prm["J_med"], prm["J_med"], 0.0]])
+    # per-type energies (C6-S7g); defaults reproduce the symmetric de Jong table
+    jaa, jpp = prm.get("J_AA", prm["J_like"]), prm.get("J_PP", prm["J_like"])
+    jap = prm.get("J_AP", prm["J_unlike"])
+    jam, jpm = prm.get("J_Am", prm["J_med"]), prm.get("J_Pm", prm["J_med"])
+    J = np.array([[jaa, jap, jam],
+                  [jap, jpp, jpm],
+                  [jam, jpm, 0.0]])
     ys, xs = np.nonzero(lat)
     ids = lat[ys, xs]
     area = np.bincount(ids, minlength=n + 1).astype(np.float64)
