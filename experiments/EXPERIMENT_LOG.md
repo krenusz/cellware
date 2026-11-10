@@ -8875,3 +8875,38 @@ sorting validated; memory module = unknown batch factor.
   - This independence fits the C6-S7h Q2/Q3 failures: the shape is set by crawling strength, not by the
     pattern or the clone state.
   - Next step needs Bence. Candidate (not registered): elongation driven by posterior cells after the pole forms.
+
+### C6-S7i result (2026-11-10; `results_gastruloid/c6s7i_diag.json`; diagnosis only, synthetic + open summaries, nothing sealed; parts on GitHub Actions https://github.com/krenusz/cellware/actions/runs/42788350289, 30 jobs; the D1c means are identical to the earlier local partial run, so Actions reproduces local)
+
+- **D1a: identity rule NOT the cause of Q2.** With perfect sorting and the feedback rule, the slope is 0.07
+  (crossings 58-62). It would read as fixed domains. The full simulation gives 0.57, so **the mechanics or the
+  readout add it** (registered reading).
+- **D1b:** independent identity gives 0.07; g 0 gives 0.37. Feedback already gives fixed domains in ideal
+  geometry, so no identity fix is needed.
+- **D1c, simulation at the chosen setting:**
+  - Clone 1 posterior share rises 0.50 -> 0.87 and clone 3 rises 0.08 -> 0.27 as clone 3 becomes the
+    majority. That is the rank rule, as in D1a.
+  - **Mean axis position of anterior cells is about 50 at every ratio.** Perfect sorting would put it at about
+    31.
+  - So the A and P domains are **poorly aligned with the long (PCA) axis** the readout uses.
+  - **Interpretation (not a registered reading):** crawling elongates the body before the pole forms (C6-S7j
+    J2). So the long axis is often not the A-P axis, and the line scan along it mixes A and P. The crossing then
+    tracks composition: the Q2 failure.
+- **D2: SATURATION SUPPORTED** (all three registered criteria). Elongation follows c x lam_F:
+  - c 0.2 vs c 1 at lam 80: +0.001;
+  - c 1 - c 0.2 at lam 20: +0.40;
+  - c 0.2 x 80 vs c 1 x 20: -0.03.
+  - lam 20: 0.15 / 0.16 / 0.23 / 0.50 / 0.63 at c 0 / 0.1 / 0.2 / 0.5 / 1.
+  - lam 80: 0.16 / 0.45 / 0.59 / 0.39 / 0.59. lam 80, c 0.5 is a noisy dip at 10 reps.
+  - **The Q3 failure at the chosen setting is saturation:** competence 0.2 x 80 already elongates fully.
+- **Q3 at lam_F 20 (descriptive only; target exposed; cannot replace the chosen setting):**
+  - Elongation 0.64 / 0.645 / 0.55 / 0.37 / 0.20 at 0 / 20 / 50 / 80 / 100% low-competence clone.
+  - It falls with the low-competence share; the first step (+0.005) is flat.
+- **Reading:**
+  - Both data-check failures come from the elongation mechanism, not from the clone-state or identity rule.
+  - **Q3:** crawling at lam 80 saturates.
+  - **Q2:** crawling elongates along a random axis before the pole exists, so the measured axis is not the A-P
+    axis.
+  - **Candidate fix (not registered; needs Bence):** elongation by posterior cells only after the pole forms,
+    at a non-saturating strength. It would have to re-pass step 0 and Q1, then Q2/Q3 (targets exposed, so those
+    would be capped), with S2 recomputed.
