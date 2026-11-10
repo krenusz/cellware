@@ -188,6 +188,17 @@ def simulate(s, c, prm, rng):
             fx[iP + 1], fy[iP + 1] = F[:, 0], F[:, 1]
         if prm["lam_F"] > 0 and t >= prm.get("t_on", 0):  # C6-S7k: optional crawling onset (default 0)
             cen = np.c_[sx[1:], sy[1:]] / np.maximum(area[1:], 1)[:, None]
+            if prm.get("orient") == "ml":  # C6-S7l: mediolateral polarity from other-type contacts (default off)
+                pr = b._contacts(lat)
+                pr = pr[P[pr[:, 0]] != P[pr[:, 1]]]
+                acc = np.zeros((n, 2))
+                cnt = np.zeros(n)
+                for u, v in ((0, 1), (1, 0)):
+                    np.add.at(acc, pr[:, u], cen[pr[:, v]])
+                    np.add.at(cnt, pr[:, u], 1)
+                hv = cnt > 0
+                dvec = cen[hv] - acc[hv] / cnt[hv, None]  # points away from the other type (A-P line)
+                pol[hv] = np.arctan2(dvec[:, 1], dvec[:, 0]) + np.pi / 2  # perpendicular: converge sideways
             links, pol = _links(lat, n, P, pol, prm, rng, cen)
             if len(links):
                 la, lb = links[:, 0] + 1, links[:, 1] + 1
