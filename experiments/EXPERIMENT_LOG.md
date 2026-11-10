@@ -9080,3 +9080,28 @@ sorting validated; memory module = unknown batch factor.
   - There is still no powered test on unseen data: the predicted mix effect is small (0.02-0.05 against SE
     0.029).
   - Per H18 (RETRO_2026-11-10), this is the 12th version; a pass is discounted in the credit ledger.
+
+## C6-S7m: sensitivity of the C6-S7l data checks to arm c, mediolateral all-cell crawling (pre-registered 2026-11-10)
+
+- **Serves: C6-S7** (sensitivity of its chosen setting; exploratory). Bence: "go 2 3" (answer to: "2. read the
+  Marangoni preprint; 3. arm c as a sensitivity check"). Scripts: `c6s7m_armc.py` (new, wraps `c6s7l_axis.py`),
+  `c6s7l_axis.py` (checks output file name becomes a module variable; logic unchanged), `c6s7c_potts.py`,
+  `c6s7g_potts_wet.py`, `c6s7f_potts_pcrawl.py`, `c6s7_checks.py`, `c6s2_space.py`, `c6s3_break.py`, `c6s4_fit.py`.
+- **H18:** this is the 13th version within C6-S7. It cites RETRO_2026-11-10. **It is a sensitivity run of an
+  already-passing step-0 point, not a new model.** Arm c passed step 0 in C6-S7l (c_t100k_lam20: polar 1.52,
+  alignment 0.97, pole first 10/10).
+- **Point:** arm c, t_on 100k, lam_F 20. This is the smallest passing lam_F in arm c, fixed now before any run.
+- **Checks:** Q1, Q2, Q3 and S2, exactly as C6-S7l: same code, same seeds, 250k MCS, chunked on Actions.
+- **Readings:**
+  - Report each check next to C6-S7l.
+  - **Robust** if Q1, Q2 and Q3 keep their C6-S7l verdicts.
+  - **S2:** report power under both states. **Arm c cannot replace the registered choice for a sealed look.** If
+    arm c alone reaches robust power >= 0.8, that is reported as selection-dependent, and any S2 proposal to Bence
+    must say so (H13 last partition, Bence's verbatim OK).
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readouts unchanged.
+  3. Open/spent summaries only. No sealed file.
+  4. Power: as C6-S7l.
+  5. Exposure: Q1-Q3 targets seen; C6-S7l results seen. Hence sensitivity only.
+  6. Literature: convergent extension (Keller; PCP).
