@@ -29,3 +29,20 @@ gastruloid is at 120 h, so no model-time-to-hours calibration is needed.
    conversion (0.180 / model gap), which came from a different line. Weakest.
 
 Neither test touches the clone claim. Under the CREDIT_C6 scale they count only for Form/Unseen, not Clone order.
+
+## Test 1 check (2026-11-10, Bence: "2"): methods read via Europe PMC (PMC13623378), methods paragraphs only
+
+- **The seqFISH set is selected.** Only "successful (i.e. elongated and uniaxial)" wells were harvested, and 6
+  of 14 samples from the first two runs were discarded on Eef2 quality. Runs 1-2 used 300-cell gastruloids
+  (n 8), run 3 used 100-cell gastruloids (n 18).
+- **The AP axis is drawn along the shape.** The posterior pole comes from T expression and nuclear morphology.
+  The line then runs "along the center of the gastruloid parallel to the edges" to the furthest point.
+- **So alignment of the long axis with the AP axis is true by construction**, on gastruloids pre-selected to be
+  uniaxial. Test 1 is circular and is dropped. A_area and P_area are not defined in the methods.
+- **Other candidates considered:**
+  - **Posterior share (T+ fraction or T landmark position):** the model gives 0.398 in both arms. But that
+    number is the G5-calibrated proportion rule, not the spatial model. It would test a calibration, in a
+    different line, on selected gastruloids, so it does not serve the C6 question (H16).
+  - **Cell-type order along the axis:** the model has only two types (A/P), so it predicts no order.
+- **Verdict:** the atlas gives no sound unseen test of the chapter 6 model. Brightfield (test 2) is blocked by
+  the crawl-mode sign flip (C6-S8d). seqFISH alignment is circular.
