@@ -9323,3 +9323,20 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   4. Power: this step.
   5. Exposure: atlas values unseen; direction partly exposed (literature).
   6. Literature: Fiuza 2024 size series (already read).
+
+### C6-S8d result (2026-11-10)
+
+- Actions run https://github.com/krenusz/cellware/actions/runs/42888098598. 64 sims per (arm, N). No atlas value
+  has been read.
+
+  | arm | moment_elong N 300 | N 100 | Delta (100 - 300) [90% CI] | d | power |
+  |---|---|---|---|---|---|
+  | a (all-cell random crawling) | 0.710 | 0.487 | -0.223 [-0.245, -0.201] | -2.9 | 1.00 |
+  | c (mediolateral crawling) | 0.716 | 0.809 | +0.093 [+0.054, +0.132] | +0.7 | 1.00 |
+
+- **Gate failed: the arms predict opposite signs.** Smaller gastruloids elongate less under random crawling and
+  more under mediolateral crawling. The model's size prediction depends on the crawling mode, which the data
+  so far cannot fix, so there is no test. The atlas stays sealed (values unread).
+- Side readings (model only): alignment drops at N 100 under arm a (0.58 vs 0.82) and stays high under arm c.
+  P fraction is 0.398 at both sizes; no multipolar runs.
+- Under the C6-S8 plan, chapter 6 now closes as exploratory with a write-up.
