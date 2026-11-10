@@ -54,7 +54,7 @@ def _kernel():
         return tot
 
     @nb.njit(cache=True)
-    def sweep(lat, area, sx, sy, typ, J, T, lam_a, A0, inc, ninc, la, lb, lw, n_mcs, seed):
+    def sweep(lat, area, sx, sy, typ, J, T, lam_a, A0, inc, ninc, la, lb, lw, fx, fy, n_mcs, seed):
         np.random.seed(seed)
         L0, L1 = lat.shape
         DX = np.array([1, -1, 0, 0, 1, 1, -1, -1])
@@ -88,12 +88,18 @@ def _kernel():
                     a = area[tgt]
                     dH += dlen(tgt, (sx[tgt] - x) / (a - 1), (sy[tgt] - y) / (a - 1), sx[tgt] / a, sy[tgt] / a,
                                inc, ninc, la, lb, lw, sx, sy, area)
+                if fx[tgt] != 0.0 or fy[tgt] != 0.0:  # C6-S7h force term: dH = -F . dc
+                    a = area[tgt]
+                    dH -= fx[tgt] * ((sx[tgt] - x) / (a - 1) - sx[tgt] / a) + fy[tgt] * ((sy[tgt] - y) / (a - 1) - sy[tgt] / a)
             if src > 0:
                 dH += lam_a * ((area[src] + 1 - A0) ** 2 - (area[src] - A0) ** 2)
                 if ninc[src] > 0:
                     a = area[src]
                     dH += dlen(src, (sx[src] + x) / (a + 1), (sy[src] + y) / (a + 1), sx[src] / a, sy[src] / a,
                                inc, ninc, la, lb, lw, sx, sy, area)
+                if fx[src] != 0.0 or fy[src] != 0.0:
+                    a = area[src]
+                    dH -= fx[src] * ((sx[src] + x) / (a + 1) - sx[src] / a) + fy[src] * ((sy[src] + y) / (a + 1) - sy[src] / a)
             if dH <= 0 or np.random.random() < np.exp(-dH / T):
                 lat[y, x] = src
                 if tgt > 0:
@@ -167,7 +173,19 @@ def simulate(s, c, prm, rng):
     empty = (np.zeros((n + 1, KI), np.int64), np.zeros(n + 1, np.int64), np.zeros(1, np.int64),
              np.zeros(1, np.int64), np.zeros(1))
     inc, ninc, la, lb, lw = empty
+    fx = np.zeros(n + 1)
+    fy = np.zeros(n + 1)
+    beta = prm.get("beta_lr", 0.0)
+    iP = np.flatnonzero(P)
+    rcut = 2 * np.sqrt(prm["A0"] / np.pi)
     for t in range(0, prm["mcs"], prm["t_int"]):
+        if beta > 0 and len(iP) > 1:  # C6-S7h: Guan 1/d^2 pull among P cells beyond contact, as a CPM force
+            cp = np.c_[sx[1:], sy[1:]][iP] / np.maximum(area[1:], 1)[iP, None]
+            d = cp[None, :, :] - cp[:, None, :]  # j - i
+            dist = np.sqrt((d ** 2).sum(-1))
+            w = np.where(dist > rcut, 1.0 / np.maximum(dist, 1e-9) ** 3, 0.0)
+            F = beta * np.einsum("ij,ijk->ik", w, d)
+            fx[iP + 1], fy[iP + 1] = F[:, 0], F[:, 1]
         if prm["lam_F"] > 0:
             cen = np.c_[sx[1:], sy[1:]] / np.maximum(area[1:], 1)[:, None]
             links, pol = _links(lat, n, P, pol, prm, rng, cen)
@@ -184,7 +202,7 @@ def simulate(s, c, prm, rng):
             else:
                 inc, ninc, la, lb, lw = empty
         lat = sweep(lat, area, sx, sy, typ, J, prm["T"], prm["lam_a"], prm["A0"], inc, ninc, la.astype(np.int64),
-                    lb.astype(np.int64), lw.astype(np.float64), int(prm["t_int"]), int(rng.integers(2 ** 31)))
+                    lb.astype(np.int64), lw.astype(np.float64), fx, fy, int(prm["t_int"]), int(rng.integers(2 ** 31)))
     xy, _ = b._cells(lat, n)
     LAST["lat"], LAST["pairs"] = lat, b._contacts(lat)  # C6-S7f readouts
     return xy, P, b.shape_from_mask(lat > 0)

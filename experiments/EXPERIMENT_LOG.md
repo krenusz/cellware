@@ -8702,3 +8702,48 @@ sorting validated; memory module = unknown batch factor.
   types, lam_F {20, 80}; S0-a..d as C6-S7g (S0-d <= 300 s). Choice and data checks as C6-S7. No stage-1 pass ->
   report; no further amendment without Bence.
 - **Pre-flight:** unchanged from C6-S7 (items 1-6); no sealed data; clone targets only if step 0 passes.
+
+### C6-S7h result (2026-11-10; `results_gastruloid/c6s7h_potts_lr.json`, `c6s7h_lattice.png`; clone checks used only open/spent summaries, nothing sealed)
+
+- **Step 0: PASS (first in chapter 6).**
+  - **Stage 1, no crawling, 100k MCS, 6 reps:** 5/6 points pass, all attached 1.00 and multipolar 0%. W1: polar
+    0.84 / 0.62 / 0.53 at beta 300 / 1000 / 3000. W4: polar 0.93 / 0.44 (fails) / 0.51.
+  - **Stage 2:** 4 points pass S0-a..d:
+    - W1 b300 lam20 and lam80;
+    - W1 b1000 lam80;
+    - W4 b3000 lam80.
+  - **W4 b300 fails S0-b:** it already elongates without crawling (0.45).
+  - **Chosen (highest polar): W1, beta 300, lam_F 80.** Polar 0.88, multipolar 0%, attached 1.00. Elongation
+    0.50 vs 0.19 without crawling; competence 0 gives 0.17.
+- **Q1 clone placement: signs 5/5, Spearman = 0.90, exactly the pre-registered threshold (>= 0.9).**
+  - Only clones 3 and 5 are swapped (sum d^2 = 2, so rho = 1 - 12/120 = 0.9).
+  - The script's flag says `pass: false` only because floating point gives 0.8999999999999998. **By the
+    registered rule (>= 0.9) this is a pass, at the boundary.** I disclose it here rather than change the flag.
+  - Magnitudes are about 1/3 of the targets: sim -0.30 / 0.42 / 0.18 / -0.39 / 0.04 vs target -0.92 / 0.88 /
+    1.05 / -1.13 / 0.73 (clones 1 / 3 / 5 / 6 / 7). Clone 7 is near 0.
+  - Multipolar 0-15%, polar 0.68-0.73.
+  - Still not an unseen test: the targets were exposed and used in C3-S1 and C6-S3..S5.
+- **Q2 fixed boundary: FAIL.** The crossing moves with the ratio (4 -> 39 over f_anterior 0.2 -> 0.8). Slope 0.57 is
+  outside the G1b CI [-0.40, 0.42]. In the model the A-P boundary follows the proportions; in the data it does not.
+- **Q3 competence: FAIL** (no monotone fall).
+  - Elongation 0.56 / 0.62 / 0.60 / 0.66 / 0.57 at 0 / 20 / 50 / 80 / 100% low-competence clone.
+  - Reading: c 0.2 x lam_F 80 = 16 per link, which is about the lam 20 that already elongates. So elongation
+    saturates and competence 0.2 does not slow it.
+- **S2 (H17): power 1.00 on the primary state (z 0), but the sign flips on the registered sensitivity (z = clone 6).**
+  - **z 0:** mix 0.762 vs bulk 0.738 and 6a 0.703. Fraction of the pure gap is +1.17, i.e. 0.21 in data units.
+  - **z clone 6:** -0.91 (-0.16), power about 0.
+  - The model's pure gap (bulk - 6a) is only 0.035 against 0.18 in the spent data. The ratio divides two small
+    simulated differences (100 gastruloids each), so the prediction is fragile.
+  - The script labels it "powered". By the registered rule the S2 look is *proposable* to Bence (H13 last
+    partition).
+  - **My recommendation: do not spend the last partition on it.** The direction depends on the state
+    assumption, and Q2/Q3 fail.
+- **Reading:**
+  - The attached Potts model with the long-range posterior pull is the first version to build one pole and
+    elongate.
+  - It orders clone placement correctly, but only at the boundary of the threshold and at 1/3 magnitude.
+  - It fails the fixed-boundary and competence checks.
+  - Both failures point to the same cause: in the model, proportions and crawling strength set the outcome, not
+    the clone's state.
+  - No parameter was tuned after the step-0 choice. C6-S7 remains exploratory. Next step needs Bence (C6-S8 or
+    further amendment).

@@ -1,0 +1,19 @@
+stage1 W1_b300 {'polar': 0.836, 'attached': 1.0, 'elong': 0.185, 'sec': 69.026, 'multipolar_rate': 0.0, 'pass1': True}
+stage1 W1_b1000 {'polar': 0.623, 'attached': 1.0, 'elong': 0.092, 'sec': 51.059, 'multipolar_rate': 0.0, 'pass1': True}
+stage1 W1_b3000 {'polar': 0.525, 'attached': 1.0, 'elong': 0.086, 'sec': 46.672, 'multipolar_rate': 0.0, 'pass1': True}
+stage1 W4_b300 {'polar': 0.931, 'attached': 1.0, 'elong': 0.454, 'sec': 69.558, 'multipolar_rate': 0.0, 'pass1': True}
+stage1 W4_b1000 {'polar': 0.443, 'attached': 1.0, 'elong': 0.084, 'sec': 48.719, 'multipolar_rate': 0.0, 'pass1': False}
+stage1 W4_b3000 {'polar': 0.514, 'attached': 1.0, 'elong': 0.1, 'sec': 46.49, 'multipolar_rate': 0.0, 'pass1': True}
+stage2 W1_b300_lam20 {'polar': 0.712, 'attached': 1.0, 'elong': 0.592, 'sec': 160.551, 'multipolar_rate': 0.0, 'elong_c0': 0.218, 'elong_lam0': 0.185, 'polar_lam0': 0.836, 'S0a': True, 'S0b': True, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W1_b300_lam80 {'polar': 0.877, 'attached': 1.0, 'elong': 0.501, 'sec': 162.672, 'multipolar_rate': 0.0, 'elong_c0': 0.171, 'elong_lam0': 0.185, 'polar_lam0': 0.836, 'S0a': True, 'S0b': True, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W1_b1000_lam20 {'polar': 0.342, 'attached': 1.0, 'elong': 0.742, 'sec': 122.041, 'multipolar_rate': 0.0, 'elong_c0': 0.17, 'elong_lam0': 0.092, 'polar_lam0': 0.623, 'S0a': False, 'S0b': True, 'S0c': False, 'S0d': True, 'attached_ok': True}
+stage2 W1_b1000_lam80 {'polar': 0.614, 'attached': 0.999, 'elong': 0.838, 'sec': 135.757, 'multipolar_rate': 0.0, 'elong_c0': 0.102, 'elong_lam0': 0.092, 'polar_lam0': 0.623, 'S0a': True, 'S0b': True, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W1_b3000_lam20 {'polar': 0.294, 'attached': 1.0, 'elong': 0.885, 'sec': 101.483, 'multipolar_rate': 0.0, 'elong_c0': 0.101, 'elong_lam0': 0.086, 'polar_lam0': 0.525, 'S0a': False, 'S0b': True, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W1_b3000_lam80 {'polar': 0.468, 'attached': 1.0, 'elong': 0.849, 'sec': 124.92, 'multipolar_rate': 0.0, 'elong_c0': 0.07, 'elong_lam0': 0.086, 'polar_lam0': 0.525, 'S0a': False, 'S0b': True, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W4_b300_lam20 {'polar': 0.465, 'attached': 1.0, 'elong': 0.527, 'sec': 141.843, 'multipolar_rate': 0.0, 'elong_c0': 0.477, 'elong_lam0': 0.454, 'polar_lam0': 0.931, 'S0a': False, 'S0b': False, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W4_b300_lam80 {'polar': 0.81, 'attached': 1.0, 'elong': 0.593, 'sec': 164.312, 'multipolar_rate': 0.167, 'elong_c0': 0.471, 'elong_lam0': 0.454, 'polar_lam0': 0.931, 'S0a': True, 'S0b': False, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W4_b3000_lam20 {'polar': 0.315, 'attached': 1.0, 'elong': 0.712, 'sec': 99.618, 'multipolar_rate': 0.0, 'elong_c0': 0.093, 'elong_lam0': 0.1, 'polar_lam0': 0.514, 'S0a': False, 'S0b': True, 'S0c': True, 'S0d': True, 'attached_ok': True}
+stage2 W4_b3000_lam80 {'polar': 0.623, 'attached': 1.0, 'elong': 0.81, 'sec': 116.562, 'multipolar_rate': 0.0, 'elong_c0': 0.096, 'elong_lam0': 0.1, 'polar_lam0': 0.514, 'S0a': True, 'S0b': True, 'S0c': True, 'S0d': True, 'attached_ok': True}
+chosen {'W': 'W1', 'beta_lr': 300.0, 'lam_F': 80.0}
+Q1 {"sim": {"1": -0.2980351963221974, "3": 0.4178870246542109, "5": 0.1826501667359993, "6": -0.3911698484687264, "7": 0.035736366298669026}, "target": {"1": -0.922, "3": 0.881, "5": 1.051, "6": -1.132, "7": 0.726}, "signs": 5, "spearman": 0.8999999999999998, "multipolar_rate": {"1": 0.0, "3": 0.15, "5": 0.05, "6": 0.025, "7": 0.125}, "polar": {"1": 0.725515911324125, "3": 0.7056862293657874, "5": 0.6763562958416407, "6": 0.6962148526092624, "7": 0.7014766872292435}, "pass": false}
+Q2 0.5677021536834679 False Q3 [0.562, 0.618, 0.603, 0.663, 0.575]
