@@ -8847,3 +8847,31 @@ sorting validated; memory module = unknown batch factor.
   5. Exposure: none.
   6. Literature: order-of-events expectation above, read before the run (lit/reading_c6_shape_benchmark.md and
      lit/reading_c6_outer_start.md).
+
+### C6-S7j result (2026-11-10; `results_gastruloid/c6s7j_repeats.json`, `c6s7j_order.png`; synthetic only; run on GitHub Actions https://github.com/krenusz/cellware/actions/runs/42786181450, 11 jobs, 12 min)
+
+- **J1, 30 seeds, chosen setting (W1, beta 300, lam_F 80): ROBUST by the registered reading (means meet S0-a..c),
+  but the 6-seed values were on the lucky side.** Values are mean [95% CI], SD:
+  - **crawling, c 1:** polar 0.77 [0.65, 0.88], SD 0.34. Multipolar 10% [0, 20%]. Attached 1.00. Elongation
+    0.57 [0.51, 0.63] (AR about 2.6).
+  - **lam_F 0:** polar 0.77 [0.59, 0.96], SD 0.54. Multipolar 0%. Elongation 0.16.
+  - **crawling, c 0:** elongation 0.16.
+  - **S0-b:** +0.41. **S0-c:** 0.003.
+  - **Single runs:** one in three crawling runs fails one-pole (polar < 0.5 or more than one cap). The polar index
+    is bimodal: runs either form a clear pole (> 0.8) or stay low.
+  - **6-seed values vs the CIs:** polar 0.88 sits at the upper end of its CI; elongation 0.50 sits just below.
+  - **AR about 2.6** is at the high end of real 120 h medians (1.2-2.2, Blotenburg 2025).
+- **J2, order of events, 10 seeds: ELONGATION FIRST (8/10).** This is the opposite of the literature expectation
+  registered before the run (pole first).
+  - t_elong 4-28k MCS vs t_pole 22-80k MCS.
+  - Run 5 never reaches half-gain elongation timing (t_elong none); run 6 never forms a pole (t_pole none).
+  - Crawling stretches the aggregate within the first 20k MCS, before the posterior cells have gathered.
+  - **Several polar traces are still rising at 100k MCS:** the pole has not settled by the end of the run.
+- **Reading:**
+  - The step-0 pass holds on average, but about a third of single gastruloids lack a clear pole.
+  - In the model, **elongation does not depend on the pole having formed**: all cells crawl along their own
+    polarity from the start.
+  - In real gastruloids, the pole comes first (by about 96 h) and elongation follows (96-120 h).
+  - This independence fits the C6-S7h Q2/Q3 failures: the shape is set by crawling strength, not by the
+    pattern or the clone state.
+  - Next step needs Bence. Candidate (not registered): elongation driven by posterior cells after the pole forms.
