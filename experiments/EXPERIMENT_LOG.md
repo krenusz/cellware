@@ -9105,3 +9105,27 @@ sorting validated; memory module = unknown batch factor.
   4. Power: as C6-S7l.
   5. Exposure: Q1-Q3 targets seen; C6-S7l results seen. Hence sensitivity only.
   6. Literature: convergent extension (Keller; PCP).
+
+### C6-S7m result (2026-11-10; `results_gastruloid/c6s7m_checks.json`; sensitivity only; Actions run 42830280687, 100 jobs; nothing sealed)
+
+Arm c (mediolateral polarity, all cells, t_on 100k, lam_F 20) vs C6-S7l's chosen arm a:
+
+| check | C6-S7l (arm a) | C6-S7m (arm c) |
+|---|---|---|
+| Q1 | pass: 5/5, rho 0.90, magnitude 43-64% | **pass:** 5/5, rho 0.90 (3/5 swapped again), magnitude **57-84%** (clone 7: 46%); polar 1.49-1.57, multipolar 0% |
+| Q2 | pass: slope 0.18, crossings 34-46 smooth | **pass:** slope 0.31, inside CI [-0.40, 0.42], but crossings **erratic** (34 / 76 / 55 / 73 / 60) |
+| Q3 | pass: 0.71 -> 0.26, monotone | **FAIL (registered strict monotone):** 0.81 / 0.815 / 0.68 / 0.65 / 0.56. The first step rises by 0.008 and the overall fall is shallow: 100% low-competence still elongates 0.56 |
+| S2 power (z 0 / z clone 6) | 0.16 / 0.54 | 0.29 / **0.81**, not robust (z 0 < 0.8) |
+
+- **Registered reading: NOT ROBUST.** Q3 changes verdict.
+  - Q1 holds and improves.
+  - Q2 holds but is noisy.
+  - Q3 depends on the arm. Mediolateral crawling elongates more strongly (0.81 at 0%), and competence 0.2 no
+    longer slows it much: closer to saturation again.
+- **S2:** arm c reaches 0.81 under the clone-6 state only.
+  - That is selection-dependent and fails the both-states rule, so it is **not usable** for a sealed proposal (as
+    registered).
+- **Consequence:**
+  - C6-S7l's Q3 pass depends on the elongation mechanism and its strength, not only on the clone state.
+  - C6-S7l's Q1/Q2 consistency holds across both arms.
+  - No arm gives a robustly powered S2.
