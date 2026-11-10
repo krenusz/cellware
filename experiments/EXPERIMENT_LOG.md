@@ -8805,3 +8805,45 @@ sorting validated; memory module = unknown batch factor.
   5. Exposure: the Q2 and Q3 targets are exposed. That is why any fix needs fresh checks.
   6. Literature: G1b implication (fixed domains need a feedback that sizes domains: fate switching at the
      boundary or growth compensation).
+
+## C6-S7j: more repeats of the chosen setting and order of events (pre-registered 2026-11-10)
+
+- **Serves: C6-S7** (robustness of its step-0 choice; exploratory). Bence: "do this in the meanwhile" (answer
+  to: "After the checks finish, run more repeats and the order-of-events check?"). Scripts: `c6s7j_repeats.py`
+  (new), `c6s7c_potts.py` (optional snapshot recording, `snap` key; off by default, so earlier runs are
+  unchanged), `c6s7h_potts_lr.py`, `c6s7g_potts_wet.py`, `c6s7f_potts_pcrawl.py`, `c6s7_checks.py`.
+- **Synthetic only.** Same +-2 mixes as step 0. No clone data, nothing sealed. Runs after C6-S7i finishes
+  (never two Pool(10) jobs at once).
+- **J1, repeats:** chosen setting W1, beta 300, lam_F 80, 100k MCS; 30 new seeds (97000+). Three arms:
+  - crawling, c 1;
+  - lam_F 0;
+  - crawling, c 0.
+
+  Report mean, SD and bootstrap 95% CI of polar, multipolar rate, attached and elongation (and AR =
+  1/(1-elong)), plus the share of single runs failing S0-a (polar < 0.5 or multipolar).
+  **Reading:**
+  - **robust** if the 30-seed means still meet S0-a..c;
+  - **fragile** otherwise.
+  - The 6-seed values (polar 0.88, elongation 0.50) are compared to the CIs.
+- **J2, order of events:** chosen setting, c 1, 10 seeds (97500+). A snapshot every 2,000 MCS records polar,
+  contact multipolar and elongation.
+  - **Definitions:**
+    - t_pole = first snapshot with polar >= 0.5 and a single posterior domain;
+    - t_elong = first snapshot with elongation >= start + 0.5 x (final - start).
+  - **Expectation from the literature** (written before the run): the pole forms first, then elongation. Pole
+    by about 96 h from a homogeneous start (Hashmi 2022); round at 72 h, ellipsoid at 96 h, elongated by
+    120 h (Fiuza 2024); elongation 96-120 h (Trani-Bustos 2025).
+  - **Reading:**
+    - **pole first** if t_pole < t_elong in >= 8/10 runs;
+    - **elongation first** if the reverse holds in >= 8/10;
+    - otherwise **mixed**.
+  - MCS are not calibrated to hours, so only the order is read.
+- **Cost:** 100 simulations, about 30 min.
+- **Pre-flight:**
+  1. Unit: synthetic gastruloid.
+  2. Readouts unchanged (polar, contact multipolar, attached, moment elongation).
+  3. No data used.
+  4. Power: not a test; CIs reported.
+  5. Exposure: none.
+  6. Literature: order-of-events expectation above, read before the run (lit/reading_c6_shape_benchmark.md and
+     lit/reading_c6_outer_start.md).
