@@ -83,3 +83,43 @@ If the S1/S2 power gates fail, a data search restricted to that requirement come
 6. **Literature:** Oriola 2024 (communication sets proportions, mechanics sets poles); Mongera 2018 (fluidity
    gradient, zebrafish axis); Regalado/Shendure monoclonal gastruloids; chimeric gastruloids 2022 (cell-non-
    autonomous compensation). Read the methods for rule 3 before coding it.
+
+## C6-S7 closed, C6-S8 plan (2026-11-10)
+
+Bence: "Yes, close and plan C6-S8". **C6-S7 is closed as EXPLORATORY**, after 13 versions (RETRO_2026-11-10,
+H18).
+- **Outcome:** the attached Potts model makes one robust pole, with long-range posterior gathering and enough
+  time.
+- With elongation switched on after the pole (C6-S7l, arm a), it passes Q1, Q2 and Q3.
+- Q2 and Q3 are exposed. **Q3 depends on the arm** (C6-S7m).
+- **S2 is not robustly powered.** Credit is about 3.25/10 (CREDIT_C6.md).
+
+**C6-S8 question:** is there any test on **unseen** data that the C6-S7l model predicts strongly enough to be
+powered (H17)? If not, chapter 6 closes as exploratory.
+
+### C6-S8a: power inventory (synthetic only; no data statistic; GitHub Actions)
+
+The model's predicted effect for each candidate is computed at C6-S7l arm a, with arm c as sensitivity, under
+both clone-state assumptions (z 0 and z = clone). Then power at the candidate's real n.
+
+| candidate | status | n | model readout | competence or parameters needed |
+|---|---|---|---|---|
+| **S1:** Jan 2024 clone 1+6 pairs, passage 4 | sealed | 34 | share of gastruloids with clone 1 anterior to clone 6 (states after 4 passages via core memory) | none new |
+| **S2:** morph 0831 partition C | sealed, last (H13) | 30 | mix minus member mean, 1 - circularity | done: 0.16 / 0.54 (arm a), 0.29 / 0.81 (arm c); **not powered** |
+| **C:** `clone_bulk_chimera_3s1_08162026` (3s1 + bulk) | **not downloaded, unseen** | to count | elongation vs 3s1 fraction | clone 3 competence from the **open** pure-clone elongation scores (Morphologies CSV), set before download |
+| D: Incucyte time-lapse (clone 5 / 6 + Bra-GFP, 72 h) | not downloaded | 3 wells | pole-then-elongation timing | descriptive only (n too small) |
+| E: seqFISH chimeras (1+3, 1+6) | not downloaded | 2-6 per condition | spatial clone/T overlap | descriptive only |
+
+**Gate:** a candidate becomes a test only if power >= 0.8 under **both** state assumptions **and** both arms
+(robust). Then it gets its own pre-registration, sealed access only through test_oracle.py, and Bence's
+verbatim OK (H13 for S2; sealed S1 also needs his OK).
+
+**Data hygiene for C:**
+- Download into a new folder under data/.
+- Lock it by sha256 and count the rows (gastruloids per fraction) **before** any readout. Only the counts are
+  read, for power.
+- The clone 3 competence mapping is fixed from open data and committed before the download.
+
+**If no candidate passes the gate:** chapter 6 closes as exploratory. Write-up: what builds a pole, what the
+clone state does and does not explain, which data would make it testable (same-plate pure and mixed gastruloids
+with outlines, as in C6-S1).

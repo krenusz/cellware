@@ -9129,3 +9129,8 @@ Arm c (mediolateral polarity, all cells, t_on 100k, lam_F 20) vs C6-S7l's chosen
   - C6-S7l's Q3 pass depends on the elongation mechanism and its strength, not only on the clone state.
   - C6-S7l's Q1/Q2 consistency holds across both arms.
   - No arm gives a robustly powered S2.
+
+## C6-S7 closed (2026-11-10)
+
+Bence: "Yes, close and plan C6-S8". Closed as **exploratory**: summary and C6-S8 plan in CHAPTER6_PLAN.md,
+credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1, S2 partition C, all others).

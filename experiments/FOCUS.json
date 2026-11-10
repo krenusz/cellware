@@ -1,10 +1,10 @@
 {
  "chapter": "6",
- "step": "C6-S7",
+ "step": "C6-S8",
  "question": "Chapter 6: cells into space. Can cells that each carry the core model's clone state (core_model.py), plus local rules (adhesion sorting, proportion feedback), build a gastruloid's A-P domains and its elongation, and predict an unseen spatial/elongation readout? C6-S1: plan + pre-flight (CHAPTER6_PLAN.md); no statistic on sealed data.",
  "next_steps": [
-  "C6-S7 (exploratory under H17 unless S2 power >= 0.8): state-first redesign on the particle model: identity from clone state (proportion feedback), binary-type sorting + long-range posterior attraction + same-type crawling; step 0 synthetic picks the setting; Q1 clone placement as a prediction (no clone-fit parameter), Q2, Q3; S2 power from the model's own prediction",
-  "C6-S8: depends on C6-S7 (Bence decides)"
+  "C6-S8a (synthetic, Actions): power inventory at the C6-S7l model (arm a, arm c sensitivity; z 0 and z clone): S1 1+6 pass-4 share (sealed, n 34), S2 (done, not powered), C = 3s1+bulk chimera (unseen; competence from open pure-clone morphology fixed before download; download + sha-lock + counts only), D/E descriptive only. Gate: power >= 0.8 under both states and both arms",
+  "C6-S8b: pre-registered test on the one robustly powered candidate (Bence's verbatim OK; oracle only), else close chapter 6 as exploratory with a write-up"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
@@ -35,7 +35,7 @@
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)"
  ],
- "approved_by": "Bence 2026-11-10: \"go 2 3\" (answer to: read Marangoni; arm c sensitivity)",
+ "approved_by": "Bence 2026-11-10: \"Yes, close and plan C6-S8\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -61,6 +61,7 @@
   "C6-S4 (2026-11-09, f72980e): LOCO-CV coupling fit FAILS (signs 3/5, rho 0.6); pole formation vs clone coupling trade-off; S1/S2 sealed, no prediction",
   "C6-S5 (2026-11-09, 94f577a): s-independent adhesion gets clone direction (5/5 in sample) but 10x too weak; LOCO CV FAILS (4/5, rho 0.8); S1 unpowerable under the core (<= 0.20), dropped",
   "C6-R (2026-11-09, 4a79aa1): retro ch5+6; H17 adopted; chapter 6 stays open (Bence)",
-  "C6-S6 (2026-11-09, e2dcc01): mechanism literature read (de Jong 2024 + code as text, Guan/Hormoz 2025, McNamara 2024); redesign sketched; H17 adopted"
+  "C6-S6 (2026-11-09, e2dcc01): mechanism literature read (de Jong 2024 + code as text, Guan/Hormoz 2025, McNamara 2024); redesign sketched; H17 adopted",
+  "C6-S7 (2026-11-10, closed exploratory after 13 versions): attached Potts + long-range posterior pull + crawling after the pole (C6-S7l) passes Q1/Q2/Q3 (Q2/Q3 exposed; Q3 arm-dependent, C6-S7m); S2 not robustly powered; credit ~3.25/10"
  ]
 }
