@@ -8747,3 +8747,61 @@ sorting validated; memory module = unknown batch factor.
     the clone's state.
   - No parameter was tuned after the step-0 choice. C6-S7 remains exploratory. Next step needs Bence (C6-S8 or
     further amendment).
+
+## C6-S7i: diagnosis of the C6-S7h Q2 and Q3 failures (pre-registered 2026-11-10)
+
+- **Serves: C6-S7** (diagnosis of its data checks; exploratory). Bence: "yes" (answer to: "pre-register a
+  diagnosis of the Q2/Q3 failures, or close C6-S7 and plan C6-S8?"). Scripts: `c6s7i_diag.py` (new),
+  `c6s7h_potts_lr.py`, `c6s7g_potts_wet.py`, `c6s7c_potts.py`, `c6s7_checks.py`, `c6s2_space.py`,
+  `c6s3_break.py`, `c6s4_fit.py`.
+- **Status: diagnosis only, not a test.**
+  - The Q2 target (G1b CI) and the Q3 target are already exposed, so nothing here can turn Q2 or Q3 into a pass.
+  - Any fix this suggests needs its own pre-registration and Bence's OK. It must then re-pass step 0 and Q1,
+    and S2 must be recomputed.
+  - Nothing sealed is read. No clone-fit parameter is introduced.
+- **D1, Q2 (the boundary follows the proportions; model slope 0.57 vs data CI [-0.40, 0.42]).**
+  - **Question:** is the cause the identity rule (posterior = the q lowest-s cells, q from proportion
+    feedback), or the mechanics?
+  - **D1a, identity-only geometry, no simulation:**
+    - Use the same gastruloid builder (clone 3 vs clone 1, f_anterior 0.2 / 1/3 / 0.5 / 2/3 / 0.8, n 300) and
+      the same identity rule (g 0.834).
+    - Place cells in perfect sorting: anterior cells evenly in [0, 100 n_A/n], posterior cells after them,
+      in random order within each type.
+    - Use the same readout: z-scored clone-fraction profiles, first crossing, slope against 100 f. 200 reps
+      per ratio.
+    - **Reading:**
+      - slope within 0.2 of 0.57: the identity rule explains Q2.
+      - slope within 0.2 of 0 while the simulation gives 0.57: the mechanics or the readout add it.
+      - otherwise: mixed.
+  - **D1b, same geometry, two identity variants:**
+    - (i) **g 0:** q follows composition.
+    - (ii) **independent identity:** each cell is posterior with probability sigmoid(-s - theta). theta is set
+      per gastruloid so that the expected posterior fraction equals the feedback q, so there is no ranking
+      between cells.
+    - Report each slope. This is a pointer to a candidate fix, not a fit.
+  - **D1c, only if D1a reads "mechanics":** rerun the C6-S7h Q2 simulations (same seeds 92000+, chosen
+    setting) and store each clone's posterior fraction and within-type mean axis position per ratio.
+    About 30 min.
+- **D2, Q3 (no fall in elongation with the low-competence share).**
+  - **Hypothesis (saturation):** elongation depends on the product c x lam_F and saturates. At lam_F 80,
+    competence 0.2 (product 16) already elongates fully.
+  - **Run:** pure gastruloids (state z 0) at W1, beta 300, 100k MCS. Competence c {0, 0.1, 0.2, 0.5, 1} x lam_F
+    {20, 80}, 10 reps each (seeds 96000+). Readouts: moment elongation, polar, attached.
+  - **Readings:**
+    - **Saturation supported** if all three hold:
+      1. c 0.2 at lam 80 is within 0.05 of c 1 at lam 80;
+      2. elongation rises with c at lam 20 (c 0.2 at least 0.15 below c 1);
+      3. points with a similar product (c 0.2 x 80 = 16 vs c 1 x 20 = 20) are within 0.08.
+    - Otherwise: not supported, reported as is.
+  - **Descriptive only:** the Q3 series at lam_F 20 (W1 b300 lam20, a step-0 passing point; same fractions
+    and seeds as C6-S7h Q3, 20 reps). It cannot replace the chosen setting; any switch needs a new
+    pre-registration.
+- **Cost:** about 1 h on Pool(10) (D2 100 sims + Q3 at lam 20 100 sims; D1a/b are seconds).
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readouts are unchanged from C6-S7 (fraction line scan and crossing, moment elongation).
+  3. Used data first: only spent or open summaries (G1b CI, Q3 description). No sealed file.
+  4. Power: not applicable; this is a diagnosis, with no test or claim.
+  5. Exposure: the Q2 and Q3 targets are exposed. That is why any fix needs fresh checks.
+  6. Literature: G1b implication (fixed domains need a feedback that sizes domains: fate switching at the
+     boundary or growth compensation).
