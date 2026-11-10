@@ -123,3 +123,12 @@ verbatim OK (H13 for S2; sealed S1 also needs his OK).
 **If no candidate passes the gate:** chapter 6 closes as exploratory. Write-up: what builds a pole, what the
 clone state does and does not explain, which data would make it testable (same-plate pure and mixed gastruloids
 with outlines, as in C6-S1).
+
+## Chapter 6 closed (2026-11-10)
+
+Bence: "Close and write up". No candidate reached robust power:
+- **S1:** C6-S8a, and C6-S8c with clone-specific memory: power 0.07-0.77.
+- **Atlas size test:** C6-S8d; the two arms predict opposite signs.
+- **Atlas alignment:** circular by construction.
+
+The chapter closes as exploratory. Write-up: WRITEUP_CELLS_IN_SPACE.md. All sealed sets untouched.
