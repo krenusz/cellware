@@ -9029,3 +9029,14 @@ sorting validated; memory module = unknown batch factor.
   6. Literature: convergent extension by mediolateral intercalation (Keller; PCP) and the order of events
      (Hashmi 2022, Fiuza 2024). **Unverified:** whether gastruloid elongation is mainly convergent extension
      rather than growth (Trani-Bustos 2025 stresses proliferation). Both arms are models, not claims.
+
+### C6-S7l amendment: early-stop rule (2026-11-10, written before any data-check result was looked at)
+
+- Bence: "we can win 40 minutes to think about other possibilities if it fails". No partial result of run
+  42812934801 has been opened.
+- **Rule:**
+  - Evaluate it once all 20 Q1 jobs (40 gastruloids per clone) are done.
+  - **If Q1 has <= 3/5 signs right, cancel the remaining jobs.** Without correct clone placement the S2 power is
+    meaningless. Report Q1, plus Q2/Q3 if already complete.
+  - **Otherwise let the run finish.**
+  - Q2 and Q3 are never used to stop; they are reported whatever they show.
