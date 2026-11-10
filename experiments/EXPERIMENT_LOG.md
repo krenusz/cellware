@@ -9044,3 +9044,39 @@ sorting validated; memory module = unknown batch factor.
   shouldnt kill it". Correct: S2 measures mix vs pure shape, which does not depend on clone placement (Q1).
   **The run finishes in full.** Q1 may be reported as soon as its 20 jobs are done (an early read, no decision
   attached).
+
+### C6-S7l result (2026-11-10; `results_gastruloid/c6s7l_step0.json`, `c6s7l_checks.json`, `c6s7l_step0.png`; synthetic + open/spent summaries; nothing sealed; Actions runs 42808970551 (step 0, 38 jobs) and 42812934801 (checks, 100 jobs))
+
+- **Step 0: PASS** (3/9). The chosen point is arm a, t_on 150k, lam_F 20 (registered rule).
+  - **Chosen point:** polar 1.13, multipolar 0%, attached 1.00, elongation 0.74 (AR about 3.8), alignment
+    0.95, pole first 8/10.
+  - **Arm c (mediolateral, all cells) also passes:** alignment 0.97-0.99, pole first 9-10/10.
+  - **Arm b (posterior only) fails:** no elongation.
+  - **Caveat:** in about 4/10 runs of the chosen point the pole appears only at crawling onset.
+  - **Caveat:** AR 3.8 is above typical real 120 h medians (1.2-2.2).
+- **Q1: PASS.**
+  - Signs 5/5. Spearman 0.90, exactly the threshold again: clones 3 and 5 swapped. Passes with the registered
+    1e-9 tolerance.
+  - Magnitudes are 43-64% of the targets (clone 7: 32%): sim -0.40 / 0.52 / 0.47 / -0.73 / 0.23 vs -0.92 /
+    0.88 / 1.05 / -1.13 / 0.73. In C6-S7h they were about 1/3.
+  - Multipolar 0%, polar 0.85-0.94. The targets are not unseen.
+- **Q2: PASS.** Crossings 34 / 43 / 45 / 46 / 46 over f_anterior 0.2-0.8; slope 0.18. The G1b CI is [-0.40, 0.42];
+  the data slope is 0.17. C6-S7h gave 0.57.
+- **Q3: PASS** (monotone fall). Elongation 0.71 / 0.66 / 0.60 / 0.38 / 0.26 at 0 / 20 / 50 / 80 / 100%
+  low-competence clone.
+- **Q2/Q3 targets were exposed** (C6-S7h). The fix targeted the C6-S7i causes (axis misalignment, saturation),
+  not the targets, but these are consistency checks, not tests.
+- **S2: NOT POWERED, so EXPLORATORY.**
+  - The model's pure gap (bulk - 6a, 1 - circularity) is 0.40; the spent data gap is 0.18. The model now
+    separates the pure plates clearly.
+  - The mix sits slightly above the pure mean, in the same direction under both state assumptions:
+    - **z 0:** +0.10 of the gap, i.e. 0.019 in data units, power 0.16;
+    - **z clone 6:** +0.28, i.e. 0.051, power 0.54.
+  - **The robust rule fails** (both must be >= 0.8). The sealed partition stays closed.
+- **Reading:**
+  - The model passes all three open data checks. It does so with the clone-state and identity rule unchanged
+    since C6-S7, once elongation starts after the pole at a non-saturating strength.
+  - The C6-S7i diagnosis predicted this.
+  - There is still no powered test on unseen data: the predicted mix effect is small (0.02-0.05 against SE
+    0.029).
+  - Per H18 (RETRO_2026-11-10), this is the 12th version; a pass is discounted in the credit ledger.
