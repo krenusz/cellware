@@ -9134,3 +9134,54 @@ Arm c (mediolateral polarity, all cells, t_on 100k, lam_F 20) vs C6-S7l's chosen
 
 Bence: "Yes, close and plan C6-S8". Closed as **exploratory**: summary and C6-S8 plan in CHAPTER6_PLAN.md,
 credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1, S2 partition C, all others).
+
+## C6-S8a: power inventory for an unseen test at the C6-S7l model (pre-registered 2026-11-10)
+
+- **Serves: C6-S8** (FOCUS.json). Bence: "Go C6-S8a". Scripts: `c6s8a_power.py` (new), `c6s7l_axis.py`,
+  `c6s7_checks.py`, `core_model.py`, `c6s2_space.py`, `c6s3_break.py`, `c6s4_fit.py`, `c6s7c_potts.py`,
+  `c6s7g_potts_wet.py`, `c6s7f_potts_pcrawl.py`.
+- **Synthetic only.** No data statistic, no sealed file opened. GitHub Actions.
+- **Models:**
+  - arm a = C6-S7l chosen (t_on 150k, lam_F 20);
+  - arm c = C6-S7m (mediolateral, t_on 100k, lam_F 20);
+  - both 250k MCS.
+- **S1 (sealed Jan 2024 clone 1+6 pairs, passage 4, n 34):**
+  - **Statistic (as C6-S4):** share of 50:50 clone 1+6 gastruloids with clone-1 polarity > clone-6 polarity.
+    States are carried to passage 4 with `core_model.memory_through` (code copied from c6s4_fit.job_s1).
+  - **Retention:** r 0.46 only. That is the lowest of C6-S4's {0.46, 0.60, 0.68}, which gives the lowest share
+    (registered rule: the lowest share is the prediction; monotonicity assumed and disclosed).
+  - 200 gastruloids per arm (binomial SE about 0.035).
+  - **Power:** one-sided binomial at alpha 0.05, n 34 (needs share >= about 0.72).
+- **C (3s1 + bulk chimera; partly exposed):**
+  - **What the data is:** the same data as the clone 3.1 rows of the authors' locked revision table
+    (`rev_chimera_elong/data/geo_metrics.csv`).
+  - **Exposure:** the authors' README (read in C4-S1) says elongation falls with % pure clone, so **the direction
+    is known**. The % is plate-confounded (C4-S1).
+  - **Counts read from label columns only:** 3.1 at 20 / 50 / 80% = 9 / 16 / 18 gastruloids, with no pure
+    plates. No value column was read.
+  - **Statistic:** OLS slope of per-gastruloid 1 - circularity on 3s1 fraction (0.2 / 0.5 / 0.8 at those counts),
+    one-sided for a negative slope.
+  - **Model prediction:** 20 gastruloids per fraction, (3s1 fraction f, z, c3) + (bulk 1 - f).
+    - **c3 (fixed now, from OPEN pure-clone morphology scores):** same-date clone 3 / bulk elongated-fraction
+      ratio **0.42** (4 dates); sensitivity 0.50 (all dates).
+    - **State z:** 0 or Z["3"].
+    - **Conversion to data units:** x (0.180 / the arm's model pure gap). The pure gaps are 0.401 (arm a,
+      C6-S7l S2) and 0.352 (arm c, C6-S7m).
+  - **Noise:** per-gastruloid SD 0.084 (C4-S4: +0.021 = 0.25 SD), so slope SE = 0.084 / sqrt(sum (f - fbar)^2)
+    = 0.056 per unit fraction.
+  - **Disclosed:** the elongated-fraction to competence mapping is untested; for 6a it would give 0.6, where we
+    use 0.2.
+- **Gate:** robustly powered only if power >= 0.8 at **every** combination: both arms; for C, both z and both c3;
+  for S1, r 0.46.
+  - A powered S1 becomes C6-S8b (Bence's verbatim OK; oracle only).
+  - A powered C is still only **partial** evidence (direction exposed, plate confound) and is labelled so.
+  - If nothing is powered, chapter 6 closes as exploratory with a write-up.
+- **Cost:** S1 400 sims + C 480 sims at 250k MCS, chunks of 10 on Actions.
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readouts: polarity line scan (S1); 1 - circularity (C).
+  3. Only open and spent summaries are used as inputs (open morphology CSV, C4-S4 spent SD, C6-S7l/m model gaps).
+     Locked file: label counts only.
+  4. Power: this step.
+  5. Exposure: S1 sealed and unseen; C direction exposed.
+  6. Literature: none new.
