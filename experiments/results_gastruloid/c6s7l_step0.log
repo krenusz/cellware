@@ -1,0 +1,10 @@
+step0 a 100000 20.0 {'polar': 1.019, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.74, 'align': 0.855, 'elong_c0': 0.218, 'pole_first': 9, 'S0a': True, 'S0b': True, 'S0c': False, 'S0e': True, 'S0f': True, 'pass': False}
+step0 a 100000 40.0 {'polar': 0.949, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.644, 'align': 0.729, 'elong_c0': 0.23, 'pole_first': 9, 'S0a': True, 'S0b': True, 'S0c': True, 'S0e': True, 'S0f': False, 'pass': False}
+step0 a 150000 20.0 {'polar': 1.127, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.743, 'align': 0.949, 'elong_c0': 0.29, 'pole_first': 8, 'S0a': True, 'S0b': True, 'S0c': True, 'S0e': True, 'S0f': True, 'pass': True}
+step0 a 150000 40.0 {'polar': 1.125, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.656, 'align': 0.784, 'elong_c0': 0.259, 'pole_first': 10, 'S0a': True, 'S0b': True, 'S0c': True, 'S0e': True, 'S0f': False, 'pass': False}
+step0 b 100000 20.0 {'polar': 1.063, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.277, 'align': 0.794, 'elong_c0': 0.279, 'pole_first': 5, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'S0f': False, 'pass': False}
+step0 b 100000 40.0 {'polar': 1.32, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.311, 'align': 0.889, 'elong_c0': 0.276, 'pole_first': 6, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'S0f': True, 'pass': False}
+step0 b 100000 80.0 {'polar': 1.259, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.239, 'align': 0.948, 'elong_c0': 0.234, 'pole_first': 4, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'S0f': True, 'pass': False}
+step0 c 100000 20.0 {'polar': 1.516, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.728, 'align': 0.974, 'elong_c0': 0.239, 'pole_first': 10, 'S0a': True, 'S0b': True, 'S0c': True, 'S0e': True, 'S0f': True, 'pass': True}
+step0 c 100000 40.0 {'polar': 1.452, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.801, 'align': 0.995, 'elong_c0': 0.28, 'pole_first': 9, 'S0a': True, 'S0b': True, 'S0c': True, 'S0e': True, 'S0f': True, 'pass': True}
+chosen {'arm': 'a', 't_on': 150000, 'lam_F': 20.0}
