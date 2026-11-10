@@ -203,6 +203,10 @@ def simulate(s, c, prm, rng):
                 inc, ninc, la, lb, lw = empty
         lat = sweep(lat, area, sx, sy, typ, J, prm["T"], prm["lam_a"], prm["A0"], inc, ninc, la.astype(np.int64),
                     lb.astype(np.int64), lw.astype(np.float64), fx, fy, int(prm["t_int"]), int(rng.integers(2 ** 31)))
+        snap = prm.get("snap", 0)  # C6-S7j: optional trajectory snapshots (off by default; no rng use)
+        if snap and (t + prm["t_int"]) % snap == 0:
+            LAST.setdefault("traj", []).append((t + prm["t_int"], b._cells(lat, n)[0], b._contacts(lat),
+                                                b.shape_from_mask(lat > 0)["moment_elong"]))
     xy, _ = b._cells(lat, n)
     LAST["lat"], LAST["pairs"] = lat, b._contacts(lat)  # C6-S7f readouts
     return xy, P, b.shape_from_mask(lat > 0)
