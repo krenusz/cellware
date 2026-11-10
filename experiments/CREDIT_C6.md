@@ -29,6 +29,7 @@ domains and elongation, **and predict an unseen readout?**
 | 2026-11-09 | **C6-S7h step 0 passes** (polar 0.88, 1 pole, attached, elongation 0.50) | 1.5 | 0 | 0 | 0 | **~3 with the chapter 1-3 base** | first full pass; discounted because 8 versions were tried and the pull is borrowed (Guan) |
 | 2026-11-09 | shape benchmark (AR 2.0 vs real 1.2-2.2) + ingredient table | 2 | 0 | 0 | 0 | **~3.5** | realistic shape, but the real range is wide, rests on 1 paper read by eye, and the table describes the model, not biology |
 | 2026-11-10 | **C6-S7h clone checks:** Q1 rho exactly 0.90, Q2 fail, Q3 fail, S2 sign flips | 2 | 0.5 | -0.5 | 0 | **~3** | Q1 passes at the bar, but the targets were seen and the order is partly carried in by the clone states; Q2/Q3 show the mix ratio and crawling strength, not the clone state, set the outcome |
+| 2026-11-10 | **C6-S7j** 30 repeats: step 0 holds on average (polar 0.77, 1/3 of single runs lack a pole); **elongation before pole (8/10), opposite to biology**. **C6-S7i:** Q2/Q3 failures come from crawling (axis misaligned with pole; saturation), not from the clone-state or identity rule | 1.5 | 0.5 | -0.5 | 0 | **~2.5** | form downgraded (fragile pole, wrong order of events); the diagnosis is understanding, not evidence, but it locates one fixable cause |
 
 The "3/10" includes about 1 point carried over from chapters 1-3 (G1a: clone propensity replicated on held-out
 data, 7/7). Chapter 6 itself has earned about 2.
@@ -37,7 +38,7 @@ data, 7/7). Chapter 6 itself has earned about 2.
 
 | result | expected change |
 |---|---|
-| C6-S7i diagnosis (running) | about 0: understanding, not evidence |
+| C6-S7i diagnosis (done) | 0: located the cause (crawling) |
 | a fix, pre-registered, that re-passes step 0 + Q1 and newly passes Q2/Q3 | +1 to +1.5 (Q2/Q3 targets were seen, so capped) |
 | S2 powered **and** robust to the state assumption, then a sealed pass | +3 to +4 |
 | sealed fail with power >= 0.8 | chapter answered "no"; stop |
