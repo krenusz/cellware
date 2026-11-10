@@ -219,3 +219,12 @@ before every look and refuses on any failure.
   test reaching 0.8 under its own model, the chapter is reframed, or its work is labelled exploratory in every
   pre-registration and summary until a powered test exists (new data or a sharper prediction). Re-run the power
   block whenever the model changes.
+- **H18 Mandatory retro after 4 amendments within one step.** (Retro 2026-11-10; Bence: "ok add h18".
+  C6-S7 reached 12 model versions, S7 to S7l, each pre-registered, but together a forking path toward a pass.)
+  - Before a 5th amendment (model version) within one step is pre-registered, write a retro
+    (`RETRO_<date>.md`, with the literature gap map).
+  - The retro answers in writing:
+    1. What is a pass worth after N versions? (Record it in the step's credit ledger.)
+    2. Should the step close instead of being amended again?
+  - Every later amendment of the same step cites that retro. Another retro is due after 4 more.
+  - C6-S7 is covered by RETRO_2026-11-10.
