@@ -1,75 +1,75 @@
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_0
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_8
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_16
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_24
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_32
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_40
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_48
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_56
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_64
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_72
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_80
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_88
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_96
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_104
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_112
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_0
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_8
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_16
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_24
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_32
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_40
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_48
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_56
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_64
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_72
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_80
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_88
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_96
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_104
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_112
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_0
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_8
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_16
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_24
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_32
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_40
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_48
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_56
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_64
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_72
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_80
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_88
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_96
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_104
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_112
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_0
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_8
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_16
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_24
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_32
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_40
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_48
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_56
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_64
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_72
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_80
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_88
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_96
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_104
-[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_112
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_0
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_8
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_16
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_24
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_32
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_40
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_48
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_56
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_64
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_72
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_80
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_88
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_96
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_104
-[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_112
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_0
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_8
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_16
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_24
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_32
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_40
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_48
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_56
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_64
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_72
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_80
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_88
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_96
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_104
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V1_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V1_112
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_0
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_8
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_16
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_24
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_32
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_40
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_48
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_56
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_64
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_72
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_80
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_88
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_96
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_104
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V2_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V2_112
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_0
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_8
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_16
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_24
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_32
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_40
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_48
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_56
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_64
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_72
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_80
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_88
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_96
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_104
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V1_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V1_112
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_0
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_8
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_16
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_24
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_32
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_40
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_48
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_56
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_64
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_72
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_80
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_88
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_96
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_104
+[experiments/results_gastruloid/c6s8c_parts/S1_c_V2_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_c_V2_112
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_0
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_8.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_8
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_16.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_16
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_24.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_24
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_32.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_32
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_40.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_40
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_48.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_48
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_56.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_56
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_64.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_64
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_72.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_72
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_80.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_80
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_88.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_88
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_96.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_96
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_104.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_104
+[experiments/results_gastruloid/c6s8c_parts/S1_a_V3_112.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s8c_s1mem.py --part S1_a_V3_112
