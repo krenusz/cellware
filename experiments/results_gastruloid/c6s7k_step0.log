@@ -1,0 +1,9 @@
+step0 50000 10.0 {'polar': 1.307, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.233, 'elong_c0': 0.236, 'pole_first': 3, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'pass': False}
+step0 50000 20.0 {'polar': 1.381, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.28, 'elong_c0': 0.18, 'pole_first': 3, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'pass': False}
+step0 50000 40.0 {'polar': 1.384, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.25, 'elong_c0': 0.231, 'pole_first': 6, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'pass': False}
+step0 50000 80.0 {'polar': 1.185, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.174, 'elong_c0': 0.275, 'pole_first': 1, 'S0a': True, 'S0b': False, 'S0c': False, 'S0e': False, 'pass': False}
+step0 100000 10.0 {'polar': 1.261, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.262, 'elong_c0': 0.22, 'pole_first': 6, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'pass': False}
+step0 100000 20.0 {'polar': 1.233, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.266, 'elong_c0': 0.195, 'pole_first': 4, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'pass': False}
+step0 100000 40.0 {'polar': 1.353, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.237, 'elong_c0': 0.222, 'pole_first': 4, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'pass': False}
+step0 100000 80.0 {'polar': 1.145, 'multipolar': 0.0, 'attached': 1.0, 'elong': 0.162, 'elong_c0': 0.204, 'pole_first': 3, 'S0a': True, 'S0b': False, 'S0c': True, 'S0e': False, 'pass': False}
+no step-0 point passes (pre-registered); no further amendment without Bence

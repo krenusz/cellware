@@ -30,6 +30,7 @@ domains and elongation, **and predict an unseen readout?**
 | 2026-11-09 | shape benchmark (AR 2.0 vs real 1.2-2.2) + ingredient table | 2 | 0 | 0 | 0 | **~3.5** | realistic shape, but the real range is wide, rests on 1 paper read by eye, and the table describes the model, not biology |
 | 2026-11-10 | **C6-S7h clone checks:** Q1 rho exactly 0.90, Q2 fail, Q3 fail, S2 sign flips | 2 | 0.5 | -0.5 | 0 | **~3** | Q1 passes at the bar, but the targets were seen and the order is partly carried in by the clone states; Q2/Q3 show the mix ratio and crawling strength, not the clone state, set the outcome |
 | 2026-11-10 | **C6-S7j** 30 repeats: step 0 holds on average (polar 0.77, 1/3 of single runs lack a pole); **elongation before pole (8/10), opposite to biology**. **C6-S7i:** Q2/Q3 failures come from crawling (axis misaligned with pole; saturation), not from the clone-state or identity rule | 1.5 | 0.5 | -0.5 | 0 | **~2.5** | form downgraded (fragile pole, wrong order of events); the diagnosis is understanding, not evidence, but it locates one fixable cause |
+| 2026-11-10 | **C6-S7k** posterior-only crawling after onset: step 0 FAIL (no elongation, 0.16-0.28 vs 0.20); pole robust at 200k MCS (polar 1.1-1.4, 0% multipolar, every point) | 1.5 | 0.5 | -0.5 | 0 | **~2.5** | pole now robust, elongation mechanism still missing; no change |
 
 The "3/10" includes about 1 point carried over from chapters 1-3 (G1a: clone propensity replicated on held-out
 data, 7/7). Chapter 6 itself has earned about 2.

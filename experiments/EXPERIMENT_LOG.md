@@ -8958,3 +8958,26 @@ sorting validated; memory module = unknown batch factor.
   6. Literature: order of events (Hashmi 2022, Fiuza 2024, Trani-Bustos 2025); posterior-led axis extension
      (Benazeraf 2010 motility gradient). **Risk:** posterior-only crawling did not elongate in C6-S7f, but that
      run had a dissociating body and no long-range pull.
+
+### C6-S7k result (2026-11-10; `results_gastruloid/c6s7k_step0.json`, `c6s7k_step0.png`; synthetic only; GitHub Actions https://github.com/krenusz/cellware/actions/runs/42799531971, 34 jobs)
+
+- **Step 0: FAIL, no point passes.** Per the registration, there are no data checks and no further amendment
+  without Bence.
+- **Pole: fixed by the longer runs.**
+  - At 200k MCS every point has polar 1.15-1.38, multipolar 0% and attached 1.00.
+  - The no-crawling control has polar 1.08 and elongation 0.20.
+  - Almost all single runs reach a clear pole by 200k. The pole forms at 10-160k: "a third of runs without a
+    pole" in C6-S7j was mostly runs stopped too early.
+- **Elongation: posterior-only crawling does not elongate (S0-b fails everywhere).**
+  - Elongation 0.16-0.28 against 0.20 without crawling (0.35 needed).
+  - Competence 0 gives 0.18-0.28 (S0-c passes except t50k lam80).
+  - Elongation stays noisy at 0.1-0.4 after onset, with no consistent rise.
+- **Pole-first (S0-e):** 1-6/10, which fails. With no real elongation, t_elong only marks noise, so this criterion
+  is uninformative here.
+- **Reading:**
+  - Posterior cells crawling only among themselves pull within the cap. Surface tension of the attached body
+    rounds it again, and nothing pushes the tissue along the axis.
+  - Elongation in this model needs force across the whole body (C6-S7h: all cells crawl) or an axis-oriented
+    mechanism. Posterior-only crawling with random, locally aligned polarity is not enough. This agrees with
+    C6-S7f.
+  - A robust single pole needs only the long-range pull, the attached energies and enough time (200k MCS).
