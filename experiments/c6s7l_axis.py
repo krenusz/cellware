@@ -37,6 +37,7 @@ POINTS = ([("a", t, l) for t in (100000, 150000) for l in (20.0, 40.0)] + [("b",
 SNAP = 5000
 PARTS = os.path.join(OUT, "c6s7l_parts")
 S1_JSON = os.path.join(OUT, "c6s7l_step0.json")
+CHECKS_JSON = os.path.join(OUT, "c6s7l_checks.json")  # C6-S7m overrides
 MODE = {"only": None, "plan": None}
 
 
@@ -256,7 +257,7 @@ def stage2():
                  "H17_label": "powered (S2 look proposable to Bence)" if robust else "exploratory"}
     for k in ("Q1", "Q2", "Q3", "S2"):
         print(k, json.dumps(res[k], default=_np)[:900], flush=True)
-    json.dump(res, open(os.path.join(OUT, "c6s7l_checks.json"), "w"), indent=1, default=_np)
+    json.dump(res, open(CHECKS_JSON, "w"), indent=1, default=_np)
 
 
 if __name__ == "__main__":
