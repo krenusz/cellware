@@ -9040,3 +9040,7 @@ sorting validated; memory module = unknown batch factor.
     meaningless. Report Q1, plus Q2/Q3 if already complete.
   - **Otherwise let the run finish.**
   - Q2 and Q3 are never used to stop; they are reported whatever they show.
+- **Withdrawn (same day, still before any look):** Bence: "q1 2 3 answers different questions so maybe we
+  shouldnt kill it". Correct: S2 measures mix vs pure shape, which does not depend on clone placement (Q1).
+  **The run finishes in full.** Q1 may be reported as soon as its 20 jobs are done (an early read, no decision
+  attached).
