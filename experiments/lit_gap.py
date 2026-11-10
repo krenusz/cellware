@@ -78,10 +78,15 @@ SEEDS = {
     "Suppinger 2023 (gastruloid Sox2/Bra spatial onset)": "10.1016/j.stem.2023.04.018",
     "Serrano Najera 2025 (gastruloids on laminin, pole by rearrangement)": "10.1101/2025.08.04.668470",
     "Trani-Bustos 2025 (surface mechanics, proliferation-driven elongation)": "10.1101/2025.10.27.684710",
+    # retro 2026-11-10b: next chapter leans to cell differentiation (Bence)
+    "Pijuan-Sala 2019 (mouse gastrulation single-cell atlas)": "10.1038/s41586-019-0933-9",
+    "Wagner 2018 (zebrafish single-cell lineage landscape)": "10.1126/science.aar4362",
+    "Briggs 2018 (Xenopus single-cell differentiation)": "10.1126/science.aar5780",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
 TOPICS = {
+    "differentiation_commitment": [r"commitment", r"fate restrict", r"fate bias", r"differentiation trajector", r"lineage tracing", r"pseudotime"],
     "mixing_rescue": [r"chimer", r"non-autonomous", r"gastruloid.{0,40}(rescue|mix)", r"elongat", r"mixed population"],
     "clonal_dominance": [r"clonal dominance", r"cell competition", r"chimer", r"take ?over", r"winner"],
     "chromatin_memory": [r"chromatin accessib", r"atac", r"epigenetic memory", r"enhancer.{0,30}prim", r"clonal.{0,20}(signature|fingerprint)"],
