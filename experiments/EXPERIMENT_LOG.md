@@ -9238,3 +9238,23 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   4. Power: this step.
   5. Exposure: G6a/G6b results were seen (calibration); S1 unseen.
   6. Literature: none new.
+
+### C6-S8c result (2026-11-10)
+
+- Actions run https://github.com/krenusz/cellware/actions/runs/42875656181 (the first run, 42874409962, failed on
+  CR characters in the sweep file before any compute).
+- Share of clone 1 anterior of clone 6, n 120 sims each (power at n 34, k_crit 23):
+
+  | combo | share | power |
+  |---|---|---|
+  | arm a, V1 (G6a point) | 0.675 | 0.57 |
+  | arm c, V1 | 0.717 | 0.77 |
+  | arm a, V2 (G6a CI ends) | 0.533 | 0.07 |
+  | arm c, V2 | 0.575 | 0.15 |
+  | arm a, V3 (uniform 0.68) | 0.533 | 0.07 |
+
+- **Gate failed** (min power over V1/V2 0.07). S1 is not proposable. Clone-specific memory lifts the share from
+  0.45 (C6-S8a) to 0.68-0.72 at the G6a point estimates, but even there power stays below 0.8. At the
+  uncertainty ends and under uniform retention it is near chance.
+- Reading: the S1 ordering prediction rests on clone 1 losing its memory faster than clone 6. G6a cannot pin
+  that down (CIs overlap), so S1 cannot test the model robustly. C6-S8a's conclusion stands; S1 stays sealed.
