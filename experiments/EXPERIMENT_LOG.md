@@ -9258,3 +9258,68 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   uncertainty ends and under uniform retention it is near chance.
 - Reading: the S1 ordering prediction rests on clone 1 losing its memory faster than clone 6. G6a cannot pin
   that down (CIs overlap), so S1 cannot test the model robustly. C6-S8a's conclusion stands; S1 stays sealed.
+
+## C6-S8d: seeding-size effect on elongation, Triandafillou 2026 atlas (pre-registered 2026-11-10)
+
+- **Serves: C6-S8** (an unseen readout for the C6-S7l model). Bence: "1 + 2 together" (answer to: pre-register
+  atlas test 1 = axis alignment and test 2 = 100 vs 300 cells). Scripts: `c6s8d_size.py` (new), `c6s7l_axis.py`,
+  `c6s7_checks.py`, `c6s3_break.py`, `c6s2_space.py`, `c6s7c_potts.py`, `c6s7g_potts_wet.py`,
+  `c6s7f_potts_pcrawl.py`, `c6s8a_power.py`.
+- **Data:** `data/ext_triandafillou/members/` (Zenodo 10.5281/zenodo.22233771, CC BY 4.0), sha256-locked in
+  `SHA256SUMS` before any statistic.
+  - **Read so far:** headers, row counts, JSON structure, tag vocabularies and tag counts. No value has been read.
+  - Notebook outputs are not opened. Only source lines matching "A_area|P_area|AP axis" were grepped
+    (2026-11-10).
+- **Test 1 (axis alignment) is NOT pre-registered here. Disclosed reason:**
+  - In the 25 seqFISH sections with `areas.json`, the A_area and P_area are hand-drawn polygons.
+  - The authors' code places cells along a hand-drawn AP line rescaled at a T landmark. That suggests the A/P
+    areas follow the AP line, which itself follows the shape.
+  - If so, alignment between the long axis and the P-A direction is close to circular.
+  - The model runs below still record `align`, P share and multipolarity, so an alternative test 1 can be
+    pre-registered later (Bence's call) without new runs.
+- **Test 2: data readout.**
+  - All 6 brightfield plates at 120 h:
+    - 300 cells: 2024-01-19 (n 88) and 2024-09-01 (n 86), n 174;
+    - 100 cells: 2025-04-04 wtp2 A/B and wtp3 A/B (93, 88, 84, 90), n 355.
+  - Each `gastruloid` polygon in the `*.json` files is rasterised at 1 px with skimage `polygon` and passed
+    through `c6s3_break.shape_from_mask`.
+  - **Primary: `moment_elong`** (1 - sqrt(ev_min/ev_max); scale-free, the same function as the model).
+    Secondary: `one_minus_circ`.
+  - No exclusions. Polygons with fewer than 3 vertices are dropped (none expected).
+- **Statistic:** one-sided Welch t on `moment_elong`, mean(100 cells) - mean(300 cells), in the direction the model
+  predicts, alpha 0.05, gastruloid as the unit.
+  - Secondary (descriptive): the 6 plate means. Whether all four 100-cell plates fall on the predicted side of
+    both 300-cell plates. A 2 vs 4 rank test cannot reach 0.05 (min p 1/15).
+- **Model prediction:**
+  - **Model:** arm a (C6-S7l chosen: W1 + beta 300 + all-cell crawling from 150k, lam_F 20, 250k MCS) is primary.
+    Arm c (C6-S7m) is the sensitivity check.
+  - **Cells:** wild-type bulk, all cells competence 1, state z 0 (`parts = [("bulk", 1.0, None, 1.0)]`).
+  - **Size:** N 300 (the model's default, matching 300 seeded cells) vs N 100. Every per-cell parameter and the MCS
+    count are unchanged.
+  - **Disclosed assumption:** model cell number is proportional to seeded cells, and 250k MCS = 120 h at both
+    sizes.
+  - 64 gastruloids per (arm, N), 256 sims, seeds 131000+, 8 per chunk on GitHub Actions.
+  - Also recorded per sim: `one_minus_circ`, `align`, P cell fraction, multipolar.
+- **Power (H17, from the model's own prediction):**
+  - d = Delta_model / SD_model, where SD_model is the pooled per-gastruloid SD of `moment_elong` from the sims.
+  - Power = one-sided Welch at n 355 / 174.
+- **Gate for proposing the one look (C6-S8e, Bence's verbatim OK, a single scripted read):**
+  - power >= 0.8 in **both** arms, and both arms predict the **same sign**.
+  - If the arms disagree, or either has power < 0.8, there is no test, and chapter 6 closes as exploratory.
+- **Scoring if the look happens:**
+  - Pass = significant in the predicted direction.
+  - Also report the data Delta against the model's 90% interval for Delta (bootstrap over sims).
+- **Disclosed limits:**
+  - Size is fully confounded with date and passage (2024 vs 2025 plates), so a pass is consistent with the model,
+    not causal.
+  - The direction of size effects on elongation appears in the literature (Fiuza 2024 size series, read
+    earlier), so the direction is partly exposed. Only the magnitude is unseen.
+  - E14 wild-type vs the Raj clone lines: different backgrounds.
+  - Counts for Form/Unseen only, not the clone claim.
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readout: polygon `moment_elong`.
+  3. Used data: none (synthetic first).
+  4. Power: this step.
+  5. Exposure: atlas values unseen; direction partly exposed (literature).
+  6. Literature: Fiuza 2024 size series (already read).
