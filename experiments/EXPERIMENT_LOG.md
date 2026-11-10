@@ -8910,3 +8910,51 @@ sorting validated; memory module = unknown batch factor.
   - **Candidate fix (not registered; needs Bence):** elongation by posterior cells only after the pole forms,
     at a non-saturating strength. It would have to re-pass step 0 and Q1, then Q2/Q3 (targets exposed, so those
     would be capped), with S2 recomputed.
+
+## C6-S7k: posterior-led elongation after the pole forms (pre-registered 2026-11-10)
+
+- **Serves: C6-S7** (amendment, exploratory under H17). Bence: "1" (answer to: "pre-register C6-S7k, run longer
+  only, or close C6-S7?"). Scripts: `c6s7k_ppost.py` (new), `c6s7c_potts.py` (kernel loop gains an optional
+  crawling onset `t_on`, default 0, so earlier runs are unchanged), `c6s7g_potts_wet.py`, `c6s7f_potts_pcrawl.py`,
+  `c6s7_checks.py`, `c6s2_space.py`, `c6s3_break.py`, `c6s4_fit.py`.
+- **Motivation (C6-S7i/j):**
+  - With all cells crawling from the start, the body elongates before the pole forms (8/10) and along a random
+    axis, so Q2 fails.
+  - Crawling at lam 80 also saturates, so competence does not matter and Q3 fails.
+  - Biology: the pole forms first (by about 96 h); then the posterior tissue extends (96-120 h).
+- **Model:** attached Potts (W1) + Guan pull (beta 300), unchanged.
+  - **Crawling only in posterior cells** (links P-P only, as C6-S7f).
+  - **It switches on at a fixed developmental time t_on.** This is a local timing cue, not a global pole
+    detector.
+  - 200,000 MCS (J2: the pole was still forming at 100k).
+- **Step 0 (synthetic +-2 mixes, 10 reps per point; GitHub Actions):**
+  - **Grid:** t_on {50k, 100k} x lam_F {10, 20, 40, 80}. Controls: lam_F 0 (10 reps) and c 0 at every point
+    (10 reps). Snapshots every 4,000 MCS in the c 1 runs.
+  - **Criteria, all required:**
+    - **S0-a:** mean polar >= 0.5 and multipolar (contact) <= 20%; attached >= 0.95.
+    - **S0-b:** elongation >= lam0 + 0.15.
+    - **S0-c:** c 0 within 0.05 of lam0.
+    - **S0-e (new, biology from the literature, registered before any run):** pole first in >= 7/10 runs
+      (t_pole < t_elong, definitions as C6-S7j).
+  - **Choice:** the passing point with the smallest lam_F, then the earliest t_on (parsimony, as C6-S7). No
+    competence or Q3-type criterion is used in the choice.
+  - No pass: report; no further amendment without Bence.
+- **Data checks at the chosen point (as C6-S7, same seeds, 200k MCS, chunked on Actions):**
+  - **Q1 and Q2:** registered criteria unchanged. Spearman is compared with a 1e-9 tolerance: C6-S7h showed the
+    float problem at exactly 0.9. This is fixed before this run.
+  - **Q3:** registered criteria unchanged.
+  - **Exposure:** the Q2 and Q3 targets are exposed (C6-S7h). A pass counts as consistency, capped in the
+    credit ledger.
+  - **S2:** computed as C6-S7, plus a new robustness condition. **An S2 look is proposable to Bence only if
+    power >= 0.8 under BOTH the z 0 and the z = clone 6 state** (C6-S7h flipped sign). Otherwise exploratory.
+    The sealed partition stays closed either way until Bence's verbatim OK (H13).
+- **Cost:** step 0, 170 sims at 200k MCS; data checks about 1,000 sims. All on GitHub Actions (standing rule).
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readouts unchanged.
+  3. Used data first: open/spent summaries only (G1a fit shard, G1b, C4-S4 pure plate). No sealed file.
+  4. Power: S2 from the model's own prediction, with robustness over the two state assumptions.
+  5. Exposure: Q1 targets used before; Q2/Q3 targets exposed. Hence capped credit.
+  6. Literature: order of events (Hashmi 2022, Fiuza 2024, Trani-Bustos 2025); posterior-led axis extension
+     (Benazeraf 2010 motility gradient). **Risk:** posterior-only crawling did not elongate in C6-S7f, but that
+     run had a dissociating body and no long-range pull.
