@@ -9203,3 +9203,38 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   per-gastruloid spatial data.
 - All sealed sets stay untouched and remain available for a sharper model or new data: S1, S2 partition C, the
   revision chimera set.
+
+## C6-S8c: S1 power with clone-specific memory from spent G6a (pre-registered 2026-11-10)
+
+- **Serves: C6-S8.** Bence: "go both" (answer to: "1. re-run S1 with clone-specific memory; 2. a non-clone
+  unseen readout from the Raj 2026 atlas"). Scripts: `c6s8c_s1mem.py` (new), `c6s8a_power.py` (job reused),
+  `c6s7l_axis.py`, `c6s7_checks.py`, `c6s2_space.py`, `c6s3_break.py`, `c6s4_fit.py`, `c6s7c_potts.py`,
+  `c6s7g_potts_wet.py`, `c6s7f_potts_pcrawl.py`.
+- **Correction disclosed:**
+  - C6-S8a carried states to passage 4 with one shared retention, as in C6-S4.
+  - The spent G6a look (2026-11-06) had already rejected a single rate. At passage 4 / passage 1, clone 1 was
+    -0.06 [-0.37, 0.24] (propensity gone) and clone 6 0.60 [0.18, 1.00]. G6 said to replace the single rate with
+    clone-specific retention fitted on non-sealed data.
+  - This step does that. Sealed S1 itself is not read.
+- **Statistic (unchanged from C6-S4/C6-S8a):** share of 50:50 clone 1+6 gastruloids with clone-1 polarity >
+  clone-6 polarity. One-sided binomial power at alpha 0.05, n 34 (needs 23/34, share >= about 0.72).
+- **Passage-4 clone mean states (clone mean z scaled; cells as in `c6s3_break.gastruloid`):**
+  - **V1 (G6a point estimates):** z1 x (-0.06), z6 x 0.60.
+  - **V2 (G6a CI ends least favourable to ordering):** z1 x 0.24, z6 x 0.18.
+  - **V3 (series sensitivity: G6b Jan 2024 pooled pair retention, applied uniformly):** z1 x 0.68, z6 x 0.68.
+- **Models and size:**
+  - arm a (C6-S7l chosen) and arm c (C6-S7m) for V1 and V2; arm a only for V3.
+  - 120 gastruloids per combination (binomial SE about 0.045). New seeds 121000+. Chunks of 8, NPROC 4,
+    GitHub Actions.
+- **Gate:** S1 becomes proposable (C6-S8b: its own pre-registration, oracle only, Bence's verbatim OK) only if
+  power >= 0.8 under **V1 and V2 in both arms**.
+  - V3 is reported. If V3 fails, any proposal must state that S1's series may fade uniformly, in which case the
+    model predicts no ordering.
+  - Otherwise chapter 6 closes as exploratory (C6-S8a reading stands).
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readout: polarity line scan.
+  3. Used data: spent G6a/G6b summaries only. S1 sealed, unread.
+  4. Power: this step.
+  5. Exposure: G6a/G6b results were seen (calibration); S1 unseen.
+  6. Literature: none new.
