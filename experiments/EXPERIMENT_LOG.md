@@ -9185,3 +9185,21 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   4. Power: this step.
   5. Exposure: S1 sealed and unseen; C direction exposed.
   6. Literature: none new.
+
+### C6-S8a result (2026-11-10; `results_gastruloid/c6s8a_power.json`; synthetic only; Actions run 42852610362, 88 jobs; nothing sealed opened)
+
+- **S1 (sealed 1+6 pairs, passage 4, n 34): NOT POWERED.**
+  - The predicted share of gastruloids with clone 1 anterior to clone 6 is **0.45 in both arms** (r 0.46,
+    200 each), i.e. chance. Power 0.006 (23/34 needed).
+  - After 3 passages of memory decay, clones 1 and 6 (both posterior-biased) have nearly the same state, so the
+    model predicts no ordering.
+- **C (3s1 + bulk; partly exposed): NOT ROBUSTLY POWERED.** Power **0.34-0.80** across the 8 combinations
+  (arm x state x c3). The predicted slope in data units is -0.07 to -0.14 per unit fraction, against SE 0.056.
+  Only arm a with z = clone 3 and c3 0.42 reaches 0.80.
+- **S2:** not powered (C6-S7l / C6-S7m).
+- **Gate: no candidate is robustly powered.** Per the C6-S8 plan, **chapter 6 closes as exploratory** with a
+  write-up.
+- Public data search (`lit/data_search_c6s8.md`): no outside dataset with clone-labelled gastruloids and
+  per-gastruloid spatial data.
+- All sealed sets stay untouched and remain available for a sharper model or new data: S1, S2 partition C, the
+  revision chimera set.
