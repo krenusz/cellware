@@ -8981,3 +8981,51 @@ sorting validated; memory module = unknown batch factor.
     mechanism. Posterior-only crawling with random, locally aligned polarity is not enough. This agrees with
     C6-S7f.
   - A robust single pole needs only the long-range pull, the attached energies and enough time (200k MCS).
+
+## C6-S7l: elongation after the pole, all-cell vs axis-oriented crawling, with an axis-alignment criterion (pre-registered 2026-11-10)
+
+- **Serves: C6-S7** (amendment, exploratory under H17). Bence: "1" (answer to: "pre-register C6-S7l, two
+  elongation mechanisms in one step 0, or close C6-S7?"). Scripts: `c6s7l_axis.py` (new), `c6s7c_potts.py`
+  (optional `orient` polarity cue, default off, so earlier runs are unchanged), `c6s7k_ppost.py` (reused
+  helpers), `c6s7g_potts_wet.py`, `c6s7f_potts_pcrawl.py`, `c6s7_checks.py`, `c6s2_space.py`, `c6s3_break.py`,
+  `c6s4_fit.py`.
+- **Motivation:**
+  - C6-S7k: posterior-only crawling does not elongate.
+  - C6-S7j/i: crawling from the start elongates before the pole and along a random axis (Q2), and lam 80
+    saturates (Q3).
+  - C6-S7k: the pole is robust by 200k MCS.
+- **Common:** attached Potts W1, Guan pull beta 300, crawling switched on at t_on, 250,000 MCS.
+- **Arms:**
+  - **(a) all-cell crawling, random Vicsek polarity** (C6-S7h mechanism, delayed): t_on {100k, 150k} x lam_F
+    {20, 40}.
+  - **(b) posterior-only, mediolateral polarity:** each P cell with anterior contacts sets its polarity
+    perpendicular to (own centroid - mean centroid of its anterior contacts). Cells without such contacts keep
+    their Vicsek polarity. Crawling links pull along the polarity, so the tissue converges sideways and extends
+    along A-P: convergent extension, a local PCP-like cue. t_on 100k x lam_F {20, 40, 80}.
+  - **(c) all cells, mediolateral polarity:** the same cue for every cell, using its other-type contacts.
+    t_on 100k x lam_F {20, 40}.
+- **Step 0:**
+  - 10 reps per point, c 1 with snapshots every 5,000 MCS, plus c 0 at every point.
+  - lam_F 0 control (250k, 10 reps). GitHub Actions.
+- **Criteria, all required:**
+  - **S0-a:** polar >= 0.5, multipolar <= 20%, attached >= 0.95.
+  - **S0-b:** elongation >= lam0 + 0.15.
+  - **S0-c:** c 0 within 0.05 of lam0.
+  - **S0-e:** pole first in >= 7/10.
+  - **S0-f (new, targets the Q2 cause without Q2 data):** mean |cos| between the body's long axis (PCA of the
+    mask) and the pole direction (P centroid - A centroid) >= 0.8.
+- **Choice:** smallest lam_F, then arm a < b < c (simplest), then earliest t_on. No competence or Q3-type
+  criterion. No pass: report, stop, Bence decides.
+- **Data checks at the chosen point:** exactly as C6-S7k stage 2 (Q1 with 1e-9 tolerance; Q2/Q3 exposed, so
+  capped credit; S2 proposable to Bence only if power >= 0.8 under both z 0 and z = clone 6; sealed stays
+  closed until Bence's verbatim OK, H13). Chunked on Actions.
+- **Cost:** 190 sims at 250k MCS for step 0, about 1,000 for the checks. All on Actions.
+- **Pre-flight:**
+  1. Unit: gastruloid.
+  2. Readouts unchanged, plus the axis-alignment readout (synthetic only).
+  3. Open/spent summaries only. No sealed file.
+  4. Power: S2 robust rule as C6-S7k.
+  5. Exposure: as C6-S7k.
+  6. Literature: convergent extension by mediolateral intercalation (Keller; PCP) and the order of events
+     (Hashmi 2022, Fiuza 2024). **Unverified:** whether gastruloid elongation is mainly convergent extension
+     rather than growth (Trani-Bustos 2025 stresses proliferation). Both arms are models, not claims.
