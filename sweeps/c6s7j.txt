@@ -1,0 +1,11 @@
+[experiments/results_gastruloid/c6s7j_parts/J1_crawl_c1_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_crawl_c1 0
+[experiments/results_gastruloid/c6s7j_parts/J1_crawl_c1_10.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_crawl_c1 10
+[experiments/results_gastruloid/c6s7j_parts/J1_crawl_c1_20.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_crawl_c1 20
+[experiments/results_gastruloid/c6s7j_parts/J1_lam0_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_lam0 0
+[experiments/results_gastruloid/c6s7j_parts/J1_lam0_10.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_lam0 10
+[experiments/results_gastruloid/c6s7j_parts/J1_lam0_20.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_lam0 20
+[experiments/results_gastruloid/c6s7j_parts/J1_crawl_c0_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_crawl_c0 0
+[experiments/results_gastruloid/c6s7j_parts/J1_crawl_c0_10.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_crawl_c0 10
+[experiments/results_gastruloid/c6s7j_parts/J1_crawl_c0_20.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J1_crawl_c0 20
+[experiments/results_gastruloid/c6s7j_parts/J2_0.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J2 0
+[experiments/results_gastruloid/c6s7j_parts/J2_5.json] cd experiments && NPROC=4 uv run --with scikit-image --with numba --with matplotlib python c6s7j_repeats.py --part J2 5

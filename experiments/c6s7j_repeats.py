@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import time
 from multiprocessing import Pool
 
@@ -48,17 +49,65 @@ def jobJ2(seed):
     return tr
 
 
+PARTS = os.path.join(OUT, "c6s7j_parts")
+CHUNK = {"J1": 10, "J2": 5}
+
+
+class _Lazy:
+    """Pool created only if some chunk is not already on disk (GitHub Actions parts)."""
+    p = None
+
+    def map(self, f, a):
+        if self.p is None:
+            self.p = Pool(int(os.environ.get("NPROC", "10")))  # worker count does not change results
+        return self.p.map(f, a)
+
+
+def _part_path(tag, i):
+    return os.path.join(PARTS, f"{tag}_{i}.json")
+
+
+def gather(pool, f, tag, args):
+    """Results in seed order; each chunk is loaded from disk if an Actions job already wrote it."""
+    n = CHUNK[tag[:2]]
+    out = []
+    for i in range(0, len(args), n):
+        fp = _part_path(tag, i)
+        if os.path.exists(fp):
+            out += json.load(open(fp))
+        else:
+            out += pool.map(f, args[i:i + n])
+    return out
+
+
+def part(tag, i):
+    """One Actions job: chunk i of a J1 arm or of J2, written to c6s7j_parts/."""
+    p = P_CHOSEN
+    if tag == "J2":
+        args = [97500 + k for k in range(10)]
+        f = jobJ2
+    else:
+        arms = {"J1_crawl_c1": (P_CHOSEN, 1.0, 97000), "J1_lam0": ({**P_CHOSEN, "lam_F": 0.0}, 1.0, 97100),
+                "J1_crawl_c0": (P_CHOSEN, 0.0, 97200)}
+        p, comp, s0 = arms[tag]
+        args = [(p, comp, s0 + k) for k in range(30)]
+        f = jobJ1
+    os.makedirs(PARTS, exist_ok=True)
+    r = Pool(int(os.environ.get("NPROC", "4"))).map(f, args[i:i + CHUNK[tag[:2]]])
+    json.dump(r, open(_part_path(tag, i), "w"))
+
+
 def main():
     t0 = time.time()
     rng = np.random.default_rng(0)
     res = {"setting": {"W": "W1", "beta_lr": 300.0, "lam_F": 80.0, "mcs": 100000}}
-    pool = Pool(10)
+    pool = _Lazy()
     # ---- J1 ----
     arms = {"crawl_c1": (P_CHOSEN, 1.0, 97000), "lam0": ({**P_CHOSEN, "lam_F": 0.0}, 1.0, 97100),
             "crawl_c0": (P_CHOSEN, 0.0, 97200)}
     j1 = {}
     for name, (p, comp, s0) in arms.items():
-        r = pool.map(jobJ1, [(p, comp, s0 + k) for k in range(30)])
+        r = gather(pool, jobJ1, "J1_" + name, [(p, comp, s0 + k) for k in range(30)])
         el = [a["elong"] for a in r]
         j1[name] = {"polar": ci([a["polar"] for a in r], rng), "multipolar_rate": ci([a["multipolar"] for a in r], rng),
                     "attached": ci([a["attached"] for a in r], rng), "elong": ci(el, rng),
@@ -75,7 +124,7 @@ def main():
     print("J1 reading", crit, j1["reading"], flush=True)
     res["J1"] = j1
     # ---- J2 ----
-    trs = pool.map(jobJ2, [97500 + k for k in range(10)])
+    trs = gather(pool, jobJ2, "J2", [97500 + k for k in range(10)])
     runs = []
     for tr in trs:
         ts = [a[0] for a in tr]
@@ -111,4 +160,7 @@ def picture(runs, path):
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 2 and sys.argv[1] == "--part":
+        part(sys.argv[2], int(sys.argv[3]))
+    else:
+        main()
