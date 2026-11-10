@@ -72,6 +72,12 @@ SEEDS = {
     "McNamara 2024 (recording morphogen signals, gastruloid symmetry breaking)": "10.1038/s41556-024-01521-9",
     "Hashmi 2022 (collective movement, endoderm-like region in gastruloids)": "10.7554/eLife.59371",
     "Turner 2017 (gastruloid A-P polarity and elongation)": "10.1242/dev.150391",
+    # chapter 6 models adopted in C6-S7 (sorting, long-range pull, crawling, outer start), added 2026-11-10
+    "Guan/Hormoz 2025 (agent-based gastruloid symmetry breaking)": "10.1101/2025.09.27.678924",
+    "de Jong 2024 (crawling + differential adhesion, gastruloid shapes)": "10.1371/journal.pcbi.1011825",
+    "Suppinger 2023 (gastruloid Sox2/Bra spatial onset)": "10.1016/j.stem.2023.04.018",
+    "Serrano Najera 2025 (gastruloids on laminin, pole by rearrangement)": "10.1101/2025.08.04.668470",
+    "Trani-Bustos 2025 (surface mechanics, proliferation-driven elongation)": "10.1101/2025.10.27.684710",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -122,7 +128,7 @@ TOPICS = {
     "fate_memory": [r"memory", r"heritab", r"fluctuation", r"transient", r"inherit", r"passag",
                     r"epigenetic", r"clonal variab"],
     "sorting_patterning": [r"cell sorting", r"segregat", r"differential adhesion", r"anterior.posterior",
-                           r"axial", r"symmetry breaking", r"pattern"],
+                           r"axial", r"symmetry breaking", r"pattern", r"convergent extension", r"intercalat", r"planar cell polarity"],
     "imaging_ssl": [
         r"time-lapse",
         r"timelapse",
