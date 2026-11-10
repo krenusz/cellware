@@ -186,7 +186,7 @@ def simulate(s, c, prm, rng):
             w = np.where(dist > rcut, 1.0 / np.maximum(dist, 1e-9) ** 3, 0.0)
             F = beta * np.einsum("ij,ijk->ik", w, d)
             fx[iP + 1], fy[iP + 1] = F[:, 0], F[:, 1]
-        if prm["lam_F"] > 0:
+        if prm["lam_F"] > 0 and t >= prm.get("t_on", 0):  # C6-S7k: optional crawling onset (default 0)
             cen = np.c_[sx[1:], sy[1:]] / np.maximum(area[1:], 1)[:, None]
             links, pol = _links(lat, n, P, pol, prm, rng, cen)
             if len(links):
