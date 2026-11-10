@@ -79,6 +79,54 @@ def job_q2c(a):
     return out
 
 
+PARTS = os.path.join(OUT, "c6s7i_parts")
+CH = 10
+ONLY = None  # set by --part: compute just this chunk file and stop
+
+
+class _Done(Exception):
+    pass
+
+
+class _Lazy:
+    p = None
+
+    def map(self, f, a):
+        if self.p is None:
+            self.p = Pool(int(os.environ.get("NPROC", "10")))  # worker count does not change results
+        return self.p.map(f, a)
+
+
+def gather(pool, f, tag, args):
+    """Chunks of 10 seeds; each chunk is loaded from c6s7i_parts/ if a GitHub Actions job already wrote it."""
+    out = []
+    for k in range(0, len(args), CH):
+        name = f"{tag}_{k}"
+        fp = os.path.join(PARTS, name + ".json")
+        if ONLY is not None and name != ONLY:
+            if os.path.exists(fp):
+                out += json.load(open(fp))
+            else:
+                out += [None] * len(args[k:k + CH])
+            continue
+        if os.path.exists(fp):
+            out += json.load(open(fp))
+        else:
+            r = pool.map(f, args[k:k + CH])
+            if ONLY is not None:
+                os.makedirs(PARTS, exist_ok=True)
+                json.dump(r, open(fp, "w"))
+                raise _Done
+            out += r
+    if any(v is None for v in out):  # --part run: placeholders for chunks owned by other jobs
+        out = [v for v in out if v is not None] or [_DUMMY.get(f.__name__)]
+    return out
+
+
+_DUMMY = {"job_q2c": {"3": {"p_post": 0, "t_in_A": 0, "t_in_P": 0}, "1": {"p_post": 0, "t_in_A": 0, "t_in_P": 0}},
+          "job_shape": {"one_minus_circ": 0.0, "moment_elong": 0.0, "attached": 0.0}}
+
+
 def main(smoke=False):
     t0 = time.time()
     res = {}
@@ -92,12 +140,12 @@ def main(smoke=False):
     print("D1a reading", res["D1a_reading"], flush=True)
     if smoke:
         return
-    pool = Pool(10)
+    pool = _Lazy()
     # ---- D1c (conditional) ----
     if res["D1a_reading"] == "mechanics/readout":
         d1c = []
         for i, fr in enumerate(FRS):
-            v = pool.map(job_q2c, [(P_CHOSEN, fr, 92000 + 100 * i + r) for r in range(20)])
+            v = gather(pool, job_q2c, f"D1c_{i}", [(P_CHOSEN, fr, 92000 + 100 * i + r) for r in range(20)])
             d1c.append({"f_anterior": fr, **{k: {kk: float(np.nanmean([a[k][kk] for a in v])) for kk in v[0][k]}
                                                for k in ("3", "1")}})
             print("D1c", json.dumps(d1c[-1]), flush=True)
@@ -107,8 +155,8 @@ def main(smoke=False):
     for li, lam in enumerate((20.0, 80.0)):
         for ci, c in enumerate((0.0, 0.1, 0.2, 0.5, 1.0)):
             p = {**P_CHOSEN, "lam_F": lam}
-            v = pool.map(ck.job_shape, [(MOD, p, [("pure", 1.0, 0.0, c)], 96000 + 100 * (5 * li + ci) + r)
-                                        for r in range(10)])
+            v = gather(pool, ck.job_shape, f"D2_{li}_{ci}", [(MOD, p, [("pure", 1.0, 0.0, c)], 96000 + 100 * (5 * li + ci) + r)
+                                                             for r in range(10)])
             d2[f"lam{lam:.0f}_c{c}"] = {mm: float(np.mean([a[mm] for a in v])) for mm in v[0]}
             print("D2", f"lam{lam:.0f}_c{c}", json.dumps(d2[f"lam{lam:.0f}_c{c}"]), flush=True)
     e = lambda lam, c: d2[f"lam{lam:.0f}_c{c}"]["moment_elong"]
@@ -125,7 +173,7 @@ def main(smoke=False):
     for i, fr in enumerate((0.0, 0.2, 0.5, 0.8, 1.0)):
         parts = ([("bulk", 1.0, None, 1.0)] if fr == 0 else [("low", 1.0, 0.0, 0.2)] if fr == 1
                  else [("low", fr, 0.0, 0.2), ("bulk", 1 - fr, None, 1.0)])
-        v = pool.map(ck.job_shape, [(MOD, p20, parts, 93000 + 100 * i + r) for r in range(20)])
+        v = gather(pool, ck.job_shape, f"Q3_{i}", [(MOD, p20, parts, 93000 + 100 * i + r) for r in range(20)])
         q3[str(fr)] = {mm: float(np.mean([a[mm] for a in v])) for mm in v[0]}
     y = [q3[str(fr)]["moment_elong"] for fr in (0.0, 0.2, 0.5, 0.8, 1.0)]
     res["Q3_lam20_descriptive"] = {"by_fraction": q3, "moment_elong": y,
@@ -136,4 +184,11 @@ def main(smoke=False):
 
 
 if __name__ == "__main__":
-    main(smoke="--smoke" in sys.argv)
+    if len(sys.argv) > 2 and sys.argv[1] == "--part":
+        ONLY = sys.argv[2]
+        try:
+            main()
+        except _Done:
+            pass
+    else:
+        main(smoke="--smoke" in sys.argv)
