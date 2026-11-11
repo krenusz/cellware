@@ -10398,3 +10398,28 @@ The numbers are unchanged from the result files.)*
      - LSK train, A and B known; C unread.
      - The day-3 experiment was near 0 in C7-S6, which dilutes H2.
   6. **Literature:** cHSPCTrack abstract; Weinreb 2020; Jindal 2024 methods.
+
+### C9-S0 result: H19 power scan (2026-11-11; `results_c9/c9s0_scan.json`, log `results_c9/c9s0_scan.log`)
+
+- **Sealed rows were touched for structural counts only** (clone/day/exp/assay columns).
+- **Structure found:**
+  - Day-10 fates exist only in exps 1, 3 and 7.
+  - Exp 6 has days 5/8/12, so it has no day-10 fate. Exp 3 has no early (<= day 5) cells.
+  - So H1 reduces to exp 7, and H2 and H3 to exps 1 + 7.
+
+| candidate | train | subset count train / sealed | effective n | power | H19 |
+|---|---|---|---|---|---|
+| H1 HSPC state vs condition, exp 6+7 (= exp 7) | diff 0.99 bits, SD 2.0, n 132 | 132 / 53 (B) | 32 | 0.79 | **fails** |
+| H2 HSPC state vs condition, all exps (= 1 + 7) | diff 0.50 (exp 1: -0.02, exp 7: 1.00), SD 1.6, n 265 | 265 / 121 (B) | 76 | 0.78 | **fails** |
+| H3 HSPC erythroid/MK vs neutrophil/monocyte split beyond condition | within-stratum rho 0.57, n 179 | 265 / 121 (B) | 79 | 1.00 | **passes** (caveats) |
+| H4 LSK early chromatin -> Neu vs Mono | rho 0.31, n 195 | 276 / 142 (C, last) | 97 | 0.87 | passes at face value; **last partition** |
+
+- **H3 caveats:**
+  - The outcome is skewed: the mean MegE fraction is 0.97, so the signal is which clones make any
+    neutrophils/monocytes.
+  - C was chosen on the statistic itself (optimistic).
+  - The per-experiment split was not computed.
+  - If rho shrinks to 0.35, power is still about 0.87.
+- **H4 caveats:**
+  - It spends celltag_lsk's last partition (H13, verbatim OK).
+  - LSK ATAC shrank from 0.28 to 0.24 between C7 train and A. A similar shrink would put power below 0.8.
