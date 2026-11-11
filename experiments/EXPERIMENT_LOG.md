@@ -10359,3 +10359,42 @@ The numbers are unchanged from the result files.)*
 - **Retro:** RETRO_2026-11-11b.md, with lit_gap rerun (`lit/gap_2026-11-11.md`).
 - **program.md H19 amended:** subset tests need subset structural counts at plan stage.
 - **FOCUS:** chapter 9 (choosing), step C9-S0.
+
+## C9-S0: H19 (amended) power scan for chapter 9 candidates, TRAIN + STRUCTURAL COUNTS ONLY (pre-registered 2026-11-11)
+
+- **Serves: C9-S0** (choosing chapter 9 under H19). Bence: "1" (answer to: start the chapter 9 power scan;
+  list item 1 and button 1 both = scan). Script: `c9s0_scan.py` (new). It reuses the `c7s3_carrier.py`,
+  `c7s6_hspc.py`, `c7s7_confirm.py`, `c8s0_scan.py` and `c8s1_confirm.py` helpers unchanged.
+- **Sealed access: structural counts only** (H19 amendment).
+  - For each candidate's subset, the script counts B units (celltag_lsk: C) from clone id, day, experiment
+    and assay columns. No fate or cell-type column is loaded for sealed rows.
+  - `c9s0_scan.py` goes into HELDOUT_READERS with that restriction.
+- **Effective B n** = sealed structural count x (train units / train structural count) x train weight ratio
+  (mean-difference tests), or minus 3 (Spearman tests).
+- **Candidates (data in hand):**
+  - **H1, human HSPC state vs condition, exp 6 + 7:**
+    - The refused T2, widened to both day-5-early experiments.
+    - Strata are experiment x condition. The pooled baseline is the experiment's pool.
+    - d = g_state - g_cond per clone, as C8-S1b. Target partition: chspctrack:B.
+  - **H2, human HSPC state vs condition, all 8 experiments:** same as H1, all experiments with day-10 fates.
+    Target: chspctrack:B.
+  - **H3, human HSPC erythroid/MK vs neutrophil/monocyte split readable from early state beyond condition:**
+    - All experiments. Units: >= 2 day-10 cells in {Ery, MK, Neu, Mono}.
+    - Binomial model on early RNA + condition one-hot.
+    - Statistic: Spearman between predicted and observed MegE fraction, both centred within the experiment x
+      condition stratum. So condition-level differences cannot drive it.
+    - Target: chspctrack:B. This is the human analogue of the chapter-8 T1.
+  - **H4, mouse LSK early chromatin predicts the Neu vs Mono split:**
+    - The ATAC version of T1. Target: celltag_lsk:C, **the last partition** (it would need Bence's verbatim
+      OK, H13).
+- **Pass rule:** power >= 0.8 on the target partition from these counts, and a path of <= 3 steps.
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' labels (HSPC G8; LSK `cell_type2`). Features are the validated C7 pipelines.
+  3. **Used data first:** C7-S6/S7c, C8-S0/S1b (HSPC), C7-S3 and C8-S2 T1 (LSK).
+  4. **Power:** this step.
+  5. **Exposure:**
+     - HSPC train and A known; B/C unread.
+     - LSK train, A and B known; C unread.
+     - The day-3 experiment was near 0 in C7-S6, which dilutes H2.
+  6. **Literature:** cHSPCTrack abstract; Weinreb 2020; Jindal 2024 methods.

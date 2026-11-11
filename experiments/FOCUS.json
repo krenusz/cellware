@@ -1,7 +1,7 @@
 {
  "chapter": "9 (choosing)",
  "step": "C9-S0",
- "question": "Chapter 9 (choosing under H19, amended 2026-11-11b: subset tests need the subset structural count). Next: a train-only power scan of candidates; Bence chooses.",
+ "question": "Chapter 9 (choosing under H19, amended: subset structural counts). C9-S0 = power scan of H1 (HSPC state vs condition exp 6+7), H2 (same, all exps), H3 (HSPC MegE vs GM split beyond condition), H4 (LSK chromatin -> Neu/Mono, last partition).",
  "next_steps": [
   "C9-S0: propose chapter 9 candidates with H19 numbers (subset-specific counts)",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data at each retro"
@@ -38,7 +38,8 @@
   "c7s6_hspc.py",
   "c7s7_confirm.py",
   "c8s0_scan.py",
-  "c8s1_confirm.py"
+  "c8s1_confirm.py",
+  "c9s0_scan.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -51,7 +52,7 @@
   "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)",
   "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)"
  ],
- "approved_by": "Bence 2026-11-11: \"Yes, close it\" (close chapter 8)",
+ "approved_by": "Bence 2026-11-11: \"1\" (start the chapter 9 power scan)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
