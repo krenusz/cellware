@@ -10471,3 +10471,20 @@ The numbers are unchanged from the result files.)*
   - the count function loads no fate column;
   - seeds fixed;
   - exps from the data (those with early and day-10 cells), recorded in the selection file.
+
+### C9-S1 result: train selection shows the test is DEGENERATE; no oracle entry, no look (2026-11-11; `selection/C9-S1.json`, log `results_c9/c9s1_select.log`)
+
+- **Only 7 of 179 train units carry any neutrophil/monocyte cell** (mean MegE share 0.97).
+  - **Exp 1 (133 units) has no GM cell at all.** Its per-experiment rho is undefined.
+  - The pooled within-stratum rho (0.57) is the same for every C (0.5699-0.5700). That means it comes from
+    the tie structure created by centring, plus 7 clones, not from the model.
+  - Exp 7 alone gives rho 0.91 on 46 units, carried by those same few GM clones.
+- **Expected B content:** about 3 GM-carrying clones. The Fisher-z power (1.00) assumes a continuous outcome
+  and does not apply. **The test cannot answer the question.**
+- **Decision (pre-flight item 2, readout):**
+  - C9-S1 is withdrawn before any sealed read.
+  - No oracle entry was added. chspctrack:B and C stay sealed.
+  - The C9-S0 "passes" for H3 is retracted. The scan did not count the GM-carrying units, which the H19
+    readout pre-flight should have required.
+- **Rule for the next retro:** a binary-split outcome must show >= 30 train units on each side of the split
+  (by any cell of the minority class) before a power number is quoted.

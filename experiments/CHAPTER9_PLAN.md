@@ -29,3 +29,9 @@ the human counterpart of chapter 8's mouse neutrophil/monocyte result.
   - The outcome is skewed: the signal is mostly which clones make any myeloid cells.
   - Exp 1 contributed nothing in the state-vs-condition scan. It may dilute this test too. The per-experiment
     values are reported, and the test stays pooled as scanned.
+
+## Status 2026-11-11: C9-S1 withdrawn (degenerate outcome)
+
+- Only 7 of 179 train clones make any neutrophil/monocyte cell, and exp 1 has none, so the test has no usable
+  signal.
+- No sealed data was read. Chapter 9 has no valid primary test.

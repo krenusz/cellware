@@ -1,10 +1,9 @@
 {
- "chapter": "9",
- "step": "C9-S1",
+ "chapter": "9 (choosing)",
+ "step": "C9-S0",
  "question": "Chapter 9 (CHAPTER9_PLAN.md): in human HSPC (cHSPCTrack exps 1+7), does a clone early RNA state predict its erythroid/MK vs neutrophil/monocyte share within the same experiment x condition? One sealed look on chspctrack:B with Bence OK.",
  "next_steps": [
-  "C9-S1: train selection (selection/C9-S1.json)",
-  "C9-S2: look on chspctrack:B (needs Bence OK), then close chapter 9",
+  "C9: H3 withdrawn (degenerate: 7 GM-carrying train clones). Remaining H19 pass: H4 LSK chromatin on last partition (0.87). Bence decides: H4 or pause",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data at each retro"
  ],
  "allowed_scripts": [
@@ -98,6 +97,7 @@
   "C8-S2 T2 2026-11-11 (8b4221e): REFUSED by power gate (0.78 < 0.8, 32 effective units); chspctrack:B not spent",
   "C8-S2 T3 2026-11-11: CONFIRMED on celltag_reprog:B (rho 0.59, lower 0.46, n 105); celltag_reprog:C sealed",
   "C8 closed 2026-11-11: T1 rho 0.45 and T3 rho 0.59 confirmed on B; T2 refused (power 0.78); WRITEUP_FATE_READOUT.md, RETRO_2026-11-11b.md; H19 amended",
-  "C9-S0 2026-11-11 (ad744d5): H3 passes (rho 0.57, power 1.00); H4 0.87 on last partition; H1/H2 fail (0.79/0.78)"
+  "C9-S0 2026-11-11 (ad744d5): H3 passes (rho 0.57, power 1.00); H4 0.87 on last partition; H1/H2 fail (0.79/0.78)",
+  "C9-S1 2026-11-11: WITHDRAWN at train selection (only 7/179 train clones carry GM cells; exp 1 none); no oracle entry, chspctrack:B/C sealed"
  ]
 }
