@@ -35,3 +35,10 @@ the human counterpart of chapter 8's mouse neutrophil/monocyte result.
 - Only 7 of 179 train clones make any neutrophil/monocyte cell, and exp 1 has none, so the test has no usable
   signal.
 - No sealed data was read. Chapter 9 has no valid primary test.
+
+## Amendment 1 (2026-11-11): chapter 9 = LSK early chromatin -> neutrophil vs monocyte split
+
+- Bence: "2" (LSK chromatin as chapter 9).
+- Pre-registered as C9-S2. Train rho 0.31, n 195. Plan-stage power 0.87 on celltag_lsk:C, the **last** partition
+  (verbatim OK, H13).
+- **Steps:** C9-S2 selection with the readout gate, then one look on C.

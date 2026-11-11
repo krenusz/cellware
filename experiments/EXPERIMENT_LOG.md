@@ -10488,3 +10488,44 @@ The numbers are unchanged from the result files.)*
     readout pre-flight should have required.
 - **Rule for the next retro:** a binary-split outcome must show >= 30 train units on each side of the split
   (by any cell of the minority class) before a power number is quoted.
+
+## C9-S2: chapter 9 = LSK early chromatin predicts the neutrophil vs monocyte split, train selection + C look (pre-registered 2026-11-11)
+
+- **Serves: C9-S2** (chapter 9 after the C9-S1 withdrawal). Bence: "2" (answer to "pause Cellware or LSK
+  chromatin"; list item 2 and button 2 both = LSK chromatin as chapter 9).
+  - Script: `c9s2_confirm.py` (new; select_lsk / counts_lsk / test_lsk). It reuses `c7s3_carrier.py` and the
+    `c8s0_scan.py` / `c8s1_confirm.py` / `c9s0_scan.py` helpers unchanged.
+  - Oracle test: `celltag_c9s2_atac`. Selection: `selection/C9-S2.json`.
+  - Look: `test_oracle.py look celltag_c9s2_atac --exp C9-S2 --partition C --last-ok "<Bence verbatim>"`.
+  - **celltag_lsk:C is the LAST partition: the look needs Bence's verbatim OK (H13).**
+- **Question:** the chromatin counterpart of chapter 8's T1 (RNA, confirmed rho 0.45). Does a clone's day-2.5
+  chromatin state predict its day-5 Neu vs Mono split on unseen clones?
+- **Units:** clones with day-2.5 ATAC cells and >= 2 day-5 Neu + Mono cells.
+- **Features:** the C7-S3 ATAC pipeline (`c3.clone_features('atac', train+held, train)`: top 50k peaks,
+  log TF-IDF, SVD without component 1, kNN-20, clone mean, z-score by train clones), exactly as C7-S7a.
+- **Model:** binomial logistic (Neu vs Mono, clone weight min(n, 20)). Fit on all train units, **C chosen by
+  5-fold train CV information gain** (grid 0.001-10).
+- **Statistic on C:** Spearman rho between predicted P(Neu) and observed Neu share. **Confirmed if** the one-sided
+  97.5% bootstrap lower bound (2,000 resamples, seed 95) is > 0.
+- **Readout gate (new C9-S1 lesson), checked at selection before any power number is used:**
+  - >= 30 train units contain any Neu cell, and >= 30 contain any Mono cell;
+  - the train within-C rho must differ across the C grid. A flat rho means a tie artefact, and the test is
+    withdrawn.
+- **Power block (Fisher z):** effect = atanh(train CV rho at the chosen C), sd = sqrt(1.06), counts = C structural
+  units (early ATAC + >= 2 day-5 cells; no fate read) x train unit ratio - 3.
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' `cell_type2` (Neu/Mono groups). Balanced in T1. Checked again by the gate above.
+     ATAC features passed the fate-free validity check in C7-S3.
+  3. **Used data first:** C9-S0 (rho 0.31, n 195); C7-S3/S7 ATAC G 0.28 train -> 0.24 on A.
+  4. **Power:** plan-stage 0.87 from the C structural count (142 -> 97 effective). It falls below 0.8 if rho
+     shrinks to about 0.28. The oracle re-checks.
+  5. **Exposure:** LSK train, A and B are known (B spent on the RNA version, T1). C is unread.
+  6. **Literature:** Jindal 2024 methods; Ma 2020 (chromatin potential); Weinreb 2020.
+- **Tick-list:**
+  - 5 candidates, chosen = best CV gain;
+  - no sealed_rows in select_lsk;
+  - the test fits on train only;
+  - the count function loads no fate column;
+  - seeds fixed;
+  - the readout gate is recorded in the selection file.

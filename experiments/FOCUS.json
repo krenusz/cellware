@@ -1,9 +1,10 @@
 {
- "chapter": "9 (choosing)",
- "step": "C9-S0",
- "question": "Chapter 9 (CHAPTER9_PLAN.md): in human HSPC (cHSPCTrack exps 1+7), does a clone early RNA state predict its erythroid/MK vs neutrophil/monocyte share within the same experiment x condition? One sealed look on chspctrack:B with Bence OK.",
+ "chapter": "9",
+ "step": "C9-S2",
+ "question": "Chapter 9 (CHAPTER9_PLAN.md amendment 1): does LSK day-2.5 chromatin predict a clone day-5 Neu vs Mono split on unseen clones? One look on celltag_lsk:C (LAST partition, verbatim OK).",
  "next_steps": [
-  "C9: H3 withdrawn (degenerate: 7 GM-carrying train clones). Remaining H19 pass: H4 LSK chromatin on last partition (0.87). Bence decides: H4 or pause",
+  "C9-S2: train selection with readout gate (selection/C9-S2.json)",
+  "C9-S2 look on celltag_lsk:C with Bence verbatim OK, then close chapter 9",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data at each retro"
  ],
  "allowed_scripts": [
@@ -40,7 +41,8 @@
   "c8s0_scan.py",
   "c8s1_confirm.py",
   "c9s0_scan.py",
-  "c9s1_confirm.py"
+  "c9s1_confirm.py",
+  "c9s2_confirm.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -53,7 +55,7 @@
   "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)",
   "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)"
  ],
- "approved_by": "Bence 2026-11-11: \"1\" (chapter 9 = erythroid vs myeloid split, human HSPC)",
+ "approved_by": "Bence 2026-11-11: \"2\" (LSK chromatin as chapter 9)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
