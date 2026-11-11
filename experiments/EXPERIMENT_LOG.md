@@ -9865,3 +9865,86 @@ The numbers are unchanged from the result files.)*
     no valid ceiling was measured.
   - ATAC is unresolved; it is a different clone set (G_sister 0.60).
 - **Status:** C7-S4 done (train, descriptive). All `celltag_lsk` partitions are unspent.
+
+## C7-S6: human HSPC replication: does early RNA carry clone fate, and how much of the clone's serial state does it cover? cHSPCTrack, TRAIN ONLY (pre-registered 2026-11-11)
+
+- **Serves: C7-S6** (chapter 7: where is a clone's fate state carried before differentiation?). It replicates
+  C7-S3 (RNA side) and C7-S4 (coverage) in a third system, with the true serial reference that C7-S4 lacked.
+  Bence: "1" (answer to: pre-register the cHSPCTrack replication, RNA only, train). Scripts: `c7s6_hspc.py`
+  (new), `c7s3_carrier.py` (fit_model, wmean, WCAP), `c7s5_reprog.py` (ChunkedFeaturizer), `partitions.py`.
+- **Train only.** Partition `chspctrack` (sealed 2026-11-11). Sealed clones' cells are **not loaded at all**
+  (stricter than C7-S3). No look follows this step.
+- **Prior exposure:**
+  - obs column names;
+  - category names of `top_level_cell_type`, `cell_type`, `condition`;
+  - structural train counts below;
+  - the Blood 2026 abstract.
+  - No fate column has been tabulated.
+- **Data:** `data/ext_chspctrack/cells_with_clone_info.h5ad` (X = raw UMI counts), human CD34+ single-cell
+  clones, serial half-well sampling d3-d12, cytokine condition per clone.
+- **Fate groups G8** (from `top_level_cell_type`): Neu (Neutrophils), Mono (Monocyte), Ery (Ery), MK (MK),
+  Baso (Basophils), Eos (Eosinophil), Mast (Mast), Prog (GMP, MEBEMP, MEP, BEMP, BEP).
+- **Times:**
+  - early = days 3-5;
+  - mid = day 7;
+  - late (target) = day 10.
+- **Units:**
+  - **U1:** train clones with >= 1 early cell and >= 2 day-10 cells. 265 structurally (condition I 166, III 53,
+    II 20, unknown 26).
+  - **U2 (coverage):** U1 clones that also have >= 2 day-7 cells. 113 structurally.
+- **Baseline:** day-10 G8 frequencies **per condition** over the training fold's clones. Unknown counts as its
+  own condition, so cytokine bias is not credited to the clone state.
+- **Early features:** the C7-S3 RNA pipeline.
+  - 1e4 normalise, log1p, 2,000 HVG (chunked computation, identical result), z-score, PCA 30.
+  - kNN 20 cosine smoothing over the universe.
+  - Clone mean over its early cells, z-scored.
+  - Universe and fit cells: early cells of train clones plus all early cells without a clone.
+- **G_early:**
+  - Multinomial logistic on [early RNA features + condition one-hot], weight min(n, 20).
+  - C from {0.001, 0.01, 0.1, 1, 10} by 5-fold CV (folds by clone hash).
+  - Per-cell log2 gain of the CV-predicted distribution over the condition baseline, on the clone's day-10
+    cells.
+- **G_serial (reference):**
+  - The same model class on [day-7 G8 fractions + log n_day7 + condition one-hot] predicting the day-10 cells.
+    It is a learned mapping across clones, like G_early. Same C grid and folds.
+- **Statistics:**
+  1. **Replication:** wmean G_early over U1 with a bootstrap 95% CI.
+     - **"Early RNA carries clone fate (human HSPC)"** if CI lower > 0;
+     - **"not detected"** otherwise.
+  2. **Coverage** = wmean G_early / wmean G_serial over U2, with a bootstrap 95% CI (ratio recomputed).
+     - **Most** if CI lower > 0.5;
+     - **minority** if CI upper < 0.5;
+     - else **unresolved**.
+- **Validity gate (fate-free, run and reported first):** sibling-nearness AUC of early cells (train clones
+  with >= 2 early cells, sibling vs random cross-clone cosine, smoothed space). If < 0.55, the RNA pipeline is
+  blind and G_early is not interpreted.
+- **Null calibration:**
+  - early features permuted across U1 clones within condition: G_early must be <= 0.02;
+  - day-7 compositions permuted within condition: G_serial must be <= 0.02;
+  - 5 permutations each.
+  - If a null fails, the corresponding statistic is not interpreted.
+- **Plan-stage power:**
+  - descriptive, train only;
+  - a sealed partition holds about half of train (about 130 U1 / 55 U2);
+  - **no look in this step.**
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' cell-type labels at day 10; early RNA from raw UMIs.
+  3. **Used data first:** C7-S3 / C7-S4 train results.
+  4. **Power:** above.
+  5. **Exposure:** listed above.
+  6. **Literature:** cHSPCTrack (Blood 2026) abstract, Weinreb 2020.
+- **Tick-list:** the script outputs
+  - validity AUC;
+  - C per model;
+  - both nulls;
+  - G_early (U1) with CI and reading;
+  - G_early and G_serial (U2) with CIs;
+  - coverage with CI and reading;
+  - unit counts after fate-label filtering.
+- **Known caveats:**
+  - Day-7 and day-10 cells come from the same well (shared environment), and day 7 is closer in time than the
+    early sample. So G_serial is an upper reference, not a pure heritable ceiling, and coverage is
+    conservative.
+  - RNA only: no chromatin.
+  - Most clones are condition I.

@@ -1,9 +1,9 @@
 {
  "chapter": "7",
- "step": "C7-S4",
+ "step": "C7-S6",
  "question": "Chapter 7: where is a clone's fate state carried before differentiation? Does early chromatin (scATAC of state siblings) predict a clone's later fate better than early RNA, on sealed held-out clones (CellTag-multi LSK d2.5->d5; reprogramming d3->d12/21)? C7-S1: plan + sealing + pre-flight (CHAPTER7_PLAN.md); no fate statistic. Keep C in view: hESC->endoderm sister-well multiome (Linneberg-Agerholm 2026) when public.",
  "next_steps": [
-  "C7-S4: carrier coverage G_early / G_sister, LSK train only, no look",
+  "C7-S6: cHSPCTrack RNA replication + serial coverage, train only, no look",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351 at each retro"
  ],
  "allowed_scripts": [
@@ -34,7 +34,8 @@
   "c7s2a_diag.py",
   "c7s3_carrier.py",
   "c7s5_reprog.py",
-  "c7s4_coverage.py"
+  "c7s4_coverage.py",
+  "c7s6_hspc.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -45,7 +46,7 @@
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)",
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)"
  ],
- "approved_by": "Bence 2026-11-11: \"Yes, pre-register\" (C7-S4 as carrier coverage, train only)",
+ "approved_by": "Bence 2026-11-11: \"1\" (pre-register the cHSPCTrack replication, RNA only, train)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -78,6 +79,8 @@
   "C7-S2 closed on train 2026-11-11 (H 0.66 [0.57,0.74]; 0.75 at >=2 cells); A/B/C kept",
   "C7-S3 closed on train 2026-11-11 (RNA 0.54 vs ATAC 0.31 bits/cell, Delta -0.23; unpowerable on sealed); A/B/C kept",
   "C7-S5 closed on train 2026-11-11 (reprogramming RNA 0.27 vs ATAC 0.29, Delta +0.03); A/B/C kept",
-  "RETRO_2026-11-11 (H18): chromatin not privileged; fate-free validity gate + plan-stage power + pre-reg tick-list adopted"
+  "RETRO_2026-11-11 (H18): chromatin not privileged; fate-free validity gate + plan-stage power + pre-reg tick-list adopted",
+  "C7-S4 done on train 2026-11-11 (coverage 1.36 [0.95,2.19]; sister ceiling invalid)",
+  "C7 data search + pre-flight 2026-11-11: cHSPCTrack passes (partitioned chspctrack); others fail"
  ]
 }
