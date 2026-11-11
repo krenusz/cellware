@@ -10423,3 +10423,51 @@ The numbers are unchanged from the result files.)*
 - **H4 caveats:**
   - It spends celltag_lsk's last partition (H13, verbatim OK).
   - LSK ATAC shrank from 0.28 to 0.24 between C7 train and A. A similar shrink would put power below 0.8.
+
+## C9-S1: chapter 9 train selection + B look for the HSPC erythroid/MK vs myeloid split (pre-registered 2026-11-11)
+
+- **Serves: C9-S1** (chapter 9, CHAPTER9_PLAN.md). Bence: "1" (answer to the C9-S0 shortlist; list item 1
+  and button 1 both = erythroid vs myeloid becomes chapter 9).
+  - Script: `c9s1_confirm.py` (new; select_hspc / counts_hspc / test_hspc). It reuses the `c7s6_hspc.py`,
+    `c7s7_confirm.py`, `c8s0_scan.py` and `c9s0_scan.py` helpers unchanged.
+  - Oracle test: `hspc_c9s1`. Selection file: `selection/C9-S1.json`.
+  - Look: `test_oracle.py look hspc_c9s1 --exp C9-S1 --partition B`. **It needs Bence's separate OK.**
+    chspctrack:C stays sealed.
+- **Units:** clones in exps 1 and 7 with >= 1 early (day <= 5) cell and >= 2 day-10 cells in {Ery, MK, Neu,
+  Mono} (G8 map).
+- **Outcome:** MegE share = (Ery + MK) / (Ery + MK + Neu + Mono) at day 10.
+- **Features:**
+  - the C7-S7c pipeline (`_hspc_features`: featurizer fit on train early + non-clonal cells, kNN-20, clone
+    mean, z-score by train clones);
+  - plus a one-hot of the experiment x condition stratum (levels from train).
+- **Model:** binomial logistic (MegE vs GM counts, clone weight min(n, 20)).
+  - Fit on all train units.
+  - **C chosen by 5-fold train CV information gain** (grid 0.001-10; H12). This replaces the scan's choice
+    by the statistic.
+- **Statistic on B:**
+  - Spearman rho between predicted P(MegE) and observed MegE share. Both are centred by subtracting their
+    B-unit mean within the experiment x condition stratum.
+  - **Confirmed if** the one-sided 97.5% bootstrap lower bound (2,000 clone resamples, seed 94) is > 0.
+- **Power block (Fisher z):**
+  - effect = atanh(train CV within-stratum rho at the chosen C), sd = sqrt(1.06);
+  - counts = B structural units (exps 1 + 7, early >= 1, day-10 >= 2; no fate read) x train unit ratio - 3.
+- **Reported, not tested:**
+  - train and B rho per experiment;
+  - raw (uncentred) rho;
+  - the number of units with any GM cell (skew).
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' G8 labels. Skewed outcome (mean MegE share 0.97), handled by reporting the GM-
+     carrying unit count.
+  3. **Used data first:** C9-S0 scan (rho 0.57, n 179).
+  4. **Power:** plan-stage 1.00 from the subset structural count (121 B units -> 79 effective). The oracle
+     re-checks.
+  5. **Exposure:** train and A known (A spent in C7-S7c, overall fate G); B/C unread.
+  6. **Literature:** cHSPCTrack abstract; Weinreb 2020 (early prediction of fate bias).
+- **Tick-list:**
+  - 5 candidates, chosen = best CV gain;
+  - no sealed_rows call in select_hspc;
+  - test fits on train only;
+  - the count function loads no fate column;
+  - seeds fixed;
+  - exps from the data (those with early and day-10 cells), recorded in the selection file.
