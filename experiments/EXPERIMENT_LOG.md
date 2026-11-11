@@ -9972,4 +9972,37 @@ The numbers are unchanged from the result files.)*
   - Everything else is unchanged.
   - The pre-registered readings are applied to the amended run. The v1 numbers stay logged and are not
     interpreted.
-EOF
+
+### C7-S6 result after amendment 1 (2026-11-11; `results_hspc/c7s6_train.json`; train only, nothing sealed, no look)
+
+- **Tick-list:** all pre-registered outputs are present.
+- **Validity:** sibling AUC 0.88 (not blind).
+- **Nulls:** G_early null -0.08, G_serial null -0.01, both pass.
+- **Units:** U1 265, serial pool 177, U2 113.
+
+| statistic | value | 95% CI | pre-registered reading |
+|---|---|---|---|
+| G_early, U1 (265 clones) | **0.66** bits/cell (C 0.1) | [0.49, 0.84] | early RNA carries clone fate (human HSPC) |
+| G_early, U2 (113; all exp 1 / condition I, early = day 3) | **-0.02** | [-0.05, -0.00] | |
+| G_serial, U2 (day-7 composition -> day 10) | **0.004** | [0.001, 0.008] | |
+| coverage, U2 | -4.4 | [-20.6, -0.04] | formally "minority"; **not interpretable** (denominator ~0) |
+
+- **Reading:**
+  1. **After stratifying by experiment x condition, early RNA still carries clone fate on U1** (0.66 [0.49,
+     0.84]).
+     - But the signal is **not uniform:** in exp 1 (early sample at day 3, all U2) it is about zero.
+     - By subtraction, it comes from exp 7 (early sample at day 5, about 130 clones).
+     - A day-5 sample is closer to fate, and its cells may already show their lineage, so this is "fate visible
+       early" rather than a hidden state. This split was not pre-registered, so it is descriptive.
+  2. **Within exp 1 / condition I, neither early RNA nor the day-7 composition predicts the day-10 composition
+     beyond the stratum baseline** (0.004 bits). This fits the authors' abstract ("single HSPCs stochastically
+     yield multiple lineages"). Between-clone variation in day-10 composition there looks close to sampling
+     noise.
+  3. **So the serial reference isn't usable as a ceiling here either.** The coverage ratio is undefined in
+     practice.
+- **Comparison with chapter 7 so far:**
+  - Early RNA carries clone fate in mouse LSK (0.54), reprogramming (0.27) and human HSPC (0.66, exp 7). In
+    human HSPC sampled at day 3 it carries none.
+  - This is the first system where an early snapshot shows **no** clone-fate signal. That may be the sampling
+    day, or clones in that culture may be close to fate-unbiased.
+- **Status:** C7-S6 done (train, descriptive, 1 amendment). `chspctrack` A/B/C are unspent.

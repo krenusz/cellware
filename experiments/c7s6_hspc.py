@@ -45,7 +45,10 @@ def load():
     with h5py.File(H5AD, "r") as f:
         o = f["obs"]
         obs = pd.DataFrame({"clone": _cat(o, "clone_id"), "day": o["sample_day_as_int"][:],
-                            "cond": _cat(o, "condition"), "ct": _cat(o, "top_level_cell_type")})
+                            "cond": _cat(o, "condition"), "ct": _cat(o, "top_level_cell_type"),
+                            "exp": _cat(o, "exp_id")})
+    # amendment 1: stratum = experiment x condition (condition I spans exp 1 / day-3 and exp 7 / day-5 early cells)
+    obs["cond"] = obs["exp"].astype(str) + "|" + obs["cond"].fillna("unknown").astype(str)
     obs["row"] = np.arange(len(obs))
     clonal = obs[obs["clone"].notna()]
     train = partitions.train_only("chspctrack", clonal, unit_col="clone")
