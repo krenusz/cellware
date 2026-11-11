@@ -10179,3 +10179,55 @@ The numbers are unchanged from the result files.)*
   - K1 is the only new question, but its power rests on an optimistic train estimate. The C grid was chosen on
     train, the SD is large, and 26 of 132 clones have an "unknown" condition.
 - **Steps for each candidate:** train selection + one B look = 2 steps (<= 3).
+
+## C8-S1: chapter 8 train selection for T1 (K3) and T2 (K1), TRAIN ONLY (pre-registered 2026-11-11)
+
+- **Serves: C8-S1** (chapter 8, CHAPTER8_PLAN.md). Bence: "1" (answer to the C8-S0 shortlist; list item 1
+  and button 1 both read "K3, then K1"). Script: `c8s1_confirm.py` (new). It reuses `c7s3_carrier.py`,
+  `c7s6_hspc.py`, `c7s7_confirm.py` and `c8s0_scan.py` helpers unchanged.
+- **This step:** train only. Writes `selection/C8-S1a.json` (T1) and `selection/C8-S1b.json` (T2) with
+  candidates, the chosen C (best train CV, H12) and the power block (H14). It also adds oracle entries
+  `celltag_c8s1_lsk` and `hspc_c8s1` with test and count functions. No sealed row is read.
+- **The B look (C8-S2) is a separate step. It needs Bence's verbatim OK for each partition** (celltag_lsk:B,
+  then chspctrack:B only if T1 is confirmed).
+- **T1 (K3), celltag_lsk:**
+  - **Units:** clones with >= 2 day-5 Neu + Mono cells and day-2.5 RNA cells.
+  - **Features:** C7-S3 RNA pipeline. The featurizer is fit on train clones + non-clonal cells
+    (`c3.clone_features('rna', train+held, train)`), exactly as C7-S7a.
+  - **Model:** binomial logistic (Neu vs Mono counts, clone weight min(n, 20)) fit on all train units with the
+    C chosen by 5-fold train CV (grid 0.001-10, criterion CV information gain, as C8-S0).
+  - **Statistic:** Spearman rho between predicted P(Neu) and observed Neu fraction on B units.
+  - **Confirmed if** the one-sided 97.5% bootstrap lower bound (2,000 clone resamples) is > 0.
+  - **Power block (Fisher z):** effect = atanh(train CV rho), sd = sqrt(1.06), counts = B units - 3.
+- **T2 (K1), chspctrack exp 7 only:**
+  - **Units:** exp-7 clones with >= 2 day-10 G8 cells and >= 1 early (day <= 5) cell.
+  - **Features:** C7-S7c pipeline (`_hspc_features`, featurizer fit on train early + non-clonal cells, z-score
+    by train clones) + condition one-hot (exp-7 strata, "unknown" kept as its own stratum).
+  - **Model:** multinomial logistic fit on all train exp-7 units with the C chosen by train CV.
+  - **Per B clone:**
+    - g_state = sum k (log2 P_model - log2 B_cond) / n;
+    - g_cond = sum k (log2 B_cond - log2 B_pool) / n;
+    - B_cond and B_pool are train exp-7 day-10 frequencies (+0.5) for the clone's condition and pooled.
+  - **Statistic:** weighted mean of d = g_state - g_cond (weights min(n, 20)).
+  - **Confirmed if** the one-sided 97.5% bootstrap lower bound > 0, which means early clone state carries more
+    fate information than the condition.
+  - **Power block:** effect = train weighted mean d, sd = SD(d), counts = B structural units x train effective
+    ratio.
+  - **Also reported, not tested:** G_cond and G_state on B with CIs.
+- **Fixed sequence:** T1, then T2. A failed T1 stops the sequence and chspctrack:B stays sealed.
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' fate labels (LSK `cell_type2` groups Neu/Mono; HSPC G8). Early features from
+     pipelines already validated (sibling AUC 0.87 LSK RNA / 0.88 HSPC).
+  3. **Used data first:** C8-S0 train scan (done).
+  4. **Power:** plan-stage from C8-S0. T1 1.00. T2 0.86 at the train effect, 0.46 if it shrinks like C7-S7.
+     The oracle re-checks from B counts.
+  5. **Exposure:** train and A known (A spent in C7). B and C unread.
+  6. **Literature:** Weinreb 2020 (Neu/Mono early prediction in LARRY), cHSPCTrack abstract (cytokines bias
+     fate; stochastic diversification).
+- **Tick-list (checked against code before the run):**
+  - selection files hold >= 2 candidates and chosen = best;
+  - no sealed_rows call in the select_ functions;
+  - test_ functions fit only on train;
+  - bootstrap seeds fixed;
+  - the exp-7 filter is literal "7".
