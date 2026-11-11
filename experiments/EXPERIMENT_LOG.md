@@ -9432,3 +9432,43 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   1. **No sealed look:** keep A, B and C for C7-S3, the chapter's main test.
   2. A union A+B look (power about 0.97), which leaves only C for C7-S3.
   3. Pre-register a weaker claim (H > 0) on A.
+
+## C7-S2a: what limits H and its power? Train-only diagnostic of the C7-S2 readout (pre-registered 2026-11-11)
+
+- **Serves: C7-S2.** The look was refused at power 0.76 with H 0.66, versus SIS 0.71 and LARRY 0.88. Bence:
+  "explore what we could miss that we cant produce the sis or larry numbers; check for possibilities how to
+  enhance the train exp without touching sealed data". Scripts: `c7s2a_diag.py` (new), `c7s2_sister.py`,
+  `sis_data.py`, `partitions.py`.
+- **Train only** (`train_only("celltag_lsk")`). No sealed partition is touched, and `counts()` is not called.
+- **Known before running (structure / metadata only):**
+  - **GEO:** all four day-5 scATAC lanes are **replicate 1** (GSM6675426-29 titles). Day-5 ATAC cells can
+    therefore only add to well 1.
+  - **LARRY's 0.88 is not an H.** It is the cross-well correlation of the neutrophil fraction N/(N+M) (K3; the in
+    vitro cross-well r was 0.74). SIS's 0.71 is the same H as ours. **The like-for-like comparison is computed
+    here.**
+- **Grid** (every cell reported; each with n, H, 95% CI, bootstrap SE, projected power at the partition size):
+  1. **Minimum cells per well:** 2, 3, 4 (pre-registered C7-S2), 6, 8.
+  2. **Grouping:**
+     - G7 (C7-S2);
+     - G6 differentiated only;
+     - G4 coarse: Neu, Mono, Prog, Other = EMk + BEM + DC + Lym. This reduces sparse categories.
+  3. **Clone quality:** all vs `edge.den` >= train median. Edge density is the authors' clone-graph density;
+     low density can mean merged false clones, which would lower H.
+  4. **Well 1 cells:** RNA only vs RNA + day-5 ATAC (authors' transferred labels).
+  5. **LARRY-comparable statistic:** Pearson r across wells of N/(N+M), clones with >= k N+M cells in both
+     wells (k = 2, 4), with bootstrap CI.
+- **Projected power:** the C7-S2 formula, with partition size = train n x (partition / train clone ratio
+  1348 / 2720), H > 0.5 one-sided alpha 0.025.
+- **What this step may and may not do:**
+  - It describes which factors lower H or its precision (noise per well, sparse fates, clone-call quality,
+    modality).
+  - If a variant would be used for a sealed look, it becomes **C7-S2b with its own pre-registration**, and
+    the number of configurations tried here (5 x 3 x 2 x 2 = 60, plus 2) is disclosed as a forking path.
+  - **No sealed look in this step.**
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** as C7-S2.
+  3. **Used data:** C7-S2 train results (spent).
+  4. **Power:** projected per variant (this step).
+  5. **Exposure:** train only; GEO sample titles read.
+  6. **Literature:** none new.

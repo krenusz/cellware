@@ -31,7 +31,8 @@
   "c6s8d_size.py",
   "lit_gap.py",
   "c7s2_sister.py",
-  "sis_data.py"
+  "sis_data.py",
+  "c7s2a_diag.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -42,7 +43,7 @@
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)",
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)"
  ],
- "approved_by": "Bence 2026-11-11: \"Go C7-S2\"",
+ "approved_by": "Bence 2026-11-11: \"explore what we could miss ... enhance the train exp without touching sealed data\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
