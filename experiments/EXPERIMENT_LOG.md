@@ -10231,3 +10231,22 @@ The numbers are unchanged from the result files.)*
   - test_ functions fit only on train;
   - bootstrap seeds fixed;
   - the exp-7 filter is literal "7".
+
+### C8-S1 result: train selection (2026-11-11; `selection/C8-S1a|b.json`, log `results_c8/c8s1_select.log`)
+
+| test (fixed order) | train value | chosen C | power on B (train-ratio estimate) |
+|---|---|---|---|
+| T1 (K3) LSK Neu vs Mono, Spearman rho | 0.46, n 324 | 0.01 | 1.00 |
+| T2 (K1) HSPC exp 7, g_state - g_cond | +0.97 bits/cell (state 1.17, condition 0.21), SD 2.0, n 132 | 0.1 | 0.86 (0.46 if shrunk as in C7) |
+
+- **Same values as the C8-S0 scan** (same folds and models).
+- **Oracle:** entries `celltag_c8s1_lsk` and `hspc_c8s1` added to PARTITION_TESTS / PARTITION_COUNTS.
+  `c8s1_confirm.py` added to HELDOUT_READERS. Count functions read no fate column.
+- **Tick-list checked against the code:**
+  - selection files hold 5 candidates and chosen = best;
+  - no sealed_rows call in the select_ functions;
+  - test_ functions fit only on train;
+  - seeds fixed (91, 92);
+  - the exp filter is the literal "7".
+- **Next: C8-S2 = B look, one partition per dataset.** It needs Bence's verbatim OK: celltag_lsk:B first, then
+  chspctrack:B only if T1 is confirmed.

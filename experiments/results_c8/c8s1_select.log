@@ -1,0 +1,73 @@
+  return K[K.sum(1) >= 2]
+C8-S1a {
+ "test": "celltag_c8s1_lsk",
+ "higher_is_better": true,
+ "candidates": {
+  "0.001": 0.07319358392018938,
+  "0.01": 0.12852496777655847,
+  "0.1": 0.1176571890763056,
+  "1.0": 0.07109183197757708,
+  "10.0": 0.051387846765576756
+ },
+ "chosen": "0.01",
+ "C": 0.01,
+ "power": {
+  "sd": 1.0295630140987,
+  "effect": 0.49895407168968864,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8
+ },
+ "train": {
+  "n": 324,
+  "cv_rho": 0.4612941918383458,
+  "by_C_rho": {
+   "0.001": 0.418066541262691,
+   "0.01": 0.4612941918383458,
+   "0.1": 0.4796746471114779,
+   "1.0": 0.47796611213412554,
+   "10.0": 0.45721576025451915
+  },
+  "unit_ratio": 0.6835443037974683,
+  "power_B_ratio_est": 0.9999842529596973
+ },
+ "note": "T1 (K3): Spearman rho(pred P(Neu), observed Neu fraction) > 0 one-sided; power in Fisher-z units"
+}
+  u = [c for c in K10.index[K10.sum(1) >= 2] if c in cf.index]
+C8-S1b {
+ "test": "hspc_c8s1",
+ "higher_is_better": true,
+ "candidates": {
+  "0.001": 0.39027556880760605,
+  "0.01": 0.881712918772917,
+  "0.1": 0.9662873776394498,
+  "1.0": 0.7462747158525616,
+  "10.0": 0.06236218819522824
+ },
+ "chosen": "0.1",
+ "C": 0.1,
+ "levels": [
+  "7|I",
+  "7|II",
+  "7|III",
+  "7|unknown"
+ ],
+ "power": {
+  "sd": 2.0047098773498075,
+  "effect": 0.9662873776394498,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8
+ },
+ "train": {
+  "n": 132,
+  "G_cond": 0.20576119662997172,
+  "G_state": 1.1720485742694216,
+  "diff": 0.9662873776394498,
+  "sd": 2.0047098773498075,
+  "neff_ratio": 0.6103857884316978,
+  "struct_ratio": 1.0,
+  "power_B_ratio_est": 0.8641998077050064
+ },
+ "note": "T2 (K1): mean(g_state - g_cond) > 0 one-sided, exp 7 only; tested only if T1 confirmed"
+}

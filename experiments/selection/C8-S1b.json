@@ -1,0 +1,37 @@
+{
+ "test": "hspc_c8s1",
+ "higher_is_better": true,
+ "candidates": {
+  "0.001": 0.39027556880760605,
+  "0.01": 0.881712918772917,
+  "0.1": 0.9662873776394498,
+  "1.0": 0.7462747158525616,
+  "10.0": 0.06236218819522824
+ },
+ "chosen": "0.1",
+ "C": 0.1,
+ "levels": [
+  "7|I",
+  "7|II",
+  "7|III",
+  "7|unknown"
+ ],
+ "power": {
+  "sd": 2.0047098773498075,
+  "effect": 0.9662873776394498,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8
+ },
+ "train": {
+  "n": 132,
+  "G_cond": 0.20576119662997172,
+  "G_state": 1.1720485742694216,
+  "diff": 0.9662873776394498,
+  "sd": 2.0047098773498075,
+  "neff_ratio": 0.6103857884316978,
+  "struct_ratio": 1.0,
+  "power_B_ratio_est": 0.8641998077050064
+ },
+ "note": "T2 (K1): mean(g_state - g_cond) > 0 one-sided, exp 7 only; tested only if T1 confirmed"
+}
