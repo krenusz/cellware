@@ -1,9 +1,10 @@
 {
  "chapter": "8",
  "step": "C8-S2",
- "question": "Chapter 8 (CHAPTER8_PLAN.md): T1 (K3) early RNA predicts clone Neu vs Mono bias on unseen LSK clones; then T2 (K1) in human HSPC exp 7, early clone state carries more fate information than the cytokine condition. Fixed sequence, B looks only with Bence OK. C8-S1 = train selection.",
+ "question": "Chapter 8 (CHAPTER8_PLAN.md): T1 (K3) early RNA predicts clone Neu vs Mono bias on unseen LSK clones (confirmed on B); T2 (K1) refused by power gate (chspctrack:B sealed); T3 (K2) early RNA predicts reprogramming success on celltag_reprog:B. Fixed sequence, B looks only with Bence OK.",
  "next_steps": [
-  "C8-S2: B look T1 celltag_lsk:B (approved), then T2 chspctrack:B only if T1 confirmed and Bence OKs",
+  "C8-S1c: T3 train selection (selection/C8-S1c.json)",
+  "C8-S2: T3 look celltag_reprog:B (needs Bence OK), then close chapter 8",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351 at each retro"
  ],
  "allowed_scripts": [
@@ -50,7 +51,7 @@
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)",
   "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)"
  ],
- "approved_by": "Bence 2026-11-11: \"1\" (spend celltag_lsk:B on T1)",
+ "approved_by": "Bence 2026-11-11: \"go with your recomm\" (add K2 as T3 after T1)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -90,6 +91,7 @@
   "C7-S7 2026-11-11 (5e69507): all 5 confirmatory tests confirmed on A (LSK H 0.75; G_rna LSK 0.50, reprog 0.35, HSPC 0.40; G_atac LSK 0.24); chapter 7 CLOSED; B/C sealed in all three",
   "C8-S0 2026-11-11 (8d54d5a): H19 scan; K2/K3 pass robustly, K1 0.86 at train effect (0.46 if shrunk); Bence chose K3 then K1",
   "C8-S1 2026-11-11 (e3dc951): train selection T1 rho 0.46 power 1.00; T2 +0.97 bits power 0.86",
-  "C8-S2 T1 2026-11-11: CONFIRMED on celltag_lsk:B (rho 0.45, lower 0.32, n 153); celltag_lsk:C sealed"
+  "C8-S2 T1 2026-11-11: CONFIRMED on celltag_lsk:B (rho 0.45, lower 0.32, n 153); celltag_lsk:C sealed",
+  "C8-S2 T2 2026-11-11 (8b4221e): REFUSED by power gate (0.78 < 0.8, 32 effective units); chspctrack:B not spent"
  ]
 }

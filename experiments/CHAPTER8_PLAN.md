@@ -17,3 +17,11 @@ Chosen under H19 from the C8-S0 power scan (EXPERIMENT_LOG C8-S0 result).
 - **Sealed after chapter 8:** C in celltag_lsk and chspctrack; B and C in celltag_reprog (K2 not used).
 - **Not in scope:** exp 6 (also day-5 early cells), K2, and the RNA-vs-chromatin question (parked with
   chapter 7).
+
+## Amendment 1 (2026-11-11): T3 replaces the refused T2
+
+- **T2 (K1) was refused by the oracle power gate:** chspctrack:B has 32 effective exp-7 units, power 0.78 < 0.8.
+  It was not spent and T2 stays untested. The plan-stage estimate had used the dataset-wide clone ratio.
+- **Bence: "go with your recomm".** T3 = K2, early RNA -> reprogramming success, on celltag_reprog:B.
+  Train rho 0.66, n 227, plan-stage power about 1.00. Pre-registered as C8-S1c.
+- **Fixed sequence now:** T1 (confirmed) -> T3.

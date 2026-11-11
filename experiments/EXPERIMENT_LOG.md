@@ -10285,3 +10285,44 @@ The numbers are unchanged from the result files.)*
 - **Why the estimate missed:** the prereg used a flat 0.5 chspctrack ratio, but exp 7 has fewer B clones than that
   ratio implies. The H19 plan-stage power should have used the exp-7 structural count (lesson for the retro).
 - **State:** T1 confirmed (C8-S2 T1 result). T2 untested. chspctrack:B and C sealed.
+
+## C8-S1c: T3 (K2) early RNA predicts reprogramming success, train selection + B look (pre-registered 2026-11-11)
+
+- **Serves: C8-S2** (chapter 8 sealed tests, CHAPTER8_PLAN.md amendment 1).
+  - Bence: "go with your recomm" (answer to: add K2 as T3 after T1, instead of the refused T2).
+  - Script: `c8s1_confirm.py` (new functions select_reprog / counts_reprog / test_reprog).
+  - Oracle test: `celltag_c8s1_reprog`.
+  - Look command: `test_oracle.py look celltag_c8s1_reprog --exp C8-S1c --partition B`. **It needs a separate OK
+    from Bence.** celltag_reprog:C stays sealed.
+- **Why this is not a post-hoc swap:**
+  - K2 was scanned in C8-S0 with the same definition before any B look.
+  - T2 was refused on counts only, so no chspctrack outcome was seen.
+  - T2 stays untested and chspctrack:B stays sealed.
+- **Units:** clones with day-3 RNA cells and >= 2 day-12/21 fate cells.
+- **Features:** the C7-S7b test pipeline, unchanged:
+  - featurizer fit on train clonal + sampled non-clonal day-3 cells;
+  - other partitions' clonal cells excluded;
+  - kNN-20 smoothing, clone mean, z-score by train clones.
+- **Model:** binomial logistic, "reprogramming" vs (transition + dead-end) counts, clone weight min(n, 20).
+  - Fit on all train units.
+  - C chosen by 5-fold train CV (grid 0.001-10, criterion CV information gain, as C8-S0).
+- **Statistic:** Spearman rho between predicted P(reprogramming) and the observed reprogramming fraction on B units.
+  - **Confirmed if** the one-sided 97.5% bootstrap lower bound (2,000 clone resamples, seed 93) is > 0.
+- **Power block (Fisher z):**
+  - effect = atanh(train CV rho), sd = sqrt(1.06);
+  - counts = B structural units (day-3 RNA clone with >= 2 day-12/21 cells; no fate read) x train unit ratio - 3.
+  - This is the subset's own structural count, the C8-S2 T2 lesson.
+- **Fixed sequence:** T1 (confirmed), then T3, one-sided alpha 0.025.
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' reprogramming fate labels. Early RNA pipeline validated (sibling AUC 0.87, C7-S5).
+  3. **Used data first:** C8-S0 scan (train rho 0.66, n 227).
+  4. **Power:** plan-stage 1.00 at n_B about 117. The oracle re-checks on B counts.
+  5. **Exposure:** train and A known (A spent in C7-S7b, G_rna 0.35). B and C unread.
+  6. **Literature:** Biddy 2018 (early clone states predict reprogramming outcome), Jindal 2024 methods.
+- **Tick-list:**
+  - selection file holds 5 candidates and chosen = best;
+  - no sealed_rows call in select_reprog;
+  - test fits on train only;
+  - the count function reads no cell_type column;
+  - seed fixed.
