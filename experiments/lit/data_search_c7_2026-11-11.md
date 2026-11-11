@@ -60,3 +60,28 @@ known prior information for any C7-C1 on that data. It is recorded here.
      cells, layers per cell; read from GEO sample counts and the processed-file headers only.
   2. Then download, sha-lock, partition by clone, and pre-register with plan-stage power.
 - **In parallel:** cHSPCTrack (GSE334867) can give the true sister ceiling that C7-S4 lacked.
+
+## Pre-flight and downloads (2026-11-11, Bence: "test all the data and download accordingly")
+
+Structure only: column names and cells per clone / day / well / condition. **No cell-type, fate, pseudotime or
+score column was tabulated.** Each download went into its own new folder under `data/` (gitignored) and was
+sha256-locked.
+
+| dataset | test | result | action |
+|---|---|---|---|
+| **cHSPCTrack** (Blood 2026; public S3 `chspctrack`, no sign-in) | clones with cells early and late | 67,332 cells (54,217 with a clone); **13,700 clones**; days 3-12; 8 cytokine conditions; 1 well per clone. Clones with >= 2 cells at both days: d3+d7 254, d3+d10 221, d5+d8 259, d5+d10 273, **d7+d10 419**, d5+d12 167, d8+d12 166. **Passes** (RNA only) | downloaded `cells_with_clone_info.h5ad` (2.6 GB), `metacells.h5ad` (1.1 GB), `cell_type_colors.csv` -> `data/ext_chspctrack/` (SHA256SUMS). Pickles not downloaded (whitelist rule). **Partitioned by clone: `partitions.chspctrack`** (salt cellware-chspctrack-v1, sealed 2026-11-11) |
+| **MethylTree LK** (Chen 2025; GSE262218-20; figshare 27288630) | same-cell layers + clone + early/late | same cell: LARRY clone + RNA + DNA methylation. But **549 cells, 75 clones (33 with >= 4 cells), one day-6 snapshot**, no early/late split. **Fails** (size: about 13 train clones; design) | zip (8.0 GB, sha256 1fec590c...) -> `data/ext_methyltree/`. LK RNA+LARRY h5ad, sample sheet and methylation matrix extracted to `extract/` (SHA256SUMS). **Locked, not partitioned, no statistic** |
+| MethylTree H9 (GSE262216) | fate, RNA | about 51 H9 hESC cells, scBS-seq methylation only, undifferentiated. **Fails** | not downloaded |
+| MethylTree 293T (GSE259241) | fate, RNA | about 58 HEK293T cells, methylation only, a cell line. **Fails** | not downloaded |
+| DARLIN Camellia (GSE222486) | fate per clone | HSCs only; barcodes as raw reads only. **Fails** | not downloaded |
+| ReDeeM (GSE219xxx) | reliable clones | clone calls disputed. **Fails** | not downloaded |
+| Clonal memory of division (GSE300913, Zenodo) | fate per sister clone | sister RNA as raw SMART-seq3 reads only; no per-clone fate table. **Fails** | not downloaded |
+| hiPSC cardiac barcoding (bioRxiv 2025) | data | no data statement found | not pursued |
+
+- GSE26258 (as typed by Bence) is a 2010 *S. aureus* microarray. It was read as the MethylTree SuperSeries
+  GSE262580, whose three parts (LK, H9, 293T) all fail.
+- **Usable now:** cHSPCTrack, for an RNA-only C7 replication in human HSPCs:
+  - (a) early-sample RNA -> the clone's later fate;
+  - (b) a **true serial ceiling**: fate composition at d7 predicting d10 within the same clone.
+- **Still no public dataset with clones + same-cell chromatin + early/late fate.** The hESC release is the only
+  route.

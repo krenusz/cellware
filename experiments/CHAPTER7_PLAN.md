@@ -114,3 +114,14 @@ To make chapter 7 carry over:
   so the C5-S6 cross-fitted A-P axis code is reused.
 - **Watch:** at every retro, check bioRxiv 10.64898/2026.09.02.748863 for publication, and GEO via E-utilities.
   When released: download, sha-lock, partition by clone before any statistic, then pre-register C7-C1.
+
+## Status 2026-11-11: C7-S3, C7-S5 closed on train; C7-S4 done (Bence)
+
+- **C7-S3 and C7-S5** are closed as exploratory. The fate state is readable early in both carriers, and
+  chromatin is not privileged (blood RNA > ATAC; reprogramming equal). See RETRO_2026-11-11. All sealed sets
+  are kept.
+- **C7-S4** (carrier coverage, train): early RNA carries at least as much clone-fate information as a sister
+  well's outcome (coverage 1.36 [0.95, 2.19]); the sister-well ceiling is not a valid ceiling.
+- **Data search** (`lit/data_search_c7_2026-11-11.md`): no public dataset has clones + same-cell chromatin +
+  early/late fate. cHSPCTrack (human HSPC clones, serial d3-d12, RNA) passed pre-flight, was downloaded and is
+  partitioned (`chspctrack`).

@@ -9796,3 +9796,72 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
     clone already shared at day 2.5, the same time point as the snapshot. Later decisions are not shared
     across wells, except through inherited state. That makes coverage a same-time comparison: snapshot vs
     the clone's heritable state.
+
+### C7-S5 train result (2026-11-11; `results_celltag/c7s5_train.json`, `c7s5_validity.json`; train only, nothing sealed)
+
+*(Restored 2026-11-11: this entry and the next two were first written with a shell heredoc whose stdin was
+overridden, so nothing was appended, although the commit messages 3d93eb7, 58dc2c1 and b675d70 describe them.
+The numbers are unchanged from the result files.)*
+
+- **Data:**
+  - 22 day-3 lane matrices from GEO (9 RNA, 13 ATAC), sha256-locked in
+    `data/ext_celltag_multi/geo_reprog/SHA256SUMS`.
+  - Universe: RNA 118,641 cells (6,975 train-clonal + 20,000 non-clonal); ATAC 60,626 cells (507 train-clonal +
+    20,000 non-clonal), 202,665 5-kb bins before the top-50k step.
+- **Validity (fate-free, read before the fate result):** sibling-nearness AUC RNA **0.87** (13,769 pairs), ATAC
+  **0.75** (97 pairs). Neither is blind.
+- **Fate information** (bits per fate cell, 3 classes; train base reprogramming 0.19, transition 0.42, dead-end
+  0.39):
+
+  | early sibling (day 3) | G | 95% CI | clones | C |
+  |---|---|---|---|---|
+  | RNA | **0.27** | [0.18, 0.35] | 227 | 0.01 |
+  | chromatin | **0.29** | [0.16, 0.43] | 61 | 0.01 |
+  | chromatin minus RNA | **+0.03** | [-0.11, +0.18] | | |
+
+  - Paired clones (45): Delta -0.003.
+  - Stratified: RNA 1 early 0.33 (115) / >= 2 early 0.21 (112); ATAC 1 early 0.27 (47) / >= 2 early 0.40 (14).
+  - C 0.01 is interior on the extended grid.
+- **Reading: no difference detectable.** The LSK direction (RNA > chromatin) does not replicate on
+  reprogramming train.
+- **Power on A (descriptive, no look):** G_RNA > 0 0.97; G_ATAC > 0 0.59; Delta 0.04.
+  - **Disclosed deviation:** A's effective n was scaled by the partition clone ratio, not by structural counts
+    of sealed rows, so no sealed row was read.
+- **Disclosure:** C7-S5 ran on my reading of Bence's "2" as "reprogramming on train". The next-step box's
+  second button was "Wait for hESC data", so the reply was ambiguous and I should have asked.
+
+## C7-S3 and C7-S5 closed on train (2026-11-11)
+
+- Bence: "Close C7-S3 and C7-S5 on train and keep every sealed set."
+- Both closed as exploratory (RETRO_2026-11-11, H18). There is no sealed look; `celltag_lsk` and
+  `celltag_reprog` A/B/C are all unspent.
+- **Train reading:** clone fate is readable before differentiation from both early RNA and early chromatin in
+  both systems.
+  - Chromatin is not privileged.
+  - Blood: RNA 0.54 vs chromatin 0.31, Delta -0.23 [-0.36, -0.10].
+  - Reprogramming: 0.27 vs 0.29, Delta +0.03 [-0.11, +0.18].
+- The RNA-vs-chromatin question waits for same-cell data.
+
+### C7-S4 result (2026-11-11; `results_celltag/c7s4_coverage.json`; train only, nothing sealed, no look)
+
+- **Tick-list:** all pre-registered outputs are present.
+- **Null calibration passes:** re-paired sister wells give G_sister -0.18 (RNA units) and -0.51 (ATAC units).
+
+  | units | n | G_sister | G_early | coverage | 95% CI | pre-registered reading |
+  |---|---|---|---|---|---|---|
+  | RNA, >= 2 cells per well | 116 | 0.29 [0.17, 0.46] | 0.40 [0.26, 0.57] | **1.36** | [0.95, 2.19] | snapshot carries most |
+  | RNA, >= 4 | 53 | 0.18 [0.07, 0.31] | 0.24 [0.10, 0.38] | 1.33 | [0.47, 3.44] | unresolved |
+  | ATAC, >= 2 | 48 | 0.60 [0.27, 1.03] | 0.28 [0.09, 0.45] | **0.46** | [0.13, 1.08] | unresolved |
+  | ATAC, >= 4 | 20 | 0.30 [0.09, 0.49] | 0.22 [0.05, 0.38] | 0.73 | [0.23, 1.59] | unresolved |
+
+  C 0.01 for both; a mostly 5 (RNA) and 1-2 (ATAC).
+- **Reading:**
+  - **The sister-well "ceiling" is not a ceiling with these wells.** One or two early RNA siblings, through a
+    model pooled over clones, predict a clone's day-5 fate composition at least as well as its sister well's own
+    fate cells do.
+  - The >= 4 secondary did not raise G_sister, so the shortfall is not only small-well noise.
+  - The honest reading for RNA is the weak form: **the day-2.5 RNA snapshot holds at least as much clone-fate
+    information as a sister well's outcome.** "Carries most of the heritable state" can't be claimed, because
+    no valid ceiling was measured.
+  - ATAC is unresolved; it is a different clone set (G_sister 0.60).
+- **Status:** C7-S4 done (train, descriptive). All `celltag_lsk` partitions are unspent.
