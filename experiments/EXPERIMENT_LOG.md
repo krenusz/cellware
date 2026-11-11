@@ -10160,3 +10160,22 @@ The numbers are unchanged from the result files.)*
   5. **Exposure:** C7 train and A known; B/C unread.
   6. **Literature:** Weinreb 2020 (Neu/Mono early-state prediction), Biddy 2018 (reprogramming success
      clones), cHSPCTrack 2026 abstract (cytokines bias, stochastic diversification).
+
+### C8-S0 result: H19 power scan, train only (2026-11-11; `results_c8/c8s0_scan.json`, log `results_celltag/c8s0_scan.log`)
+
+- **No sealed row read.** B size = train count x train-to-B clone ratio.
+- **Run note:** the first run stopped at an assertion before computing anything. Train has two experiments with
+  day-5 early cells (exp 6 and exp 7); K1 was then pinned to exp 7 as pre-registered. Exp 6 is not used.
+
+| candidate | train n | train effect | n on B (est.) | power on B at train effect | power if the effect shrinks as C7 train -> A did | steps | H19 |
+|---|---|---|---|---|---|---|---|
+| K1 instruction vs clone state (HSPC exp 7) | 132 | g_state - g_cond = 0.97 bits (G_cond 0.21, G_state 1.17), SD 2.0 | neff 40 | 0.86 | 0.46 (HSPC shrank 0.66 -> 0.40) | 2 | passes at face value only; fragile |
+| K2 early RNA -> reprogramming success | 227 | Spearman rho 0.66 | 117 | 1.00 | about 1.00 (reprog grew on A) | 2 | passes |
+| K3 early RNA -> Neu vs Mono bias (LSK) | 324 | Spearman rho 0.46 | 163 | 1.00 | about 1.00 (rho 0.30 would still give 0.97) | 2 | passes |
+
+- **Caveats:**
+  - K2 and K3 are close to the confirmed C7-S7 tests 2-3 (same features, binary fate split). They are robust
+    because they narrow a confirmed result.
+  - K1 is the only new question, but its power rests on an optimistic train estimate. The C grid was chosen on
+    train, the SD is large, and 26 of 132 clones have an "unknown" condition.
+- **Steps for each candidate:** train selection + one B look = 2 steps (<= 3).
