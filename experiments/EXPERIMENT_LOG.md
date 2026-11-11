@@ -10006,3 +10006,73 @@ The numbers are unchanged from the result files.)*
   - This is the first system where an early snapshot shows **no** clone-fate signal. That may be the sampling
     day, or clones in that culture may be close to fate-unbiased.
 - **Status:** C7-S6 done (train, descriptive, 1 amendment). `chspctrack` A/B/C are unspent.
+
+## C7-S7: chapter 7 confirmatory looks: clone fate state is heritable and readable before differentiation (pre-registered 2026-11-11)
+
+- **Serves: C7-S7** (closes chapter 7). Bence: "3" (answer to: adopt H19, close chapter 7 with powered
+  confirmatory looks, then choose chapter 8 under H19). Scripts: `c7s7_confirm.py` (new; selection/power on
+  train, sealed statistics via `test_oracle`), reusing unchanged `c7s2_sister.py`, `c7s3_carrier.py`,
+  `c7s5_reprog.py`, `c7s6_hspc.py`, plus `partitions.py` and `test_oracle.py`.
+- **Claim under test:** a clone's fate state is heritable, and readable from early RNA (and chromatin, in LSK)
+  before differentiation, on **unseen clones**.
+  - This is the chapter's achievable confirmed result.
+  - The RNA-vs-chromatin *comparison* is not tested here (unpowerable; it waits for same-cell data).
+- **One look per dataset, on partition A only.** B and C stay sealed in every dataset.
+- **Five tests in a fixed sequence**, each one-sided alpha 0.025. A test counts as confirmed only if every
+  earlier one is confirmed. This controls family-wise error with no power loss for the early tests.
+  1. **LSK H** (C7-S7a): heritable fate share across sister wells, clones with >= 2 G7 RNA cells per well.
+     **H > 0.5**: one-sided lower bound H - z(0.975) x bootstrap SE > 0.5. Train (C7-S2a, min 2 cells): H 0.75
+     [0.70, 0.81], n 342. C7-S2's 4-cell threshold was underpowered (0.76); 2 cells is the threshold C7-S2a
+     showed to be valid (synthetic syn0 about -0.05, syn1 0.92-0.94).
+  2. **LSK G_rna > 0** (C7-S7a): the C7-S3 fixed pipeline; model and features fitted on train, applied to A;
+     one-sided 2.5% bootstrap lower bound > 0.
+  3. **Reprogramming G_rna > 0** (C7-S7b): the C7-S5 pipeline, RNA only; same rule.
+  4. **Human HSPC G_early > 0** (C7-S7c): the C7-S6 pipeline after amendment 1 (stratum = experiment x
+     condition), U1 units; same rule.
+  5. **LSK G_atac > 0** (C7-S7a): the C7-S3 fixed ATAC pipeline; same rule. It comes last as the weakest
+     (train power about 0.83).
+- **Selection (H12) and power (H14):**
+  - `python c7s7_confirm.py select` reruns the train CV and writes `selection/C7-S7a|b|c.json`: candidates =
+    the C grid scores, chosen = best C. The power block uses the train per-clone SD and effect = train G.
+  - The oracle's power gate computes power from partition-A counts (structure only) and refuses below 0.8.
+    For C7-S7a the gate uses the weakest test (G_atac); the H and G_rna powers are recorded in the file.
+- **Disclosure, found while writing this:** C7-S5's train universe treated other partitions' clonal day-3
+  cells as non-clonal. Those cells could enter the unsupervised featurizer fit and the kNN smoothing as part of
+  the 20,000 non-clonal sample. That's expression only, no fate, but it contradicts the C7-S5 text ("sealed
+  clones' cells are not in the universe").
+  - C7-S7b's train selection reruns C7-S5's `features()` unchanged, so the same caveat applies to the train
+    CV.
+  - The sealed test (`test_reprog`) excludes all other partitions' clonal cells explicitly.
+  - The LSK pipeline smooths over all day-2.5 cells, sealed included (as logged in C7-S3 amendment 4).
+- **Readings:**
+  - Each test is **confirmed** or **not confirmed**.
+  - Chapter 7 conclusion:
+    - **"Clone fate state is heritable and readable before differentiation on unseen clones"** if tests 1-4
+      are confirmed;
+    - plus **"also from early chromatin (LSK)"** if test 5 is confirmed.
+  - Any failure is reported as-is, and the sequence stops there for confirmatory claims.
+- **Pre-flight:**
+  1. **Unit:** clone (all three datasets partitioned by clone).
+  2. **Readout:** authors' fate labels; early features from the pipelines fixed in C7-S3/S5/S6.
+  3. **Used data first:** C7-S2a, C7-S3, C7-S5, C7-S6 train.
+  4. **Power:** from `select`, gated by the oracle.
+  5. **Exposure:** all train results known; A partitions are unread.
+  6. **Literature:** as C7-S3/S5/S6.
+
+## C7-S7a: LSK confirmatory look (pre-registered 2026-11-11)
+
+- **Serves: C7-S7.** Tests 1, 2 and 5 above. `test_oracle.py look celltag_c7s7_lsk --exp C7-S7a --partition
+  A`. Script `c7s7_confirm.py` (test_lsk, counts_lsk).
+- **Pre-flight:** see C7-S7.
+
+## C7-S7b: reprogramming confirmatory look (pre-registered 2026-11-11)
+
+- **Serves: C7-S7.** Test 3. `test_oracle.py look celltag_c7s7_reprog --exp C7-S7b --partition A`. Script
+  `c7s7_confirm.py` (test_reprog, counts_reprog).
+- **Pre-flight:** see C7-S7.
+
+## C7-S7c: human HSPC confirmatory look (pre-registered 2026-11-11)
+
+- **Serves: C7-S7.** Test 4. `test_oracle.py look hspc_c7s7 --exp C7-S7c --partition A`. Script
+  `c7s7_confirm.py` (test_hspc, counts_hspc).
+- **Pre-flight:** see C7-S7.
