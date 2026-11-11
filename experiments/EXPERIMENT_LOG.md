@@ -10266,3 +10266,12 @@ The numbers are unchanged from the result files.)*
   - Run only if T1 is confirmed **and** Bence gives a separate OK.
   - Script: `c8s1_confirm.py` (test_hspc, counts_hspc).
 - **Pre-flight:** see C8-S1.
+
+### C8-S2 T1 result: celltag_lsk:B spent (2026-11-11; `test_ledger.tsv`, commit 5ca00c4)
+
+- **Oracle power gate:** B counts 150 effective units, power 1.00.
+- **T1 (K3) CONFIRMED:** on 153 unseen LSK clones, day-2.5 RNA predicts the clone's day-5 neutrophil vs monocyte
+  split. Spearman rho **0.45** (train 0.46); 95% CI 0.32-0.57; one-sided lower bound 0.32 > 0.
+- **Sealed:** celltag_lsk:C, chspctrack:B/C, celltag_reprog:B/C.
+- **Next in the fixed sequence:** T2 on chspctrack:B. It needs Bence's separate OK. Plan-stage power 0.86 at the
+  train effect, 0.46 if the effect shrinks as in C7.

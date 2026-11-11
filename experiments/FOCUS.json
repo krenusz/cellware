@@ -89,6 +89,7 @@
   "C7-S6 done on train 2026-11-11 (human HSPC early RNA 0.66 [0.49,0.84] after batch amendment; ~0 in day-3 experiment)",
   "C7-S7 2026-11-11 (5e69507): all 5 confirmatory tests confirmed on A (LSK H 0.75; G_rna LSK 0.50, reprog 0.35, HSPC 0.40; G_atac LSK 0.24); chapter 7 CLOSED; B/C sealed in all three",
   "C8-S0 2026-11-11 (8d54d5a): H19 scan; K2/K3 pass robustly, K1 0.86 at train effect (0.46 if shrunk); Bence chose K3 then K1",
-  "C8-S1 2026-11-11 (e3dc951): train selection T1 rho 0.46 power 1.00; T2 +0.97 bits power 0.86"
+  "C8-S1 2026-11-11 (e3dc951): train selection T1 rho 0.46 power 1.00; T2 +0.97 bits power 0.86",
+  "C8-S2 T1 2026-11-11: CONFIRMED on celltag_lsk:B (rho 0.45, lower 0.32, n 153); celltag_lsk:C sealed"
  ]
 }
