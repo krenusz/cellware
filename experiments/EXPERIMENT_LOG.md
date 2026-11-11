@@ -9733,3 +9733,66 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
      Jindal 2024 (methods).
 - **Known caveats:** different cells per modality; ATAC has ~1,249 clonal day-3 cells over 13 lanes; lanes are
   uncorrected batches; 5 kb tiling is coarser than peaks.
+
+## C7-S4: carrier coverage, how much of a clone's heritable fate state does the early snapshot capture? LSK, TRAIN ONLY (pre-registered 2026-11-11)
+
+- **Serves: C7-S4** (chapter 7: where is a clone's fate state carried before differentiation?). Bence: "Yes,
+  pre-register" (answer to: pre-register C7-S4 as carrier coverage, train only, then run it; framing in
+  `lit/reading_c7_prep.md`). Scripts: `c7s4_coverage.py` (new), `c7s3_carrier.py` (clone_features, fit_model,
+  wmean; unchanged), `c7s2_sister.py` (CSV, GROUPS), `partitions.py`.
+- **Train only.** No sealed row is read. `celltag_lsk` A/B/C stay sealed, and **no look follows this step**,
+  whatever the result. Structural train counts (lit/reading_c7_prep.md) show no sealed contrast is powerable.
+- **Units:** train clones with >= 2 counted day-5 RNA fate cells (G7) in **each** sister well (r1, r2) **and**
+  >= 1 day-2.5 sibling in the modality. The structural counts were 140 (RNA) and 62 (ATAC) before fate-label
+  exclusions.
+- **Target cells:** the clone's day-5 **RNA** cells in r1 and r2. ATAC day-5 cells carry no well, so they are
+  not used here. Both scores below are evaluated on exactly this cell set.
+- **Baseline:** fate frequencies of day-5 RNA cells over the training fold's clones.
+- **G_sister (ceiling):**
+  - Each well's cells are predicted from the sister well's composition, shrunk to the baseline:
+    p = (k_other + a * base) / (n_other + a). This is done in both directions.
+  - G_sister = summed log2 gain over the base for all r1 + r2 cells / their number.
+  - a is chosen from {0.5, 1, 2, 5, 10, 20} by 5-fold CV over the unit clones.
+- **G_early:**
+  - The C7-S3 model (multinomial logistic, weight min(n, 20), fixed C7-S3 featurisation from amendment 4,
+    features fitted on train cells), per modality.
+  - 5-fold CV by clone over all train clones with an early sibling and >= 2 counted fate cells (all wells, both
+    assays, as in C7-S3). A clone's model never sees that clone.
+  - C is chosen from {0.001, 0.01, 0.1, 1, 10} by CV.
+  - G_early per unit clone is evaluated on its r1 + r2 RNA cells.
+- **Primary statistic per modality:** coverage = wmean(G_early) / wmean(G_sister) over the unit clones,
+  weight min(n_r1 + n_r2, 20). 95% CI by bootstrap over clones (1,000), with the ratio recomputed each time.
+- **Readings (per modality; train, descriptive):**
+  - **The snapshot carries most of the state:** CI lower bound > 0.5.
+  - **The snapshot carries a minority:** CI upper bound < 0.5.
+  - **Unresolved:** otherwise.
+- **Sanity (null calibration, reported before the readings):** G_sister with sister wells re-paired across
+  random clones (10 permutations). It must be <= 0 (mean). If it is > 0.02 bits, the ceiling is biased and
+  coverage is not interpreted.
+- **Secondary (descriptive):**
+  1. Coverage at >= 4 RNA cells per well, which gives a less noisy ceiling.
+  2. G_sister and G_early separately, with CIs.
+  3. **Caveat check:** G_sister is a noisy-ceiling *estimate*. Small wells understate it, so coverage can
+     exceed 1. The >= 4 secondary shows the direction of that bias.
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' fate labels; early features from the fixed C7-S3 pipeline (no new featurisation, so
+     no new validity gate; the C7-S3 own-label validity 0.78 ATAC / 0.67 RNA holds).
+  3. **Used data first:** C7-S2 (H 0.66-0.75) and C7-S3 train.
+  4. **Power:** train-only, descriptive; there is no look.
+  5. **Exposure:** C7-S2 / C7-S3 train results known; Safi 2022 abstract read.
+  6. **Literature:** Weinreb 2020 (RNA state predicts only part of clonal fate), Safi 2022.
+- **Pre-registration tick-list (new rule):** the script outputs all of the following, and nothing promised is
+  missing:
+  - a and C choices;
+  - the null calibration;
+  - G_sister, G_early (RNA, ATAC) with CIs;
+  - coverage per modality with CI and reading;
+  - the >= 4-cell secondary.
+- **Known caveats:**
+  - RNA and ATAC coverages use different clone sets (62 vs 140), so they are not a paired contrast.
+  - Sister wells are technical replicates (same condition).
+  - The wells were split at day 2.5, when the early siblings were profiled. So G_sister measures the state the
+    clone already shared at day 2.5, the same time point as the snapshot. Later decisions are not shared
+    across wells, except through inherited state. That makes coverage a same-time comparison: snapshot vs
+    the clone's heritable state.
