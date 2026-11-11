@@ -10250,3 +10250,19 @@ The numbers are unchanged from the result files.)*
   - the exp filter is the literal "7".
 - **Next: C8-S2 = B look, one partition per dataset.** It needs Bence's verbatim OK: celltag_lsk:B first, then
   chspctrack:B only if T1 is confirmed.
+
+## C8-S1a: T1 (K3) LSK confirmatory look on B (pre-registered 2026-11-11)
+
+- **Serves: C8-S2.** T1 as defined in C8-S1 (test unchanged).
+  - Command: `test_oracle.py look celltag_c8s1_lsk --exp C8-S1a --partition B`.
+  - Script: `c8s1_confirm.py` (test_lsk, counts_lsk).
+- **Approval:** Bence: "1" (list item 1 and button 1 both = spend celltag_lsk:B on T1). celltag_lsk:C stays sealed.
+- **Pre-flight:** see C8-S1.
+
+## C8-S1b: T2 (K1) HSPC exp 7 confirmatory look on B (pre-registered 2026-11-11)
+
+- **Serves: C8-S2.** T2 as defined in C8-S1.
+  - Command: `test_oracle.py look hspc_c8s1 --exp C8-S1b --partition B`.
+  - Run only if T1 is confirmed **and** Bence gives a separate OK.
+  - Script: `c8s1_confirm.py` (test_hspc, counts_hspc).
+- **Pre-flight:** see C8-S1.
