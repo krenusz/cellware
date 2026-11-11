@@ -228,3 +228,17 @@ before every look and refuses on any failure.
     2. Should the step close instead of being amended again?
   - Every later amendment of the same step cites that retro. Another retro is due after 4 more.
   - C6-S7 is covered by RETRO_2026-11-10.
+- **H19 Chapter selection gate: achievable goals only.** (2026-11-11; Bence: "how about selecting a chapter goal
+  with achievable goals???? 3rd fcking chapter we went with your suggestion and ending up as data limitation",
+  then "3" = adopt this gate, close chapter 7 with powered looks, choose chapter 8 under it.)
+  - Chapters 4, 5 and 7 were chosen for interest, and power was checked after building. All three ended
+    data-limited. Chapter 6 had no possible unseen test.
+  - **A chapter goal may be proposed only if, before any work starts, all three hold:**
+    1. **Data in hand:** the data is on disk or public, and it has passed the structural pre-flight (unit,
+       readout, counts).
+    2. **Powered primary test:** the primary sealed test has power >= 0.8, from structural counts of a sealed
+       partition. The effect size comes from data already used (a spent result or train), never from hope.
+    3. **Short path:** that test can be run within about 3 steps of the chapter start.
+  - The proposal shows the three checks with numbers. If no candidate passes, say so; don't pitch an
+    ungated idea.
+  - **Exploratory side questions** may follow inside a chapter only after its primary test has been run.
