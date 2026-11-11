@@ -9590,3 +9590,90 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   - RNA and ATAC siblings are different cells of the clone, not one cell measured twice.
   - Detection depth and clone size differ by modality (stratified report).
   - 30 components for each modality is a fixed, equal budget, not tuned.
+
+### C7-S3 amendment before any run (2026-11-11)
+
+- The G6 secondary (progenitors dropped) is **not implemented**. Only the G7 primary and the paired / stratified
+  secondaries are computed.
+- **HVG implementation:** "Seurat-v3-style" is a quadratic fit of log variance on log mean of library-normalised
+  counts, with standardised clipped variance, top 2,000.
+- **CV detail:** the train-CV featurisers are fit on all train-clone cells, unsupervised and without fate. Only
+  the classifier is cross-validated.
+
+### C7-S3 amendment 2 (2026-11-11, train only, before any sealed look): feature scaling bug
+
+- **The first train run had a bug:**
+  - ATAC gain was about 0.0015 bits/cell at **every** C (0.01-10), with per-clone SD 0.04.
+  - Cause: TF-IDF/LSI components are about 1e-3 in scale, so L2 regularisation zeroed them. RNA PCs are about
+    1 in scale.
+  - That run (RNA 0.56, ATAC 0.0015) is **void** as a modality comparison.
+- **Fix:** clone features of both modalities are z-scored with the fitting (train) clones' mean and SD before the
+  classifier. Nothing else changes.
+- **Also noted:** RNA chose C = 0.01, the grid edge. The grid stays as pre-registered, and the edge choice is
+  reported.
+
+### C7-S3 amendment 3 (2026-11-11, train only): pipeline validity check before any look
+
+- **Question:** can each modality's day-2.5 single-cell features predict the cell's **own day-2.5 label**
+  (`cell_type2` of day-2 train cells, the authors' annotation and label transfer)? This involves no clone fate.
+- **Method:** 5-fold CV logistic regression (C 1) on per-cell features (z-scored), balanced accuracy vs chance.
+- **Readings:**
+  - If ATAC is near chance while RNA is not, the ATAC pipeline (single-cell LSI) cannot see cell state at all,
+    and C7-S3's "no ATAC signal" is a measurement limit, not a biological reading.
+  - If ATAC predicts its own labels well, the C7-S3 train result stands.
+
+### C7-S3 validity result + amendment 4 (2026-11-11, train only)
+
+- **Validity (amendment 3):** on own day-2.5 labels, RNA balanced accuracy 0.62 (11 classes, chance 0.09, 971
+  cells). **ATAC 0.13 (8 classes, chance 0.125, 522 cells): blind.**
+  - The C7-S3 train comparison (RNA 0.54 vs ATAC 0.004 bits/cell) is a measurement artefact and is **void as a
+    carrier reading**.
+  - **No sealed look.**
+- **Amendment 4: ATAC featurisation is tuned on the fate-free validity task only.**
+  - The criterion is own-label balanced accuracy. Fate is never used to choose.
+  - **Variants:**
+    - (a) Signac-style log1p(TF x IDF x 1e4) LSI;
+    - (b) (a) on the 50,000 most frequently accessible peaks;
+    - (c) (b) plus kNN smoothing (k 20, cosine in LSI space, over all day-2.5 ATAC cells), as the authors
+      smoothed before prediction;
+    - (d) RNA with the same kNN smoothing, so both modalities get equal treatment.
+  - **The chosen ATAC variant:** the highest validity, provided it reaches >= 0.4 balanced accuracy. If none
+    does, C7-S3 cannot be run on this data with our tools, and the authors' chromVAR / ArchR outputs (Zenodo)
+    are the fallback; that needs Bence.
+  - If smoothing is chosen for ATAC, RNA gets the same smoothing for the fate comparison.
+
+### C7-S3 amendment 4 result (2026-11-11; `results_celltag/c7s3_validity_variants.json`; fate-free)
+
+- **Own-label balanced accuracy:**
+  - ATAC: (a) Signac LSI 0.76, (b) top-50k 0.76, (c) top-50k + kNN20 **0.78**.
+  - RNA: 0.61 base, (d) kNN20 0.67.
+- The blind first pipeline lacked the log1p(TF x IDF x 1e4) step.
+- **Chosen by the pre-declared rule:**
+  - (c) for ATAC; the same kNN20 smoothing for RNA.
+  - Smoothing runs over all day-2.5 cells of the modality, in a space fitted on train-clone and non-clonal cells
+    only (unsupervised; no fate).
+- The code is changed accordingly. The C7-S3 train CV is re-run with the selection file regenerated.
+- **H18:** this is the 4th amendment in C7-S3, so a **retro is mandatory before the sealed look**.
+
+### C7-S3 train result with the fixed pipeline (2026-11-11; `results_celltag/c7s3_train.json`; train only, nothing sealed)
+
+- **Information gain on day-5 clone fate from day-2.5 siblings (5-fold CV, bits per fate cell):**
+
+  | | G | 95% CI | clones |
+  |---|---|---|---|
+  | RNA | 0.54 | [0.44, 0.65] | 434 |
+  | ATAC | 0.31 | [0.22, 0.43] | 237 |
+  | **Delta (ATAC - RNA)** | **-0.23** | **[-0.36, -0.10]** | |
+  | paired (69 clones) | -0.31 | | |
+
+- **Both modalities carry clone fate at day 2.5, and on train RNA carries more than chromatin.** This is the
+  opposite of the chapter's working hypothesis (C5-S6).
+- Both chose C 0.01 (the grid edge).
+- Stratified:
+  - ATAC with one early sibling 0.36 (195 clones), with two or more 0.10 (42 clones);
+  - RNA 0.54 / 0.55.
+- **Power for the sealed Delta test (H14, from train):**
+  - partition A: effective n about 137 RNA / 75 ATAC, **power about 0.34**;
+  - union A+B: about 0.6.
+  - **The Delta contrast cannot reach 0.8 on the sealed partitions. No look.**
+- **Status:** H18 retro due (4 amendments in C7-S3) before any further step.

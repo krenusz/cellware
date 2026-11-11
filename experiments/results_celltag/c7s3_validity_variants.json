@@ -1,0 +1,8 @@
+{
+ "a_signac_lsi": 0.7619681400228184,
+ "b_top50k": 0.7602844914699878,
+ "c_top50k_knn20": 0.7843743704057438,
+ "rna_base": 0.6076995011110881,
+ "d_rna_knn20": 0.6705290026039847,
+ "note": "LSI/featurisers fit on ALL day-2.5 cells of the modality here (unsupervised, no fate); validity task only"
+}

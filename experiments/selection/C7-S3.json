@@ -1,0 +1,29 @@
+{
+ "test": "celltag_c7s3",
+ "higher_is_better": true,
+ "candidates": {
+  "rna": 0.542252846736324,
+  "atac": 0.3081887938824044
+ },
+ "chosen": "rna",
+ "C": {
+  "rna": 0.01,
+  "atac": 0.01
+ },
+ "power": {
+  "sd": 1.0243397765339464,
+  "effect": 0.23406405285391962,
+  "alpha": 0.05,
+  "one_sided": false,
+  "min_power": 0.8
+ },
+ "train_counts": {
+  "rna": 434,
+  "atac": 237
+ },
+ "neff_ratio": {
+  "rna": 0.6362429484358348,
+  "atac": 0.6376143498248986
+ },
+ "note": "C7-S3: Delta = G_atac - G_rna (bits/cell); counts(part) = effective n per modality"
+}

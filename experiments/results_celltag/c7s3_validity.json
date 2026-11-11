@@ -1,0 +1,35 @@
+{
+ "rna": {
+  "n_cells": 971,
+  "labels": {
+   "MEP": 163,
+   "MPP": 162,
+   "Mono": 144,
+   "Neutro": 136,
+   "Unk_2": 125,
+   "MPP/GMP": 92,
+   "uns": 60,
+   "Ery/Meg": 51,
+   "Lym": 14,
+   "Unk_1": 14,
+   "Baso/Eos/Mast": 10
+  },
+  "balanced_acc": 0.6239812042506748,
+  "chance": 0.09090909090909091
+ },
+ "atac": {
+  "n_cells": 522,
+  "labels": {
+   "MPP/GMP": 135,
+   "Neutro": 116,
+   "MEP": 72,
+   "Unk_2": 59,
+   "MPP": 59,
+   "Ery/Meg": 41,
+   "uns": 25,
+   "Lym": 15
+  },
+  "balanced_acc": 0.1344125159642401,
+  "chance": 0.125
+ }
+}
