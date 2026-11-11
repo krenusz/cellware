@@ -1,0 +1,2 @@
+H14 power: counts {'rna': 32}, sd 2.0047098773498075, effect 0.9662873776394498, power 0.78 (min 0.8)
+refused: power 0.78 < 0.8 for partition B (counts {'rna': 32}); partition NOT spent (H14)

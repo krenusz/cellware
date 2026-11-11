@@ -10275,3 +10275,13 @@ The numbers are unchanged from the result files.)*
 - **Sealed:** celltag_lsk:C, chspctrack:B/C, celltag_reprog:B/C.
 - **Next in the fixed sequence:** T2 on chspctrack:B. It needs Bence's separate OK. Plan-stage power 0.86 at the
   train effect, 0.46 if the effect shrinks as in C7.
+
+### C8-S2 T2: oracle REFUSED, chspctrack:B NOT spent (2026-11-11; `results_c8/c8s2_t2_look.log`)
+
+- **Approval:** Bence: "1" (list item 1 and button 1 = spend chspctrack:B on T2).
+- **Refusal:** the oracle H14 gate counted B structurally (exp 7 only, no fate read): **32 effective units**, against
+  40 estimated from the 0.5 clone ratio. Power **0.78 < 0.8**, so the look was refused. **No outcome was computed
+  and B stays sealed.**
+- **Why the estimate missed:** the prereg used a flat 0.5 chspctrack ratio, but exp 7 has fewer B clones than that
+  ratio implies. The H19 plan-stage power should have used the exp-7 structural count (lesson for the retro).
+- **State:** T1 confirmed (C8-S2 T1 result). T2 untested. chspctrack:B and C sealed.
