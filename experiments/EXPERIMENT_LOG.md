@@ -9472,3 +9472,43 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   4. **Power:** projected per variant (this step).
   5. **Exposure:** train only; GEO sample titles read.
   6. **Literature:** none new.
+
+### C7-S2a amendment (2026-11-11, before reading anything new): synthetic validity at small wells
+
+- Synthetic syn0/syn1 checks (as C7-S2) are repeated at min cells 2 and 3 (G7, RNA only, train), to test whether
+  H is biased when wells hold 2-3 cells, because D_noise is large there.
+
+### C7-S2a result (2026-11-11; `results_celltag/c7s2a_diag.json`, `c7s2a_synthetic_small.json`; train only, nothing sealed)
+
+- **The limit is the cell threshold, not the signal.** At >= 4 cells per well (C7-S2) only 144 train clones
+  qualify.
+
+  | min cells | n | H [95%] | projected power at partition size |
+  |---|---|---|---|
+  | 2 | 342 | 0.75 [0.70, 0.81] | 1.00 |
+  | 3 | 210 | 0.71 [0.64, 0.77] | 0.99 |
+  | 4 | 144 | 0.66 [0.57, 0.74] | 0.77 |
+  | 6 | 72 | 0.66 [0.51, 0.78] | 0.35 |
+  | 8 | 44 | 0.67 [0.47, 0.86] | 0.24 |
+
+  (G7, RNA only.)
+- **Small-well validity (amendment):**
+  - syn0 gives H -0.05 [-0.26, 0.22] at 2 cells and -0.07 [-0.62, 0.39] at 3.
+  - syn1 gives 0.92 [0.88, 0.96] and 0.94 [0.88, 0.98].
+  - So H is not inflated at small wells, and if anything it is slightly conservative.
+- **H is higher in the smallest clones** (0.75 at >= 2 vs 0.66 at >= 4). This is consistent with memory lost per
+  division after the split (larger clones = more divisions), as LARRY's K1 (rho_div 0.964). It is a hypothesis,
+  not tested here.
+- **Other factors:**
+  - Coarse grouping G4 is about G7 (+0.01 to +0.02).
+  - Day-5 ATAC cells added to well 1 give +10% n and +0.01 to +0.02 H.
+  - The `edge.den` >= median filter leaves 22-31 clones, which is unusable. Edge density is mostly 1 for small
+    clones, so the median splits off small clones.
+  - Dropping progenitors (G6) lowers H (0.52-0.71). Part of the clone state is **how far a clone has
+    differentiated** (Prog logit SD 1.38).
+- **LARRY-comparable statistic:** cross-well r of N/(N+M) = 0.51 [0.33, 0.65] at >= 2 N+M cells (n 206), and
+  0.45 [0.14, 0.71] at >= 4 (n 67). That is below LARRY (0.88 in the cytokine split; in vitro 0.74). This r has
+  no noise correction, and here few clones have many N+M cells. The neutrophil/monocyte axis looks weaker in
+  this culture than in LARRY's, but this comparison is not noise-matched.
+- **Forking path:** 60 + 2 train configurations were run. Any sealed look on a changed threshold needs its own
+  pre-registration (C7-S2b) and states this count.
