@@ -125,3 +125,13 @@ To make chapter 7 carry over:
 - **Data search** (`lit/data_search_c7_2026-11-11.md`): no public dataset has clones + same-cell chromatin +
   early/late fate. cHSPCTrack (human HSPC clones, serial d3-d12, RNA) passed pre-flight, was downloaded and is
   partitioned (`chspctrack`).
+
+## Chapter 7 CLOSED 2026-11-11 with a confirmed result (C7-S7)
+
+- **Confirmed on unseen clones (partition A, 5 tests in fixed sequence):** clone fate state is heritable
+  across sister wells (LSK H 0.75), and it is readable before differentiation from early RNA in mouse LSK
+  (0.50 bits/cell), reprogramming (0.35) and human HSPC (0.40), and from early chromatin in LSK (0.24).
+- **Open, waiting for same-cell data:** whether chromatin or RNA is the primary carrier, and how much of the
+  heritable state an early snapshot covers. The hESC endoderm multiome would answer both.
+- **Sealed:** B and C remain in celltag_lsk, celltag_reprog and chspctrack.
+- **Process:** H19 (chapter selection gate) was adopted. Chapter 8 is chosen only under it.

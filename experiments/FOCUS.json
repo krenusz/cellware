@@ -1,10 +1,9 @@
 {
  "chapter": "7",
- "step": "C7-S7",
+ "step": "C7-closed",
  "question": "Chapter 7: where is a clone's fate state carried before differentiation? Does early chromatin (scATAC of state siblings) predict a clone's later fate better than early RNA, on sealed held-out clones (CellTag-multi LSK d2.5->d5; reprogramming d3->d12/21)? C7-S1: plan + sealing + pre-flight (CHAPTER7_PLAN.md); no fate statistic. Keep C in view: hESC->endoderm sister-well multiome (Linneberg-Agerholm 2026) when public.",
  "next_steps": [
-  "C7-S7: close chapter 7 with powered confirmatory looks on A (LSK H + G_rna + G_atac; reprog G_rna; HSPC G_rna), fixed-sequence",
-  "Chapter 8: choose only under H19 (data in hand, power >= 0.8 from structural counts, <= 3 steps)",
+  "Chapter 8: shortlist only candidates passing H19 (data in hand, power >= 0.8 from structural counts, <= 3 steps); Bence chooses",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351 at each retro"
  ],
  "allowed_scripts": [
@@ -46,7 +45,8 @@
   "GSE291244 founder state (not memory)",
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)",
-  "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)"
+  "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)",
+  "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)"
  ],
  "approved_by": "Bence 2026-11-11: \"3\" (adopt H19 chapter gate; close chapter 7 with powered looks; choose chapter 8 under H19)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
@@ -84,6 +84,7 @@
   "RETRO_2026-11-11 (H18): chromatin not privileged; fate-free validity gate + plan-stage power + pre-reg tick-list adopted",
   "C7-S4 done on train 2026-11-11 (coverage 1.36 [0.95,2.19]; sister ceiling invalid)",
   "C7 data search + pre-flight 2026-11-11: cHSPCTrack passes (partitioned chspctrack); others fail",
-  "C7-S6 done on train 2026-11-11 (human HSPC early RNA 0.66 [0.49,0.84] after batch amendment; ~0 in day-3 experiment)"
+  "C7-S6 done on train 2026-11-11 (human HSPC early RNA 0.66 [0.49,0.84] after batch amendment; ~0 in day-3 experiment)",
+  "C7-S7 2026-11-11 (5e69507): all 5 confirmatory tests confirmed on A (LSK H 0.75; G_rna LSK 0.50, reprog 0.35, HSPC 0.40; G_atac LSK 0.24); chapter 7 CLOSED; B/C sealed in all three"
  ]
 }

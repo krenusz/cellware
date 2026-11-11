@@ -10089,3 +10089,35 @@ The numbers are unchanged from the result files.)*
 
 - The oracle power gates recompute power from partition-A structural counts before each look.
 - The LSK C grid has no 0.001 (C7-S3 grid). 0.01 is its edge, as in C7-S3.
+
+### C7-S7 result: sealed looks on partition A (2026-11-11; `test_ledger.tsv`, commit 5e69507)
+
+- **Spent:** celltag_lsk:A, celltag_reprog:A, chspctrack:A. **B and C remain sealed in all three.**
+- **Oracle power gates (partition-A counts):** LSK ATAC 83 effective units, power 0.95; reprogramming RNA 56,
+  power 0.93; HSPC 76, power 0.99.
+
+| # (fixed order) | test | A estimate | one-sided 97.5% lower bound | threshold | result |
+|---|---|---|---|---|---|
+| 1 | LSK heritable fate share H (>= 2 cells per well), n 158 | **0.75** (95% CI 0.65-0.82) | 0.66 | > 0.5 | **confirmed** |
+| 2 | LSK early RNA -> clone fate, n 196 | **0.50** bits/cell | 0.33 | > 0 | **confirmed** |
+| 3 | reprogramming early RNA -> clone fate, n 113 | **0.35** | 0.21 | > 0 | **confirmed** |
+| 4 | human HSPC early RNA -> clone fate (stratified), n 122 | **0.40** | 0.13 | > 0 | **confirmed** |
+| 5 | LSK early chromatin -> clone fate, n 137 | **0.24** | 0.10 | > 0 | **confirmed** |
+
+- **Train vs A:**
+  - H 0.75 -> 0.75;
+  - LSK RNA 0.56 -> 0.50;
+  - reprogramming 0.24 -> 0.35;
+  - HSPC 0.66 -> 0.40;
+  - LSK ATAC 0.28 -> 0.24.
+  - No sign flips. The HSPC estimate shrank, consistent with the train heterogeneity between experiments
+    (C7-S6).
+- **Pre-registered conclusion (all 5 confirmed in sequence):** **a clone's fate state is heritable, and is
+  readable before differentiation, on unseen clones**:
+  - from early RNA in three systems (mouse LSK, mouse fibroblast reprogramming, human HSPC);
+  - and from early chromatin in LSK.
+- **Not claimed:**
+  - which layer carries more. RNA was ahead in LSK and equal in reprogramming, both on train; the comparison
+    was never powered;
+  - any statement about the HSPC day-3 experiment alone (descriptive, C7-S6);
+  - a ceiling or coverage (C7-S4/S6: no valid ceiling in these data).
