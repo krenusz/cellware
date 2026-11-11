@@ -9677,3 +9677,59 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   - union A+B: about 0.6.
   - **The Delta contrast cannot reach 0.8 on the sealed partitions. No look.**
 - **Status:** H18 retro due (4 amendments in C7-S3) before any further step.
+
+## C7-S5: early chromatin vs early RNA in a second system, CellTag-multi reprogramming, TRAIN ONLY (pre-registered 2026-11-11)
+
+- **Serves: C7-S5** (CHAPTER7_PLAN.md: the same question in a second system). Bence: "2" (answer to: run the same
+  comparison on the reprogramming data, its own partitions, on train first, to see whether RNA also wins in
+  another system). Scripts: `c7s5_reprog.py` (new), `c7s3_carrier.py` (Featurizer, model and score functions
+  reused unchanged), `partitions.py`.
+- **H18 status:** this is a new step, not an amendment to C7-S3. The C7-S3 retro is still due before any further
+  C7-S3 step. Nothing sealed is read here; `celltag_reprog` partitions A/B/C stay unspent.
+- **Data:**
+  - Clone table `b4.rna_atac.r1_2_master_rev1_annotated.csv` (locked), partition `celltag_reprog`, unit
+    `clone_id`.
+  - Day-3 matrices from GEO, one file per lane: RNA GSE216518 (9 lanes, GSM6675617-25, `B4D3-RNA-r*-*`);
+    ATAC GSE217119 (13 lanes, GSM6705338-50, `B4D3-ATAC-r*-*`). Into `data/ext_celltag_multi/geo_reprog/`,
+    sha256-locked on arrival. Clone-table barcode `B4D3-<MOD>-<lane>-<BC>-1` maps to `<BC>-1` in that lane's file.
+- **Units:** clones with >= 1 day-3 sibling in the modality and >= 2 counted day-12/21 fate cells.
+- **Fate target:** the clone's day-12 + day-21 cells in the authors' 3 classes (reprogramming, transition,
+  dead-end), both assays.
+- **Early features:** the C7-S3 pipeline as fixed after amendment 4 (RNA: 1e4 normalise, log1p, 2,000 HVG,
+  z-score, PCA 30; ATAC: binarise, top 50k features, Signac log1p(TF x IDF x 1e4), SVD 31 drop component 1;
+  both: kNN 20 cosine smoothing, clone mean, z-score with fit-clone stats). Changes forced by this dataset,
+  fixed now:
+  1. **ATAC lanes have their own peak sets.** Peaks are mapped to a common genome tiling of 5 kb bins (a peak
+     counts in the bin holding its midpoint); the top-50k step then runs on bins.
+  2. **Cell universe:** all clonal day-3 cells plus up to 20,000 non-clonal day-3 cells per modality, sampled
+     with seed 75 (memory: about 16 GB RAM). Fitting cells = train-clone cells + those non-clonal cells; sealed
+     clones' cells are not in the universe at all in this train-only step.
+  3. **No batch correction** across lanes (the same as C7-S3's single lane would need none). Lane is a caveat.
+- **Model and score:** as C7-S3 (multinomial logistic, weight min(n_fate, 20), information gain G in bits per
+  fate cell over the population baseline). C grid {0.001, 0.01, 0.1, 1, 10}: 0.001 is added because both C7-S3
+  modalities chose the grid edge 0.01. 5-fold CV by clone on train.
+- **Statistics (train, descriptive):** G_RNA and G_ATAC with bootstrap 95% CIs; Delta = G_ATAC - G_RNA with
+  CI (clone resampling as C7-S3); paired-clone Delta; stratified by number of early siblings.
+- **Fate-free validity check, run and reported before the fate result is read:** day-3 cells have no cell-type
+  labels, so C7-S3's own-label check is not available. Instead: **sibling nearness**, i.e. for train clones
+  with >= 2 day-3 cells in the modality, the AUC of the cosine similarity of sibling pairs vs random cross-clone
+  pairs, in the smoothed feature space. It uses clone membership, not fate. The modality is called **blind** if
+  the AUC < 0.55. A blind modality's G is reported but not interpreted.
+- **Readings (train only, no sealed claim):**
+  - **RNA also carries more:** Delta < 0, CI excludes 0 (replicates the LSK direction on train).
+  - **Chromatin carries more:** Delta > 0, CI excludes 0 (the systems disagree).
+  - **No difference detectable:** otherwise; expected if ATAC stays at ~40 train clones.
+- **Power block (reported, decides whether any later sealed look on `celltag_reprog` is worth pre-registering):**
+  effective n on A from the structural count x train ratios, as in C7-S3 `counts()`; power of Delta two-sided
+  alpha 0.05 and of G > 0 per modality one-sided alpha 0.025. **No look in this step whatever the power.**
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' fate classes; early features from GEO lane matrices.
+  3. **Used data first:** C7-S3 train (LSK) gave the direction and the pipeline.
+  4. **Power:** block above; train-only, so no look depends on it.
+  5. **Exposure:** paper methods read; results / figures on reprogramming fate prediction unread; the LSK train
+     result (RNA > ATAC) is known and is the prior.
+  6. **Literature:** Biddy 2018 / Kong 2020 (CellTag reprogramming: early dead-end vs reprogramming bias),
+     Jindal 2024 (methods).
+- **Known caveats:** different cells per modality; ATAC has ~1,249 clonal day-3 cells over 13 lanes; lanes are
+  uncorrected batches; 5 kb tiling is coarser than peaks.
