@@ -10351,3 +10351,11 @@ The numbers are unchanged from the result files.)*
   - T2 not powerable on B (refused, sealed);
   - T3 confirmed.
 - **Sealed:** celltag_lsk:C, celltag_reprog:C, chspctrack:B and C.
+
+### C8-S3: chapter 8 closed (2026-11-11)
+
+- **Bence:** "Yes, close it".
+- **Write-up:** WRITEUP_FATE_READOUT.md.
+- **Retro:** RETRO_2026-11-11b.md, with lit_gap rerun (`lit/gap_2026-11-11.md`).
+- **program.md H19 amended:** subset tests need subset structural counts at plan stage.
+- **FOCUS:** chapter 9 (choosing), step C9-S0.

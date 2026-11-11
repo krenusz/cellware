@@ -25,3 +25,9 @@ Chosen under H19 from the C8-S0 power scan (EXPERIMENT_LOG C8-S0 result).
 - **Bence: "go with your recomm".** T3 = K2, early RNA -> reprogramming success, on celltag_reprog:B.
   Train rho 0.66, n 227, plan-stage power about 1.00. Pre-registered as C8-S1c.
 - **Fixed sequence now:** T1 (confirmed) -> T3.
+
+## Chapter 8 CLOSED 2026-11-11 (confirmed)
+
+- **T1 confirmed** (rho 0.45) and **T3 confirmed** (rho 0.59) on B.
+- **T2 untested:** power gate 0.78; chspctrack:B sealed.
+- **Write-up:** WRITEUP_FATE_READOUT.md. **Retro:** RETRO_2026-11-11b.md (H19 amended: subset structural counts).

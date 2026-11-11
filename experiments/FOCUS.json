@@ -1,10 +1,10 @@
 {
- "chapter": "8",
- "step": "C8-S2",
- "question": "Chapter 8 (CHAPTER8_PLAN.md): T1 (K3) early RNA predicts clone Neu vs Mono bias on unseen LSK clones (confirmed on B); T2 (K1) refused by power gate (chspctrack:B sealed); T3 (K2) early RNA predicts reprogramming success on celltag_reprog:B. Fixed sequence, B looks only with Bence OK.",
+ "chapter": "9 (choosing)",
+ "step": "C9-S0",
+ "question": "Chapter 9 (choosing under H19, amended 2026-11-11b: subset tests need the subset structural count). Next: a train-only power scan of candidates; Bence chooses.",
  "next_steps": [
-  "C8-S3: close chapter 8 (write-up + H18/H19 retro: subset-specific structural counts at plan stage)",
-  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351 at each retro"
+  "C9-S0: propose chapter 9 candidates with H19 numbers (subset-specific counts)",
+  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data at each retro"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
@@ -48,9 +48,10 @@
   "chapter 4 rescue (closed; partition C reserve)",
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)",
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)",
-  "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)"
+  "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)",
+  "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)"
  ],
- "approved_by": "Bence 2026-11-11: \"1\" (spend celltag_reprog:B on T3)",
+ "approved_by": "Bence 2026-11-11: \"Yes, close it\" (close chapter 8)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -92,6 +93,7 @@
   "C8-S1 2026-11-11 (e3dc951): train selection T1 rho 0.46 power 1.00; T2 +0.97 bits power 0.86",
   "C8-S2 T1 2026-11-11: CONFIRMED on celltag_lsk:B (rho 0.45, lower 0.32, n 153); celltag_lsk:C sealed",
   "C8-S2 T2 2026-11-11 (8b4221e): REFUSED by power gate (0.78 < 0.8, 32 effective units); chspctrack:B not spent",
-  "C8-S2 T3 2026-11-11: CONFIRMED on celltag_reprog:B (rho 0.59, lower 0.46, n 105); celltag_reprog:C sealed"
+  "C8-S2 T3 2026-11-11: CONFIRMED on celltag_reprog:B (rho 0.59, lower 0.46, n 105); celltag_reprog:C sealed",
+  "C8 closed 2026-11-11: T1 rho 0.45 and T3 rho 0.59 confirmed on B; T2 refused (power 0.78); WRITEUP_FATE_READOUT.md, RETRO_2026-11-11b.md; H19 amended"
  ]
 }
