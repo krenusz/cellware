@@ -82,10 +82,15 @@ SEEDS = {
     "Pijuan-Sala 2019 (mouse gastrulation single-cell atlas)": "10.1038/s41586-019-0933-9",
     "Wagner 2018 (zebrafish single-cell lineage landscape)": "10.1126/science.aar4362",
     "Briggs 2018 (Xenopus single-cell differentiation)": "10.1126/science.aar5780",
+    # chapter 7 (where is clone fate carried: chromatin vs RNA), added at the C7-S3 retro 2026-11-11
+    "Jindal 2024 (CellTag-multi, RNA + ATAC clonal fate)": "10.1038/s41587-023-01931-4",
+    "Biddy 2018 (CellTag reprogramming lineage)": "10.1038/s41586-018-0744-4",
+    "Ma 2020 (SHARE-seq chromatin potential)": "10.1016/j.cell.2020.09.056",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
 TOPICS = {
+    "fate_carrier_priming": [r"lineage priming", r"chromatin potential", r"multiome", r"share-seq", r"primed.{0,30}(chromatin|enhancer|state)", r"predict.{0,40}fate"],
     "differentiation_commitment": [r"commitment", r"fate restrict", r"fate bias", r"differentiation trajector", r"lineage tracing", r"pseudotime"],
     "mixing_rescue": [r"chimer", r"non-autonomous", r"gastruloid.{0,40}(rescue|mix)", r"elongat", r"mixed population"],
     "clonal_dominance": [r"clonal dominance", r"cell competition", r"chimer", r"take ?over", r"winner"],
