@@ -10326,3 +10326,16 @@ The numbers are unchanged from the result files.)*
   - test fits on train only;
   - the count function reads no cell_type column;
   - seed fixed.
+
+### C8-S1c result: T3 train selection (2026-11-11; `selection/C8-S1c.json`, log `results_c8/c8s1c_select.log`)
+
+- **Train:** rho **0.66**, n 227, chosen C 0.01 (best of 5 by CV gain). Same values as the C8-S0 scan.
+- **Power on B:** about 1.00 (train-ratio estimate). The oracle re-checks it on the B structural count.
+- **Oracle:** entry `celltag_c8s1_reprog` added. sealed.py reader note extended.
+- **Tick-list:**
+  - 5 candidates, chosen = best;
+  - no sealed_rows call in select_reprog;
+  - test fits on train only;
+  - the count function reads no cell_type column;
+  - seeds 75 and 93.
+- **Next:** the T3 look on celltag_reprog:B needs Bence's OK.

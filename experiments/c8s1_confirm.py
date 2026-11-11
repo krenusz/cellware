@@ -213,6 +213,107 @@ def test_hspc(part):
                                     "strata_unseen_in_train": sorted(set(cdh) - set(cdt)), **rep}}
 
 
+# =============================== T3: reprogramming success (C8-S1c) ===============================
+def _rp_units(K):
+    K = K[K.sum(1) >= 2]
+    return pd.DataFrame({"success": K["reprogramming"], "other": K["transition"] + K["dead-end"]})
+
+
+def _rp_struct(x):
+    early = set(x.loc[(x["day"] == "D3") & (x["assay"] == "RNA"), "clone_id"])
+    f = x[x["day"].isin(["D12", "D21"])].groupby("clone_id").size()
+    return len(early & set(f[f >= 2].index))
+
+
+def select_reprog():
+    import c7s5_reprog as c5
+    import c7s7_confirm as c7
+
+    rng = np.random.default_rng(75)
+    tab = c5._table()
+    F, sizes, _, _ = c5.features("rna", tab, rng)
+    K = _rp_units(c5._fates(tab).reindex(sizes.index).dropna())
+    Kn = K.to_numpy()
+    folds = np.array([_fold(c) for c in K.index])
+    preds = cv_binomial(F.loc[K.index].to_numpy(), Kn, folds)
+    frac = Kn[:, 0] / Kn.sum(1)
+    w = np.minimum(Kn.sum(1), WCAP)
+    b = np.clip(frac.mean(), 1e-6, 1 - 1e-6)
+
+    def gain(p):
+        p = np.clip(p, 1e-6, 1 - 1e-6)
+        return wmean((Kn[:, 0] * (np.log2(p) - np.log2(b)) + Kn[:, 1] * (np.log2(1 - p) - np.log2(1 - b))) / Kn.sum(1), w)
+
+    by = {str(c): gain(preds[c]) for c in CS}
+    C = max(CS, key=lambda c: by[str(c)])
+    rho = float(spearmanr(preds[C], frac).statistic)
+    t = partitions.train_only("celltag_reprog", c7._reprog_full()[["clone_id", "day", "assay"]], unit_col="clone_id")
+    ratio = len(K) / _rp_struct(t)
+    _write("C8-S1c", {"test": "celltag_c8s1_reprog", "higher_is_better": True, "candidates": by, "chosen": str(C), "C": C,
+                      "power": {"sd": FISHER_SD, "effect": float(np.arctanh(rho)), "alpha": ALPHA, "one_sided": True,
+                                "min_power": 0.8},
+                      "train": {"n": int(len(K)), "cv_rho": rho, "by_C_rho": {str(c): float(spearmanr(preds[c], frac).statistic) for c in CS},
+                                "unit_ratio": ratio, "power_B_ratio_est": _power_z(np.arctanh(rho), FISHER_SD, len(K) * 1647 / 3208 - 3)},
+                      "note": "T3 (K2): Spearman rho(pred P(reprogramming), observed fraction) > 0 one-sided; Fisher-z power"})
+
+
+def counts_reprog(part):
+    import c7s7_confirm as c7
+
+    sel = json.load(open(os.path.join(SEL, "C8-S1c.json")))
+    t = c7._reprog_full()[["clone_id", "day", "assay"]]  # no fate column read
+    n = _rp_struct(partitions.sealed_rows("celltag_reprog", t, "clone_id", part))
+    return {"rna": int(np.floor(n * sel["train"]["unit_ratio"])) - 3}
+
+
+def test_reprog(part):
+    """Features exactly as C7-S7b test_reprog; binomial model; Spearman on held-out units."""
+    import c7s5_reprog as c5
+    import c7s7_confirm as c7
+    from sklearn.neighbors import NearestNeighbors
+
+    rng = np.random.default_rng(75)
+    sel = json.load(open(os.path.join(SEL, "C8-S1c.json")))
+    full = c7._reprog_full()
+    trn = partitions.train_only("celltag_reprog", full, unit_col="clone_id")
+    held = partitions.sealed_rows("celltag_reprog", full, "clone_id", part)
+    e_all = c5._early(full, "rna")
+    et, eh = c5._early(trn, "rna"), c5._early(held, "rna")
+    X, bc, _ = c5.load_universe("rna", set(e_all["bc"]), rng)
+    other = set(e_all["bc"]) - set(et["bc"]) - set(eh["bc"])
+    keep = ~bc.isin(list(other))
+    X, bc = X[np.flatnonzero(keep)], bc[keep]
+    fit_rows = np.flatnonzero(~bc.isin(list(eh["bc"])))
+    fz = c5.ChunkedFeaturizer("rna").fit(X[fit_rows])
+    Fz = fz.transform(X)
+    idx = NearestNeighbors(n_neighbors=20, metric="cosine").fit(Fz).kneighbors(Fz, return_distance=False)
+    Fz = Fz[idx].mean(1)
+    e = pd.concat([et, eh])
+    e = e[e["bc"].isin(bc)]
+    df = pd.DataFrame(Fz[bc.get_indexer(e["bc"])], index=e["clone_id"].to_numpy()).groupby(level=0).mean()
+    ref = df.loc[df.index.isin(et["clone_id"])]
+    df = (df - ref.mean()) / (ref.std() + 1e-9)
+    Kt = _rp_units(c5._fates(trn).reindex(df.index.intersection(c5._fates(trn).index)))
+    Kh = _rp_units(c5._fates(held).reindex(df.index.intersection(c5._fates(held).index)))
+    m = fit_model(df.loc[Kt.index].to_numpy(), Kt.to_numpy(), sel["C"])
+    P = np.zeros((len(Kh), 2))
+    P[:, m.classes_] = m.predict_proba(df.loc[Kh.index].to_numpy())
+    p = P[:, 0]
+    frac = Kh["success"].to_numpy() / Kh.sum(1).to_numpy()
+    rng = np.random.default_rng(93)
+    rho = float(spearmanr(p, frac).statistic)
+    bs = [spearmanr(p[ix], frac[ix]).statistic for ix in (rng.integers(0, len(p), len(p)) for _ in range(2000))]
+    bs = np.array([x for x in bs if np.isfinite(x)])
+    lo = _lb(bs)
+    return {"T3_rho": {"n": int(len(p)), "rho": rho, "lower_one_sided": lo,
+                       "ci95": np.percentile(bs, [2.5, 97.5]).tolist(), "confirmed": bool(lo > 0)}}
+
+
 if __name__ == "__main__":
-    select_lsk()
-    select_hspc()
+    import sys
+
+    if "reprog" in sys.argv[1:]:
+        select_reprog()
+    else:
+        select_lsk()
+        select_hspc()

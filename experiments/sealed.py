@@ -199,7 +199,7 @@ HELDOUT_READERS = {
     "c5s4_atac_memory.py": "C5-S4: sealed passages 2-3 read only in test(part)/counts(part) via test_oracle",
     "c4s2a_morph_confirm.py": "C4-S2a: mixture plate read only in test(part) via test_oracle; counts(part) counts only",
     "c7s3_carrier.py": "C7-S3: celltag_lsk sealed partitions read only in test(part) / counts(part) via test_oracle; train via train_only",
-    "c8s1_confirm.py": "C8-S1: celltag_lsk / chspctrack sealed partitions read only in test_* / counts_* via test_oracle; select_* via train_only",
+    "c8s1_confirm.py": "C8-S1: celltag_lsk / chspctrack / celltag_reprog sealed partitions read only in test_* / counts_* via test_oracle; select_* via train_only",
     "c7s7_confirm.py": "C7-S7: celltag_lsk / celltag_reprog / chspctrack sealed partitions read only in test_* / counts_* via test_oracle; select_* via train_only",
     "c7s2_sister.py":"C7-S2: celltag_lsk sealed partitions read only in test(part) / counts(part) via test_oracle; train via train_only",
     "g7_confirm.py": "G7 sealed-file readers (oracle only)",

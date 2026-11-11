@@ -237,6 +237,7 @@ def _c8s1(kind, what):
 PARTITION_TESTS = {
     "celltag_c8s1_lsk": (_c8s1("lsk", "test"), "celltag_lsk", "C8-S1a T1 (K3): LSK early RNA -> Neu vs Mono bias, Spearman rho > 0"),
     "hspc_c8s1": (_c8s1("hspc", "test"), "chspctrack", "C8-S1b T2 (K1): HSPC exp 7 early clone state beats cytokine condition (g_state - g_cond > 0); only after T1 confirmed"),
+    "celltag_c8s1_reprog": (_c8s1("reprog", "test"), "celltag_reprog", "C8-S1c T3 (K2): reprogramming early RNA -> reprogramming success, Spearman rho > 0"),
     "celltag_c7s7_lsk": (_c7s7("lsk", "test"), "celltag_lsk", "C7-S7a: LSK H(>=2 cells) > 0.5, G_rna > 0, G_atac > 0 (fixed sequence)"),
     "celltag_c7s7_reprog": (_c7s7("reprog", "test"), "celltag_reprog", "C7-S7b: reprogramming G_rna > 0"),
     "hspc_c7s7": (_c7s7("hspc", "test"), "chspctrack", "C7-S7c: human HSPC early RNA G > 0 (stratum exp x condition)"),
@@ -274,7 +275,8 @@ def selection_gate(exp, test):
 PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts, "gastruloid_c5s4_atac": _c5s4_counts, "celltag_c7s2": _c7s2_counts, "celltag_c7s3": _c7s3_counts,
                     "celltag_c7s7_lsk": _c7s7("lsk", "counts"), "celltag_c7s7_reprog": _c7s7("reprog", "counts"),
                     "hspc_c7s7": _c7s7("hspc", "counts"),
-                    "celltag_c8s1_lsk": _c8s1("lsk", "counts"), "hspc_c8s1": _c8s1("hspc", "counts")}  # test -> function(partition) -> {group: n units}; counts only (H9)
+                    "celltag_c8s1_lsk": _c8s1("lsk", "counts"), "hspc_c8s1": _c8s1("hspc", "counts"),
+                    "celltag_c8s1_reprog": _c8s1("reprog", "counts")}  # test -> function(partition) -> {group: n units}; counts only (H9)
 
 
 def power_gate(exp, test, part):
