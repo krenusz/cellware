@@ -9421,3 +9421,14 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   ratio of eligible clones after and before the fate-label exclusions. Otherwise it would overstate n and power.
 - **Reading so far:** a clone fate state exists in this culture, weaker than in LARRY/SIS (no group reaches
   logit SD 2). The sealed look decides "fixed" vs "partly fixed".
+
+### C7-S2 look refused by the power gate (2026-11-11)
+
+- `test_oracle.py look celltag_c7s2 --exp C7-S2 --partition A`: counts 67 clones (conservative scaling), power
+  **0.76 < 0.8**. **Refused; partition A NOT spent** (H14). No sealed value was read.
+- C7-S2 therefore stands on train only: H 0.66 [0.58, 0.75], so a clone fate state exists (stopping rule not
+  triggered). "Fixed vs partly fixed" is unconfirmed.
+- Options, for Bence:
+  1. **No sealed look:** keep A, B and C for C7-S3, the chapter's main test.
+  2. A union A+B look (power about 0.97), which leaves only C for C7-S3.
+  3. Pre-register a weaker claim (H > 0) on A.
