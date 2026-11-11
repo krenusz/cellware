@@ -9512,3 +9512,81 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   this culture than in LARRY's, but this comparison is not noise-matched.
 - **Forking path:** 60 + 2 train configurations were run. Any sealed look on a changed threshold needs its own
   pre-registration (C7-S2b) and states this count.
+
+### C7-S2 closed on train (2026-11-11)
+
+- Bence: "1" (answer to: close C7-S2 on train and keep A for C7-S3, B for replication, C in reserve).
+- **No sealed look for C7-S2. Partitions A, B and C of celltag_lsk stay unspent for C7-S3 / C7-S4.**
+- **Status: precondition met on train, not confirmed on sealed data.**
+  - Pre-registered setting: H 0.66 [0.57, 0.74], n 144.
+  - At >= 2 cells per well (C7-S2a): H 0.75 [0.70, 0.81], n 342.
+- The chapter continues with C7-S3.
+
+## C7-S3: does early chromatin carry a clone's fate better than early RNA? CellTag-multi LSK (pre-registered 2026-11-11)
+
+- **Serves: C7-S3**, the chapter 7 question (CHAPTER7_PLAN.md). Bence: "1" (answer to: close C7-S2 on train,
+  pre-register C7-S3 with A for the look, B for replication, C in reserve). Scripts: `c7s3_carrier.py` (new),
+  `c7s2_sister.py` (constants), `partitions.py`, `test_oracle.py`.
+- **Data:**
+  - Clone table `hsc.rna_atac.r1_2_master_v2.csv` (locked), partition `celltag_lsk`.
+  - Day-2.5 count matrices from GEO: RNA GSM6681127 `d2_5_filtered_feature_bc_matrix.h5`; ATAC GSM6675425
+    `d2_5_filtered_peak_bc_matrix.h5`. They go into `data/ext_celltag_multi/geo/` and are sha256-locked on
+    arrival. Clone-table barcode `d2_5-rna-<BC>-1` maps to matrix barcode `<BC>-1` (same for atac).
+- **Units:** clones with >= 1 day-2.5 sibling in the modality and >= 2 counted day-5 fate cells. Two groups:
+  RNA-sibling clones and ATAC-sibling clones; clones with both siblings are in both.
+- **Fate target:** the clone's day-5 fate counts in the C7-S2 groups G7 (Neu, Mono, BEM, EMk, DC, Lym, Prog).
+  Both wells, both day-5 assays (authors' labels); Unk_1-3 / uns dropped.
+- **Early features (fixed now):**
+  - **RNA:**
+    - library-size normalise to 1e4, log1p;
+    - 2,000 highly variable genes (Seurat-v3-style dispersion on the fitting cells);
+    - z-score, PCA 30.
+  - **ATAC:**
+    - binarise peaks; TF-IDF;
+    - truncated SVD 31 components, dropping component 1 (depth) = 30.
+  - **Fitting cells for both:** day-2.5 cells of train clones plus day-2.5 cells in no clone. **Cells of sealed
+    clones are never used to fit** HVG / PCA / LSI; they are only projected inside the oracle test.
+  - **Clone feature:** mean over its day-2.5 siblings of that modality.
+- **Model:**
+  - Multinomial logistic regression (sklearn, L2), one per modality.
+  - Rows = clones, target = fate cells (clone rows repeated per fate cell, with weights so each clone counts
+    min(n_fate, 20) in total).
+  - C chosen from {0.01, 0.1, 1, 10} by 5-fold CV on train clones, per modality.
+- **Score:** per clone, the mean per-cell log2-likelihood of its day-5 fate cells under the model, minus the
+  same under the population baseline (train fate frequencies). This is **information gain G, in bits per cell.**
+  A modality's score is the weighted mean of G over its clones (weight min(n_fate, 20)).
+- **Primary statistic:** Delta = G_ATAC - G_RNA. Two-sided, 95% CI by bootstrap over clones (1,000; a clone in
+  both groups is resampled once).
+- **Readings:**
+  - **Chromatin carries more:** Delta > 0, CI excludes 0.
+  - **RNA carries more:** Delta < 0, CI excludes 0.
+  - **No difference detectable:** otherwise. Also report each G with its CI; G > 0 means early state predicts
+    fate at all.
+- **Secondary (descriptive):**
+  - **paired clones** (both siblings): the within-clone Delta;
+  - **stratified by number of early siblings** (1 vs >= 2), because ATAC detection differs;
+  - **G6** (progenitor cells dropped).
+- **Train first:** 5-fold CV estimates of G_RNA, G_ATAC and Delta on train clones (folds by clone), with per-clone
+  SDs.
+  - **H12 selection file:** candidates = the two modalities' train-CV G; chosen = the best. The look still
+    reports the pre-registered Delta.
+  - **H14 power block:** groups {rna, atac} with the partition counts; sd = pooled per-clone SD of G; effect =
+    |Delta_train|; two-sided alpha 0.05; min 0.8.
+  - **If the power is < 0.8: no look.** The train result is reported and chapter 7 waits for C (paired multiome).
+- **Sealed look:** `test_oracle.py look celltag_c7s3 --exp C7-S3 --partition A`. The model and features are
+  refitted on all train clones, then applied to A. **B stays for replication** (its own pre-registration).
+  **C is reserve** (last; H13).
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** fate composition from the authors' labels; early features from GEO matrices.
+  3. **Used data first:** C7-S2 / C7-S2a (train).
+  4. **Power:** from train (block above).
+  5. **Exposure:**
+     - paper methods read; **results and Fig. 2 (their RNA vs ATAC fate prediction) unread**;
+     - the abstract says lineage priming is characterised;
+     - our prior is C5-S6 (chromatin separates ES clone groups) and #17 / #19 (RNA weak).
+  6. **Literature:** Weinreb 2020 (RNA state predicts only part of fate), Jindal 2024 (methods).
+- **Known caveats:**
+  - RNA and ATAC siblings are different cells of the clone, not one cell measured twice.
+  - Detection depth and clone size differ by modality (stratified report).
+  - 30 components for each modality is a fixed, equal budget, not tuned.
