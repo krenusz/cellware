@@ -3,9 +3,8 @@
  "step": "C7-S3/S5-closed",
  "question": "Chapter 7: where is a clone's fate state carried before differentiation? Does early chromatin (scATAC of state siblings) predict a clone's later fate better than early RNA, on sealed held-out clones (CellTag-multi LSK d2.5->d5; reprogramming d3->d12/21)? C7-S1: plan + sealing + pre-flight (CHAPTER7_PLAN.md); no fate statistic. Keep C in view: hESC->endoderm sister-well multiome (Linneberg-Agerholm 2026) when public.",
  "next_steps": [
-  "C7-S4 candidate (core-model clone state vs early RNA / chromatin axis, train): needs Bence go",
-  "Before C7-S4: read Cell Rep 2022 chromatin priming (10.1016/j.celrep.2022.110798); GSE266524 methods pre-flight (same-cell RNA+ATAC, clones?)",
-  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, GSE266524 at each retro"
+  "C7-S4 candidate re-framed as carrier coverage (G_early / G_sister, LSK train only, descriptive): needs Bence go; see lit/reading_c7_prep.md",
+  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351 at each retro (GSE266524 dropped: no clones with same-cell ATAC)"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
