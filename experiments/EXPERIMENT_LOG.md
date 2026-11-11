@@ -9340,3 +9340,68 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
 - Side readings (model only): alignment drops at N 100 under arm a (0.58 vs 0.82) and stays high under arm c.
   P fraction is 0.398 at both sizes; no multipolar runs.
 - Under the C6-S8 plan, chapter 6 now closes as exploratory with a write-up.
+
+## C7-S2: is blood fate a heritable clone state in CellTag-multi? Sister wells at day 5 (pre-registered 2026-11-11)
+
+- **Serves: C7-S2** (CHAPTER7_PLAN.md). Before asking *where* the clone fate state is carried (C7-S3), test
+  that one exists here. Bence: "Go C7-S2". Scripts: `c7s2_sister.py` (new), `sis_data.py` (functions
+  `heritable_share`, `clone_logit_sd`, `bootstrap`, `synthetic`, reused unchanged), `partitions.py`,
+  `test_oracle.py`.
+- **Data:**
+  - `data/ext_celltag_multi/hsc.rna_atac.r1_2_master_v2.csv` (sha256-locked), partition `celltag_lsk`
+    (unit = clone).
+  - Day-5 **RNA** cells only. The well comes from the barcode prefix: `d5r1-` = sister well 1, `d5r2-` = sister
+    well 2. Day-5 ATAC has no well label, so it is not used.
+  - The fate label is `cell_type2` of each day-5 cell.
+- **Fate groups (fixed now, from the level names only):**
+
+  | group | `cell_type2` levels |
+  |---|---|
+  | Neu | Neutro |
+  | Mono | Mono |
+  | BEM | Baso/Eos/Mast |
+  | EMk | Ery/Meg + MEP |
+  | DC | Ccr7_DC + pDC |
+  | Lym | Lym |
+  | Prog | MPP + MPP/GMP |
+
+  - Cells labelled `Unk_1`/`Unk_2`/`Unk_3`/`uns` are dropped before counting.
+  - **Sensitivity:** differentiated groups only (Prog dropped, 6 groups).
+- **Units:** clones with >= 4 counted day-5 RNA cells in **both** wells (B38 used > 3).
+- **Statistics (exactly as B38, `sis_data` functions):**
+  - **A.** H = (D_rand - D_sis) / (D_rand - D_noise). Total-variation distance; D_rand comes from random
+    well-1 / well-2 pairs (one group: one experiment); D_noise from multinomial redraws from the clone's pooled
+    fractions.
+  - **B.** Between-clone logit SD per group from the sister covariance.
+  - 95% CIs by bootstrap over clones (1,000).
+- **Synthetic check first (train only):** syn0, no memory (expect the H CI to include 0); syn1, full memory
+  (expect H about 1).
+- **Train (`train_only`):**
+  - all statistics plus the sensitivity analysis;
+  - H12 selection file `selection/C7-S2.json`: two candidate models of well 2 given well 1, scored by per-cell
+    log-likelihood on train clones in both directions:
+    - **memory**: p = (k_other + pi) / (n_other + 1), pi the population fractions;
+    - **no memory**: p = pi.
+    The chosen model is the better one.
+  - **H14 power block**, one-sided alpha 0.025 (the 95% lower bound) for H > 0.5, from the train H and its
+    bootstrap SE: sd = SE x sqrt(n_train), effect = H_train - 0.5.
+- **Stopping rule (from the plan):** if the train H CI includes 0, the chapter stops, and there is no look.
+- **Sealed look:** `test_oracle.py look celltag_c7s2 --exp C7-S2 --partition A`. One look, partition A only;
+  B and C stay sealed for C7-S3.
+- **Readings (on A):**
+  - **Fate largely fixed in the clone:** H >= 0.7 and lower bound > 0.5.
+  - **Partly fixed:** lower bound > 0 but not the first reading.
+  - **No clone memory:** CI includes 0. The chapter stops.
+  - **Cross-check with LARRY / SIS:** logit SD >= 2 for at least two groups = a strong clone state, as in #1/#13.
+- **Pre-flight:**
+  1. **Unit:** clone; the two wells are its sisters.
+  2. **Readout:** fate composition from the authors' labels (their label transfer and clustering; not ours).
+  3. **Used data first:** none; this data is new to us. Expected size from SIS: H 0.71 [0.59, 0.78].
+  4. **Power:** from train, H14 block above; the oracle refuses below 0.8.
+  5. **Exposure:**
+     - level names of the fate columns only; no counts;
+     - the paper's results and figures are unread;
+     - the abstract mentions "lineage priming" (disclosed in the plan).
+  6. **Literature:** Weinreb 2020 (sister fate agreement in LARRY) and Tian 2021 (SIS) give the same design.
+- **Known caveat:** the two wells were split at day 2.5, after tagging during days 0-2. A clone tagged late
+  shares fewer divisions before the split, which would lower H, not raise it.
