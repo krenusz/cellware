@@ -238,6 +238,10 @@ before every look and refuses on any failure.
        readout, counts).
     2. **Powered primary test:** the primary sealed test has power >= 0.8, from structural counts of a sealed
        partition. The effect size comes from data already used (a spent result or train), never from hope.
+       **Amendment 2026-11-11b (RETRO_2026-11-11b):** when the test uses a subset (an experiment, condition or
+       stratum), the count must be that subset's own structural count in the sealed partition. That count
+       reads no fate labels and uses the oracle count-function code. Dataset-wide clone ratios are not
+       allowed for subsets (C8 T2: estimate 0.86, real 0.78).
     3. **Short path:** that test can be run within about 3 steps of the chapter start.
   - The proposal shows the three checks with numbers. If no candidate passes, say so; don't pitch an
     ungated idea.
