@@ -74,6 +74,16 @@ PARTITIONED = {
         "sealed_on": "2026-11-11",
         "prior_exposure": "as celltag_lsk",
     },
+    "chspctrack": {
+        "salt": "cellware-chspctrack-v1",
+        "unit": "clone (`clone_id` in data/ext_chspctrack/cells_with_clone_info.h5ad obs, 13,700 clones; "
+                "human CD34+ single-cell-derived clones, serial half-well sampling d3-d12, 8 cytokine conditions)",
+        "files": ["cells_with_clone_info.h5ad", "metacells.h5ad"],
+        "sealed_on": "2026-11-11",
+        "prior_exposure": "obs column names, cells per clone per day / well / condition only; cell_type and "
+                          "pseudotime / score columns unread; Blood 2026 abstract read (clones diversify "
+                          "stochastically, cytokines bias; clonal memory stabilises a few genes per clone)",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)
