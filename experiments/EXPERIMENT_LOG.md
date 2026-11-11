@@ -10339,3 +10339,15 @@ The numbers are unchanged from the result files.)*
   - the count function reads no cell_type column;
   - seeds 75 and 93.
 - **Next:** the T3 look on celltag_reprog:B needs Bence's OK.
+
+### C8-S2 T3 result: celltag_reprog:B spent (2026-11-11; `test_ledger.tsv`, commit 31345fc)
+
+- **Approval:** Bence: "1" (list item 1 and button 1 = spend celltag_reprog:B on T3).
+- **Oracle power gate:** B structural count 102, power 1.00.
+- **T3 (K2) CONFIRMED:** on 105 unseen clones, day-3 RNA predicts the share of a clone's day-12/21 cells that
+  reprogram. Spearman rho **0.59** (train 0.66); 95% CI 0.46-0.69; one-sided lower bound 0.46 > 0.
+- **Chapter 8 tally:**
+  - T1 confirmed (LSK Neu vs Mono, rho 0.45);
+  - T2 not powerable on B (refused, sealed);
+  - T3 confirmed.
+- **Sealed:** celltag_lsk:C, celltag_reprog:C, chspctrack:B and C.
