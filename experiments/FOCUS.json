@@ -1,9 +1,11 @@
 {
- "chapter": "6",
- "step": "C6-closed",
- "question": "Chapter 6: cells into space. Can cells that each carry the core model's clone state (core_model.py), plus local rules (adhesion sorting, proportion feedback), build a gastruloid's A-P domains and its elongation, and predict an unseen spatial/elongation readout? C6-S1: plan + pre-flight (CHAPTER6_PLAN.md); no statistic on sealed data.",
+ "chapter": "7",
+ "step": "C7-S1",
+ "question": "Chapter 7: where is a clone's fate state carried before differentiation? Does early chromatin (scATAC of state siblings) predict a clone's later fate better than early RNA, on sealed held-out clones (CellTag-multi LSK d2.5->d5; reprogramming d3->d12/21)? C7-S1: plan + sealing + pre-flight (CHAPTER7_PLAN.md); no fate statistic. Keep C in view: hESC->endoderm sister-well multiome (Linneberg-Agerholm 2026) when public.",
  "next_steps": [
-  "Chapter 6 closed as exploratory (WRITEUP_CELLS_IN_SPACE.md). Next chapter: Bence chooses; no new experiment until he does. Re-run the public data search (lit/data_search_c6s8.md) at the next retro."
+  "C7-S2: heritable fate across sister wells d5 r1 vs r2 (SIS method), train first, then one sealed look; stop the chapter if H is not above the null",
+  "C7-S3: early chromatin vs early RNA prediction of clone fate on held-out clones (after C7-S2)",
+  "Watch: hESC endoderm data (bioRxiv 10.64898/2026.09.02.748863) at each retro"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
@@ -38,7 +40,7 @@
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)",
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)"
  ],
- "approved_by": "Bence 2026-11-10: \"Close and write up\"",
+ "approved_by": "Bence 2026-11-11: \"go plan A but keep in mind C also\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -66,6 +68,7 @@
   "C6-R (2026-11-09, 4a79aa1): retro ch5+6; H17 adopted; chapter 6 stays open (Bence)",
   "C6-S6 (2026-11-09, e2dcc01): mechanism literature read (de Jong 2024 + code as text, Guan/Hormoz 2025, McNamara 2024); redesign sketched; H17 adopted",
   "C6-S7 (2026-11-10, closed exploratory after 13 versions): attached Potts + long-range posterior pull + crawling after the pole (C6-S7l) passes Q1/Q2/Q3 (Q2/Q3 exposed; Q3 arm-dependent, C6-S7m); S2 not robustly powered; credit ~3.25/10",
-  "C6 closed 2026-11-10: C6-S8a/c/d no robust powered unseen test; atlas alignment circular (WRITEUP_CELLS_IN_SPACE.md)"
+  "C6 closed 2026-11-10: C6-S8a/c/d no robust powered unseen test; atlas alignment circular (WRITEUP_CELLS_IN_SPACE.md)",
+  "C7-S1 plan written and celltag_lsk / celltag_reprog sealed 2026-11-11 (CHAPTER7_PLAN.md)"
  ]
 }

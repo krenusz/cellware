@@ -58,6 +58,22 @@ PARTITIONED = {
         "prior_exposure": "sample sheet, file names and sizes; paper's peak totals (p1 44,540; p3 41,593) and "
                           "passage-1 anterior/posterior shared-peak shares",
     },
+    "celltag_lsk": {
+        "salt": "cellware-celltag-lsk-v1",
+        "unit": "clone (`clone.id` in data/ext_celltag_multi/hsc.rna_atac.r1_2_master_v2.csv, 6,822 clones; "
+                "all siblings of a clone, d2.5 RNA/ATAC and d5 r1/r2, go together)",
+        "files": ["hsc.rna_atac.r1_2_master_v2.csv"],
+        "sealed_on": "2026-11-11",
+        "prior_exposure": "column names and structural counts (day, assay, sibling counts) only; fate columns unread; "
+                          "Jindal 2024 methods read, results/figures not read",
+    },
+    "celltag_reprog": {
+        "salt": "cellware-celltag-reprog-v1",
+        "unit": "clone (`clone_id` in data/ext_celltag_multi/b4.rna_atac.r1_2_master_rev1_annotated.csv, 8,050 clones)",
+        "files": ["b4.rna_atac.r1_2_master_rev1_annotated.csv"],
+        "sealed_on": "2026-11-11",
+        "prior_exposure": "as celltag_lsk",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)
