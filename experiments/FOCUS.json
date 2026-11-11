@@ -1,12 +1,11 @@
 {
  "chapter": "7",
- "step": "C7-S5",
+ "step": "C7-S3/S5-closed",
  "question": "Chapter 7: where is a clone's fate state carried before differentiation? Does early chromatin (scATAC of state siblings) predict a clone's later fate better than early RNA, on sealed held-out clones (CellTag-multi LSK d2.5->d5; reprogramming d3->d12/21)? C7-S1: plan + sealing + pre-flight (CHAPTER7_PLAN.md); no fate statistic. Keep C in view: hESC->endoderm sister-well multiome (Linneberg-Agerholm 2026) when public.",
  "next_steps": [
-  "C7-S5: reprogramming early chromatin vs RNA, train only (no look)",
-  "C7-S3: H18 retro before any further C7-S3 step (sealed use: G>0 on A, or hold Delta for hESC)",
-  "C7-S3 replication on B (own pre-registration)",
-  "Watch: hESC endoderm data at each retro"
+  "C7-S4 candidate (core-model clone state vs early RNA / chromatin axis, train): needs Bence go",
+  "Before C7-S4: read Cell Rep 2022 chromatin priming (10.1016/j.celrep.2022.110798); GSE266524 methods pre-flight (same-cell RNA+ATAC, clones?)",
+  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, GSE266524 at each retro"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
@@ -46,7 +45,7 @@
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)",
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)"
  ],
- "approved_by": "Bence 2026-11-11: \"2\" (run the RNA vs chromatin comparison on the reprogramming data, train first)",
+ "approved_by": "Bence 2026-11-11: \"Close C7-S3 and C7-S5 on train and keep every sealed set.\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -76,6 +75,9 @@
   "C6-S7 (2026-11-10, closed exploratory after 13 versions): attached Potts + long-range posterior pull + crawling after the pole (C6-S7l) passes Q1/Q2/Q3 (Q2/Q3 exposed; Q3 arm-dependent, C6-S7m); S2 not robustly powered; credit ~3.25/10",
   "C6 closed 2026-11-10: C6-S8a/c/d no robust powered unseen test; atlas alignment circular (WRITEUP_CELLS_IN_SPACE.md)",
   "C7-S1 plan written and celltag_lsk / celltag_reprog sealed 2026-11-11 (CHAPTER7_PLAN.md)",
-  "C7-S2 closed on train 2026-11-11 (H 0.66 [0.57,0.74]; 0.75 at >=2 cells); A/B/C kept"
+  "C7-S2 closed on train 2026-11-11 (H 0.66 [0.57,0.74]; 0.75 at >=2 cells); A/B/C kept",
+  "C7-S3 closed on train 2026-11-11 (RNA 0.54 vs ATAC 0.31 bits/cell, Delta -0.23; unpowerable on sealed); A/B/C kept",
+  "C7-S5 closed on train 2026-11-11 (reprogramming RNA 0.27 vs ATAC 0.29, Delta +0.03); A/B/C kept",
+  "RETRO_2026-11-11 (H18): chromatin not privileged; fate-free validity gate + plan-stage power + pre-reg tick-list adopted"
  ]
 }
