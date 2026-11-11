@@ -10529,3 +10529,14 @@ The numbers are unchanged from the result files.)*
   - the count function loads no fate column;
   - seeds fixed;
   - the readout gate is recorded in the selection file.
+
+### C9-S2 result: train selection (2026-11-11; `selection/C9-S2.json`, log `results_c9/c9s2_select.log`)
+
+- **Readout gate PASSES:** 60 train units with any Neu cell, 181 with any Mono (mean Neu share 0.16). Rho varies
+  across the C grid (range 0.14), so it is not a tie artefact.
+- **Chosen C 0.01** (best CV gain, 0.063 bits). **Train CV rho 0.30**, n 195. The scan's 0.31 was at C 10,
+  chosen on the statistic.
+- **Power on C:** 142 structural units x 0.71 - 3 = 97, so power **about 0.84** (Fisher z). If rho shrinks to
+  0.24 (the C7 ATAC train-to-A ratio), power is about 0.65.
+- **Oracle:** entry `celltag_c9s2_atac` added. sealed.py reader added.
+- **The look on celltag_lsk:C (LAST partition) needs Bence's verbatim OK** via `--last-ok` (H13).
