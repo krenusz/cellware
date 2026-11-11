@@ -1,9 +1,9 @@
 {
- "chapter": "7",
- "step": "C7-closed",
- "question": "Chapter 7: where is a clone's fate state carried before differentiation? Does early chromatin (scATAC of state siblings) predict a clone's later fate better than early RNA, on sealed held-out clones (CellTag-multi LSK d2.5->d5; reprogramming d3->d12/21)? C7-S1: plan + sealing + pre-flight (CHAPTER7_PLAN.md); no fate statistic. Keep C in view: hESC->endoderm sister-well multiome (Linneberg-Agerholm 2026) when public.",
+ "chapter": "8 (choosing)",
+ "step": "C8-S0",
+ "question": "Chapter 8 (choosing under H19): shortlist only candidates with data in hand, power >= 0.8 on a sealed partition from structural counts, and <= 3 steps. C8-S0 = train-only power scan of K1 (instruction vs clone state, human HSPC), K2 (early predictor of reprogramming success), K3 (early predictor of Neu vs Mono bias, LSK).",
  "next_steps": [
-  "Chapter 8: shortlist only candidates passing H19 (data in hand, power >= 0.8 from structural counts, <= 3 steps); Bence chooses",
+  "C8-S0: train power scan K1-K3, then Bence chooses chapter 8",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351 at each retro"
  ],
  "allowed_scripts": [
@@ -36,7 +36,8 @@
   "c7s5_reprog.py",
   "c7s4_coverage.py",
   "c7s6_hspc.py",
-  "c7s7_confirm.py"
+  "c7s7_confirm.py",
+  "c8s0_scan.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -48,7 +49,7 @@
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)",
   "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)"
  ],
- "approved_by": "Bence 2026-11-11: \"3\" (adopt H19 chapter gate; close chapter 7 with powered looks; choose chapter 8 under H19)",
+ "approved_by": "Bence 2026-11-11: \"1\" (build the chapter 8 shortlist under H19)",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",

@@ -10121,3 +10121,42 @@ The numbers are unchanged from the result files.)*
     was never powered;
   - any statement about the HSPC day-3 experiment alone (descriptive, C7-S6);
   - a ceiling or coverage (C7-S4/S6: no valid ceiling in these data).
+
+## C8-S0: H19 power scan for chapter 8 candidates, TRAIN ONLY (pre-registered 2026-11-11)
+
+- **Serves: C8-S0** (choosing chapter 8 under H19). Bence: "1" (answer to: build the chapter 8 shortlist under
+  H19). Script: `c8s0_scan.py` (new; reuses `c7s3_carrier.py`, `c7s5_reprog.py`, `c7s6_hspc.py`,
+  `c7s7_confirm.py` helpers unchanged).
+- **Purpose:** compute, for each candidate, the train effect, its SD and the plan-stage power on partition B,
+  so the shortlist shows the three H19 checks with numbers.
+  - Train only.
+  - B's size comes from the train-to-B clone ratio; no sealed row is read.
+  - No candidate becomes a chapter without Bence's choice and its own pre-registration.
+- **Candidates (all with data in hand, B and C unspent):**
+  - **K1, instruction vs clone state (human HSPC, cHSPCTrack exp 7, early = day 5, fate = day 10):**
+    - Per clone: g_cond = information from the cytokine condition alone (condition baseline vs the exp-7
+      pooled baseline) and g_state = information from early RNA beyond condition (the C7-S6 stratified model).
+      Both are bits per day-10 cell, from 5-fold CV.
+    - Test statistic: mean paired difference g_state - g_cond (two-sided).
+    - The project's original question (chapters 1-2: instruction vs selection), now in human cells.
+  - **K2, early predictor of reprogramming success (celltag_reprog, RNA):**
+    - CV-predicted probability of "reprogramming" from early RNA (binomial logistic, C grid as C7-S5).
+    - Test statistic: Spearman rho with the clone's observed reprogramming fraction among day-12/21 cells
+      (clones with >= 2 fate cells). One-sided rho > 0.
+  - **K3, early predictor of neutrophil vs monocyte bias (celltag_lsk, RNA):**
+    - Units: clones with >= 2 Neu + Mono day-5 cells.
+    - CV-predicted Neu probability from early RNA vs the observed Neu fraction. One-sided Spearman rho > 0.
+    - The classic LARRY (Weinreb 2020) question, on CellTag-multi clones.
+- **Power:**
+  - K1: normal approximation on the paired difference with the effective n of B.
+  - K2 and K3: Fisher z, one-sided alpha 0.025, n_B = n_train x clone ratio (LSK 1365/2720, reprog
+    1647/3208, HSPC about 0.5).
+- **H19 pass rule:** power >= 0.8 on B, and a path of <= 3 steps (one train step + one look).
+- **Pre-flight:**
+  1. **Unit:** clone.
+  2. **Readout:** authors' fate labels; early features from the pipelines fixed in C7-S3/S5/S6.
+  3. **Used data first:** C7 train and A results.
+  4. **Power:** this step.
+  5. **Exposure:** C7 train and A known; B/C unread.
+  6. **Literature:** Weinreb 2020 (Neu/Mono early-state prediction), Biddy 2018 (reprogramming success
+     clones), cHSPCTrack 2026 abstract (cytokines bias, stochastic diversification).
