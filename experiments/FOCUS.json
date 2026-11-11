@@ -1,11 +1,10 @@
 {
- "chapter": "9",
- "step": "C9-S2",
- "question": "Chapter 9 (CHAPTER9_PLAN.md amendment 1): does LSK day-2.5 chromatin predict a clone day-5 Neu vs Mono split on unseen clones? One look on celltag_lsk:C (LAST partition, verbatim OK).",
+ "chapter": "PAUSED",
+ "step": "PAUSED",
+ "question": "Cellware paused 2026-11-11 by Bence. All remaining sealed sets kept (celltag_lsk:C, celltag_reprog:C, chspctrack:B/C). Resume only on Bence OK; restart = choose a chapter under H19.",
  "next_steps": [
-  "C9-S2: train selection with readout gate (selection/C9-S2.json)",
-  "C9-S2 look on celltag_lsk:C with Bence verbatim OK, then close chapter 9",
-  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data at each retro"
+  "On resume: H19 chapter choice; C9-S2 LSK chromatin test ready (power ~0.84, last partition) but not approved",
+  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
@@ -53,9 +52,10 @@
   "chapter 5 clone memory (parked; re-open on hESC sister-well multiome release or >= 10 clones x >= 3 passages; C5-S6 tests ready, ATAC A and B sealed; F8MWB5 locked; C5-S3 Raj reserve)",
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)",
   "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)",
-  "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)"
+  "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)",
+  "chapter 9 (paused 2026-11-11): HSPC erythroid/myeloid withdrawn (degenerate); LSK chromatin test ready, not run; all sealed kept"
  ],
- "approved_by": "Bence 2026-11-11: \"2\" (LSK chromatin as chapter 9)",
+ "approved_by": "Bence 2026-11-11: \"no, leave all sealed, and pause cellware\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -100,6 +100,7 @@
   "C8-S2 T3 2026-11-11: CONFIRMED on celltag_reprog:B (rho 0.59, lower 0.46, n 105); celltag_reprog:C sealed",
   "C8 closed 2026-11-11: T1 rho 0.45 and T3 rho 0.59 confirmed on B; T2 refused (power 0.78); WRITEUP_FATE_READOUT.md, RETRO_2026-11-11b.md; H19 amended",
   "C9-S0 2026-11-11 (ad744d5): H3 passes (rho 0.57, power 1.00); H4 0.87 on last partition; H1/H2 fail (0.79/0.78)",
-  "C9-S1 2026-11-11: WITHDRAWN at train selection (only 7/179 train clones carry GM cells; exp 1 none); no oracle entry, chspctrack:B/C sealed"
+  "C9-S1 2026-11-11: WITHDRAWN at train selection (only 7/179 train clones carry GM cells; exp 1 none); no oracle entry, chspctrack:B/C sealed",
+  "Cellware PAUSED 2026-11-11 by Bence; nothing sealed spent after chapter 8"
  ]
 }

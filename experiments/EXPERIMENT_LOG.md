@@ -10540,3 +10540,10 @@ The numbers are unchanged from the result files.)*
   0.24 (the C7 ATAC train-to-A ratio), power is about 0.65.
 - **Oracle:** entry `celltag_c9s2_atac` added. sealed.py reader added.
 - **The look on celltag_lsk:C (LAST partition) needs Bence's verbatim OK** via `--last-ok` (H13).
+
+### C9-S2: NOT run; Cellware PAUSED (2026-11-11)
+
+- **Bence:** "no, leave all sealed, and pause cellware" / "we need to pause".
+- **No look was run.** celltag_lsk:C, celltag_reprog:C and chspctrack:B and C all stay sealed.
+- **The C9-S2 selection and oracle entry stay in place,** ready if the chromatin test is ever re-approved
+  (power about 0.84).

@@ -42,3 +42,8 @@ the human counterpart of chapter 8's mouse neutrophil/monocyte result.
 - Pre-registered as C9-S2. Train rho 0.31, n 195. Plan-stage power 0.87 on celltag_lsk:C, the **last** partition
   (verbatim OK, H13).
 - **Steps:** C9-S2 selection with the readout gate, then one look on C.
+
+## Status 2026-11-11: PAUSED, no look
+
+- Bence chose to keep every sealed set and pause Cellware.
+- The chromatin test is ready but not run.
