@@ -9405,3 +9405,19 @@ credit in CREDIT_C6.md, retro in RETRO_2026-11-10.md. Sealed sets untouched (S1,
   6. **Literature:** Weinreb 2020 (sister fate agreement in LARRY) and Tian 2021 (SIS) give the same design.
 - **Known caveat:** the two wells were split at day 2.5, after tagging during days 0-2. A clone tagged late
   shares fewer divisions before the split, which would lower H, not raise it.
+
+### C7-S2 train result (2026-11-11; `results_celltag/c7s2_train*.json`; train partition only, nothing sealed read)
+
+- **Synthetic checks pass:** syn0 (no memory) H -0.36 [-1.99, 0.44], CI includes 0; syn1 (full memory)
+  H 1.02 [0.98, 1.07].
+- **Train, 144 clones with >= 4 cells in both wells:** D_sis 0.29, D_rand 0.53, D_noise 0.17, **H 0.66
+  [0.58, 0.75]**.
+  - Logit SD: Mono 1.50, Prog 1.38, Neu 0.71, EMk 0.62, Lym 0.42, BEM 0.25, DC 0.12.
+  - Differentiated-only (73 clones): H 0.53 [0.27, 0.71].
+- **Stopping rule not triggered** (the train CI excludes 0). Selection: memory -0.972 vs no memory -1.073
+  per-cell log-likelihood, so memory is chosen.
+- **Power block (`selection/C7-S2.json`):** sd 0.505, effect 0.164 (H > 0.5), alpha 0.025 one-sided.
+- **Counts amendment (before any look):** the oracle count is the structural count scaled down by the train
+  ratio of eligible clones after and before the fate-label exclusions. Otherwise it would overstate n and power.
+- **Reading so far:** a clone fate state exists in this culture, weaker than in LARRY/SIS (no group reaches
+  logit SD 2). The sealed look decides "fixed" vs "partly fixed".

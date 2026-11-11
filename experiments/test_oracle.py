@@ -192,7 +192,20 @@ def _c5s4_counts(part):
     return c5s4_atac_memory.counts(part)
 
 
+def _c7s2(part):
+    import c7s2_sister
+
+    return c7s2_sister.test(part)
+
+
+def _c7s2_counts(part):
+    import c7s2_sister
+
+    return c7s2_sister.counts(part)
+
+
 PARTITION_TESTS = {
+    "celltag_c7s2": (_c7s2, "celltag_lsk", "C7-S2: sister-well heritable fate share H, CellTag-multi LSK day 5"),
     "gastruloid_c5s4_atac": (_c5s4, "raj_atac", "C5-S4: clone chromatin distinctness ratio sealed passage / passage 1"),
     "gastruloid_c4s2a_rescue": (_c4s2a, "raj_morph_0831", "C4-S2a: 5s2+6a rescue over member mean, Aug 2026 plates"),
     "gastruloid_g12_drug": (_g12_drug, "raj_drug", "G12: pooled drugs vs control, one-sided, drug partition B"),
@@ -222,7 +235,7 @@ def selection_gate(exp, test):
     return None
 
 
-PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts, "gastruloid_c5s4_atac": _c5s4_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
+PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts, "gastruloid_c5s4_atac": _c5s4_counts, "celltag_c7s2": _c7s2_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
 
 
 def power_gate(exp, test, part):

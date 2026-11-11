@@ -1,0 +1,17 @@
+{
+ "test": "celltag_c7s2",
+ "higher_is_better": true,
+ "candidates": {
+  "memory": -0.9723521835261936,
+  "no_memory": -1.0729240556136759
+ },
+ "chosen": "memory",
+ "power": {
+  "sd": 0.5046485395768061,
+  "effect": 0.16395966520693972,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8
+ },
+ "note": "C7-S2: H > 0.5 one-sided (95% lower bound); sd = train bootstrap SE x sqrt(n_train)"
+}
