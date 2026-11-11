@@ -1,0 +1,59 @@
+{
+ "test": "hspc_c7s7",
+ "higher_is_better": true,
+ "candidates": {
+  "0.001": 0.2138580332133768,
+  "0.01": 0.5529961010015527,
+  "0.1": 0.6614559768622571,
+  "1.0": 0.6005329217164722,
+  "10.0": 0.43609915569849234
+ },
+ "chosen": "0.1",
+ "C": 0.1,
+ "levels": [
+  "1|I",
+  "2|I",
+  "3|I",
+  "3|III",
+  "3|IV",
+  "3|VII",
+  "3|unknown",
+  "4|II",
+  "4|III",
+  "4|IV",
+  "4|V",
+  "4|VI",
+  "4|unknown",
+  "5|II",
+  "5|IV",
+  "5|unknown",
+  "6|II",
+  "6|III",
+  "6|IV",
+  "6|V",
+  "6|VI",
+  "6|unknown",
+  "7|I",
+  "7|II",
+  "7|III",
+  "7|unknown",
+  "8|I",
+  "8|III",
+  "8|unknown"
+ ],
+ "power": {
+  "sd": 1.3413920491733098,
+  "effect": 0.6614559768622571,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8
+ },
+ "train": {
+  "G": 0.6614559768622571,
+  "sd": 1.3413920491733098,
+  "n": 265,
+  "neff_ratio": 0.6294544523179374,
+  "power_A_ratio_est": 0.9945107429164272
+ },
+ "note": "C7-S7c: G_early > 0 one-sided; stratum = experiment x condition (C7-S6 amendment 1)"
+}

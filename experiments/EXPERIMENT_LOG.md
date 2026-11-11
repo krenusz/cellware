@@ -10076,3 +10076,16 @@ The numbers are unchanged from the result files.)*
 - **Serves: C7-S7.** Test 4. `test_oracle.py look hspc_c7s7 --exp C7-S7c --partition A`. Script
   `c7s7_confirm.py` (test_hspc, counts_hspc).
 - **Pre-flight:** see C7-S7.
+
+### C7-S7 train selection and power (2026-11-11; `selection/C7-S7a|b|c.json`; train only)
+
+| test (fixed order) | train value | chosen C | power on A (train-ratio estimate) |
+|---|---|---|---|
+| 1. LSK H, >= 2 cells | 0.75 [0.70, 0.81], n 342 | - | 1.00 |
+| 2. LSK G_rna | 0.56 bits, n 434 | 0.01 | 1.00 |
+| 3. reprogramming G_rna | 0.24, n 227 | 0.01 | 0.93 |
+| 4. HSPC G_early (stratified) | 0.66, n 265 | 0.1 | 0.99 |
+| 5. LSK G_atac | 0.28, n 237 | 0.01 | 0.93 |
+
+- The oracle power gates recompute power from partition-A structural counts before each look.
+- The LSK C grid has no 0.001 (C7-S3 grid). 0.01 is its edge, as in C7-S3.

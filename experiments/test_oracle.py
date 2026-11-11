@@ -216,7 +216,19 @@ def _c7s3_counts(part):
     return c7s3_carrier.counts(part)
 
 
+def _c7s7(kind, what):
+    def f(part):
+        import c7s7_confirm
+
+        return getattr(c7s7_confirm, f"{what}_{kind}")(part)
+
+    return f
+
+
 PARTITION_TESTS = {
+    "celltag_c7s7_lsk": (_c7s7("lsk", "test"), "celltag_lsk", "C7-S7a: LSK H(>=2 cells) > 0.5, G_rna > 0, G_atac > 0 (fixed sequence)"),
+    "celltag_c7s7_reprog": (_c7s7("reprog", "test"), "celltag_reprog", "C7-S7b: reprogramming G_rna > 0"),
+    "hspc_c7s7": (_c7s7("hspc", "test"), "chspctrack", "C7-S7c: human HSPC early RNA G > 0 (stratum exp x condition)"),
     "celltag_c7s3": (_c7s3, "celltag_lsk", "C7-S3: early chromatin vs early RNA information gain on clone fate, LSK d2.5->d5"),
     "celltag_c7s2": (_c7s2, "celltag_lsk", "C7-S2: sister-well heritable fate share H, CellTag-multi LSK day 5"),
     "gastruloid_c5s4_atac": (_c5s4, "raj_atac", "C5-S4: clone chromatin distinctness ratio sealed passage / passage 1"),
@@ -248,7 +260,9 @@ def selection_gate(exp, test):
     return None
 
 
-PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts, "gastruloid_c5s4_atac": _c5s4_counts, "celltag_c7s2": _c7s2_counts, "celltag_c7s3": _c7s3_counts}  # test -> function(partition) -> {group: n units}; counts only (H9)
+PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue": _c4s2a_counts, "gastruloid_c5s4_atac": _c5s4_counts, "celltag_c7s2": _c7s2_counts, "celltag_c7s3": _c7s3_counts,
+                    "celltag_c7s7_lsk": _c7s7("lsk", "counts"), "celltag_c7s7_reprog": _c7s7("reprog", "counts"),
+                    "hspc_c7s7": _c7s7("hspc", "counts")}  # test -> function(partition) -> {group: n units}; counts only (H9)
 
 
 def power_gate(exp, test, part):
