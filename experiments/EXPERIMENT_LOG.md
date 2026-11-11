@@ -9948,3 +9948,28 @@ The numbers are unchanged from the result files.)*
     conservative.
   - RNA only: no chromatin.
   - Most clones are condition I.
+
+### C7-S6 first run (pre-registered design) and amendment 1 (2026-11-11, train only, before re-running)
+
+- **Pre-registered run** (`results_hspc/c7s6_train_v1_confounded.json`):
+  - validity AUC 0.88 (not blind);
+  - units U1 265, serial pool 177, U2 113;
+  - G_early (U1) **0.72** [0.55, 0.90], C 0.1, null -0.07 (ok);
+  - G_serial (pool) **-0.005** (null -0.009);
+  - on U2: G_early 0.047 [0.018, 0.064], G_serial 0.004 [0.001, 0.008], coverage 12.0 [3.9, 42.0].
+- **Not interpretable as a clone state: a confound in the design, found because of the result.**
+  - The 0.72 vs 0.047 gap between U1 and its U2 subset prompted a structural check (experiment x condition x
+    early day; no fate column).
+  - Condition I clones come from **two experiments** with **different early days**: exp 1 early cells are all
+    day 3 (358 cells); exp 7 early cells are all day 5 (934).
+  - Early RNA therefore identifies experiment and sampling day. A condition-only baseline credits any
+    experiment-level difference in day-10 composition to "clone state".
+  - U2 is entirely exp 1 / condition I, where that confound can't act.
+- **The disclosure (H18 spirit):** the check was triggered by a fate result. The fix, though, is a standard
+  design correction (stratify by batch), not a tuning toward a target, and it is fixed before re-running.
+- **Amendment 1 (fixed now):**
+  - The baseline and the model's one-hot use **stratum = experiment x condition** instead of condition.
+  - Everything else is unchanged.
+  - The pre-registered readings are applied to the amended run. The v1 numbers stay logged and are not
+    interpreted.
+EOF
