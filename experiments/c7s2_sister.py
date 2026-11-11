@@ -72,7 +72,7 @@ def _loglik(k1, k2):
 
 def train(synthetic=None, boot=1000):
     rng = np.random.default_rng(72)
-    df = partitions.train_only(DATASET, _load(), unit_col="clone.id")
+    df = partitions.train_only("celltag_lsk", _load(), unit_col="clone.id")
     res = {"synthetic": synthetic}
     for label, fates in (("all", FATES), ("differentiated", FATES[:-1])):
         k1, k2 = _counts(df, fates)
