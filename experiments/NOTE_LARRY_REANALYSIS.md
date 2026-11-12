@@ -55,7 +55,20 @@ contact with the original authors (standing rule).
 ## Before any outside use
 
 1. ~~Re-check the non-indexed citers~~ (done, see above).
-2. Rerun claim 2 under a second selection prior (for example gamma <= 0.4 and <= 0.8) and report the range.
+2. **Selection-prior sensitivity, mostly done from existing runs (2026-11-12):**
+
+   | selection cap (gamma) | run | instruction G / M (logit, gated median) |
+   |---|---|---|
+   | none in the model (E38: uniform boost, no lineage-matched term) | E38 | 0.49 / 0.47 |
+   | <= 0.35 (strict, Rieger) | E47 | 0.47 / 0.62 |
+   | <= 0.6 (generous, Rieger) | E48 | 0.50 / 0.56 (range 0.38-0.92) |
+   | <= 0.6, core code | E53 | 0.52 / 0.70 |
+   | unbounded (fit 1.3, about 4x the plausible bound) | E46 | 0.86 / not identified (0.6-7.5) |
+
+   - **Robust at about 0.5 across every physiologically plausible cap.** It breaks only when selection is
+     allowed about four times stronger than doubling rates permit.
+   - **Optional, not run:** a cap of about 0.9 would locate where the estimate starts to drift. That needs a new
+     pre-registered GitHub Actions sweep (18 seeds, about 40 min).
 3. A figure set:
    - presence lift with model bands (claim 3);
    - the instruction/selection ridge with the plausible band shaded (claims 1-2).
