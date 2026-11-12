@@ -29,6 +29,19 @@
 | 14/18 | Bcor loss acts on persistence and expansion. **A fate-level effect is not identifiable** in SIS-skew once 40% editing efficiency and sampling are modelled | **reinterprets the source paper's claim** (Tian 2021: Bcor restricts pDC potential). No later paper re-examines it (Bcor search: only Tian 2021 and its preview) | Tian 2021 Immunity | moderate; recovery checks + held-out E51 |
 | 15 | The SIS-skew control ("null") wells are not null: control-vector sisters shift away from cDC1 within clones | **contradicts the source paper's** report of no change in control wells | Tian 2021 | strong (CIs exclude 0) |
 
+**Correction (same day, after reading the logs again):** "confirmed" was too strong for three of the four.
+- **#9:** held-out replicated (B37).
+- **#2-#3:** a fitted parameter within the model family. It holds only under a plausible selection bound;
+  unbounded, it ranges 0.5-3.7 logits.
+- **#14/#18:** a design-level non-identifiability result (recovery study), not a sealed test.
+- **#15:** fit set only (strong CIs). Tian 2021 did not test it (a finer test, not a contradiction).
+
+**Full-text check (same day):**
+- 283 open-access citers of Weinreb 2020 and all 12 citers of Tian 2021 (Europe PMC) were read.
+- None reports any of the four. All four stay novel at full-text level for the indexed literature.
+- Not covered: about 480 non-PMC citers of Weinreb 2020.
+- See NOTE_LARRY_REANALYSIS.md and NOTE_SISSKEW_REANALYSIS.md.
+
 **Caveat for A:** all four come from reanalysing published datasets. Their value is as corrections or
 quantifications of those papers. A reviewer would want the authors' raw-data checks (for #15: vector or
 population effects; for #14: editing efficiency per clone).
