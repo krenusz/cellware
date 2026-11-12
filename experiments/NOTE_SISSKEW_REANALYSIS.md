@@ -46,8 +46,12 @@ contact with the original authors (standing rule).
 
 ## Before any outside use
 
-1. Check Tian 2021's supplement for per-clone editing data. It might make claim 1 testable instead of "not
-   identifiable".
+1. ~~Check for per-clone editing data~~ (done 2026-11-12):
+   - Tian 2021 is not open access in PMC and has no PMC supplement.
+   - The authors' SIS-skew files (counts, sorted cell numbers, analysis Rmd) mark transduction (Cherry) only,
+     not editing. Only the bulk 40% indel efficiency is reported.
+   - Claim 1 therefore stays "not identifiable from public data". Only the authors' per-clone genotyping could
+     settle it.
 2. Simulate claim 3's alternatives (vector effect vs population difference) and state which data would
    separate them.
 3. A figure set:

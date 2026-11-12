@@ -45,9 +45,16 @@ contact with the original authors (standing rule).
   - Rieger 2009: instruction in sorted GMPs.
   - Lin/Naik 2024: restricted progenitors make small clones, which is consistent with claim 3.
 
+- **All citers screened by title and abstract (2026-11-12):** 712 citers (Semantic Scholar), 622 with
+  abstracts.
+  - Two pattern matches, neither a quantification.
+  - One is a 2020 review arguing cytokines instruct (Brown et al., IJMS 2020, doi 10.3390/ijms21072362): the
+    opposing view, to cite.
+  - The other is a 2026 preprint on ageing clonal selection.
+
 ## Before any outside use
 
-1. Re-check the 480 non-indexed citers by title and abstract for "cytokine", "instruct" and "selection".
+1. ~~Re-check the non-indexed citers~~ (done, see above).
 2. Rerun claim 2 under a second selection prior (for example gamma <= 0.4 and <= 0.8) and report the range.
 3. A figure set:
    - presence lift with model bands (claim 3);
