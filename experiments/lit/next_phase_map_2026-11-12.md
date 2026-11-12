@@ -42,3 +42,55 @@ Cellware stays PAUSED. This is a map, not a plan. Nothing here was downloaded or
 1. **H19 counts only:** download metadata (barcode tables, no expression), and count clones per arm and sisters per clone for #1 and #2.
 2. **H20 value check:** full-text read of ReSisTrace (open access) to confirm that it does not quantify instruction.
 3. **Seal before any statistic:** partition train/A/B/C at the clone level before loading outcomes.
+
+## Follow-up on rank 1, ReSisTrace (2026-11-12, same day)
+
+### Structure (counts only, from GEO processed cell_info tables)
+
+The tables hold the outcome label (`drugSens`: pre-resistant vs pre-sensitive). Its direction was **not** tabulated.
+
+| arm | replicate | pre cells | pre cells with a label | sister groups >= 2 cells | post cells |
+|---|---|---|---|---|---|
+| carboplatin | 1 / 2 | 5057 / 4882 | 934 / 866 | 41 / 48 | 1508 / 1852 |
+| olaparib | 1 / 2 | 5239 / 5218 | 898 / 995 | 74 / 43 | 8753 / 1297 |
+| NK cells | 1 / 2 | 4929 / 6947 | 627 / 1262 | 32 / 67 | 5449 / 5527 |
+| control | 1 / 2 | 2738 / 2001 | 323 / 239 | 31 / 22 | 8910 / 7417 |
+
+- **Readout questions (pre-state -> fate) have ample units:** 600-1260 labelled pre cells per replicate.
+  - The per-side split (>= 30 per side, readout gate) is unknown until sealed. The paper implies a minority
+    pre-resistant side.
+- **Within-timepoint sister pairs are few** (22-74 groups per replicate). A sister-heritability (H) estimate
+  would be thin per replicate.
+- **The processed tables have no lineage barcode on post-treatment cells.**
+  - So pre-to-post lineage matching, which an instruction estimate needs, requires the raw data (RAW tar, 484 MB, or SRA reads).
+  - Not downloaded.
+- **Natural seal:** two independent replicates per arm. Replicate 1 can be the fit set and replicate 2 the
+  sealed confirmation, plus three arms as cross-checks.
+
+### Full-text check (PMC10850087, Nat Commun 2024)
+
+- **The design assumes selection.**
+  - A cell is pre-resistant if its lineage is recovered after treatment.
+  - Missing lineages are called pre-sensitive (the paper notes false negatives).
+  - They model **label accuracy**: true pre-resistant cells are enriched 4-5x in the observed pre-resistant group.
+- **They do not estimate instruction.** No test asks whether survivors' post-treatment state moved beyond
+  their sisters' pre-treatment state, or how much the drug induces resistance vs selects for it.
+- **Genetic subclones confound the signal.** The paper reports subclone A enriched in pre-resistant cells,
+  especially under carboplatin and olaparib. So part of "pre-resistance" is genetic subclone selection.
+- **Validation:** two replicates with consistent changes, plus small-molecule follow-up. No sealed held-out
+  prediction.
+- **Sister analysis** is gene-level (sister-concordant vs discordant genes), not a heritability of the fate
+  state.
+
+### Verdict for rank 1
+
+The gap is confirmed at full-text level. It splits resistance into three parts:
+- genetic subclone selection;
+- non-genetic pre-state selection;
+- drug-instructed change.
+
+Fitting this jointly is not done in the source paper. It is the best transfer of chapter 1-2 machinery found.
+
+Blockers before H19:
+- the lineage match after treatment needs raw data (about 0.5 GB);
+- the per-side split must be checked under seal.
