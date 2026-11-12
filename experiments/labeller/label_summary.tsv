@@ -1,0 +1,95 @@
+A extracted_data/SG_kit1	52	0.0 GB
+A raw_data/SG	14	0.0 GB
+B extracted_data/ATAC	50	37.3 GB
+B extracted_data/RNAseq	18	0.1 GB
+B extracted_data/SG_Lmetric	2	0.0 GB
+B extracted_data/SG_kit1	4	0.0 GB
+B extracted_data/SGanalysis_visualizations	4	0.0 GB
+B extracted_data/linescans	16	0.0 GB
+B extraction_scripts/ATAC	7	0.0 GB
+B extraction_scripts/SG	5	0.1 GB
+B extraction_scripts/linescans	6	0.0 GB
+B plot_scripts/ATAC-seq (Figure 4)	4	0.0 GB
+B plot_scripts/Bootstrap Analysis (Supplementary)	1	0.0 GB
+B plot_scripts/Clone Morphologies (Figure 1 and Supplementary)	6	0.0 GB
+B plot_scripts/SG (Figure 2 and Supplementary)	11	0.0 GB
+B plot_scripts/chimera_elongation (revisions)	1	0.0 GB
+B raw_data/ATAC	25	3.5 GB
+B raw_data/Bootstrap Analysis	18	0.0 GB
+B raw_data/Immunofluorescence Intensity Measurements	25	0.0 GB
+B raw_data/Morphology CSVs	2	0.0 GB
+B raw_data/Nimbus JSON	144	0.0 GB
+B raw_data/RNAseq	1	0.0 GB
+B raw_data/SG	137	1.2 GB
+B raw_data/clone_bulk_chimera_3s1_08162026	2	0.0 GB
+B raw_data/linescans	20	0.0 GB
+C extracted_data/SG_Lmetric	4	0.0 GB
+C extracted_data/SG_kit1	4	0.0 GB
+C extracted_data/bootstrapping_rainbow	18	0.0 GB
+C extracted_data/linescans	26	0.0 GB
+C raw_data/Immunofluorescence Blob Metrics	54	0.0 GB
+C raw_data/Incucyte_raw_test	222	3.4 GB
+C raw_data/Morphologies	10	0.0 GB
+C raw_data/SG	120	0.1 GB
+C raw_data/Weber_reanalysis	1	1.1 GB
+C raw_data/linescans	10	0.0 GB
+D Figures/Fig1_propensity_v6.pdf	1	0.0 GB
+D Figures/Fig2_SG_v5.pdf	1	0.0 GB
+D Figures/Fig3_passaging_v1.pdf	1	0.0 GB
+D Figures/Fig4_seq_v4.pdf	1	0.1 GB
+D Figures/Fig5_drugtx_v5.pdf	1	0.0 GB
+D Figures/Fig6_Weber_v4.pdf	1	0.0 GB
+D Figures/Figure 1-related Supplementary	6	0.1 GB
+D Figures/Figure 2-related Supplementary	5	0.1 GB
+D Figures/Figure 3-related Supplementary	3	0.0 GB
+D Figures/Figure 4-related Supplementary	4	0.1 GB
+D Figures/Figure 5-related Supplementary	5	0.0 GB
+D Figures/Figure 6-related Supplementary	1	0.0 GB
+D Figures/Supplementary Movies	2	0.0 GB
+D extracted_data/ATAC	6949	5.3 GB
+D extracted_data/RNAseq	37	0.0 GB
+D extracted_data/SGanalysis_visualizations	4	0.0 GB
+D extracted_data/Tobias	87	22.2 GB
+D extracted_data/linescans	4	0.0 GB
+D extraction_scripts/Amadei_reanalysis	3	0.0 GB
+D extraction_scripts/IOU	3	0.0 GB
+D extraction_scripts/RNAseq	1	0.0 GB
+D extraction_scripts/TOBIAS	2	0.0 GB
+D plot_scripts/Clone Ratios (Supplementary)	1	0.0 GB
+D plot_scripts/Competition (Supplementary)	2	0.0 GB
+D plot_scripts/Differentiation Assay (Supplementary)	1	0.0 GB
+D plot_scripts/IOU Analysis (Figure 5)	5	0.0 GB
+D plot_scripts/Linescans (Figure 1)	2	0.0 GB
+D plot_scripts/Linescans (Figure 3)	3	0.0 GB
+D plot_scripts/Linescans (Figure 5 and Supplementary)	2	0.0 GB
+D plot_scripts/RNAseq (Figure 4)	2	0.0 GB
+D plot_scripts/SG (Figure 2 and Supplementary)	7	0.0 GB
+D plot_scripts/T Overlap - (Figure 3 and Supplementary)	1	0.0 GB
+D plot_scripts/T_Igfbp5_separation (revisions)	16	0.0 GB
+D plot_scripts/Weber Reanalysis (Figure 6 and Supplementary)	1	0.0 GB
+D plot_scripts/Wnt Analysis (Supplementary)	1	0.0 GB
+D plot_scripts/chimera_elongation (revisions)	31	0.0 GB
+D raw_data/ATAC	71	50.5 GB
+D raw_data/Morphologies	1	0.0 GB
+D raw_data/Nimbus JSON	7	0.0 GB
+D raw_data/RNAseq	65	35.3 GB
+D raw_data/RNAseq_03192026	19	0.0 GB
+D raw_data/SG	310	0.1 GB
+X extracted_data/ATAC	6910	38.0 GB
+X extracted_data/Differentiation Assay	1	0.0 GB
+X extracted_data/IOU	46	0.0 GB
+X extracted_data/Tobias	42	14.1 GB
+X extracted_data/linescans	3	0.0 GB
+X plot_scripts/T_Igfbp5_separation (revisions)	5	0.0 GB
+X plot_scripts/chimera_elongation (revisions)	2	0.0 GB
+X raw_data/ATAC	96	47.8 GB
+X raw_data/Differentiation Assay - 10212024	3	0.0 GB
+X raw_data/Line Scans	4	0.0 GB
+X raw_data/Morphologies	46	0.3 GB
+X raw_data/Nimbus JSON	76	0.0 GB
+X raw_data/Patch Analysis	70	1.5 GB
+X raw_data/RNAseq_03192026	5	0.0 GB
+X raw_data/T_Igfbp5_09022026	1	0.0 GB
+X raw_data/clone_bulk_chimera_08232026	6	0.0 GB
+X raw_data/linescans	12	0.0 GB
+X raw_data/morph_08312026	2	0.0 GB

@@ -1,0 +1,43 @@
+raw_data/Bootstrap Analysis/rainbow_distribution	18	0.2MB	{'json': 18}	aggregate_120h_2_03282025.json | aggregate_120h_3_03282025.json | aggregate_120h_5_03282025.json | aggregate_120h_6_03282025.json | aggregate_120h_7_03282025.json | aggregate_120h_8_03282025.json
+raw_data/Differentiation Assay - 10212024	3	0.0MB	{'txt': 3}	bulk_late_clone1.txt | clone234.txt | clone567.txt
+raw_data/Immunofluorescence Blob Metrics/01202025	4	0.0MB	{'csv': 4}	clone1_clone3_01202025.csv | clone1_clone3001_01202025.csv | clone1_clone3002_01202025.csv | clone1_clone3003_01202025.csv
+raw_data/Immunofluorescence Blob Metrics/04062025	8	0.0MB	{'csv': 8}	50%clone7_04062025.csv | 50%clone7001_04062025.csv | 50%clone7002_04062025.csv | 50%clone7003_04062025.csv | 50%clone7004_04062025.csv | bulk_04062025.csv
+raw_data/Immunofluorescence Blob Metrics/04262024	2	0.0MB	{'csv': 2}	clone3_10x_04262024.csv | clone3_20x_04262024.csv
+raw_data/Immunofluorescence Blob Metrics/10092024	1	0.0MB	{'csv': 1}	clone3_20x_10092024.csv
+raw_data/Immunofluorescence Blob Metrics/11072024	10	0.0MB	{'csv': 10}	clone1_clone3_1to1_11072024.csv | clone1_clone3_1to20001_11072024.csv | clone1_clone3_1to20002_11072024.csv | clone1_clone3_2to10003_11072024.csv | clone1_clone3_2to10004_11072024.csv | clone1001_11072024.csv
+raw_data/Immunofluorescence Blob Metrics/11172024	18	0.0MB	{'csv': 18}	111724_clone1+3.csv | 111724_clone1+6.csv | 111724_clone1+3001.csv | 111724_clone1+3002.csv | 111724_clone1+6001.csv | 111724_clone1+6002.csv
+raw_data/Immunofluorescence Blob Metrics/12012024	11	0.0MB	{'csv': 11}	clone1_clone5.csv | clone1_clone5001.csv | clone1_clone5002.csv | clone1_clone5003.csv | clone1_clone5004.csv | clone1_clone5005.csv
+raw_data/Immunofluorescence Intensity Measurements/04192025	9	0.2MB	{'csv': 9}	20250419_124905_185__WellA1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0000.csv | 20250419_124905_185__WellA4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0003.csv | 20250419_124905_185__WellB1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0007.csv | 20250419_124905_185__WellB2_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0006.csv | 20250419_124905_185__WellB3_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0005.csv | 20250419_124905_185__WellB4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0004.csv
+raw_data/Immunofluorescence Intensity Measurements/04202025	6	1.4MB	{'csv': 6}	20250420_173146_742__WellA5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0004.csv | 20250420_173146_742__WellA6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0005.csv | 20250420_173146_742__WellB5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0007.csv | 20250420_173146_742__WellB6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0006.csv | 20250420_173146_742__WellC5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0016.csv | 20250420_173146_742__WellC6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0017.csv
+raw_data/Immunofluorescence Intensity Measurements/05032025	10	0.4MB	{'csv': 10}	20250503_142206_938__WellA1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0000.csv | 20250503_142206_938__WellA2_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0001.csv | 20250503_142206_938__WellA3_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0002.csv | 20250503_142206_938__WellA4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0003.csv | 20250503_142206_938__WellA5_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0004.csv | 20250503_142206_938__WellB1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0011.csv
+raw_data/Line Scans/07162025	2	2.6MB	{'csv': 2}	line_scan_GFP%spike_1.csv | line_scan_GFPspike.csv
+raw_data/Line Scans/07282025	1	0.9MB	{'csv': 1}	linescan_drug_07282025.csv
+raw_data/Line Scans/08052025	1	1.2MB	{'csv': 1}	line_scan_sgbc2_50%.csv
+raw_data/Morphology CSVs	2	0.0MB	{'csv': 2}	Morphologies_1_2_3_4_5_6_7.csv | T_overlap - Sheet1.csv
+raw_data/Nimbus JSON/01202025	4	0.1MB	{'json': 4}	clone1_clone3_01202025.json | clone1_clone3001_01202025.json | clone1_clone3002_01202025.json | clone1_clone3003_01202025.json
+raw_data/Nimbus JSON/03252025	5	0.1MB	{'json': 5}	aggregate_120h_wellD3_03252025.json | aggregate_120h_wellF2_03252025.json | aggregate_120h_wellF5_03252025.json | aggregate_120h_wellG2_03252025.json | aggregate_120hwellE7_03252025.json
+raw_data/Nimbus JSON/03282025	13	0.1MB	{'json': 13}	aggregate_120h_2_03282025.json | aggregate_120h_3_03282025.json | aggregate_120h_5_03282025.json | aggregate_120h_6_03282025.json | aggregate_120h_7_03282025.json | aggregate_120h_8_03282025.json
+raw_data/Nimbus JSON/04062025	8	0.1MB	{'json': 8}	50%clone7_04062025.json | 50%clone7001_04062025.json | 50%clone7002_04062025.json | 50%clone7003_04062025.json | 50%clone7004_04062025.json | bulk_04062025.json
+raw_data/Nimbus JSON/04192025	9	2.0MB	{'json': 9}	20250419_124905_185__WellA1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0000.json | 20250419_124905_185__WellA4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0003.json | 20250419_124905_185__WellB1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0007.json | 20250419_124905_185__WellB2_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0006.json | 20250419_124905_185__WellB3_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0005.json | 20250419_124905_185__WellB4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0004.json
+raw_data/Nimbus JSON/04202025	6	2.7MB	{'json': 6}	20250420_173146_742__WellA5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0004.json | 20250420_173146_742__WellA6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0005.json | 20250420_173146_742__WellB5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0007.json | 20250420_173146_742__WellB6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0006.json | 20250420_173146_742__WellC5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0016.json | 20250420_173146_742__WellC6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0017.json
+raw_data/Nimbus JSON/04262024	2	0.0MB	{'json': 2}	clone3_10x_04262024.json | clone3_20x_04262024.json
+raw_data/Nimbus JSON/04262025	2	0.1MB	{'json': 2}	clone1_Wnt_04262025_fixed.json | clone3_Wnt_04262025_fixed.json
+raw_data/Nimbus JSON/05032025	32	1.4MB	{'json': 32}	1+3_ctrl001.json | 1+3_ctrl002.json | 1+3_ctrl003.json | 1+3_ctrl004.json | 1+3_ctrl005.json | 1+3_ra.json
+raw_data/Nimbus JSON/05072025	21	0.3MB	{'json': 21}	1+7.json | 1+7001.json | 1+7002.json | 3+7.json | 3+7001.json | 3+7002.json
+raw_data/Nimbus JSON/05142025	25	0.1MB	{'json': 25}	bulk.json | bulk001.json | bulk002.json | bulk003.json | bulk004.json | bulk005.json
+raw_data/Nimbus JSON/05282025	42	0.5MB	{'json': 42}	1+3ra001.json | 1+3ra002.json | 1+3ra003 (1).json | 1+3ra003.json | 1+3sb002.json | 1+3sb003.json
+raw_data/Nimbus JSON/07132025	7	0.0MB	{'json': 7}	rb_10%004.json | rb_10%005.json | rb_10%007.json | rb_25%.json | rb_25%002.json | rb_25%003.json
+raw_data/Nimbus JSON/07132025 (1)	7	0.0MB	{'json': 7}	rb_10%004.json | rb_10%005.json | rb_10%007.json | rb_25%.json | rb_25%002.json | rb_25%003.json
+raw_data/Nimbus JSON/07162025	1	0.1MB	{'json': 1}	%GFPbc2_plate2_07162025.json
+raw_data/Nimbus JSON/08052025	1	0.1MB	{'json': 1}	sg_bc2_50%_08052025.json
+raw_data/Nimbus JSON/090924	1	0.0MB	{'json': 1}	clone6%_09092024.json
+raw_data/Nimbus JSON/10092024	1	0.0MB	{'json': 1}	clone3_20x_10092024.json
+raw_data/Nimbus JSON/11042024	2	0.1MB	{'json': 2}	2024-11-08 13_39 - green_ratios_A1_1_00d00h00m.json | demix_clones1_3.json
+raw_data/Nimbus JSON/11072024	9	0.0MB	{'json': 9}	clone1_clone3_1to20001_11072024.json | clone1_clone3_1to20002_11072024.json | clone1_clone3_2to10003_11072024.json | clone1_clone3_2to10004_11072024.json | clone1001_11072024.json | clone1002_11072024.json
+raw_data/Nimbus JSON/11172024	18	0.3MB	{'json': 18}	111724_clone1+3.json | 111724_clone1+6.json | 111724_clone1+3001.json | 111724_clone1+3002.json | 111724_clone1+6001.json | 111724_clone1+6002.json
+raw_data/Nimbus JSON/12012024	11	0.1MB	{'json': 11}	clone1_clone5.json | clone1_clone5001.json | clone1_clone5002.json | clone1_clone5003.json | clone1_clone5004.json | clone1_clone5005.json
+raw_data/T_Igfbp5_09022026	1	4.4MB	{'csv': 1}	gastruloid_T_Igfbp5.csv
+raw_data/clone_bulk_chimera_08232026	6	0.7MB	{'csv': 3, 'json': 3}	1s2+bulk.csv | 1s2+bulk.json | 5+bulk.csv | 5+bulk.json | 6a+bulk.csv | 6a+bulk.json
+raw_data/clone_bulk_chimera_3s1_08162026	2	0.3MB	{'csv': 1, 'json': 1}	3s1+bulk.csv | 3s1+bulk.json
+raw_data/linescans	42	16.1MB	{'xlsx': 35, 'csv': 7}	1+3_ctrl_ra_sb_05032025.csv | 3+7_6+7_linescan_5032025.csv | clone1_pass1subclones_09242024.xlsx | clone1_pass2subclones_09242024.xlsx | clone1_Wnt_04262025.csv | clone1%_pass1_07072024.xlsx
+raw_data/morph_08312026	2	0.2MB	{'json': 2}	bulk_5s2_6a.json | bulk+5s2_bulk+6a_5s2+6a.json

@@ -1,0 +1,6 @@
+[
+ {"glob": "raw_data/linescans/clone1+3_*1to1_11042024.xlsx", "usefulness": "B", "seal": "open", "questions": "Q4", "basis": "metadata", "note": "review: raw per-gastruloid data behind the ratio mean curves used in G1b (#21); same gastruloids, so per-gastruloid variance only, not an independent test"},
+ {"glob": "raw_data/linescans/clone1+3_ratios_11042024.xlsx", "usefulness": "B", "seal": "open", "questions": "Q4", "basis": "metadata", "note": "review: raw behind G1b (#21) ratio curves; same gastruloids, not independent"},
+ {"glob": "raw_data/linescans/clone1+clone3_1to1_115h_11042024.xlsx", "usefulness": "B", "seal": "open", "questions": "Q4", "basis": "metadata", "note": "review: 115 h timepoint of the G1b ratio batch; same batch, not independent"},
+ {"glob": "raw_data/linescans/clone1+3_clone*_04292024.xlsx", "usefulness": "B", "seal": "open", "questions": "Q4", "basis": "metadata", "note": "review: raw behind the 04292024 ratio curves used in G1b (#21); same gastruloids, not independent"}
+]

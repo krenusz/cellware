@@ -1,0 +1,179 @@
+Figures	6	216.7MB	{'pdf': 6}	Fig1_propensity_v6.pdf | Fig2_SG_v5.pdf | Fig3_passaging_v1.pdf | Fig4_seq_v4.pdf | Fig5_drugtx_v5.pdf | Fig6_Weber_v4.pdf
+Figures/Figure 1-related Supplementary	6	64.6MB	{'pdf': 3, 'ai': 3}	Supplementary_1_bootstrapanalysis_v1.pdf | Supplementary_2_relativepropensity_v2.ai | Supplementary_3_morphologybreakdown_v2.ai | Supplementary_4_ratios.pdf | Supplementary_5_competition_v1.ai | Supplementary_6_BrachyuryIF_v1.pdf
+Figures/Figure 2-related Supplementary	5	138.7MB	{'pdf': 5}	Supplementary_7_fullpanel_v1.pdf | Supplementary_8_badbulk_v1.pdf | Supplementary_9_clonesegment_v1.pdf | Supplementary_10_Toverlap_v1.pdf | Supplementary_11_comboexamples_v1.pdf
+Figures/Figure 3-related Supplementary	3	3.4MB	{'pdf': 3}	Supplementary_12_expansion_v1.pdf | Supplementary_13_passaging_v2.pdf | Supplementary_14_passaging_v1.pdf
+Figures/Figure 4-related Supplementary	4	77.1MB	{'pdf': 4}	Supplementary_15_Cadherin_v1.pdf | Supplementary_16_diffassay_v1.pdf | Supplementary_17_Wnt.pdf | Supplementary_18_APpeaks_v1.pdf
+Figures/Figure 5-related Supplementary	5	21.3MB	{'pdf': 5}	Supplementary_19_1+3avgscan_v1 copy.pdf | Supplementary_20_1+6avgscan_v1.pdf | Supplementary_21_agn_v1.pdf | Supplementary_22_Manders_v1.pdf | Supplementary_23_sgdrug.pdf
+Figures/Figure 6-related Supplementary	1	0.7MB	{'pdf': 1}	Supplementary_24_Weberworkflow_v1.pdf
+Figures/Supplementary Movies	2	5.5MB	{'webm': 2}	Supplementary_Movie_1_v1.webm | Supplementary_Movie_2_v1.webm
+extraction_scripts/ATAC	1	0.1MB	{'R': 1}	102024_ATAC_clone_mapping.R
+extraction_scripts/ATAC/atac-qc	6	0.0MB	{'R': 3, 'sh': 2, 'py': 1}	atac_peak_counts_requant.R | tobias_fork.py | tobias_perclone_regions.R | tobias_perclone_run.sh | tobias_perclone_score.R | tss_enrichment_deeptools.sh
+extraction_scripts/Amadei_reanalysis	3	0.0MB	{'R': 3}	amadei_analysis_fromscaled.R | amadei_part2.R | amadei.R
+extraction_scripts/IOU	3	5.4MB	{'ipynb': 3}	DrugTx_Patchiness_1+3_07282025.ipynb | DrugTx_patchiness_script_1+3_052325.ipynb | DrugTx_patchiness_script_050325.ipynb
+extraction_scripts/RNAseq	1	0.0MB	{'txt': 1}	Alignment_commandprompt.txt
+extraction_scripts/SG	5	88.6MB	{'ipynb': 5}	Gastruloid_Lmetric_kit2.ipynb | Gastruloid_Lmetric-gridded.ipynb | Gastruloid_Lmetric.ipynb | L_metric_clonecombo_segmented.ipynb | L_metric_kit2.ipynb
+extraction_scripts/TOBIAS	2	0.0MB	{'sh': 2}	merge_bams.sh | merge_selected.sh
+extraction_scripts/linescans	6	14.0MB	{'ipynb': 6}	Clone_DrugTx.ipynb | Clone_Passaging.ipynb | Clone_Propensity_Passaging.ipynb | Clone_Propensity_Subclones.ipynb | Clone_Ratios.ipynb | Competition_Plots.ipynb
+plot_scripts/ATAC-seq (Figure 4)	4	0.3MB	{'R': 4}	ATAC_pipeline_organized_October2024.R | plot_motif_homermotif.R | plot_motif_knownmotif.R | TOBIAS.R
+plot_scripts/Bootstrap Analysis (Supplementary)	1	0.0MB	{'R': 1}	lineage_spatial_test.R
+plot_scripts/Clone Morphologies (Figure 1 and Supplementary)	6	0.1MB	{'R': 6}	clone_morphology.R | Clone_Scoring_Bargraphs_v4.R | gastruloid_morphology_consolidated.R | morphologies_drugtx.R | rb_bulk_comparison_07282025.R | rb_bulk_comparison.R
+plot_scripts/Clone Ratios (Supplementary)	1	0.0MB	{'R': 1}	linescan_plotting_ratios.R
+plot_scripts/Competition (Supplementary)	2	0.0MB	{'R': 2}	competition_plotting.R | linescan_coculture_indiv.R
+plot_scripts/Differentiation Assay (Supplementary)	1	0.0MB	{'R': 1}	differentiation_assay.R
+plot_scripts/IOU Analysis (Figure 5)	5	0.0MB	{'R': 5}	chem_perturbs_092024.R | chem_perturbs_clone_08092025.R | clone_side_overlap_plot.R | IOU_rep3.R | IOU.R
+plot_scripts/Linescans (Figure 1)	2	0.0MB	{'R': 2}	GFP_polyclonal_linescans.R | linescan_plotting_fig1.R
+plot_scripts/Linescans (Figure 3)	3	0.0MB	{'R': 3}	linescan_plotting_passaging.R | passaging_directionality.R | plot_passage_test.R
+plot_scripts/Linescans (Figure 5 and Supplementary)	2	0.0MB	{'R': 2}	linescan_drugtx_07282025.R | linescan_plotting_drugtx.R
+plot_scripts/RNAseq (Figure 4)	2	0.1MB	{'R': 2}	RNAseq_clone_032025.R | rnaseq_gastr.R
+plot_scripts/SG (Figure 2 and Supplementary)	11	1.9MB	{'R': 10, 'ipynb': 1}	clonecombo_plotting.R | lMetric_plotting_kit2.R | lMetric_plotting.R | sg_analysis_clonecombination_01292025_v2.R | sg_analysis_clonecombination_02132025_v2.R | sg_analysis_clonecombination_02172025_v2.R
+plot_scripts/SG (Figure 2 and Supplementary)/SG_moran_coexpr	6	0.0MB	{'csv': 5, 'R': 1}	coexpr_offL_per_gastruloid.csv | coexpr_tests.csv | moran_clone_vs_bulk.csv | moran_I_per_gastruloid.csv | moran_log2fc_pure_vs_bulk.csv | sg_moran_coexpr_pipeline.R
+plot_scripts/SG (Figure 2 and Supplementary)/SG_moran_coexpr/data	1	0.0MB	{'rds': 1}	moran_pipeline_I.rds
+plot_scripts/T Overlap - (Figure 3 and Supplementary)	1	0.0MB	{'R': 1}	overlaps.R
+plot_scripts/T_Igfbp5_separation (revisions)	13	0.0MB	{'R': 8, 'csv': 5}	containment.R | correlation_ci.csv | correlation_ci.R | draw_linescans.R | polarization_bargraph.R | profile_correlation.csv
+plot_scripts/T_Igfbp5_separation (revisions)/figures	8	1.6MB	{'png': 6, 'pdf': 2}	correlation_ci.png | linescans.pdf | linescans.png | polarization_bargraph.pdf | polarization_bargraph.png | profile_correlation.png
+plot_scripts/Weber Reanalysis (Figure 6 and Supplementary)	1	0.0MB	{'R': 1}	analysis_Weber.R
+plot_scripts/Wnt Analysis (Supplementary)	1	0.0MB	{'R': 1}	CTNNB1_intensity_05032025.R
+plot_scripts/chimera_elongation (revisions)	7	0.0MB	{'R': 5, 'py': 1, 'md': 1}	chimera_geo_3s1_only.R | chimera_geo_analysis.R | chimera_geo_barplots.R | chimera_geo_grouped_bar_small.R | chimera_geo_grouped_bar.R | compute_geo_metrics.py
+plot_scripts/chimera_elongation (revisions)/data	1	0.0MB	{'csv': 1}	geo_metrics.csv
+plot_scripts/chimera_elongation (revisions)/figures	26	1.2MB	{'pdf': 13, 'png': 13}	geo_3s1_only.pdf | geo_3s1_only.png | geo_bar_sig_coded.pdf | geo_bar_sig_coded.png | geo_continuous_panels.pdf | geo_continuous_panels.png
+raw_data/Incucyte_raw_test/VA_Clone5+BraGFP_Clone6+BraGFP_72htimelapse_09152025_D8_D9_A3	30	54.8MB	{'tif': 30}	VID5046_A3_1_01d12h00m.tif | VID5046_A3_1_01d00h00m.tif | VID5046_A3_1_02d12h00m.tif | VID5046_A3_1_02d00h00m.tif | VID5046_A3_1_03d12h15m.tif | VID5046_A3_1_03d00h15m.tif
+raw_data/Incucyte_raw_test/bulk_clone1s1_bulk+clone7s1_08272025_fixed	192	3317.8MB	{'tif': 192}	green_VID4987_A1_1_00d00h00m.tif | green_VID4987_A2_1_00d00h00m.tif | green_VID4987_A3_1_00d00h00m.tif | green_VID4987_A4_1_00d00h00m.tif | green_VID4987_A5_1_00d00h00m.tif | green_VID4987_A6_1_00d00h00m.tif
+raw_data/Morphologies/07112025	1	0.1MB	{'json': 1}	bulk_rainbow_07112025.json
+raw_data/Morphologies/07282025	42	270.8MB	{'nd2': 40, 'pdf': 2}	clone1+3_agn001.nd2 | clone1+3_agn002_diagnostic.pdf | clone1+3_agn002.nd2 | clone1+3_agn003.nd2 | clone1+3_agn005.nd2 | clone1+3_ctrl.nd2
+raw_data/Morphologies/08062024	1	0.0MB	{'csv': 1}	chem_08062024.csv
+raw_data/Morphologies/08072025	7	1.4MB	{'json': 7}	bulk_agn_ra_sb_dose_08072025.json | clone1_agn_ra_sb_dose_08072025.json | clone3_agn_ra_sb_dose_08072025.json | clone5_agn_ra_sb_dose_08072025.json | clone6_agn_ra_sb_dose_08072025.json | clone7_agn_ra_sb_dose_08072025.json
+raw_data/Morphologies/Nimbus JSON DrugTx/02152025	1	0.1MB	{'json': 1}	clone1+clone3_nodrug_ra_sb_agn_02152025.json
+raw_data/Morphologies/Nimbus JSON DrugTx/05032025	1	0.0MB	{'json': 1}	VA_bulk_1+3_RA_SB_05032025_v2.json
+raw_data/Morphologies/Nimbus JSON DrugTx/07282025	3	0.4MB	{'json': 3}	bulk_agn_ra_sb_07292025.json | clone1+3_ctrl_RA_AGN_SB_07282025.json | rainbow_ctrl_07282025.json
+raw_data/Morphologies/Nimbus JSON DrugTx/11282024	1	0.0MB	{'json': 1}	clone1+clone3_clone1+clone6_drugtx_11282024.json
+raw_data/Patch Analysis/clone1+3_gastruloid_RA_SB_05032025_test	32	589.9MB	{'nd2': 23, 'pdf': 9}	1+3_ctrl_diagnostic.pdf | 1+3_ctrl.nd2 | 1+3_ctrl001_diagnostic.pdf | 1+3_ctrl001.nd2 | 1+3_ctrl002.nd2 | 1+3_ctrl003.nd2
+raw_data/Patch Analysis/clone1+3_gastruloid_RA_SB_05242025	38	945.3MB	{'nd2': 37, 'pdf': 1}	1+3ra.nd2 | 1+3ra001.nd2 | 1+3ra002.nd2 | 1+3ra003.nd2 | 1+3sb.nd2 | 1+3sb002.nd2
+raw_data/SG	26	50.5MB	{'h5ad': 18, 'hdf5': 4, 'R': 2, 'csv': 2}	matrix_decode_roi1_seg_roi1_nuclei_run5.h5ad | matrix_decode_roi1_seg_roi1_nuclei_run6.h5ad | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad | matrix_decode_roi1_segmentation_roi1_nuclei_run3.h5ad | matrix_decode_roi1_test_clone1_segment_roi1_channel2_v2_nuclei_run4.h5ad | matrix_decode_roi1_v2_segmentation_roi1_run3_nuclei.h5ad
+raw_data/SG/01212025	7	4.4MB	{'hdf5': 2, 'h5ad': 2, 'tiff': 2, 'csv': 1}	decode_v1.hdf5 | decode_v2.hdf5 | matrix_decode_v1_segmentation_v1_nuclei.h5ad | matrix_decode_v2_segmentation_v1_nuclei.h5ad | ROI1_run2_genematrix.csv | segmentation_v1_nuclei.tiff
+raw_data/SG/01272025	8	12.1MB	{'hdf5': 3, 'h5ad': 3, 'tiff': 2}	decode_roi1_v2.hdf5 | decode_roi1.hdf5 | decode_roi2.hdf5 | matrix_decode_roi1_segmentation_roi1_nuclei_run3.h5ad | matrix_decode_roi1_v2_segmentation_roi1_run3_nuclei.h5ad | matrix_decode_roi2_roi2_segment__run3_nuclei.h5ad
+raw_data/SG/01292025	11	8.0MB	{'tiff': 4, 'hdf5': 3, 'h5ad': 3, 'csv': 1}	decode_green_roi1.hdf5 | decode_roi1_test_clone1.hdf5 | decode_roi1.hdf5 | matrix_decode_green_roi1_seg_green_roi2_nuclei.h5ad | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad | matrix_decode_roi1_test_clone1_segment_roi1_channel2_v2_nuclei.h5ad
+raw_data/SG/01292025/roi1_analyze	9	1.8MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/01292025/roi1_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/01292025/roi1_analyze/clusters	4	1.8MB	{'h5ad': 2, 'json': 2}	cluster_roi1_clone1.h5ad | cluster_roi1_clone1.json | cluster_roi1.h5ad | cluster_roi1.json
+raw_data/SG/01292025/roi1_analyze/genes	9	3.7MB	{'hdf5': 3, 'h5ad': 3, 'json': 3}	decode_green_roi1.hdf5 | decode_roi1_test_clone1.hdf5 | decode_roi1.hdf5 | matrix_decode_green_roi1_seg_green_roi2_nuclei.h5ad | matrix_decode_green_roi1_seg_green_roi2_nuclei.json | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad
+raw_data/SG/01292025/roi1_analyze/segmentations	13	2.6MB	{'json': 4, 'npz': 4, 'tiff': 4, 'zip': 1}	seg_green_roi2_nuclei.json | seg_green_roi2_nuclei.npz | seg_green_roi2_nuclei.tiff | seg_green_roi2_nuclei.zip | segment_GFP_roi1_nuclei.json | segment_GFP_roi1_nuclei.npz
+raw_data/SG/01292025/roi1_analyze/thresholds	1	0.0MB	{'json': 1}	threshold_roi1.json
+raw_data/SG/02142025	21	29.7MB	{'hdf5': 7, 'h5ad': 7, 'tiff': 7}	decode_green.hdf5 | decode_roi1.hdf5 | decode_roi2.hdf5 | decode_roi3.hdf5 | decode_roi4.hdf5 | decode_roi5.hdf5
+raw_data/SG/02142025/roi_1_processed	8	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_1_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_1_processed/genes	3	3.5MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json
+raw_data/SG/02142025/roi_1_processed/segmentations	3	5.0MB	{'json': 1, 'npz': 1, 'tiff': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff
+raw_data/SG/02142025/roi_1_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/02142025/roi_2_processed	8	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_2_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_2_processed/genes	6	5.0MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi2.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/02142025/roi_2_processed/segmentations	7	2.7MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi2_nuclei.json | seg_roi2_nuclei.npz
+raw_data/SG/02142025/roi_2_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/02142025/roi_3_processed	9	7.2MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_3_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_3_processed/genes	6	5.8MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi3.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi3_seg_roi3_nuclei.h5ad | matrix_decode_roi3_seg_roi3_nuclei.json
+raw_data/SG/02142025/roi_3_processed/segmentations	7	1.0MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi3_nuclei.json | seg_roi3_nuclei.npz
+raw_data/SG/02142025/roi_3_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/02142025/roi_4_processed	6	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.session
+raw_data/SG/02142025/roi_4_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_4_processed/genes	6	4.8MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi4.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/02142025/roi_4_processed/segmentations	7	3.8MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi4_nuclei.json | seg_roi4_nuclei.npz
+raw_data/SG/02142025/roi_4_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/02142025/roi_5_processed	8	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_5_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_5_processed/genes	6	3.0MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi5.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi5_seg_roi5_nuclei.h5ad | matrix_decode_roi5_seg_roi5_nuclei.json
+raw_data/SG/02142025/roi_5_processed/segmentations	7	2.6MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi5_nuclei.json | seg_roi5_nuclei.npz
+raw_data/SG/02142025/roi_5_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi5.json
+raw_data/SG/02142025/roi_6_processed	4	0.0MB	{'log': 1, '1': 1, '2': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/02142025/roi_6_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_6_processed/genes	3	1.9MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi6.hdf5 | matrix_decode_roi6_seg_roi6_nuclei.h5ad | matrix_decode_roi6_seg_roi6_nuclei.json
+raw_data/SG/02142025/roi_6_processed/segmentations	3	1.8MB	{'json': 1, 'npz': 1, 'tiff': 1}	seg_roi6_nuclei.json | seg_roi6_nuclei.npz | seg_roi6_nuclei.tiff
+raw_data/SG/02142025/roi_6_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi6.json
+raw_data/SG/02172025	9	21.0MB	{'hdf5': 3, 'h5ad': 3, 'tiff': 3}	decode_green.hdf5 | decode_roi1.hdf5 | decode_roi2.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.h5ad
+raw_data/SG/02172025/roi_1_processed	7	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02172025/roi_1_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02172025/roi_1_processed/genes	3	5.5MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json
+raw_data/SG/02172025/roi_1_processed/segmentations	3	2.9MB	{'json': 1, 'npz': 1, 'tiff': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff
+raw_data/SG/02172025/roi_1_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/02172025/roi_2_processed	5	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/02172025/roi_2_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02172025/roi_2_processed/clusters	2	3.0MB	{'h5ad': 1, 'json': 1}	cluster_roi2.h5ad | cluster_roi2.json
+raw_data/SG/02172025/roi_2_processed/genes	6	8.0MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi2.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/02172025/roi_2_processed/segmentations	7	4.8MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi2_nuclei.json | seg_roi2_nuclei.npz
+raw_data/SG/02172025/roi_2_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/02192025	17	24.2MB	{'hdf5': 6, 'h5ad': 6, 'tiff': 5}	decode_roi1.hdf5 | decode_roi2.hdf5 | decode_roi3.hdf5 | decode_roi4.hdf5 | decode_roi5.hdf5 | decode_roi6.hdf5
+raw_data/SG/05052025	8	41.7MB	{'hdf5': 2, 'h5ad': 2, 'tiff': 2, 'csv': 2}	decode_roi1.hdf5 | decode_roi2.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.h5ad | seg_roi1_nuclei.tiff | seg_roi2_nuclei.tiff
+raw_data/SG/05232025	20	285.8MB	{'h5ad': 7, 'tiff': 7, 'hdf5': 6}	decode_roi1.hdf5 | decode_roi2_green.hdf5 | decode_roi2.hdf5 | decode_roi3_green.hdf5 | decode_roi4.hdf5 | decore_roi4_green.hdf5
+raw_data/SG/05232025/roi1_analyze	3	0.0MB	{'log': 1, '1': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.session
+raw_data/SG/05232025/roi1_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/05232025/roi1_analyze/genes	3	28.9MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json
+raw_data/SG/05232025/roi1_analyze/segmentations	4	1.8MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff | seg_roi1_nuclei.zip
+raw_data/SG/05232025/roi1_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/05232025/roi2_analyze	4	0.0MB	{'log': 1, '1': 1, '2': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/05232025/roi2_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/05232025/roi2_analyze/genes	6	58.5MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi2_green.hdf5 | decode_roi2.hdf5 | matrix_decode_roi2_green_seg_roi2_green_nuclei.h5ad | matrix_decode_roi2_green_seg_roi2_green_nuclei.json | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/05232025/roi2_analyze/segmentations	8	1.3MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi2_green_nuclei.json | seg_roi2_green_nuclei.npz | seg_roi2_green_nuclei.tiff | seg_roi2_green_nuclei.zip | seg_roi2_nuclei.json | seg_roi2_nuclei.npz
+raw_data/SG/05232025/roi2_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/05232025/roi3_analyze	4	0.0MB	{'log': 1, '1': 1, '2': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/05232025/roi3_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/05232025/roi3_analyze/genes	6	89.9MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi3_green.hdf5 | decode_roi3.hdf5 | matrix_decode_roi3_green_seg_roi3_green_nuclei.h5ad | matrix_decode_roi3_green_seg_roi3_green_nuclei.json | matrix_decode_roi3_seg_roi3_nuclei.h5ad | matrix_decode_roi3_seg_roi3_nuclei.json
+raw_data/SG/05232025/roi3_analyze/segmentations	8	1.3MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi3_green_nuclei.json | seg_roi3_green_nuclei.npz | seg_roi3_green_nuclei.tiff | seg_roi3_green_nuclei.zip | seg_roi3_nuclei.json | seg_roi3_nuclei.npz
+raw_data/SG/05232025/roi3_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/05232025/roi4_analyze	2	0.0MB	{'log': 1, 'session': 1}	sganalysis.log | sganalysis.session
+raw_data/SG/05232025/roi4_analyze/genes	6	148.4MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi4.hdf5 | decore_roi4_green.hdf5 | matrix_decode_roi4_green_seg_roi4_green_nuclei.h5ad | matrix_decode_roi4_green_seg_roi4_green_nuclei.json | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/05232025/roi4_analyze/segmentations	8	1.4MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi4_green_nuclei.json | seg_roi4_green_nuclei.npz | seg_roi4_green_nuclei.tiff | seg_roi4_green_nuclei.zip | seg_roi4_nuclei.json | seg_roi4_nuclei.npz
+raw_data/SG/05232025/roi4_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/08182025	6	1.6MB	{'png': 6}	green_nuclei_seg_roi4.png | green_nuclei_seg.png | roi2_Igfbp5.png | roi2_T_igfbp5.png | roi2_T.png | roi4_green.png
+raw_data/SG/08182025/roi1_analyze	3	32.2MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi1_08182025.csv
+raw_data/SG/08182025/roi1_analyze/genes	1	10.4MB	{'hdf5': 1}	decode_roi1.hdf5
+raw_data/SG/08182025/roi1_analyze/segmentations	4	0.8MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff | seg_roi1_nuclei.zip
+raw_data/SG/08182025/roi1_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/08182025/roi2_analyze	3	54.0MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi2_08182025.csv
+raw_data/SG/08182025/roi2_analyze/genes	3	17.2MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi2.hdf5 | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/08182025/roi2_analyze/segmentations	4	0.8MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi2_nuclei.json | seg_roi2_nuclei.npz | seg_roi2_nuclei.tiff | seg_roi2_nuclei.zip
+raw_data/SG/08182025/roi2_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/08182025/roi3_analyze	2	0.0MB	{'log': 1, 'session': 1}	sganalysis.log | sganalysis.session
+raw_data/SG/08182025/roi3_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/08182025/roi4_analyze	3	34.8MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi4_08182025.csv
+raw_data/SG/08182025/roi4_analyze/genes	6	23.7MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi4_green.hdf5 | decode_roi4.hdf5 | matrix_decode_roi4_green_seg_roi4_green_nuclei.h5ad | matrix_decode_roi4_green_seg_roi4_green_nuclei.json | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/08182025/roi4_analyze/segmentations	8	1.7MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi4_green_nuclei.json | seg_roi4_green_nuclei.npz | seg_roi4_green_nuclei.tiff | seg_roi4_green_nuclei.zip | seg_roi4_nuclei.json | seg_roi4_nuclei.npz
+raw_data/SG/08182025/roi4_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/08182025/roi5_analyze	3	88.1MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi5_08182025.csv
+raw_data/SG/08182025/roi5_analyze/genes	3	28.7MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi5.hdf5 | matrix_decode_roi5_seg_roi5_nuclei.h5ad | matrix_decode_roi5_seg_roi5_nuclei.json
+raw_data/SG/08182025/roi5_analyze/segmentations	4	1.6MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi5_nuclei.json | seg_roi5_nuclei.npz | seg_roi5_nuclei.tiff | seg_roi5_nuclei.zip
+raw_data/SG/08182025/roi5_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/08182025/roi6_analyze	3	8.8MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi6_08182025.csv
+raw_data/SG/08182025/roi6_analyze/genes	6	6.8MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi6_green.hdf5 | decode_roi6.hdf5 | matrix_decode_roi6_green_seg_roi6_green_nuclei.h5ad | matrix_decode_roi6_green_seg_roi6_green_nuclei.json | matrix_decode_roi6_seg_roi6_nuclei.h5ad | matrix_decode_roi6_seg_roi6_nuclei.json
+raw_data/SG/08182025/roi6_analyze/segmentations	8	1.6MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi6_green_nuclei.json | seg_roi6_green_nuclei.npz | seg_roi6_green_nuclei.tiff | seg_roi6_green_nuclei.zip | seg_roi6_nuclei.json | seg_roi6_nuclei.npz
+raw_data/SG/08182025/roi6_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi6.json
+raw_data/SG/08212025	6	1.4MB	{'png': 6}	roi1_Igfbp5.png | roi1_T_Igfbp5.png | ROI1_T.png | roi2_Igfbp5.png | roi2_T_Igfbp5.png | roi2_T.png
+raw_data/SG/08212025/roi1_analyze	3	56.6MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi1_08212025.csv
+raw_data/SG/08212025/roi1_analyze/genes	9	55.9MB	{'hdf5': 3, 'h5ad': 3, 'json': 3}	decode_roi1_V2.hdf5 | decode_roi1_v3.hdf5 | decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json | matrix_decode_roi1_V2_seg_roi1_nuclei.h5ad
+raw_data/SG/08212025/roi1_analyze/segmentations	4	0.9MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff | seg_roi1_nuclei.zip
+raw_data/SG/08212025/roi1_analyze/thresholds	2	0.0MB	{'json': 2}	thresh_roi1_V2.json | thresh_roi1.json
+raw_data/SG/08212025/roi2_analyze	3	7.4MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi2_08212025.csv
+raw_data/SG/08212025/roi2_analyze/genes	3	3.0MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi2.hdf5 | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/08212025/roi2_analyze/segmentations	4	0.9MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi2_nuclei.json | seg_roi2_nuclei.npz | seg_roi2_nuclei.tiff | seg_roi2_nuclei.zip
+raw_data/SG/08212025/roi2_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/08212025/roi3_analyze	3	3.3MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi3_08212025.csv
+raw_data/SG/08212025/roi3_analyze/genes	3	1.6MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi3.hdf5 | matrix_decode_roi3_seg_roi3_nuclei.h5ad | matrix_decode_roi3_seg_roi3_nuclei.json
+raw_data/SG/08212025/roi3_analyze/segmentations	4	0.6MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi3_nuclei.json | seg_roi3_nuclei.npz | seg_roi3_nuclei.tiff | seg_roi3_nuclei.zip
+raw_data/SG/08212025/roi3_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/08212025/roi4_analyze	3	3.9MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi4_08212025.csv
+raw_data/SG/08212025/roi4_analyze/genes	3	1.7MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi4.hdf5 | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/08212025/roi4_analyze/segmentations	4	0.6MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi4_nuclei.json | seg_roi4_nuclei.npz | seg_roi4_nuclei.tiff | seg_roi4_nuclei.zip
+raw_data/SG/08212025/roi4_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/08212025/roi5_analyze	3	11.3MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi5_08212025.csv
+raw_data/SG/08212025/roi5_analyze/genes	3	4.2MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi5.hdf5 | matrix_decode_roi5_seg_roi5_nuclei.h5ad | matrix_decode_roi5_seg_roi5_nuclei.json
+raw_data/SG/08212025/roi5_analyze/segmentations	4	1.1MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi5_nuclei.json | seg_roi5_nuclei.npz | seg_roi5_nuclei.tiff | seg_roi5_nuclei.zip
+raw_data/SG/08212025/roi5_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi5.json
+raw_data/SG/08212025/roi6_analyze	3	11.7MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi6_08212025.csv
+raw_data/SG/08212025/roi6_analyze/genes	3	4.2MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi6.hdf5 | matrix_decode_roi6_seg_roi6_nuclei.h5ad | matrix_decode_roi6_seg_roi6_nuclei.json
+raw_data/SG/08212025/roi6_analyze/segmentations	4	0.9MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi6_nuclei.json | seg_roi6_nuclei.npz | seg_roi6_nuclei.tiff | seg_roi6_nuclei.zip
+raw_data/SG/08212025/roi6_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi6.json
+raw_data/SG/Clone Combination Analysis 01292025/Images/01292025	6	3.3MB	{'png': 6}	clone1+3_confusion_anteriorzoom_blackbckgd.png | clone1+3_confusion_large_blackbckgd.png | clone1+3_confusion_posteriorzoom_blackbckgd.png | clone1+3_confusion_posteriorzoom_transparentbckgd.png | T_IGFBP%_confusion_masks_anterior_greenmask_v2.png | T_IGFBP%_confusion_masks_posterior_greenmask_v2.png
+raw_data/SG/Clone Combination Analysis 01292025/genes	9	3.7MB	{'hdf5': 3, 'h5ad': 3, 'json': 3}	decode_green_roi1.hdf5 | decode_roi1_test_clone1.hdf5 | decode_roi1.hdf5 | matrix_decode_green_roi1_seg_green_roi2_nuclei.h5ad | matrix_decode_green_roi1_seg_green_roi2_nuclei.json | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad
+raw_data/SG/Clone Combination Analysis 01292025/segmentations	14	2.6MB	{'tiff': 5, 'json': 4, 'npz': 4, 'zip': 1}	._segment_GFP_roi1_nuclei.tiff | seg_green_roi2_nuclei.json | seg_green_roi2_nuclei.npz | seg_green_roi2_nuclei.tiff | seg_green_roi2_nuclei.zip | segment_GFP_roi1_nuclei.json
+raw_data/SG/Clone Combination Analysis 01292025/thresholds	1	0.0MB	{'json': 1}	threshold_roi1.json
+raw_data/SG/reprocessed	7	2.7MB	{'h5ad': 6, 'json': 1}	matrix_decode_roi1_seg_roi1_nuclei_run5.h5ad | matrix_decode_roi1_seg_roi1_nuclei_run5.json | matrix_decode_roi2_v2_seg_roi2_nuclei_run5.h5ad | matrix_decode_roi3_seg_roi3_nuclei_run5.h5ad | matrix_decode_roi4_seg_roi4_nuclei_run5.h5ad | matrix_decode_roi5_seg_roi5_nuclei_run5.h5ad
+raw_data/Weber_reanalysis	1	1068.4MB	{'rds': 1}	seurat_object.rds

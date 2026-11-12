@@ -1,0 +1,383 @@
+Figures	6	216.7MB	{'pdf': 6}	Fig1_propensity_v6.pdf | Fig2_SG_v5.pdf | Fig3_passaging_v1.pdf | Fig4_seq_v4.pdf | Fig5_drugtx_v5.pdf | Fig6_Weber_v4.pdf
+Figures/Figure 1-related Supplementary	6	64.6MB	{'pdf': 3, 'ai': 3}	Supplementary_1_bootstrapanalysis_v1.pdf | Supplementary_2_relativepropensity_v2.ai | Supplementary_3_morphologybreakdown_v2.ai | Supplementary_4_ratios.pdf | Supplementary_5_competition_v1.ai | Supplementary_6_BrachyuryIF_v1.pdf
+Figures/Figure 2-related Supplementary	5	138.7MB	{'pdf': 5}	Supplementary_7_fullpanel_v1.pdf | Supplementary_8_badbulk_v1.pdf | Supplementary_9_clonesegment_v1.pdf | Supplementary_10_Toverlap_v1.pdf | Supplementary_11_comboexamples_v1.pdf
+Figures/Figure 3-related Supplementary	3	3.4MB	{'pdf': 3}	Supplementary_12_expansion_v1.pdf | Supplementary_13_passaging_v2.pdf | Supplementary_14_passaging_v1.pdf
+Figures/Figure 4-related Supplementary	4	77.1MB	{'pdf': 4}	Supplementary_15_Cadherin_v1.pdf | Supplementary_16_diffassay_v1.pdf | Supplementary_17_Wnt.pdf | Supplementary_18_APpeaks_v1.pdf
+Figures/Figure 5-related Supplementary	5	21.3MB	{'pdf': 5}	Supplementary_19_1+3avgscan_v1 copy.pdf | Supplementary_20_1+6avgscan_v1.pdf | Supplementary_21_agn_v1.pdf | Supplementary_22_Manders_v1.pdf | Supplementary_23_sgdrug.pdf
+Figures/Figure 6-related Supplementary	1	0.7MB	{'pdf': 1}	Supplementary_24_Weberworkflow_v1.pdf
+Figures/Supplementary Movies	2	5.5MB	{'webm': 2}	Supplementary_Movie_1_v1.webm | Supplementary_Movie_2_v1.webm
+extracted_data/ATAC	6	282.9MB	{'csv': 3, 'R': 1, 'txt': 1, 'bed': 1}	102024_ATAC_clone_mapping.R | alignments_clones_gastr_101214.txt | AvBulk.csv | AvP.csv | mm10-blacklist.v2.bed.gz | PvBulk.csv
+extracted_data/ATAC/BED Files	20	3.0MB	{'txt': 18, 'bed': 2}	anterior_diff_dn_forHomer.bed.bed | anterior_diff_dn_forHomer.bed.txt | anterior_diff_up_forHomer.bed | anterior_diff_up_forHomer.txt | clone1dn_forHomer.txt | clone1up_forHomer.txt
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p1_dn_noP	10	0.3MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p1_dn_noP/homerResults	260	5.3MB	{'motif': 96, 'html': 82, 'svg': 82}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p1_dn_noP/knownResults	6	0.0MB	{'svg': 3, 'motif': 3}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p1_up_noP	10	0.5MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p1_up_noP/homerResults	133	2.5MB	{'motif': 57, 'html': 38, 'svg': 38}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p1_up_noP/knownResults	130	0.3MB	{'svg': 65, 'motif': 65}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p2_dn	10	0.4MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p2_dn/homerResults	297	5.9MB	{'motif': 109, 'html': 94, 'svg': 94}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1RV.logo.svg | motif1RV.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p2_dn/knownResults	50	0.1MB	{'svg': 25, 'motif': 25}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p2_up	10	0.8MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p2_up/homerResults	221	4.1MB	{'motif': 97, 'html': 62, 'svg': 62}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p2_up/knownResults	248	0.6MB	{'svg': 124, 'motif': 124}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p3_dn	10	0.4MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p3_dn/homerResults	275	5.6MB	{'motif': 99, 'html': 88, 'svg': 88}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p3_dn/knownResults	28	0.1MB	{'svg': 14, 'motif': 14}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p3_up	18	32.1MB	{'motifs': 2, 'html': 2, 'txt': 2, 'tsv': 2, 'pos': 2}	group.adj | homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p3_up/homerResults	248	4.6MB	{'motif': 108, 'html': 70, 'svg': 70}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_AvP_p3_up/knownResults	330	0.7MB	{'svg': 165, 'motif': 165}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_anterioropen_v2	11	0.3MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_anterioropen_v2/homerResults	246	4.7MB	{'motif': 102, 'html': 72, 'svg': 72}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_anterioropen_v2/knownResults	5	0.0MB	{'motif': 3, 'svg': 2}	known1.motif | known3.motif | known4.logo.svg | known5.logo.svg | known5.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_anteriorrelax_v2	11	1.4MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_anteriorrelax_v2/homerResults	209	3.8MB	{'motif': 97, 'html': 56, 'svg': 56}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_anteriorrelax_v2/knownResults	488	1.1MB	{'svg': 244, 'motif': 244}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_bulk_p1vp3_dn_output	11	0.3MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_bulk_p1vp3_dn_output/homerResults	200	4.0MB	{'motif': 84, 'html': 58, 'svg': 58}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_bulk_p1vp3_up_output	11	0.3MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_bulk_p1vp3_up_output/homerResults	245	5.0MB	{'motif': 93, 'html': 76, 'svg': 76}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_bulk_p1vp3_up_output/knownResults	6	0.0MB	{'svg': 3, 'motif': 3}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1_p1vp3_dn_output	11	0.6MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1_p1vp3_dn_output/homerResults	290	5.6MB	{'motif': 118, 'html': 86, 'svg': 86}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1_p1vp3_dn_output/knownResults	132	0.3MB	{'svg': 66, 'motif': 66}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1_p1vp3_up_output	11	1.5MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1_p1vp3_up_output/homerResults	220	3.9MB	{'motif': 104, 'html': 58, 'svg': 58}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1_p1vp3_up_output/knownResults	554	1.3MB	{'svg': 277, 'motif': 277}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1dn_output	10	0.3MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1dn_output/homerResults	251	4.7MB	{'motif': 103, 'html': 74, 'svg': 74}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1dn_output/knownResults	28	0.1MB	{'svg': 14, 'motif': 14}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1up_output	10	0.9MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1up_output/homerResults	202	3.6MB	{'motif': 94, 'html': 54, 'svg': 54}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone1up_output/knownResults	276	0.6MB	{'svg': 138, 'motif': 138}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone2dn_output	10	0.3MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone2dn_output/homerResults	235	4.5MB	{'motif': 95, 'html': 70, 'svg': 70}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1RV.logo.svg | motif1RV.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone2dn_output/knownResults	22	0.1MB	{'svg': 11, 'motif': 11}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone2up_output	10	0.8MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone2up_output/homerResults	231	4.3MB	{'motif': 99, 'html': 66, 'svg': 66}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone2up_output/knownResults	226	0.5MB	{'svg': 113, 'motif': 113}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3_p1vp3_dn_output	11	0.4MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3_p1vp3_dn_output/homerResults	285	5.4MB	{'motif': 117, 'html': 84, 'svg': 84}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3_p1vp3_dn_output/knownResults	34	0.1MB	{'svg': 17, 'motif': 17}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3_p1vp3_up_output	11	1.6MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3_p1vp3_up_output/homerResults	225	4.0MB	{'motif': 105, 'html': 60, 'svg': 60}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3_p1vp3_up_output/knownResults	580	1.3MB	{'svg': 290, 'motif': 290}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3dn_output	10	0.9MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3dn_output/homerResults	217	3.8MB	{'motif': 101, 'html': 58, 'svg': 58}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3dn_output/knownResults	298	0.7MB	{'svg': 149, 'motif': 149}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3up_output	10	0.5MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3up_output/homerResults	244	4.7MB	{'motif': 100, 'html': 72, 'svg': 72}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone3up_output/knownResults	108	0.3MB	{'svg': 54, 'motif': 54}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone4dn_output	10	0.3MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone4dn_output/homerResults	236	4.6MB	{'motif': 96, 'html': 70, 'svg': 70}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone4dn_output/knownResults	24	0.1MB	{'svg': 12, 'motif': 12}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone4up_output	10	0.5MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone4up_output/homerResults	173	3.2MB	{'motif': 77, 'html': 48, 'svg': 48}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone4up_output/knownResults	140	0.3MB	{'svg': 70, 'motif': 70}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5_p1vp3_dn_output	11	0.3MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5_p1vp3_dn_output/homerResults	219	4.1MB	{'motif': 95, 'html': 62, 'svg': 62}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5_p1vp3_dn_output/knownResults	28	0.1MB	{'svg': 14, 'motif': 14}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5_p1vp3_up_output	11	0.6MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5_p1vp3_up_output/homerResults	193	3.7MB	{'motif': 81, 'html': 56, 'svg': 56}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5_p1vp3_up_output/knownResults	154	0.3MB	{'svg': 77, 'motif': 77}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5dn_output	10	0.3MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5dn_output/homerResults	181	3.5MB	{'motif': 73, 'html': 54, 'svg': 54}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1RV.logo.svg | motif1RV.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5dn_output/knownResults	28	0.1MB	{'svg': 14, 'motif': 14}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5up_output	10	0.7MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5up_output/homerResults	210	4.0MB	{'motif': 90, 'html': 60, 'svg': 60}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone5up_output/knownResults	210	0.5MB	{'svg': 105, 'motif': 105}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6_p1vp3_dn_output	14	0.4MB	{'txt': 3, 'motifs': 2, 'html': 2, 'pos': 2, 'tmp': 1}	0.488209544056193.tmp | homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6_p1vp3_dn_output/homerResults	249	4.5MB	{'motif': 113, 'html': 68, 'svg': 68}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6_p1vp3_dn_output/knownResults	30	0.1MB	{'svg': 15, 'motif': 15}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6_p1vp3_up_output	11	0.6MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6_p1vp3_up_output/homerResults	214	4.1MB	{'motif': 90, 'html': 62, 'svg': 62}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6_p1vp3_up_output/knownResults	144	0.3MB	{'svg': 72, 'motif': 72}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6dn_output	10	0.3MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6dn_output/homerResults	251	4.8MB	{'motif': 103, 'html': 74, 'svg': 74}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1RV.logo.svg | motif1RV.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6dn_output/knownResults	6	0.0MB	{'svg': 3, 'motif': 3}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6up_output	10	1.0MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6up_output/homerResults	252	4.8MB	{'motif': 104, 'html': 74, 'svg': 74}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone6up_output/knownResults	328	0.7MB	{'svg': 164, 'motif': 164}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7_p1vp3_dn_output	10	0.3MB	{'txt': 3, 'html': 2, 'motifs': 1, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7_p1vp3_dn_output/homerResults	225	4.2MB	{'motif': 97, 'html': 64, 'svg': 64}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7_p1vp3_up_output	11	0.9MB	{'txt': 3, 'motifs': 2, 'html': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7_p1vp3_up_output/homerResults	239	4.5MB	{'motif': 103, 'html': 68, 'svg': 68}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7_p1vp3_up_output/knownResults	282	0.6MB	{'svg': 141, 'motif': 141}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7dn_output	10	0.3MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7dn_output/homerResults	223	4.1MB	{'motif': 95, 'html': 64, 'svg': 64}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1RV.logo.svg
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7up_output	10	0.8MB	{'motifs': 2, 'html': 2, 'txt': 2, 'motifs8': 1, 'motifs10': 1}	homerMotifs.all.motifs | homerMotifs.motifs8 | homerMotifs.motifs10 | homerMotifs.motifs12 | homerResults.html | knownResults.html
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7up_output/homerResults	205	3.6MB	{'motif': 93, 'html': 56, 'svg': 56}	motif1.info.html | motif1.logo.svg | motif1.motif | motif1.similar.html | motif1.similar1.motif | motif1.similar2.motif
+extracted_data/ATAC/Homer_Output/ATAC_Oct2024_clone7up_output/knownResults	264	0.6MB	{'svg': 132, 'motif': 132}	known1.logo.svg | known1.motif | known2.logo.svg | known2.motif | known3.logo.svg | known3.motif
+extracted_data/ATAC/Homer_Peaklists	18	2.2MB	{'txt': 16, 'bed': 2}	anterior_diff_dn_forHomer.bed | anterior_diff_dn_forHomer.txt | anterior_diff_up_forHomer.bed | anterior_diff_up_forHomer.txt | clone1dn_forHomer.txt | clone1up_forHomer.txt
+extracted_data/ATAC/MACS2_output/Oct1224	153	1680.6MB	{'narrowPeak': 51, 'xls': 51, 'bed': 51}	V1_Small_Paired_peaks.narrowPeak_peaks.narrowPeak | V1_Small_Paired_peaks.narrowPeak_peaks.xls | V1_Small_Paired_peaks.narrowPeak_summits.bed | V7_Small_Paired_peaks.narrowPeak_peaks.narrowPeak | V7_Small_Paired_peaks.narrowPeak_peaks.xls | V7_Small_Paired_peaks.narrowPeak_summits.bed
+extracted_data/ATAC/MACS2_output/Oct1224_shifted	153	4720.9MB	{'narrowPeak': 51, 'xls': 51, 'bed': 51}	Sorted_V1_Small_Paired_peaks.narrowPeak_peaks.narrowPeak | Sorted_V1_Small_Paired_peaks.narrowPeak_peaks.xls | Sorted_V1_Small_Paired_peaks.narrowPeak_summits.bed | Sorted_V7_Small_Paired_peaks.narrowPeak_peaks.narrowPeak | Sorted_V7_Small_Paired_peaks.narrowPeak_peaks.xls | Sorted_V7_Small_Paired_peaks.narrowPeak_summits.bed
+extracted_data/ATAC/MACS2_output/Oct1224_shifted_duprem	153	4988.7MB	{'narrowPeak': 51, 'xls': 51, 'bed': 51}	Sorted_V1_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak | Sorted_V1_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.xls | Sorted_V1_rg_nodup_Small_Paired_peaks.narrowPeak_summits.bed | Sorted_V7_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.narrowPeak | Sorted_V7_rg_nodup_Small_Paired_peaks.narrowPeak_peaks.xls | Sorted_V7_rg_nodup_Small_Paired_peaks.narrowPeak_summits.bed
+extracted_data/ATAC/Sorted_BAMs_Oct12_2024_duprem	51	68658.9MB	{'bam': 51}	Sorted_V1_rg_nodup.bam | Sorted_V7_rg_nodup.bam | Sorted_V10_rg_nodup.bam | Sorted_V11_rg_nodup.bam | Sorted_V13_rg_nodup.bam | Sorted_V15_rg_nodup.bam
+extracted_data/Differentiation Assay	1	0.0MB	{'csv': 1}	DiffAssay_Oct212024.csv
+extracted_data/IOU	5	0.0MB	{'csv': 5}	AP_CloneFraction_Drug - Sheet1.csv | gastruloid_analysis_results_1+3_05032025.csv | gastruloid_analysis_results_1+3_05242025.csv | gastruloid_analysis_results_1+3_07282025.csv | gastruloid_analysis_results_1+6_05242025.csv
+extracted_data/IOU/07282025	41	30.5MB	{'png': 41}	clone1+3_agn_qc.png | clone1+3_agn001_qc.png | clone1+3_agn002_qc.png | clone1+3_agn003_qc.png | clone1+3_agn005_qc.png | clone1+3_ctrl_qc.png
+extracted_data/RNAseq	1	2.7MB	{'html': 1}	VA_escClone_attempt2_32825_QC.html
+extracted_data/RNAseq/Counts/VA_1	3	6.0MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_10	3	6.7MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_11	3	5.9MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_12	3	6.6MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_13	3	6.8MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_14	3	6.8MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_15	3	6.8MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_16	3	6.8MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_17	3	6.7MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_18	3	6.8MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_2	3	6.8MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_3	3	6.5MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_4	3	6.7MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_5	3	6.7MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_6	3	6.3MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_7	3	6.7MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_8	3	6.7MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/RNAseq/Counts/VA_9	3	6.4MB	{'h5': 1, 'tsv': 1, 'json': 1}	abundance.h5 | abundance.tsv | run_info.json
+extracted_data/SG_Lmetric	6	0.5MB	{'csv': 6}	L_dataframe_clone1_3.csv | L_dataframe_clonecombo_segmentation.csv | L_dataframe_kit2_run1.csv | L_dataframe.csv | segmented_counts_01292025.csv | segmented_counts_02132025.csv
+extracted_data/SG_kit1	60	23.1MB	{'csv': 60}	expression_comparison_bulk_g1g6_vs_clones.csv | expression_comparison_bulk_g17g20_vs_clones.csv | fc_Jan29_ROIs.csv | fc_reference_ROI1-4.csv | g15_clone1.csv | g15_clone3.csv
+extracted_data/SGanalysis_visualizations	8	65.0MB	{'tiff': 4, 'csv': 4}	nuclei_ROI1_dec22024.tiff | seg_roi3_nuclei_02132025.tiff | segment_roi1_nuclei_012925.tiff | transcripts_01292025.csv | transcripts_02142025.csv | transcripts_dec22024_microns.csv
+extracted_data/Tobias	7	2772.5MB	{'bed': 3, 'meme': 2, 'fa': 1, 'fai': 1}	BSgenome.Mmusculus.UCSC.mm10.mainChrs.fa | BSgenome.Mmusculus.UCSC.mm10.mainChrs.fa.fai | centered_peaks.bed | JASPAR2022_CORE_vertebrates_redundant_v2.meme | JASPAR2024_CORE_vertebrates_redundant.meme | mm10-blacklist.v2.bed
+extracted_data/Tobias/PeaksLists	112	9.5MB	{'txt': 107, 'bed': 4, 'DS_Store': 1}	._.DS_Store | ._anterior_diff_dn_forHomer.bed.bed | ._anterior_diff_dn_forHomer.txt | ._anterior_diff_up_forHomer.bed | ._anterior_diff_up_forHomer.txt | ._AvBulk_p1_dn_forHomer.txt
+extracted_data/Tobias/merged_BAMs	10	33558.4MB	{'bam': 5, 'bai': 5}	bulk_merge.bam | bulk_merge.bam.bai | p1_A_merge.bam | p1_A_merge.bam.bai | p1_P_merge.bam | p1_P_merge.bam.bai
+extracted_data/bootstrapping_rainbow/rainbow_distribution	18	0.2MB	{'json': 18}	aggregate_120h_2_03282025.json | aggregate_120h_3_03282025.json | aggregate_120h_5_03282025.json | aggregate_120h_6_03282025.json | aggregate_120h_7_03282025.json | aggregate_120h_8_03282025.json
+extracted_data/linescans	49	1.2MB	{'csv': 49}	agn_clone1_clone3_022025.csv | AGN_clone1_clone3_112024.csv | agn_clone1_clone6_022025.csv | all_normalized_scans.csv | clone1_passage_rep1.csv | clone1_passage_rep2.csv
+extraction_scripts/ATAC	1	0.1MB	{'R': 1}	102024_ATAC_clone_mapping.R
+extraction_scripts/ATAC/atac-qc	6	0.0MB	{'R': 3, 'sh': 2, 'py': 1}	atac_peak_counts_requant.R | tobias_fork.py | tobias_perclone_regions.R | tobias_perclone_run.sh | tobias_perclone_score.R | tss_enrichment_deeptools.sh
+extraction_scripts/Amadei_reanalysis	3	0.0MB	{'R': 3}	amadei_analysis_fromscaled.R | amadei_part2.R | amadei.R
+extraction_scripts/IOU	3	5.4MB	{'ipynb': 3}	DrugTx_Patchiness_1+3_07282025.ipynb | DrugTx_patchiness_script_1+3_052325.ipynb | DrugTx_patchiness_script_050325.ipynb
+extraction_scripts/RNAseq	1	0.0MB	{'txt': 1}	Alignment_commandprompt.txt
+extraction_scripts/SG	5	88.6MB	{'ipynb': 5}	Gastruloid_Lmetric_kit2.ipynb | Gastruloid_Lmetric-gridded.ipynb | Gastruloid_Lmetric.ipynb | L_metric_clonecombo_segmented.ipynb | L_metric_kit2.ipynb
+extraction_scripts/TOBIAS	2	0.0MB	{'sh': 2}	merge_bams.sh | merge_selected.sh
+extraction_scripts/linescans	6	14.0MB	{'ipynb': 6}	Clone_DrugTx.ipynb | Clone_Passaging.ipynb | Clone_Propensity_Passaging.ipynb | Clone_Propensity_Subclones.ipynb | Clone_Ratios.ipynb | Competition_Plots.ipynb
+plot_scripts/ATAC-seq (Figure 4)	4	0.3MB	{'R': 4}	ATAC_pipeline_organized_October2024.R | plot_motif_homermotif.R | plot_motif_knownmotif.R | TOBIAS.R
+plot_scripts/Bootstrap Analysis (Supplementary)	1	0.0MB	{'R': 1}	lineage_spatial_test.R
+plot_scripts/Clone Morphologies (Figure 1 and Supplementary)	6	0.1MB	{'R': 6}	clone_morphology.R | Clone_Scoring_Bargraphs_v4.R | gastruloid_morphology_consolidated.R | morphologies_drugtx.R | rb_bulk_comparison_07282025.R | rb_bulk_comparison.R
+plot_scripts/Clone Ratios (Supplementary)	1	0.0MB	{'R': 1}	linescan_plotting_ratios.R
+plot_scripts/Competition (Supplementary)	2	0.0MB	{'R': 2}	competition_plotting.R | linescan_coculture_indiv.R
+plot_scripts/Differentiation Assay (Supplementary)	1	0.0MB	{'R': 1}	differentiation_assay.R
+plot_scripts/IOU Analysis (Figure 5)	5	0.0MB	{'R': 5}	chem_perturbs_092024.R | chem_perturbs_clone_08092025.R | clone_side_overlap_plot.R | IOU_rep3.R | IOU.R
+plot_scripts/Linescans (Figure 1)	2	0.0MB	{'R': 2}	GFP_polyclonal_linescans.R | linescan_plotting_fig1.R
+plot_scripts/Linescans (Figure 3)	3	0.0MB	{'R': 3}	linescan_plotting_passaging.R | passaging_directionality.R | plot_passage_test.R
+plot_scripts/Linescans (Figure 5 and Supplementary)	2	0.0MB	{'R': 2}	linescan_drugtx_07282025.R | linescan_plotting_drugtx.R
+plot_scripts/RNAseq (Figure 4)	2	0.1MB	{'R': 2}	RNAseq_clone_032025.R | rnaseq_gastr.R
+plot_scripts/SG (Figure 2 and Supplementary)	11	1.9MB	{'R': 10, 'ipynb': 1}	clonecombo_plotting.R | lMetric_plotting_kit2.R | lMetric_plotting.R | sg_analysis_clonecombination_01292025_v2.R | sg_analysis_clonecombination_02132025_v2.R | sg_analysis_clonecombination_02172025_v2.R
+plot_scripts/SG (Figure 2 and Supplementary)/SG_moran_coexpr	6	0.0MB	{'csv': 5, 'R': 1}	coexpr_offL_per_gastruloid.csv | coexpr_tests.csv | moran_clone_vs_bulk.csv | moran_I_per_gastruloid.csv | moran_log2fc_pure_vs_bulk.csv | sg_moran_coexpr_pipeline.R
+plot_scripts/SG (Figure 2 and Supplementary)/SG_moran_coexpr/data	1	0.0MB	{'rds': 1}	moran_pipeline_I.rds
+plot_scripts/T Overlap - (Figure 3 and Supplementary)	1	0.0MB	{'R': 1}	overlaps.R
+plot_scripts/T_Igfbp5_separation (revisions)	13	0.0MB	{'R': 8, 'csv': 5}	containment.R | correlation_ci.csv | correlation_ci.R | draw_linescans.R | polarization_bargraph.R | profile_correlation.csv
+plot_scripts/T_Igfbp5_separation (revisions)/figures	8	1.6MB	{'png': 6, 'pdf': 2}	correlation_ci.png | linescans.pdf | linescans.png | polarization_bargraph.pdf | polarization_bargraph.png | profile_correlation.png
+plot_scripts/Weber Reanalysis (Figure 6 and Supplementary)	1	0.0MB	{'R': 1}	analysis_Weber.R
+plot_scripts/Wnt Analysis (Supplementary)	1	0.0MB	{'R': 1}	CTNNB1_intensity_05032025.R
+plot_scripts/chimera_elongation (revisions)	7	0.0MB	{'R': 5, 'py': 1, 'md': 1}	chimera_geo_3s1_only.R | chimera_geo_analysis.R | chimera_geo_barplots.R | chimera_geo_grouped_bar_small.R | chimera_geo_grouped_bar.R | compute_geo_metrics.py
+plot_scripts/chimera_elongation (revisions)/data	1	0.0MB	{'csv': 1}	geo_metrics.csv
+plot_scripts/chimera_elongation (revisions)/figures	26	1.2MB	{'pdf': 13, 'png': 13}	geo_3s1_only.pdf | geo_3s1_only.png | geo_bar_sig_coded.pdf | geo_bar_sig_coded.png | geo_continuous_panels.pdf | geo_continuous_panels.png
+raw_data/ATAC/ATAC_Oct12_2024	192	101888.1MB	{'bw': 64, 'bam': 64, 'bai': 64}	Sorted_V1_openRegionRPM.bw | Sorted_V1.bam | Sorted_V1.bam.bai | Sorted_V2_openRegionRPM.bw | Sorted_V2.bam | Sorted_V2.bam.bai
+raw_data/Bootstrap Analysis/rainbow_distribution	18	0.2MB	{'json': 18}	aggregate_120h_2_03282025.json | aggregate_120h_3_03282025.json | aggregate_120h_5_03282025.json | aggregate_120h_6_03282025.json | aggregate_120h_7_03282025.json | aggregate_120h_8_03282025.json
+raw_data/Differentiation Assay - 10212024	3	0.0MB	{'txt': 3}	bulk_late_clone1.txt | clone234.txt | clone567.txt
+raw_data/Immunofluorescence Blob Metrics/01202025	4	0.0MB	{'csv': 4}	clone1_clone3_01202025.csv | clone1_clone3001_01202025.csv | clone1_clone3002_01202025.csv | clone1_clone3003_01202025.csv
+raw_data/Immunofluorescence Blob Metrics/04062025	8	0.0MB	{'csv': 8}	50%clone7_04062025.csv | 50%clone7001_04062025.csv | 50%clone7002_04062025.csv | 50%clone7003_04062025.csv | 50%clone7004_04062025.csv | bulk_04062025.csv
+raw_data/Immunofluorescence Blob Metrics/04262024	2	0.0MB	{'csv': 2}	clone3_10x_04262024.csv | clone3_20x_04262024.csv
+raw_data/Immunofluorescence Blob Metrics/10092024	1	0.0MB	{'csv': 1}	clone3_20x_10092024.csv
+raw_data/Immunofluorescence Blob Metrics/11072024	10	0.0MB	{'csv': 10}	clone1_clone3_1to1_11072024.csv | clone1_clone3_1to20001_11072024.csv | clone1_clone3_1to20002_11072024.csv | clone1_clone3_2to10003_11072024.csv | clone1_clone3_2to10004_11072024.csv | clone1001_11072024.csv
+raw_data/Immunofluorescence Blob Metrics/11172024	18	0.0MB	{'csv': 18}	111724_clone1+3.csv | 111724_clone1+6.csv | 111724_clone1+3001.csv | 111724_clone1+3002.csv | 111724_clone1+6001.csv | 111724_clone1+6002.csv
+raw_data/Immunofluorescence Blob Metrics/12012024	11	0.0MB	{'csv': 11}	clone1_clone5.csv | clone1_clone5001.csv | clone1_clone5002.csv | clone1_clone5003.csv | clone1_clone5004.csv | clone1_clone5005.csv
+raw_data/Immunofluorescence Intensity Measurements/04192025	9	0.2MB	{'csv': 9}	20250419_124905_185__WellA1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0000.csv | 20250419_124905_185__WellA4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0003.csv | 20250419_124905_185__WellB1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0007.csv | 20250419_124905_185__WellB2_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0006.csv | 20250419_124905_185__WellB3_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0005.csv | 20250419_124905_185__WellB4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0004.csv
+raw_data/Immunofluorescence Intensity Measurements/04202025	6	1.4MB	{'csv': 6}	20250420_173146_742__WellA5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0004.csv | 20250420_173146_742__WellA6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0005.csv | 20250420_173146_742__WellB5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0007.csv | 20250420_173146_742__WellB6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0006.csv | 20250420_173146_742__WellC5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0016.csv | 20250420_173146_742__WellC6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0017.csv
+raw_data/Immunofluorescence Intensity Measurements/05032025	10	0.4MB	{'csv': 10}	20250503_142206_938__WellA1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0000.csv | 20250503_142206_938__WellA2_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0001.csv | 20250503_142206_938__WellA3_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0002.csv | 20250503_142206_938__WellA4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0003.csv | 20250503_142206_938__WellA5_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0004.csv | 20250503_142206_938__WellB1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0011.csv
+raw_data/Incucyte_raw_test/VA_Clone5+BraGFP_Clone6+BraGFP_72htimelapse_09152025_D8_D9_A3	30	54.8MB	{'tif': 30}	VID5046_A3_1_01d12h00m.tif | VID5046_A3_1_01d00h00m.tif | VID5046_A3_1_02d12h00m.tif | VID5046_A3_1_02d00h00m.tif | VID5046_A3_1_03d12h15m.tif | VID5046_A3_1_03d00h15m.tif
+raw_data/Incucyte_raw_test/bulk_clone1s1_bulk+clone7s1_08272025_fixed	192	3317.8MB	{'tif': 192}	green_VID4987_A1_1_00d00h00m.tif | green_VID4987_A2_1_00d00h00m.tif | green_VID4987_A3_1_00d00h00m.tif | green_VID4987_A4_1_00d00h00m.tif | green_VID4987_A5_1_00d00h00m.tif | green_VID4987_A6_1_00d00h00m.tif
+raw_data/Line Scans/07162025	2	2.6MB	{'csv': 2}	line_scan_GFP%spike_1.csv | line_scan_GFPspike.csv
+raw_data/Line Scans/07282025	1	0.9MB	{'csv': 1}	linescan_drug_07282025.csv
+raw_data/Line Scans/08052025	1	1.2MB	{'csv': 1}	line_scan_sgbc2_50%.csv
+raw_data/Morphologies/07112025	1	0.1MB	{'json': 1}	bulk_rainbow_07112025.json
+raw_data/Morphologies/07282025	42	270.8MB	{'nd2': 40, 'pdf': 2}	clone1+3_agn001.nd2 | clone1+3_agn002_diagnostic.pdf | clone1+3_agn002.nd2 | clone1+3_agn003.nd2 | clone1+3_agn005.nd2 | clone1+3_ctrl.nd2
+raw_data/Morphologies/08062024	1	0.0MB	{'csv': 1}	chem_08062024.csv
+raw_data/Morphologies/08072025	7	1.4MB	{'json': 7}	bulk_agn_ra_sb_dose_08072025.json | clone1_agn_ra_sb_dose_08072025.json | clone3_agn_ra_sb_dose_08072025.json | clone5_agn_ra_sb_dose_08072025.json | clone6_agn_ra_sb_dose_08072025.json | clone7_agn_ra_sb_dose_08072025.json
+raw_data/Morphologies/Nimbus JSON DrugTx/02152025	1	0.1MB	{'json': 1}	clone1+clone3_nodrug_ra_sb_agn_02152025.json
+raw_data/Morphologies/Nimbus JSON DrugTx/05032025	1	0.0MB	{'json': 1}	VA_bulk_1+3_RA_SB_05032025_v2.json
+raw_data/Morphologies/Nimbus JSON DrugTx/07282025	3	0.4MB	{'json': 3}	bulk_agn_ra_sb_07292025.json | clone1+3_ctrl_RA_AGN_SB_07282025.json | rainbow_ctrl_07282025.json
+raw_data/Morphologies/Nimbus JSON DrugTx/11282024	1	0.0MB	{'json': 1}	clone1+clone3_clone1+clone6_drugtx_11282024.json
+raw_data/Morphology CSVs	2	0.0MB	{'csv': 2}	Morphologies_1_2_3_4_5_6_7.csv | T_overlap - Sheet1.csv
+raw_data/Nimbus JSON/01202025	4	0.1MB	{'json': 4}	clone1_clone3_01202025.json | clone1_clone3001_01202025.json | clone1_clone3002_01202025.json | clone1_clone3003_01202025.json
+raw_data/Nimbus JSON/03252025	5	0.1MB	{'json': 5}	aggregate_120h_wellD3_03252025.json | aggregate_120h_wellF2_03252025.json | aggregate_120h_wellF5_03252025.json | aggregate_120h_wellG2_03252025.json | aggregate_120hwellE7_03252025.json
+raw_data/Nimbus JSON/03282025	13	0.1MB	{'json': 13}	aggregate_120h_2_03282025.json | aggregate_120h_3_03282025.json | aggregate_120h_5_03282025.json | aggregate_120h_6_03282025.json | aggregate_120h_7_03282025.json | aggregate_120h_8_03282025.json
+raw_data/Nimbus JSON/04062025	8	0.1MB	{'json': 8}	50%clone7_04062025.json | 50%clone7001_04062025.json | 50%clone7002_04062025.json | 50%clone7003_04062025.json | 50%clone7004_04062025.json | bulk_04062025.json
+raw_data/Nimbus JSON/04192025	9	2.0MB	{'json': 9}	20250419_124905_185__WellA1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0000.json | 20250419_124905_185__WellA4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0003.json | 20250419_124905_185__WellB1_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0007.json | 20250419_124905_185__WellB2_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0006.json | 20250419_124905_185__WellB3_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0005.json | 20250419_124905_185__WellB4_ChannelDAPI,YFP,CY3,A594,Brightfield_Seq0004.json
+raw_data/Nimbus JSON/04202025	6	2.7MB	{'json': 6}	20250420_173146_742__WellA5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0004.json | 20250420_173146_742__WellA6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0005.json | 20250420_173146_742__WellB5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0007.json | 20250420_173146_742__WellB6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0006.json | 20250420_173146_742__WellC5_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0016.json | 20250420_173146_742__WellC6_ChannelDAPI,YFP,CY3,CY5,Brightfield_Seq0017.json
+raw_data/Nimbus JSON/04262024	2	0.0MB	{'json': 2}	clone3_10x_04262024.json | clone3_20x_04262024.json
+raw_data/Nimbus JSON/04262025	2	0.1MB	{'json': 2}	clone1_Wnt_04262025_fixed.json | clone3_Wnt_04262025_fixed.json
+raw_data/Nimbus JSON/05032025	32	1.4MB	{'json': 32}	1+3_ctrl001.json | 1+3_ctrl002.json | 1+3_ctrl003.json | 1+3_ctrl004.json | 1+3_ctrl005.json | 1+3_ra.json
+raw_data/Nimbus JSON/05072025	21	0.3MB	{'json': 21}	1+7.json | 1+7001.json | 1+7002.json | 3+7.json | 3+7001.json | 3+7002.json
+raw_data/Nimbus JSON/05142025	25	0.1MB	{'json': 25}	bulk.json | bulk001.json | bulk002.json | bulk003.json | bulk004.json | bulk005.json
+raw_data/Nimbus JSON/05282025	42	0.5MB	{'json': 42}	1+3ra001.json | 1+3ra002.json | 1+3ra003 (1).json | 1+3ra003.json | 1+3sb002.json | 1+3sb003.json
+raw_data/Nimbus JSON/07132025	7	0.0MB	{'json': 7}	rb_10%004.json | rb_10%005.json | rb_10%007.json | rb_25%.json | rb_25%002.json | rb_25%003.json
+raw_data/Nimbus JSON/07132025 (1)	7	0.0MB	{'json': 7}	rb_10%004.json | rb_10%005.json | rb_10%007.json | rb_25%.json | rb_25%002.json | rb_25%003.json
+raw_data/Nimbus JSON/07162025	1	0.1MB	{'json': 1}	%GFPbc2_plate2_07162025.json
+raw_data/Nimbus JSON/08052025	1	0.1MB	{'json': 1}	sg_bc2_50%_08052025.json
+raw_data/Nimbus JSON/090924	1	0.0MB	{'json': 1}	clone6%_09092024.json
+raw_data/Nimbus JSON/10092024	1	0.0MB	{'json': 1}	clone3_20x_10092024.json
+raw_data/Nimbus JSON/11042024	2	0.1MB	{'json': 2}	2024-11-08 13_39 - green_ratios_A1_1_00d00h00m.json | demix_clones1_3.json
+raw_data/Nimbus JSON/11072024	9	0.0MB	{'json': 9}	clone1_clone3_1to20001_11072024.json | clone1_clone3_1to20002_11072024.json | clone1_clone3_2to10003_11072024.json | clone1_clone3_2to10004_11072024.json | clone1001_11072024.json | clone1002_11072024.json
+raw_data/Nimbus JSON/11172024	18	0.3MB	{'json': 18}	111724_clone1+3.json | 111724_clone1+6.json | 111724_clone1+3001.json | 111724_clone1+3002.json | 111724_clone1+6001.json | 111724_clone1+6002.json
+raw_data/Nimbus JSON/12012024	11	0.1MB	{'json': 11}	clone1_clone5.json | clone1_clone5001.json | clone1_clone5002.json | clone1_clone5003.json | clone1_clone5004.json | clone1_clone5005.json
+raw_data/Patch Analysis/clone1+3_gastruloid_RA_SB_05032025_test	32	589.9MB	{'nd2': 23, 'pdf': 9}	1+3_ctrl_diagnostic.pdf | 1+3_ctrl.nd2 | 1+3_ctrl001_diagnostic.pdf | 1+3_ctrl001.nd2 | 1+3_ctrl002.nd2 | 1+3_ctrl003.nd2
+raw_data/Patch Analysis/clone1+3_gastruloid_RA_SB_05242025	38	945.3MB	{'nd2': 37, 'pdf': 1}	1+3ra.nd2 | 1+3ra001.nd2 | 1+3ra002.nd2 | 1+3ra003.nd2 | 1+3sb.nd2 | 1+3sb002.nd2
+raw_data/RNAseq	5	1.6MB	{'json': 3, 'csv': 1, 'tsv': 1}	RunManifest.csv | RunManifest.json | RunParameters.json | RunStats.json | studydesign.tsv
+raw_data/RNAseq/DefaultProject	4	4.3MB	{'csv': 2, 'html': 1, 'json': 1}	DefaultProject_IndexAssignment.csv | DefaultProject_Metrics.csv | DefaultProject_QC.html | DefaultProject_RunStats.json
+raw_data/RNAseq/DefaultProject/PhiX	3	0.1MB	{'fastq': 2, 'json': 1}	PhiX_R1.fastq.gz | PhiX_R2.fastq.gz | PhiX_stats.json
+raw_data/RNAseq/DefaultProject/VA_1	3	76.2MB	{'fastq': 2, 'json': 1}	VA_1_R1.fastq.gz | VA_1_R2.fastq.gz | VA_1_stats.json
+raw_data/RNAseq/DefaultProject/VA_10	3	1915.8MB	{'fastq': 2, 'json': 1}	VA_10_R1.fastq.gz | VA_10_R2.fastq.gz | VA_10_stats.json
+raw_data/RNAseq/DefaultProject/VA_11	3	63.7MB	{'fastq': 2, 'json': 1}	VA_11_R1.fastq.gz | VA_11_R2.fastq.gz | VA_11_stats.json
+raw_data/RNAseq/DefaultProject/VA_12	3	1517.4MB	{'fastq': 2, 'json': 1}	VA_12_R1.fastq.gz | VA_12_R2.fastq.gz | VA_12_stats.json
+raw_data/RNAseq/DefaultProject/VA_13	3	2764.8MB	{'fastq': 2, 'json': 1}	VA_13_R1.fastq.gz | VA_13_R2.fastq.gz | VA_13_stats.json
+raw_data/RNAseq/DefaultProject/VA_14	3	2305.3MB	{'fastq': 2, 'json': 1}	VA_14_R1.fastq.gz | VA_14_R2.fastq.gz | VA_14_stats.json
+raw_data/RNAseq/DefaultProject/VA_15	3	2538.3MB	{'fastq': 2, 'json': 1}	VA_15_R1.fastq.gz | VA_15_R2.fastq.gz | VA_15_stats.json
+raw_data/RNAseq/DefaultProject/VA_16	3	2016.6MB	{'fastq': 2, 'json': 1}	VA_16_R1.fastq.gz | VA_16_R2.fastq.gz | VA_16_stats.json
+raw_data/RNAseq/DefaultProject/VA_17	3	2537.9MB	{'fastq': 2, 'json': 1}	VA_17_R1.fastq.gz | VA_17_R2.fastq.gz | VA_17_stats.json
+raw_data/RNAseq/DefaultProject/VA_18	3	4313.1MB	{'fastq': 2, 'json': 1}	VA_18_R1.fastq.gz | VA_18_R2.fastq.gz | VA_18_stats.json
+raw_data/RNAseq/DefaultProject/VA_2	3	4470.9MB	{'fastq': 2, 'json': 1}	VA_2_R1.fastq.gz | VA_2_R2.fastq.gz | VA_2_stats.json
+raw_data/RNAseq/DefaultProject/VA_3	3	695.6MB	{'fastq': 2, 'json': 1}	VA_3_R1.fastq.gz | VA_3_R2.fastq.gz | VA_3_stats.json
+raw_data/RNAseq/DefaultProject/VA_4	3	2188.4MB	{'fastq': 2, 'json': 1}	VA_4_R1.fastq.gz | VA_4_R2.fastq.gz | VA_4_stats.json
+raw_data/RNAseq/DefaultProject/VA_5	3	2427.8MB	{'fastq': 2, 'json': 1}	VA_5_R1.fastq.gz | VA_5_R2.fastq.gz | VA_5_stats.json
+raw_data/RNAseq/DefaultProject/VA_6	3	503.8MB	{'fastq': 2, 'json': 1}	VA_6_R1.fastq.gz | VA_6_R2.fastq.gz | VA_6_stats.json
+raw_data/RNAseq/DefaultProject/VA_7	3	2223.2MB	{'fastq': 2, 'json': 1}	VA_7_R1.fastq.gz | VA_7_R2.fastq.gz | VA_7_stats.json
+raw_data/RNAseq/DefaultProject/VA_8	3	2119.9MB	{'fastq': 2, 'json': 1}	VA_8_R1.fastq.gz | VA_8_R2.fastq.gz | VA_8_stats.json
+raw_data/RNAseq/DefaultProject/VA_9	3	591.4MB	{'fastq': 2, 'json': 1}	VA_9_R1.fastq.gz | VA_9_R2.fastq.gz | VA_9_stats.json
+raw_data/RNAseq_03192026/F8MWB5_results	8	23.5MB	{'html': 3, 'csv': 2, 'png': 1, 'tsv': 1, 'txt': 1}	F8MWB5-correlation-heatmap.png | F8MWB5-expression-matrix.tsv | F8MWB5-gene-biotype-5plus_reads-summary.csv | F8MWB5-gene-biotype-5plus_reads.html | F8MWB5-mapping-stats-reads.csv | F8MWB5-methods.txt
+raw_data/RNAseq_03192026/F8MWB5_results/F8MWB5_mapping-stats	8	0.0MB	{'tsv': 8}	F8MWB5_1_bulk_48h_rep1.tsv | F8MWB5_2_bulk_48h_rep2.tsv | F8MWB5_3_clone1s2_48h_rep1.tsv | F8MWB5_4_clone1s2_48h_rep2.tsv | F8MWB5_5_clone5s2_48h_rep1.tsv | F8MWB5_6_clone5s2_48h_rep2.tsv
+raw_data/RNAseq_03192026/F8MWB5_results/F8MWB5_per-sample-multiqc-report	8	19.3MB	{'html': 8}	F8MWB5_1_bulk_48h_rep1.html | F8MWB5_2_bulk_48h_rep2.html | F8MWB5_3_clone1s2_48h_rep1.html | F8MWB5_4_clone1s2_48h_rep2.html | F8MWB5_5_clone5s2_48h_rep1.html | F8MWB5_6_clone5s2_48h_rep2.html
+raw_data/SG	26	50.5MB	{'h5ad': 18, 'hdf5': 4, 'R': 2, 'csv': 2}	matrix_decode_roi1_seg_roi1_nuclei_run5.h5ad | matrix_decode_roi1_seg_roi1_nuclei_run6.h5ad | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad | matrix_decode_roi1_segmentation_roi1_nuclei_run3.h5ad | matrix_decode_roi1_test_clone1_segment_roi1_channel2_v2_nuclei_run4.h5ad | matrix_decode_roi1_v2_segmentation_roi1_run3_nuclei.h5ad
+raw_data/SG/01212025	7	4.4MB	{'hdf5': 2, 'h5ad': 2, 'tiff': 2, 'csv': 1}	decode_v1.hdf5 | decode_v2.hdf5 | matrix_decode_v1_segmentation_v1_nuclei.h5ad | matrix_decode_v2_segmentation_v1_nuclei.h5ad | ROI1_run2_genematrix.csv | segmentation_v1_nuclei.tiff
+raw_data/SG/01272025	8	12.1MB	{'hdf5': 3, 'h5ad': 3, 'tiff': 2}	decode_roi1_v2.hdf5 | decode_roi1.hdf5 | decode_roi2.hdf5 | matrix_decode_roi1_segmentation_roi1_nuclei_run3.h5ad | matrix_decode_roi1_v2_segmentation_roi1_run3_nuclei.h5ad | matrix_decode_roi2_roi2_segment__run3_nuclei.h5ad
+raw_data/SG/01292025	11	8.0MB	{'tiff': 4, 'hdf5': 3, 'h5ad': 3, 'csv': 1}	decode_green_roi1.hdf5 | decode_roi1_test_clone1.hdf5 | decode_roi1.hdf5 | matrix_decode_green_roi1_seg_green_roi2_nuclei.h5ad | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad | matrix_decode_roi1_test_clone1_segment_roi1_channel2_v2_nuclei.h5ad
+raw_data/SG/01292025/roi1_analyze	9	1.8MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/01292025/roi1_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/01292025/roi1_analyze/clusters	4	1.8MB	{'h5ad': 2, 'json': 2}	cluster_roi1_clone1.h5ad | cluster_roi1_clone1.json | cluster_roi1.h5ad | cluster_roi1.json
+raw_data/SG/01292025/roi1_analyze/genes	9	3.7MB	{'hdf5': 3, 'h5ad': 3, 'json': 3}	decode_green_roi1.hdf5 | decode_roi1_test_clone1.hdf5 | decode_roi1.hdf5 | matrix_decode_green_roi1_seg_green_roi2_nuclei.h5ad | matrix_decode_green_roi1_seg_green_roi2_nuclei.json | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad
+raw_data/SG/01292025/roi1_analyze/segmentations	13	2.6MB	{'json': 4, 'npz': 4, 'tiff': 4, 'zip': 1}	seg_green_roi2_nuclei.json | seg_green_roi2_nuclei.npz | seg_green_roi2_nuclei.tiff | seg_green_roi2_nuclei.zip | segment_GFP_roi1_nuclei.json | segment_GFP_roi1_nuclei.npz
+raw_data/SG/01292025/roi1_analyze/thresholds	1	0.0MB	{'json': 1}	threshold_roi1.json
+raw_data/SG/02142025	21	29.7MB	{'hdf5': 7, 'h5ad': 7, 'tiff': 7}	decode_green.hdf5 | decode_roi1.hdf5 | decode_roi2.hdf5 | decode_roi3.hdf5 | decode_roi4.hdf5 | decode_roi5.hdf5
+raw_data/SG/02142025/roi_1_processed	8	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_1_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_1_processed/genes	3	3.5MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json
+raw_data/SG/02142025/roi_1_processed/segmentations	3	5.0MB	{'json': 1, 'npz': 1, 'tiff': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff
+raw_data/SG/02142025/roi_1_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/02142025/roi_2_processed	8	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_2_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_2_processed/genes	6	5.0MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi2.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/02142025/roi_2_processed/segmentations	7	2.7MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi2_nuclei.json | seg_roi2_nuclei.npz
+raw_data/SG/02142025/roi_2_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/02142025/roi_3_processed	9	7.2MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_3_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_3_processed/genes	6	5.8MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi3.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi3_seg_roi3_nuclei.h5ad | matrix_decode_roi3_seg_roi3_nuclei.json
+raw_data/SG/02142025/roi_3_processed/segmentations	7	1.0MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi3_nuclei.json | seg_roi3_nuclei.npz
+raw_data/SG/02142025/roi_3_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/02142025/roi_4_processed	6	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.session
+raw_data/SG/02142025/roi_4_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_4_processed/genes	6	4.8MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi4.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/02142025/roi_4_processed/segmentations	7	3.8MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi4_nuclei.json | seg_roi4_nuclei.npz
+raw_data/SG/02142025/roi_4_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/02142025/roi_5_processed	8	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02142025/roi_5_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_5_processed/genes	6	3.0MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi5.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi5_seg_roi5_nuclei.h5ad | matrix_decode_roi5_seg_roi5_nuclei.json
+raw_data/SG/02142025/roi_5_processed/segmentations	7	2.6MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi5_nuclei.json | seg_roi5_nuclei.npz
+raw_data/SG/02142025/roi_5_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi5.json
+raw_data/SG/02142025/roi_6_processed	4	0.0MB	{'log': 1, '1': 1, '2': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/02142025/roi_6_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02142025/roi_6_processed/genes	3	1.9MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi6.hdf5 | matrix_decode_roi6_seg_roi6_nuclei.h5ad | matrix_decode_roi6_seg_roi6_nuclei.json
+raw_data/SG/02142025/roi_6_processed/segmentations	3	1.8MB	{'json': 1, 'npz': 1, 'tiff': 1}	seg_roi6_nuclei.json | seg_roi6_nuclei.npz | seg_roi6_nuclei.tiff
+raw_data/SG/02142025/roi_6_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi6.json
+raw_data/SG/02172025	9	21.0MB	{'hdf5': 3, 'h5ad': 3, 'tiff': 3}	decode_green.hdf5 | decode_roi1.hdf5 | decode_roi2.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.h5ad
+raw_data/SG/02172025/roi_1_processed	7	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1, '3': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.log.3 | sganalysis.log.4
+raw_data/SG/02172025/roi_1_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02172025/roi_1_processed/genes	3	5.5MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json
+raw_data/SG/02172025/roi_1_processed/segmentations	3	2.9MB	{'json': 1, 'npz': 1, 'tiff': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff
+raw_data/SG/02172025/roi_1_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/02172025/roi_2_processed	5	0.0MB	{'session': 2, 'log': 1, '1': 1, '2': 1}	sganalysis_deprecated.session | sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/02172025/roi_2_processed/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/02172025/roi_2_processed/clusters	2	3.0MB	{'h5ad': 1, 'json': 1}	cluster_roi2.h5ad | cluster_roi2.json
+raw_data/SG/02172025/roi_2_processed/genes	6	8.0MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_green.hdf5 | decode_roi2.hdf5 | matrix_decode_green_seg_green_nuclei.h5ad | matrix_decode_green_seg_green_nuclei.json | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/02172025/roi_2_processed/segmentations	7	4.8MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 1}	seg_green_nuclei.json | seg_green_nuclei.npz | seg_green_nuclei.tiff | seg_green_nuclei.zip | seg_roi2_nuclei.json | seg_roi2_nuclei.npz
+raw_data/SG/02172025/roi_2_processed/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/02192025	17	24.2MB	{'hdf5': 6, 'h5ad': 6, 'tiff': 5}	decode_roi1.hdf5 | decode_roi2.hdf5 | decode_roi3.hdf5 | decode_roi4.hdf5 | decode_roi5.hdf5 | decode_roi6.hdf5
+raw_data/SG/05052025	8	41.7MB	{'hdf5': 2, 'h5ad': 2, 'tiff': 2, 'csv': 2}	decode_roi1.hdf5 | decode_roi2.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.h5ad | seg_roi1_nuclei.tiff | seg_roi2_nuclei.tiff
+raw_data/SG/05232025	20	285.8MB	{'h5ad': 7, 'tiff': 7, 'hdf5': 6}	decode_roi1.hdf5 | decode_roi2_green.hdf5 | decode_roi2.hdf5 | decode_roi3_green.hdf5 | decode_roi4.hdf5 | decore_roi4_green.hdf5
+raw_data/SG/05232025/roi1_analyze	3	0.0MB	{'log': 1, '1': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.session
+raw_data/SG/05232025/roi1_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/05232025/roi1_analyze/genes	3	28.9MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json
+raw_data/SG/05232025/roi1_analyze/segmentations	4	1.8MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff | seg_roi1_nuclei.zip
+raw_data/SG/05232025/roi1_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/05232025/roi2_analyze	4	0.0MB	{'log': 1, '1': 1, '2': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/05232025/roi2_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/05232025/roi2_analyze/genes	6	58.5MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi2_green.hdf5 | decode_roi2.hdf5 | matrix_decode_roi2_green_seg_roi2_green_nuclei.h5ad | matrix_decode_roi2_green_seg_roi2_green_nuclei.json | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/05232025/roi2_analyze/segmentations	8	1.3MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi2_green_nuclei.json | seg_roi2_green_nuclei.npz | seg_roi2_green_nuclei.tiff | seg_roi2_green_nuclei.zip | seg_roi2_nuclei.json | seg_roi2_nuclei.npz
+raw_data/SG/05232025/roi2_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/05232025/roi3_analyze	4	0.0MB	{'log': 1, '1': 1, '2': 1, 'session': 1}	sganalysis.log | sganalysis.log.1 | sganalysis.log.2 | sganalysis.session
+raw_data/SG/05232025/roi3_analyze/auxiliaries	1	0.0MB	{'json': 1}	gene_groups.json
+raw_data/SG/05232025/roi3_analyze/genes	6	89.9MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi3_green.hdf5 | decode_roi3.hdf5 | matrix_decode_roi3_green_seg_roi3_green_nuclei.h5ad | matrix_decode_roi3_green_seg_roi3_green_nuclei.json | matrix_decode_roi3_seg_roi3_nuclei.h5ad | matrix_decode_roi3_seg_roi3_nuclei.json
+raw_data/SG/05232025/roi3_analyze/segmentations	8	1.3MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi3_green_nuclei.json | seg_roi3_green_nuclei.npz | seg_roi3_green_nuclei.tiff | seg_roi3_green_nuclei.zip | seg_roi3_nuclei.json | seg_roi3_nuclei.npz
+raw_data/SG/05232025/roi3_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/05232025/roi4_analyze	2	0.0MB	{'log': 1, 'session': 1}	sganalysis.log | sganalysis.session
+raw_data/SG/05232025/roi4_analyze/genes	6	148.4MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi4.hdf5 | decore_roi4_green.hdf5 | matrix_decode_roi4_green_seg_roi4_green_nuclei.h5ad | matrix_decode_roi4_green_seg_roi4_green_nuclei.json | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/05232025/roi4_analyze/segmentations	8	1.4MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi4_green_nuclei.json | seg_roi4_green_nuclei.npz | seg_roi4_green_nuclei.tiff | seg_roi4_green_nuclei.zip | seg_roi4_nuclei.json | seg_roi4_nuclei.npz
+raw_data/SG/05232025/roi4_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/08182025	6	1.6MB	{'png': 6}	green_nuclei_seg_roi4.png | green_nuclei_seg.png | roi2_Igfbp5.png | roi2_T_igfbp5.png | roi2_T.png | roi4_green.png
+raw_data/SG/08182025/roi1_analyze	3	32.2MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi1_08182025.csv
+raw_data/SG/08182025/roi1_analyze/genes	1	10.4MB	{'hdf5': 1}	decode_roi1.hdf5
+raw_data/SG/08182025/roi1_analyze/segmentations	4	0.8MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff | seg_roi1_nuclei.zip
+raw_data/SG/08182025/roi1_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/08182025/roi2_analyze	3	54.0MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi2_08182025.csv
+raw_data/SG/08182025/roi2_analyze/genes	3	17.2MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi2.hdf5 | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/08182025/roi2_analyze/segmentations	4	0.8MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi2_nuclei.json | seg_roi2_nuclei.npz | seg_roi2_nuclei.tiff | seg_roi2_nuclei.zip
+raw_data/SG/08182025/roi2_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/08182025/roi3_analyze	2	0.0MB	{'log': 1, 'session': 1}	sganalysis.log | sganalysis.session
+raw_data/SG/08182025/roi3_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/08182025/roi4_analyze	3	34.8MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi4_08182025.csv
+raw_data/SG/08182025/roi4_analyze/genes	6	23.7MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi4_green.hdf5 | decode_roi4.hdf5 | matrix_decode_roi4_green_seg_roi4_green_nuclei.h5ad | matrix_decode_roi4_green_seg_roi4_green_nuclei.json | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/08182025/roi4_analyze/segmentations	8	1.7MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi4_green_nuclei.json | seg_roi4_green_nuclei.npz | seg_roi4_green_nuclei.tiff | seg_roi4_green_nuclei.zip | seg_roi4_nuclei.json | seg_roi4_nuclei.npz
+raw_data/SG/08182025/roi4_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/08182025/roi5_analyze	3	88.1MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi5_08182025.csv
+raw_data/SG/08182025/roi5_analyze/genes	3	28.7MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi5.hdf5 | matrix_decode_roi5_seg_roi5_nuclei.h5ad | matrix_decode_roi5_seg_roi5_nuclei.json
+raw_data/SG/08182025/roi5_analyze/segmentations	4	1.6MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi5_nuclei.json | seg_roi5_nuclei.npz | seg_roi5_nuclei.tiff | seg_roi5_nuclei.zip
+raw_data/SG/08182025/roi5_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi1.json
+raw_data/SG/08182025/roi6_analyze	3	8.8MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi6_08182025.csv
+raw_data/SG/08182025/roi6_analyze/genes	6	6.8MB	{'hdf5': 2, 'h5ad': 2, 'json': 2}	decode_roi6_green.hdf5 | decode_roi6.hdf5 | matrix_decode_roi6_green_seg_roi6_green_nuclei.h5ad | matrix_decode_roi6_green_seg_roi6_green_nuclei.json | matrix_decode_roi6_seg_roi6_nuclei.h5ad | matrix_decode_roi6_seg_roi6_nuclei.json
+raw_data/SG/08182025/roi6_analyze/segmentations	8	1.6MB	{'json': 2, 'npz': 2, 'tiff': 2, 'zip': 2}	seg_roi6_green_nuclei.json | seg_roi6_green_nuclei.npz | seg_roi6_green_nuclei.tiff | seg_roi6_green_nuclei.zip | seg_roi6_nuclei.json | seg_roi6_nuclei.npz
+raw_data/SG/08182025/roi6_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi6.json
+raw_data/SG/08212025	6	1.4MB	{'png': 6}	roi1_Igfbp5.png | roi1_T_Igfbp5.png | ROI1_T.png | roi2_Igfbp5.png | roi2_T_Igfbp5.png | roi2_T.png
+raw_data/SG/08212025/roi1_analyze	3	56.6MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi1_08212025.csv
+raw_data/SG/08212025/roi1_analyze/genes	9	55.9MB	{'hdf5': 3, 'h5ad': 3, 'json': 3}	decode_roi1_V2.hdf5 | decode_roi1_v3.hdf5 | decode_roi1.hdf5 | matrix_decode_roi1_seg_roi1_nuclei.h5ad | matrix_decode_roi1_seg_roi1_nuclei.json | matrix_decode_roi1_V2_seg_roi1_nuclei.h5ad
+raw_data/SG/08212025/roi1_analyze/segmentations	4	0.9MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi1_nuclei.json | seg_roi1_nuclei.npz | seg_roi1_nuclei.tiff | seg_roi1_nuclei.zip
+raw_data/SG/08212025/roi1_analyze/thresholds	2	0.0MB	{'json': 2}	thresh_roi1_V2.json | thresh_roi1.json
+raw_data/SG/08212025/roi2_analyze	3	7.4MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi2_08212025.csv
+raw_data/SG/08212025/roi2_analyze/genes	3	3.0MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi2.hdf5 | matrix_decode_roi2_seg_roi2_nuclei.h5ad | matrix_decode_roi2_seg_roi2_nuclei.json
+raw_data/SG/08212025/roi2_analyze/segmentations	4	0.9MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi2_nuclei.json | seg_roi2_nuclei.npz | seg_roi2_nuclei.tiff | seg_roi2_nuclei.zip
+raw_data/SG/08212025/roi2_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi2.json
+raw_data/SG/08212025/roi3_analyze	3	3.3MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi3_08212025.csv
+raw_data/SG/08212025/roi3_analyze/genes	3	1.6MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi3.hdf5 | matrix_decode_roi3_seg_roi3_nuclei.h5ad | matrix_decode_roi3_seg_roi3_nuclei.json
+raw_data/SG/08212025/roi3_analyze/segmentations	4	0.6MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi3_nuclei.json | seg_roi3_nuclei.npz | seg_roi3_nuclei.tiff | seg_roi3_nuclei.zip
+raw_data/SG/08212025/roi3_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi3.json
+raw_data/SG/08212025/roi4_analyze	3	3.9MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi4_08212025.csv
+raw_data/SG/08212025/roi4_analyze/genes	3	1.7MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi4.hdf5 | matrix_decode_roi4_seg_roi4_nuclei.h5ad | matrix_decode_roi4_seg_roi4_nuclei.json
+raw_data/SG/08212025/roi4_analyze/segmentations	4	0.6MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi4_nuclei.json | seg_roi4_nuclei.npz | seg_roi4_nuclei.tiff | seg_roi4_nuclei.zip
+raw_data/SG/08212025/roi4_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi4.json
+raw_data/SG/08212025/roi5_analyze	3	11.3MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi5_08212025.csv
+raw_data/SG/08212025/roi5_analyze/genes	3	4.2MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi5.hdf5 | matrix_decode_roi5_seg_roi5_nuclei.h5ad | matrix_decode_roi5_seg_roi5_nuclei.json
+raw_data/SG/08212025/roi5_analyze/segmentations	4	1.1MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi5_nuclei.json | seg_roi5_nuclei.npz | seg_roi5_nuclei.tiff | seg_roi5_nuclei.zip
+raw_data/SG/08212025/roi5_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi5.json
+raw_data/SG/08212025/roi6_analyze	3	11.7MB	{'log': 1, 'session': 1, 'csv': 1}	sganalysis.log | sganalysis.session | transcripts_roi6_08212025.csv
+raw_data/SG/08212025/roi6_analyze/genes	3	4.2MB	{'hdf5': 1, 'h5ad': 1, 'json': 1}	decode_roi6.hdf5 | matrix_decode_roi6_seg_roi6_nuclei.h5ad | matrix_decode_roi6_seg_roi6_nuclei.json
+raw_data/SG/08212025/roi6_analyze/segmentations	4	0.9MB	{'json': 1, 'npz': 1, 'tiff': 1, 'zip': 1}	seg_roi6_nuclei.json | seg_roi6_nuclei.npz | seg_roi6_nuclei.tiff | seg_roi6_nuclei.zip
+raw_data/SG/08212025/roi6_analyze/thresholds	1	0.0MB	{'json': 1}	thresh_roi6.json
+raw_data/SG/Clone Combination Analysis 01292025/Images/01292025	6	3.3MB	{'png': 6}	clone1+3_confusion_anteriorzoom_blackbckgd.png | clone1+3_confusion_large_blackbckgd.png | clone1+3_confusion_posteriorzoom_blackbckgd.png | clone1+3_confusion_posteriorzoom_transparentbckgd.png | T_IGFBP%_confusion_masks_anterior_greenmask_v2.png | T_IGFBP%_confusion_masks_posterior_greenmask_v2.png
+raw_data/SG/Clone Combination Analysis 01292025/genes	9	3.7MB	{'hdf5': 3, 'h5ad': 3, 'json': 3}	decode_green_roi1.hdf5 | decode_roi1_test_clone1.hdf5 | decode_roi1.hdf5 | matrix_decode_green_roi1_seg_green_roi2_nuclei.h5ad | matrix_decode_green_roi1_seg_green_roi2_nuclei.json | matrix_decode_roi1_segment_roi1_nuclei_run4.h5ad
+raw_data/SG/Clone Combination Analysis 01292025/segmentations	14	2.6MB	{'tiff': 5, 'json': 4, 'npz': 4, 'zip': 1}	._segment_GFP_roi1_nuclei.tiff | seg_green_roi2_nuclei.json | seg_green_roi2_nuclei.npz | seg_green_roi2_nuclei.tiff | seg_green_roi2_nuclei.zip | segment_GFP_roi1_nuclei.json
+raw_data/SG/Clone Combination Analysis 01292025/thresholds	1	0.0MB	{'json': 1}	threshold_roi1.json
+raw_data/SG/reprocessed	7	2.7MB	{'h5ad': 6, 'json': 1}	matrix_decode_roi1_seg_roi1_nuclei_run5.h5ad | matrix_decode_roi1_seg_roi1_nuclei_run5.json | matrix_decode_roi2_v2_seg_roi2_nuclei_run5.h5ad | matrix_decode_roi3_seg_roi3_nuclei_run5.h5ad | matrix_decode_roi4_seg_roi4_nuclei_run5.h5ad | matrix_decode_roi5_seg_roi5_nuclei_run5.h5ad
+raw_data/T_Igfbp5_09022026	1	4.4MB	{'csv': 1}	gastruloid_T_Igfbp5.csv
+raw_data/Weber_reanalysis	1	1068.4MB	{'rds': 1}	seurat_object.rds
+raw_data/clone_bulk_chimera_08232026	6	0.7MB	{'csv': 3, 'json': 3}	1s2+bulk.csv | 1s2+bulk.json | 5+bulk.csv | 5+bulk.json | 6a+bulk.csv | 6a+bulk.json
+raw_data/clone_bulk_chimera_3s1_08162026	2	0.3MB	{'csv': 1, 'json': 1}	3s1+bulk.csv | 3s1+bulk.json
+raw_data/linescans	42	16.1MB	{'xlsx': 35, 'csv': 7}	1+3_ctrl_ra_sb_05032025.csv | 3+7_6+7_linescan_5032025.csv | clone1_pass1subclones_09242024.xlsx | clone1_pass2subclones_09242024.xlsx | clone1_Wnt_04262025.csv | clone1%_pass1_07072024.xlsx
+raw_data/morph_08312026	2	0.2MB	{'json': 2}	bulk_5s2_6a.json | bulk+5s2_bulk+6a_5s2+6a.json
