@@ -1,0 +1,4 @@
+[
+ {"glob": "extracted_data/SG_kit1/gastruloid*.csv", "usefulness": "B", "questions": "Q4", "basis": "header", "units": "gastruloid 27", "note": "header check 2026-11-12: 21-gene panel, no clone id or position; duplicate of the _spatial table"},
+ {"glob": "extracted_data/SG_kit1/gastruloid*_spatial.csv", "usefulness": "A", "questions": "Q1,Q4", "basis": "header", "units": "gastruloid ~25; ~2,400 cells in gastruloid 1", "note": "header check 2026-11-12: per-cell clone_id, nuclei_x/y, gastruloid_id, 21-gene panel. Mixture vs pure count unknown; values unread"}
+]

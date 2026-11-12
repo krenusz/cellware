@@ -65,3 +65,26 @@ All 16,044 files are labelled (0 unmatched). Every label's basis is `metadata`: 
 1. **Header-only check of SG_kit1:** download 1 table, read the header row only, and see if a clone id column
    exists. This decides whether A stands.
 2. If it stands: H19 counts (cells per clone per gastruloid), then seal by gastruloid before any statistic.
+
+## Header-only check of SG_kit1 (2026-11-12, Bence: "Yes, header check")
+
+One table pair downloaded (`gastruloid1.csv`, `gastruloid1_spatial.csv`). Only the header row and the row count
+were read. No values were read, including `clone_id`.
+
+- **`gastruloidN_spatial.csv` has a per-cell `clone_id` column**, plus `nuclei_x`, `nuclei_y`, `gastruloid_id`.
+- **Panel:** 21 genes (Zfp42, Mesp1, Sox2, Utf1, Pim2, Hoxc8, Cyp26a1, Foxa2, Thy1, Wnt3, Sox9, Lhx1, Hoxb9, Nrp2,
+  Igfbp5, Epha5, Sfrp1, Gbx2, Ncam1, T, Hoxaas3).
+- **Size:** 2,393 cells in gastruloid 1. `gastruloidN.csv` is the same table without the position and id columns.
+- **Other files in the folder** (names only, not opened): `g15_clone1/3.csv`, `g19_clone1/3.csv`,
+  `expression_comparison_bulk_*_vs_clones.csv` (the authors' comparison, do not read), `fc_*ROI*.csv`.
+
+**Verdict: the A label stands for the 25 `_spatial` tables.** The plain `gastruloidN.csv` tables are duplicates
+without clone id (B).
+
+**Still unknown, needs counts under H19 (not done):**
+- how many of the 27 gastruloids are mixtures vs pure;
+- how many clones each holds;
+- cells per clone.
+
+**Limit:** the unit for any test is the gastruloid, so at most 25-27 units. That is too few for a per-condition
+split unless most are the same mixture type.
