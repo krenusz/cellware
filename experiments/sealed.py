@@ -25,7 +25,7 @@ DATASETS = {
                       "partitioned by pre-treatment lineage (partitions.resistrace, sealed 2026-11-13): train 40%, A/B/C 20%; "
                       "drugSens / prer_r_group readable only via train_only / test_oracle. Exposure (2026-11-12): column names, "
                       "cells per sample, and (via a column-shift bug) per-sample counts of cells with a sisters ID AND of distinct "
-                      "prer_r_group IDs = number of pre-resistant families per sample (outcome aggregate, all partitions pooled); "
+                      "distinct prer_r_group IDs (pre-resistant families; whether singletons were included is unverified), cells carrying prer_r_group (perfect-match pre-resistant cells), family size spread, and post cells carrying prer_r_group (matched post cells); all pooled across partitions (outcome aggregates); "
                       "two example rows printed (one pre-sensitive, one pre-resistant). No per-lineage outcome tabulated. "
                       "An unlocked copy of the same 16 files remains in an old session temp folder (C: scratchpad dl_resistrace), never read since. "
                       "Lineage labels are not in any GEO table: only in the 10x reads (gene pBA439_UMI_20).",
@@ -208,7 +208,7 @@ HELDOUT_READERS = {
     "c4s2a_morph_confirm.py": "C4-S2a: mixture plate read only in test(part) via test_oracle; counts(part) counts only",
     "c7s3_carrier.py": "C7-S3: celltag_lsk sealed partitions read only in test(part) / counts(part) via test_oracle; train via train_only",
     "c9s2_confirm.py": "C9-S2: celltag_lsk sealed partition read only in test_lsk / counts_lsk (no fate column) via test_oracle",
-    "c10s0_partition.py": "C10-S0: partition_of on pre-side lineage keys for structural counts only (sisters + label-detected flag; drugSens / prer_r_group values never read; post tables not opened)",
+    "c10s0_partition.py": "C10-S0: main() = partition_of on pre-side lineage keys, structural counts only; train_links()/train_post() read prer_r_group on TRAIN lineages only via train_only",
     "c9s0_scan.py": "C9-S0: sealed_rows used ONLY for structural counts (clone/day/exp/assay columns, no fate column loaded) for H19 power",
     "c8s1_confirm.py": "C8-S1: celltag_lsk / chspctrack / celltag_reprog sealed partitions read only in test_* / counts_* via test_oracle; select_* via train_only",
     "c7s7_confirm.py": "C7-S7: celltag_lsk / celltag_reprog / chspctrack sealed partitions read only in test_* / counts_* via test_oracle; select_* via train_only",

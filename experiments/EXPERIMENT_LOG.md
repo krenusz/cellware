@@ -10584,3 +10584,20 @@ The numbers are unchanged from the result files.)*
   `partitions.train_only`). Sealed thirds are not touched.
 - **Why:** the test units are linked lineages, not the 300-600 sister groups. If a sealed third would hold fewer
   than 30 linked lineages per side, pooling across samples is Bence's call.
+
+### C10-S0 amendment 2 (2026-11-13, before running): train post cells per family + synthetic statistic check
+
+- `c10s0_partition.py train_post`, **train families only**:
+  - post cells per linked family; asserts each `prer_r_group` ID maps to exactly one pre lineage;
+  - post cells without an ID are dropped before counting and never read further.
+- `c10s0_sim.py` (new, **synthetic only, no data**): smoke test of the candidate instruction statistic.
+  - **Statistic S:** log F(drug library) minus log F(matched control library, same replicate).
+  - **F:** the between-family mean square of family post-means, after regressing them on pre-sister means (top
+    PCs), divided by the within-family post-cell mean square / mean n.
+  - **Unit:** linked family; bootstrap over families within each library.
+  - **Must pass all three, or the stop rule:**
+    1. S is unchanged when a constant or a scale is applied to every cell of one library;
+    2. S stays near 0 in a selection-only world where survivors are a narrow slice of pre-states (range
+       restriction, one pre cell per family);
+    3. S is > 0 when family-specific instruction is added.
+- **Practice:** this is the synthetic smoke test; adequacy gate = the three checks above.

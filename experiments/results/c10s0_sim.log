@@ -1,0 +1,13 @@
+1_invariance_diff 0.0
+2_selection_only_n40 {'mean': np.float64(-0.007), 'sd': np.float64(0.191), 'crit95': np.float64(0.313)}
+3_instruction_tau0.25_n40 {'mean': np.float64(0.09), 'power_vs_null95': np.float64(0.102)}
+3_instruction_tau0.5_n40 {'mean': np.float64(0.372), 'power_vs_null95': np.float64(0.616)}
+3_instruction_tau0.75_n40 {'mean': np.float64(0.72), 'power_vs_null95': np.float64(0.988)}
+2b_strong_restriction_n40 {'mean': np.float64(-0.047), 'false_pos_vs_crit': np.float64(0.012)}
+2c_lower_memory_n40 {'mean': np.float64(-0.414), 'pos_rate': np.float64(0.0)}
+2_selection_only_n80 {'mean': np.float64(-0.013), 'sd': np.float64(0.131), 'crit95': np.float64(0.188)}
+3_instruction_tau0.25_n80 {'mean': np.float64(0.109), 'power_vs_null95': np.float64(0.226)}
+3_instruction_tau0.5_n80 {'mean': np.float64(0.375), 'power_vs_null95': np.float64(0.932)}
+3_instruction_tau0.75_n80 {'mean': np.float64(0.721), 'power_vs_null95': np.float64(1.0)}
+2b_strong_restriction_n80 {'mean': np.float64(-0.034), 'false_pos_vs_crit': np.float64(0.044)}
+2c_lower_memory_n80 {'mean': np.float64(-0.401), 'pos_rate': np.float64(0.0)}

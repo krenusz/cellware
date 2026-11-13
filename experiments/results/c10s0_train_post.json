@@ -1,0 +1,58 @@
+{
+ "Carboplatin_1": {
+  "families_ge2_post": 23,
+  "families_ge5_post": 2,
+  "median_post_per_family": 1.0,
+  "post_cells": 114,
+  "train_families": 117
+ },
+ "Carboplatin_2": {
+  "families_ge2_post": 29,
+  "families_ge5_post": 4,
+  "median_post_per_family": 1.0,
+  "post_cells": 143,
+  "train_families": 127
+ },
+ "Control_1": {
+  "families_ge2_post": 75,
+  "families_ge5_post": 15,
+  "median_post_per_family": 2.0,
+  "post_cells": 320,
+  "train_families": 140
+ },
+ "Control_2": {
+  "families_ge2_post": 36,
+  "families_ge5_post": 6,
+  "median_post_per_family": 1.0,
+  "post_cells": 153,
+  "train_families": 88
+ },
+ "NK_1": {
+  "families_ge2_post": 83,
+  "families_ge5_post": 28,
+  "median_post_per_family": 2.0,
+  "post_cells": 382,
+  "train_families": 136
+ },
+ "NK_2": {
+  "families_ge2_post": 106,
+  "families_ge5_post": 43,
+  "median_post_per_family": 2.0,
+  "post_cells": 573,
+  "train_families": 170
+ },
+ "Olaparib_1": {
+  "families_ge2_post": 117,
+  "families_ge5_post": 39,
+  "median_post_per_family": 2.0,
+  "post_cells": 628,
+  "train_families": 172
+ },
+ "Olaparib_2": {
+  "families_ge2_post": 22,
+  "families_ge5_post": 1,
+  "median_post_per_family": 1.0,
+  "post_cells": 116,
+  "train_families": 131
+ }
+}

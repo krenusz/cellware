@@ -7,7 +7,8 @@
  "next_steps": [
   "C10-S0: partition done (partitions.resistrace, by pre lineage; pre-side counts in results/c10s0_counts.json); pre-to-post links = prer_r_group (perfect matches only); raw-read extraction not needed for now",
   "Train link counts done (amendment 1): 117-172 linked lineages per drug sample on train, so about 60-85 per sealed third",
-  "Next (Bence): pin the instruction statistic and its unit; a shared drug shift vs control is between libraries (2 per arm) and would hit the stop rule. Then expression (GEO RAW tar 484 MB, new ask) for the train power step; read Russo 2022 and Whiting 2025 in full",
+  "Instruction statistic pinned (amendment 2): S = logF(drug) - logF(control), family-level, synthetic smoke test PASSES (invariant; selection-only ~0; power 0.62 at tau 0.5 / 40 families, 0.93 / 80). Needs >= 2 post cells per family: feasible in NK_1/NK_2/Olaparib_1/Control_1 (~37-58 per sealed third), not carboplatin or Olaparib_2 (~11-15)",
+  "Next (Bence): GEO RAW tar (484 MB) for expression -> train power with real noise; featuriser scope (may unlinked post cells enter unsupervised fitting?)",
   "Exposure to weigh (H10, Bence): per-sample number of pre-resistant families was seen 2026-11-12 via a column-shift bug",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
@@ -47,7 +48,8 @@
   "c9s0_scan.py",
   "c9s1_confirm.py",
   "c9s2_confirm.py",
-  "c10s0_partition.py"
+  "c10s0_partition.py",
+  "c10s0_sim.py"
  ],
  "parked": [
   "#27 series gain / drug compression",

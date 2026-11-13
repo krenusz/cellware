@@ -6,8 +6,10 @@ Unit: pre-treatment lineage, keyed "<sample>:s<sisters>" when the cell has a sis
 "<sample>:c<cell barcode>". The key never uses an outcome column. Post-treatment cells join a lineage
 later through `prer_r_group` (an outcome-linked family ID); that join is NOT done here.
 
-Reads only: cell barcode, `sisters`, and whether `drugSens` is missing (= lineage label detected).
-The values of `drugSens` and `prer_r_group` are never loaded, tabulated or printed. Post tables are not opened.
+main(): reads only cell barcode, `sisters`, and whether `drugSens` is missing (= lineage label detected);
+no outcome value; post tables not opened.
+train_links() / train_post() (amendments 1-2): read `prer_r_group` presence on TRAIN lineages only
+(partitions.train_only); sealed thirds never touched.
 Output: per sample x partition, labelled pre cells, lineage units, sister groups (>= 2 cells).
 """
 import glob
@@ -84,8 +86,41 @@ def train_links():
         print(s, r)
 
 
+def train_post():
+    """Amendment 2 (2026-11-13): TRAIN ONLY. Post cells per linked family. Each prer_r_group ID must map to
+    exactly one pre lineage key; post cells without an ID are dropped before counting (never read further)."""
+    out = {}
+    for f in sorted(glob.glob(os.path.join(DATA, "*_pre_treatment_cell_info.tsv.gz"))):
+        sample = re.search(r"ReSisTrace_(\w+?_\d)_pre", f).group(1)
+        pre = pd.read_csv(f, sep="\t", index_col=0,
+                          usecols=lambda c: c in ("", "Unnamed: 0", "sisters", "drugSens", "prer_r_group"))
+        pre = pre[pre["drugSens"].notna() & pre["prer_r_group"].notna()]
+        pre["unit"] = [f"{sample}:s{int(s)}" if pd.notna(s) else f"{sample}:c{bc}"
+                       for bc, s in zip(pre.index, pre["sisters"])]
+        fam2unit = pre.groupby("prer_r_group")["unit"].unique()
+        assert (fam2unit.map(len) == 1).all(), f"{sample}: a family maps to >1 lineage"
+        fam2unit = fam2unit.map(lambda u: u[0])
+        train_fams = {fam for fam, u in fam2unit.items() if partitions.partition_of(DS, u) == "train"}
+        post_f = f.replace("_pre_treatment_", "_post_treatment_").replace(
+            re.search(r"GSM\d+", f).group(0), "GSM*")
+        post_f = glob.glob(post_f)[0]
+        post = pd.read_csv(post_f, sep="\t", index_col=0, usecols=lambda c: c in ("", "Unnamed: 0", "prer_r_group"))
+        post = post[post["prer_r_group"].notna()]
+        post = post[post["prer_r_group"].isin(train_fams)]
+        n = post.groupby("prer_r_group").size().reindex(sorted(train_fams), fill_value=0)
+        out[sample] = {"train_families": int(len(train_fams)), "post_cells": int(n.sum()),
+                       "families_ge2_post": int((n >= 2).sum()), "families_ge5_post": int((n >= 5).sum()),
+                       "median_post_per_family": float(n.median()) if len(n) else 0.0}
+    path = os.path.join(HERE, "results", "c10s0_train_post.json")
+    json.dump(out, open(path, "w"), indent=1, sort_keys=True)
+    for s, r in out.items():
+        print(s, r)
+
+
 if __name__ == "__main__":
-    if sys.argv[1:] == ["train_links"]:
+    if sys.argv[1:] == ["train_post"]:
+        train_post()
+    elif sys.argv[1:] == ["train_links"]:
         train_links()
     else:
         main()
