@@ -172,9 +172,10 @@ def test_A(part="A"):
     info = _sealed_info(part)
     meta, Xs = [], []
     for s in DRUGS:
-        bcs = list(info.index[info["unit"].str.startswith(s + ":")])
+        sub_s = info[info["unit"].str.startswith(s + ":")]   # barcodes repeat across libraries: select per library
+        bcs = list(sub_s.index)
         X, _ = pl.load(s, "pre", bcs, genes=genes)
-        Xs.append(X); meta.append(pd.DataFrame({"sample": s, "unit": info.loc[bcs, "unit"].values}, index=bcs))
+        Xs.append(X); meta.append(pd.DataFrame({"sample": s, "unit": sub_s["unit"].values}, index=bcs))
     X = np.vstack(Xs); meta = pd.concat(meta)
     prof = _cnv_profile(X, M["order"], M["chroms"], M["gmean"])
     cnv_pc = (prof - M["pmean"]) @ M["cnv_V"]

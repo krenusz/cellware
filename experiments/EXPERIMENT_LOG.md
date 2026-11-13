@@ -10837,3 +10837,14 @@ Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cell
 - **Practice:** the frozen pipeline is checked on train (it reproduces delta AUC > 0 in-sample) before the look;
   tick-list: fit on train only, k and the models fixed, seeds fixed, counts read no outcome.
 - **Exposure (accepted):** pooled per-sample pre-resistant counts were seen.
+
+### C10-S2 frozen fit and code fix (2026-11-13)
+- **Train fit (848e791):**
+  - k = 3 (silhouettes: k2 0.184, k3 0.194, k4 0.131);
+  - 10,132 train drug lineages, 853 linked;
+  - in-sample delta AUC 0.0555 (> 0, as the pre-registration requires before the look).
+- **First oracle call crashed before any statistic was computed.** The H14 counts printed (structural): 5,194
+  lineages in A, power 0.85. Then test_A failed: cell barcodes repeat across libraries, so `info.loc[bcs]` on the
+  concatenated table returned extra rows.
+- **The ledger was not written; A is not spent.** No outcome was computed or seen.
+- **Fix:** select barcodes per library (one line). The model, statistic and seeds are unchanged.
