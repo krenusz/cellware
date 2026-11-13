@@ -1,0 +1,17 @@
+[
+ {"id": "K01", "kind": "fault", "commit": "babbd50", "sections": ["G11"]},
+ {"id": "K02", "kind": "fault", "commit": "0dbf867", "sections": ["G7"]},
+ {"id": "K03", "kind": "fault", "at": "C4-S2b", "sections": ["C4-S2b"]},
+ {"id": "K04", "kind": "fault", "at": "C5-S4", "sections": ["C5-S4"]},
+ {"id": "K06", "kind": "fault", "at": "C6-S7g", "sections": ["C6-S7g"]},
+ {"id": "K07", "kind": "fault", "at": "C6-S8a", "sections": ["C6-S8a"]},
+ {"id": "K08", "kind": "fault", "at": "C8-S1b", "sections": ["C8-S1", "C8-S1b"], "selection": ["C8-S1b"]},
+ {"id": "K09", "kind": "fault", "commit": "c4f30da^", "sections": ["C9-S1"]},
+ {"id": "K16", "kind": "fault", "at": "C7-S3", "sections": ["C7-S3"]},
+ {"id": "K11", "kind": "sound", "commit": "5e69507", "sections": ["C7-S7", "C7-S7a", "C7-S7b", "C7-S7c"]},
+ {"id": "K12", "kind": "sound", "commit": "31345fc", "sections": ["C8-S1c"]},
+ {"id": "K17", "kind": "sound", "commit": "5ca00c4", "sections": ["C8-S1", "C8-S1a"], "selection": ["C8-S1a"]},
+ {"id": "K18", "kind": "sound", "at": "G6", "sections": ["G6"]},
+ {"id": "K15", "kind": "sound", "at": "C7-S6", "sections": ["C7-S6"]},
+ {"id": "K13", "kind": "live", "commit": "HEAD", "sections": ["C9-S2"]}
+]
