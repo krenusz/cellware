@@ -10601,3 +10601,18 @@ The numbers are unchanged from the result files.)*
        restriction, one pre cell per family);
     3. S is > 0 when family-specific instruction is added.
 - **Practice:** this is the synthetic smoke test; adequacy gate = the three checks above.
+
+### C10-S0 amendment 3 (2026-11-13, before any expression is read): simulation at real structure + null worlds
+
+- `c10s0_sim.py real` (synthetic only). Family counts per sealed third come from the train counts x 0.5:
+  - families with >= 2 post cells: Olaparib_1 58, NK_1 41, NK_2 53; Control_1 37, Control_2 18;
+  - post cells per family drawn from 1: 0.4, 2: 0.35, 3: 0.12, 4+: 0.13.
+- **Two estimators:** F2 (families with >= 2 post cells) and Fall (all linked families, mean noise variance
+  sigma_w^2 / n_i, with sigma_w from the >= 2 families).
+- **Null worlds; S must not fire:**
+  - (a) two genetic subclones with subclone-specific drift in both arms, drug enriching subclone A (90% vs 50%);
+  - (b) longer drift in the drug arm (drift sd x sqrt(13/8)), and the reverse for NK (shorter).
+- **Stop bar:** for each drug x control pairing, the smallest family-instruction sd tau with power >= 0.8 at
+  alpha 0.05 against the selection-only null. If train S cannot plausibly reach it, stop.
+- Exposure accepted (Bence): pooled per-sample pre-resistant counts were seen. They are used here only through the
+  family counts above.
