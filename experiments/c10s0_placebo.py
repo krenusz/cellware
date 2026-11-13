@@ -39,15 +39,18 @@ def allowed_cells():
         lab = pre["drugSens"].notna()
         unit = pd.Series([f"{s}:s{int(x)}" if pd.notna(x) else f"{s}:c{bc}"
                           for bc, x in zip(pre.index, pre["sisters"])], index=pre.index)
-        part = unit.map(lambda u: partitions.partition_of(DS, u))
-        keep = (~lab) | (part == "train")
-        u = unit.where(lab & (part == "train"))
+        tr = partitions.train_only(DS, pd.DataFrame({"unit": unit[lab]}), "unit")   # H11: train lineages only
+        is_tr = pd.Series(pre.index.isin(tr.index), index=pre.index)
+        keep = (~lab) | is_tr
+        u = unit.where(is_tr)
         cells[(s, "pre")] = pd.DataFrame({"unit": u[keep], "fam": pre.loc[keep, "prer_r_group"].where(lab[keep])})
         fam2unit = {fam: unit[bc] for bc, fam in pre["prer_r_group"].dropna().items()}
         pf = glob.glob(os.path.join(PROC, f"*ReSisTrace_{s}_post_treatment_cell_info.tsv.gz"))[0]
         post = pd.read_csv(pf, sep="\t", index_col=0, usecols=lambda c: c in ("", "Unnamed: 0", "prer_r_group"))
         famp = post["prer_r_group"]
-        in_train = famp.map(lambda x: pd.notna(x) and partitions.partition_of(DS, fam2unit[x]) == "train")
+        fam_df = pd.DataFrame({"unit": pd.Series(fam2unit)})
+        train_fams = set(partitions.train_only(DS, fam_df, "unit").index)
+        in_train = famp.map(lambda x: pd.notna(x) and x in train_fams)
         keep = famp.isna() | in_train
         cells[(s, "post")] = pd.DataFrame({"unit": famp[keep].map(lambda x: fam2unit[x] if pd.notna(x) else None),
                                            "fam": famp[keep]})
