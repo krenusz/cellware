@@ -21,7 +21,7 @@ import partitions  # noqa: E402
 DS = "resistrace"
 PROC = os.path.join(HERE, "..", "data", "ext_resistrace", "processed")
 MAT = os.path.join(HERE, "..", "data", "ext_resistrace", "raw_tar", "files")
-OUT = os.path.join(HERE, "results", "c10s0_placebo.json")
+OUT = os.path.join(HERE, "results", "c10s0_placebo_v5.json" if "--v5" in sys.argv else "c10s0_placebo.json")
 rng = np.random.default_rng(101)
 
 
@@ -124,6 +124,9 @@ def main():
         sis, rnd = np.array(sis), np.array(rnd)
         auc[kdim] = float((sis[:, None] < rnd[None, :]).mean())
     kbest = max(auc, key=auc.get)
+    V5 = "--v5" in sys.argv
+    if V5:
+        kbest = 5                                   # amendment 5: dof cap k <= 36/5, fixed before running
     res["sister_auc"] = auc
     res["k_chosen"] = kbest
     P = V[:, :kbest]
@@ -181,9 +184,17 @@ def main():
         g = [np.where(u.values == x)[0] for x in u[u.str.contains(":s", na=False)].unique()]
         g = [ix for ix in g if len(ix) >= 2]
         means = np.array([Z[ix].mean(0) for ix in g]); n = np.array([len(ix) for ix in g])
-        within = sum(((Z[ix] - Z[ix].mean(0)) ** 2).sum() for ix in g) / ((n - 1).sum() * P.shape[1])
-        between = ((means - means.mean(0)) ** 2).sum() / ((len(g) - 1) * P.shape[1])
-        p2[s] = {"groups": len(g), "logF": round(float(np.log(between / (within * np.mean(1 / n)))), 3)}
+        def lf(gs):
+            mm = np.array([Z[ix].mean(0) for ix in gs]); nn = np.array([len(ix) for ix in gs])
+            wi = sum(((Z[ix] - Z[ix].mean(0)) ** 2).sum() for ix in gs) / ((nn - 1).sum() * P.shape[1])
+            be = ((mm - mm.mean(0)) ** 2).sum() / ((len(gs) - 1) * P.shape[1])
+            return float(np.log(be / (wi * np.mean(1 / nn))))
+        if V5:
+            r5 = np.random.default_rng(103)
+            vals5 = [lf([g[i] for i in r5.choice(len(g), 39, replace=False)]) for _ in range(200)]
+            p2[s] = {"groups": len(g), "logF": round(float(np.median(vals5)), 3)}
+        else:
+            p2[s] = {"groups": len(g), "logF": round(lf(g), 3)}
     vals = [v["logF"] for v in p2.values()]
     res["P2_pre_sister_logF"] = p2
     res["P2_range"] = round(max(vals) - min(vals), 3)

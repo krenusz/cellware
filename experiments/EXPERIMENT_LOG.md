@@ -10684,3 +10684,48 @@ Bence: "go forward with recomms". Script: `c10s0_placebo.py`.
   - A retry (a dof-capped k, group-count-matched P2) would be a 5th amendment and needs an H18 retro first.
 - **Exposure (accepted):** pooled per-sample pre-resistant counts were seen; they are not used here.
 - **Status:** C10 instruction test STOPPED under its own rule. Nothing sealed was read.
+
+### C10-S0 amendment 5 (2026-11-13; after RETRO_2026-11-13.md, per H18): corrected placebo
+
+Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cells; train only).
+- **k fixed at 5:** the cap k <= n_families / 5 gives 7 for Control_2's 36 families; 5 is the largest
+  pre-listed value under the cap. It is not chosen by AUC or S.
+- **P2 count-matched:** each pre library is subsampled to 39 train sister groups (the smallest library), 200
+  repeats, seed 103. Report the median logF per library and the range of the medians.
+- **P1 at k = 5:** F2 and Fall as before, bootstrap 1,000.
+- **Stop rule unchanged:** |P1 F2| >= 0.5 or the P2 range >= 0.5.
+- **Pre-stated reading:**
+  - even if both pass, proposed H22 (treatment-assignment unit < 3 per arm) blocks the instruction test unless
+    Bence overrides;
+  - a pass only shows that the 0.84 spread was partly a small-n or high-k artefact.
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen; they are not used here.
+
+### C10-S0 amendment 5 result (2026-11-13; `results/c10s0_placebo_v5.json`): STOP CONFIRMED
+
+- **P1 (k = 5), Control_1 vs Control_2:**
+  - F2 S = 0.02 (95% bootstrap -0.24 to 0.50; 75 vs 36 families);
+  - Fall S = -0.00 (-0.22 to 0.26; 126 vs 77 families).
+  - It passes. The earlier P1 failure was the k = 30 design error.
+- **P2, count-matched (39 groups, 200 repeats, median):**
+
+  | library | Carboplatin_1 | Carboplatin_2 | Olaparib_1 | Olaparib_2 | NK_1 | NK_2 | Control_1 | Control_2 |
+  |---|---|---|---|---|---|---|---|---|
+  | logF | 1.89 | 1.86 | **1.65** | 1.87 | 1.89 | 1.79 | **2.02** | 2.36 |
+
+  - **Range 0.72 >= 0.5: the stop rule fires again.**
+- **Reading:**
+  - The library spread is not a small-n artefact; count matching barely moved it.
+  - The primary pairing's own libraries (Olaparib_1 1.65 vs Control_1 2.02) differ by 0.37 before any drug. That
+    is about 70% of the bar.
+  - Any drug-vs-control family contrast inherits this library effect.
+- **Self-challenge:**
+  - Suspicious? Control pre libraries have the fewest labelled sister groups and the highest sister-F. A
+    library-level difference in label detection or depth could drive both. It is not resolvable with one library
+    per arm.
+  - Other explanations? Sequencing depth, plating density, label multiplicity per cell.
+  - Units? 8 libraries.
+  - Used data enough? Yes: train only, nothing sealed.
+  - Published? No.
+- **Status:** the C10 instruction test is CLOSED (stopped twice under its own rule; also blocked by proposed H22).
+  Nothing sealed was read.
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen; they are not used here.

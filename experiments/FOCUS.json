@@ -1,17 +1,12 @@
 {
  "chapter": "C10 drug instruction vs selection (ReSisTrace, GSE223003)",
- "step": "C10-S0",
- "question": "C10-S0 access and structure scan (H19 step 1, NOT a passed chapter gate): can the sister-split drug data (carboplatin / olaparib / NK, 2 replicates each) be lineage-matched pre to post, so that resistance can be split into genetic-subclone selection, non-genetic pre-state selection and drug instruction? Stop rule: if the lineage match is impossible or primary-test power < 0.8, stop and report; do not slide into the readout-only question.",
+ "step": "C10-STOPPED",
+ "question": "C10 (ReSisTrace drug instruction vs selection) STOPPED 2026-11-13, data-limited: treatment varies per library (2 per arm; 1 time-matched pair), and untreated pre libraries already differ in sister-group logF by 0.72 (count-matched; bar 0.5). Nothing sealed read; resistrace A/B/C kept. Restart = choose a chapter under H19 + proposed H22 (treatment-assignment unit >= 3 per arm).",
  "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
-  "Expression tar downloaded + locked (raw_tar, SHA256SUMS_raw). Featuriser (Bence OK via advisor): fit on train-lineage pre, unlabelled pre, train-family post and unlinked post cells; never on sealed-family post cells; pre-listed featurisers chosen by train pre-sister similarity, not by S; freeze+hash before any look",
-  "C10-S0 PLACEBO 2026-11-13: STOP RULE FIRED (pre sister-group logF range across 8 untreated libraries 0.84 >= bar 0.5; carried by Control_1 1.99 / Control_2 2.42 vs drug libs 1.58-1.80). P1 invalid (k=30 regressors vs 36-75 families). Instruction test stopped; retry only via H18 retro + amendment 5 (Bence's call); nothing sealed read",
-  "Amendments 3-4 (synthetic): S cannot tell family instruction from extra family drift (null B fired 12-17%), so the primary pairing is time-matched Olaparib_1 vs Control_1 only (13 d each, inferred; confirm Supp. Data 11); NK biased against; carboplatin and Olaparib_2 out. F2 fixed (per-family 1/n). Real sizes: null bias +0.07-0.09; power 0.8 at sealed-third size needs true S ~0.5-0.55, i.e. train S >= ~1.0 under the 0.5 shrink",
-  "Next, on train only: placebo S (Control_1 vs Control_2; sister-group F across 8 pre libraries); stop if placebo |S| reaches the bar. Then train S and subsampled power. 4 amendments used: a 5th needs an H18 retro",
-  "C10-S0: partition done (partitions.resistrace, by pre lineage; pre-side counts in results/c10s0_counts.json); pre-to-post links = prer_r_group (perfect matches only); raw-read extraction not needed for now",
-  "Train link counts done (amendment 1): 117-172 linked lineages per drug sample on train, so about 60-85 per sealed third",
+  "Bence to decide: adopt H22 (RETRO_2026-11-13.md); next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [
@@ -64,7 +59,8 @@
   "chapter 6 cells into space (closed 2026-11-10, exploratory; re-open on clone-specific memory data over passages 1-4 or crawl-orientation imaging; S1, S2 partition C, revision chimeras and the Triandafillou atlas stay sealed/locked)",
   "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)",
   "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)",
-  "chapter 9 (paused 2026-11-11): HSPC erythroid/myeloid withdrawn (degenerate); LSK chromatin test ready, not run; all sealed kept"
+  "chapter 9 (paused 2026-11-11): HSPC erythroid/myeloid withdrawn (degenerate); LSK chromatin test ready, not run; all sealed kept",
+  "chapter 10 ReSisTrace (stopped 2026-11-13, data-limited: library-level treatment, 2/arm; partition resistrace A/B/C sealed; S statistic + placebo code kept; reopen only with >= 3 libraries per arm)"
  ],
  "approved_by": "Bence 2026-11-13: \"Yes, ReSisTrace + download\" (restart on ReSisTrace). Earlier, 2026-11-11: \"no, leave all sealed, and pause cellware\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
@@ -114,6 +110,7 @@
   "C9-S1 2026-11-11: WITHDRAWN at train selection (only 7/179 train clones carry GM cells; exp 1 none); no oracle entry, chspctrack:B/C sealed",
   "Cellware PAUSED 2026-11-11 by Bence; nothing sealed spent after chapter 8",
   "C10-S0 started 2026-11-13: processed tables locked (ext_resistrace); GEO RAW tar holds only UMI counts + the same cell_info (no labels), not downloaded; labels only in reads (64 runs, ~564 GB)",
-  "C10-S0 2026-11-13: partition + structure + H20 read + synthetic statistic; placebo stop rule fired (library F spread 0.84 >= 0.5); instruction test stopped, nothing sealed read"
+  "C10-S0 2026-11-13: partition + structure + H20 read + synthetic statistic; placebo stop rule fired (library F spread 0.84 >= 0.5); instruction test stopped, nothing sealed read",
+  "C10 stopped 2026-11-13 (amendment 5 placebo: P1 0.02 passes, P2 range 0.72 >= 0.5); RETRO_2026-11-13.md; H22 proposed"
  ]
 }

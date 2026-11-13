@@ -1,0 +1,70 @@
+{
+ "n_cells_fit": 54383,
+ "n_genes_hvg": 2000,
+ "sister_auc": {
+  "10": 0.8984874927283304,
+  "20": 0.9111896908284068,
+  "30": 0.9254566303920763
+ },
+ "k_chosen": 5,
+ "P1_control1_minus_control2": {
+  "F2": {
+   "S": 0.024,
+   "ci95": [
+    -0.239,
+    0.503
+   ],
+   "families": {
+    "Control_1": 75,
+    "Control_2": 36
+   }
+  },
+  "Fall": {
+   "S": -0.003,
+   "ci95": [
+    -0.216,
+    0.26
+   ],
+   "families": {
+    "Control_1": 126,
+    "Control_2": 77
+   }
+  }
+ },
+ "P2_pre_sister_logF": {
+  "Carboplatin_1": {
+   "groups": 180,
+   "logF": 1.893
+  },
+  "Carboplatin_2": {
+   "groups": 155,
+   "logF": 1.859
+  },
+  "Olaparib_1": {
+   "groups": 163,
+   "logF": 1.647
+  },
+  "Olaparib_2": {
+   "groups": 174,
+   "logF": 1.868
+  },
+  "NK_1": {
+   "groups": 118,
+   "logF": 1.892
+  },
+  "NK_2": {
+   "groups": 249,
+   "logF": 1.792
+  },
+  "Control_1": {
+   "groups": 68,
+   "logF": 2.017
+  },
+  "Control_2": {
+   "groups": 39,
+   "logF": 2.363
+  }
+ },
+ "P2_range": 0.716,
+ "stop": true
+}

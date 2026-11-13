@@ -32,6 +32,8 @@ FIELDS = (
 # Core papers whose neighbourhood we map (references and citers). Extend as the project grows.
 SEEDS = {
     "Weinreb 2020 (LARRY)": "10.1126/science.aaw3381",
+    "Dai 2024 (ReSisTrace)": "10.1038/s41467-024-45478-7",
+    "Goyal 2023 (FateMap)": "10.1038/s41586-023-06342-8",
     "Rieger 2009 (cytokines instruct)": "10.1126/science.1171461",
     "Mossadegh-Keller 2013 (M-CSF instructs)": "10.1038/nature12026",
     "Olsson 2016 (mixed-lineage states)": "10.1038/nature19348",
