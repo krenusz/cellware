@@ -21,6 +21,11 @@ DATASETS = {
     "ext_celltag_multi": "partitioned by clone (partitions.celltag_lsk / celltag_reprog, sealed 2026-11-11): train 40%, A/B/C 20% each; fate columns readable only via train_only / test_oracle; files sha256 in data/ext_celltag_multi/SHA256SUMS",
     "ext_chspctrack": "partitioned by clone (partitions.chspctrack, sealed 2026-11-11): train 40%, A/B/C 20%; cell_type / pseudotime / score columns readable only via train_only / test_oracle; files sha256 in data/ext_chspctrack/SHA256SUMS; pickles NOT downloaded",
     "ext_methyltree": "downloaded 2026-11-11 (figshare 27288630 zip, sha256 locked); structure check only until partitioned by clone",
+    "ext_resistrace": "GSE223003 processed cell_info tables (16 files), locked 2026-11-13 (data/ext_resistrace/SHA256SUMS_processed); "
+                      "LOCKED, not partitioned: no statistic until partitioned by lineage label. Exposure (2026-11-12): column names, "
+                      "cells / labelled cells / sister groups per sample counted; drugSens and prer_r_group values never tabulated. "
+                      "An unlocked copy of the same 16 files remains in an old session temp folder (C: scratchpad dl_resistrace), never read since. "
+                      "Lineage labels are not in any GEO table: only in the 10x reads (gene pBA439_UMI_20).",
     "ext_triandafillou": "locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
     "ext_guan": "not data: two failed PDF downloads (HTML / 17 bytes), left for Bence to delete",
     "ext_plos_gastruloid": "not data: de Jong 2024 model code, read as text only (C6-S6/S7c)",

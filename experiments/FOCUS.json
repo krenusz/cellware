@@ -1,9 +1,12 @@
 {
- "chapter": "PAUSED",
- "step": "PAUSED",
- "question": "Cellware paused 2026-11-11 by Bence. All remaining sealed sets kept (celltag_lsk:C, celltag_reprog:C, chspctrack:B/C). Resume only on Bence OK; restart = choose a chapter under H19.",
+ "chapter": "C10 drug instruction vs selection (ReSisTrace, GSE223003)",
+ "step": "C10-S0",
+ "question": "C10-S0 access and structure scan (H19 step 1, NOT a passed chapter gate): can the sister-split drug data (carboplatin / olaparib / NK, 2 replicates each) be lineage-matched pre to post, so that resistance can be split into genetic-subclone selection, non-genetic pre-state selection and drug instruction? Stop rule: if the lineage match is impossible or primary-test power < 0.8, stop and report; do not slide into the readout-only question.",
+ "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
+ "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
-  "On resume: H19 chapter choice; C9-S2 LSK chromatin test ready (power ~0.84, last partition) but not approved",
+  "C10-S0: lineage labels exist only in the 10x reads (gene pBA439_UMI_20; 64 runs, ~564 GB). Bence to choose: streamed label extraction on Actions, or park",
+  "Seal by lineage label (train 40% + A/B/C) before any pre-to-post match is counted; match counts on train only",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [
@@ -55,7 +58,7 @@
   "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)",
   "chapter 9 (paused 2026-11-11): HSPC erythroid/myeloid withdrawn (degenerate); LSK chromatin test ready, not run; all sealed kept"
  ],
- "approved_by": "Bence 2026-11-11: \"no, leave all sealed, and pause cellware\"",
+ "approved_by": "Bence 2026-11-13: \"Yes, ReSisTrace + download\" (restart on ReSisTrace). Earlier, 2026-11-11: \"no, leave all sealed, and pause cellware\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
  "done": [
   "C3-S1 (2026-11-07, 4266f5d): core configuration reproduces #20/#26 qualitatively; 3 series-level magnitude misses recorded as limits",
@@ -101,6 +104,7 @@
   "C8 closed 2026-11-11: T1 rho 0.45 and T3 rho 0.59 confirmed on B; T2 refused (power 0.78); WRITEUP_FATE_READOUT.md, RETRO_2026-11-11b.md; H19 amended",
   "C9-S0 2026-11-11 (ad744d5): H3 passes (rho 0.57, power 1.00); H4 0.87 on last partition; H1/H2 fail (0.79/0.78)",
   "C9-S1 2026-11-11: WITHDRAWN at train selection (only 7/179 train clones carry GM cells; exp 1 none); no oracle entry, chspctrack:B/C sealed",
-  "Cellware PAUSED 2026-11-11 by Bence; nothing sealed spent after chapter 8"
+  "Cellware PAUSED 2026-11-11 by Bence; nothing sealed spent after chapter 8",
+  "C10-S0 started 2026-11-13: processed tables locked (ext_resistrace); GEO RAW tar holds only UMI counts + the same cell_info (no labels), not downloaded; labels only in reads (64 runs, ~564 GB)"
  ]
 }
