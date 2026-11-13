@@ -27,6 +27,7 @@ import sys
 EXP = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FOCUS = os.path.join(EXP, "FOCUS.json")
 LOG = os.path.join(EXP, "EXPERIMENT_LOG.md")
+DIGEST = os.path.join(EXP, "RULES_DIGEST.md")
 SCRIPT_RE = re.compile(r"\b([a-z]+\d+[a-z0-9]*_[a-z0-9_]+)(?:\.py)?\b")
 HEAD_RE = re.compile(r"^## (\S+?):.*\(pre-registered (\d{4}-\d{2}-\d{2})", re.M)
 MARKER = "<!-- scope-guard:"
@@ -105,6 +106,8 @@ def claude_prompt():
     ctx = (f"[Cellware focus, FOCUS.json] Step {f['step']}: {f['question']} Next: {'; '.join(f['next_steps'])}. "
            f"Parked (no work without Bence's OK): {', '.join(f['parked'])}. Every proposed step must serve this "
            f"focus (H16) and pass pre-flight (H15); propose nothing else.")
+    if os.path.exists(DIGEST):  # the rules themselves, so they do not depend on memory (RETRO_SWEEP_2026-11-13)
+        ctx += "\n" + open(DIGEST, encoding="utf-8").read().strip()
     print(json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": ctx}}))
 
 

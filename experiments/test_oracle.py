@@ -291,24 +291,24 @@ PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue
 
 
 def power_gate(exp, test, part):
-    """H14: power of the pre-registered contrast from counts only; refuse below the minimum."""
-    from scipy.stats import norm
+    """H14: power of the pre-registered contrast from counts only; refuse below the minimum (never below
+    0.8). Pre-registrations from power.STRICT_FROM also need power sources and a readout block (H21).
+    The arithmetic lives in power.py, the one power rule for all three gates."""
+    import power
 
     s = json.load(open(os.path.join(SELECTION_DIR, f"{exp}.json"), encoding="utf-8"))
-    p = s.get("power")
-    if not p or test not in PARTITION_COUNTS:
-        return f"no power block in selection/{exp}.json or no count function for {test} (H14)"
+    if test not in PARTITION_COUNTS:
+        return f"no count function for {test} (H14)"
+    strict = (prereg_date(exp) or "") >= power.STRICT_FROM
+    errs = power.block_errors(s, strict)  # before any count is read from the partition
+    if errs:
+        return f"selection/{exp}.json: " + "; ".join(errs)
     n = PARTITION_COUNTS[test](part)
-    if min(n.values()) < 2:
-        return f"partition {part} counts {n}: a group is empty (H14)"
-    w = p.get("weights", {})  # contrast weights per group (default 1): se = sd * sqrt(sum w^2 / n)
-    se = p["sd"] * np.sqrt(sum(w.get(g, 1.0) ** 2 / v for g, v in n.items()))
-    z = norm.ppf(1 - p["alpha"]) if p.get("one_sided") else norm.ppf(1 - p["alpha"] / 2)
-    power = float(1 - norm.cdf(z - p["effect"] / se))
-    print(f"H14 power: counts {n}, sd {p['sd']}, effect {p['effect']}, power {power:.2f} (min {p['min_power']})")
-    if power < p["min_power"]:
-        return f"power {power:.2f} < {p['min_power']} for partition {part} (counts {n}); partition NOT spent (H14)"
-    return None
+    pw, msg = power.gate(s, n, strict)
+    if pw is not None:
+        p = s["power"]
+        print(f"H14 power: counts {n}, sd {p['sd']}, effect {p['effect']}, power {pw:.2f} (min {power.MIN_POWER})")
+    return f"partition {part}: {msg}" if msg else None
 
 
 def read_ledger():
@@ -327,6 +327,15 @@ def append_ledger(row):
         f.write("\t".join(str(row[c]) for c in COLUMNS) + "\n")
 
 
+
+
+def prereg_date(exp):
+    """Date in the heading '## <exp>: ... (pre-registered <date>)', or None."""
+    import re
+
+    m = re.search(rf"^## {re.escape(exp)}:.*pre-registered (\d{{4}}-\d{{2}}-\d{{2}}).*$",
+                  open(LOG, encoding="utf-8").read(), re.M)
+    return m.group(1) if m else None
 
 
 def preregistered(exp):
