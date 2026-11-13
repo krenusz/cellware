@@ -39,3 +39,29 @@ Live case (unscored): K13 C9-S2, the ready LSK chromatin test. Its review is rep
 - Fail -> the reviewer stays advisory (`"enforced": false`); the brief may be revised once and the benchmark
   re-run on the same cases with the result of both runs reported.
 - Scoring of each case is written into `RESULTS.md` with the reviewer's findings quoted.
+
+## Amendment 1 (2026-11-13, before any reviewer run; advisor review)
+- **Target step per case** (`target` in cases.json). The reviewer judges only the target. K08 = T2 (C8-S1b) only,
+  K17 = T1 (C8-S1a) only, although both packets hold the shared C8-S1 text. K11 = the three C7-S7 looks together.
+- **K18 (G6) removed from the sound set:** it has no power computation (pre-H14), so a block on check 2 would be
+  correct, not false. Replaced by **K19 = C7-S5** (train-only reprogramming carrier step, no retro defect).
+- **Class to accepted check names** (a catch needs a blocking finding under one of these checks):
+
+| case | accepted checks |
+|---|---|
+| K01 | power |
+| K02 | reserve, spent-results |
+| K03 | power, readout |
+| K04 | power |
+| K06 | amendments, readout (repeats per point) |
+| K07 | spent-results, power |
+| K08 | power |
+| K09 | readout |
+| K16 | readout, power |
+
+- **Isolation:** a canary run on the live case K13 first reports any project context it sees beyond its prompt
+  (focus text, rules digest, memory index), and whether it read every packet file in full. If it sees outcome
+  hints, the hint source is listed in RESULTS.md as a limitation. `files_read` is self-reported; the answer key and
+  retros are in the same repo, so independence rests on the instruction not to look outside the packet.
+- **Run rules:** one prompt template, only packet path and target change; no reruns except void cases, and every
+  void is reported; each verdict is written to `results/<id>.json` as it arrives.
