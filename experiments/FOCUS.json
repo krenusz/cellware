@@ -6,7 +6,7 @@
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
-  "C10-S1 train power check: GO narrowly (delta AUC state beyond subclone + QC 0.055, power 0.83 at 0.5 shrink). QC alone explained half the raw gain. Next needs Bence: pre-register + oracle look on resistrace:A (B/C kept)",
+  "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. Next needs Bence: close C10 with a write-up, or a mechanism step on train (which state PCs / genes carry it)",
   "Bence to decide: adopt H22 (RETRO_2026-11-13.md); next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
@@ -114,6 +114,8 @@
   "Cellware PAUSED 2026-11-11 by Bence; nothing sealed spent after chapter 8",
   "C10-S0 started 2026-11-13: processed tables locked (ext_resistrace); GEO RAW tar holds only UMI counts + the same cell_info (no labels), not downloaded; labels only in reads (64 runs, ~564 GB)",
   "C10-S0 2026-11-13: partition + structure + H20 read + synthetic statistic; placebo stop rule fired (library F spread 0.84 >= 0.5); instruction test stopped, nothing sealed read",
-  "C10 stopped 2026-11-13 (amendment 5 placebo: P1 0.02 passes, P2 range 0.72 >= 0.5); RETRO_2026-11-13.md; H22 proposed"
+  "C10 stopped 2026-11-13 (amendment 5 placebo: P1 0.02 passes, P2 range 0.72 >= 0.5); RETRO_2026-11-13.md; H22 proposed",
+  "C10-S1 2026-11-13 (f78c29a): within-library rescue, train power check GO (delta AUC 0.055, power 0.83 shrunk)",
+  "C10-S2 2026-11-13 (545ae77): CONFIRMED on resistrace:A (delta AUC 0.062, lower 0.046, 5194 lineages); B/C sealed"
  ]
 }

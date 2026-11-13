@@ -10848,3 +10848,37 @@ Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cell
   concatenated table returned extra rows.
 - **The ledger was not written; A is not spent.** No outcome was computed or seen.
 - **Fix:** select barcodes per library (one line). The model, statistic and seeds are unchanged.
+
+### C10-S2 result: CONFIRMED on resistrace:A (2026-11-13, 545ae77)
+- **Test:** one oracle look; H14 power 0.85.
+- **Data:** 5,194 drug-library lineages, 420 linked to a post-treatment family (survived).
+- **Result:**
+
+| Model | AUC |
+|---|---|
+| M0: library + subclone + QC | 0.660 |
+| M1: + 5 state PCs | 0.722 |
+
+  - delta AUC **0.062**; lower 97.5% bound **0.046 > 0**. **Confirmed.** The effect is larger than the train CV
+    estimate (0.055), not shrunk.
+- **Partitions:** resistrace:A spent; B and C sealed.
+- **Exposure (accepted, Bence 2026-11-13):** pooled per-sample pre-resistant family/cell counts and matched
+  post-cell counts were seen before sealing. They are library-level totals, carry no lineage-level state link, and
+  could not have shaped this model.
+- **Self-challenge:**
+  1. *Suspicious?* A gain larger than train is unusual but within about 1 SE of the train SE scaled to A
+     (~0.009).
+  2. *Other explanations?*
+     - (a) The CNV proxy (k = 3) is coarse. Finer genetic subclones that show in expression would be counted as
+       "state", so this is an upper bound on non-genetic state. A barcode-level SNV/CNV call from the reads
+       (~564 GB) would separate them.
+     - (b) The outcome is "a post-treatment family was detected", which mixes survival with capture. QC
+       covariates and pre-cell count are in M0, but capture-linked state (cell cycle, size) can remain.
+     - (c) Pre-cell state PCs may carry cell cycle. Not removed.
+  3. *Units:* 5,194 lineages in 6 libraries (2 per drug). This is a within-library question, so the library is
+     a fixed effect, not the replicate.
+  4. *Used data enough?* Train alone gave the effect. The look adds a sealed replication.
+  5. *Already published?* Qualitatively yes: Dai 2024 reports pre-resistant transcriptional signatures. New here:
+     a quantified increment beyond a genetic-subclone proxy + QC, confirmed on a sealed lineage partition.
+- **Credit (H8):** moderate, for "state predicts survival beyond a coarse CNV proxy + QC". Not for
+  "non-genetic"; see (a).

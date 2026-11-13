@@ -19,3 +19,4 @@ date	experiment	test	shard	commit	result
 2026-11-11	C7-S7c	hspc_c7s7	chspctrack:A	5e69507	{"G_rna": {"n": 122, "G": 0.3980655604290396, "lower_one_sided": 0.12637770395945203, "ci95": [0.12637770395945203, 0.6692258910418245], "confirmed": true, "strata_unseen_in_train": []}}
 2026-11-11	C8-S1a	celltag_c8s1_lsk	celltag_lsk:B	5ca00c4	{"T1_rho": {"n": 153, "rho": 0.44772283267598045, "lower_one_sided": 0.3178884649111748, "ci95": [0.3178884649111748, 0.5679656587278124], "confirmed": true}}
 2026-11-11	C8-S1c	celltag_c8s1_reprog	celltag_reprog:B	31345fc	{"T3_rho": {"n": 105, "rho": 0.5915285847836915, "lower_one_sided": 0.45893368122022743, "ci95": [0.45893368122022743, 0.6875222229328141], "confirmed": true}}
+2026-11-13	C10-S2	resistrace_c10s2	resistrace:A	545ae77	{"n_lineages": 5194, "n_linked": 420, "auc_M0": 0.6598, "auc_M1": 0.7221, "delta_auc": 0.0623, "lower_97_5": 0.0462, "confirmed": true}
