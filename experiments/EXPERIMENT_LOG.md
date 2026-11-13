@@ -10805,3 +10805,35 @@ Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cell
     with a sealed confirmation.
 - **No sealed partition is read until Bence approves a look** (A: one partition, B/C kept).
 - **Exposure (accepted):** pooled per-sample pre-resistant counts were seen.
+
+## C10-S2: state predicts survival beyond subclone + QC, oracle look on resistrace:A (pre-registered 2026-11-13)
+
+- **Serves: C10-S2.** Bence: "go" (to: "Pre-register and run the one-look test on ReSisTrace partition A?").
+  - Script: `c10s2_confirm.py` (`fit` on train, frozen to `selection/C10-S2_model.npz` with its sha256 in the
+    selection file; `test_A` / `counts_A` called only by the oracle).
+  - Oracle test: `resistrace_c10s2`. Look: `test_oracle.py look resistrace_c10s2 --exp C10-S2 --partition A`.
+  - **B and C stay sealed.**
+- **Pipeline (exactly C10-S1 amendment 1, frozen on train):**
+  - CNV proxy: 101-gene smoothing, CNV PCA 10, then k-means with k = 3, chosen by silhouette.
+  - State: HVG PCA 5. QC covariates as in amendment 1.
+  - Logistic M0 = library + subclone + QC; M1 = M0 + 5 state PCs. Fit on all train drug lineages.
+- **Units:** pre lineages of the 6 drug libraries in partition A, with sealed pre cells projected through the
+  frozen pipeline.
+- **Statistic:** delta AUC = AUC(M1 score) - AUC(M0 score) for linked vs unlinked.
+  - **Confirmed if** the one-sided 97.5% lower bound of a 2,000-resample lineage bootstrap (seed 121) is > 0.
+- **Prediction:** delta AUC about 0.03-0.055 (train 0.055; 0.5 shrink gives 0.027), with a lower bound > 0.
+- **Power block:**
+  - effect 0.0275 (train delta AUC 0.0549 x 0.5, from C10-S1 amendment 1);
+  - sd per lineage 0.664 (train bootstrap SE 0.0066 x sqrt(10,132));
+  - counts = labelled drug lineages in A (structural); one-sided alpha 0.025.
+- **Pre-flight:**
+  1. **Unit:** lineage (hash partition).
+  2. **Readout:** linked yes/no. Train sides 853 / 9,279.
+  3. **Used data first:** C10-S1 train.
+  4. **Power:** above; the oracle re-checks.
+  5. **Exposure:** accepted pooled survival counts; train results. A is unread.
+  6. **Literature:** C10_top5.md.
+  - **Readout gate:** passes (sides >= 30).
+- **Practice:** the frozen pipeline is checked on train (it reproduces delta AUC > 0 in-sample) before the look;
+  tick-list: fit on train only, k and the models fixed, seeds fixed, counts read no outcome.
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen.

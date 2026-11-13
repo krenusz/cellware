@@ -1,7 +1,7 @@
 {
  "chapter": "C10 drug instruction vs selection (ReSisTrace, GSE223003)",
- "step": "C10-S1",
- "question": "C10-S1 (train-only power check): within one drug library, does a lineage's pre-treatment state predict survival beyond its genetic subclone (CNV proxy)? Unit lineage, no drug-vs-control contrast. Stop if power < 0.8. The C10 instruction test stays STOPPED (library-limited).",
+ "step": "C10-S2",
+ "question": "C10-S2: oracle look on resistrace:A - does pre-treatment state predict lineage survival beyond CNV-proxy subclone + QC (delta AUC M1-M0, lower 97.5% bound > 0)? B/C stay sealed. C10 instruction test stays STOPPED.",
  "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
@@ -49,7 +49,8 @@
   "c10s0_partition.py",
   "c10s0_sim.py",
   "c10s0_placebo.py",
-  "c10s1_select.py"
+  "c10s1_select.py",
+  "c10s2_confirm.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
