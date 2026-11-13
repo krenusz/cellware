@@ -10642,3 +10642,45 @@ The numbers are unchanged from the result files.)*
      - **If the placebo |S| reaches the stop bar, stop.**
 - **Exposure (accepted by Bence):** pooled per-sample pre-resistant counts were seen. They are used here only
   through the family counts.
+
+### C10-S0 placebo (train only; implements amendment 4 item 4, no new model version) (2026-11-13)
+
+Bence: "go forward with recomms". Script: `c10s0_placebo.py`.
+- **Cells loaded** (columns chosen from cell_info BEFORE any value is read):
+  - pre: labelled cells of TRAIN lineages plus unlabelled cells;
+  - post: TRAIN-family cells plus unlinked cells (no `prer_r_group`);
+  - sealed-lineage pre cells and sealed-family post cells are never read.
+- **Featurisers (pre-listed):** log CP10k, 2,000 HVG (chosen on a 400-cell subsample per file of the allowed cells),
+  z-score, then PCA k in {10, 20, 30}.
+  - The chosen k maximises the train pre sister-pair AUC (sister distance < random same-library pair distance).
+  - **Not chosen by S.**
+- **P1:** S = logF(Control_1) - logF(Control_2), on train families, both estimators (F2 primary, Fall). The
+  pre-sister state is the mean of the lineage's pre cells. Bootstrap 1,000 over families, seed 101.
+- **P2:** per pre library (8), sister-group logF on train sister groups (>= 2 cells), as between-group MS /
+  (within MS x mean 1/n). Report the spread across libraries.
+- **Stop rule (from amendment 4):** if |P1| >= 0.5 (the lower end of the power-0.8 bar), or the P2 range is
+  >= 0.5, stop C10: library-to-library F differences alone would reach the bar.
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen.
+
+### C10-S0 placebo result (2026-11-13, train only; `results/c10s0_placebo.json`): STOP RULE FIRES
+
+- **Fit set:** 54,383 allowed cells; 2,000 HVG (genes shared by all 16 matrices).
+  - Train pre sister-pair AUC: k 10 0.90, k 20 0.91, **k 30 0.93 (chosen)**.
+- **P2, pre sister-group logF per library** (train groups; no outcome involved):
+  - drug libraries 1.58-1.80, from 118-249 groups each;
+  - Control_1 1.99 (68 groups), Control_2 2.42 (39 groups);
+  - **range 0.84 >= 0.5: the pre-registered stop rule fires.** Untreated libraries differ in sister-group logF by
+    more than the power-0.8 bar, before any drug.
+- **P1 is invalid as implemented:**
+  - Fall S = -0.08 (95% bootstrap -0.09 to 0.65). F2 S = -0.25, but its bootstrap interval (63 to 65) is
+    degenerate.
+  - Cause: with k = 30 the family regression has 31 regressors for 36 (Control_2) and 75 (Control_1) families, so
+    almost no residual degrees of freedom are left.
+  - This is a design error in the placebo (k chosen by sister AUC without a dof cap), not a property of the data.
+- **Self-challenge:**
+  - The P2 spread is carried by the two control libraries, which have the fewest groups (39, 68). Small-n
+    upward bias is a plausible part of it; the drug libraries alone span 0.22.
+  - Either way the registered rule is met, and the primary pairing needs a control library.
+  - A retry (a dof-capped k, group-count-matched P2) would be a 5th amendment and needs an H18 retro first.
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen; they are not used here.
+- **Status:** C10 instruction test STOPPED under its own rule. Nothing sealed was read.

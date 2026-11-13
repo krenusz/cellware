@@ -7,6 +7,7 @@
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
   "Expression tar downloaded + locked (raw_tar, SHA256SUMS_raw). Featuriser (Bence OK via advisor): fit on train-lineage pre, unlabelled pre, train-family post and unlinked post cells; never on sealed-family post cells; pre-listed featurisers chosen by train pre-sister similarity, not by S; freeze+hash before any look",
+  "C10-S0 PLACEBO 2026-11-13: STOP RULE FIRED (pre sister-group logF range across 8 untreated libraries 0.84 >= bar 0.5; carried by Control_1 1.99 / Control_2 2.42 vs drug libs 1.58-1.80). P1 invalid (k=30 regressors vs 36-75 families). Instruction test stopped; retry only via H18 retro + amendment 5 (Bence's call); nothing sealed read",
   "Amendments 3-4 (synthetic): S cannot tell family instruction from extra family drift (null B fired 12-17%), so the primary pairing is time-matched Olaparib_1 vs Control_1 only (13 d each, inferred; confirm Supp. Data 11); NK biased against; carboplatin and Olaparib_2 out. F2 fixed (per-family 1/n). Real sizes: null bias +0.07-0.09; power 0.8 at sealed-third size needs true S ~0.5-0.55, i.e. train S >= ~1.0 under the 0.5 shrink",
   "Next, on train only: placebo S (Control_1 vs Control_2; sister-group F across 8 pre libraries); stop if placebo |S| reaches the bar. Then train S and subsampled power. 4 amendments used: a 5th needs an H18 retro",
   "C10-S0: partition done (partitions.resistrace, by pre lineage; pre-side counts in results/c10s0_counts.json); pre-to-post links = prer_r_group (perfect matches only); raw-read extraction not needed for now",
@@ -50,7 +51,8 @@
   "c9s1_confirm.py",
   "c9s2_confirm.py",
   "c10s0_partition.py",
-  "c10s0_sim.py"
+  "c10s0_sim.py",
+  "c10s0_placebo.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
@@ -111,6 +113,7 @@
   "C9-S0 2026-11-11 (ad744d5): H3 passes (rho 0.57, power 1.00); H4 0.87 on last partition; H1/H2 fail (0.79/0.78)",
   "C9-S1 2026-11-11: WITHDRAWN at train selection (only 7/179 train clones carry GM cells; exp 1 none); no oracle entry, chspctrack:B/C sealed",
   "Cellware PAUSED 2026-11-11 by Bence; nothing sealed spent after chapter 8",
-  "C10-S0 started 2026-11-13: processed tables locked (ext_resistrace); GEO RAW tar holds only UMI counts + the same cell_info (no labels), not downloaded; labels only in reads (64 runs, ~564 GB)"
+  "C10-S0 started 2026-11-13: processed tables locked (ext_resistrace); GEO RAW tar holds only UMI counts + the same cell_info (no labels), not downloaded; labels only in reads (64 runs, ~564 GB)",
+  "C10-S0 2026-11-13: partition + structure + H20 read + synthetic statistic; placebo stop rule fired (library F spread 0.84 >= 0.5); instruction test stopped, nothing sealed read"
  ]
 }
