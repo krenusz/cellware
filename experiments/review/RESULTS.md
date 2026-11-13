@@ -14,11 +14,11 @@ block on power and spent results). `files_read` is self-reported.
 | K06 C6-S7g | fault | pass | - | **miss** | flagged "7th sub-version" and "6 reps" as notes |
 | K07 C6-S8a | fault | pass | - | **miss** | flagged the exact defect (one rate where sealed G6 gave clone-specific rates) as a note |
 | K08 C8-S1b T2 | fault | block | power, spent-results | **catch** | power fragile, 0.46 if shrunk; did not name the subset-ratio defect |
-| K02 G7 | fault | (running) | | | |
+| K02 G7 | fault | pass | - | **miss** | flagged "spends all remaining hold-out" and "single rate rejected by spent G6" as notes |
 | K09, K16 | fault | not run | | | stopped: rule unreachable |
 | K11, K12, K17, K15, K19 | sound | not run | | | stopped |
 
-**Score:** 2 of 6 scored fault cases caught; at most 5 of 9 reachable, so the 7 of 9 rule cannot be met. Stopped
+**Score:** 2 of 7 scored fault cases caught; at most 4 of 9 reachable, so the 7 of 9 rule cannot be met. Stopped
 under the early-stop rule; no sound case was run.
 
 **Diagnosis:** detection worked: in all four misses the known defect appears in the findings, with evidence. The
