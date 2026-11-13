@@ -56,6 +56,13 @@ The tables hold the outcome label (`drugSens`: pre-resistant vs pre-sensitive). 
 | NK cells | 1 / 2 | 4929 / 6947 | 627 / 1262 | 32 / 67 | 5449 / 5527 |
 | control | 1 / 2 | 2738 / 2001 | 323 / 239 | 31 / 22 | 8910 / 7417 |
 
+- **CORRECTION 2026-11-13 (C10-S0): this table is mislabelled, and one column is an outcome.**
+  - The counting script added 1 to each column index, assuming the header lacked the index column; it did not.
+  - "Pre cells with a label" are really pre cells with a `sisters` ID.
+  - "Sister groups >= 2 cells" are really the number of distinct `prer_r_group` IDs, i.e. **the number of
+    pre-resistant families per sample: an outcome aggregate seen before sealing.**
+  - Per-lineage outcomes were not seen. Corrected structural counts: `results/c10s0_counts.json`, where about 90%
+    of pre cells are labelled and there are 430-470 sister groups per drug sample.
 - **Readout questions (pre-state -> fate) have ample units:** 600-1260 labelled pre cells per replicate.
   - The per-side split (>= 30 per side, readout gate) is unknown until sealed. The paper implies a minority
     pre-resistant side.

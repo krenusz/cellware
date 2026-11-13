@@ -10547,3 +10547,31 @@ The numbers are unchanged from the result files.)*
 - **No look was run.** celltag_lsk:C, celltag_reprog:C and chspctrack:B and C all stay sealed.
 - **The C9-S2 selection and oracle entry stay in place,** ready if the chromatin test is ever re-approved
   (power about 0.84).
+
+## C10-S0: ReSisTrace lineage partition + pre-side structural counts (pre-registered 2026-11-13)
+
+- **Serves: C10-S0** (access and structure scan, H19 step 1). Bence: "Yes, read + partition".
+  - Script: `c10s0_partition.py` (new). Output `results/c10s0_counts.json`.
+  - No statistic, no oracle test, no look.
+- **What it does:** registers the lineage partition (`partitions.resistrace`, salt `cellware-resistrace-v1`,
+  train 40% + A/B/C 20% by unit hash) and counts the pre-treatment side per sample x partition.
+- **Unit:** pre-treatment lineage. Key `<arm>_<rep>:s<sisters>` with a sister group, else
+  `<arm>_<rep>:c<cell barcode>`; only label-detected cells (`drugSens` not missing).
+  - Source: the authors' Preprocess Rmd defines `sisters` as the lineage ID shared by perfect-label-match pre sisters.
+  - Post cells inherit their lineage's partition through `prer_r_group`. That join is outcome-linked and is done
+    later, on train only or in the oracle.
+- **Pre-flight:**
+  1. **Unit:** lineage (above), not library. The keys use no outcome column.
+  2. **Readout:** none in this step.
+  3. **Used data first:** the 2026-11-12 structural counts (column names, cells, labelled cells, sister groups
+     per sample).
+  4. **Power:** not in this step. H19 power comes next, from train families only.
+  5. **Exposure:** counts as above; `drugSens` and `prer_r_group` values never tabulated; Dai 2024 full text read.
+  6. **Literature:** H20 top-5 read running in parallel (`lit/C10_top5.md`), before any analysis code.
+  - **Readout gate:** n/a (no outcome).
+- **Practice:** synthetic smoke test n/a (counting only); tick-list below.
+- **Tick-list:**
+  - the post tables are not opened;
+  - only the `sisters` column and the not-missing flag of `drugSens` are loaded;
+  - only pre-side counts are printed;
+  - the script runs with `python -I` (downloaded data).

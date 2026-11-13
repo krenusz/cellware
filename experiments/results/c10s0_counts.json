@@ -1,0 +1,178 @@
+{
+ "Carboplatin_1": {
+  "A": {
+   "labelled_pre_cells": 896,
+   "lineage_units": 803,
+   "sister_groups_ge2": 88
+  },
+  "B": {
+   "labelled_pre_cells": 921,
+   "lineage_units": 822,
+   "sister_groups_ge2": 90
+  },
+  "C": {
+   "labelled_pre_cells": 907,
+   "lineage_units": 809,
+   "sister_groups_ge2": 88
+  },
+  "train": {
+   "labelled_pre_cells": 1795,
+   "lineage_units": 1597,
+   "sister_groups_ge2": 180
+  }
+ },
+ "Carboplatin_2": {
+  "A": {
+   "labelled_pre_cells": 917,
+   "lineage_units": 825,
+   "sister_groups_ge2": 83
+  },
+  "B": {
+   "labelled_pre_cells": 897,
+   "lineage_units": 806,
+   "sister_groups_ge2": 85
+  },
+  "C": {
+   "labelled_pre_cells": 867,
+   "lineage_units": 771,
+   "sister_groups_ge2": 93
+  },
+  "train": {
+   "labelled_pre_cells": 1742,
+   "lineage_units": 1571,
+   "sister_groups_ge2": 155
+  }
+ },
+ "Control_1": {
+  "A": {
+   "labelled_pre_cells": 475,
+   "lineage_units": 448,
+   "sister_groups_ge2": 24
+  },
+  "B": {
+   "labelled_pre_cells": 468,
+   "lineage_units": 438,
+   "sister_groups_ge2": 26
+  },
+  "C": {
+   "labelled_pre_cells": 480,
+   "lineage_units": 443,
+   "sister_groups_ge2": 32
+  },
+  "train": {
+   "labelled_pre_cells": 1031,
+   "lineage_units": 952,
+   "sister_groups_ge2": 68
+  }
+ },
+ "Control_2": {
+  "A": {
+   "labelled_pre_cells": 368,
+   "lineage_units": 331,
+   "sister_groups_ge2": 30
+  },
+  "B": {
+   "labelled_pre_cells": 328,
+   "lineage_units": 304,
+   "sister_groups_ge2": 22
+  },
+  "C": {
+   "labelled_pre_cells": 354,
+   "lineage_units": 332,
+   "sister_groups_ge2": 17
+  },
+  "train": {
+   "labelled_pre_cells": 679,
+   "lineage_units": 631,
+   "sister_groups_ge2": 39
+  }
+ },
+ "NK_1": {
+  "A": {
+   "labelled_pre_cells": 756,
+   "lineage_units": 689,
+   "sister_groups_ge2": 60
+  },
+  "B": {
+   "labelled_pre_cells": 778,
+   "lineage_units": 714,
+   "sister_groups_ge2": 59
+  },
+  "C": {
+   "labelled_pre_cells": 766,
+   "lineage_units": 698,
+   "sister_groups_ge2": 64
+  },
+  "train": {
+   "labelled_pre_cells": 1557,
+   "lineage_units": 1430,
+   "sister_groups_ge2": 118
+  }
+ },
+ "NK_2": {
+  "A": {
+   "labelled_pre_cells": 1306,
+   "lineage_units": 1172,
+   "sister_groups_ge2": 119
+  },
+  "B": {
+   "labelled_pre_cells": 1288,
+   "lineage_units": 1158,
+   "sister_groups_ge2": 118
+  },
+  "C": {
+   "labelled_pre_cells": 1245,
+   "lineage_units": 1117,
+   "sister_groups_ge2": 121
+  },
+  "train": {
+   "labelled_pre_cells": 2427,
+   "lineage_units": 2164,
+   "sister_groups_ge2": 249
+  }
+ },
+ "Olaparib_1": {
+  "A": {
+   "labelled_pre_cells": 947,
+   "lineage_units": 850,
+   "sister_groups_ge2": 92
+  },
+  "B": {
+   "labelled_pre_cells": 897,
+   "lineage_units": 814,
+   "sister_groups_ge2": 79
+  },
+  "C": {
+   "labelled_pre_cells": 956,
+   "lineage_units": 846,
+   "sister_groups_ge2": 99
+  },
+  "train": {
+   "labelled_pre_cells": 1909,
+   "lineage_units": 1734,
+   "sister_groups_ge2": 163
+  }
+ },
+ "Olaparib_2": {
+  "A": {
+   "labelled_pre_cells": 954,
+   "lineage_units": 855,
+   "sister_groups_ge2": 91
+  },
+  "B": {
+   "labelled_pre_cells": 977,
+   "lineage_units": 858,
+   "sister_groups_ge2": 111
+  },
+  "C": {
+   "labelled_pre_cells": 929,
+   "lineage_units": 819,
+   "sister_groups_ge2": 102
+  },
+  "train": {
+   "labelled_pre_cells": 1825,
+   "lineage_units": 1636,
+   "sister_groups_ge2": 174
+  }
+ }
+}

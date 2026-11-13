@@ -84,6 +84,19 @@ PARTITIONED = {
                           "pseudotime / score columns unread; Blood 2026 abstract read (clones diversify "
                           "stochastically, cytokines bias; clonal memory stabilises a few genes per clone)",
     },
+    "resistrace": {
+        "salt": "cellware-resistrace-v1",
+        "unit": "pre-treatment lineage in GSE223003 processed cell_info (data/ext_resistrace/processed): key "
+                "'<arm>_<rep>:s<sisters>' for cells with a sister group, else '<arm>_<rep>:c<cell barcode>'; "
+                "only cells with a detected label (drugSens not missing). Post-treatment cells inherit the "
+                "partition of their pre lineage through prer_r_group (outcome-linked; join only in train or oracle)",
+        "files": ["16 *_cell_info.tsv.gz (8 pre, 8 post), sha256 in data/ext_resistrace/SHA256SUMS_processed"],
+        "sealed_on": "2026-11-13",
+        "prior_exposure": "column names; per-sample cell counts; via a 2026-11-12 column-shift bug, per-sample number "
+                          "of pre-resistant families (distinct prer_r_group, all partitions pooled; outcome aggregate) "
+                          "and two example rows; no per-lineage outcome; Dai 2024 full text read "
+                          "(design, label accuracy, subclone A enrichment reported in the paper)",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

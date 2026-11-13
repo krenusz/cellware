@@ -22,7 +22,8 @@ DATASETS = {
     "ext_chspctrack": "partitioned by clone (partitions.chspctrack, sealed 2026-11-11): train 40%, A/B/C 20%; cell_type / pseudotime / score columns readable only via train_only / test_oracle; files sha256 in data/ext_chspctrack/SHA256SUMS; pickles NOT downloaded",
     "ext_methyltree": "downloaded 2026-11-11 (figshare 27288630 zip, sha256 locked); structure check only until partitioned by clone",
     "ext_resistrace": "GSE223003 processed cell_info tables (16 files), locked 2026-11-13 (data/ext_resistrace/SHA256SUMS_processed); "
-                      "LOCKED, not partitioned: no statistic until partitioned by lineage label. Exposure (2026-11-12): column names, "
+                      "partitioned by pre-treatment lineage (partitions.resistrace, sealed 2026-11-13): train 40%, A/B/C 20%; "
+                      "drugSens / prer_r_group readable only via train_only / test_oracle. Exposure (2026-11-12): column names, "
                       "cells / labelled cells / sister groups per sample counted; drugSens and prer_r_group values never tabulated. "
                       "An unlocked copy of the same 16 files remains in an old session temp folder (C: scratchpad dl_resistrace), never read since. "
                       "Lineage labels are not in any GEO table: only in the 10x reads (gene pBA439_UMI_20).",
@@ -205,6 +206,7 @@ HELDOUT_READERS = {
     "c4s2a_morph_confirm.py": "C4-S2a: mixture plate read only in test(part) via test_oracle; counts(part) counts only",
     "c7s3_carrier.py": "C7-S3: celltag_lsk sealed partitions read only in test(part) / counts(part) via test_oracle; train via train_only",
     "c9s2_confirm.py": "C9-S2: celltag_lsk sealed partition read only in test_lsk / counts_lsk (no fate column) via test_oracle",
+    "c10s0_partition.py": "C10-S0: partition_of on pre-side lineage keys for structural counts only (sisters + label-detected flag; drugSens / prer_r_group values never read; post tables not opened)",
     "c9s0_scan.py": "C9-S0: sealed_rows used ONLY for structural counts (clone/day/exp/assay columns, no fate column loaded) for H19 power",
     "c8s1_confirm.py": "C8-S1: celltag_lsk / chspctrack / celltag_reprog sealed partitions read only in test_* / counts_* via test_oracle; select_* via train_only",
     "c7s7_confirm.py": "C7-S7: celltag_lsk / celltag_reprog / chspctrack sealed partitions read only in test_* / counts_* via test_oracle; select_* via train_only",

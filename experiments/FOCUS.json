@@ -5,8 +5,9 @@
  "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
-  "C10-S0: lineage labels exist only in the 10x reads (gene pBA439_UMI_20; 64 runs, ~564 GB). Bence to choose: streamed label extraction on Actions, or park",
-  "Seal by lineage label (train 40% + A/B/C) before any pre-to-post match is counted; match counts on train only",
+  "C10-S0: partition done (partitions.resistrace, by pre lineage; pre-side counts in results/c10s0_counts.json); pre-to-post links = prer_r_group (perfect matches only); raw-read extraction not needed for now",
+  "Next: H19 power on TRAIN families only; needs expression matrices (GEO RAW tar, 484 MB, Bence's OK already given for it) for pre/post states and subclone calls",
+  "Exposure to weigh (H10, Bence): per-sample number of pre-resistant families was seen 2026-11-12 via a column-shift bug",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [
@@ -44,7 +45,8 @@
   "c8s1_confirm.py",
   "c9s0_scan.py",
   "c9s1_confirm.py",
-  "c9s2_confirm.py"
+  "c9s2_confirm.py",
+  "c10s0_partition.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
