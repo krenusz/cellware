@@ -26,9 +26,9 @@ DATASETS = {
                       "drugSens / prer_r_group readable only via train_only / test_oracle. Exposure (2026-11-12): column names, "
                       "cells per sample, and (via a column-shift bug) per-sample counts of cells with a sisters ID AND of distinct "
                       "distinct prer_r_group IDs (pre-resistant families; whether singletons were included is unverified), cells carrying prer_r_group (perfect-match pre-resistant cells), family size spread, and post cells carrying prer_r_group (matched post cells); all pooled across partitions (outcome aggregates); "
-                      "two example rows printed (one pre-sensitive, one pre-resistant). No per-lineage outcome tabulated. "
+                      "two example rows printed (one pre-sensitive, one pre-resistant). No per-lineage outcome tabulated. Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\" -> every C10 report and power input must state that per-sample pre-resistant family/cell counts were seen. "
                       "An unlocked copy of the same 16 files remains in an old session temp folder (C: scratchpad dl_resistrace), never read since. "
-                      "Lineage labels are not in any GEO table: only in the 10x reads (gene pBA439_UMI_20).",
+                      "Lineage labels are not in any GEO table: only in the 10x reads (gene pBA439_UMI_20). GEO RAW tar downloaded 2026-11-13 (Bence: \"go 1 and 2\"): data/ext_resistrace/raw_tar, 32 files + tar sha256 in SHA256SUMS_raw; its 16 cell_info files are byte-identical to the locked processed copies; UMIcounts matrices unopened. Post-cell columns of sealed families: oracle only.",
     "ext_triandafillou": "locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
     "ext_guan": "not data: two failed PDF downloads (HTML / 17 bytes), left for Bence to delete",
     "ext_plos_gastruloid": "not data: de Jong 2024 model code, read as text only (C6-S6/S7c)",

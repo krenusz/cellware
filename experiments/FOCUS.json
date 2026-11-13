@@ -5,11 +5,12 @@
  "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
+  "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
+  "Expression tar downloaded + locked (raw_tar, SHA256SUMS_raw). Featuriser (Bence OK via advisor): fit on train-lineage pre, unlabelled pre, train-family post and unlinked post cells; never on sealed-family post cells; pre-listed featurisers chosen by train pre-sister similarity, not by S; freeze+hash before any look",
+  "Before reading expression: rerun c10s0_sim at real family structure (sizes per sample, mostly 2 post cells), add null worlds (subclone mix differs; longer drift), commit stop bar = smallest train S giving power 0.8. NK recovers ~8 d vs control 13 d (inferred from Methods): NK needs time-matched handling or separate analysis",
   "C10-S0: partition done (partitions.resistrace, by pre lineage; pre-side counts in results/c10s0_counts.json); pre-to-post links = prer_r_group (perfect matches only); raw-read extraction not needed for now",
   "Train link counts done (amendment 1): 117-172 linked lineages per drug sample on train, so about 60-85 per sealed third",
   "Instruction statistic pinned (amendment 2): S = logF(drug) - logF(control), family-level, synthetic smoke test PASSES (invariant; selection-only ~0; power 0.62 at tau 0.5 / 40 families, 0.93 / 80). Needs >= 2 post cells per family: feasible in NK_1/NK_2/Olaparib_1/Control_1 (~37-58 per sealed third), not carboplatin or Olaparib_2 (~11-15)",
-  "Next (Bence): GEO RAW tar (484 MB) for expression -> train power with real noise; featuriser scope (may unlinked post cells enter unsupervised fitting?)",
-  "Exposure to weigh (H10, Bence): per-sample number of pre-resistant families was seen 2026-11-12 via a column-shift bug",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [
