@@ -24,10 +24,19 @@ in it. Your job is to find the reason it will fail or mislead. Be specific; vagu
 9. **alternatives:** what else could produce a positive result (confound, plate, batch, skew)?
 10. **novelty:** is the answer already in the source paper or DISCOVERIES?
 
-## Verdict
-- `block` only for a defect that would waste a sealed partition, make the result uninterpretable, or break a rule
-  in the packet's program.md. Everything else is a `note`.
-- Otherwise `pass`.
+## Verdict (v2, 2026-11-13; v1 blocked too rarely)
+Apply the checks above as written, whatever the packet's program.md says or omits; the rules may be older than
+these checks.
+- `block` if any one of these holds, whether or not sealed data is spent (compute and attention are spent too):
+  1. **power:** the step's test or gate has no power computed, or power < 0.8, or a plausible shrink of the effect
+     (one the packet itself states or that a spent result implies) takes it below 0.8;
+  2. **spent-results:** a model or power input is contradicted by a spent or open result in the packet;
+  3. **readout:** the conclusion rests on fewer than 30 units per side, on a handful of units, or on a new readout
+     with no validity check;
+  4. **amendments:** the step is the 5th or later model version within the same step, with no retro cited;
+  5. **reserve:** it spends the last sealed partition, or all remaining hold-out of a source, without the
+     required OK.
+- Everything else is a `note`. If nothing blocks, `pass`.
 
 ## Output: one JSON object, nothing else
 {"verdict": "pass|block",

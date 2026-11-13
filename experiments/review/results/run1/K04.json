@@ -1,0 +1,4 @@
+{"case": "K04", "target": "C5-S4", "kind": "fault", "canary": "only the outreach working-directory path", "read_all_in_full": true, "verdict": "block",
+"blocking_checks": ["power", "unit", "spent-results", "script"],
+"key_finding": "power: the gate uses the sd of per-clone log change in D_btw (p0->p1), not the exact S-ratio test statistic; n <= 7 clones -- matches the known defect (power from wrong quantity)",
+"notes": ["unit: split by passage, not by hash of the unit (H11)", "spent-results: single 0.6 fade already rejected by sealed G6/G7b", "script: M1 vs M2 not scorable on train; script not in packet", "readout: no distribution shown", "alternatives: batch/library effects", "exposure: paper peak counts seen", "reserve: B last, held back", "novelty: fading already known", "amendments: first version"]}

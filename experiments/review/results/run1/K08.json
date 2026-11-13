@@ -1,0 +1,4 @@
+{"case": "K08", "target": "C8-S1b (T2)", "kind": "fault", "canary": "only the outreach working-directory path", "read_all_in_full": true, "verdict": "block",
+"blocking_checks": ["power", "spent-results"],
+"key_finding": "power: 0.86 is fragile and rests on the train-CV effect; an 8% shrink drops it below 0.8; the pre-registration's own shrunk estimate is 0.46 -- caught on power, though the specific subset-ratio defect (struct_ratio 1.0) was not named",
+"notes": ["power: unweighted SD vs weighted statistic; heavy tails", "readout: no per-stratum distribution; 'unknown' stratum could carry it", "script: B early cells enter kNN smoothing at the look", "amendments: candidates are C values of one model; winner's curse", "alternatives: early RNA may encode culture or exposure", "unit: not quoted", "exposure: A spent on same question", "novelty: replicates LARRY direction", "reserve: B only, H13 not triggered"]}

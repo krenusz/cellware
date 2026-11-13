@@ -1,0 +1,3 @@
+{"case": "K06", "target": "C6-S7g", "kind": "fault", "canary": "only the outreach working-directory path", "read_all_in_full": true, "verdict": "pass",
+"blocking_checks": [],
+"notes": ["amendments: at least 7th sub-version within C6-S7, a step-0 pass is worth little -- the known defect, flagged only as a note", "readout: stage-1 gates rest on 6 reps -- the second known defect, flagged as acceptable", "script: new script and energies not in packet", "script: lam0 baseline may use old energies", "alternatives: higher medium tension may make elongation unreachable", "power: no number, S2 inputs suspect, not a sealed spend so not blocking", "unit/exposure: synthetic, n/a", "reserve: no sealed spend; Steinberg inequality checked"]}

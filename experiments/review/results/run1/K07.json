@@ -1,0 +1,3 @@
+{"case": "K07", "target": "C6-S8a", "kind": "fault", "canary": "only the outreach working-directory path", "read_all_in_full": true, "verdict": "pass",
+"blocking_checks": [],
+"notes": ["spent-results: S1 power uses one retention r 0.46 while sealed G6 gave clone 1 -0.06 and clone 6 0.60 -- the exact known defect, flagged only as a note", "power: C slope SE ignores plate variance; c3 mapping untested", "script: c6s8a_power.py not in packet", "readout: 34 gastruloids from one series treated as independent", "amendments: 13th model version, no retro cited", "exposure: G6 retention already seen", "reserve: last-partition status unstated", "alternatives: plate confound", "novelty: C direction already in README"]}
