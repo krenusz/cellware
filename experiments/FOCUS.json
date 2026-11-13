@@ -7,10 +7,10 @@
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
   "Expression tar downloaded + locked (raw_tar, SHA256SUMS_raw). Featuriser (Bence OK via advisor): fit on train-lineage pre, unlabelled pre, train-family post and unlinked post cells; never on sealed-family post cells; pre-listed featurisers chosen by train pre-sister similarity, not by S; freeze+hash before any look",
-  "Before reading expression: rerun c10s0_sim at real family structure (sizes per sample, mostly 2 post cells), add null worlds (subclone mix differs; longer drift), commit stop bar = smallest train S giving power 0.8. NK recovers ~8 d vs control 13 d (inferred from Methods): NK needs time-matched handling or separate analysis",
+  "Amendments 3-4 (synthetic): S cannot tell family instruction from extra family drift (null B fired 12-17%), so the primary pairing is time-matched Olaparib_1 vs Control_1 only (13 d each, inferred; confirm Supp. Data 11); NK biased against; carboplatin and Olaparib_2 out. F2 fixed (per-family 1/n). Real sizes: null bias +0.07-0.09; power 0.8 at sealed-third size needs true S ~0.5-0.55, i.e. train S >= ~1.0 under the 0.5 shrink",
+  "Next, on train only: placebo S (Control_1 vs Control_2; sister-group F across 8 pre libraries); stop if placebo |S| reaches the bar. Then train S and subsampled power. 4 amendments used: a 5th needs an H18 retro",
   "C10-S0: partition done (partitions.resistrace, by pre lineage; pre-side counts in results/c10s0_counts.json); pre-to-post links = prer_r_group (perfect matches only); raw-read extraction not needed for now",
   "Train link counts done (amendment 1): 117-172 linked lineages per drug sample on train, so about 60-85 per sealed third",
-  "Instruction statistic pinned (amendment 2): S = logF(drug) - logF(control), family-level, synthetic smoke test PASSES (invariant; selection-only ~0; power 0.62 at tau 0.5 / 40 families, 0.93 / 80). Needs >= 2 post cells per family: feasible in NK_1/NK_2/Olaparib_1/Control_1 (~37-58 per sealed third), not carboplatin or Olaparib_2 (~11-15)",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [

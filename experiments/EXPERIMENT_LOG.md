@@ -10616,3 +10616,29 @@ The numbers are unchanged from the result files.)*
   alpha 0.05 against the selection-only null. If train S cannot plausibly reach it, stop.
 - Exposure accepted (Bence): pooled per-sample pre-resistant counts were seen. They are used here only through the
   family counts above.
+
+### C10-S0 amendment 4 (2026-11-13, LAST before an H18 retro; before any expression is read)
+
+- **Amendment 3 outcome, reported as written:**
+  - null A (subclone) is about nominal;
+  - **null B (longer drug drift) fires 12-17%, so the registered rule "S must not fire" FAILED.**
+  - Extra family drift is indistinguishable from family instruction, so S reads as instruction only against a
+    time- and division-matched control.
+- **Consequences, fixed now:**
+  1. **Primary pairing:** Olaparib_1 vs Control_1, both 13 days by the inferred mapping (confirm in Dai 2024
+     Supp. Data 11 before any look).
+     - NK (8 days) is reported only as biased against a finding.
+     - Carboplatin and Olaparib_2 are out (too few families with >= 2 post cells).
+  2. **F2 estimator fixed:** the within-family term uses the per-family 1/n correction (sigma_w^2 x mean(1/n_i)),
+     as Fall does.
+     - New null C: the arms' real train size distributions (Olaparib_1 3.65 vs Control_1 2.29 post cells per
+       family), with size correlated with state.
+  3. **Stop bar in S units:** mean S at each tau is printed.
+     - Power will come from subsampling **train** families to sealed-third size, with a 0.5 shrink on train S.
+     - Stop if power < 0.8.
+  4. **Placebo on train, before the power step:**
+     - S for Control_1 vs Control_2 (library-to-library F spread with no drug);
+     - the spread of a sister-group F across the 8 untreated pre libraries.
+     - **If the placebo |S| reaches the stop bar, stop.**
+- **Exposure (accepted by Bence):** pooled per-sample pre-resistant counts were seen. They are used here only
+  through the family counts.

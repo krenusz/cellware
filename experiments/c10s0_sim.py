@@ -37,9 +37,9 @@ def logF(pre, fams):
     ms_between = (resid ** 2).sum() / (dof_b * D)
     within = sum(((f - f.mean(0)) ** 2).sum() for f in fams)
     dof_w = sum(len(f) - 1 for f in fams) * D
-    nbar = np.mean([len(f) for f in fams])
+    inv_n = np.mean([1.0 / len(f) for f in fams])   # amendment 4: per-family 1/n (was 1/mean n)
     # F compares between-family residual variance to what cell noise alone would give a family mean
-    return np.log(ms_between / (within / dof_w / nbar))
+    return np.log(ms_between / (within / dof_w * inv_n))
 
 
 def S(rng, n_fam, drug_keep, ctrl_keep, tau, **kw):
@@ -80,7 +80,8 @@ def main():
 PROBS = {1: 0.40, 2: 0.35, 3: 0.12, 4: 0.07, 5: 0.06}
 
 
-def lib_real(rng, n_fam, keep_frac, tau, memory=0.7, drift_sd=0.3, sub_frac_A=None, sub_drift=0.0, n_fixed=None):
+def lib_real(rng, n_fam, keep_frac, tau, memory=0.7, drift_sd=0.3, sub_frac_A=None, sub_drift=0.0, n_fixed=None,
+             probs=None, size_state=0.0):
     n_all = int(n_fam / keep_frac)
     x = rng.normal(size=(n_all, D))
     sub = None
@@ -103,10 +104,13 @@ def lib_real(rng, n_fam, keep_frac, tau, memory=0.7, drift_sd=0.3, sub_frac_A=No
     if sub is not None:
         d = np.zeros(D); d[2] = sub_drift
         mu = mu + np.outer(sub, d)
-    ks = list(PROBS); ps = np.array(list(PROBS.values())); ps = ps / ps.sum()
+    pr = probs or PROBS
+    ks = list(pr); ps = np.array(list(pr.values())); ps = ps / ps.sum()
     fams = []
     for i in range(n_fam):
         k = n_fixed or rng.choice(ks, p=ps)
+        if size_state and x[i, 0] > np.median(x[:, 0]):   # bigger families for higher-state lineages
+            k = k + int(rng.random() < size_state)
         fams.append(mu[i] + rng.normal(scale=SIG_CELL, size=(k, D)))
     return pre, fams
 
@@ -131,6 +135,31 @@ def S_real(rng, nd, nc, est, tau=0.0, drug_kw=None, ctrl_kw=None):
         return logF(pdd[keep_d], [fd[i] for i in keep_d]) - logF(pc[keep_c], [fc[i] for i in keep_c])
     pdd, fd = lib_real(rng, nd, 0.08, tau, **drug_kw); pc, fc = lib_real(rng, nc, 0.15, 0.0, **ctrl_kw)
     return logF_all(pdd, fd) - logF_all(pc, fc)
+
+
+OLA1 = {1: 0.32, 2: 0.25, 3: 0.13, 4: 0.08, 5: 0.07, 6: 0.05, 8: 0.05, 12: 0.05}   # mean ~3.6
+CTRL1 = {1: 0.46, 2: 0.30, 3: 0.11, 4: 0.06, 5: 0.04, 8: 0.03}                     # mean ~2.3
+
+
+def real4():
+    nd, nc = int(58 / 0.6), int(37 / 0.6)
+    out = {}
+    R = 400
+    for est in ("F2", "Fall"):
+        rng = np.random.default_rng(13)
+        kw_d = {"probs": OLA1}; kw_c = {"probs": CTRL1}
+        null = np.array([S_real(rng, nd, nc, est, drug_kw=kw_d, ctrl_kw=kw_c) for _ in range(R)])
+        crit = np.quantile(null, 0.95)
+        row = {"nullC_sizes_mean": round(null.mean(), 3), "crit95": round(crit, 3)}
+        sz = np.array([S_real(rng, nd, nc, est, drug_kw={**kw_d, "size_state": 0.8}, ctrl_kw=kw_c)
+                       for _ in range(R // 2)])
+        row["nullC2_size_x_state_fp"] = round((sz > crit).mean(), 3)
+        for tau in (0.5, 0.75, 1.0):
+            alt = np.array([S_real(rng, nd, nc, est, tau=tau, drug_kw=kw_d, ctrl_kw=kw_c) for _ in range(R // 2)])
+            row[f"tau{tau}"] = {"mean_S": round(alt.mean(), 3), "power": round((alt > crit).mean(), 3)}
+        out[f"Olaparib_1 vs Control_1 real sizes [{est}]"] = row
+    for k, v in out.items():
+        print(k, v)
 
 
 def real():
@@ -163,4 +192,4 @@ def real():
 
 if __name__ == "__main__":
     import sys
-    real() if sys.argv[1:] == ["real"] else main()
+    {"real": real, "real4": real4}.get((sys.argv[1:] or ["main"])[0], main)()
