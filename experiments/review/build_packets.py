@@ -1,5 +1,5 @@
 """Build replay packets: the pre-registration as it stood at a past commit, the scripts it names, its
-selection file and DISCOVERIES.md at that commit. Text from git only; no data file is read."""
+selection file, and program.md and DISCOVERIES.md at that commit. Text from git only; no data file is read."""
 import json, os, re, subprocess, sys
 REPO, OUT = sys.argv[1], sys.argv[2]
 def git(*a):
@@ -39,6 +39,8 @@ for c in CASES:
         if s:
             os.makedirs(os.path.join(d, "selection"), exist_ok=True)
             open(os.path.join(d, "selection", e + ".json"), "w", encoding="utf-8", newline="\n").write(s); sels.append(e)
+    prog = git("show", f"{commit}:experiments/program.md") or ""
+    open(os.path.join(d, "program.md"), "w", encoding="utf-8", newline="\n").write(prog)
     disc = git("show", f"{commit}:experiments/DISCOVERIES.md") or ""
     open(os.path.join(d, "DISCOVERIES.md"), "w", encoding="utf-8", newline="\n").write(disc)
     outcome = bool(re.search(r"(?im)^\*\*(outcome|result)", text))
