@@ -78,7 +78,7 @@ Checked by search of program.md. "Standing practice" in a retro is not enforced 
 | H20 value gate | 11-11c | proposed, not adopted |
 | Merge H14 / H17 / H19.2 into one power rule | 11-11c | proposed, not adopted |
 
-19 lessons, 0 enforced. This is the main finding of the sweep.
+19 lessons; none is a rule in program.md. Two have partial cover (H14, the FOCUS.json watch list). This is the main finding of the sweep.
 
 ## 4. Decisions made in retros that were never carried out
 
