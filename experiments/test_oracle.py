@@ -349,6 +349,8 @@ def preregistered(exp):
         sys.exit(f"refused: {exp} pre-registration has no 'Pre-flight:' block (H15)")
     if "Serves:" not in section:
         sys.exit(f"refused: {exp} pre-registration has no 'Serves:' line (H16 scope guard)")
+    if m.group(1) >= "2026-11-13" and "Practice:" not in section:
+        sys.exit(f"refused: {exp} pre-registration has no 'Practice:' line (program.md practice checklist)")
     return True
 
 

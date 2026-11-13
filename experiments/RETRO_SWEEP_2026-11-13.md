@@ -118,3 +118,20 @@ Checked by search of program.md. "Standing practice" in a retro is not enforced 
 - Withdrawals are recorded as withdrawals: E26-E29, #16, C4-S2b, C9-S1, and the "confirmed" overclaim in the
   novelty map.
 - The retro cadence itself worked: every hard rule (H11-H19) came out of a retro within a day of the failure.
+
+## 7. Adopted 2026-11-13 (Bence: "alright go 1 2 3 and still think whether now rules (H) should be added")
+
+- **Two new H-rules:** H20 value and literature gate (proposals 2 and 3); H21 readout gate (pre-flight item 7).
+- **Power:** H14 / H17 / H19.2 are bound as one rule at three gates; the numbers are kept because code and
+  log cite them.
+- **Practice checklist:** 10 lessons, with a required `Practice:` line in every pre-registration.
+- **Self-challenge block** in every result report (proposal 4).
+- **Retro steps 4 and 5:** every lesson must land as a rule, a practice line, a memory item or "not adopted";
+  the watch-list accessions are re-checked.
+- Where the 19 lessons went: 10 practice checklist; 2 into H20 (top 5 papers, methods definitions); 3 into
+  H21 (readout gate, units that drive a statistic, uninformative statistics); 2 into the power rule (merged
+  rule, spent results per input); 1 is H20 itself; 1 into retro step 5.
+- **Enforced in code:** `Practice:` line (commit-msg hook and oracle, for pre-registrations dated 2026-11-13
+  or later); `value` and `literature` fields when FOCUS.json opens a new chapter (commit-msg hook).
+- **Text only, not enforced in code:** H21's four checks, the H20 reading itself, the self-challenge block.
+- **Not done:** proposal 5 (the open decisions in section 4).

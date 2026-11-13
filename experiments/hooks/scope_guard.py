@@ -10,7 +10,8 @@ Modes
   claude-prompt  Claude Code UserPromptSubmit hook: in Cellware sessions, injects the current focus.
   commit-msg F   git commit-msg hook: FOCUS.json changes need 'Bence:' in the message; new
                  pre-registrations (below the scope-guard marker in EXPERIMENT_LOG) need `Pre-flight:` and a `Serves:` line naming
-                 the current step (or quoting 'Bence OK').
+                 the current step (or quoting 'Bence OK'), and from 2026-11-13 a `Practice:` line; a FOCUS.json
+                 change that opens a new chapter needs `value` and `literature` fields (H20).
 
 Stdlib only; run with -I.
 """
@@ -107,12 +108,40 @@ def claude_prompt():
     print(json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": ctx}}))
 
 
+PRACTICE_FROM = "2026-11-13"  # pre-registrations from this date need a 'Practice:' line (program.md checklist)
+
+
+def chapter_of(step):
+    """'C9-S2' -> 'C9'; 'PAUSED' -> 'PAUSED'."""
+    return str(step).split("-")[0].strip().upper()
+
+
+def chapter_gate_errors(old_focus, new_focus):
+    """H20: opening a new chapter needs non-empty 'value' and 'literature' fields in FOCUS.json."""
+    new_ch = chapter_of(new_focus.get("step", ""))
+    if new_ch in ("", "PAUSED") or new_ch == chapter_of((old_focus or {}).get("step", "")):
+        return []
+    missing = [k for k in ("value", "literature") if not str(new_focus.get(k, "")).strip()]
+    return [f"FOCUS.json opens chapter {new_ch} without '{k}' (H20 value and literature gate)." for k in missing]
+
+
+def practice_error(exp, date, body):
+    if date >= PRACTICE_FROM and "Practice:" not in body:
+        return f"{exp}: pre-registration lacks 'Practice:' (program.md practice checklist)."
+    return None
+
+
 def commit_msg(path):
     msg = open(path, encoding="utf-8").read()
     staged = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True).stdout.split()
     errs = []
     if "experiments/FOCUS.json" in staged and "Bence:" not in msg:
         errs.append("FOCUS.json changed: the commit message must quote Bence's OK ('Bence: \"...\"').")
+    if "experiments/FOCUS.json" in staged:
+        show = lambda ref: subprocess.run(["git", "show", ref], capture_output=True, text=True, encoding="utf-8").stdout
+        new_txt, old_txt = show(":experiments/FOCUS.json"), show("HEAD:experiments/FOCUS.json")
+        if new_txt:
+            errs += chapter_gate_errors(json.loads(old_txt) if old_txt else {}, json.loads(new_txt))
     if "experiments/EXPERIMENT_LOG.md" in staged:
         f = json.loads(subprocess.run(["git", "show", ":experiments/FOCUS.json"], capture_output=True,
                                       text=True).stdout or open(FOCUS, encoding="utf-8").read())
@@ -130,6 +159,8 @@ def commit_msg(path):
                 errs.append(f"{exp}: pre-registration lacks 'Pre-flight:' (H15).")
             if not (serves_step(body, f["step"]) or "Bence OK" in body):
                 errs.append(f"{exp}: 'Serves:' must name current step {f['step']} or quote 'Bence OK' (H16).")
+            if practice_error(exp, date, body):
+                errs.append(practice_error(exp, date, body))
     if errs:
         sys.stderr.write("commit refused by scope guard:\n  " + "\n  ".join(errs) + "\n")
         sys.exit(1)

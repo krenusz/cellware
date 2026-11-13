@@ -142,6 +142,11 @@ Later: does the model reproduce measured clonal statistics (Weinreb 2020 LARRY)?
    and record in the retro which paywalled papers matter and behind which publisher. Add new
    core papers to SEEDS when the project adopts them.
 3. Sweeps run with `--guard N`; status updates show `./sweep_status.sh`.
+4. **Every lesson lands somewhere** (RETRO_SWEEP_2026-11-13: 19 lessons lived only in retros). Each lesson in
+   a retro ends with one of: `-> H<n>` (rule added or amended), `-> practice` (line added to the practice
+   checklist below), `-> memory` (tooling pitfall, saved to the assistant's memory), or `-> not adopted`
+   with the reason. "Standing practice" without one of these is not allowed.
+5. Re-check the private accessions on the FOCUS.json watch list.
 
 ## Out of bounds
 - Changing the metric or the target after seeing results of the same study.
@@ -199,7 +204,8 @@ before every look and refuses on any failure.
   `Pre-flight:` block covering (1) unit verified from the source, quoted; (2) readout verified by a
   structure check; (3) used data first: open / train / spent data tried before any sealed look;
   (4) power (H14); (5) exposure: any count or summary already seen that is an outcome for this
-  question; (6) literature access checked. The oracle refuses a look whose section lacks the block.
+  question; (6) literature access checked; (7) readout gate (H21, from 2026-11-13). The oracle refuses a
+  look whose section lacks the block.
 - **H16 Scope guard.** (Bence 2026-11-07: "now you are drifting! ... biology is really wide topic".)
   Every pre-registration has a `Serves:` line: the goal element and the current chapter question it
   serves, and how its result could change that chapter's answer (stopping rule). Work outside the
@@ -246,3 +252,80 @@ before every look and refuses on any failure.
   - The proposal shows the three checks with numbers. If no candidate passes, say so; don't pitch an
     ungated idea.
   - **Exploratory side questions** may follow inside a chapter only after its primary test has been run.
+- **H20 Value and literature gate, at chapter opening.** (RETRO_2026-11-11c, RETRO_SWEEP_2026-11-13; Bence
+  2026-11-13: "alright go 1 2 3". Five retros found the literature read after building. Chapters 7-9 confirmed
+  results the source papers already had: H19 checks feasibility, not value.)
+  - A chapter proposal shows, next to the three H19 checks and **before any code**:
+    1. **Source methods read:** the methods of the source paper, with the definition of every readout the
+       chapter would use, quoted.
+    2. **Top 5 read:** the five highest-ranked unread papers of the gap map for the chapter question, DOIs
+       added to `lit/read.txt`.
+    3. **Minimal published mechanism:** the simplest published model that already explains the data, and
+       whether its code is public.
+    4. **Value:** whether the source paper or a 2024+ paper already reports the answer, and what our result
+       would add. If it adds only a disciplined replication, say so up front; Bence decides.
+  - **Hold-out limit:** reading stops at any section, figure or table that reports the outcome of a sealed
+    test (H9). The proposal lists what was skipped for that reason.
+  - **Enforced by the commit-msg hook:** a FOCUS.json change that opens a new chapter is refused unless
+    FOCUS.json holds non-empty `value` and `literature` fields.
+- **H21 Readout gate.** (RETRO_2026-11-11b/c; C9-S1 passed the scan with a degenerate outcome; 11-04, B26,
+  C4-S2b and chapter 6 leaned on a handful of units.) Pre-flight item 7. Before a statistic is pre-registered
+  as a test or used as a gate:
+  1. the outcome distribution is shown at the scan, from train / open / spent data only;
+  2. a binary split has >= 30 units on each side, by structural count of the partition to be looked at;
+  3. the statistic varies with the model: simulate it under at least two candidate models and show that it
+     differs. A statistic that does not is left out of any summed score;
+  4. the number of units that carry the statistic is stated. A statistic carried by a handful of units is
+     reported as exploratory and cannot be a gate.
+- **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log
+  cite them).
+
+  | gate | when | power comes from | rule |
+  |---|---|---|---|
+  | scan | chapter proposal | structural counts of a sealed partition; effect from used data | H19.2 |
+  | selection | chapter opening, and after every model change | the current model's simulated test statistic at the sealed n | H17 |
+  | oracle | before the look | counts only, read by the oracle; refuses below 0.8 | H14 |
+
+  At every gate:
+  - effect size and sd come from named used results (train, open or spent), never from assumed values;
+  - the power block lists which spent results constrain each input, and uses all of them (C6-S8a: one
+    memory rate was used where a spent result gave two);
+  - the sd is estimated at the test's own unit (C5-S4);
+  - a subset uses its own structural count (H19.2 amendment);
+  - the outcome passes the readout gate (H21) first.
+
+## Practice checklist (from 2026-11-13; RETRO_SWEEP_2026-11-13)
+
+Lessons that retros called standing practice. They are checks, not H-rules: each is one line in a
+pre-registration. Every pre-registration from 2026-11-13 has a `Practice:` line that names the list it
+ticked and any item that does not apply, with the reason. The oracle and the commit-msg hook refuse a
+pre-registration dated 2026-11-13 or later without it.
+
+**Before a model run**
+- Smoke tests use synthetic outcomes and write to the scratchpad, never to real results (11-04b).
+- Cold start after any structural model change (11-04).
+- Check a known model's analytic regime before choosing parameters (11-09).
+- Simulated readouts copy the measurement physics (11-09).
+- Probe whether the fit can stay at the favourable point before registering (11-05b).
+- Step 0 hygiene: at least 10 repeats, a settling check, a float tolerance (11-10).
+
+**Before a statistic**
+- Adequacy gate before any cross reading (11-03).
+- On a new featurisation, pass a fate-free validity check before any fate statistic (11-11).
+- Tick the pre-registration against the script, line by line, before the run (11-11).
+
+**Before calling a candidate best**
+- Rank the candidates against stated criteria first (11-08).
+
+## Result reports: self-challenge block (from 2026-11-13)
+
+In 9 of 16 retros the key failure was found by Bence's question, not by the analysis. Every result report,
+in chat and in the outcome entry of EXPERIMENT_LOG.md (`Challenge:` line), answers these before the
+conclusion, one line each:
+1. Is anything suspicious (too clean, too large, too convenient)?
+2. What else could explain it?
+3. How many units carry it?
+4. Could data already used have answered it?
+5. Is it already in the literature?
+
+"Nothing" is an allowed answer only with the check that was done.
