@@ -24,7 +24,9 @@ DATASETS = {
     "ext_resistrace": "GSE223003 processed cell_info tables (16 files), locked 2026-11-13 (data/ext_resistrace/SHA256SUMS_processed); "
                       "partitioned by pre-treatment lineage (partitions.resistrace, sealed 2026-11-13): train 40%, A/B/C 20%; "
                       "drugSens / prer_r_group readable only via train_only / test_oracle. Exposure (2026-11-12): column names, "
-                      "cells / labelled cells / sister groups per sample counted; drugSens and prer_r_group values never tabulated. "
+                      "cells per sample, and (via a column-shift bug) per-sample counts of cells with a sisters ID AND of distinct "
+                      "prer_r_group IDs = number of pre-resistant families per sample (outcome aggregate, all partitions pooled); "
+                      "two example rows printed (one pre-sensitive, one pre-resistant). No per-lineage outcome tabulated. "
                       "An unlocked copy of the same 16 files remains in an old session temp folder (C: scratchpad dl_resistrace), never read since. "
                       "Lineage labels are not in any GEO table: only in the 10x reads (gene pBA439_UMI_20).",
     "ext_triandafillou": "locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
