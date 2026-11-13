@@ -243,7 +243,17 @@ def _c9s2(what):
     return f
 
 
+def _c10s2(what):
+    def f(part):
+        import c10s2_confirm
+
+        return getattr(c10s2_confirm, f"{what}_A")(part)
+
+    return f
+
+
 PARTITION_TESTS = {
+    "resistrace_c10s2": (_c10s2("test"), "resistrace", "C10-S2: pre-treatment state beyond CNV subclone + QC predicts lineage survival, dAUC lower 97.5% bound > 0"),
     "celltag_c9s2_atac": (_c9s2("test"), "celltag_lsk", "C9-S2: LSK early chromatin -> Neu vs Mono split, Spearman rho > 0 (last partition C)"),
     "celltag_c8s1_lsk": (_c8s1("lsk", "test"), "celltag_lsk", "C8-S1a T1 (K3): LSK early RNA -> Neu vs Mono bias, Spearman rho > 0"),
     "hspc_c8s1": (_c8s1("hspc", "test"), "chspctrack", "C8-S1b T2 (K1): HSPC exp 7 early clone state beats cytokine condition (g_state - g_cond > 0); only after T1 confirmed"),
@@ -287,7 +297,7 @@ PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue
                     "hspc_c7s7": _c7s7("hspc", "counts"),
                     "celltag_c8s1_lsk": _c8s1("lsk", "counts"), "hspc_c8s1": _c8s1("hspc", "counts"),
                     "celltag_c8s1_reprog": _c8s1("reprog", "counts"),
-                    "celltag_c9s2_atac": _c9s2("counts")}  # test -> function(partition) -> {group: n units}; counts only (H9)
+                    "celltag_c9s2_atac": _c9s2("counts"), "resistrace_c10s2": _c10s2("counts")}  # test -> function(partition) -> {group: n units}; counts only (H9)
 
 
 def power_gate(exp, test, part):

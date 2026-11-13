@@ -1,0 +1,38 @@
+{
+ "test": "resistrace_c10s2",
+ "higher_is_better": true,
+ "candidates": {
+  "2": 0.1841,
+  "3": 0.1943,
+  "4": 0.1311
+ },
+ "chosen": "3",
+ "note": "candidates = CNV-proxy subclone k scored by train silhouette (pre-registered C10-S1); statistic delta AUC (M1 - M0) on sealed drug lineages, lower 97.5% bootstrap bound > 0",
+ "model_sha256": "67ec70b94d6d8b263999b65b4f90de277acae940e2da1bec689d88c909c03bde",
+ "train": {
+  "n_lineages": 10132,
+  "n_linked": 853,
+  "insample_delta_auc": 0.0555,
+  "cv_delta_auc_c10s1_qc": 0.0549,
+  "cv_se_c10s1_qc": 0.0066
+ },
+ "power": {
+  "effect": 0.02745,
+  "sd": 0.6643,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8,
+  "sources": {
+   "effect": "C10-S1 amendment 1 train CV delta AUC 0.0549 x 0.5 shrink",
+   "sd": "C10-S1 amendment 1 train bootstrap SE 0.0066 x sqrt(10132 lineages)"
+  }
+ },
+ "readout_gate": {
+  "pass": true,
+  "sides": {
+   "linked": 853,
+   "unlinked": 9279
+  }
+ },
+ "exposure": "pooled per-sample pre-resistant counts seen (accepted by Bence 2026-11-13)"
+}
