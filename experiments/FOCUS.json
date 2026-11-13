@@ -1,11 +1,12 @@
 {
  "chapter": "C10 drug instruction vs selection (ReSisTrace, GSE223003)",
- "step": "C10-STOPPED",
- "question": "C10 (ReSisTrace drug instruction vs selection) STOPPED 2026-11-13, data-limited: treatment varies per library (2 per arm; 1 time-matched pair), and untreated pre libraries already differ in sister-group logF by 0.72 (count-matched; bar 0.5). Nothing sealed read; resistrace A/B/C kept. Restart = choose a chapter under H19 + proposed H22 (treatment-assignment unit >= 3 per arm).",
+ "step": "C10-S1",
+ "question": "C10-S1 (train-only power check): within one drug library, does a lineage's pre-treatment state predict survival beyond its genetic subclone (CNV proxy)? Unit lineage, no drug-vs-control contrast. Stop if power < 0.8. The C10 instruction test stays STOPPED (library-limited).",
  "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
+  "C10-S1 train power check: GO narrowly (delta AUC state beyond subclone + QC 0.055, power 0.83 at 0.5 shrink). QC alone explained half the raw gain. Next needs Bence: pre-register + oracle look on resistrace:A (B/C kept)",
   "Bence to decide: adopt H22 (RETRO_2026-11-13.md); next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
@@ -47,7 +48,8 @@
   "c9s2_confirm.py",
   "c10s0_partition.py",
   "c10s0_sim.py",
-  "c10s0_placebo.py"
+  "c10s0_placebo.py",
+  "c10s1_select.py"
  ],
  "parked": [
   "#27 series gain / drug compression",

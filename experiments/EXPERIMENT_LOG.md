@@ -10729,3 +10729,79 @@ Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cell
 - **Status:** the C10 instruction test is CLOSED (stopped twice under its own rule; also blocked by proposed H22).
   Nothing sealed was read.
 - **Exposure (accepted):** pooled per-sample pre-resistant counts were seen; they are not used here.
+
+## C10-S1: within-library genetic vs non-genetic selection, TRAIN-ONLY power check (pre-registered 2026-11-13)
+
+- **Serves: C10-S1.** Bence: "yes" (to: "run that train-only power check for the genetic versus non-genetic
+  split"). Script: `c10s1_select.py`. Train lineages only; nothing sealed is read.
+- **Question:** within one drug library, does a lineage's pre-treatment state predict whether it survives (has a
+  post link) **beyond its genetic subclone**?
+  - The paper reports subclone enrichment among survivors but never separates the two.
+  - No drug-vs-control contrast, so proposed H22 does not apply. The unit is the lineage, with library as a
+    stratum.
+- **Genetic proxy:** inferCNV-like.
+  - Log CP10k; genes with mean > 0.1 over loaded pre cells; ordered by Ensembl GRCh38 position.
+  - Centre each gene, then a 101-gene moving average per chromosome, sampled every 25 genes.
+  - PCA (10), then k-means for k in {2, 3, 4}; k chosen by silhouette on train pre cells, **not by survival**.
+  - A lineage's subclone is the majority of its pre cells.
+- **Non-genetic state:** HVG PCA, k = 5 (cap from RETRO_2026-11-13), as lineage means.
+- **Models** (logistic, survival = linked yes/no, pooled over the 6 drug libraries with library dummies):
+  - M0 = library + subclone;
+  - M1 = M0 + 5 state PCs.
+- **Statistic:** delta AUC = AUC(M1) - AUC(M0), out of fold (5-fold by lineage, seed 111).
+- **Power:** bootstrap SE of delta AUC on train (500 resamples). Sealed-third SE = train SE x sqrt(2). Power =
+  Phi(0.5 x delta / SE_third - 1.96), with a 0.5 shrink.
+  - **Go only if power >= 0.8; otherwise stop.**
+  - Also reported: AUC(M0) minus a library-only model (the genetic term), descriptive, train only.
+- **Pre-flight:**
+  1. **Unit:** lineage (sister group or singleton), sealed by its hash. Treatment does not vary within the
+     contrast (H22 check: OK).
+  2. **Readout:** linked yes/no. Train has 117-172 linked vs about 1,300-2,000 unlinked per drug sample, so >= 30
+     per side.
+  3. **Used data first:** train only.
+  4. **Power:** this step.
+  5. **Exposure:** accepted pooled per-sample survival counts; the C10 placebo (train).
+  6. **Literature:** C10_top5.md. Dai 2024 reports subclone enrichment without a split; Goyal 2023 argues against
+     genetic drivers in melanoma.
+  - **Readout gate:** linked rate per library shown on train.
+- **Practice:**
+  - smoke test: the CNV proxy must separate cells into >= 2 groups with silhouette > 0.1, otherwise the genetic
+    term is undefined: stop;
+  - tick-list: train only, k fixed in advance, seeds fixed.
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen.
+
+### C10-S1 result + amendment 1 (2026-11-13, train only; `results/c10s1_power.json`)
+
+- **CNV proxy:** 7,173 genes; silhouette k2 0.18, **k3 0.19 (chosen)**, k4 0.13. It separates (> 0.1).
+- **Train drug lineages:** 10,132, of which 853 are linked (5.4-10.7% per library).
+- **AUC:** library only 0.51; + subclone (M0) 0.585; + 5 state PCs (M1) **0.682**.
+- **Delta AUC 0.096** (train SE 0.009; sealed-third SE 0.013): **power 0.96 under the 0.5 shrink. GO by the
+  registered rule.**
+- **Self-challenge before trusting it:**
+  - Linkage needs clean label detection in the pre cells, and the state PCs can track cell quality.
+  - **Amendment 1 (before any sealed read):** both models also get lineage-mean log nCount_RNA, log
+    nFeature_RNA, percent.mt and log(number of pre cells in the lineage). These columns are structural.
+  - The statistic stays the same delta AUC, with M0 = library + subclone + QC and M1 = M0 + 5 PCs.
+  - **Go only if power >= 0.8 again.**
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen. The train linked rates above are new
+  train-only reads.
+
+### C10-S1 amendment 1 result (2026-11-13, train only; `results/c10s1_power_qc.json`): GO, narrowly
+
+- The first QC rerun silently ran the unamended script (the edit failed; its output duplicated the first run).
+  It was redone with the edits applied; this is the valid run.
+- **AUC:** library + QC **0.633** (QC alone moves library-only from 0.51 to 0.63, so the confound was real);
+  + subclone (M0) 0.660; + 5 state PCs (M1) **0.715**.
+- **Delta AUC 0.055** (train SE 0.007; sealed-third SE 0.009): **power 0.83 under the 0.5 shrink (>= 0.8: GO).**
+- **Genetic term (descriptive):** subclone adds 0.027 AUC over library + QC.
+- **Self-challenge:**
+  - Suspicious? Half of the original gain was cell quality. The 4 QC metrics may not capture all of it (cell
+    cycle and stress also track label detection).
+  - Other explanations? The CNV proxy is expression-derived and may under-call true subclones, so "beyond the
+    subclone" may overstate the non-genetic share.
+  - Units: 10,132 train lineages, 853 linked.
+  - Used data enough? Yes (train).
+  - Published? The paper shows pre-state predicts survival. **New here:** the effect net of the subclone and QC,
+    with a sealed confirmation.
+- **No sealed partition is read until Bence approves a look** (A: one partition, B/C kept).
+- **Exposure (accepted):** pooled per-sample pre-resistant counts were seen.

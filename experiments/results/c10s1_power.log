@@ -1,0 +1,54 @@
+{
+ "cnv_genes": 7173,
+ "cnv_silhouette": {
+  "2": 0.184,
+  "3": 0.194,
+  "4": 0.131
+ },
+ "k_subclone": 3,
+ "linked_rate_per_library_train": {
+  "Carboplatin_1": {
+   "sum": 117,
+   "count": 1597
+  },
+  "Carboplatin_2": {
+   "sum": 127,
+   "count": 1571
+  },
+  "Control_1": {
+   "sum": 140,
+   "count": 952
+  },
+  "Control_2": {
+   "sum": 88,
+   "count": 631
+  },
+  "NK_1": {
+   "sum": 136,
+   "count": 1430
+  },
+  "NK_2": {
+   "sum": 170,
+   "count": 2164
+  },
+  "Olaparib_1": {
+   "sum": 172,
+   "count": 1734
+  },
+  "Olaparib_2": {
+   "sum": 131,
+   "count": 1636
+  }
+ },
+ "train_lineages_drug": 10132,
+ "train_linked_drug": 853,
+ "AUC_library": 0.511,
+ "AUC_M0_library_subclone": 0.585,
+ "AUC_M1_plus_state": 0.682,
+ "delta_auc_train": 0.0963,
+ "se_train": 0.0091,
+ "se_sealed_third": 0.0129,
+ "power_shrunk_0.5": 0.962,
+ "power_unshrunk": 1.0,
+ "go": true
+}
