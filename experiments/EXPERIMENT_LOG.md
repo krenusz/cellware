@@ -10575,3 +10575,12 @@ The numbers are unchanged from the result files.)*
   - only the `sisters` column and the not-missing flag of `drugSens` are loaded;
   - only pre-side counts are printed;
   - the script runs with `python -I` (downloaded data).
+
+### C10-S0 amendment 1 (2026-11-13, before running): train-only link counts
+
+- `c10s0_partition.py train_links`, **train partition only**: per sample, the number of train lineages with a
+  post link (any pre cell carrying `prer_r_group`) and without one, plus linked lineages with >= 2 pre sisters.
+- This is the H21 side count, on train. It reads `prer_r_group` presence on train rows only (via
+  `partitions.train_only`). Sealed thirds are not touched.
+- **Why:** the test units are linked lineages, not the 300-600 sister groups. If a sealed third would hold fewer
+  than 30 linked lineages per side, pooling across samples is Bence's call.

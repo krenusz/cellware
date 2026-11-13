@@ -62,5 +62,30 @@ def main():
             print(f"{s:16s} {p:6s} {r['labelled_pre_cells']:6d} {r['lineage_units']:6d} {r['sister_groups_ge2']:6d}")
 
 
+def train_links():
+    """Amendment 1 (2026-11-13): TRAIN ONLY. Lineages with a post-treatment link (any pre cell with a
+    prer_r_group ID = perfect-match pre-resistant family) vs without, per sample. H21 side counts on train."""
+    out = {}
+    for f in sorted(glob.glob(os.path.join(DATA, "*_pre_treatment_cell_info.tsv.gz"))):
+        sample = re.search(r"ReSisTrace_(\w+?_\d)_pre", f).group(1)
+        df = pd.read_csv(f, sep="\t", index_col=0,
+                         usecols=lambda c: c in ("", "Unnamed: 0", "sisters", "drugSens", "prer_r_group"))
+        df = df[df["drugSens"].notna()]
+        df["unit"] = [f"{sample}:s{int(s)}" if pd.notna(s) else f"{sample}:c{bc}"
+                      for bc, s in zip(df.index, df["sisters"])]
+        tr = partitions.train_only(DS, df, "unit")
+        linked = tr.groupby("unit")["prer_r_group"].apply(lambda x: x.notna().any())
+        multi = tr.groupby("unit").size() >= 2
+        out[sample] = {"train_units": int(len(linked)), "linked": int(linked.sum()),
+                       "unlinked": int((~linked).sum()), "linked_with_ge2_pre_sisters": int((linked & multi).sum())}
+    path = os.path.join(HERE, "results", "c10s0_train_links.json")
+    json.dump(out, open(path, "w"), indent=1, sort_keys=True)
+    for s, r in out.items():
+        print(s, r)
+
+
 if __name__ == "__main__":
-    main()
+    if sys.argv[1:] == ["train_links"]:
+        train_links()
+    else:
+        main()

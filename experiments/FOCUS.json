@@ -6,7 +6,8 @@
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
   "C10-S0: partition done (partitions.resistrace, by pre lineage; pre-side counts in results/c10s0_counts.json); pre-to-post links = prer_r_group (perfect matches only); raw-read extraction not needed for now",
-  "Next: H19 power on TRAIN families only; needs expression matrices (GEO RAW tar, 484 MB, Bence's OK already given for it) for pre/post states and subclone calls",
+  "Train link counts done (amendment 1): 117-172 linked lineages per drug sample on train, so about 60-85 per sealed third",
+  "Next (Bence): pin the instruction statistic and its unit; a shared drug shift vs control is between libraries (2 per arm) and would hit the stop rule. Then expression (GEO RAW tar 484 MB, new ask) for the train power step; read Russo 2022 and Whiting 2025 in full",
   "Exposure to weigh (H10, Bence): per-sample number of pre-resistant families was seen 2026-11-12 via a column-shift bug",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],

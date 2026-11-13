@@ -1,0 +1,50 @@
+{
+ "Carboplatin_1": {
+  "linked": 117,
+  "linked_with_ge2_pre_sisters": 18,
+  "train_units": 1597,
+  "unlinked": 1480
+ },
+ "Carboplatin_2": {
+  "linked": 127,
+  "linked_with_ge2_pre_sisters": 16,
+  "train_units": 1571,
+  "unlinked": 1444
+ },
+ "Control_1": {
+  "linked": 140,
+  "linked_with_ge2_pre_sisters": 14,
+  "train_units": 952,
+  "unlinked": 812
+ },
+ "Control_2": {
+  "linked": 88,
+  "linked_with_ge2_pre_sisters": 9,
+  "train_units": 631,
+  "unlinked": 543
+ },
+ "NK_1": {
+  "linked": 136,
+  "linked_with_ge2_pre_sisters": 13,
+  "train_units": 1430,
+  "unlinked": 1294
+ },
+ "NK_2": {
+  "linked": 170,
+  "linked_with_ge2_pre_sisters": 35,
+  "train_units": 2164,
+  "unlinked": 1994
+ },
+ "Olaparib_1": {
+  "linked": 172,
+  "linked_with_ge2_pre_sisters": 26,
+  "train_units": 1734,
+  "unlinked": 1562
+ },
+ "Olaparib_2": {
+  "linked": 131,
+  "linked_with_ge2_pre_sisters": 17,
+  "train_units": 1636,
+  "unlinked": 1505
+ }
+}
