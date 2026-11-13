@@ -223,6 +223,11 @@ pre-registration dated 2026-11-13 or later without it.
 **Before calling a candidate best**
 - Rank the candidates against stated criteria first (11-08).
 
+**When withdrawing a test**
+- Remove its sealed-reader functions in the same commit as its `HELDOUT_READERS` entry, then run
+  `check_sealed.py` (C9-S1: the entry went, the functions stayed, and the oracle refused every look for
+  two days without anyone noticing; found 2026-11-13).
+
 ## Result reports: self-challenge block (from 2026-11-13)
 
 In 9 of 16 retros the key failure was found by Bence's question, not by the analysis. Every result report,

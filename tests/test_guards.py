@@ -506,15 +506,11 @@ def test_repo_wiring():
 
 # --- the real experiment code, checked statically (no data directory needed) ---------------------
 
-# Known, reported 2026-11-13: the withdrawn C9-S1 script still holds sealed-reader functions but its
-# HELDOUT_READERS entry was removed, so the real oracle refuses every look until Bence decides
-# (drop the functions or re-register the reader). Nothing else may appear here.
-KNOWN_SEALED_PROBLEMS = ("c9s1_confirm.py:",)
-
 
 def test_real_experiment_code_passes_the_static_sealed_check(tmp_path):
+    """No script outside the approved readers may hold a sealed-reader call (H2, H3, H11).
+    A withdrawn test loses its reader functions with its HELDOUT_READERS entry (C9-S1)."""
     import check_sealed
 
     problems = check_sealed.check(py_dir=str(EXP), data_dir=str(tmp_path))
-    new = [p for p in problems if not p.startswith(KNOWN_SEALED_PROBLEMS)]
-    assert new == [], "\n".join(new)
+    assert problems == [], "\n".join(problems)
