@@ -1,0 +1,82 @@
+{
+ "test": "lsc_c12s1",
+ "higher_is_better": true,
+ "note": "delta AUC (M1 - M0), M0 = log D20 size + QC, M1 = M0 + 5 PCs of clone-mean D20 expression; train CV only",
+ "train": {
+  "n_units": 712,
+  "library_prefix_counts": {
+   "MultiGFP21": 144,
+   "Flp": 28,
+   "MultiGFP19": 136,
+   "MultiGFP20": 173,
+   "MultiGFP18": 231
+  },
+  "D40_exvivo": {
+   "positives": 158,
+   "prevalence": 0.2219,
+   "auc_size_only": 0.7127,
+   "auc_library_only": 0.4846,
+   "delta_auc_without_library": 0.0556,
+   "auc_M0": 0.7473,
+   "auc_M1": 0.8035,
+   "delta_auc": 0.0562,
+   "boot_se": 0.014,
+   "state_placebo_delta_mean": -0.0103,
+   "state_placebo_delta_sd": 0.0075,
+   "label_shuffle_delta_mean": 0.0163,
+   "power_effect_shrunk": 0.0281,
+   "power": {
+    "B": {
+     "units": 316,
+     "expected_positives": 70.1,
+     "power": 0.267
+    },
+    "A": {
+     "units": 304,
+     "expected_positives": 67.5,
+     "power": 0.258
+    },
+    "C": {
+     "units": 298,
+     "expected_positives": 66.1,
+     "power": 0.254
+    }
+   },
+   "readout_gate": "PASS"
+  },
+  "D20_invivo": {
+   "positives": 101,
+   "prevalence": 0.1419,
+   "auc_size_only": 0.7002,
+   "auc_library_only": 0.4858,
+   "delta_auc_without_library": 0.1441,
+   "auc_M0": 0.7095,
+   "auc_M1": 0.8602,
+   "delta_auc": 0.1507,
+   "boot_se": 0.0235,
+   "state_placebo_delta_mean": -0.0124,
+   "state_placebo_delta_sd": 0.0105,
+   "label_shuffle_delta_mean": -0.0104,
+   "power_effect_shrunk": 0.0753,
+   "power": {
+    "B": {
+     "units": 316,
+     "expected_positives": 44.8,
+     "power": 0.571
+    },
+    "A": {
+     "units": 304,
+     "expected_positives": 43.1,
+     "power": 0.555
+    },
+    "C": {
+     "units": 298,
+     "expected_positives": 42.3,
+     "power": 0.547
+    }
+   },
+   "readout_gate": "PASS"
+  }
+ },
+ "exposure": "C12-S0 counts + train presence fractions; no sealed outcome read"
+}

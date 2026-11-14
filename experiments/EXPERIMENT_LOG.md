@@ -11094,3 +11094,29 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Change:** M0L = M0 + one-hot of the clone key's library prefix; M1L = M0L + 5 PCs. The primary statistic becomes delta AUC (M1L - M0L). Both deltas are reported. Power is recomputed from M1L - M0L (shrink 0.5 unchanged).
 - **Exposure:** library-prefix counts of train clones (structure only).
 - **First-run numbers (for the record):** units A 304 / B 316 / C 298 / train 712 under the highest-UMI rule; D40 ex vivo 158 positives (22%), D20 in vivo 101 (14%); delta AUC 0.056 and 0.144; placebo delta about -0.01; power per partition 0.24-0.25 and 0.52-0.54.
+
+### C12-S1 result (2026-11-14; `results_c12/c12s1_train.json`, `selection/C12-S1.json`): train only, no sealed read
+- **Units under the highest-UMI rule (structural):** train 712, A 304, B 316, C 298 (C12-S0 dropped-ambiguous rule gave 565/232/250/226; partition keys unchanged).
+- **Library confound (amendment 1): not it.** Library prefix alone gives AUC 0.48-0.49 on both readouts (train library counts: MultiGFP18 231, MultiGFP20 173, MultiGFP21 144, MultiGFP19 136, Flp 28); deltas unchanged by adding it.
+- **Train CV, delta AUC of D20 state (5 PCs) beyond log D20 size + QC + library:**
+
+  | readout | positives / 712 | AUC size only | AUC M0 | AUC M1 | delta | boot SE | state placebo delta | label shuffle delta |
+  |---|---|---|---|---|---|---|---|---|
+  | present at D40 ex vivo | 158 (22%) | 0.713 | 0.747 | 0.804 | +0.056 | 0.014 | -0.010 | +0.016 |
+  | present at D20 in vivo | 101 (14%) | 0.700 | 0.710 | 0.860 | +0.151 | 0.024 | -0.012 | -0.010 |
+
+- **H21 readout gate (train):** passes for both (>= 30 per side; M0 and M1 differ; the state PCs carry it, library and size do not).
+- **H17 power, shrink 0.5, from power.py (sd per positive x sqrt(expected positives)):**
+
+  | readout | one sealed partition | A+B pooled | all three |
+  |---|---|---|---|
+  | D20 in vivo | 0.55-0.57 | 0.85 | 0.95 |
+  | D40 ex vivo | 0.25-0.27 | 0.47 | 0.63 |
+
+- **Verdict:** no single sealed partition reaches power 0.8 for either readout. D20 in vivo reaches 0.85 only if two partitions are pooled (a single look spending A and B); D40 ex vivo does not reach 0.8 even with all three. **H19 fails for a one-partition test; the oracle gate (H14) would refuse.** Nothing was looked at in A/B/C.
+- **Self-challenge:**
+  - Suspicious? A jump from AUC 0.71 to 0.86 for in vivo is large. The state placebo and label shuffle show no leak (deltas about 0 or negative). Library and size are excluded. Not excluded: doublets or multi-clone cells inflating the mean-expression PCs (clone-mean over cells; the dropped-ambiguous rule was removed), in vivo cell number per clone sampling, and hashtag/well structure at D20 (not tested).
+  - Used data enough? Train 712 clones, 101 in vivo positives; SE 0.024 is stable.
+  - Already published? The preprint reports that MPP4-like fate clusters engraft more (Fig 2k), a clone-level association; the size-adjusted held-out version is ours, the overlap in signal is probable (H20).
+  - Units: 712 train clones, but the positives are what count (101 / 158).
+- **Exposure (to state in every C12 report):** C12-S0 counts; train presence fractions and quantiles; train library-prefix counts; per-partition D20 unit counts under both assignment rules (structural); nothing from A/B/C outcomes.
