@@ -1,13 +1,13 @@
 {
  "chapter": "C10 drug instruction vs selection (ReSisTrace, GSE223003)",
- "step": "C10-S2",
- "question": "C10-S2: oracle look on resistrace:A - does pre-treatment state predict lineage survival beyond CNV-proxy subclone + QC (delta AUC M1-M0, lower 97.5% bound > 0)? B/C stay sealed. C10 instruction test stays STOPPED.",
+ "step": "C10-CLOSED",
+ "question": "Chapter 10 CLOSED 2026-11-14 (WRITEUP_RESISTRACE.md): instruction test stopped (data-limited, H22); state beyond subclone + QC predicts survival, confirmed on resistrace:A; B/C sealed. No work until Bence picks the next chapter (H19 + H20 + H22 gates).",
  "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
  "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
-  "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. Next needs Bence: close C10 with a write-up, or a mechanism step on train (which state PCs / genes carry it)",
-  "H22 ADOPTED 2026-11-14 (Bence: \"go 3 adopt h22\"). Bence to decide: next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
+  "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. C10 closed 2026-11-14 (Bence: \"Close C10 + write-up\"); mechanism step on train not done",
+  "H22 ADOPTED 2026-11-14 (Bence: \"go 3 adopt h22\"). Retro practice lines (k cap, count-matched placebos) pending Bence. Bence to decide: next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [
@@ -63,7 +63,7 @@
   "chapter 7 fate carrier (closed 2026-11-11, confirmed; RNA-vs-chromatin and coverage reopen on same-cell clone data, e.g. hESC endoderm multiome; B/C of celltag_lsk, celltag_reprog, chspctrack sealed)",
   "chapter 8 fate readout (closed 2026-11-11, confirmed T1 + T3; T2 HSPC state vs condition untested, chspctrack:B/C sealed; celltag_lsk:C and celltag_reprog:C sealed)",
   "chapter 9 (paused 2026-11-11): HSPC erythroid/myeloid withdrawn (degenerate); LSK chromatin test ready, not run; all sealed kept",
-  "chapter 10 ReSisTrace (stopped 2026-11-13, data-limited: library-level treatment, 2/arm; partition resistrace A/B/C sealed; S statistic + placebo code kept; reopen only with >= 3 libraries per arm)"
+  "chapter 10 ReSisTrace (closed 2026-11-14, WRITEUP_RESISTRACE.md: instruction test data-limited, library-level treatment 2/arm; state-beyond-subclone survival confirmed on A; resistrace B/C sealed; reopen on per-barcode variant calls (genetic vs non-genetic, partition B) or >= 3 libraries per arm)"
  ],
  "approved_by": "Bence 2026-11-13: \"Yes, ReSisTrace + download\" (restart on ReSisTrace). Earlier, 2026-11-11: \"no, leave all sealed, and pause cellware\"",
  "rules": "program.md H15 (Pre-flight:), H16 (Serves: <step>); GOAL_CHECK_2026-11-07.md section 5. Changing this file needs a commit message quoting Bence ('Bence:').",
@@ -116,6 +116,7 @@
   "C10-S0 2026-11-13: partition + structure + H20 read + synthetic statistic; placebo stop rule fired (library F spread 0.84 >= 0.5); instruction test stopped, nothing sealed read",
   "C10 stopped 2026-11-13 (amendment 5 placebo: P1 0.02 passes, P2 range 0.72 >= 0.5); RETRO_2026-11-13.md; H22 proposed",
   "C10-S1 2026-11-13 (f78c29a): within-library rescue, train power check GO (delta AUC 0.055, power 0.83 shrunk)",
-  "C10-S2 2026-11-13 (545ae77): CONFIRMED on resistrace:A (delta AUC 0.062, lower 0.046, 5194 lineages); B/C sealed"
+  "C10-S2 2026-11-13 (545ae77): CONFIRMED on resistrace:A (delta AUC 0.062, lower 0.046, 5194 lineages); B/C sealed",
+  "C10 closed 2026-11-14: WRITEUP_RESISTRACE.md, DISCOVERIES #29, RETRO_2026-11-13 closing addendum; H22 adopted"
  ]
 }
