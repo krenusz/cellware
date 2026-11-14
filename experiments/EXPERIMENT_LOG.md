@@ -10902,3 +10902,57 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Confirming the counts** would mean downloading the 25 spatial tables (~4 MB) and reading only the distinct
   clone_id labels per gastruloid. That would change the verdict only if the folder holds many more chimeras
   than the paper reports (27 tables vs 21 gastruloids reported).
+
+## C9-S3: C9-S2 power rescue on train + spent A/B, no C read (pre-registered 2026-11-14)
+- **Serves: C9-S3.** Bence: "think about c9-s2 and try to rescue the power". C9-S2 (LSK day-2.5 chromatin ->
+  day-5 Neu vs Mono split, one look on celltag_lsk:C, the LAST partition) has power 0.84 at the train CV
+  rho 0.30. It falls to about 0.65 if rho shrinks the way C7 ATAC did (0.28 -> 0.24).
+- **Idea:**
+  - A and B of celltag_lsk are spent (C7-S7a and C8-S1a). They can be used for **fitting**, never for testing
+    (H7).
+  - That gives about twice the training clones.
+  - The spent partitions also give an **out-of-sample** effect estimate instead of a train CV rho with a guessed
+    shrink.
+- **Script:** `c9s3_power.py` (new). Data: train via `train_only`; A and B via `sealed_rows`, both spent.
+  **C rows are dropped before any feature or fate step.** ATAC kNN smoothing runs over all day-2.5 cells with
+  no labels, exactly as the pre-registered `test_lsk`.
+- **Candidates (fixed now):**
+  - **R0**, current design:
+    - fit on train (C 0.01), predict A and B;
+    - statistic Spearman rho(pred P(Neu), Neu share);
+    - gives the honest out-of-sample rho of the existing model.
+  - **R1**, pooled training:
+    - fit on train + A and predict B; fit on train + B and predict A;
+    - C chosen by 5-fold CV gain inside each training set;
+    - Spearman on the pooled out-of-sample units.
+    - In the final test the model would fit on train + A + B, about 1.5x more clones than each R1 fit, so
+      R1's effect is conservative.
+  - **R2:** R1's predictions, statistic = weighted Pearson of logit P(Neu) vs empirical-logit Neu share
+    ((Neu + 0.5) / (n + 1)), clone weight min(n, 20).
+- **Power for C:**
+  - Each candidate's statistic gets a clone-bootstrap SE (2,000 resamples, seed 96) on its out-of-sample
+    units. The SE is scaled to C's effective units (97, the oracle's own count for C9-S2's unit definition):
+    se_C = se_oos x sqrt(n_oos / 97).
+  - Power = P(stat / se_C > 1.96), computed with `power.mean_power`. No extra shrink, since the effect is
+    already out-of-sample.
+- **Decision rule:**
+  - A candidate is **GO** if power >= 0.8.
+  - The C look uses the GO candidate with the highest power. It still needs a C9-S2 amendment, a selection
+    file, and Bence's verbatim OK for the last partition (H13).
+  - If none is GO, C9-S2 stays unrun and celltag_lsk:C stays sealed.
+- **Pre-flight:**
+  1. **Unit:** clone, the same as C9-S2.
+  2. **Readout:** `cell_type2` Neu/Mono. Readout gate passed at C9-S2 (60 / 181 train units).
+  3. **Used data first:** this step is used data only (train + spent A/B).
+  4. **Power:** the output of this step.
+  5. **Exposure:** train, A and B fates are known: A spent at C7-S7a (G_atac 0.24 on A), B at C8-S1a (RNA T1
+     rho 0.45). C is unread.
+  6. **Literature:** Jindal 2024 methods (CellTag-multi); Ma 2020 (chromatin potential).
+  7. **H22:** unit = clone; no between-condition contrast, so it passes.
+- **Practice:**
+  - tick-list against the script;
+  - seeds fixed;
+  - C dropped first;
+  - candidates fixed before the run;
+  - the fate-free validity gate was already passed for ATAC (C7-S3);
+  - smoke test not needed: the helpers are unchanged from C9-S2.

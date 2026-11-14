@@ -1,9 +1,9 @@
 {
- "chapter": "C10 drug instruction vs selection (ReSisTrace, GSE223003)",
- "step": "C10-CLOSED",
- "question": "Chapter 10 CLOSED 2026-11-14 (WRITEUP_RESISTRACE.md): instruction test stopped (data-limited, H22); state beyond subclone + QC predicts survival, confirmed on resistrace:A; B/C sealed. No work until Bence picks the next chapter (H19 + H20 + H22 gates).",
- "value": "ReSisTrace (Dai 2024) assumes selection and models label accuracy only; it never estimates how much the drug instructs resistance, and a genetic subclone confounds its pre-resistance signal. A joint instruction/selection fit with a sealed confirmation is the direct transfer of chapters 1-2.",
- "literature": "Source paper full text read 2026-11-12 (PMC10850087): no instruction estimate, no sealed hold-out. H20 top-5 read still owed inside S0, before any analysis code.",
+ "chapter": "C9 LSK early chromatin predicts the neutrophil vs monocyte split (CellTag-multi, Jindal 2024)",
+ "step": "C9-S3",
+ "question": "C9-S3: power rescue for C9-S2 on train + spent A/B only (celltag_lsk:C unread): does pooled training (R1) or a weighted logit statistic (R2) give out-of-sample power >= 0.8 at C's 97 effective clones? Look on C (LAST partition) still needs Bence's verbatim OK.",
+ "value": "Chromatin counterpart of chapter 8's confirmed RNA T1 (rho 0.45): a clone's day-2.5 accessibility predicting its specific Neu/Mono split on unseen clones. Jindal 2024 reports chromatin fate priming at population level, not a sealed clone-level split prediction; adds a disciplined replication in a second modality, value modest.",
+ "literature": "Jindal 2024 (CellTag-multi) methods read for C7; Ma 2020 chromatin potential; C10 watch-list re-check 2026-11-14: GSE324482 private, E-MTAB-17351 403, hESC endoderm and DeepTrack preprints without accessions.",
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
   "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. C10 closed 2026-11-14 (Bence: \"Close C10 + write-up\"); mechanism step on train not done",
@@ -50,7 +50,8 @@
   "c10s0_sim.py",
   "c10s0_placebo.py",
   "c10s1_select.py",
-  "c10s2_confirm.py"
+  "c10s2_confirm.py",
+  "c9s3_power.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
