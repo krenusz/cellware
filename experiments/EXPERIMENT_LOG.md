@@ -11139,3 +11139,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Verdict:** adjusting for barcode level, multi-clone cells and hashtag does not reduce the delta (it rises slightly). Placebo and label-shuffle unchanged (about -0.01). The power table is unchanged (D20 in vivo 0.55-0.57 per partition, 0.85 pooled A+B; D40 ex vivo never 0.8). The +0.15 stands on train; it is still train CV, not a held-out result (H8).
 - **Still not excluded:** mouse/well effects not captured by hashtags, clone-level sampling of the transplant inoculum, and overlap with the preprint's own engraftment association (H20).
 - **Code note:** two dead `if False` expressions in `c12s1_select.py` were removed after the run (syntax-checked, not rerun; no behaviour change).
+
+## PAUSE 2026-11-14b (Bence: "keep sealed, pause cellware")
+- C12-S1 closed on train only. lsc_larry A, B and C stay sealed and unspent (H7 untouched).
+- Open options, each needing Bence: pooled A+B look on D20 in vivo (power 0.85 at the shrunk effect; leaves C as last reserve, H13); four retro practice lines; watch list re-check about 21 Nov.

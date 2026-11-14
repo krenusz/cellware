@@ -1,14 +1,15 @@
 {
  "chapter": "C9 LSK early chromatin predicts the neutrophil vs monocyte split (CellTag-multi, Jindal 2024)",
- "step": "C12-S1",
- "question": "C12-S1 train-only selection and power check on the sealed LSC LARRY set (Zenodo 18444428; Bence 2026-11-14: \"go with step 1\"): does a clone's D20 ex vivo state predict its later presence (D40 ex vivo, D20 in vivo) beyond D20 clone size + QC? Train CV only, no sealed read, no oracle look. Otherwise Cellware stays PAUSED (2026-11-14).",
+ "step": "PAUSED-2026-11-14b",
+ "question": "Cellware PAUSED 2026-11-14 (Bence: \"keep sealed, pause cellware\"). C12-S1 done on train only: D20 clone state beyond size + QC + library + barcode level + multi-clone + hashtag predicts D20 in vivo presence (delta AUC 0.166) and D40 ex vivo (0.060); no single sealed partition reaches power 0.8 (in vivo 0.55-0.57; pooled A+B 0.85; D40 never). lsc_larry A/B/C all sealed, unlooked. No work until Bence.",
  "value": "Chromatin counterpart of chapter 8's confirmed RNA T1 (rho 0.45): a clone's day-2.5 accessibility predicting its specific Neu/Mono split on unseen clones. Jindal 2024 reports chromatin fate priming at population level, not a sealed clone-level split prediction; adds a disciplined replication in a second modality, value modest.",
  "literature": "Jindal 2024 (CellTag-multi) methods read for C7; Ma 2020 chromatin potential; C10 watch-list re-check 2026-11-14: GSE324482 private, E-MTAB-17351 403, hESC endoderm and DeepTrack preprints without accessions.",
  "next_steps": [
+  "lsc_larry A, B, C sealed and unspent; a pooled A+B look on D20 in vivo (power 0.85 at shrunk effect) needs Bence OK and would leave C as last reserve (H13)",
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
-  "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. C10 closed 2026-11-14 (Bence: \"Close C10 + write-up\"); mechanism step on train not done",
-  "H22 ADOPTED 2026-11-14 (Bence: \"go 3 adopt h22\"). Retro practice lines (k cap, count-matched placebos) pending Bence. Bence to decide: next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
-  "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
+  "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. C10 closed 2026-11-14 (Bence: \"Close C10 + write-up\"); mechanism step on train not done; H22 ADOPTED 2026-11-14 (Bence: \"go 3 adopt h22\")",
+  "Pending Bence: four retro practice lines (RETRO_2026-11-14.md); C12 exposure statement in every report",
+  "Watch list re-check about 21 Nov: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026, PEtracer GSE342607"
  ],
  "allowed_scripts": [
   "c6s2_space.py",
