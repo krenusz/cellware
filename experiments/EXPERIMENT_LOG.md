@@ -11143,3 +11143,6 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 ## PAUSE 2026-11-14b (Bence: "keep sealed, pause cellware")
 - C12-S1 closed on train only. lsc_larry A, B and C stay sealed and unspent (H7 untouched).
 - Open options, each needing Bence: pooled A+B look on D20 in vivo (power 0.85 at the shrunk effect; leaves C as last reserve, H13); four retro practice lines; watch list re-check about 21 Nov.
+
+## Retro 2026-11-14b (Bence: "do the retro")
+- RETRO_2026-11-14b.md written with neutral wording per Bence's save rule. Three practice lines proposed (positives-based power, train confound battery, pre-registration template), pending Bence; memory items added. Cellware remains paused.
