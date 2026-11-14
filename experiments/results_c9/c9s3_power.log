@@ -1,0 +1,56 @@
+R0 {'n_oos': 209, 'stat': 0.263, 'se_oos': 0.0712, 'se_C': np.float64(0.1046), 'power_C': 0.711, 'go': False, 'C': 0.01, 'n_train': 195}
+{
+ "R0_train_only_spearman": {
+  "n_oos": 209,
+  "stat": 0.263,
+  "se_oos": 0.0712,
+  "se_C": 0.1046,
+  "power_C": 0.711,
+  "go": false,
+  "C": 0.01,
+  "n_train": 195
+ },
+ "R1_pooled_spearman": {
+  "n_oos": 209,
+  "stat": 0.2554,
+  "se_oos": 0.0723,
+  "se_C": 0.1061,
+  "power_C": 0.673,
+  "go": false,
+  "C": {
+   "->A": 0.01,
+   "->B": 0.001
+  },
+  "n_train": {
+   "->A": 295,
+   "->B": 304
+  }
+ },
+ "R2_pooled_wlogit": {
+  "n_oos": 209,
+  "stat": 0.0821,
+  "se_oos": 0.0917,
+  "se_C": 0.1345,
+  "power_C": 0.089,
+  "go": false,
+  "C": {
+   "->A": 0.01,
+   "->B": 0.001
+  }
+ },
+ "per_partition_spearman": {
+  "A": 0.2206,
+  "B": 0.3788
+ },
+ "R0_wlogit_for_reference": {
+  "n_oos": 209,
+  "stat": 0.2041,
+  "se_oos": 0.0999,
+  "se_C": 0.1467,
+  "power_C": 0.285,
+  "go": false
+ },
+ "go_candidates": [],
+ "chosen": null,
+ "N_C_effective": 97
+}

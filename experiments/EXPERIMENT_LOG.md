@@ -10956,3 +10956,33 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - candidates fixed before the run;
   - the fate-free validity gate was already passed for ATAC (C7-S3);
   - smoke test not needed: the helpers are unchanged from C9-S2.
+
+### C9-S3 result: NO rescue (2026-11-14; `results_c9/c9s3_power.json`)
+
+| candidate | out-of-sample stat (209 spent clones) | se at C (97) | power on C |
+|---|---|---|---|
+| R0 current design (train only) | Spearman 0.263 | 0.105 | 0.71 |
+| R1 pooled training (train + A / train + B) | Spearman 0.255 | 0.106 | 0.67 |
+| R2 pooled, weighted logit Pearson | 0.082 | 0.135 | 0.09 |
+
+- **No candidate reaches 0.8, so by the pre-registered rule C9-S2 stays unrun and celltag_lsk:C stays sealed.**
+- **The honest out-of-sample rho of the existing model is 0.26** (train CV 0.30): A 0.22, B 0.38.
+- **Pooled training does not help.** Going from 195 to ~300 training clones gives no gain, so the limit is
+  the signal and C's size, not the model's training n.
+- **The weighted logit statistic is worse.** Inner CV picked C 0.001 for one fit, which compresses the
+  predicted logits, and the empirical logits of small clones are noisy.
+- **What would be needed:** power 0.8 at 97 units needs an out-of-sample rho of about 0.29. Every route here
+  gives 0.26 or less.
+- **Not tried (would be new pre-registrations, likely forking paths):**
+  - relaxing the unit definition to raise C's count;
+  - adding RNA features, which changes the question.
+- **Environment note:** the project .venv had lost h5py / scikit-learn (pruned by a uv sync). They were
+  reinstalled from PyPI (scikit-learn 1.9.1), and the first run failed at import before reading anything.
+- **Challenge:**
+  1. *Suspicious?* No; the shrink from 0.30 to 0.26 is ordinary.
+  2. *Other explanations?* The A vs B spread (0.22 vs 0.38) shows the partition-to-partition variance at
+     n ~100. That is the reason a single 97-unit look is risky.
+  3. *Units:* 209 spent clones, 195-304 training clones.
+  4. *Used data enough?* Yes. Spent A and B already give out-of-sample evidence of a chromatin signal:
+     rho 0.26, bootstrap se 0.07, about 3.7 se above 0. That is exploratory (spent data), not a confirmation.
+  5. *Already published?* Chromatin priming of fate is in Jindal 2024 / Ma 2020 at population level.

@@ -1,7 +1,7 @@
 {
  "chapter": "C9 LSK early chromatin predicts the neutrophil vs monocyte split (CellTag-multi, Jindal 2024)",
- "step": "C9-S3",
- "question": "C9-S3: power rescue for C9-S2 on train + spent A/B only (celltag_lsk:C unread): does pooled training (R1) or a weighted logit statistic (R2) give out-of-sample power >= 0.8 at C's 97 effective clones? Look on C (LAST partition) still needs Bence's verbatim OK.",
+ "step": "C9-S3-DONE",
+ "question": "C9-S3 DONE 2026-11-14: no power rescue (out-of-sample rho 0.26 on spent A/B; best power on C 0.71 < 0.8); C9-S2 stays unrun, celltag_lsk:C sealed. Cellware has no active step; watch list re-checked 2026-11-14, nothing public. No work until Bence picks.",
  "value": "Chromatin counterpart of chapter 8's confirmed RNA T1 (rho 0.45): a clone's day-2.5 accessibility predicting its specific Neu/Mono split on unseen clones. Jindal 2024 reports chromatin fate priming at population level, not a sealed clone-level split prediction; adds a disciplined replication in a second modality, value modest.",
  "literature": "Jindal 2024 (CellTag-multi) methods read for C7; Ma 2020 chromatin potential; C10 watch-list re-check 2026-11-14: GSE324482 private, E-MTAB-17351 403, hESC endoderm and DeepTrack preprints without accessions.",
  "next_steps": [
