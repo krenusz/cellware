@@ -11087,3 +11087,4 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Exposure:** C12-S0 counts + train presence fractions (listed in the C12-S0 entry). No sealed outcome read.
 - **Practice:** shuffled-label null (delta AUC ~ 0) and clone-size-only placebo run in the same script; scripts read only through `train_only("lsc_larry"`; tick-list checked.
 - **Pre-flight:** (1) unit: D20 clone; (2) readout: presence at D40 ex vivo / D20 in vivo; (3) used data first: none for this set beyond C12-S0 train counts; (4) power: computed in this step from train CV, then stated per partition; (5) exposure: as above; (6) literature: preprint open access, methods and Fig 2 legend read; (7) readout gate: this step, train only.
+- Serves: C12-S1 (script `c12s1_select.py`, train CV only; writes selection/C12-S1.json and results_c12/c12s1_train.json).
