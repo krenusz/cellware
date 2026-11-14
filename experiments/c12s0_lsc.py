@@ -26,6 +26,7 @@ MAP = os.path.join(D, "clone_map_d20.tsv")
 OUT = os.path.join(HERE, "results_c12", "c12s0_counts.json")
 DS = "lsc_larry"
 MIN_UMI, MIN_LINK, MIN_CELLS = 3, 2, 3
+LINK_FRAC, AMBIENT = 0.5, 0.02   # amendment 1 (EXPERIMENT_LOG): symmetric co-occurrence, ambient barcodes removed
 SAMPLES = ["D20_exvivo", "D20_invivo", "D40_exvivo", "D40_invivo_control", "D40_invivo_treated"]
 
 
@@ -55,6 +56,10 @@ def calls(s):
 def seal():
     assert not os.path.exists(MAP), "clone map already written; never redrawn"
     cc = calls("D20_exvivo")
+    n_b = collections.Counter(b for bcs in cc.values() for b in set(bcs))
+    ambient = {b for b, n in n_b.items() if n > AMBIENT * len(cc)}               # amendment 1
+    cc = {cell: [b for b in bcs if b not in ambient] for cell, bcs in cc.items()}
+    cc = {cell: bcs for cell, bcs in cc.items() if bcs}
     parent = {}
 
     def find(x):
@@ -73,17 +78,17 @@ def seal():
             for j in range(i + 1, len(u)):
                 pairs[(u[i], u[j])] += 1
     for (a, b), n in pairs.items():
-        if n >= MIN_LINK:
+        if n >= MIN_LINK and n / max(n_b[a], n_b[b]) >= LINK_FRAC:              # amendment 1
             ra, rb = find(a), find(b)
             if ra != rb:
                 parent[max(ra, rb)] = min(ra, rb)
     comp = collections.defaultdict(list)
     for b in parent:
         comp[find(b)].append(b)
-    rows = [(b, min(m)) for m in comp.values() for b in m]
+    rows = [(b, min(m)) for m in comp.values() for b in m] + [(b, "AMBIENT") for b in ambient]
     pd.DataFrame(rows, columns=["barcode", "clone"]).sort_values("barcode").to_csv(MAP, sep="\t", index=False)
     sizes = collections.Counter(min(len(m), 5) for m in comp.values())
-    print(json.dumps({"cells_with_call": len(cc), "called_barcodes": len(parent), "components": len(comp),
+    print(json.dumps({"ambient_barcodes_removed": len(ambient), "cells_with_call": len(cc), "called_barcodes": len(parent), "components": len(comp),
                       "largest_component_barcodes": max(len(m) for m in comp.values()),
                       "components_by_n_barcodes(5=5+)": dict(sorted(sizes.items()))}, indent=1))
     h = hashlib.sha256(open(MAP, "rb").read()).hexdigest()
@@ -96,7 +101,9 @@ def assign(s, cmap):
     """cell -> clone key; cells whose called barcodes map to >1 clone are dropped (ambiguous)."""
     out, amb = {}, 0
     for cell, bcs in calls(s).items():
-        ks = {cmap.get(b, b) for b in bcs}
+        ks = {cmap.get(b, b) for b in bcs} - {"AMBIENT"}
+        if not ks:
+            continue
         if len(ks) == 1:
             out[cell] = ks.pop()
         else:

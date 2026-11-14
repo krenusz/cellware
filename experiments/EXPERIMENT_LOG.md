@@ -11036,3 +11036,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   6. Literature: bioRxiv 10.64898/2026.02.24.707683, open access.
   7. Readout gate: this step, train only.
 - **Practice:** script `c12s0_lsc.py` (`seal`, then `counts`); seeds not needed; the map is written before `counts` can run; the tick-list is checked against the script.
+
+### C12-S0 amendment 1 (2026-11-14, before any count or statistic): linkage rule
+- **What happened:** the seal sanity output showed 22,788 D20 cells with a call, 5,911 barcodes and 3,542 components, but the **largest component had 1,178 barcodes**. Linking on any >= 2 co-calls chains clones through ambient or doublet barcodes.
+- **Fix:**
+  - Link a and b only if n_ab >= 2 AND n_ab / max(n_a, n_b) >= 0.5. True multi-integration barcodes of one clone co-occur symmetrically; ambient barcodes are frequent, so the max term blocks them.
+  - Barcodes called in > 2% of D20 cells are flagged ambient and removed before calling.
+- **What was discarded:** the map file was deleted, unread beyond the sanity line; no partition counts or outcomes were computed.
+- **Exposure from the failed attempt:** only the sanity numbers above.
