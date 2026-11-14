@@ -11,6 +11,7 @@ Power (one rule, three gates; arithmetic only from experiments/power.py)
 - H14 Oracle: power >= 0.8 from structural counts, or no look. H17 Selection: power from the model's own simulated statistic.
 - H19 Chapter gate: data in hand; primary test power >= 0.8 from the subset's own sealed counts; test within 3 steps.
 - Effect and sd come from named used results; list every spent result that constrains an input.
+- H22 Name the treatment-assignment unit at S0; < 3 per arm for a between-condition contrast = stop. Re-check on every amendment.
 Before a pre-registration
 - H15 Pre-flight block: unit, readout, used data first, power, exposure, literature access, readout gate.
 - H16 Serves: line naming the current FOCUS step; no work outside the chapter question without Bence's OK.

@@ -179,6 +179,20 @@ before every look and refuses on any failure.
      differs. A statistic that does not is left out of any summed score;
   4. the number of units that carry the statistic is stated. A statistic carried by a handful of units is
      reported as exploratory and cannot be a gate.
+- **H22 Treatment-assignment unit.** (RETRO_2026-11-13; Bence 2026-11-14: "go 3 adopt h22". C10 counted
+  hundreds of lineages per library, but the drug was assigned per library, 2 per arm. Power was read at the
+  lineage level and 4 amendments narrowed the test to one library pair before a placebo stopped it; the 2 per
+  arm was visible at S0. Chapters 4 and 5 ended data-limited for design reasons visible at S0 too.)
+  - Before any C*-S0 goes past structure, the pre-flight names the **treatment-assignment unit** of the primary
+    contrast: the level at which the condition varies (library, well, plate, animal, donor, batch).
+  - If it has **< 3 independent units per arm** and the question needs a between-condition contrast, **stop at
+    S0**. Cell, lineage or clone counts inside those units add precision, not replication, and cannot
+    substitute.
+  - A question answered by a contrast **inside** one unit (e.g. lineages within a library, with the library as a
+    fixed effect) is allowed; say so in the pre-flight.
+  - Every amendment that drops arms, pairs or conditions re-checks this, and so does a step called a "scan".
+  - H19.2 power is computed at this unit when the contrast is between conditions.
+  - Text only, not enforced in code.
 - **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log
   cite them).
 
@@ -247,5 +261,5 @@ conclusion, one line each:
 repo with the real oracle, sealed-file check, power rule and scope-guard hook, and synthetic stubs for the
 data side; no real data is read. It covers the oracle refusals (H2-H4, H6, H11-H15, H21, `Practice:`), the
 commit hook (H16, H20, FOCUS.json quote), the Claude Code hooks, the power arithmetic, and that every rule
-H1-H21 is present in this file and in `RULES_DIGEST.md`. CI runs it on every push. A change to a guard
+H1-H22 is present in this file and in `RULES_DIGEST.md`. CI runs it on every push. A change to a guard
 that makes a test fail is a rule change and needs Bence's OK.

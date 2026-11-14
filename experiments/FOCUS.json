@@ -7,7 +7,7 @@
  "next_steps": [
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
   "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. Next needs Bence: close C10 with a write-up, or a mechanism step on train (which state PCs / genes carry it)",
-  "Bence to decide: adopt H22 (RETRO_2026-11-13.md); next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
+  "H22 ADOPTED 2026-11-14 (Bence: \"go 3 adopt h22\"). Bence to decide: next chapter from the restart list (SG_kit1 design counts; C9-S2 LSK chromatin, power ~0.71 if shrunk)",
   "Watch: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026 data"
  ],
  "allowed_scripts": [

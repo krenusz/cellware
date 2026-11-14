@@ -1,4 +1,4 @@
-"""End-to-end tests of the research guards (experiments/program.md H1-H21).
+"""End-to-end tests of the research guards (experiments/program.md H1-H22).
 
 Each test builds a throwaway git repo that holds the REAL oracle, sealed-file check, power rule and
 scope-guard hook, plus synthetic stubs for the data side. Nothing here reads real data: the stub
@@ -488,7 +488,7 @@ def test_new_scripts_take_power_from_power_py():
 def test_every_rule_is_in_program_and_digest():
     program = (EXP / "program.md").read_text(encoding="utf-8")
     digest = (EXP / "RULES_DIGEST.md").read_text(encoding="utf-8")
-    for n in range(1, 22):
+    for n in range(1, 23):
         assert re.search(rf"\*\*H{n} ", program), f"H{n} missing from program.md"
         assert re.search(rf"\bH{n}\b", digest), f"H{n} missing from RULES_DIGEST.md"
     assert len(digest) < 4000, "the digest is injected every turn; keep it short"
