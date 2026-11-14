@@ -11125,3 +11125,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Why:** the train delta AUC of +0.15 (D20 in vivo) is large and three measurement explanations were not excluded: (1) barcode transcript level (clones expressing more LARRY are easier to detect >= 3 UMI later), (2) D20 ex vivo hashtag / well structure (TotalSeqMouse3-10) lining up with what was transplanted, (3) doublet-like cells (>= 2 clones called) inflating the clone-mean expression PCs.
 - **Change:** M0x = M0L + mean log top-barcode UMI of the clone's D20 cells + fraction of its cells with >= 2 clones called + majority-hashtag one-hot. M1x = M0x + 5 PCs. Reported next to the existing deltas; the verdict reads M1x - M0x. Shrink 0.5 and power arithmetic unchanged.
 - **Exposure:** train-clone barcode-UMI, multi-clone fraction and hashtag counts (structure/QC only). No A/B/C outcome read.
+
+### C12-S1 amendment 2 result (2026-11-14; train only): the signal is not a measurement artefact of these three kinds
+- **Train QC:** mean log top-barcode UMI 2.87; 34% of D20 cells call >= 2 clones (doublet-like or multi-integration); majority hashtag per clone spread over all 8 tags (50-127 clones each).
+- **Nuisance alone carries nothing:** barcode UMI + multi-clone fraction + hashtag, AUC 0.50 (D40 ex vivo) and 0.52 (D20 in vivo).
+- **Delta AUC of the state PCs with all nuisance in M0x:**
+
+  | readout | delta M1L-M0L | delta M1x-M0x |
+  |---|---|---|
+  | D40 ex vivo | +0.056 | +0.060 |
+  | D20 in vivo | +0.151 | +0.166 |
+
+- **Verdict:** adjusting for barcode level, multi-clone cells and hashtag does not reduce the delta (it rises slightly). Placebo and label-shuffle unchanged (about -0.01). The power table is unchanged (D20 in vivo 0.55-0.57 per partition, 0.85 pooled A+B; D40 ex vivo never 0.8). The +0.15 stands on train; it is still train CV, not a held-out result (H8).
+- **Still not excluded:** mouse/well effects not captured by hashtags, clone-level sampling of the transplant inoculum, and overlap with the preprint's own engraftment association (H20).
+- **Code note:** two dead `if False` expressions in `c12s1_select.py` were removed after the run (syntax-checked, not rerun; no behaviour change).

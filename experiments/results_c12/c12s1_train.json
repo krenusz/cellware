@@ -22,6 +22,20 @@
    "MultiGFP20": 173,
    "MultiGFP18": 231
   },
+  "amendment2_qc": {
+   "mean_log_top_umi": 2.866,
+   "mean_multi_clone_frac": 0.339,
+   "hashtag_majority_counts": {
+    "126246": 62,
+    "126241": 104,
+    "126244": 117,
+    "126240": 100,
+    "126239": 50,
+    "126245": 127,
+    "126243": 70,
+    "126242": 82
+   }
+  },
   "D40_exvivo": {
    "positives": 158,
    "prevalence": 0.2219,
@@ -53,7 +67,13 @@
      "power": 0.254
     }
    },
-   "readout_gate": "PASS"
+   "readout_gate": "PASS",
+   "amendment2": {
+    "auc_M0x": 0.7345,
+    "auc_M1x": 0.7944,
+    "delta_auc_x": 0.0599,
+    "auc_qc_extras_only": 0.4993
+   }
   },
   "D20_invivo": {
    "positives": 101,
@@ -86,7 +106,13 @@
      "power": 0.547
     }
    },
-   "readout_gate": "PASS"
+   "readout_gate": "PASS",
+   "amendment2": {
+    "auc_M0x": 0.6846,
+    "auc_M1x": 0.8507,
+    "delta_auc_x": 0.1661,
+    "auc_qc_extras_only": 0.5164
+   }
   }
  }
 }

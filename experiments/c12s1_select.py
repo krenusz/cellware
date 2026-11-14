@@ -78,6 +78,35 @@ def d20_expression(cells):
     return X, [gene_rows[r] for r in grow]
 
 
+def d20_extra(cells, cmap):
+    """Per-cell QC for D20 ex vivo train cells: top barcode UMI, number of clones called (>= 3 UMI), majority hashtag index (-1 none)."""
+    feats = c0._features("D20_exvivo")
+    cust = {i + 1: x[0] for i, x in enumerate(feats) if x[2] == "Custom"}
+    ab = np.array([i + 1 for i, x in enumerate(feats) if x[2] == "Antibody Capture"])
+    lo, hi = min(cust), max(cust)
+    cellarr = np.array(cells)
+    cmask = np.zeros(cellarr.max() + 1, bool)
+    cmask[cellarr] = True
+    cu, ht = [], []
+    for ch in pd.read_csv(os.path.join(c0.RAW, "D20_exvivo_matrix.mtx.gz"), sep=" ", comment="%", header=None, skiprows=3,
+                          chunksize=5_000_000, dtype={0: np.int64, 1: np.int64, 2: np.int64}):
+        r, c, v = ch[0].to_numpy(), ch[1].to_numpy(), ch[2].to_numpy()
+        k = c <= cellarr.max()
+        r, c, v = r[k], c[k], v[k]
+        k = cmask[c]
+        r, c, v = r[k], c[k], v[k]
+        kc = (r >= lo) & (r <= hi) & (v >= MIN_UMI)
+        cu.append(pd.DataFrame({"cell": c[kc], "row": r[kc], "v": v[kc]}))
+        ka = np.isin(r, ab)
+        ht.append(pd.DataFrame({"cell": c[ka], "row": r[ka], "v": v[ka]}))
+    cu, ht = pd.concat(cu), pd.concat(ht)
+    cu["key"] = cu["row"].map(lambda x: cmap.get(cust[int(x)], cust[int(x)]))
+    top = cu.groupby("cell")["v"].max()
+    ncl = cu.groupby("cell")["key"].nunique()
+    htag = ht.sort_values("v").groupby("cell").tail(1).set_index("cell")["row"]
+    return top.to_dict(), ncl.to_dict(), htag.to_dict()
+
+
 def cv_auc(M, y, repeats=5, seed=0):
     aucs, oofs = [], []
     for rep in range(repeats):
@@ -123,7 +152,16 @@ def main():
     libs = sorted(set(lib))
     L = np.column_stack([(lib == x).astype(float) for x in libs[1:]]) if len(libs) > 1 else np.zeros((len(lib), 0))
     qcL = np.hstack([qc, L])                                                            # amendment 1
-    res["train"] = {"n_units": len(tr_clones), "library_prefix_counts": dict(collections.Counter(lib))}
+    top, ncl, htag = d20_extra(cells, cmap)                                              # amendment 2
+    bc_umi = np.array([np.mean([np.log(top.get(cells[i], 3)) for i in idx[k]]) for k in tr_clones])
+    multi = np.array([np.mean([ncl.get(cells[i], 1) >= 2 for i in idx[k]]) for k in tr_clones])
+    maj = [collections.Counter(htag[cells[i]] for i in idx[k] if cells[i] in htag).most_common(1) for k in tr_clones]
+    tags = sorted({m[0][0] for m in maj if m})
+    H = np.column_stack([[1.0 if (m and m[0][0] == t) else 0.0 for m in maj] for t in tags[1:]]) if len(tags) > 1 else np.zeros((len(tr_clones), 0))
+    qcX = np.hstack([qcL, bc_umi[:, None], multi[:, None], H])
+    res["train"] = {"n_units": len(tr_clones), "library_prefix_counts": dict(collections.Counter(lib)),
+                    "amendment2_qc": {"mean_log_top_umi": round(float(bc_umi.mean()), 3), "mean_multi_clone_frac": round(float(multi.mean()), 3),
+                                      "hashtag_majority_counts": dict(collections.Counter(m[0][0] if m else -1 for m in maj))}}
     sel = {"test": "lsc_c12s1", "higher_is_better": True,
            "note": "delta AUC (M1 - M0), M0 = log D20 size + QC, M1 = M0 + 5 PCs of clone-mean D20 expression; train CV only"}
     for s in OUTCOMES:
@@ -141,6 +179,10 @@ def main():
         a1_noL, _ = cv_auc(np.hstack([qc, pcs]), y)
         a_lib, _ = cv_auc(L, y) if L.shape[1] else (0.5, None)
         delta = a1 - a0
+        ax0, ox0 = cv_auc(qcX, y)
+        ax1, ox1 = cv_auc(np.hstack([qcX, pcs]), y)
+        qd = {"auc_M0x": round(ax0, 4), "auc_M1x": round(ax1, 4), "delta_auc_x": round(ax1 - ax0, 4),
+              "auc_qc_extras_only": round(cv_auc(qcX[:, qc.shape[1] + L.shape[1]:], y)[0], 4)}
         p0, p1 = np.mean(o0, 0), np.mean(o1, 0)
         bs = []
         for _ in range(500):
@@ -166,6 +208,7 @@ def main():
                   "boot_se": round(se, 4), "state_placebo_delta_mean": round(float(np.mean(plc)), 4),
                   "state_placebo_delta_sd": round(float(np.std(plc)), 4), "label_shuffle_delta_mean": round(float(np.mean(null)), 4),
                   "power_effect_shrunk": round(effect, 4), "power": pw, "readout_gate": "PASS"})
+        r["amendment2"] = qd
         res["train"][s] = r
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(res, open(OUT, "w"), indent=1)
