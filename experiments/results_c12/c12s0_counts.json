@@ -1,0 +1,68 @@
+{
+ "min_umi": 3,
+ "min_link": 2,
+ "min_cells": 3,
+ "D20_exvivo_cells_assigned": 14732,
+ "D20_exvivo_cells_ambiguous": 8056,
+ "D20_invivo_cells_assigned": 14803,
+ "D20_invivo_cells_ambiguous": 22879,
+ "D40_exvivo_cells_assigned": 3385,
+ "D40_exvivo_cells_ambiguous": 13472,
+ "D40_invivo_control_cells_assigned": 7266,
+ "D40_invivo_control_cells_ambiguous": 7798,
+ "D40_invivo_treated_cells_assigned": 13257,
+ "D40_invivo_treated_cells_ambiguous": 12512,
+ "D20_units_ge3_per_partition": {
+  "A": 232,
+  "B": 250,
+  "C": 226,
+  "train": 565
+ },
+ "train": {
+  "n_units": 565,
+  "D20_invivo": {
+   "present": 81,
+   "frac_present": 0.143,
+   "ge3": 43,
+   "size_q": [
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  "D40_exvivo": {
+   "present": 60,
+   "frac_present": 0.106,
+   "ge3": 36,
+   "size_q": [
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  "D40_invivo_control": {
+   "present": 3,
+   "frac_present": 0.005,
+   "ge3": 1,
+   "size_q": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "D40_invivo_treated": {
+   "present": 3,
+   "frac_present": 0.005,
+   "ge3": 3,
+   "size_q": [
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ }
+}

@@ -104,7 +104,7 @@ PARTITIONED = {
                 "ex vivo are keyed by their own ID. All cells of a clone in every sample (D20/D40, ex vivo/in vivo) go together",
         "files": ["15 Zenodo 18444428 matrices, sha256 in data/ext_lsc_larry/SHA256SUMS", "clone_map_d20.tsv"],
         "sealed_on": "2026-11-14",
-        "prior_exposure": "feature/cell structure only (C12-S0 format check); preprint design text (1,375 clones >= 3 cells "
+        "prior_exposure": "C12-S0: feature/cell structure; per-partition D20 unit counts (>= 3 cells); pooled assigned/ambiguous cell counts per sample; TRAIN-only presence/size of D20 clones in later samples; preprint design text (1,375 clones >= 3 cells "
                           "ex vivo, 160 in vivo, ~13 clones/mouse in chemo); no figures/outcomes read",
     },
 }

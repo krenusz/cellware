@@ -11044,3 +11044,30 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Barcodes called in > 2% of D20 cells are flagged ambient and removed before calling.
 - **What was discarded:** the map file was deleted, unread beyond the sanity line; no partition counts or outcomes were computed.
 - **Exposure from the failed attempt:** only the sanity numbers above.
+
+### C12-S0 result (2026-11-14; `results_c12/c12s0_counts.json`): structure passes, power undecided
+- **Clone map (amendment 1):**
+  - 4,737 clones from 5,911 barcodes; largest clone 12 barcodes; no ambient barcodes.
+  - sha256 71efc919... is locked in data/ext_lsc_larry/SHA256SUMS.
+- **Units (structural):** D20 ex vivo clones with >= 3 cells: train 565, A 232, B 250, C 226.
+- **Readout, train only (565 clones):**
+
+  | later sample | train clones present | with >= 3 cells |
+  |---|---|---|
+  | D20 in vivo | 81 (14%) | 43 |
+  | D40 ex vivo | 60 (11%) | 36 |
+  | D40 in vivo control | 3 | 1 |
+  | D40 in vivo treated | 3 | 3 |
+
+- **Gates:**
+  - **H21 readout gate on train:** passes for D40 ex vivo (60 vs 505) and D20 in vivo (81 vs 484).
+  - **Sealed per-side count:** at about 11-14% prevalence, each sealed partition (~230) holds about 25-33 positives. This is borderline for ">= 30 per side" in the look itself.
+  - **H22:** unit = clone, no between-condition contrast, so it passes.
+  - **Chemo arm (D40 in vivo):** shares about 0.5% of D20 clones, so it is a separate transduction or transplant cohort. It is unusable for D20-state questions; the chemo contrast is dropped.
+  - **H19 power:** undecided. Presence at a later sample trivially tracks D20 clone size (sampling), so the only meaningful test is **state beyond D20 clone size + QC**, the same shape as C10-S2. Its effect has no prior; it needs a train-only selection step (C12-S1, like C10-S1) before any power claim.
+- **Caveat: high ambiguity.** Cells whose barcodes map to >1 clone are dropped: 35% at D20 ex vivo, 80% at D40 ex vivo. Under-linking or barcodes first called after D20 likely deflate presence. A majority-UMI assignment would raise it; that is a train-side rule choice for C12-S1. Partition keys stay fixed.
+- **H20 risk:** the preprint reports heritable clonal programs shaping engraftment. Our increment would be held-out prediction beyond clone size, and the size of that overlap is unread.
+- **Exposure (to state in every C12 report):**
+  - per-partition D20 unit counts;
+  - train-only presence fractions and size quantiles;
+  - ambiguous / assigned cell counts per sample (pooled).
