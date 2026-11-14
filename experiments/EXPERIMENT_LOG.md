@@ -10990,3 +10990,49 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 ## PAUSE + retro + data search (2026-11-14; Bence: "pause cellware, and do a retro / after look around for more data")
 - FOCUS step PAUSED-2026-11-14. Retro: RETRO_2026-11-14.md. Data search: DATA_SEARCH_2026-11-14.md.
 - **Data search:** two new public candidates: LSC expansion LARRY (Zenodo 10.5281/zenodo.18444428, CC-BY, clone unit, D20 -> D40 / in vivo) and PEtracer embryo trees (Cell 2026, GSE342607, 16 embryos; H20 risk high). It is not downloaded, and nothing was read beyond the paper's design text. Everything else is unreleased or fails H19/H22.
+
+## C12-S0: LSC LARRY gate check (pre-registered 2026-11-14; Bence: "Yes, download LSC")
+- **Serves: C12-S0.**
+  - Data: Zenodo 10.5281/zenodo.18444428 (CC-BY), 15 files, md5 verified, sha256 locked (data/ext_lsc_larry/SHA256SUMS).
+  - The CROP-seq set, the PLSTC-vs-StemSpan set and the authors' notebooks were not downloaded.
+- **Format check (H9), done:**
+  - All 5 samples share one feature index of 126,246 features:
+    - 32,286 genes;
+    - 93,952 Custom LARRY barcodes (MultiGFP18-21, Sapphire1/2, Flp libraries);
+    - 3-8 TotalSeq mouse hashtags;
+    - tdTomato.
+  - Cells per sample:
+
+    | sample | cells |
+    |---|---|
+    | D20 ex vivo | 32,206 |
+    | D20 in vivo | 46,772 |
+    | D40 ex vivo | 19,107 |
+    | D40 in vivo control | 23,973 |
+    | D40 in vivo treated | 42,119 |
+
+  - No clone sizes have been computed.
+- **Unit (fixed now): clone, defined from D20 ex vivo only**, the pre-outcome sample.
+  - A barcode is called in a cell if it has >= 3 UMI.
+  - Two barcodes are linked if they are co-called in >= 2 D20 ex vivo cells.
+  - Clone = connected component; key = the lexicographically smallest barcode ID.
+  - Barcodes never called at D20 ex vivo are singleton units keyed by their own ID. They are not units of any D20-state question.
+  - Partition: salted sha256 of the key (salt cellware-lsc-larry-v1), train 40% / A / B / C 20%.
+  - The clone map is written once and its sha256 is locked.
+- **What the seal step may print:** the number of called barcodes, components and largest component (in barcodes), as sanity checks for ambient merging. It prints no cell counts per clone and nothing from D20 in vivo or D40.
+- **After sealing, train only:**
+  1. Per partition: D20 clones with >= 3 cells (structural unit counts).
+  2. Train only: fraction of D20 clones seen at D40 ex vivo and at D20 in vivo, and the distribution of D40 size (readout gate H21).
+- **Gate verdict:**
+  - H19 power uses the chapter 8 T1 rho 0.45 (LSK, confirmed), shrunk to 0.30, with C's own count.
+  - H22: unit = clone, no between-condition contrast. The chemo arm (4 vs 4 mice) is scored separately.
+  - H20: Figures 2-4 legends only, stopping at outcome panels.
+- **Pre-flight:**
+  1. Unit: clone.
+  2. Readout: D40 ex vivo / D20 in vivo clone presence and size.
+  3. Used data first: no used data exists for this set.
+  4. Power: this step.
+  5. Exposure: paper design text only (clone counts of >= 3 cells: 1,375 ex vivo, 160 in vivo).
+  6. Literature: bioRxiv 10.64898/2026.02.24.707683, open access.
+  7. Readout gate: this step, train only.
+- **Practice:** script `c12s0_lsc.py` (`seal`, then `counts`); seeds not needed; the map is written before `counts` can run; the tick-list is checked against the script.

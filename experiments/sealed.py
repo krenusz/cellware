@@ -29,6 +29,12 @@ DATASETS = {
                       "two example rows printed (one pre-sensitive, one pre-resistant). No per-lineage outcome tabulated. Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\" -> every C10 report and power input must state that per-sample pre-resistant family/cell counts were seen. "
                       "An unlocked copy of the same 16 files remains in an old session temp folder (C: scratchpad dl_resistrace), never read since. "
                       "Lineage labels are not in any GEO table: only in the 10x reads (gene pBA439_UMI_20). GEO RAW tar downloaded 2026-11-13 (Bence: \"go 1 and 2\"): data/ext_resistrace/raw_tar, 32 files + tar sha256 in SHA256SUMS_raw; its 16 cell_info files are byte-identical to the locked processed copies; UMIcounts matrices unopened. Post-cell columns of sealed families: oracle only.",
+    "ext_lsc_larry": "Zenodo 10.5281/zenodo.18444428 (CC-BY; Rodriguez-Fraticelli lab LSC expansion + LARRY), downloaded 2026-11-14 "
+                     "(Bence: \"Yes, download LSC\"): 15 files (D20/D40 ex vivo, D20 in vivo, D40 in vivo control/treated; "
+                     "barcodes/features/matrix), md5 checked vs Zenodo, sha256 in data/ext_lsc_larry/SHA256SUMS. CROP-seq, "
+                     "PLSTCvsStemspan and the authors' notebooks NOT downloaded. Format check only (feature types, cell counts, "
+                     "number of LARRY features per sample) until partitioned by clone (LARRY barcode); clone sizes and "
+                     "cross-sample presence are outcomes: train only after sealing.",
     "ext_triandafillou": "locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
     "ext_guan": "not data: two failed PDF downloads (HTML / 17 bytes), left for Bence to delete",
     "ext_plos_gastruloid": "not data: de Jong 2024 model code, read as text only (C6-S6/S7c)",

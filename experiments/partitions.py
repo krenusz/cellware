@@ -97,6 +97,16 @@ PARTITIONED = {
                           "and two example rows; no per-lineage outcome; Dai 2024 full text read "
                           "(design, label accuracy, subclone A enrichment reported in the paper)",
     },
+    "lsc_larry": {
+        "salt": "cellware-lsc-larry-v1",
+        "unit": "clone: connected component of LARRY barcodes (Custom features) co-called (>= 3 UMI) in >= 2 D20 ex vivo "
+                "cells; key = smallest barcode ID (data/ext_lsc_larry/clone_map_d20.tsv). Barcodes never called at D20 "
+                "ex vivo are keyed by their own ID. All cells of a clone in every sample (D20/D40, ex vivo/in vivo) go together",
+        "files": ["15 Zenodo 18444428 matrices, sha256 in data/ext_lsc_larry/SHA256SUMS", "clone_map_d20.tsv"],
+        "sealed_on": "2026-11-14",
+        "prior_exposure": "feature/cell structure only (C12-S0 format check); preprint design text (1,375 clones >= 3 cells "
+                          "ex vivo, 160 in vivo, ~13 clones/mouse in chemo); no figures/outcomes read",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)
