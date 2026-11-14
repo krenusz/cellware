@@ -10882,3 +10882,23 @@ Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cell
      a quantified increment beyond a genetic-subclone proxy + QC, confirmed on a sealed lineage partition.
 - **Credit (H8):** moderate, for "state predicts survival beyond a coarse CNV proxy + QC". Not for
   "non-genetic"; see (a).
+
+## C11 proposal gate: SG_kit1 seqFISH (2026-11-14, Bence: "1"; no download, no statistic)
+Design counts are taken from the C4-S1 pre-flight (Ayyappan 2025 methods/figures, same SG folders):
+- pure: clone 1 (5), 3 (5), 6 (2), bulk (2);
+- chimeras: 1+3 (2), 1+6 (3), bulk (2).
+
+SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is likely clone 1 GFP+ vs the rest.
+- **H22 (unit = gastruloid):**
+  - 1+3 vs 1+6, the one new prediction from C3-S2 (segregation graded by H), has 2 vs 3 per arm: **stop**.
+  - Pure vs chimera passes H22 (>= 3 per arm), but **H20 fails**: the authors already report chimeras
+    segregate better (Fig 2E), on these same gastruloids, so we are exposed.
+- **H19 / H11:**
+  - A 40/20/20/20 split by gastruloid leaves 1-2 chimeras per sealed partition, so no partition has a
+    powered between-gastruloid test.
+  - A within-gastruloid test (clone identity -> A-P position) has thousands of cells but 1 replicate per
+    partition. It is also the published segregation result.
+- **Verdict: SG_kit1 fails the chapter gate on its own design counts.** Not downloaded.
+- **Confirming the counts** would mean downloading the 25 spatial tables (~4 MB) and reading only the distinct
+  clone_id labels per gastruloid. That would change the verdict only if the folder holds many more chimeras
+  than the paper reports (27 tables vs 21 gastruloids reported).
