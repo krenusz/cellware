@@ -233,6 +233,15 @@ pre-registration dated 2026-11-13 or later without it.
 - Adequacy gate before any cross reading (11-03).
 - On a new featurisation, pass a fate-free validity check before any fate statistic (11-11).
 - Tick the pre-registration against the script, line by line, before the run (11-11).
+- Pre-registration carries a `Pre-flight:` line and `Serves: <step> (script <name>)` (11-14b).
+- State-beyond-baseline tests: run a train confound battery (batch or library, well or tag, multi-unit
+  cells, detection level) before any power claim (11-14b).
+- Report deltas net of the label-shuffle null mean (11-14b).
+
+**Before a power claim**
+- Presence-type outcomes: count expected positives per sealed partition, not units (11-14b).
+- Selection power only by `sim_power` on the refit pipeline at the sealed n (H17); never `z_power` on a
+  fixed out-of-fold SE (11-14b; C12-S1 power is provisional until redone).
 
 **Before calling a candidate best**
 - Rank the candidates against stated criteria first (11-08).
