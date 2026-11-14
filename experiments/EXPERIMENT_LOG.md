@@ -11146,3 +11146,4 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 
 ## Retro 2026-11-14b (Bence: "do the retro")
 - RETRO_2026-11-14b.md written with neutral wording per Bence's save rule. Three practice lines proposed (positives-based power, train confound battery, pre-registration template), pending Bence; memory items added. Cellware remains paused.
+- Second check (Bence: "check the retro with opus"): the C12-S1 power figures (0.55-0.57 per partition, 0.85 pooled) used `z_power` on a fixed out-of-fold SE, not H17 simulation. They are provisional and probably optimistic; a `sim_power` redo is needed before any look. The D40 delta is about +0.04 net of label-shuffle bias. lit_gap was skipped (deviation).
