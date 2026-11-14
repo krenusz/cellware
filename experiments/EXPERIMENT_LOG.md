@@ -11088,3 +11088,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Practice:** shuffled-label null (delta AUC ~ 0) and clone-size-only placebo run in the same script; scripts read only through `train_only("lsc_larry"`; tick-list checked.
 - **Pre-flight:** (1) unit: D20 clone; (2) readout: presence at D40 ex vivo / D20 in vivo; (3) used data first: none for this set beyond C12-S0 train counts; (4) power: computed in this step from train CV, then stated per partition; (5) exposure: as above; (6) literature: preprint open access, methods and Fig 2 legend read; (7) readout gate: this step, train only.
 - Serves: C12-S1 (script `c12s1_select.py`, train CV only; writes selection/C12-S1.json and results_c12/c12s1_train.json).
+
+### C12-S1 amendment 1 (2026-11-14, after the first train CV, before any sealed read): library-index confound
+- **Why:** the first train run gave delta AUC 0.056 (D40 ex vivo) and 0.144 (D20 in vivo) over M0 = size + QC. Clones from different LARRY libraries (barcode prefix: Flp, MultiGFP18-21, Sapphire) come from different transductions (preprint: "differently indexed EGFP LARRY libraries"), and D40 / in vivo cohorts may draw unevenly from them, so state PCs could be proxying library/batch.
+- **Change:** M0L = M0 + one-hot of the clone key's library prefix; M1L = M0L + 5 PCs. The primary statistic becomes delta AUC (M1L - M0L). Both deltas are reported. Power is recomputed from M1L - M0L (shrink 0.5 unchanged).
+- **Exposure:** library-prefix counts of train clones (structure only).
+- **First-run numbers (for the record):** units A 304 / B 316 / C 298 / train 712 under the highest-UMI rule; D40 ex vivo 158 positives (22%), D20 in vivo 101 (14%); delta AUC 0.056 and 0.144; placebo delta about -0.01; power per partition 0.24-0.25 and 0.52-0.54.
