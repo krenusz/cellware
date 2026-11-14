@@ -10986,3 +10986,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   4. *Used data enough?* Yes. Spent A and B already give out-of-sample evidence of a chromatin signal:
      rho 0.26, bootstrap se 0.07, about 3.7 se above 0. That is exploratory (spent data), not a confirmation.
   5. *Already published?* Chromatin priming of fate is in Jindal 2024 / Ma 2020 at population level.
+
+## PAUSE + retro + data search (2026-11-14; Bence: "pause cellware, and do a retro / after look around for more data")
+- FOCUS step PAUSED-2026-11-14. Retro: RETRO_2026-11-14.md. Data search: DATA_SEARCH_2026-11-14.md.
+- **Data search:** two new public candidates: LSC expansion LARRY (Zenodo 10.5281/zenodo.18444428, CC-BY, clone unit, D20 -> D40 / in vivo) and PEtracer embryo trees (Cell 2026, GSE342607, 16 embryos; H20 risk high). It is not downloaded, and nothing was read beyond the paper's design text. Everything else is unreleased or fails H19/H22.
