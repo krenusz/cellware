@@ -120,10 +120,9 @@ def counts():
         size[s] = collections.Counter(a.values())
         res[f"{s}_cells_assigned"] = len(a)
         res[f"{s}_cells_ambiguous"] = amb
-    d20 = [k for k, n in size["D20_exvivo"].items() if n >= MIN_CELLS]
-    part = {k: partitions.partition_of(DS, k) for k in d20}
-    res["D20_units_ge3_per_partition"] = dict(collections.Counter(part.values()))       # structural
-    tr = [k for k in d20 if part[k] == "train"]
+    d20 = pd.DataFrame({"clone": [k for k, n in size["D20_exvivo"].items() if n >= MIN_CELLS]})
+    res["D20_units_ge3_per_partition"] = dict(collections.Counter(d20["clone"].map(lambda u: partitions.partition_of(DS, u))))  # structural
+    tr = list(partitions.train_only("lsc_larry", d20, "clone")["clone"])                      # outcomes: train only (H11)
     res["train"] = {"n_units": len(tr)}
     for s in SAMPLES[1:]:
         n = np.array([size[s].get(k, 0) for k in tr])
