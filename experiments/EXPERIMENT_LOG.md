@@ -11071,3 +11071,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - per-partition D20 unit counts;
   - train-only presence fractions and size quantiles;
   - ambiguous / assigned cell counts per sample (pooled).
+
+## C12-S1: train-only selection and power check (pre-registered 2026-11-14; Bence: "go with step 1")
+- **Serves: C12-S1** (chapter question: does D20 clone state predict later clone fate beyond clone size, held-out).
+- **H20 reading (done, bioRxiv 10.64898/2026.02.24.707683, methods + Fig 2 legend; stopped at outcome panels):**
+  - Authors call a cell's clone by its single highest-count barcode (>= 3 UMI). Our component map is kept (partition keys fixed); for the *later* samples a cell is assigned by its highest-UMI barcode mapped through the map (train-side rule choice, replaces dropping ambiguous cells).
+  - They group clones by fate distribution (scLiTr) and report fate-cluster engraftment enrichment adjusted for cell numbers. They do not report a held-out clone-level predictor beyond clone size. Their D20 vs D40 clone-size correlation is about 0.06 (legend), so size alone is weak.
+  - Minimal published mechanism: clones occupy stable states; MPP4-like (Hoxa9, Hmga2, Cd48) engraft more.
+  - Value: held-out, size-adjusted version of a published association; modest.
+- **Unit:** clone (D20 component, >= 3 D20 cells), train only. No between-condition contrast (H22 pass).
+- **Readouts (binary):** present at D40 ex vivo; present at D20 in vivo (>= 1 assigned cell).
+- **Models (train 5-fold CV by clone, repeated):** M0 = log D20 clone size + QC (mean log nCount, nFeature, % mt); M1 = M0 + top 5 PCs of the clone's mean D20 log-normalised expression (HVG, train-fit). Statistic: delta AUC (M1 - M0).
+- **Power (H17):** effect = train CV delta AUC x 0.5; sd = bootstrap SE x sqrt(n_train); power from power.py at each sealed partition's own clone count and positive count (~230 clones, ~25-33 positives each).
+- **Readout gate (H21):** >= 30 positives per side on train, and statistic must differ between models; units carrying it stated.
+- **Exposure:** C12-S0 counts + train presence fractions (listed in the C12-S0 entry). No sealed outcome read.
+- **Practice:** shuffled-label null (delta AUC ~ 0) and clone-size-only placebo run in the same script; scripts read only through `train_only("lsc_larry"`; tick-list checked.
+- **Pre-flight:** (1) unit: D20 clone; (2) readout: presence at D40 ex vivo / D20 in vivo; (3) used data first: none for this set beyond C12-S0 train counts; (4) power: computed in this step from train CV, then stated per partition; (5) exposure: as above; (6) literature: preprint open access, methods and Fig 2 legend read; (7) readout gate: this step, train only.

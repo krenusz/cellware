@@ -1,7 +1,7 @@
 {
  "chapter": "C9 LSK early chromatin predicts the neutrophil vs monocyte split (CellTag-multi, Jindal 2024)",
- "step": "C12-S0",
- "question": "C12-S0 gate check of the LSC expansion LARRY set (Zenodo 18444428; Bence 2026-11-14: \"Yes, download LSC\"): format check, seal by clone, then train-only unit counts and readout gate for 'D20 clone state predicts later expansion'. No test, no sealed read. Otherwise Cellware stays PAUSED (2026-11-14).",
+ "step": "C12-S1",
+ "question": "C12-S1 train-only selection and power check on the sealed LSC LARRY set (Zenodo 18444428; Bence 2026-11-14: \"go with step 1\"): does a clone's D20 ex vivo state predict its later presence (D40 ex vivo, D20 in vivo) beyond D20 clone size + QC? Train CV only, no sealed read, no oracle look. Otherwise Cellware stays PAUSED (2026-11-14).",
  "value": "Chromatin counterpart of chapter 8's confirmed RNA T1 (rho 0.45): a clone's day-2.5 accessibility predicting its specific Neu/Mono split on unseen clones. Jindal 2024 reports chromatin fate priming at population level, not a sealed clone-level split prediction; adds a disciplined replication in a second modality, value modest.",
  "literature": "Jindal 2024 (CellTag-multi) methods read for C7; Ma 2020 chromatin potential; C10 watch-list re-check 2026-11-14: GSE324482 private, E-MTAB-17351 403, hESC endoderm and DeepTrack preprints without accessions.",
  "next_steps": [
@@ -52,7 +52,8 @@
   "c10s1_select.py",
   "c10s2_confirm.py",
   "c9s3_power.py",
-  "c12s0_lsc.py"
+  "c12s0_lsc.py",
+  "c12s1_select.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
