@@ -11120,3 +11120,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Already published? The preprint reports that MPP4-like fate clusters engraft more (Fig 2k), a clone-level association; the size-adjusted held-out version is ours, the overlap in signal is probable (H20).
   - Units: 712 train clones, but the positives are what count (101 / 158).
 - **Exposure (to state in every C12 report):** C12-S0 counts; train presence fractions and quantiles; train library-prefix counts; per-partition D20 unit counts under both assignment rules (structural); nothing from A/B/C outcomes.
+
+### C12-S1 amendment 2 (2026-11-14, Bence: "recheck this"; train only, before any sealed read): measurement-confound checks
+- **Why:** the train delta AUC of +0.15 (D20 in vivo) is large and three measurement explanations were not excluded: (1) barcode transcript level (clones expressing more LARRY are easier to detect >= 3 UMI later), (2) D20 ex vivo hashtag / well structure (TotalSeqMouse3-10) lining up with what was transplanted, (3) doublet-like cells (>= 2 clones called) inflating the clone-mean expression PCs.
+- **Change:** M0x = M0L + mean log top-barcode UMI of the clone's D20 cells + fraction of its cells with >= 2 clones called + majority-hashtag one-hot. M1x = M0x + 5 PCs. Reported next to the existing deltas; the verdict reads M1x - M0x. Shrink 0.5 and power arithmetic unchanged.
+- **Exposure:** train-clone barcode-UMI, multi-clone fraction and hashtag counts (structure/QC only). No A/B/C outcome read.
