@@ -38,7 +38,7 @@ DATASETS = {
     "ext_petracer": "Zenodo 10.5281/zenodo.19892784 (MIT; Mouse Embryonic Lineage Atlas, PEtracer, Cell 2026), downloaded "
                     "2026-11-15 (Bence: \"Yes, download\"): 4 combined files (E7.5-E10_trees.h5td, _cells.csv, "
                     "_characters.csv, _spatial_scores.csv), md5 checked vs Zenodo, sha256 in data/ext_petracer/SHA256SUMS. "
-                    "Per-embryo h5td, scVI, umap NOT downloaded; GEO matrices of the 7 TRAIN embryos only downloaded 2026-11-15 (Bence: \"download the 9gb go ahead\") to data/ext_petracer/train_matrices, sizes checked vs GEO, sha256 in SHA256SUMS there; sealed embryos' matrices never downloaded. Format check only (columns, dtypes, "
+                    "Per-embryo h5td, scVI, umap NOT downloaded; GEO matrices of the 7 TRAIN embryos only downloaded 2026-11-15 (Bence: \"download the 9gb go ahead\") to data/ext_petracer/train_matrices, sizes checked vs GEO, sha256 in SHA256SUMS there. Partition A matrices (5 embryos, 15 files, 11.5 GB) downloaded 2026-11-15 (Bence: \"1\") to data/ext_petracer/sealed_A_matrices, sizes checked vs GEO, sha256 in SHA256SUMS there, UNREAD: only c14s2_confirm.test_A via test_oracle. B and C matrices never downloaded. Format check only (columns, dtypes, "
                     "cells per embryo, tree counts) until partitioned by embryo (petracer_embryo); cell-type composition, "
                     "spatial scores and tree structure are outcomes: train only after sealing.",
     "ext_triandafillou": "locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
