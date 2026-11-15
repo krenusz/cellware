@@ -149,8 +149,8 @@ def design(df, cols=None, pcs=None):
 
 def fit_lr(X, y):
     from sklearn.linear_model import LogisticRegression
-    mu, sd = X.mean(0).to_numpy(), X.std(0).to_numpy()
-    sd[sd == 0] = 1
+    mu, sd = np.array(X.mean(axis=0), dtype=float), np.array(X.std(axis=0), dtype=float)
+    sd[~(sd > 0)] = 1
     m = LogisticRegression(max_iter=2000, C=1.0).fit((X.to_numpy() - mu) / sd, y)
     return dict(cols=list(X.columns), mu=mu.tolist(), sd=sd.tolist(), coef=m.coef_[0].tolist(), b=float(m.intercept_[0]))
 
@@ -183,6 +183,8 @@ def deltas(D):
 def fit_models(D, pcs):
     models = {}
     for T, g in D.groupby("T"):
+        if g["y"].nunique() < 2:
+            continue
         models[T] = dict(base=fit_lr(design(g), g["y"]), full=fit_lr(design(g, pcs=pcs[D.index.get_indexer(g.index)]), g["y"]))
     return models
 
