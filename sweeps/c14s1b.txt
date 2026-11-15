@@ -1,0 +1,2 @@
+# C14-S1b expression selection, train embryos only (needs -f petracer=true)
+[experiments/results_c14/c14s1b_expr.json] python -I experiments/c14s1b_expr.py

@@ -9,6 +9,7 @@ args=(-f "sweep=$sweep")
 while [ $# -gt 0 ]; do
   case $1 in
     --larry) args+=(-f larry=true) ;;
+    --petracer) args+=(-f petracer=true) ;;
     --lines) args+=(-f "lines=$2"); shift ;;
     --guard) guard=$2; shift ;;  # cancel once fewer than N seeds can pass the gate
     *) echo "unknown option $1" >&2; exit 2 ;;

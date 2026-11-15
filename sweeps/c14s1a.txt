@@ -1,0 +1,2 @@
+# C14-S1a selection after power fix (amendment 1), train embryos only (needs -f petracer=true)
+[experiments/results_c14/c14s1_select.json] python -I experiments/c14s1_select.py

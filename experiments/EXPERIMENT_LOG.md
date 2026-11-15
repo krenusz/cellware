@@ -11399,3 +11399,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The fix indexes by flat-table positions.
   - Synthetic check: 6 embryos, one of them null, planted delta 0.43; the simulated mean was 0.46.
   - **Practice lesson (for the retro):** every power simulation gets a synthetic smoke test before its first real use.
+- **C14 compute moved to GitHub Actions (2026-11-15; Bence: "github action!!!!!! standing rule again !!! its already there").**
+  - sweep.yml gets a `petracer` input. The runner downloads the public Zenodo trees file and the 7 TRAIN-embryo GEO matrices, then checks sha256 against sweeps/petracer_train_data.sha256.
+  - The scripts are unchanged: they read train embryos only. Logs print train results only.
+  - Oracle looks stay local.
+  - S1b runs as sweeps/c14s1b.txt. Later S1a reruns would use sweeps/c14s1a.txt.

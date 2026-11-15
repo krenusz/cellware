@@ -16,6 +16,10 @@ on:
         description: download the LARRY datasets (fit_larry / fit_cytokine / clone-ES sweeps)
         type: boolean
         default: false
+      petracer:
+        description: download the PEtracer embryo trees + TRAIN-embryo GEO matrices (C14 train-only scripts)
+        type: boolean
+        default: false
 
 jobs:
   plan:
@@ -61,6 +65,21 @@ jobs:
               [ -s "$dir/$f" ] || curl -sfL -o "$dir/$f" "${base}stateFate_${pair##*:}_$f"
             done
           done
+      - name: PEtracer train data (public Zenodo + GEO; scripts read train embryos only)
+        if: inputs.petracer
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h . | tail -1
+          mkdir -p data/ext_petracer/raw data/ext_petracer/train_matrices
+          curl -sfL --retry 3 -o data/ext_petracer/raw/E7.5-E10_trees.h5td \
+            https://zenodo.org/api/records/23088914/files/E7.5-E10_trees.h5td/content
+          for f in $(awk '{print $2}' sweeps/petracer_train_data.sha256 | grep train_matrices); do
+            n=$(basename "$f"); gsm=${n%%_*}
+            curl -sfL --retry 3 -o "$f" "https://ftp.ncbi.nlm.nih.gov/geo/samples/${gsm:0:7}nnn/$gsm/suppl/$n"
+          done
+          sha256sum -c sweeps/petracer_train_data.sha256
+          source .venv/bin/activate
+          uv pip install h5py scikit-learn pandas
       - name: Run line ${{ matrix.line }}
         run: |
           source .venv/bin/activate  # lines may call plain python or uv run
