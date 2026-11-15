@@ -11316,3 +11316,40 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     3. The cluster bootstrap ignores between-embryo variance; A is 5 embryos. The train per-embryo deltas are positive in 5 of 6, and the small early embryos are weakest, so the power of 1.00 is optimistic.
     4. Exposure from the two re-analysis abstracts is topic level.
   - **Not yet decided:** the A look. Next is a train-only selection step (H12): ablation, a shuffled-label smoke test, and embryo-level power. It needs Bence's go.
+
+## C14-S1a: train-only selection, ablation, smoke tests, embryo-level power (pre-registered 2026-11-15; Bence: "go 1 2")
+- **Serves: C14-S1 (script c14s1_select.py).** Train embryos only.
+- **Same readout as C14-S0,** with the 30-clusters-per-side rule now enforced in code: types below it are dropped before modelling.
+- **Feature sets, each added to the base model:**
+  - S = author subtype;
+  - U = UMAP x/y + cycle phase (no author labels);
+  - F = S + U (the S0 full model).
+  The statistic is LOEO cell-weighted within-type delta AUC.
+- **Smoke tests:**
+  - (i) Null: outcomes shuffled across clusters within type × embryo. Pass if |delta| < 0.01 for every set.
+  - (ii) Planted: a synthetic feature y + N(0, 1.5) added to U. Pass if delta > 0.05.
+- **Embryo-level power (H17):** for each of A's 5 embryos (public stages), a stage-matched train donor is drawn at random:
+  - E8.0 from {R1, R3}; E8.5 from {R2, R3}; E9.0 from R1; E9.5 from R1.
+  - Clusters are resampled within the donor, and the delta is pooled.
+  - The null sd comes from paired swaps per cluster. Power is reported at the train effect and at half.
+  - Limit: E9.0 and E9.5 have one train donor each, so between-embryo variance is underestimated.
+- **Selection rule (written now, before the run):**
+  - If U has LOEO delta ≥ 0.02, embryo-level power ≥ 0.8 at half the effect, and both smoke tests pass, U is the model carried to the A look. It is label-free, which answers the annotation worry.
+  - If only S or F pass, there is no A look until S1b (expression), or Bence decides.
+  - Selection file: selection/C14-S1.json.
+- **Pre-flight:**
+  - Unit: embryo. The cluster is the ancestor node.
+  - Readout: as in S0.
+  - Used data first: C14-S0's train result (delta 0.081). It constrains the effect inputs.
+  - Power: as above.
+  - Exposure: as in S0, plus the S0 per-type and per-embryo train results.
+  - Literature access: as in S0.
+  - Readout gate (H21): at least 30 clusters per side per kept type.
+  - H22: no contrast; stage is a covariate.
+- **Practice:**
+  - Synthetic smoke tests: (i) and (ii) above, run before reading the ablation.
+  - Cold start: none.
+  - Measurement physics: UMAP is a 2-D embedding, and subtypes are author labels.
+  - Adequacy: if either smoke test fails, stop and do not read the ablation as evidence.
+- **S1b** (the expression matrices for the 7 train embryos, 9.3 GB) waits for Bence to confirm the corrected size.
+- **Models:** Opus designed it and wrote the script; the Sonnet data lane runs it.
