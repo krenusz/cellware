@@ -11404,3 +11404,20 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The scripts are unchanged: they read train embryos only. Logs print train results only.
   - Oracle looks stay local.
   - S1b runs as sweeps/c14s1b.txt. Later S1a reruns would use sweeps/c14s1a.txt.
+- **C14-S1a result after amendment 1** (2026-11-15). Sonnet ran it locally, since it started before the move to Actions. Opus reviewed. Train only. Files: results_c14/c14s1_select.txt and selection/C14-S1.json.
+  - 37 types, 163,305 cells, 25,688 clusters.
+  - **Smoke tests:**
+    - Shuffled null: S -0.0003, U -0.0005, F -0.0014. PASS.
+    - Planted: +0.138. PASS.
+  - **Results** (LOEO delta; embryo-level power on A at the train effect and at half; simulated mean):
+    - S (subtype): +0.016; power 1.00 and 0.45; sim mean 0.019.
+    - U (UMAP + phase): +0.076; power 1.00 and 1.00; sim mean 0.083.
+    - F (both): +0.081; power 1.00 and 1.00; sim mean 0.089.
+    The simulated means now sit near the LOEO deltas, so the fix holds.
+  - **Selection: U (base + UMAP + phase) is carried to the A look,** by the pre-registered rule.
+  - **Self-challenge:**
+    1. Power is saturated, because E9.0 and E9.5 each have one train donor. Between-embryo variance is therefore underestimated, so treat power as optimistic.
+    2. E8.0-R1 is negative in U and F. The effect is carried from E8.5 on, and A is mostly E9.0 and E9.5 (3 of 5 embryos).
+    3. UMAP is the authors' embedding, fit on all 16 embryos. S1b (expression PCs, on Actions) checks this.
+    4. Exposure: as in S0 and S1a.
+  - **The A look is not pre-registered yet.** It waits for S1b.

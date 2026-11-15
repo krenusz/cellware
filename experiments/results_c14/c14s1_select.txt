@@ -1,0 +1,7 @@
+types kept 37, cells 163305, clusters 25688
+SMOKE (i) shuffled null delta: {'S': -0.000272612680822662, 'U': -0.0004622224720709175, 'F': -0.001429294764523898} -> PASS
+SMOKE (ii) planted delta (U + planted): 0.1379 -> PASS
+SET S: LOEO delta +0.0160; per embryo E8.0-R1 -0.001, E8.0-R3 +0.004, E8.5-R2 +0.002, E8.5-R3 -0.004, E9.0-R1 +0.019, E9.5-R1 +0.022; embryo-level power on A 1.000 (half effect 0.453); sim mean 0.0193 sd 0.0026, null sd 0.0051
+SET U: LOEO delta +0.0761; per embryo E8.0-R1 -0.020, E8.0-R3 +0.021, E8.5-R2 +0.072, E8.5-R3 +0.090, E9.0-R1 +0.070, E9.5-R1 +0.087; embryo-level power on A 1.000 (half effect 1.000); sim mean 0.0825 sd 0.0024, null sd 0.0034
+SET F: LOEO delta +0.0813; per embryo E8.0-R1 -0.024, E8.0-R3 +0.018, E8.5-R2 +0.068, E8.5-R3 +0.065, E9.0-R1 +0.076, E9.5-R1 +0.093; embryo-level power on A 1.000 (half effect 1.000); sim mean 0.0890 sd 0.0035, null sd 0.0055
+SELECTION: U carried to the A look
