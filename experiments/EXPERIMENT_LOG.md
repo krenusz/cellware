@@ -11479,3 +11479,4 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Possible regional or capture confounding in the expression PCs.
   - The A embryos are later stages (E8.0 to E9.5).
 - One look spends A. B and C stay sealed.
+- **C14-S2 go (2026-11-15; Bence: "1" = run the one look on A).** Gates passed (selection; power 0.91). The look ran locally through test_oracle (oracle exception) at the commit below.
