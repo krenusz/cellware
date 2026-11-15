@@ -11266,3 +11266,39 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - state beyond cell type predicting clade fate in held-out embryos;
   - the within-embryo NMP maturation claim.
   Nothing has been adopted, and Bence decides. petracer_embryo train/A/B/C are still unread.
+
+## C13 CLOSED (2026-11-15; Bence: "memorize the claimable hypos and lets start with 1 2", option 1)
+- The morphogenesis question (claim H-a) cannot be asked of this set: its positions are inferred from expression, and no public set has whole-embryo lineage plus measured position.
+- petracer_embryo train/A/B/C are all unread.
+
+## C14-S0: chapter gate, cell state beyond cell type predicts clade fate in embryos (pre-registered 2026-11-15; same quote, option 2; claim H-b)
+- **Serves: C14-S0 (script c14s0_gate.py).** Train embryos only.
+- **Question:** in an embryo the model never saw, does a cell's state beyond its cell type predict the lineage composition of its nearest tree relatives?
+  - State: author subtype, UMAP x/y, cycle phase.
+  - Nearest relatives: different-type leaves of the smallest ancestor with at least 5 of them; ancestors above 300 leaves are not used.
+- **Readout:**
+  - Per cell type T, L1/L2 are the two commonest relative lineages. T is eligible if each holds at least 20% of relatives and T has at least 200 evaluable cells.
+  - y = 1 if L1 relatives outnumber L2, given at least 3 relatives in L1 or L2; ties are dropped.
+  - Base model: own lineage, germ layer, log counts, detection rate, log clade size, ancestor depth, stage.
+  - Full model: base + subtype + UMAP + phase.
+  - Logistic regression per type, leave-one-embryo-out. The statistic is the cell-weighted within-type delta AUC.
+- **Pre-flight:**
+  - Unit: embryo (independent). Within an embryo, the cluster is the ancestor node, since cells sharing it share their outcome.
+  - Readout: as above.
+  - Used data first: train only (7 embryos). No sealed partition is read; sealed trees are skipped by key while streaming.
+  - Power: H17 simulation. Train out-of-fold predictions are bootstrapped by cluster to partition A's projected cluster counts: stage-matched per-embryo means times A's public stages. The null sd comes from paired full/base swaps per cluster. Power is also reported at half the effect.
+  - Exposure:
+    - C13 headings: topic level.
+    - Two re-analysis abstracts (lineage inpainting, scPFA): topic level.
+    - The UMAP was fit by the authors on all 16 embryos. It is an embedding with no outcome leakage, but stated.
+    - The subtype labels are the authors' and may be named by fate bias. That would make the effect partly an annotation effect, so it is checked in the result.
+  - Literature access: the sweep notes LITERATURE_SWEEP_C13_2026-11-15.md, open-access abstracts.
+  - Readout gate (H21): outcome counts per side as cells and clusters, at least 30 clusters per side for each type kept, and the statistic must differ between models.
+  - H22: no between-condition contrast. Stage is a covariate only.
+- **Practice:**
+  - Synthetic smoke test: none for the gate itself. Before any oracle test, a planted-signal smoke test will be done on shuffled train labels.
+  - Cold start: the first run is reported as it comes.
+  - Measurement physics: state is the author annotation plus a 2-D embedding, which is lossy. A full-expression version needs train-embryo GEO matrices (download needs Bence's OK).
+  - Adequacy: if fewer than 90% of leaves match the cell index, stop. If no type is eligible, stop.
+- **Pass rule:** the readout gate is met AND simulated power on A is at least 0.8 at the train effect. Otherwise stop and report. The options then are train expression matrices or closing.
+- **Models:** Opus wrote the design and the script; a Sonnet data lane (cellware-data) runs it and reports.
