@@ -11482,3 +11482,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **C14-S2 go (2026-11-15; Bence: "1" = run the one look on A).** Gates passed (selection; power 0.91). The look ran locally through test_oracle (oracle exception) at the commit below.
 
 **C14-S2 look, technical re-run (2026-11-15).** The first run of the look crashed with an out-of-memory error inside `extract` (building the sparse matrix of A's HVG counts), before any statistic was computed. Output seen: the H14 power line and the count of A trees kept (15); no outcome, delta or AUC. Nothing was written to test_ledger.tsv, so A is not spent. Fix: `extract` now fills a dense float32 cells x HVG array chunk by chunk instead of concatenating COO arrays. It computes the same numbers (synthetic smoke test: max abs diff 0.0 against a direct computation). The model, readout, statistic and threshold are unchanged. Re-running the same look once.
+
+### C14-S2 result on petracer_embryo:A (2026-11-15, commit 88f4654; reported as it came)
+- **Primary: CONFIRMED.** Mean embryo delta AUC (full - base) 0.0838 over 5 embryos; sd used 0.0625 (A's own, above the 0.0374 floor); z = 3.0 > 1.96.
+- Per embryo: E8.0-R2 -0.006, E8.5-R1 +0.043, E9.0-R2 +0.115, E9.5-R2 +0.137, E9.5-R3 +0.131. 4 of 5 positive.
+- Prediction (stated before the look): delta > 0 in at least 4 of 5 embryos, mean about 0.05-0.10. Met.
+- Secondary (descriptive): pooled cell-weighted delta 0.121; 279,153 cells, 40,594 clusters, 36 types; barcode match 100%. Largest per-type deltas: somatic mesoderm 0.32, endothelial cell 0.29, endothelial progenitor 0.21, forelimb field 0.17, arterial endothelial 0.17. 10 of 36 types slightly negative (all > -0.06).
+- Self-challenge:
+  - Suspicious? The effect rises with stage: about zero at E8.0, about 0.13 at E9.5. The earliest A embryo carries none of it.
+  - Other explanations? Expression PCs may encode position (region) rather than a fate bias: relatives that sit together share both a regional program and a lineage mix. Capture or batch per embryo is controlled by the within-embryo design, but regional co-location is not. Endothelial types again carry a large share (as on train).
+  - How many units? 5 embryos; z rests on n = 5.
+  - Used data enough? Train (7 embryos) selected the model and readout; nothing was tuned on A.
+  - Already published? Two unread papers in today's gap map (#2, #12 in lit/gap_2026-11-15.md) are close; to be read before any write-up.
+- Exposure (C14): two re-analysis abstracts of this dataset at topic level, plus C13 headings; the authors' annotations are used only for type and lineage labels, not as features of P.
+- Partition A is spent. B (3 embryos) and C (1 embryo) stay sealed.
