@@ -1,0 +1,40 @@
+{
+ "test": "petracer_c14s2",
+ "higher_is_better": true,
+ "candidates": {
+  "P": 0.0903,
+  "F": 0.0813,
+  "U": 0.0761,
+  "S": 0.016
+ },
+ "chosen": "P",
+ "note": "candidates = C14-S1a/S1b train LOEO delta AUC; P = base + 30 expression PCs (train-fit HVG/z/PCA); primary = mean of A embryo deltas, known-sd z > 1.96, sd = max(0.0374, A sd)",
+ "model_sha256": "890380fbbaeff7ed8fc22258a89875338f9419b4ff239faf7fd51b10bb608654",
+ "train": {
+  "types": 37,
+  "cells": 163305,
+  "clusters": 25688,
+  "matched": 1.0,
+  "smoke_heldout_embryo": "E8.5-R2",
+  "smoke_delta": 0.10213672928072125
+ },
+ "power": {
+  "effect": 0.0556,
+  "sd": 0.0374,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8,
+  "sources": {
+   "effect": "C14-S1b train embryo-mean LOEO delta 0.0741 x 0.75 shrink",
+   "sd": "C14-S1b sd of 6 train embryo LOEO deltas"
+  }
+ },
+ "readout_gate": {
+  "pass": true,
+  "sides": {
+   "L1_majority_clusters": 20675,
+   "L2_majority_clusters": 9639
+  }
+ },
+ "exposure": "train results; C13 headings; two re-analysis abstracts (topic level)"
+}
