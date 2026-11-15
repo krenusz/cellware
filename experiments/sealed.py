@@ -212,6 +212,7 @@ SEALED_FILES = {
 # modules allowed to contain held-out access patterns (each reviewed; reason stated)
 HELDOUT_READERS = {
     "test_oracle.py": "the oracle",
+    "c14s2_confirm.py": "C14-S2: petracer_embryo sealed partition read only in test_A (sealed_rows, sealed_A_matrices) via test_oracle; counts_A uses public embryo names only; fit() via train_only",
     "core_sisseq.py": "scores('heldout') only inside heldout_stat (E54)",
     "sis_data.py": "_keep(part='heldout') loader, called only by oracle tests",
     "e55_fm.py": "split() marks held-out clones; heldout_stat (E55)",

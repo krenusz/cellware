@@ -11436,3 +11436,46 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     2. Power is saturated and optimistic (one train donor at E9.0 and at E9.5).
     3. The `capture` column (107 values) may correspond to dissected regions. If so, expression PCs partly carry regional identity, which is biological state but may be read as position. The A design should report this rather than hide it.
     4. Exposure: as in S0 and S1a.
+
+## C14-S2: one oracle look on petracer_embryo:A, expression state beyond cell type predicts clade fate (pre-registered 2026-11-15; Bence: "1")
+- **Serves: C14-S2 (script c14s2_confirm.py).** Claim H-b.
+- **Compute:** fit() on GitHub Actions (train data only, sweeps/c14s2_fit.txt). The look runs locally through test_oracle (oracle exception).
+- **Data:** partition A's GEO matrices (5 embryos: E8.0-R2, E8.5-R1, E9.0-R2, E9.5-R2, E9.5-R3; 15 files, 11.5 GB) are in data/ext_petracer/sealed_A_matrices, with sha256 locked there. They are read only by c14s2_confirm.test_A. B's and C's matrices are never downloaded.
+- **Frozen model (fit on the 7 train embryos only; selection/C14-S2_model.pkl, sha256 in selection/C14-S2.json):**
+  - Readout as in C14-S0/S1. Eligible types and their L1/L2 lineages are fixed from train, with at least 30 clusters per side.
+  - HVG: as in S1b (2,000 genes, chosen on the 6 train embryos other than E9.5-R1).
+  - Per-gene z-score and PCA (30 components) are fit on train readout cells only.
+  - Per type, a base logistic model and a full one (base + PCs) are fit on all train cells of that type.
+  - The design columns are frozen. A categories unseen in train are encoded as all zeros.
+- **Test on A:**
+  - Build A's readout with the same rules and train-fixed types and L1/L2. Project A cells with the frozen HVG, z-score and PCA, and score them with the frozen models.
+  - Per A embryo: the cell-weighted within-type delta AUC (full - base). Types with a single class in that embryo are skipped.
+  - **Primary:** the mean of the 5 embryo deltas (embryo-weighted). z = mean / (sd / sqrt(5)), with sd = max(0.0374, the sd of the 5 A deltas). **Confirmed if z > 1.96** (one-sided alpha 0.025). If fewer than 5 embryos have a delta, n is reduced and stated.
+  - **Secondary (descriptive only):** pooled cell-weighted delta over all A cells; how many embryos are positive; per-type deltas.
+- **Prediction (stated before the look):** delta > 0 in at least 4 of 5 embryos, and a mean of about 0.05-0.10.
+- **Power (H14, from power.py):**
+  - effect 0.0556 = train embryo-mean LOEO delta 0.0741 (C14-S1b) × 0.75 shrink;
+  - sd 0.0374 = sd of the 6 train embryo deltas (C14-S1b);
+  - counts {embryos: 5} (public names);
+  - power 0.91.
+  - Spent results that constrain these inputs: C14-S0, S1a, S1b (train only).
+- **Pre-flight:**
+  - Unit: embryo.
+  - Readout: the lineage of different-type relatives (L1 vs L2).
+  - Used data first: all train analyses.
+  - Exposure:
+    - Train results.
+    - C13 headings.
+    - Two re-analysis abstracts (topic level).
+    - The authors' UMAP and subtypes are not used in P.
+  - Literature: LITERATURE_SWEEP_C13.
+  - Readout gate (H21): sides from train S0 clusters.
+  - H22: no contrast.
+- **Practice:**
+  - The planted and shuffled smoke tests passed for P in S1b.
+  - The frozen-model path is smoke-tested on one train embryo held out from the fit before the look (sanity: delta > 0).
+  - Adequacy: if fewer than 90% of A readout cells match a barcode, or fewer than 3 A embryos have a delta, stop with no conclusion (the partition is still spent).
+- **Self-challenge to report with the result:**
+  - Possible regional or capture confounding in the expression PCs.
+  - The A embryos are later stages (E8.0 to E9.5).
+- One look spends A. B and C stay sealed.

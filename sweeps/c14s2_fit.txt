@@ -1,0 +1,2 @@
+# C14-S2 frozen-model fit, train embryos only (needs -f petracer=true)
+[experiments/results_c14/c14s2_selection.json] python -I experiments/c14s2_confirm.py fit

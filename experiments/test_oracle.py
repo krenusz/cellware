@@ -300,6 +300,20 @@ PARTITION_COUNTS = {"gastruloid_g12_drug": _g12_counts, "gastruloid_c4s2a_rescue
                     "celltag_c9s2_atac": _c9s2("counts"), "resistrace_c10s2": _c10s2("counts")}  # test -> function(partition) -> {group: n units}; counts only (H9)
 
 
+def _c14s2(what):
+    def f(part):
+        import c14s2_confirm
+
+        return getattr(c14s2_confirm, f"{what}_A")(part)
+
+    return f
+
+
+PARTITION_TESTS["petracer_c14s2"] = (_c14s2("test"), "petracer_embryo", "C14-S2: expression state beyond cell type "
+                                     "predicts clade fate; mean of A embryo dAUC, known-sd z > 1.96")
+PARTITION_COUNTS["petracer_c14s2"] = _c14s2("counts")
+
+
 def power_gate(exp, test, part):
     """H14: power of the pre-registered contrast from counts only; refuse below the minimum (never below
     0.8). Pre-registrations from power.STRICT_FROM also need power sources and a readout block (H21).
