@@ -11148,3 +11148,46 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - RETRO_2026-11-14b.md written with neutral wording per Bence's save rule. Three practice lines proposed (positives-based power, train confound battery, pre-registration template), pending Bence; memory items added. Cellware remains paused.
 - Second check (Bence: "check the retro with opus"): the C12-S1 power figures (0.55-0.57 per partition, 0.85 pooled) used `z_power` on a fixed out-of-fold SE, not H17 simulation. They are provisional and probably optimistic; a `sim_power` redo is needed before any look. The D40 delta is about +0.04 net of label-shuffle bias. lit_gap was skipped (deviation).
 - Practice lines from RETRO_2026-11-14b adopted (Bence: "1"): pre-registration template, train confound battery, shuffle-net deltas, positives-based counts, sim_power-only selection power. Added to program.md practice checklist.
+
+## C13-S0: embryo lineage-tree set gate check, metadata only (pre-registered 2026-11-15; Bence: "goo 1")
+- **Serves: C13-S0.** It decides whether GEO GSE342607 (PEtracer embryo lineage maps, Cell 2026 189:7154) can carry a chapter on Cellware's core question: does early lineage/fate structure predict later tissue or morphogenesis outcomes on sealed units?
+- **Pre-flight:**
+  - Unit: the embryo (independent biological replicate), to be confirmed from the sample sheet.
+  - Readout: per-embryo lineage tree with tissue or spatial labels. The candidate readouts are named only after the design is known.
+  - Used data first: none. This is a new set, with no prior exposure beyond the abstract and the data-search line of 2026-11-14.
+  - Power: no statistic in S0. H19 needs at least 0.8 from the sealed counts of the primary test, so this step only counts units.
+  - Exposure: GEO series and sample metadata (titles, characteristics, file names and sizes) plus the Zenodo file list. No data file is downloaded or read. Authors' result tables stay unread.
+  - Literature access: Cell 2026 is open access (to confirm). H20 reading happens only if the gate passes.
+  - Readout gate (H21): not applicable in S0.
+  - H22: name the assignment unit. With fewer than 3 embryos per arm for any between-condition contrast, stop.
+- **Practice:**
+  - Synthetic smoke test: not applicable (metadata counting only, no statistic).
+  - Cold start: done; this is a new dataset with no prior files.
+  - Measurement physics: lineage recording by editing at target sites; trees are given by the authors (method read at H20 if the gate passes).
+  - Adequacy gate: the four pass rules below.
+- **Pass rule (all must hold):**
+  1. At least 6 independent embryos with lineage trees, so that train plus 3 sealed partitions each get at least 1, and partitions by unit are possible. Alternatively, a within-embryo unit (clone/subtree) with at least 30 per partition, if subtrees are independent enough. That is stated as a risk, not assumed.
+  2. A tissue, spatial or later-stage readout per unit.
+  3. Processed trees available, so no raw re-processing beyond 3 steps (H19).
+  4. A download size we can hold (C: is nearly full, so D:).
+  Otherwise the set fails the gate, and stays on the watch list or is dropped.
+- **No download in S0.** Any download needs Bence's OK on file names and size.
+- **C13-S0 result (2026-11-15, metadata only, no data file downloaded or read; Opus):**
+  - **Design (GEO series and sample text, 32 samples):**
+    - 16 embryos, all whole-embryo chimeras from lineage-recording ES cells: E7.5, E8.0, E8.5, E9.0 and E9.5 with replicates R1-R3 each, plus E10.0 R1 only.
+    - Per embryo: one scRNA count matrix and 2-3 lineage trees (Newick, C1-C3, likely one per contributing ES clone), plus a character matrix.
+    - No treatment arms. Stage is the only factor, at 3 embryos per stage (1 at E10.0).
+  - **Files:**
+    - GEO RAW.tar is 28.4 GB (the matrices are 28.3 GB; the trees only 0.03 GB).
+    - The Zenodo atlas (10.5281/zenodo.19892784, MIT licence, "Mouse Embryonic Lineage Atlas", 16 embryos, >1.4M cells) holds combined compact files: `E7.5-E10_trees.h5td` 1.63 GB, `E7.5-E10_cells.csv` 0.36 GB, `E7.5-E10_spatial_scores.csv` 0.11 GB, `E7.5-E10_characters.csv` 0.34 GB, `E7.5-E10_umap.csv` 0.09 GB, `E7.5-E10_scVI.csv` 1.03 GB. It also has per-embryo h5td files of 0.1-17.5 GB.
+  - **Gate:**
+    1. Units: **pass.** 16 embryos is at least 6, so a partition by embryo is possible: train about 6, A/B/C about 3 each. A within-embryo unit (clade) would give far more units but is not independent; the unit is decided at S1 with that risk stated.
+    2. Readout: **pass on paper.** Per-cell expression (cell type) and a per-cell "spatial scores" table exist. Their columns are unread until sealing.
+    3. Processed trees: **pass.** No raw re-processing is needed.
+    4. Size: **pass.** A lean set of trees + cells + spatial scores + characters is about 2.4 GB on D:, which has 419 GB free.
+  - **H22:** no between-condition contrast is planned. Any stage contrast would have at most 3 embryos per stage before partitioning, so stage contrasts are excluded and tests must be within-embryo statistics pooled over held-out embryos.
+  - **H19:** power is not yet known. It needs a train-only statistic at S1, and the gate passes on design counts only.
+  - **H20:** not started. The source paper itself charts fate coupling, so any C13 test must add something beyond it (overlap risk stated). A candidate within Cellware's core question, named here but not adopted: whether lineage history predicts spatial position beyond cell type in held-out embryos. This would touch the chapter 6 reopen condition.
+  - **Next:**
+    - The lean download (the 4 Zenodo files above, about 2.4 GB) needs Bence's OK.
+    - Then seal by embryo (H1), with partition `petracer_embryo` defined before any statistic. Format check (H9) shows columns and counts only.

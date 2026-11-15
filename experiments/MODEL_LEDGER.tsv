@@ -1887,3 +1887,6 @@ toolu_01XkwTauytM6qnAxBj9vcm8J#commit	2026-11-15T12:10:02.538Z	b7d9fa19	main	cla
 toolu_01X38i62dchBEcL8dZxkZAtX#run	2026-11-15T12:13:37.161Z	b7d9fa19	main	claude-opus-5-5	run	model_ledger.py		
 toolu_01PYJs8RvsfFb3XMWSAttBoJ#run	2026-11-15T12:14:16.720Z	b7d9fa19	main	claude-opus-5-5	run	model_ledger.py	resistrace	
 toolu_01LJ6ornDDEhRN3vHkteKkVC#run	2026-11-15T12:14:29.166Z	b7d9fa19	main	claude-opus-5-5	run	model_ledger.py		
+toolu_013Lpys4bJ4xVFMhvSZmV7Lb#run	2026-11-15T12:15:06.378Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_013Lpys4bJ4xVFMhvSZmV7Lb#tests	2026-11-15T12:15:06.378Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01ET8FuXZH2bUWYreVh42U36#commit	2026-11-15T12:15:56.548Z	b7d9fa19	main	claude-opus-5-5	commit	Model provenance ledger (MODEL_LEDGER.tsv, backfilled from 2026-10-01) + retro rule		
