@@ -11421,3 +11421,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     3. UMAP is the authors' embedding, fit on all 16 embryos. S1b (expression PCs, on Actions) checks this.
     4. Exposure: as in S0 and S1a.
   - **The A look is not pre-registered yet.** It waits for S1b.
+- **C14-S1b result** (2026-11-15). GitHub Actions run https://github.com/krenusz/cellware/actions/runs/43749061502, success; the runner checked every sha256. Opus reviewed. Train only. File: results_c14/c14s1b_expr.json.
+  - 100% of readout cells matched a matrix barcode.
+  - **Smoke tests:**
+    - Shuffled: +0.002. PASS (under 0.01).
+    - Planted: +0.138. PASS.
+  - **P (base + 30 expression PCs, no author labels, no UMAP): LOEO delta +0.090.**
+    - Per embryo: E8.0-R1 +0.015, E8.0-R3 +0.041, E8.5-R2 +0.102, E8.5-R3 +0.090, E9.0-R1 +0.088, E9.5-R1 +0.108. All 6 are positive, including E8.0-R1, which was negative with UMAP.
+    - Embryo-level power on A: 1.00 at the train effect and at half. Sim mean 0.099, null sd 0.0043.
+  - **Selection** (pre-registered rule; the runner had no S1a file, so the comparison with U = +0.076 from S1a was made here): P ≥ U, so **P (expression PCs) replaces U and is carried to the A look.**
+  - The A look needs partition A's expression matrices: a separate download that needs Bence's OK, plus code and predictions committed first (H6).
+  - **Self-challenge:**
+    1. The PCA was fit on all train readout cells, including the held-out embryo in each LOEO fold. This is unsupervised and stated. For the A look, the PCA is fit on train only and applied to A.
+    2. Power is saturated and optimistic (one train donor at E9.0 and at E9.5).
+    3. The `capture` column (107 values) may correspond to dissected regions. If so, expression PCs partly carry regional identity, which is biological state but may be read as position. The A design should report this rather than hide it.
+    4. Exposure: as in S0 and S1a.

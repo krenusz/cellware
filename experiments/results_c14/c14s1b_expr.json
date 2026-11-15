@@ -1,0 +1,24 @@
+{
+ "smoke_shuffled": 0.002239961936944689,
+ "smoke_planted": 0.1381987780823438,
+ "smoke_pass": true,
+ "loeo_delta": 0.09026049717077222,
+ "per_embryo": {
+  "E8.0-R1": 0.014541410211001523,
+  "E8.0-R3": 0.04136270980548454,
+  "E8.5-R2": 0.10175082689915377,
+  "E8.5-R3": 0.09044547592472746,
+  "E9.0-R1": 0.08808350857336045,
+  "E9.5-R1": 0.1081173967591566
+ },
+ "power_A": 1.0,
+ "power_A_half": 1.0,
+ "sim_mean": 0.09937742347137987,
+ "sim_sd": 0.003222566860594981,
+ "null_sd": 0.004288148196437421,
+ "u_delta_s1a": null,
+ "selection": "P carried to the A look (needs A expression matrices: separate download, Bence OK)",
+ "n_hvg": 2000,
+ "n_pc": 30,
+ "matched": 1.0
+}
