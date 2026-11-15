@@ -1,0 +1,89 @@
+train embryos (7): ['E7.5-R1', 'E8.0-R1', 'E8.0-R3', 'E8.5-R2', 'E8.5-R3', 'E9.0-R1', 'E9.5-R1']; cells 552719
+trees seen 56, kept (train) 24
+train leaves 413254, matched to obs 413254 (1.000); cells with relatives 394021
+
+READOUT GATE (H21), per eligible type:
+  {'type': 'Allantoic endothelial progenitor', 'L1': 'Extraembryonic mesoderm', 'L2': 'Lateral plate mesoderm', 'cells': 920, 'y1': 629, 'y0': 291, 'clusters_y1': 295, 'clusters_y0': 163, 'embryos': 5, 'subtypes': 1}
+  {'type': 'Arterial endothelial cell', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 450, 'y1': 316, 'y0': 134, 'clusters_y1': 235, 'clusters_y0': 109, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Autonomic progenitor', 'L1': 'Neural crest', 'L2': 'Neural ectoderm', 'cells': 805, 'y1': 601, 'y0': 204, 'clusters_y1': 174, 'clusters_y0': 86, 'embryos': 1, 'subtypes': 1}
+  {'type': 'Axial progenitor', 'L1': 'Neural ectoderm', 'L2': 'Paraxial mesoderm', 'cells': 3133, 'y1': 2005, 'y0': 1128, 'clusters_y1': 965, 'clusters_y0': 517, 'embryos': 6, 'subtypes': 1}
+  {'type': 'Cranial neural crest', 'L1': 'Neural ectoderm', 'L2': 'Neural crest', 'cells': 7002, 'y1': 4615, 'y0': 2387, 'clusters_y1': 1094, 'clusters_y0': 660, 'embryos': 4, 'subtypes': 2}
+  {'type': 'Dermomyotome', 'L1': 'Paraxial mesoderm', 'L2': 'Neural ectoderm', 'cells': 18534, 'y1': 15721, 'y0': 2813, 'clusters_y1': 3343, 'clusters_y0': 492, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Dorsal root ganglion neuron', 'L1': 'Neural crest', 'L2': 'Neural ectoderm', 'cells': 243, 'y1': 170, 'y0': 73, 'clusters_y1': 80, 'clusters_y0': 33, 'embryos': 1, 'subtypes': 1}
+  {'type': 'Dorsal root ganglion progenitor', 'L1': 'Neural ectoderm', 'L2': 'Neural crest', 'cells': 223, 'y1': 77, 'y0': 146, 'clusters_y1': 51, 'clusters_y0': 97, 'embryos': 1, 'subtypes': 1}
+  {'type': 'Endocardial cell', 'L1': 'Paraxial mesoderm', 'L2': 'Lateral plate mesoderm', 'cells': 596, 'y1': 162, 'y0': 434, 'clusters_y1': 95, 'clusters_y0': 230, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Endothelial cell', 'L1': 'Paraxial mesoderm', 'L2': 'Lateral plate mesoderm', 'cells': 3489, 'y1': 1819, 'y0': 1670, 'clusters_y1': 840, 'clusters_y0': 856, 'embryos': 4, 'subtypes': 2}
+  {'type': 'Endothelial progenitor', 'L1': 'Paraxial mesoderm', 'L2': 'Lateral plate mesoderm', 'cells': 2931, 'y1': 1390, 'y0': 1541, 'clusters_y1': 848, 'clusters_y0': 928, 'embryos': 6, 'subtypes': 1}
+  {'type': 'Epicardium', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 378, 'y1': 330, 'y0': 48, 'clusters_y1': 143, 'clusters_y0': 13, 'embryos': 2, 'subtypes': 1}
+  {'type': 'Extraembryonic mesoderm', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 2344, 'y1': 1604, 'y0': 740, 'clusters_y1': 364, 'clusters_y0': 141, 'embryos': 6, 'subtypes': 1}
+  {'type': 'First heart field', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 1473, 'y1': 1062, 'y0': 411, 'clusters_y1': 441, 'clusters_y0': 148, 'embryos': 6, 'subtypes': 3}
+  {'type': 'Floor plate', 'L1': 'Neural ectoderm', 'L2': 'Paraxial mesoderm', 'cells': 7858, 'y1': 6991, 'y0': 867, 'clusters_y1': 1919, 'clusters_y0': 189, 'embryos': 4, 'subtypes': 2}
+  {'type': 'Foregut', 'L1': 'Endoderm', 'L2': 'Neural ectoderm', 'cells': 1647, 'y1': 1520, 'y0': 127, 'clusters_y1': 367, 'clusters_y0': 33, 'embryos': 4, 'subtypes': 4}
+  {'type': 'Forelimb field', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 7057, 'y1': 6177, 'y0': 880, 'clusters_y1': 615, 'clusters_y0': 123, 'embryos': 1, 'subtypes': 1}
+  {'type': 'Frontonasal mesenchyme', 'L1': 'Neural crest', 'L2': 'Neural ectoderm', 'cells': 8154, 'y1': 4826, 'y0': 3328, 'clusters_y1': 525, 'clusters_y0': 337, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Intermediate mesoderm', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 4518, 'y1': 2308, 'y0': 2210, 'clusters_y1': 883, 'clusters_y0': 905, 'embryos': 6, 'subtypes': 3}
+  {'type': 'Juxtacardiac field', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 718, 'y1': 531, 'y0': 187, 'clusters_y1': 261, 'clusters_y0': 86, 'embryos': 6, 'subtypes': 1}
+  {'type': 'Nascent mesoderm', 'L1': 'Epiblast', 'L2': 'Ectoderm', 'cells': 267, 'y1': 161, 'y0': 106, 'clusters_y1': 54, 'clusters_y0': 34, 'embryos': 1, 'subtypes': 1}
+  {'type': 'Nascent somite', 'L1': 'Neural ectoderm', 'L2': 'Paraxial mesoderm', 'cells': 4026, 'y1': 1494, 'y0': 2532, 'clusters_y1': 472, 'clusters_y0': 749, 'embryos': 6, 'subtypes': 1}
+  {'type': 'Notochord', 'L1': 'Paraxial mesoderm', 'L2': 'Neural ectoderm', 'cells': 579, 'y1': 392, 'y0': 187, 'clusters_y1': 153, 'clusters_y0': 84, 'embryos': 6, 'subtypes': 1}
+  {'type': 'Olfactory placode', 'L1': 'Surface ectoderm', 'L2': 'Neural crest', 'cells': 2570, 'y1': 1855, 'y0': 715, 'clusters_y1': 387, 'clusters_y0': 191, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Otic placode', 'L1': 'Surface ectoderm', 'L2': 'Neural crest', 'cells': 1306, 'y1': 1024, 'y0': 282, 'clusters_y1': 285, 'clusters_y0': 91, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Otic sensory neuron', 'L1': 'Surface ectoderm', 'L2': 'Neural crest', 'cells': 205, 'y1': 173, 'y0': 32, 'clusters_y1': 56, 'clusters_y0': 11, 'embryos': 2, 'subtypes': 1}
+  {'type': 'Pharyngeal arch mesenchyme', 'L1': 'Neural crest', 'L2': 'Neural ectoderm', 'cells': 12466, 'y1': 7916, 'y0': 4550, 'clusters_y1': 788, 'clusters_y0': 500, 'embryos': 3, 'subtypes': 3}
+  {'type': 'Pharyngeal endoderm', 'L1': 'Endoderm', 'L2': 'Paraxial mesoderm', 'cells': 3084, 'y1': 2254, 'y0': 830, 'clusters_y1': 288, 'clusters_y0': 126, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Pharyngeal mesoderm', 'L1': 'Paraxial mesoderm', 'L2': 'Lateral plate mesoderm', 'cells': 3774, 'y1': 2061, 'y0': 1713, 'clusters_y1': 514, 'clusters_y0': 460, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Pre-placodal ectoderm', 'L1': 'Surface ectoderm', 'L2': 'Neural ectoderm', 'cells': 1961, 'y1': 1483, 'y0': 478, 'clusters_y1': 385, 'clusters_y0': 161, 'embryos': 3, 'subtypes': 1}
+  {'type': 'Roof plate', 'L1': 'Neural ectoderm', 'L2': 'Neural crest', 'cells': 2970, 'y1': 2018, 'y0': 952, 'clusters_y1': 976, 'clusters_y0': 432, 'embryos': 4, 'subtypes': 2}
+  {'type': 'Second heart field', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 5814, 'y1': 3714, 'y0': 2100, 'clusters_y1': 983, 'clusters_y0': 583, 'embryos': 6, 'subtypes': 6}
+  {'type': 'Somatic mesoderm', 'L1': 'Lateral plate mesoderm', 'L2': 'Paraxial mesoderm', 'cells': 21310, 'y1': 16115, 'y0': 5195, 'clusters_y1': 2836, 'clusters_y0': 1193, 'embryos': 4, 'subtypes': 4}
+  {'type': 'Spinal cord (lumbar)', 'L1': 'Neural ectoderm', 'L2': 'Paraxial mesoderm', 'cells': 5306, 'y1': 4003, 'y0': 1303, 'clusters_y1': 931, 'clusters_y0': 336, 'embryos': 2, 'subtypes': 1}
+  {'type': 'Spinal cord (sacral)', 'L1': 'Neural ectoderm', 'L2': 'Paraxial mesoderm', 'cells': 1514, 'y1': 993, 'y0': 521, 'clusters_y1': 318, 'clusters_y0': 182, 'embryos': 1, 'subtypes': 1}
+  {'type': 'Telencephalon', 'L1': 'Neural ectoderm', 'L2': 'Neural crest', 'cells': 16780, 'y1': 13095, 'y0': 3685, 'clusters_y1': 2153, 'clusters_y0': 507, 'embryos': 4, 'subtypes': 2}
+  {'type': 'Trigeminal ganglion neuron', 'L1': 'Neural crest', 'L2': 'Neural ectoderm', 'cells': 566, 'y1': 497, 'y0': 69, 'clusters_y1': 163, 'clusters_y0': 25, 'embryos': 1, 'subtypes': 1}
+  {'type': 'Trigeminal placode', 'L1': 'Neural crest', 'L2': 'Surface ectoderm', 'cells': 3047, 'y1': 1298, 'y0': 1749, 'clusters_y1': 269, 'clusters_y0': 410, 'embryos': 2, 'subtypes': 1}
+  {'type': 'Trunk neural crest', 'L1': 'Neural ectoderm', 'L2': 'Neural crest', 'cells': 2320, 'y1': 1805, 'y0': 515, 'clusters_y1': 526, 'clusters_y0': 137, 'embryos': 4, 'subtypes': 1}
+  {'type': 'Vagal neural crest', 'L1': 'Neural ectoderm', 'L2': 'Neural crest', 'cells': 2116, 'y1': 1305, 'y0': 811, 'clusters_y1': 465, 'clusters_y0': 301, 'embryos': 4, 'subtypes': 1}
+
+LOEO delta AUC (full - base), cell-weighted over 32 types: 0.0811
+  Allantoic endothelial progenitor: +0.0443 (n 920)
+  Arterial endothelial cell: +0.0077 (n 450)
+  Axial progenitor: +0.0138 (n 3133)
+  Cranial neural crest: +0.0146 (n 7002)
+  Dermomyotome: +0.0661 (n 18534)
+  Endocardial cell: -0.0340 (n 596)
+  Endothelial cell: +0.3006 (n 3489)
+  Endothelial progenitor: +0.4070 (n 2931)
+  Epicardium: +0.0014 (n 378)
+  Extraembryonic mesoderm: -0.0237 (n 2344)
+  First heart field: -0.0188 (n 1473)
+  Floor plate: +0.1170 (n 7858)
+  Foregut: -0.0240 (n 1647)
+  Frontonasal mesenchyme: +0.0479 (n 8154)
+  Intermediate mesoderm: +0.0065 (n 4518)
+  Juxtacardiac field: +0.0823 (n 718)
+  Nascent somite: -0.0030 (n 4026)
+  Notochord: -0.0026 (n 579)
+  Olfactory placode: -0.0072 (n 2570)
+  Otic placode: +0.0100 (n 1306)
+  Pharyngeal arch mesenchyme: +0.0556 (n 12466)
+  Pharyngeal endoderm: +0.0056 (n 3084)
+  Pharyngeal mesoderm: +0.0706 (n 3774)
+  Pre-placodal ectoderm: -0.0167 (n 1961)
+  Roof plate: +0.0865 (n 2970)
+  Second heart field: +0.1033 (n 5814)
+  Somatic mesoderm: +0.0475 (n 21310)
+  Spinal cord (lumbar): +0.0697 (n 5306)
+  Telencephalon: +0.2538 (n 16780)
+  Trigeminal placode: -0.0483 (n 3047)
+  Trunk neural crest: +0.0710 (n 2320)
+  Vagal neural crest: +0.0479 (n 2116)
+  embryo E8.0-R1: -0.0240 (cells 682)
+  embryo E8.0-R3: +0.0178 (cells 1178)
+  embryo E8.5-R2: +0.0683 (cells 10521)
+  embryo E8.5-R3: +0.0649 (cells 9769)
+  embryo E9.0-R1: +0.0760 (cells 34198)
+  embryo E9.5-R1: +0.0928 (cells 97221)
+
+A embryos (public names): ['E8.0-R2', 'E8.5-R1', 'E9.0-R2', 'E9.5-R2', 'E9.5-R3']; projected clusters per type: {'Allantoic endothelial progenitor': 354, 'Arterial endothelial cell': 447, 'Axial progenitor': 1523, 'Cranial neural crest': 2226, 'Dermomyotome': 6284, 'Endocardial cell': 434, 'Endothelial cell': 2978, 'Endothelial progenitor': 1877, 'Epicardium': 275, 'Extraembryonic mesoderm': 449, 'First heart field': 670, 'Floor plate': 3423, 'Foregut': 521, 'Frontonasal mesenchyme': 1401, 'Intermediate mesoderm': 2507, 'Juxtacardiac field': 394, 'Nascent somite': 1544, 'Notochord': 248, 'Olfactory placode': 802, 'Otic placode': 450, 'Otic sensory neuron': 3, 'Pharyngeal arch mesenchyme': 2260, 'Pharyngeal endoderm': 489, 'Pharyngeal mesoderm': 1255, 'Pre-placodal ectoderm': 415, 'Roof plate': 2228, 'Second heart field': 1760, 'Somatic mesoderm': 5963, 'Spinal cord (lumbar)': 2111, 'Telencephalon': 3472, 'Trigeminal placode': 1127, 'Trunk neural crest': 1165, 'Vagal neural crest': 1212}
+simulated delta AUC on A: mean 0.0802, sd 0.0035; null sd 0.0054
+H17 power on A: 1.000 at the train effect; 1.000 at half the effect

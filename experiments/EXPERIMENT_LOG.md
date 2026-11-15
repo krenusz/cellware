@@ -11302,3 +11302,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Adequacy: if fewer than 90% of leaves match the cell index, stop. If no type is eligible, stop.
 - **Pass rule:** the readout gate is met AND simulated power on A is at least 0.8 at the train effect. Otherwise stop and report. The options then are train expression matrices or closing.
 - **Models:** Opus wrote the design and the script; a Sonnet data lane (cellware-data) runs it and reports.
+- **C14-S0 result (2026-11-15; Sonnet data lane ran c14s0_gate.py unchanged, exit 0; Opus reviewed; train embryos only; full output in results_c14/c14s0_gate.txt and .json):**
+  - **Data:** 24 of 56 trees kept (train), 552,719 cells. Leaf match 1.000 (413,254). 394,021 cells have relatives.
+  - **Deviation:** the script modelled 3 types below the 30-clusters-per-side rule (Epicardium, Otic sensory neuron, Trigeminal ganglion neuron). Dropping them as pre-registered leaves 31 types in LOEO, with at least 33 clusters per side. Delta AUC is 0.0813 with them dropped and 0.0811 with them kept.
+  - **LOEO delta AUC:** +0.081, cell-weighted.
+    - Per embryo: E8.0-R1 -0.024 (682 cells), E8.0-R3 +0.018, E8.5-R2 +0.068, E8.5-R3 +0.065, E9.0-R1 +0.076, E9.5-R1 +0.093.
+    - E7.5-R1 has no evaluable cells.
+  - **H17 power on A:** 1.00 at the train effect and 1.00 at half. Simulated mean 0.080, sd 0.0035, null sd 0.0054.
+  - **Gate: PASS** on the pre-registered rule.
+  - **Self-challenge (Opus):**
+    1. The effect is concentrated: endothelial progenitor +0.41, endothelial cell +0.30, telencephalon +0.25, floor plate +0.12. 9 of 31 types are at or below zero.
+    2. Author subtypes may encode region or origin, e.g. endothelial subtypes. Then "state beyond type" would partly be regional identity, or an annotation effect. A train-only ablation is needed before any look: subtype only vs UMAP + phase only.
+    3. The cluster bootstrap ignores between-embryo variance; A is 5 embryos. The train per-embryo deltas are positive in 5 of 6, and the small early embryos are weakest, so the power of 1.00 is optimistic.
+    4. Exposure from the two re-analysis abstracts is topic level.
+  - **Not yet decided:** the A look. Next is a train-only selection step (H12): ablation, a shuffled-label smoke test, and embryo-level power. It needs Bence's go.
