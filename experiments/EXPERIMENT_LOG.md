@@ -11257,3 +11257,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The top-5 reading is not started, because it would only serve a dropped design.
   - Options go to Bence.
   - petracer_embryo stays sealed: train, A, B and C all unread.
+
+## C13-S1: H20 reading, second part: literature sweep and citation map (2026-11-15; Bence: "do a literature review around this and citation map"; Opus)
+- Notes: LITERATURE_SWEEP_C13_2026-11-15.md (OpenAlex, 11 seeds, 1,673 works, 2,382 edges; metadata and abstracts only).
+- **Exposure:** the source abstract was not read. Titles of its 11 citers were read. Two citer abstracts re-analyse what is very likely this atlas: lineage inpainting (convergence events; a Tbx5 knockout counterfactual) and scPFA (heritable programs). This is topic-level outcome exposure across all 16 embryos, with no numbers.
+- **Finding:** no public set has whole-embryo lineage plus measured position, so the morphogenesis question cannot be asked of C13. The open gaps C13 could carry are fate questions:
+  - out-of-sample replication of fate rules across embryos;
+  - state beyond cell type predicting clade fate in held-out embryos;
+  - the within-embryo NMP maturation claim.
+  Nothing has been adopted, and Bence decides. petracer_embryo train/A/B/C are still unread.
