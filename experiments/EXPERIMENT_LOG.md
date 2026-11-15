@@ -11384,3 +11384,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Measurement physics: 10x counts with author normalisation totals.
   - Adequacy: if fewer than 90% of readout cells match a matrix barcode, stop.
 - **Models:** Opus: download, design and script. Sonnet: the run.
+- **C14-S1a, first run (2026-11-15; Sonnet ran it, Opus reviewed): power INVALID because of a bug.**
+  - **Bug:** `embryo_power` used row positions from within each embryo × type subgroup to index the whole table, so it resampled the wrong rows.
+  - **How it showed:** U and F gave identical simulated means (0.0248 each), far below their LOEO deltas.
+  - **Valid from this run** (the bug touched only the power function):
+    - Smoke (i): S -0.0003, U -0.0005, F -0.0014. PASS.
+    - Smoke (ii): planted +0.134. PASS.
+    - LOEO S +0.016 (per embryo -0.004 to +0.022).
+    - LOEO U +0.076 (per embryo -0.020 to +0.090; E8.0-R1 negative).
+    - LOEO F +0.081.
+  - **Reading:** the author subtype alone adds little. UMAP + phase carries the effect, which eases the annotation worry.
+  - **Invalid:** the power numbers and the selection line. They are re-run after the fix.
+- **C14-S1a amendment 1 (code only, design unchanged):**
+  - The fix indexes by flat-table positions.
+  - Synthetic check: 6 embryos, one of them null, planted delta 0.43; the simulated mean was 0.46.
+  - **Practice lesson (for the retro):** every power simulation gets a synthetic smoke test before its first real use.

@@ -128,8 +128,10 @@ def run_sets(D, embryos, ycol, planted=None, sets=SETS):
 
 
 def embryo_power(E, rng):
-    by = {(e, T): list(g.groupby("cluster").indices.values()) for (e, T), g in E.reset_index(drop=True).groupby(["embryo", "T"])}
     flat = E.reset_index(drop=True)
+    # positions in flat (g.index after reset_index), not positions within the subgroup g
+    by = {(e, T): [g.index.to_numpy()[ix] for ix in g.groupby("cluster").indices.values()]
+          for (e, T), g in flat.groupby(["embryo", "T"])}
     a_stages = [g0.stage_of(e) for e in g0.A_EMBRYOS]
 
     def draw(swap):
