@@ -272,3 +272,10 @@ data side; no real data is read. It covers the oracle refusals (H2-H4, H6, H11-H
 commit hook (H16, H20, FOCUS.json quote), the Claude Code hooks, the power arithmetic, and that every rule
 H1-H22 is present in this file and in `RULES_DIGEST.md`. CI runs it on every push. A change to a guard
 that makes a test fail is a rule change and needs Bence's OK.
+
+## Model routing (Bence, 2026-11-15: "anytime we are blocked the work is switched to sonnet, but most of the control goes through opus")
+- Opus is the orchestrator: plans, rules, pre-registrations, review, FOCUS.json, commits and pushes.
+- Steps that load, read or compute on a chapter's biology dataset or its per-unit results go to the `cellware-data` agent (Sonnet 5.5; definition in `~/.claude/agents/cellware-data.md`). It runs the step as stated, keeps detail in files, and returns numbers, paths and pass/fail. It never edits FOCUS.json, commits or pushes.
+- If the platform safety classifier stops an Opus or Fable turn, the `flag_router.py` UserPromptSubmit hook (`~/.claude/hooks/`) tells the next turn to hand that step, unchanged, to `cellware-data`. No retry on the stopped model and no rewording. If Sonnet is stopped too, the step is blocked: stop and tell Bence.
+- Each stop is logged with its request id in `~/.claude/hooks/flag_log.tsv`, for reports to Anthropic.
+- Do not read source-paper wet-lab methods (vector construction, dosing) into a session beyond what the analysis needs (data layout, barcode and clone calling). H20 reading stays at the level of the analysis.
