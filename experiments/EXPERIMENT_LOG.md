@@ -11353,3 +11353,34 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Adequacy: if either smoke test fails, stop and do not read the ablation as evidence.
 - **S1b** (the expression matrices for the 7 train embryos, 9.3 GB) waits for Bence to confirm the corrected size.
 - **Models:** Opus designed it and wrote the script; the Sonnet data lane runs it.
+
+## C14-S1b: expression state, train embryos only (pre-registered 2026-11-15; Bence: "download the 9gb go ahead")
+- **Serves: C14-S1 (script c14s1b_expr.py).**
+- **Data:** GEO GSE342607 per-embryo 10x matrices for the 7 TRAIN embryos only: 21 files, 9.31 GB, in data/ext_petracer/train_matrices. Sizes are checked against GEO and sha256 is locked in SHA256SUMS there. The sealed embryos' matrices are never downloaded.
+- **Features:**
+  - Per-cell normalisation uses the author total_counts (counts / total × 1e4, log1p).
+  - HVG: the 2,000 genes with the highest normalised variance, chosen on the six train embryos other than E9.5-R1.
+  - Only HVG entries are kept for the cells in the C14 readout set.
+  - PCA: 30 components, fit on all readout-set cells of the 7 train embryos. This is unsupervised and transductive within train, and stated as such.
+- **Feature set P = base + 30 PCs.** No author subtype and no UMAP. Same readout, LOEO, smoke tests (shuffled null |delta| < 0.01; planted y + N(0, 1.5) on P, delta > 0.05) and embryo-level power as C14-S1a.
+- **Selection rule (written now):** P is carried to the A look, replacing U, if all of these hold:
+  - LOEO delta(P) ≥ 0.02;
+  - embryo-level power ≥ 0.8 at half the effect;
+  - both smoke tests pass;
+  - P's delta ≥ U's delta from S1a.
+  If P passes but U's delta is larger, U stays (both are label-free). If neither passes, there is no A look.
+- **The A look itself would need partition A's expression matrices,** a separate download that needs Bence's OK, and a commit of code and predictions first (H6).
+- **Pre-flight:**
+  - Unit: embryo; cluster = ancestor.
+  - Readout: as in S0.
+  - Used data first: S0 and S1a train results.
+  - Power: embryo-level H17, as in S1a.
+  - Exposure: as in S1a.
+  - Literature: as before.
+  - Readout gate: at least 30 clusters per side.
+  - H22: no contrast.
+- **Practice:**
+  - Smoke tests (i) and (ii).
+  - Measurement physics: 10x counts with author normalisation totals.
+  - Adequacy: if fewer than 90% of readout cells match a matrix barcode, stop.
+- **Models:** Opus: download, design and script. Sonnet: the run.
