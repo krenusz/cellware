@@ -1900,3 +1900,12 @@ toolu_01PBGUnTKy83W6jqtLXEqkVL#edit	2026-11-15T13:16:43.765Z	b7d9fa19	main	claud
 toolu_01HHKvQ7YbHPxFMNR7k7VqUb#commit	2026-11-15T13:16:48.599Z	b7d9fa19	main	claude-opus-5-5	commit	C13-S0: embryo lineage-tree set (GSE342607 / Zenodo 19892784) gate passes on design counts, metadata only; no download		
 toolu_01F5gAjtPTr4sSBjtCiFkty7#edit	2026-11-15T13:41:37.129Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/partitions.py		
 toolu_01DQnHvvaFe5Ypy5TQAhbkvP#edit	2026-11-15T13:41:40.191Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/sealed.py		
+toolu_01HbazrPDHSsCK7PxJKVuZv8#run	2026-11-15T13:49:32.113Z	b7d9fa19	main	claude-opus-5-5	run	c12s0_lsc.py		
+toolu_01MFE9hVYMF35VyjHgRnbnay#edit	2026-11-15T13:49:55.735Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01NbUnimpSg4Wq3mymMTJiKG#edit	2026-11-15T13:49:56.783Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01URCMTjNGMDujT3JPGArF1e	2026-11-15T13:50:21.455Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c13s0_format.py		
+toolu_01Rde25nDvqdDMMfGSSKCtqm#run	2026-11-15T13:50:22.366Z	b7d9fa19	main	claude-opus-5-5	run	c13s0_format.py		
+toolu_01Lbkf1QdWTsrjwkRHJYH4yK#run	2026-11-15T13:50:39.790Z	b7d9fa19	main	claude-opus-5-5	run	c13s0_format.py		
+toolu_01Va6RFgVpcgCCedBzSjnsTj#run	2026-11-15T13:51:09.528Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01Va6RFgVpcgCCedBzSjnsTj#tests	2026-11-15T13:51:09.528Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01VnsLVKqe4nhPEaF4oNNYdB#commit	2026-11-15T13:51:55.679Z	b7d9fa19	main	claude-opus-5-5	commit	C13-S0b: embryo lineage set downloaded (4 Zenodo files, md5 ok), sha256 locked, partition petracer_embryo by embryo, format check (structure	petracer_embryo	

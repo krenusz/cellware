@@ -11241,3 +11241,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - H20 reading (preprint methods + top 5 papers);
     - a train-only design of a within-embryo test of whether lineage history predicts AP/DV position beyond cell type;
     - H17 simulated power at the sealed embryo counts. B (3 small embryos) and C (1 embryo) are the weak partitions.
+
+## C13-S1: H20 reading, first part (2026-11-15; Bence: "Yes, start S1"; Opus orchestrating, web-fetch subagent read the source)
+- **Exposure:**
+  - Source preprint (bioRxiv 10.64898/2026.05.07.722278): section headings, figure titles and the Methods summary. The page was read about 45% verbatim, the rest model-summarized, so the method details are secondhand.
+  - The pycea tutorial (API only).
+  - No quantitative results, effect sizes or conclusions were requested or reported.
+  - The headings disclose topics (e.g. early notochord restriction, bipotent axial progenitors, spatial axes establishment). This is noted as topic-level exposure across all 16 embryos.
+- **Measurement physics, decisive:**
+  - The per-cell `ap_score`/`dv_score` are **not measured positions**. They are inferred from each cell's gene expression by random-forest regressors (A-P from Hox and axial genes, D-V from spinal-cord markers), trained on a single published E13.5 Stereo-seq sagittal section.
+  - So any test of whether lineage predicts AP/DV position beyond cell type reduces to whether lineage predicts Hox/axial expression beyond cell type. Sister cells share expression, so lineage would predict this trivially, and nothing about morphogenesis follows.
+  - The planned C13 question therefore has **no valid spatial readout** in this set.
+- **Overlap (H20):** the paper has a Methods section "Heritability and bias for spatial positions" (Fig. 6I-L). It compares clade positions with nearest relatives and infers ancestral spatial bias, which overlaps the candidate test directly.
+- **Decision:** the candidate test (lineage → AP/DV beyond cell type) is **dropped before any code or statistic**, for measurement physics plus overlap. Nothing in the data was read beyond the S0b structure.
+  - The top-5 reading is not started, because it would only serve a dropped design.
+  - Options go to Bence.
+  - petracer_embryo stays sealed: train, A, B and C all unread.
