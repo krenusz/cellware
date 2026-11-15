@@ -114,7 +114,8 @@ def extract(d, embryos, cells, totals, hvg_idx):
     """cells x HVG log-normalised matrix (rows in the order of `cells`)."""
     rows = {c: i for i, c in enumerate(cells)}
     gpos = None
-    R_, C_, V_ = [], [], []
+    # dense float32 filled chunk by chunk (each cell x gene entry appears once); avoids COO concatenation OOM
+    M = np.zeros((len(cells), len(hvg_idx)), np.float32)
     for emb in embryos:
         b, _, m = mat_files(d, emb)
         bc, scale = scale_of(b, totals)
@@ -126,12 +127,7 @@ def extract(d, embryos, cells, totals, hvg_idx):
             c = ch["c"].to_numpy() - 1
             g = gpos[ch["g"].to_numpy() - 1]
             keep = (rid[c] >= 0) & (g >= 0)
-            R_.append(rid[c[keep]])
-            C_.append(g[keep])
-            V_.append(np.log1p(ch["v"].to_numpy()[keep] * scale[c[keep]]).astype(np.float32))
-    from scipy import sparse
-    M = sparse.csr_matrix((np.concatenate(V_), (np.concatenate(R_), np.concatenate(C_))),
-                          shape=(len(cells), len(hvg_idx))).toarray()
+            M[rid[c[keep]], g[keep]] += np.log1p(ch["v"].to_numpy()[keep] * scale[c[keep]]).astype(np.float32)
     matched = len(set(cells) & set(np.concatenate([scale_of(mat_files(d, e)[0], totals)[0] for e in embryos])))
     return M, matched / max(len(cells), 1)
 

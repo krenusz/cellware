@@ -11480,3 +11480,5 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The A embryos are later stages (E8.0 to E9.5).
 - One look spends A. B and C stay sealed.
 - **C14-S2 go (2026-11-15; Bence: "1" = run the one look on A).** Gates passed (selection; power 0.91). The look ran locally through test_oracle (oracle exception) at the commit below.
+
+**C14-S2 look, technical re-run (2026-11-15).** The first run of the look crashed with an out-of-memory error inside `extract` (building the sparse matrix of A's HVG counts), before any statistic was computed. Output seen: the H14 power line and the count of A trees kept (15); no outcome, delta or AUC. Nothing was written to test_ledger.tsv, so A is not spent. Fix: `extract` now fills a dense float32 cells x HVG array chunk by chunk instead of concatenating COO arrays. It computes the same numbers (synthetic smoke test: max abs diff 0.0 against a direct computation). The model, readout, statistic and threshold are unchanged. Re-running the same look once.
