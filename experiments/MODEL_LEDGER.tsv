@@ -1890,3 +1890,13 @@ toolu_01LJ6ornDDEhRN3vHkteKkVC#run	2026-11-15T12:14:29.166Z	b7d9fa19	main	claude
 toolu_013Lpys4bJ4xVFMhvSZmV7Lb#run	2026-11-15T12:15:06.378Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
 toolu_013Lpys4bJ4xVFMhvSZmV7Lb#tests	2026-11-15T12:15:06.378Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
 toolu_01ET8FuXZH2bUWYreVh42U36#commit	2026-11-15T12:15:56.548Z	b7d9fa19	main	claude-opus-5-5	commit	Model provenance ledger (MODEL_LEDGER.tsv, backfilled from 2026-10-01) + retro rule		
+toolu_01Q9PW8AVgPyVUtMVyakc27B#edit	2026-11-15T13:14:00.347Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01Wd14h1RqKdjmoUYJS8oe6J#run	2026-11-15T13:14:41.769Z	b7d9fa19	main	claude-opus-5-5	run	parse_soft.py		
+toolu_01UmHZJuoQ6VS8imDupUyprY#edit	2026-11-15T13:15:43.519Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01Y2v9MJ9DaMjP4nTtGa2iff#run	2026-11-15T13:15:44.620Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01Y2v9MJ9DaMjP4nTtGa2iff#tests	2026-11-15T13:15:44.620Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_013XxtksYuaV9Bmwe2Dhe7CF#commit	2026-11-15T13:16:32.567Z	b7d9fa19	main	claude-opus-5-5	commit	C13-S0: embryo lineage-tree set (GSE342607 / Zenodo 19892784) gate passes on design counts, metadata only; no download		
+toolu_01PBGUnTKy83W6jqtLXEqkVL#edit	2026-11-15T13:16:43.765Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/EXPERIMENT_LOG.md		
+toolu_01HHKvQ7YbHPxFMNR7k7VqUb#commit	2026-11-15T13:16:48.599Z	b7d9fa19	main	claude-opus-5-5	commit	C13-S0: embryo lineage-tree set (GSE342607 / Zenodo 19892784) gate passes on design counts, metadata only; no download		
+toolu_01F5gAjtPTr4sSBjtCiFkty7#edit	2026-11-15T13:41:37.129Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/partitions.py		
+toolu_01DQnHvvaFe5Ypy5TQAhbkvP#edit	2026-11-15T13:41:40.191Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/sealed.py		

@@ -35,6 +35,12 @@ DATASETS = {
                      "PLSTCvsStemspan and the authors' notebooks NOT downloaded. Format check only (feature types, cell counts, "
                      "number of LARRY features per sample) until partitioned by clone (LARRY barcode); clone sizes and "
                      "cross-sample presence are outcomes: train only after sealing.",
+    "ext_petracer": "Zenodo 10.5281/zenodo.19892784 (MIT; Mouse Embryonic Lineage Atlas, PEtracer, Cell 2026), downloaded "
+                    "2026-11-15 (Bence: \"Yes, download\"): 4 combined files (E7.5-E10_trees.h5td, _cells.csv, "
+                    "_characters.csv, _spatial_scores.csv), md5 checked vs Zenodo, sha256 in data/ext_petracer/SHA256SUMS. "
+                    "Per-embryo h5td, scVI, umap and GEO matrices NOT downloaded. Format check only (columns, dtypes, "
+                    "cells per embryo, tree counts) until partitioned by embryo (petracer_embryo); cell-type composition, "
+                    "spatial scores and tree structure are outcomes: train only after sealing.",
     "ext_triandafillou": "locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
     "ext_guan": "not data: two failed PDF downloads (HTML / 17 bytes), left for Bence to delete",
     "ext_plos_gastruloid": "not data: de Jong 2024 model code, read as text only (C6-S6/S7c)",

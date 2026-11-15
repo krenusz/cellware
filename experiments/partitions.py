@@ -107,6 +107,17 @@ PARTITIONED = {
         "prior_exposure": "C12-S0: feature/cell structure; per-partition D20 unit counts (>= 3 cells); pooled assigned/ambiguous cell counts per sample; TRAIN-only presence/size of D20 clones in later samples; preprint design text (1,375 clones >= 3 cells "
                           "ex vivo, 160 in vivo, ~13 clones/mouse in chemo); no figures/outcomes read",
     },
+    "petracer_embryo": {
+        "salt": "cellware-petracer-embryo-v1",
+        "unit": "embryo (GEO GSE342607 / Zenodo 19892784 embryo id, e.g. 'E8.5-R2'; 16 embryos E7.5-E10.0). All cells, "
+                "trees and characters of an embryo go together. First salt kept (assignment from public names, before any "
+                "data read): train E7.5-R1 E8.0-R1 E8.0-R3 E8.5-R2 E8.5-R3 E9.0-R1 E9.5-R1; A E8.0-R2 E8.5-R1 E9.0-R2 "
+                "E9.5-R2 E9.5-R3; B E7.5-R2 E7.5-R3 E9.0-R3; C E10.0-R1 (one embryo: weak last reserve)",
+        "files": ["4 Zenodo 19892784 files (trees.h5td, cells.csv, characters.csv, spatial_scores.csv), "
+                  "sha256 in data/ext_petracer/SHA256SUMS"],
+        "sealed_on": "2026-11-15",
+        "prior_exposure": "C13-S0: GEO/Zenodo metadata only (sample titles, stages, file names and sizes); abstract",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

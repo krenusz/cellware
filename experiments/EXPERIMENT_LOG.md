@@ -11191,3 +11191,53 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - **Next:**
     - The lean download (the 4 Zenodo files above, about 2.4 GB) needs Bence's OK.
     - Then seal by embryo (H1), with partition `petracer_embryo` defined before any statistic. Format check (H9) shows columns and counts only.
+
+## C13-S0b: seal and format check of the embryo lineage set (pre-registered 2026-11-15; Bence: "Yes, download")
+- **Serves: C13-S0b (script c13s0_format.py).**
+- **Data:** Zenodo 19892784, 4 files (trees.h5td 1.63 GB, cells.csv 0.36 GB, characters.csv 0.34 GB, spatial_scores.csv 0.11 GB) in data/ext_petracer/raw.
+  - md5 matches Zenodo for all 4.
+  - sha256 locked in data/ext_petracer/SHA256SUMS.
+  - Registered in sealed.py as `ext_petracer`.
+- **Partition (H1, H11):** `petracer_embryo`, salt v1, unit embryo, assigned from the 16 public embryo names before any file was opened. The first salt was kept.
+  - train (7 embryos): E7.5-R1, E8.0-R1, E8.0-R3, E8.5-R2, E8.5-R3, E9.0-R1, E9.5-R1
+  - A (5 embryos): E8.0-R2, E8.5-R1, E9.0-R2, E9.5-R2, E9.5-R3
+  - B (3 embryos): E7.5-R2, E7.5-R3, E9.0-R3
+  - C (1 embryo): E10.0-R1. This is a weak last reserve, stated.
+- **Pre-flight:**
+  - Unit: embryo.
+  - Readout: none in this step.
+  - Used data first: none.
+  - Power: none.
+  - Exposure: column names, dtypes, row counts per embryo, HDF5 group names and shapes. No values of cell type, spatial score, character state or tree topology are printed.
+  - Literature access: the bioRxiv preprint 10.64898/2026.05.07.722278 is open access.
+  - Readout gate: not applicable.
+  - H22: embryo is the unit, and no contrast is planned.
+- **Practice:**
+  - Synthetic smoke test: not applicable (structure only).
+  - Measurement physics: noted at H20.
+  - Adequacy: the embryo column must map to the 16 names, otherwise stop.
+- **Format check rule (H9):**
+  - Print each CSV's header with dtypes, and its row count per embryo id (structural).
+  - Print the h5td group/dataset tree with shapes and dtypes only.
+  - Never print a data row.
+- **C13-S0b result (2026-11-15, Opus; structure only, full output in results_c13/c13s0_format.txt):**
+  - **sha256 (also in data/ext_petracer/SHA256SUMS):**
+    - cells.csv: bb92d1ff…f997d8
+    - characters.csv: 0636c830…47880a
+    - spatial_scores.csv: 6ee71237…fea5
+    - trees.h5td: c57b2c23…77d1
+  - **cells.csv:** 1,792,520 cells, 16 columns. Among them are embryo, stage, clone, cell_type, cell_subtype, germ_layer, lineage, cluster and QC fields. The embryo column maps exactly to the 16 names, so the adequacy check passes.
+  - **Cells per partition** (structural, by embryo):
+    - train: 552,719 cells in 7 embryos
+    - A: 826,358 cells in 5 embryos
+    - B: 66,150 cells in 3 embryos
+    - C: 347,293 cells in 1 embryo
+    - Embryo size grows about 250-fold from E7.5 (1.3-1.8k cells) to E9.5-E10.0 (340-380k cells).
+  - **characters.csv:** 1,447,839 cells × 105 target sites (35 integrations × 3 sites).
+  - **spatial_scores.csv:** 1,792,634 rows (114 more than the cell table, to be reconciled at S1), with columns ap_score, dv_score and neural_ap_score.
+  - **trees.h5td:** treedata-format HDF5. Its obs mirrors the cell table and has 56 clone categories, matching the 56 Newick files on GEO. The trees sit in `obst` as a single serialized object; their topology is unread. It also has per-embryo character lists in `uns`.
+  - **Not read:** no values of cell type, spatial score, character state or tree topology.
+  - **Next (S1, needs a pre-registration):**
+    - H20 reading (preprint methods + top 5 papers);
+    - a train-only design of a within-embryo test of whether lineage history predicts AP/DV position beyond cell type;
+    - H17 simulated power at the sealed embryo counts. B (3 small embryos) and C (1 embryo) are the weak partitions.

@@ -1,0 +1,276 @@
+
+== E7.5-E10_cells.csv: 16 columns
+   'Unnamed: 0': str
+   'cell_subtype': str
+   'capture': str
+   'embryo': str
+   'stage': str
+   'type': str
+   'total_counts': float64
+   'pe_counts': float64
+   'detection_rate': float64
+   'edit_frac': float64
+   'clone': str
+   'phase': str
+   'cell_type': str
+   'germ_layer': str
+   'lineage': str
+   'cluster': str
+   embryo id via 'embryo': 16 ids, 1792520 rows; ids outside the 16 names: []
+   E7.5-R1: 1342
+   E7.5-R2: 1838
+   E7.5-R3: 1468
+   E8.0-R1: 4498
+   E8.0-R2: 10681
+   E8.0-R3: 6763
+   E8.5-R1: 23392
+   E8.5-R2: 38154
+   E8.5-R3: 27684
+   E9.0-R1: 92024
+   E9.0-R2: 99848
+   E9.0-R3: 62844
+   E9.5-R1: 382254
+   E9.5-R2: 350037
+   E9.5-R3: 342400
+   E10.0-R1: 347293
+
+== E7.5-E10_characters.csv: 106 columns
+   'Unnamed: 0': str
+   'intID1039-EMX1': str
+   'intID1039-HEK3': str
+   'intID1039-RNF2': str
+   'intID1068-EMX1': str
+   'intID1068-HEK3': str
+   'intID1068-RNF2': str
+   'intID1070-EMX1': str
+   'intID1070-HEK3': str
+   'intID1070-RNF2': str
+   'intID1113-EMX1': str
+   'intID1113-HEK3': str
+   'intID1113-RNF2': str
+   'intID1134-EMX1': str
+   'intID1134-HEK3': str
+   'intID1134-RNF2': str
+   'intID1188-EMX1': str
+   'intID1188-HEK3': str
+   'intID1188-RNF2': str
+   'intID1206-EMX1': str
+   'intID1206-HEK3': str
+   'intID1206-RNF2': str
+   'intID1308-EMX1': str
+   'intID1308-HEK3': str
+   'intID1308-RNF2': str
+   'intID1351-EMX1': str
+   'intID1351-HEK3': str
+   'intID1351-RNF2': str
+   'intID1356-EMX1': str
+   'intID1356-HEK3': str
+   'intID1356-RNF2': str
+   'intID1472-EMX1': str
+   'intID1472-HEK3': str
+   'intID1472-RNF2': str
+   'intID1497-EMX1': str
+   'intID1497-HEK3': str
+   'intID1497-RNF2': str
+   'intID1631-EMX1': str
+   'intID1631-HEK3': str
+   'intID1631-RNF2': str
+   'intID1646-EMX1': str
+   'intID1646-HEK3': str
+   'intID1646-RNF2': str
+   'intID1667-EMX1': str
+   'intID1667-HEK3': str
+   'intID1667-RNF2': str
+   'intID1739-EMX1': str
+   'intID1739-HEK3': str
+   'intID1739-RNF2': str
+   'intID1763-EMX1': str
+   'intID1763-HEK3': str
+   'intID1763-RNF2': str
+   'intID1811-EMX1': str
+   'intID1811-HEK3': str
+   'intID1811-RNF2': str
+   'intID1919-EMX1': str
+   'intID1919-HEK3': str
+   'intID1919-RNF2': str
+   'intID1979-EMX1': str
+   'intID1979-HEK3': str
+   'intID1979-RNF2': str
+   'intID1994-EMX1': str
+   'intID1994-HEK3': str
+   'intID1994-RNF2': str
+   'intID2023-EMX1': str
+   'intID2023-HEK3': str
+   'intID2023-RNF2': str
+   'intID2044-EMX1': str
+   'intID2044-HEK3': str
+   'intID2044-RNF2': str
+   'intID250-EMX1': str
+   'intID250-HEK3': str
+   'intID250-RNF2': str
+   'intID257-EMX1': str
+   'intID257-HEK3': str
+   'intID257-RNF2': str
+   'intID394-EMX1': str
+   'intID394-HEK3': str
+   'intID394-RNF2': str
+   'intID566-EMX1': str
+   'intID566-HEK3': str
+   'intID566-RNF2': str
+   'intID620-EMX1': str
+   'intID620-HEK3': str
+   'intID620-RNF2': str
+   'intID683-EMX1': str
+   'intID683-HEK3': str
+   'intID683-RNF2': str
+   'intID700-EMX1': str
+   'intID700-HEK3': str
+   'intID700-RNF2': str
+   'intID709-EMX1': str
+   'intID709-HEK3': str
+   'intID709-RNF2': str
+   'intID845-EMX1': str
+   'intID845-HEK3': str
+   'intID845-RNF2': str
+   'intID945-EMX1': str
+   'intID945-HEK3': str
+   'intID945-RNF2': str
+   'intID1423-EMX1': str
+   'intID1423-HEK3': str
+   'intID1423-RNF2': str
+   'intID801-EMX1': float64
+   'intID801-HEK3': float64
+   'intID801-RNF2': float64
+   embryo id via prefix of 'Unnamed: 0': 16 ids, 1447839 rows; ids outside the 16 names: []
+   E7.5-R1: 1032
+   E7.5-R2: 1298
+   E7.5-R3: 1374
+   E8.0-R1: 4203
+   E8.0-R2: 7748
+   E8.0-R3: 5708
+   E8.5-R1: 11832
+   E8.5-R2: 27670
+   E8.5-R3: 24752
+   E9.0-R1: 87355
+   E9.0-R2: 94085
+   E9.0-R3: 60204
+   E9.5-R1: 262534
+   E9.5-R2: 246029
+   E9.5-R3: 317917
+   E10.0-R1: 294098
+
+== E7.5-E10_spatial_scores.csv: 4 columns
+   'Unnamed: 0': str
+   'ap_score': float64
+   'dv_score': float64
+   'neural_ap_score': float64
+   embryo id via prefix of 'Unnamed: 0': 16 ids, 1792634 rows; ids outside the 16 names: []
+   E7.5-R1: 1342
+   E7.5-R2: 1838
+   E7.5-R3: 1468
+   E8.0-R1: 4498
+   E8.0-R2: 10681
+   E8.0-R3: 6763
+   E8.5-R1: 23392
+   E8.5-R2: 38154
+   E8.5-R3: 27684
+   E9.0-R1: 92026
+   E9.0-R2: 99853
+   E9.0-R3: 62844
+   E9.5-R1: 382281
+   E9.5-R2: 350075
+   E9.5-R3: 342421
+   E10.0-R1: 347314
+
+== E7.5-E10_trees.h5td: HDF5 structure (names, shapes, dtypes only)
+   root attrs: ['encoding-type', 'encoding-version']; top-level: ['X', 'alignment', 'allow_overlap', 'label', 'layers', 'obs', 'obsm', 'obsp', 'obst', 'uns', 'var', 'varm', 'varp', 'vart']
+   X/ (group, 3 members, attrs=['encoding-type', 'encoding-version', 'shape'])
+   X/data: dataset shape=(0,) dtype=float32
+   X/indices: dataset shape=(0,) dtype=int32
+   X/indptr: dataset shape=(1792521,) dtype=int32
+   alignment: dataset shape=() dtype=object
+   allow_overlap: dataset shape=() dtype=bool
+   label: dataset shape=() dtype=object
+   layers/ (group, 0 members, attrs=['encoding-type', 'encoding-version'])
+   obs/ (group, 16 members, attrs=['_index', 'column-order', 'encoding-type', 'encoding-version'])
+   obs/_index: dataset shape=(1792520,) dtype=object
+   obs/capture/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/capture/categories: dataset shape=(107,) dtype=object
+   obs/capture/codes: dataset shape=(1792520,) dtype=int8
+   obs/cell_subtype/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/cell_subtype/categories: dataset shape=(142,) dtype=object
+   obs/cell_subtype/codes: dataset shape=(1792520,) dtype=int16
+   obs/cell_type/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/cell_type/categories: dataset shape=(99,) dtype=object
+   obs/cell_type/codes: dataset shape=(1792520,) dtype=int8
+   obs/clone/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/clone/categories: dataset shape=(56,) dtype=object
+   obs/clone/codes: dataset shape=(1792520,) dtype=int8
+   obs/cluster/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/cluster/categories: dataset shape=(12,) dtype=object
+   obs/cluster/codes: dataset shape=(1792520,) dtype=int8
+   obs/detection_rate: dataset shape=(1792520,) dtype=float64
+   obs/edit_frac: dataset shape=(1792520,) dtype=float64
+   obs/embryo/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/embryo/categories: dataset shape=(16,) dtype=object
+   obs/embryo/codes: dataset shape=(1792520,) dtype=int8
+   obs/germ_layer/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/germ_layer/categories: dataset shape=(5,) dtype=object
+   obs/germ_layer/codes: dataset shape=(1792520,) dtype=int8
+   obs/lineage/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/lineage/categories: dataset shape=(15,) dtype=object
+   obs/lineage/codes: dataset shape=(1792520,) dtype=int8
+   obs/pe_counts: dataset shape=(1792520,) dtype=float64
+   obs/phase/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/phase/categories: dataset shape=(3,) dtype=object
+   obs/phase/codes: dataset shape=(1792520,) dtype=int8
+   obs/stage/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/stage/categories: dataset shape=(6,) dtype=object
+   obs/stage/codes: dataset shape=(1792520,) dtype=int8
+   obs/total_counts: dataset shape=(1792520,) dtype=float64
+   obs/type/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   obs/type/categories: dataset shape=(2,) dtype=object
+   obs/type/codes: dataset shape=(1792520,) dtype=int8
+   obsm/ (group, 1 members, attrs=['encoding-type', 'encoding-version'])
+   obsm/X_umap: dataset shape=(1792520, 2) dtype=float64
+   obsp/ (group, 0 members, attrs=['encoding-type', 'encoding-version'])
+   obst: dataset shape=() dtype=object
+   uns/ (group, 11 members, attrs=['encoding-type', 'encoding-version'])
+   uns/cell_subtype_colors: dataset shape=(142,) dtype=object
+   uns/cell_type_colors: dataset shape=(99,) dtype=object
+   uns/default_depth: dataset shape=() dtype=object
+   uns/embryo_characters/ (group, 16 members, attrs=['encoding-type', 'encoding-version'])
+   uns/embryo_characters/E10.0-R1: dataset shape=(96,) dtype=object
+   uns/embryo_characters/E7.5-R1: dataset shape=(99,) dtype=object
+   uns/embryo_characters/E7.5-R2: dataset shape=(102,) dtype=object
+   uns/embryo_characters/E7.5-R3: dataset shape=(102,) dtype=object
+   uns/embryo_characters/E8.0-R1: dataset shape=(102,) dtype=object
+   uns/embryo_characters/E8.0-R2: dataset shape=(96,) dtype=object
+   uns/embryo_characters/E8.0-R3: dataset shape=(102,) dtype=object
+   uns/embryo_characters/E8.5-R1: dataset shape=(99,) dtype=object
+   uns/embryo_characters/E8.5-R2: dataset shape=(99,) dtype=object
+   uns/embryo_characters/E8.5-R3: dataset shape=(102,) dtype=object
+   uns/embryo_characters/E9.0-R1: dataset shape=(99,) dtype=object
+   uns/embryo_characters/E9.0-R2: dataset shape=(99,) dtype=object
+   uns/embryo_characters/E9.0-R3: dataset shape=(96,) dtype=object
+   uns/embryo_characters/E9.5-R1: dataset shape=(99,) dtype=object
+   uns/embryo_characters/E9.5-R2: dataset shape=(99,) dtype=object
+   uns/embryo_characters/E9.5-R3: dataset shape=(99,) dtype=object
+   uns/embryo_colors: dataset shape=(16, 3) dtype=float64
+   uns/germ_layer_colors: dataset shape=(5,) dtype=object
+   uns/lineage_colors: dataset shape=(15,) dtype=object
+   uns/log1p/ (group, 1 members, attrs=['encoding-type', 'encoding-version'])
+   uns/log1p/base: dataset shape=None dtype=float32
+   uns/phase_colors: dataset shape=(3,) dtype=object
+   uns/stage_colors: dataset shape=(6,) dtype=object
+   uns/type_colors: dataset shape=(2,) dtype=object
+   var/ (group, 4 members, attrs=['_index', 'column-order', 'encoding-type', 'encoding-version'])
+   var/chromosome/ (group, 2 members, attrs=['encoding-type', 'encoding-version', 'ordered'])
+   var/chromosome/categories: dataset shape=(0,) dtype=object
+   var/chromosome/codes: dataset shape=(0,) dtype=int8
+   var/gene_ids: dataset shape=(0,) dtype=object
+   var/gene_name: dataset shape=(0,) dtype=object
+   var/mito: dataset shape=(0,) dtype=bool
+   varm/ (group, 0 members, attrs=['encoding-type', 'encoding-version'])
+   varp/ (group, 0 members, attrs=['encoding-type', 'encoding-version'])
+   vart: dataset shape=() dtype=object

@@ -1,7 +1,7 @@
 {
  "chapter": "C9 LSK early chromatin predicts the neutrophil vs monocyte split (CellTag-multi, Jindal 2024)",
- "step": "C13-S0",
- "question": "C13-S0 (Bence 2026-11-15: \"goo 1\"): metadata-only gate check of the embryo lineage-tree set GEO GSE342607 (PEtracer, Cell 2026). Does it give enough independent units (embryos) with lineage trees plus a spatial or tissue readout to test, on sealed data, whether early lineage fate structure predicts later tissue/morphogenesis outcomes (H19, H22, H20)? No data file downloaded or read in this step. Before this step Cellware was PAUSED 2026-11-14 (Bence: \"keep sealed, pause cellware\"). C12-S1 done on train only: D20 clone state beyond size + QC + library + barcode level + multi-clone + hashtag predicts D20 in vivo presence (delta AUC 0.166) and D40 ex vivo (0.060); no single sealed partition reaches power 0.8 (in vivo 0.55-0.57; pooled A+B 0.85; D40 never). lsc_larry A/B/C all sealed, unlooked. No work until Bence.",
+ "step": "C13-S0b",
+ "question": "C13-S0b (Bence 2026-11-15: \"Yes, download\"): lean Zenodo set downloaded, md5 checked, sha256 locked, partition petracer_embryo defined by embryo before any statistic; format check only (H9: columns, dtypes, cells per embryo, tree/group structure; no cell types, spatial scores or tree shapes). C13-S0 (Bence 2026-11-15: \"goo 1\"): metadata-only gate check of the embryo lineage-tree set GEO GSE342607 (PEtracer, Cell 2026). Does it give enough independent units (embryos) with lineage trees plus a spatial or tissue readout to test, on sealed data, whether early lineage fate structure predicts later tissue/morphogenesis outcomes (H19, H22, H20)? No data file downloaded or read in this step. Before this step Cellware was PAUSED 2026-11-14 (Bence: \"keep sealed, pause cellware\"). C12-S1 done on train only: D20 clone state beyond size + QC + library + barcode level + multi-clone + hashtag predicts D20 in vivo presence (delta AUC 0.166) and D40 ex vivo (0.060); no single sealed partition reaches power 0.8 (in vivo 0.55-0.57; pooled A+B 0.85; D40 never). lsc_larry A/B/C all sealed, unlooked. No work until Bence.",
  "value": "Chromatin counterpart of chapter 8's confirmed RNA T1 (rho 0.45): a clone's day-2.5 accessibility predicting its specific Neu/Mono split on unseen clones. Jindal 2024 reports chromatin fate priming at population level, not a sealed clone-level split prediction; adds a disciplined replication in a second modality, value modest.",
  "literature": "Jindal 2024 (CellTag-multi) methods read for C7; Ma 2020 chromatin potential; C10 watch-list re-check 2026-11-14: GSE324482 private, E-MTAB-17351 403, hESC endoderm and DeepTrack preprints without accessions.",
  "next_steps": [
@@ -13,6 +13,7 @@
   "Watch list re-check about 21 Nov: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026, PEtracer GSE342607"
  ],
  "allowed_scripts": [
+  "c13s0_format.py",
   "c6s2_space.py",
   "c6s3_break.py",
   "c6s4_fit.py",
