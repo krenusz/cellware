@@ -42,6 +42,12 @@ Per A embryo: E8.0-R2 -0.006, E8.5-R1 +0.043, E9.0-R2 +0.115, E9.5-R2 +0.137, E9
 - **Replication.** B and C are unspent. n = 5 embryos for the confirmation.
 - **Strength wording.** No "strong" claims; one partition.
 
+## Exploratory: what carries the gain (C14-S4, train only, no claim)
+- In mesoderm types (endothelial, somatic mesoderm, second heart field, trunk neural crest), one shared axis separates cells by their relatives' lineage. Cells with paraxial relatives carry paraxial/somite genes (Tcf15, Meox1, Pax3). Cells with lateral-plate relatives carry lateral-plate and posterior genes (Gata6, Pitx1, Prrx1, posterior Hox, Cdx).
+- In neural types, telencephalon cells with neural-crest relatives carry border genes (Msx1, Gli3). Floor plate cells with neural relatives carry axial-progenitor genes (T, Fgf8, Cdx2).
+- The gene lists are stable when one embryo is left out (top-50 overlap 0.65-0.86). The gain is spread across many PCs.
+- **Reading:** a cell keeps a trace of its lineage-of-origin program beyond its annotated type. This fits inherited state, but also mixed cells near type boundaries. The posterior Hox genes are partly axial position.
+
 ## Value against the literature
 - Lineage-coupled expression memory is well documented in cell lines and in vitro or organoid systems: Minkina et al. 2022 (HEK293 lineage plus expression); Eisele et al. 2024, GEMLI (lineage inferred from memory genes in cell lines, organoids and crypts). Neither tests prediction of relatives' fate beyond cell type, and neither evaluates on held-out individuals or uses whole-embryo trees.
 - The PEtracer authors' own analyses and two re-analysis abstracts (topic level only) were not used beyond the type and lineage labels.

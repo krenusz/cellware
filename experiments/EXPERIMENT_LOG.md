@@ -11573,3 +11573,15 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Run the whole path on a tiny synthetic input before dispatch (RETRO_2026-11-15 item 5).
   - Peak RAM: as S3 on the runner (same matrix pass).
 - **C14-S4 dispatch (2026-11-16):** synthetic path test passed (planted gene G7 ranked 1st toward L1 in its type, stability 0.93; dropping its PC lowered the gain by 0.21; programs mostly type-specific on synthetic, |cos| 0.17). Runs on GitHub Actions (sweeps/c14s4.txt --petracer).
+
+### C14-S4 result (2026-11-16, Actions run 43920786822, commit b9864f4; train embryos only; EXPLORATORY, no claim)
+- Pooled LOEO gain 0.074 (same as S1b/S3). Top types by gain: endothelial progenitor 0.33, telencephalon 0.31, endothelial cell 0.26, roof plate 0.13, somatic mesoderm 0.13, floor plate 0.13, trunk neural crest 0.12, second heart field 0.12.
+- **Mesoderm types share one origin program.** Cells whose relatives lean paraxial carry paraxial/somite genes (Tcf15, Meox1, Pax3, Ntn1, Cadm1). Cells whose relatives lean lateral plate carry lateral-plate and posterior genes (Gata6, Pitx1, Prrx1, Hoxa9/b9/c8, Cdx2/4). This holds for endothelial progenitor, endothelial cell, somatic mesoderm, trunk neural crest and second heart field. Raw cosines look mixed only because L1/L2 order flips between types (endothelial progenitor vs somatic mesoderm -0.42 = the same axis, opposite labelling; endothelial progenitor vs endothelial cell +0.84).
+- **Neural types:** telencephalon cells with neural-crest relatives carry border/epithelial genes (Msx1, Gli3, Epcam, Cldn6, Crabp2); floor plate cells with neural (vs paraxial) relatives carry axial-progenitor genes (T, Fgf8, Cdx2, Cyp26a1).
+- Stability of the top-50 genes when one embryo is left out: 0.65-0.86 (all 8 types >= 0.5).
+- Leave-one-PC-out: no single PC carries the gain (largest drop 0.0016); the signal is spread across PCs.
+- Prediction check: lineage-priming genes (met: top genes mark the relatives' lineage in 8 of 8 types); stability >= 0.5 (met); mostly type-specific, mean |cos| < 0.3 (met on the stated metric, 0.23, but the metric is confounded by L1/L2 order; sign-aligned, mesoderm types share one paraxial-vs-lateral axis, so read as NOT type-specific for mesoderm).
+- Self-challenge:
+  - Posterior Hox and Cdx genes on the lateral side are partly axial position. S3 kept 82% of the gain with the AP score in the model, but this gene set suggests some of the remainder is still AP-linked.
+  - A cell carrying its relatives' lineage program is consistent with inherited state (memory) and with mixed or transitioning cells near annotation boundaries (type impurity). This step cannot separate the two.
+  - Coefficients are not causal; 7 embryos.
