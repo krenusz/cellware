@@ -222,6 +222,8 @@ ticked and any item that does not apply, with the reason. The oracle and the com
 pre-registration dated 2026-11-13 or later without it.
 
 **Before a model run**
+- Every pre-registration has a `Compute:` line; any run over about 2 minutes goes through `run_sweep.sh` on GitHub Actions; only the oracle look and private-file jobs stay local (11-15).
+- Run the whole fit or test path on a tiny synthetic input before dispatching it to Actions or to the oracle (11-15).
 - Smoke tests use synthetic outcomes and write to the scratchpad, never to real results (11-04b).
 - Cold start after any structural model change (11-04).
 - Check a known model's analytic regime before choosing parameters (11-09).
@@ -230,6 +232,7 @@ pre-registration dated 2026-11-13 or later without it.
 - Step 0 hygiene: at least 10 repeats, a settling check, a float tolerance (11-10).
 
 **Before a statistic**
+- Before an oracle look, estimate the sealed reader's peak RAM from the sealed file sizes, or run it once on the largest train unit locally (11-15; C14-S2 OOM).
 - Adequacy gate before any cross reading (11-03).
 - On a new featurisation, pass a fate-free validity check before any fate statistic (11-11).
 - Tick the pre-registration against the script, line by line, before the run (11-11).
@@ -239,6 +242,7 @@ pre-registration dated 2026-11-13 or later without it.
 - Report deltas net of the label-shuffle null mean (11-14b).
 
 **Before a power claim**
+- Every power simulation gets a synthetic smoke test with a known answer (11-15; C14-S1a index bug).
 - Presence-type outcomes: count expected positives per sealed partition, not units (11-14b).
 - Selection power only by `sim_power` on the refit pipeline at the sealed n (H17); never `z_power` on a
   fixed out-of-fold SE (11-14b; C12-S1 power is provisional until redone).
