@@ -64,8 +64,9 @@ def region_block(df):
     return R[REG]
 
 
-def readout_with_pcs():
-    """C14-S1b readout + 30 PCs (same code path as c14s1b_expr.main, steps 1-2)."""
+def readout_with_pcs(keep=None):
+    """C14-S1b readout + 30 PCs (same code path as c14s1b_expr.main, steps 1-2).
+    keep: optional dict; receives hvg indices, gene sd and PCA components (C14-S4)."""
     import c14s1_select as s1
     import c14s1b_expr as e
     D, embryos = s1.build()
@@ -108,8 +109,11 @@ def readout_with_pcs():
     mu, sd = M.mean(0), M.std(0)
     sd[~(sd > 0)] = 1
     M = np.clip((M - mu) / sd, -10, 10)
-    pcs = PCA(n_components=len(PCS), random_state=0).fit_transform(M)
+    pca = PCA(n_components=len(PCS), random_state=0)
+    pcs = pca.fit_transform(M)
     del M
+    if keep is not None:
+        keep.update(hvg=hvg, comps=pca.components_, gene_sd=sd)
     for i, name in enumerate(PCS):
         D[name] = pcs[:, i]
     return D, embryos, s1

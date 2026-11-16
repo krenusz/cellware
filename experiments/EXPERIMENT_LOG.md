@@ -11547,3 +11547,29 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Prediction (retained about 0.5-0.8): met at the top end (0.82).
 - Limits: the AP score covers all readout cells, but the DV score is missing for 91% and neural AP for 51% (missing flags in the model). So DV position is barely controlled. Scores are expression-inferred. 6 embryos, descriptive (no sealed data).
 - Self-challenge: the remaining alternative is fine-scale co-location (local niche) below the resolution of these scores; not testable without measured positions (same gap as C13/H-a).
+
+## C14-S4: train-only mechanism step, which genes and programs carry the expression-state gain (pre-registered 2026-11-16; Bence: "go 1 2 3")
+- **Serves: C14-S4 (script c14s4_genes.py; output-only hooks in c14s3_region.py and c14s1_select.py, described under Data).** Exploratory follow-up after the C14 primary test (H19 allows side questions once the primary has run). Serves the long-term goal (model fate behaviour): it names the state variables a mechanistic fate model would need. No claim from this step; it cannot change the C14 verdict.
+- **Compute:** GitHub Actions (sweeps/c14s4.txt, `--petracer`). Nothing local beyond a synthetic smoke test.
+- **Data:** TRAIN embryos only (7). Readout, HVG and PCs exactly as C14-S1b/S3 (`c14s3_region.readout_with_pcs`). Two output-only hooks: the PCA loadings are kept, and the readout stores each type's L1/L2 lineage names (labels for the report, not model features). A, B and C are not touched.
+- **Analyses (per type, logistic as in S1):**
+  - (a) per-type gain: LOEO delta AUC (base + PCs minus base), cell-weighted over embryos.
+  - (b) gene weights for the top 8 types: w_g = sum_k loading_kg x beta_k / sd(pc_k), fit on all train embryos; positive = toward L1. Top 20 genes each way. Stability: refit without each embryo, overlap of the top-50 |w| genes with the all-embryo fit.
+  - (c) shared vs type-specific: cosine of gene-weight vectors between top types; a shared program = mean of unit |w|.
+  - (d) PC importance: leave-one-PC-out drop of the pooled LOEO gain, for the 8 PCs with the largest mean |beta|.
+- **Prediction:** the gain is carried by lineage-priming genes (top genes toward L1 are markers of L1's own lineage), stability >= 0.5 in the top types, and the programs are mostly type-specific (mean |cosine| < 0.3).
+- **Limits stated now:** exploratory; gene weights through 30 PCs are smoothed and correlated genes share weight; logistic coefficients are not causal; n = 7 embryos.
+- **Pre-flight:**
+  - Unit: embryo (stability folds); cells within types for weights.
+  - Readout: as C14-S1.
+  - Used data first: train only.
+  - Power: not a test, no H14 gate.
+  - Exposure: as C14 (two re-analysis abstracts at topic level; C14-S2 result on A).
+  - Literature: Minkina 2022 and GEMLI 2024 read 2026-11-16 (memory genes in culture).
+  - Readout gate: as S1.
+  - H22: no contrast.
+- **Practice:**
+  - Synthetic smoke: a planted gene loading on one PC drives y in one type; it must rank in that type's top 20 toward L1, and dropping that PC must lower the gain by > 0.05.
+  - Run the whole path on a tiny synthetic input before dispatch (RETRO_2026-11-15 item 5).
+  - Peak RAM: as S3 on the runner (same matrix pass).
+- **C14-S4 dispatch (2026-11-16):** synthetic path test passed (planted gene G7 ranked 1st toward L1 in its type, stability 0.93; dropping its PC lowered the gain by 0.21; programs mostly type-specific on synthetic, |cos| 0.17). Runs on GitHub Actions (sweeps/c14s4.txt --petracer).

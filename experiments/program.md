@@ -5,10 +5,17 @@ How experiments are run and logged here. An agent or a person follows these rule
 ## Goal (set by Bence, 2026-11-05)
 - **Long term:** model stem-cell fate behaviour in general, and eventually answer embryo
   morphogenesis questions (how cells sharing local rules build a patterned tissue).
-- **Current step:** show that the model can fit conditional data, i.e. perturbation experiments
-  where the same clones are split across conditions. First data set: Weinreb 2020 LARRY cytokine
-  experiment (closed 2026-11-05, WRITEUP_LARRY_CYTOKINE.md). Second: SIS-seq / SIS-skew
-  (chapter 2 plan in PROGRAM_HISTORY.md; closed 2026-11-06, WRITEUP_SIS.md).
+- **Current step:** always `experiments/FOCUS.json` (chapter, step, question). This file holds no
+  current step since 2026-11-16: the bullet written here on 2026-11-05 (chapters 1-2, fitting
+  conditional data) was never updated when FOCUS.json took over the current step on 2026-11-07, and
+  stayed stale through chapters 3-14. **Chapter close rule:** closing a chapter adds one line to
+  "Arc so far" below and checks that the chapter served the long-term goal.
+- **Arc so far:** chapters 1-3 fitted the mechanistic model to conditional data (LARRY cytokine,
+  SIS-seq, gastruloids); chapter 6 fitted spatial models (closed exploratory). Chapters 7, 8, 10 and 14 tested whether cell state beyond type carries
+  clone or clade fate, with classifiers, in culture (7, 8, 10) and in held-out embryos (14,
+  confirmed on A). Morphogenesis (claim H-a) is blocked by data: no public whole-embryo lineage
+  with measured position. Gap noted 2026-11-16: since chapter 6 the mechanistic models have not
+  been fitted to new data.
 - **Short-term question (chapter 1, answered):** do G-CSF and M-CSF instruct or select neutrophil
   vs monocyte fate, and in what proportion (instruction shifts tau, selection s and gamma)?
   Answer: mostly clone-level selection on a strong fate state, modest instruction.
@@ -112,7 +119,7 @@ before every look and refuses on any failure.
   Every pre-registration has a `Serves:` line: the goal element and the current chapter question it
   serves, and how its result could change that chapter's answer (stopping rule). Work outside the
   current chapter question needs Bence's OK in chat, quoted in the entry. The oracle refuses a look
-  without `Serves:`. Current chapter and order of work: GOAL_CHECK_2026-11-07.md section 5.
+  without `Serves:`. Current chapter and step: `experiments/FOCUS.json` (GOAL_CHECK_2026-11-07.md section 5 is history).
   **Enforced by hooks** (Bence 2026-11-07: "create hooks to defense us from drifting like this again!"):
   `experiments/FOCUS.json` holds the current step; `experiments/hooks/scope_guard.py` runs as a Claude
   Code PreToolUse hook (blocks running or creating an experiment script not named in a pre-registration

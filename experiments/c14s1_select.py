@@ -76,6 +76,7 @@ def build():
         if min(h.loc[h.y == 1, "cluster"].nunique(), h.loc[h.y == 0, "cluster"].nunique()) < MIN_CL:
             continue  # H21 rule enforced before modelling
         h["T"] = T
+        h["L1"], h["L2"] = L1, L2  # names only (C14-S4); not model features
         rows.append(h.drop(columns=["relcnt"]))
     D = pd.concat(rows)
     say(f"types kept {D['T'].nunique()}, cells {len(D)}, clusters {D['cluster'].nunique()}")

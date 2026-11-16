@@ -88,6 +88,15 @@ SEEDS = {
     "Jindal 2024 (CellTag-multi, RNA + ATAC clonal fate)": "10.1038/s41587-023-01931-4",
     "Biddy 2018 (CellTag reprogramming lineage)": "10.1038/s41586-018-0744-4",
     "Ma 2020 (SHARE-seq chromatin potential)": "10.1016/j.cell.2020.09.056",
+    # chapter 14 (state beyond type predicts clade fate in embryos), added at C14 close 2026-11-16
+    "PEtracer 2025 (prime-editing lineage recorder)": "10.1126/science.adx3800",
+    "Chan 2019 (mouse embryogenesis recording)": "10.1038/s41586-019-1184-5",
+    "Kalhor 2018 (whole-mouse developmental barcoding)": "10.1126/science.aat9804",
+    "Bowling 2020 (CARLIN lineage mouse)": "10.1016/j.cell.2020.04.048",
+    "Minkina 2022 (lineage-tethered state heterogeneity)": "10.1101/2022.05.12.491602",
+    "Eisele 2024 (GEMLI, memory-gene lineages)": "10.1038/s41467-024-47158-y",
+    "Quantitative fate mapping 2022": "10.1016/j.cell.2022.10.028",
+    "Nat Genet 2026 (spatiotemporal lineage)": "10.1038/s41588-026-02739-z",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -155,6 +164,11 @@ TOPICS = {
     "spatial_mechanism": [r"chemota", r"wave.pinning", r"potts", r"vertex model", r"agent-based", r"jamming",
                           r"convergent extension", r"collective (cell )?migration", r"reaction.diffusion", r"tissue mechanic"],
     "morphogenesis_long_term": [r"gastruloid", r"embryo", r"morphogen", r"organoid", r"self-organi"],
+    # C14 close 2026-11-16: in vivo lineage + state data with many independent units (fresh hold-outs)
+    "in_vivo_lineage_state": [r"lineage recorder", r"molecular recording", r"phylogen", r"cassiopeia",
+                              r"in vivo lineage", r"whole.organism lineage", r"lineage tree", r"prime editing"],
+    "replicate_units": [r"embryos", r"replicate", r"independent (mice|animals|embryos|individuals|donors)",
+                        r"geo accession", r"data availability", r"atlas"],
     "inference_identifiability": [
         r"identifiab",
         r"inference",
