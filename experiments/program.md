@@ -8,7 +8,7 @@ How experiments are run and logged here. An agent or a person follows these rule
 - **Current step:** always `experiments/FOCUS.json` (chapter, step, question). This file holds no
   current step since 2026-11-16: the bullet written here on 2026-11-05 (chapters 1-2, fitting
   conditional data) was never updated when FOCUS.json took over the current step on 2026-11-07, and
-  stayed stale through chapters 3-14. **Chapter close rule:** closing a chapter runs a retro in the same session (all standing retro steps, RETRO_2026-11-16) before the next chapter is proposed, adds one line to
+  stayed stale through chapters 3-14. **Chapter close rule (H23):** closing a chapter runs a retro in the same session (all standing retro steps, RETRO_2026-11-16) before the next chapter is proposed, adds one line to
   "Arc so far" below and checks that the chapter served the long-term goal.
 - **Arc so far:** chapters 1-3 fitted the mechanistic model to conditional data (LARRY cytokine,
   SIS-seq, gastruloids); chapter 6 fitted spatial models (closed exploratory). Chapters 7, 8, 10 and 14 tested whether cell state beyond type carries
@@ -200,6 +200,14 @@ before every look and refuses on any failure.
   - Every amendment that drops arms, pairs or conditions re-checks this, and so does a step called a "scan".
   - H19.2 power is computed at this unit when the contrast is between conditions.
   - Text only, not enforced in code.
+- **H23 Chapter-close retro.** (RETRO_2026-11-16; Bence 2026-11-16: "add rule for chapter colsure retro". C14 was
+  closed, written up and followed by S4 with no retro; Bence caught it.)
+  - Closing a chapter, or pausing Cellware from inside one, runs a retro in the same session, before the next
+    chapter is proposed. The retro is `RETRO_<date>.md`, its title line says `<chapter> close` (e.g. "C14
+    close"), and it covers all five standing retro steps, including the gap map and the watch list.
+  - The retro also says how the chapter served the long-term goal, and adds the chapter's line to "Arc so far".
+  - **Enforced by the commit-msg hook:** a FOCUS.json change that leaves a chapter (to another chapter or to
+    PAUSED) is refused unless a RETRO_*.md title line names `<old chapter> close`. Tests in test_guards.py.
 - **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log
   cite them).
 

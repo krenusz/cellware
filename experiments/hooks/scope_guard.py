@@ -115,8 +115,31 @@ PRACTICE_FROM = "2026-11-13"  # pre-registrations from this date need a 'Practic
 
 
 def chapter_of(step):
-    """'C9-S2' -> 'C9'; 'PAUSED' -> 'PAUSED'."""
-    return str(step).split("-")[0].strip().upper()
+    """'C9-S2' -> 'C9'; 'C14 CLOSED' -> 'C14'; 'PAUSED' -> 'PAUSED'."""
+    m = re.match(r"\s*(C\d+|PAUSED)", str(step).upper())
+    return m.group(1) if m else str(step).split("-")[0].strip().upper()
+
+
+def retro_titles():
+    """Title lines of experiments/RETRO_*.md on disk (staged or committed)."""
+    out = []
+    for name in sorted(os.listdir(EXP)):
+        if name.startswith("RETRO_") and name.endswith(".md"):
+            with open(os.path.join(EXP, name), encoding="utf-8") as fh:
+                out.append(fh.readline())
+    return out
+
+
+def retro_gate_errors(old_focus, new_focus, titles):
+    """H23: leaving a chapter (to another chapter or PAUSED) needs a retro whose title says '<chapter> close'."""
+    old_ch = chapter_of((old_focus or {}).get("step", ""))
+    new_ch = chapter_of(new_focus.get("step", ""))
+    if not re.fullmatch(r"C\d+", old_ch) or new_ch == old_ch:
+        return []
+    if any(re.search(rf"\b{old_ch}\s+close", t, re.I) for t in titles):
+        return []
+    return [f"FOCUS.json leaves chapter {old_ch} without a chapter-close retro: write experiments/RETRO_<date>.md "
+            f"whose title line says '{old_ch} close' (H23)."]
 
 
 def chapter_gate_errors(old_focus, new_focus):
@@ -144,7 +167,9 @@ def commit_msg(path):
         show = lambda ref: subprocess.run(["git", "show", ref], capture_output=True, text=True, encoding="utf-8").stdout
         new_txt, old_txt = show(":experiments/FOCUS.json"), show("HEAD:experiments/FOCUS.json")
         if new_txt:
-            errs += chapter_gate_errors(json.loads(old_txt) if old_txt else {}, json.loads(new_txt))
+            old_f, new_f = (json.loads(old_txt) if old_txt else {}), json.loads(new_txt)
+            errs += chapter_gate_errors(old_f, new_f)
+            errs += retro_gate_errors(old_f, new_f, retro_titles())
     if "experiments/EXPERIMENT_LOG.md" in staged:
         f = json.loads(subprocess.run(["git", "show", ":experiments/FOCUS.json"], capture_output=True,
                                       text=True).stdout or open(FOCUS, encoding="utf-8").read())

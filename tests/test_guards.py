@@ -358,6 +358,7 @@ def test_commit_refuses_focus_change_without_bence_quote(box):
 
 
 def test_commit_refuses_new_chapter_without_value_and_literature(box):
+    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close\n")
     box.focus(step="C10-S1")
     res = box.commit('open chapter 10\n\nBence: "go"')
     assert res.returncode != 0 and "H20" in res.stderr
@@ -365,11 +366,32 @@ def test_commit_refuses_new_chapter_without_value_and_literature(box):
     assert box.commit('open chapter 10\n\nBence: "go"').returncode == 0
 
 
-def test_commit_allows_pause_and_same_chapter_step(box):
+def test_commit_allows_same_chapter_step_and_pause_after_close_retro(box):
     box.focus(step="C9-S3")
     assert box.commit('next step\n\nBence: "go"').returncode == 0
     box.focus(step="PAUSED")
+    res = box.commit('pause\n\nBence: "pause"')
+    assert res.returncode != 0 and "H23" in res.stderr
+    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close\n")
     assert box.commit('pause\n\nBence: "pause"').returncode == 0
+
+
+def test_commit_refuses_leaving_chapter_without_close_retro(box):
+    box.write("RETRO_2026-11-13.md", "# Retro 2026-11-13: C8 closed, C9 opened\n")  # names C9, not its close
+    box.focus(step="C10-S1", value="adds x", literature="top 5 read")
+    res = box.commit('open chapter 10\n\nBence: "go"')
+    assert res.returncode != 0 and "H23" in res.stderr
+    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close (S2 look, write-up)\n")
+    assert box.commit('open chapter 10\n\nBence: "go"').returncode == 0
+
+
+def test_chapter_of_reads_closed_and_step_labels():
+    sys.path.insert(0, str(EXP / "hooks"))
+    import scope_guard as sg
+    assert sg.chapter_of("C14 CLOSED") == "C14" and sg.chapter_of("C14-S4") == "C14"
+    assert sg.chapter_of("PAUSED") == "PAUSED"
+    assert sg.retro_gate_errors({"step": "C14-S4"}, {"step": "C14 CLOSED"}, []) == []
+    assert sg.retro_gate_errors({"step": "C14-S4"}, {"step": "C15-S0"}, ["# Retro: C14 close\n"]) == []
 
 
 @pytest.mark.parametrize(
