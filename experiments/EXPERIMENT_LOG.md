@@ -11496,3 +11496,46 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Already published? Two unread papers in today's gap map (#2, #12 in lit/gap_2026-11-15.md) are close; to be read before any write-up.
 - Exposure (C14): two re-analysis abstracts of this dataset at topic level, plus C13 headings; the authors' annotations are used only for type and lineage labels, not as features of P.
 - Partition A is spent. B (3 embryos) and C (1 embryo) stay sealed.
+
+
+## C14-S3: train-only regional confound check of the expression-state gain (pre-registered 2026-11-16; Bence: "go 1 2")
+- **Serves: C14-S3 (script c14s3_region.py).** Self-challenge of the C14-S2 confirmation: is the gain of P over base explained by where the cell sits?
+- **Compute:** GitHub Actions (sweeps/c14s3.txt, `--petracer`; the step now also downloads the lean set's spatial-scores file, sha256 locked). Nothing local beyond a synthetic smoke test.
+- **Data:** TRAIN embryos only (7). Readout, HVG and PCs exactly as in C14-S1b. Region covariates are the lean set's per-cell AP, DV and neural-AP scores, read through `partitions.train_only` (cell-id column first, sealed rows skipped before any score is read). Missing scores are set to 0 with a missing flag. Region block: ap, dv, nap, ap^2, dv^2, ap*dv and three missing flags. A, B and C are not touched.
+- **Models (per type, LOEO over embryos, logistic as in S1):**
+  - B = base
+  - BP = base + PCs (as S1b)
+  - BR = base + region
+  - BRP = base + region + PCs
+- **Statistics:** embryo-mean of the per-embryo cell-weighted within-type delta AUC.
+  - d = BP - B (original gain)
+  - dR = BRP - BR (gain beyond region)
+  - r = BR - B (region alone)
+  - retained = dR / d
+- **Decision rule (stated before the run):**
+  - **Survives:** retained >= 0.5 and dR > 0 in at least 5 of the embryos with a delta.
+  - **Partly regional:** retained between 0.25 and 0.5.
+  - **Mostly regional:** retained < 0.25, or dR > 0 in fewer than half of the embryos.
+- **Smoke tests (synthetic outcomes, scratch outputs only):**
+  - (i) Planted region-only outcome y* = 1[z(ap) + z(dv) + N(0, 1) > 0]: dR* must be < 0.02. This checks that the region block absorbs a pure-region signal.
+  - (ii) Planted state outcome = y + N(0, 1.5) on a PC-independent feature added to both full models: dR > 0.05.
+  - If either test fails, the result is reported as invalid.
+- **Prediction:** retained about 0.5-0.8 (some of the PC signal is regional, most is not).
+- **Limits stated now:**
+  - The scores are expression-inferred, not measured. If PCs and scores share information, the adjustment over-controls, so dR is a lower bound on non-regional state. If the scores miss real position, it under-controls.
+  - This step can lower the C14 claim. It cannot raise it, and no sealed data is spent.
+- **Pre-flight:**
+  - Unit: embryo.
+  - Readout: as C14-S1.
+  - Used data first: train only.
+  - Power: not a confirmatory test, so no H14 gate. It is descriptive at n = 6-7 embryos.
+  - Exposure: as C14 (two re-analysis abstracts at topic level, plus the C14-S2 result on A).
+  - Literature: gap map #2 and #12 read 2026-11-16. Neither tests relatives' fate beyond type in held-out embryos.
+  - Readout gate: as S1 (at least 30 clusters per side).
+  - H22: no contrast.
+- **Practice:**
+  - Synthetic smoke tests (i) and (ii).
+  - Tick the pre-registration against the script before dispatch.
+  - Run the whole path on a tiny synthetic input before dispatch (RETRO_2026-11-15 item 5).
+  - Peak RAM: same as S1b on the runner.
+- **C14-S3 dispatch (2026-11-16):** synthetic path test passed (smoke i/ii PASS, retained 0.44 on a planted half-regional signal, classified PARTLY REGIONAL as designed); train-only reader checked (7 train embryos, counts only). Runs on GitHub Actions (sweeps/c14s3.txt --petracer).

@@ -1,0 +1,2 @@
+# C14-S3 regional confound check, train embryos only (needs --petracer)
+[experiments/results_c14/c14s3_region.json] python -I experiments/c14s3_region.py

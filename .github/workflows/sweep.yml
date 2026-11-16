@@ -73,6 +73,8 @@ jobs:
           mkdir -p data/ext_petracer/raw data/ext_petracer/train_matrices
           curl -sfL --retry 3 -o data/ext_petracer/raw/E7.5-E10_trees.h5td \
             https://zenodo.org/api/records/23088914/files/E7.5-E10_trees.h5td/content
+          curl -sfL --retry 3 -o data/ext_petracer/raw/E7.5-E10_spatial_scores.csv \
+            https://zenodo.org/api/records/23088914/files/E7.5-E10_spatial_scores.csv/content
           for f in $(awk '{print $2}' sweeps/petracer_train_data.sha256 | grep train_matrices); do
             n=$(basename "$f"); gsm=${n%%_*}
             curl -sfL --retry 3 -o "$f" "https://ftp.ncbi.nlm.nih.gov/geo/samples/${gsm:0:7}nnn/$gsm/suppl/$n"
