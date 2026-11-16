@@ -11539,3 +11539,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Run the whole path on a tiny synthetic input before dispatch (RETRO_2026-11-15 item 5).
   - Peak RAM: same as S1b on the runner.
 - **C14-S3 dispatch (2026-11-16):** synthetic path test passed (smoke i/ii PASS, retained 0.44 on a planted half-regional signal, classified PARTLY REGIONAL as designed); train-only reader checked (7 train embryos, counts only). Runs on GitHub Actions (sweeps/c14s3.txt --petracer).
+
+### C14-S3 result (2026-11-16, Actions run 43837455839, commit 16d7bbb; train embryos only)
+- **SURVIVES (pre-stated rule).** Gain beyond region dR = 0.061 vs original d = 0.074 (retained 0.82). dR > 0 in 6 of 6 embryos with a delta. Region alone adds r = 0.013.
+- Per embryo d -> dR: E8.0-R1 0.015 -> 0.012; E8.0-R3 0.041 -> 0.029; E8.5-R2 0.102 -> 0.085; E8.5-R3 0.090 -> 0.080; E9.0-R1 0.088 -> 0.066; E9.5-R1 0.108 -> 0.092.
+- Smoke tests passed: (i) region-only outcome dR -0.011 (d +0.073, so the PCs do carry region and the adjustment removes it); (ii) planted state dR +0.127.
+- Prediction (retained about 0.5-0.8): met at the top end (0.82).
+- Limits: the AP score covers all readout cells, but the DV score is missing for 91% and neural AP for 51% (missing flags in the model). So DV position is barely controlled. Scores are expression-inferred. 6 embryos, descriptive (no sealed data).
+- Self-challenge: the remaining alternative is fine-scale co-location (local niche) below the resolution of these scores; not testable without measured positions (same gap as C13/H-a).
