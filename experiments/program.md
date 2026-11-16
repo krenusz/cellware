@@ -8,7 +8,7 @@ How experiments are run and logged here. An agent or a person follows these rule
 - **Current step:** always `experiments/FOCUS.json` (chapter, step, question). This file holds no
   current step since 2026-11-16: the bullet written here on 2026-11-05 (chapters 1-2, fitting
   conditional data) was never updated when FOCUS.json took over the current step on 2026-11-07, and
-  stayed stale through chapters 3-14. **Chapter close rule:** closing a chapter adds one line to
+  stayed stale through chapters 3-14. **Chapter close rule:** closing a chapter runs a retro in the same session (all standing retro steps, RETRO_2026-11-16) before the next chapter is proposed, adds one line to
   "Arc so far" below and checks that the chapter served the long-term goal.
 - **Arc so far:** chapters 1-3 fitted the mechanistic model to conditional data (LARRY cytokine,
   SIS-seq, gastruloids); chapter 6 fitted spatial models (closed exploratory). Chapters 7, 8, 10 and 14 tested whether cell state beyond type carries
