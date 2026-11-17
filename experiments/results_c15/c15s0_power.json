@@ -1,0 +1,56 @@
+{
+ "verdict": "FAIL (no sealed partition >= 0.8 at the shrunk effect, pessimistic sd)",
+ "grid": {
+  "A | shrunk 0.0556 | optimistic": {
+   "power": 0.635,
+   "hosts_used": 3
+  },
+  "A | shrunk 0.0556 | pessimistic": {
+   "power": 0.306,
+   "hosts_used": 3
+  },
+  "A | half 0.028 | optimistic": {
+   "power": 0.204,
+   "hosts_used": 3
+  },
+  "A | half 0.028 | pessimistic": {
+   "power": 0.162,
+   "hosts_used": 3
+  },
+  "B | shrunk 0.0556 | optimistic": {
+   "power": 0.953,
+   "hosts_used": 7
+  },
+  "B | shrunk 0.0556 | pessimistic": {
+   "power": 0.157,
+   "hosts_used": 7
+  },
+  "B | half 0.028 | optimistic": {
+   "power": 0.441,
+   "hosts_used": 7
+  },
+  "B | half 0.028 | pessimistic": {
+   "power": 0.089,
+   "hosts_used": 7
+  },
+  "C | shrunk 0.0556 | optimistic": {
+   "power": 0.77,
+   "hosts_used": 4
+  },
+  "C | shrunk 0.0556 | pessimistic": {
+   "power": 0.147,
+   "hosts_used": 4
+  },
+  "C | half 0.028 | optimistic": {
+   "power": 0.264,
+   "hosts_used": 4
+  },
+  "C | half 0.028 | pessimistic": {
+   "power": 0.097,
+   "hosts_used": 4
+  }
+ },
+ "sd": 0.0374,
+ "ref_cells": 27217.5,
+ "min_leaves": 200
+}

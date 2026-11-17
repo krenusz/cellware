@@ -11715,3 +11715,33 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Source table named for every count (RETRO_2026-11-17 lesson 1).
   - Neutral wording in outputs.
   - Compute on Actions with the run URL given.
+
+### C15-S0 result (2026-11-17; structure on Actions run 44064547427, power local; no outcome read)
+- **Structure:** 78 units, 3 arms, 19 state clusters. Cells: h5ad1 57,485, h5ad2 102,032 (the larger was used per unit). Trees for 73 units.
+- **Partition growth12_host** (hash fixed before any host was seen; not redrawn):
+
+  | Partition | Hosts | Units | Hosts with a unit >= 200 leaves | Leaves per host |
+  |---|---|---|---|---|
+  | train | 17 | 39 | 11 | |
+  | A | 3 | 8 | 3 | 2,162-14,852 |
+  | B | 7 | 19 | 6 | 248-5,860 |
+  | C | 5 | 12 | 4 | 0-1,842 |
+
+  The hash split is unlucky: A got only 3 hosts.
+- **H17 power** (mean of per-host delta AUC, frozen C14 z rule):
+
+  | Partition | Shrunk effect, optimistic sd | Shrunk effect, pessimistic sd | Half effect, optimistic sd |
+  |---|---|---|---|
+  | A | 0.64 | 0.31 | 0.20 |
+  | B | 0.95 | 0.16 | 0.44 |
+  | C | 0.77 | 0.15 | 0.26 |
+
+  - Pooled, descriptive only: A+B 0.99 / 0.21; A+B+C 1.00 / 0.22.
+- **Gate (pre-registered: shrunk effect, pessimistic sd): FAIL.** No sealed partition reaches 0.8. The prediction (4-9 hosts per partition; A powered under the optimistic sd) was not met for A: 3 hosts, 0.64.
+- **Deviation found on review:** c15s0_power counts hosts by total leaves >= 200, not by "a unit with >= 200 leaves" as pre-registered. B uses 7 hosts where the stated rule gives 6. This makes power slightly higher, so the FAIL verdict stands.
+- Self-challenge:
+  - The verdict hinges on an assumed per-host sd. The pessimistic case scales C14's embryo sd by sqrt(27,200 / leaves), which makes small hosts (about 250 leaves) ten times noisier and dominates the equal-weight host mean. The optimistic case ignores host size.
+  - The true per-host sd at 1-5k traced cells is unknown and measurable on train (11 usable hosts).
+  - The effect is transferred from embryos to a growth model; it may not exist there at all.
+  - Units within a host share the host; the host is the right unit (H22), and this caps n.
+- Reading: on structural counts alone C15 does not pass H19 power. The deciding input, per-host sd (and a size-weighted host mean), can only come from a train-only fit. That would be the model's own simulated statistic (H17 proper), and it needs Bence's OK as C15-S1.
