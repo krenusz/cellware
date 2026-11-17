@@ -11780,3 +11780,50 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - C 0.77 / 0.21 (4 usable hosts)
 - Gate (pessimistic): still FAIL. The prediction (0.77-0.86 optimistic, < 0.25 pessimistic) was met.
 - Reading: the rebalance makes two partitions powered under the optimistic sd, where before there was one. The pessimistic case is unchanged, because it is driven by the assumed per-host noise, not by the split.
+
+## C15-S1: train-only readout, leave-one-host-out fit, per-host noise and H17 power (pre-registered 2026-11-17; Bence: "go c15-s1")
+- **Serves: C15-S1 (scripts c15s1a_format.py, c15s1b_fit.py; both reuse c15g_hosts download/unit parsing and c15s0_struct helpers unchanged).** Measures the input that decided the C15-S0 gate (per-host sd) and the train effect. That makes power the model's own simulated statistic (H17). TRAIN hosts only (17 hosts of growth12_host_v2, via train_only); A/B/C hosts' rows are dropped before any column other than the unit ID is read. No claim.
+- **Compute:** both on GitHub Actions (sweeps/c15s1a.txt, sweeps/c15s1b.txt).
+- **(a) c15s1a_format.py, H9 format check on train hosts:**
+  - h5ad obs column names, dtypes and category counts; X shape and dtype, and whether it is integer counts.
+  - The var gene-ID column.
+  - Fraction of tree leaf names found in the obs index, per h5ad.
+  - Difference between .nwk and .tree for one unit; kinds of .txt files by name pattern.
+  - Values stay out of the output: no state composition, no per-cluster counts.
+  - Raw column and file names go only to the run's .txt log (kept in .sweep_runs, gitignored). The committed JSON holds counts and match fractions only.
+- **(b) c15s1b_fit.py, readout as C14 transferred:**
+  - Cluster T: the authors' state cluster (the obs column found in (a); 19 categories).
+  - Relatives: the leaves of the smallest clade around the cell with >= 5 leaves of another cluster (clades > 300 leaves skipped).
+  - L1 and L2: per T, pooled over train hosts, the two most frequent relative clusters, each >= 20% of relatives.
+  - y = 1 if relatives lean L1 over L2. At least 3 informative relatives; ties dropped.
+  - H21 gate on train: a cluster enters with >= 200 cells and >= 30 clades per side.
+  - Base model: log counts, detection rate, log clade size, depth, log unit leaves, arm (recoded).
+  - Full model: base + 30 PCs of 2,000 HVGs, with log-normalisation, HVG, z-scoring and PCA fit on train hosts only.
+  - Per-cluster logistic, leave-one-host-out. Per-host cell-weighted within-cluster delta AUC.
+  - Smoke tests: shuffled y gives |mean delta| < 0.01; a planted y from PC0 gives > 0.05. Either failing makes the run INVALID.
+- **Outputs:**
+  - per-host delta (hosts recoded), host leaves, mean, leaf-weighted mean, sd;
+  - the variance model sd^2 = a + b / leaves, fitted on the train hosts;
+  - H17 power for A, B and C (v2 structural leaves).
+- **H17 power method:**
+  - Per sealed host, delta ~ N(0.75 x train weighted mean, sd(leaves) from the variance model). Statistic: leaf-weighted mean.
+  - Known-sd z, SE = sqrt(sum w^2 sd^2) / sum w, z > 1.96. 20,000 simulations via power.sim_power.
+  - Hosts with < 200 leaves are excluded.
+- **Gate (H19):** C15 is powered if A or B reaches >= 0.8.
+- **Prediction:**
+  - (a): obs index matches tree leaves for >= 90% of leaves in one h5ad; X is raw counts.
+  - (b): the train weighted delta is positive, 0.02-0.06, with >= 70% of hosts positive; per-host sd 0.03-0.08 at 1-5k leaves; power for A and B 0.5-0.9.
+- **Limits stated now:** 11-17 train hosts. The effect may not transfer from embryos to this system. This is the C14 classifier readout, not yet the mechanistic transition model (that is S2 if the gate passes).
+- **Pre-flight:**
+  - Unit: host (H22: arm is not contrasted; 3 arms).
+  - Readout: as above; H21 checked on train.
+  - Used data first: train hosts only.
+  - Power: this step (H17).
+  - Exposure: #12 methods at topic level, plus C15-S0 structure.
+  - Literature: #12, #25.
+  - Readout gate: in (b).
+- **Practice:**
+  - Synthetic path test of (b) before dispatch: a tiny fake tree + obs + X with a planted signal.
+  - Source table named for every count.
+  - Neutral wording.
+  - Peak RAM: X read only for train cells and HVGs, streamed by row blocks.
