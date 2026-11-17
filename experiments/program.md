@@ -15,7 +15,9 @@ How experiments are run and logged here. An agent or a person follows these rule
   clone or clade fate, with classifiers, in culture (7, 8, 10) and in held-out embryos (14,
   confirmed on A). Morphogenesis (claim H-a) is blocked by data: no public whole-embryo lineage
   with measured position. Gap noted 2026-11-16: since chapter 6 the mechanistic models have not
-  been fitted to new data.
+  been fitted to new data. Chapter 15 (closed 2026-11-17, underpowered) tried to carry the C14 test
+  to an in vivo growth model with 32 hosts: the train effect was about zero and the between-host
+  noise too large for 5 hosts per sealed partition; no model was fitted; that set stays sealed.
 - **Short-term question (chapter 1, answered):** do G-CSF and M-CSF instruct or select neutrophil
   vs monocyte fate, and in what proportion (instruction shifts tau, selection s and gamma)?
   Answer: mostly clone-level selection on a strong fate state, modest instruction.
@@ -269,6 +271,8 @@ pre-registration dated 2026-11-13 or later without it.
 
 **Before a power claim**
 - Every power simulation gets a synthetic smoke test with a known answer (11-15; C14-S1a index bug).
+- A planted smoke signal goes on a direction orthogonal to the base features (residualised, or a synthetic
+  column), never on a raw top PC: real PC1 often tracks depth, and the base absorbs it (11-17b; C15-S1b).
 - Presence-type outcomes: count expected positives per sealed partition, not units (11-14b).
 - Selection power only by `sim_power` on the refit pipeline at the sealed n (H17); never `z_power` on a
   fixed out-of-fold SE (11-14b; C12-S1 power is provisional until redone).
