@@ -50,6 +50,7 @@ Per A embryo: E8.0-R2 -0.006, E8.5-R1 +0.043, E9.0-R2 +0.115, E9.5-R2 +0.137, E9
 
 ## Value against the literature
 - Lineage-coupled expression memory is well documented in cell lines and in vitro or organoid systems: Minkina et al. 2022 (HEK293 lineage plus expression); Eisele et al. 2024, GEMLI (lineage inferred from memory genes in cell lines, organoids and crypts). Neither tests prediction of relatives' fate beyond cell type, and neither evaluates on held-out individuals or uses whole-embryo trees.
+- Closest neighbour (read 2026-11-17, gap map #25): Gowri et al. 2026, arXiv 2610.40447, "lineage inpainting". It uses the same embryo atlas and a tree-aware generative model that predicts a cell's state dynamics from its relatives' states. It does not test state beyond annotated type against relatives' fate. It does not hold out embryos (only clone trees), and it fits no mechanistic model. C14's claim is therefore not pre-empted. Its per-embryo and per-clone results were not read, because its held-out trees may come from our sealed embryos.
 - The PEtracer authors' own analyses and two re-analysis abstracts (topic level only) were not used beyond the type and lineage labels.
 - What this chapter adds: a held-out-embryo test of state beyond type predicting relatives' fate in an in vivo whole-embryo tree, with a regional confound check. Gap map: `lit/gap_2026-11-15.md`.
 

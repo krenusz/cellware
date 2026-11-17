@@ -1,0 +1,52 @@
+{
+ "verdict": "UNDERPOWERED",
+ "rule": "frozen C14-S2 z test; sd floor 0.0374; z > 1.96",
+ "b_stages": [
+  7.5,
+  7.5,
+  9.0
+ ],
+ "inputs": "train LOEO d/dR (c14s3_region.json) + spent A d (C14-S2); B not read",
+ "results": {
+  "d (train + spent A) | S-drop (E7.5 gives no readout)": {
+   "power": 0.87,
+   "median_z": 2.62,
+   "n_sim": 19999,
+   "fit_intercept": -0.5289,
+   "fit_slope_per_day": 0.0696,
+   "effect_at_E7_5": -0.0069,
+   "effect_at_E9_0": 0.0976,
+   "n_embryos_in_fit": 11
+  },
+  "d (train + spent A) | S-keep (E7.5 at extrapolated effect)": {
+   "power": 0.087,
+   "median_z": 0.77,
+   "n_sim": 20000,
+   "fit_intercept": -0.5289,
+   "fit_slope_per_day": 0.0696,
+   "effect_at_E7_5": -0.0069,
+   "effect_at_E9_0": 0.0976,
+   "n_embryos_in_fit": 11
+  },
+  "dR region-adjusted (train only) | S-drop (E7.5 gives no readout)": {
+   "power": 0.604,
+   "median_z": 2.13,
+   "n_sim": 19959,
+   "fit_intercept": -0.315,
+   "fit_slope_per_day": 0.0438,
+   "effect_at_E7_5": 0.0132,
+   "effect_at_E9_0": 0.0788,
+   "n_embryos_in_fit": 6
+  },
+  "dR region-adjusted (train only) | S-keep (E7.5 at extrapolated effect)": {
+   "power": 0.261,
+   "median_z": 1.28,
+   "n_sim": 19950,
+   "fit_intercept": -0.315,
+   "fit_slope_per_day": 0.0438,
+   "effect_at_E7_5": 0.0132,
+   "effect_at_E9_0": 0.0788,
+   "n_embryos_in_fit": 6
+  }
+ }
+}

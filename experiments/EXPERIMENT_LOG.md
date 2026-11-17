@@ -11585,3 +11585,50 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Posterior Hox and Cdx genes on the lateral side are partly axial position. S3 kept 82% of the gain with the AP score in the model, but this gene set suggests some of the remainder is still AP-linked.
   - A cell carrying its relatives' lineage program is consistent with inherited state (memory) and with mixed or transitioning cells near annotation boundaries (type impurity). This step cannot separate the two.
   - Coefficients are not causal; 7 embryos.
+
+## C14-S5: B power simulation, train-only memory-vs-boundary check, C15 host count (pre-registered 2026-11-17; Bence: "go 1 2 3 4")
+- **Serves: C14-S5 (scripts c14s5_bpower.py, c14s5_core.py, c15g_hosts.py; c14s5_core reuses c14s3_region.readout_with_pcs and c14s1_select unchanged).** Three side steps after the C14 primary test, plus a write-up edit (#25 into WRITEUP_C14's value section). Serves the long-term goal: (a) says whether the last embryo partition can carry a test, (b) says whether S4's origin program may enter a mechanistic fate model as an inherited-state term, (c) decides whether candidate #12 passes H19 power for a chapter that fits the model. No claim from any of the three.
+- **Compute:** (a) local, under 10 s (arithmetic on committed result files; no data file). (b) GitHub Actions (sweeps/c14s5.txt, `--petracer`). (c) GitHub Actions (sweeps/c15g.txt): download from Zenodo on the runner, nothing local.
+- **(a) c14s5_bpower.py, B power:**
+  - Inputs: only the committed per-embryo train LOEO deltas (C14-S1b/S3: d and dR for 6 train embryos) and the spent A per-embryo deltas (C14-S2: 5 embryos). B's three embryos are not read; only their public stage labels (E7.5, E7.5, E9.0) from partitions.py.
+  - Test simulated = the frozen C14-S2 rule applied to B: mean of B's embryo deltas, known-sd z, sd = max(0.0374, B's own sd when n >= 2), confirmed if z > 1.96.
+  - Effect model: a linear fit of embryo delta on stage over train + A (d) or train only (dR), with its residual sd. Each simulated B embryo draws stage mean + residual noise + parameter uncertainty (bootstrap of the 11 or 6 embryos).
+  - Readout scenarios for the E7.5 embryos: S-drop, where they give no readout cells (as train E7.5-R1 gave none), and S-keep, where they contribute at the extrapolated E7.5 effect.
+  - Output: power by power.sim_power for d and dR under both scenarios. Decision: B is "lookable" only if power >= 0.8 under S-drop for dR (the conservative case).
+- **(b) c14s5_core.py, memory vs boundary (TRAIN embryos only):**
+  - Readout, HVG, PCs and LOEO base/full predictions exactly as C14-S3 (B vs BP).
+  - Boundary distance per cell is kNN type purity: the share of its 30 nearest readout neighbours in PC space (same embryo) with the same annotated type.
+  - Core = purity >= 0.9; edge = purity < 0.6.
+  - Per embryo, cell-weighted within-type delta AUC on core and on edge cells. retained_core = mean d_core / mean d_all.
+  - Rule:
+    - MEMORY-CONSISTENT if retained_core >= 0.5 and d_core > 0 in >= 5 of 6 embryos.
+    - BOUNDARY-DRIVEN if retained_core < 0.25.
+    - MIXED otherwise.
+  - Smoke tests on the real PCs:
+    - (i) a planted outcome that depends on PC0 only in edge cells (random elsewhere) must give retained_core < 0.25.
+    - (ii) a planted outcome depending on PC0 in all cells must give retained_core >= 0.5.
+    - If either fails, the verdict is INVALID.
+  - Limits: purity uses readout cells only and the same PCs as the features; "far from a boundary" in expression space is not lineage memory proven, only the boundary-mixing explanation weakened.
+- **(c) c15g_hosts.py, candidate #12 structure:**
+  - Downloads Zenodo 10.5281/zenodo.5847461 (one tarball, 1,305 MB by the Zenodo API) to the runner. Size and md5 are checked against the API record. Read with tarfile streaming; members are never executed and pickles are never loaded.
+  - Reads only: member names, extensions and sizes; unit IDs parsed from names and from cell-metadata sample columns (`<host>_<arm>_T<n>` pattern); cells per unit.
+  - Never reads: expression values, state labels, trees' shapes, or any result table.
+  - Output is recoded: arms become arm1..k and hosts become h01..; no raw sample names. It gives the number of hosts, units per host, hosts per arm, cells per unit, and whether a host carries units of more than one arm.
+  - Decision input for C15: a by-host train/A/B/C split needs >= 4 hosts per sealed partition and >= 30 units on each side of the readout (H21), checked later in the proposal.
+- **Prediction:**
+  - (a) B is underpowered under S-drop (power < 0.8), because only E9.0-R3 would contribute.
+  - (b) MIXED: some boundary contribution, retained_core between 0.25 and 0.5.
+  - (c) 15-40 hosts.
+- **Pre-flight:**
+  - Unit: embryo (a, b); host (c).
+  - Readout: as C14-S1 (a, b); structural counts only (c).
+  - Used data first: train and spent A only (a, b); (c) is a new public set, structure only, before any partition.
+  - Power: (a) is the power computation itself; (b) exploratory with no H14 gate; (c) is the input to H17.
+  - Exposure: as C14. For #12, topic-level methods and the abstract only; Table S1 and per-unit results unread. For #25, per-embryo/clone results unread (its held-out trees may be our sealed embryos).
+  - Literature: #25 and #12 read 2026-11-17 (PROPOSAL_C15).
+  - Readout gate: as S1.
+  - H22: no treatment contrast.
+- **Practice:**
+  - Synthetic path test before dispatch: (b) runs its smoke on synthetic PCs; (c) runs on a tiny synthetic tarball with fake sample names; (a) prints its inputs.
+  - Peak RAM: (b) as S3; (c) streams the tarball; extracts only metadata tables under 200 MB and h5ad files, of which only the obs unit-ID column is read (X never opened).
+  - Neutral wording in all outputs.
