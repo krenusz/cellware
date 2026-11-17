@@ -43,7 +43,7 @@ DATASETS = {
                     "spatial scores and tree structure are outcomes: train only after sealing.",
     "ext_c15": "Zenodo 10.5281/zenodo.5847461 (CC-BY; C15 candidate #12, in vivo growth model with lineage trees), downloaded "
                "only on GitHub Actions runners (never locally), md5 checked vs the record each time. Partitioned by host "
-               "(partitions.growth12_host, sealed 2026-11-17) before any statistic: train 40%, A/B/C 20%. Structure only "
+               "(partitions.growth12_host_v2, sealed 2026-11-17; v1 A/B/C void after the 5/5/5 rebalance, Bence: \"yes rebalance\") before any statistic: train 40%, A/B/C 20%. Structure only "
                "(units, hosts, cells per unit, tree leaves, number of state clusters) until a pre-registered train-only "
                "step; state labels, expression and trees of sealed hosts readable only via test_oracle.",
     "ext_triandafillou":"locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",

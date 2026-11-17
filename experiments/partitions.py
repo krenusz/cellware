@@ -118,7 +118,7 @@ PARTITIONED = {
         "sealed_on": "2026-11-15",
         "prior_exposure": "C13-S0: GEO/Zenodo metadata only (sample titles, stages, file names and sizes); abstract",
     },
-    "growth12_host": {
+    "growth12_host": {  # A/B/C VOID 2026-11-17 (amendment 1); train identical to v2
         "salt": "cellware-growth12-host-v1",
         "unit": "host (leading number of the unit ID `<host>_<arm>_T<n>` in Zenodo 5847461, C15 candidate #12; all "
                 "growths, cells and trees of a host go together; 32 hosts, 78 units, no host spans arms). Rule fixed "
@@ -127,6 +127,14 @@ PARTITIONED = {
         "sealed_on": "2026-11-17",
         "prior_exposure": "paper abstract and methods (topic level); recoded structure: 78 units, 32 hosts, 3 arms, "
                           "units per host, rows per unit from an allele-like table (C14-S5c)",
+    },
+    "growth12_host_v2": {
+        # C15-S0 amendment 1 (Bence 2026-11-17: "yes rebalance"): train = v1 train; the 15 v1-sealed hosts dealt
+        # by leaf count (snake ABCCBA) to 5/5/5. Structure only was known. Use this, not growth12_host, for A/B/C.
+        "fixed": {"3430": "A", "3432": "B", "3433": "train", "3434": "B", "3435": "train", "3451": "A", "3454": "train", "3457": "A", "3458": "C", "3460": "train", "3464": "train", "3465": "train", "3466": "train", "3467": "train", "3505": "train", "3507": "A", "3508": "C", "3510": "B", "3511": "C", "3513": "train", "3515": "train", "3519": "train", "3520": "train", "3522": "B", "3703": "train", "3724": "A", "3726": "C", "3730": "train", "3732": "C", "3754": "train", "3765": "train", "3777": "B"},
+        "unit": "host number (see growth12_host)",
+        "sealed_on": "2026-11-17",
+        "prior_exposure": "as growth12_host, plus leaves per host per partition (c15s0_rebal.json)",
     },
 }
 BUCKETS = 5

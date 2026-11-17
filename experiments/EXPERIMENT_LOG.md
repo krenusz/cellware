@@ -11768,3 +11768,15 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - H22: arm is not contrasted.
 - **Practice:**
   - Synthetic test: 15 fake sealed hosts give 5/5/5, the snake order is checked, train hosts are untouched, and the map is identical when run twice.
+
+### C15-S0a1 result (2026-11-17, Actions run 44069813079; structure only)
+- v2 is train 17 (unchanged) / A 5 / B 5 / C 5 hosts. The map is committed as partitions.growth12_host_v2; v1 A/B/C are void.
+  - A: 15 units, leaves per host 339-14,852
+  - B: 15 units, 248-5,860; B has no arm2 host
+  - C: 9 units, 0-4,797; one host has no tree
+- Power at the shrunk effect, optimistic / pessimistic sd:
+  - A 0.86 / 0.16
+  - B 0.86 / 0.15
+  - C 0.77 / 0.21 (4 usable hosts)
+- Gate (pessimistic): still FAIL. The prediction (0.77-0.86 optimistic, < 0.25 pessimistic) was met.
+- Reading: the rebalance makes two partitions powered under the optimistic sd, where before there was one. The pessimistic case is unchanged, because it is driven by the assumed per-host noise, not by the split.
