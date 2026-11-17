@@ -11679,3 +11679,39 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Rows per unit: median 2,929, total 755,032, 76 of 78 units >= 100. These counts come from the table with the most unit-ID matches. They exceed the paper's traced-cell totals (about 72k), so they are probably allele or UMI rows rather than cells. Treat them as an upper bound; the cell count per unit is still open.
 - The prediction (15-40 hosts) was met.
 - Reading: a by-host split is possible, for example train 14 hosts and A/B/C 6 hosts each, about 14 units per sealed partition. The H17 simulation and the H21 readout gate need the cell-level table and a readout definition; both are proposal work.
+
+## C15-S0: partition candidate #12 by host, structural counts, H17 power at the sealed n (pre-registered 2026-11-17; Bence: "do an other short retro and than go with 1")
+- **Serves: C15-S0 (scripts c15s0_struct.py, c15s0_power.py; c15s0_struct reuses c15g_hosts download/scan helpers unchanged).** Chapter-opening gate for C15 (H19 data and power, H20 value and literature in FOCUS.json). Serves the long-term goal: decides whether a fitted fate model with an inherited-state term can be tested on sealed units.
+- **Partition first:** `growth12_host` in partitions.py (salt cellware-growth12-host-v1, 40/20/20/20 by host number) is committed in the same commit as this pre-registration, before any host ID is seen in clear. Hosts are never re-drawn.
+- **Compute:** c15s0_struct on GitHub Actions (sweeps/c15s0.txt; downloads the tarball on the runner). c15s0_power is local arithmetic on the committed counts (seconds).
+- **c15s0_struct.py reads structure only.** Per partition (train, A, B, C) it reports:
+  - hosts, units, and units per arm (recoded);
+  - cells per unit from h5ad obs (the unit-ID column), each h5ad reported separately;
+  - tree leaves per unit, counted from .nwk files (comma count, no topology kept);
+  - the number of distinct state clusters, a category count of the obs column named like leiden/cluster/state, with no per-cluster or per-unit composition.
+  - It never reads expression, state composition, tree shape or any result.
+  - Output: recoded, with per-unit sizes as sorted lists without IDs.
+- **c15s0_power.py, H17 simulated power of the planned primary test:**
+  - Statistic: the mean over a partition's hosts of the per-host within-cluster delta AUC (model with the inherited-state term minus without), known-sd z, sd = max(0.0374, own), z > 1.96, the C14-S2 rule.
+  - Hosts count only if they have a unit with >= 200 tree leaves.
+  - Effect: C14 train embryo-mean 0.074 x 0.75 = 0.0556 (as C14-S2), plus a half-effect 0.028.
+  - Per-host sd, two cases:
+    - optimistic: 0.0374, the C14 train embryo sd;
+    - pessimistic: 0.0374 x sqrt(27,200 / leaves_host), floored at 0.0374. 27,200 = C14 train readout cells per embryo, 163,305 / 6.
+  - 20,000 simulations per cell of the grid; power via power.sim_power.
+  - **Gate:** C15 passes H19 power if at least one sealed partition reaches power >= 0.8 at the shrunk effect under the pessimistic sd.
+- **Prediction:** hosts per sealed partition 4-9. Power >= 0.8 at the shrunk effect in A under the optimistic sd, and below 0.8 under the pessimistic sd at the half effect.
+- **Pre-flight:**
+  - Unit: host (H22: growths within a host are not independent).
+  - Readout: to be defined on train in C15-S1 (H-b transfer: relatives' state-cluster composition; the cell's state beyond its cluster); here only its size gate (>= 200 leaves).
+  - Used data first: the structure of a new set; no train statistic yet.
+  - Power: this step.
+  - Exposure: #12 abstract and methods at topic level, C14-S5c recoded structure.
+  - Literature: #12, #25 (2026-11-17).
+  - Readout gate (H21): projected; checked on train in S1.
+  - H22: the treatment-assignment unit is the arm (3 arms, 9-12 hosts each). Arms are not contrasted; the primary test pools arms within partition.
+- **Practice:**
+  - Synthetic path test of c15s0_struct on a tiny tarball (fake names, an h5ad obs, newick files) before dispatch.
+  - Source table named for every count (RETRO_2026-11-17 lesson 1).
+  - Neutral wording in outputs.
+  - Compute on Actions with the run URL given.

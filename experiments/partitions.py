@@ -118,6 +118,16 @@ PARTITIONED = {
         "sealed_on": "2026-11-15",
         "prior_exposure": "C13-S0: GEO/Zenodo metadata only (sample titles, stages, file names and sizes); abstract",
     },
+    "growth12_host": {
+        "salt": "cellware-growth12-host-v1",
+        "unit": "host (leading number of the unit ID `<host>_<arm>_T<n>` in Zenodo 5847461, C15 candidate #12; all "
+                "growths, cells and trees of a host go together; 32 hosts, 78 units, no host spans arms). Rule fixed "
+                "2026-11-17 before any host ID was seen in clear (C14-S5c output was recoded)",
+        "files": ["Zenodo 5847461 tarball (1,305 MB, md5 checked vs the record on each runner download)"],
+        "sealed_on": "2026-11-17",
+        "prior_exposure": "paper abstract and methods (topic level); recoded structure: 78 units, 32 hosts, 3 arms, "
+                          "units per host, rows per unit from an allele-like table (C14-S5c)",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

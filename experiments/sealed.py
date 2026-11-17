@@ -41,7 +41,12 @@ DATASETS = {
                     "Per-embryo h5td, scVI, umap NOT downloaded; GEO matrices of the 7 TRAIN embryos only downloaded 2026-11-15 (Bence: \"download the 9gb go ahead\") to data/ext_petracer/train_matrices, sizes checked vs GEO, sha256 in SHA256SUMS there. Partition A matrices (5 embryos, 15 files, 11.5 GB) downloaded 2026-11-15 (Bence: \"1\") to data/ext_petracer/sealed_A_matrices, sizes checked vs GEO, sha256 in SHA256SUMS there, UNREAD: only c14s2_confirm.test_A via test_oracle. B and C matrices never downloaded. Format check only (columns, dtypes, "
                     "cells per embryo, tree counts) until partitioned by embryo (petracer_embryo); cell-type composition, "
                     "spatial scores and tree structure are outcomes: train only after sealing.",
-    "ext_triandafillou": "locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
+    "ext_c15": "Zenodo 10.5281/zenodo.5847461 (CC-BY; C15 candidate #12, in vivo growth model with lineage trees), downloaded "
+               "only on GitHub Actions runners (never locally), md5 checked vs the record each time. Partitioned by host "
+               "(partitions.growth12_host, sealed 2026-11-17) before any statistic: train 40%, A/B/C 20%. Structure only "
+               "(units, hosts, cells per unit, tree leaves, number of state clusters) until a pre-registered train-only "
+               "step; state labels, expression and trees of sealed hosts readable only via test_oracle.",
+    "ext_triandafillou":"locked 2026-11-10 (data/ext_triandafillou SHA256SUMS); schema only, values unread; no test pre-registered",
     "ext_guan": "not data: two failed PDF downloads (HTML / 17 bytes), left for Bence to delete",
     "ext_plos_gastruloid": "not data: de Jong 2024 model code, read as text only (C6-S6/S7c)",
     "camellia": "exploratory only (no confirmation claims without a new sealed shard)",
