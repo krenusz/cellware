@@ -12086,3 +12086,14 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Readout gate: per-embryo train values shown in the output.
   - H22: no between-condition contrast.
 - **Practice:** arithmetic only through power.py; inputs printed; no sealed file named outside its reader.
+
+### C16-S4a result (2026-11-17; local arithmetic on committed train results; no sealed data read)
+- Critical z 2.39 (alpha 0.025/3 one-sided).
+- **K1** (hidden state beyond depth-varying rates): null sd 0.0003, critical 0.0008; power 0.978 (all 6), 0.987 (stage-matched) -> **ENTERS**.
+- **K2** (family bias beyond within-embryo position): null sd 0.0122, critical 0.029; power 0.903 (all 6), 0.997 (stage-matched) -> **ENTERS**.
+- **K3** (readable in expression beyond axial identity): null sd 0.0367, critical 0.088; power 0.581 (all 6), 0.767 (stage-matched) -> **does not enter** (prediction "borderline" met; it fails the gate). K3 stays exploratory.
+- Self-challenge:
+  - The K1 null sd (0.0003) comes from memory-free simulations under the depth-varying model. It covers sampling noise, not misspecification: a real embryo with other tree structure (for example clade-level niche) could also give M1t > M0t. K1 confirms "beyond depth-varying rates", not "intrinsic memory".
+  - The K2 null sd is an upper bound (from the smoke limit), so its power is conservative.
+  - The power inputs come from 6 (or 4) train embryos; one sealed embryo carries the look.
+- Next: the B look spends petracer_embryo B (also earmarked for C14, whose B power was 0.60). It needs Bence's explicit OK. If approved, the look would be pre-registered with K1 and K2 only, alpha 0.025/3 kept as pre-registered here, parameters frozen from all 7 train embryos, B read only through the oracle.

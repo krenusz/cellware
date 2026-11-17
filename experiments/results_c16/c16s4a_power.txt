@@ -1,0 +1,16 @@
+K1 hidden state beyond depth-varying rates (S1): train E8.0-R1 +0.0092, E8.0-R3 +0.0106, E8.5-R2 +0.0144, E8.5-R3 +0.0161, E9.0-R1 +0.0228, E9.5-R1 +0.0170
+  null sd 0.0003, critical value 0.0008 (z 2.39, alpha 0.0083 one-sided)
+  all 6: mean +0.0150, sd 0.0049, n 6 -> power 0.978
+  stage-matched E8.5-E9.5: mean +0.0176, sd 0.0037, n 4 -> power 0.987
+  -> ENTERS the B look
+K2 family bias beyond within-embryo position (S3c-i): train E8.0-R1 +0.0473, E8.0-R3 +0.1037, E8.5-R2 +0.3025, E8.5-R3 +0.3198, E9.0-R1 +0.3517, E9.5-R1 +0.2653
+  null sd 0.0122, critical value 0.0293 (z 2.39, alpha 0.0083 one-sided)
+  all 6: mean +0.2317, sd 0.1254, n 6 -> power 0.903
+  stage-matched E8.5-E9.5: mean +0.3098, sd 0.0360, n 4 -> power 0.997
+  -> ENTERS the B look
+K3 readable in expression beyond axial identity (S3a): train E8.0-R1 -0.0073, E8.0-R3 +0.0982, E8.5-R2 +0.1794, E8.5-R3 +0.1610, E9.0-R1 +0.0730, E9.5-R1 +0.1181
+  null sd 0.0367, critical value 0.0880 (z 2.39, alpha 0.0083 one-sided)
+  all 6: mean +0.1037, sd 0.0671, n 6 -> power 0.581
+  stage-matched E8.5-E9.5: mean +0.1329, sd 0.0475, n 4 -> power 0.767
+  -> does NOT enter (power < 0.8)
+claims passing the gate: 2/3 (K1, K2)
