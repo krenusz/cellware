@@ -541,3 +541,19 @@ def test_real_experiment_code_passes_the_static_sealed_check(tmp_path):
 
     problems = check_sealed.check(py_dir=str(EXP), data_dir=str(tmp_path))
     assert problems == [], "\n".join(problems)
+
+
+def test_balanced_split_gives_equal_matched_sealed_partitions():
+    import collections
+
+    import partitions as pt
+
+    sizes = {f"u{i}": 1000 - 7 * i for i in range(32)}
+    strata = {u: ("x" if i % 3 else "y") for i, u in enumerate(sizes)}
+    m = pt.balanced_split(sizes, "salt-test", strata)
+    n = collections.Counter(m.values())
+    assert max(n["A"], n["B"], n["C"]) - min(n["A"], n["B"], n["C"]) <= 1
+    assert abs(n["train"] - 0.4 * len(sizes)) <= 2
+    tot = {p: sum(sizes[u] for u in m if m[u] == p) / n[p] for p in "ABC"}
+    assert max(tot.values()) - min(tot.values()) < 0.05 * max(tot.values())
+    assert m == pt.balanced_split(sizes, "salt-test", strata)

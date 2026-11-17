@@ -7,6 +7,7 @@ Hold-out
 - H9 Format checks show columns, tags and counts, never outcomes. H10 Unsure whether data is held out: ask Bence.
 - H11 Train 40% + sealed A/B/C by unit hash; one look spends one partition. H12 Train cross-validation picks the model (selection/<exp>.json).
 - H13 The last partition needs Bence's verbatim OK.
+- H24 Seal new sets with balanced A/B/C (equal units +-1, size- and stratum-matched) via partitions.balanced_split; structure only, before any statistic.
 Power (one rule, three gates; arithmetic only from experiments/power.py)
 - H14 Oracle: power >= 0.8 from structural counts, or no look. H17 Selection: power from the model's own simulated statistic.
 - H19 Chapter gate: data in hand; primary test power >= 0.8 from the subset's own sealed counts; test within 3 steps.

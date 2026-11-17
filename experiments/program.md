@@ -208,6 +208,17 @@ before every look and refuses on any failure.
   - The retro also says how the chapter served the long-term goal, and adds the chapter's line to "Arc so far".
   - **Enforced by the commit-msg hook:** a FOCUS.json change that leaves a chapter (to another chapter or to
     PAUSED) is refused unless a RETRO_*.md title line names `<old chapter> close`. Tests in test_guards.py.
+- **H24 Balanced sealed partitions.** (Bence 2026-11-17: "add the rule for sealed sets to balance them as much as
+  it is possible". A plain salted hash gave C15's 15 sealed hosts as A 3 / B 7 / C 5, and A was unpowered.)
+  - When a data set is sealed, A, B and C get as equal a number of units as possible (differing by at most one),
+    and matched structure: unit size, and the strata named at sealing (arm, stage, batch).
+  - Use `partitions.balanced_split(sizes, strata, salt)`: within each stratum, units are sorted by size (ties by
+    salted hash) and dealt in the order T T A B C C B A T T ... (train 40%, A/B/C 20% each). The result is
+    committed as a fixed map before any statistic.
+  - Balance only on structure known before any outcome (unit IDs, cell/leaf counts, design labels). Never on an
+    outcome, a state label's composition or a result.
+  - Existing sealed sets are not redrawn under this rule (H7, H11). The one exception, growth12_host_v2, had
+    Bence's OK and no statistic before it.
 - **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log
   cite them).
 

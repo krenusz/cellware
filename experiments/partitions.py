@@ -174,3 +174,21 @@ def sealed_rows(dataset, df, unit_col, part):
     return df[keep]
 
 
+
+
+BALANCED_ORDER = ("train", "train", "A", "B", "C", "C", "B", "A", "train", "train")  # H24: 40/20/20/20, snake
+
+
+def balanced_split(sizes, salt, strata=None):
+    """H24: balanced sealing. sizes = {unit: structural size}; strata = {unit: label} (optional).
+    Within each stratum, units sorted by size (desc; ties by sha256(salt:unit)) are dealt in BALANCED_ORDER,
+    continuing the position across strata so totals stay balanced. Returns {unit: partition} to commit as a
+    fixed map. Structure only (unit counts, cell/leaf counts, design labels); never outcomes."""
+    strata = strata or {u: "" for u in sizes}
+    tie = lambda u: hashlib.sha256(f"{salt}:{u}".encode()).hexdigest()  # noqa: E731
+    out, i = {}, 0
+    for s in sorted(set(strata.values()), key=str):
+        for u in sorted((u for u in sizes if strata[u] == s), key=lambda u: (-sizes[u], tie(u))):
+            out[u] = BALANCED_ORDER[i % len(BALANCED_ORDER)]
+            i += 1
+    return out
