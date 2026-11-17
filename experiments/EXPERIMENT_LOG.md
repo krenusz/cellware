@@ -12062,3 +12062,27 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Used data enough? All P/L leaves with a region row (part i) or in the matched strata (part ii).
   - Already published? Fate restriction timing on these embryos is reported by the data authors (abstract level); progressive, asynchronous restriction by Liu 2026 (abstract). The matched-family concordance curve here was not found.
 - Reading: at E8.0, siblings and cousins agree on P vs L in about 78% of ranked pairs; by E8.5 about 94%; by E9.0-E9.5 about 98-99%. Together with S1 (switching slows about 5-fold with depth), this is the picture of a split being made around E8.0 and locked in by E8.5, with an inherited family bias on top.
+
+## C16-S4a: H17 power for a one-look confirmation of C16 claims on petracer_embryo B (pre-registered 2026-11-17; Bence: "go 1")
+- **Serves: C16-S4a (script c16s4a_power.py; reads committed train results only: results_c16/c16s1_time.json, c16s3c_i.json, c16s3a_position.json; imports power.py).** No sealed data, no new data read; local arithmetic (< 2 min, H17 allows).
+- **Unit and counts:** B = E7.5-R2, E7.5-R3, E9.0-R3 (partitions.py). The train E7.5 embryo has 0 P/L leaves, so the E7.5 embryos are expected to fall below the 100-leaf minimum; the look is powered as **one embryo (E9.0-R3)**. Per-embryo P/L leaf counts of B would be read only as structure, through the oracle, at the look.
+- **Claims (all per embryo, one-sided, predicted sign positive):**
+  - K1 (S1): hidden-state gain beyond depth-varying rates, M1t - M0t per leaf, parameters frozen from all train embryos.
+  - K2 (S3c-i): family bias beyond within-embryo position, delta AUC.
+  - K3 (S3a): readable in expression beyond axial identity, delta rho.
+- **Effect inputs (used results, train only):** the 6 per-embryo train values of each statistic. Two scenarios: all 6 embryos; stage-matched (E8.5-E9.5, 4 embryos, since B's embryo is E9.0). Simulated B statistic = mean + sd * sqrt(1 + 1/n) * t(n - 1), 100,000 draws (predictive distribution for one new embryo).
+- **Null sd (used results):** K1 sd of the 6 per-embryo values of the S1 no-memory smoke; K2 and K3 from the shuffled smokes, sd = limit * sqrt(6) / 2 (limit = max(floor, 2 SE), so this is an upper bound).
+- **Test:** each claim confirmed if the B statistic > z * null_sd with Bonferroni alpha 0.025 / 3 (one-sided), power by `power.sim_power`.
+- **Gate:** a claim enters the B look only if power >= 0.8 in **both** scenarios. If no claim passes, no B look is proposed.
+- **Prediction:** K1 and K2 pass (power > 0.9), K3 borderline (one E8.0 value near zero widens its spread).
+- **Limits stated now:** n = 6 (or 4) train embryos per input; the predictive t is an approximation; E9.0-R3 tree size unknown until the look (structure only).
+- **Pre-flight:**
+  - Unit: embryo; one sealed embryo expected to carry the statistic.
+  - Readout: as K1-K3 above.
+  - Used data first: train only, committed results.
+  - Power: this step.
+  - Exposure: B unread; partition names public; nothing about B's content seen.
+  - Literature: lit/c16_map_2026-11-17.md.
+  - Readout gate: per-embryo train values shown in the output.
+  - H22: no between-condition contrast.
+- **Practice:** arithmetic only through power.py; inputs printed; no sealed file named outside its reader.
