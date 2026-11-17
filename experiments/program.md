@@ -18,6 +18,10 @@ How experiments are run and logged here. An agent or a person follows these rule
   been fitted to new data. Chapter 15 (closed 2026-11-17, underpowered) tried to carry the C14 test
   to an in vivo growth model with 32 hosts: the train effect was about zero and the between-host
   noise too large for 5 hosts per sealed partition; no model was fitted; that set stays sealed.
+  Chapter 16 (closed exploratory 2026-11-17, WRITEUP_C16.md) closed the model-fit gap: a hidden
+  inherited-state tree model for paraxial vs lateral plate on the embryo train trees survived time,
+  axial-identity and position controls (6/6 embryos) and looked like shared streak-exit history in
+  expression; no claim (B has one usable embryo), and the biology is largely published (Colgan 2026).
 - **Short-term question (chapter 1, answered):** do G-CSF and M-CSF instruct or select neutrophil
   vs monocyte fate, and in what proportion (instruction shifts tau, selection s and gamma)?
   Answer: mostly clone-level selection on a strong fate state, modest instruction.
@@ -276,6 +280,15 @@ pre-registration dated 2026-11-13 or later without it.
 - Presence-type outcomes: count expected positives per sealed partition, not units (11-14b).
 - Selection power only by `sim_power` on the refit pipeline at the sealed n (H17); never `z_power` on a
   fixed out-of-fold SE (11-14b; C12-S1 power is provisional until redone).
+- Before any power for a sealed look, count the partition's usable units (units that can carry the
+  statistic) against the oracle's rule (at least 2 per group, H14); stop there if it fails (11-17c; C16-S4a
+  powered a B look on one usable embryo).
+
+**At chapter opening**
+- Run the novelty search per planned finding (each step's expected result), not per chapter topic. While a
+  data set's partitions are sealed, exclude its source paper's results pages from searches, and record any
+  snippet exposure in the novelty file and in every later use of that partition (11-17c; C16 biology was
+  largely published on the same data, found only at close).
 
 **Before calling a candidate best**
 - Rank the candidates against stated criteria first (11-08).
