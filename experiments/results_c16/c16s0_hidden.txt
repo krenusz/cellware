@@ -1,0 +1,11 @@
+E7.5-R1: P/L leaves 0 (P 0, L 0), nodes 0
+E8.0-R1: P/L leaves 950 (P 583, L 367), nodes 1645
+E8.0-R3: P/L leaves 1448 (P 690, L 758), nodes 2546
+E8.5-R2: P/L leaves 9796 (P 5584, L 4212), nodes 15279
+E8.5-R3: P/L leaves 9733 (P 5410, L 4323), nodes 16093
+E9.0-R1: P/L leaves 29958 (P 15522, L 14436), nodes 46541
+E9.5-R1: P/L leaves 95767 (P 59847, L 35920), nodes 142181
+all train: LL M0 -31728.8, M1 -28692.8 (+0.0206/leaf); M1 params {'alpha0': np.float64(0.00012340980408667956), 'beta0': np.float64(0.26094250414219217), 'alpha1': np.float64(0.16522971167271736), 'beta1': np.float64(0.0010698414034937627), 'mu': np.float64(0.055652476765111605), 'half_life_edges': 12.454920622589029}
+SMOKE (i) strong memory: mean gain +0.0196, positive 6/6, mu hat 0.049 (true 0.05) -> PASS
+SMOKE (ii) no memory: mean gain +0.0000 -> PASS
+held-out gain per leaf: E8.0-R1 +0.0617, E8.0-R3 +0.0593, E8.5-R2 +0.0298, E8.5-R3 +0.0256, E9.0-R1 +0.0212, E9.5-R1 +0.0244; mean +0.0370, positive 6/6 -> MEMORY TERM SUPPORTED (exploratory)

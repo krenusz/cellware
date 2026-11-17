@@ -11896,3 +11896,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The planted signal is in the label process itself, not on a PC (RETRO_2026-11-17b lesson 1).
   - Neutral wording.
   - Run URL given.
+
+### C16-S0 result (2026-11-17; run https://github.com/krenusz/cellware/actions/runs/44082919451)
+- Smokes PASS: (i) strong memory gain +0.0196, 6/6 positive, mu hat 0.049 (true 0.05); (ii) no memory +0.0000.
+- Held-out gain per leaf (M1 vs M0): E8.0-R1 +0.062, E8.0-R3 +0.059, E8.5-R2 +0.030, E8.5-R3 +0.026, E9.0-R1 +0.021, E9.5-R1 +0.024; mean +0.037, 6/6 positive. E7.5-R1 has no P/L leaves (6 embryos used).
+- Verdict by the pre-registered rule: **MEMORY TERM SUPPORTED (exploratory, train only, no claim).**
+- Full-train fit: z=0 drives toward one fate (alpha0 ~0.0001, beta0 0.26), z=1 toward the other (alpha1 0.17, beta1 ~0.001); mu 0.056, half-life about 12 edges (prediction >= 2: met).
+- Self-challenge:
+  - Suspicious? The gain is largest in the smallest trees (E8.0) and falls with size; the M1 rates are near-absorbing, so z behaves like a persistent clade-level fate bias, not a reversible switch.
+  - Other explanations: (a) z can be clade-level position or niche, not intrinsic memory; the tree alone cannot separate them. (b) M0 is time-homogeneous; depth- or stage-dependent rates could give part of the gain (no M0-with-time-varying-rates control). (c) Edge length = 1 per edge is a proxy for divisions.
+  - Units: 6 embryos, all train; the effect is consistent across all 6.
+  - Used data enough? Yes for an exploratory fit; no sealed embryo was read.
+  - Already published? Hidden-rate tree models are standard in comparative phylogenetics; a fitted inherited-bias half-life on these embryo trees was not found in the C16 reading.
+- Next candidate (train only): control (b) with a depth-varying-rate M0, then link posterior z to the C14-S4 expression program.
