@@ -11632,3 +11632,20 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Synthetic path test before dispatch: (b) runs its smoke on synthetic PCs; (c) runs on a tiny synthetic tarball with fake sample names; (a) prints its inputs.
   - Peak RAM: (b) as S3; (c) streams the tarball; extracts only metadata tables under 200 MB and h5ad files, of which only the obs unit-ID column is read (X never opened).
   - Neutral wording in all outputs.
+
+### C14-S5 (a) result: B power (2026-11-17, local, 9 s, committed inputs only; B not read)
+- Effect by stage, linear fit over train + spent A (d): E7.5 -0.007, E9.0 +0.098. Region-adjusted, train only (dR): E7.5 +0.013, E9.0 +0.079.
+- Power of the frozen C14-S2 rule on B:
+
+  | Scenario | d | dR |
+  |---|---|---|
+  | S-drop (E7.5 embryos give no readout, as train E7.5-R1 gave none) | 0.87 | 0.60 |
+  | S-keep (E7.5 embryos contribute at the extrapolated effect) | 0.09 | 0.26 |
+
+- **Decision (pre-registered: dR, S-drop): power 0.60, so B is UNDERPOWERED.** The prediction was met.
+- Self-challenge:
+  - Under S-drop the whole B look rests on one embryo (E9.0-R3). Even the 0.87 for d would be a one-embryo confirmation, which is weaker than A's five.
+  - Under S-keep the frozen rule averages two near-zero E7.5 embryos in and fails. That is a property of the frozen rule, not of the effect.
+  - The fit uses 11 (d) or 6 (dR) embryos with a straight line in stage. Power at E9.0 depends mostly on the E9.0 to E9.5 points.
+  - Which scenario holds is a structural fact about B (readout cells at E7.5) that we did not read.
+- Reading: B cannot carry a region-adjusted replication; at best a fragile one-embryo look. Keep B sealed; it is not worth spending.
