@@ -1,0 +1,17 @@
+M1 all train: {'alpha0': np.float64(0.00012340980408667956), 'beta0': np.float64(0.2609764363485598), 'alpha1': np.float64(0.1651665397979828), 'beta1': np.float64(0.0010688037714147289), 'mu': np.float64(0.05565935848106164), 'half_life_edges': 12.45338069779931}
+P/L leaves with expression PCs: 63302 of 147652
+  E8.0-R1: P 143, L 96, z_rel mean 0.490 sd 0.257
+  E8.0-R3: P 254, L 273, z_rel mean 0.774 sd 0.175
+  E8.5-R2: P 1560, L 2137, z_rel mean 0.521 sd 0.336
+  E8.5-R3: P 1612, L 2289, z_rel mean 0.462 sd 0.320
+  E9.0-R1: P 4731, L 7419, z_rel mean 0.614 sd 0.352
+  E9.5-R1: P 18034, L 24754, z_rel mean 0.554 sd 0.391
+SMOKE (i) planted column: min delta +0.122 -> PASS
+SMOKE (ii) shuffled z_rel: mean delta +0.013 (limit 0.030) -> PASS
+  E8.0-R1: delta rho -0.007 (P 143, L 96)
+  E8.0-R3: delta rho +0.032 (P 254, L 273)
+  E8.5-R2: delta rho +0.173 (P 1560, L 2137)
+  E8.5-R3: delta rho +0.167 (P 1612, L 2289)
+  E9.0-R1: delta rho +0.087 (P 4731, L 7419)
+  E9.5-R1: delta rho +0.127 (P 18034, L 24754)
+mean delta +0.097, positive 5/6 -> READABLE (exploratory)
