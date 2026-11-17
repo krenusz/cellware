@@ -1,0 +1,89 @@
+{
+ "verdict": "INVALID (smoke failed)",
+ "smoke_shuffled": {
+  "mean": 0.006651848431469882,
+  "wmean": 0.02454974893893903,
+  "sd": 0.02367780964819952,
+  "positive": 5,
+  "hosts": 8
+ },
+ "smoke_planted": {
+  "mean": 0.0026393116802337323,
+  "wmean": 0.008941809457410304,
+  "sd": 0.015090904328758974,
+  "positive": 8,
+  "hosts": 14
+ },
+ "smoke_pass": false,
+ "train": {
+  "mean": -0.021712531056652887,
+  "wmean": -0.018971442442200313,
+  "sd": 0.09891990821796372,
+  "positive": 4,
+  "hosts": 8
+ },
+ "per_host": {
+  "h01": {
+   "delta": -0.0879,
+   "cells": 40,
+   "leaves": 330
+  },
+  "h02": {
+   "delta": 0.0078,
+   "cells": 1042,
+   "leaves": 1913
+  },
+  "h03": {
+   "delta": 0.0952,
+   "cells": 20,
+   "leaves": 726
+  },
+  "h04": {
+   "delta": -0.1706,
+   "cells": 610,
+   "leaves": 5495
+  },
+  "h05": {
+   "delta": -0.1079,
+   "cells": 39,
+   "leaves": 1041
+  },
+  "h06": {
+   "delta": 0.0928,
+   "cells": 134,
+   "leaves": 149
+  },
+  "h08": {
+   "delta": 0.0534,
+   "cells": 762,
+   "leaves": 1884
+  },
+  "h07": {
+   "delta": -0.0564,
+   "cells": 40,
+   "leaves": 230
+  }
+ },
+ "variance_model": {
+  "a": 0.00856951827841135,
+  "b": 0.0
+ },
+ "readout_per_leaf": 0.19515205925260914,
+ "power": {
+  "A": {
+   "power": 0.0
+  },
+  "B": {
+   "power": 0.0
+  },
+  "C": {
+   "power": 0.0
+  }
+ },
+ "power_with_C14_sd_floor": {},
+ "effect_used": -0.014228581831650235,
+ "clusters_passing": 4,
+ "clusters_with_pair": 9,
+ "labelled_cells": 3478,
+ "y1_share": 0.6437607820586544
+}

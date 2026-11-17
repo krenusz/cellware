@@ -11841,3 +11841,20 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Now: the mean of 5 within-(cluster, host) shuffles, passing if |mean| < max(0.01, 2 x its SE across hosts). The planted test is unchanged.
 - Added a sensitivity line (not the gate): power with the between-host variance floored at C14's embryo sd (0.0374^2). It guards against the 11-host variance fit underestimating it.
 - Synthetic path test after the amendment: shuffled +0.005 (PASS), planted +0.065 (PASS), planted-program effect recovered (+0.031, 10/10 hosts).
+
+### C15-S1b result (2026-11-17, Actions run 44076921545; train hosts only; no claim)
+- Readout: 37 train units, 17,822 leaves (99.7% in the h5ad), 14,648 cells with a relatives clade. Clusters with an L1/L2 pair: 9. Passing H21: 4. Labelled cells: 3,478 (y1 share 0.64). 8 of 17 train hosts carry a per-host delta.
+- **Smoke tests both FAILED, so the verdict is INVALID by the pre-registered rule.**
+  - Shuffled: +0.025 against a limit of 0.017.
+  - Planted: +0.009, below 0.05.
+- Train per-host delta: mean -0.022, weighted -0.019, sd 0.099, positive in 4 of 8 hosts. Readout cells per host: 20-1,042, about 0.20 per tree leaf.
+- Variance model: sd^2 = 0.0086, with no 1/n term fitted. That is a between-host sd of about 0.093, 2.5 times C14's embryo sd.
+- Diagnosis (stated after the result; not a re-test):
+  - The planted test put y on PC0. In this set PC0 most likely tracks library depth or detection, which the base model already holds. A planted PC0 signal is then absorbed by the base, and the test was uninformative here (in the synthetic test PC0 was not tied to depth). This is a design error in the smoke test.
+  - The shuffled excess is about 3 SE on 8 hosts with 20-1,000 cells each. It is unexplained.
+- What holds regardless of the smokes: the readout is thin (3,478 cells in 4 clusters, a fifth of the cells per leaf). The per-host sd (~0.1) gives SE ~0.045 for a 5-host partition. Even an effect equal to C14's full 0.074 would give z ~1.6, so power < 0.5. The train effect is about zero.
+- Self-challenge:
+  - 8 hosts is few. The sd estimate is itself rough (but large).
+  - The transfer may fail because states here are defined differently (19 clusters from expression in a growth model, versus embryo cell types) and clades are smaller. It does not mean the C14 effect is wrong.
+  - Was the setup enough to detect a real signal? No: the planted smoke test could not show that it was.
+- **Reading: C15 with the C14 classifier readout cannot be powered on #12.** The gate FAILs on the model's own statistic as well as on structure. No sealed host was read; A, B and C (v2) stay sealed.
