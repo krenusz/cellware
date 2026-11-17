@@ -268,7 +268,7 @@ def rand_forests(rng, n_emb=6, n_leaves=300):
 
 def synthetic(outdir):
     rng = np.random.default_rng(2)
-    forests = rand_forests(rng)
+    forests = rand_forests(rng, n_leaves=800)
     set_bins(forests, cuts_from(forests))
     truth = np.r_[np.log([0.03, 0.3, 0.3, 0.03, 0.08]), np.zeros(NB - 1), 0.0, 0.0, 0.0]
     forests = relabel(forests, {e: simulate(f, truth, 1, rng) for e, f in forests.items()})
