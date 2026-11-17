@@ -1,0 +1,17 @@
+M1 all train (warm start): {'alpha0': np.float64(0.00012340980408667956), 'beta0': np.float64(0.2609019998335967), 'alpha1': np.float64(0.1652079566263825), 'beta1': np.float64(0.00107563060768757), 'mu': np.float64(0.055653918488008845), 'half_life_edges': 12.454597976048898}
+S3b leaves with region rows and relatives: 147652
+  E8.0-R1: P 583, L 367
+  E8.0-R3: P 690, L 758
+  E8.5-R2: P 5584, L 4212
+  E8.5-R3: P 5410, L 4323
+  E9.0-R1: P 15522, L 14436
+  E9.5-R1: P 59847, L 35920
+SMOKE (i) y ~ Bernoulli(z_rel): min delta AUC +0.258 -> PASS
+SMOKE (ii) shuffled z_rel: mean delta AUC -0.0002 (limit 0.0100) -> PASS
+  E8.0-R1: AUC position-only 0.205, + z_rel 0.740, delta +0.535 (n 950)
+  E8.0-R3: AUC position-only 0.251, + z_rel 0.786, delta +0.534 (n 1448)
+  E8.5-R2: AUC position-only 0.586, + z_rel 0.869, delta +0.283 (n 9796)
+  E8.5-R3: AUC position-only 0.562, + z_rel 0.855, delta +0.293 (n 9733)
+  E9.0-R1: AUC position-only 0.612, + z_rel 0.935, delta +0.323 (n 29958)
+  E9.5-R1: AUC position-only 0.684, + z_rel 0.962, delta +0.278 (n 95767)
+S3b mean delta AUC +0.374, positive 6/6 -> BEYOND AXIAL POSITION (exploratory)

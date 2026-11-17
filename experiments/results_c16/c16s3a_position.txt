@@ -1,0 +1,11 @@
+M1 all train (warm start): {'alpha0': np.float64(0.00012340980408667956), 'beta0': np.float64(0.26093272008426854), 'alpha1': np.float64(0.16521158609468384), 'beta1': np.float64(0.0010713559786808804), 'mu': np.float64(0.05565146924327535), 'half_life_edges': 12.455146108181173}
+S3a leaves with PCs: 63302; without a region row: 0
+SMOKE (i) planted column: min delta +0.124 -> PASS
+SMOKE (ii) shuffled z_rel: mean delta -0.002 (limit 0.030) -> PASS
+  E8.0-R1: delta rho beyond region -0.007; region alone -0.002 (P 143, L 96)
+  E8.0-R3: delta rho beyond region +0.098; region alone -0.065 (P 254, L 273)
+  E8.5-R2: delta rho beyond region +0.179; region alone -0.010 (P 1560, L 2137)
+  E8.5-R3: delta rho beyond region +0.161; region alone +0.005 (P 1612, L 2289)
+  E9.0-R1: delta rho beyond region +0.073; region alone +0.011 (P 4731, L 7419)
+  E9.5-R1: delta rho beyond region +0.118; region alone +0.009 (P 18034, L 24754)
+S3a mean delta +0.104, positive 5/6 -> SURVIVES AXIAL IDENTITY (exploratory)
