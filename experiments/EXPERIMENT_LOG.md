@@ -11909,3 +11909,50 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Used data enough? Yes for an exploratory fit; no sealed embryo was read.
   - Already published? Hidden-rate tree models are standard in comparative phylogenetics; a fitted inherited-bias half-life on these embryo trees was not found in the C16 reading.
 - Next candidate (train only): control (b) with a depth-varying-rate M0, then link posterior z to the C14-S4 expression program.
+
+## C16-S1: time-varying-rate control for the hidden inherited state (pre-registered 2026-11-17; Bence: "go 1 2")
+- **Serves: C16-S1 (script c16s1_time.py; imports c16s0_hidden.py, unchanged).** Tests the open alternative from C16-S0: the hidden-state gain could come from P/L rates that change with depth (developmental time) rather than from inherited memory.
+- **Compute:** GitHub Actions (sweeps/c16s1.txt, `--petracer`). Locally only the synthetic path test.
+- **Data:** TRAIN embryos only, trees and labels exactly as C16-S0 (`c16s0_hidden.load_train`). A, B, C unread.
+- **Models:** depth = edges from the tree root in the induced tree; 3 depth bins at tertiles of pooled train edge depth (structure only).
+  - M0t: 2-state P/L model with its own rates (a_k, b_k) in each depth bin (7 parameters).
+  - M1t: the C16-S0 hidden-state model plus one rate multiplier per depth bin (bin 0 = 1) and one switch rate mu (10 parameters).
+  - S0's M0 and M1 are refitted per fold for reference contrasts.
+- **Primary:** LOEO held-out log-likelihood per leaf, M1t minus M0t, per embryo (6 embryos with >= 100 P/L leaves).
+- **Rule:** SURVIVES if mean > 0 and positive in all but at most one embryo; EXPLAINED BY DEPTH-VARYING RATES if mean <= 0; else MIXED; INVALID if a smoke fails.
+- **Smokes (on the real trees, labels simulated):** (i) truth = all-train M0t fit (depth-varying, no memory): mean M1t - M0t <= 0.002; also reported, for information, how much the S0 contrast M1 - M0 gains on these memory-free data. (ii) truth = strong memory without depth variation: mean > 0 and >= 5/6 positive.
+- **Prediction:** SURVIVES, with a smaller gain than S0 (about +0.02 per leaf); the S0 contrast gains little on memory-free depth-varying data.
+- **Limits stated now:** exploratory, train only, n = 6 embryos; 3 bins is a coarse time model; depth bins partly track stage because later embryos have deeper trees; no claim.
+- **Pre-flight:**
+  - Unit: embryo (LOEO folds); leaves within trees.
+  - Readout: P/L leaf labels as S0.
+  - Used data first: train only; S0 result is the reference.
+  - Power: exploratory, no sealed test, H19 does not apply.
+  - Exposure: as C16-S0.
+  - Literature: hidden-rate and time-heterogeneous trait models (comparative phylogenetics), as C16-S0.
+  - Readout gate: as S0 (950-95,767 P/L leaves per embryo, both labels >= 367).
+  - H22: no between-condition contrast.
+- **Practice:** synthetic path test locally on random trees with both smokes before dispatch; planted signal is in the label process itself; neutral wording; run URL given.
+
+## C16-S2: posterior hidden state vs expression (pre-registered 2026-11-17; Bence: "go 1 2")
+- **Serves: C16-S1 (FOCUS step covers C16-S1 + C16-S2; script c16s2_link.py; imports c16s0_hidden.py, c14s3_region.py, c14s1_select.py, c14s0_gate.py, all unchanged).** Is the inherited bias the tree model infers readable in a cell's own expression? Also answers Bence's question whether the fate bias is in the lineage before it shows in expression (descriptive per embryo only).
+- **Compute:** GitHub Actions (sweeps/c16s2.txt, `--petracer`).
+- **Data:** TRAIN embryos only. M1 refitted on all train trees (as S0). Expression PCs exactly as C14-S3/S4 (`c14s3_region.readout_with_pcs`, 30 PCs); only P/L leaves that are in the C14 readout table are used.
+- **Statistic:**
+  - For every P/L leaf, z_rel = P(z = 1 | all other leaves' labels), from the outside (down-pass) message: the relatives' signal, excluding the leaf's own label.
+  - Within each observed label (P, L), LOEO ridge regression of z_rel on base (C14 base design + cell-type dummies) vs base + 30 PCs; per embryo, Spearman of held-out predictions with z_rel; delta = rho(base+PCs) - rho(base), cell-weighted over the two labels.
+- **Rule (descriptive):** READABLE if mean delta > 0.05 and positive in >= 4 of the embryos with >= 30 leaves per label; NOT READABLE if mean delta <= 0; else MIXED; INVALID if a smoke fails. Per-embryo deltas are listed in stage order with no stage contrast test (H22 note in FOCUS).
+- **Smokes:** (i) a planted column = z_rel + noise (sd = sd(z_rel)), added after the PCs: delta > 0.05 in every embryo; (ii) z_rel shuffled within embryo x label: mean |delta| <= 0.03.
+- **Prediction:** READABLE from E8.5 onwards (delta about 0.1), near zero in the E8.0 embryos (bias in lineage before it shows).
+- **Limits stated now:** z_rel uses parameters fitted on all train trees including the held-out embryo (5 rate parameters; the expression model is LOEO); the C14 readout restricts which leaves have PCs; exploratory, no claim.
+- **Pre-flight:**
+  - Unit: embryo (LOEO folds); leaves within labels.
+  - Readout: z_rel (model output) vs expression PCs.
+  - Used data first: train only; C14-S4 program is the reference.
+  - Power: exploratory, H19 does not apply.
+  - Exposure: as C14 and C16-S0.
+  - Literature: as C14-S4 and C16-S0.
+  - Readout gate: leaves per label per embryo reported; embryos with < 30 per label are listed but excluded from the rule.
+  - H22: no between-condition contrast.
+- **Practice:** synthetic path test locally (random trees + random PCs, both smokes) before dispatch; the planted signal is a separate column, not a PC (RETRO_2026-11-17b lesson 1); no gene names printed; run URL given.
+- **C16-S2 amendment 1 (2026-11-17, before any real-data run):** the synthetic path test failed smoke (ii) with mean |delta| 0.077 on shuffled z_rel at about 250 leaves per embryo: the pre-registered limit (mean |delta| <= 0.03) ignores sampling noise of a 30-column ridge fit at small n. New limit, as C15-S1b amendment 1: |signed mean delta| <= max(0.03, 2 SE over embryos). Smoke (i) passed (min delta +0.32). The down-pass posterior was checked against brute-force enumeration on a 5-node tree (exact match).
