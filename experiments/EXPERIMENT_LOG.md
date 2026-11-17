@@ -12026,3 +12026,27 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Used data enough? All P/L leaves (147,652).
   - Already published? Stage-specific transition rates from annotated trees: PASTRI 2026 (abstract read; full text rate-limited). Hidden-state-plus-time model on these trees: not found.
 - Reading: P/L switching slows about 5-fold with depth (multipliers 1 -> 0.18): progressive commitment. On top of that, a family-level bias persists about 10 divisions.
+
+## C16-S3c: the E8.0 check (pre-registered 2026-11-17; Bence: "Yes, run S3c")
+- **Serves: C16-S3c (script c16s3c_e8.py; imports c16s3_position.py, c16s2_link.py, c16s0_hidden.py, c14s3_region.py, c14s0_gate.py, all unchanged).** Separates three readings of the E8.0 pattern in S3b: (a) the position baseline is broken there (cross-stage transfer), (b) the paraxial/lateral split is still being made at E8.0, (c) E8.0 trees are just smaller and shallower.
+- **Compute:** GitHub Actions, two parallel jobs (sweeps/c16s3c.txt: line 1 = part i, line 2 = part ii; `--petracer`).
+- **Data:** TRAIN embryos only; trees, labels, region scores and relatives' means as C16-S3b; z_rel from the C16-S0 warm-start M1 fit.
+- **Part (i), position within embryo:** per embryo, 5-fold cross-validation grouped by clade (the ancestor 4 edges below each tree root, so relatives stay in one fold); logistic, own label on position (own region + relatives' mean region) vs position + logit(z_rel). Report AUC position-only, AUC full, delta per embryo.
+  - Rule (descriptive): BIAS BEYOND WITHIN-EMBRYO POSITION if delta > 0.02 in >= 5 of 6 embryos.
+  - Smokes: (1) y simulated as Bernoulli(z_rel): delta > 0.02 in every embryo; (2) z_rel shuffled within embryo: mean delta <= max(0.01, 2 SE) (one-sided).
+- **Part (ii), matched family:** no model fit. For each labelled leaf: n_rel = other labelled leaves under its lowest ancestor with >= 5 of them, d = edges up to that ancestor, f = fraction lateral among them. Strata: n_rel in 5-20 and d in {1-2, 3-4, 5-8}. Per embryo and stratum (>= 30 leaves of each label), AUC of f for own label; summary = leaf-weighted mean AUC over strata shared by all 6 embryos.
+  - Reading (descriptive, pre-stated): if the E8.0 AUCs stay below the E8.5-E9.5 AUCs at matched n_rel and d, the lower E8.0 predictability is not a tree-size effect ("split still being made"); if they match, it was tree size.
+  - Smoke: labels permuted within embryo: every stratum AUC within 0.5 +- 0.05 (pooled over embryos).
+- **Prediction:** (i) delta > 0.02 in 6/6, smaller at E8.0 (about +0.1) than in S3b (+0.53); (ii) E8.0 AUCs lower than later embryos at matched family size and distance.
+- **Limits stated now:** 2 embryos at E8.0, so no stage contrast claim (H22 note); clade grouping is approximate; region scores are expression-inferred axial identity; exploratory, train only.
+- **Pre-flight:**
+  - Unit: embryo; leaves within clades.
+  - Readout: own P/L label.
+  - Used data first: train only; S3b is the reference.
+  - Power: exploratory, H19 does not apply.
+  - Exposure: as C16-S3.
+  - Literature: lit/c16_map_2026-11-17.md.
+  - Readout gate: per-embryo and per-stratum counts reported; strata below 30 per label excluded.
+  - H22: no between-condition contrast.
+- **Practice:** synthetic path test locally (both parts and smokes) before dispatch; parallel jobs; neutral wording; run URL given.
+- **C16-S3c amendment 1 (2026-11-17, before any real-data run):** the synthetic path test failed the part (ii) permuted-label smoke in the sparse d5-8 stratum (AUC 0.557 against a flat +-0.05). The limit is now max(0.05, 3 null SE of the AUC) per stratum, SE from the Mann-Whitney null variance. Also seen in the synthetic test: with useless position columns, grouped-CV AUC of the base falls below 0.5 (0.32-0.49), a known CV artifact, which inflates part (i) deltas when the base carries nothing; the real-data report will state the base AUC next to every delta.

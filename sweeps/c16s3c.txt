@@ -1,0 +1,2 @@
+[experiments/results_c16/c16s3c_i.json] python -I experiments/c16s3c_e8.py i
+[experiments/results_c16/c16s3c_ii.json] python -I experiments/c16s3c_e8.py ii
