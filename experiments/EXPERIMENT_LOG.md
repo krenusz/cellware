@@ -12123,3 +12123,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Practice:** synthetic path test locally (planted orthogonal trace detected, shuffled null flat) before dispatch; planted signal orthogonal to the base and the fate axis (RETRO_2026-11-17b lesson 1); run URL given.
 - Pre-registration detail (added before the script was written): the null sd used for B power is the largest per-embryo shuffle sd among the E8.5-E9.5 train embryos (closest in stage and size to B's E9.0 embryo; conservative).
 - **C16-S4b synthetic path test (before dispatch):** positive case (trace orthogonal to the fate axis): K3'a +0.126, K3'd +0.189, both pass, gene overlap 0.18-0.20, smokes PASS. Negative case (trace only along the fate axis): K3'a -0.020 and K3'd +0.014, both ABSORBED. The test separates explanation (a) from a trace beyond the fate axis on synthetic data.
+
+### C16-S4b result (2026-11-17; run https://github.com/krenusz/cellware/actions/runs/44158644502; train only; EXPLORATORY, no claim)
+- Smokes PASS: planted orthogonal trace min +0.185; shuffled means -0.0026 (K3'a), -0.0024 (K3'd). Measured per-embryo null sd: E8.0 0.05-0.06, E8.5 0.016-0.017, E9.0 0.009, E9.5 0.005 (the S4a floor-based 0.037 was 2-7x too high for the later embryos).
+- **K3'a (beyond own P/L likeness):** E8.0-R1 +0.015, E8.0-R3 +0.007, E8.5-R2 +0.037, E8.5-R3 +0.039, E9.0-R1 -0.001, E9.5-R1 +0.082; mean +0.030, 5/6 -> **PARTLY**. B power 0.469 / 0.566 -> fails the gate.
+- **K3'd (orthogonal to the fate axis):** +0.018, +0.055, +0.152, +0.126, +0.063, +0.069; mean +0.081, 6/6 -> **TRACE BEYOND THE FATE AXIS**. B power 0.790 (all) / 0.873 (stage-matched) -> **fails the gate** (0.790 < 0.8).
+- **Entering a B look by the fixed rule: none.** No re-tuning (stated before the run).
+- Gene overlap with the P/L classifier (Jaccard, top 50): P 0.12, L 0.04. Top trace genes (smoothed through PCs) in P cells: retinoic-acid and anterior/axial genes and epithelial genes; in L cells: sterol-synthesis genes, an FGF ligand, Sox-family and tubulin genes (names in results_c16/c16s4b_trace.json).
+- Prediction (both PARTLY, about +0.03 to +0.04): met for K3'a, wrong for K3'd (+0.081).
+- Self-challenge:
+  - Suspicious? K3'd > K3'a. Directions orthogonal to the P/L axis across all cells are not uncorrelated with P/L likeness within one label and embryo, so part of the K3'd signal is shared with the cell's own P/L likeness. K3'a (+0.030) is the stricter number; K3'd (+0.081) is an upper bound.
+  - Other explanations: the trace genes point to shared history (c): axial and retinoic-acid identity (when and where a family left the streak) and maturation state. The region scores (E13.5 reference) evidently missed this. A new intrinsic memory program (d) is not indicated by these genes.
+  - Units: 6 embryos, 2 at E8.0.
+  - Used data enough? 63,302 leaves with PCs (C14 readout restriction).
+  - Already published? Streak-exit timing sets axial identity and fate (Kinder 1999; lit/c16_map_2026-11-17.md). A lineage trace carried in expression beyond the P/L axis on these trees: not found in abstracts read.
+- Reading: a small trace in a cell's expression tracks its family's fate bias beyond its own P/L likeness (+0.03 strict, up to +0.08); its genes look like developmental history (axial/retinoic-acid identity, maturation), not a new memory program. Not powered for B at the pre-registered gate.

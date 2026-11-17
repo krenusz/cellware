@@ -1,0 +1,20 @@
+leaves with PCs: 63302
+SMOKE (1) planted trace: min K3'd delta +0.185 -> PASS
+SMOKE (2) shuffled z_rel, K3'a: mean -0.0026 (limit 0.0112) -> PASS; per-embryo null sd E8.0-R1 0.0621, E8.0-R3 0.0517, E8.5-R2 0.0156, E8.5-R3 0.0166, E9.0-R1 0.0087, E9.5-R1 0.0049
+SMOKE (2) shuffled z_rel, K3'd: mean -0.0024 (limit 0.0114) -> PASS; per-embryo null sd E8.0-R1 0.0622, E8.0-R3 0.0538, E8.5-R2 0.0157, E8.5-R3 0.0173, E9.0-R1 0.0089, E9.5-R1 0.0050
+  E8.0-R1 K3'a (beyond own P/L likeness): delta +0.015 (null sd 0.0621; P 143, L 96)
+  E8.0-R3 K3'a (beyond own P/L likeness): delta +0.007 (null sd 0.0517; P 254, L 273)
+  E8.5-R2 K3'a (beyond own P/L likeness): delta +0.037 (null sd 0.0156; P 1560, L 2137)
+  E8.5-R3 K3'a (beyond own P/L likeness): delta +0.039 (null sd 0.0166; P 1612, L 2289)
+  E9.0-R1 K3'a (beyond own P/L likeness): delta -0.001 (null sd 0.0087; P 4731, L 7419)
+  E9.5-R1 K3'a (beyond own P/L likeness): delta +0.082 (null sd 0.0049; P 18034, L 24754)
+K3'a (beyond own P/L likeness): mean +0.030, positive 5/6 -> PARTLY; B power (alpha 0.025, null sd 0.0166): all 0.469, stage-matched 0.566 -> fails the gate
+  E8.0-R1 K3'd (orthogonal to the fate axis): delta +0.018 (null sd 0.0622; P 143, L 96)
+  E8.0-R3 K3'd (orthogonal to the fate axis): delta +0.055 (null sd 0.0538; P 254, L 273)
+  E8.5-R2 K3'd (orthogonal to the fate axis): delta +0.152 (null sd 0.0157; P 1560, L 2137)
+  E8.5-R3 K3'd (orthogonal to the fate axis): delta +0.126 (null sd 0.0173; P 1612, L 2289)
+  E9.0-R1 K3'd (orthogonal to the fate axis): delta +0.063 (null sd 0.0089; P 4731, L 7419)
+  E9.5-R1 K3'd (orthogonal to the fate axis): delta +0.069 (null sd 0.0050; P 18034, L 24754)
+K3'd (orthogonal to the fate axis): mean +0.081, positive 6/6 -> TRACE BEYOND THE FATE AXIS (exploratory); B power (alpha 0.025, null sd 0.0173): all 0.790, stage-matched 0.873 -> fails the gate
+K3' entering a B look (fixed rule): none
+gene overlap (Jaccard, top 50) trace vs P/L classifier: P 0.12, L 0.04
