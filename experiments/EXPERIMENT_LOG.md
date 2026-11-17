@@ -12097,3 +12097,29 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The K2 null sd is an upper bound (from the smoke limit), so its power is conservative.
   - The power inputs come from 6 (or 4) train embryos; one sealed embryo carries the look.
 - Next: the B look spends petracer_embryo B (also earmarked for C14, whose B power was 0.60). It needs Bence's explicit OK. If approved, the look would be pre-registered with K1 and K2 only, alpha 0.025/3 kept as pre-registered here, parameters frozen from all 7 train embryos, B read only through the oracle.
+
+## C16-S4b: K3', a lineage trace beyond the fate axis (pre-registered 2026-11-17; Bence: "can we do a and d?")
+- **Serves: C16-S4b (script c16s4b_trace.py; imports c16s3_position.py, c16s2_link.py, c16s0_hidden.py, c14s3_region.py, c14s4_genes.py, c14s1_select.py, c14s0_gate.py, power.py, all unchanged).** Question: is the relatives' bias z_rel readable in a cell's own expression beyond (a) the cell's own paraxial-vs-lateral likeness (boundary or intermediate cells) and (d) in expression directions orthogonal to the P/L axis itself (a trace not explained by partial fate)?
+- **Compute:** GitHub Actions, one job (the expression pass dominates); shuffles run in a 4-process pool inside the job.
+- **Data:** TRAIN embryos only; z_rel, base, region and PCs exactly as C16-S3a.
+- **Tests (per embryo, within label, LOEO ridge, delta rho cell-weighted over P and L, as S2/S3a):**
+  - **K3'a (boundary control):** base + region + logit(s_PL) vs the same + 30 PCs. s_PL = out-of-fold P-vs-L likeness: logistic regression of own label on the 30 PCs, fitted on the other embryos.
+  - **K3'd (orthogonal trace):** base + region vs base + region + the 30 PCs projected orthogonal to the P/L direction u (the standardised logistic weight vector from the other embryos; projection fold-specific).
+  - Rule for each: TRACE BEYOND THE FATE AXIS if mean delta > 0.05 and positive in >= 4 of the rule embryos; ABSORBED if mean <= 0.02; else PARTLY.
+- **Gene overlap (descriptive):** gene weights through the PCA loadings (as C14-S4) for the K3'd readout (ridge on orthogonal PCs, all train cells, per label) and for the P/L classifier; Jaccard overlap of the top 50 |w| genes. Up to 15 top genes of each saved to the JSON only.
+- **Null and power:** 50 shuffles of z_rel within embryo x label for each test; per-embryo null sd; power for a one-embryo B look with K3' tested first at alpha 0.025 one-sided (fixed sequence: K3', then K2, then K1, each at 0.025 only if the previous passes), predictive distribution as C16-S4a (all 6 and stage-matched). Gate unchanged: power >= 0.8 in both scenarios. The K3' entering the look is K3'd if it passes the gate, else K3'a, else none (fixed now).
+- **Smokes:** (1) planted column z_rel + noise orthogonalised against u and s_PL: K3'd delta > 0.05 in every rule embryo; (2) shuffled z_rel: mean delta <= the null 2 SE (one-sided), both tests.
+- **Prediction:** K3'a PARTLY (about +0.04; C14-S4 found partial-fate genes); K3'd PARTLY (about +0.03); gene overlap with the P/L classifier < 0.3.
+- **Limits stated now:** s_PL and u are linear; a non-linear P/L likeness could still leak into the orthogonal PCs. Physical medial-lateral position is not in the data (explanation b stays open). Shared history (c) stays open. Exploratory, train only.
+- **Pre-flight:**
+  - Unit: embryo (LOEO); leaves within labels.
+  - Readout: z_rel vs expression.
+  - Used data first: train only; S2, S3a and C14-S4 are references.
+  - Power: this step computes it for the look; exploratory otherwise.
+  - Exposure: as C16-S3.
+  - Literature: lit/c16_map_2026-11-17.md.
+  - Readout gate: counts per embryo and label, as S3a.
+  - H22: no between-condition contrast.
+- **Practice:** synthetic path test locally (planted orthogonal trace detected, shuffled null flat) before dispatch; planted signal orthogonal to the base and the fate axis (RETRO_2026-11-17b lesson 1); run URL given.
+- Pre-registration detail (added before the script was written): the null sd used for B power is the largest per-embryo shuffle sd among the E8.5-E9.5 train embryos (closest in stage and size to B's E9.0 embryo; conservative).
+- **C16-S4b synthetic path test (before dispatch):** positive case (trace orthogonal to the fate axis): K3'a +0.126, K3'd +0.189, both pass, gene overlap 0.18-0.20, smokes PASS. Negative case (trace only along the fate axis): K3'a -0.020 and K3'd +0.014, both ABSORBED. The test separates explanation (a) from a trace beyond the fate axis on synthetic data.
