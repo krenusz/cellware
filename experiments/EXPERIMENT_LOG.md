@@ -12013,3 +12013,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Units: 6 embryos, train only.
   - Used data enough? S3a 63,302 of 147,652 leaves (C14 readout restriction); S3b all 147,652.
   - Already published? Fate maps place the P/L split at the streak by time and position (lit/c16_map_2026-11-17.md); a lineage bias beyond inferred axial identity on these trees was not found in the abstracts read.
+
+### C16-S1 result (2026-11-17; parallel run https://github.com/krenusz/cellware/actions/runs/44128234610, 19 jobs, combined locally; train only; EXPLORATORY, no claim)
+- Depth bins (edges from root): < 11, 11-13, >= 14. All-train M0t: P->L and L->P rates fall with depth (a 0.043 -> 0.024 -> 0.013; b 0.100 -> 0.039 -> 0.023). M1t: mu 0.067 (half-life 10.3 edges), rate multipliers 1.0, 0.42, 0.18 by depth bin.
+- Smokes PASS: (i) depth-varying, no memory: M1t - M0t -0.0002; for information, the S0 contrast M1 - M0 gains +0.0074 on these memory-free data; (ii) strong memory: +0.0263, 6/6.
+- **Primary M1t - M0t per leaf:** E8.0-R1 +0.0092, E8.0-R3 +0.0106, E8.5-R2 +0.0144, E8.5-R3 +0.0161, E9.0-R1 +0.0228, E9.5-R1 +0.0170; mean +0.0150, 6/6 -> **HIDDEN STATE SURVIVES THE TIME CONTROL**. Prediction (survives, about +0.02) met.
+- Decomposition: time alone (M0t - M0) mean +0.025, largest at E8.0 (+0.052, +0.049); S0 contrast M1 - M0 +0.037; M1 - M0t +0.012.
+- Self-challenge:
+  - Suspicious? The S0 gain at E8.0 (+0.06) was mostly time-varying rates (+0.05). After the time control, the memory gain is smallest at E8.0 (+0.009, +0.011) and larger later (+0.014 to +0.023), so the "opposite of C14" pattern Bence asked about came from rates changing with depth, not from memory. The smoke shows the S0 contrast alone would give about +0.007 of false memory from depth variation.
+  - Other explanations: (a) 3 depth bins are coarse; finer time variation could absorb more. (b) Depth in edges is a proxy for divisions and partly tracks stage. (c) The hidden state could still be clade-level niche (S3 controlled only expression-inferred axial identity).
+  - Units: 6 embryos, train only.
+  - Used data enough? All P/L leaves (147,652).
+  - Already published? Stage-specific transition rates from annotated trees: PASTRI 2026 (abstract read; full text rate-limited). Hidden-state-plus-time model on these trees: not found.
+- Reading: P/L switching slows about 5-fold with depth (multipliers 1 -> 0.18): progressive commitment. On top of that, a family-level bias persists about 10 divisions.

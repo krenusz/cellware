@@ -1,0 +1,16 @@
+depth bin cuts (edges from root): [11.0, 14.0]
+E7.5-R1: P/L leaves 0, mean leaf depth None, leaf bins [0, 0, 0]
+E8.0-R1: P/L leaves 950, mean leaf depth 9.302105263157895, leaf bins [723, 215, 12]
+E8.0-R3: P/L leaves 1448, mean leaf depth 8.964779005524862, leaf bins [1161, 279, 8]
+E8.5-R2: P/L leaves 9796, mean leaf depth 10.08350347080441, leaf bins [5714, 3462, 620]
+E8.5-R3: P/L leaves 9733, mean leaf depth 11.541148669474982, leaf bins [2870, 5143, 1720]
+E9.0-R1: P/L leaves 29958, mean leaf depth 11.516890313105014, leaf bins [10016, 13653, 6289]
+E9.5-R1: P/L leaves 95767, mean leaf depth 14.087169901949522, leaf bins [10095, 31958, 53714]
+all train M0t rates a [0.043, 0.0239, 0.013], b [0.1002, 0.0391, 0.023]; M1t mu 0.0672 (half-life 10.3 edges), bin multipliers [1.0, 0.418, 0.182]; LL M0t -30648.3 M1t -28151.7
+SMOKE (i) depth-varying, no memory: M1t-M0t -0.0002 -> PASS; (info) S0 contrast M1-M0 on the same data +0.0074
+SMOKE (ii) strong memory: M1t-M0t +0.0263, positive 6/6 -> PASS
+primary_M1t_vs_M0t: E8.0-R1 +0.0092, E8.0-R3 +0.0106, E8.5-R2 +0.0144, E8.5-R3 +0.0161, E9.0-R1 +0.0228, E9.5-R1 +0.0170; mean +0.0150
+time_alone_M0t_vs_M0: E8.0-R1 +0.0522, E8.0-R3 +0.0486, E8.5-R2 +0.0168, E8.5-R3 +0.0134, E9.0-R1 +0.0045, E9.5-R1 +0.0134; mean +0.0248
+S0_M1_vs_M0: E8.0-R1 +0.0617, E8.0-R3 +0.0593, E8.5-R2 +0.0298, E8.5-R3 +0.0256, E9.0-R1 +0.0212, E9.5-R1 +0.0244; mean +0.0370
+M1_vs_M0t: E8.0-R1 +0.0095, E8.0-R3 +0.0107, E8.5-R2 +0.0130, E8.5-R3 +0.0122, E9.0-R1 +0.0167, E9.5-R1 +0.0110; mean +0.0122
+PRIMARY mean +0.0150, positive 6/6 -> HIDDEN STATE SURVIVES THE TIME CONTROL (exploratory)
