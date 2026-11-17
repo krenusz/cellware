@@ -1,0 +1,408 @@
+{
+ "file_kinds": {
+  "<unit>_tree.nwk": 73,
+  "<unit>_character_matrix.txt": 73,
+  "<unit>_priors.pkl": 73,
+  "<unit>_tree_nj.processed.tree": 72,
+  "mean_fitness.<unit>.txt": 61,
+  "clonal_expansions.<unit>.txt": 59,
+  "clonal_expansions.<unit>.nj.txt": 21,
+  "<unit>_Fam_tree.nwk": 7,
+  "<unit>_Fam_priors.pkl": 7,
+  "<unit>_Fam_character_matrix.txt": 7,
+  "<unit>_Fam_tree_nj.processed.tree": 5,
+  "#_X#_All_character_matrix.txt": 3,
+  "#_X#_All_priors.pkl": 3,
+  "#_X#_All_tree.nwk": 3,
+  "#_X#_All_tree_nj.processed.tree": 3,
+  "._.DS_Store": 2,
+  ".DS_Store": 2,
+  "#_NT_All_priors.pkl": 2,
+  "#_NT_All_tree_nj.processed.tree": 2,
+  "plasticity_scores.tsv": 1,
+  "._trcr_master.txt": 1,
+  "trcr_master.txt": 1,
+  "._README": 1,
+  "README": 1,
+  "X.alleleTable.unfiltered.txt": 1,
+  "X.alleleTable.FINAL.txt": 1,
+  "X_statistics.tsv": 1,
+  "X_meta.csv": 1,
+  "majority_vote.down_genes.X.txt": 1,
+  "adata_processed.nt.h#ad": 1,
+  "majority_vote.up_genes.X.txt": 1,
+  "adata_processed.combined.h#ad": 1,
+  "#_X_All_tree.nwk": 1,
+  "#_X_All_character_matrix.txt": 1,
+  "#_NT_All_tree.nwk": 1,
+  "X_list.txt": 1,
+  "#_NTXpriors.pkl": 1,
+  "#_NT_All_character_matrix.txt": 1,
+  "#_X_All_priors.pkl": 1,
+  "#_NTXtree_nj.processed.tree": 1
+ },
+ "train_units_with_nwk": 37,
+ "train_leaves": 18380,
+ "nwk_vs_tree": {
+  "identical": false,
+  "nwk_len": 21073,
+  "tree_len": 24576,
+  "tree_head": "(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((("
+ },
+ "h5ad": [
+  {
+   "top": [
+    "X",
+    "obs",
+    "obsm",
+    "obsp",
+    "raw",
+    "uns",
+    "var"
+   ],
+   "n_obs": 58022,
+   "obs_columns": [
+    [
+     "Aging_Month",
+     "categorical(old)",
+     2
+    ],
+    [
+     "Aging_Time",
+     "categorical(old)",
+     8
+    ],
+    [
+     "Aging_time",
+     "categorical(old)",
+     1
+    ],
+    [
+     "Batch_Harvest",
+     "categorical(old)",
+     8
+    ],
+    [
+     "Batch_Library",
+     "categorical(old)",
+     4
+    ],
+    [
+     "Cluster-Name",
+     "categorical(old)",
+     15
+    ],
+    [
+     "ES_clone",
+     "categorical(old)",
+     3
+    ],
+    [
+     "Lane",
+     "categorical(old)",
+     13
+    ],
+    [
+     "MULTI",
+     "categorical(old)",
+     49
+    ],
+    [
+     "X",
+     "categorical(old)",
+     30
+    ],
+    [
+     "Mouse",
+     "categorical(old)",
+     11
+    ],
+    [
+     "NUM_INTBC",
+     "float64",
+     null
+    ],
+    [
+     "PercentUncut",
+     "categorical(old)",
+     76
+    ],
+    [
+     "RNA_Present",
+     "bool",
+     null
+    ],
+    [
+     "SubX",
+     "categorical(old)",
+     76
+    ],
+    [
+     "TS_Present",
+     "bool",
+     null
+    ],
+    [
+     "TS_UMI",
+     "float64",
+     null
+    ],
+    [
+     "X",
+     "categorical(old)",
+     35
+    ],
+    [
+     "genotype",
+     "categorical(old)",
+     1
+    ],
+    [
+     "is_normal",
+     "bool",
+     null
+    ],
+    [
+     "leiden",
+     "categorical(old)",
+     15
+    ],
+    [
+     "leiden_sub",
+     "categorical(old)",
+     15
+    ],
+    [
+     "lentiBC",
+     "categorical(old)",
+     27
+    ],
+    [
+     "n_counts",
+     "float32",
+     null
+    ]
+   ],
+   "X": {
+    "encoding": "csr_matrix",
+    "shape": [
+     58022,
+     27998
+    ],
+    "dtype": "float32",
+    "nnz": 140272601,
+    "integer_valued_sample": false
+   },
+   "var_columns": [
+    "index"
+   ],
+   "layers": [],
+   "obsm": [
+    "X_scVI",
+    "X_umap"
+   ],
+   "leaf_match": {
+    "exact": 0.557,
+    "strip -1": 0.0,
+    "add -1": 0.0
+   },
+   "example_index": "L10.AAACCTGAGACGCAAC-1",
+   "example_leaf": "L21.GGGACCTCAAGCGTAG-1"
+  },
+  {
+   "top": [
+    "X",
+    "layers",
+    "obs",
+    "obsm",
+    "obsp",
+    "raw",
+    "uns",
+    "var"
+   ],
+   "n_obs": 104197,
+   "obs_columns": [
+    [
+     "Aging_Month",
+     "categorical(old)",
+     3
+    ],
+    [
+     "Aging_Time",
+     "categorical(old)",
+     14
+    ],
+    [
+     "Aging_time",
+     "categorical(old)",
+     1
+    ],
+    [
+     "Batch_Harvest",
+     "categorical(old)",
+     14
+    ],
+    [
+     "Batch_Library",
+     "categorical(old)",
+     6
+    ],
+    [
+     "Cluster",
+     "categorical(old)",
+     19
+    ],
+    [
+     "Cluster-Name",
+     "categorical(old)",
+     19
+    ],
+    [
+     "ES_clone",
+     "categorical(old)",
+     6
+    ],
+    [
+     "Lane",
+     "categorical(old)",
+     26
+    ],
+    [
+     "LentiFiltered",
+     "bool",
+     null
+    ],
+    [
+     "MULTI",
+     "categorical(old)",
+     86
+    ],
+    [
+     "X",
+     "categorical(old)",
+     83
+    ],
+    [
+     "Mouse",
+     "categorical(old)",
+     32
+    ],
+    [
+     "NUM_INTBC",
+     "float64",
+     null
+    ],
+    [
+     "PercentUncut",
+     "float64",
+     null
+    ],
+    [
+     "RNA_Present",
+     "bool",
+     null
+    ],
+    [
+     "SubX",
+     "categorical(old)",
+     222
+    ],
+    [
+     "TS_Present",
+     "bool",
+     null
+    ],
+    [
+     "TS_UMI",
+     "float64",
+     null
+    ],
+    [
+     "X",
+     "categorical(old)",
+     133
+    ],
+    [
+     "genotype",
+     "categorical(old)",
+     3
+    ],
+    [
+     "is_normal",
+     "bool",
+     null
+    ],
+    [
+     "lentiBC",
+     "categorical(old)",
+     60
+    ],
+    [
+     "n_genes",
+     "int64",
+     null
+    ],
+    [
+     "n_genes_by_counts",
+     "int32",
+     null
+    ],
+    [
+     "pct_counts_mt",
+     "float32",
+     null
+    ],
+    [
+     "total_counts",
+     "float32",
+     null
+    ],
+    [
+     "total_counts_mt",
+     "float32",
+     null
+    ]
+   ],
+   "X": {
+    "encoding": "csr_matrix",
+    "shape": [
+     104197,
+     4000
+    ],
+    "dtype": "float32",
+    "nnz": 25735050,
+    "integer_valued_sample": true
+   },
+   "var_columns": [
+    "_index",
+    "gene_ids",
+    "highly_variable",
+    "highly_variable_nbatches",
+    "highly_variable_rank",
+    "mean_counts",
+    "means",
+    "mt",
+    "n_cells_by_counts",
+    "pct_dropout_by_counts",
+    "total_counts",
+    "variances",
+    "variances_norm"
+   ],
+   "layers": [
+    "counts"
+   ],
+   "obsm": [
+    "X_scANVI",
+    "X_scVI",
+    "X_umap"
+   ],
+   "leaf_match": {
+    "exact": 0.997,
+    "strip -1": 0.0,
+    "add -1": 0.0
+   },
+   "example_index": "L10.AAACCTGAGACGCAAC-1",
+   "example_leaf": "L21.GGGACCTCAAGCGTAG-1"
+  }
+ ]
+}

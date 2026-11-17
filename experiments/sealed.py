@@ -221,6 +221,7 @@ HELDOUT_READERS = {
     "c15s0_struct.py": "C15-S0: growth12_host structure only (H9 format check): partition_of on host numbers to count hosts, units, cells (obs unit-ID column) and tree leaves (comma count) per partition; no state, expression, topology or outcome read",
     "c15s0_rebal.py": "C15-S0a1: growth12_host v1 -> v2 rebalance on host leaf counts only (structure); writes the host -> partition map",
     "c15s1a_format.py": "C15-S1a: H9 format check; partition_of(growth12_host_v2) skips sealed units' trees before reading; obs index and column layout read for all rows (names, dtypes, category counts only; no values saved)",
+    "c15s1b_fit.py": "C15-S1b: train-only fit; sealed units' tree files skipped by name (partition_of growth12_host_v2); h5ad obs index read whole and cut to train leaves before cluster codes or counts are used; sealed rows never used",
     "core_sisseq.py": "scores('heldout') only inside heldout_stat (E54)",
     "sis_data.py": "_keep(part='heldout') loader, called only by oracle tests",
     "e55_fm.py": "split() marks held-out clones; heldout_stat (E55)",

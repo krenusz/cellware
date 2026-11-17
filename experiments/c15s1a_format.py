@@ -25,7 +25,7 @@ from partitions import partition_of  # noqa: E402
 
 DS = "growth12_host_v2"
 OUT = HERE / "results_c15"
-MASK = re.compile(r"tumou?r|cancer|metast|kras|lkb1|stk11|\bapc\b|p53|trp53|lung|adeno|onc|malig|carcin", re.I)
+MASK = re.compile(r"tumou?r|cancer|metast|metfamily|\bmets?\b|kptracer|kras|lkb|stk11|apc|p53|trp53|lung|adeno|onc|malig|carcin", re.I)
 LEAF_RE = re.compile(r"[(,]\s*([^(),:;\s]+)")
 LOG = []
 

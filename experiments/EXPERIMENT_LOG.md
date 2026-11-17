@@ -11827,3 +11827,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Source table named for every count.
   - Neutral wording.
   - Peak RAM: X read only for train cells and HVGs, streamed by row blocks.
+
+### C15-S1a result (2026-11-17, Actions run 44073504820; train hosts, format only)
+- 37 train units have a tree; 18,380 train leaves.
+- **h5ad2 (combined):** 104,197 cells x 4,000 genes; raw counts in layers/counts; 99.7% of train leaves found in its obs index (exact names). It has the authors' state cluster column (19 categories), a host column (32 categories, matching the 32 hosts) and arm labels.
+- h5ad1 is a subset of one arm (58,022 cells, 15 clusters; 56% leaf match). Not used.
+- Unit trees are `<unit>_tree.nwk`. Family and pooled trees (`_Fam_`, `_All_`) are excluded by exact file-name match. The .nwk and .tree files differ (the .tree is a neighbour-joining tree); .nwk is used.
+- Prediction (>= 90% leaf match; raw counts available) met.
+- **Hygiene slip:** the name mask missed two gene names, the tool name and one column name. They appeared in the run's public Actions log and in the JSON. The JSON was scrubbed before commit and the mask was widened in c15s1a_format.py.
+
+### C15-S1b amendment 1 (2026-11-17, before any real-data run; found by the synthetic path test)
+- The shuffled smoke threshold (|delta| < 0.01) was tighter than its own noise: synthetic SE 0.018 over 10 hosts, and it failed at +0.016.
+- Now: the mean of 5 within-(cluster, host) shuffles, passing if |mean| < max(0.01, 2 x its SE across hosts). The planted test is unchanged.
+- Added a sensitivity line (not the gate): power with the between-host variance floored at C14's embryo sd (0.0374^2). It guards against the 11-host variance fit underestimating it.
+- Synthetic path test after the amendment: shuffled +0.005 (PASS), planted +0.065 (PASS), planted-program effect recovered (+0.031, 10/10 hosts).
