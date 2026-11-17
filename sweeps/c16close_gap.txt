@@ -1,1 +1,1 @@
-[experiments/lit/gap_2026-11-17_c16.md] python experiments/lit_gap.py c16
+[experiments/results_c16/gap_2026-11-17_c16.md] python experiments/lit_gap.py c16 && cp experiments/lit/gap_2026-11-17_c16.md experiments/lit/gap_2026-11-17_c16.json experiments/results_c16/
