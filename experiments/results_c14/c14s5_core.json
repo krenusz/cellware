@@ -1,0 +1,311 @@
+{
+ "verdict": "MEMORY-CONSISTENT",
+ "core_positive": 5,
+ "n_embryos": 6,
+ "k": 30,
+ "core_cut": 0.9,
+ "edge_cut": 0.6,
+ "smoke_edge": {
+  "all": {
+   "per_embryo": {
+    "E8.0-R1": -0.0085,
+    "E8.0-R3": -0.0085,
+    "E8.5-R2": 0.0384,
+    "E8.5-R3": 0.0366,
+    "E9.0-R1": 0.0409,
+    "E9.5-R1": 0.0158
+   },
+   "mean": 0.019116666666666667,
+   "cells": 163305
+  },
+  "core": {
+   "per_embryo": {
+    "E8.0-R1": -0.0078,
+    "E8.0-R3": -0.0127,
+    "E8.5-R2": -0.0007,
+    "E8.5-R3": 0.0006,
+    "E9.0-R1": 0.0094,
+    "E9.5-R1": 0.0014
+   },
+   "mean": -0.0016333333333333328,
+   "cells": 111689
+  },
+  "edge": {
+   "per_embryo": {
+    "E8.0-R1": -0.0697,
+    "E8.0-R3": -0.287,
+    "E8.5-R2": 0.179,
+    "E8.5-R3": 0.1634,
+    "E9.0-R1": 0.1795,
+    "E9.5-R1": 0.0339
+   },
+   "mean": 0.033183333333333336,
+   "cells": 17360
+  },
+  "retained_core": -0.08544027898866606
+ },
+ "smoke_all": {
+  "all": {
+   "per_embryo": {
+    "E8.0-R1": 0.6083,
+    "E8.0-R3": 0.5396,
+    "E8.5-R2": 0.3243,
+    "E8.5-R3": 0.3352,
+    "E9.0-R1": 0.3591,
+    "E9.5-R1": 0.3972
+   },
+   "mean": 0.4272833333333333,
+   "cells": 163305
+  },
+  "core": {
+   "per_embryo": {
+    "E8.0-R1": 0.6493,
+    "E8.0-R3": 0.5698,
+    "E8.5-R2": 0.2833,
+    "E8.5-R3": 0.32,
+    "E9.0-R1": 0.3868,
+    "E9.5-R1": 0.3976
+   },
+   "mean": 0.4344666666666667,
+   "cells": 111689
+  },
+  "edge": {
+   "per_embryo": {
+    "E8.0-R1": 0.4398,
+    "E8.0-R3": 0.48,
+    "E8.5-R2": 0.376,
+    "E8.5-R3": 0.3843,
+    "E9.0-R1": 0.3735,
+    "E9.5-R1": 0.3773
+   },
+   "mean": 0.40514999999999995,
+   "cells": 17360
+  },
+  "retained_core": 1.0168116394273903
+ },
+ "smoke_pass": true,
+ "by_type": {
+  "Allantoic endothelial progenitor": {
+   "cells": 920,
+   "core_frac": 0.242,
+   "edge_frac": 0.377
+  },
+  "Arterial endothelial cell": {
+   "cells": 450,
+   "core_frac": 0.007,
+   "edge_frac": 0.831
+  },
+  "Autonomic progenitor": {
+   "cells": 805,
+   "core_frac": 0.045,
+   "edge_frac": 0.619
+  },
+  "Axial progenitor": {
+   "cells": 3133,
+   "core_frac": 0.728,
+   "edge_frac": 0.079
+  },
+  "Cranial neural crest": {
+   "cells": 7002,
+   "core_frac": 0.633,
+   "edge_frac": 0.095
+  },
+  "Dermomyotome": {
+   "cells": 18534,
+   "core_frac": 0.908,
+   "edge_frac": 0.026
+  },
+  "Dorsal root ganglion neuron": {
+   "cells": 243,
+   "core_frac": 0.704,
+   "edge_frac": 0.177
+  },
+  "Dorsal root ganglion progenitor": {
+   "cells": 223,
+   "core_frac": 0.157,
+   "edge_frac": 0.529
+  },
+  "Endocardial cell": {
+   "cells": 596,
+   "core_frac": 0.144,
+   "edge_frac": 0.465
+  },
+  "Endothelial cell": {
+   "cells": 3489,
+   "core_frac": 0.741,
+   "edge_frac": 0.104
+  },
+  "Endothelial progenitor": {
+   "cells": 2931,
+   "core_frac": 0.353,
+   "edge_frac": 0.259
+  },
+  "Extraembryonic mesoderm": {
+   "cells": 2344,
+   "core_frac": 0.906,
+   "edge_frac": 0.035
+  },
+  "First heart field": {
+   "cells": 1473,
+   "core_frac": 0.281,
+   "edge_frac": 0.289
+  },
+  "Floor plate": {
+   "cells": 7858,
+   "core_frac": 0.931,
+   "edge_frac": 0.02
+  },
+  "Foregut": {
+   "cells": 1647,
+   "core_frac": 0.519,
+   "edge_frac": 0.124
+  },
+  "Forelimb field": {
+   "cells": 7057,
+   "core_frac": 0.775,
+   "edge_frac": 0.063
+  },
+  "Frontonasal mesenchyme": {
+   "cells": 8154,
+   "core_frac": 0.441,
+   "edge_frac": 0.158
+  },
+  "Intermediate mesoderm": {
+   "cells": 4518,
+   "core_frac": 0.491,
+   "edge_frac": 0.188
+  },
+  "Juxtacardiac field": {
+   "cells": 718,
+   "core_frac": 0.181,
+   "edge_frac": 0.499
+  },
+  "Nascent mesoderm": {
+   "cells": 267,
+   "core_frac": 1.0,
+   "edge_frac": 0.0
+  },
+  "Nascent somite": {
+   "cells": 4026,
+   "core_frac": 0.711,
+   "edge_frac": 0.043
+  },
+  "Notochord": {
+   "cells": 579,
+   "core_frac": 0.373,
+   "edge_frac": 0.33
+  },
+  "Olfactory placode": {
+   "cells": 2570,
+   "core_frac": 0.446,
+   "edge_frac": 0.195
+  },
+  "Otic placode": {
+   "cells": 1306,
+   "core_frac": 0.312,
+   "edge_frac": 0.345
+  },
+  "Pharyngeal arch mesenchyme": {
+   "cells": 12466,
+   "core_frac": 0.637,
+   "edge_frac": 0.074
+  },
+  "Pharyngeal endoderm": {
+   "cells": 3084,
+   "core_frac": 0.317,
+   "edge_frac": 0.209
+  },
+  "Pharyngeal mesoderm": {
+   "cells": 3774,
+   "core_frac": 0.669,
+   "edge_frac": 0.102
+  },
+  "Pre-placodal ectoderm": {
+   "cells": 1961,
+   "core_frac": 0.385,
+   "edge_frac": 0.166
+  },
+  "Roof plate": {
+   "cells": 2970,
+   "core_frac": 0.715,
+   "edge_frac": 0.079
+  },
+  "Second heart field": {
+   "cells": 5814,
+   "core_frac": 0.504,
+   "edge_frac": 0.2
+  },
+  "Somatic mesoderm": {
+   "cells": 21310,
+   "core_frac": 0.733,
+   "edge_frac": 0.069
+  },
+  "Spinal cord (lumbar)": {
+   "cells": 5306,
+   "core_frac": 0.785,
+   "edge_frac": 0.055
+  },
+  "Spinal cord (sacral)": {
+   "cells": 1514,
+   "core_frac": 0.332,
+   "edge_frac": 0.181
+  },
+  "Telencephalon": {
+   "cells": 16780,
+   "core_frac": 0.969,
+   "edge_frac": 0.006
+  },
+  "Trigeminal placode": {
+   "cells": 3047,
+   "core_frac": 0.831,
+   "edge_frac": 0.059
+  },
+  "Trunk neural crest": {
+   "cells": 2320,
+   "core_frac": 0.197,
+   "edge_frac": 0.297
+  },
+  "Vagal neural crest": {
+   "cells": 2116,
+   "core_frac": 0.08,
+   "edge_frac": 0.656
+  }
+ },
+ "all": {
+  "per_embryo": {
+   "E8.0-R1": 0.0145,
+   "E8.0-R3": 0.0414,
+   "E8.5-R2": 0.1018,
+   "E8.5-R3": 0.0904,
+   "E9.0-R1": 0.0881,
+   "E9.5-R1": 0.1081
+  },
+  "mean": 0.07405,
+  "cells": 163305
+ },
+ "core": {
+  "per_embryo": {
+   "E8.0-R1": -0.0249,
+   "E8.0-R3": 0.0347,
+   "E8.5-R2": 0.1123,
+   "E8.5-R3": 0.1049,
+   "E9.0-R1": 0.072,
+   "E9.5-R1": 0.1169
+  },
+  "mean": 0.06931666666666667,
+  "cells": 111689
+ },
+ "edge": {
+  "per_embryo": {
+   "E8.0-R1": 0.0232,
+   "E8.0-R3": -0.004,
+   "E8.5-R2": 0.062,
+   "E8.5-R3": 0.095,
+   "E9.0-R1": 0.1073,
+   "E9.5-R1": 0.0942
+  },
+  "mean": 0.06294999999999999,
+  "cells": 17360
+ },
+ "retained_core": 0.9360792257483681
+}

@@ -1,0 +1,208 @@
+{
+ "members": 500,
+ "by_extension": {
+  ".tsv": {
+   "files": 2,
+   "mb": 3.9
+  },
+  ".ds_store": {
+   "files": 2,
+   "mb": 0.0
+  },
+  "(none)": {
+   "files": 4,
+   "mb": 0.0
+  },
+  ".txt": {
+   "files": 233,
+   "mb": 278.5
+  },
+  ".csv": {
+   "files": 1,
+   "mb": 16.8
+  },
+  ".h5ad": {
+   "files": 2,
+   "mb": 4899.4
+  },
+  ".nwk": {
+   "files": 85,
+   "mb": 2.3
+  },
+  ".pkl": {
+   "files": 87,
+   "mb": 0.5
+  },
+  ".tree": {
+   "files": 84,
+   "mb": 3.3
+  }
+ },
+ "tables_with_unit_ids": 8,
+ "n_units": 78,
+ "n_units_named_in_files": 73,
+ "n_units_with_cells": 78,
+ "n_hosts": 32,
+ "n_arms": 3,
+ "units_per_host": {
+  "1": 7,
+  "2": 12,
+  "3": 8,
+  "4": 2,
+  "5": 3
+ },
+ "hosts_with_more_than_one_arm": 0,
+ "per_arm": {
+  "arm1": {
+   "hosts": 9,
+   "units": 23
+  },
+  "arm2": {
+   "hosts": 12,
+   "units": 26
+  },
+  "arm3": {
+   "hosts": 11,
+   "units": 29
+  }
+ },
+ "cells_per_unit": {
+  "min": 4,
+  "q25": 1273,
+  "median": 2929,
+  "q75": 8704,
+  "max": 192295,
+  "units_ge_100": 76,
+  "total": 755032
+ },
+ "per_host": [
+  {
+   "host": "h01",
+   "arm3": 4
+  },
+  {
+   "host": "h02",
+   "arm3": 2
+  },
+  {
+   "host": "h03",
+   "arm3": 2
+  },
+  {
+   "host": "h04",
+   "arm3": 3
+  },
+  {
+   "host": "h05",
+   "arm3": 4
+  },
+  {
+   "host": "h06",
+   "arm2": 3
+  },
+  {
+   "host": "h07",
+   "arm2": 3
+  },
+  {
+   "host": "h08",
+   "arm1": 5
+  },
+  {
+   "host": "h09",
+   "arm1": 2
+  },
+  {
+   "host": "h10",
+   "arm2": 2
+  },
+  {
+   "host": "h11",
+   "arm2": 1
+  },
+  {
+   "host": "h12",
+   "arm2": 1
+  },
+  {
+   "host": "h13",
+   "arm2": 2
+  },
+  {
+   "host": "h14",
+   "arm2": 2
+  },
+  {
+   "host": "h15",
+   "arm2": 3
+  },
+  {
+   "host": "h16",
+   "arm1": 2
+  },
+  {
+   "host": "h17",
+   "arm1": 2
+  },
+  {
+   "host": "h18",
+   "arm1": 3
+  },
+  {
+   "host": "h19",
+   "arm2": 1
+  },
+  {
+   "host": "h20",
+   "arm3": 5
+  },
+  {
+   "host": "h21",
+   "arm2": 3
+  },
+  {
+   "host": "h22",
+   "arm2": 3
+  },
+  {
+   "host": "h23",
+   "arm3": 1
+  },
+  {
+   "host": "h24",
+   "arm1": 2
+  },
+  {
+   "host": "h25",
+   "arm3": 3
+  },
+  {
+   "host": "h26",
+   "arm3": 1
+  },
+  {
+   "host": "h27",
+   "arm3": 2
+  },
+  {
+   "host": "h28",
+   "arm3": 2
+  },
+  {
+   "host": "h29",
+   "arm2": 2
+  },
+  {
+   "host": "h30",
+   "arm1": 1
+  },
+  {
+   "host": "h31",
+   "arm1": 1
+  },
+  {
+   "host": "h32",
+   "arm1": 5
+  }
+ ]
+}

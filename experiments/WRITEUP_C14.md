@@ -46,6 +46,7 @@ Per A embryo: E8.0-R2 -0.006, E8.5-R1 +0.043, E9.0-R2 +0.115, E9.5-R2 +0.137, E9
 - In mesoderm types (endothelial, somatic mesoderm, second heart field, trunk neural crest), one shared axis separates cells by their relatives' lineage. Cells with paraxial relatives carry paraxial/somite genes (Tcf15, Meox1, Pax3). Cells with lateral-plate relatives carry lateral-plate and posterior genes (Gata6, Pitx1, Prrx1, posterior Hox, Cdx).
 - In neural types, telencephalon cells with neural-crest relatives carry border genes (Msx1, Gli3). Floor plate cells with neural relatives carry axial-progenitor genes (T, Fgf8, Cdx2).
 - The gene lists are stable when one embryo is left out (top-50 overlap 0.65-0.86). The gain is spread across many PCs.
+- Boundary check (C14-S5, train only, no claim): cells far from any type boundary (kNN type purity >= 0.9, 68% of cells) keep 94% of the gain (0.069 of 0.074, 5 of 6 embryos). Mixed cells between types do not explain it. A shared local environment is still not excluded.
 - **Reading:** a cell keeps a trace of its lineage-of-origin program beyond its annotated type. This fits inherited state, but also mixed cells near type boundaries. The posterior Hox genes are partly axial position.
 
 ## Value against the literature
@@ -63,7 +64,7 @@ Per A embryo: E8.0-R2 -0.006, E8.5-R1 +0.043, E9.0-R2 +0.115, E9.5-R2 +0.137, E9
 ## Partitions after chapter 14
 - train: used.
 - A: spent (C14-S2, 88f4654).
-- B (E7.5-R2, E7.5-R3, E9.0-R3): sealed. Two of its three embryos are E7.5, where the readout is thin and the effect small, so a B replication would be underpowered for the E8.5+ effect. Power must be recomputed (sim_power) before any look.
+- B (E7.5-R2, E7.5-R3, E9.0-R3): sealed. Simulated power of the frozen rule (C14-S5): 0.60 region-adjusted if the E7.5 embryos give no readout (as train E7.5-R1 did not), so B would be a one-embryo look. B is underpowered and stays sealed.
 - C (E10.0-R1): sealed, last reserve (H13).
 
 ## Process note

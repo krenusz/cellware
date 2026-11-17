@@ -11649,3 +11649,33 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The fit uses 11 (d) or 6 (dR) embryos with a straight line in stage. Power at E9.0 depends mostly on the E9.0 to E9.5 points.
   - Which scenario holds is a structural fact about B (readout cells at E7.5) that we did not read.
 - Reading: B cannot carry a region-adjusted replication; at best a fragile one-embryo look. Keep B sealed; it is not worth spending.
+
+### C14-S5 (b) result: core vs edge (2026-11-17, Actions run 44058001395; train embryos only; EXPLORATORY, no claim)
+- kNN type purity: median 0.97. Core cells (>= 0.9) are 68% of 163,305 readout cells; edge cells (< 0.6) are 11%.
+- Both smoke tests passed: the edge-only signal gave retained_core -0.09, and the signal-everywhere test gave 1.02.
+- Gain by subset:
+
+  | Cells | Gain | Cells counted |
+  |---|---|---|
+  | all | 0.074 | 163,305 |
+  | core | 0.069 | 111,689 |
+  | edge | 0.063 | 17,360 |
+
+  - retained_core is 0.94. Core gain is positive in 5 of 6 embryos (E8.0-R1 -0.025, as in S1-S3).
+- **Verdict: MEMORY-CONSISTENT.** The prediction (MIXED) was not met. The gain does not come from cells sitting between types.
+- Train E7.5-R1 again gave no per-embryo delta (7 embryos in, 6 with a delta). This supports scenario S-drop for B's E7.5 embryos in (a).
+- Self-challenge:
+  - Purity is measured on the same 30 PCs the model uses, against neighbours among readout cells only. A cell mixed toward a non-readout type would look pure.
+  - Purity is against any other type, not specifically against the relatives' L1/L2 lineages. A sharper check would measure distance toward L1-type and L2-type cells.
+  - "Far from a boundary" weakens the type-impurity explanation; it does not prove inherited memory. A shared local environment (S3 left 18% to region, and fine position is untested) still fits.
+  - Low-purity types (arterial endothelial, autonomic progenitor, vagal neural crest) are small and mostly edge; the verdict is carried by large, well-separated types.
+
+### C14-S5 (c) result: C15 candidate #12 structure (2026-11-17, Actions run 44057980769; structure only)
+- The tarball's size and md5 matched the Zenodo record. 500 members: 2 h5ad (4.9 GB unpacked), 85 newick and 84 .tree files, 87 pkl (not loaded), 233 txt, plus tsv and csv.
+- **78 units in 32 hosts, 3 arms.** Each host has 1-5 units (7 hosts with 1, 12 with 2, 8 with 3, 2 with 4, 3 with 5). No host carries more than one arm.
+  - arm1: 9 hosts, 23 units
+  - arm2: 12 hosts, 26 units
+  - arm3: 11 hosts, 29 units
+- Rows per unit: median 2,929, total 755,032, 76 of 78 units >= 100. These counts come from the table with the most unit-ID matches. They exceed the paper's traced-cell totals (about 72k), so they are probably allele or UMI rows rather than cells. Treat them as an upper bound; the cell count per unit is still open.
+- The prediction (15-40 hosts) was met.
+- Reading: a by-host split is possible, for example train 14 hosts and A/B/C 6 hosts each, about 14 units per sealed partition. The H17 simulation and the H21 readout gate need the cell-level table and a readout definition; both are proposal work.
