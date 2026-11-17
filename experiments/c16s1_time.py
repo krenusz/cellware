@@ -277,9 +277,179 @@ def synthetic(outdir):
     print("SYNTHETIC OK", res["verdict"])
 
 
+# ---------- parallel execution (technical amendment 2026-11-17): one Actions job per fold task, 4 cores per job ----------
+PARTS = OUT / "c16s1_parts"
+_G = {}
+
+
+def _x0(model, rng, s0=False):
+    if s0:
+        n = 2 if model == 0 else 5
+        k_ = 3 if model == 0 else 8
+        return np.r_[np.log(rng.uniform(0.02, 0.3, n)), rng.normal(0, 0.5, k_ - n)]
+    k_ = NPAR[model]
+    nr = 2 * NB if model == 0 else 5 + NB - 1
+    x0 = np.r_[np.log(rng.uniform(0.02, 0.3, nr)), rng.normal(0, 0.5, k_ - nr)]
+    if model == 1:
+        x0[5:5 + NB - 1] = rng.normal(0, 0.3, NB - 1)
+    return x0
+
+
+def _one(job):
+    """job = (tag, model, x0); tag 't' = binned models (this file), 's' = C16-S0 models."""
+    tag, model, x0 = job
+    F = _G["F"]
+    if tag == "t":
+        nr = 2 * NB if model == 0 else 5 + NB - 1
+        bounds = [(-9, 3)] * nr + [(-8, 8)] * (len(x0) - nr)
+        r = minimize(lambda th: -loglik(th, F, model), x0, method="L-BFGS-B", bounds=bounds)
+    else:
+        n = 2 if model == 0 else 5
+        r = minimize(lambda th: -h.loglik(th, F, model), x0, method="L-BFGS-B", bounds=[(-9, 3)] * n + [(-8, 8)] * (len(x0) - n))
+    return tag, model, r.x, -r.fun
+
+
+def pfit(F, jobs, procs=4):
+    """Run independent fits in parallel (fork shares F); return best theta per (tag, model)."""
+    import multiprocessing as mp
+
+    _G["F"] = F
+    if procs > 1 and sys.platform != "win32":
+        with mp.get_context("fork").Pool(procs) as pool:
+            out = pool.map(_one, jobs)
+    else:
+        out = [_one(j) for j in jobs]
+    best = {}
+    for tag, model, x, ll in out:
+        if (tag, model) not in best or ll > best[(tag, model)][1]:
+            best[(tag, model)] = (x, ll)
+    return best
+
+
+def fold_jobs(rng, starts):
+    return ([("t", 0, _x0(0, rng))] + [("t", 1, _x0(1, rng)) for _ in range(starts)]
+            + [("s", 0, _x0(0, rng, True))] + [("s", 1, _x0(1, rng, True)) for _ in range(starts)])
+
+
+def fold_rows(forests, e, rng, starts):
+    tr = Pooled([forests[o] for o in forests if o != e])
+    b = pfit(tr, fold_jobs(rng, starts))
+    F = forests[e]
+    ll = dict(M0t=loglik(b[("t", 0)][0], F, 0), M1t=loglik(b[("t", 1)][0], F, 1),
+              M0=h.loglik(b[("s", 0)][0], F, 0), M1=h.loglik(b[("s", 1)][0], F, 1))
+    return {k_: v / F.n_obs for k_, v in ll.items()}
+
+
+def prepare(forests):
+    cuts = cuts_from(forests)
+    set_bins(forests, cuts)
+    allF = Pooled(list(forests.values()))
+    rng = np.random.default_rng(SEED)
+    b = pfit(allF, [("t", 0, _x0(0, rng))])  # deterministic M0t all-train fit (truth for smoke i)
+    return cuts, allF, b[("t", 0)][0]
+
+
+def sim_forests(forests, kind, t0t):
+    rng = np.random.default_rng(SEED + (1 if kind == "null" else 2))
+    if kind == "null":
+        theta, model = t0t, 0
+    else:
+        theta, model = np.r_[np.log([0.02, 0.25, 0.25, 0.02, 0.05]), np.zeros(NB - 1), 0.0, 0.0, 0.0], 1
+    return relabel(forests, {e: simulate(f, theta, model, rng) for e, f in forests.items()})
+
+
+def task_names(forests):
+    emb = [e for e, f in forests.items() if f.n_obs >= h.MIN_LEAVES]
+    return ["all"] + [f"{kind}:{e}" for kind in ("real", "null", "strong") for e in emb]
+
+
+def run_task(forests, name, outdir):
+    cuts, allF, t0t = prepare(forests)
+    rng = np.random.default_rng(SEED + sum(map(ord, name)))  # deterministic per task
+    if name == "all":
+        b = pfit(allF, [("t", 0, _x0(0, rng)), *[("t", 1, _x0(1, rng)) for _ in range(3)]])
+        t1t, ll1t = b[("t", 1)]
+        ll0t = loglik(t0t, allF, 0)
+        res = dict(task=name, cuts=cuts.tolist(), m0t=np.exp(t0t[:2 * NB]).tolist(), ll0t=ll0t, ll1t=ll1t,
+                   mu=float(np.exp(t1t[4])), mult=np.exp(t1t[5:5 + NB - 1]).tolist(),
+                   leaves={e: dict(n=f.n_obs, depth=float(depth_of(f)[f.obs >= 0].mean()) if f.n_obs else None,
+                                   bins=np.bincount(f.bin[f.obs >= 0], minlength=NB).tolist()) for e, f in forests.items()})
+    else:
+        kind, e = name.split(":", 1)
+        fs = forests if kind == "real" else sim_forests(forests, kind, t0t)
+        res = dict(task=name, rows=fold_rows(fs, e, rng, 3 if kind == "real" else 2))
+    Path(outdir).mkdir(parents=True, exist_ok=True)
+    (Path(outdir) / f"{name.replace(':', '__')}.json").write_text(json.dumps(res, indent=1, default=float), encoding="utf-8")
+    print(name, res.get("rows", ""), flush=True)
+    return res
+
+
+def combine(partdir, outdir):
+    LOG.clear()
+    P = {json.loads(p.read_text())["task"]: json.loads(p.read_text()) for p in Path(partdir).glob("*.json")}
+    a = P["all"]
+    say(f"depth bin cuts (edges from root): {np.round(a['cuts'], 1).tolist()}")
+    for e, v in a["leaves"].items():
+        say(f"{e}: P/L leaves {v['n']}, mean leaf depth {v['depth']}, leaf bins {v['bins']}")
+    say(f"all train M0t rates a {np.round(a['m0t'][:NB], 4).tolist()}, b {np.round(a['m0t'][NB:], 4).tolist()}; "
+        f"M1t mu {a['mu']:.4f} (half-life {np.log(2) / a['mu']:.1f} edges), bin multipliers {np.round([1] + a['mult'], 3).tolist()}; "
+        f"LL M0t {a['ll0t']:.1f} M1t {a['ll1t']:.1f}")
+    rows = {kind: {t.split(":", 1)[1]: v["rows"] for t, v in P.items() if t.startswith(kind + ":")} for kind in ("real", "null", "strong")}
+    g0, g0s, g1 = gains(rows["null"], "M1t", "M0t"), gains(rows["null"], "M1", "M0"), gains(rows["strong"], "M1t", "M0t")
+    ok1 = np.mean(list(g0.values())) <= 0.002
+    ok2 = np.mean(list(g1.values())) > 0 and sum(v > 0 for v in g1.values()) >= min(5, len(g1))
+    say(f"SMOKE (i) depth-varying, no memory: M1t-M0t {np.mean(list(g0.values())):+.4f} -> {'PASS' if ok1 else 'FAIL'}; "
+        f"(info) S0 contrast M1-M0 on the same data {np.mean(list(g0s.values())):+.4f}")
+    say(f"SMOKE (ii) strong memory: M1t-M0t {np.mean(list(g1.values())):+.4f}, positive {sum(v > 0 for v in g1.values())}/{len(g1)} "
+        f"-> {'PASS' if ok2 else 'FAIL'}")
+    r = rows["real"]
+    g = gains(r, "M1t", "M0t")
+    m = float(np.mean(list(g.values())))
+    pos = sum(v > 0 for v in g.values())
+    if not (ok1 and ok2):
+        verdict = "INVALID (smoke failed)"
+    elif m > 0 and pos >= len(g) - 1:
+        verdict = "HIDDEN STATE SURVIVES THE TIME CONTROL (exploratory)"
+    elif m <= 0:
+        verdict = "EXPLAINED BY DEPTH-VARYING RATES"
+    else:
+        verdict = "MIXED"
+    for nm, (x, y) in dict(primary_M1t_vs_M0t=("M1t", "M0t"), time_alone_M0t_vs_M0=("M0t", "M0"),
+                           S0_M1_vs_M0=("M1", "M0"), M1_vs_M0t=("M1", "M0t")).items():
+        gg = gains(r, x, y)
+        say(f"{nm}: " + ", ".join(f"{k_} {v:+.4f}" for k_, v in gg.items()) + f"; mean {np.mean(list(gg.values())):+.4f}")
+    say(f"PRIMARY mean {m:+.4f}, positive {pos}/{len(g)} -> {verdict}")
+    res = dict(verdict=verdict, primary=g, mean=m, positive=pos, rows=r, all=a, smoke_pass=bool(ok1 and ok2),
+               smoke=dict(no_memory=g0, no_memory_s0_contrast=g0s, strong=g1))
+    Path(outdir).mkdir(parents=True, exist_ok=True)
+    (Path(outdir) / "c16s1_time.json").write_text(json.dumps(res, indent=1, default=float), encoding="utf-8")
+    (Path(outdir) / "c16s1_time.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
+    return res
+
+
+def synthetic_tasks(outdir):
+    rng = np.random.default_rng(2)
+    forests = rand_forests(rng, n_leaves=800)
+    set_bins(forests, cuts_from(forests))
+    truth = np.r_[np.log([0.03, 0.3, 0.3, 0.03, 0.08]), np.zeros(NB - 1), 0.0, 0.0, 0.0]
+    forests = relabel(forests, {e: simulate(f, truth, 1, rng) for e, f in forests.items()})
+    parts = Path(outdir) / "parts"
+    for name in task_names(forests):
+        run_task(forests, name, parts)
+    res = combine(parts, outdir)
+    assert res["smoke_pass"], res["smoke"]
+    print("SYNTHETIC TASKS OK", res["verdict"])
+
+
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == "--synthetic":
         return synthetic(sys.argv[2])
+    if len(sys.argv) > 2 and sys.argv[1] == "--synthetic-tasks":
+        return synthetic_tasks(sys.argv[2])
+    if len(sys.argv) > 1 and sys.argv[1] == "--combine":
+        return combine(PARTS, OUT)
+    if len(sys.argv) > 2 and sys.argv[1] == "task":
+        return run_task(h.load_train(), sys.argv[2], PARTS)
     analyse(h.load_train(), OUT)
 
 
