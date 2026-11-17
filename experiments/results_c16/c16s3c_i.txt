@@ -1,0 +1,9 @@
+SMOKE (1) y ~ Bernoulli(z_rel): min delta +0.146 -> PASS
+SMOKE (2) shuffled z_rel: mean delta +0.0007 (limit 0.0100) -> PASS
+  E8.0-R1: within-embryo AUC position-only 0.789, + z_rel 0.837, delta +0.047 (n 950)
+  E8.0-R3: within-embryo AUC position-only 0.739, + z_rel 0.842, delta +0.104 (n 1448)
+  E8.5-R2: within-embryo AUC position-only 0.567, + z_rel 0.869, delta +0.302 (n 9796)
+  E8.5-R3: within-embryo AUC position-only 0.531, + z_rel 0.851, delta +0.320 (n 9733)
+  E9.0-R1: within-embryo AUC position-only 0.583, + z_rel 0.935, delta +0.352 (n 29958)
+  E9.5-R1: within-embryo AUC position-only 0.697, + z_rel 0.962, delta +0.265 (n 95767)
+part (i): delta > 0.02 in 6/6 -> BIAS BEYOND WITHIN-EMBRYO POSITION (exploratory)

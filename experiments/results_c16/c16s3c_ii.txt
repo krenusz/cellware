@@ -1,0 +1,21 @@
+SMOKE permuted labels: pooled stratum AUC d1-2 0.503 (limit +-0.050), d3-4 0.510 (limit +-0.050), d5-8 0.520 (limit +-0.054) -> PASS
+  E8.0-R1 d1-2: AUC 0.786 (n 295, mean family size 7.5)
+  E8.0-R1 d3-4: AUC 0.775 (n 459, mean family size 8.0)
+  E8.0-R1 d5-8: AUC 0.771 (n 118, mean family size 9.7)
+  E8.0-R3 d1-2: AUC 0.836 (n 395, mean family size 7.2)
+  E8.0-R3 d3-4: AUC 0.745 (n 748, mean family size 8.3)
+  E8.0-R3 d5-8: AUC 0.709 (n 198, mean family size 10.2)
+  E8.5-R2 d1-2: AUC 0.962 (n 5499, mean family size 8.7)
+  E8.5-R2 d3-4: AUC 0.937 (n 2287, mean family size 9.5)
+  E8.5-R2 d5-8: AUC 0.769 (n 96, mean family size 11.4)
+  E8.5-R3 d1-2: AUC 0.938 (n 4831, mean family size 8.5)
+  E8.5-R3 d3-4: AUC 0.931 (n 3293, mean family size 9.2)
+  E8.5-R3 d5-8: AUC 0.870 (n 210, mean family size 10.6)
+  E9.0-R1 d1-2: AUC 0.981 (n 16462, mean family size 9.1)
+  E9.0-R1 d3-4: AUC 0.976 (n 6833, mean family size 9.6)
+  E9.0-R1 d5-8: AUC 0.970 (n 195, mean family size 10.2)
+  E9.5-R1 d1-2: AUC 0.991 (n 49077, mean family size 9.7)
+  E9.5-R1 d3-4: AUC 0.994 (n 14136, mean family size 9.9)
+  E9.5-R1 d5-8: AUC 0.959 (n 229, mean family size 10.4)
+strata shared by all embryos: ['d1-2', 'd3-4', 'd5-8']
+summary (leaf-weighted AUC over shared strata): E8.0-R1 0.778, E8.0-R3 0.767, E8.5-R2 0.952, E8.5-R3 0.933, E9.0-R1 0.979, E9.5-R1 0.992
