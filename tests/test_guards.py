@@ -377,7 +377,9 @@ def test_commit_allows_same_chapter_step_and_pause_after_close_retro(box):
 
 
 def test_commit_refuses_leaving_chapter_without_close_retro(box):
-    box.write("RETRO_2026-11-13.md", "# Retro 2026-11-13: C8 closed, C9 opened\n")  # names C9, not its close
+    box.write(
+        "RETRO_2026-11-13.md", "# Retro 2026-11-13: C8 closed, C9 opened\n"
+    )  # names C9, not its close
     box.focus(step="C10-S1", value="adds x", literature="top 5 read")
     res = box.commit('open chapter 10\n\nBence: "go"')
     assert res.returncode != 0 and "H23" in res.stderr
@@ -388,10 +390,13 @@ def test_commit_refuses_leaving_chapter_without_close_retro(box):
 def test_chapter_of_reads_closed_and_step_labels():
     sys.path.insert(0, str(EXP / "hooks"))
     import scope_guard as sg
+
     assert sg.chapter_of("C14 CLOSED") == "C14" and sg.chapter_of("C14-S4") == "C14"
     assert sg.chapter_of("PAUSED") == "PAUSED"
     assert sg.retro_gate_errors({"step": "C14-S4"}, {"step": "C14 CLOSED"}, []) == []
-    assert sg.retro_gate_errors({"step": "C14-S4"}, {"step": "C15-S0"}, ["# Retro: C14 close\n"]) == []
+    assert (
+        sg.retro_gate_errors({"step": "C14-S4"}, {"step": "C15-S0"}, ["# Retro: C14 close\n"]) == []
+    )
 
 
 @pytest.mark.parametrize(
