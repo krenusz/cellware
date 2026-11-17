@@ -449,9 +449,18 @@ def synthetic(outdir):
     print("SYNTHETIC OK", round(res["train"]["wmean"], 3), res["power"])
 
 
+def ensure_sklearn():
+    try:
+        import sklearn  # noqa: F401
+    except ImportError:  # runner without the --petracer extras
+        import subprocess
+        subprocess.run(["uv", "pip", "install", "scikit-learn"], check=True)
+
+
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == "--synthetic":
         return synthetic(sys.argv[2])
+    ensure_sklearn()
     load_sealed_leaves()
     dl = HERE.parent / "data" / "ext_c15" / "raw"
     dl.mkdir(parents=True, exist_ok=True)
