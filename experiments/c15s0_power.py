@@ -43,7 +43,8 @@ def power(leaves, effect, case, rng):
 
 
 def main():
-    s = json.loads((OUT / "c15s0_struct.json").read_text(encoding="utf-8"))
+    src = sys.argv[1] if len(sys.argv) > 1 else "c15s0_struct.json"  # c15s0_rebal.json for the v2 split
+    s = json.loads((OUT / src).read_text(encoding="utf-8"))
     rng = np.random.default_rng(SEED)
     grid, lines = {}, []
     for p in ["A", "B", "C"]:
@@ -57,7 +58,7 @@ def main():
     verdict = f"PASS (powered partitions: {', '.join(ok)})" if ok else "FAIL (no sealed partition >= 0.8 at the shrunk effect, pessimistic sd)"
     lines.append(f"H19 power gate: {verdict}")
     print("\n".join(lines))
-    (OUT / "c15s0_power.json").write_text(json.dumps(dict(verdict=verdict, grid=grid, sd=SD, ref_cells=REF_CELLS,
+    (OUT / src.replace("struct", "power").replace("rebal", "rebal_power")).write_text(json.dumps(dict(verdict=verdict, grid=grid, sd=SD, ref_cells=REF_CELLS,
                                                           min_leaves=MIN_LEAVES), indent=1), encoding="utf-8")
 
 

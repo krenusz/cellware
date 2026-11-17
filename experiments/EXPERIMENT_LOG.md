@@ -11745,3 +11745,26 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The effect is transferred from embryos to a growth model; it may not exist there at all.
   - Units within a host share the host; the host is the right unit (H22), and this caps n.
 - Reading: on structural counts alone C15 does not pass H19 power. The deciding input, per-host sd (and a size-weighted host mean), can only come from a train-only fit. That would be the model's own simulated statistic (H17 proper), and it needs Bence's OK as C15-S1.
+
+## C15-S0a1: (amendment 1) rebalance the sealed hosts of growth12_host to 5/5/5 (pre-registered 2026-11-17; Bence: "yes rebalance")
+- **Serves: C15-S0 (script c15s0_rebal.py; reuses c15s0_struct.scan and c15g_hosts download unchanged).** This is a one-time exception to "partitions are never redrawn", taken with Bence's OK. It is allowed because nothing beyond structure (host, unit, cell and leaf counts) has been read on any partition, train included. Balancing on structure is a stratified random split; precedent: gse291244 was voided and re-partitioned before its first statistic.
+- **Rule, fixed here before running:**
+  - Train is unchanged: the 17 hosts that v1 put in train stay in train.
+  - The 15 v1-sealed hosts are sorted by total tree leaves (descending), ties broken by sha256("cellware-growth12-host-v2:" + host).
+  - They are dealt into A, B, C in snake order (A B C C B A ...). That gives 5/5/5 with matched size profiles.
+  - The resulting host -> partition map is committed to partitions.py as `growth12_host_v2` (fixed map). v1 is marked VOID for A/B/C.
+  - Never redrawn again.
+- **Reads:** only host leaves (comma counts of .nwk) and unit IDs, as C15-S0. Output: the host-number -> partition map (host numbers only, no arm names), plus per-partition hosts, units, units per arm (recoded) and leaves per host.
+- **Compute:** GitHub Actions (sweeps/c15s0_rebal.txt).
+- **Prediction:** 5/5/5. At the shrunk effect, optimistic sd: power 0.77-0.86 per partition. Pessimistic sd: below 0.25. (Same arithmetic as the chat estimate from committed host sizes.)
+- **Pre-flight:**
+  - Unit: host.
+  - Readout: none.
+  - Used data first: structure only.
+  - Power: re-run c15s0_power on v2.
+  - Exposure: unchanged.
+  - Literature: n/a.
+  - Readout gate: n/a.
+  - H22: arm is not contrasted.
+- **Practice:**
+  - Synthetic test: 15 fake sealed hosts give 5/5/5, the snake order is checked, train hosts are untouched, and the map is identical when run twice.

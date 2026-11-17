@@ -219,6 +219,7 @@ HELDOUT_READERS = {
     "test_oracle.py": "the oracle",
     "c14s2_confirm.py": "C14-S2: petracer_embryo sealed partition read only in test_A (sealed_rows, sealed_A_matrices) via test_oracle; counts_A uses public embryo names only; fit() via train_only",
     "c15s0_struct.py": "C15-S0: growth12_host structure only (H9 format check): partition_of on host numbers to count hosts, units, cells (obs unit-ID column) and tree leaves (comma count) per partition; no state, expression, topology or outcome read",
+    "c15s0_rebal.py": "C15-S0a1: growth12_host v1 -> v2 rebalance on host leaf counts only (structure); writes the host -> partition map",
     "core_sisseq.py": "scores('heldout') only inside heldout_stat (E54)",
     "sis_data.py": "_keep(part='heldout') loader, called only by oracle tests",
     "e55_fm.py": "split() marks held-out clones; heldout_stat (E55)",
