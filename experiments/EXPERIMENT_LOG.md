@@ -11858,3 +11858,41 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The transfer may fail because states here are defined differently (19 clusters from expression in a growth model, versus embryo cell types) and clades are smaller. It does not mean the C14 effect is wrong.
   - Was the setup enough to detect a real signal? No: the planted smoke test could not show that it was.
 - **Reading: C15 with the C14 classifier readout cannot be powered on #12.** The gate FAILs on the model's own statistic as well as on structure. No sealed host was read; A, B and C (v2) stay sealed.
+
+## C16-S0: hidden inherited state in a tree fate model, paraxial vs lateral plate (pre-registered 2026-11-17; Bence: "Yes, start it")
+- **Serves: C16-S0 (script c16s0_hidden.py; reuses c14s0_gate.load_obs and iter_train_trees unchanged).** This is the first mechanistic fit since chapter 6. Exploratory: TRAIN embryos only (7). No sealed data (A spent; B and C sealed); no claim.
+- **Compute:** GitHub Actions (sweeps/c16s0.txt, `--petracer`). Local: synthetic smoke only.
+- **Data:** train trees. Leaves whose authors' lineage is Paraxial mesoderm (P) or Lateral plate mesoderm (L); all other leaves are unobserved. Each tree is cut to the subtree spanning its P/L leaves, with single-child chains collapsed; edge length = number of original edges, a division-count proxy.
+- **Models (continuous-time Markov on the tree, Felsenstein pruning):**
+  - M0: 2 states (P, L), rates alpha (P->L) and beta (L->P), root probability of P. 3 parameters.
+  - M1: hidden inherited state z in {0, 1}. z switches at rate mu (both ways) and sets the P/L rates (alpha_z, beta_z); root distribution over (c, z). 8 parameters. M1 nests M0.
+  - Maximum likelihood (L-BFGS on log rates; M1 from 3 starts, best kept).
+- **Statistic:** leave-one-embryo-out held-out log-likelihood per P/L leaf, M1 minus M0, per embryo (embryos with >= 100 P/L leaves).
+- **Rule:**
+  - MEMORY TERM SUPPORTED (exploratory) if the mean gain is > 0 and positive in all but at most one embryo.
+  - NOT SUPPORTED if the mean is <= 0.
+  - MIXED otherwise.
+- **Reported:** M1 parameters fitted on all train embryos. The half-life ln2 / mu, in edges, is the persistence of the hidden state.
+- **Smoke tests (simulated labels on the real train topologies, same pipeline):**
+  - (i) Labels from an M1 with strong memory (mu = 0.05; z=0 favours P, z=1 favours L). The pipeline must give a mean gain > 0 in >= 5 embryos and recover mu within a factor 3.
+  - (ii) Labels from M0 at its train fit. The mean gain must be <= 0.002 per leaf: no false memory.
+  - If either fails, the verdict is INVALID.
+- **Prediction:** SUPPORTED, with a half-life >= 2 edges. C14's relatives-lean signal suggests clade-level persistence beyond the label.
+- **Limits stated now:**
+  - z can be any clade-level heterogeneity in P/L rates: inherited intrinsic state, shared position or niche, or clone-founder timing. The model cannot tell these apart (as C14).
+  - Edge length is a topology proxy, not time.
+  - The P/L labels are the authors'.
+  - Expression is not used. Whether z matches the C14-S4 origin program is the next step.
+- **Pre-flight:**
+  - Unit: embryo (LOEO folds); leaves within trees.
+  - Readout: P/L labels on trees; no H21 binary-per-side gate. Counts of P and L leaves per embryo are reported.
+  - Used data first: train only.
+  - Power: exploratory, no sealed test (H19 does not apply; stated in FOCUS).
+  - Exposure: as C14.
+  - Literature: model class standard (FOCUS literature field).
+  - H22: no treatment.
+- **Practice:**
+  - Synthetic path test locally (random trees, both smokes) before dispatch.
+  - The planted signal is in the label process itself, not on a PC (RETRO_2026-11-17b lesson 1).
+  - Neutral wording.
+  - Run URL given.
