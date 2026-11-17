@@ -97,6 +97,16 @@ SEEDS = {
     "Eisele 2024 (GEMLI, memory-gene lineages)": "10.1038/s41467-024-47158-y",
     "Quantitative fate mapping 2022": "10.1016/j.cell.2022.10.028",
     "Nat Genet 2026 (spatiotemporal lineage)": "10.1038/s41588-026-02739-z",
+    # chapter 16 (hidden inherited state, paraxial vs lateral plate on embryo trees), added at C16 close 2026-11-17
+    "Lawson 1991 (epiblast clonal fate map)": "10.1242/dev.113.3.891",
+    "Kinder 1999 (order of mesoderm allocation)": "10.1242/dev.126.21.4691",
+    "Tzouanacou 2009 (lineage segregations by clonal analysis)": "10.1016/j.devcel.2009.08.002",
+    "Wymeersch 2016 (position-dependent streak progenitor plasticity)": "10.7554/eLife.10042",
+    "Dubrulle 2004 (fgf8 mRNA decay gradient)": "10.1038/nature02216",
+    "Deschamps 2017 (Hox clock, axial timing)": "10.1101/gad.303123.117",
+    "Hormoz 2016 (state transitions from lineage trees)": "10.1016/j.cels.2016.10.015",
+    "Beaulieu 2013 (hidden-rate trait model)": "10.1093/sysbio/syt034",
+    "Colgan 2026 Cell (embryo data source; titles and abstracts only)": "10.1016/j.cell.2026.09.050",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -164,6 +174,9 @@ TOPICS = {
     "spatial_mechanism": [r"chemota", r"wave.pinning", r"potts", r"vertex model", r"agent-based", r"jamming",
                           r"convergent extension", r"collective (cell )?migration", r"reaction.diffusion", r"tissue mechanic"],
     "morphogenesis_long_term": [r"gastruloid", r"embryo", r"morphogen", r"organoid", r"self-organi"],
+    # C16 close 2026-11-17: timing and place of streak exit, axial identity clocks
+    "axial_timing": [r"primitive streak", r"paraxial", r"lateral plate", r"fgf8", r"retinoic",
+                     r"axial (elongation|identity|progenitor)", r"\bhox", r"neuromesodermal", r"fate restriction"],
     # C14 close 2026-11-16: in vivo lineage + state data with many independent units (fresh hold-outs)
     "in_vivo_lineage_state": [r"lineage recorder", r"molecular recording", r"phylogen", r"cassiopeia",
                               r"in vivo lineage", r"whole.organism lineage", r"lineage tree", r"prime editing"],
@@ -248,7 +261,7 @@ def access(w):
     return ("open" if oa.get("is_oa") else "paywalled"), oa.get("oa_url"), pub
 
 
-def main(top=40):
+def main(top=40, tag=""):
     os.makedirs(LIT, exist_ok=True)
     pool, seed_ids = {}, {}
     for name, doi in SEEDS.items():
@@ -320,12 +333,15 @@ def main(top=40):
             f"| {i} | {r['score']} | {r['year']} | {title} | {', '.join(r['groups'])} | {link} "
             f"| {acc} | {'; '.join(r['via'])} |"
         )
-    path = os.path.join(LIT, f"gap_{date}.md")
+    stem = f"gap_{date}" + (f"_{tag}" if tag else "")
+    path = os.path.join(LIT, f"{stem}.md")
     open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
-    json.dump(rows, open(os.path.join(LIT, f"gap_{date}.json"), "w"), indent=1)
+    json.dump(rows, open(os.path.join(LIT, f"{stem}.json"), "w"), indent=1)
     print("\n".join(lines[:8]))
     print(f"wrote {path}")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main(tag=sys.argv[1] if len(sys.argv) > 1 else "")  # optional tag: a second map on the same day
