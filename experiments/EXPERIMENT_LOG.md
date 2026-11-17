@@ -11969,3 +11969,28 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Units: 6 embryos, 2 per early stage at most.
   - Used data enough? 43% of P/L leaves have PCs (C14 readout restriction).
   - Already published? Liu 2026 (bioRxiv) reports lineage fate bias before diversification at gastrulation (lit/c16_map_2026-11-17.md); the expression-readability pattern per stage on these trees was not found.
+
+## C16-S3: axial-position control for the hidden inherited state (pre-registered 2026-11-17; Bence: "start s3a and s3b")
+- **Serves: C16-S3 (script c16s3_position.py; imports c16s2_link.py, c16s0_hidden.py, c14s3_region.py, c14s1_select.py, c14s0_gate.py, all unchanged).** Separates "inherited family bias" from "shared axial position" as far as these data allow.
+- **What "position" means here:** the per-cell spatial scores (front-to-back, dorsoventral, neural front-to-back) are inferred by the authors from each cell's expression (EXPERIMENT_LOG C13 format check), not measured positions. The control is therefore **axial identity**, not physical location; physical position stays the stated limit.
+- **Compute:** GitHub Actions, two parallel jobs (sweeps/c16s3.txt: line 1 = S3a, line 2 = S3b; `--petracer`). M1 is refitted on all train trees from a warm start at the C16-S0 estimates (1 start).
+- **Data:** TRAIN embryos only; trees and labels as C16-S0; region scores via `c14s3_region.load_region` (sealed rows dropped before reading); PCs as C16-S2.
+- **S3a (expression link beyond axial identity):** as C16-S2, but both models get the 9 region columns (c14s3_region.REG) in the base. delta = rho(base + region + PCs) - rho(base + region), cell-weighted over P and L, per embryo; also reported: rho(base + region) - rho(base).
+  - Rule: SURVIVES if mean delta > 0.05 and positive in >= 4 of the embryos in the rule (>= 30 leaves per label); ABSORBED BY AXIAL IDENTITY if mean delta <= 0.02; else PARTLY ABSORBED. Smokes as C16-S2 (amendment 1 limits).
+- **S3b (own label beyond position):** all P/L leaves with a region row. y = own label (L = 1). Base = own region columns + close relatives' mean front-to-back, dorsoventral and neural scores (relatives = other labelled leaves under the lowest ancestor with >= 5 of them) + missing flags. Full = base + logit(z_rel). LOEO logistic regression; per-embryo delta AUC (full - base).
+  - Rule: BEYOND AXIAL POSITION if mean delta AUC > 0.02 and positive in >= 5 of 6 embryos; ABSORBED if mean <= 0; else PARTLY.
+  - Smokes: (i) y simulated as Bernoulli(z_rel): delta AUC > 0.02 in every embryo; (ii) z_rel shuffled within embryo: |mean delta| <= max(0.01, 2 SE).
+- **Prediction:** S3a PARTLY ABSORBED (delta about +0.05: axial identity carries part of S2's +0.097); S3b BEYOND AXIAL POSITION (relatives' labels carry fate information that their inferred axial scores do not).
+- **Limits stated now:** region scores are expression-derived, so S3a partly removes expression with expression; S3b's relatives' labels and z_rel share the same source, which is intended (the question is whether labels carry more than inferred position); exploratory, train only, n = 6 embryos, no claim.
+- **Pre-flight:**
+  - Unit: embryo (LOEO folds); leaves within embryos.
+  - Readout: z_rel (S3a), own P/L label (S3b).
+  - Used data first: train only; C16-S2 and C14-S3 (region partly absorbed the C14 gain) are the references.
+  - Power: exploratory, H19 does not apply.
+  - Exposure: as C14 and C16; region scores were used in C14-S3 on train.
+  - Literature: lit/c16_map_2026-11-17.md (fate maps: position and time at the streak).
+  - Readout gate: per-embryo leaf counts reported; S2 counts 239-42,788 per embryo.
+  - H22: no between-condition contrast.
+- **Practice:** synthetic path test locally for both parts before dispatch; planted signals are simulated outcomes or separate columns, not PCs; neutral wording; two parallel jobs; run URL given.
+- **C16-S3 amendment 1 (2026-11-17, before any real-data run):** the synthetic path test (300-leaf trees) failed S3b smoke (ii) by a hair: shuffled z_rel gave mean delta AUC -0.0274 against a two-sided limit of 0.0270. A negative delta is overfitting noise from one useless column, not a false gain. Both shuffled smokes (S3a, S3b) are now one-sided: fail only if the mean delta exceeds the limit. The synthetic harness uses 800-leaf trees (as C16-S1). Rules for the real data are unchanged.
+- **C16-S3 synthetic noise check (before dispatch):** 3 extra synthetic seeds (800-leaf trees, random PCs and region). S3b: shuffled smoke passes in all 3 (|mean| <= 0.004), simulated signal detected (+0.39 to +0.40). S3a: null noise at this size is about +-0.05 per run (random PCs gave mean delta -0.016, +0.008, +0.027 and one shuffled smoke reached +0.050). So at about 800 leaves per embryo S3a cannot separate 0 from 0.05; real embryos have 3,700-42,800 leaves with PCs except the two E8.0 embryos (239, 527). The S3a reading will state this: a "PARTLY ABSORBED" result near 0.03-0.05 is within the noise for the E8.0 embryos.

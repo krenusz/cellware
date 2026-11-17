@@ -1,0 +1,2 @@
+[experiments/results_c16/c16s3a_position.json] python -I experiments/c16s3_position.py a
+[experiments/results_c16/c16s3b_position.json] python -I experiments/c16s3_position.py b
