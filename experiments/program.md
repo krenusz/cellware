@@ -236,6 +236,11 @@ before every look and refuses on any failure.
   - A finding marked `published` is not pursued unless Bence quotes his OK on a line
     `Published but proceeding: Bence: "..."` (e.g. a replication or method test is the point).
   - The search covers each finding, not the chapter topic, and runs before any script for that step.
+  - **Source paper with sealed partitions** (Bence 2026-11-18: "Yes, claims only"): the novelty check reads the
+    data set's source paper at claims level only: abstract, section headings, figure titles and the authors'
+    stated conclusions. No numbers, figure panels, tables, supplements or per-sample results. The `Source paper:`
+    line lists what was read and records it as accepted exposure; every later look on that set states it.
+    This is the one exception to "authors' result tables for sealed sets stay unread" (H20).
   - Bookkeeping steps (PAUSED, CLOSED, close, retro) are exempt.
   - **Enforced by the commit-msg hook** (scope_guard.novelty_gate_errors); tests in test_guards.py.
 - **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log
