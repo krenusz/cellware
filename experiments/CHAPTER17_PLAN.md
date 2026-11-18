@@ -30,3 +30,18 @@ Does one generative clone model with shared rules and per-system scales predict 
 | expansion-culture barcoded set | needs a time-split configuration | lsc_larry A/B/C |
 | embryo lineage trees | needs tree emission | petracer_embryo B (one embryo)/C |
 | LARRY in vivo, DARLIN, CAMELLIA, EPI-Clone, MethylTree | not yet checked | not partitioned (seal before any statistic, H1/H24) |
+
+## S0 inventory and searches (2026-11-18, metadata only; no statistic, no sealed read)
+**Pre-protocol data sets (H5 provenance):** `larry_invivo`, `epiclone`, `ext_methyltree`, `darlin`, `camellia` were opened in tracks of 2026-11-02/03, before the sealing rules. They count as **used data**: usable in the S1 joint fit, not as clean held-out targets.
+
+**Join, perturbation side (finding 3):** GSE284197 (Ding/Pollen, Nature 2026; public 2025-10-13): CRISPRi Perturb-seq of 44 TFs in primary human cortical radial-glia cultures (days 0 and 7) plus a 5-TF lineage-tracing and slice-culture set; code at github.com/jding5066/perturbTF. Per-cell guide calls are expected (Perturb-seq); check in S0b. This is the only perturbation set found with per-cell guides in a stem/progenitor system. The embryoid TF screen (GSE291368) lacks per-cell guides in its processed tables.
+
+**Clone-split transplants (Bence's 3):**
+| candidate | design | data | verdict |
+|---|---|---|---|
+| Rodriguez-Fraticelli 2020 (GSE134242, Nature 2020, TCF15) | LARRY-barcoded HSCs into primary recipients (at least 4) and secondary transplants; inDrop HSC and KIT libraries; 90 samples | public | **best transplant target**: if clones are shared across recipients, recipient-split sisters test intrinsic vs extrinsic fate. Recipients are the units (H22 >= 3 per arm needs checking). Also re-analysed by the 2026 kinetics model paper. Check clone sharing across recipients from structure only (S0b). |
+| Kinetics-based haematopoiesis model (Nature Cell Biology 2026; Zenodo 14497706, CC-BY, 3 rds files) | single-HSC-derived systems plus polyclonal controls; re-analyses GSE134242 and GSE299000 | public | source of a published "extrinsic regulation" claim: read at claims level before any test (H25). |
+| GSE299000 (neonatal platelet-biased HSC fate mapping, 2026) | in situ fate mapping across development, 8 samples | public | not a split design; possible extra system for the S1 fit. |
+| Excluded | two disease-domain transplant studies found | | excluded domain (standing rule). |
+
+**Next (S0b):** structure-only checks: GSE284197 per-cell guide columns; GSE134242 clone sharing across recipients (counts only). Then the S1-S3 pre-registration.
