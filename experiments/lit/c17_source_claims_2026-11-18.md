@@ -14,12 +14,16 @@ Bence: "1" (claims-level read before any test). Read by web-fetch subagents (Opu
 - **Not done (as far as read):** fate choice is not separated from clone growth or survival (clone-size distributions sit in extended data); no sister-similarity or inherited-axis analysis; no comparison with other systems' lineage data.
 - **Open questions they state:** chromatin-level mechanisms in radial glia; regulators of protracted human maturation; interneuron subtypes; migration roles.
 
-## 3. Rodriguez-Fraticelli et al. 2020 (Nature, TCF15; source of GSE134242)
-- **Not read:** paywalled (redirect to a login host). Claims-level read still owed before any GSE134242 statistic (H20). Its PMC copy needs its ID.
+## 3. Rodriguez-Fraticelli et al. 2020 (Nature 583:585-589, doi 10.1038/s41586-020-2503-6; source of GSE134242)
+- Read 2026-11-18 from Bence's PDF copy: abstract, figure and extended-data titles, and sentences stating conclusions (no numbers, panels or tables). Accepted exposure, claims level.
+- **Design (stated):** expressible LARRY barcoding of adult HSCs, lineage plus transcriptome during transplant reconstitution; for the engraftment programme, half of the barcoded LT-HSC compartment was sampled and the other half **randomly split into two equal parts and transplanted into two secondary recipients**; an "equipotent HSC null model" is used as a comparison.
+- **Claims:** many engrafted clones have low progeny output, contribute biasedly to the Mk lineage and carry a quiescence-linked signature; **long-term potency is an intrinsic and heritable property** that propagates through transplantation, with a clone-intrinsic transcriptional programme; an in vivo CRISPR screen finds TCF15 required and sufficient for HSC quiescence and self-renewal.
+- **Figure titles:** simultaneous lineage and transcriptome sequencing; a clonal molecular signature of serial repopulation capacity; in vivo CRISPR screening of regulators of HSC output; TCF15 marks functional LT-HSCs.
+- **Not claimed (as read):** whether a clone's **lineage bias** (not its potency) agrees between the two recipients it was split into, or a model separating intrinsic and extrinsic components of lineage bias.
 
 ## Consequences for C17 (to go into the S1-S3 pre-registration)
 | question | verdict | what is ours |
 |---|---|---|
-| Is HSC lineage bias intrinsic or extrinsic, tested with the same clones in two recipients? | partly published (extrinsic claim exists from other designs) | a direct test of that claim: within-clone agreement across recipients, against a clone-shuffled null, as a held-out system for the joint model |
+| Is HSC lineage bias intrinsic or extrinsic, tested with the same clones in two recipients? | partly published, and the two sources pull opposite ways: potency intrinsic and heritable across split recipients (2020), lineage bias extrinsic (2026, other designs) | a direct test between them: within-clone **lineage-bias** agreement across the two recipients a clone was split into, against a clone-shuffled null, separated from potency; also a held-out system for the joint model |
 | Do TF knockdowns instruct fate or select clones (fate choice vs clone growth)? | not found (shifts in clone fate bias are published; the split is not) | the chapter 1-2 instruction-vs-selection model on a new system, clone = unit, guide = clone-level treatment |
 | Which TFs move cells along an inherited, fate-predictive axis? | not found | the perturbation x lineage join |
