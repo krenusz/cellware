@@ -144,7 +144,8 @@ PARTITIONED = {
         "files": ["GSE134242 Sample1-5 barcode_list / samp_id(_flat), sha256 in results_c17/c17s0c_seal.json"],
         "sealed_on": "2026-11-18",
         "prior_exposure": "C17-S0b structure counts (recipients, shared clones per sample set); C17-S0c partition "
-                          "counts; claims-level read of the source paper (lit/c17_source_claims_2026-11-18.md)",
+                          "counts; claims-level read of the source paper (lit/c17_source_claims_2026-11-18.md); one pooled "
+                          "2020 result sentence on across-recipient clone-expansion correlation (lit/novelty/C17-S0.md)",
     },
     "cortical_clone": {
         "salt": "cellware-cortical-clone-v1",

@@ -12204,3 +12204,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Practice:** synthetic smoke tests first (planted intrinsic bias recovered; shuffled null near 0; pure-selection cortical simulation yields instruction ~0); cold start from the E53/E52/C3-S1 configurations; adequacy gate = posterior predictive check per system before S2 scoring; tick-list in the result entry.
 - **Self-challenge, stated in advance:** T-split rests mostly on one sample set (S5, ~72% of shared clones), so a sample-set-specific artefact could carry it. Report S5 and non-S5 separately. Shared clones are selected for engrafting in both recipients (selection bias toward potent clones); state this in every reading.
 - **Compute:** GitHub Actions (sweeps/c17s1_joint.txt, c17s2_loso.txt, c17s3_look.txt); nothing run locally.
+
+### C17-S1/S2/S3 amendment 1 (2026-11-18; Bence: "go 2 and 3")
+- **Primary sealed test: T-cortical instruction component** (per guide target vs non-targeting, clone = unit). **T-split becomes secondary** (exploratory unless it passes the power gate). Reason: T-split has about 30 shared clones per partition, most of them in one sample set, and it is partly published (2020: clone-expansion agreement across recipients). The direct lineage-bias version is not found.
+- T-split must beat the published expansion agreement: the primary T-split statistic is the **partial** rho of lineage bias given log clone size in each recipient (raw rho reported but not tested).
+- Exposure added: one pooled 2020 result sentence on across-recipient clone-expansion correlation (lit/novelty/C17-S0.md). It is not used as an effect prior.
+- H22 re-check: unchanged. Cortical arms are guide targets with clone-level assignment, and >= 3 donor batches per arm is checked on train. T-split is not a between-condition contrast.
