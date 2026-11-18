@@ -70,7 +70,8 @@
   "c9s3_power.py",
   "c12s0_lsc.py",
   "c12s1_select.py",
-  "c17s0b_struct.py"
+  "c17s0b_struct.py",
+  "c17s0c_seal.py"
  ],
  "parked": [
   "#27 series gain / drug compression",

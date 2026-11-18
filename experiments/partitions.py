@@ -148,8 +148,20 @@ def bucket(dataset, unit):
     return int(hashlib.sha256(f"{salt}:{unit}".encode()).hexdigest(), 16) % PARTITIONED[dataset].get("buckets", BUCKETS)
 
 
+@functools.lru_cache(maxsize=None)
+def _fixed_from_file(dataset):
+    """H24 balanced map stored as a committed TSV (unit<TAB>partition), for maps too large to inline."""
+    import os  # noqa: PLC0415
+
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), PARTITIONED[dataset]["fixed_file"])
+    with open(path, encoding="utf-8") as fh:
+        return dict(line.rstrip("\n").split("\t") for line in fh if line.strip() and not line.startswith("#"))
+
+
 def partition_of(dataset, unit):
     fixed = PARTITIONED[dataset].get("fixed")
+    if fixed is None and "fixed_file" in PARTITIONED[dataset]:
+        fixed = _fixed_from_file(dataset)
     if fixed is not None:
         return fixed[str(unit)]
     b = bucket(dataset, unit)

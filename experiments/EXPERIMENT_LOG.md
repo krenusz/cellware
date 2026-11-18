@@ -12161,3 +12161,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - `screen.h5ad` (4.45 GB; 27 MB read over range requests): 137,317 cells; per-cell `sgRNA` and `Gene_target_single` (46 levels: the 44 TFs plus controls); `perturbation` NT / Perturbed / WT; 4 individuals; 2 timepoints (day 0, day 7). **Per-cell guide calls confirmed**: the perturbation side of the join works.
   - `clones.h5ad` (8 MB): 10,328 rows with `n_cells`, `Clonal cluster` (5), `Gene_target` (5 TFs + non-targeting), `sgRNA_effective`, 13 donor batches, 9 stages: **perturbation assigned per clone with lineage barcodes**. Clone = unit; perturbation is the clone-level treatment.
 - **Exposure:** counts, column names, guide and donor labels only. No expression, cluster composition or fate read.
+
+## C17-S0c: seal the two new systems by clone (pre-registered 2026-11-18; Bence: "Yes, pre-register")
+- **Serves: C17-S0** (sealing before any statistic, H1/H24). Script: `c17s0c_seal.py`, on GitHub Actions; output `results_c17/c17s0c_seal.json` plus map files `results_c17/partition_rf2020_clone.tsv` and `results_c17/partition_cortical_clone.tsv`, committed to `partition_maps/` and registered in `partitions.py` (`fixed_file`).
+- **Pre-flight:**
+  1. Unit: clone. GSE134242: "<sample set>:<LARRY barcode set>", size = barcoded cells. GSE284197 clones.h5ad: obs row (asserted unique), size = n_cells.
+  2. Readout: none. Partition counts (units, cells) per partition and stratum only (H9).
+  3. Used data first: neither set has been used for a statistic; S0b structure counts are the only prior exposure.
+  4. Power: not applicable; balanced 40/20/20/20 (H24) keeps three sealed looks.
+  5. Exposure: unit IDs, sizes and design labels (sample set, recipient, guide target, donor batch). No expression, fate or cluster read. prior_exposure = S0b counts + claims-level reads (lit/c17_source_claims_2026-11-18.md).
+  6. Literature access: claims-level reads done.
+  7. Readout gate: not applicable.
+- **Strata:** GSE134242, sample set x shared (>= 3 cells in each of two recipients) vs single; recipient parser fixed for Sample1 (second token when the first is HSC/Kit). Cortical, guide target x donor batch.
+- **Practice:** smoke = lengths of barcode and sample-ID files match (assert), obs index unique (assert); salts fixed in the script.
+- **Compute:** GitHub Actions run (sweeps/c17s0c_seal.txt); nothing run locally.
