@@ -307,6 +307,17 @@ pre-registration dated 2026-11-13 or later without it.
   data set's partitions are sealed, exclude its source paper's results pages from searches, and record any
   snippet exposure in the novelty file and in every later use of that partition (11-17c; C16 biology was
   largely published on the same data, found only at close).
+- Prefer questions the data set's source paper cannot answer by design: held-out prediction across independent
+  units, a fitted model against alternatives, transfer across data sets. Describing the same data is the
+  authors' ground (11-18 full retro: C10, C12, C14 and C16 were all partly pre-empted by their source paper).
+
+**At chapter close**
+- Add the chapter's results to DISCOVERIES.md with their novelty verdict, in the close commit (11-18 full retro:
+  the register lagged C7, C8, C12 and C14).
+
+**At every retro**
+- Lessons pending Bence for more than 3 days go to him as one decision list, not left in retro text (11-18 full
+  retro: seven items had waited 2-5 days).
 
 **Before calling a candidate best**
 - Rank the candidates against stated criteria first (11-08).

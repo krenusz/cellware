@@ -61,6 +61,12 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 |---|---|---|---|---|---|
 | 29 | **A lineage's pre-treatment expression state predicts whether it survives drug or NK treatment, beyond library, a coarse genetic-subclone proxy (expression-inferred CNV, k = 3) and capture QC.** Frozen logistic model, pooled carboplatin/olaparib/NK libraries: AUC 0.660 -> 0.722, delta 0.062 (lower 97.5% 0.046) on 5,194 unseen lineages (420 survived); train CV 0.055. **Not shown:** that the state is non-genetic (CNV proxy coarse); survival vs capture fully separated; per-drug effects; instruction vs selection (library-level treatment, 2 per arm, untestable; H22). Exposure: pooled per-library pre-resistant counts seen before sealing (accepted). | C10-S1, C10-S2 (WRITEUP_RESISTRACE.md) | moderate (oracle-confirmed on resistrace:A; B/C sealed) | Dai 2024 (pre-resistant signatures in the same data); Shaffer 2017, Goyal 2023 (rare pre-existing non-genetic resistant states) | consistent; adds a quantified increment beyond a subclone proxy |
 
+## Chapter 14: state beyond cell type predicts clade fate in held-out embryos
+
+| # | discovery | evidence | strength | literature | check |
+|---|---|---|---|---|---|
+| 31 | **A cell's expression state beyond its annotated type predicts the fate composition of its lineage relatives in embryos it was not trained on.** Frozen model, petracer_embryo:A: z 3.0, mean embryo delta AUC 0.084, 4 of 5 embryos positive; effect about 0 at E8.0 and rising with stage. On train: survives expression-inferred region scores (retained 0.82, 6/6), is carried by an origin-like program (S4), and holds in cells far from type boundaries (S5, retained 0.94). **Not shown:** mechanism; physical position; B (one usable embryo) or C. | C14-S2 to S5 (WRITEUP_C14.md) | moderate (oracle-confirmed on A only) | Colgan 2026 (claims read 2026-11-18: gene regulatory programs underlying fate specification; converging cell types keep traces of origin); Minkina 2022; GEMLI 2024 | partly published; the held-out predictive test is ours |
+
 ## Chapter 16: hidden inherited state for paraxial vs lateral plate (embryo lineage trees, train only)
 
 | # | discovery | evidence | strength | literature | check |
