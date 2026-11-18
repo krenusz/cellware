@@ -1909,3 +1909,599 @@ toolu_01Lbkf1QdWTsrjwkRHJYH4yK#run	2026-11-15T13:50:39.790Z	b7d9fa19	main	claude
 toolu_01Va6RFgVpcgCCedBzSjnsTj#run	2026-11-15T13:51:09.528Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
 toolu_01Va6RFgVpcgCCedBzSjnsTj#tests	2026-11-15T13:51:09.528Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
 toolu_01VnsLVKqe4nhPEaF4oNNYdB#commit	2026-11-15T13:51:55.679Z	b7d9fa19	main	claude-opus-5-5	commit	C13-S0b: embryo lineage set downloaded (4 Zenodo files, md5 ok), sha256 locked, partition petracer_embryo by embryo, format check (structure	petracer_embryo	
+toolu_01P2Tzro5RwsEdCtZF62b9G1#edit	2026-11-15T14:13:37.544Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01Hj5jqd6VrBUwZ4ft9P8reU#commit	2026-11-15T14:15:00.693Z	b7d9fa19	main	claude-opus-5-5	commit	C13-S1 H20 part 1: spatial scores are expression-derived (RF on Hox/axial genes, E13.5 reference) and the paper already tests spatial herita	petracer_embryo	
+toolu_01Hj5jqd6VrBUwZ4ft9P8reU#run	2026-11-15T14:15:00.693Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	petracer_embryo	
+toolu_01Hj5jqd6VrBUwZ4ft9P8reU#tests	2026-11-15T14:15:00.693Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01H59L6T5a4CLCkD2KpHB6GH#run	2026-11-15T17:27:25.522Z	b7d9fa19	main	claude-opus-5-5	run	c13map.py		
+toolu_019fNJUkKTiKLPJwy5nMwYwG	2026-11-15T17:29:06.381Z	b7d9fa19	main	claude-opus-5-5	write	experiments/LITERATURE_SWEEP_C13_2026-11-15.md		
+toolu_01NnTnkkoxnWJMaKmdDJuqs3#run	2026-11-15T17:29:12.895Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	petracer_embryo	
+toolu_01NnTnkkoxnWJMaKmdDJuqs3#tests	2026-11-15T17:29:12.895Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01Gt1LgeHRo1ZpWTsReX3xgs#commit	2026-11-15T17:30:01.813Z	b7d9fa19	main	claude-opus-5-5	commit	C13-S1: literature sweep and citation map (H20 part 2)		
+toolu_018wdoFt3WLSQHPVCPXuQkQR#edit	2026-11-15T17:42:29.072Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01D8Z7HfNJiaaS5MEBnoGQZg#edit	2026-11-15T17:42:31.566Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01WGswWHfYf93jspNHZqpwsA#edit	2026-11-15T17:42:33.466Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01V8xdTGP5k3Mh8sBm8SvMTD#edit	2026-11-15T17:42:34.374Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01QcPAwA1bxaH2JapaYTubc4#guard	2026-11-15T17:43:03.633Z	b7d9fa19	main	claude-opus-5-5	guard	check_sealed.py		
+toolu_01QcPAwA1bxaH2JapaYTubc4#run	2026-11-15T17:43:03.633Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_01H4SbhW5FeRiPi72tzYxUTe	2026-11-15T17:44:29.151Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s0_gate.py		
+toolu_01717U9TggBepEy9WH6HkX1K	2026-11-15T17:45:29.412Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s0_gate.py		
+toolu_01FExeSRRn1qCmH5S2pWjY5Z#guard	2026-11-15T17:45:32.421Z	b7d9fa19	main	claude-opus-5-5	guard	check_sealed.py		
+toolu_011KZvZbtPPF6qwCRRUi9Mz2#run	2026-11-15T17:45:59.642Z	b7d9fa19	agent-ac3b21fbca3046f37	claude-sonnet-5-5	run	c14s0_gate.py		CHECK
+toolu_01Mck9qxbdW5uknhCwS2VJGF#commit	2026-11-15T17:46:02.419Z	b7d9fa19	main	claude-opus-5-5	commit	C13 closed; C14-S0 pre-registration and gate script (train only)		
+toolu_01Mck9qxbdW5uknhCwS2VJGF#run	2026-11-15T17:46:02.419Z	b7d9fa19	main	claude-opus-5-5	run	c14s0_gate.py		
+toolu_01Mck9qxbdW5uknhCwS2VJGF#run	2026-11-15T17:46:02.419Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01Mck9qxbdW5uknhCwS2VJGF#tests	2026-11-15T17:46:02.419Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01LwcWD6yqhYx7uN9aRkDeVu#commit	2026-11-15T17:52:28.745Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S0 gate result (train only): PASS, delta AUC 0.081 LOEO		
+toolu_01LwcWD6yqhYx7uN9aRkDeVu#run	2026-11-15T17:52:28.745Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01LwcWD6yqhYx7uN9aRkDeVu#tests	2026-11-15T17:52:28.745Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01VyQdsi8W2G6hit5WdxQhAc#edit	2026-11-15T18:08:57.906Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01LrEkctNvqsiyjpunPN6mr6#edit	2026-11-15T18:08:58.717Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01LzBnPKfEPoLcqEC93mW63P	2026-11-15T18:09:56.740Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s1_select.py		
+toolu_01H74MSnGcrVn9KdKYsWznQ1#guard	2026-11-15T18:09:57.845Z	b7d9fa19	main	claude-opus-5-5	guard	check_sealed.py		
+toolu_01H74MSnGcrVn9KdKYsWznQ1#run	2026-11-15T18:09:57.845Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01H74MSnGcrVn9KdKYsWznQ1#tests	2026-11-15T18:09:57.845Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01QBQhnJ5U3xgPqMuTze6ika#commit	2026-11-15T18:10:49.412Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S1a pre-registration and selection script (train only)		
+toolu_015tY65XQNcMETfE4q2ujvMi#run	2026-11-15T18:11:07.184Z	b7d9fa19	agent-a7747ef4eeb78a914	claude-sonnet-5-5	run	c14s1_select.py		CHECK
+toolu_01Eu1Mh97ZWg6z5gpBDWWP7F	2026-11-15T18:13:13.511Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s1b_expr.py		
+toolu_01Vmz1Abaja76tjc8jxkyVgf#edit	2026-11-15T18:13:18.115Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c14s1b_expr.py		
+toolu_01HZw2J3TV4pRRmAnuy7WNjm#edit	2026-11-15T18:13:18.997Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01HNY9aiP4wg6Z33KHKiX4T9#edit	2026-11-15T18:13:20.858Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01NQFoLAkFcnd6Hfkk863JXq#guard	2026-11-15T18:13:26.129Z	b7d9fa19	main	claude-opus-5-5	guard	check_sealed.py		
+toolu_01NQFoLAkFcnd6Hfkk863JXq#run	2026-11-15T18:13:26.129Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_017YQZqCrZfMPmMmA4B7cfNs#commit	2026-11-15T18:13:41.429Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S1b pre-registration and expression script (train only); train matrices downloading		
+toolu_017YQZqCrZfMPmMmA4B7cfNs#run	2026-11-15T18:13:41.429Z	b7d9fa19	main	claude-opus-5-5	run	c14s1b_expr.py		
+toolu_017YQZqCrZfMPmMmA4B7cfNs#run	2026-11-15T18:13:41.429Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_017YQZqCrZfMPmMmA4B7cfNs#run	2026-11-15T18:13:41.429Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_017YQZqCrZfMPmMmA4B7cfNs#tests	2026-11-15T18:13:41.429Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01EW1RpoUpHU1R4CcMxDGUKe#edit	2026-11-15T18:13:46.032Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01XR6NbHtE6Nnx3n1adUUhkG#commit	2026-11-15T18:13:49.165Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S1b pre-registration and expression script (train only); train matrices downloading		
+toolu_01XR6NbHtE6Nnx3n1adUUhkG#run	2026-11-15T18:13:49.165Z	b7d9fa19	main	claude-opus-5-5	run	c14s1b_expr.py		
+toolu_01XR6NbHtE6Nnx3n1adUUhkG#run	2026-11-15T18:13:49.165Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_01XR6NbHtE6Nnx3n1adUUhkG#run	2026-11-15T18:13:49.165Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01XR6NbHtE6Nnx3n1adUUhkG#tests	2026-11-15T18:13:49.165Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_019uFLPCfW9AUfWhsWEdG4Vw#edit	2026-11-15T18:29:08.105Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c14s1_select.py		
+toolu_01FDJQunxDtK9XU75bx4nJ6d#commit	2026-11-15T18:29:36.333Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S1a: fix embryo-level power indexing bug (amendment 1); first-run power invalid		
+toolu_01FDJQunxDtK9XU75bx4nJ6d#run	2026-11-15T18:29:36.333Z	b7d9fa19	main	claude-opus-5-5	run	c14s1_select.py		
+toolu_01FDJQunxDtK9XU75bx4nJ6d#run	2026-11-15T18:29:36.333Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01FDJQunxDtK9XU75bx4nJ6d#tests	2026-11-15T18:29:36.333Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_012UGX8cZ2Ugxbo1b5e8XV5S#run	2026-11-15T18:30:35.629Z	b7d9fa19	agent-a71de43c3dee4dec0	claude-sonnet-5-5	run	c14s1_select.py		CHECK
+toolu_01LX7hXacggnaTZvAWTcYvML#run	2026-11-15T18:49:26.976Z	b7d9fa19	main	claude-opus-5-5	run	c14s1_select.py		
+toolu_01LX7hXacggnaTZvAWTcYvML#run	2026-11-15T18:49:26.976Z	b7d9fa19	main	claude-opus-5-5	run	c14s1b_expr.py		
+toolu_01FRbRWo3nUSH3ZB1t1kmVXs#edit	2026-11-15T18:49:33.934Z	b7d9fa19	main	claude-opus-5-5	edit	.github/workflows/sweep.yml		
+toolu_014VAByodQoYfRVeDUEVVg7W#edit	2026-11-15T18:49:37.563Z	b7d9fa19	main	claude-opus-5-5	edit	.github/workflows/sweep.yml		
+toolu_01A61YsvWir6XiBj11z54aZb#run	2026-11-15T18:49:43.903Z	b7d9fa19	main	claude-opus-5-5	run	sweep.py		
+toolu_01A61YsvWir6XiBj11z54aZb#run	2026-11-15T18:49:43.903Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01A61YsvWir6XiBj11z54aZb#tests	2026-11-15T18:49:43.903Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01VGJtDMToZdqWSqSo2udxRM#commit	2026-11-15T18:50:50.159Z	b7d9fa19	main	claude-opus-5-5	commit	Sweep runner: PEtracer train-data step; C14-S1a/S1b sweep files (compute on Actions)		
+toolu_01PwcpdNZLuDep6hxQ9hdAfW#commit	2026-11-15T18:53:31.696Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S1a result (fixed power): U selected, LOEO delta 0.076; train only		
+toolu_01PwcpdNZLuDep6hxQ9hdAfW#run	2026-11-15T18:53:31.696Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01PwcpdNZLuDep6hxQ9hdAfW#tests	2026-11-15T18:53:31.696Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_014G9zftUUrjrsvnwpWqBXRJ#commit	2026-11-15T18:53:44.811Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S1a result (fixed power): U selected, LOEO delta 0.076; train only		
+toolu_014G9zftUUrjrsvnwpWqBXRJ#run	2026-11-15T18:53:44.811Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_014G9zftUUrjrsvnwpWqBXRJ#tests	2026-11-15T18:53:44.811Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01V6jjSmrRdLBFMLiiQbLPYU#commit	2026-11-15T19:33:16.655Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S1b result (Actions run 43749061502): expression PCs delta 0.090, all 6 embryos positive; P selected		
+toolu_01V6jjSmrRdLBFMLiiQbLPYU#run	2026-11-15T19:33:16.655Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01V6jjSmrRdLBFMLiiQbLPYU#tests	2026-11-15T19:33:16.655Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_012iuu5kFus5QtJXm3jo9VPW#edit	2026-11-15T19:56:01.583Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01JW35gxBJ53owmq8TFV71dZ#edit	2026-11-15T19:56:02.690Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01UnGVFcg4XQbKjaKvBEwCXM	2026-11-15T19:57:32.822Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s2_confirm.py		
+toolu_01CWgahx694PrM8t7VFpaLTs#guard	2026-11-15T19:57:45.370Z	b7d9fa19	main	claude-opus-5-5	guard	check_sealed.py	petracer_embryo,resistrace	
+toolu_01CWgahx694PrM8t7VFpaLTs#run	2026-11-15T19:57:45.370Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py	petracer_embryo,resistrace	
+toolu_01CWv1dArcwWn57x4yaWVGqP#edit	2026-11-15T19:57:51.203Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/test_oracle.py		
+toolu_01Y8K5LZ8rv35n3zhQqUpTco#edit	2026-11-15T19:57:55.362Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/sealed.py		
+toolu_014jAV2KxJBHFFs9UAPZgq57#guard	2026-11-15T19:57:56.903Z	b7d9fa19	main	claude-opus-5-5	guard	check_sealed.py		
+toolu_014jAV2KxJBHFFs9UAPZgq57#guard	2026-11-15T19:57:56.903Z	b7d9fa19	main	claude-opus-5-5	guard	test_oracle.py		
+toolu_01GMybLCLhut1DVsQcEWXch3#commit	2026-11-15T19:58:12.537Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S2 pre-registration: partition A look design, oracle test, frozen-model fit (Actions)		
+toolu_01GMybLCLhut1DVsQcEWXch3#run	2026-11-15T19:58:12.537Z	b7d9fa19	main	claude-opus-5-5	run	c14s2_confirm.py		
+toolu_01GMybLCLhut1DVsQcEWXch3#run	2026-11-15T19:58:12.537Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_01GMybLCLhut1DVsQcEWXch3#run	2026-11-15T19:58:12.537Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01GMybLCLhut1DVsQcEWXch3#guard	2026-11-15T19:58:12.537Z	b7d9fa19	main	claude-opus-5-5	guard	test_oracle.py		
+toolu_01GMybLCLhut1DVsQcEWXch3#tests	2026-11-15T19:58:12.537Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_0157DFuWe9ezavUCxGU1UCbU#edit	2026-11-15T20:24:57.673Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c14s2_confirm.py		
+toolu_01XHwt2nxRrYnWmG3LZRoXha#edit	2026-11-15T20:24:58.901Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c14s2_confirm.py		
+toolu_01PyBNdBJssSGN3DHRCZneoc#commit	2026-11-15T20:25:03.584Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S2 fit: fix read-only sd array; skip single-class types (code only, design unchanged)		
+toolu_01PyBNdBJssSGN3DHRCZneoc#run	2026-11-15T20:25:03.584Z	b7d9fa19	main	claude-opus-5-5	run	c14s2_confirm.py		
+toolu_01PyBNdBJssSGN3DHRCZneoc#run	2026-11-15T20:25:03.584Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01PyBNdBJssSGN3DHRCZneoc#tests	2026-11-15T20:25:03.584Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01GTY5uSiu6cXKBFv7JhH7gL#edit	2026-11-15T20:40:06.255Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/sealed.py		
+toolu_01Tu3avr1buXJNQ13jhroSgC#commit	2026-11-15T20:40:07.579Z	b7d9fa19	main	claude-opus-5-5	commit	Register partition A matrices (sealed, unread; sha256 locked)		
+toolu_01Tu3avr1buXJNQ13jhroSgC#guard	2026-11-15T20:40:07.579Z	b7d9fa19	main	claude-opus-5-5	guard	check_sealed.py		
+toolu_01Tu3avr1buXJNQ13jhroSgC#run	2026-11-15T20:40:07.579Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_016TYZmYGFC26UiwSyiFKTiR#commit	2026-11-15T20:49:27.280Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S2 frozen model + selection (train only, Actions run 43758060474); smoke on held-out train embryo +0.102		
+toolu_016TYZmYGFC26UiwSyiFKTiR#run	2026-11-15T20:49:27.280Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_016TYZmYGFC26UiwSyiFKTiR#tests	2026-11-15T20:49:27.280Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01DQwxdqLYPvxoGB7ac5Xe4S#commit	2026-11-15T21:20:48.160Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S2: Bence		
+toolu_01PJtSYPMH1St9jGb55pDFUP#oracle-look	2026-11-15T21:20:55.367Z	b7d9fa19	main	claude-opus-5-5	oracle-look	test_oracle.py		
+toolu_01K8g3SrH1vhL4FFRS8KMHYR#edit	2026-11-15T21:36:12.432Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c14s2_confirm.py		
+toolu_014vGW7LzwViZXS42fhW6Ldf#edit	2026-11-15T21:36:14.482Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c14s2_confirm.py		
+toolu_014LQGrK98LrgtCCZ6HnZTD6#run	2026-11-15T21:36:28.632Z	b7d9fa19	main	claude-opus-5-5	run	smoke_extract.py		
+toolu_014LQGrK98LrgtCCZ6HnZTD6#run	2026-11-15T21:36:28.632Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_014LQGrK98LrgtCCZ6HnZTD6#tests	2026-11-15T21:36:28.632Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01QWVWD7g83hACskaXsudmrB#run	2026-11-15T21:37:39.479Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01QWVWD7g83hACskaXsudmrB#tests	2026-11-15T21:37:39.479Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_019uaC89dsUkCxTkwMb8b6dJ#run	2026-11-15T21:37:46.482Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_019uaC89dsUkCxTkwMb8b6dJ#tests	2026-11-15T21:37:46.482Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01A4QABomv11729VbY3CCf9g#commit	2026-11-15T21:38:35.691Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S2: fix OOM in extract before the A look (no statistic computed, A unspent); log technical re-run		
+toolu_013wzpG3913ezigSUJjX8Ffv#oracle-look	2026-11-15T21:38:42.367Z	b7d9fa19	main	claude-opus-5-5	oracle-look	test_oracle.py		
+toolu_01QzTue1yQNbngmyStAd5hvZ#run	2026-11-15T21:38:55.872Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_011avi47jzEMgcqPU26AhjHC	2026-11-15T21:45:03.167Z	b7d9fa19	main	claude-opus-5-5	write	experiments/RETRO_2026-11-15.md		
+toolu_013XvXg6VM2LkBXnsYruQAmP#edit	2026-11-15T21:53:37.248Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-15.md		
+toolu_01VWm5G8DggjnnmcaFKGtiaw#edit	2026-11-15T21:53:38.797Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-15.md		
+toolu_0113eD5cb3bXtr3MCfAwWpEs#edit	2026-11-15T21:53:40.900Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01KCtScPPeiTS5arHjgyQPCf#edit	2026-11-15T21:53:45.819Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01AfzCei7A3u2xV3tXULUsyp#commit	2026-11-15T21:53:50.467Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S2: CONFIRMED on petracer_embryo:A (z 3.0, mean dAUC 0.084, 4/5 embryos); retro 2026-11-15 + gap map	petracer_embryo	
+toolu_01AfzCei7A3u2xV3tXULUsyp#run	2026-11-15T21:53:50.467Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	petracer_embryo	
+toolu_01AfzCei7A3u2xV3tXULUsyp#tests	2026-11-15T21:53:50.467Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01WBCMSz7guF4XnB5TzyszmU#edit	2026-11-16T09:06:02.107Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01K6SMpMRKhLwpr3hMdtH8Qn#edit	2026-11-16T09:06:02.187Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_011A5crCdZ9dsBsH5xbz6WFt#commit	2026-11-16T09:06:05.915Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS: open C14-S3 (train-only regional confound check + read two close papers)		
+toolu_01PMrMqLbaDc4WebPdh6NGx4	2026-11-16T09:09:13.039Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s3_region.py		
+toolu_01BpwEZDGMHbnYSHADXVu4WT#run	2026-11-16T09:09:17.809Z	b7d9fa19	main	claude-opus-5-5	run	c14s3_region.py		
+toolu_01Btg2ZpVSmdi5kM8yhPC9Et#edit	2026-11-16T09:10:02.996Z	b7d9fa19	main	claude-opus-5-5	edit	.github/workflows/sweep.yml		
+toolu_01LjufrjKZ31KEpER2Fm4HNy#run	2026-11-16T09:10:06.491Z	b7d9fa19	main	claude-opus-5-5	run	c14s3_region.py		
+toolu_01LjufrjKZ31KEpER2Fm4HNy#run	2026-11-16T09:10:06.491Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_01LjufrjKZ31KEpER2Fm4HNy#run	2026-11-16T09:10:06.491Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01LjufrjKZ31KEpER2Fm4HNy#tests	2026-11-16T09:10:06.491Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01KPVmAAU2fvi8SVncLstFrz#commit	2026-11-16T09:10:55.129Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S3: pre-register + script for train-only regional confound check; Actions downloads spatial scores (sha locked)		
+toolu_01JPNo4jvY3BpJbZLhLQVK5V#commit	2026-11-16T09:15:06.142Z	b7d9fa19	main	claude-opus-5-5	commit	program.md: adopt four practice lines from RETRO_2026-11-15 (compute line, synthetic path test, power smoke, look RAM)		
+toolu_01JPNo4jvY3BpJbZLhLQVK5V#run	2026-11-16T09:15:06.142Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01JPNo4jvY3BpJbZLhLQVK5V#tests	2026-11-16T09:15:06.142Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01HSagYbj8NRTGk2u424a3MS#edit	2026-11-16T09:41:08.586Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_018qkbpJkAPSpeaNFVjphQAQ#commit	2026-11-16T09:41:12.857Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S3: regional confound check SURVIVES on train (retained 0.82, 6/6 embryos)		
+toolu_018qkbpJkAPSpeaNFVjphQAQ#run	2026-11-16T09:41:12.857Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_018qkbpJkAPSpeaNFVjphQAQ#tests	2026-11-16T09:41:12.857Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_016X1M6GuEsHRUxPcbAQmE8X	2026-11-16T09:48:21.232Z	b7d9fa19	main	claude-opus-5-5	write	experiments/WRITEUP_C14.md		
+toolu_01GBwDQUxoaHqTFzmpVrx7nU#commit	2026-11-16T09:48:25.708Z	b7d9fa19	main	claude-opus-5-5	commit	C14: draft write-up (confirmed on A, region check survives on train; B and C sealed)		
+toolu_01GBwDQUxoaHqTFzmpVrx7nU#run	2026-11-16T09:48:25.708Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01GBwDQUxoaHqTFzmpVrx7nU#tests	2026-11-16T09:48:25.708Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01R2BZ1irMEFmxvoDXzuCsuH#edit	2026-11-16T17:27:12.977Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_014KQm3Z7KTkm4yLnGtr2BDH#commit	2026-11-16T17:27:16.713Z	b7d9fa19	main	claude-opus-5-5	commit	C14 closed: H-b confirmed on A, region check survives; B and C sealed		
+toolu_014KQm3Z7KTkm4yLnGtr2BDH#run	2026-11-16T17:27:16.713Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_014KQm3Z7KTkm4yLnGtr2BDH#tests	2026-11-16T17:27:16.713Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01VtBDMtiaeQQ6JwauHKZbsw#edit	2026-11-16T17:35:50.233Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01S6J7xPhXJCQYsCVb2VNnN8#edit	2026-11-16T17:35:51.504Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01Pyftbpn5KEzG3Uusu5KtxQ#edit	2026-11-16T17:36:05.717Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_01MG5oMhXybxxjEQtvz9iSHw#edit	2026-11-16T17:36:07.970Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_01Nz3hGKmHTEHUVB4jwN58N7#run	2026-11-16T17:36:11.083Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_01Fh4ZSB3T6QPTHn8qAtJa8T#edit	2026-11-16T17:36:56.490Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01NbPk1tAxVcC926LuG9LXwp#edit	2026-11-16T17:36:57.301Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01QYqg249i4jmsLdTpFAYnhu#edit	2026-11-16T17:37:04.442Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01XGuyzTUmWnSrwz1MaZpuT5	2026-11-16T17:37:48.537Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s4_genes.py		
+toolu_013jfhZUC4exDTnEMCnntBmS	2026-11-16T17:38:27.913Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s4_genes.py		
+toolu_012a9uNAeuE8Yf7uhyHh6Lzh#run	2026-11-16T17:38:36.364Z	b7d9fa19	main	claude-opus-5-5	run	c14s4_genes.py		
+toolu_011swZkQKPfYwir2gRZXT1oc#run	2026-11-16T17:38:50.789Z	b7d9fa19	main	claude-opus-5-5	run	c14s4_genes.py		
+toolu_01XcxjC4Wu8XVvRLhziTRvHR#run	2026-11-16T17:39:13.893Z	b7d9fa19	main	claude-opus-5-5	run	c14s4_genes.py		
+toolu_01XcxjC4Wu8XVvRLhziTRvHR#run	2026-11-16T17:39:13.893Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01XcxjC4Wu8XVvRLhziTRvHR#tests	2026-11-16T17:39:13.893Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01WU7yTXaezrHD5aBgwSX6b4#commit	2026-11-16T17:40:02.166Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S4 open (train-only mechanism, exploratory); program.md current step -> FOCUS.json + arc; gap map seeded from C14		
+toolu_01SfcjiL6h6okyhzjVmMCqxs	2026-11-16T17:43:43.098Z	b7d9fa19	main	claude-opus-5-5	write	experiments/PROPOSAL_C15_2026-11-16.md		
+toolu_0198aD6tdQ5pw6g7CsMe84zX#commit	2026-11-16T17:43:46.950Z	b7d9fa19	main	claude-opus-5-5	commit	C15 candidates draft (no chapter open): gap-map leads, re-alignment option		
+toolu_01LYL4qsiFMwqJomJwzmdiwb	2026-11-16T17:46:00.331Z	b7d9fa19	main	claude-opus-5-5	write	experiments/RETRO_2026-11-16.md		
+toolu_01J8RM6kjabeF7ApMEfR97ZT#commit	2026-11-16T17:46:06.300Z	b7d9fa19	main	claude-opus-5-5	commit	Retro 2026-11-16 (C14 close): chapter close now runs a retro; ledger + watch-list review		
+toolu_01J8RM6kjabeF7ApMEfR97ZT#run	2026-11-16T17:46:06.300Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01J8RM6kjabeF7ApMEfR97ZT#tests	2026-11-16T17:46:06.300Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01796oRUxhhAZoKXgUgWdGdB#edit	2026-11-16T18:18:42.581Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01NnsbuhUBc1ZbLDLDVJUSZW#edit	2026-11-16T18:18:46.435Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/WRITEUP_C14.md		
+toolu_01WETDTFt85uU8HKZqUkXvdw#commit	2026-11-16T18:18:48.887Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S4 result: shared paraxial-vs-lateral origin program carries the gain (train, exploratory)		
+toolu_01WETDTFt85uU8HKZqUkXvdw#run	2026-11-16T18:18:48.887Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01WETDTFt85uU8HKZqUkXvdw#tests	2026-11-16T18:18:48.887Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01Mwke18iXAJ8wPdUdv2FwW7#commit	2026-11-16T18:52:07.981Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01GChoopf23QWyLJjVQRh29M#run	2026-11-16T18:54:12.387Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01GChoopf23QWyLJjVQRh29M#tests	2026-11-16T18:54:12.387Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01RaYhhRd1oeC7PNrMRmpCc6#edit	2026-11-16T18:55:11.613Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/hooks/scope_guard.py		
+toolu_01GeeBXWoCbeyf4HvUCpd5nq#edit	2026-11-16T18:55:21.715Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_014rxfWCmYadPsSiGZ4522ki#run	2026-11-16T18:55:22.577Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_014rxfWCmYadPsSiGZ4522ki#tests	2026-11-16T18:55:22.577Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_0135Fo2x8KLgLPK4e89nFMUF#edit	2026-11-16T18:56:16.410Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01Sj3aEDw7EMFna72x2Zx9vY#commit	2026-11-16T18:56:24.846Z	b7d9fa19	main	claude-opus-5-5	commit	H23 chapter-close retro: rule + commit-msg hook check + tests; chapter_of reads 		
+toolu_01Sj3aEDw7EMFna72x2Zx9vY#run	2026-11-16T18:56:24.846Z	b7d9fa19	main	claude-opus-5-5	run	scope_guard.py		
+toolu_01Sj3aEDw7EMFna72x2Zx9vY#run	2026-11-16T18:56:24.846Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01Sj3aEDw7EMFna72x2Zx9vY#tests	2026-11-16T18:56:24.846Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01C7kdhF7jFfaPmNhFq8wXhG#run	2026-11-17T09:25:04.095Z	b7d9fa19	main	claude-opus-5-5	run	zread.py		
+toolu_01946mJCWyKH2ZTu9QgYNnYs#edit	2026-11-17T09:26:55.281Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/PROPOSAL_C15_2026-11-16.md		
+toolu_01875hq7gxrQ47aGMjGJ3zCw#commit	2026-11-17T09:27:00.074Z	b7d9fa19	main	claude-opus-5-5	commit	C15 groundwork: #25 overlap read, #12 methods + metadata (no download)		
+toolu_01875hq7gxrQ47aGMjGJ3zCw#run	2026-11-17T09:27:00.074Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01875hq7gxrQ47aGMjGJ3zCw#tests	2026-11-17T09:27:00.074Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01GzuuMN6q4H3bnG1BCZDF4M#edit	2026-11-17T09:37:13.008Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_018ZG1wnmKw2XKVhUSzkZT5Z	2026-11-17T09:38:59.635Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s5_bpower.py		
+toolu_011m5qK47L9V8CHPwoDXWmcK#run	2026-11-17T09:38:59.648Z	b7d9fa19	main	claude-opus-5-5	run	c14s5_bpower.py		
+toolu_01WxAUbMwJoE5ajVibNyUzAv	2026-11-17T09:39:45.538Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c14s5_core.py		
+toolu_01RBavDkd7xKe3zPFtB2aXLE#run	2026-11-17T09:39:46.833Z	b7d9fa19	main	claude-opus-5-5	run	c14s5_core.py		
+toolu_01CK5E5955dr4GEQXSd9UnG1	2026-11-17T09:40:48.021Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c15g_hosts.py		
+toolu_01PZiHmnTaeAEJ3rp1THgeFz#run	2026-11-17T09:40:48.804Z	b7d9fa19	main	claude-opus-5-5	run	c15g_hosts.py		
+toolu_01EPTVhTVRmZoPrTNPnFXFwo#run	2026-11-17T09:41:03.301Z	b7d9fa19	main	claude-opus-5-5	run	c14s5_core.py		
+toolu_01EPTVhTVRmZoPrTNPnFXFwo#run	2026-11-17T09:41:03.301Z	b7d9fa19	main	claude-opus-5-5	run	c15g_hosts.py		
+toolu_01CbJL9Weu1G5uWqiQ6R8T9S#edit	2026-11-17T09:41:09.166Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/WRITEUP_C14.md		
+toolu_0134tMacSsW9wEd9jLGzBY5X#commit	2026-11-17T09:41:11.452Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S5 open: B power sim (done), core-vs-edge check and C15 host count pre-registered; #25 in WRITEUP_C14		
+toolu_0134tMacSsW9wEd9jLGzBY5X#run	2026-11-17T09:41:11.452Z	b7d9fa19	main	claude-opus-5-5	run	c14s5_bpower.py		
+toolu_0134tMacSsW9wEd9jLGzBY5X#run	2026-11-17T09:41:11.452Z	b7d9fa19	main	claude-opus-5-5	run	c14s5_core.py		
+toolu_0134tMacSsW9wEd9jLGzBY5X#run	2026-11-17T09:41:11.452Z	b7d9fa19	main	claude-opus-5-5	run	c15g_hosts.py		
+toolu_0134tMacSsW9wEd9jLGzBY5X#run	2026-11-17T09:41:11.452Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_0134tMacSsW9wEd9jLGzBY5X#tests	2026-11-17T09:41:11.452Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01Bm9V2pqmiY3qQoDLKQj99h#commit	2026-11-17T09:42:35.111Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S5 (a) result: B underpowered (dR power 0.60 under S-drop)		
+toolu_0119gegDucMj1LFzFVAjSkmW#edit	2026-11-17T10:12:34.002Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01JVWHjVhHvxMAmmGGiHWXNy#commit	2026-11-17T10:12:44.846Z	b7d9fa19	main	claude-opus-5-5	commit	C14-S5 done: core-vs-edge memory-consistent (retained 0.94); #12 has 32 hosts / 78 units		
+toolu_01JVWHjVhHvxMAmmGGiHWXNy#run	2026-11-17T10:12:44.846Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01JVWHjVhHvxMAmmGGiHWXNy#tests	2026-11-17T10:12:44.846Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01SaPnbaNJNh6xgAVHH5MopS#run	2026-11-17T10:19:23.064Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_01SaPnbaNJNh6xgAVHH5MopS#run	2026-11-17T10:19:23.064Z	b7d9fa19	main	claude-opus-5-5	run	partitions.py		
+toolu_01E6zBv1iJFRLCEpkKMuqwcC	2026-11-17T10:19:58.427Z	b7d9fa19	main	claude-opus-5-5	write	experiments/RETRO_2026-11-17.md		
+toolu_01Tzp52GHXy7RTQNNZ21BNBz#edit	2026-11-17T10:20:08.211Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01WDEYPvYNG6rdoxiFMgkyCq#edit	2026-11-17T10:20:17.203Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01W159eL4fhQP3JqnXMUFypw#edit	2026-11-17T10:20:18.962Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01YbncVJzqnfqM47Gop1ypvo#edit	2026-11-17T10:20:28.291Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/partitions.py		
+toolu_01HruuBJudGQ3qFfqYuh5kNZ#edit	2026-11-17T10:20:30.346Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/sealed.py		
+toolu_01H4119WbUyi2ADm2VomjMUt	2026-11-17T10:21:26.339Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c15s0_struct.py		
+toolu_01MrgRvdmk8R9i7swbAC5G9r#run	2026-11-17T10:21:27.939Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_struct.py		
+toolu_01QWapm6fq47AiYqHxHHrSMP	2026-11-17T10:21:41.347Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c15s0_power.py		
+toolu_013XBMA6LHKEsJjWXkq3rhks#commit	2026-11-17T10:21:44.104Z	b7d9fa19	main	claude-opus-5-5	commit	Retro 2026-11-17 (C14 close after S5); open C15-S0: host partition growth12_host sealed, structure + power pre-registered	growth12_host	
+toolu_013XBMA6LHKEsJjWXkq3rhks#run	2026-11-17T10:21:44.104Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_power.py	growth12_host	
+toolu_013XBMA6LHKEsJjWXkq3rhks#run	2026-11-17T10:21:44.104Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_struct.py	growth12_host	
+toolu_013XBMA6LHKEsJjWXkq3rhks#run	2026-11-17T10:21:44.104Z	b7d9fa19	main	claude-opus-5-5	run	partitions.py	growth12_host	
+toolu_013XBMA6LHKEsJjWXkq3rhks#run	2026-11-17T10:21:44.104Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py	growth12_host	
+toolu_013XBMA6LHKEsJjWXkq3rhks#run	2026-11-17T10:21:44.104Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	growth12_host	
+toolu_013XBMA6LHKEsJjWXkq3rhks#tests	2026-11-17T10:21:44.104Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_014KCDRg77Z5uQFHW9JXZnZR#run	2026-11-17T10:22:37.943Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_014KCDRg77Z5uQFHW9JXZnZR#tests	2026-11-17T10:22:37.943Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01Rdg3GnxQCbdbBjBkm6tTTX#edit	2026-11-17T10:23:31.167Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/sealed.py		
+toolu_01TUYLubJ9nGa34JqHTyQgQc#commit	2026-11-17T10:23:32.838Z	b7d9fa19	main	claude-opus-5-5	commit	sealed: register c15s0_struct as a structure-only reader (fixes guard test failing at 0f0db2a)		
+toolu_01TUYLubJ9nGa34JqHTyQgQc#run	2026-11-17T10:23:32.838Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_01TUYLubJ9nGa34JqHTyQgQc#run	2026-11-17T10:23:32.838Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01TUYLubJ9nGa34JqHTyQgQc#tests	2026-11-17T10:23:32.838Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01N4C3MwUFjYb2n5yFapCpqD#edit	2026-11-17T10:24:38.923Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-17.md		
+toolu_01X85Jh3VVhk1rvtYCDFkj5t#run	2026-11-17T10:28:58.806Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01WKoJti7XbeQE11propKecL#commit	2026-11-17T10:29:04.169Z	b7d9fa19	main	claude-opus-5-5	commit	CI: wrap two long H23 test lines (lint failing since 2de62da); retro gap-map line		
+toolu_01WKoJti7XbeQE11propKecL#run	2026-11-17T10:29:04.169Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01WKoJti7XbeQE11propKecL#tests	2026-11-17T10:29:04.169Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_017bbdohc5ZWgHmnAJNv12nS#run	2026-11-17T10:36:48.533Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_power.py		
+toolu_01Ln3n1EnaYMSUBm33xVD2Ky#commit	2026-11-17T10:37:27.593Z	b7d9fa19	main	claude-opus-5-5	commit	C15-S0 result: host partition fixed; H19 power gate FAIL on structural counts (per-host sd unknown)	growth12_host	
+toolu_01Ln3n1EnaYMSUBm33xVD2Ky#run	2026-11-17T10:37:27.593Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	growth12_host	
+toolu_01Ln3n1EnaYMSUBm33xVD2Ky#tests	2026-11-17T10:37:27.593Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01GXMgQizXXdpF8T5dKPxHM2	2026-11-17T10:57:23.836Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c15s0_rebal.py		
+toolu_01CAiZnwBspWb4qjKncvJ97r#run	2026-11-17T10:57:24.451Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_rebal.py		
+toolu_015coa7WtC5ytD6ZXJVPrJrN	2026-11-17T10:57:46.490Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c15s0_rebal.py		
+toolu_017dxpCVVvGQLwRLGjKnbmQc#run	2026-11-17T10:57:46.837Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_rebal.py		
+toolu_01AdvEv3h58DkpfRLfxENJEz#run	2026-11-17T10:57:53.364Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_rebal.py		
+toolu_019mN6d8zih2Y5DgJAdwsFBM#run	2026-11-17T10:58:01.549Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_power.py	growth12_host	
+toolu_019mN6d8zih2Y5DgJAdwsFBM#run	2026-11-17T10:58:01.549Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_rebal.py	growth12_host	
+toolu_01P6tdhUfkLUdKdymsy8dzT8#edit	2026-11-17T10:58:04.477Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_012RHqQb1GM388JDUXfev4qu#commit	2026-11-17T10:58:06.952Z	b7d9fa19	main	claude-opus-5-5	commit	C15-S0 amendment 1: rebalance sealed hosts 5/5/5 by leaf count (pre-registered, structure only)		
+toolu_012RHqQb1GM388JDUXfev4qu#run	2026-11-17T10:58:06.952Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_power.py		
+toolu_012RHqQb1GM388JDUXfev4qu#run	2026-11-17T10:58:06.952Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_rebal.py		
+toolu_012RHqQb1GM388JDUXfev4qu#run	2026-11-17T10:58:06.952Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py		
+toolu_012RHqQb1GM388JDUXfev4qu#run	2026-11-17T10:58:06.952Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_012RHqQb1GM388JDUXfev4qu#tests	2026-11-17T10:58:06.952Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01LpRBrRw3nLQ7feA2mfHGer#run	2026-11-17T11:09:40.557Z	b7d9fa19	main	claude-opus-5-5	run	c15s0_power.py		
+toolu_0151w2Qx9hLuXzDJMeVwk5mw#commit	2026-11-17T11:10:02.657Z	b7d9fa19	main	claude-opus-5-5	commit	C15-S0a1 result: growth12_host_v2 fixed (17/5/5/5); v1 A/B/C void; power A/B 0.86 optimistic	growth12_host,growth12_host_v2	
+toolu_0151w2Qx9hLuXzDJMeVwk5mw#run	2026-11-17T11:10:02.657Z	b7d9fa19	main	claude-opus-5-5	run	partitions.py	growth12_host,growth12_host_v2	
+toolu_0151w2Qx9hLuXzDJMeVwk5mw#run	2026-11-17T11:10:02.657Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py	growth12_host,growth12_host_v2	
+toolu_0151w2Qx9hLuXzDJMeVwk5mw#run	2026-11-17T11:10:02.657Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	growth12_host,growth12_host_v2	
+toolu_0151w2Qx9hLuXzDJMeVwk5mw#tests	2026-11-17T11:10:02.657Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01ADusw8cxgEbZub9FjXXdBq#edit	2026-11-17T11:19:18.646Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01S2ZgQVxiuMuwZ8D25uh9Bz#run	2026-11-17T11:19:31.662Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01S2ZgQVxiuMuwZ8D25uh9Bz#tests	2026-11-17T11:19:31.662Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01S3fHetuZRkjdE8UGd3BD73#commit	2026-11-17T11:19:38.864Z	b7d9fa19	main	claude-opus-5-5	commit	H24 balanced sealed partitions: rule, digest line, partitions.balanced_split + test		
+toolu_01S3fHetuZRkjdE8UGd3BD73#run	2026-11-17T11:19:38.864Z	b7d9fa19	main	claude-opus-5-5	run	partitions.py		
+toolu_01S3fHetuZRkjdE8UGd3BD73#run	2026-11-17T11:19:38.864Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01S3fHetuZRkjdE8UGd3BD73#tests	2026-11-17T11:19:38.864Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01TC3mhcHPX9XUvHcaxsnyar#edit	2026-11-17T11:20:32.878Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01T127A3DSMQMrxKy5QpcEG6	2026-11-17T11:21:43.747Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c15s1a_format.py		
+toolu_01U8NC3cvHt319w3fnJJfYji#run	2026-11-17T11:21:45.172Z	b7d9fa19	main	claude-opus-5-5	run	c15s1a_format.py		
+toolu_01WFp58cbE4FQZQZXemxM8VX#commit	2026-11-17T11:21:56.479Z	b7d9fa19	main	claude-opus-5-5	commit	C15-S1 open (train-only): pre-registration; S1a format check script	growth12_host,growth12_host_v2	
+toolu_01WFp58cbE4FQZQZXemxM8VX#run	2026-11-17T11:21:56.479Z	b7d9fa19	main	claude-opus-5-5	run	c15s1a_format.py	growth12_host,growth12_host_v2	
+toolu_01WFp58cbE4FQZQZXemxM8VX#run	2026-11-17T11:21:56.479Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py	growth12_host,growth12_host_v2	
+toolu_01WFp58cbE4FQZQZXemxM8VX#run	2026-11-17T11:21:56.479Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	growth12_host,growth12_host_v2	
+toolu_01WFp58cbE4FQZQZXemxM8VX#tests	2026-11-17T11:21:56.479Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01DMDwHSAm2P7dLFe3eNWHgh	2026-11-17T11:35:47.024Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c15s1b_fit.py		
+toolu_01QLM2bJiZGBWGAYyGxDeQv7#run	2026-11-17T11:35:49.142Z	b7d9fa19	main	claude-opus-5-5	run	c15s1b_fit.py		
+toolu_016RNpC9ZfXiEEzc5WNHtUL6#run	2026-11-17T11:36:07.880Z	b7d9fa19	main	claude-opus-5-5	run	c15s1b_fit.py		
+toolu_01F5hAvS15U4xwc8ypPHqg1J#run	2026-11-17T11:36:30.288Z	b7d9fa19	main	claude-opus-5-5	run	c15s1b_fit.py		
+toolu_01Ubj5TxRbXeeidtDkCta6A4#commit	2026-11-17T11:36:57.796Z	b7d9fa19	main	claude-opus-5-5	commit	C15-S1a result (format OK, 99.7% leaf match); S1b fit script + amendment 1 (noise-relative shuffle smoke)	growth12_host,growth12_host_v2	
+toolu_01Ubj5TxRbXeeidtDkCta6A4#run	2026-11-17T11:36:57.796Z	b7d9fa19	main	claude-opus-5-5	run	c15s1a_format.py	growth12_host,growth12_host_v2	
+toolu_01Ubj5TxRbXeeidtDkCta6A4#run	2026-11-17T11:36:57.796Z	b7d9fa19	main	claude-opus-5-5	run	c15s1b_fit.py	growth12_host,growth12_host_v2	
+toolu_01Ubj5TxRbXeeidtDkCta6A4#run	2026-11-17T11:36:57.796Z	b7d9fa19	main	claude-opus-5-5	run	sealed.py	growth12_host,growth12_host_v2	
+toolu_01Ubj5TxRbXeeidtDkCta6A4#run	2026-11-17T11:36:57.796Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	growth12_host,growth12_host_v2	
+toolu_01Ubj5TxRbXeeidtDkCta6A4#tests	2026-11-17T11:36:57.796Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01YECRBAKbkTsEJM2G2LgmfN#commit	2026-11-17T11:44:51.104Z	b7d9fa19	main	claude-opus-5-5	commit	C15-S1b: install scikit-learn on runners without the embryo extras (technical re-run, no statistic was computed)		
+toolu_01YECRBAKbkTsEJM2G2LgmfN#run	2026-11-17T11:44:51.104Z	b7d9fa19	main	claude-opus-5-5	run	c15s1b_fit.py		
+toolu_01YECRBAKbkTsEJM2G2LgmfN#run	2026-11-17T11:44:51.104Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01YECRBAKbkTsEJM2G2LgmfN#tests	2026-11-17T11:44:51.104Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_015Bs1Pv1ssmDgomiZSUi4RU#edit	2026-11-17T12:02:41.198Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_013p55EbR7eimqB4dDf3CrXx#commit	2026-11-17T12:02:43.655Z	b7d9fa19	main	claude-opus-5-5	commit	C15-S1b result: INVALID (smoke) and underpowered; C14 readout does not transfer to #12 at power		
+toolu_013p55EbR7eimqB4dDf3CrXx#run	2026-11-17T12:02:43.655Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_013p55EbR7eimqB4dDf3CrXx#tests	2026-11-17T12:02:43.655Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01SN3mp6Jd3Lgj77hwu6gjuq	2026-11-17T12:13:09.926Z	b7d9fa19	main	claude-opus-5-5	write	experiments/RETRO_2026-11-17b.md		
+toolu_01U8aBwfEtKWY4YrFCryBnQG#edit	2026-11-17T12:13:12.179Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_013fznaDpFrQDZvCjwSSk4vq#edit	2026-11-17T12:13:19.903Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_015YjWSVGfQe4Si82Hw6sa8r#edit	2026-11-17T12:13:21.749Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01PF2wdYX1nyg3Vr92ceMUSZ#commit	2026-11-17T12:13:27.144Z	b7d9fa19	main	claude-opus-5-5	commit	C15 close: retro (RETRO_2026-11-17b), Arc so far, planted-smoke practice line; Cellware paused	growth12_host,growth12_host_v2	
+toolu_01PF2wdYX1nyg3Vr92ceMUSZ#run	2026-11-17T12:13:27.144Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	growth12_host,growth12_host_v2	
+toolu_01PF2wdYX1nyg3Vr92ceMUSZ#tests	2026-11-17T12:13:27.144Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_0179UDw8vfZCfYhz2EqX4M6Z#edit	2026-11-17T12:21:21.024Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_013HDZDqQqG7Uy6x1EfNdCD8#edit	2026-11-17T12:21:33.132Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01VHRHKF2L6D99RgiyyGyMtA#edit	2026-11-17T12:21:34.822Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01Mak5jMuGgguYgVkYMXk1J1	2026-11-17T12:22:37.375Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s0_hidden.py		
+toolu_01YDQi8DrVJTUGLH8XcWVSKL#run	2026-11-17T12:22:39.522Z	b7d9fa19	main	claude-opus-5-5	run	c16s0_hidden.py		
+toolu_012YCanJL9BStUMgMfUpFGuF#commit	2026-11-17T12:24:01.858Z	b7d9fa19	main	claude-opus-5-5	commit	C16 open (exploratory, train only): hidden inherited state tree model pre-registered; synthetic path test passes		
+toolu_012YCanJL9BStUMgMfUpFGuF#run	2026-11-17T12:24:01.858Z	b7d9fa19	main	claude-opus-5-5	run	c16s0_hidden.py		
+toolu_012YCanJL9BStUMgMfUpFGuF#run	2026-11-17T12:24:01.858Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_012YCanJL9BStUMgMfUpFGuF#tests	2026-11-17T12:24:01.858Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01BHNKic8Rad3a3jFr8QivQN#edit	2026-11-17T13:35:26.096Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01KWhaUYErZ31mHG7oQQa3uN#commit	2026-11-17T13:35:28.153Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S0 result: hidden inherited state SUPPORTED on train (exploratory, no claim)		
+toolu_01KWhaUYErZ31mHG7oQQa3uN#run	2026-11-17T13:35:28.153Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01KWhaUYErZ31mHG7oQQa3uN#tests	2026-11-17T13:35:28.153Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_016MtTGviyoujpAEqUGEGmBi#edit	2026-11-17T15:14:53.769Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01Knt72YZx1puEMXt8YasaYJ#edit	2026-11-17T15:14:57.276Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01URd8LEiNAi2YCKwRWxoxM1#commit	2026-11-17T15:15:06.307Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS: open C16-S1 (time-varying-rate control) + C16-S2 (posterior z vs expression), train only		
+toolu_014mDuisBKoDyPAgtuHRfC9Q	2026-11-17T15:16:34.884Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s1_time.py		
+toolu_01AwE5kqgHm7oRUdnkFnmxum	2026-11-17T15:17:37.202Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s1_time.py		
+toolu_019s398UyoTkFbXfJMgG3XhD#run	2026-11-17T15:17:43.401Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_01QScsP6F5NidmQQLUvp5Egm	2026-11-17T15:18:50.332Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s2_link.py		
+toolu_01BFpNqU1f5ia13t89wnkWyY#run	2026-11-17T15:19:04.879Z	b7d9fa19	main	claude-opus-5-5	run	zcheck.py		
+toolu_01HVVnHF8XQycFbqjofqfovv#run	2026-11-17T15:19:15.600Z	b7d9fa19	main	claude-opus-5-5	run	c16s2_link.py		
+toolu_01VJrAPPaZFMvVDq126A7gfn#edit	2026-11-17T15:19:30.325Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c16s2_link.py		
+toolu_011oY9W5EWcKihuifXTHTJgF#edit	2026-11-17T15:19:31.479Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c16s2_link.py		
+toolu_01XNwUc8izLgwp862j3t8Cfb#run	2026-11-17T15:19:35.575Z	b7d9fa19	main	claude-opus-5-5	run	c16s2_link.py		
+toolu_011ra6WCWSEmMnGxBJM7D2FZ#run	2026-11-17T15:19:53.750Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_011ra6WCWSEmMnGxBJM7D2FZ#run	2026-11-17T15:19:53.750Z	b7d9fa19	main	claude-opus-5-5	run	c16s2_link.py		
+toolu_015BA4B17kD3HYCJNaCYB8iN#run	2026-11-17T15:19:59.224Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_015BA4B17kD3HYCJNaCYB8iN#run	2026-11-17T15:19:59.224Z	b7d9fa19	main	claude-opus-5-5	run	c16s2_link.py		
+toolu_013A8fQvyQ6C7t2VRAReX4dt#commit	2026-11-17T15:20:10.759Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S1 (time-varying-rate control) + C16-S2 (posterior hidden state vs expression): pre-registrations, scripts, S2 amendment 1		
+toolu_013A8fQvyQ6C7t2VRAReX4dt#run	2026-11-17T15:20:10.759Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_013A8fQvyQ6C7t2VRAReX4dt#run	2026-11-17T15:20:10.759Z	b7d9fa19	main	claude-opus-5-5	run	c16s2_link.py		
+toolu_013A8fQvyQ6C7t2VRAReX4dt#run	2026-11-17T15:20:10.759Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_013A8fQvyQ6C7t2VRAReX4dt#tests	2026-11-17T15:20:10.759Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01R8jwL7bxEcjrh69ofA4neF#run	2026-11-17T15:21:16.254Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_0174H5fERgphKESmLkAcq2p5#commit	2026-11-17T15:25:44.182Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S1: synthetic harness 800-leaf trees (smokes pass); log note		
+toolu_0174H5fERgphKESmLkAcq2p5#run	2026-11-17T15:25:44.182Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_0174H5fERgphKESmLkAcq2p5#run	2026-11-17T15:25:44.182Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_0174H5fERgphKESmLkAcq2p5#tests	2026-11-17T15:25:44.182Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_016sQk6zFwbvD8DMKqaAZGoC#run	2026-11-17T15:33:17.757Z	b7d9fa19	main	claude-opus-5-5	run	q.py		
+toolu_011vvk7WFGb1Fqr3figV6b2d#run	2026-11-17T15:34:23.807Z	b7d9fa19	main	claude-opus-5-5	run	ab.py		
+toolu_01RL4RWvWfSDHqbM66eo7SVc	2026-11-17T15:35:50.052Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/c16_map_2026-11-17.md		
+toolu_01L3Vut4wCoPr1r4vP7xPUT7#commit	2026-11-17T15:35:53.909Z	b7d9fa19	main	claude-opus-5-5	commit	C16 literature map: timing/position of P vs L allocation, commitment before expression, inherited vs positional, hidden-state tree models		
+toolu_0157bsiecQ9tL3D1UAtzwgPN#edit	2026-11-17T15:52:29.099Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01PjRQkL4qz4dQVWGvpYxNz6#commit	2026-11-17T15:52:31.405Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S2 result: posterior hidden state READABLE in expression from E8.5 (exploratory, train only)		
+toolu_01PjRQkL4qz4dQVWGvpYxNz6#run	2026-11-17T15:52:31.405Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01PjRQkL4qz4dQVWGvpYxNz6#tests	2026-11-17T15:52:31.405Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_013KRXWHCvtqcUCBX7Cs2dSJ#edit	2026-11-17T16:27:03.608Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_012FKKzz5TuZHXZmWtq41LMi#edit	2026-11-17T16:27:06.311Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01W8A5u4BDaMsx38F9KADP2c#commit	2026-11-17T16:27:07.712Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS: open C16-S3 (axial-position control: S3a expression link, S3b own label beyond position), train only		
+toolu_01YAYdivRxiddrP7fGrUApFA	2026-11-17T16:28:21.498Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s3_position.py		
+toolu_01EdqoJyMXWksEC96ifQ5mGb#edit	2026-11-17T16:28:25.836Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c16s3_position.py		
+toolu_018eCzfS6U5CSbiteWRHrWFQ#run	2026-11-17T16:28:28.360Z	b7d9fa19	main	claude-opus-5-5	run	c16s3_position.py		
+toolu_01TmSFqc64wiVZtp3Bf28aPy#run	2026-11-17T16:28:46.231Z	b7d9fa19	main	claude-opus-5-5	run	c16s3_position.py		
+toolu_01A9JWL7rpfseUUeBWkhsbob#run	2026-11-17T16:29:03.906Z	b7d9fa19	main	claude-opus-5-5	run	_tmp_c16s3_seed.py		
+toolu_01A9JWL7rpfseUUeBWkhsbob#run	2026-11-17T16:29:03.906Z	b7d9fa19	main	claude-opus-5-5	run	c16s3_seed.py		
+toolu_01JrTfbgLZpntvZPPBhmqwhx#commit	2026-11-17T16:29:45.413Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S3: axial-position control (S3a expression link, S3b own label), pre-registration, amendment 1, parallel sweep		
+toolu_01JrTfbgLZpntvZPPBhmqwhx#run	2026-11-17T16:29:45.413Z	b7d9fa19	main	claude-opus-5-5	run	c16s3_position.py		
+toolu_01JrTfbgLZpntvZPPBhmqwhx#run	2026-11-17T16:29:45.413Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01JrTfbgLZpntvZPPBhmqwhx#tests	2026-11-17T16:29:45.413Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01SPmRXek27CAVbhQFNSvJnS#edit	2026-11-17T16:33:00.098Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c16s1_time.py		
+toolu_011HfV6EvWqmVmxzwH6U6Ut6#edit	2026-11-17T16:33:05.563Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c16s1_time.py		
+toolu_01W3vapPpYp9tVrpAx9gQT2U#run	2026-11-17T16:33:07.517Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_01XaKYigdYXGBvfzDNocJkPK#edit	2026-11-17T16:33:13.581Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01TAn5aY3o5TBBL8qtxQYU8N#commit	2026-11-17T16:33:20.090Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS + log: C16-S1 parallel execution (technical amendment), serial run to be cancelled unread		
+toolu_01P2pM2RgbJt7s2z5G8sLrYL#edit	2026-11-17T16:33:24.806Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01EqnrTpuDZjFueYm7cB9oem#commit	2026-11-17T16:33:26.252Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS + log: C16-S1 parallel execution (technical amendment), serial run to be cancelled unread		
+toolu_01SJ1V9rFrEVDE1kcoTjXKnK#run	2026-11-17T16:33:32.456Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_01W5XVA6Vz9zWuRFX8LHuikU#commit	2026-11-17T16:38:26.881Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S1a1: parallel fold tasks (19 jobs, 4 processes each) + combine step		
+toolu_01W5XVA6Vz9zWuRFX8LHuikU#run	2026-11-17T16:38:26.881Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_01W5XVA6Vz9zWuRFX8LHuikU#run	2026-11-17T16:38:26.881Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01W5XVA6Vz9zWuRFX8LHuikU#tests	2026-11-17T16:38:26.881Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_014sPM5vi8tYktMUh5wGg4mz#edit	2026-11-17T16:59:00.397Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01YZKiTbq8gjUW6HSb6ZHby8#commit	2026-11-17T16:59:02.773Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S3 result: hidden family bias survives axial-identity control (S3a +0.104, S3b +0.374), exploratory		
+toolu_01YZKiTbq8gjUW6HSb6ZHby8#run	2026-11-17T16:59:02.773Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01YZKiTbq8gjUW6HSb6ZHby8#tests	2026-11-17T16:59:02.773Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01QVfq4LnvA5CYG45KkztY1o#run	2026-11-17T17:13:06.690Z	b7d9fa19	main	claude-opus-5-5	run	c16s1_time.py		
+toolu_01W2Vir5U4mCTqJqStG8md2x#edit	2026-11-17T17:13:27.212Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01AFBQXxV6NmdsxZrHCnnfGv#commit	2026-11-17T17:13:29.480Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S1 result: hidden state survives depth-varying-rate control (+0.015/leaf, 6/6), exploratory		
+toolu_01AFBQXxV6NmdsxZrHCnnfGv#run	2026-11-17T17:13:29.480Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01AFBQXxV6NmdsxZrHCnnfGv#tests	2026-11-17T17:13:29.480Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_018dCVaXete3AaEGHbimthqe#edit	2026-11-17T17:35:00.585Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01M2ksR6Mirj3jqAXY8DtaGy#commit	2026-11-17T17:35:02.087Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS: open C16-S3c (E8.0 check: within-embryo position, matched family size), train only		
+toolu_01QcyQFCwsgpzKpzjbm1FCS6	2026-11-17T17:35:58.736Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s3c_e8.py		
+toolu_019ByoifD8eQQyNG3sWCcB3P#run	2026-11-17T17:36:05.482Z	b7d9fa19	main	claude-opus-5-5	run	c16s3c_e8.py		
+toolu_014dm6hfJeQAxe38QGZVRgFg#run	2026-11-17T17:36:26.901Z	b7d9fa19	main	claude-opus-5-5	run	c16s3c_e8.py		
+toolu_01PP6o16pjx4NFTVSfZVpnGG#commit	2026-11-17T17:36:37.694Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S3c: E8.0 check (within-embryo position, matched family), pre-registration + amendment 1		
+toolu_01PP6o16pjx4NFTVSfZVpnGG#run	2026-11-17T17:36:37.694Z	b7d9fa19	main	claude-opus-5-5	run	c16s3c_e8.py		
+toolu_01PP6o16pjx4NFTVSfZVpnGG#run	2026-11-17T17:36:37.694Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01PP6o16pjx4NFTVSfZVpnGG#tests	2026-11-17T17:36:37.694Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_018KgLNsqB57aL3ksuT53Bxx#edit	2026-11-17T17:56:32.181Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_012Py6dfbb5ozLPrWkCmVtFq#commit	2026-11-17T17:56:34.652Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S3c result: E8.0 lower family concordance is not tree size; bias beyond within-embryo position 6/6 (exploratory)		
+toolu_012Py6dfbb5ozLPrWkCmVtFq#run	2026-11-17T17:56:34.652Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_012Py6dfbb5ozLPrWkCmVtFq#tests	2026-11-17T17:56:34.652Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01W51mM5q5q5PLaMK5LJmuDN#edit	2026-11-17T18:37:11.771Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_013EuoDZU8KVws4UdpVf5mMM#commit	2026-11-17T18:37:12.834Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS: open C16-S4a (H17 power for a B confirmation look, train-only arithmetic)	petracer_embryo	
+toolu_01TvHH945dWQ4KAKNif9DnWH	2026-11-17T18:37:44.948Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s4a_power.py		
+toolu_01YJMv8JfbZ9VFfnZxsR2K9B#run	2026-11-17T18:37:45.602Z	b7d9fa19	main	claude-opus-5-5	run	c16s4a_power.py		
+toolu_0134b7hVgb5RLn8yZBKe2tXU#edit	2026-11-17T18:37:49.831Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_015qbnCpzWm676SUnUgYMgj1#commit	2026-11-17T18:37:51.181Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS step C16-S4a + pre-registration (H17 power for a B look, train-only arithmetic)		
+toolu_01GcwhpvacnZp9PBqtzhB2p5	2026-11-17T18:38:04.946Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s4a_power.py		
+toolu_01RhYwnWKLJ5CYWTtRaroF4q#run	2026-11-17T18:38:05.581Z	b7d9fa19	main	claude-opus-5-5	run	c16s4a_power.py		
+toolu_01JcML3hrZqo7jySgpPvKmUQ#commit	2026-11-17T18:38:20.783Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S4a result: B look powered for K1 (0.98) and K2 (0.90), not K3 (0.58); train-only arithmetic	petracer_embryo	
+toolu_01JcML3hrZqo7jySgpPvKmUQ#run	2026-11-17T18:38:20.783Z	b7d9fa19	main	claude-opus-5-5	run	c16s4a_power.py	petracer_embryo	
+toolu_01JcML3hrZqo7jySgpPvKmUQ#run	2026-11-17T18:38:20.783Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py	petracer_embryo	
+toolu_01JcML3hrZqo7jySgpPvKmUQ#tests	2026-11-17T18:38:20.783Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01XDBdyMv5srADdqpuVBFWq1#edit	2026-11-17T18:39:13.210Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/c16s4a_power.py		
+toolu_01LtAx6jyBoeoKoCNLup6euM#commit	2026-11-17T18:39:15.232Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S4a result: B look powered for K1 (0.98) and K2 (0.90), not K3 (0.58); train-only arithmetic		
+toolu_01LtAx6jyBoeoKoCNLup6euM#run	2026-11-17T18:39:15.232Z	b7d9fa19	main	claude-opus-5-5	run	c16s4a_power.py		
+toolu_01LtAx6jyBoeoKoCNLup6euM#run	2026-11-17T18:39:15.232Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01LtAx6jyBoeoKoCNLup6euM#tests	2026-11-17T18:39:15.232Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01LgHD3HgDVvm8smqzPy1CJS#edit	2026-11-17T19:23:30.433Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01CeydTahHXZn3nRiAf6fsZP#edit	2026-11-17T19:23:33.351Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_015CqYG29ir697oGRcsow5Ev#commit	2026-11-17T19:23:35.012Z	b7d9fa19	main	claude-opus-5-5	commit	FOCUS: open C16-S4b (K3		
+toolu_013fbqCprzv8YEWqadnCJ5Ah	2026-11-17T19:24:48.005Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c16s4b_trace.py		
+toolu_01YSyNYavXNHpspXzsbkoy3a#run	2026-11-17T19:24:53.725Z	b7d9fa19	main	claude-opus-5-5	run	c16s4b_trace.py		
+toolu_01NFtAfbDSWDwQfEDm6rErHX#commit	2026-11-17T19:25:29.392Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S4b: K3		
+toolu_01NFtAfbDSWDwQfEDm6rErHX#run	2026-11-17T19:25:29.392Z	b7d9fa19	main	claude-opus-5-5	run	c16s4b_trace.py		
+toolu_01NFtAfbDSWDwQfEDm6rErHX#run	2026-11-17T19:25:29.392Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01NFtAfbDSWDwQfEDm6rErHX#tests	2026-11-17T19:25:29.392Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_012biThdXtSDcfRpH3ETjp9x#commit	2026-11-17T19:25:37.262Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S4b: K3		
+toolu_012biThdXtSDcfRpH3ETjp9x#run	2026-11-17T19:25:37.262Z	b7d9fa19	main	claude-opus-5-5	run	c16s4b_trace.py		
+toolu_012biThdXtSDcfRpH3ETjp9x#run	2026-11-17T19:25:37.262Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_012biThdXtSDcfRpH3ETjp9x#tests	2026-11-17T19:25:37.262Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01GiEvoykCKmMGNKphgrcohg#edit	2026-11-17T19:59:42.847Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_014x9Y8ZVebSGaSuNpzTFC5e#commit	2026-11-17T19:59:45.499Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S4b result: trace beyond the fate axis (+0.081, 6/6; strict +0.030), B power 0.79 fails gate; trace genes look like axial/maturation his		
+toolu_014x9Y8ZVebSGaSuNpzTFC5e#run	2026-11-17T19:59:45.499Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_014x9Y8ZVebSGaSuNpzTFC5e#tests	2026-11-17T19:59:45.499Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01CK4N3WDhTwNTcBdwT3jNVj#commit	2026-11-17T20:04:52.305Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S4b result: trace beyond the fate axis (+0.081, 6/6; strict +0.030); B power 0.79 fails the gate		
+toolu_01CK4N3WDhTwNTcBdwT3jNVj#run	2026-11-17T20:04:52.305Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01CK4N3WDhTwNTcBdwT3jNVj#tests	2026-11-17T20:04:52.305Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_011ecws1reWoeDgiSTkMAhSr#commit	2026-11-17T20:05:04.926Z	b7d9fa19	main	claude-opus-5-5	commit	C16-S4b result: trace beyond the fate axis (+0.081, 6/6; strict +0.030); B power 0.79 fails the gate		
+toolu_011ecws1reWoeDgiSTkMAhSr#run	2026-11-17T20:05:04.926Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_011ecws1reWoeDgiSTkMAhSr#tests	2026-11-17T20:05:04.926Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01SMrYg7wJnWYvGEA8fQVTz8#run	2026-11-17T20:32:48.359Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01SMrYg7wJnWYvGEA8fQVTz8#tests	2026-11-17T20:32:48.359Z	b7d9fa19	main	claude-opus-5-5	tests	pytest		
+toolu_01DnSbzYAEaG4XGnrN6YpXwy#commit	2026-11-17T20:33:35.937Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01QEDkXqFATJXaBwARbdhWmW#edit	2026-11-17T21:16:32.947Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01GZP7GSYWKNaZ6RhfzdxPt5#commit	2026-11-17T21:16:34.332Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_015quR5HF2oQ7yj2sSh8G896#edit	2026-11-17T21:16:49.152Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_017YLvL8zzsimhKgaftkLxQk#edit	2026-11-17T21:16:50.403Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_013UGBMyeVg35V4oqjerXfW6#edit	2026-11-17T21:16:52.775Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_01WNCjcCab1stWB5goM7oRJ5#edit	2026-11-17T21:16:53.435Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_01UKCNS7cebHYJBsUkHLHTR1#edit	2026-11-17T21:16:54.375Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_01Tct2jiQBPSHppusLEzH8ir#run	2026-11-17T21:17:00.065Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_01Tct2jiQBPSHppusLEzH8ir#run	2026-11-17T21:17:00.065Z	b7d9fa19	main	claude-opus-5-5	run	sweep.py		
+toolu_01Tct2jiQBPSHppusLEzH8ir#run	2026-11-17T21:17:00.065Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01W99u1oUZj6U785vxyxALUu#edit	2026-11-17T21:17:56.559Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_017KkNh8NhVoAV3bZgoj3WeC#edit	2026-11-17T21:17:58.853Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit_gap.py		
+toolu_018hGuHY389oAaHdh7k23pKD#commit	2026-11-17T21:18:01.205Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_018hGuHY389oAaHdh7k23pKD#run	2026-11-17T21:18:01.205Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_0147eSdWCvX95r2MZo22wDm8	2026-11-17T21:19:56.482Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/c16_novelty_2026-11-17.md		
+toolu_018ZMADYPVNzuKDPjASDNCRm	2026-11-17T21:20:14.310Z	b7d9fa19	main	claude-opus-5-5	write	experiments/WRITEUP_C16.md		
+toolu_01HE6T7C3fsw9pRBRdfwzXh4#edit	2026-11-17T21:20:26.092Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_016LaUws53Wa3Z6jvXBqgRYv	2026-11-17T21:20:47.338Z	b7d9fa19	main	claude-opus-5-5	write	experiments/RETRO_2026-11-17c.md		
+toolu_01NqoJ1pv2bwFf6CR3kXiFnD#edit	2026-11-17T21:20:57.747Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01YDfaufcBoSNEKUJUTjPnq6#edit	2026-11-17T21:21:13.039Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/DISCOVERIES.md		
+toolu_011Bnfg6horPrtnp4PcQvgcW#commit	2026-11-17T21:23:07.955Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_011Bnfg6horPrtnp4PcQvgcW#run	2026-11-17T21:23:07.955Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_017LpJ7RLujmeswTgiiDEH6S#edit	2026-11-17T21:27:55.310Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-17c.md		
+toolu_01M5x5uUF3f8YoRqRT3NjMKX#edit	2026-11-17T21:28:00.720Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-17c.md		
+toolu_01K7BeTEQXii8fLw8ekWzC2Z#edit	2026-11-17T21:28:17.173Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_0194Z2t7nXo75sK32e1tvYrA#run	2026-11-17T21:28:19.877Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01Q6QxgXfrvoYbWtK1HVeX2d#commit	2026-11-17T21:29:22.640Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01ArnFFczfKsfjW96CUBrsaT#edit	2026-11-18T09:44:34.679Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/hooks/scope_guard.py		
+toolu_01EaqnEWyVyDNRwRUXhcpqK2#edit	2026-11-18T09:44:35.997Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/hooks/scope_guard.py		
+toolu_01LNmHR6GEoCSZBCG6TvLwKA#edit	2026-11-18T09:44:36.362Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/hooks/scope_guard.py		
+toolu_01846MJCVioWW76GChDZR55t#edit	2026-11-18T09:44:50.189Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_01AD5ewdSgVSKhKwEmpkhw78#edit	2026-11-18T09:44:50.969Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_012HhVj3XTUo2BYwBRFWCZVG#edit	2026-11-18T09:45:01.248Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_014TrJyQRtfSQtcNqEVQfKZj#edit	2026-11-18T09:45:02.499Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_019yL6wTFchFbYwKtqJievXh#edit	2026-11-18T09:45:03.645Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_01Be8dFu2bCDMZJWNb2DCrme#edit	2026-11-18T09:45:08.835Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_013yXrUwjnzaE8wB8sTJBNbh#edit	2026-11-18T09:46:08.670Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_01QGMXWgwjs53VJXm8r4mtyb#edit	2026-11-18T09:46:17.331Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01KDwiMmJvodMDZSsKQLnRmF#edit	2026-11-18T09:46:24.413Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RULES_DIGEST.md		
+toolu_01BUxSprob2mpfUvVp2SCbGy	2026-11-18T09:46:28.551Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/novelty/TEMPLATE.md		
+toolu_01SJrbcawv1JrbcMpj9vECf7#edit	2026-11-18T09:47:24.849Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-17c.md		
+toolu_01FxywthMyd89E9rHjNAdwpM#commit	2026-11-18T09:47:27.906Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01XZBBJX8c5oJbHFvTzPJs4i#edit	2026-11-18T09:47:36.584Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-17c.md		
+toolu_01FToJJQk7ybgtfKApqNyFe1#commit	2026-11-18T09:47:37.262Z	b7d9fa19	main	claude-opus-5-5	commit	RETRO_2026-11-17c: lesson 1 landed as H25		
+toolu_01UBfTvszQ8cjYVHLH1dK3tY#edit	2026-11-18T10:29:23.056Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01X9ZcTmfH7NSEdftWtrzTkL#edit	2026-11-18T10:29:24.361Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RULES_DIGEST.md		
+toolu_011wSqbg4a4ngLWBnGZRNMuo#edit	2026-11-18T10:29:26.159Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/lit/novelty/TEMPLATE.md		
+toolu_01U4EmWzULkkFsxNpqB7eVtf#commit	2026-11-18T10:29:29.790Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_019LYb4UHdMfy1Wcmpb79eq9#commit	2026-11-18T11:02:54.372Z	b7d9fa19	main	claude-opus-5-5	commit	Full retro 2026-11-18: gap map sweep		
+toolu_019LYb4UHdMfy1Wcmpb79eq9#run	2026-11-18T11:02:54.372Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_01GDSLHmyNdVTzxifBwnnitn	2026-11-18T11:03:46.228Z	b7d9fa19	main	claude-opus-5-5	write	experiments/RETRO_2026-11-18_FULL.md		
+toolu_0149FCiimM1P4TkkGSVMW36N#edit	2026-11-18T11:03:53.952Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01PgmySvX2fh27JyxHQqT2Mh#edit	2026-11-18T11:03:58.552Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/DISCOVERIES.md		
+toolu_011eZv7N5zidPNBHmxrg5X5J	2026-11-18T11:04:05.211Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/source_claims_petracer_2026-11-18.md		
+toolu_01AXu6vMC8zticJkYmkEdvnc#edit	2026-11-18T11:04:12.838Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01Seja5wYYX17j7gzY6zS3Gm#edit	2026-11-18T11:08:56.301Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-18_FULL.md		
+toolu_017SU4ZqnVC31SZHnU99uoK8#commit	2026-11-18T11:09:56.431Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01RHswCVnurf4j8Qn82VnPEt#run	2026-11-18T11:44:20.289Z	b7d9fa19	main	claude-opus-5-5	run	neutral.py		
+toolu_01Jn69DMLbgc34KcZiHgHweu#edit	2026-11-18T11:44:44.197Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01P9t8jxPaSMgo1wo68YkUb1#edit	2026-11-18T11:44:46.845Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/program.md		
+toolu_01T7hjfu6sXpYvNR7rC12HwC#edit	2026-11-18T11:44:57.474Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/hooks/scope_guard.py		
+toolu_014GByMNjxHXwMpMMJf2KUEP#edit	2026-11-18T11:44:58.824Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/hooks/scope_guard.py		
+toolu_01DkAhmUC7HKZdtg9E7mY8mq#edit	2026-11-18T11:45:00.431Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/hooks/scope_guard.py		
+toolu_01GzuEdEaSU6pyrWZPdVvAxW#edit	2026-11-18T11:45:09.615Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_01SeK6DRJiHkf1ubZ1Gc4gan#edit	2026-11-18T11:46:03.592Z	b7d9fa19	main	claude-opus-5-5	edit	tests/test_guards.py		
+toolu_013qfVmcrf2rrCsoaHfgj2nF#edit	2026-11-18T11:46:26.224Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_016kYH6Sb4jEqBYk2DBVBpsE#edit	2026-11-18T11:46:30.675Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-18_FULL.md		
+toolu_01Szc2mGEKL2L1b5mAuxtfzS#edit	2026-11-18T11:46:34.254Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-18_FULL.md		
+toolu_01FfqzmEcv1DDPBMC9shiHsx#run	2026-11-18T11:46:37.154Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_019NCkDHnFSV9R2wYhKyfBCZ#commit	2026-11-18T11:47:34.778Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01R49aENCqY9QkAUgnhMyP3q	2026-11-18T11:49:09.570Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/novelty_audit_2026-11-18.md		
+toolu_01NFWX7hbN4BqhSD5zo5rNXR#commit	2026-11-18T11:49:12.725Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01SEEBhesRksUe9w5e5eGqhg#edit	2026-11-18T12:09:03.514Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/RETRO_2026-11-18_FULL.md		
+toolu_01AU2cqo7VwYXwJQWx1wjDPK#commit	2026-11-18T12:09:04.914Z	b7d9fa19	main	claude-opus-5-5	commit	Full retro: run 44073504820 artifacts deleted		
+toolu_01HZb1dSDFkwnnw8DYRcb8oE	2026-11-18T12:12:57.899Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/gap_outcomes_2026-11-18.md		
+toolu_01TQVKiqAejUeKDuuTS3ufHd#commit	2026-11-18T12:13:00.655Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01HtbcxcvMvWHknQ5TKV14NF	2026-11-18T12:26:45.547Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/novelty/CAND-A_cross_recorder.md		
+toolu_01MjfAerWduyHHoKk1Eegxda	2026-11-18T12:26:55.850Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/novelty/CAND-B_lineage_position.md		
+toolu_011JrsswyjUUFSfS3XStkR7h#commit	2026-11-18T12:26:59.071Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_017uMsq3Jrrkj2VoyACaDpU4	2026-11-18T12:29:35.091Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit_citers.py		
+toolu_01CayDpvpSjgZge53HTxwbjb#run	2026-11-18T12:29:36.045Z	b7d9fa19	main	claude-opus-5-5	run	lit_citers.py		
+toolu_018fWoDq4FuxtFazSBcM1Tcd#commit	2026-11-18T12:30:19.212Z	b7d9fa19	main	claude-opus-5-5	commit	Citer screen for the correction notes (lit_citers.py), on Actions		
+toolu_018fWoDq4FuxtFazSBcM1Tcd#run	2026-11-18T12:30:19.212Z	b7d9fa19	main	claude-opus-5-5	run	lit_citers.py		
+toolu_016PedpgHc9JgMkhsvLBQ9Rz#commit	2026-11-18T12:30:25.076Z	b7d9fa19	main	claude-opus-5-5	commit	Citer screen for the correction notes (lit_citers.py), on Actions		
+toolu_016PedpgHc9JgMkhsvLBQ9Rz#run	2026-11-18T12:30:25.076Z	b7d9fa19	main	claude-opus-5-5	run	lit_citers.py		
+toolu_01HCBcT2EWQbDttfYGDiyawx	2026-11-18T12:31:10.200Z	b7d9fa19	main	claude-opus-5-5	write	experiments/REANALYSIS_LARRY_2026-11-18.md		
+toolu_01Pw5pMngTWuVbV5UcrxfmfF	2026-11-18T12:31:33.007Z	b7d9fa19	main	claude-opus-5-5	write	experiments/REANALYSIS_SISSKEW_2026-11-18.md		
+toolu_01JQaZXLkhJcvaRxXEvDhHG3#commit	2026-11-18T12:33:23.552Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01UcUVH1FLkFkrs4hUj5nZMv#commit	2026-11-18T12:33:32.193Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01UcUVH1FLkFkrs4hUj5nZMv#run	2026-11-18T12:33:32.193Z	b7d9fa19	main	claude-opus-5-5	run	lit_citers.py		
+toolu_01UcUVH1FLkFkrs4hUj5nZMv#run	2026-11-18T12:33:32.193Z	b7d9fa19	main	claude-opus-5-5	run	patch_citers.py		
+toolu_01Uuj9jrGoeCx1d7QQxZyVBm#edit	2026-11-18T12:35:01.131Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/REANALYSIS_LARRY_2026-11-18.md		
+toolu_01JoJm3pzMBgmnBozV9nBYy9#edit	2026-11-18T12:35:04.032Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/REANALYSIS_LARRY_2026-11-18.md		
+toolu_01LhCDdzKFBy5b4PF48ngzHr#edit	2026-11-18T12:35:05.337Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/REANALYSIS_LARRY_2026-11-18.md		
+toolu_012a7FhKFq2GQckSPD3n1ndo#run	2026-11-18T12:51:47.959Z	b7d9fa19	main	claude-opus-5-5	run	lit_citers.py		
+toolu_012a7FhKFq2GQckSPD3n1ndo#run	2026-11-18T12:51:47.959Z	b7d9fa19	main	claude-opus-5-5	run	patch2.py		
+toolu_01E3egeLc42p1drZ7sfcFAWb#commit	2026-11-18T12:51:57.651Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01XbAExAVYpPuyK4qEgrimpE#run	2026-11-18T12:53:15.958Z	b7d9fa19	main	claude-opus-5-5	run	fill.py		
+toolu_01GWtU8wdfR8pJCUBqpdEFjp#commit	2026-11-18T12:53:21.617Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_015hkYMiQZnzetbn3XAUqPUH#run	2026-11-18T12:55:50.959Z	b7d9fa19	main	claude-opus-5-5	run	summ.py		
+toolu_01BgKqfVqhFFG9D5V71VL9vu#run	2026-11-18T12:56:01.555Z	b7d9fa19	main	claude-opus-5-5	run	summ2.py		
+toolu_01Ke1FBstq6sUFRof2Ed8KMk#run	2026-11-18T12:56:13.678Z	b7d9fa19	main	claude-opus-5-5	run	summ3.py		
+toolu_01FF7s6nTG6H5vFj8v2s2ro8#edit	2026-11-18T12:56:41.723Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/REANALYSIS_LARRY_2026-11-18.md		
+toolu_011PJfRPzC4eZnHSxemhRrmo#edit	2026-11-18T12:56:44.833Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/REANALYSIS_SISSKEW_2026-11-18.md		
+toolu_011AL2RMfZTcV2A8iEFL6Ya8#run	2026-11-18T13:09:15.355Z	b7d9fa19	main	claude-opus-5-5	run	disc.py		
+toolu_01PPqqTfB8vNg6xYqDuri5Ey#run	2026-11-18T13:09:26.927Z	b7d9fa19	main	claude-opus-5-5	run	lit_citers.py		
+toolu_01PPqqTfB8vNg6xYqDuri5Ey#run	2026-11-18T13:09:26.927Z	b7d9fa19	main	claude-opus-5-5	run	patch3.py		
+toolu_017nxExLkAszpjC98qq5L7ii#run	2026-11-18T13:09:35.994Z	b7d9fa19	main	claude-opus-5-5	run	chk.py		
+toolu_017nxExLkAszpjC98qq5L7ii#run	2026-11-18T13:09:35.994Z	b7d9fa19	main	claude-opus-5-5	run	lit_citers.py		
+toolu_01EKf7dBu6A72id7Piyphdqi#commit	2026-11-18T13:09:42.908Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01JfyAx6G3KArS1ny87BAih2#run	2026-11-18T13:38:34.181Z	b7d9fa19	main	claude-opus-5-5	run	lit_gap.py		
+toolu_01JfyAx6G3KArS1ny87BAih2#run	2026-11-18T13:38:34.181Z	b7d9fa19	main	claude-opus-5-5	run	p4.py		
+toolu_01Ej2xvrUJ5HtdzGbD5DXjMt#commit	2026-11-18T13:38:40.231Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_013NuyEBMR9Uuk9hkxKNWKKP#run	2026-11-18T13:49:03.529Z	b7d9fa19	main	claude-opus-5-5	run	s5.py		
+toolu_01BXAWDJc2TZu99bBM2pgDB1	2026-11-18T13:49:39.610Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/sister_split_hunt_2026-11-18.md		
+toolu_01SXeyq9YR4iNzDWA2VinTVo#commit	2026-11-18T13:50:32.766Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01HcAYcLz8dURtXiHx3Z8EbM	2026-11-18T14:05:00.998Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/novelty/C17-S0.md		
+toolu_01Wti6LPcRCNjJG4eMK6pZ33	2026-11-18T14:05:12.863Z	b7d9fa19	main	claude-opus-5-5	write	experiments/CHAPTER17_PLAN.md		
+toolu_01EqLqzimka1EE2EFdXh3Ro8#edit	2026-11-18T14:05:20.934Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01TDroHUQymeNzdC3VnTUiYx#edit	2026-11-18T14:05:22.208Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01N3hftjnA2WtZhdGBUVz9UA#commit	2026-11-18T14:05:28.284Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01N3hftjnA2WtZhdGBUVz9UA#run	2026-11-18T14:05:28.284Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01DWBPxEcMArBqzpMrDamzzC#commit	2026-11-18T14:08:25.684Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01KMK7RtmvjbNCzW9acRhmsN	2026-11-18T14:11:36.151Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c17s0b_struct.py		
+toolu_019FoDUUQCgmPDssigzV7RNM#edit	2026-11-18T14:11:37.059Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_01E59MZRCt9TwMNowwi5wNpF	2026-11-18T14:12:04.888Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c17s0b_struct.py		
+toolu_01KWevcBJxs3bWDAR79GiFj4#run	2026-11-18T14:12:09.836Z	b7d9fa19	main	claude-opus-5-5	run	c17s0b_struct.py		
+toolu_01KWevcBJxs3bWDAR79GiFj4#run	2026-11-18T14:12:09.836Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_014N9jf1sKekefvJ4w2bDqfE#run	2026-11-18T14:12:15.838Z	b7d9fa19	main	claude-opus-5-5	run	c17s0b_struct.py		
+toolu_014N9jf1sKekefvJ4w2bDqfE#run	2026-11-18T14:12:15.838Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01DH93UWhANmzc88F5CzC48D#commit	2026-11-18T14:13:14.810Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01DH93UWhANmzc88F5CzC48D#run	2026-11-18T14:13:14.810Z	b7d9fa19	main	claude-opus-5-5	run	c17s0b_struct.py		
+toolu_01NaQpmEfzXEYxZ4YYF1hb8u#commit	2026-11-18T14:13:19.723Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_014Qo5k88oYnKDoReka62Bsq#commit	2026-11-18T14:16:37.954Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_019a2cGQ37bi5SJQTBiS35mQ	2026-11-18T14:20:46.868Z	b7d9fa19	main	claude-opus-5-5	write	experiments/lit/c17_source_claims_2026-11-18.md		
+toolu_01Ais9BXyXz1ZYyGc6sG7rdC#commit	2026-11-18T14:20:48.677Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_01RzqrRJRUoU12xbH8wFwYqZ#commit	2026-11-18T14:29:45.513Z	b7d9fa19	main	claude-opus-5-5	commit	git commit		
+toolu_017QAh5UDBn82fWgVKTHbRTh#edit	2026-11-18T16:19:06.691Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/partitions.py		
+toolu_01RytyBMCse57mg2YygEEv4P	2026-11-18T16:19:23.399Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c17s0c_seal.py		
+toolu_01BrV3nMKkRkQ375Paxi5yr2	2026-11-18T16:20:57.082Z	b7d9fa19	main	claude-opus-5-5	write	experiments/c17s0c_seal.py		
+toolu_01H5eur3EBgv4ykQLqmUSFc2#edit	2026-11-18T16:21:05.261Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_012cmPWCBNahHF1UoW1HsAuJ#run	2026-11-18T16:21:06.745Z	b7d9fa19	main	claude-opus-5-5	run	c17s0c_seal.py		
+toolu_012cmPWCBNahHF1UoW1HsAuJ#run	2026-11-18T16:21:06.745Z	b7d9fa19	main	claude-opus-5-5	run	partitions.py		
+toolu_012cmPWCBNahHF1UoW1HsAuJ#run	2026-11-18T16:21:06.745Z	b7d9fa19	main	claude-opus-5-5	run	test_guards.py		
+toolu_01KRuuv6Nf4DcrnFND7jdmer#commit	2026-11-18T16:22:19.220Z	b7d9fa19	main	claude-opus-5-5	commit	C17-S0c: pre-register and script clone sealing of two new systems; fixed_file maps in partitions		
+toolu_01CLMrVv8oqFJxwbhDYPs2YN#edit	2026-11-18T16:26:22.520Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/partitions.py		
+toolu_015NQuSMzKERc2kbWzKbxoF9#commit	2026-11-18T16:30:03.096Z	b7d9fa19	main	claude-opus-5-5	commit	C17-S0c result: rf2020_clone and cortical_clone sealed (H24), maps committed and registered	cortical_clone,rf2020_clone	
+toolu_014dRsLz5L4GYMYqombukeZz#edit	2026-11-18T16:36:31.614Z	b7d9fa19	main	claude-opus-5-5	edit	experiments/FOCUS.json		
+toolu_011obPDn79UgnsraPvXoe6An#commit	2026-11-18T16:36:35.841Z	b7d9fa19	main	claude-opus-5-5	commit	C17-S1/S2/S3 pre-registration: joint fit, LOSO, split-recipient and cortical tests with power		
+toolu_01BxEpv5RHVWxcXVFQPXQMi2#commit	2026-11-18T17:36:00.387Z	b7d9fa19	main	claude-opus-5-5	commit	C17 amendment 1: cortical test primary, split test secondary (partial rho); targeted novelty read and exposure record		
