@@ -43,14 +43,19 @@ CLAIMS = {
 
 
 def get(url):
-    for i in range(5):
+    err = None
+    for i in range(8):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "cellware-lit/1.0"})
             with urllib.request.urlopen(req, timeout=60) as r:
                 return json.load(r)
-        except Exception:  # noqa: BLE001 - retry on rate limits and timeouts
-            time.sleep(2 * (i + 1))
-    raise RuntimeError(f"failed: {url}")
+        except Exception as e:  # noqa: BLE001 - retry on rate limits and timeouts
+            err = e
+            hdr = getattr(e, "headers", None)
+            wait = max(int((hdr.get("Retry-After") if hdr else 0) or 0), 5 * 2**i)
+            print(f"retry {i + 1}: {type(e).__name__} {getattr(e, 'code', '')} wait {min(wait, 300)}s", flush=True)
+            time.sleep(min(wait, 300))
+    raise RuntimeError(f"failed: {url}: {err}")
 
 
 def wid(doi):
