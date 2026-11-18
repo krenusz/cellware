@@ -1,0 +1,1 @@
+[experiments/results_c17/c17s0b_struct.json] uv pip install -q h5py && python experiments/c17s0b_struct.py

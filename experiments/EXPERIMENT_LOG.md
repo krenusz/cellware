@@ -12138,3 +12138,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Used data enough? 63,302 leaves with PCs (C14 readout restriction).
   - Already published? Streak-exit timing sets axial identity and fate (Kinder 1999; lit/c16_map_2026-11-17.md). A lineage trace carried in expression beyond the P/L axis on these trees: not found in abstracts read.
 - Reading: a small trace in a cell's expression tracks its family's fate bias beyond its own P/L likeness (+0.03 strict, up to +0.08); its genes look like developmental history (axial/retinoic-acid identity, maturation), not a new memory program. Not powered for B at the pre-registered gate.
+
+## C17-S0b: structure-only checks of two candidate systems (pre-registered 2026-11-18)
+- **Serves: C17-S0** (inventory for the cross-system model and the perturbation join). Bence: "go 1" (answer to: S0b structure checks). Script: `c17s0b_struct.py`, on GitHub Actions; output `results_c17/c17s0b_struct.json`.
+- **Pre-flight:**
+  1. Unit: GSE134242, recipient mouse (sample-ID prefix), clone = LARRY barcode set; GSE284197, to be named from its obs columns (guide target, donor, sample).
+  2. Readout: none. Counts only (H9): cells, clones and libraries per recipient; clones shared across recipients (>= 1 and >= 3 cells per recipient); obs column names, dtypes and level counts; level names only for identifier-like columns.
+  3. Used data first: neither set has been opened before; no partition exists yet. They will be sealed (H1, H24) before any statistic if a step uses them.
+  4. Power: not applicable (no test). The counts feed H22 (units per arm) and the later H17/H19 power.
+  5. Exposure: structural counts only; no expression, fate, cluster or guide-effect read. GSE134242 fate files (projected clusters) and expression matrices are not downloaded; GSE284197 is read over HTTP range requests for obs only.
+  6. Literature access: source papers open (Nature 2020; Nature 2026); claims-level reading follows in a separate step (H25).
+  7. Readout gate: not applicable.
+- **Practice:** structure-only, smoke = row counts match between barcode and sample-ID files (mismatch reported, not repaired).
+- **Compute:** GitHub Actions run (sweeps/c17s0b_struct.txt); nothing run locally.
