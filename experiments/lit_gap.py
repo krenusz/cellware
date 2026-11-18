@@ -30,6 +30,8 @@ FIELDS = (
 )
 
 # Core papers whose neighbourhood we map (references and citers). Extend as the project grows.
+SENSITIVE = r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|oncog|metasta|drug|chemo|therap|patient|disease|clinical"
+
 SEEDS = {
     "Weinreb 2020 (LARRY)": "10.1126/science.aaw3381",
     "Dai 2024 (ReSisTrace)": "10.1038/s41467-024-45478-7",
@@ -43,6 +45,12 @@ SEEDS = {
     "Sierra 2010 (Gfi1 gates G-CSF)": "10.1182/blood-2009-10-246967",
     "LCL 2024 (lineage contrastive)": "10.1101/2024.10.28.620670",
     "Lin/Naik 2024 (restricted progenitors, small clones)": "10.1101/2024.03.28.587126",
+    # sister-split designs (2026-11-18, Bence: "go 1 2"): sisters of one clone sent to different wells/conditions
+    "Tian 2021 (SIS-seq/SIS-skew)": "10.1016/j.immuni.2021.03.012",
+    "Shaffer 2020 (memory sequencing)": "10.1016/j.cell.2020.07.003",
+    "cHSPCTrack 2026 (human clones x cytokines)": "10.1182/blood.2026033834",
+    "hESC clonal memory 2026 (sister-well endoderm)": "10.64898/2026.09.02.748863",
+    "Regalado/Qiu 2026 (gastruloid fluctuation test)": "10.1016/j.cell.2026.09.057",
     "Grover 2014 (Epo guides MPPs to erythroid)": "10.1084/jem.20131189",
     "Tian 2021 (SIS-seq/SIS-skew, Bcor)": "10.1016/j.immuni.2021.03.012",
     "Naik 2013 (heritable lineage imprinting)": "10.1038/nature12013",
@@ -180,6 +188,9 @@ TOPICS = {
     # C14 close 2026-11-16: in vivo lineage + state data with many independent units (fresh hold-outs)
     "in_vivo_lineage_state": [r"lineage recorder", r"molecular recording", r"phylogen", r"cassiopeia",
                               r"in vivo lineage", r"whole.organism lineage", r"lineage tree", r"prime editing"],
+    "sister_split": [r"sister (cells?|wells?|clones?)", r"split.{0,30}(wells|conditions|sisters|across)",
+                     r"twin", r"fluctuation test", r"same clone.{0,40}(different|two|both) (conditions|wells|environments)",
+                     r"clonal (split|splitting)", r"barcod.{0,60}(divided|split)"],
     "replicate_units": [r"embryos", r"replicate", r"independent (mice|animals|embryos|individuals|donors)",
                         r"geo accession", r"data availability", r"atlas"],
     "inference_identifiability": [
@@ -333,6 +344,9 @@ def main(top=40, tag=""):
             f"| {i} | {r['score']} | {r['year']} | {title} | {', '.join(r['groups'])} | {link} "
             f"| {acc} | {'; '.join(r['via'])} |"
         )
+    # neutral output (standing rule): drop rows whose title carries disease/drug terms
+    rows = [r for r in rows if not re.search(SENSITIVE, (r.get("title") or "").lower())]
+    lines = [ln for ln in lines if not (ln.startswith("| ") and re.search(SENSITIVE, ln.lower()))]
     stem = f"gap_{date}" + (f"_{tag}" if tag else "")
     path = os.path.join(LIT, f"{stem}.md")
     open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
