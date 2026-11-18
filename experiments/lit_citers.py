@@ -69,15 +69,30 @@ def abstract(w):
 
 
 def citers(work_id):
-    out, cursor = [], "*"
-    sel = "id,doi,display_name,publication_year,publication_date,abstract_inverted_index,type,referenced_works"
-    while cursor:
-        q = urllib.parse.urlencode({"filter": f"cites:{work_id}", "per-page": 100, "cursor": cursor, "select": sel})
+    """Plain page paging (cursor paging returned 401 without a key, run 44305237451)."""
+    out, page = [], 1
+    sel = "id,doi,display_name,publication_year,publication_date,abstract_inverted_index,type"
+    while True:
+        q = urllib.parse.urlencode({"filter": f"cites:{work_id}", "per-page": 100, "page": page, "select": sel})
         d = get(f"{API}?{q}")
         out += d["results"]
-        cursor = d["meta"].get("next_cursor")
-        time.sleep(0.2)
-    return out
+        if not d["results"] or len(out) >= d["meta"]["count"] or page >= 100:
+            return out
+        page += 1
+        time.sleep(0.5)
+
+
+def cociting_ids(target_id, nb_id):
+    """IDs of works citing both a target and a neighbour (one small filtered query set)."""
+    ids, page = set(), 1
+    while True:
+        q = urllib.parse.urlencode({"filter": f"cites:{target_id},cites:{nb_id}", "per-page": 100, "page": page, "select": "id"})
+        d = get(f"{API}?{q}")
+        ids |= {r["id"].rsplit("/", 1)[-1] for r in d["results"]}
+        if not d["results"] or len(ids) >= d["meta"]["count"] or page >= 20:
+            return ids
+        page += 1
+        time.sleep(0.5)
 
 
 def main():
@@ -85,11 +100,15 @@ def main():
     nb_ids = {wid(doi): name for name, doi in NEIGHBOURS.items()}
     rows = []
     for name, doi in TARGETS.items():
-        for w in citers(wid(doi)):
+        tid = wid(doi)
+        co_map = {}
+        for nid, nname in nb_ids.items():
+            for i in cociting_ids(tid, nid):
+                co_map.setdefault(i, []).append(nname)
+        for w in citers(tid):
             text = f"{w.get('display_name') or ''} {abstract(w)}".lower()
             hits = [k for k, rx in CLAIMS.items() if re.search(rx, text)]
-            refs = {r.rsplit("/", 1)[-1] for r in w.get("referenced_works") or []}
-            co = sorted(nb_ids[i] for i in refs & set(nb_ids))
+            co = sorted(co_map.get(w["id"].rsplit("/", 1)[-1], []))
             rows.append(dict(target=name, title=w.get("display_name"), year=w.get("publication_year"),
                              date=w.get("publication_date"), doi=(w.get("doi") or "").replace("https://doi.org/", ""),
                              type=w.get("type"), has_abstract=bool(w.get("abstract_inverted_index")),
