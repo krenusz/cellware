@@ -85,7 +85,7 @@ The self-challenge block asks "already published?" at the result, which is too l
 7. Housekeeping:
    - the five open decisions from RETRO_SWEEP_2026-11-13 s.4 are **dropped** (their chapters are closed);
    - prose files rewritten in neutral wording (15 files: line, disease and agent names replaced; treatment arms now T1, T2, NK). Code keeps its data keys and the mask list; run logs and generated gap maps (public paper titles) are unchanged; git history still holds the old text;
-   - the public log of run 44073504820 is deleted (API 404 since). Its two artifacts (`results`, `line-1`) still exist until about 1 Dec; deleting them was not asked.
+   - the public log of run 44073504820 is deleted (API 404 since). Its two artifacts (`results`, `line-1`) were deleted on Bence's OK the same day ("Yes, delete them"); the run now has 0 artifacts.
 
 ## 5. Model ledger (since 2026-11-13)
 - 762 Opus, 35 Sonnet, 45 Fable rows. 0 RISK rows.
