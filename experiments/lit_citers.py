@@ -30,6 +30,7 @@ NEIGHBOURS = {  # works whose co-citation with a target marks a likely reanalysi
     "Lin 2021 (Flt3L clonal tuning)": "10.1038/s41556-021-00636-7",
     "Brown 2020 review (cytokines instruct)": "10.3390/ijms21072362",
 }
+SENSITIVE = r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|oncog|metasta|drug|chemo|therap|patient|disease|clinical"
 CLAIMS = {
     "instruction_vs_selection": r"(instruct\w*).{0,80}(select\w*)|(select\w*).{0,80}(instruct\w*)",
     "cytokine_GM": r"g-csf|m-csf|csf-?1|csf-?3|colony.stimulating",
@@ -114,11 +115,18 @@ def main():
                              type=w.get("type"), has_abstract=bool(w.get("abstract_inverted_index")),
                              claims=hits, cocites=co))
     date = datetime.date.today().isoformat()
-    json.dump(rows, open(os.path.join(LIT, f"citers_{date}.json"), "w", encoding="utf-8"), indent=1)
+    # Neutral output only (standing rule: no disease/drug terms in saved files or public artifacts):
+    # counts for every citer, rows only for flagged works whose title passes the term screen.
+    counts = {t: dict(citers=sum(r["target"] == t for r in rows),
+                      abstracts=sum(r["has_abstract"] for r in rows if r["target"] == t),
+                      withheld=sum(bool(re.search(SENSITIVE, (r["title"] or "").lower())) for r in rows if r["target"] == t))
+              for t in TARGETS}
+    rows = [r for r in rows if (r["claims"] or r["cocites"]) and not re.search(SENSITIVE, (r["title"] or "").lower())]
+    json.dump({"counts": counts, "rows": rows}, open(os.path.join(LIT, f"citers_{date}.json"), "w", encoding="utf-8"), indent=1)
     lines = [f"# Citer screen, {date}", ""]
     for name in TARGETS:
         rs = [r for r in rows if r["target"] == name]
-        lines.append(f"## {name}: {len(rs)} citers, {sum(r['has_abstract'] for r in rs)} with abstracts")
+        lines.append(f"## {name}: {counts[name]['citers']} citers, {counts[name]['abstracts']} with abstracts, {counts[name]['withheld']} titles withheld by the term screen")
         flag = [r for r in rs if ({"instruction_vs_selection", "identifiability", "reanalysis", "bcor", "sis_skew",
                                    "private_or_well_split"} & set(r["claims"])) and (r["claims"] or r["cocites"])]
         flag.sort(key=lambda r: (-len(r["claims"]) - len(r["cocites"]), -(r["year"] or 0)))

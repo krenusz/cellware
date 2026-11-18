@@ -55,11 +55,29 @@ Data set for entries 1-12: Weinreb et al. 2020, LARRY cytokine-perturbation expe
 | 26 | **Clone states plus rank sorting predict how two unseen clones order along the axis.** Simulator v2 (states from the G1a fit shard, rank sorting, gastruloid noise fitted on open 1+3 pairs) predicted sealed pairs: clone 7 anterior of clone 6 in 12/12 (predicted ~all); clones 3 and 7 (both anterior) barely sort, 0.50 (predicted 0.61 [0.36, 0.86]). Magnitude off: 6+7 separation -1.60 vs predicted -2.67. | G7a | moderate (one sealed test, n 14 + 12; magnitude miss) | Ayyappan 2025 (pairs sort by propensity) | consistent |
 | 27 | **Perturbing signalling erodes the clones' division of labour; strength of propensity varies by experiment series.** RA, SB (Nodal block) and AGN (RAR block) each reduce 1+3 and 1+6 clone separation in 11/11 comparisons with their own series' control; high Wnt removes both clones' propensity (0.06 / 0.05 vs 0.50 / 1.24). Order of clones in pairs is consistent (6 < 1 < 3 ~ 7) but separation size varies by series (1+3: 3.0 / 1.3 / 1.8); no model with fixed clone states fits the magnitudes. | G9, G10 | **unconfirmed (train partitions only; no model passed H12; sealed drug partitions A-C unspent)** | Suppinger 2023 (all-or-none Wnt response); Ayyappan 2025 (drug effects on chimeras) | consistent with Suppinger; Ayyappan comparison not yet read in detail |
 
+## Chapter 7: where a clone's fate state is carried (three lineage-barcoded systems)
+
+| # | discovery | evidence | strength | literature | check |
+|---|---|---|---|---|---|
+| 32 | **A clone's fate state is heritable and readable before differentiation, on unseen clones, in three systems.** Sealed looks on partition A, fixed order, all 5 confirmed: heritable fate share H 0.75 (95% CI 0.65-0.82, n 158 clones; > 0.5 needed); early RNA predicts clone fate in mouse LSK (0.50 bits/cell, lower 0.33, n 196), fibroblast reprogramming (0.35, lower 0.21, n 113) and human HSPC (0.40, lower 0.13, n 122); early chromatin in LSK (0.24, lower 0.10, n 137). Train to A stable, no sign flips (HSPC shrank 0.66 to 0.40). **Not shown:** which layer (RNA or chromatin) carries more (never powered); a ceiling or coverage. | C7-S3 to S7 (EXPERIMENT_LOG C7-S7, commit 5e69507) | moderate (oracle-confirmed on A in all three sets; B/C sealed) | source papers of the three sets; FateLimit; LineageFlow 2026 | known phenomenon; one sealed metric across systems is new (method) |
+
+## Chapter 8: a clone's specific fate is readable from early RNA
+
+| # | discovery | evidence | strength | literature | check |
+|---|---|---|---|---|---|
+| 33 | **Early clone RNA predicts which fate a clone takes, on unseen clones.** Sealed partition B, fixed sequence: mouse LSK day-2.5 RNA predicts the day-5 neutrophil vs monocyte split (rho 0.45, 95% CI 0.32-0.57, n 153 clones; train 0.46); fibroblast day-3 RNA predicts the share of the clone that reprograms (rho 0.59, 0.46-0.69, n 105; train 0.66). Stable from train to unseen clones. **Not shown:** whether early clone state beats the cytokine condition in human HSPC (T2 untested, oracle power 0.78 < 0.8, B sealed). | C8-S0 to S2 (WRITEUP_FATE_READOUT.md) | moderate (oracle-confirmed on B; C sealed) | source papers; LineageFlow 2026 (clone-disjoint held-out prediction) | known; the sealed confirmation is ours |
+
 ## Chapter 10: treatment survival (ReSisTrace, Dai et al. 2024; one cultured cell line)
 
 | # | discovery | evidence | strength | literature | check |
 |---|---|---|---|---|---|
 | 29 | **A lineage's pre-treatment expression state predicts whether it survives drug or NK treatment, beyond library, a coarse genetic-subclone proxy (expression-inferred CNV, k = 3) and capture QC.** Frozen logistic model, pooled T1/T2/NK libraries: AUC 0.660 -> 0.722, delta 0.062 (lower 97.5% 0.046) on 5,194 unseen lineages (420 survived); train CV 0.055. **Not shown:** that the state is non-genetic (CNV proxy coarse); survival vs capture fully separated; per-drug effects; instruction vs selection (library-level treatment, 2 per arm, untestable; H22). Exposure: pooled per-library pre-resistant counts seen before sealing (accepted). | C10-S1, C10-S2 (WRITEUP_RESISTRACE.md) | moderate (oracle-confirmed on resistrace:A; B/C sealed) | Dai 2024 (pre-resistant signatures in the same data); Shaffer 2017, Goyal 2023 (rare pre-existing non-genetic resistant states) | consistent; adds a quantified increment beyond a subclone proxy |
+
+## Chapter 12: barcoded progenitor expansion culture with transplant readout (train only)
+
+| # | discovery | evidence | strength | literature | check |
+|---|---|---|---|---|---|
+| 34 | **A clone's day-20 expression state predicts whether it is found after transplant, beyond its day-20 size, QC and library.** Train cross-validation, 712 clones (highest-UMI clone rule): delta AUC +0.151 (SE 0.024) for presence in vivo (101 positives), +0.056 (SE 0.014) for presence at day 40 in culture (158). Survives barcode transcript level, multi-clone cells and hashtag/well structure (deltas +0.166 / +0.060 with all three in the base model; nuisance alone AUC 0.50-0.52); state placebo and label shuffle about 0. **Not shown:** on any sealed partition (one partition has power 0.55-0.57; A+B pooled 0.85 is provisional and needs the simulated-power redo and Bence's OK); mechanism; which program carries it (gene names masked). Exposure: C12-S0 counts, train presence fractions and library/hashtag counts. | C12-S0, C12-S1 + amendments (EXPERIMENT_LOG) | weak (train only; A/B/C sealed and unspent) | source preprint (claims level: clonal programs linked to self-renewal and in vivo initiation) | published in kind; the size-adjusted held-out version would be ours |
 
 ## Chapter 14: state beyond cell type predicts clade fate in held-out embryos
 
