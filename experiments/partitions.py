@@ -136,6 +136,25 @@ PARTITIONED = {
         "sealed_on": "2026-11-17",
         "prior_exposure": "as growth12_host, plus leaves per host per partition (c15s0_rebal.json)",
     },
+    "rf2020_clone": {
+        "salt": "cellware-rf2020-clone-v1",
+        "unit": "clone: '<sample set>:<LARRY barcode set>' in GSE134242 (all cells of a clone, both recipients and "
+                "compartments, go together); strata sample set x shared-across-recipients",
+        "fixed_file": "partition_maps/partition_rf2020_clone.tsv",
+        "files": ["GSE134242 Sample1-5 barcode_list / samp_id(_flat), sha256 in results_c17/c17s0c_seal.json"],
+        "sealed_on": "2026-11-18",
+        "prior_exposure": "C17-S0b structure counts (recipients, shared clones per sample set); C17-S0c partition "
+                          "counts; claims-level read of the source paper (lit/c17_source_claims_2026-11-18.md)",
+    },
+    "cortical_clone": {
+        "salt": "cellware-cortical-clone-v1",
+        "unit": "clone: obs row of GSE284197 clones.h5ad; strata guide target x donor batch",
+        "fixed_file": "partition_maps/partition_cortical_clone.tsv",
+        "files": ["GSE284197_clones.h5ad, sha256 in results_c17/c17s0c_seal.json"],
+        "sealed_on": "2026-11-18",
+        "prior_exposure": "C17-S0b obs structure (columns, levels, guide and donor labels); C17-S0c partition counts; "
+                          "claims-level read of the source paper",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

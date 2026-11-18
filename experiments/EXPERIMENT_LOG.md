@@ -12175,3 +12175,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Strata:** GSE134242, sample set x shared (>= 3 cells in each of two recipients) vs single; recipient parser fixed for Sample1 (second token when the first is HSC/Kit). Cortical, guide target x donor batch.
 - **Practice:** smoke = lengths of barcode and sample-ID files match (assert), obs index unique (assert); salts fixed in the script.
 - **Compute:** GitHub Actions run (sweeps/c17s0c_seal.txt); nothing run locally.
+
+### C17-S0c result (2026-11-18; run https://github.com/krenusz/cellware/actions/runs/44346491916; structure only)
+- **rf2020_clone:** 11,936 clones; units train 4,774 / A 2,387 / B 2,387 / C 2,388; cells 20,816 / 10,698 / 16,042 / 17,497. Unit counts balanced; cell totals are not (A has ~60% of C's cells): a few very large clones dominate cell totals. Per-stratum unit counts are balanced. Noted for power (use per-partition shared-clone counts, not cells).
+- **cortical_clone:** 10,328 clones (index unique); units 4,130 / 2,066 / 2,066 / 2,066; cells 21,940 / 11,145 / 11,080 / 11,032.
+- Maps committed in `partition_maps/`, registered in `partitions.py` (`fixed_file`). Both sets sealed before any statistic; A/B/C unread.

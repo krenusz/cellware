@@ -1,0 +1,551 @@
+{
+ "rf2020_clone": {
+  "totals": {
+   "A": {
+    "units": 2387,
+    "cells": 10698
+   },
+   "B": {
+    "units": 2387,
+    "cells": 16042
+   },
+   "C": {
+    "units": 2388,
+    "cells": 17497
+   },
+   "train": {
+    "units": 4774,
+    "cells": 20816
+   }
+  },
+  "units_by_stratum": {
+   "Sample1|shared": {
+    "A": 1,
+    "B": 1,
+    "C": 1,
+    "train": 2
+   },
+   "Sample1|single": {
+    "A": 98,
+    "B": 98,
+    "C": 97,
+    "train": 196
+   },
+   "Sample2|shared": {
+    "A": 0,
+    "B": 1,
+    "C": 2,
+    "train": 0
+   },
+   "Sample2|single": {
+    "A": 866,
+    "B": 864,
+    "C": 864,
+    "train": 1732
+   },
+   "Sample3|single": {
+    "A": 272,
+    "B": 272,
+    "C": 272,
+    "train": 544
+   },
+   "Sample4|shared": {
+    "A": 5,
+    "B": 6,
+    "C": 6,
+    "train": 10
+   },
+   "Sample4|single": {
+    "A": 21,
+    "B": 22,
+    "C": 22,
+    "train": 42
+   },
+   "Sample5|shared": {
+    "A": 24,
+    "B": 23,
+    "C": 22,
+    "train": 48
+   },
+   "Sample5|single": {
+    "A": 1100,
+    "B": 1100,
+    "C": 1102,
+    "train": 2200
+   }
+  }
+ },
+ "cortical_clone": {
+  "totals": {
+   "A": {
+    "units": 2066,
+    "cells": 11145
+   },
+   "B": {
+    "units": 2066,
+    "cells": 11080
+   },
+   "C": {
+    "units": 2066,
+    "cells": 11032
+   },
+   "train": {
+    "units": 4130,
+    "cells": 21940
+   }
+  },
+  "units_by_stratum": {
+   "ARX|E60#16-F": {
+    "A": 2,
+    "B": 2,
+    "C": 2,
+    "train": 3
+   },
+   "ARX|E75#14-F": {
+    "A": 20,
+    "B": 20,
+    "C": 20,
+    "train": 41
+   },
+   "ARX|E80#12-M": {
+    "A": 28,
+    "B": 28,
+    "C": 28,
+    "train": 54
+   },
+   "ARX|E80#19-M": {
+    "A": 29,
+    "B": 30,
+    "C": 30,
+    "train": 60
+   },
+   "ARX|GW16#161-F": {
+    "A": 69,
+    "B": 68,
+    "C": 68,
+    "train": 139
+   },
+   "ARX|GW17#136-F": {
+    "A": 121,
+    "B": 121,
+    "C": 122,
+    "train": 241
+   },
+   "ARX|GW18#183-M": {
+    "A": 135,
+    "B": 135,
+    "C": 134,
+    "train": 269
+   },
+   "ARX|GW19#139-M": {
+    "A": 55,
+    "B": 54,
+    "C": 54,
+    "train": 111
+   },
+   "ARX|GW19#153-F": {
+    "A": 44,
+    "B": 45,
+    "C": 45,
+    "train": 88
+   },
+   "ARX|GW21#143-F": {
+    "A": 68,
+    "B": 68,
+    "C": 68,
+    "train": 136
+   },
+   "ARX|GW21#154-F": {
+    "A": 35,
+    "B": 35,
+    "C": 35,
+    "train": 69
+   },
+   "ARX|GW22#147-M": {
+    "A": 45,
+    "B": 46,
+    "C": 46,
+    "train": 91
+   },
+   "NEUROD2|E60#16-F": {
+    "A": 2,
+    "B": 2,
+    "C": 2,
+    "train": 4
+   },
+   "NEUROD2|E75#14-F": {
+    "A": 10,
+    "B": 9,
+    "C": 8,
+    "train": 20
+   },
+   "NEUROD2|E80#12-M": {
+    "A": 14,
+    "B": 13,
+    "C": 14,
+    "train": 28
+   },
+   "NEUROD2|E80#19-M": {
+    "A": 10,
+    "B": 11,
+    "C": 10,
+    "train": 20
+   },
+   "NEUROD2|GW16#161-F": {
+    "A": 29,
+    "B": 29,
+    "C": 30,
+    "train": 60
+   },
+   "NEUROD2|GW17#136-F": {
+    "A": 37,
+    "B": 37,
+    "C": 38,
+    "train": 72
+   },
+   "NEUROD2|GW17#187-M": {
+    "A": 0,
+    "B": 1,
+    "C": 0,
+    "train": 0
+   },
+   "NEUROD2|GW18#183-M": {
+    "A": 42,
+    "B": 40,
+    "C": 40,
+    "train": 84
+   },
+   "NEUROD2|GW19#139-M": {
+    "A": 19,
+    "B": 20,
+    "C": 20,
+    "train": 40
+   },
+   "NEUROD2|GW19#153-F": {
+    "A": 16,
+    "B": 16,
+    "C": 16,
+    "train": 30
+   },
+   "NEUROD2|GW21#143-F": {
+    "A": 16,
+    "B": 16,
+    "C": 16,
+    "train": 34
+   },
+   "NEUROD2|GW21#154-F": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "train": 20
+   },
+   "NEUROD2|GW22#147-M": {
+    "A": 13,
+    "B": 12,
+    "C": 12,
+    "train": 24
+   },
+   "NR2E1|E75#14-F": {
+    "A": 6,
+    "B": 8,
+    "C": 8,
+    "train": 12
+   },
+   "NR2E1|E80#12-M": {
+    "A": 10,
+    "B": 9,
+    "C": 10,
+    "train": 20
+   },
+   "NR2E1|E80#19-M": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "train": 20
+   },
+   "NR2E1|GW16#161-F": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "train": 24
+   },
+   "NR2E1|GW17#136-F": {
+    "A": 19,
+    "B": 19,
+    "C": 19,
+    "train": 40
+   },
+   "NR2E1|GW18#183-M": {
+    "A": 18,
+    "B": 18,
+    "C": 17,
+    "train": 36
+   },
+   "NR2E1|GW19#139-M": {
+    "A": 7,
+    "B": 7,
+    "C": 8,
+    "train": 12
+   },
+   "NR2E1|GW19#153-F": {
+    "A": 3,
+    "B": 3,
+    "C": 3,
+    "train": 8
+   },
+   "NR2E1|GW21#143-F": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "train": 20
+   },
+   "NR2E1|GW21#154-F": {
+    "A": 4,
+    "B": 4,
+    "C": 4,
+    "train": 8
+   },
+   "NR2E1|GW22#147-M": {
+    "A": 5,
+    "B": 5,
+    "C": 5,
+    "train": 8
+   },
+   "SOX2|E60#16-F": {
+    "A": 2,
+    "B": 2,
+    "C": 2,
+    "train": 7
+   },
+   "SOX2|E75#14-F": {
+    "A": 12,
+    "B": 12,
+    "C": 12,
+    "train": 23
+   },
+   "SOX2|E80#12-M": {
+    "A": 15,
+    "B": 14,
+    "C": 14,
+    "train": 30
+   },
+   "SOX2|E80#19-M": {
+    "A": 22,
+    "B": 23,
+    "C": 24,
+    "train": 44
+   },
+   "SOX2|GW16#161-F": {
+    "A": 64,
+    "B": 65,
+    "C": 64,
+    "train": 128
+   },
+   "SOX2|GW17#136-F": {
+    "A": 66,
+    "B": 66,
+    "C": 66,
+    "train": 132
+   },
+   "SOX2|GW18#183-M": {
+    "A": 85,
+    "B": 84,
+    "C": 84,
+    "train": 172
+   },
+   "SOX2|GW19#139-M": {
+    "A": 33,
+    "B": 34,
+    "C": 34,
+    "train": 64
+   },
+   "SOX2|GW19#153-F": {
+    "A": 18,
+    "B": 18,
+    "C": 18,
+    "train": 36
+   },
+   "SOX2|GW21#143-F": {
+    "A": 31,
+    "B": 30,
+    "C": 30,
+    "train": 61
+   },
+   "SOX2|GW21#154-F": {
+    "A": 19,
+    "B": 18,
+    "C": 18,
+    "train": 39
+   },
+   "SOX2|GW22#147-M": {
+    "A": 18,
+    "B": 18,
+    "C": 18,
+    "train": 36
+   },
+   "ZNF219|E60#16-F": {
+    "A": 2,
+    "B": 3,
+    "C": 4,
+    "train": 4
+   },
+   "ZNF219|E75#14-F": {
+    "A": 10,
+    "B": 11,
+    "C": 10,
+    "train": 20
+   },
+   "ZNF219|E80#12-M": {
+    "A": 15,
+    "B": 14,
+    "C": 14,
+    "train": 32
+   },
+   "ZNF219|E80#19-M": {
+    "A": 14,
+    "B": 14,
+    "C": 14,
+    "train": 25
+   },
+   "ZNF219|GW16#161-F": {
+    "A": 58,
+    "B": 58,
+    "C": 58,
+    "train": 118
+   },
+   "ZNF219|GW17#136-F": {
+    "A": 81,
+    "B": 82,
+    "C": 82,
+    "train": 161
+   },
+   "ZNF219|GW17#187-M": {
+    "A": 1,
+    "B": 0,
+    "C": 0,
+    "train": 0
+   },
+   "ZNF219|GW18#183-M": {
+    "A": 101,
+    "B": 101,
+    "C": 100,
+    "train": 204
+   },
+   "ZNF219|GW19#139-M": {
+    "A": 34,
+    "B": 33,
+    "C": 34,
+    "train": 68
+   },
+   "ZNF219|GW19#153-F": {
+    "A": 34,
+    "B": 36,
+    "C": 36,
+    "train": 68
+   },
+   "ZNF219|GW21#143-F": {
+    "A": 35,
+    "B": 34,
+    "C": 34,
+    "train": 72
+   },
+   "ZNF219|GW21#154-F": {
+    "A": 17,
+    "B": 16,
+    "C": 16,
+    "train": 32
+   },
+   "ZNF219|GW22#147-M": {
+    "A": 22,
+    "B": 23,
+    "C": 23,
+    "train": 44
+   },
+   "non-targeting|E60#16-F": {
+    "A": 2,
+    "B": 2,
+    "C": 1,
+    "train": 4
+   },
+   "non-targeting|E75#14-F": {
+    "A": 7,
+    "B": 7,
+    "C": 8,
+    "train": 16
+   },
+   "non-targeting|E80#12-M": {
+    "A": 16,
+    "B": 16,
+    "C": 16,
+    "train": 32
+   },
+   "non-targeting|E80#19-M": {
+    "A": 19,
+    "B": 19,
+    "C": 19,
+    "train": 36
+   },
+   "non-targeting|GW16#161-F": {
+    "A": 34,
+    "B": 35,
+    "C": 35,
+    "train": 68
+   },
+   "non-targeting|GW17#136-F": {
+    "A": 53,
+    "B": 52,
+    "C": 52,
+    "train": 104
+   },
+   "non-targeting|GW18#183-M": {
+    "A": 52,
+    "B": 52,
+    "C": 52,
+    "train": 108
+   },
+   "non-targeting|GW19#139-M": {
+    "A": 20,
+    "B": 20,
+    "C": 20,
+    "train": 38
+   },
+   "non-targeting|GW19#153-F": {
+    "A": 20,
+    "B": 20,
+    "C": 20,
+    "train": 41
+   },
+   "non-targeting|GW21#143-F": {
+    "A": 26,
+    "B": 26,
+    "C": 26,
+    "train": 51
+   },
+   "non-targeting|GW21#154-F": {
+    "A": 12,
+    "B": 12,
+    "C": 12,
+    "train": 26
+   },
+   "non-targeting|GW22#147-M": {
+    "A": 22,
+    "B": 22,
+    "C": 22,
+    "train": 40
+   }
+  }
+ },
+ "sha256": {
+  "GSE134242_ARF2019_Sample1_barcode_list.txt.gz": "f0e85e5f6a81b7733b559d653458caf742eeea949e57de942a35005dcf9891fa",
+  "GSE134242_ARF2019_Sample1_samp_id.txt.gz": "d1651b4b7f8a488f12d595373e7e80a7679bfeacdb9afbbe2a8babe9e7ff9f78",
+  "GSE134242_ARF2019_Sample2_barcode_list.txt.gz": "e5476c7c21caf7364accb124d9f9d76e2ca85fa8d694156fab51c26daca559cb",
+  "GSE134242_ARF2019_Sample2_samp_id_flat.txt.gz": "6ae6effc7db92755d4c68c2a89c713f979e6e08989b658c8d98c32d29b4d4798",
+  "GSE134242_ARF2019_Sample3_barcode_list.txt.gz": "46d157e1cc19e0254f0d635e89b2ce6bd2269998ecc8f9780e3ccec13829917b",
+  "GSE134242_ARF2019_Sample3_samp_id_flat.txt.gz": "b415a2b2f604ac34399da934f3f38924e9eefa210ec8cd97e42c78f0cf4fcbc1",
+  "GSE134242_ARF2019_Sample4_barcode_list.txt.gz": "ebed8009af5d0b265543d163720ebf0666b10a813c3265eaa49e4eca72d741fc",
+  "GSE134242_ARF2019_Sample4_samp_id_flat.txt.gz": "c59e7b45dc01349f90d6fadfa90497709d4441b5c2d03576ed75ac1c5855237f",
+  "GSE134242_ARF2019_Sample5_barcode_list.txt.gz": "ed3ad68c80e6cceb3054ef658bbd4cd48dcac6ac0c26dfaec8b4186fe22079a7",
+  "GSE134242_ARF2019_Sample5_samp_id_flat.txt.gz": "1e2fe919f29cf13c344e42ac3ad5ffd28f578b6c0cc42da6e0b6f85797cb7b5a",
+  "GSE284197_clones.h5ad": "3a27529fc77935f3421e000aa4388ce5e061fe62386fed2dba2f4f464cb50818"
+ }
+}
