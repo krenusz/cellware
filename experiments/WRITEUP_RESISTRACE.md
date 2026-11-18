@@ -2,9 +2,9 @@
 
 ## Question
 
-ReSisTrace (Dai et al. 2024, GSE223003) labels ovarian cancer cells (Kuramochi) with lentiviral barcodes, lets
+ReSisTrace (Dai et al. 2024, GSE223003) labels cells of one cultured line with lentiviral barcodes, lets
 them divide once, and splits sister cells. One half is sequenced before treatment (pre). The other half gets a
-drug (carboplatin, olaparib, NK cells) or a control, and the survivors are sequenced (post).
+drug (T1, T2, NK cells) or a control, and the survivors are sequenced (post).
 
 The chapter asked two things:
 1. **Instruction vs selection (primary, as planned):** does the drug *instruct* resistance in cells, or only
@@ -30,7 +30,7 @@ Models are logistic regressions on drug-library lineages:
 
 - **Expression state before treatment carries survival information** beyond a coarse genetic-subclone
   proxy, library and capture quality.
-- **The effect held from train to sealed data** (0.055 -> 0.062). Carboplatin, olaparib and NK libraries are
+- **The effect held from train to sealed data** (0.055 -> 0.062). T1, T2 and NK libraries are
   pooled with the library as a fixed effect; per-drug effects were not tested.
 - **Size:** it adds about 40% to what library + subclone + QC give above chance (AUC above 0.5: 0.160 ->
   0.222). Real but modest: an AUC of 0.72 leaves most survival unpredicted.

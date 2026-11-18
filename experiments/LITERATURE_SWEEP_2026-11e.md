@@ -85,7 +85,7 @@ published form (not verified; Cell page blocked).
 ## 5. Memory of pluripotent states
 
 - **Shaffer et al. 2020 Cell (MemorySeq, Raj lab):** Luria-Delbrück fluctuation analysis with
-  bulk RNA-seq finds genes whose states persist over several divisions (cancer line; not mESC).
+  bulk RNA-seq finds genes whose states persist over several divisions (cultured line; not mESC).
 - Lineages of ESCs show non-Markovian state transitions (PMC8353490; search only): history
   matters.
 - Nanog high/low fluctuations are the classic mESC heterogeneity (search only).

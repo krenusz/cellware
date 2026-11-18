@@ -52,7 +52,8 @@ def serves_step(body, step):
 
 
 def allowed_script(name, f):
-    if name in f.get("allowed_scripts", []):
+    allowed = {str(s).removesuffix(".py") for s in f.get("allowed_scripts", [])}  # entries carry '.py' (RETRO_2026-11-17)
+    if name.removesuffix(".py") in allowed:
         return True
     text = open(LOG, encoding="utf-8").read()
     return any(serves_step(b, f["step"]) and name in b for _, _, b in sections(text))
@@ -189,9 +190,19 @@ def novelty_gate_errors(old_focus, new_focus, read=None):
     return errs
 
 
+COMPUTE_FROM = "2026-11-18"  # pre-registrations from this date need a 'Compute:' line (Bence: "Adopt all seven")
+
+
 def practice_error(exp, date, body):
     if date >= PRACTICE_FROM and "Practice:" not in body:
         return f"{exp}: pre-registration lacks 'Practice:' (program.md practice checklist)."
+    return None
+
+
+def compute_error(exp, date, body):
+    """'Compute: Actions run <url>' or 'Compute: local because <exception>' (practice line, RETRO_2026-11-15)."""
+    if date >= COMPUTE_FROM and not re.search(r"^\s*-?\s*\**Compute:?\**:?\s*\S", body, re.M):
+        return f"{exp}: pre-registration lacks a 'Compute:' line (Actions run, or local because <exception>)."
     return None
 
 
@@ -228,6 +239,8 @@ def commit_msg(path):
                 errs.append(f"{exp}: 'Serves:' must name current step {f['step']} or quote 'Bence OK' (H16).")
             if practice_error(exp, date, body):
                 errs.append(practice_error(exp, date, body))
+            if compute_error(exp, date, body):
+                errs.append(compute_error(exp, date, body))
     if errs:
         sys.stderr.write("commit refused by scope guard:\n  " + "\n  ".join(errs) + "\n")
         sys.exit(1)

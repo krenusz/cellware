@@ -15,7 +15,7 @@
   "lsc_larry A, B, C sealed and unspent; a pooled A+B look on D20 in vivo (power 0.85 at shrunk effect) needs Bence OK and would leave C as last reserve (H13)",
   "EXPOSURE ACCEPTED (Bence 2026-11-13: \"exposure is acceptable if we keep in mind always we use this\"): per-sample pre-resistant family/cell and matched post-cell counts were seen (pooled); state this in every C10 report and power input",
   "C10-S2 CONFIRMED on resistrace:A 2026-11-13 (545ae77): pre-treatment state beyond CNV subclone + QC, delta AUC 0.062, lower 97.5% 0.046, n 5194 lineages (420 survived); B/C sealed. C10 closed 2026-11-14 (Bence: \"Close C10 + write-up\"); mechanism step on train not done; H22 ADOPTED 2026-11-14 (Bence: \"go 3 adopt h22\")",
-  "Pending Bence: four retro practice lines (RETRO_2026-11-14.md); C12 exposure statement in every report",
+  "Retro practice lines from RETRO_2026-11-13/14 ADOPTED 2026-11-18 (Bence: \"Adopt all seven\"; RETRO_2026-11-18_FULL s.4); C12 exposure statement in every report; owed: C12 sim_power redo before any C12 look, drug_resistance topic in lit_gap.py before any drug chapter, DISCOVERIES entries for C7, C8, C12",
   "Watch list re-check about 21 Nov: hESC endoderm data, GSE324482, E-MTAB-17351, DeepTrack 2026, PEtracer GSE342607"
  ],
  "allowed_scripts": [

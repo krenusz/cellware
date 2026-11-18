@@ -76,6 +76,17 @@ The self-challenge block asks "already published?" at the result, which is too l
 | Dataset-specific and sensitive wording in files written before 2026-11-14 (e.g. the DISCOVERIES chapter 10 heading) | RETRO_2026-11-14b | Bence's call | rewrite neutrally (text only; touches no seal) |
 | Public Actions log of run 44073504820 (two gene names and a tool name) | RETRO_2026-11-17b | Bence's call | delete the log |
 
+**Decided 2026-11-18 (Bence: "Adopt all seven"):**
+1. k cap and 2. count-matched placebos: practice lines, "Before a statistic".
+3. Out-of-sample power from spent partitions: practice line, "Before a power claim".
+4. Data search by shape of past successes plus H25: practice line, "When searching for data".
+5. `Compute:` line: enforced by the commit hook for pre-registrations dated 2026-11-18 or later (scope_guard.compute_error; test added).
+6. Allow-list bug: fixed (scope_guard.allowed_script strips `.py`; test added).
+7. Housekeeping:
+   - the five open decisions from RETRO_SWEEP_2026-11-13 s.4 are **dropped** (their chapters are closed);
+   - prose files rewritten in neutral wording (15 files: line, disease and agent names replaced; treatment arms now T1, T2, NK). Code keeps its data keys and the mask list; run logs and generated gap maps (public paper titles) are unchanged; git history still holds the old text;
+   - the public log of run 44073504820 is deleted (API 404 since). Its two artifacts (`results`, `line-1`) still exist until about 1 Dec; deleting them was not asked.
+
 ## 5. Model ledger (since 2026-11-13)
 - 762 Opus, 35 Sonnet, 45 Fable rows. 0 RISK rows.
 - 15 CHECK rows:

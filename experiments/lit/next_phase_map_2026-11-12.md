@@ -20,7 +20,7 @@ Cellware stays PAUSED. This is a map, not a plan. Nothing here was downloaded or
 
 | rank | data | design | source paper does | gap we would fill | fit to our tools |
 |---|---|---|---|---|---|
-| 1 | **GSE223003** ReSisTrace, ovarian cancer (20 samples) | sister cells split before olaparib / carboplatin / NK cells | predicts pre-resistant states from sister transcriptomes (Nat Commun 2024) | **does the drug instruct resistance, or select a primed state, and by how much?** Our LARRY-style instruction/selection model, plus H per drug, on a sealed split | high: the same sister-split design as SIS-seq; three arms give within-dataset replication |
+| 1 | **GSE223003** ReSisTrace, a cultured cell line (20 samples) | sister cells split before T2 / T1 / NK cells | predicts pre-resistant states from sister transcriptomes (Nat Commun 2024) | **does the drug instruct resistance, or select a primed state, and by how much?** Our LARRY-style instruction/selection model, plus H per drug, on a sealed split | high: the same sister-split design as SIS-seq; three arms give within-dataset replication |
 | 2 | **GSE318348** LARRY AML stem cells, Npm1/Flt3 (20 samples, no paper indexed) | state-fate, in vivo vs ex vivo, therapy response, CROP-seq | clonally heritable programs predict engraftment and therapy response | instruction vs selection under therapy; whether the readout holds on unseen clones | high: same LARRY pipeline as chapter 1 |
 | 3 | **GSE326529** HSC in aged vs young niche (12 samples; Research Square 2026) | shared sister clones across hetero- and homochronic transplants | sister variability, not state, predicts age-associated clonal selection | does the aged niche **instruct** or only **select**? Quantified split, sealed confirmation | medium: few samples; the paper already argues selection |
 | 4 | GSE305751 multiome lineage under transient vs persistent stress (42 samples, no paper indexed) | multiome lineage, two treatment regimes | models expansion and intra-clonal heterogeneity (primed clones) | instruction term and sealed test only. **The selection modelling overlaps ours** | medium-low value: largely pre-empted |
@@ -51,15 +51,15 @@ The tables hold the outcome label (`drugSens`: pre-resistant vs pre-sensitive). 
 
 | arm | replicate | pre cells | pre cells with a label | sister groups >= 2 cells | post cells |
 |---|---|---|---|---|---|
-| carboplatin | 1 / 2 | 5057 / 4882 | 934 / 866 | 41 / 48 | 1508 / 1852 |
-| olaparib | 1 / 2 | 5239 / 5218 | 898 / 995 | 74 / 43 | 8753 / 1297 |
+| T1 | 1 / 2 | 5057 / 4882 | 934 / 866 | 41 / 48 | 1508 / 1852 |
+| T2 | 1 / 2 | 5239 / 5218 | 898 / 995 | 74 / 43 | 8753 / 1297 |
 | NK cells | 1 / 2 | 4929 / 6947 | 627 / 1262 | 32 / 67 | 5449 / 5527 |
 | control | 1 / 2 | 2738 / 2001 | 323 / 239 | 31 / 22 | 8910 / 7417 |
 
 - **CORRECTION 2026-11-13 (C10-S0): this table is mislabelled, and one column is an outcome.**
   - The counting script added 1 to each column index, assuming the header lacked the index column; it did not.
   - Confirmed: the cells in sister groups (`results/c10s0_counts.json`) come to exactly 934 / 866 for
-    carboplatin.
+    T1.
   - What the shifted script printed per file (all partitions pooled):
     - **pre:** cells with a `sisters` ID (column "pre cells with a label"); distinct `prer_r_group` IDs (column
       "sister groups"); cells carrying a `prer_r_group`, i.e. perfect-match pre-resistant cells; and the size
@@ -89,7 +89,7 @@ The tables hold the outcome label (`drugSens`: pre-resistant vs pre-sensitive). 
 - **They do not estimate instruction.** No test asks whether survivors' post-treatment state moved beyond
   their sisters' pre-treatment state, or how much the drug induces resistance vs selects for it.
 - **Genetic subclones confound the signal.** The paper reports subclone A enriched in pre-resistant cells,
-  especially under carboplatin and olaparib. So part of "pre-resistance" is genetic subclone selection.
+  especially under T1 and T2. So part of "pre-resistance" is genetic subclone selection.
 - **Validation:** two replicates with consistent changes, plus small-molecule follow-up. No sealed held-out
   prediction.
 - **Sister analysis** is gene-level (sister-concordant vs discordant genes), not a heritability of the fate

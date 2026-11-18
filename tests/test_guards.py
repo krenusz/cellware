@@ -467,6 +467,24 @@ def test_commit_allows_complete_and_bence_ok_preregistrations(box):
     assert box.commit("add T3").returncode == 0
 
 
+def test_commit_refuses_preregistration_without_compute_line(box):
+    box.append_log(prereg(exp="T4", date="2026-11-18"))
+    res = box.commit("add T4")
+    assert res.returncode != 0 and "Compute" in res.stderr
+    text = (box.exp / "EXPERIMENT_LOG.md").read_text(encoding="utf-8")
+    compute = "\nCompute: Actions run (sweeps/t4.txt).\n\n"
+    box.write("EXPERIMENT_LOG.md", text.rstrip("\n") + compute)
+    assert box.commit("add T4").returncode == 0
+
+
+def test_allowed_scripts_match_with_or_without_py_suffix():
+    sys.path.insert(0, str(EXP / "hooks"))
+    import scope_guard as sg
+
+    f = {"step": "X", "allowed_scripts": ["c14s0_gate.py", "c13s0_format"]}
+    assert sg.allowed_script("c14s0_gate", f) and sg.allowed_script("c13s0_format", f)
+
+
 def test_commit_refuses_log_without_marker(box):
     text = (box.exp / "EXPERIMENT_LOG.md").read_text(encoding="utf-8").replace(MARKER, "")
     box.write("EXPERIMENT_LOG.md", text)

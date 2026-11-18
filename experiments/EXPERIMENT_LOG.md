@@ -966,7 +966,7 @@ too few day-2 cells. It is either absent from expression (e.g. epigenetic) or se
 |---|---|---|---|
 | Rodriguez-Fraticelli 2020 Nature (TCF15), LARRY in transplanted HSCs | sisters across HSC and mature compartments, 16-24 wk | GEO GSE134242 (via OmicsDI; check on GEO) | best next test: clone state (HSC transcriptome) vs fate, in vivo |
 | Scherer 2025 Nature (EPI-Clone), LARRY + single-cell methylation | clone fate vs methylation state: tests the "hidden = epigenetic" reading of track B | Nature / PMC12240852; accession not yet found | high value for B's open question |
-| Singh 2025 Cell Stem Cell, LARRYv2 HSCs +/- leukemic drivers | clonal responses split by mutation | accession not checked | condition split, but leukemic |
+| Singh 2025 Cell Stem Cell, LARRYv2 HSCs +/- disease-model alleles | clonal responses split by mutation | accession not checked | condition split, but disease-model |
 | DARLIN (Li 2023 Cell) | single time point, no sister split | CoSpar link 404; Zenodo 10.8 GB | not a test for our statistics |
 | Xue 2026 Adv Sci, human hematopoietic organoids, LARRY + MAESTER | day 4 vs day 8, human; reports LARRY barcode homoplasy | PMC13042525 | human in vitro time series; check |
 | PolyloxExpress (GSE152555) | in vivo HSC clones | GEO | secondary |
@@ -10605,7 +10605,7 @@ The numbers are unchanged from the result files.)*
 ### C10-S0 amendment 3 (2026-11-13, before any expression is read): simulation at real structure + null worlds
 
 - `c10s0_sim.py real` (synthetic only). Family counts per sealed third come from the train counts x 0.5:
-  - families with >= 2 post cells: Olaparib_1 58, NK_1 41, NK_2 53; Control_1 37, Control_2 18;
+  - families with >= 2 post cells: T2_1 58, NK_1 41, NK_2 53; Control_1 37, Control_2 18;
   - post cells per family drawn from 1: 0.4, 2: 0.35, 3: 0.12, 4+: 0.13.
 - **Two estimators:** F2 (families with >= 2 post cells) and Fall (all linked families, mean noise variance
   sigma_w^2 / n_i, with sigma_w from the >= 2 families).
@@ -10625,13 +10625,13 @@ The numbers are unchanged from the result files.)*
   - Extra family drift is indistinguishable from family instruction, so S reads as instruction only against a
     time- and division-matched control.
 - **Consequences, fixed now:**
-  1. **Primary pairing:** Olaparib_1 vs Control_1, both 13 days by the inferred mapping (confirm in Dai 2024
+  1. **Primary pairing:** T2_1 vs Control_1, both 13 days by the inferred mapping (confirm in Dai 2024
      Supp. Data 11 before any look).
      - NK (8 days) is reported only as biased against a finding.
-     - Carboplatin and Olaparib_2 are out (too few families with >= 2 post cells).
+     - T1 and T2_2 are out (too few families with >= 2 post cells).
   2. **F2 estimator fixed:** the within-family term uses the per-family 1/n correction (sigma_w^2 x mean(1/n_i)),
      as Fall does.
-     - New null C: the arms' real train size distributions (Olaparib_1 3.65 vs Control_1 2.29 post cells per
+     - New null C: the arms' real train size distributions (T2_1 3.65 vs Control_1 2.29 post cells per
        family), with size correlated with state.
   3. **Stop bar in S units:** mean S at each tau is printed.
      - Power will come from subsampling **train** families to sealed-third size, with a 0.5 shrink on train S.
@@ -10708,14 +10708,14 @@ Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cell
   - It passes. The earlier P1 failure was the k = 30 design error.
 - **P2, count-matched (39 groups, 200 repeats, median):**
 
-  | library | Carboplatin_1 | Carboplatin_2 | Olaparib_1 | Olaparib_2 | NK_1 | NK_2 | Control_1 | Control_2 |
+  | library | T1_1 | T1_2 | T2_1 | T2_2 | NK_1 | NK_2 | Control_1 | Control_2 |
   |---|---|---|---|---|---|---|---|---|
   | logF | 1.89 | 1.86 | **1.65** | 1.87 | 1.89 | 1.79 | **2.02** | 2.36 |
 
   - **Range 0.72 >= 0.5: the stop rule fires again.**
 - **Reading:**
   - The library spread is not a small-n artefact; count matching barely moved it.
-  - The primary pairing's own libraries (Olaparib_1 1.65 vs Control_1 2.02) differ by 0.37 before any drug. That
+  - The primary pairing's own libraries (T2_1 1.65 vs Control_1 2.02) differ by 0.37 before any drug. That
     is about 70% of the bar.
   - Any drug-vs-control family contrast inherits this library effect.
 - **Self-challenge:**
@@ -10762,7 +10762,7 @@ Bence: "retry after a retro". Script: `c10s0_placebo.py --v5` (same allowed cell
   4. **Power:** this step.
   5. **Exposure:** accepted pooled per-sample survival counts; the C10 placebo (train).
   6. **Literature:** C10_top5.md. Dai 2024 reports subclone enrichment without a split; Goyal 2023 argues against
-     genetic drivers in melanoma.
+     genetic drivers in one disease model.
   - **Readout gate:** linked rate per library shown on train.
 - **Practice:**
   - smoke test: the CNV proxy must separate cells into >= 2 groups with silhouette > 0.1, otherwise the genetic

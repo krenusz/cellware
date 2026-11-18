@@ -40,7 +40,7 @@ known prior information for any C7-C1 on that data. It is recorded here.
 - **GSE306002**, motor neuron multiome: no lineage barcodes.
 - **GSE264015**, SC-islet alpha/beta: reporter lineage labelling, not clones.
 - **EPI-Clone, GSE282971:** methylation clones + protein, no RNA.
-- **GALILEO 2024, ARID1A 2025, B-ALL GSE302493:** cancer clones, outside the chapter question.
+- **GALILEO 2024, ARID1A 2025, GSE302493:** disease-model clones, outside the chapter question.
 
 ## Still private (watch)
 

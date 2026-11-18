@@ -290,6 +290,11 @@ pre-registration dated 2026-11-13 or later without it.
 - State-beyond-baseline tests: run a train confound battery (batch or library, well or tag, multi-unit
   cells, detection level) before any power claim (11-14b).
 - Report deltas net of the label-shuffle null mean (11-14b).
+- Any regression on learned features (PCs, components, embeddings) caps k at n_units / 5; featuriser choice is
+  limited to k values that meet the cap (11-13; C10 placebo P1 had 31 regressors on 36-75 families; adopted
+  2026-11-18, Bence: "Adopt all seven").
+- Placebos that compare libraries (or any units of unequal size) are matched for unit count by subsampling to the
+  smallest (11-13; C10 placebo P2; adopted 2026-11-18).
 
 **Before a power claim**
 - Every power simulation gets a synthetic smoke test with a known answer (11-15; C14-S1a index bug).
@@ -301,6 +306,15 @@ pre-registration dated 2026-11-13 or later without it.
 - Before any power for a sealed look, count the partition's usable units (units that can carry the
   statistic) against the oracle's rule (at least 2 per group, H14); stop there if it fails (11-17c; C16-S4a
   powered a B look on one usable embryo).
+- Where spent partitions of the same data set exist, power for a new sealed look uses the out-of-sample effect
+  on them; train CV with a guessed shrink only when none exist (11-14; C9-S2 train 0.30 vs spent 0.26, power
+  0.84 -> 0.71; adopted 2026-11-18).
+
+**When searching for data**
+- Score candidates by the shape of past successes: lineage or clone unit; >= ~100 units per sealed partition
+  after a 40/20/20/20 split; state measured before the fate readout; public now; and the source paper has not
+  answered the question at claims level (H25). Replicated-condition contrasts need >= 3 per arm (H22) and rank
+  second (11-14; adopted 2026-11-18).
 
 **At chapter opening**
 - Run the novelty search per planned finding (each step's expected result), not per chapter topic. While a

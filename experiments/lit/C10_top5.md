@@ -6,7 +6,7 @@ selection and drug instruction in one quantified model with held-out confirmatio
 
 | paper | design | quantifies the induced share? | held-out? | read |
 |---|---|---|---|---|
-| Shaffer 2017 Nature (vemurafenib, melanoma) | RNA FISH + fluctuation | no: rare pre-state, then reprogrammed by the drug (qualitative) | no | abstract |
+| Shaffer 2017 Nature (one agent, one cultured line) | RNA FISH + fluctuation | no: rare pre-state, then reprogrammed by the drug (qualitative) | no | abstract |
 | Goyal 2023 Nature (FateMap) | barcodes + scRNA, twin split | no: resistant fate type mostly set before drug; dose switches it; no recurrent mutations | 80/20 classifier, FISH | full text ~45% |
 | Russo 2022 Nat Genet (CRC, EGFR/BRAF) | two-step fluctuation + population model | yes, but **genetic only** (drug raises mutation rate 7-50x); no non-genetic pre-state | no | abstract |
 | Eyler 2020 Genome Biol (GBM, dasatinib) | barcodes + scRNA, replicate splits | no: names all three routes (CNV jackpots, shared lineage, Notch persisters), no model | partial replication | full text ~80% |
@@ -43,7 +43,7 @@ replicate. **Limits:** three of the five are abstract-only, and the search was n
   - **no paired post-family vs pre-sister state comparison, and no within-family post spread**;
   - "induced" appears only in a separate, non-lineage drug-vs-DMSO experiment;
   - subclones were called with inferCNV v1.7.1 (subclusters, Leiden 0.5).
-- **Time per arm (inferred mapping, confirm in Supp. Data 11):** carboplatin 3 + 10 days, olaparib 7 + 6 days, NK
+- **Time per arm (inferred mapping, confirm in Supp. Data 11):** T1 3 + 10 days, T2 7 + 6 days, NK
   1 + 7 days, control 13 days of culture. **NK is about 5 days shorter**, so a drug-vs-control spread contrast
   confounds NK with drift time.
 - **Verdict:** S (family-level post spread beyond the pre-sister prediction, drug vs control) is not done in any of
