@@ -71,7 +71,10 @@
   "c12s0_lsc.py",
   "c12s1_select.py",
   "c17s0b_struct.py",
-  "c17s0c_seal.py"
+  "c17s0c_seal.py",
+  "c17s1_joint.py",
+  "c17s2_loso.py",
+  "c17s3_look.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
