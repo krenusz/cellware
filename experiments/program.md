@@ -225,6 +225,19 @@ before every look and refuses on any failure.
     outcome, a state label's composition or a result.
   - Existing sealed sets are not redrawn under this rule (H7, H11). The one exception, growth12_host_v2, had
     Bence's OK and no statistic before it.
+- **H25 Novelty gate at every new chapter and every new hypothesis.** (RETRO_2026-11-17c; Bence 2026-11-18:
+  "this check needs to happen every time we select new chapter and hypothesis to see what we want to work on is
+  something that already published". C16 ran eight steps on biology already published on the same data,
+  Colgan 2026; found only at the close.)
+  - Before FOCUS.json moves to any new step (a new chapter or a new hypothesis inside one), write
+    `experiments/lit/novelty/<step>.md` from `TEMPLATE.md`: each planned finding (`Finding:`) with its expected
+    result, a `Verdict:` (published / partly published / not found) with the papers, a `Searched:` line (sources,
+    queries, date) and a `Source paper:` line (what of the data set's source paper was checked, or why not).
+  - A finding marked `published` is not pursued unless Bence quotes his OK on a line
+    `Published but proceeding: Bence: "..."` (e.g. a replication or method test is the point).
+  - The search covers each finding, not the chapter topic, and runs before any script for that step.
+  - Bookkeeping steps (PAUSED, CLOSED, close, retro) are exempt.
+  - **Enforced by the commit-msg hook** (scope_guard.novelty_gate_errors); tests in test_guards.py.
 - **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log
   cite them).
 

@@ -14,6 +14,7 @@ Power (one rule, three gates; arithmetic only from experiments/power.py)
 - Effect and sd come from named used results; list every spent result that constrains an input.
 - H22 Name the treatment-assignment unit at S0; < 3 per arm for a between-condition contrast = stop. Re-check on every amendment.
 - H23 Closing or pausing a chapter = retro in the same session, title "<chapter> close", before the next chapter (commit hook enforces).
+- H25 Every new chapter AND every new hypothesis (FOCUS step) first gets lit/novelty/<step>.md: each planned finding with a verdict (published / partly / not found), Searched:, Source paper:; a published finding needs Bence's quoted OK to proceed (commit hook enforces).
 Before a pre-registration
 - H15 Pre-flight block: unit, readout, used data first, power, exposure, literature access, readout gate.
 - H16 Serves: line naming the current FOCUS step; no work outside the chapter question without Bence's OK.

@@ -96,6 +96,7 @@ class Box:
         self.exp = root / "experiments"
         (self.exp / "hooks").mkdir(parents=True)
         (self.exp / "selection").mkdir()
+        (self.exp / "lit" / "novelty").mkdir(parents=True)
         for name in ("test_oracle.py", "check_sealed.py", "power.py", "RULES_DIGEST.md"):
             shutil.copy(EXP / name, self.exp / name)
         shutil.copy(EXP / "hooks" / "scope_guard.py", self.exp / "hooks" / "scope_guard.py")
@@ -152,6 +153,17 @@ class Box:
     def append_log(self, text):
         with open(self.exp / "EXPERIMENT_LOG.md", "a", encoding="utf-8", newline="\n") as f:
             f.write(text)
+
+    def novelty(self, step, text=None):
+        """A valid H25 novelty file for a step, unless text is given."""
+        self.write(
+            f"lit/novelty/{step}.md",
+            text
+            or (
+                f"# {step} novelty\n- Searched: OpenAlex, web\n- Source paper: abstract read\n"
+                "- Finding: x\n  - Verdict: not found\n"
+            ),
+        )
 
     def focus(self, **over):
         f = {"step": "C9-S2", "question": "toy question.", "next_steps": ["n"], "parked": ["p"]}
@@ -359,6 +371,7 @@ def test_commit_refuses_focus_change_without_bence_quote(box):
 
 def test_commit_refuses_new_chapter_without_value_and_literature(box):
     box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close\n")
+    box.novelty("C10-S1")
     box.focus(step="C10-S1")
     res = box.commit('open chapter 10\n\nBence: "go"')
     assert res.returncode != 0 and "H20" in res.stderr
@@ -367,6 +380,7 @@ def test_commit_refuses_new_chapter_without_value_and_literature(box):
 
 
 def test_commit_allows_same_chapter_step_and_pause_after_close_retro(box):
+    box.novelty("C9-S3")
     box.focus(step="C9-S3")
     assert box.commit('next step\n\nBence: "go"').returncode == 0
     box.focus(step="PAUSED")
@@ -380,11 +394,44 @@ def test_commit_refuses_leaving_chapter_without_close_retro(box):
     box.write(
         "RETRO_2026-11-13.md", "# Retro 2026-11-13: C8 closed, C9 opened\n"
     )  # names C9, not its close
+    box.novelty("C10-S1")
     box.focus(step="C10-S1", value="adds x", literature="top 5 read")
     res = box.commit('open chapter 10\n\nBence: "go"')
     assert res.returncode != 0 and "H23" in res.stderr
     box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close (S2 look, write-up)\n")
     assert box.commit('open chapter 10\n\nBence: "go"').returncode == 0
+
+
+def test_commit_refuses_new_step_without_novelty_check(box):
+    box.focus(step="C9-S3")
+    res = box.commit('next hypothesis\n\nBence: "go"')
+    assert res.returncode != 0 and "H25" in res.stderr
+    no_verdict = "# C9-S3\n- Searched: web\n- Source paper: read\n- Finding: x\n"
+    box.novelty("C9-S3", no_verdict)
+    res = box.commit('next hypothesis\n\nBence: "go"')
+    assert res.returncode != 0 and "Verdict" in res.stderr
+    box.novelty("C9-S3")
+    assert box.commit('next hypothesis\n\nBence: "go"').returncode == 0
+
+
+def test_commit_refuses_published_finding_without_bence_ok(box):
+    pub = "# C9-S3\n- Searched: web\n- Source paper: read\n- Finding: x\n  - Verdict: published\n"
+    box.novelty("C9-S3", pub)
+    box.focus(step="C9-S3")
+    res = box.commit('next hypothesis\n\nBence: "go"')
+    assert res.returncode != 0 and "Published but proceeding" in res.stderr
+    box.novelty("C9-S3", pub + 'Published but proceeding: Bence: "yes, replicate it"\n')
+    assert box.commit('next hypothesis\n\nBence: "go"').returncode == 0
+
+
+def test_novelty_gate_skips_bookkeeping_steps():
+    sys.path.insert(0, str(EXP / "hooks"))
+    import scope_guard as sg
+
+    none = lambda p: None  # noqa: E731
+    for step in ("PAUSED", "C16-close", "C14 CLOSED", "C9-S2"):
+        assert sg.novelty_gate_errors({"step": "C9-S2"}, {"step": step}, read=none) == []
+    assert sg.novelty_gate_errors({"step": "C9-S2"}, {"step": "C9-S3"}, read=none)
 
 
 def test_chapter_of_reads_closed_and_step_labels():

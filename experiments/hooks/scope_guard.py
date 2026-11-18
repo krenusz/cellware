@@ -11,7 +11,8 @@ Modes
   commit-msg F   git commit-msg hook: FOCUS.json changes need 'Bence:' in the message; new
                  pre-registrations (below the scope-guard marker in EXPERIMENT_LOG) need `Pre-flight:` and a `Serves:` line naming
                  the current step (or quoting 'Bence OK'), and from 2026-11-13 a `Practice:` line; a FOCUS.json
-                 change that opens a new chapter needs `value` and `literature` fields (H20).
+                 change that opens a new chapter needs `value` and `literature` fields (H20); a FOCUS.json
+                 change to any new step needs experiments/lit/novelty/<step>.md (H25 novelty gate).
 
 Stdlib only; run with -I.
 """
@@ -151,6 +152,43 @@ def chapter_gate_errors(old_focus, new_focus):
     return [f"FOCUS.json opens chapter {new_ch} without '{k}' (H20 value and literature gate)." for k in missing]
 
 
+NOVELTY_DIR = os.path.join(EXP, "lit", "novelty")
+VERDICT_RE = re.compile(r"^\s*-?\s*Verdict:\s*(published|partly published|not found)\b", re.I | re.M)
+NO_GATE_RE = re.compile(r"PAUSED|CLOSED|close|retro", re.I)  # bookkeeping steps, no new hypothesis
+
+
+def novelty_gate_errors(old_focus, new_focus, read=None):
+    """H25: a FOCUS change to a new step (new chapter or new hypothesis) needs experiments/lit/novelty/<step>.md:
+    one 'Verdict:' per 'Finding:', a 'Searched:' line, a 'Source paper:' line, and Bence's quoted OK on a line
+    'Published but proceeding:' if any finding is already published."""
+    step = str(new_focus.get("step", "")).strip()
+    if not step or step == str((old_focus or {}).get("step", "")).strip() or NO_GATE_RE.search(step):
+        return []
+    path = os.path.join(NOVELTY_DIR, f"{step}.md")
+    if read is None:
+        read = lambda p: open(p, encoding="utf-8").read() if os.path.exists(p) else None  # noqa: E731
+    text = read(path)
+    tag = f"experiments/lit/novelty/{step}.md"
+    if text is None:
+        return [f"FOCUS.json opens step {step} without a novelty check: write {tag} (H25; template "
+                f"experiments/lit/novelty/TEMPLATE.md)."]
+    errs = []
+    findings = len(re.findall(r"^\s*-?\s*Finding:", text, re.M))
+    verdicts = VERDICT_RE.findall(text)
+    if findings == 0 or findings != len(verdicts):
+        errs.append(f"{tag}: needs one 'Verdict: published | partly published | not found' per 'Finding:' "
+                    f"({findings} findings, {len(verdicts)} verdicts) (H25).")
+    for key in ("Searched:", "Source paper:"):
+        if key not in text:
+            errs.append(f"{tag}: lacks a '{key}' line (H25).")
+    if any(v.lower() == "published" for v in verdicts) and not re.search(
+        r"Published but proceeding:.*Bence:", text
+    ):
+        errs.append(f"{tag}: a finding is already published; proceeding needs a line "
+                    f"'Published but proceeding: Bence: \"...\"' (H25).")
+    return errs
+
+
 def practice_error(exp, date, body):
     if date >= PRACTICE_FROM and "Practice:" not in body:
         return f"{exp}: pre-registration lacks 'Practice:' (program.md practice checklist)."
@@ -170,6 +208,7 @@ def commit_msg(path):
             old_f, new_f = (json.loads(old_txt) if old_txt else {}), json.loads(new_txt)
             errs += chapter_gate_errors(old_f, new_f)
             errs += retro_gate_errors(old_f, new_f, retro_titles())
+            errs += novelty_gate_errors(old_f, new_f)
     if "experiments/EXPERIMENT_LOG.md" in staged:
         f = json.loads(subprocess.run(["git", "show", ":experiments/FOCUS.json"], capture_output=True,
                                       text=True).stdout or open(FOCUS, encoding="utf-8").read())
