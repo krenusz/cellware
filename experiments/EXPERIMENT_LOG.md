@@ -12151,3 +12151,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   7. Readout gate: not applicable.
 - **Practice:** structure-only, smoke = row counts match between barcode and sample-ID files (mismatch reported, not repaired).
 - **Compute:** GitHub Actions run (sweeps/c17s0b_struct.txt); nothing run locally.
+
+### C17-S0b result (2026-11-18; Actions run 44321907643; `results_c17/c17s0b_struct.json`; structure only)
+- **GSE134242 (LARRY-barcoded HSC transplants):** five sample sets, each **2 recipients** (S1 84/85, S2 1773/1774, S4 E2/E3, S5 CropA/CropB) except S3 (one recipient, 1992); HSC and Kit+ libraries per recipient.
+  - Clones shared across the two recipients with >= 3 cells in each: S2 3, S4 27, **S5 117**; S3 none (single recipient).
+  - S1: my parser took the compartment (HSC/Kit) as the recipient; 58 clones span both compartments with >= 3 cells each. Its recipient split (84 vs 85) is not counted yet (parser fix in the next step).
+  - Reading: a recipient-split sister design exists, with about 150 usable shared clones, mostly in S5. Unit for a within-clone agreement test is the clone; no condition contrast across recipients, so the H22 per-arm rule is not triggered. As a transplant system it is a leave-one-system-out target, not a contrast.
+- **GSE284197 (cortical CRISPRi):**
+  - `screen.h5ad` (4.45 GB; 27 MB read over range requests): 137,317 cells; per-cell `sgRNA` and `Gene_target_single` (46 levels: the 44 TFs plus controls); `perturbation` NT / Perturbed / WT; 4 individuals; 2 timepoints (day 0, day 7). **Per-cell guide calls confirmed**: the perturbation side of the join works.
+  - `clones.h5ad` (8 MB): 10,328 rows with `n_cells`, `Clonal cluster` (5), `Gene_target` (5 TFs + non-targeting), `sgRNA_effective`, 13 donor batches, 9 stages: **perturbation assigned per clone with lineage barcodes**. Clone = unit; perturbation is the clone-level treatment.
+- **Exposure:** counts, column names, guide and donor labels only. No expression, cluster composition or fate read.
