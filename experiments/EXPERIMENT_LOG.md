@@ -12324,3 +12324,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Identifiability is uneven: SIS's selection and instruction are not identified (R3); the gastruloid's selection is not identified. The only parameter identified in all three systems is a memory quantity (heritable share or per-division/per-event retention).
 - **CellTag LSK inventory (structure from partitions.py and the C7 log):** 6,822 clones; the day-2.5 siblings are profiled (RNA/ATAC), and the day-5 siblings (r1/r2) carry fate. This is a time-split design, and its train rows are used data from C7 (A spent; B/C sealed). It can identify memory (the heritable share from a day-2.5 state to the day-5 sibling fate), not instruction (one culture condition). It would bring committed blood to 3 systems for the memory parameter.
 - **Bottleneck:** the pluripotent class has one system. Candidates: the hESC endoderm sister-well set (not public), PEtracer embryo trees (need tree emission; petracer_embryo A spent, B one usable embryo), CellTag reprogramming (a third class, fibroblast reprogramming, not pluripotent). A committed-vs-pluripotent law test needs at least two more pluripotent systems.
+
+## C17-S1D: data sweep for new systems of the general model, and the watch list (pre-registered 2026-11-19; Bence: "do a retro citation map mand swep for data also")
+- Serves: C17-S1 (C17-S1R: grow the systems; parameter table has committed blood 2, pluripotent 1). Script c17_data_sweep.py, on Actions.
+- Pre-flight:
+  1. Unit: a public dataset record (GEO series, Zenodo record, BioStudies/ArrayExpress study).
+  2. Readout: metadata only (H9): accession, title, year, sample count, organism, keyword flags (lineage method, sister/split/passage/memory design, pluripotent/organoid/embryo vs blood system, single-cell). No data file is downloaded; summaries are used for flags and are not stored.
+  3. Used data first: records already named in the project (accession found in EXPERIMENT_LOG, lit notes, partitions.py or FOCUS.json) are flagged `known` (H5 provenance); new candidates are sealed before any statistic if adopted (H1/H24).
+  4. Power: not applicable; the sweep counts candidate systems per cell class (the law test needs >= 3 per class).
+  5. Exposure: titles and design keywords only. Records whose title carries disease-domain terms, or whose summary carries tumour/leukaemia/patient/drug-resistance terms, are dropped (standing exclusion). Cell-line names in titles are masked.
+  6. Literature access: public catalogue APIs without keys (NCBI E-utilities, Zenodo records API, EBI BioStudies); no account, no personal data in requests.
+  7. Readout gate: not applicable.
+- Watch list (FOCUS.json; retro step 5): GSE324482 and GSE342607 (public or not), E-MTAB-17351 (public or not), hESC endoderm sister-well data and DeepTrack (GEO title search).
+- Practice: offline selftest of flags, masking, domain drop and scoring before dispatch (practice line 2026-11-19).
+- Compute: GitHub Actions run (sweeps/c17_data_sweep.txt).

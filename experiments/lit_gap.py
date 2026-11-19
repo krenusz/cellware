@@ -115,6 +115,18 @@ SEEDS = {
     "Hormoz 2016 (state transitions from lineage trees)": "10.1016/j.cels.2016.10.015",
     "Beaulieu 2013 (hidden-rate trait model)": "10.1093/sysbio/syt034",
     "Colgan 2026 Cell (embryo data source; titles and abstracts only)": "10.1016/j.cell.2026.09.050",
+    # chapter 17 (one clone model across systems; split-recipient transplants), added at retro 2026-11-19b
+    "Rodriguez-Fraticelli 2020 (LARRY HSC transplants, split recipients; sealed set source)": "10.1038/s41586-020-2503-6",
+    "Rodriguez-Correa 2026 (kinetics model, extrinsic lineage bias)": "10.1038/s41556-026-01958-0",
+    "Ding 2026 (cortical TF CRISPRi + lineage; sealed set source)": "10.1038/s41586-025-09997-7",
+    "Muller-Sieburg 2002 (daughter HSCs of a clone share lineage contribution)": "10.1182/blood.v100.4.1302.h81602001302_1302_1309",
+    "Dykstra 2007 (distinct HSC programs propagate on serial transplant)": "10.1016/j.stem.2007.05.015",
+    "Yu 2016 (epigenetic memory, clone-autonomous HSC behaviour)": "10.1016/j.cell.2016.10.045",
+    "Klein & Simons 2011 (universal patterns of stem cell fate)": "10.1242/dev.060103",
+    "Wang 2022 (CoSpar, fate bias from lineage + state)": "10.1038/s41587-022-01209-1",
+    "Busch 2015 (unperturbed haematopoiesis from stem cells)": "10.1038/nature14242",
+    "Carrelha 2018 (lineage-restricted fates of multipotent HSCs)": "10.1038/nature25455",
+    "Pei 2017 (Polylox, HSC fates in vivo)": "10.1038/nature23653",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -193,6 +205,11 @@ TOPICS = {
                      r"clonal (split|splitting)", r"barcod.{0,60}(divided|split)"],
     "replicate_units": [r"embryos", r"replicate", r"independent (mice|animals|embryos|individuals|donors)",
                         r"geo accession", r"data availability", r"atlas"],
+    # C17 retro 2026-11-19b: cross-system clone laws and transplant clone behaviour
+    "cross_system_model": [r"universal", r"across (tissues|systems|organs|species)", r"general (model|law|principle)",
+                           r"clone.size distribution", r"scaling", r"meta-analys", r"hierarchical model"],
+    "transplant_clonal": [r"transplant", r"engraft", r"repopulat", r"(myeloid|lymphoid|lineage).bias",
+                          r"clonal (behaviou?r|output|heterogeneity)", r"daughter (cells|hscs?)"],
     "inference_identifiability": [
         r"identifiab",
         r"inference",
@@ -206,14 +223,14 @@ TOPICS = {
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "cellware-lit-gap"})
-    for attempt in range(4):
+    for attempt in range(5):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
                 return json.load(r)
         except Exception:
-            if attempt == 3:
+            if attempt == 4:
                 raise
-            time.sleep(2 * (attempt + 1))
+            time.sleep(5 * (attempt + 1))
 
 
 def works(filt, pages=3):
@@ -274,17 +291,25 @@ def access(w):
 
 def main(top=40, tag=""):
     os.makedirs(LIT, exist_ok=True)
-    pool, seed_ids = {}, {}
+    pool, seed_ids, unresolved = {}, {}, []
     for name, doi in SEEDS.items():
-        w = get(f"{API}/doi:{doi}?select=id,referenced_works,display_name")
+        try:
+            w = get(f"{API}/doi:{doi}?select=id,referenced_works,display_name")
+        except Exception as e:  # noqa: BLE001  (a wrong or unindexed DOI must not stop the map)
+            unresolved.append(f"{name} ({doi}): {str(e)[:60]}")
+            continue
         sid = w["id"].rsplit("/", 1)[-1]
         seed_ids[sid] = name
         refs = [r.rsplit("/", 1)[-1] for r in w.get("referenced_works", [])]
-        for i in range(0, len(refs), 50):
-            for x in works("openalex_id:" + "|".join(refs[i : i + 50]), pages=1):
-                pool.setdefault(x["id"], (x, set()))[1].add(f"cited by {name}")
-        for x in works(f"cites:{sid}"):
-            pool.setdefault(x["id"], (x, set()))[1].add(f"cites {name}")
+        try:
+            for i in range(0, len(refs), 50):
+                for x in works("openalex_id:" + "|".join(refs[i : i + 50]), pages=1):
+                    pool.setdefault(x["id"], (x, set()))[1].add(f"cited by {name}")
+            for x in works(f"cites:{sid}"):
+                pool.setdefault(x["id"], (x, set()))[1].add(f"cites {name}")
+        except Exception as e:  # noqa: BLE001
+            unresolved.append(f"{name} ({doi}) partial: {str(e)[:60]}")
+    print(f"seeds resolved {len(seed_ids)} of {len(SEEDS)}; unresolved or partial: {unresolved}", flush=True)
     read = read_dois()
     rows = []
     for wid, (w, via) in pool.items():
@@ -320,7 +345,8 @@ def main(top=40, tag=""):
     lines = [
         f"# Literature gap map, {date}",
         "",
-        f"Citation neighbourhood of {len(SEEDS)} core papers: {len(pool)} works, {len(rows)} "
+        f"Citation neighbourhood of {len(seed_ids)} of {len(SEEDS)} core papers (unresolved: {len(unresolved)}): "
+        f"{len(pool)} works, {len(rows)} "
         f"relevant to at least two open questions, {sum(r['read'] for r in rows)} already read.",
         "",
         f"**Top {len(unread)} unread:** {sum(r['status'] == 'open' for r in unread)} open access, "
