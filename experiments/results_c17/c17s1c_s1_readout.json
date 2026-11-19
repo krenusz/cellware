@@ -1,0 +1,65 @@
+{
+ "arm1": {
+  "cells": 1291,
+  "types": 14,
+  "frequency": {
+   "NbGABA0": 0.1983,
+   "NbGABABL": 0.1975,
+   "NPBL": 0.1905,
+   "NPBM": 0.1301,
+   "NbBM0": 0.0767,
+   "NbGLUAL1": 0.0542,
+   "NbBM1": 0.0426,
+   "NbGABABI": 0.0294,
+   "NbGLUAL2": 0.0248,
+   "Rgl1": 0.0225,
+   "NbFP": 0.0178,
+   "OMTN": 0.0139,
+   "GLUAL": 0.0008,
+   "Peric": 0.0008
+  },
+  "kept": [
+   "NPBL",
+   "NPBM",
+   "NbBM0",
+   "NbGABA0",
+   "NbGABABL",
+   "NbGLUAL1"
+  ]
+ },
+ "arm2": {
+  "cells": 1755,
+  "types": 19,
+  "frequency": {
+   "GABABL1": 0.2365,
+   "GABABL4": 0.1595,
+   "GABABL2": 0.0855,
+   "GABABI": 0.0855,
+   "GLUBM2": 0.0627,
+   "GLUAL1": 0.0536,
+   "NbGLU": 0.0479,
+   "DA": 0.0405,
+   "Rgl2BP": 0.037,
+   "NbGABABI": 0.033,
+   "GLUBM1": 0.0313,
+   "GLUMHB1": 0.0302,
+   "NbDA": 0.0251,
+   "RglUnk": 0.0222,
+   "GLUFP": 0.016,
+   "Rgl3": 0.0142,
+   "NbBM1": 0.0097,
+   "GABA_unk": 0.008,
+   "NbFP": 0.0017
+  },
+  "kept": [
+   "GABABI",
+   "GABABL1",
+   "GABABL2",
+   "GABABL4",
+   "GLUAL1",
+   "GLUBM2"
+  ]
+ },
+ "units": 123,
+ "gate_pass": true
+}

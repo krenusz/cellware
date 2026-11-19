@@ -12496,3 +12496,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Smoke (200 sets, alpha 0.025): plain null 4.5%, embryo-offset null 5.0%, size-only null 3.5% (all <= 5%); planted H 0.9 100%. **PASS** (embryo-offset null exactly at the limit).
 - Power on the 123 train arm sizes: **H 0.66, sigma 1.0: 0.965 (K 6) / 0.98 (K 8) -> gate passed.** Sensitivity: sigma 0.5 gives 0.53-0.56 at H 0.66 and 0.75-0.77 at H 0.81; H 0.33 gives 0.11-0.61. So a null result would rule out strong, broad between-clone fate bias, not weak bias.
 - Next, pre-registered order: `readout` (H21 gate), then `train`.
+
+### C17-S1C-S1 readout gate (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44616950244; train clones only)
+- 123 train clones; arm 1 (in vivo E11) 1,291 cells over 14 types, arm 2 (organoid) 1,755 cells over 19 types.
+- Kept by the fixed rule (>= 5%): arm 1 six types (progenitor and early neuroblast groups, 85% of cells), arm 2 six types (GABAergic and glutamatergic neuron groups, 68% of cells); the rest pooled as "other". Arm 1 is mostly progenitors/neuroblasts, arm 2 mostly neurons, as the design implies.
+- **Gate passed** (>= 30 clones, >= 2 kept types per arm). Next: `train`.
