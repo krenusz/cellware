@@ -55,10 +55,19 @@ def kernel(F1):
     return W
 
 
-def predictability(W, F2):
+def predictability(W, F2, ids=None):
+    """ids (amendment 1): original clone id per row; copies of a row's clone are excluded from its prediction
+    and its population mean (bootstrap resamples)."""
     n = len(F2)
-    hat = W @ F2 / W.sum(1, keepdims=True)
-    pop = (F2.sum(0)[None, :] - F2) / (n - 1)
+    if ids is None:
+        hat = W @ F2 / W.sum(1, keepdims=True)
+        pop = (F2.sum(0)[None, :] - F2) / (n - 1)
+    else:
+        same = ids[:, None] == ids[None, :]
+        W = np.where(same, 0.0, W)
+        hat = W @ F2 / W.sum(1, keepdims=True)
+        keep = (~same).astype(float)
+        pop = keep @ F2 / keep.sum(1, keepdims=True)
     return 1.0 - ((F2 - hat) ** 2).sum(1).mean() / ((F2 - pop) ** 2).sum(1).mean()
 
 
@@ -66,16 +75,16 @@ def strata_of(embryo, a1, a2):
     return np.array([f"{e}|{int(x >= 6)}|{int(y >= 8)}" for e, x, y in zip(embryo, a1, a2, strict=True)])
 
 
-def perm_test(F1, F2, strata, n_perm, rng):
+def perm_test(F1, F2, strata, n_perm, rng, ids=None):
     W = kernel(F1)
-    obs = predictability(W, F2)
+    obs = predictability(W, F2, ids)
     groups = [np.flatnonzero(strata == s) for s in np.unique(strata)]
     null = np.empty(n_perm)
     for b in range(n_perm):
         idx = np.arange(len(F1))
         for g in groups:
             idx[g] = rng.permutation(g)
-        null[b] = predictability(W[np.ix_(idx, idx)], F2)
+        null[b] = predictability(W[np.ix_(idx, idx)], F2, ids)
     p = (1 + (null >= obs).sum()) / (n_perm + 1)
     return {"P": float(obs), "null_mean": float(null.mean()), "P_excess": float(obs - null.mean()), "p": float(p)}
 
@@ -228,6 +237,55 @@ def train(n_perm=9999, n_boot=1000):
     return res
 
 
+def boot_ci(F1, F2, emb, st, rng, n_boot=1000, n_perm=99):
+    """Amendment 1: resample clones within embryo; copies never predict each other."""
+    out = []
+    for _ in range(n_boot):
+        idx = np.concatenate([rng.choice(np.flatnonzero(emb == e), (emb == e).sum()) for e in np.unique(emb)])
+        out.append(perm_test(F1[idx], F2[idx], st[idx], n_perm, rng, ids=idx)["P_excess"])
+    return [float(np.quantile(out, 0.025)), float(np.quantile(out, 0.975))]
+
+
+def ci_check(n_sim=40, n_boot=200, n_perm=49):
+    rng = np.random.default_rng(20261122)
+    a1, a2, emb = sizes()
+    st = strata_of(emb, a1, a2)
+    res = {}
+    for name, kw in (("null", {"H": 0.0}), ("planted", {"H": 0.81, "sigma": 1.5})):
+        hits = []
+        for _ in range(n_sim):
+            F1, F2 = simulate(a1, a2, emb, rng, **kw)
+            pt = perm_test(F1, F2, st, 199, rng)["P_excess"]
+            lo, hi = boot_ci(F1, F2, emb, st, rng, n_boot, n_perm)
+            hits.append(lo <= 0 if name == "null" else lo <= pt <= hi)
+        res[name] = float(np.mean(hits))
+    res["pass"] = bool(res["null"] >= 0.9 and res["planted"] >= 0.8)
+    return res
+
+
+def ci():
+    chk = ci_check()
+    res = {"check": chk}
+    if not chk["pass"]:
+        return res
+    cells = train_cells()
+    units = sorted(cells["unit"].unique())
+    F, n = {}, {}
+    for arm in (1, 2):
+        c = cells[cells["arm"] == arm]
+        m = collapse((c["type"].value_counts() / len(c)).to_dict())
+        tab = c.assign(t=c["type"].map(m)).groupby(["unit", "t"]).size().unstack(fill_value=0)
+        tab = tab.reindex(index=units, columns=sorted(set(m.values())), fill_value=0)
+        n[arm] = tab.sum(1).to_numpy()
+        F[arm] = tab.to_numpy() / n[arm][:, None]
+    emb = np.array([u.split(":")[0] for u in units])
+    st = strata_of(emb, n[1], n[2])
+    rng = np.random.default_rng(20261123)
+    res["P_excess_point_recheck"] = perm_test(F[1], F[2], st, 999, rng)["P_excess"]
+    res["P_excess_ci95"] = boot_ci(F[1], F[2], emb, st, rng)
+    return res
+
+
 def selftest():
     rng = np.random.default_rng(0)
     a1, a2 = np.full(60, 6), np.full(60, 8)
@@ -238,12 +296,21 @@ def selftest():
     assert strong["p"] <= 0.01 and strong["P_excess"] > 0.05, strong
     assert none["p"] > 0.01, none
     assert collapse({"a": 0.6, "b": 0.37, "c": 0.03}) == {"a": "a", "b": "b", "c": "other"}
+    F1, F2 = simulate(a1, a2, emb, rng, H=0.0, sigma=3.0)
+    dup = np.r_[np.arange(60), np.arange(30)]  # 30 clones duplicated; copy-aware P stays near 0 without signal
+    naive = predictability(kernel(F1[dup]), F2[dup])
+    aware = predictability(kernel(F1[dup]), F2[dup], ids=dup)
+    assert abs(aware) < 0.1 and naive >= aware - 0.02, (naive, aware)
+    W = kernel(F1[:4][[0, 0, 1, 2]])  # the copy pair (rows 0, 1) must get no weight on each other
+    hat_ids = np.array([0, 0, 1, 2])
+    assert np.where(hat_ids[:, None] == hat_ids[None, :], 0.0, W)[0, 1] == 0.0 and W[0, 1] == 1.0
     return {"ok": True, "strong": strong, "none": none}
 
 
 def main():
     stage = sys.argv[1] if len(sys.argv) > 1 else "selftest"
-    res = {"selftest": selftest, "smoke": smoke, "power": power, "readout": readout, "train": train}[stage]()
+    res = {"selftest": selftest, "smoke": smoke, "power": power, "readout": readout, "train": train,
+           "ci": ci}[stage]()
     if stage != "selftest":
         OUT.mkdir(exist_ok=True)
         json.dump(res, open(OUT / f"c17s1c_s1_{stage}.json", "w", encoding="utf-8"), indent=1)

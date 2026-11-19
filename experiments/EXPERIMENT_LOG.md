@@ -12512,3 +12512,10 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   4. Units: 123 clones in 3 embryos; per-embryo values not computed (not pre-registered).
   5. Published? The source states heterogeneous fates within one progenitor type; it addresses the same link from the other side. Our P is a parameter for the table, not a claim.
 - **Table:** not added yet; it waits for the CI fix. Planned row: "CRISPR brain split clones (train)", neural class, split_predictability 0.22, with the regional-identity caveat. That would be the first neural system.
+
+### C17-S1C-S1 amendment 1: copy-aware bootstrap CI (2026-11-19; Bence: "yes" = fix the CI; after the result, CI only)
+- Changes only the interval; the point estimate (P_excess 0.218) and the permutation p (0.0001) stand as reported.
+- Fix: in each bootstrap resample, a clone's copies are excluded from its own prediction (kernel weight 0 between rows of the same original clone) and from its population mean, in the resample's statistic and in its permutation null alike. Resampling stays within embryo, 1,000 resamples x 99 permutations.
+- Check before the real run (synthetic, real arm sizes): 40 null data sets (H 0), CI lower bound <= 0 in >= 90% (i.e. the fixed CI does not invent signal), and 40 planted sets (H 0.81, sigma 1.5) where the CI should contain the full-data P_excess in >= 80%. If the check fails, no CI is reported and the table row carries the point only.
+- Output: results_c17/c17s1c_s1_ci.json (new stage `ci`; reads train clones only, as `train`).
+- Offline note on amendment 1 (synthetic only): the bias is small, because the kernel spreads weight over ~120 clones and a copy gets ~2% of it. On one planted set (H 0.81, sigma 1.5) the naive bootstrap mean was 0.100 against a full-data P_excess of 0.084; the copy-aware mean was 0.078. Expect the fixed CI to shift down by roughly 0.01-0.02, not to change the conclusion.
