@@ -1,0 +1,2 @@
+[experiments/results_c17/c17s1c_s1_smoke.json] python -I experiments/c17s1c_s1.py smoke
+[experiments/results_c17/c17s1c_s1_power.json] python -I experiments/c17s1c_s1.py power

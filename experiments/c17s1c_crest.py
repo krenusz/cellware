@@ -179,12 +179,20 @@ def main():
     if stage == "selftest":
         print(json.dumps(selftest()))
         return
+    sys.path.insert(0, str(HERE))  # -I drops the script dir; partitions.py is ours
     df = load(RAW / FILE)
     if stage == "schema":
         res = schema(df)
     elif stage == "split":  # amendment 2
         cl = split_clones(df)
         res = {"mapping": split_clones.__doc__.strip(), **split_gate(cl), **coincidence(df)}
+    elif stage == "sizes":  # S1 power input: arm sizes of the eligible TRAIN clones (structure only)
+        from partitions import train_only  # noqa: PLC0415
+
+        cl = split_clones(df).assign(unit=lambda c: c["embryo"] + ":" + c["pattern"])
+        cl = train_only("crest_split_clone", cl, "unit")
+        cl = cl[(cl["arm1"] >= 3) & (cl["arm2"] >= 4)]
+        res = {"n": len(cl), "embryo": cl["embryo"].tolist(), "arm1": cl["arm1"].tolist(), "arm2": cl["arm2"].tolist()}
     elif stage == "seal":  # amendment 2, gate passed: seal before any fate read (H1, H24)
         res = seal(split_clones(df))
     else:  # amendment 1: gate on the mapped clones, per sample group and pooled
