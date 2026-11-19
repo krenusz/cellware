@@ -1,0 +1,147 @@
+{
+ "rows": [
+  {
+   "system": "LARRY cytokine wells",
+   "cell_class": "committed blood progenitor",
+   "parameter": "heritable_share",
+   "point": 0.88,
+   "lo": 0.82,
+   "hi": 0.92,
+   "identified": true,
+   "source": "0.88 [0.82, 0.92]"
+  },
+  {
+   "system": "LARRY cytokine wells",
+   "cell_class": "committed blood progenitor",
+   "parameter": "rho_div",
+   "point": 0.964,
+   "lo": 0.927,
+   "hi": 0.997,
+   "identified": true,
+   "source": "rho_div 0.964 [0.927,"
+  },
+  {
+   "system": "LARRY cytokine wells",
+   "cell_class": "committed blood progenitor",
+   "parameter": "tau_G",
+   "point": 0.52,
+   "lo": 0.38,
+   "hi": 0.7,
+   "identified": true,
+   "source": "| instruction shift G | 0.52 | 0.38-0.70"
+  },
+  {
+   "system": "LARRY cytokine wells",
+   "cell_class": "committed blood progenitor",
+   "parameter": "tau_M",
+   "point": 0.7,
+   "lo": 0.4,
+   "hi": 0.92,
+   "identified": true,
+   "source": "| instruction shift M | 0.70 | 0.40-0.92"
+  },
+  {
+   "system": "LARRY cytokine wells",
+   "cell_class": "committed blood progenitor",
+   "parameter": "gamma",
+   "point": 0.56,
+   "lo": 0.482,
+   "hi": 0.568,
+   "identified": true,
+   "source": "| gamma | 0.560 | 0.482-0.568"
+  },
+  {
+   "system": "SIS-seq / SIS-skew",
+   "cell_class": "committed blood progenitor",
+   "parameter": "heritable_share",
+   "point": 0.71,
+   "lo": 0.59,
+   "hi": 0.78,
+   "identified": true,
+   "source": "SIS-seq heritable share 0.71 [0.59, 0.78]"
+  },
+  {
+   "system": "SIS-seq / SIS-skew",
+   "cell_class": "committed blood progenitor",
+   "parameter": "gamma_cDC2",
+   "point": 0.34,
+   "lo": -0.28,
+   "hi": 0.89,
+   "identified": false,
+   "source": "gamma_cDC2 0.34 [-0.28,"
+  },
+  {
+   "system": "SIS-seq / SIS-skew",
+   "cell_class": "committed blood progenitor",
+   "parameter": "gamma_pDC",
+   "point": 0.1,
+   "lo": -0.54,
+   "hi": 0.78,
+   "identified": false,
+   "source": "gamma_pDC 0.10 [-0.54, 0.78]"
+  },
+  {
+   "system": "SIS-seq / SIS-skew",
+   "cell_class": "committed blood progenitor",
+   "parameter": "tau_cDC2",
+   "point": -1.18,
+   "lo": -2.0,
+   "hi": 0.71,
+   "identified": false,
+   "source": "tau + label difference: cDC2 -1.18"
+  },
+  {
+   "system": "Raj gastruloids",
+   "cell_class": "pluripotent",
+   "parameter": "rho_div",
+   "point": 1.0,
+   "lo": 1.0,
+   "hi": 1.0,
+   "identified": true,
+   "source": "no per-division shrink at all is allowed"
+  },
+  {
+   "system": "Raj gastruloids",
+   "cell_class": "pluripotent",
+   "parameter": "rho_event_passage",
+   "point": 0.46,
+   "lo": 0.23,
+   "hi": 0.68,
+   "identified": true,
+   "source": "rho_P = 0.21 per passage (retention 0.46"
+  },
+  {
+   "system": "Raj gastruloids",
+   "cell_class": "pluripotent",
+   "parameter": "rho_context_gastruloid",
+   "point": 0.06,
+   "lo": null,
+   "hi": null,
+   "identified": true,
+   "source": "rho_g = 0.06"
+  },
+  {
+   "system": "Raj gastruloids",
+   "cell_class": "pluripotent",
+   "parameter": "gamma",
+   "point": null,
+   "lo": null,
+   "hi": null,
+   "identified": false,
+   "source": "Growth/selection gamma = 0 (not identified here"
+  }
+ ],
+ "systems_with_identified_parameters_by_class": {
+  "committed blood progenitor": [
+   "LARRY cytokine wells",
+   "SIS-seq / SIS-skew"
+  ],
+  "pluripotent": [
+   "Raj gastruloids"
+  ]
+ },
+ "law_test_gate_ge_3_systems_per_class": {
+  "committed blood progenitor": false,
+  "pluripotent": false
+ }
+}

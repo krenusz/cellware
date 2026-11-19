@@ -12306,3 +12306,21 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The gate had no measured baseline. 21 author clusters against 7 of our labels, with HSC-compartment cells and intermediate progenitors included, may cap purity below 0.8 even for correct labels. This repeats retro lesson L1 (rule fixed before its regime was measured) on the gate itself.
   - Equally, marker-based labels of Kit+ progenitors may simply be too noisy. The run cannot tell these apart, and relabelling or re-setting the gate after seeing 0.52 would be tuning on the readout.
 - Status: T-cortical exploratory (amendment 5), T-split' stopped (amendment 6). No sealed partition read; rf2020_clone and cortical_clone A/B/C intact.
+
+## C17-S1R: the general model is built system by system (pre-registered 2026-11-19; Bence: "1")
+- **Serves: C17-S1.** Reason (inventory 2026-11-19, no statistic): only LARRY, SIS and the gastruloids carry fitted fate parameters. A cross-system law has the system as its unit, so 3 systems give no power. C5-S2 already showed that one memory law fails across committed blood and pluripotent clones, so any law needs a cell-class term, and H22 requires >= 3 systems per class. The joint fit of the original S1 is replaced by:
+  1. **Parameter table** (`c17s1_params.py`): one row per system and parameter (memory per division, memory per event, instruction, selection, growth noise), each with point, interval, identifiability flag and log source. Used estimates only; no data read.
+  2. **Grow the systems** with the time-split configuration of `core_model.py`, starting with CellTag LSK. Each new system is fitted on train rows only and fills the table.
+  3. **The law test is pre-registered only when the table has >= 3 systems per cell class with identified parameters**, with power from power.py using systems as units.
+- Serves: C17-S1 parameter table, script c17s1_params.py.
+- Pre-flight: (table step) unit = system x parameter; readout = none (compilation); used data only; power n/a; exposure none new; literature: per-system sources already read; readout gate n/a.
+- Practice: values are copied from logged results with line references, and the table script asserts each source line exists in EXPERIMENT_LOG.md (smoke against transcription errors).
+- Compute: local because it is a compilation of logged numbers (no data, no simulation).
+- T-cortical (exploratory) and T-split' (stopped) remain as recorded; S2/S3 wait for the law test.
+
+### C17-S1R table result (2026-11-19; local, logged numbers only; `results_c17/c17s1_params.json`)
+- 13 rows; all source phrases verified against EXPERIMENT_LOG / c3s1 script (smoke PASS).
+- Systems with identified parameters: **committed blood: LARRY, SIS (2)**; **pluripotent: Raj gastruloids (1)**. Law-test gate (>= 3 systems per class): **not met in either class**.
+- Identifiability is uneven: SIS's selection and instruction are not identified (R3); the gastruloid's selection is not identified. The only parameter identified in all three systems is a memory quantity (heritable share or per-division/per-event retention).
+- **CellTag LSK inventory (structure from partitions.py and the C7 log):** 6,822 clones; the day-2.5 siblings are profiled (RNA/ATAC), and the day-5 siblings (r1/r2) carry fate. This is a time-split design, and its train rows are used data from C7 (A spent; B/C sealed). It can identify memory (the heritable share from a day-2.5 state to the day-5 sibling fate), not instruction (one culture condition). It would bring committed blood to 3 systems for the memory parameter.
+- **Bottleneck:** the pluripotent class has one system. Candidates: the hESC endoderm sister-well set (not public), PEtracer embryo trees (need tree emission; petracer_embryo A spent, B one usable embryo), CellTag reprogramming (a third class, fibroblast reprogramming, not pluripotent). A committed-vs-pluripotent law test needs at least two more pluripotent systems.
