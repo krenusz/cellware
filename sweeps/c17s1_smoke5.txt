@@ -1,1 +1,1 @@
-[experiments/results_c17/c17s1_smoke.json] python experiments/c17s1_joint.py --stage smoke
+[experiments/results_c17/c17s1_smoke5.json] python experiments/c17s1_joint.py --stage smoke && cp experiments/results_c17/c17s1_smoke.json experiments/results_c17/c17s1_smoke5.json
