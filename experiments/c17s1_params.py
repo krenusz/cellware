@@ -5,7 +5,8 @@ EXPERIMENT_LOG.md; each row names a phrase that must appear in the log or the ci
 transcription errors). No data are read and nothing is simulated.
 
 Parameters: rho_div (memory retained per division), rho_event (per split/passage event), tau (instruction
-shift, logit units), gamma (selection, log growth per unit state), heritable_share (cross-condition sharing).
+shift, logit units), gamma (selection, log growth per unit state), heritable_share (cross-condition sharing),
+split_predictability (state-to-fate, excess kernel predictability; not on the heritable-share scale).
 
     uv run python experiments/c17s1_params.py   # writes results_c17/c17s1_params.json
 """
@@ -18,7 +19,7 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOG = os.path.join(HERE, "EXPERIMENT_LOG.md")
 OUT = os.path.join(HERE, "results_c17", "c17s1_params.json")
-BLOOD, PLURI = "committed blood progenitor", "pluripotent"
+BLOOD, PLURI, NEURO = "committed blood progenitor", "pluripotent", "neural progenitor"
 
 # system, class, parameter, point, lo, hi, identified, source phrase (log or c3s1 script)
 ROWS = [
@@ -36,6 +37,9 @@ ROWS = [
     ("Raj gastruloids", PLURI, "rho_div", 1.00, 1.00, 1.00, True, "no per-division shrink at all is allowed"),
     # C17-S1P, train embryos only, pooled over stages (rises E7.5 -0.01 to E9.5 0.89); shared-niche upper bound
     ("PEtracer embryo trees (train)", PLURI, "heritable_share", 0.81, 0.53, 0.87, True, "H 0.81 [0.53, 0.87]"),
+    # C17-S1C-S1 + amendment 1, train clones only; state-to-fate predictability (not a heritable share)
+    ("CRISPR brain split clones (train)", NEURO, "split_predictability", 0.22, 0.17, 0.25, True,
+     "P_excess 0.218, 95% CI [0.166, 0.247]"),
     ("Raj gastruloids", PLURI, "rho_event_passage", 0.46, 0.23, 0.68, True, "rho_P = 0.21 per passage (retention 0.46"),
     ("Raj gastruloids", PLURI, "rho_context_gastruloid", 0.06, None, None, True, "rho_g = 0.06"),
     ("Raj gastruloids", PLURI, "gamma", None, None, None, False, "Growth/selection gamma = 0 (not identified here"),

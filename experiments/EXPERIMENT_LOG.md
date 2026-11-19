@@ -12519,3 +12519,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Check before the real run (synthetic, real arm sizes): 40 null data sets (H 0), CI lower bound <= 0 in >= 90% (i.e. the fixed CI does not invent signal), and 40 planted sets (H 0.81, sigma 1.5) where the CI should contain the full-data P_excess in >= 80%. If the check fails, no CI is reported and the table row carries the point only.
 - Output: results_c17/c17s1c_s1_ci.json (new stage `ci`; reads train clones only, as `train`).
 - Offline note on amendment 1 (synthetic only): the bias is small, because the kernel spreads weight over ~120 clones and a copy gets ~2% of it. On one planted set (H 0.81, sigma 1.5) the naive bootstrap mean was 0.100 against a full-data P_excess of 0.084; the copy-aware mean was 0.078. Expect the fixed CI to shift down by roughly 0.01-0.02, not to change the conclusion.
+
+### C17-S1C-S1 amendment 1 result (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44618826289; `results_c17/c17s1c_s1_ci.json`; train only)
+- Coverage check (40 synthetic sets each): null CI lower bound <= 0 in 100%; planted CI contains the full-data value in 100% (the interval is on the conservative side). **PASS.**
+- **Fixed: P_excess 0.218, 95% CI [0.166, 0.247]** (old naive CI [0.181, 0.261]; shifted down about 0.015, as the offline note expected). Point re-check 0.218.
+- **Table:** added as "CRISPR brain split clones (train)", class neural progenitor, split_predictability 0.22 [0.17, 0.25], identified, caveats: regional identity kept by descent; state-to-fate configuration, not on the heritable-share scale; 3 embryos. Neural class: **1 system**.

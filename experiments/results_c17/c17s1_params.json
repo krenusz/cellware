@@ -121,6 +121,16 @@
    "source": "H 0.81 [0.53, 0.87]"
   },
   {
+   "system": "CRISPR brain split clones (train)",
+   "cell_class": "neural progenitor",
+   "parameter": "split_predictability",
+   "point": 0.22,
+   "lo": 0.17,
+   "hi": 0.25,
+   "identified": true,
+   "source": "P_excess 0.218, 95% CI [0.166, 0.247]"
+  },
+  {
    "system": "Raj gastruloids",
    "cell_class": "pluripotent",
    "parameter": "rho_event_passage",
@@ -160,10 +170,14 @@
   "pluripotent": [
    "PEtracer embryo trees (train)",
    "Raj gastruloids"
+  ],
+  "neural progenitor": [
+   "CRISPR brain split clones (train)"
   ]
  },
  "law_test_gate_ge_3_systems_per_class": {
   "committed blood progenitor": true,
-  "pluripotent": false
+  "pluripotent": false,
+  "neural progenitor": false
  }
 }
