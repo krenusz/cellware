@@ -1,0 +1,26 @@
+{
+ "markers_found_per_set": {
+  "Sample1": 22,
+  "Sample2": 22,
+  "Sample4": 22,
+  "Sample5": 22
+ },
+ "train_cells": 19638,
+ "train_kit_cells": 9420,
+ "label_counts_train_kit": {
+  "unassigned": 3582,
+  "GM": 1708,
+  "Ery": 1488,
+  "Mk": 843,
+  "preDC": 787,
+  "BaMast": 585,
+  "preB": 427
+ },
+ "gate_sample2": {
+  "cells": 3132,
+  "clusters": 21,
+  "purity": 0.5239463601532567,
+  "pass": false
+ },
+ "stop": "label validation gate failed; split test stops (no relabelling)"
+}

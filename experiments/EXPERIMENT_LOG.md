@@ -12297,3 +12297,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Exposure: unchanged. Train only; A/B/C untouched. Cluster IDs carry no lineage names; their purity is a structural check of our labels.
 - Practice: 1-rep local writer check on synthetic input before dispatch; regime measured (labels exist for S2 only), then rules fixed.
 - Compute: GitHub Actions run (sweeps/c17s1_train.txt).
+
+### C17-S1 amendment 6 result (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44525456461; train only)
+- All 22 marker genes were found in every sample set. Train cells 19,638, of which 9,420 are Kit+. Our labels on train Kit+ cells: unassigned 3,582; GM 1,708; Ery 1,488; Mk 843; preDC 787; Ba/Mast 585; preB 427.
+- **Label validation gate: FAIL.** Sample2 train cells 3,132 across 21 author clusters; cell-weighted purity **0.52** (rule >= 0.8).
+- **Decision (fixed rule): the split test stops. No relabelling, no expansion control, no split statistic computed.**
+- Self-challenge:
+  - The gate had no measured baseline. 21 author clusters against 7 of our labels, with HSC-compartment cells and intermediate progenitors included, may cap purity below 0.8 even for correct labels. This repeats retro lesson L1 (rule fixed before its regime was measured) on the gate itself.
+  - Equally, marker-based labels of Kit+ progenitors may simply be too noisy. The run cannot tell these apart, and relabelling or re-setting the gate after seeing 0.52 would be tuning on the readout.
+- Status: T-cortical exploratory (amendment 5), T-split' stopped (amendment 6). No sealed partition read; rf2020_clone and cortical_clone A/B/C intact.
