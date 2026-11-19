@@ -12422,3 +12422,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Limits written now: sister subclades in an embryo share a neighbourhood, so H here is memory plus shared niche (an upper bound on intrinsic memory); in SIS and CellTag the arms were separated into wells. The table row will carry this caveat. Exploratory secondary: H by clade-size tertile (deeper splits vs shallow), no claim.
 - Practice: offline selftest of the pair picker; synthetic smoke on real pair sizes inside the run; peak RAM as C14 (streamed trees, train obs only); 1-rep writer check offline.
 - Compute: GitHub Actions run (sweeps/c17s1p.txt, `--petracer`).
+
+### C17-S1P result (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44581668936; `results_c17/c17s1p_trees.json`; 7 TRAIN embryos only, nothing sealed read)
+- 11,057 disjoint sister-subclade pairs (gate >= 30 met), 14 lineage categories, median arm 8 and 5 labelled cells.
+- Smoke on the real arm sizes (20 draws): syn0 mean 0.07 (sd 0.02), syn1 mean 0.99 (sd 0.001): **PASS**.
+- **Pre-registered estimate: H 0.81 [0.53, 0.87]** (CI from resampling embryos). D_sis 0.22, D_rand 0.77, D_noise 0.09. The prediction (between 0.46 and 0.88) was met.
+- Exploratory (no claim):
+  - By clade size: H 0.84 (median 11 leaves), 0.81 (17), 0.78 (28). Larger, older clades agree slightly less, the direction of memory lost per division.
+  - **Per embryo, H rises with stage:** E7.5 -0.01, E8.0 0.27 and 0.32, E8.5 0.63 and 0.59, E9.0 0.79, E9.5 0.89. E9.0-E9.5 hold 80% of the pairs, so the pooled 0.81 mostly reflects late embryos.
+- Self-challenge:
+  1. **Stage dominates.** Later sister subclades sit inside lineages that are already committed, so their shared label is commitment by descent as much as ongoing memory. The pooled value is not one stage-free parameter. The early embryos (E7.5-E8.0, H about 0-0.3, few pairs) are the closest to an uncommitted state.
+  2. **Shared niche:** sisters in an embryo stay neighbours, so H includes a shared environment (upper bound on intrinsic memory); in SIS and CellTag the arms were separated into wells.
+  3. Units: 7 embryos; the CI is wide.
+  4. Published? Fate coupling of related clades is the source study's own topic (claims level); this is a parameter for our table, not a claim.
+- **Table:** added as "PEtracer embryo trees (train)", class pluripotent-derived, heritable_share 0.81 [0.53, 0.87], identified, with the stage and niche caveats. The pluripotent class now has **2 systems** (gastruloids, embryo trees); blood 3. Any cross-class law must model stage (or use the early embryos), because this system's memory value moves with developmental time.

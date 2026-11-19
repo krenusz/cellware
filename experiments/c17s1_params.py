@@ -34,6 +34,8 @@ ROWS = [
     # C7-S2 pre-registered primary (>= 4 cells per well), train only; added 2026-11-19 (Bence: "go 1 2")
     ("CellTag-multi LSK culture", BLOOD, "heritable_share", 0.66, 0.58, 0.75, True, "H 0.66 [0.58, 0.75]"),
     ("Raj gastruloids", PLURI, "rho_div", 1.00, 1.00, 1.00, True, "no per-division shrink at all is allowed"),
+    # C17-S1P, train embryos only, pooled over stages (rises E7.5 -0.01 to E9.5 0.89); shared-niche upper bound
+    ("PEtracer embryo trees (train)", PLURI, "heritable_share", 0.81, 0.53, 0.87, True, "H 0.81 [0.53, 0.87]"),
     ("Raj gastruloids", PLURI, "rho_event_passage", 0.46, 0.23, 0.68, True, "rho_P = 0.21 per passage (retention 0.46"),
     ("Raj gastruloids", PLURI, "rho_context_gastruloid", 0.06, None, None, True, "rho_g = 0.06"),
     ("Raj gastruloids", PLURI, "gamma", None, None, None, False, "Growth/selection gamma = 0 (not identified here"),

@@ -111,6 +111,16 @@
    "source": "no per-division shrink at all is allowed"
   },
   {
+   "system": "PEtracer embryo trees (train)",
+   "cell_class": "pluripotent",
+   "parameter": "heritable_share",
+   "point": 0.81,
+   "lo": 0.53,
+   "hi": 0.87,
+   "identified": true,
+   "source": "H 0.81 [0.53, 0.87]"
+  },
+  {
    "system": "Raj gastruloids",
    "cell_class": "pluripotent",
    "parameter": "rho_event_passage",
@@ -148,6 +158,7 @@
    "SIS-seq / SIS-skew"
   ],
   "pluripotent": [
+   "PEtracer embryo trees (train)",
    "Raj gastruloids"
   ]
  },
