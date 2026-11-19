@@ -298,6 +298,9 @@ pre-registration dated 2026-11-13 or later without it.
 
 **Before a power claim**
 - Every power simulation gets a synthetic smoke test with a known answer (11-15; C14-S1a index bug).
+- Smoke pass rules are fixed only after the structural regime they cover (detection floor, unit sizes, arm counts) is measured on train (11-19; C17 amendment 4 tested a floor the data never occupy).
+- Scans of a sealed set's source paper print headings and design sentences only; any sentence with statistics words (r =, P =, correlation of, n =) is dropped (11-19; C17 novelty scan slip).
+- Result writers get a 1-rep local run before dispatch (11-19; C17-S1 numpy-bool crash twice).
 - A planted smoke signal goes on a direction orthogonal to the base features (residualised, or a synthetic
   column), never on a raw top PC: real PC1 often tracks depth, and the base absorbs it (11-17b; C15-S1b).
 - Presence-type outcomes: count expected positives per sealed partition, not units (11-14b).

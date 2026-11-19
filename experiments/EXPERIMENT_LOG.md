@@ -12265,3 +12265,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The selection estimate is biased under the null at floors 3 and 5 (-0.31, -0.86). Selection detection passes formally but is not trustworthy above floor 1.
 - **Real train detection floor:** minimum n_cells = 3 (train clones with 3 / 4 / 5 cells: 1,501 / 875 / 527), so the real data sit in the floor-3 regime, where instruction passes but with about 2-3x the noise.
 - **Decision by the fixed rule:** a pass rule failed (floor 5), so **T-cortical is exploratory (no sealed look)**. Floor 5 is not the real data's regime. Re-scoping the rule to the observed floor would be a 5th amendment and needs a retro first (H18); that is Bence's call. S1 proceeds with T-split', the expansion control and the joint fit.
+
+### C17-S1/S2/S3 amendment 5: cortical pass rules re-scoped to the observed regime (2026-11-19; Bence: "1"; retro RETRO_2026-11-19.md first, H18)
+- Serves: C17-S1. Script `c17s1_joint.py --stage smoke`.
+- The detection floor is the observed train minimum: **3 cells** (run 2 counts). Floor 5 is dropped from the rules (reported, not gated).
+- Pass rules (fixed before the run): under pure selection, |corrected instruction| < 0.5 sd at floors 1 and 3; under pure instruction, corrected instruction > 0.1 at floors 1 and 3. **New: power at the real train arm sizes and floor 3** (NT 564 vs smallest arm 208, and vs largest 1,302; planted shift 0.15; one-sided alpha 0.025 against the simulated null). Power >= 0.8 for both arm sizes, and false-positive rate under pure selection <= 0.06.
+- Selection component: descriptive only (biased under the null above floor 1, run 2); never tested.
+- If the rules pass, T-cortical is restored as the primary sealed test. If not, it stays exploratory, with no further amendment in this step.
+- Practice: lines of 2026-11-19 applied (regime measured first; 1-rep local writer run done).
+- Compute: GitHub Actions run (sweeps/c17s1_smoke5.txt); retro gap map (sweeps/retro_c17s1_gap.txt).

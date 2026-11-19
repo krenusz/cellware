@@ -191,6 +191,14 @@ def smoke(reps=200, cortical_only=False):
                 "corrected_instruction_mean": float(st[:, 3].mean()),
                 "corrected_instruction_sd": float(st[:, 3].std()),
                 "corrected_selection_mean": float(st[:, 4].mean())}
+    # amendment 5: power at the real train arm sizes and the observed floor (3); planted shift 0.15
+    res["cortical_real_arms_floor3"] = {}
+    for name, ng in (("smallest_NR2E1", 208), ("largest_ARX", 1302)):
+        nul = np.array([sim_cortical(rng, "null", 3, n_nt=564, n_g=ng)[3] for _ in range(reps)])
+        ins = np.array([sim_cortical(rng, "instruction", 3, n_nt=564, n_g=ng)[3] for _ in range(reps)])
+        sel = np.array([sim_cortical(rng, "selection", 3, n_nt=564, n_g=ng)[3] for _ in range(reps)])
+        q = np.quantile(nul, 1 - ALPHA)
+        res["cortical_real_arms_floor3"][name] = {"power": float((ins > q).mean()), "fpr_selection": float((sel > q).mean())}
     t, c = res["tsplit"], res["cortical"]
     res["pass"] = {
         "tsplit_clone_power": t["clone"]["reject_rate"] >= 0.8,
@@ -199,11 +207,13 @@ def smoke(reps=200, cortical_only=False):
         "expansion_control_recovered": res["expansion_control"]["icc_mean"] > 0.3,
         "cortical_corrected_selection_not_instruction": all(
             abs(c[f"selection_floor{f}"]["corrected_instruction_mean"])
-            < 0.5 * c[f"selection_floor{f}"]["corrected_instruction_sd"] for f in (1, 3, 5)),
+            < 0.5 * c[f"selection_floor{f}"]["corrected_instruction_sd"] for f in (1, 3)),
         "cortical_corrected_instruction_detected": all(
-            c[f"instruction_floor{f}"]["corrected_instruction_mean"] > 0.1 for f in (1, 3, 5)),
-        "cortical_corrected_selection_detected": all(
-            c[f"selection_floor{f}"]["corrected_selection_mean"] > 0.4 for f in (1, 3, 5)),
+            c[f"instruction_floor{f}"]["corrected_instruction_mean"] > 0.1 for f in (1, 3)),
+        "cortical_real_arms_power_ge_0.8": all(
+            v["power"] >= 0.8 for v in res["cortical_real_arms_floor3"].values()),
+        "cortical_real_arms_selection_fpr_le_0.06": all(
+            v["fpr_selection"] <= 0.06 for v in res["cortical_real_arms_floor3"].values()),
     }
     return res
 
@@ -297,7 +307,7 @@ def main():
     path = os.path.join(OUT, f"c17s1_{a.stage}.json")
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(res, fh, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o))
-    print(json.dumps(res.get("pass", res), indent=1)[:3000])
+    print(json.dumps(res.get("pass", res), indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o))[:3000])
 
 
 if __name__ == "__main__":
