@@ -182,6 +182,15 @@ def novelty_gate_errors(old_focus, new_focus, read=None):
     for key in ("Searched:", "Source paper:"):
         if key not in text:
             errs.append(f"{tag}: lacks a '{key}' line (H25).")
+    # H25 amendment 2026-11-19 (RETRO_2026-11-19b; Bence: "if #3 catches than good"): every finding not marked
+    # published carries a classic search (experiments/novelty_search.py): no-date, citation-sorted search in the
+    # field's own words, plus the source paper's references ranked by citations.
+    open_verdicts = sum(v.lower() != "published" for v in verdicts)
+    classic = len(re.findall(r"^\s*-?\s*Classic search:", text, re.M))
+    if classic < open_verdicts:
+        errs.append(f"{tag}: each finding not marked published needs a 'Classic search:' line "
+                    f"(novelty_search.py: field words, no date, by citations, top 25 screened; source references "
+                    f"top 20) ({open_verdicts} open verdicts, {classic} lines) (H25).")
     if any(v.lower() == "published" for v in verdicts) and not re.search(
         r"Published but proceeding:.*Bence:", text
     ):

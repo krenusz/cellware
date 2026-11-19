@@ -91,6 +91,16 @@
    "source": "tau + label difference: cDC2 -1.18"
   },
   {
+   "system": "CellTag-multi LSK culture",
+   "cell_class": "committed blood progenitor",
+   "parameter": "heritable_share",
+   "point": 0.66,
+   "lo": 0.58,
+   "hi": 0.75,
+   "identified": true,
+   "source": "H 0.66 [0.58, 0.75]"
+  },
+  {
    "system": "Raj gastruloids",
    "cell_class": "pluripotent",
    "parameter": "rho_div",
@@ -133,6 +143,7 @@
  ],
  "systems_with_identified_parameters_by_class": {
   "committed blood progenitor": [
+   "CellTag-multi LSK culture",
    "LARRY cytokine wells",
    "SIS-seq / SIS-skew"
   ],
@@ -141,7 +152,7 @@
   ]
  },
  "law_test_gate_ge_3_systems_per_class": {
-  "committed blood progenitor": false,
+  "committed blood progenitor": true,
   "pluripotent": false
  }
 }

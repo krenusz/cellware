@@ -241,6 +241,14 @@ before every look and refuses on any failure.
     stated conclusions. No numbers, figure panels, tables, supplements or per-sample results. The `Source paper:`
     line lists what was read and records it as accepted exposure; every later look on that set states it.
     This is the one exception to "authors' result tables for sealed sets stay unread" (H20).
+  - **Classic search** (amendment 2026-11-19, RETRO_2026-11-19b; Bence: "can we add something to the novelty
+    check to catch these misses? if #3 catches than good"): every finding not marked published carries a
+    `Classic search:` line from `experiments/novelty_search.py`: (1) a no-date, citation-sorted title+abstract
+    search with at least one phrasing in the field's own words (from the source paper or classic reviews, not
+    our jargon), top 25 titles screened and the top 10 relevant abstracts read; (2) the source paper's
+    references ranked by citations, top 20 titles screened. Backtest on the C17 split-test miss: our wording
+    found none of the three classics; the field's wording found all three in the top 25; the references found
+    one (rank 18). `novelty_search.py backtest` re-checks this.
   - Bookkeeping steps (PAUSED, CLOSED, close, retro) are exempt.
   - **Enforced by the commit-msg hook** (scope_guard.novelty_gate_errors); tests in test_guards.py.
 - **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log

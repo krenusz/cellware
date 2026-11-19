@@ -12349,3 +12349,24 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Watch list:** GSE342607 is public; it is the PEtracer superseries, and its DevMap sub-series are the petracer_embryo embryos already held (A spent, B one usable embryo, C sealed): nothing new, stays sealed. GSE324482 not public. E-MTAB-17351: API error, re-check. hESC endoderm sister-well data and DeepTrack: no GEO hit. Added: a human neuromesoderm organoid lineage preprint (10.64898/2026.07.29.741448), data availability unknown.
 - Citation map run (same retro): https://github.com/krenusz/cellware/actions/runs/44565568511, `results_lit/gap_2026-11-19_c17.json` (5,707 rows after the post-filter; 263 dropped, 2 cell-line names masked). Retro: RETRO_2026-11-19b.md.
 - Model: Opus 5.5 (main session).
+
+### C17-S1R table: CellTag LSK added (2026-11-19; Bence: "go 1 2"; logged numbers only, no fit)
+- The planned time-split fit was not needed. The day-5 sister wells (r1/r2) of CellTag LSK already give the heritable share with the same B38 method as SIS-seq: **H 0.66 [0.58, 0.75]** (C7-S2, pre-registered primary, >= 4 cells per well, 144 train clones; train only, never sealed-confirmed: the look was refused at power 0.76 and A/B/C stay unspent). The C7-S2a threshold table (0.75 at >= 2 cells) is a forking path of 62 configurations and is not used.
+- Instruction and selection are not identified (one culture condition).
+- With this row, committed blood has **3 systems with an identified heritable share** (LARRY 0.88, SIS 0.71, CellTag LSK 0.66). The pluripotent class still has 1. The law-test gate (>= 3 systems per class) is met for blood memory only.
+- Self-challenge: the three blood values are not all confirmed on sealed data (CellTag is train only); LARRY's 0.88 comes from cross-well fits, SIS and CellTag from the B38 sister-well statistic; 3 systems give little power for a within-class law (systems are the unit). A 4th blood candidate is chspctrack (serial half-well sampling; its C7-S6 reference G_serial is not a B38 heritable share, so it needs its own train estimate).
+
+## C17-S1N: structure-only check of the neural progenitor clone sets (pre-registered 2026-11-19; Bence: "neural prog class!! good", "go 1 2")
+- Serves: C17-S1 (C17-S1R: grow the systems; a neural progenitor class could become the first class with >= 3 memory-capable systems). Script c17s1n_struct.py, on Actions.
+- Sets (from C17-S1D): thalamus TrackerSeq study (GSE300285, GSE300287, GSE300289, GSE324903, GSE324905 and its superseries if listed), organoid MADM-CloneSeq (GSE327468), developing-brain CRISPR barcoding (GSE210139). Also GSE342607 (Bence: "2607 can be still useful"): list its sub-series; the DevMap sub-series are the sealed petracer_embryo set and get no detail beyond accession and sample count.
+- Pre-flight:
+  1. Unit: a GEO series; within it, the design unit that would carry a clone (animal, organoid, embryo).
+  2. Readout: metadata only (H9): series design text and sample characteristics reduced to keys, distinct-value counts and design flags; supplementary file names and sizes. No data file is downloaded; no expression, clone composition or fate is read.
+  3. Used data first: cortical_clone (sealed) is counted from its C17-S0b structure record, not re-read.
+  4. Power: not applicable here; the check decides which sets can identify memory. Clone counts per set come only after download and sealing (H1/H24).
+  5. Exposure: design text is reduced to flags before saving; titles pass the neutral-wording filter; nothing outcome-like is printed to the public log (counts only).
+  6. Literature access: public GEO pages (acc.cgi text, no key).
+  7. Readout gate: not applicable.
+- Decision rule (fixed now): a set is **memory-capable** if its metadata shows (a) a sister split (two sublineages per clone, e.g. MADM two colours, split wells), (b) a time split (the same clones sampled at >= 2 times), or (c) lineage trees with nested levels (CRISPR scar arrays). TrackerSeq-type single-timepoint barcoding without (a)-(c) gives clone composition only and is **not** memory-capable. The neural class is worth fitting if >= 3 sets (cortical_clone included) are memory-capable; then the next step is download sizes, Bence's OK for any download over 2 GB, and sealing by clone before any statistic.
+- Practice: offline selftest of the design-flag parser on synthetic SOFT text before dispatch; 1-rep writer run (practice lines 2026-11-19).
+- Compute: GitHub Actions run (sweeps/c17s1n_struct.txt).

@@ -9,6 +9,7 @@ Copy to `experiments/lit/novelty/<step>.md` before FOCUS.json moves to <step>. T
 - Finding: <what the step expects to show, in one line>
   - Verdict: <published | partly published | not found>
   - Papers: <closest papers, with DOI, and how close>
+  - Classic search: <required unless published: `python -I experiments/novelty_search.py <step> --source <doi> --q "<field's own words>" --q "<our words>"`; results_lit/novelty_<step>.json; top 25 titles screened, top 10 relevant abstracts read, source references top 20 screened; what was found>
 - Finding: <...>
   - Verdict: <...>
   - Papers: <...>

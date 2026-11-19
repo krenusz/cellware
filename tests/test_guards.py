@@ -162,6 +162,7 @@ class Box:
             or (
                 f"# {step} novelty\n- Searched: OpenAlex, web\n- Source paper: abstract read\n"
                 "- Finding: x\n  - Verdict: not found\n"
+                "  - Classic search: field words; source references\n"
             ),
         )
 
@@ -422,6 +423,18 @@ def test_commit_refuses_published_finding_without_bence_ok(box):
     assert res.returncode != 0 and "Published but proceeding" in res.stderr
     box.novelty("C9-S3", pub + 'Published but proceeding: Bence: "yes, replicate it"\n')
     assert box.commit('next hypothesis\n\nBence: "go"').returncode == 0
+
+
+def test_novelty_gate_needs_classic_search_for_open_verdicts():
+    """H25 amendment 2026-11-19: a finding not marked published needs a 'Classic search:' line."""
+    sys.path.insert(0, str(EXP / "hooks"))
+    import scope_guard as sg
+
+    base = "# C9-S3\n- Searched: web\n- Source paper: read\n- Finding: x\n  - Verdict: not found\n"
+    errs = sg.novelty_gate_errors({"step": "C9-S2"}, {"step": "C9-S3"}, read=lambda p: base)
+    assert any("Classic search" in e for e in errs)
+    ok = base + "  - Classic search: field words, no date; source references top 20\n"
+    assert sg.novelty_gate_errors({"step": "C9-S2"}, {"step": "C9-S3"}, read=lambda p: ok) == []
 
 
 def test_novelty_gate_skips_bookkeeping_steps():

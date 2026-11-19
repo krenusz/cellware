@@ -31,6 +31,8 @@ ROWS = [
     ("SIS-seq / SIS-skew", BLOOD, "gamma_cDC2", 0.34, -0.28, 0.89, False, "gamma_cDC2 0.34 [-0.28,"),
     ("SIS-seq / SIS-skew", BLOOD, "gamma_pDC", 0.10, -0.54, 0.78, False, "gamma_pDC 0.10 [-0.54, 0.78]"),
     ("SIS-seq / SIS-skew", BLOOD, "tau_cDC2", -1.18, -2.00, 0.71, False, "tau + label difference: cDC2 -1.18"),
+    # C7-S2 pre-registered primary (>= 4 cells per well), train only; added 2026-11-19 (Bence: "go 1 2")
+    ("CellTag-multi LSK culture", BLOOD, "heritable_share", 0.66, 0.58, 0.75, True, "H 0.66 [0.58, 0.75]"),
     ("Raj gastruloids", PLURI, "rho_div", 1.00, 1.00, 1.00, True, "no per-division shrink at all is allowed"),
     ("Raj gastruloids", PLURI, "rho_event_passage", 0.46, 0.23, 0.68, True, "rho_P = 0.21 per passage (retention 0.46"),
     ("Raj gastruloids", PLURI, "rho_context_gastruloid", 0.06, None, None, True, "rho_g = 0.06"),
