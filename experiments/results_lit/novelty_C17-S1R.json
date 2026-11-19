@@ -1,0 +1,283 @@
+{
+ "step": "C17-S1R",
+ "date": "2026-11-19",
+ "concept": [
+  {
+   "query": "sister cell fate correlation",
+   "matches": 25,
+   "top": [
+    {
+     "title": "The embryonic cell lineage of the nematode Caenorhabditis elegans",
+     "year": 1983,
+     "cites": 4744,
+     "doi": "10.1016/0012-1606(83)90201-4"
+    },
+    {
+     "title": "Network plasticity of pluripotency transcription factors in embryonic stem cells",
+     "year": 2015,
+     "cites": 138,
+     "doi": "10.1038/ncb3237"
+    },
+    {
+     "title": "Hidden heterogeneity and circadian-controlled cell fate inferred from single cell lineages",
+     "year": 2018,
+     "cites": 70,
+     "doi": "10.1038/s41467-018-07788-5"
+    },
+    {
+     "title": "Uncoupling of the induction of mutations and sister-chromatid exchanges by the replication of 5-bromouracil-substituted DNA",
+     "year": 1987,
+     "cites": 14,
+     "doi": "10.1016/0027-5107(87)90260-0"
+    },
+    {
+     "title": "Author response: Mother cells control daughter cell proliferation in intestinal organoids to minimize proliferation fluctuations",
+     "year": 2022,
+     "cites": 1,
+     "doi": "10.7554/elife.80682.sa2"
+    },
+    {
+     "title": "Abstracts from the First Scientific Meeting of the Soft Bones Foundation",
+     "year": 2018,
+     "cites": 1,
+     "doi": "10.1002/jbm4.10082"
+    },
+    {
+     "title": "Data and analysis scripts of the article \"Stochastic and Heritable Responses in Cell-Size Regulation and Survival to pH Stress in C. glutamicum\"",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.5281/zenodo.23274000"
+    },
+    {
+     "title": "Theories of epithelial stem cell dynamics in homeostasis, development and regeneration",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.17863/cam.131849"
+    }
+   ]
+  },
+  {
+   "query": "clonal memory cell fate",
+   "matches": 363,
+   "top": [
+    {
+     "title": "Following the fate of individual T cells throughout activation and clonal expansion. Signals from T cell receptor and CD28 differentially regulate the induction and duration of a proliferative response.",
+     "year": 1997,
+     "cites": 483,
+     "doi": "10.1172/jci119873"
+    },
+    {
+     "title": "T cell fate and clonality inference from single-cell transcriptomes",
+     "year": 2016,
+     "cites": 460,
+     "doi": "10.1038/nmeth.3800"
+    },
+    {
+     "title": "Two subsets of stem-like CD8+ memory T cell progenitors with distinct fate commitments in humans",
+     "year": 2020,
+     "cites": 323,
+     "doi": "10.1038/s41590-020-0791-5"
+    },
+    {
+     "title": "Single-cell analysis of human B cell maturation predicts how antibody class switching shapes selection dynamics",
+     "year": 2021,
+     "cites": 292,
+     "doi": "10.1126/sciimmunol.abe6291"
+    },
+    {
+     "title": "Memory CD4 T cells emerge from effector T-cell progenitors",
+     "year": 2008,
+     "cites": 288,
+     "doi": "10.1038/nature06672"
+    },
+    {
+     "title": "Polycomb Repressive Complex 2-Mediated Chromatin Repression Guides Effector CD8 + T Cell Terminal Differentiation and Loss of Multipotency",
+     "year": 2017,
+     "cites": 252,
+     "doi": "10.1016/j.immuni.2017.03.012"
+    },
+    {
+     "title": "Astrocytes regulate adult hippocampal neurogenesis through ephrin-B signaling",
+     "year": 2012,
+     "cites": 241,
+     "doi": "10.1038/nn.3212"
+    }
+   ]
+  },
+  {
+   "query": "heritability of cell fate",
+   "matches": 369,
+   "top": [
+    {
+     "title": "Role of conserved non-coding DNA elements in the Foxp3 gene in regulatory T-cell fate",
+     "year": 2010,
+     "cites": 1306,
+     "doi": "10.1038/nature08750"
+    },
+    {
+     "title": "Global Mapping of H3K4me3 and H3K27me3 Reveals Specificity and Plasticity in Lineage Fate Determination of Differentiating CD4+ T Cells",
+     "year": 2009,
+     "cites": 1280,
+     "doi": "10.1016/j.immuni.2008.12.009"
+    },
+    {
+     "title": "Cellular Decision Making and Biological Noise: From Microbes to Mammals",
+     "year": 2011,
+     "cites": 1164,
+     "doi": "10.1016/j.cell.2011.01.030"
+    },
+    {
+     "title": "Use of a recombinant retrovirus to study post\u2010implantation cell lineage in mouse embryos.",
+     "year": 1986,
+     "cites": 1158,
+     "doi": "10.1002/j.1460-2075.1986.tb04620.x"
+    },
+    {
+     "title": "Non-genetic origins of cell-to-cell variability in TRAIL-induced apoptosis",
+     "year": 2009,
+     "cites": 1139,
+     "doi": "10.1038/nature08012"
+    },
+    {
+     "title": "Nano-fertilizers and Their Smart Delivery System",
+     "year": 2015,
+     "cites": 554,
+     "doi": "10.1007/978-3-319-14024-7_4"
+    },
+    {
+     "title": "Diverse and heritable lineage imprinting of early haematopoietic progenitors",
+     "year": 2013,
+     "cites": 487,
+     "doi": "10.1038/nature12013"
+    },
+    {
+     "title": "Whole-organism clone tracing using single-cell sequencing",
+     "year": 2018,
+     "cites": 472,
+     "doi": "10.1038/nature25969"
+    },
+    {
+     "title": "Single-cell epigenomics: Recording the past and predicting the future",
+     "year": 2017,
+     "cites": 437,
+     "doi": "10.1126/science.aan6826"
+    },
+    {
+     "title": "Epigenetic control of neural precursor cell fate during development",
+     "year": 2010,
+     "cites": 415,
+     "doi": "10.1038/nrn2810"
+    },
+    {
+     "title": "Histone modifying enzymes: Structures, mechanisms, and specificities",
+     "year": 2008,
+     "cites": 369,
+     "doi": "10.1016/j.bbagrm.2008.07.009"
+    },
+    {
+     "title": "Cell-Intrinsic Differences between Stem Cells from Different Regions of the Peripheral Nervous System Regulate the Generation of Neural Diversity",
+     "year": 2002,
+     "cites": 330,
+     "doi": "10.1016/s0896-6273(02)00825-5"
+    },
+    {
+     "title": "Causal role for inheritance of H3K27me3 in maintaining the OFF state of a Drosophila HOX gene",
+     "year": 2017,
+     "cites": 243,
+     "doi": "10.1126/science.aai8236"
+    }
+   ]
+  },
+  {
+   "query": "transcriptional memory lineage tracing",
+   "matches": 89,
+   "top": [
+    {
+     "title": "Hair follicle dermal papilla cells at a glance",
+     "year": 2011,
+     "cites": 496,
+     "doi": "10.1242/jcs.082446"
+    },
+    {
+     "title": "The Transcription Factor T-bet Resolves Memory B Cell Subsets with Distinct Tissue Distributions and Antibody Specificities in Mice and Humans",
+     "year": 2020,
+     "cites": 223,
+     "doi": "10.1016/j.immuni.2020.03.020"
+    },
+    {
+     "title": "Central memory CD8+ T cells derive from stem-like Tcf7hi effector cells in the absence of cytotoxic differentiation",
+     "year": 2020,
+     "cites": 218,
+     "doi": "10.1016/j.immuni.2020.09.005"
+    },
+    {
+     "title": "Memory of Inflammation in Regulatory T Cells",
+     "year": 2016,
+     "cites": 214,
+     "doi": "10.1016/j.cell.2016.07.006"
+    },
+    {
+     "title": "Drosophilatype II neuroblast lineages keep Prospero levels low to generate large clones that contribute to the adult brain central complex",
+     "year": 2010,
+     "cites": 138,
+     "doi": "10.1186/1749-8104-5-26"
+    },
+    {
+     "title": "The transcriptional cofactor Tle3 reciprocally controls effector and central memory CD8+ T cell fates",
+     "year": 2024,
+     "cites": 29,
+     "doi": "10.1038/s41590-023-01720-w"
+    },
+    {
+     "title": "Real-time observation of CRISPR spacer acquisition by Cas1\u2013Cas2 integrase",
+     "year": 2020,
+     "cites": 29,
+     "doi": "10.1038/s41594-020-0415-7"
+    },
+    {
+     "title": "Stem Cell Aging",
+     "year": 2009,
+     "cites": 28,
+     "doi": "10.1093/gerona/gln070"
+    },
+    {
+     "title": "Extraembryonic gut endoderm cells undergo programmed cell death during development",
+     "year": 2024,
+     "cites": 25,
+     "doi": "10.1038/s41556-024-01431-w"
+    },
+    {
+     "title": "Persistent Antigen Harbored by Alveolar Macrophages Enhances the Maintenance of Lung-Resident Memory CD8+ T Cells",
+     "year": 2022,
+     "cites": 20,
+     "doi": "10.4049/jimmunol.2200082"
+    },
+    {
+     "title": "Lhx5 controls mamillary differentiation in the developing hypothalamus of the mouse",
+     "year": 2015,
+     "cites": 17,
+     "doi": "10.3389/fnana.2015.00113"
+    },
+    {
+     "title": "Age-related differences in oligodendrogenesis across the dorsal-ventral axis of the mouse hippocampus",
+     "year": 2014,
+     "cites": 14,
+     "doi": "10.1002/hipo.22287"
+    },
+    {
+     "title": "In preprints: the fast-paced field of single-cell lineage tracing",
+     "year": 2022,
+     "cites": 8,
+     "doi": "10.1242/dev.200877"
+    },
+    {
+     "title": "Lineage tracing reveals fate bias and transcriptional memory in human B cells",
+     "year": 2023,
+     "cites": 6,
+     "doi": "10.26508/lsa.202201792"
+    }
+   ]
+  }
+ ],
+ "references": null
+}

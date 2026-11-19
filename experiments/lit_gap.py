@@ -42,7 +42,7 @@ SENSITIVE += (
     r"|congenital|pathogen|malaria|tubercul|influenza|zika|ebola|herpes|cytomegalo|septic|blastoma|adenom"
     r"|hepatom|teratom|mesotheliom|astrocytom|myeloprolif|lymphoprolif|\baml\b|\bcml\b|\bcll\b|metaplas"
     r"|hyperplas|atroph|cystic|trauma|injur|vaccin|antibiotic|pharmac|fluorouracil|\b5-?fu\b"
-    r"|\w+(nib|mab|ciclib|parib)\b"
+    r"|\w+(nib|mab|ciclib|parib)\b|cholesta|ichthyo|\bdeficiency\b|\btoxicity\b|mutations? in a|cardiovascular|risk factor|immuniz"
 )
 # Cell-line names are masked in saved titles (same pattern as c17_data_sweep.py).
 CELL_LINE = re.compile(

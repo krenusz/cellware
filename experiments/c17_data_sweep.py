@@ -41,7 +41,7 @@ DISEASE_EXTRA = (
     r"|congenital|pathogen|malaria|tubercul|influenza|zika|ebola|herpes|cytomegalo|septic|blastoma|adenom"
     r"|hepatom|teratom|mesotheliom|astrocytom|myeloprolif|lymphoprolif|\baml\b|\bcml\b|\bcll\b|metaplas"
     r"|hyperplas|atroph|cystic|trauma|injur|vaccin|antibiotic|pharmac|fluorouracil|\b5-?fu\b"
-    r"|\w+(nib|mab|ciclib|parib)\b"
+    r"|\w+(nib|mab|ciclib|parib)\b|cholesta|ichthyo|\bdeficiency\b|\btoxicity\b|mutations? in a|cardiovascular|risk factor|immuniz"
 )
 TITLE_DROP = re.compile(r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|oncog|metasta|drug|chemo|"
                         r"therap|patient|disease|clinical|glioma|sarcoma|neoplas|syndrom|dysplas|fibros|diabet|"

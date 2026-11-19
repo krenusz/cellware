@@ -15,6 +15,8 @@ Titles pass the neutral-wording filter of lit_gap.py before printing or saving. 
     python -I experiments/novelty_search.py <step> --source <doi> --q "<field words>" [--q "<our words>"] [--top 25]
     python -I experiments/novelty_search.py backtest      # the C17 split-test miss, must find the classics
 
+Phrasings: 3-5 words. OpenAlex's title+abstract search needs every word, so 7-8 word phrasings return nothing.
+
 Writes results_lit/novelty_<step>.json; the novelty file's `Classic search:` line cites it.
 """
 
@@ -107,6 +109,8 @@ def hits(res, targets):
 
 
 def main():
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # Windows console (cp1252) cannot print all titles
     if sys.argv[1:2] == ["backtest"]:
         res = run("backtest", BACKTEST["source"], BACKTEST["queries"])
         found = hits(res, BACKTEST["targets"])

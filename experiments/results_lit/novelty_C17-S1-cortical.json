@@ -1,0 +1,271 @@
+{
+ "step": "C17-S1-cortical",
+ "date": "2026-11-19",
+ "concept": [
+  {
+   "query": "instruction versus selection",
+   "matches": 1152,
+   "top": [
+    {
+     "title": "Measurement and Assessment in Teaching",
+     "year": 1994,
+     "cites": 1276,
+     "doi": ""
+    },
+    {
+     "title": "Battelle Developmental Inventory",
+     "year": 1999,
+     "cites": 716,
+     "doi": "10.1093/ptj/79.8.776"
+    },
+    {
+     "title": "Interventions for treating proximal humeral fractures in adults",
+     "year": 2015,
+     "cites": 649,
+     "doi": "10.1002/14651858.cd000434.pub4"
+    },
+    {
+     "title": "Web-based Learning: Sound Educational Method or Hype? A Review of the Evaluation Literature",
+     "year": 2002,
+     "cites": 618,
+     "doi": "10.1097/00001888-200210001-00028"
+    },
+    {
+     "title": "Fuzzy Expert Systems and Fuzzy Reasoning",
+     "year": 2004,
+     "cites": 503,
+     "doi": "10.1002/0471698504"
+    },
+    {
+     "title": "Cerebral structures participating in motor preparation in humans: a positron emission tomography study",
+     "year": 1996,
+     "cites": 493,
+     "doi": "10.1152/jn.1996.75.1.233"
+    },
+    {
+     "title": "Cognitive mediators of aggression in adolescent offenders: II. Intervention.",
+     "year": 1990,
+     "cites": 462,
+     "doi": "10.1037/0012-1649.26.2.269"
+    },
+    {
+     "title": "Telephone Survey Methods: Sampling, Selection and Supervision",
+     "year": 1988,
+     "cites": 400,
+     "doi": "10.2307/2290176"
+    },
+    {
+     "title": "Another view of the selective model of thymocyte selection",
+     "year": 1993,
+     "cites": 303,
+     "doi": "10.1016/0092-8674(93)90225-f"
+    },
+    {
+     "title": "Interventions to reduce harm from continued tobacco use",
+     "year": 2016,
+     "cites": 292,
+     "doi": "10.1002/14651858.cd005231.pub3"
+    },
+    {
+     "title": "Cohort Profile: The French national cohort of children (ELFE): birth to 5 years",
+     "year": 2019,
+     "cites": 288,
+     "doi": "10.1093/ije/dyz227"
+    },
+    {
+     "title": "Using Activity Monitors to Measure Physical Activity in Free-Living Conditions",
+     "year": 2006,
+     "cites": 275,
+     "doi": "10.1093/ptj/86.8.1137"
+    }
+   ]
+  },
+  {
+   "query": "clonal selection cell fate",
+   "matches": 441,
+   "top": [
+    {
+     "title": "Aire regulates negative selection of organ-specific T cells",
+     "year": 2003,
+     "cites": 918,
+     "doi": "10.1038/ni906"
+    },
+    {
+     "title": "T-cell development and the CD4\u2013CD8 lineage decision",
+     "year": 2002,
+     "cites": 913,
+     "doi": "10.1038/nri798"
+    },
+    {
+     "title": "Evidence for a differential avidity model of T cell selection in the thymus",
+     "year": 1994,
+     "cites": 730,
+     "doi": "10.1016/0092-8674(94)90505-3"
+    },
+    {
+     "title": "Control of Male Gametophyte Development",
+     "year": 2004,
+     "cites": 676,
+     "doi": "10.1105/tpc.016659"
+    },
+    {
+     "title": "The Development of Endosperm in Grasses",
+     "year": 2009,
+     "cites": 504,
+     "doi": "10.1104/pp.108.129437"
+    },
+    {
+     "title": "Foxp3 Inhibits ROR\u03b3t-mediated IL-17A mRNA Transcription through Direct Interaction with ROR\u03b3t*",
+     "year": 2008,
+     "cites": 489,
+     "doi": "10.1074/jbc.m801286200"
+    },
+    {
+     "title": "Understanding Apomixis: Recent Advances and Remaining Conundrums",
+     "year": 2004,
+     "cites": 484,
+     "doi": "10.1105/tpc.017921"
+    },
+    {
+     "title": "The self-obsession of T cells: how TCR signaling thresholds affect fate 'decisions' and effector function",
+     "year": 2014,
+     "cites": 298,
+     "doi": "10.1038/ni.2938"
+    },
+    {
+     "title": "Intraclonal competition limits the fate determination of regulatory T cells in the thymus",
+     "year": 2009,
+     "cites": 297,
+     "doi": "10.1038/ni.1739"
+    },
+    {
+     "title": "THE ROLE OF THE IKAROS GENE IN LYMPHOCYTE DEVELOPMENT AND HOMEOSTASIS",
+     "year": 1997,
+     "cites": 296,
+     "doi": "10.1146/annurev.immunol.15.1.155"
+    },
+    {
+     "title": "Single-cell analysis of human B cell maturation predicts how antibody class switching shapes selection dynamics",
+     "year": 2021,
+     "cites": 292,
+     "doi": "10.1126/sciimmunol.abe6291"
+    },
+    {
+     "title": "High throughput sequencing reveals a complex pattern of dynamic interrelationships among human T cell subsets",
+     "year": 2010,
+     "cites": 277,
+     "doi": "10.1073/pnas.0913939107"
+    },
+    {
+     "title": "Receptor Selection in B and T Lymphocytes",
+     "year": 2000,
+     "cites": 269,
+     "doi": "10.1146/annurev.immunol.18.1.19"
+    },
+    {
+     "title": "Differential Roles of ERK and p38 MAP Kinase Pathways in Positive and Negative Selection of T Lymphocytes",
+     "year": 1998,
+     "cites": 246,
+     "doi": "10.1016/s1074-7613(00)80639-1"
+    }
+   ]
+  },
+  {
+   "query": "instructive or selective",
+   "matches": 1214,
+   "top": [
+    {
+     "title": "A Review of Electrocatalytic Reduction of Dinitrogen to Ammonia under Ambient Conditions",
+     "year": 2018,
+     "cites": 1353,
+     "doi": "10.1002/aenm.201800369"
+    },
+    {
+     "title": "Recurrent gain of chromosomes 17q and 12 in cultured human embryonic stem cells",
+     "year": 2003,
+     "cites": 1084,
+     "doi": "10.1038/nbt922"
+    },
+    {
+     "title": "Mobile Fading Channels",
+     "year": 2002,
+     "cites": 942,
+     "doi": "10.1002/0470847808"
+    },
+    {
+     "title": "Interactions of Mitochondrial and Nuclear Genes That Affect Male Gametophyte Development",
+     "year": 2004,
+     "cites": 915,
+     "doi": "10.1105/tpc.015966"
+    },
+    {
+     "title": "Alternative Neural Crest Cell Fates Are Instructively Promoted by TGF\u03b2 Superfamily Members",
+     "year": 1996,
+     "cites": 854,
+     "doi": "10.1016/s0092-8674(00)81112-5"
+    },
+    {
+     "title": "Selective probiotic bacteria induce IL-10\u2013producing regulatory T cells in vitro by modulating dendritic cell function through dendritic cell\u2013specific intercellular adhesion molecule 3\u2013grabbing nonintegrin",
+     "year": 2005,
+     "cites": 849,
+     "doi": "10.1016/j.jaci.2005.03.036"
+    },
+    {
+     "title": "The neurotrophin hypothesis for synaptic plasticity",
+     "year": 2000,
+     "cites": 842,
+     "doi": "10.1016/s0166-2236(00)01672-6"
+    },
+    {
+     "title": "Practical Handbook of Physical Properties of Rocks and Minerals (1988)",
+     "year": 2017,
+     "cites": 787,
+     "doi": "10.1201/9780203710968"
+    },
+    {
+     "title": "A Two-Step Process for Thymic Regulatory T Cell Development",
+     "year": 2008,
+     "cites": 785,
+     "doi": "10.1016/j.immuni.2007.11.021"
+    },
+    {
+     "title": "Kr\u00fcppel-like Factors: Three Fingers in Many Pies",
+     "year": 2001,
+     "cites": 670,
+     "doi": "10.1074/jbc.r100043200"
+    },
+    {
+     "title": "Tandem reactions, cascade sequences, and biomimetic strategies in total synthesis",
+     "year": 2003,
+     "cites": 627,
+     "doi": "10.1039/b209440c"
+    },
+    {
+     "title": "Bifurcation dynamics in lineage-commitment in bipotent progenitor cells",
+     "year": 2007,
+     "cites": 619,
+     "doi": "10.1016/j.ydbio.2007.02.036"
+    },
+    {
+     "title": "Glial growth factor restricts mammalian neural crest stem cells to a glial fate",
+     "year": 1994,
+     "cites": 541,
+     "doi": "10.1016/0092-8674(94)90150-3"
+    },
+    {
+     "title": "Bad Actor, Good Advisor: Exploring the Role of Large Language Models in Fake News Detection",
+     "year": 2024,
+     "cites": 502,
+     "doi": "10.1609/aaai.v38i20.30214"
+    },
+    {
+     "title": "Recent developments in the field of oxa-Michael reactions",
+     "year": 2011,
+     "cites": 492,
+     "doi": "10.1039/c1cs15167c"
+    }
+   ]
+  }
+ ],
+ "references": null
+}
