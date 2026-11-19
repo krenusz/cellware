@@ -12382,3 +12382,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Watch list re-check (Bence: "4 also go"):** GSE324482 private until 2030-03-01; E-MTAB-17351 still not accessible (403); neuromesoderm organoid preprint: data statement not read (bioRxiv rate limit, 3 tries), re-check about 26 Nov.
 - Self-challenge: verdicts come from keywords and characteristic tags, not data; MADM's sister design is certain from the method, CRISPR trees from the title; 69 MADM clones is small (wide intervals expected); the in vivo MADM series and the CRISPR set's organoid samples may change the system count.
 - Model: Opus 5.5 (main session); one web-fetch subagent (Opus 5.5) was rate-limited and returned nothing.
+
+## C17-S1M: MADM organoid clones, S0 structure gate before sealing (pre-registered 2026-11-19; Bence: "Go MADM")
+- Serves: C17-S1 (C17-S1R: grow the systems; the neural class needs a 3rd memory-capable system and this is the cheapest candidate). Script c17s1m_madm.py, stage `struct`, on Actions.
+- Design (from C17-S1N metadata): GSE327468, one GEO sample per sequenced cell, with per-cell tags `cloneid`, `color` (G / R / NA: the two MADM sister sublineages of a clone) and `plate`. The memory estimand planned for S1 is the B38 heritable share between the G and R sublineages of a clone (as SIS and CellTag LSK), with cell fates from expression.
+- Pre-flight:
+  1. Unit: clone (`cloneid`); the G and R sublineages are its two arms (the treatment-assignment unit for the split is the clone itself; no between-condition contrast, so H22's per-arm rule does not apply).
+  2. Readout (this stage): structure only (H9): cells per clone per colour, per plate. No expression, no fate, no `clone type` tag is tabulated (it is the authors' outcome class).
+  3. Used data first: none of this set is used.
+  4. Power: the gate below decides whether a train estimate is possible at all.
+  5. Exposure: per-cell colour and clone tags only; distinct-value tags were already seen in C17-S1N.
+  6. Literature access: public GEO SOFT text.
+  7. Readout gate: S1 needs >= 30 eligible train clones (H21).
+- **Gate (fixed now):** an eligible clone has >= 2 cells in G and >= 2 in R (the smallest sister-arm size validated for B38 in C7-S2a). With the standard split (train 40%, A/B/C 20% each), **pass if 0.4 x eligible >= 30** (>= 75 eligible clones). Pass: seal by clone with balanced_split (strata = plate; size = cells), commit the map, then pre-register S1. Fail: stop; this set cannot carry a train estimate under H1/H11, and any other use (descriptive estimate without sealing) needs Bence's OK.
+- Practice: offline selftest of the per-cell tag parser and the gate on synthetic SOFT text; 1-rep writer run before dispatch.
+- Compute: GitHub Actions run (sweeps/c17s1m_struct.txt).
