@@ -7,6 +7,8 @@ listed by name and type only, never tabulated. R files are parsed with `rdata` (
 
     python -I experiments/c17s1c_crest.py schema                   # columns, types, distinct counts
     python -I experiments/c17s1c_crest.py gate CLONE ALLELE SAMPLE  # gate with the named columns
+    python -I experiments/c17s1c_crest.py split                    # amendment 2: split clones + gate
+    python -I experiments/c17s1c_crest.py seal                     # amendment 2: H24 map by clone
     python -I experiments/c17s1c_crest.py selftest
 """
 
@@ -25,6 +27,8 @@ OUT = HERE / "results_c17"
 FILE = "GSE210139_single_cell_CREST_barcode_qc_updated20230422.rds.gz"
 FATE_LIKE = re.compile(r"type|fate|cluster|annot|class|ident|lineage|celltype|state", re.I)
 MIN_CELLS, MIN_SUB, MIN_SUBS = 8, 4, 2
+NAME, SALT = "crest_split_clone", "cellware-crest-split-clone-v1"
+MAPS = HERE / "partition_maps"
 
 
 def load(path):
@@ -96,6 +100,63 @@ def mapped(df):
     return d.assign(clone=d["sample_key"] + "|" + d["pattern.v2"])
 
 
+def split_clones(df):
+    """Amendment 2: clones shared by pandaE11_k and OGN_k (same k) and absent from every other sample."""
+    d = df[df["pattern.v2"].map(informative)].copy()
+    where = d.groupby("pattern.v2")["sample_key"].agg(lambda s: frozenset(s))
+    rows = []
+    for k in ("1", "2", "3"):
+        pair = frozenset({f"pandaE11_rep{k}", f"OGN_rep{k}"})
+        pats = [p for p, s in where.items() if s == pair]
+        for p in pats:
+            g = d[d["pattern.v2"] == p]
+            rows.append({"embryo": k, "pattern": p, "arm1": int((g["sample_key"] == f"pandaE11_rep{k}").sum()),
+                         "arm2": int((g["sample_key"] == f"OGN_rep{k}").sum())})
+    return pd.DataFrame(rows)
+
+
+def split_gate(cl, a1=3, a2=4):
+    elig = cl[(cl["arm1"] >= a1) & (cl["arm2"] >= a2)]
+    return {"shared_clones": int(len(cl)), "eligible_clones": int(len(elig)),
+            "eligible_per_embryo": {str(k): int(v) for k, v in elig.groupby("embryo").size().items()},
+            "expected_train_eligible": int(0.4 * len(elig)), "gate_pass": bool(0.4 * len(elig) >= 30),
+            "arm1_cells_median": float(cl["arm1"].median()) if len(cl) else 0.0,
+            "arm2_cells_median": float(cl["arm2"].median()) if len(cl) else 0.0}
+
+
+def coincidence(df):
+    """Informative v2 patterns shared by each matched pair vs by unrelated pandaE11/OGN pairs (structure)."""
+    d = df[df["pattern.v2"].map(informative)]
+    pats = {k: set(g["pattern.v2"]) for k, g in d.groupby("sample_key")}
+    pair = {k: len(pats[f"pandaE11_rep{k}"] & pats[f"OGN_rep{k}"]) for k in "123"}
+    other = [len(pats[f"pandaE11_rep{i}"] & pats[f"OGN_rep{j}"]) for i in "123" for j in "123" if i != j]
+    return {"matched_pair_shared": pair, "unrelated_pair_shared": other,
+            "coincidental_share_est": round(sum(other) / len(other) / (sum(pair.values()) / 3), 3)}
+
+
+def seal(cl):
+    """H24 balanced map by clone (unit = '<embryo>:<v2 pattern>', size = cells in both arms, strata = embryo)."""
+    sys.path.insert(0, str(HERE))  # -I drops the script dir; partitions.py is ours, not downloaded
+    from partitions import balanced_split  # noqa: PLC0415
+
+    size = {f"{r.embryo}:{r.pattern}": int(r.arm1 + r.arm2) for r in cl.itertuples()}
+    strata = {f"{r.embryo}:{r.pattern}": r.embryo for r in cl.itertuples()}
+    elig = {f"{r.embryo}:{r.pattern}" for r in cl.itertuples() if r.arm1 >= 3 and r.arm2 >= 4}
+    mapping = balanced_split(size, SALT, strata)
+    MAPS.mkdir(exist_ok=True)
+    with open(MAPS / f"partition_{NAME}.tsv", "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(f"# {NAME}: H24 balanced map, salt {SALT}, sealed 2026-11-19 before any statistic\n")
+        for u in sorted(mapping):
+            fh.write(f"{u}\t{mapping[u]}\n")
+    parts = sorted(set(mapping.values()))
+    return {"salt": SALT, "units": len(mapping), "totals": {p: {
+        "units": sum(v == p for v in mapping.values()),
+        "eligible": sum(mapping[u] == p for u in elig),
+        "cells": sum(size[u] for u in mapping if mapping[u] == p)} for p in parts},
+        "eligible_by_embryo": {k: {p: sum(mapping[u] == p for u in elig if strata[u] == k) for p in parts}
+                               for k in "123"}}
+
+
 def selftest():
     df = pd.DataFrame({"clone": ["a"] * 9 + ["b"] * 3, "allele": ["x"] * 5 + ["y"] * 4 + ["z"] * 3,
                        "sample": ["s1"] * 12, "celltype": ["n"] * 12})
@@ -104,6 +165,12 @@ def selftest():
     assert "tags" not in ct and ct["fate_like"], ct
     g = gate(df, "clone", "allele", "sample")
     assert g["clones"] == 2 and g["eligible_clones"] == 1 and not g["gate_pass"], g
+    sp = pd.DataFrame({"pattern.v2": ["1D+5_NONE"] * 7 + ["9D+2_NONE"] * 2 + ["4D+1_NONE"] * 2,
+                       "sample_key": ["pandaE11_rep1"] * 3 + ["OGN_rep1"] * 4 + ["pandaE11_rep1", "E15_rep1"]
+                       + ["pandaE11_rep2", "OGN_rep2"]})
+    cl = split_clones(sp)
+    assert len(cl) == 2 and set(cl["pattern"]) == {"1D+5_NONE", "4D+1_NONE"}, cl  # 9D+2 seen in E15: dropped
+    assert split_gate(cl)["eligible_clones"] == 1
     return {"ok": True}
 
 
@@ -115,6 +182,11 @@ def main():
     df = load(RAW / FILE)
     if stage == "schema":
         res = schema(df)
+    elif stage == "split":  # amendment 2
+        cl = split_clones(df)
+        res = {"mapping": split_clones.__doc__.strip(), **split_gate(cl), **coincidence(df)}
+    elif stage == "seal":  # amendment 2, gate passed: seal before any fate read (H1, H24)
+        res = seal(split_clones(df))
     else:  # amendment 1: gate on the mapped clones, per sample group and pooled
         d = mapped(df)
         res = {"mapping": mapped.__doc__.strip(), "pooled": gate(d, "clone", "pattern.v1", "sample_key"),

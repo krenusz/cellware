@@ -156,6 +156,17 @@ PARTITIONED = {
         "prior_exposure": "C17-S0b obs structure (columns, levels, guide and donor labels); C17-S0c partition counts; "
                           "claims-level read of the source paper",
     },
+    "crest_split_clone": {
+        "salt": "cellware-crest-split-clone-v1",
+        "unit": "split clone of GSE210139 (C17-S1C amendment 2): '<embryo k>:<informative pattern.v2>' present in the "
+                "in vivo arm (pandaE11_rep k) and the organoid arm (OGN_rep k) and in no other sample; strata = embryo",
+        "fixed_file": "partition_maps/partition_crest_split_clone.tsv",
+        "files": ["GSE210139 single-cell barcode QC tables (rds.gz), sha256 in data/ext_crest/raw/SHA256SUMS"],
+        "sealed_on": "2026-11-19",
+        "prior_exposure": "C17-S1C schema (column names/types; the cell type column was not tabulated), barcode "
+                          "pattern sharing between samples, cells per arm per clone, partition counts; GEO design text "
+                          "and the source abstract (claims level; methods paywalled)",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

@@ -41,6 +41,10 @@ DATASETS = {
                     "Per-embryo h5td, scVI, umap NOT downloaded; GEO matrices of the 7 TRAIN embryos only downloaded 2026-11-15 (Bence: \"download the 9gb go ahead\") to data/ext_petracer/train_matrices, sizes checked vs GEO, sha256 in SHA256SUMS there. Partition A matrices (5 embryos, 15 files, 11.5 GB) downloaded 2026-11-15 (Bence: \"1\") to data/ext_petracer/sealed_A_matrices, sizes checked vs GEO, sha256 in SHA256SUMS there, UNREAD: only c14s2_confirm.test_A via test_oracle. B and C matrices never downloaded. Format check only (columns, dtypes, "
                     "cells per embryo, tree counts) until partitioned by embryo (petracer_embryo); cell-type composition, "
                     "spatial scores and tree structure are outcomes: train only after sealing.",
+    "ext_crest": "GEO GSE210139 (CRISPR barcoding of ventral midbrain), two single-cell barcode QC tables (rds.gz, 2.7 MB "
+                 "each) downloaded 2026-11-19 (Bence: \"go\"), sha256 in data/ext_crest/raw/SHA256SUMS. Partitioned by split "
+                 "clone (partitions.crest_split_clone, sealed 2026-11-19): train 40%, A/B/C 20%. Cell type column readable "
+                 "only via train_only / test_oracle; snapshot samples (E11, E15) carry no split and are not used.",
     "ext_c15": "Zenodo 10.5281/zenodo.5847461 (CC-BY; C15 candidate #12, in vivo growth model with lineage trees), downloaded "
                "only on GitHub Actions runners (never locally), md5 checked vs the record each time. Partitioned by host "
                "(partitions.growth12_host_v2, sealed 2026-11-17; v1 A/B/C void after the 5/5/5 rebalance, Bence: \"yes rebalance\") before any statistic: train 40%, A/B/C 20%. Structure only "

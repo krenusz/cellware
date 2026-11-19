@@ -1,0 +1,28 @@
+{
+ "mapping": "Amendment 2: clones shared by pandaE11_k and OGN_k (same k) and absent from every other sample.",
+ "shared_clones": 740,
+ "eligible_clones": 308,
+ "eligible_per_embryo": {
+  "1": 100,
+  "2": 99,
+  "3": 109
+ },
+ "expected_train_eligible": 123,
+ "gate_pass": true,
+ "arm1_cells_median": 4.0,
+ "arm2_cells_median": 4.0,
+ "matched_pair_shared": {
+  "1": 326,
+  "2": 251,
+  "3": 321
+ },
+ "unrelated_pair_shared": [
+  14,
+  24,
+  17,
+  14,
+  23,
+  16
+ ],
+ "coincidental_share_est": 0.06
+}

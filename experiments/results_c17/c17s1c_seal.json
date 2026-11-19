@@ -1,0 +1,46 @@
+{
+ "salt": "cellware-crest-split-clone-v1",
+ "units": 740,
+ "totals": {
+  "A": {
+   "units": 148,
+   "eligible": 59,
+   "cells": 2108
+  },
+  "B": {
+   "units": 148,
+   "eligible": 59,
+   "cells": 2131
+  },
+  "C": {
+   "units": 148,
+   "eligible": 67,
+   "cells": 1991
+  },
+  "train": {
+   "units": 296,
+   "eligible": 123,
+   "cells": 4323
+  }
+ },
+ "eligible_by_embryo": {
+  "1": {
+   "A": 22,
+   "B": 18,
+   "C": 21,
+   "train": 39
+  },
+  "2": {
+   "A": 17,
+   "B": 21,
+   "C": 23,
+   "train": 38
+  },
+  "3": {
+   "A": 20,
+   "B": 20,
+   "C": 23,
+   "train": 46
+  }
+ }
+}
