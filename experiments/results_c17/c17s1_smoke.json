@@ -1,0 +1,112 @@
+{
+ "tsplit": {
+  "clone": {
+   "reject_rate": 0.815,
+   "icc_mean": 0.4347594821174336
+  },
+  "size": {
+   "reject_rate": 0.02,
+   "icc_mean": 0.0046420494390176014
+  },
+  "host": {
+   "reject_rate": 0.015,
+   "icc_mean": 0.0056325803612911705
+  }
+ },
+ "expansion_control": {
+  "icc_mean": 0.7125985293437914,
+  "min": 0.49941766330912746
+ },
+ "cortical": {
+  "null_floor1": {
+   "instruction_mean": 0.003042415369680941,
+   "instruction_sd": 0.039410809633836606,
+   "selection_mean": 0.022779292949883904,
+   "size_matched_instruction_mean": 0.0021528161674858374,
+   "corrected_instruction_mean": 0.0037466674532700274,
+   "corrected_instruction_sd": 0.04041459563748213,
+   "corrected_selection_mean": 0.01977872607999384
+  },
+  "selection_floor1": {
+   "instruction_mean": 0.010572168102994049,
+   "instruction_sd": 0.04400254245808245,
+   "selection_mean": 0.6269353978451032,
+   "size_matched_instruction_mean": -0.011010764597099137,
+   "corrected_instruction_mean": -0.003100026296491825,
+   "corrected_instruction_sd": 0.04452387245440495,
+   "corrected_selection_mean": 0.6839511748636089
+  },
+  "instruction_floor1": {
+   "instruction_mean": 0.15207778109105752,
+   "instruction_sd": 0.04622240320417055,
+   "selection_mean": -0.009204357327418283,
+   "size_matched_instruction_mean": 0.15117980029284153,
+   "corrected_instruction_mean": 0.15201030507409935,
+   "corrected_instruction_sd": 0.04830658658505204,
+   "corrected_selection_mean": -0.009161734742791208
+  },
+  "null_floor3": {
+   "instruction_mean": -0.0024780680177842918,
+   "instruction_sd": 0.048545141248532306,
+   "selection_mean": -0.006944058452071392,
+   "size_matched_instruction_mean": -0.0031272460350658658,
+   "corrected_instruction_mean": 0.006406893789527218,
+   "corrected_instruction_sd": 0.13025428060915137,
+   "corrected_selection_mean": -0.3073412369428861
+  },
+  "selection_floor3": {
+   "instruction_mean": 0.055169755649314214,
+   "instruction_sd": 0.04514012198208029,
+   "selection_mean": 0.4906230356045206,
+   "size_matched_instruction_mean": 0.03178949384320713,
+   "corrected_instruction_mean": -0.01009357878032892,
+   "corrected_instruction_sd": 0.0912363037375884,
+   "corrected_selection_mean": 0.7057130163160764
+  },
+  "instruction_floor3": {
+   "instruction_mean": 0.15065172206883662,
+   "instruction_sd": 0.045074716167821126,
+   "selection_mean": 0.004668867151418331,
+   "size_matched_instruction_mean": 0.15312806522017774,
+   "corrected_instruction_mean": 0.13794396557509334,
+   "corrected_instruction_sd": 0.12460633893678034,
+   "corrected_selection_mean": -0.09077617488088892
+  },
+  "null_floor5": {
+   "instruction_mean": -0.006150375849456619,
+   "instruction_sd": 0.05966454894980601,
+   "selection_mean": -0.008688674926890908,
+   "size_matched_instruction_mean": -0.005999330603883812,
+   "corrected_instruction_mean": 0.027804148024430805,
+   "corrected_instruction_sd": 0.31205061390357947,
+   "corrected_selection_mean": -0.8554191200832775
+  },
+  "selection_floor5": {
+   "instruction_mean": 0.12406045658297221,
+   "instruction_sd": 0.05189240373775361,
+   "selection_mean": 0.3906276055250041,
+   "size_matched_instruction_mean": 0.10404455718658719,
+   "corrected_instruction_mean": -0.013908162683984728,
+   "corrected_instruction_sd": 0.23964230978100431,
+   "corrected_selection_mean": 2.729308844205256
+  },
+  "instruction_floor5": {
+   "instruction_mean": 0.14930798055939537,
+   "instruction_sd": 0.06068730844373869,
+   "selection_mean": 0.003593391437827692,
+   "size_matched_instruction_mean": 0.15251830617066214,
+   "corrected_instruction_mean": 0.08593215759761354,
+   "corrected_instruction_sd": 0.3226819768447404,
+   "corrected_selection_mean": 2.2392705271294266
+  }
+ },
+ "pass": {
+  "tsplit_clone_power": true,
+  "tsplit_size_fpr": true,
+  "tsplit_host_fpr": true,
+  "expansion_control_recovered": true,
+  "cortical_corrected_selection_not_instruction": true,
+  "cortical_corrected_instruction_detected": false,
+  "cortical_corrected_selection_detected": true
+ }
+}

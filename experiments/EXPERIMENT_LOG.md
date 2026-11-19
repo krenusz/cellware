@@ -12255,3 +12255,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Smoke pass rules (fixed now), floors 1, 3 and 5, 200 reps:** under pure selection, |corrected instruction| < 0.5 sd; under pure instruction, corrected instruction > 0.1; under pure selection, corrected selection > 0.4 (planted log 2 = 0.69). If any rule fails, T-cortical stays exploratory (no sealed look), and S1 proceeds with T-split' and the joint fit.
 - Assumption stated: clone size follows a negative binomial within (arm, fate class). Misfit is checked on train by a posterior-predictive size distribution before any test (adequacy gate).
 - H22 unchanged (clone-level assignment, >= 11 donor batches per arm). Exposure unchanged. **This is the 4th amendment in this step; a 5th requires a retro first (H18).**
+
+### C17-S1 run 2 result (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44507674489; synthetic + train counts)
+- The sweep reports "fail" on its single line, but both result files are complete, with the pass dict written. The cause of the non-zero exit is not yet found. It is noted and will be fixed before the next run.
+- **T-split' smoke:** all pass again (unchanged code).
+- **Detection-aware cortical estimator (amendment 4):** no leak at any floor. Under pure selection, corrected instruction is -0.003 / -0.010 / -0.014 at floors 1 / 3 / 5 (all within 0.5 sd: PASS).
+  - Instruction is detected at floors 1 and 3 (+0.152, +0.138) but **not at floor 5 (+0.086 < 0.1): FAIL** by the fixed all-floors rule.
+  - Variance grows with the floor: instruction sd 0.045 / 0.09-0.13 / 0.24-0.32.
+  - The selection estimate is biased under the null at floors 3 and 5 (-0.31, -0.86). Selection detection passes formally but is not trustworthy above floor 1.
+- **Real train detection floor:** minimum n_cells = 3 (train clones with 3 / 4 / 5 cells: 1,501 / 875 / 527), so the real data sit in the floor-3 regime, where instruction passes but with about 2-3x the noise.
+- **Decision by the fixed rule:** a pass rule failed (floor 5), so **T-cortical is exploratory (no sealed look)**. Floor 5 is not the real data's regime. Re-scoping the rule to the observed floor would be a 5th amendment and needs a retro first (H18); that is Bence's call. S1 proceeds with T-split', the expansion control and the joint fit.

@@ -1,0 +1,76 @@
+{
+ "rf2020_clone": {
+  "cells_by_compartment_all_partitions": {
+   "Sample1": {
+    "kit": 11187,
+    "hsc": 6398
+   },
+   "Sample2": {
+    "hsc": 6870,
+    "kit": 3504
+   },
+   "Sample3": {
+    "hsc": 2057,
+    "kit": 2787
+   },
+   "Sample4": {
+    "hsc": 11082,
+    "kit": 14553
+   },
+   "Sample5": {
+    "hsc": 18629,
+    "kit": 22426
+   }
+  },
+  "train_clones": 4774,
+  "train_shared_kit3_by_set": {
+   "Sample1": 2,
+   "Sample4": 4,
+   "Sample5": 30
+  },
+  "train_shared_kit3_total": 36,
+  "gate_ge_30": true
+ },
+ "cortical_clone": {
+  "ARX": {
+   "train_clones": 1302,
+   "donor_batches": 12,
+   "gate_ge_3_batches": true
+  },
+  "NEUROD2": {
+   "train_clones": 436,
+   "donor_batches": 12,
+   "gate_ge_3_batches": true
+  },
+  "NR2E1": {
+   "train_clones": 208,
+   "donor_batches": 11,
+   "gate_ge_3_batches": true
+  },
+  "SOX2": {
+   "train_clones": 772,
+   "donor_batches": 12,
+   "gate_ge_3_batches": true
+  },
+  "ZNF219": {
+   "train_clones": 848,
+   "donor_batches": 12,
+   "gate_ge_3_batches": true
+  },
+  "non-targeting": {
+   "train_clones": 564,
+   "donor_batches": 12,
+   "gate_ge_3_batches": true
+  }
+ },
+ "cortical_detection_floor": {
+  "train_min_n_cells": 3,
+  "train_clones_by_n_cells_1_to_5": {
+   "1": 0,
+   "2": 0,
+   "3": 1501,
+   "4": 875,
+   "5": 527
+  }
+ }
+}
