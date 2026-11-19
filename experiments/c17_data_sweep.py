@@ -31,12 +31,27 @@ OUT = os.path.join(HERE, "results_c17", "c17_data_sweep.json")
 UA = {"User-Agent": "cellware-data-sweep/1.0 (public metadata, research use)"}
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 
+# Further disease, pathogen and drug names (retro 2026-11-19b; same list in lit_gap.py).
+DISEASE_EXTRA = (
+    r"|anemi|anaemi|aplastic|thalass|sickle|hemophil|haemophil|penia\b|immunodeficien|dystroph|scleros|sclerotic"
+    r"|fibrot|arthritis|lupus|asthma|allerg|obes(e|ity)|hypertens|ischemi|ischaemi|stroke|infarct|aneurysm"
+    r"|embolism|thrombos[ie]s|thrombotic|hemorrhag|haemorrhag|cirrhos|hepatitis|colitis|crohn|inflammatory bowel"
+    r"|ulcer|psoria|dementia|neurodegenerat|macular|epilep|autis|schizophren|deafness|opath(y|ies|ic)\b"
+    r"|graft.versus.host|gvhd|\bdisorders?\b|\blesions?\b|pneumonia|eclamp|spina bifida|malnut|infertil"
+    r"|congenital|pathogen|malaria|tubercul|influenza|zika|ebola|herpes|cytomegalo|septic|blastoma|adenom"
+    r"|hepatom|teratom|mesotheliom|astrocytom|myeloprolif|lymphoprolif|\baml\b|\bcml\b|\bcll\b|metaplas"
+    r"|hyperplas|atroph|cystic|trauma|injur|vaccin|antibiotic|pharmac|fluorouracil|\b5-?fu\b"
+    r"|\w+(nib|mab|ciclib|parib)\b"
+)
 TITLE_DROP = re.compile(r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|oncog|metasta|drug|chemo|"
-                        r"therap|patient|disease|clinical|glioma|sarcoma|neoplas", re.I)
+                        r"therap|patient|disease|clinical|glioma|sarcoma|neoplas|syndrom|dysplas|fibros|diabet|"
+                        r"alzheimer|parkinson|sepsis|autoimmun|infection|\bhiv\b|covid|sars|defect" + DISEASE_EXTRA,
+                        re.I)
 SUMMARY_DROP = re.compile(r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|metasta|patient|glioma|"
                           r"sarcoma|neoplas|drug.resist|chemoresist", re.I)
 CELL_LINE = re.compile(r"\b(hela|hek ?293[a-z]*|k562|mcf-?7|a549|hct-?116|jurkat|u2os|thp-?1|hl-?60|nb4|molm-?\d+|"
-                       r"mv4-?11|kasumi-?\d*|wtc-?11|hues\d+|kolf2?[\w.-]*|h1|h9|h7|e14(tg2a)?|v6\.5|cgr8)\b", re.I)
+                       r"mv4-?11|kasumi-?\d*|wtc-?11|hues\d+|kolf2?[\w.-]*|(?<!histone )h[179](?![.]\d)|"
+                       r"e14(tg2a)?(?![.]\d)|v6\.5|cgr8)\b", re.I)
 FLAGS = {
     "lineage": r"barcod|lineage[ -]trac|lineage record|clonal (trac|analys|barcod|lineage)|celltag|\blarry\b|"
                r"polylox|carlin|darlin|lineage tree|cellular barcod|clone[ -]tracing",
@@ -145,6 +160,25 @@ def biostudies_records(name, q):
     return r.get("totalHits"), out
 
 
+# Study families already in the project (H5): GEO sub-series of these studies are not new data.
+KNOWN_STEMS = {
+    "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis":
+        "PEtracer embryo set (sealed)",
+    "single-cell lineage capture across genomic modalities with celltag-multi reveals fate-specific gene "
+    "regulatory changes": "CellTag-multi LSK and reprogramming sets (sealed)",
+    "a mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling "
+    "in single cells": "darlin (used, pre-protocol)",
+    "in situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells":
+        "GSE299000 family (C17 inventory)",
+    "heterogeneity in hematopoietic stem cell enables adaptation to the aged microenvironment": "GSE326529 family",
+}
+
+
+def stem(title):
+    """Study title without a trailing sub-series tag such as ' [scRNA-seq]' or ' (RNA-seq)'."""
+    return re.sub(r"\s*[\[(][^\])]*[\])]\s*\.?$", "", title or "").strip().lower()
+
+
 def known_accessions():
     text = ""
     files = [os.path.join(HERE, "EXPERIMENT_LOG.md"), os.path.join(HERE, "partitions.py"),
@@ -183,6 +217,16 @@ def process(raw, known):
             out[acc] = rec
         if r["query"] not in rec["queries"]:
             rec["queries"].append(r["query"])
+    fam = {}
+    for rec in out.values():
+        rec["family"] = stem(rec["title"])
+        fam.setdefault(rec["family"], []).append(rec)
+    for f, members in fam.items():
+        tag = KNOWN_STEMS.get(f)
+        if tag or any(m["known"] for m in members):
+            for m in members:
+                m["known"] = True
+                m["known_as"] = tag or "family of a known accession"
     recs = sorted(out.values(), key=lambda x: (-x["score"], -len(x["queries"]), x["accession"]))
     return recs, dropped
 
@@ -238,6 +282,7 @@ def sweep():
     by = {
         "records_with_lineage_flag": len(recs),
         "new_records": sum(not r["known"] for r in recs),
+        "new_study_families": len({r["family"] for r in recs if not r["known"]}),
         "pluripotent_candidates_new": sum(r["pluripotent_candidate"] and not r["known"] for r in recs),
         "blood_split_or_memory_new": sum(("blood" in r["flags"]) and ("split_or_memory" in r["flags"])
                                          and not r["known"] for r in recs),
@@ -259,14 +304,32 @@ def selftest():
          "summary": "scRNA-seq of progenitors; cells derived from patient samples", "query": "q"},
         {"source": "Zenodo", "accession": "zenodo:5", "title": "LARRY barcoding of organoid split wells",
          "summary": "single-cell", "query": "q2"},
+        {"source": "GEO", "accession": "GSE6", "title": "Barcoding of H9 hESC sister clones across passages [ATAC]",
+         "summary": "single-cell lineage tracing", "query": "q"},
+        {"source": "GEO", "accession": "GSE7", "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell "
+         "Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E7.5-R1]", "summary": "lineage tracing", "query": "q"},
     ]
     recs, dropped = process(raw, known)
     acc = [r["accession"] for r in recs]
-    assert acc == ["GSE1", "zenodo:5"], acc
+    assert acc == ["GSE1", "GSE6", "zenodo:5", "GSE7"], acc
     assert dropped == 2, dropped
+    by = {r["accession"]: r for r in recs}
+    assert by["GSE6"]["known"], "sub-series of a known study must be known"
+    assert by["GSE7"]["known"] and by["GSE7"]["known_as"] == "PEtracer embryo set (sealed)", by["GSE7"]
     assert recs[0]["title"] == "Barcoding of [line] hESC sister clones across passages", recs[0]["title"]
     assert recs[0]["known"] and recs[0]["pluripotent_candidate"]
-    assert not recs[1]["known"] and recs[1]["pluripotent_candidate"]
+    assert not by["zenodo:5"]["known"] and by["zenodo:5"]["pluripotent_candidate"]
+    # extended neutral-wording filter (retro 2026-11-19b): drops disease names, keeps core biology wording
+    for t in ("Sclerotome and blastomere fate", "E14.5 lentiviral barcoding of clones",
+              "Inducible Cre lineage tracing after transplantation",
+              "Platelet-biased HSCs and thrombopoiesis in aging knockout mice",
+              "Astrocyte and trophectoderm lineages", "Genotoxic stress in neuromesodermal progenitors"):
+        assert not TITLE_DROP.search(t), t
+    for t in ("Neutropenia after stroke", "Autism risk genes in organoids", "Glioblastoma clones",
+              "Spina bifida", "Acute kidney injury", "Teratoma assay", "Xatinib response", "Xumab", "Xoparib"):
+        assert TITLE_DROP.search(t), t
+    masked = CELL_LINE.sub("[line]", "E14.5 embryo, histone H1 and H9 hESC")
+    assert masked == "E14.5 embryo, histone H1 and [line] hESC", masked
     return {"ok": True, "kept": acc, "dropped": dropped}
 
 

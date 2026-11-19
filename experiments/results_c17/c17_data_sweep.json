@@ -1,0 +1,3881 @@
+{
+ "queries": {
+  "GEO:pluripotent_clones": {
+   "total": 616,
+   "fetched": 300
+  },
+  "GEO:sister_split": {
+   "total": 78,
+   "fetched": 78
+  },
+  "GEO:clonal_memory": {
+   "total": 86,
+   "fetched": 86
+  },
+  "GEO:organoid_clones": {
+   "total": 160,
+   "fetched": 160
+  },
+  "GEO:progenitor_clones": {
+   "total": 932,
+   "fetched": 300
+  },
+  "Zenodo:pluripotent_clones": {
+   "total": 16,
+   "fetched": 2
+  },
+  "Zenodo:sister_split": {
+   "total": 2,
+   "fetched": 2
+  },
+  "Zenodo:clonal_barcoding": {
+   "total": 42,
+   "fetched": 3
+  },
+  "BioStudies:pluripotent_clones": {
+   "total": 3807,
+   "fetched": 100
+  },
+  "BioStudies:sister_split": {
+   "total": 43736,
+   "fetched": 100
+  },
+  "BioStudies:organoid_clones": {
+   "total": 2537,
+   "fetched": 100
+  }
+ },
+ "errors": [],
+ "summary": {
+  "records_with_lineage_flag": 203,
+  "new_records": 186,
+  "pluripotent_candidates_new": 25,
+  "blood_split_or_memory_new": 32,
+  "dropped_excluded_domain": 382
+ },
+ "watch": {
+  "GSE324482": "not public",
+  "GSE342607": "public",
+  "E-MTAB-17351": "error: https://www.ebi.ac.uk/biostudies/api/v1/studies/E-MTAB-17351",
+  "hESC endoderm sister wells": {
+   "hits": 0,
+   "titles": []
+  },
+  "DeepTrack": {
+   "hits": 0,
+   "titles": []
+  }
+ },
+ "records": [
+  {
+   "source": "GEO",
+   "accession": "GSE342226",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E7.5-R1]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342227",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E7.5-R2]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342228",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E7.5-R3]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342229",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E8.0-R1]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342230",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E8.0-R2]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342231",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E8.0-R3]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342232",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E8.5-R1]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342233",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E8.5-R2]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342236",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E8.5-R3]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342237",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E9.0-R1]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342238",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E9.0-R2]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342239",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E9.0-R3]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342240",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E9.5-R1]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342270",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E9.5-R2]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342272",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E9.5-R3]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342606",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis [DevMap_mouse_E10.0-R1]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE210139",
+   "title": "Comprehensive spatiotemporal mapping of single-cell lineages in developing mouse brain by CRISPR-based barcoding",
+   "year": "2023",
+   "n_samples": 118,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "comprehensive spatiotemporal mapping of single-cell lineages in developing mouse brain by crispr-based barcoding"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE221362",
+   "title": "Extraembryonic gut endoderm cells undergo programmed cell death during development (scRNA-seq)",
+   "year": "2024",
+   "n_samples": 3,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "extraembryonic gut endoderm cells undergo programmed cell death during development"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE352893",
+   "title": "Evaluation of circular guide RNA capture in Parse Evercode v3 single-cell profiling of mixed human induced pluripotent stem cells and [line] cells",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "evaluation of circular guide rna capture in parse evercode v3 single-cell profiling of mixed human induced pluripotent stem cells and [line] cells"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE226169",
+   "title": "Barcode-free prediction of cell lineages from scRNA-seq datasets",
+   "year": "2024",
+   "n_samples": 1,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "barcode-free prediction of cell lineages from scrna-seq datasets"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE250083",
+   "title": "Extraembryonic gut endoderm cells undergo programmed cell death during development (RNA-seq)",
+   "year": "2024",
+   "n_samples": 44,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "extraembryonic gut endoderm cells undergo programmed cell death during development"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE250084",
+   "title": "Extraembryonic gut endoderm cells undergo programmed cell death during development",
+   "year": "2024",
+   "n_samples": 88,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "extraembryonic gut endoderm cells undergo programmed cell death during development"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE250180",
+   "title": "Extraembryonic gut endoderm cells undergo programmed cell death during development (RRBS)",
+   "year": "2024",
+   "n_samples": 32,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "extraembryonic gut endoderm cells undergo programmed cell death during development"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE250181",
+   "title": "Extraembryonic gut endoderm cells undergo programmed cell death during development (WGBS)",
+   "year": "2024",
+   "n_samples": 9,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "extraembryonic gut endoderm cells undergo programmed cell death during development"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE291244",
+   "title": "A fluctuation test for gastruloid heterogeneity",
+   "year": "2025",
+   "n_samples": 56,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "sister_split",
+    "clonal_memory",
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "a fluctuation test for gastruloid heterogeneity",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326044",
+   "title": "Temporal Uncoupling of Radial Glial Progenitor Cell Lineage Progression in Self-organizing Organoid System \u2013 mTmG scRNA-Seq",
+   "year": "2026",
+   "n_samples": 5,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "temporal uncoupling of radial glial progenitor cell lineage progression in self-organizing organoid system \u2013 mtmg scrna-seq"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-GEOD-65951",
+   "title": "Pluripotency factor-induced lineage conversion involves transient passage through an iPS cell stage",
+   "year": "2015",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": true,
+   "family": "pluripotency factor-induced lineage conversion involves transient passage through an ips cell stage"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299000",
+   "title": "In situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells [Native Developmental Atlas]",
+   "year": "2026",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "in situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells",
+   "known_as": "GSE299000 family (C17 inventory)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299003",
+   "title": "In situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells [TransplantTracing_Tppp3]",
+   "year": "2026",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "in situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells",
+   "known_as": "GSE299000 family (C17 inventory)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299166",
+   "title": "In situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells [TamRapaTreatments]",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "in situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells",
+   "known_as": "GSE299000 family (C17 inventory)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299426",
+   "title": "In situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells [Tppp3Naive]",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "in situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells",
+   "known_as": "GSE299000 family (C17 inventory)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE307390",
+   "title": "In situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells",
+   "year": "2026",
+   "n_samples": 24,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "in situ fate mapping identifies the neonatal origin of platelet-biased hematopoietic stem cells",
+   "known_as": "GSE299000 family (C17 inventory)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE325995",
+   "title": "Heterogeneity in hematopoietic stem cell enables adaptation to the aged microenvironment",
+   "year": "2026",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "sister_split",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "heterogeneity in hematopoietic stem cell enables adaptation to the aged microenvironment",
+   "known_as": "GSE326529 family"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326529",
+   "title": "Heterogeneity in hematopoietic stem cell enables adaptation to the aged microenvironment [celltag_cross_exp4]",
+   "year": "2026",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "sister_split",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "heterogeneity in hematopoietic stem cell enables adaptation to the aged microenvironment",
+   "known_as": "GSE326529 family"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE327449",
+   "title": "Heterogeneity in hematopoietic stem cell enables adaptation to the aged microenvironment [scRNA-seq]",
+   "year": "2026",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "sister_split",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "heterogeneity in hematopoietic stem cell enables adaptation to the aged microenvironment",
+   "known_as": "GSE326529 family"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE328457",
+   "title": "Pooled combinatorial screening identifies transcription factor sets that drive hematopoietic progenitor-like cell fate",
+   "year": "2026",
+   "n_samples": 39,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "pooled combinatorial screening identifies transcription factor sets that drive hematopoietic progenitor-like cell fate"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE144468",
+   "title": "Inflammatory Signals induce AT2 Cell-Derived Damage-Associated Transient Progenitors that Mediate Alveolar Regeneration",
+   "year": "2020",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "inflammatory signals induce at2 cell-derived damage-associated transient progenitors that mediate alveolar regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE144598",
+   "title": "Inflammatory Signals induce AT2 Cell-Derived Damage-Associated Transient Progenitors that Mediate Alveolar Regeneration",
+   "year": "2020",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "inflammatory signals induce at2 cell-derived damage-associated transient progenitors that mediate alveolar regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE145031",
+   "title": "Inflammatory Signals induce AT2 Cell-Derived Damage-Associated Transient Progenitors that Mediate Alveolar Regeneration",
+   "year": "2020",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "inflammatory signals induce at2 cell-derived damage-associated transient progenitors that mediate alveolar regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE202398",
+   "title": "Combined Lineage Tracing and scRNA-seq Reveals Unexpected First Heart Field Predominance of Human iPSC Differentiation",
+   "year": "2023",
+   "n_samples": 3,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "combined lineage tracing and scrna-seq reveals unexpected first heart field predominance of human ipsc differentiation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE215094",
+   "title": "GLI1+ cells are a source of repair-supportive mesenchymal cells (RSMCs) during airway epithelial regeneration",
+   "year": "2022",
+   "n_samples": 1,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "gli1+ cells are a source of repair-supportive mesenchymal cells (rsmcs) during airway epithelial regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE216506",
+   "title": "Single-cell lineage capture across genomic modalities with CellTag-multi reveals fate-specific gene regulatory changes [scATAC-seq - LSK].",
+   "year": "2023",
+   "n_samples": 5,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell lineage capture across genomic modalities with celltag-multi reveals fate-specific gene regulatory changes",
+   "known_as": "CellTag-multi LSK and reprogramming sets (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE216518",
+   "title": "Single-cell lineage capture across genomic modalities with CellTag-multi reveals fate-specific gene regulatory changes [scRNA-seq - iEP].",
+   "year": "2023",
+   "n_samples": 25,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell lineage capture across genomic modalities with celltag-multi reveals fate-specific gene regulatory changes",
+   "known_as": "CellTag-multi LSK and reprogramming sets (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE216606",
+   "title": "Single-cell lineage capture across genomic modalities with CellTag-multi reveals fate-specific gene regulatory changes [scRNA-seq - LSK].",
+   "year": "2023",
+   "n_samples": 9,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell lineage capture across genomic modalities with celltag-multi reveals fate-specific gene regulatory changes",
+   "known_as": "CellTag-multi LSK and reprogramming sets (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE217119",
+   "title": "Single-cell lineage capture across genomic modalities with CellTag-multi reveals fate-specific gene regulatory changes [scATAC-seq - iEP].",
+   "year": "2023",
+   "n_samples": 29,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell lineage capture across genomic modalities with celltag-multi reveals fate-specific gene regulatory changes",
+   "known_as": "CellTag-multi LSK and reprogramming sets (sealed)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE221501",
+   "title": "A mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells [10X scRNA-seq data]",
+   "year": "2023",
+   "n_samples": 5,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+   "known_as": "darlin (used, pre-protocol)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE222246",
+   "title": "A mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells [scRNA-seq datasets from Camellia-seq]",
+   "year": "2023",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+   "known_as": "darlin (used, pre-protocol)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE222328",
+   "title": "A mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells [BiSulfite-seq]",
+   "year": "2023",
+   "n_samples": 1080,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+   "known_as": "darlin (used, pre-protocol)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE222479",
+   "title": "A mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+   "year": "2023",
+   "n_samples": 244,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+   "known_as": "darlin (used, pre-protocol)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE222486",
+   "title": "A mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+   "year": "2023",
+   "n_samples": 1341,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+   "known_as": "darlin (used, pre-protocol)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE264015",
+   "title": "Resolving human \u03b1 versus \u03b2 cell fate allocation for the generation of stem cell-derived islets",
+   "year": "2026",
+   "n_samples": 10,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "resolving human \u03b1 versus \u03b2 cell fate allocation for the generation of stem cell-derived islets",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE285727",
+   "title": "Temporal control of progenitor competence shapes maturation in GABAergic neuron development in mice",
+   "year": "2025",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "temporal control of progenitor competence shapes maturation in gabaergic neuron development in mice"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE300285",
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [Multiome]",
+   "year": "2026",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "early lineage divergence segregates sensory-related and motor-associative identities in the thalamus"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE300287",
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [snRNAseq - TrackerSeq]",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "early lineage divergence segregates sensory-related and motor-associative identities in the thalamus"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE300289",
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [Spatial Transcriptomics E17]",
+   "year": "2026",
+   "n_samples": 1,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "early lineage divergence segregates sensory-related and motor-associative identities in the thalamus"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE312424",
+   "title": "Hierarchical lineage architecture of human and avian spinal cord revealed by single-cell genomic barcoding",
+   "year": "2026",
+   "n_samples": 66,
+   "organism": "Gallus gallus; Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "hierarchical lineage architecture of human and avian spinal cord revealed by single-cell genomic barcoding",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE324903",
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [Spatial Transcriptomics E12]",
+   "year": "2026",
+   "n_samples": 1,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "early lineage divergence segregates sensory-related and motor-associative identities in the thalamus"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE324905",
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [snRNAseq - CRi]",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "early lineage divergence segregates sensory-related and motor-associative identities in the thalamus"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326936",
+   "title": "Discovery of a primed endothelial progenitor that requires VEGF/ERK inhibition to complete vein differentiation [kairos_knockdown_scrnaseq]",
+   "year": "2026",
+   "n_samples": 6,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "discovery of a primed endothelial progenitor that requires vegf/erk inhibition to complete vein differentiation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326938",
+   "title": "Discovery of a primed endothelial progenitor that requires VEGF/ERK inhibition to complete vein differentiation [kairos_timecourse_scrnaseq]",
+   "year": "2026",
+   "n_samples": 10,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "discovery of a primed endothelial progenitor that requires vegf/erk inhibition to complete vein differentiation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE327468",
+   "title": "Temporal Uncoupling of Radial Glial Progenitor Cell Lineage Progression in Self-organizing Organoid System \u2013 MADM-CloneSeq",
+   "year": "2026",
+   "n_samples": 287,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "temporal uncoupling of radial glial progenitor cell lineage progression in self-organizing organoid system \u2013 madm-cloneseq"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE329257",
+   "title": "A yolk sac-derived hepatic \u03b3\u03b4 T cell subpopulation develops in a hematopoietic stem cell- and thymus-independent manner",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a yolk sac-derived hepatic \u03b3\u03b4 t cell subpopulation develops in a hematopoietic stem cell- and thymus-independent manner"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE336258",
+   "title": "Pparg deficiency in Myl1+ adipose progenitor cells (APCs) of mouse brown adipose tissue [RNA-seq]",
+   "year": "2026",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "pparg deficiency in myl1+ adipose progenitor cells (apcs) of mouse brown adipose tissue"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE338520",
+   "title": "Somatic mutations reveal the ontogeny of microglia in human aging [mtscATAC-seq]",
+   "year": "2026",
+   "n_samples": 7,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "somatic mutations reveal the ontogeny of microglia in human aging"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE348624",
+   "title": "Ablation of Myl1+ APC-derived adipocytes in brown adipose tissue [RNA-Seq]",
+   "year": "2026",
+   "n_samples": 13,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "ablation of myl1+ apc-derived adipocytes in brown adipose tissue"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE351177",
+   "title": "Myl1-Cre and Ucp1-Cre-mediated Ribo-Tag sequencing of mouse brown adipose tissue",
+   "year": "2026",
+   "n_samples": 18,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "myl1-cre and ucp1-cre-mediated ribo-tag sequencing of mouse brown adipose tissue"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE272618",
+   "title": "Single-Molecule Barcoding Technology for Single-Cell Genomics",
+   "year": "2026",
+   "n_samples": 140,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-molecule barcoding technology for single-cell genomics"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE277654",
+   "title": "Census of clustered protocaherins in human semi-guided organoids and 1st trimester embryo at single-cell resolution [PCDH_merged]",
+   "year": "2026",
+   "n_samples": 21,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "census of clustered protocaherins in human semi-guided organoids and 1st trimester embryo at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE277655",
+   "title": "Census of clustered protocaherins in human semi-guided organoids and 1st trimester embryo at single-cell resolution [PCDH_human_embryo]",
+   "year": "2026",
+   "n_samples": 12,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "census of clustered protocaherins in human semi-guided organoids and 1st trimester embryo at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE277686",
+   "title": "Census of clustered protocaherins in human semi-guided organoids and 1st trimester embryo at single-cell resolution",
+   "year": "2026",
+   "n_samples": 17,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "census of clustered protocaherins in human semi-guided organoids and 1st trimester embryo at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE291368",
+   "title": "Barcoded monoclonal embryoids are a potential solution to confounding bottlenecks in mosaic organoid screens",
+   "year": "2025",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "barcoded monoclonal embryoids are a potential solution to confounding bottlenecks in mosaic organoid screens",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-GEOD-65525",
+   "title": "Droplet barcoding for single cell transcriptomics applied to embryonic stem cells",
+   "year": "2015",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "droplet barcoding for single cell transcriptomics applied to embryonic stem cells"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-10971",
+   "title": "Lineage recording in human cerebral organoids (iTracer-perturb)",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "lineage recording in human cerebral organoids"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-10973",
+   "title": "Lineage recording in human cerebral organoids (microdissected)",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "lineage recording in human cerebral organoids"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-10974",
+   "title": "Lineage recording in human cerebral organoids (whole organoids)",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "lineage recording in human cerebral organoids"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE236936",
+   "title": "Genome editing by dual nucleases records deep lineage hierarchy with high fidelity.",
+   "year": "2024",
+   "n_samples": 14,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "genome editing by dual nucleases records deep lineage hierarchy with high fidelity."
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE261211",
+   "title": "Dual nuclease single-cell lineage tracing by Cas9 and Cas12a",
+   "year": "2024",
+   "n_samples": 26,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "dual nuclease single-cell lineage tracing by cas9 and cas12a"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE266496",
+   "title": "Spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution [Smart-seq3-RNA-seq]",
+   "year": "2025",
+   "n_samples": 140,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE266497",
+   "title": "Spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution [10x-v3-RNA-seq]",
+   "year": "2025",
+   "n_samples": 13,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE274014",
+   "title": "Tripotent Lgr5 stem cells in the posterior tongue generate non-taste lingual, taste and salivary gland cells [Bulk RNA-seq]",
+   "year": "2025",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "tripotent lgr5 stem cells in the posterior tongue generate non-taste lingual, taste and salivary gland cells"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE274015",
+   "title": "Tripotent Lgr5 stem cells in the posterior tongue generate non-taste lingual, taste and salivary gland cells [scRNA-seq]",
+   "year": "2025",
+   "n_samples": 5,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "tripotent lgr5 stem cells in the posterior tongue generate non-taste lingual, taste and salivary gland cells"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE277789",
+   "title": "Spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution [Smart-seq3-RNA-seq-add]",
+   "year": "2025",
+   "n_samples": 830,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE280613",
+   "title": "Using CRISPR barcoding as a molecular clock to capture dynamic processes at single-cell resolution [RNA-seq]",
+   "year": "2026",
+   "n_samples": 160,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "using crispr barcoding as a molecular clock to capture dynamic processes at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE280614",
+   "title": "Using CRISPR barcoding as a molecular clock to capture dynamic processes at single-cell resolution [scRNA-seq]",
+   "year": "2026",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "using crispr barcoding as a molecular clock to capture dynamic processes at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE296898",
+   "title": "Studying Inner ear development through the use of the CARLIN mouse model to label progenitor cells, identifying the potency of early cell types in the otocyst",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "studying inner ear development through the use of the carlin mouse model to label progenitor cells, identifying the potency of early cell types in the otocyst"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE297036",
+   "title": "Lineage tracing reveals photoreceptor precursor cell subpopulations that contribute to murine retinogenesis",
+   "year": "2026",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "lineage tracing reveals photoreceptor precursor cell subpopulations that contribute to murine retinogenesis"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE313516",
+   "title": "scRNA-seq of a knockout village during hPSC-derived islet differentiation",
+   "year": "2025",
+   "n_samples": "",
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "scrna-seq of a knockout village during hpsc-derived islet differentiation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE315827",
+   "title": "SciPhy: A Bayesian phylogenetic framework using sequential genetic lineage tracing data",
+   "year": "2026",
+   "n_samples": 3,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "sciphy: a bayesian phylogenetic framework using sequential genetic lineage tracing data",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE324349",
+   "title": "Postnatal Pax7-expressing limb cells are multipotent and generate non-myogenic lineages that persist into adulthood.",
+   "year": "2026",
+   "n_samples": 25,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "postnatal pax7-expressing limb cells are multipotent and generate non-myogenic lineages that persist into adulthood."
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE324486",
+   "title": "CapMux: a Snakemake pipeline for early demultiplexing of split-pool scRNA-seq data into sample-resolved outputs",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "capmux: a snakemake pipeline for early demultiplexing of split-pool scrna-seq data into sample-resolved outputs"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE331455",
+   "title": "scRNA-seq of limb-mesenhymal organoid derived from mouse embryo during digit-like morphogenesis",
+   "year": "2026",
+   "n_samples": 3,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "scrna-seq of limb-mesenhymal organoid derived from mouse embryo during digit-like morphogenesis"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE336917",
+   "title": "Endotome as an Unrecognized Source of Human Peri-Aortic Brown Adipocytes",
+   "year": "2026",
+   "n_samples": 19,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "endotome as an unrecognized source of human peri-aortic brown adipocytes"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE119561",
+   "title": "Fate-mapping within human iPSC-derived kidney organoids reveals conserved mammalian nephron progenitor lineage relationships.",
+   "year": "2019",
+   "n_samples": 2,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "fate-mapping within human ipsc-derived kidney organoids reveals conserved mammalian nephron progenitor lineage relationships."
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE130065",
+   "title": "CellTag Indexing: genetic barcode-based sample multiplexing for single-cell genomics",
+   "year": "2019",
+   "n_samples": 5,
+   "organism": "Mus musculus; Homo sapiens",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "celltag indexing: genetic barcode-based sample multiplexing for single-cell genomics"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE140890",
+   "title": "Parallel scRNA-seq and genetic recording reveals lineage decisions in early mouse embryogenesis",
+   "year": "2020",
+   "n_samples": 55,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "parallel scrna-seq and genetic recording reveals lineage decisions in early mouse embryogenesis"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE142212",
+   "title": "Single cell hierarchy of the mouse vaginal epithelium",
+   "year": "2019",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single cell hierarchy of the mouse vaginal epithelium"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE142838",
+   "title": "Differentiation of PSC into lung organoids with endogenous functional alveolar macrophages and blood vessels",
+   "year": "2020",
+   "n_samples": 1,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "differentiation of psc into lung organoids with endogenous functional alveolar macrophages and blood vessels"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE146811",
+   "title": "Differentiated prostate luminal cells acquire enhanced regenerative potential after androgen ablation",
+   "year": "2020",
+   "n_samples": 27,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "differentiated prostate luminal cells acquire enhanced regenerative potential after androgen ablation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE163971",
+   "title": "POLYseq: A poly(\u00df-amino ester)-based vector for multifunctional cellular barcoding",
+   "year": "2021",
+   "n_samples": 5,
+   "organism": "Mus musculus; Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "polyseq: a poly(\u00df-amino ester)-based vector for multifunctional cellular barcoding"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE165379",
+   "title": "Troy/Tnfrsf19 marks epidermal cells that govern interfollicular epidermal renewal and cornification",
+   "year": "2021",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "troy/tnfrsf19 marks epidermal cells that govern interfollicular epidermal renewal and cornification"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE166293",
+   "title": "Barcoded oligonucleotides ligated on RNA amplified for multiplexed and parallel in situ analyses",
+   "year": "2021",
+   "n_samples": 7,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "barcoded oligonucleotides ligated on rna amplified for multiplexed and parallel in situ analyses"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE211097",
+   "title": "Intracellular pH dynamics regulates intestinal stem cell lineage specification",
+   "year": "2023",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "intracellular ph dynamics regulates intestinal stem cell lineage specification"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE229067",
+   "title": "scRNA-seq data for H-23 and H-358 cells traced under using customized barcode",
+   "year": "2023",
+   "n_samples": 29,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "sister_split"
+   ],
+   "pluripotent_candidate": false,
+   "family": "scrna-seq data for h-23 and h-358 cells traced under using customized barcode"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE235217",
+   "title": "Defining GRAMD2 expression in the alveolar epithelium using organoid and single cell approaches",
+   "year": "2023",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "defining gramd2 expression in the alveolar epithelium using organoid and single cell approaches"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE245416",
+   "title": "Polymer-mediated oligo delivery enables construction of spatially encoded 3D cultures for analysis by single-cell RNA sequencing",
+   "year": "2024",
+   "n_samples": 12,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "polymer-mediated oligo delivery enables construction of spatially encoded 3d cultures for analysis by single-cell rna sequencing"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE246611",
+   "title": "An integrated toolkit for the analysis of synthetic cellular barcodes in the genome and transcriptome",
+   "year": "2023",
+   "n_samples": 88,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "an integrated toolkit for the analysis of synthetic cellular barcodes in the genome and transcriptome"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE252510",
+   "title": "Mouse Smartseq3 Data from Mold et al. Clonally Heritable Gene Expression Imparts a Layer of Diversity in Cell Types",
+   "year": "2024",
+   "n_samples": 1,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "mouse smartseq3 data from mold et al. clonally heritable gene expression imparts a layer of diversity in cell types"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE254382",
+   "title": "Single-cell 5-hydroxymethyl cytosine dynamics during remote memory formation",
+   "year": "2025",
+   "n_samples": 12,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell 5-hydroxymethyl cytosine dynamics during remote memory formation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE259393",
+   "title": "Ensembles of genome-coverage single-cell histone modifications reveal epigenetic lineages during mouse preimplantation development II",
+   "year": "2024",
+   "n_samples": 27,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "ensembles of genome-coverage single-cell histone modifications reveal epigenetic lineages during mouse preimplantation development ii"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE262537",
+   "title": "An Lgr5-independent developmental lineage is involved in mouse intestinal regeneration [scRNA-Seq]",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "an lgr5-independent developmental lineage is involved in mouse intestinal regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE262572",
+   "title": "An Lgr5-independent developmental lineage is involved in mouse intestinal regeneration",
+   "year": "2025",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "an lgr5-independent developmental lineage is involved in mouse intestinal regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE262606",
+   "title": "Non-genetic differences underlie variability in proliferation among esophageal epithelial clones",
+   "year": "2024",
+   "n_samples": 1,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "clonal_memory"
+   ],
+   "pluripotent_candidate": false,
+   "family": "non-genetic differences underlie variability in proliferation among esophageal epithelial clones"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE262657",
+   "title": "An Lgr5-independent developmental lineage is involved in mouse intestinal regeneration [Organoids vs Spheroids in sandwich protocol]",
+   "year": "2025",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "an lgr5-independent developmental lineage is involved in mouse intestinal regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE262855",
+   "title": "An Lgr5-independent developmental lineage is involved in mouse intestinal regeneration II",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "an lgr5-independent developmental lineage is involved in mouse intestinal regeneration ii"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE262871",
+   "title": "An Lgr5-independent developmental lineage is involved in mouse intestinal regeneration (ATAC seq)",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "an lgr5-independent developmental lineage is involved in mouse intestinal regeneration"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE289725",
+   "title": "SAMHD1 Knockout iPSC model enables high lenti-viral transduction in myeloid cell types [barcode_count]",
+   "year": "2025",
+   "n_samples": 10,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "samhd1 knockout ipsc model enables high lenti-viral transduction in myeloid cell types"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE290276",
+   "title": "Differentially expressed fusogens specify myocyte states to drive myogenesis",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "differentially expressed fusogens specify myocyte states to drive myogenesis"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE293298",
+   "title": "Expression of synaptic function genes in iPSC-derived induced human neurons",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "expression of synaptic function genes in ipsc-derived induced human neurons"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299463",
+   "title": "Stem cell specification and niche formation in developing incisor depend on actomyosin forces",
+   "year": "2025",
+   "n_samples": 10,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "stem cell specification and niche formation in developing incisor depend on actomyosin forces"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE302292",
+   "title": "PAX3-SIX2 muscle stem cell heterogeneity drives muscle-specific repair dynamics diversification",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "pax3-six2 muscle stem cell heterogeneity drives muscle-specific repair dynamics diversification"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE305070",
+   "title": "Single-nucleus multiome ATAC-seq and RNA-seq analysis of GCM1 knockout in rotational human tropholast organoids",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-nucleus multiome atac-seq and rna-seq analysis of gcm1 knockout in rotational human tropholast organoids"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE325703",
+   "title": "PAX3-SIX2 muscle stem cell heterogeneity drives muscle-specific repair dynamics diversification",
+   "year": "2026",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "pax3-six2 muscle stem cell heterogeneity drives muscle-specific repair dynamics diversification"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE325733",
+   "title": "Barcoded lineage tracing of diverse cell types within the developing mouse embryonic gut.",
+   "year": "2026",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "barcoded lineage tracing of diverse cell types within the developing mouse embryonic gut."
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326989",
+   "title": "Discovery of a primed endothelial progenitor that requires VEGF/ERK inhibition to complete vein differentiation [kairos_timecourse_bulkrnaseq]",
+   "year": "2026",
+   "n_samples": 14,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "discovery of a primed endothelial progenitor that requires vegf/erk inhibition to complete vein differentiation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE331177",
+   "title": "A transient epithelial plasticity state defines the developmental window for uterine gland specification",
+   "year": "2026",
+   "n_samples": 18,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a transient epithelial plasticity state defines the developmental window for uterine gland specification"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE331354",
+   "title": "A transient epithelial plasticity state defines the developmental window for uterine gland specification [Spatial]",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a transient epithelial plasticity state defines the developmental window for uterine gland specification"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE343366",
+   "title": "MSKCC Study 4-  LARRY-barcoded pooled Knock out scRNA-seq (40KO)",
+   "year": "2026",
+   "n_samples": 6,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "mskcc study 4-  larry-barcoded pooled knock out scrna-seq"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE343371",
+   "title": "MSKCC Study 2- A dual barcoding system for pooled analysis of gene knockouts in polyclonal populations (30KO)",
+   "year": "2026",
+   "n_samples": 24,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "mskcc study 2- a dual barcoding system for pooled analysis of gene knockouts in polyclonal populations"
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:7183939",
+   "title": "devCellPy is a machine learning-enabled pipeline for automated annotation of complex multilayered single-cell transcriptomic data",
+   "year": "2022",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "devcellpy is a machine learning-enabled pipeline for automated annotation of complex multilayered single-cell transcriptomic data"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342607",
+   "title": "Comprehensive Lineage Tracing Maps the Landscape of Cell Fate Decisions in Mouse Embryogenesis",
+   "year": "2026",
+   "n_samples": 32,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": true,
+   "queries": [
+    "pluripotent_clones",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+   "known_as": "PEtracer embryo set (sealed)"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-10972",
+   "title": "Lineage recording in human cerebral organoids (Visium)",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "lineage recording in human cerebral organoids"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-8737",
+   "title": "Charting the age-altered thymic epithelial cell differentiation by lineage tracing from a beta 5-t expressing TEC progenitor",
+   "year": "2020",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "charting the age-altered thymic epithelial cell differentiation by lineage tracing from a beta 5-t expressing tec progenitor"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE236316",
+   "title": "Zinc accumulation-induced integrated stress response triggers \u03b2-cell identity loss",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "zinc accumulation-induced integrated stress response triggers \u03b2-cell identity loss"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE289873",
+   "title": "PDGFR\u03b1 signaling regulates cartilage and fibrous tissue differentiation during synovial joint development",
+   "year": "2025",
+   "n_samples": 5,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "pdgfr\u03b1 signaling regulates cartilage and fibrous tissue differentiation during synovial joint development"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE289874",
+   "title": "PDGFR\u03b1 signaling regulates cartilage and fibrous tissue differentiation during synovial joint development [scRNA-seq]",
+   "year": "2025",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "pdgfr\u03b1 signaling regulates cartilage and fibrous tissue differentiation during synovial joint development"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-GEOD-43772",
+   "title": "Intestinal label-retaining cells are secretory precursors expressing Lgr5",
+   "year": "2013",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "intestinal label-retaining cells are secretory precursors expressing lgr5"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-GEOD-75522",
+   "title": "Pluripotent Stem Cells Induced from Mouse Neural Stem Cells and Small Intestinal Epithelial Cells by Small Molecule Compounds",
+   "year": "2016",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "pluripotent stem cells induced from mouse neural stem cells and small intestinal epithelial cells by small molecule compounds"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-14807",
+   "title": "Fate and State Transitions during Human Blood Vessel Organoid Development: Time Course",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "fate and state transitions during human blood vessel organoid development: time course"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE140802",
+   "title": "Lineage tracing on transcriptional landscapes links state to fate during differentiation",
+   "year": "2019",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": true,
+   "queries": [
+    "sister_split"
+   ],
+   "pluripotent_candidate": false,
+   "family": "lineage tracing on transcriptional landscapes links state to fate during differentiation",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE196967",
+   "title": "Localization of a TORC1-eIF4F translation complex during CD8+ T cell activation drives divergent cell fate",
+   "year": "2022",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "split_or_memory"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "sister_split"
+   ],
+   "pluripotent_candidate": false,
+   "family": "localization of a torc1-eif4f translation complex during cd8+ t cell activation drives divergent cell fate"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE266522",
+   "title": "A unified workflow to define multipotent progenitor hierarchies [Fluidigm]",
+   "year": "2025",
+   "n_samples": 337,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": true,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a unified workflow to define multipotent progenitor hierarchies",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE266523",
+   "title": "A unified workflow to define multipotent progenitor hierarchies (HIVE)",
+   "year": "2025",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": true,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a unified workflow to define multipotent progenitor hierarchies",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE266524",
+   "title": "A unified workflow to define multipotent progenitor hierarchies (TEA-Seq)",
+   "year": "2025",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": true,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a unified workflow to define multipotent progenitor hierarchies",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE266608",
+   "title": "A unified workflow to define multipotent progenitor hierarchies (CITE-Seq and CellTag)",
+   "year": "2025",
+   "n_samples": 63,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": true,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a unified workflow to define multipotent progenitor hierarchies",
+   "known_as": "family of a known accession"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE267144",
+   "title": "Single cell RNA-seq detects cMPCs expressing HO gene expression signature in B/T mouse blood samples",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single cell rna-seq detects cmpcs expressing ho gene expression signature in b/t mouse blood samples"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE273748",
+   "title": "Rapid Human Oogonia-like Cell Specification via Combinatorial Transcription Factor-Directed Differentiation [barcode]",
+   "year": "2024",
+   "n_samples": 18,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "rapid human oogonia-like cell specification via combinatorial transcription factor-directed differentiation"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE276896",
+   "title": "Unveiling Clonal Cell Fate and Differentiation Dynamics: A Hybrid NeuralODE-Gillespie Approach",
+   "year": "2025",
+   "n_samples": 10,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "unveiling clonal cell fate and differentiation dynamics: a hybrid neuralode-gillespie approach"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE278327",
+   "title": "Protocol for detecting m5C RNA modification at single-base resolution using m5C-TAC-seq",
+   "year": "2024",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "protocol for detecting m5c rna modification at single-base resolution using m5c-tac-seq"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE279710",
+   "title": "Atlas of multilineage stem cell differentiation reveals TMEM88 as a developmental regulator of blood pressure",
+   "year": "2024",
+   "n_samples": 13,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "atlas of multilineage stem cell differentiation reveals tmem88 as a developmental regulator of blood pressure"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE285303",
+   "title": "Spatially resolved m6A profiling using m6A-ARTR-DBiT",
+   "year": "2026",
+   "n_samples": 40,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "spatially resolved m6a profiling using m6a-artr-dbit"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE295782",
+   "title": "Diversity and immune dynamics of choroid plexus macrophages are shaped by distinct developmental origins [scRNA-seq Tgfbr2_cKO]",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "diversity and immune dynamics of choroid plexus macrophages are shaped by distinct developmental origins"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE295783",
+   "title": "Diversity and immune dynamics of choroid plexus macrophages are shaped by distinct developmental origins [CD45_TotalSeq_ICV_injection]",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "diversity and immune dynamics of choroid plexus macrophages are shaped by distinct developmental origins"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE298817",
+   "title": "High-Purity Production of Endothelial Cells from Human Pluripotent Stem Cells",
+   "year": "2025",
+   "n_samples": 3,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "high-purity production of endothelial cells from human pluripotent stem cells"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE310001",
+   "title": "Reprogramming lineage-traced M\u00fcller glia for robust proliferation and neurogenesis in adult mammalian retinas",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "reprogramming lineage-traced m\u00fcller glia for robust proliferation and neurogenesis in adult mammalian retinas"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE312414",
+   "title": "ROR\u03b3t\u207a Dendritic Cells Are a Distinct Lymphoid-Derived Lineage",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "ror\u03b3t\u207a dendritic cells are a distinct lymphoid-derived lineage"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE312479",
+   "title": "ROR\u03b3t\u207a Dendritic Cells Are a Distinct Lymphoid-Derived Lineage [CITE-seq]",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "ror\u03b3t\u207a dendritic cells are a distinct lymphoid-derived lineage"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE322687",
+   "title": "Olfactomedin 4 marks luminal progenitor cells that give rise to a secretory cell lineage in the mouse cervix",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "olfactomedin 4 marks luminal progenitor cells that give rise to a secretory cell lineage in the mouse cervix"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE333189",
+   "title": "Hopx is a dual-gatekeeper of astrocyte fate enabling in vivo reprogramming and neural repair",
+   "year": "2026",
+   "n_samples": 3,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "hopx is a dual-gatekeeper of astrocyte fate enabling in vivo reprogramming and neural repair"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342534",
+   "title": "Long-read single cell transcriptomics uncovers isoform preferences in developing human retina",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "long-read single cell transcriptomics uncovers isoform preferences in developing human retina"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE343370",
+   "title": "MSKCC Study 3- A dual barcoding system for pooled analysis of gene knockouts in polyclonal populations (30KO_GEM-X)",
+   "year": "2026",
+   "n_samples": 3,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "mskcc study 3- a dual barcoding system for pooled analysis of gene knockouts in polyclonal populations"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE306708",
+   "title": "Multi-step genomics on single cells and live cultures in sub-nanoliter capsules",
+   "year": "2025",
+   "n_samples": 22,
+   "organism": "Escherichia coli; Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "sister_split",
+    "clonal_memory",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "multi-step genomics on single cells and live cultures in sub-nanoliter capsules"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE267117",
+   "title": "scHiCAR: a tri-modal single-cell genomics technology for integrated transcriptome, epigenome, and 3D genome analysis in complex tissues [cellline_scHiCAR]",
+   "year": "2025",
+   "n_samples": 34,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "schicar: a tri-modal single-cell genomics technology for integrated transcriptome, epigenome, and 3d genome analysis in complex tissues"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-GEOD-49803",
+   "title": "Identification of Lgr5-independent spheroid-generating progenitors of the mouse fetal intestinal epithelium",
+   "year": "2014",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "blood"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "identification of lgr5-independent spheroid-generating progenitors of the mouse fetal intestinal epithelium"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-12819",
+   "title": "Single-cell RNA sequencing data for a mixed population of [line] cells and [line] cells, encoded with combinatorial DNA barcodes.",
+   "year": "2023",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "sister_split"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell rna sequencing data for a mixed population of [line] cells and [line] cells, encoded with combinatorial dna barcodes."
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE214451",
+   "title": "Characterization of CD63+ adult liver stem cells and downstream lineages",
+   "year": "2025",
+   "n_samples": 1,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "characterization of cd63+ adult liver stem cells and downstream lineages"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE231385",
+   "title": "SDePER: a hybrid machine learning and regression method for cell-type deconvolution of spatial barcoding-based transcriptomic data",
+   "year": "2024",
+   "n_samples": 1,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "sdeper: a hybrid machine learning and regression method for cell-type deconvolution of spatial barcoding-based transcriptomic data"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE266977",
+   "title": "Spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution",
+   "year": "2025",
+   "n_samples": 983,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "spatiotemporal and genetic cell lineage tracing of endodermal organogenesis at single-cell resolution"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE281669",
+   "title": "Hair Follicle Epithelial Stem Cells Contributing to Interfollicular Epidermis during Homeostasis [single-cell RNA-seq]",
+   "year": "2025",
+   "n_samples": 1,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "hair follicle epithelial stem cells contributing to interfollicular epidermis during homeostasis"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE286365",
+   "title": "Improving bulk RNA-seq protocols",
+   "year": "2025",
+   "n_samples": 1168,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "improving bulk rna-seq protocols"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299567",
+   "title": "IT-scC&T-seq streamlines scalable, parallel profiling of protein-DNA interactions in single cells",
+   "year": "2025",
+   "n_samples": 17,
+   "organism": "Homo sapiens; Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "it-scc&t-seq streamlines scalable, parallel profiling of protein-dna interactions in single cells"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE310396",
+   "title": "Distinct contributions of Etv2+ and Flk1+ progenitors to endothelial, hematopoietic, and cardiac lineages",
+   "year": "2025",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "distinct contributions of etv2+ and flk1+ progenitors to endothelial, hematopoietic, and cardiac lineages"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE310548",
+   "title": "Distinct contributions of Etv2+ and Flk1+ progenitors to endothelial, hematopoietic, and cardiac lineages [RNA-seq]",
+   "year": "2025",
+   "n_samples": 21,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "distinct contributions of etv2+ and flk1+ progenitors to endothelial, hematopoietic, and cardiac lineages"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE312224",
+   "title": "Single-cell RNA-seq of endothelial and pericyte populations in the mouse cochlear stria vascularis",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell rna-seq of endothelial and pericyte populations in the mouse cochlear stria vascularis"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE319066",
+   "title": "Single-cell RNA sequencing of Ms4a3-lineage myeloid cells in mouse brain after transient middle cerebral artery occlusion",
+   "year": "2026",
+   "n_samples": 6,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "single-cell rna sequencing of ms4a3-lineage myeloid cells in mouse brain after transient middle cerebral artery occlusion"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE346113",
+   "title": "Gli1\u207a Periodontal Crestal Stem Cells Orchestrate Cervical Periodontal Homeostasis and Regeneration via Cxcl12\u2013Shh/Ihh Signaling",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "gli1\u207a periodontal crestal stem cells orchestrate cervical periodontal homeostasis and regeneration via cxcl12\u2013shh/ihh signaling"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-10685",
+   "title": "High complexity cellular barcoding and clonal tracing reveals stochastic and deterministic parameters of radiation resistance - Photon Irradiated samples",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "high complexity cellular barcoding and clonal tracing reveals stochastic and deterministic parameters of radiation resistance - photon irradiated samples"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-6411",
+   "title": "Short Tandem Repeats - Targeted-Sequencing of human cells for Lineage tracing",
+   "year": "2018",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "short tandem repeats - targeted-sequencing of human cells for lineage tracing"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-7524",
+   "title": "Bulk RNA Barcoding and sequencing (BRB-seq) protocol for RNA-seq of 60 human LCL from the 1000G project",
+   "year": "2018",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "bulk rna barcoding and sequencing (brb-seq) protocol for rna-seq of 60 human lcl from the 1000g project"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-GEOD-44060",
+   "title": "Expression profiling of Troy positive gastric cells",
+   "year": "2013",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "expression profiling of troy positive gastric cells"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-6469",
+   "title": "Bulk RNA Barcoding and sequencing (BRB-seq) protocol for RNA-seq of human pre-adipocytes and differentiated adipocytes",
+   "year": "2018",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "bulk rna barcoding and sequencing (brb-seq) protocol for rna-seq of human pre-adipocytes and differentiated adipocytes"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE244908",
+   "title": "Quantitative multiplexed ChIP-Seq (MINUTE-ChIP) from formaldehyde-fixed material",
+   "year": "2024",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "pluripotent_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "quantitative multiplexed chip-seq (minute-chip) from formaldehyde-fixed material"
+  }
+ ],
+ "post_filter": {
+  "rule": "extended neutral-wording filter (two passes), retro 2026-11-19b",
+  "dropped": 22,
+  "watch_titles_dropped": 0,
+  "family_rule": "process() family rule applied offline to the saved records (added after the run)",
+  "kept_records": 181,
+  "new_records": 137,
+  "new_study_families": 106,
+  "study_families": 118
+ }
+}

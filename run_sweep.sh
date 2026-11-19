@@ -10,7 +10,7 @@ while [ $# -gt 0 ]; do
   case $1 in
     --larry) args+=(-f larry=true) ;;
     --petracer) args+=(-f petracer=true) ;;
-    --lines) args+=(-f "lines=$2"); shift ;;
+    --lines) args+=(-f "lines=$2"); lines=$2; shift ;;
     --guard) guard=$2; shift ;;  # cancel once fewer than N seeds can pass the gate
     *) echo "unknown option $1" >&2; exit 2 ;;
   esac
@@ -20,6 +20,12 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 git fetch -q origin "$branch"
 if [ "$(git rev-parse HEAD)" != "$(git rev-parse "origin/$branch")" ]; then
   echo "push $branch first: the runners check out origin/$branch" >&2; exit 1
+fi
+# a line whose output file already exists is skipped on the runner; refuse a dispatch that would run nothing
+pending=$(uv run python experiments/sweep.py "$sweep" --list ${lines:+--lines "$lines"} 2>/dev/null || echo "?")
+if [ "$pending" = "[]" ]; then
+  echo "nothing to run: every line of $sweep already has its output file in the repo (rename the output to re-run)" >&2
+  exit 1
 fi
 # lock dispatch + run-id lookup so concurrent launches cannot pick up each other's run
 lock=.sweep_runs/.dispatch.lock

@@ -30,7 +30,34 @@ FIELDS = (
 )
 
 # Core papers whose neighbourhood we map (references and citers). Extend as the project grows.
-SENSITIVE = r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|oncog|metasta|drug|chemo|therap|patient|disease|clinical"
+SENSITIVE = r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|oncog|metasta|drug|chemo|therap|patient|disease|clinical|syndrom|dysplas|fibros|diabet|alzheimer|parkinson|sepsis|autoimmun|infection|\bhiv\b|covid|sars|defect"
+# Further disease, pathogen and drug names (retro 2026-11-19b; same list in c17_data_sweep.py). Lower case only:
+# titles are lower-cased before matching.
+SENSITIVE += (
+    r"|anemi|anaemi|aplastic|thalass|sickle|hemophil|haemophil|penia\b|immunodeficien|dystroph|scleros|sclerotic"
+    r"|fibrot|arthritis|lupus|asthma|allerg|obes(e|ity)|hypertens|ischemi|ischaemi|stroke|infarct|aneurysm"
+    r"|embolism|thrombos[ie]s|thrombotic|hemorrhag|haemorrhag|cirrhos|hepatitis|colitis|crohn|inflammatory bowel"
+    r"|ulcer|psoria|dementia|neurodegenerat|macular|epilep|autis|schizophren|deafness|opath(y|ies|ic)\b"
+    r"|graft.versus.host|gvhd|\bdisorders?\b|\blesions?\b|pneumonia|eclamp|spina bifida|malnut|infertil"
+    r"|congenital|pathogen|malaria|tubercul|influenza|zika|ebola|herpes|cytomegalo|septic|blastoma|adenom"
+    r"|hepatom|teratom|mesotheliom|astrocytom|myeloprolif|lymphoprolif|\baml\b|\bcml\b|\bcll\b|metaplas"
+    r"|hyperplas|atroph|cystic|trauma|injur|vaccin|antibiotic|pharmac|fluorouracil|\b5-?fu\b"
+    r"|\w+(nib|mab|ciclib|parib)\b"
+)
+# Cell-line names are masked in saved titles (same pattern as c17_data_sweep.py).
+CELL_LINE = re.compile(
+    r"\b(hela|hek ?293[a-z]*|k562|mcf-?7|a549|hct-?116|jurkat|u2os|thp-?1|hl-?60|nb4|molm-?\d+|"
+    r"mv4-?11|kasumi-?\d*|wtc-?11|hues\d+|kolf2?[\w.-]*|(?<!histone )h[179](?![.]\d)|"
+    r"e14(tg2a)?(?![.]\d)|v6\.5|cgr8)\b",
+    re.I,
+)
+
+
+def neutral(row):
+    """True if a map row's title, venue, link and DOI carry no sensitive term (standing rule; the md filter
+    already checks the whole table line)."""
+    text = " ".join(str(row.get(k) or "") for k in ("title", "pub", "url", "doi")).lower()
+    return not re.search(SENSITIVE, text)
 
 SEEDS = {
     "Weinreb 2020 (LARRY)": "10.1126/science.aaw3381",
@@ -326,7 +353,7 @@ def main(top=40, tag=""):
                 groups=groups,
                 via=sorted(via),
                 doi=doi,
-                title=w.get("display_name"),
+                title=CELL_LINE.sub("[line]", w.get("display_name") or ""),
                 year=w.get("publication_year"),
                 cites=w.get("cited_by_count", 0),
                 status=status,
@@ -370,8 +397,8 @@ def main(top=40, tag=""):
             f"| {i} | {r['score']} | {r['year']} | {title} | {', '.join(r['groups'])} | {link} "
             f"| {acc} | {'; '.join(r['via'])} |"
         )
-    # neutral output (standing rule): drop rows whose title carries disease/drug terms
-    rows = [r for r in rows if not re.search(SENSITIVE, (r.get("title") or "").lower())]
+    # neutral output (standing rule): drop rows whose title, venue, link or DOI carries a sensitive term
+    rows = [r for r in rows if neutral(r)]
     lines = [ln for ln in lines if not (ln.startswith("| ") and re.search(SENSITIVE, ln.lower()))]
     stem = f"gap_{date}" + (f"_{tag}" if tag else "")
     path = os.path.join(LIT, f"{stem}.md")

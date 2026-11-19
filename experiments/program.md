@@ -280,6 +280,7 @@ pre-registration dated 2026-11-13 or later without it.
 - Simulated readouts copy the measurement physics (11-09).
 - Probe whether the fit can stay at the favourable point before registering (11-05b).
 - Step 0 hygiene: at least 10 repeats, a settling check, a float tolerance (11-10).
+- Before committing an output that stores external titles (citation maps, data sweeps), probe the saved titles with the full neutral-wording filter; the filter's selftest carries a keep-list of core terms (11-19b; disease-domain titles passed a 30-stem blocklist into 34 committed maps).
 
 **Before a statistic**
 - Before an oracle look, estimate the sealed reader's peak RAM from the sealed file sizes, or run it once on the largest train unit locally (11-15; C14-S2 OOM).
@@ -299,6 +300,10 @@ pre-registration dated 2026-11-13 or later without it.
 **Before a power claim**
 - Every power simulation gets a synthetic smoke test with a known answer (11-15; C14-S1a index bug).
 - Smoke pass rules are fixed only after the structural regime they cover (detection floor, unit sizes, arm counts) is measured on train (11-19; C17 amendment 4 tested a floor the data never occupy).
+- Every threshold (validation gate, purity, adequacy bar) gets a baseline or ceiling estimate before it is fixed (11-19b; C17 label purity bar 0.8 set without a ceiling, result 0.52 uninterpretable).
+- Primary-test power at pre-registration comes from simulating the actual estimator at the measured regime, not from an analytic formula (11-19b; C17 cortical analytic 0.80 vs simulated 0.14-0.67).
+- The S0 inventory lists, per unit, the file that carries its outcome and its coverage; and it names and counts the unit of the chapter's headline claim (a cross-system claim counts systems) (11-19b; labels existed for 2 of 5 transplant sample sets; 3 systems cannot carry a law).
+- Every 'not found' novelty verdict includes a no-date concept search (OpenAlex or PubMed, sorted by citations) with the top 10 abstracts read; recent work and the source papers alone are not enough (11-19b; C17 split test was published in kind in 2002, 2007 and 2016).
 - Scans of a sealed set's source paper print headings and design sentences only; any sentence with statistics words (r =, P =, correlation of, n =) is dropped (11-19; C17 novelty scan slip).
 - Result writers get a 1-rep local run before dispatch (11-19; C17-S1 numpy-bool crash twice).
 - A planted smoke signal goes on a direction orthogonal to the base features (residualised, or a synthetic
