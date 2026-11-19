@@ -298,12 +298,192 @@ def checks():
     return {"rf2020_clone": rf, "cortical_clone": arms, "cortical_detection_floor": floor_counts}
 
 
+# ---------------------------------------------------------------- train stage (amendment 6)
+MARKERS = {
+    "Mk": ["Pf4", "Itga2b", "Gp9", "Vwf"], "Ery": ["Klf1", "Car1", "Gata1", "Hba-a1"],
+    "GM": ["Mpo", "Elane", "Ctsg", "Prtn3"], "BaMast": ["Prss34", "Cpa3", "Mcpt8"],
+    "preDC": ["Irf8", "Siglech", "Cd74"], "preB": ["Vpreb1", "Dntt", "Ebf1", "Igll1"],
+}
+ALLM = {g for v in MARKERS.values() for g in v}
+ID_FILES = {"Sample1": "samp_id", "Sample2": "samp_id_flat", "Sample4": "samp_id_flat", "Sample5": "samp_id_flat"}
+
+
+def marker_rows(sample):
+    """Stream the genes x cells normalised CSV; keep only marker-gene rows (log1p)."""
+    out = {}
+    req = urllib.request.Request(RF + f"{sample}_counts_norm.csv.gz", headers={"User-Agent": "cellware-c17/1.0"})
+    with urllib.request.urlopen(req, timeout=600) as r, gzip.GzipFile(fileobj=r) as gz:
+        for raw in gz:
+            g = raw[: raw.find(b",")].decode().strip('"')
+            if g in ALLM:
+                out[g] = np.log1p(np.array(raw.decode().rstrip().split(",")[1:], dtype=float))
+    return out
+
+
+def icc_swap_null(x1, x2, grp, rng, n=1000):
+    """Plain ICC with a clone-swap null within sample set (expansion control)."""
+    obs = icc_pairs(x1, x2)
+    nul = np.empty(n)
+    for k in range(n):
+        perm = np.arange(len(x1))
+        for g in np.unique(grp):
+            m = np.where(grp == g)[0]
+            perm[m] = rng.permutation(m)
+        nul[k] = icc_pairs(x1, x2[perm])
+    return obs, (1 + (nul >= obs).sum()) / (1 + n)
+
+
+def label_cells(d, lins):
+    kit = d.comp == "kit"
+    z = (d[lins] - d.loc[kit, lins].mean()) / d.loc[kit, lins].std()
+    return np.where(z.max(axis=1) >= 1.0, z.idxmax(axis=1), "unassigned")
+
+
+def cluster_purity(d2):
+    """Cell-weighted purity of the authors' clusters under our labels (unassigned is its own label)."""
+    top = d2.groupby("clus").label.agg(lambda x: x.value_counts().iloc[0]).sum()
+    return float(top / max(len(d2), 1))
+
+
+def split_tables(d, lins):
+    """Shared clones (>= 3 Kit+ cells in two recipients): lineage-bias score, Kit size, total size per recipient."""
+    kit = d.comp == "kit"
+    tot = d.groupby(["unit", "rec"]).size().unstack(fill_value=0)
+    kc = d[kit].groupby(["unit", "rec"]).size().unstack(fill_value=0)
+    rows = []
+    for u in kc.index:
+        recs = list(kc.loc[u][kc.loc[u] >= 3].index)
+        if len(recs) >= 2:
+            rows.append((u, u.split(":")[0], recs[0], recs[1]))
+    comp = d[kit & (d.label != "unassigned")].groupby(["unit", "rec", "label"]).size().unstack(fill_value=0)
+    comp = comp.reindex(columns=lins, fill_value=0)
+    keys = [(u, r) for u, _, r1, r2 in rows for r in (r1, r2)]
+    X = []
+    for k in keys:
+        c = comp.loc[k].values if k in comp.index else np.zeros(len(lins))
+        lc = np.log(c + 0.5)
+        X.append(lc - lc.mean())
+    X = np.array(X)
+    Xc = X - X.mean(0)
+    axis = np.linalg.svd(Xc, full_matrices=False)[2][0]
+    sc = dict(zip(keys, Xc @ axis, strict=True))
+    assigned = [float(comp.loc[k].sum()) if k in comp.index else 0.0 for k in keys]
+
+    def arr(f):
+        return np.array([f(u, r1, r2) for u, _, r1, r2 in rows], float)
+
+    t = {
+        "b1": arr(lambda u, a, b: sc[(u, a)]), "b2": arr(lambda u, a, b: sc[(u, b)]),
+        "s1": np.log(arr(lambda u, a, b: kc.loc[u, a])), "s2": np.log(arr(lambda u, a, b: kc.loc[u, b])),
+        "e1": np.log(arr(lambda u, a, b: tot.loc[u, a])), "e2": np.log(arr(lambda u, a, b: tot.loc[u, b])),
+        "grp": np.array([g for _, g, _, _ in rows]), "axis": axis, "assigned": assigned,
+    }
+    return t
+
+
+def train_stage():
+    import ast  # noqa: PLC0415
+    import re  # noqa: PLC0415
+
+    import pandas as pd  # noqa: PLC0415
+    from partitions import train_only  # noqa: PLC0415
+    from power import rho_power  # noqa: PLC0415
+
+    rng = np.random.default_rng(1719)
+    frames, found = [], {}
+    for s, id_f in ID_FILES.items():
+        bcs, ids = lines(f"{s}_barcode_list"), lines(f"{s}_{id_f}")
+        if len(ids) == len(bcs) + 1:
+            ids = ids[1:]
+        df = pd.DataFrame({"sid": ids, "bc": [b.strip().strip("_") for b in bcs]})
+        df["set"], df["cell"] = s, np.arange(len(df))
+        df["unit"] = s + ":" + df.bc
+        df["rec"] = [recipient(i) for i in ids]
+        df["comp"] = [compartment(i) for i in ids]
+        df = train_only("rf2020_clone", df[df.bc != ""], "unit")  # train rows before any expression read
+        mk = marker_rows(s)
+        found[s] = sorted(mk)
+        for lin, genes in MARKERS.items():
+            have = [g for g in genes if g in mk]
+            df[lin] = np.mean([mk[g][df.cell.values] for g in have], 0) if have else 0.0
+        frames.append(df)
+    d = pd.concat(frames, ignore_index=True)
+    lins = list(MARKERS)
+    d["label"] = label_cells(d, lins)
+    res = {"markers_found_per_set": {s: len(v) for s, v in found.items()}, "train_cells": int(len(d)),
+           "train_kit_cells": int((d.comp == "kit").sum()),
+           "label_counts_train_kit": d[d.comp == "kit"].label.value_counts().to_dict()}
+
+    txt = gzip.decompress(fetch(RF + "Sample2_projected_clusters.csv.gz")).decode()
+    sids, _s2, clus = (ast.literal_eval(x) for x in re.findall(r"\[[^\]]*\]", txt))
+    s2ids = lines("Sample2_samp_id_flat")
+    off = len(s2ids) - len(sids)
+    assert off in (0, 1) and s2ids[off:] == list(sids), "cluster file not aligned to Sample2 cell order"
+    d2 = d[d.set == "Sample2"].copy()
+    d2["clus"] = [clus[c - off] if 0 <= c - off < len(clus) else None for c in d2.cell]
+    d2 = d2.dropna(subset=["clus"])
+    pur = cluster_purity(d2)
+    res["gate_sample2"] = {"cells": int(len(d2)), "clusters": int(d2.clus.nunique()), "purity": pur,
+                           "pass": bool(pur >= 0.8 and len(d2) >= 100)}
+    if not res["gate_sample2"]["pass"]:
+        res["stop"] = "label validation gate failed; split test stops (no relabelling)"
+        return res
+
+    t = split_tables(d, lins)
+    n = len(t["b1"])
+    res["readout_gate"] = {
+        "units_shared_clones": n, "by_set": dict(collections.Counter(t["grp"].tolist())),
+        "bias_quantiles": [float(q) for q in np.quantile(np.r_[t["b1"], t["b2"]], [0, .1, .25, .5, .75, .9, 1])],
+        "assigned_kit_cells_per_clone_recipient_median": float(np.median(t["assigned"])),
+        "axis_loadings": dict(zip(lins, [float(a) for a in t["axis"]], strict=True)), "ge_30_units": n >= 30}
+    icc_e, p_e = icc_swap_null(t["e1"], t["e2"], t["grp"], rng)
+    res["expansion_control"] = {"icc": float(icc_e), "p": float(p_e), "pass": bool(p_e < ALPHA)}
+    if not res["expansion_control"]["pass"]:
+        res["stop"] = "expansion control did not replicate; split test stops"
+        return res
+    icc_b, p_b = tsplit_stat(t["b1"], t["b2"], t["s1"], t["s2"], t["grp"], rng, n_null=1000)
+    boot = []
+    for _ in range(1000):
+        i = rng.integers(0, n, n)
+        ie = icc_pairs(t["e1"][i], t["e2"][i])
+        if ie > 0:
+            boot.append(icc_pairs(size_adjust(t["b1"][i], t["s1"][i]), size_adjust(t["b2"][i], t["s2"][i])) / ie)
+    res["tsplit"] = {"icc_bias_size_adjusted": float(icc_b), "p": float(p_b), "n": n}
+    res["R"] = {"estimate": float(icc_b / icc_e), "ci95": [float(np.quantile(boot, .025)), float(np.quantile(boot, .975))]}
+    half = max(icc_b / 2, 0.0)
+    pw = float(rho_power(half, 30)) if half > 0 else 0.0
+    res["look_gate_A"] = {"half_train_icc": float(half), "power_n30": pw, "pass_0.9": pw >= 0.9}
+    return res
+
+
+def selftest_train_tables():
+    """1-rep synthetic check of the train-stage tables and writer (practice line 2026-11-19)."""
+    import pandas as pd  # noqa: PLC0415
+
+    rng = np.random.default_rng(3)
+    rows = []
+    for c in range(40):
+        for rec in ("R1", "R2"):
+            for _ in range(int(rng.integers(3, 12))):
+                rows.append({"unit": f"Sample5:c{c}", "rec": rec, "comp": "kit", "set": "Sample5"})
+            rows.append({"unit": f"Sample5:c{c}", "rec": rec, "comp": "hsc", "set": "Sample5"})
+    d = pd.DataFrame(rows)
+    lins = list(MARKERS)
+    for lin in lins:
+        d[lin] = rng.normal(0, 1, len(d))
+    d["label"] = label_cells(d, lins)
+    t = split_tables(d, lins)
+    icc_b, p_b = tsplit_stat(t["b1"], t["b2"], t["s1"], t["s2"], t["grp"], rng, n_null=50)
+    icc_e, p_e = icc_swap_null(t["e1"], t["e2"], t["grp"], rng, n=50)
+    return {"n": len(t["b1"]), "icc_b": float(icc_b), "p_b": float(p_b), "icc_e": float(icc_e), "ok": True}
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stage", choices=["smoke", "checks"], required=True)
+    ap.add_argument("--stage", choices=["smoke", "checks", "train", "selftest"], required=True)
     a = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)
-    res = smoke() if a.stage == "smoke" else checks()
+    res = {"smoke": smoke, "checks": checks, "train": train_stage, "selftest": selftest_train_tables}[a.stage]()
     path = os.path.join(OUT, f"c17s1_{a.stage}.json")
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(res, fh, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o))

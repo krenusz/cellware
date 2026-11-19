@@ -12282,3 +12282,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Decision (fixed rule, no further amendment in this step): T-cortical is exploratory, with no sealed look.** It may be run on train as a descriptive decomposition. The primary test of C17 is now **T-split'** (with the expansion control), followed by the joint fit.
 - Reading: the detection floor at 3 cells (1,501 of the train clones sit exactly at it) leaves too little size information to separate instruction from selection at these arm sizes. This is a data limit, not an estimator bias.
 - Retro gap map (run 44509374694, sister topic): 5,099 rows, 451 from 2026. Top recent: DeepTrack in vivo barcoding (already on the watch list), the DNA Typewriter whole-mouse lineage, neuromesoderm organoid lineage tracing, and whole-embryo barcoding of mesoderm origins. None does split-recipient lineage-bias agreement (titles only).
+
+### C17-S1/S2/S3 amendment 6: our own lineage labels for the split test (2026-11-19; Bence: "go" to amendment 6; retro RETRO_2026-11-19.md already done, H18)
+- Serves: C17-S1. Script `c17s1_joint.py --stage train` (Actions; train rows only via partitions.train_only, filtered before any scoring).
+- **Reason:** published per-cell lineage labels exist only for Sample2 (as numeric cluster IDs, no names) and Sample3. Sample5, Sample4 and Sample1, which hold all 36 shared train clones (30 / 4 / 2; Sample2 has none in train), have normalised expression only (genes x cells CSV). Format check: counts only (H9).
+- **Labels (fixed now, before any expression read):** marker sets (mouse): Mk Pf4, Itga2b, Gp9, Vwf; Ery Klf1, Car1, Gata1, Hba-a1; GM Mpo, Elane, Ctsg, Prtn3; Ba/Mast Prss34, Cpa3, Mcpt8; preDC Irf8, Siglech, Cd74; preB Vpreb1, Dntt, Ebf1, Igll1. Score = mean log1p(normalised counts) over a lineage's markers, z-scored per lineage across train Kit+ cells. Label = argmax z if z_max >= 1.0, else unassigned (progenitor/HSC-like).
+- **Validation gate (before any split statistic):** on Sample2 train cells, each authors' cluster ID is mapped to the lineage that most of its cells receive. Gate: cell-weighted purity >= 0.8 (cells in a cluster carrying that cluster's majority label, unassigned counted as its own label). Fail = the split test stops; no relabelling.
+- **Order of statistics on train:**
+  1. Readout gate (H21): distribution of per-clone-recipient lineage composition and bias score (quantiles), units counted.
+  2. Expansion control: ICC of log total barcoded cells per recipient across shared clones; clone-swap null within sample set (1,000). It must pass at one-sided alpha 0.025, or the split test stops.
+  3. T-split': bias = first principal axis of CLR (counts + 0.5) of assigned Kit+ lineage counts per clone-recipient, fitted on train. Size-adjusted, size-binned clone-swap ICC (smoke-tested code). Units: shared clones with >= 3 Kit+ cells per recipient.
+  4. R = ICC_bias / ICC_expansion, with a 95% CI from a 1,000-draw clone bootstrap.
+  5. Look gate for A computed from the half-shrunk train ICC (power.rho_power, n = 30, gate 0.9).
+- Exposure: unchanged. Train only; A/B/C untouched. Cluster IDs carry no lineage names; their purity is a structural check of our labels.
+- Practice: 1-rep local writer check on synthetic input before dispatch; regime measured (labels exist for S2 only), then rules fixed.
+- Compute: GitHub Actions run (sweeps/c17s1_train.txt).
