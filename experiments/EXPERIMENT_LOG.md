@@ -12436,3 +12436,26 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   3. Units: 7 embryos; the CI is wide.
   4. Published? Fate coupling of related clades is the source study's own topic (claims level); this is a parameter for our table, not a claim.
 - **Table:** added as "PEtracer embryo trees (train)", class pluripotent-derived, heritable_share 0.81 [0.53, 0.87], identified, with the stage and niche caveats. The pluripotent class now has **2 systems** (gastruloids, embryo trees); blood 3. Any cross-class law must model stage (or use the early embryos), because this system's memory value moves with developmental time.
+
+## C17-S1C: CRISPR brain barcoding set (GSE210139), S0 download of the barcode tables and structure check (pre-registered 2026-11-19; Bence: "go" = download the CRISPR brain set)
+- Serves: C17-S1 (C17-S1R: grow the systems; the neural class has this one sure memory-capable set). Script c17s1c_crest.py, stage `struct`.
+- Download (Bence's OK covers the whole 12.7 GB set; taken in stages, smallest first): now only the two single-cell barcode QC tables (2.7 MB each, `GSE210139_single_cell_CREST_barcode_qc*.rds.gz`) into `data/ext_crest/raw/`, read with `python -I` and the `rdata` package (R data parser; no R code is executed). The expression objects (Seurat, 1.3-2.7 GB each) come only if this gate passes.
+- Pre-flight:
+  1. Unit: clone (cells sharing a founder barcode); sister subclades are groups of a clone's cells that share a further edited allele.
+  2. Readout (this stage): structure only (H9): column names, row count, per-cell sample/stage/region tags, cells per clone, distinct alleles per clone. No cell type, no expression, no fate column is tabulated (columns whose names suggest a cell type are listed by name only).
+  3. Used data first: none of this set is used.
+  4. Power: the gate below.
+  5. Exposure: barcode tables only.
+  6. Literature: source paper not read yet (H20 before any estimate; claims level).
+  7. Readout gate: S1 needs >= 30 eligible train clones (H21).
+- **Gate (fixed now):** an eligible clone has >= 8 barcoded cells and at least two allele-defined subclades with >= 4 cells each (the C17-S1P arm size). Pass if 0.4 x eligible >= 30 (>= 75 eligible clones) and the table has a column that links each cell to an expression object (cell barcode plus sample). Pass: seal by clone (balanced_split, strata = sample), commit the map, then download the matching expression object(s) and pre-register S1. Fail: stop; nothing else downloaded.
+- Practice: offline selftest of the structure functions on a synthetic table before the real read; peak RAM trivial (5 MB).
+- Compute: local, because it is a structure read of two 2.7 MB files (under 2 minutes; nothing statistical).
+- **Schema (2026-11-19, `results_c17/c17s1c_schema.json`):** the file is a list of per-sample tables (E11, E15, a second E11 series and organoids, 3 replicates each, plus merged copies; the replicates are stacked). 58,740 cells; columns: cell barcode, `pattern.v1` and `pattern.v2` (edits per target site of two barcode arrays; v1 missing for about half the cells), a combined `pattern`, `sample`, and a cell-type column (41 types; **not read**). The barcode table carries the fate labels itself, so the expression objects may not be needed.
+- **Amendment 1 (before the gate; column mapping only, no fate read):** clone = cells sharing one informative `pattern.v2` that occurs in one sample only (recurrent alleles, "no edit" and single deletions spanning every site are homoplasy or uninformative); subclades = distinct informative `pattern.v1` within the clone. These subclades are related groups inside a clone, not proven sisters (no tree is reconstructed); a tree-based definition needs the source methods (H20) before S1. The gate rule is unchanged and is reported pooled and per sample group (E11, E15, second E11 series, organoids), since the groups may be separate systems.
+
+### C17-S1C S0 result: gate FAILS under amendment 1, stop (2026-11-19; local; `results_c17/c17s1c_gate.json`; structure only, cell types not read)
+- Clones are plentiful: 46,709 cells carry an informative v2 pattern; 26,386 of them in v2 patterns seen in one sample only; **2,731 such clones, 835 with >= 8 cells** (21,313 cells). 981 v2 patterns recur across samples (20,323 cells) and are excluded as homoplasy.
+- **Subclades are not:** v1 is present for 9,854 of those cells, but only **336** carry an informative v1 pattern; most v1 arrays show one deletion over every site (the array is wiped). Eligible clones (>= 8 cells, >= 2 v1 subclades of >= 4): **0** in every group. Stop by the rule; the expression objects are not downloaded.
+- What would rescue it (not done; needs a decision and the H20 methods read): subclades from shared edits inside the v2 array (cells of one clade share an early edit and differ in later ones), i.e. a tree from edit sharing, as the source study likely does. That is amendment 2 and a new structure check, not a re-tuning of this gate.
+- Downloads so far: two 2.7 MB barcode tables in data/ext_crest/raw (SHA256SUMS there); nothing else.

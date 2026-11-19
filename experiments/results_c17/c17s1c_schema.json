@@ -1,0 +1,48 @@
+{
+ "rows": 58740,
+ "columns": [
+  {
+   "name": "Cell.BC",
+   "dtype": "string",
+   "n_distinct": 58603,
+   "n_missing": 0
+  },
+  {
+   "name": "pattern.v1",
+   "dtype": "string",
+   "n_distinct": 1049,
+   "n_missing": 29757
+  },
+  {
+   "name": "pattern.v2",
+   "dtype": "string",
+   "n_distinct": 3824,
+   "n_missing": 1735
+  },
+  {
+   "name": "Cell.type",
+   "dtype": "string",
+   "n_distinct": 41,
+   "n_missing": 0,
+   "fate_like": "name and type only"
+  },
+  {
+   "name": "pattern",
+   "dtype": "string",
+   "n_distinct": 9924,
+   "n_missing": 0
+  },
+  {
+   "name": "sample",
+   "dtype": "string",
+   "n_distinct": 12,
+   "n_missing": 0
+  },
+  {
+   "name": "sample_key",
+   "dtype": "str",
+   "n_distinct": 12,
+   "n_missing": 0
+  }
+ ]
+}

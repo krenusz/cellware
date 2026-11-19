@@ -1,0 +1,75 @@
+{
+ "mapping": "Amendment 1 mapping: clone = informative pattern.v2 seen in one sample only (recurrent alleles are\n    homoplasy); subclade = pattern.v1 within the clone (informative, non-missing).",
+ "pooled": {
+  "cells_with_clone": 336,
+  "clones": 153,
+  "eligible_clones": 0,
+  "expected_train_eligible": 0,
+  "gate_pass": false,
+  "clones_ge8_cells": 7,
+  "clones_spanning_samples": 0,
+  "cells_per_clone_quantiles": [
+   1.0,
+   4.8,
+   13.9
+  ]
+ },
+ "by_group": {
+  "E11": {
+   "cells_with_clone": 189,
+   "clones": 68,
+   "eligible_clones": 0,
+   "expected_train_eligible": 0,
+   "gate_pass": false,
+   "clones_ge8_cells": 6,
+   "clones_spanning_samples": 0,
+   "cells_per_clone_quantiles": [
+    1.0,
+    6.3,
+    13.0
+   ]
+  },
+  "E15": {
+   "cells_with_clone": 89,
+   "clones": 46,
+   "eligible_clones": 0,
+   "expected_train_eligible": 0,
+   "gate_pass": false,
+   "clones_ge8_cells": 1,
+   "clones_spanning_samples": 0,
+   "cells_per_clone_quantiles": [
+    1.0,
+    3.0,
+    14.2
+   ]
+  },
+  "OGN": {
+   "cells_with_clone": 34,
+   "clones": 22,
+   "eligible_clones": 0,
+   "expected_train_eligible": 0,
+   "gate_pass": false,
+   "clones_ge8_cells": 0,
+   "clones_spanning_samples": 0,
+   "cells_per_clone_quantiles": [
+    1.0,
+    2.9,
+    3.8
+   ]
+  },
+  "pandaE11": {
+   "cells_with_clone": 24,
+   "clones": 17,
+   "eligible_clones": 0,
+   "expected_train_eligible": 0,
+   "gate_pass": false,
+   "clones_ge8_cells": 0,
+   "clones_spanning_samples": 0,
+   "cells_per_clone_quantiles": [
+    1.0,
+    2.4,
+    3.8
+   ]
+  }
+ }
+}
