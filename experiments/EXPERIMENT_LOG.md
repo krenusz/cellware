@@ -12403,3 +12403,22 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Stop by the fixed rule.** Nothing was sealed, no expression or fate was read; the set stays unused (only cell-per-colour counts were seen).
 - Reading: the MADM organoid set is too small (a median of about 4 sequenced cells per clone) to estimate a sister heritable share. The neural class keeps **1 sure memory-capable system** (CRISPR brain barcoding, GSE210139, 12.7 GB, download needs Bence's OK) plus the unchecked in vivo MADM series (GSE326044: 5 multiplexed samples; whether clones are identified there is not clear from metadata).
 - Self-challenge: the threshold (>= 2 per colour) is the smallest validated arm size, so a looser rule would have no validity check; the result is structural, not a judgement on the biology.
+
+## C17-S1P: sister-subclade heritable share in the embryo lineage trees, TRAIN embryos only (pre-registered 2026-11-19; Bence: "1 go")
+- Serves: C17-S1 (C17-S1R: grow the systems; the pluripotent-derived class has 1 system). Script c17s1p_trees.py (reuses c14s0_gate.load_obs / iter_train_trees, which filter to train embryos with partitions.train_only before any other column, and sis_data.heritable_share / synthetic unchanged), on Actions with `--petracer`.
+- Estimand: the B38 heritable share used for SIS and CellTag LSK, with the two children of a tree node as the two sister arms. H = (D_rand - D_sis) / (D_rand - D_noise) on per-subclade counts over the obs `lineage` categories; random partners within the same embryo.
+- Sister pairs: a node qualifies if its clade has <= 300 leaves (C14's MAX_CLADE) and its two largest children each hold >= 4 annotated train cells (C7-S2 primary arm size). Qualifying nodes are taken smallest first and a node is skipped if it shares leaves with one already taken, so pairs are disjoint (independent units).
+- Pre-flight:
+  1. Unit: a disjoint sister-subclade pair; clustered in embryos (7 train embryos; the CI resamples embryos, then pairs).
+  2. Readout: lineage label counts per subclade (already used on train in C14).
+  3. Used data first: train embryos only; A (spent) and B/C (sealed) are skipped by key before parsing.
+  4. Power: not a test; an estimate for the parameter table. Gate below.
+  5. Exposure: as C14 (train cells, trees, labels).
+  6. Literature: PEtracer source read at claims level (C13); fate coupling between sister clades is the authors' own topic, so this value is a parameter, not a claim.
+  7. Readout gate (H21): >= 30 disjoint pairs, else stop.
+- Smoke (before the real estimate, same run): syn0 (both arms drawn from the embryo's population fractions) must give |H| < 0.15 and syn1 (both arms from the pair's pooled fractions) H > 0.85, on the real pair sizes; otherwise INVALID. Offline selftest of the pair picker on a toy tree.
+  - **Amendment 1 (before any real data, 2026-11-19):** the offline baseline showed that one synthetic draw has sd 0.15-0.26 for syn0 (60-500 pairs) and that syn1 tops out near 0.88 at 4 cells per arm, so the single-draw rule above would fail by chance or by the estimator's ceiling. The rule is now the **mean over 20 draws**: |mean syn0| < 0.15 and mean syn1 > 0.80; both means and sds are reported. (Practice line: thresholds get a baseline before they are fixed.)
+- Prediction: H between the gastruloid's per-passage retention (0.46) and blood (0.66-0.88); written before the run.
+- Limits written now: sister subclades in an embryo share a neighbourhood, so H here is memory plus shared niche (an upper bound on intrinsic memory); in SIS and CellTag the arms were separated into wells. The table row will carry this caveat. Exploratory secondary: H by clade-size tertile (deeper splits vs shallow), no claim.
+- Practice: offline selftest of the pair picker; synthetic smoke on real pair sizes inside the run; peak RAM as C14 (streamed trees, train obs only); 1-rep writer check offline.
+- Compute: GitHub Actions run (sweeps/c17s1p.txt, `--petracer`).
