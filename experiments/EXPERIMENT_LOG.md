@@ -12274,3 +12274,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - If the rules pass, T-cortical is restored as the primary sealed test. If not, it stays exploratory, with no further amendment in this step.
 - Practice: lines of 2026-11-19 applied (regime measured first; 1-rep local writer run done).
 - Compute: GitHub Actions run (sweeps/c17s1_smoke5.txt); retro gap map (sweeps/retro_c17s1_gap.txt).
+
+### C17-S1 amendment 5 result (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44510233252; synthetic only)
+- Run 44509258927 executed nothing: the sweep skips a line whose output file already exists. The output was renamed to `c17s1_smoke5.json` and re-run.
+- **Floors 1 and 3:** selection does not leak into corrected instruction (floor 3: -0.010, sd 0.091; PASS); instruction is detected (floor 3: +0.138; PASS).
+- **Power at real train arm sizes, floor 3, shift 0.15:** NR2E1 (208 vs 564) **0.14**; ARX (1,302 vs 564) **0.665**: **FAIL** (rule >= 0.8). Selection false-positive rate 0.000 / 0.005 (PASS). A sealed partition holds about half the train clones, so sealed power would be lower still.
+- **Decision (fixed rule, no further amendment in this step): T-cortical is exploratory, with no sealed look.** It may be run on train as a descriptive decomposition. The primary test of C17 is now **T-split'** (with the expansion control), followed by the joint fit.
+- Reading: the detection floor at 3 cells (1,501 of the train clones sit exactly at it) leaves too little size information to separate instruction from selection at these arm sizes. This is a data limit, not an estimator bias.
+- Retro gap map (run 44509374694, sister topic): 5,099 rows, 451 from 2026. Top recent: DeepTrack in vivo barcoding (already on the watch list), the DNA Typewriter whole-mouse lineage, neuromesoderm organoid lineage tracing, and whole-embryo barcoding of mesoderm origins. None does split-recipient lineage-bias agreement (titles only).
