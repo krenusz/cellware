@@ -250,7 +250,7 @@ def main():
     res = smoke() if a.stage == "smoke" else checks()
     path = os.path.join(OUT, f"c17s1_{a.stage}.json")
     with open(path, "w", encoding="utf-8") as fh:
-        json.dump(res, fh, indent=1)
+        json.dump(res, fh, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o))
     print(json.dumps(res.get("pass", res), indent=1)[:3000])
 
 
