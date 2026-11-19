@@ -1,0 +1,1 @@
+[experiments/results_c17/c17s1c_s1_train.json] uv run --with rdata python -I experiments/c17s1c_s1.py train

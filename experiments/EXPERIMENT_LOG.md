@@ -12491,3 +12491,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Limits written now: (a) both arms come from one embryo region, so a shared prior history (position in the tissue at E11) counts as memory here; (b) arm-1 types are progenitor states, so P measures state-to-fate predictability (the CellTag time-split configuration), not a sister heritable share; it enters the table as a separate parameter `split_predictability`; (c) up to 6% of clones may be chance pattern matches (amendment 2 result), a dilution toward 0.
 - Practice: offline selftest of the statistic (strong vs no memory, collapse rule); synthetic smoke and power on the real arm sizes before any fate read; the train stage reuses the tested functions; 1-stage writer check offline.
 - Compute: GitHub Actions run (sweeps/c17s1c_s1.txt), stages as separate lines; selftest offline.
+
+### C17-S1C-S1 smoke and power (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44616024190; synthetic only, no cell type read)
+- Smoke (200 sets, alpha 0.025): plain null 4.5%, embryo-offset null 5.0%, size-only null 3.5% (all <= 5%); planted H 0.9 100%. **PASS** (embryo-offset null exactly at the limit).
+- Power on the 123 train arm sizes: **H 0.66, sigma 1.0: 0.965 (K 6) / 0.98 (K 8) -> gate passed.** Sensitivity: sigma 0.5 gives 0.53-0.56 at H 0.66 and 0.75-0.77 at H 0.81; H 0.33 gives 0.11-0.61. So a null result would rule out strong, broad between-clone fate bias, not weak bias.
+- Next, pre-registered order: `readout` (H21 gate), then `train`.

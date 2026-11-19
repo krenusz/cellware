@@ -1,0 +1,19 @@
+{
+ "null": {
+  "reject_rate": 0.045,
+  "P_excess_mean": 0.0007164859296700705
+ },
+ "null_embryo_offset": {
+  "reject_rate": 0.05,
+  "P_excess_mean": 0.0004057479810751305
+ },
+ "null_size_only": {
+  "reject_rate": 0.035,
+  "P_excess_mean": 0.0014145789987644094
+ },
+ "planted_H0.9": {
+  "reject_rate": 1.0,
+  "P_excess_mean": 0.18670559168630368
+ },
+ "pass": true
+}
