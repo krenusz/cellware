@@ -94,6 +94,42 @@ def cortical_stats(fate, size, guide):
     return instr, sel, float(np.mean(diffs)) if diffs else float("nan")
 
 
+def truncnb_fit(x, floor):
+    """MLE of a negative binomial (mean mu, size k) truncated below at floor; returns mu, k, P(detect)."""
+    from scipy import optimize, stats  # noqa: PLC0415
+
+    x = np.asarray(x)
+
+    def nll(t):
+        mu, k = np.exp(t)
+        p = k / (k + mu)
+        return -(stats.nbinom.logpmf(x, k, p).sum() - len(x) * stats.nbinom.logsf(floor - 1, k, p))
+
+    t = optimize.minimize(nll, [np.log(max(x.mean(), 1.0)), 0.0], method="Nelder-Mead").x
+    mu, k = np.exp(t)
+    return mu, k, float(stats.nbinom.sf(floor - 1, k, k / (k + mu)))
+
+
+def cortical_corrected(fate, size, guide, floor):
+    """Amendment 4: detection-aware decomposition. Per arm and fate class, fit a truncated NB to clone
+    sizes; undetected clones are added back as n / P(detect). Instruction = corrected fate fraction
+    (guide - NT); selection = difference in log fitted mean size between fates (guide - NT)."""
+    frac, lmu = {}, {}
+    for arm in (False, True):
+        m = guide == arm
+        nh, mus = {}, {}
+        for f in np.unique(fate):
+            xs = size[m & (fate == f)]
+            mu, _k, d = truncnb_fit(xs, floor)
+            nh[f], mus[f] = len(xs) / max(d, 1e-6), mu
+        tot = sum(nh.values())
+        frac[arm] = {f: v / tot for f, v in nh.items()}
+        lmu[arm] = mus
+    instr = frac[True][1] - frac[False][1]
+    sel = (np.log(lmu[True][1]) - np.log(lmu[True][0])) - (np.log(lmu[False][1]) - np.log(lmu[False][0]))
+    return instr, sel
+
+
 # ---------------------------------------------------------------- smoke
 def sim_split(rng, scenario, n=60, groups=4):
     g = rng.integers(0, groups, n)
@@ -129,10 +165,10 @@ def sim_cortical(rng, scenario, floor, n_nt=560, n_g=200):
     fg, sg = arm(n_g, pg, gr)
     fate, size = np.r_[fn, fg], np.r_[sn, sg]
     guide = np.r_[np.zeros(len(fn), bool), np.ones(len(fg), bool)]
-    return cortical_stats(fate, size, guide)
+    return (*cortical_stats(fate, size, guide), *cortical_corrected(fate, size, guide, floor))
 
 
-def smoke(reps=200):
+def smoke(reps=200, cortical_only=False):
     rng = np.random.default_rng(17)
     res = {"tsplit": {}, "expansion_control": {}, "cortical": {}}
     for sc in ("clone", "size", "host"):
@@ -145,23 +181,29 @@ def smoke(reps=200):
         res["tsplit"][sc] = {"reject_rate": rej / reps, "icc_mean": float(np.mean(iccs))}
     ctrl = [icc_pairs(*sim_split(rng, "host")[2:4]) for _ in range(reps)]
     res["expansion_control"] = {"icc_mean": float(np.mean(ctrl)), "min": float(np.min(ctrl))}
-    for floor in (1, 3):
+    for floor in (1, 3, 5):
         for sc in ("null", "selection", "instruction"):
             st = np.array([sim_cortical(rng, sc, floor) for _ in range(reps)])
             res["cortical"][f"{sc}_floor{floor}"] = {
                 "instruction_mean": float(st[:, 0].mean()), "instruction_sd": float(st[:, 0].std()),
                 "selection_mean": float(st[:, 1].mean()),
-                "size_matched_instruction_mean": float(np.nanmean(st[:, 2]))}
+                "size_matched_instruction_mean": float(np.nanmean(st[:, 2])),
+                "corrected_instruction_mean": float(st[:, 3].mean()),
+                "corrected_instruction_sd": float(st[:, 3].std()),
+                "corrected_selection_mean": float(st[:, 4].mean())}
     t, c = res["tsplit"], res["cortical"]
     res["pass"] = {
         "tsplit_clone_power": t["clone"]["reject_rate"] >= 0.8,
         "tsplit_size_fpr": t["size"]["reject_rate"] <= 0.06,
         "tsplit_host_fpr": t["host"]["reject_rate"] <= 0.06,
         "expansion_control_recovered": res["expansion_control"]["icc_mean"] > 0.3,
-        "cortical_selection_not_instruction": all(
-            abs(c[f"selection_floor{f}"]["instruction_mean"]) < 0.5 * c[f"selection_floor{f}"]["instruction_sd"]
-            for f in (1, 3)),
-        "cortical_instruction_detected": all(c[f"instruction_floor{f}"]["instruction_mean"] > 0.1 for f in (1, 3)),
+        "cortical_corrected_selection_not_instruction": all(
+            abs(c[f"selection_floor{f}"]["corrected_instruction_mean"])
+            < 0.5 * c[f"selection_floor{f}"]["corrected_instruction_sd"] for f in (1, 3, 5)),
+        "cortical_corrected_instruction_detected": all(
+            c[f"instruction_floor{f}"]["corrected_instruction_mean"] > 0.1 for f in (1, 3, 5)),
+        "cortical_corrected_selection_detected": all(
+            c[f"selection_floor{f}"]["corrected_selection_mean"] > 0.4 for f in (1, 3, 5)),
     }
     return res
 
@@ -235,11 +277,15 @@ def checks():
             cats = [c.decode() if isinstance(c, bytes) else str(c) for c in g["categories"][:]]
             return [cats[k] if k >= 0 else "NA" for k in g["codes"][:]]
 
+        h5_ncells = obs["n_cells"][:]
         cd = pd.DataFrame({"unit": index, "target": cat("Gene_target"), "batch": cat("batch")})
     cd = train_only("cortical_clone", cd, "unit")
+    nc = np.asarray(h5_ncells)[np.isin(index, cd.unit.values)]
+    floor_counts = {"train_min_n_cells": int(nc.min()), "train_clones_by_n_cells_1_to_5":
+                    {int(v): int((nc == v).sum()) for v in range(1, 6)}}
     arms = {t: {"train_clones": int(len(g)), "donor_batches": int(g.batch.nunique()),
                 "gate_ge_3_batches": bool(g.batch.nunique() >= 3)} for t, g in cd.groupby("target")}
-    return {"rf2020_clone": rf, "cortical_clone": arms}
+    return {"rf2020_clone": rf, "cortical_clone": arms, "cortical_detection_floor": floor_counts}
 
 
 def main():
