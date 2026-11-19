@@ -1,0 +1,827 @@
+{
+ "neural": {
+  "GSE300285": {
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [Multiome]",
+   "n_samples": 12,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1280035"
+   ],
+   "library_strategy": {
+    "RNA-Seq": 6,
+    "ATAC-seq": 6
+   },
+   "timepoints": [
+    "E11",
+    "E14",
+    "E16",
+    "day 11",
+    "day 14",
+    "day 16"
+   ],
+   "flags": {
+    "sister_split": [],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "barcod",
+     "lineage tracing"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 1,
+     "values": [
+      "Thalamus"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 1,
+     "values": [
+      "C57BL/6J"
+     ]
+    },
+    "developmental stage": {
+     "n_distinct": 3,
+     "values": [
+      "Embryonic day 11",
+      "Embryonic day 14",
+      "Embryonic day 16"
+     ]
+    }
+   },
+   "verdict": "check: several timepoints, same clones not shown",
+   "supplementary": [
+    {
+     "file": "GSE300285_RAW.tar",
+     "bytes": 10613145600
+    }
+   ],
+   "accession": "GSE300285"
+  },
+  "GSE300287": {
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [snRNAseq - TrackerSeq]",
+   "n_samples": 4,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1280042"
+   ],
+   "library_strategy": {
+    "RNA-Seq": 4
+   },
+   "timepoints": [
+    "day 2"
+   ],
+   "flags": {
+    "sister_split": [],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "barcod",
+     "lineage tracing",
+     "piggybac",
+     "trackerseq"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 1,
+     "values": [
+      "Thalamus"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 1,
+     "values": [
+      "ICR/CD-1"
+     ]
+    },
+    "developmental stage": {
+     "n_distinct": 1,
+     "values": [
+      "Postnatal day 2"
+     ]
+    }
+   },
+   "verdict": "not memory-capable (clone composition only)",
+   "supplementary": [
+    {
+     "file": "GSE300287_TS1_filtered_feature_bc_matrix.h5",
+     "bytes": 30503566
+    },
+    {
+     "file": "GSE300287_TS2_filtered_feature_bc_matrix.h5",
+     "bytes": 26040416
+    }
+   ],
+   "accession": "GSE300287"
+  },
+  "GSE300289": {
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [Spatial Transcriptomics E17]",
+   "n_samples": 1,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1280043"
+   ],
+   "library_strategy": {
+    "OTHER": 1
+   },
+   "timepoints": [
+    "day 17"
+   ],
+   "flags": {
+    "sister_split": [],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "barcod",
+     "lineage tracing"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 1,
+     "values": [
+      "Thalamus"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 1,
+     "values": [
+      "ICR/CD-1"
+     ]
+    },
+    "developmental stage": {
+     "n_distinct": 1,
+     "values": [
+      "Embryonic day 17.5"
+     ]
+    }
+   },
+   "verdict": "not memory-capable (clone composition only)",
+   "supplementary": [
+    {
+     "file": "GSE300289_RAW.tar",
+     "bytes": 608215040
+    }
+   ],
+   "accession": "GSE300289"
+  },
+  "GSE324903": {
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [Spatial Transcriptomics E12]",
+   "n_samples": 1,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1438066"
+   ],
+   "library_strategy": {
+    "OTHER": 1
+   },
+   "timepoints": [
+    "day 12"
+   ],
+   "flags": {
+    "sister_split": [],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "barcod",
+     "lineage tracing"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 1,
+     "values": [
+      "Thalamus"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 1,
+     "values": [
+      "ICR/CD-1"
+     ]
+    },
+    "developmental stage": {
+     "n_distinct": 1,
+     "values": [
+      "Embryonic day 12.5"
+     ]
+    }
+   },
+   "verdict": "not memory-capable (clone composition only)",
+   "supplementary": [
+    {
+     "file": "GSE324903_RAW.tar",
+     "bytes": 493393920
+    }
+   ],
+   "accession": "GSE324903"
+  },
+  "GSE324905": {
+   "title": "Early lineage divergence segregates sensory-related and motor-associative identities in the thalamus [snRNAseq - CRi]",
+   "n_samples": 4,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1438078"
+   ],
+   "library_strategy": {
+    "RNA-Seq": 4
+   },
+   "timepoints": [
+    "day 0"
+   ],
+   "flags": {
+    "sister_split": [],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "barcod",
+     "lineage tracing"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 2,
+     "values": [
+      "DLG",
+      "Thalamus"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 1,
+     "values": [
+      "ICR/CD-1"
+     ]
+    },
+    "developmental stage": {
+     "n_distinct": 1,
+     "values": [
+      "Postnatal day 0"
+     ]
+    },
+    "treatment": {
+     "n_distinct": 2,
+     "values": [
+      "CRIN",
+      "CRIS"
+     ]
+    }
+   },
+   "verdict": "not memory-capable (clone composition only)",
+   "supplementary": [
+    {
+     "file": "GSE324905_RAW.tar",
+     "bytes": 132608000
+    }
+   ],
+   "accession": "GSE324905"
+  },
+  "GSE327468": {
+   "title": "Temporal Uncoupling of Radial Glial Progenitor Cell Lineage Progression in Self-organizing Organoid System \u2013 MADM-CloneSeq",
+   "n_samples": 287,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "SubSeries of: GSE327470",
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1451059"
+   ],
+   "library_strategy": {
+    "RNA-Seq": 287
+   },
+   "timepoints": [],
+   "flags": {
+    "sister_split": [
+     "madm"
+    ],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "clon",
+     "lineage tracing"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 1,
+     "values": [
+      "cerebral organoid"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 1,
+     "values": [
+      "MADM-11GT/TG;Emx1-CreER+/-"
+     ]
+    },
+    "plate": {
+     "n_distinct": 3,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    "cloneid": {
+     "n_distinct": 69,
+     "values": null
+    },
+    "color": {
+     "n_distinct": 3,
+     "values": [
+      "G",
+      "NA",
+      "R"
+     ]
+    },
+    "clone type": {
+     "n_distinct": 3,
+     "values": [
+      "N",
+      "NA",
+      "SN"
+     ]
+    },
+    "clone size": {
+     "n_distinct": 12,
+     "values": [
+      "10",
+      "13",
+      "19",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "NA"
+     ]
+    }
+   },
+   "verdict": "memory-capable",
+   "supplementary": [
+    {
+     "file": "GSE327468_MADM_CloneSeq_exon_counts.csv.gz",
+     "bytes": 3758807
+    },
+    {
+     "file": "GSE327468_MADM_CloneSeq_intron_counts.csv.gz",
+     "bytes": 3348106
+    }
+   ],
+   "accession": "GSE327468"
+  },
+  "GSE210139": {
+   "title": "Comprehensive spatiotemporal mapping of single-cell lineages in developing mouse brain by CRISPR-based barcoding",
+   "n_samples": 118,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA864034"
+   ],
+   "library_strategy": {
+    "RNA-Seq": 61,
+    "OTHER": 57
+   },
+   "timepoints": [
+    "Day1",
+    "Day12",
+    "Day2",
+    "Day3",
+    "Day4",
+    "Day5",
+    "Day7",
+    "Day9",
+    "E10.5",
+    "E11.5",
+    "E12.5",
+    "E15.5",
+    "E8",
+    "E8.5",
+    "E9.5",
+    "P0",
+    "P14"
+   ],
+   "flags": {
+    "sister_split": [],
+    "serial_sampling": [],
+    "trees": [
+     "crispr-based barcod"
+    ],
+    "clone_barcodes": [
+     "barcod",
+     "clon"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 6,
+     "values": [
+      "cortex",
+      "embryonic  fibroblasts",
+      "midbrain",
+      "midbrain and hindbrain",
+      "organoid",
+      "ventral midbrain"
+     ]
+    },
+    "treatment": {
+     "n_distinct": 5,
+     "values": [
+      "FACS sort, EGFP+/BFP+ cells",
+      "FACS sort, EGFP-/BFP+ cells",
+      "FACS sort, tdT+ cells",
+      "unsorted"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 6,
+     "values": [
+      "CREST-Cas9",
+      "CREST-sgRNAs",
+      "CREST-sgRNAs/CREST-Cas9",
+      "En1-Cre/Ai9",
+      "En1-Cre/CREST-sgRNAs/CREST-Cas9",
+      "Nkx2.1-Cre/CREST-sgRNAs/CREST-Cas9"
+     ]
+    },
+    "age": {
+     "n_distinct": 24,
+     "values": null
+    }
+   },
+   "verdict": "memory-capable",
+   "supplementary": [
+    {
+     "file": "GSE210139_E11_seurat_final.rds.gz",
+     "bytes": 2699909008
+    },
+    {
+     "file": "GSE210139_E15_seurat_final.rds.gz",
+     "bytes": 2636934532
+    },
+    {
+     "file": "GSE210139_E15_seurat_final_20230406.rds.gz",
+     "bytes": 2636934881
+    },
+    {
+     "file": "GSE210139_En1_CREST_bulk_additional_v1_QC.rds.gz",
+     "bytes": 2672958
+    },
+    {
+     "file": "GSE210139_En1_CREST_bulk_additional_v2_QC.rds.gz",
+     "bytes": 4188435
+    },
+    {
+     "file": "GSE210139_Nkx2_1_CREST_bulk_v1_QC_blacklist_filtered.rds.gz",
+     "bytes": 7889433
+    },
+    {
+     "file": "GSE210139_Nkx2_1_CREST_bulk_v2_QC_blacklist_filtered.rds.gz",
+     "bytes": 23703879
+    },
+    {
+     "file": "GSE210139_Organoid_seurat_final.rds.gz",
+     "bytes": 1292329084
+    },
+    {
+     "file": "GSE210139_Organoid_seurat_final_20230422.rds.gz",
+     "bytes": 1292329206
+    },
+    {
+     "file": "GSE210139_RAW.tar",
+     "bytes": 2117949440
+    },
+    {
+     "file": "GSE210139_in_vitro_MEF_CREST_bulk_QC.rds.gz",
+     "bytes": 1054705
+    },
+    {
+     "file": "GSE210139_single_cell_CREST_barcode_qc.rds.gz",
+     "bytes": 2655713
+    },
+    {
+     "file": "GSE210139_single_cell_CREST_barcode_qc_updated20230422.rds.gz",
+     "bytes": 2655985
+    }
+   ],
+   "accession": "GSE210139"
+  },
+  "GSE327470": {
+   "title": "Temporal Uncoupling of Radial Glial Progenitor Cell Lineage Progression in Self-organizing Organoid System",
+   "n_samples": 292,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "SuperSeries of: GSE326044",
+    "SuperSeries of: GSE327468",
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1450976"
+   ],
+   "library_strategy": {
+    "RNA-Seq": 292
+   },
+   "timepoints": [
+    "D13",
+    "D20",
+    "D25",
+    "D8",
+    "E10",
+    "E13",
+    "E16",
+    "P0"
+   ],
+   "flags": {
+    "sister_split": [
+     "madm"
+    ],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "clon"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 2,
+     "values": [
+      "cerebral organoid",
+      "telencephalic vesicles/cerebral cortex"
+     ]
+    },
+    "cell line": {
+     "n_distinct": 1,
+     "values": [
+      "A1/A2/B1/B2"
+     ]
+    },
+    "barcode": {
+     "n_distinct": 1,
+     "values": [
+      "BC001/BC002/BC003/BC004"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 2,
+     "values": [
+      "MADM-11GT/TG;Emx1-CreER+/-",
+      "mTmG;Emx1Cre/+"
+     ]
+    },
+    "age": {
+     "n_distinct": 5,
+     "values": [
+      "D13",
+      "D20",
+      "D25",
+      "D8",
+      "E10/E13/E16/P0"
+     ]
+    },
+    "plate": {
+     "n_distinct": 3,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    "cloneid": {
+     "n_distinct": 69,
+     "values": null
+    },
+    "color": {
+     "n_distinct": 3,
+     "values": [
+      "G",
+      "NA",
+      "R"
+     ]
+    },
+    "clone type": {
+     "n_distinct": 3,
+     "values": [
+      "N",
+      "NA",
+      "SN"
+     ]
+    },
+    "clone size": {
+     "n_distinct": 12,
+     "values": [
+      "10",
+      "13",
+      "19",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "NA"
+     ]
+    }
+   },
+   "verdict": "memory-capable",
+   "supplementary": [
+    {
+     "file": "GSE327470_RAW.tar",
+     "bytes": 869857280
+    }
+   ],
+   "accession": "GSE327470"
+  },
+  "GSE326044": {
+   "title": "Temporal Uncoupling of Radial Glial Progenitor Cell Lineage Progression in Self-organizing Organoid System \u2013 mTmG scRNA-Seq",
+   "n_samples": 5,
+   "taxon": [
+    "10090"
+   ],
+   "relations": [
+    "SubSeries of: GSE327470",
+    "BioProject: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1443219"
+   ],
+   "library_strategy": {
+    "RNA-Seq": 5
+   },
+   "timepoints": [
+    "D13",
+    "D20",
+    "D25",
+    "D8",
+    "E10",
+    "E13",
+    "E16",
+    "P0"
+   ],
+   "flags": {
+    "sister_split": [
+     "madm"
+    ],
+    "serial_sampling": [],
+    "trees": [],
+    "clone_barcodes": [
+     "clon",
+     "lineage tracing"
+    ]
+   },
+   "characteristics": {
+    "tissue": {
+     "n_distinct": 2,
+     "values": [
+      "cerebral organoid",
+      "telencephalic vesicles/cerebral cortex"
+     ]
+    },
+    "cell line": {
+     "n_distinct": 1,
+     "values": [
+      "A1/A2/B1/B2"
+     ]
+    },
+    "barcode": {
+     "n_distinct": 1,
+     "values": [
+      "BC001/BC002/BC003/BC004"
+     ]
+    },
+    "genotype": {
+     "n_distinct": 1,
+     "values": [
+      "mTmG;Emx1Cre/+"
+     ]
+    },
+    "age": {
+     "n_distinct": 5,
+     "values": [
+      "D13",
+      "D20",
+      "D25",
+      "D8",
+      "E10/E13/E16/P0"
+     ]
+    }
+   },
+   "verdict": "memory-capable",
+   "supplementary": [
+    {
+     "file": "GSE326044_Gfp_tdTom_FLEX_probes.tsv.gz",
+     "bytes": 456
+    },
+    {
+     "file": "GSE326044_RAW.tar",
+     "bytes": 869857280
+    }
+   ],
+   "accession": "GSE326044"
+  }
+ },
+ "superseries": {
+  "GSE342607": {
+   "n_subseries": 16,
+   "subseries": {
+    "GSE342226": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342227": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342228": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342229": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342230": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342231": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342232": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342233": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342236": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342237": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342238": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342239": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342240": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342270": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342272": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    },
+    "GSE342606": {
+     "sealed": "PEtracer embryo set (sealed)",
+     "n_samples": 2
+    }
+   }
+  }
+ },
+ "summary": {
+  "neural_series_checked": 9,
+  "memory_capable": [
+   "GSE327468",
+   "GSE210139",
+   "GSE327470",
+   "GSE326044"
+  ],
+  "verdicts": {
+   "GSE300285": "check: several timepoints, same clones not shown",
+   "GSE300287": "not memory-capable (clone composition only)",
+   "GSE300289": "not memory-capable (clone composition only)",
+   "GSE324903": "not memory-capable (clone composition only)",
+   "GSE324905": "not memory-capable (clone composition only)",
+   "GSE327468": "memory-capable",
+   "GSE210139": "memory-capable",
+   "GSE327470": "memory-capable",
+   "GSE326044": "memory-capable"
+  },
+  "gse342607_unsealed_subseries": {}
+ }
+}
