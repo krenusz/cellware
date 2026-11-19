@@ -12501,3 +12501,14 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - 123 train clones; arm 1 (in vivo E11) 1,291 cells over 14 types, arm 2 (organoid) 1,755 cells over 19 types.
 - Kept by the fixed rule (>= 5%): arm 1 six types (progenitor and early neuroblast groups, 85% of cells), arm 2 six types (GABAergic and glutamatergic neuron groups, 68% of cells); the rest pooled as "other". Arm 1 is mostly progenitors/neuroblasts, arm 2 mostly neurons, as the design implies.
 - **Gate passed** (>= 30 clones, >= 2 kept types per arm). Next: `train`.
+
+### C17-S1C-S1 result (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44617537758; `results_c17/c17s1c_s1_train.json`; 123 TRAIN clones, nothing sealed read)
+- **P 0.224, null mean 0.006, P_excess 0.218, permutation p 0.0001** (the floor at 9,999 permutations). Bootstrap 95% CI [0.18, 0.26]: **not trusted, see 2.**
+- Prediction (P_excess 0.0-0.15) **not met**: the value is higher, above every synthetic setting in the power grid (H 0.81, sigma 1.5: 0.15; planted H 0.9: 0.19).
+- Self-challenge:
+  1. **Suspicious size; what it is.** The type names carry regional identity in both arms (basal-lateral / basal-medial / alar groups, GABAergic vs glutamatergic). An E11 progenitor clone's region and lineage branch decide its neuron type, so most of P is likely positional identity and commitment kept by descent, not plastic state memory. As in the late PEtracer embryos, this is a "commitment" value, not a memory-per-division value.
+  2. **The CI is biased (method flaw found after the run).** The bootstrap draws clones with replacement; a duplicated clone matches its own copy at kernel distance 0 in the leave-one-out step, which inflates P in the resample but not in its permutation null. The point estimate and the permutation p are unaffected. Fix needs an amendment (exclude a clone's own copies from its prediction, or resample embryos / jackknife clones); not done.
+  3. Other explanations: shared annotation pipeline cannot create a clone-level link by itself (the null keeps both arms' type frequencies); coincidental pattern matches (<= 6%) only dilute; clone size and embryo are controlled by the permutation strata.
+  4. Units: 123 clones in 3 embryos; per-embryo values not computed (not pre-registered).
+  5. Published? The source states heterogeneous fates within one progenitor type; it addresses the same link from the other side. Our P is a parameter for the table, not a claim.
+- **Table:** not added yet; it waits for the CI fix. Planned row: "CRISPR brain split clones (train)", neural class, split_predictability 0.22, with the regional-identity caveat. That would be the first neural system.
