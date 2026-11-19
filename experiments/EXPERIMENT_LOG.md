@@ -12397,3 +12397,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Gate (fixed now):** an eligible clone has >= 2 cells in G and >= 2 in R (the smallest sister-arm size validated for B38 in C7-S2a). With the standard split (train 40%, A/B/C 20% each), **pass if 0.4 x eligible >= 30** (>= 75 eligible clones). Pass: seal by clone with balanced_split (strata = plate; size = cells), commit the map, then pre-register S1. Fail: stop; this set cannot carry a train estimate under H1/H11, and any other use (descriptive estimate without sealing) needs Bence's OK.
 - Practice: offline selftest of the per-cell tag parser and the gate on synthetic SOFT text; 1-rep writer run before dispatch.
 - Compute: GitHub Actions run (sweeps/c17s1m_struct.txt).
+
+### C17-S1M S0 result: gate FAILS, stop (2026-11-19; run https://github.com/krenusz/cellware/actions/runs/44579825731; `results_c17/c17s1m_struct.json`; structure only)
+- 287 cells, 284 with a clone id, **68 clones**; 50 have cells of both colours, but only **16 have >= 2 cells in each colour**. Expected train clones 6, far below 30. Even at >= 1 cell per colour (50 clones, 20 in train) the H21 gate (>= 30 units) fails, sealed or not.
+- **Stop by the fixed rule.** Nothing was sealed, no expression or fate was read; the set stays unused (only cell-per-colour counts were seen).
+- Reading: the MADM organoid set is too small (a median of about 4 sequenced cells per clone) to estimate a sister heritable share. The neural class keeps **1 sure memory-capable system** (CRISPR brain barcoding, GSE210139, 12.7 GB, download needs Bence's OK) plus the unchecked in vivo MADM series (GSE326044: 5 multiplexed samples; whether clones are identified there is not clear from metadata).
+- Self-challenge: the threshold (>= 2 per colour) is the smallest validated arm size, so a looser rule would have no validity check; the result is structural, not a judgement on the biology.
