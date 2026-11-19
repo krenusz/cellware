@@ -145,12 +145,18 @@ def retro_gate_errors(old_focus, new_focus, titles):
 
 
 def chapter_gate_errors(old_focus, new_focus):
-    """H20: opening a new chapter needs non-empty 'value' and 'literature' fields in FOCUS.json."""
+    """H20: opening a new chapter needs non-empty 'value' and 'literature' fields in FOCUS.json.
+    H19 amendment 2026-11-19: it also needs 'headline_unit' ("<unit>: <count>"; systems for a cross-system claim)."""
     new_ch = chapter_of(new_focus.get("step", ""))
     if new_ch in ("", "PAUSED") or new_ch == chapter_of((old_focus or {}).get("step", "")):
         return []
     missing = [k for k in ("value", "literature") if not str(new_focus.get(k, "")).strip()]
-    return [f"FOCUS.json opens chapter {new_ch} without '{k}' (H20 value and literature gate)." for k in missing]
+    errs = [f"FOCUS.json opens chapter {new_ch} without '{k}' (H20 value and literature gate)." for k in missing]
+    unit = str(new_focus.get("headline_unit", "")).strip()
+    if not re.search(r"\S+\s*:\s*\d+", unit):
+        errs.append(f"FOCUS.json opens chapter {new_ch} without 'headline_unit' as '<unit>: <count>' (H19 amendment "
+                    f"2026-11-19: count the headline claim's unit; systems for a cross-system claim).")
+    return errs
 
 
 NOVELTY_DIR = os.path.join(EXP, "lit", "novelty")

@@ -164,6 +164,13 @@ before every look and refuses on any failure.
        reads no fate labels and uses the oracle count-function code. Dataset-wide clone ratios are not
        allowed for subsets (C8 T2: estimate 0.86, real 0.78).
     3. **Short path:** that test can be run within about 3 steps of the chapter start.
+  - **Amendment 2026-11-19 (RETRO_2026-11-19b; Bence: "go with this ... H19 amendment"): the gate applies to
+    the chapter's headline claim.** The proposal names the headline claim's unit and counts it. For a
+    cross-system or cross-class claim the unit is the system (a law across classes needs >= 3 systems per
+    class, H22), not the clone or cell inside one system. Power in check 2 is computed with that unit. (C17
+    pre-registered a joint fit across 3 systems without this count; the re-scope C17-S1R came after
+    six amendments.) Enforced: a FOCUS.json change that opens a chapter needs a non-empty `headline_unit`
+    field ("<unit>: <count>"), checked by the commit hook (scope_guard.chapter_gate_errors).
   - The proposal shows the three checks with numbers. If no candidate passes, say so; don't pitch an
     ungated idea.
   - **Exploratory side questions** may follow inside a chapter only after its primary test has been run.

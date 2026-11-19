@@ -377,6 +377,9 @@ def test_commit_refuses_new_chapter_without_value_and_literature(box):
     res = box.commit('open chapter 10\n\nBence: "go"')
     assert res.returncode != 0 and "H20" in res.stderr
     box.focus(step="C10-S1", value="adds x", literature="top 5 read")
+    res = box.commit('open chapter 10\n\nBence: "go"')
+    assert res.returncode != 0 and "headline_unit" in res.stderr  # H19 amendment 2026-11-19
+    box.focus(step="C10-S1", value="adds x", literature="top 5 read", headline_unit="systems: 4")
     assert box.commit('open chapter 10\n\nBence: "go"').returncode == 0
 
 
@@ -396,7 +399,7 @@ def test_commit_refuses_leaving_chapter_without_close_retro(box):
         "RETRO_2026-11-13.md", "# Retro 2026-11-13: C8 closed, C9 opened\n"
     )  # names C9, not its close
     box.novelty("C10-S1")
-    box.focus(step="C10-S1", value="adds x", literature="top 5 read")
+    box.focus(step="C10-S1", value="adds x", literature="top 5 read", headline_unit="systems: 4")
     res = box.commit('open chapter 10\n\nBence: "go"')
     assert res.returncode != 0 and "H23" in res.stderr
     box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close (S2 look, write-up)\n")
