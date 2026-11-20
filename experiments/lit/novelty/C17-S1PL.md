@@ -41,6 +41,8 @@ Bence 2026-11-20: "go but also do a full novelty check", "1 i mean" (= S0 gates 
 
 Value judgement: the leads matter mainly for finding 2, i.e. as a deeper tree for the stage-aware memory model, not as another "agreement is high" value.
 
+Published but proceeding: Bence: "1" (2026-11-20; answer to option 1: open C17-S1PL for the DNA Typewriter dated tree only; finding 1 enters as an input, not as a result; the step serves finding 2).
+
 New data leads found by the search (not acted on; watch list):
 - monoclonal gastruloids with lineage recording (2025 preprint, doi 10.1101/2025.05.23.655664): pluripotent class, heritable modes of early development;
 - FateVec's stem-cell-derived embryo-model trees (same recorder).
