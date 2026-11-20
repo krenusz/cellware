@@ -1,0 +1,6 @@
+[experiments/results_c17/c17s1t_smoke_mem.json] python -I experiments/c17s1t_stage.py smoke mem
+[experiments/results_c17/c17s1t_smoke_com.json] python -I experiments/c17s1t_stage.py smoke com
+[experiments/results_c17/c17s1t_smoke_full.json] python -I experiments/c17s1t_stage.py smoke full
+[experiments/results_c17/c17s1t_smoke_l085.json] python -I experiments/c17s1t_stage.py smoke l085
+[experiments/results_c17/c17s1t_smoke_l097.json] python -I experiments/c17s1t_stage.py smoke l097
+[experiments/results_c17/c17s1t_smoke_half.json] python -I experiments/c17s1t_stage.py smoke half
