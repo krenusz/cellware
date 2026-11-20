@@ -199,16 +199,48 @@ def smoke(truth):
     T.dump(res, RES / f"c17s1pl_t_smoke_{truth}.json")
 
 
+N_ANALYTIC = 200
+
+
+def bins_of(S):
+    zb = np.digitize(S["z"], np.percentile(S["z"], [33.3, 66.7]))
+    kb = np.digitize(S["k"], np.percentile(S["k"], [33.3, 66.7]))
+    return {f"z{zz}k{kk}": m for zz in range(3) for kk in range(3) if (m := (zb == zz) & (kb == kk)).sum() >= 30}
+
+
+def analytic():
+    """Amendment 1 (Bence: "1"): per-bin bias of the simulator vs the closed form, averaged over sets (full truth)."""
+    T.STRUCT = STRUCT
+    S = T.load_struct()
+    lam, slope = T.TRUTHS["full"]
+    al, be = T.planted_c(S, slope)
+    rng = np.random.default_rng(T.SEED + 101)
+    cf = T.closed_form(lam, al, be, T.EPS, S["z"], S["k"], S["Q"])
+    B = bins_of(S)
+    d = np.array([[np.mean(a[m]) - np.mean(cf[m]) for m in B.values()]
+                  for a in (T.simulate(S, lam, al, be, rng) for _ in range(N_ANALYTIC))])
+    bias = d.mean(0)
+    res = {"n_sets": N_ANALYTIC, "bins": list(B), "n_per_bin": [int(m.sum()) for m in B.values()],
+           "bias_per_bin": bias.tolist(), "se_per_bin": (d.std(0, ddof=1) / np.sqrt(N_ANALYTIC)).tolist(),
+           "per_set_sd_per_bin": d.std(0, ddof=1).tolist(), "max_abs_bias": float(np.max(np.abs(bias))),
+           "per_set_max_mean": float(np.mean(np.max(np.abs(d), axis=1)))}
+    T.dump(res, RES / "c17s1pl_t_analytic.json")
+    print(json.dumps(res, indent=1))
+
+
 def gate():
     r = {t: json.loads((RES / f"c17s1pl_t_smoke_{t}.json").read_text(encoding="utf-8")) for t in T.TRUTHS}
+    an = json.loads((RES / "c17s1pl_t_analytic.json").read_text(encoding="utf-8"))
     checks = {
         "mem_false_pass<=0.10": r["mem"]["pass_rate"] <= 0.10,
         "com_false_pass<=0.10": r["com"]["pass_rate"] <= 0.10,
         "full_power>=0.8": r["full"]["pass_rate"] >= 0.8,
         "full_lambda_recovery>=0.8": r["full"]["recovery_rate"] >= 0.8,
-        "analytic_bin_diff<=0.01": r["full"]["analytic_max_bin_diff_mean"] <= 0.01,
+        "analytic_bias_over_sets<=0.01": an["max_abs_bias"] <= 0.01,  # amendment 1
     }
-    out = {"checks": checks, "pass": all(checks.values()),
+    out = {"checks": checks, "pass": all(checks.values()), "amendment": "1 (Bence: \"1\")",
+           "analytic_max_abs_bias": an["max_abs_bias"],
+           "analytic_per_set_max_mean_as_preregistered": r["full"]["analytic_max_bin_diff_mean"],
            "summary": {t: {k: r[t][k] for k in ("pass_rate", "recovery_rate", "lambda_hat_median",
                                                  "analytic_max_bin_diff_mean")} for t in T.TRUTHS}}
     T.dump(out, GATE)
@@ -216,7 +248,48 @@ def gate():
 
 
 def fit():
-    raise SystemExit("fit stage is written after the gate passes and Bence gives the go (pre-registered order)")
+    """Train founder clades only; as C17-S1T real_fit, with the 2/3 rule of the C17-S1PL-T pre-registration."""
+    if not json.loads(GATE.read_text(encoding="utf-8")).get("pass"):
+        raise SystemExit("gate not passed: no fit (pre-registered order)")
+    d = json.loads(STRUCT.read_text(encoding="utf-8"))
+    rows, pop, cats, _ = load_train()
+    assert cats == d["categories"] and len(rows) == d["n_pairs"], "pair set differs from the structure stage"
+    unit = np.array([r[0] for r in rows])
+    assert unit.tolist() == d["pairs"]["embryo"], "pair order differs from the structure stage"
+    tau = np.array([r[1] for r in rows], float)
+    k = np.array([r[2] for r in rows], float)
+    z = (tau - d["tau_mean"]) / d["tau_sd"]
+    pi = {u: v / v.sum() for u, v in pop.items()}
+    Q = np.array([np.sum(pi[u] ** 2) for u in unit])
+    c1 = np.array([r[4] for r in rows], float)
+    c2 = np.array([r[5] for r in rows], float)
+    n1, n2 = c1.sum(1), c2.sum(1)
+    a = np.sum((c1 / n1[:, None]) * (c2 / n2[:, None]), axis=1)
+    w = T.weights(n1, n2)
+    rng = np.random.default_rng(T.SEED)
+    lo = loo(unit, z, k, Q, a, w, d["eligible_embryos"], rng)
+    full = {}
+    for m in T.MODELS:
+        th, loss, spread = T.fit(m, z, k, Q, a, w, rng)
+        al, be, lam, eps, _ = T.unpack(th, m)
+        full[m] = {"loss": loss, "start_spread": spread, "alpha": float(al), "beta_per_sd_tau": float(be),
+                   "lambda": float(lam), "eps": float(eps)}
+    th = T.fit("full", z, k, Q, a, w, rng)[0]
+    tq = np.percentile(tau, [10, 50, 90])
+    C_at = {f"tau_{t:.0f}": float(T.sig(th[0] + th[1] * (t - d["tau_mean"]) / d["tau_sd"])) for t in tq}
+    pred = T.predict(th, "full", z, k, Q)
+    calib = {b: {"n": int(m.sum()), "obs": float(np.mean(a[m])), "pred": float(np.mean(pred[m]))}
+             for b, m in bins_of({"z": z, "k": k}).items()}
+    lam_l = np.array(list(lo["lambda_loo"].values()))
+    res = {"verdict": "STAGE-AWARE MODEL SUPPORTED (exploratory)" if lo["pass"] else "NOT SUPPORTED",
+           "loo": lo, "lambda_loo_quantiles": np.percentile(lam_l, [0, 10, 50, 90, 100]).tolist(),
+           "full_data_fits": full, "C_at_tau_quantiles": C_at, "calibration_in_sample": calib,
+           "n_pairs": len(rows), "eligible_founders": d["eligible_embryos"], "label": LABEL,
+           "note": "train founder clades of one embryo; lineage-constrained tree (biases toward M_com); "
+                   "k in edges is a proxy for divisions; calibration uses the full-data fit (in-sample)."}
+    T.dump(res, FIT)
+    T.say(json.dumps({k: v for k, v in res.items() if k not in ("calibration_in_sample", "loo")}, indent=1))
+    T.say(json.dumps({k: lo[k] for k in ("full_beats_both", "n_eligible", "pooled", "pass")}, indent=1))
 
 
 def selftest():
@@ -260,4 +333,4 @@ if __name__ == "__main__":
     if stage == "smoke":
         smoke(sys.argv[2])
     else:
-        {"selftest": selftest, "structure": structure, "gate": gate, "fit": fit}[stage]()
+        {"selftest": selftest, "structure": structure, "analytic": analytic, "gate": gate, "fit": fit}[stage]()

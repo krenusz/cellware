@@ -12760,3 +12760,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Why:** the check as written took the per-set maximum over 9 bins, which at this bin size is about 0.01 from Monte Carlo noise alone (per-set bin SD 0.004-0.007). What the check is meant to catch is a mismatch between simulator and closed form, which is a bias averaged over sets.
 - **Stated plainly:** this amendment was chosen after seeing the failed number (0.0102). The other four checks are unchanged and were all passed with margin; the per-set maximum stays reported.
 - After the gate: the `fit` stage (as C17-S1T real_fit, leave-one-founder-out, rule fixed in the pre-registration) runs on Actions (sweeps/c17s1pl_t_fit.txt), train founder clades only.
+
+### C17-S1PL-T amendment 1 result: gate PASS (2026-11-20; local, synthetic labels on the real train structure, simulator only)
+- Bias averaged over 200 sets, per tau x k bin (9 bins, 765-1,105 pairs each): largest |bias| 0.00075 (bar 0.01); per-bin SE 0.0003-0.0005, so all biases are within about 2 SE of 0. The per-set maximum (as pre-registered) is 0.0098 on this new seed and 0.0102 in the smoke.
+- Other checks unchanged: false pass 0.02 / 0.02, power 1.00, lambda recovery 1.00. **Gate: PASS.** Fit dispatched on Actions (sweeps/c17s1pl_t_fit.txt).

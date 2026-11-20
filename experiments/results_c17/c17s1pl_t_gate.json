@@ -4,9 +4,12 @@
   "com_false_pass<=0.10": true,
   "full_power>=0.8": true,
   "full_lambda_recovery>=0.8": true,
-  "analytic_bin_diff<=0.01": false
+  "analytic_bias_over_sets<=0.01": true
  },
- "pass": false,
+ "pass": true,
+ "amendment": "1 (Bence: \"1\")",
+ "analytic_max_abs_bias": 0.0007541988801098359,
+ "analytic_per_set_max_mean_as_preregistered": 0.010183736072143418,
  "summary": {
   "mem": {
    "pass_rate": 0.02,
