@@ -12719,3 +12719,27 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Sealed before any cell type read:** `c17s1pl_tree.py seal` (local, 12 s), H24 balanced map by founder clade, strata = first-cleavage half (410,925 / 244,776 leaves). 93 founder clades: train 38, A 19, B 18, C 18. Committed as partition_maps/partition_dtt_founder.tsv and registered as partitions.dtt_founder; the first write used a 3-column format the registry cannot read and was rewritten (same split, verified). Pairs per partition are not counted yet.
 - Forking path: 2 pickers tried on this tree (amendment 2 rule: no third).
 - Next (not started; needs Bence's go): re-register the C17-S1T nested test (M_mem / M_com / M_full) on train founder clades, with smoke and power simulated on this tree's real structure, founder clades as units (H17/H19).
+
+## C17-S1PL-T: stage-aware memory model (C17-S1T nested test) on the dated embryo tree, TRAIN founder clades only (pre-registered 2026-11-20; Bence: "Go with 1")
+- **Serves: C17-S1PL** (FOCUS step; novelty lit/novelty/C17-S1PL.md finding 2; Published but proceeding: Bence: "1" for finding 1, an input only). Script c17s1pl_fit.py (new; stages `selftest`, `structure`, `smoke <truth>`, `gate`, `fit`). It reuses unchanged from c17s1t_stage.py: predict, closed_form, fit, weights, simulate, planted_c, TRUTHS, EPS. It reuses from c17s1pl_tree.py: parser, structure, the stratified picker (amendment 2) and founders. Train founder clades are filtered with partitions.train_only before any label is read. Sealed founders' metadata rows are skipped by row index and never parsed.
+- **Data:** DNA Typewriter tree (one E13.5 embryo), 38 train founder clades, pairs from the stratified picker. **Label = `major_trajectory`** (the coarse lineage column, the analogue of the embryo set's 14 lineage labels; fixed now, before its levels are seen). Levels holding < 1% of train labelled cells are pooled as "other". Missing values are dropped, and an arm needs >= 4 non-missing labels.
+- **Model:** as C17-S1T. a(tau, k) = Q + (1 - Q)(1 - eps)[C(tau) + (1 - C(tau)) lambda^(2k)]. Q is the founder clade's sum of squared label fractions, tau is node depth in edges, and k is the mean edges to the pair's labelled leaves. Nested reductions M_mem (C = 0) and M_com (lambda = 0); weighted least squares (n1 n2, capped at the 95th percentile), 5 starts.
+- **Primary statistic:** leave-one-founder-out held-out weighted squared error per eligible founder clade (>= 30 pairs).
+- **Rule (fixed now; with 38 units, "all but one" is replaced):** STAGE-AWARE MODEL SUPPORTED (exploratory) if M_full has lower held-out error than both reductions in >= 2/3 of eligible founder clades, AND its pooled held-out error is lower than each reduction's. Otherwise report which reduction suffices.
+- Pre-flight:
+  1. Unit: the founder clade (38 train), the test unit for leave-one-out; one embryo. No treatment, so H22 does not apply.
+  2. Readout: `major_trajectory` labels of train leaves (first read of any label column on this set, train only); tree depths.
+  3. Used data first: C17-S1T on the used embryo train trees came first (not supported, k range too narrow).
+  4. Power (H17/H19): synthetic labels on the real train structure (founder, tau, k, n1, n2, founder label fractions), the same 6 truths and gates as C17-S1T. False pass <= 0.10 under memory-only and under commitment-only; power >= 0.8 at lambda 0.935 with the full commitment slope; lambda recovered within 0.05 in >= 80%; closed form vs simulation <= 0.01 per tau x k bin. 50 sets per truth. **Below the gate: stop before the fit.**
+  5. Exposure: source abstract; structure counts; the founder label fractions read in `structure` (train only, as C17-S1T's embryo label counts). No pair agreement computed before the gate.
+  6. Literature: H20 lit/c17s1t_h20_2026-11-20.md; novelty lit/novelty/C17-S1PL.md.
+  7. Readout gate (H21): >= 20 eligible founder clades with >= 30 pairs each, and train pairs >= 1,000; else stop.
+- **Prediction (written now):** commitment dominates again (C17-S1T, source claims); with the wider k range, lambda is identified. The rule may still fail if M_com is within noise of M_full. If it passes, lambda per edge is between 0.80 and 0.95.
+- Limits written now:
+  - One embryo; sisters share a niche (upper bound on intrinsic memory).
+  - The tree is "lineage-constrained": if cell types shaped its topology, sibling agreement and the commitment term are inflated, which biases toward M_com. The fit must state this, and an unconstrained-tree check is the follow-up if the result depends on it.
+  - k in edges is a proxy for divisions. Time since split is reported, not tested.
+  - 2 pickers were tried on this tree (amendment 2).
+- **Output to the table** (only if the rule passes and lambda is recovered in the smoke): a row "DNA Typewriter mouse (train), memory per edge at commitment C = 0", scale = memory per division.
+- Practice: offline selftest (preorder subtree ranges vs explicit descent on toy trees, the label-row skip, the rule function); cold start (5 starts, spread reported); analytic regime check (closed form vs simulation per bin); measurement physics (label noise eps fitted); adequacy (held-out calibration per tau x k bin reported); neutral wording; tick-list in the result entry.
+- Compute: GitHub Actions (sweeps/c17s1pl_t_structure.txt, c17s1pl_t_smoke.txt; each line fetches by tag and checks sha256); selftest offline; the fit waits for Bence's go after the gate.
