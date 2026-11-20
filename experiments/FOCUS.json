@@ -79,7 +79,8 @@
   "c17s2_loso.py",
   "c17s3_look.py",
   "c17s1_params.py",
-  "c17_data_sweep.py"
+  "c17_data_sweep.py",
+  "c17s1pl_tree.py"
  ],
  "parked": [
   "#27 series gain / drug compression",

@@ -53,6 +53,11 @@ DATASETS = {
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "
                    "\"gate all 5 actually\"), sha256 in raw/SHA256SUMS. Hold cell type columns: names and types only "
                    "until partitioned by clone (C17-S1G).",
+    "ext_dtt_mouse": "GitHub shendurelab/dtt-mouse release v1.1.0 (DNA Typewriter mouse, one E13.5 embryo): dated "
+                     "lineage-constrained Newick tree and cell metadata table, downloaded 2026-11-20 (Bence: \"1\"), "
+                     "sha256 in raw/SHA256SUMS and pinned in c17s1pl_tree.py. Structure only (topology, branch lengths, "
+                     "leaf IDs, metadata ID join; column names and dtypes) until partitioned by founder clade "
+                     "(C17-S1PL); cell-type columns are outcomes, not read before sealing.",
     "ext_c15": "Zenodo 10.5281/zenodo.5847461 (CC-BY; C15 candidate #12, in vivo growth model with lineage trees), downloaded "
                "only on GitHub Actions runners (never locally), md5 checked vs the record each time. Partitioned by host "
                "(partitions.growth12_host_v2, sealed 2026-11-17; v1 A/B/C void after the 5/5/5 rebalance, Bence: \"yes rebalance\") before any statistic: train 40%, A/B/C 20%. Structure only "
