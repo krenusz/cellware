@@ -12623,3 +12623,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Output to the table (if the rule passes and lambda is recovered):** a row "PEtracer embryo trees (train), memory per edge at commitment C = 0", next to LARRY rho_div; the cross-system comparison at matched commitment is pre-registered separately, after this step, with its own power (systems as units, H19).
 - Practice: offline selftest of the extended pair picker (toy tree with known tau and k) and of the closed form against the generative simulator; cold start (5 starts, spread reported); analytic regime (closed form vs simulation per bin); measurement physics (edges are edits, label noise eps fitted); adequacy gate (held-out calibration per tau x k bin reported); tick-list in the result entry.
 - Compute: GitHub Actions run (sweeps/c17s1t.txt, `--petracer`), stages as separate lines; selftest offline.
+
+### C17-S1T structure, smoke and power (2026-11-20; runs https://github.com/krenusz/cellware/actions/runs/44745695335 (structure), https://github.com/krenusz/cellware/actions/runs/44748047833 (smoke); train structure only, no pair agreement computed)
+- Selftest (offline): same pairs as the C17-S1P picker; closed form vs simulator 0.0004; toy lambda 0.941 (true 0.935).
+- **Structure / readout gate: PASS.** 11,057 disjoint pairs (= C17-S1P), all 7 train embryos eligible (48, 158, 218, 870, 913, 2,758, 6,092 pairs; E7.5 to E9.5). tau 3-25 edges (10th-90th 8-16), k 2.0-5.4 (10th-90th 2.4-3.6). tau-k correlation within embryo -0.02 to -0.20, so the two axes are not collinear.
+- **Smoke and power (50 synthetic sets per truth, real structure): GATE PASS** (`results_c17/c17s1t_gate.json`).
+  - False pass: truth memory-only 0.00, truth commitment-only **0.10 (at the limit)**.
+  - Truth full (lambda 0.935, full slope): rule passes 0.94; lambda recovered within 0.05 in 1.00 (median 0.934); closed form vs simulation, mean max bin difference 0.009 (limit 0.01).
+  - Grid: lambda 0.85 power 1.00, lambda 0.97 0.68, half commitment slope 0.62 (recovery 1.00, 1.00, 0.92).
+- Reading: the test can tell the three models apart and recover lambda on these trees at the planted values; it is weak if memory is very long (lambda 0.97) or commitment rises slowly; the commitment-only false pass at 0.10 means a narrow pass (exactly 6/7) would need caution.
+- Next, pre-registered order: `fit` (train), waits for Bence's go.

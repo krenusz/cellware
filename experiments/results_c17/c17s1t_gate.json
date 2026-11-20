@@ -1,0 +1,48 @@
+{
+ "checks": {
+  "mem_false_pass<=0.10": true,
+  "com_false_pass<=0.10": true,
+  "full_power>=0.8": true,
+  "full_lambda_recovery>=0.8": true,
+  "analytic_bin_diff<=0.01": true
+ },
+ "pass": true,
+ "summary": {
+  "mem": {
+   "pass_rate": 0.0,
+   "recovery_rate": 0.78,
+   "lambda_hat_median": 0.9160945393087867,
+   "analytic_max_bin_diff_mean": 0.010102386634699865
+  },
+  "com": {
+   "pass_rate": 0.1,
+   "recovery_rate": 0.02,
+   "lambda_hat_median": 0.19891917096121534,
+   "analytic_max_bin_diff_mean": 0.008239440737430943
+  },
+  "full": {
+   "pass_rate": 0.94,
+   "recovery_rate": 1.0,
+   "lambda_hat_median": 0.9344746328367505,
+   "analytic_max_bin_diff_mean": 0.008900975339615818
+  },
+  "l085": {
+   "pass_rate": 1.0,
+   "recovery_rate": 1.0,
+   "lambda_hat_median": 0.8487544375656779,
+   "analytic_max_bin_diff_mean": 0.009825003578562159
+  },
+  "l097": {
+   "pass_rate": 0.68,
+   "recovery_rate": 1.0,
+   "lambda_hat_median": 0.9700071082444726,
+   "analytic_max_bin_diff_mean": 0.00810838342732196
+  },
+  "half": {
+   "pass_rate": 0.62,
+   "recovery_rate": 0.92,
+   "lambda_hat_median": 0.9343646995538024,
+   "analytic_max_bin_diff_mean": 0.008305117703447393
+  }
+ }
+}
