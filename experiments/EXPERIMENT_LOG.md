@@ -12743,3 +12743,14 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Output to the table** (only if the rule passes and lambda is recovered in the smoke): a row "DNA Typewriter mouse (train), memory per edge at commitment C = 0", scale = memory per division.
 - Practice: offline selftest (preorder subtree ranges vs explicit descent on toy trees, the label-row skip, the rule function); cold start (5 starts, spread reported); analytic regime check (closed form vs simulation per bin); measurement physics (label noise eps fitted); adequacy (held-out calibration per tau x k bin reported); neutral wording; tick-list in the result entry.
 - Compute: GitHub Actions (sweeps/c17s1pl_t_structure.txt, c17s1pl_t_smoke.txt; each line fetches by tag and checks sha256); selftest offline; the fit waits for Bence's go after the gate.
+
+### C17-S1PL-T structure, smoke and power: gate FAILS on the analytic check only; stop before the fit (2026-11-20; runs https://github.com/krenusz/cellware/actions/runs/44800715074 (structure), https://github.com/krenusz/cellware/actions/runs/44800975551 (smoke); synthetic labels on the real train structure; no pair agreement computed)
+- **Readout gate PASS:** 8,146 train pairs; 27 of 38 train founder clades have >= 30 pairs (pair counts per founder range 1 to 602). k 10th-90th 3.44-7.21 edges; tau 19-36; corr(tau, k) -0.12. 11 trajectory labels + "other".
+- **Smoke, 50 sets per truth:**
+  - False pass: memory-only truth 0.02, commitment-only truth 0.02.
+  - Full truth (lambda 0.935): pass 1.00, lambda recovery 1.00 (median 0.935).
+  - lambda 0.85 and lambda 0.97: pass 1.00 and 1.00. Half slope: 1.00.
+  - This is far stronger than on the sealed embryo set (power 0.94, lambda 0.97 0.68, half slope 0.62), as the wider k range should give.
+- **Analytic check FAIL: mean max bin difference 0.0102 against the 0.01 bar** (memory truth 0.0106, l085 0.0108; under 0.01 for com, l097, half). **Gate: FAIL; stop before the fit, as pre-registered.**
+- Diagnostic (synthetic only; 200 extra sets of the full truth, simulator only, no fitting): the mean simulated agreement per tau x k bin matches the closed form within 0.0007 in all 9 bins (bias about 0). The per-set SD of a bin mean is 0.004-0.007, so the maximum over 9 bins of a single set is about 0.01 by noise alone. The check, as written (per-set maximum over bins), measures Monte Carlo noise at this bin size, not a model or simulator error.
+- A changed check (e.g. bias averaged over sets, or a bar scaled to the bin SE) would be an amendment chosen after seeing this number, and needs Bence's OK. No rule changed here.
