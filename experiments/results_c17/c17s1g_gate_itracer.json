@@ -1,0 +1,51 @@
+{
+ "design": {
+  "E-MTAB-10974_meta_org1-12.tsv.gz": {
+   "genotype_levels": 4,
+   "kept_share": 0.436
+  }
+ },
+ "organoids": 17,
+ "pairs_taken": {
+  "E-MTAB-10973|Region1.1": 204,
+  "E-MTAB-10973|Region1.2": 222,
+  "E-MTAB-10973|Region2.1": 43,
+  "E-MTAB-10973|Region2.2": 45,
+  "E-MTAB-10974|Org1-s15-d60": 50,
+  "E-MTAB-10974|Org10-s4-d46": 42,
+  "E-MTAB-10974|Org11-s7-d32": 91,
+  "E-MTAB-10974|Org12-s7-d46": 39,
+  "E-MTAB-10974|Org3-s30-d60": 88,
+  "E-MTAB-10974|Org4-s15-d63": 80,
+  "E-MTAB-10974|Org5-s20-d63": 99,
+  "E-MTAB-10974|Org6-s20-d63": 122,
+  "E-MTAB-10974|Org7-s30-d63": 258,
+  "E-MTAB-10974|Org8-s4-d32": 52,
+  "E-MTAB-10974|Org9-s4-d46": 104,
+  "E-MTAB-10974|d15_1": 1204,
+  "E-MTAB-10974|d15_2": 1336
+ },
+ "eligible_by_animal": {
+  "E-MTAB-10973|Region1.1": 3,
+  "E-MTAB-10973|Region1.2": 3,
+  "E-MTAB-10973|Region2.1": 3,
+  "E-MTAB-10973|Region2.2": 3,
+  "E-MTAB-10974|Org1-s15-d60": 0,
+  "E-MTAB-10974|Org10-s4-d46": 0,
+  "E-MTAB-10974|Org11-s7-d32": 0,
+  "E-MTAB-10974|Org12-s7-d46": 0,
+  "E-MTAB-10974|Org3-s30-d60": 1,
+  "E-MTAB-10974|Org4-s15-d63": 1,
+  "E-MTAB-10974|Org5-s20-d63": 1,
+  "E-MTAB-10974|Org6-s20-d63": 0,
+  "E-MTAB-10974|Org7-s30-d63": 0,
+  "E-MTAB-10974|Org8-s4-d32": 0,
+  "E-MTAB-10974|Org9-s4-d46": 0,
+  "E-MTAB-10974|d15_1": 3,
+  "E-MTAB-10974|d15_2": 1
+ },
+ "eligible": 19,
+ "expected_train_eligible": 7,
+ "gate_pass": false,
+ "recurrent_allele_share": null
+}

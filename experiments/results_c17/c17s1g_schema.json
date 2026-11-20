@@ -1,0 +1,463 @@
+{
+ "zf_dev_tar_members": [
+  [
+   "GSM2813984_ZF1.GestMaster.txt.gz",
+   32706
+  ],
+  [
+   "GSM2813984_ZF1.stats.txt.gz",
+   57300
+  ],
+  [
+   "GSM2813985_ZF2.GestMaster.txt.gz",
+   106066
+  ],
+  [
+   "GSM2813985_ZF2.stats.txt.gz",
+   136214
+  ],
+  [
+   "GSM2813986_ZF3.GestMaster.txt.gz",
+   17103
+  ],
+  [
+   "GSM2813986_ZF3.stats.txt.gz",
+   34748
+  ],
+  [
+   "GSM2813987_hsp5-1.allReadCounts.txt.gz",
+   33723
+  ],
+  [
+   "GSM2813987_hsp5-1.stats.txt.gz",
+   472971
+  ],
+  [
+   "GSM2813988_hsp5-2.allReadCounts.txt.gz",
+   11486
+  ],
+  [
+   "GSM2813988_hsp5-2.stats.txt.gz",
+   173115
+  ],
+  [
+   "GSM2813989_hsp5-3.allReadCounts.txt.gz",
+   32756
+  ],
+  [
+   "GSM2813989_hsp5-3.stats.txt.gz",
+   447739
+  ],
+  [
+   "GSM2813990_hsp5-4.allReadCounts.txt.gz",
+   22784
+  ],
+  [
+   "GSM2813990_hsp5-4.stats.txt.gz",
+   366601
+  ],
+  [
+   "GSM2813991_hsp5-5.allReadCounts.txt.gz",
+   20412
+  ],
+  [
+   "GSM2813991_hsp5-5.stats.txt.gz",
+   437439
+  ],
+  [
+   "GSM2813992_hsp5-6.allReadCounts.txt.gz",
+   44026
+  ],
+  [
+   "GSM2813992_hsp5-6.stats.txt.gz",
+   840758
+  ],
+  [
+   "GSM2813993_hsp5-7.allReadCounts.txt.gz",
+   48953
+  ],
+  [
+   "GSM2813993_hsp5-7.stats.txt.gz",
+   883303
+  ],
+  [
+   "GSM2813994_hsp5-8.allReadCounts.txt.gz",
+   27834
+  ],
+  [
+   "GSM2813994_hsp5-8.stats.txt.gz",
+   569527
+  ],
+  [
+   "GSM2813995_hsp1-1.allReadCounts.txt.gz",
+   536
+  ],
+  [
+   "GSM2813995_hsp1-1.stats.txt.gz",
+   227379
+  ],
+  [
+   "GSM2813996_hsp1-2.allReadCounts.txt.gz",
+   539
+  ],
+  [
+   "GSM2813996_hsp1-2.stats.txt.gz",
+   268095
+  ],
+  [
+   "GSM2813997_hsp2-7.allReadCounts.txt.gz",
+   14252
+  ],
+  [
+   "GSM2813997_hsp2-7.stats.txt.gz",
+   257458
+  ],
+  [
+   "GSM2813998_hsp2-8.allReadCounts.txt.gz",
+   10840
+  ],
+  [
+   "GSM2813998_hsp2-8.stats.txt.gz",
+   176445
+  ]
+ ],
+ "zf_dev_tar_first": {
+  "rows": 750,
+  "columns": [
+   {
+    "name": "Unnamed: 0",
+    "dtype": "int64",
+    "n_distinct": 750
+   },
+   {
+    "name": "CellNum",
+    "dtype": "int64",
+    "n_distinct": 750,
+    "example": "2"
+   },
+   {
+    "name": "CellBarcode",
+    "dtype": "str",
+    "n_distinct": 750,
+    "example": "F3-DEW111_AAACCGCC-GCCTCTTT"
+   },
+   {
+    "name": "CellUMI",
+    "dtype": "str",
+    "n_distinct": 750,
+    "example": "CACTCCTGGC"
+   },
+   {
+    "name": "BarcodeKey",
+    "dtype": "str",
+    "n_distinct": 750,
+    "example": "DEW111_bcABSR"
+   },
+   {
+    "name": "ClusterIdent",
+    "dtype": "int64",
+    "n_distinct": 56,
+    "fate_like": "name and type only"
+   },
+   {
+    "name": "HMID",
+    "dtype": "str",
+    "n_distinct": 192,
+    "example": "45D+140-45D+140-390D+188-390D+188-390D+188-390D+188-390D+188"
+   },
+   {
+    "name": "Readname",
+    "dtype": "str",
+    "n_distinct": 750,
+    "example": "NS500488:132:H7JCTAFXX:1:11101:8025:33_CACTCCTGGCFWD_39_2663"
+   }
+  ]
+ },
+ "zf_dev_gestmaster": {
+  "rows": 454,
+  "columns": [
+   {
+    "name": "Unnamed: 0",
+    "dtype": "int64",
+    "n_distinct": 454
+   },
+   {
+    "name": "CellNum",
+    "dtype": "int64",
+    "n_distinct": 454,
+    "example": "2"
+   },
+   {
+    "name": "CellBarcode",
+    "dtype": "str",
+    "n_distinct": 454,
+    "example": "AAACCTGCATGCTAGT"
+   },
+   {
+    "name": "CellUMI",
+    "dtype": "str",
+    "n_distinct": 454,
+    "example": "CACTCCTGGC-f10"
+   },
+   {
+    "name": "ClusterIdent",
+    "dtype": "int64",
+    "n_distinct": 84,
+    "fate_like": "name and type only"
+   },
+   {
+    "name": "HMID",
+    "dtype": "str",
+    "n_distinct": 148,
+    "example": "22D+124-2S+169+CT-NONE-4D+255-NONE-1I+331+T-9D+362-UNKNOWN"
+   },
+   {
+    "name": "Readname",
+    "dtype": "str",
+    "n_distinct": 454,
+    "example": "NS500488:132:H7JCTAFXX:1:11101:8025:25_CACTCCTGGCFWD_6_18_Co"
+   }
+  ]
+ },
+ "zf_adult_scars": {
+  "rows": 8738,
+  "columns": [
+   {
+    "name": "Reads\tCIGAR\tBarcode\tUMI\tLocation\tSequence",
+    "dtype": "str",
+    "n_distinct": 8738,
+    "example": "28\t46M2I27M\tAAACCCAAGCCTATTG\tACTCCGTTTCTC\t1983\tGCTTTCCCCGAGA"
+   }
+  ]
+ },
+ "itracer_E-MTAB-10973_meta.tsv.gz": {
+  "rows": 29274,
+  "columns": [
+   {
+    "name": "nCount_RNA",
+    "dtype": "int64",
+    "n_distinct": 9880
+   },
+   {
+    "name": "nFeature_RNA",
+    "dtype": "int64",
+    "n_distinct": 3903
+   },
+   {
+    "name": "percent.mito",
+    "dtype": "float64",
+    "n_distinct": 28805
+   },
+   {
+    "name": "orig.ident",
+    "dtype": "str",
+    "n_distinct": 4,
+    "fate_like": "name and type only"
+   },
+   {
+    "name": "GeneBarcodeMerge",
+    "dtype": "str",
+    "n_distinct": 393,
+    "example": "AAGAAAAAGAA_TTCTTGCCGTT"
+   },
+   {
+    "name": "ScarMerge",
+    "dtype": "str",
+    "n_distinct": 122,
+    "example": "0:50M1I40M_0:91M"
+   },
+   {
+    "name": "proj_atlas_cl",
+    "dtype": "float64",
+    "n_distinct": 25
+   },
+   {
+    "name": "RNA_snn_res.0.6",
+    "dtype": "int64",
+    "n_distinct": 19
+   }
+  ]
+ },
+ "itracer_E-MTAB-10974_meta_org1-12.tsv.gz": {
+  "rows": 44275,
+  "columns": [
+   {
+    "name": "nCount_RNA",
+    "dtype": "int64",
+    "n_distinct": 11252
+   },
+   {
+    "name": "nFeature_RNA",
+    "dtype": "int64",
+    "n_distinct": 4116
+   },
+   {
+    "name": "percent.mito",
+    "dtype": "float64",
+    "n_distinct": 42947
+   },
+   {
+    "name": "batch",
+    "dtype": "str",
+    "n_distinct": 2,
+    "example": "Batch_1"
+   },
+   {
+    "name": "organoid",
+    "dtype": "str",
+    "n_distinct": 12,
+    "example": "Org4-s15-d63"
+   },
+   {
+    "name": "GeneBarcodeMerge",
+    "dtype": "str",
+    "n_distinct": 3905,
+    "example": "iDOXd15.1_AAGGAACGCCA_ACGGTGCACGT"
+   },
+   {
+    "name": "ScarMerge",
+    "dtype": "str",
+    "n_distinct": 570,
+    "example": "0:91M_0:91M"
+   },
+   {
+    "name": "S.Score",
+    "dtype": "float64",
+    "n_distinct": 44275
+   },
+   {
+    "name": "G2M.Score",
+    "dtype": "float64",
+    "n_distinct": 44275
+   },
+   {
+    "name": "Phase",
+    "dtype": "str",
+    "n_distinct": 3
+   },
+   {
+    "name": "css_graph_res.1",
+    "dtype": "int64",
+    "n_distinct": 29
+   },
+   {
+    "name": "neuron_vs_NPC",
+    "dtype": "float64",
+    "n_distinct": 44275
+   },
+   {
+    "name": "genotype",
+    "dtype": "str",
+    "n_distinct": 4,
+    "fate_like": "name and type only"
+   }
+  ]
+ },
+ "itracer_E-MTAB-10974_meta_org_d15.tsv.gz": {
+  "rows": 13502,
+  "columns": [
+   {
+    "name": "orig.ident",
+    "dtype": "str",
+    "n_distinct": 1,
+    "fate_like": "name and type only"
+   },
+   {
+    "name": "nCount_RNA",
+    "dtype": "int64",
+    "n_distinct": 10744
+   },
+   {
+    "name": "nFeature_RNA",
+    "dtype": "int64",
+    "n_distinct": 5000
+   },
+   {
+    "name": "percent.mt",
+    "dtype": "float64",
+    "n_distinct": 13469
+   },
+   {
+    "name": "GeneBarcodeMerged",
+    "dtype": "str",
+    "n_distinct": 2522,
+    "example": "ACGACAGCACT_ACGACAGCACT"
+   },
+   {
+    "name": "ScarMerged",
+    "dtype": "str",
+    "n_distinct": 403,
+    "example": "0:44M8D47M_0:91M"
+   },
+   {
+    "name": "RNA_snn_res.0.6",
+    "dtype": "int64",
+    "n_distinct": 14
+   },
+   {
+    "name": "seurat_clusters",
+    "dtype": "int64",
+    "n_distinct": 14,
+    "fate_like": "name and type only"
+   },
+   {
+    "name": "sample",
+    "dtype": "str",
+    "n_distinct": 2,
+    "example": "d15_1"
+   },
+   {
+    "name": "S.Score",
+    "dtype": "float64",
+    "n_distinct": 13502
+   },
+   {
+    "name": "G2M.Score",
+    "dtype": "float64",
+    "n_distinct": 13502
+   },
+   {
+    "name": "Phase",
+    "dtype": "str",
+    "n_distinct": 3
+   },
+   {
+    "name": "isNE",
+    "dtype": "bool",
+    "n_distinct": 2
+   },
+   {
+    "name": "is_PSC",
+    "dtype": "object",
+    "n_distinct": 2
+   },
+   {
+    "name": "proj_forebrain",
+    "dtype": "object",
+    "n_distinct": 2
+   },
+   {
+    "name": "proj_midbrain",
+    "dtype": "object",
+    "n_distinct": 2
+   },
+   {
+    "name": "proj_hindbrain",
+    "dtype": "object",
+    "n_distinct": 2
+   },
+   {
+    "name": "proj_region",
+    "dtype": "str",
+    "n_distinct": 4,
+    "fate_like": "name and type only"
+   },
+   {
+    "name": "final_ident",
+    "dtype": "str",
+    "n_distinct": 7,
+    "fate_like": "name and type only"
+   }
+  ]
+ }
+}

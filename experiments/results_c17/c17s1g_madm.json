@@ -1,0 +1,16 @@
+{
+ "GSE245102": {
+  "samples": 429,
+  "clones": 45,
+  "clones_ge4_cells": 39,
+  "cells_per_clone_median": 8.0
+ },
+ "GSE245103": {
+  "samples": 36,
+  "clones": 0,
+  "clones_ge4_cells": 0,
+  "cells_per_clone_median": NaN
+ },
+ "upper_bound_eligible": 39,
+ "gate_pass": false
+}

@@ -45,6 +45,14 @@ DATASETS = {
                  "each) downloaded 2026-11-19 (Bence: \"go\"), sha256 in data/ext_crest/raw/SHA256SUMS. Partitioned by split "
                  "clone (partitions.crest_split_clone, sealed 2026-11-19): train 40%, A/B/C 20%. Cell type column readable "
                  "only via train_only / test_oracle; snapshot samples (E11, E15) carry no split and are not used.",
+    "ext_zf_dev": "GEO GSE105010 RAW.tar (per-fish lineage barcode files, 5.8 MB) and GSE158142 F8-F15 GestMaster lineage "
+                  "tables, downloaded 2026-11-20 (Bence: \"gate all 5 actually\"), sha256 in raw/SHA256SUMS. Structure "
+                  "gate only (C17-S1G) until partitioned by clade; no expression or cell type file downloaded.",
+    "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
+                    "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
+    "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "
+                   "\"gate all 5 actually\"), sha256 in raw/SHA256SUMS. Hold cell type columns: names and types only "
+                   "until partitioned by clone (C17-S1G).",
     "ext_c15": "Zenodo 10.5281/zenodo.5847461 (CC-BY; C15 candidate #12, in vivo growth model with lineage trees), downloaded "
                "only on GitHub Actions runners (never locally), md5 checked vs the record each time. Partitioned by host "
                "(partitions.growth12_host_v2, sealed 2026-11-17; v1 A/B/C void after the 5/5/5 rebalance, Bence: \"yes rebalance\") before any statistic: train 40%, A/B/C 20%. Structure only "

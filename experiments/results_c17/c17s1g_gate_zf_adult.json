@@ -1,0 +1,19 @@
+{
+ "animals": 2,
+ "cells_called": {
+  "lin1": 4351,
+  "lin2": 1334
+ },
+ "pairs_taken": {
+  "lin1": 129,
+  "lin2": 43
+ },
+ "eligible_by_animal": {
+  "lin1": 0,
+  "lin2": 0
+ },
+ "eligible": 0,
+ "expected_train_eligible": 0,
+ "gate_pass": false,
+ "recurrent_allele_share": 0.001
+}

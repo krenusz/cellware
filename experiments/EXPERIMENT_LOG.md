@@ -12556,3 +12556,43 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Fail (d), already in the project: GSE326044, GSE327470 (MADM organoid family, failed C17-S1M), GSE291244 (gastruloid, parked).
   - Not neural, **not acted on**, noted for the pluripotent class (which needs a 3rd system): GSE341627 (prime-editing recorder, whole mouse embryo, trees), GSE220949 (synthetic embryos, phylogenies), GSE261211 (dual-nuclease recorder in embryoid bodies and neuromesodermal organoids), GSE296898 (inner ear progenitors, CRISPR array, 2 samples; borderline neural).
 - Bound kept: no download. Next per the pre-registration: each candidate needs an S0 structure gate (clones with >= 2 arms or nested levels, cells per clone), sealing by clone, then a train estimate; downloads > 2 GB need Bence's OK (candidate 1 = 2.03 GB, GSE158142 = 39 GB).
+
+## C17-S1G: S0 structure gates for the 5 neural candidates of C17-S1N2 (pre-registered 2026-11-20; Bence: "Yes, gate both", then "gate all 5 actually")
+- Serves: C17-S1 (C17-S1R: grow the systems; neural class has 1 system, the law test needs 3). Script c17s1g_gates.py (stages `fetch`, `schema`, `madm`, `gate <candidate>`, `selftest`).
+- Candidates and the files used (lineage and metadata tables only; no expression matrix is downloaded):
+  - **G1 MADM-CloneSeq superior colliculus** (GSE245102 E10, GSE245103 E12): GEO sample titles only (`PSnn.k` = clone nn, cell k). No download.
+  - **G2 zebrafish developing brain, scar-array trees** (GSE105010 RAW.tar 5.8 MB: per-fish barcode files; GSE158142 F8-F15 GestMaster tables, < 1 MB): one system family.
+  - **G3 zebrafish adult brain, scar lineage tracing** (GSE246714: the 10 `filtered_scars` tables of lineage replicates 1 and 2, GSM-level files).
+  - **G4 human cerebral organoids, iTracer** (E-MTAB-10971, 10973, 10974: `meta*.tsv.gz` only, about 4.6 MB). These tables also hold cell-type columns: the `schema` stage lists column names and types only; type-like columns (CREST FATE_LIKE rule) are never tabulated.
+  - **G5 SPACE-seq developing brain** (GSE327687 RAW.tar 0.5 MB, brain samples only; the liver series GSE326431 and the tumour samples are an excluded domain and are not opened).
+- Units and arms, fixed now:
+  - G1: clone = title prefix; the two MADM colours would be the arms, but colour is not in the metadata; upper bound first: clones with >= 4 cells. Fail if that bound is < 75.
+  - G2, G3, G5 (cumulative edits): within one animal (or section), a clade = all cells carrying a given edit that occurs in >= 2 distinct full alleles and in < 50% of that animal's lineage-called cells (not a founder edit); its two largest distinct full alleles are the two arms. Clades are taken smallest first; a clade that shares cells with one already taken is skipped (disjoint pairs, as C17-S1P).
+  - G4: clone = static iTracer barcode within an organoid; arms = its two largest distinct scar alleles.
+  - Eligible pair or clone: both arms >= 4 cells (C7-S2 primary arm size; G1 bound as stated).
+- **Gate per candidate: pass if 0.4 x eligible >= 30 (>= 75 eligible units).** Also reported: units per animal/organoid, the coincidence check where alleles can recur across animals (share of full alleles seen in > 1 animal).
+- Order: `fetch` (sha256 written to SHA256SUMS in each data/ext_* directory, and a sealed.py DATASETS entry "structure only until partitioned"), then `schema`, then the column mapping for each candidate is written as an amendment **before** `gate` runs (the file formats are not known yet), then `gate`. A pass leads to sealing by unit (balanced_split, strata = animal/organoid) before any fate read; a fail stops that candidate.
+- Pre-flight: unit as above; readout = structure only (edits, alleles, counts); used data first: none of these sets is used; power: the gate; exposure: column names, allele structure and counts only; literature: GEO/BioStudies text only, source methods not read (H20 gap, recorded); readout gate (H21) = the gate above.
+- Limits written now: arms from nested edits are subclades of one clade, not separated sister wells; G2/G3/G5 values will be upper bounds as in C17-S1P (shared niche). G5 spatial beads may mix cells; that is checked at S1, not here.
+- Practice: offline selftest of the clade picker (toy alleles with a founder edit, two nested clades, an overlapping clade that must be skipped) and of the title parser; downloads read with python -I from their own directories.
+- Compute: local (downloads about 15 MB; structure counts under 2 minutes); no fate column is read.
+
+### C17-S1G G1 result and schema (2026-11-20; structure only)
+- **G1 MADM-CloneSeq: FAIL.** GEO titles give 45 clones at E10 (median 8 cells) and none parseable at E12; clones with >= 4 cells = 39 < 75, before colour is even considered. Stop.
+- **G5 SPACE-seq: FAIL (no data).** The series archive holds only the tumour samples' allele tables; no brain lineage table is deposited (listing only; archive deleted unopened).
+- Schema (`results_c17/c17s1g_schema.json`): G2 per-cell lineage tables = GSE105010 ZF1-ZF3 GestMaster (inside RAW.tar) and GSE158142 F8-F15 GestMaster, column `HMID` (sites joined by "-"); the hsp*.allReadCounts files carry no cell barcode and are not used. G3 = tab-separated scar reads (Reads, CIGAR, Barcode, UMI, Location, Sequence) at 6 endogenous target sites, 2 animals. G4 = `GeneBarcodeMerge(d)` (static clone barcode) and `ScarMerge(d)` (scar allele) per cell, organoid id in `organoid` / `orig.ident` / `sample`.
+- **Exposure note:** the schema printed one example value for columns my type-name filter missed (a neuron-vs-progenitor score, pseudotime, atlas projection flags and cluster numbers); single values only, nothing tabulated. The filter now prints examples only for ID and lineage columns.
+
+### C17-S1G amendment 1: column mapping (written before any gate count)
+- G2: animal = fish file (11 fish); full allele = `HMID`; edits = position:site value for sites not NONE/UNKNOWN (sites split on "-").
+- G3: animal = lineage replicate (lin1, lin2); per cell and target site, scars = distinct (Location, CIGAR) with >= 2 reads whose CIGAR has an I or D (pure-match CIGAR = unedited, dropped); edits = site:Location:CIGAR; full allele = sorted join of the cell's edits; cells with edits at >= 2 sites only.
+- G4: E-MTAB-10971 is a gene-perturbation set and is **excluded** (perturbation confounds memory); used: E-MTAB-10973 (organoid id `orig.ident`), E-MTAB-10974 org1-12 (`organoid`; only cells of the most common `genotype` level, read as a design label) and d15 (`sample`). Clone = organoid + static barcode; arms = its two largest distinct scar alleles that carry >= 1 edit (an all-match scar string = unedited, not an arm).
+- Gates unchanged (both arms >= 4 cells; pass if 0.4 x eligible >= 30).
+
+### C17-S1G result (2026-11-20; local structure counts, `results_c17/c17s1g_gate_*.json`; no fate column read)
+- **G2 zebrafish developing brain: FAIL.** 11 fish, 9,525 cells with an HMID; 338 disjoint clade pairs, **38 eligible** (both arms >= 4 cells; ZF2 alone 17), expected train 15 < 30. 21% of full alleles recur in > 1 fish (common GESTALT outcomes), so some clades would be coincidence anyway.
+- **G3 zebrafish adult brain: FAIL.** 5,685 cells with edits at >= 2 sites (2 animals); 172 clade pairs, **0 eligible**. Under the fixed mapping a cell's full allele is the exact set of its called scars, and site dropout makes nearly every full allele unique, so arms stay at 1-3 cells. A dropout-tolerant mapping was not tried (it would be a new forking choice; not without Bence's OK).
+- **G4 iTracer organoids: FAIL.** 17 organoids/sections, 4,079 barcode clones, **19 eligible** (two scarred alleles with >= 4 cells each); most clones carry no or one scar allele at this depth. The genotype filter kept 44% of org1-12 cells (most common level).
+- With G1 and G5: **all 5 candidates fail**. The neural class stays at **1 system** (CRISPR brain split clones). The search (C17-S1N2, recall-checked) and these gates exhaust the public neural sets found; no rule was relaxed after seeing counts.
+- Self-challenge: is >= 4 cells per arm too strict? It is the standard used for every system in the table (C7-S2 primary arm size); lowering it now would be chosen after seeing counts. Near miss: G2 at 38 of 75.
+- Next (Bence 2026-11-20): the stage-aware memory model.
