@@ -12648,3 +12648,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   4. Used data enough? All 11,057 train pairs.
   5. Already published? Commitment dominating fate agreement on embryo trees is in line with quantitative fate mapping (commitment without memory) and the source study's restriction timing (claims level).
 - **Table:** no row added (pre-registered: only if the rule passes). The C17-S1P row (H 0.81, stage-dependent) stands with its caveat; this result says that value is mostly commitment, not per-division memory.
+
+### C17-S1T follow-up check: memory at commitment near zero (2026-11-20; Bence: "Go with 1"; log read only, no data, no compute)
+- Before pre-registering a new fit on LARRY and the gastruloids, the log was checked: **this comparison already exists (C5-S2, 2026-11-07, K1 FAIL).** Blood (LARRY E19c, cytokine wells, about 4 extra divisions): rho_div 0.964 [0.927, 0.997]; gastruloid subclones (G5): no per-division loss allowed (rho_div >= 1.00), memory is lost at passage events instead (retention 0.46 per passage). The intervals do not overlap, so one per-division law already failed across these two systems at C near 0.
+- A new fit on the same data would repeat C5-S2, so none was pre-registered (H16: no duplicate work).
+- Combined reading with the C17-S1T result: in embryo trees, sister agreement is mostly commitment (memory adds <= 2%); where commitment is near zero, memory per division differs between blood (decays slowly) and gastruloids (kept through divisions, lost at passages). A stage-aware model with one lambda does not unify the systems; memory loss is tied to events (passage, commitment) more than to division count.
