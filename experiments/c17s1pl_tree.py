@@ -26,7 +26,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 RAW = HERE.parent / "data" / "ext_dtt_mouse" / "raw"
-OUT = HERE / "results_c17" / "c17s1pl_gate.json"
+OUT = HERE / "results_c17" / "c17s1pl_gate2.json"  # amendment 2 (first gate: c17s1pl_gate.json)
 MAP = HERE / "partition_maps" / "partition_dtt_founder.tsv"
 TAG = "v1.1.0"
 BASE = f"https://raw.githubusercontent.com/shendurelab/dtt-mouse/{TAG}/support_data/"
@@ -39,6 +39,7 @@ ID_COL = "cell_id"  # metadata column whose values are the tree leaf names: set 
 CAP, CAP_C17S1P, MIN_ARM, FOUNDER_MAX = 3000, 300, 4, 20000
 GATE = {"G1_min_pairs": 75, "G2_min_k_range": 2.4, "G3_min_founders": 50, "G4_max_abs_corr": 0.8}
 SALT = "cellware-dtt-founder-v1"
+PICK_SALT, N_BINS = "cellware-dtt-pick-v1", 5
 ID_LIKE = re.compile(r"cell|barcode|\bid\b|_id|name|leaf|node", re.I)
 TYPE_LIKE = re.compile(r"type|cluster|annot|lineage|fate|state|tissue|organ|germ|class|label|celltype|region|subtype", re.I)
 
@@ -116,7 +117,7 @@ def children_of(parent):
     return order, starts, ends
 
 
-def pick_pairs(parent, s, cap):
+def pick_pairs(parent, s, cap, strat=False):
     """C17-S1P/C17-S1T rule with counts: for each node with <= cap leaves and >= 2 children, its two largest children
     (by leaves) as arms, both with >= MIN_ARM labelled leaves; disjoint, smallest clades first.
     Returns rows (node, size, tau, k_edges, t_since, lab_a, lab_b)."""
@@ -132,7 +133,17 @@ def pick_pairs(parent, s, cap):
             t = (s["sdist"][a] + s["sdist"][b]) / nl - s["rdist"][nd]
             cand.append((int(s["leaves"][nd]), int(nd), int(s["depth"][nd]), float(k), float(t),
                          int(s["lab"][a]), int(s["lab"][b])))
-    cand.sort(key=lambda r: (r[0], r[1]))
+    if strat:  # amendment 2: 5 equal-count bins by node date, hash order within bin, round-robin across bins
+        dates = np.array([s["rdist"][r[1]] for r in cand])
+        bins = np.minimum((np.argsort(np.argsort(dates, kind="stable"), kind="stable") * N_BINS) // len(cand), N_BINS - 1)
+        hkey = [hashlib.sha256(f"{PICK_SALT}:{r[1]}".encode()).hexdigest() for r in cand]
+        rank = np.zeros(len(cand), dtype=np.int64)
+        for b in range(N_BINS):
+            ix = np.nonzero(bins == b)[0]
+            rank[ix[np.argsort([hkey[i] for i in ix], kind="stable")]] = np.arange(len(ix))
+        cand = [cand[i] for i in np.lexsort((bins, rank))]
+    else:
+        cand.sort(key=lambda r: (r[0], r[1]))
     used = np.zeros(len(parent), bool)
     desc_used = np.zeros(len(parent), bool)
     out = []
@@ -250,14 +261,14 @@ def gate():
     is_f = np.zeros(len(parent), bool)
     is_f[fnd] = True
     res["founder_clades"] = int(len(fnd))
-    for cap in (CAP, CAP_C17S1P):
-        rows = pick_pairs(parent, s, cap)
+    for cap, strat, key in ((CAP, True, "stratified"), (CAP, False, "smallest_first")):
+        rows = pick_pairs(parent, s, cap, strat)
         if not rows:
-            res[f"cap_{cap}"] = {"eligible_pairs": 0}
+            res[key] = {"eligible_pairs": 0}
             continue
         _, size, tau, k, t, la, lb = (np.array(x) for x in zip(*rows))
         f_of = np.array([ancestor_in(parent, r[0], is_f) for r in rows])
-        res[f"cap_{cap}"] = {
+        res[key] = {
             "eligible_pairs": int(len(rows)),
             "k_pct_10_50_90": np.percentile(k, [10, 50, 90]).round(2).tolist(),
             "k_range_10_90": float(np.percentile(k, 90) - np.percentile(k, 10)),
@@ -268,7 +279,7 @@ def gate():
             "labelled_per_arm_median": float(np.median(np.r_[la, lb])),
             "founders_with_pairs": int(len(set(f_of[f_of >= 0]))),
         }
-    p = res[f"cap_{CAP}"]
+    p = res["stratified"]
     checks = {
         "G1": p["eligible_pairs"] >= GATE["G1_min_pairs"],
         "G2": p.get("k_range_10_90", 0) >= GATE["G2_min_k_range"],
@@ -337,7 +348,28 @@ def selftest():
     parent, blen, names = parse_newick("((A:1,B:1)X:2,(C:3,D:3)Y:0)R;")
     s = structure(parent, blen, np.array([nm in "ABCD" and nm != "" for nm in names]))
     assert names.index("A") > names.index("X") and abs(s["rdist"][names.index("C")] - 3) < 1e-9
-    print("selftest ok: 30 random trees match c17s1t_stage.pairs_of; Newick parser and root distances ok")
+    # amendment 2: stratified picker is disjoint, deterministic, and reaches older splits than smallest-first
+    pool = [(f"L{i}", f"L{i}:{rng.uniform(0.1, 2):.3f}") for i in range(3000)]
+    j = 0
+    while len(pool) > 1:
+        a, b = (pool.pop(int(rng.integers(len(pool)))) for _ in range(2))
+        pool.append((f"I{j}", f"({a[1]},{b[1]})I{j}:{rng.uniform(0.1, 2):.3f}"))
+        j += 1
+    parent, blen, names = parse_newick(pool[0][1].rsplit(":", 1)[0] + ";")
+    s = structure(parent, blen, np.array([nm.startswith("L") for nm in names]))
+    r1, r2 = pick_pairs(parent, s, 400, True), pick_pairs(parent, s, 400, True)
+    assert r1 == r2, "not deterministic"
+    nodes = [r[0] for r in r1]
+    for nd in nodes:  # no picked node is an ancestor of another
+        p = parent[nd]
+        while p >= 0:
+            assert p not in set(nodes), "overlap"
+            p = parent[p]
+    old = pick_pairs(parent, s, 400, False)
+    assert np.mean([r[3] for r in r1]) > np.mean([r[3] for r in old]), "stratified does not reach older splits"
+    print("selftest ok: 30 random trees match c17s1t_stage.pairs_of; Newick parser and root distances ok; "
+          f"stratified picker disjoint and deterministic, mean k {np.mean([r[3] for r in r1]):.2f} vs "
+          f"smallest-first {np.mean([r[3] for r in old]):.2f}")
 
 
 if __name__ == "__main__":

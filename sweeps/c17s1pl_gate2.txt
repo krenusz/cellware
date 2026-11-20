@@ -1,0 +1,1 @@
+[experiments/results_c17/c17s1pl_gate2.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/c17s1pl_tree.py gate
