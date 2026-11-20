@@ -45,6 +45,7 @@ DISEASE_EXTRA = (
     r"|glioma|(gli|mening|ependym|astrocyt|sarc|neur|aden)oma\b|alcohol|addict|vulnerab|injur|lesion|ischem|stroke|epilep|seizure|autis|schizo|depress|congenit|keratos|\bflu\b|h5n1|pregnan|placent|inflammat|cell-free dna"
     # retro 2026-11-20: same additions as lit_gap.SENSITIVE
     r"|infect|\bs?hiv\b|\bsiv\b|\w+(arabine|rubicin|platin|taxel|mycin)\b|resistan(ce|t) to|drug.?resist"
+    r"|relaps|prognos|tremor|\bhsct\b|\bcar[- ]?t\b"
 )
 TITLE_DROP = re.compile(r"cancer|tumou?r|leuk|lymphom|myelom|carcinom|melanom|malignan|oncog|metasta|drug|chemo|"
                         r"therap|patient|disease|clinical|glioma|sarcoma|neoplas|syndrom|dysplas|fibros|diabet|"

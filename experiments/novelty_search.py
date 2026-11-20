@@ -67,6 +67,8 @@ def concept(q, top):
     params = {"filter": f"title_and_abstract.search:{q}", "sort": "cited_by_count:desc", "per_page": top,
               "select": "doi,display_name,publication_year,cited_by_count"}
     r = get(f"{API}?" + urllib.parse.urlencode(params))
+    if not r:  # retro 2026-11-20: a rate-limited (HTTP 429) run printed "None matches" and looked like an empty search
+        raise SystemExit(f"concept search failed after retries (API error or rate limit): {q!r}")
     rows = [x for x in (row(w) for w in r.get("results", [])) if x]
     return {"query": q, "matches": r.get("meta", {}).get("count"), "top": rows}
 
@@ -84,10 +86,30 @@ def references(doi, top):
     return {"source": doi, "n_references": len(ids), "top": rows[:top]}
 
 
-def run(step, source, queries, top=25, ref_top=20):
-    out = {"step": step, "date": time.strftime("%Y-%m-%d"), "concept": [], "references": None}
+EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
+
+
+def concept_epmc(q, top):
+    """Same search on Europe PMC (includes PubMed), citation-sorted, title+abstract. Used when OpenAlex is
+    rate-limited (its keyless tier allows about 100 searches a day; retro 2026-11-20)."""
+    terms = " AND ".join(f"TITLE_ABS:{t}" for t in q.split())
+    params = {"query": terms, "sort": "CITED desc", "format": "json", "pageSize": top, "resultType": "lite"}
+    r = get(f"{EPMC}?" + urllib.parse.urlencode(params))
+    if not r:
+        raise SystemExit(f"Europe PMC search failed after retries: {q!r}")
+    rows = []
+    for w in r.get("resultList", {}).get("result", []):
+        x = row({"display_name": w.get("title"), "publication_year": w.get("pubYear"),
+                 "cited_by_count": w.get("citedByCount"), "doi": w.get("doi") or ""})
+        if x:
+            rows.append(x)
+    return {"query": q, "matches": r.get("hitCount"), "top": rows, "engine": "europepmc"}
+
+
+def run(step, source, queries, top=25, ref_top=20, engine="openalex"):
+    out = {"step": step, "date": time.strftime("%Y-%m-%d"), "concept": [], "references": None, "engine": engine}
     for q in queries:
-        out["concept"].append(concept(q, top))
+        out["concept"].append(concept_epmc(q, top) if engine == "europepmc" else concept(q, top))
         time.sleep(1)
     if source:
         out["references"] = references(source, ref_top)
@@ -122,8 +144,10 @@ def main():
     ap.add_argument("--source", default="")
     ap.add_argument("--q", action="append", required=True)
     ap.add_argument("--top", type=int, default=25)
+    ap.add_argument("--engine", choices=["openalex", "europepmc"], default="openalex")
+    ap.add_argument("--no-refs", action="store_true", help="skip the source-reference pass (already saved)")
     a = ap.parse_args()
-    res = run(a.step, a.source, a.q, a.top)
+    res = run(a.step, "" if a.no_refs else a.source, a.q, a.top, engine=a.engine)
     path = os.path.join(HERE, "results_lit", f"novelty_{a.step}.json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     json.dump(res, open(path, "w", encoding="utf-8"), indent=1)

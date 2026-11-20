@@ -1,0 +1,157 @@
+{
+ "step": "C17-S1PL",
+ "date": "2026-11-20",
+ "concept": [
+  {
+   "query": "transcriptional memory across cell divisions",
+   "matches": null,
+   "top": []
+  },
+  {
+   "query": "lineage restriction mouse embryo",
+   "matches": null,
+   "top": []
+  },
+  {
+   "query": "epigenetic memory differentiation reset",
+   "matches": null,
+   "top": []
+  },
+  {
+   "query": "heritable cell state memory",
+   "matches": null,
+   "top": []
+  },
+  {
+   "query": "memory per division commitment",
+   "matches": null,
+   "top": []
+  }
+ ],
+ "references": {
+  "source": "10.1126/science.ael0508",
+  "n_references": 115,
+  "top": [
+   {
+    "title": "The neighbor-joining method: a new method for reconstructing phylogenetic trees.",
+    "year": 1987,
+    "cites": 66768,
+    "doi": "10.1093/oxfordjournals.molbev.a040454"
+   },
+   {
+    "title": "STAR: ultrafast universal RNA-seq aligner",
+    "year": 2012,
+    "cites": 55644,
+    "doi": "10.1093/bioinformatics/bts635"
+   },
+   {
+    "title": "CONFIDENCE LIMITS ON PHYLOGENIES: AN APPROACH USING THE BOOTSTRAP",
+    "year": 1985,
+    "cites": 48052,
+    "doi": "10.1111/j.1558-5646.1985.tb00420.x"
+   },
+   {
+    "title": "fastp: an ultra-fast all-in-one FASTQ preprocessor",
+    "year": 2018,
+    "cites": 33085,
+    "doi": "10.1093/bioinformatics/bty560"
+   },
+   {
+    "title": "HTSeq\u2014a Python framework to work with high-throughput sequencing data",
+    "year": 2014,
+    "cites": 23182,
+    "doi": "10.1093/bioinformatics/btu638"
+   },
+   {
+    "title": "ape 5.0: an environment for modern phylogenetics and evolutionary analyses in R",
+    "year": 2018,
+    "cites": 10273,
+    "doi": "10.1093/bioinformatics/bty633"
+   },
+   {
+    "title": "SCANPY: large-scale single-cell gene expression data analysis",
+    "year": 2018,
+    "cites": 10160,
+    "doi": "10.1186/s13059-017-1382-0"
+   },
+   {
+    "title": "Search-and-replace genome editing without double-strand breaks or donor DNA",
+    "year": 2019,
+    "cites": 5423,
+    "doi": "10.1038/s41586-019-1711-4"
+   },
+   {
+    "title": "The Nonconcept of Species Diversity: A Critique and Alternative Parameters",
+    "year": 1971,
+    "cites": 4957,
+    "doi": "10.2307/1934145"
+   },
+   {
+    "title": "The single-cell transcriptional landscape of mammalian organogenesis",
+    "year": 2019,
+    "cites": 4916,
+    "doi": "10.1038/s41586-019-0969-x"
+   },
+   {
+    "title": "The embryonic cell lineage of the nematode Caenorhabditis elegans",
+    "year": 1983,
+    "cites": 4744,
+    "doi": "10.1016/0012-1606(83)90201-4"
+   },
+   {
+    "title": "Post-embryonic cell lineages of the nematode, Caenorhabditis elegans",
+    "year": 1977,
+    "cites": 4006,
+    "doi": "10.1016/0012-1606(77)90158-0"
+   },
+   {
+    "title": "Scrublet: Computational Identification of Cell Doublets in Single-Cell Transcriptomic Data",
+    "year": 2019,
+    "cites": 2994,
+    "doi": "10.1016/j.cels.2018.11.005"
+   },
+   {
+    "title": "II.\u2014A mathematical theory of evolution, based on the conclusions of Dr. J. C. Willis, F. R. S",
+    "year": 1925,
+    "cites": 2218,
+    "doi": "10.1098/rstb.1925.0002"
+   },
+   {
+    "title": "Transgenic strategies for combinatorial expression of fluorescent proteins in the nervous system",
+    "year": 2007,
+    "cites": 2086,
+    "doi": "10.1038/nature06293"
+   },
+   {
+    "title": "Measurement of Inequality of Incomes",
+    "year": 1921,
+    "cites": 2068,
+    "doi": "10.2307/2223319"
+   },
+   {
+    "title": "Definitive Hematopoiesis Is Autonomously Initiated by the AGM Region",
+    "year": 1996,
+    "cites": 1771,
+    "doi": "10.1016/s0092-8674(00)80165-8"
+   },
+   {
+    "title": "Comprehensive single-cell transcriptional profiling of a multicellular organism",
+    "year": 2017,
+    "cites": 1502,
+    "doi": "10.1126/science.aam8940"
+   },
+   {
+    "title": "A single-cell molecular map of mouse gastrulation and early organogenesis",
+    "year": 2019,
+    "cites": 1105,
+    "doi": "10.1038/s41586-019-0933-9"
+   },
+   {
+    "title": "A simulation comparison of phylogeny algorithms under equal and unequal evolutionary rates.",
+    "year": 1994,
+    "cites": 977,
+    "doi": "10.1093/oxfordjournals.molbev.a040126"
+   }
+  ]
+ }
+}

@@ -1,0 +1,813 @@
+{
+ "step": "C17-S1PL",
+ "date": "2026-11-20",
+ "concept": [
+  {
+   "query": "transcriptional memory cell divisions",
+   "matches": 43,
+   "top": [
+    {
+     "title": "Epigenetic regulation of cellular memory by the Polycomb and Trithorax group proteins.",
+     "year": "2004",
+     "cites": 800,
+     "doi": "10.1146/annurev.genet.38.072902.091907"
+    },
+    {
+     "title": "Selective recognition of acetylated histones by bromodomain proteins visualized in living cells.",
+     "year": "2004",
+     "cites": 288,
+     "doi": "10.1016/s1097-2765(03)00482-9"
+    },
+    {
+     "title": "Interferon stimulation creates chromatin marks and establishes transcriptional memory.",
+     "year": "2018",
+     "cites": 203,
+     "doi": "10.1073/pnas.1720930115"
+    },
+    {
+     "title": "Environmental perception and epigenetic memory: mechanistic insight through FLC.",
+     "year": "2015",
+     "cites": 177,
+     "doi": "10.1111/tpj.12869"
+    },
+    {
+     "title": "DNA replication-coupled histone modification maintains Polycomb gene silencing in plants.",
+     "year": "2017",
+     "cites": 160,
+     "doi": "10.1126/science.aan4965"
+    },
+    {
+     "title": "Cellular memory of acquired stress resistance in Saccharomyces cerevisiae.",
+     "year": "2012",
+     "cites": 115,
+     "doi": "10.1534/genetics.112.143016"
+    },
+    {
+     "title": "Asymmetric PI3K Signaling Driving Developmental and Regenerative Cell Fate Bifurcation.",
+     "year": "2015",
+     "cites": 99,
+     "doi": "10.1016/j.celrep.2015.10.072"
+    },
+    {
+     "title": "Polycomb group genes control developmental timing of endosperm.",
+     "year": "2005",
+     "cites": 70,
+     "doi": "10.1111/j.1365-313x.2005.02404.x"
+    },
+    {
+     "title": "Dominant role for signal transduction in the transcriptional memory of yeast GAL genes.",
+     "year": "2010",
+     "cites": 61,
+     "doi": "10.1128/mcb.01675-09"
+    },
+    {
+     "title": "Signal-induced Brd4 release from chromatin is essential for its role transition from chromatin targeting to transcriptional regulation.",
+     "year": "2011",
+     "cites": 55,
+     "doi": "10.1093/nar/gkr698"
+    },
+    {
+     "title": "Arginine methylation provides epigenetic transcription memory for retinoid-induced differentiation in myeloid cells.",
+     "year": "2005",
+     "cites": 52,
+     "doi": "10.1128/mcb.25.13.5648-5663.2005"
+    },
+    {
+     "title": "Replicative history marks transcriptional and functional disparity in the CD8&lt;sup&gt;+&lt;/sup&gt; T cell memory pool.",
+     "year": "2022",
+     "cites": 48,
+     "doi": "10.1038/s41590-022-01171-9"
+    },
+    {
+     "title": "Epigenetic Transcriptional Memory of <i>GAL</i> Genes Depends on Growth in Glucose and the Tup1 Transcription Factor in <i>Saccharomyces cerevisiae</i>.",
+     "year": "2017",
+     "cites": 38,
+     "doi": "10.1534/genetics.117.201632"
+    },
+    {
+     "title": "Transcriptional regulation of neural stem cell expansion in the adult hippocampus.",
+     "year": "2022",
+     "cites": 36,
+     "doi": "10.7554/elife.72195"
+    },
+    {
+     "title": "Mammalian histone acetyltransferases and their complexes.",
+     "year": "2001",
+     "cites": 36,
+     "doi": "10.1007/pl00000892"
+    },
+    {
+     "title": "The molecular basis of cell memory in mammals: The epigenetic cycle.",
+     "year": "2024",
+     "cites": 29,
+     "doi": "10.1126/sciadv.adl3188"
+    },
+    {
+     "title": "Remembering foods and foes: emerging principles of transcriptional memory.",
+     "year": "2025",
+     "cites": 26,
+     "doi": "10.1038/s41418-023-01200-6"
+    },
+    {
+     "title": "Epigenomics in stress tolerance of plants under the climate change.",
+     "year": "2023",
+     "cites": 26,
+     "doi": "10.1007/s11033-023-08539-6"
+    },
+    {
+     "title": "DNA methylation in adult stem cells: new insights into self-renewal.",
+     "year": "2010",
+     "cites": 22,
+     "doi": "10.4161/epi.5.3.11374"
+    },
+    {
+     "title": "Exploring cellular memory molecules marking competent and active transcriptions.",
+     "year": "2007",
+     "cites": 22,
+     "doi": "10.1186/1471-2199-8-31"
+    },
+    {
+     "title": "Single-Cell Tracing Dissects Regulation of Maintenance and Inheritance of Transcriptional Reinduction Memory.",
+     "year": "2020",
+     "cites": 19,
+     "doi": "10.1016/j.molcel.2020.04.016"
+    },
+    {
+     "title": "A Transcription Factor Pulse Can Prime Chromatin for Heritable Transcriptional Memory.",
+     "year": "2017",
+     "cites": 18,
+     "doi": "10.1128/mcb.00372-16"
+    },
+    {
+     "title": "Nup98-dependent transcriptional memory is established independently of transcription.",
+     "year": "2022",
+     "cites": 16,
+     "doi": "10.7554/elife.63404"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "epigenetic memory differentiation",
+   "matches": 822,
+   "top": [
+    {
+     "title": "Epigenetic memory in induced pluripotent stem cells.",
+     "year": "2010",
+     "cites": 1758,
+     "doi": "10.1038/nature09342"
+    },
+    {
+     "title": "Distinct factors control histone variant H3.3 localization at specific genomic regions.",
+     "year": "2010",
+     "cites": 1101,
+     "doi": "10.1016/j.cell.2010.01.003"
+    },
+    {
+     "title": "Cell type of origin influences the molecular and functional properties of mouse induced pluripotent stem cells.",
+     "year": "2010",
+     "cites": 923,
+     "doi": "10.1038/nbt.1667"
+    },
+    {
+     "title": "Genomewide analysis of PRC1 and PRC2 occupancy identifies two classes of bivalent domains.",
+     "year": "2008",
+     "cites": 847,
+     "doi": "10.1371/journal.pgen.1000242"
+    },
+    {
+     "title": "Enhancer function: new insights into the regulation of tissue-specific gene expression.",
+     "year": "2011",
+     "cites": 733,
+     "doi": "10.1038/nrg2957"
+    },
+    {
+     "title": "Genome-wide programmable transcriptional memory by CRISPR-based epigenome editing.",
+     "year": "2021",
+     "cites": 654,
+     "doi": "10.1016/j.cell.2021.03.025"
+    },
+    {
+     "title": "Epigenetic mechanisms in memory formation.",
+     "year": "2005",
+     "cites": 520,
+     "doi": "10.1038/nrn1604"
+    },
+    {
+     "title": "An siRNA pathway prevents transgenerational retrotransposition in plants subjected to stress.",
+     "year": "2011",
+     "cites": 497,
+     "doi": "10.1038/nature09861"
+    },
+    {
+     "title": "Donor cell type can influence the epigenome and differentiation potential of human induced pluripotent stem cells.",
+     "year": "2011",
+     "cites": 477,
+     "doi": "10.1038/nbt.2052"
+    },
+    {
+     "title": "CTCF establishes discrete functional chromatin domains at the Hox clusters during differentiation.",
+     "year": "2015",
+     "cites": 471,
+     "doi": "10.1126/science.1262088"
+    },
+    {
+     "title": "Epigenetic memory and preferential lineage-specific differentiation in induced pluripotent stem cells derived from human pancreatic islet beta cells.",
+     "year": "2011",
+     "cites": 469,
+     "doi": "10.1016/j.stem.2011.06.007"
+    },
+    {
+     "title": "Epigenetic control of CD8&lt;sup&gt;+&lt;/sup&gt; T cell differentiation.",
+     "year": "2018",
+     "cites": 455,
+     "doi": "10.1038/nri.2017.146"
+    },
+    {
+     "title": "Effector CD8 T cells dedifferentiate into long-lived memory cells.",
+     "year": "2017",
+     "cites": 419,
+     "doi": "10.1038/nature25144"
+    },
+    {
+     "title": "Epigenetic mechanisms in cognition.",
+     "year": "2011",
+     "cites": 383,
+     "doi": "10.1016/j.neuron.2011.05.019"
+    },
+    {
+     "title": "Epigenetic marking correlates with developmental potential in cloned bovine preimplantation embryos.",
+     "year": "2003",
+     "cites": 378,
+     "doi": "10.1016/s0960-9822(03)00419-6"
+    },
+    {
+     "title": "DNMT1 maintains progenitor function in self-renewing somatic tissue.",
+     "year": "2010",
+     "cites": 377,
+     "doi": "10.1038/nature08683"
+    },
+    {
+     "title": "DNA methylation: an epigenetic mark of cellular memory.",
+     "year": "2017",
+     "cites": 368,
+     "doi": "10.1038/emm.2017.10"
+    },
+    {
+     "title": "Environmental signaling: what embryos and evolution teach us about endocrine disrupting chemicals.",
+     "year": "2001",
+     "cites": 343,
+     "doi": "10.1210/edrv.22.3.0432"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "heritable gene expression single cells",
+   "matches": 195,
+   "top": [
+    {
+     "title": "DMY is a Y-specific DM-domain gene required for male development in the medaka fish.",
+     "year": "2002",
+     "cites": 1010,
+     "doi": "10.1038/nature751"
+    },
+    {
+     "title": "Genome-wide programmable transcriptional memory by CRISPR-based epigenome editing.",
+     "year": "2021",
+     "cites": 654,
+     "doi": "10.1016/j.cell.2021.03.025"
+    },
+    {
+     "title": "Contribution of intragenic DNA methylation in mouse gametic DNA methylomes to establish oocyte-specific heritable marks.",
+     "year": "2012",
+     "cites": 426,
+     "doi": "10.1371/journal.pgen.1002440"
+    },
+    {
+     "title": "Integrated spatial genomics reveals global architecture of single nuclei.",
+     "year": "2021",
+     "cites": 419,
+     "doi": "10.1038/s41586-020-03126-2"
+    },
+    {
+     "title": "Genetic variation in the serotonin transporter promoter region affects serotonin uptake in human blood platelets.",
+     "year": "1999",
+     "cites": 398,
+     "doi": "10.1002/(sici)1096-8628(19990205)88:1<83::aid-ajmg15>3.0.co;2-0"
+    },
+    {
+     "title": "Heritable gene silencing in Drosophila using double-stranded RNA.",
+     "year": "2000",
+     "cites": 343,
+     "doi": "10.1038/78531"
+    },
+    {
+     "title": "A male-expressed rice embryogenic trigger redirected for asexual propagation through seeds.",
+     "year": "2019",
+     "cites": 319,
+     "doi": "10.1038/s41586-018-0785-8"
+    },
+    {
+     "title": "Genetic and epigenetic regulation of the FLO gene family generates cell-surface variation in yeast.",
+     "year": "2004",
+     "cites": 282,
+     "doi": "10.1016/s0092-8674(04)00118-7"
+    },
+    {
+     "title": "Hotspot identifies informative gene modules across modalities of single-cell genomics.",
+     "year": "2021",
+     "cites": 249,
+     "doi": "10.1016/j.cels.2021.04.005"
+    },
+    {
+     "title": "pKAMA-ITACHI Vectors for Highly Efficient CRISPR/Cas9-Mediated Gene Knockout in Arabidopsis thaliana.",
+     "year": "2017",
+     "cites": 229,
+     "doi": "10.1093/pcp/pcw191"
+    },
+    {
+     "title": "Single cell assay of a transcription factor reveals a threshold in transcription activated by signals emanating from the T-cell antigen receptor.",
+     "year": "1990",
+     "cites": 225,
+     "doi": "10.1101/gad.4.10.1823"
+    },
+    {
+     "title": "Single-cell gene expression analysis reveals genetic associations masked in whole-tissue experiments.",
+     "year": "2013",
+     "cites": 217,
+     "doi": "10.1038/nbt.2642"
+    },
+    {
+     "title": "The epigenetic control of stemness in CD8<sup>+</sup> T cell fate commitment.",
+     "year": "2018",
+     "cites": 212,
+     "doi": "10.1126/science.aah6499"
+    },
+    {
+     "title": "Memory Sequencing Reveals Heritable Single-Cell Gene Expression Programs Associated with Distinct Cellular Behaviors.",
+     "year": "2020",
+     "cites": 196,
+     "doi": "10.1016/j.cell.2020.07.003"
+    },
+    {
+     "title": "Highly efficient heritable plant genome engineering using Cas9 orthologues from Streptococcus thermophilus and Staphylococcus aureus.",
+     "year": "2015",
+     "cites": 188,
+     "doi": "10.1111/tpj.13078"
+    },
+    {
+     "title": "Chemerin, a novel adipokine in the regulation of angiogenesis.",
+     "year": "2010",
+     "cites": 179,
+     "doi": "10.1210/jc.2010-0042"
+    },
+    {
+     "title": "Development of germ-line-specific CRISPR-Cas9 systems to improve the production of heritable gene modifications in Arabidopsis.",
+     "year": "2016",
+     "cites": 167,
+     "doi": "10.1111/pbi.12468"
+    },
+    {
+     "title": "A foreign beta-globin gene in transgenic mice: integration at abnormal chromosomal positions and expression in inappropriate tissues.",
+     "year": "1983",
+     "cites": 164,
+     "doi": "10.1016/0092-8674(83)90369-0"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "sister cells fate decisions",
+   "matches": 19,
+   "top": [
+    {
+     "title": "POP-1 and anterior-posterior fate decisions in C. elegans embryos.",
+     "year": "1998",
+     "cites": 229,
+     "doi": "10.1016/s0092-8674(00)80917-4"
+    },
+    {
+     "title": "Abscission Couples Cell Division to Embryonic Stem Cell Fate.",
+     "year": "2020",
+     "cites": 46,
+     "doi": "10.1016/j.devcel.2020.09.001"
+    },
+    {
+     "title": "OTX2 represses sister cell fate choices in the developing retina to promote photoreceptor specification.",
+     "year": "2020",
+     "cites": 44,
+     "doi": "10.7554/elife.54279"
+    },
+    {
+     "title": "Intra-lineage Fate Decisions Involve Activation of Notch Receptors Basal to the Midbody in Drosophila Sensory Organ Precursor Cells.",
+     "year": "2017",
+     "cites": 37,
+     "doi": "10.1016/j.cub.2017.06.030"
+    },
+    {
+     "title": "Hybrid T-helper cells: stabilizing the moderate center in a polarized system.",
+     "year": "2013",
+     "cites": 33,
+     "doi": "10.1371/journal.pbio.1001632"
+    },
+    {
+     "title": "mig-5/Dsh controls cell fate determination and cell migration in C. elegans.",
+     "year": "2006",
+     "cites": 22,
+     "doi": "10.1016/j.ydbio.2006.06.053"
+    },
+    {
+     "title": "Hermaphrodite cell-fate specification.",
+     "year": "2006",
+     "cites": 17,
+     "doi": "10.1895/wormbook.1.39.1"
+    },
+    {
+     "title": "Asymmetric Histone Inheritance: Establishment, Recognition, and Execution.",
+     "year": "2022",
+     "cites": 16,
+     "doi": "10.1146/annurev-genet-072920-125226"
+    },
+    {
+     "title": "The Functions and Mechanisms of the Cohesin Complex in Regulating the Fate Determinations of Stem Cells.",
+     "year": "2025",
+     "cites": 3,
+     "doi": "10.34133/research.0757"
+    },
+    {
+     "title": "Notch-driven asymmetry dictates hair-cell behavior via a fate-specific kinase",
+     "year": "2026",
+     "cites": 1,
+     "doi": "10.64898/2026.02.25.708020"
+    },
+    {
+     "title": "Asymmetric inheritance of actin regulatory machinery shapes cytoskeletal heterogeneity during early  <i>Caenorhabditis elegans</i>  embryogenesis",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.64898/2026.03.22.713200"
+    },
+    {
+     "title": "Cyst-ained connections in the mammalian germline.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1016/bs.ctdb.2026.03.004"
+    },
+    {
+     "title": "Competing gene regulatory networks drive naive and memory B cell differentiation.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1038/s44320-026-00207-8"
+    },
+    {
+     "title": "SYS-1/beta-catenin inheritance and regulation by Wnt signaling during asymmetric cell division.",
+     "year": "2025",
+     "cites": 0,
+     "doi": "10.1091/mbc.e24-10-0441"
+    },
+    {
+     "title": "SYS-1/beta-catenin inheritance and regulation by Wnt-signaling during asymmetric cell division",
+     "year": "2023",
+     "cites": 0,
+     "doi": "10.1101/2023.07.21.550069"
+    },
+    {
+     "title": "Abscission couples cell division to embryonic stem cell fate",
+     "year": "2019",
+     "cites": 0,
+     "doi": "10.1101/798165"
+    },
+    {
+     "title": "Inheritance of OCT4 predetermines fate choice in human embryonic stem cells",
+     "year": "2017",
+     "cites": 0,
+     "doi": "10.1101/137299"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "lineage restriction mouse embryo",
+   "matches": 39,
+   "top": [
+    {
+     "title": "Klf4 reverts developmentally programmed restriction of ground state pluripotency.",
+     "year": "2009",
+     "cites": 630,
+     "doi": "10.1242/dev.030957"
+    },
+    {
+     "title": "Clonal analysis of the origin of primordial germ cells in the mouse.",
+     "year": "1994",
+     "cites": 336,
+     "doi": "10.1002/9780470514573.ch5"
+    },
+    {
+     "title": "Human naive epiblast cells possess unrestricted lineage potential.",
+     "year": "2021",
+     "cites": 317,
+     "doi": "10.1016/j.stem.2021.02.025"
+    },
+    {
+     "title": "The NuRD component Mbd3 is required for pluripotency of embryonic stem cells.",
+     "year": "2006",
+     "cites": 315,
+     "doi": "10.1038/ncb1372"
+    },
+    {
+     "title": "Epigenetic restriction of embryonic cell lineage fate by methylation of Elf5.",
+     "year": "2008",
+     "cites": 289,
+     "doi": "10.1038/ncb1786"
+    },
+    {
+     "title": "Distinct Wnt-driven primitive streak-like populations reflect in vivo lineage precursors.",
+     "year": "2014",
+     "cites": 215,
+     "doi": "10.1242/dev.101014"
+    },
+    {
+     "title": "Spatial Transcriptome for the Molecular Annotation of Lineage Fates and Cell Identity in Mid-gastrula Mouse Embryo.",
+     "year": "2016",
+     "cites": 203,
+     "doi": "10.1016/j.devcel.2016.02.020"
+    },
+    {
+     "title": "Notch and hippo converge on Cdx2 to specify the trophectoderm lineage in the mouse blastocyst.",
+     "year": "2014",
+     "cites": 193,
+     "doi": "10.1016/j.devcel.2014.06.019"
+    },
+    {
+     "title": "Expression of the mouse labial-like homeobox-containing genes, Hox 2.9 and Hox 1.6, during segmentation of the hindbrain.",
+     "year": "1991",
+     "cites": 179,
+     "doi": "10.1242/dev.111.1.61"
+    },
+    {
+     "title": "Distinct Requirements for FGFR1 and FGFR2 in Primitive Endoderm Development and Exit from Pluripotency.",
+     "year": "2017",
+     "cites": 169,
+     "doi": "10.1016/j.devcel.2017.05.004"
+    },
+    {
+     "title": "The Polycomb-group gene eed is required for normal morphogenetic movements during gastrulation in the mouse embryo.",
+     "year": "1998",
+     "cites": 166,
+     "doi": "10.1242/dev.125.22.4495"
+    },
+    {
+     "title": "Direct lineage tracing reveals the ontogeny of pancreatic cell fates during mouse embryogenesis.",
+     "year": "2003",
+     "cites": 160,
+     "doi": "10.1016/s0925-4773(02)00330-1"
+    },
+    {
+     "title": "Differential plasticity of epiblast and primitive endoderm precursors within the ICM of the early mouse embryo.",
+     "year": "2012",
+     "cites": 142,
+     "doi": "10.1242/dev.067702"
+    },
+    {
+     "title": "Role of cadherins in maintaining the compartment boundary between the cortex and striatum during development.",
+     "year": "2001",
+     "cites": 125,
+     "doi": "10.1242/dev.128.4.561"
+    },
+    {
+     "title": "Otx2 is required for visceral endoderm movement and for the restriction of posterior signals in the epiblast of the mouse embryo.",
+     "year": "2001",
+     "cites": 112,
+     "doi": "10.1242/dev.128.5.753"
+    },
+    {
+     "title": "Fetal liver myelopoiesis occurs through distinct, prospectively isolatable progenitor subsets.",
+     "year": "2001",
+     "cites": 98,
+     "doi": "10.1182/blood.v98.3.627"
+    },
+    {
+     "title": "Conversion from mouse embryonic to extra-embryonic endoderm stem cells reveals distinct differentiation capacities of pluripotent stem cell states.",
+     "year": "2012",
+     "cites": 94,
+     "doi": "10.1242/dev.078519"
+    },
+    {
+     "title": "Stem cells and lineage development in the mammalian blastocyst.",
+     "year": "2007",
+     "cites": 79,
+     "doi": "10.1071/rd06125"
+    },
+    {
+     "title": "The anterior-posterior axis emerges respecting the morphology of the mouse embryo that changes and aligns with the uterus before gastrulation.",
+     "year": "2004",
+     "cites": 62,
+     "doi": "10.1016/j.cub.2004.01.026"
+    },
+    {
+     "title": "Cripto is essential to capture mouse epiblast stem cell and human embryonic stem cell pluripotency.",
+     "year": "2016",
+     "cites": 56,
+     "doi": "10.1038/ncomms12589"
+    },
+    {
+     "title": "A conserved enhancer of the human and murine Hoxa-7 gene specifies the anterior boundary of expression during embryonal development.",
+     "year": "1995",
+     "cites": 51,
+     "doi": "10.1242/dev.121.4.1077"
+    },
+    {
+     "title": "Lineage restriction of the myogenic conversion factor myf-5 in the brain.",
+     "year": "1995",
+     "cites": 47,
+     "doi": "10.1242/dev.121.12.4077"
+    },
+    {
+     "title": "Antigenic Characterization of New Lineage II Insect-Specific Flaviviruses in Australian Mosquitoes and Identification of Host Restriction Factors.",
+     "year": "2020",
+     "cites": 44,
+     "doi": "10.1128/msphere.00095-20"
+    },
+    {
+     "title": "Plasticity of the inner cell mass in mouse blastocyst is restricted by the activity of FGF/MAPK pathway.",
+     "year": "2017",
+     "cites": 41,
+     "doi": "10.1038/s41598-017-15427-0"
+    },
+    {
+     "title": "Emergence of NK-cell progenitors and functionally competent NK-cell lineage subsets in the early mouse embryo.",
+     "year": "2012",
+     "cites": 30,
+     "doi": "10.1182/blood-2011-02-337980"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "fate commitment lineage tracing",
+   "matches": 84,
+   "top": [
+    {
+     "title": "The bHLH transcription factor Tcf21 is required for lineage-specific EMT of cardiac fibroblast progenitors.",
+     "year": "2012",
+     "cites": 432,
+     "doi": "10.1242/dev.079970"
+    },
+    {
+     "title": "Signaling and transcriptional control of pancreatic organogenesis.",
+     "year": "2002",
+     "cites": 165,
+     "doi": "10.1016/s0959-437x(02)00338-6"
+    },
+    {
+     "title": "Commitment of cell fate in the early zebrafish embryo.",
+     "year": "1993",
+     "cites": 131,
+     "doi": "10.1126/science.8316841"
+    },
+    {
+     "title": "Heart Regeneration by Endogenous Stem Cells and Cardiomyocyte Proliferation: Controversy, Fallacy, and Progress.",
+     "year": "2020",
+     "cites": 127,
+     "doi": "10.1161/circulationaha.119.045566"
+    },
+    {
+     "title": "Hdac3 Interaction with p300 Histone Acetyltransferase Regulates the Oligodendrocyte and Astrocyte Lineage Fate Switch.",
+     "year": "2016",
+     "cites": 100,
+     "doi": "10.1016/j.devcel.2016.01.002"
+    },
+    {
+     "title": "T cell receptor-instructed alphabeta versus gammadelta lineage commitment revealed by single-cell analysis.",
+     "year": "2008",
+     "cites": 96,
+     "doi": "10.1084/jem.20072425"
+    },
+    {
+     "title": "Genetic and scRNA-seq Analysis Reveals Distinct Cell Populations that Contribute to Salivary Gland Development and Maintenance.",
+     "year": "2018",
+     "cites": 83,
+     "doi": "10.1038/s41598-018-32343-z"
+    },
+    {
+     "title": "Mechanical signals promote osteogenic fate through a primary cilia-mediated mechanism.",
+     "year": "2016",
+     "cites": 73,
+     "doi": "10.1096/fj.15-276402"
+    },
+    {
+     "title": "Single cell sequencing of radial glia progeny reveals the diversity of newborn neurons in the adult zebrafish brain.",
+     "year": "2020",
+     "cites": 72,
+     "doi": "10.1242/dev.185595"
+    },
+    {
+     "title": "Lgr5&lt;sup&gt;+&lt;/sup&gt; stem and progenitor cells reside at the apex of a heterogeneous embryonic hepatoblast pool.",
+     "year": "2019",
+     "cites": 63,
+     "doi": "10.1242/dev.174557"
+    },
+    {
+     "title": "High-resolution, noninvasive single-cell lineage tracing in mice and humans based on DNA methylation epimutations.",
+     "year": "2025",
+     "cites": 57,
+     "doi": "10.1038/s41592-024-02567-1"
+    },
+    {
+     "title": "The role of Sox9 in mouse mammary gland development and maintenance of mammary stem and luminal progenitor cells.",
+     "year": "2014",
+     "cites": 39,
+     "doi": "10.1186/s12861-014-0047-4"
+    },
+    {
+     "title": "Parathyroid Hormone Shifts Cell Fate of a Leptin Receptor-Marked Stromal Population from Adipogenic to Osteoblastic Lineage.",
+     "year": "2019",
+     "cites": 38,
+     "doi": "10.1002/jbmr.3811"
+    },
+    {
+     "title": "Genetic studies in mice directly link oocytes produced during adulthood to ovarian function and natural fertility.",
+     "year": "2017",
+     "cites": 36,
+     "doi": "10.1038/s41598-017-10033-6"
+    },
+    {
+     "title": "Early commitment and robust differentiation in colonic crypts.",
+     "year": "2017",
+     "cites": 33,
+     "doi": "10.15252/msb.20167283"
+    },
+    {
+     "title": "Neocortical Sox9+ radial glia generate glutamatergic neurons for all layers, but lack discernible evidence of early laminar fate restriction.",
+     "year": "2017",
+     "cites": 31,
+     "doi": "10.1186/s13064-017-0091-4"
+    },
+    {
+     "title": "Ectopic PDX-1 expression directly reprograms human keratinocytes along pancreatic insulin-producing cells fate.",
+     "year": "2011",
+     "cites": 30,
+     "doi": "10.1371/journal.pone.0026298"
+    },
+    {
+     "title": "Severe Heterotopic Ossification in the Skeletal Muscle and Endothelial Cells Recruitment to Chondrogenesis Are Enhanced by Monocyte/Macrophage Depletion.",
+     "year": "2019",
+     "cites": 29,
+     "doi": "10.3389/fimmu.2019.01640"
+    },
+    {
+     "title": "Canonical <i>Notch</i> Signaling Directs the Fate of Differentiating Neurocompetent Progenitors in the Mammalian Olfactory Epithelium.",
+     "year": "2018",
+     "cites": 29,
+     "doi": "10.1523/jneurosci.0484-17.2018"
+    },
+    {
+     "title": "Reduced Neurog3 Gene Dosage Shifts Enteroendocrine Progenitor Towards Goblet Cell Lineage in the Mouse Intestine.",
+     "year": "2021",
+     "cites": 24,
+     "doi": "10.1016/j.jcmgh.2020.08.006"
+    },
+    {
+     "title": "In vivo Notch reactivation in differentiating cochlear hair cells induces Sox2 and Prox1 expression but does not disrupt hair cell maturation.",
+     "year": "2012",
+     "cites": 24,
+     "doi": "10.1002/dvdy.23754"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "memory loss per division",
+   "matches": 8,
+   "top": [
+    {
+     "title": "Modeling the dynamics of neonatal CD8&lt;sup&gt;+&lt;/sup&gt; T-cell responses.",
+     "year": "2016",
+     "cites": 29,
+     "doi": "10.1038/icb.2016.47"
+    },
+    {
+     "title": "T cell renewal rates, telomerase, and telomere length shortening.",
+     "year": "1998",
+     "cites": 24,
+     "doi": "10.4049/jimmunol.160.12.5832"
+    },
+    {
+     "title": "Entanglement distribution: to herald or not to herald.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1364/oe.599227"
+    },
+    {
+     "title": "An all-optical signal processor enabling terabit-per-second real-time equalization.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1126/science.ady5344"
+    }
+   ],
+   "engine": "europepmc"
+  }
+ ],
+ "references": null,
+ "engine": "europepmc"
+}
