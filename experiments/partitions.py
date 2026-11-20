@@ -167,6 +167,16 @@ PARTITIONED = {
                           "pattern sharing between samples, cells per arm per clone, partition counts; GEO design text "
                           "and the source abstract (claims level; methods paywalled)",
     },
+    "dtt_founder": {
+        "salt": "cellware-dtt-founder-v1",
+        "unit": "founder clade of the DNA Typewriter mouse dated tree (C17-S1PL): maximal clade with <= 20,000 leaves, "
+                "'F<node index in preorder parse of merged_minB2h_lineage_constrained.nwk>'; strata = first-cleavage half",
+        "fixed_file": "partition_maps/partition_dtt_founder.tsv",
+        "files": ["shendurelab/dtt-mouse v1.1.0 tree + cell metadata, sha256 pinned in c17s1pl_tree.py"],
+        "sealed_on": "2026-11-20",
+        "prior_exposure": "C17-S1PL schema (column names/types; only cell_id examples), tree topology, branch lengths, "
+                          "leaf-ID join, pair and founder counts (gate 1 and 2); source abstract (claims level)",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

@@ -12707,3 +12707,15 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Unchanged:** G1-G4 and their thresholds, G2 on edges (the C17-S1T model counts divisions in edges), founder clades, sealing. Time-since-split spread is reported, not gated. The old smallest-first picker is reported alongside for comparison.
 - Forking-path count: this is the second picker tried on this tree; any later step states it. If G2 still fails, the step closes; no third picker.
 - Selftest: the picks are disjoint, every bin is represented on a toy tree, and the result is deterministic.
+
+### C17-S1PL amendment 2 result: gate PASS, sealed by founder clade (2026-11-20; run https://github.com/krenusz/cellware/actions/runs/44798786231; `results_c17/c17s1pl_gate2.json`; structure only, no cell type read)
+- **Stratified picker: all four gates pass.**
+  - G1: 19,346 pairs.
+  - G2: k 10th-50th-90th 3.44 / 4.62 / 7.33 edges, range **3.89** (bar 2.4; the sealed embryo set had 1.2).
+  - G3: 91 founder clades hold pairs.
+  - G4: corr(tau, k) -0.10.
+  - Also: tau 18-35 edges; time since split 1.88-5.84; clade size 10th-90th 9-47 leaves; median 7 labelled cells per arm.
+- The smallest-first picker reproduced gate 1 exactly (26,731 pairs, range 1.81), so the runs are deterministic.
+- **Sealed before any cell type read:** `c17s1pl_tree.py seal` (local, 12 s), H24 balanced map by founder clade, strata = first-cleavage half (410,925 / 244,776 leaves). 93 founder clades: train 38, A 19, B 18, C 18. Committed as partition_maps/partition_dtt_founder.tsv and registered as partitions.dtt_founder; the first write used a 3-column format the registry cannot read and was rewritten (same split, verified). Pairs per partition are not counted yet.
+- Forking path: 2 pickers tried on this tree (amendment 2 rule: no third).
+- Next (not started; needs Bence's go): re-register the C17-S1T nested test (M_mem / M_com / M_full) on train founder clades, with smoke and power simulated on this tree's real structure, founder clades as units (H17/H19).

@@ -312,7 +312,8 @@ def seal():
     strata = {unit[f]: half_of.get(f, "other") for f in fnd}
     part = balanced_split(sizes, SALT, strata)
     MAP.parent.mkdir(exist_ok=True)
-    lines = ["founder\troot_node\tpartition"] + [f"{unit[f]}\t{f}\t{part[unit[f]]}" for f in fnd]
+    lines = [f"# dtt_founder: H24 balanced map, salt {SALT}, strata first-cleavage half, sealed 2026-11-20 before any "
+             "cell type read"] + [f"{unit[f]}\t{part[unit[f]]}" for f in fnd]
     MAP.write_text("\n".join(lines) + "\n")
     print({p: sum(v == p for v in part.values()) for p in ("train", "A", "B", "C")})
 
