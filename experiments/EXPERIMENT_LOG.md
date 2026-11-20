@@ -12662,3 +12662,28 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   3. Confound: differentiated clones expand more, so clone size and commitment move together; the test cannot separate them in this culture.
   4. Exposure: the size hint came from this same train data (C7-S2a: H 0.75 at >= 2 cells vs 0.66 at >= 4), so a train-only test would be circular.
 - **Decision: stop at S0, nothing pre-registered, no script written.** Sealed partitions A/B/C of celltag_lsk stay unspent. The events-vs-divisions reading stays a cross-system observation (C5-S2 + C17-S1T), untested within one system.
+
+## C17-S1PL: dated whole-embryo tree (DNA Typewriter mouse), S0 structure gate and sealing before any fate read (pre-registered 2026-11-20; Bence: "1")
+- **Serves: C17-S1PL** (FOCUS step; novelty lit/novelty/C17-S1PL.md, with Published but proceeding: Bence: "1"). Scripts c17s1pl_tree.py (new; stages `fetch`, `schema`, `gate`, `seal`, `selftest`), reusing the C17-S1P / C17-S1T pair picker logic (c17s1p_trees.pairs_of, c17s1t_stage.pairs_of) re-implemented with counts instead of leaf lists for a 1.28M-leaf tree (selftest: same pairs as c17s1p_trees.pairs_of on toy trees). Routing (smart delegation): Opus writes this gate and the script; Sonnet `cellware-data` downloads, checksums and runs `schema`; `gate` runs on Actions.
+- **Why this set:** C17-S1T could not separate per-division memory from commitment on the sealed embryo trees, partly because divisions since a split spanned only 2.4-3.6 edges (10th-90th). This tree is one embryo, dated, zygote-rooted, with 1.28M profiled cells (source paper, claims level), so splits of many ages are available. Sibling cell-type agreement on it is published (input only).
+- **Data:** public GitHub repo shendurelab/dtt-mouse, release tag v1.1.0: `support_data/merged_minB2h_lineage_constrained.nwk` (dated, lineage-constrained tree, 34.0 MB) and `support_data/cell_metadata.v8.txt.gz` (57.0 MB) -> data/ext_dtt_mouse/raw, SHA256SUMS there, sha256 constants committed in the script; sealed.py entry "structure only until partitioned". Not downloaded: the full placed tree, the consensus table, the GEO expression matrices.
+- **Exposure rules:** the metadata table holds cell-type columns. `schema` prints column names and dtypes, and example values only for ID-like columns (C17-S1G fix). No type-like column is read or tabulated before sealing. A leaf counts as "labelled" if its ID joins a metadata row (ID column only).
+- **Units:** sister-clade pair = the two largest children of a node, both with >= 4 labelled leaves; disjoint pairs, smallest clades first (C17-S1P rule). Primary clade cap 3,000 leaves (raised from 300 because the point is a wide range of split ages; written before any count); cap 300 reported for comparison. tau = node depth in edges from the root; k = mean edges from the node to its labelled leaves; time since split = mean root-to-leaf branch length minus the node's root distance (units as in the file; reported, not gated).
+- **Sealing unit (fixed now):** founder clade = maximal clade with <= 20,000 leaves; strata = the two daughters of the first cleavage (the root's two largest children; the source calls them inline replicates). Balanced split (H24, salt cellware-dtt-founder-v1), train 40% / A, B, C 20% each, committed as partition_maps/partition_dtt_founder.tsv, before any cell type is read.
+- **Gate (all must pass; else stop and report):**
+  - G1: eligible pairs (cap 3,000) >= 75 (0.4 x eligible >= 30).
+  - G2: the 10th-90th percentile range of k >= 2.4 edges (twice the sealed embryo set's 1.2); otherwise this tree gives no more leverage than C17-S1T.
+  - G3: founder clades holding >= 1 eligible pair >= 50 (so each sealed partition holds >= 10).
+  - G4: |corr(tau, k)| over eligible pairs <= 0.8 (tau and k not collinear).
+- Pre-flight:
+  1. Unit: sister-clade pair, clustered in founder clades; one embryo, so no between-embryo claim; the test unit for the later fit is the founder clade (H22 does not apply: no treatment).
+  2. Readout: tree topology, branch lengths, leaf IDs and the metadata ID join; no outcome.
+  3. Used data first: this set is new; C17-S1T on the used embryo train trees came first and was not supported.
+  4. Power: not a test; the gate is structural. Power for the re-registered C17-S1T test comes from its own smoke on this tree's real structure, with founder clades as units.
+  5. Exposure: source paper abstract only (novelty file); column names; counts.
+  6. Literature: H20 for the model is lit/c17s1t_h20_2026-11-20.md; source-paper methods for tree building not read beyond the repo README (stated gap).
+  7. Readout gate (H21): G1-G4.
+- **Prediction (written now):** G1 and G3 pass easily; G2 is the real question (deep clades are large, the cap may bind); G4 passes.
+- Limits written now: one embryo (no replication across embryos; the first-cleavage halves are the only internal replicate); sisters share a niche (upper bound on intrinsic memory, as C17-S1P); the lineage-constrained tree used cell-type information in its construction (repo name "lineage_constrained"), which could inflate sibling agreement: the later fit must say so, and the unconstrained NJ backbone stays a fallback check.
+- Practice: offline selftest of the count-based picker against c17s1p_trees.pairs_of on toy trees, and of the Newick parser on a toy dated tree; downloads read with python -I from their own directory; large reads on Actions; neutral wording.
+- Compute: `fetch` and `schema` local (Sonnet, small reads); `gate` and `seal` on GitHub Actions (sweeps/c17s1pl_gate.txt; the runner downloads by tag and checks sha256).
