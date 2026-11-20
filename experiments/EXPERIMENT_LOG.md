@@ -12687,3 +12687,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Limits written now: one embryo (no replication across embryos; the first-cleavage halves are the only internal replicate); sisters share a niche (upper bound on intrinsic memory, as C17-S1P); the lineage-constrained tree used cell-type information in its construction (repo name "lineage_constrained"), which could inflate sibling agreement: the later fit must say so, and the unconstrained NJ backbone stays a fallback check.
 - Practice: offline selftest of the count-based picker against c17s1p_trees.pairs_of on toy trees, and of the Newick parser on a toy dated tree; downloads read with python -I from their own directory; large reads on Actions; neutral wording.
 - Compute: `fetch` and `schema` local (Sonnet, small reads); `gate` and `seal` on GitHub Actions (sweeps/c17s1pl_gate.txt; the runner downloads by tag and checks sha256).
+
+### C17-S1PL amendment 1: column mapping and pinned files (2026-11-20; written before any gate count)
+- Fetch and schema ran locally on the Sonnet `cellware-data` lane (fetch 36 s, schema 4 s). Tree 33,984,975 B, sha256 dcc12fcd...aa79; metadata 57,035,367 B, sha256 208dc0a0...4058; both pinned in c17s1pl_tree.py, so the Actions runner re-downloads by tag and verifies.
+- Metadata: 1,584,848 rows, 9 columns (an ID, two trajectory/type columns, five embedding coordinates, one mapping column). Example values were printed for the ID column only; no type column was read.
+- Mapping: ID_COL = `cell_id`, which has the same format as the tree leaf names. A leaf is "labelled" if its name is a `cell_id`. Gates G1-G4 unchanged.

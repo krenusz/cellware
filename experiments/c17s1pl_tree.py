@@ -31,11 +31,11 @@ MAP = HERE / "partition_maps" / "partition_dtt_founder.tsv"
 TAG = "v1.1.0"
 BASE = f"https://raw.githubusercontent.com/shendurelab/dtt-mouse/{TAG}/support_data/"
 FILES = {  # name -> expected sha256 (filled from the first verified download, then committed)
-    "merged_minB2h_lineage_constrained.nwk": "",
-    "cell_metadata.v8.txt.gz": "",
+    "merged_minB2h_lineage_constrained.nwk": "dcc12fcdc0da7defe52bb01deeec75d397b38cb6408a1f93df1b5d507feaaa79",
+    "cell_metadata.v8.txt.gz": "208dc0a0bb52796c8b77d4d1c6859d4378fb9ef3b0a0598f2bef34010a794058",
 }
 TREE, META = "merged_minB2h_lineage_constrained.nwk", "cell_metadata.v8.txt.gz"
-ID_COL = ""  # metadata column whose values are the tree leaf names: set by the mapping amendment after `schema`
+ID_COL = "cell_id"  # metadata column whose values are the tree leaf names: set by the mapping amendment after `schema`
 CAP, CAP_C17S1P, MIN_ARM, FOUNDER_MAX = 3000, 300, 4, 20000
 GATE = {"G1_min_pairs": 75, "G2_min_k_range": 2.4, "G3_min_founders": 50, "G4_max_abs_corr": 0.8}
 SALT = "cellware-dtt-founder-v1"
