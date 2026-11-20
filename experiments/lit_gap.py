@@ -155,6 +155,10 @@ SEEDS = {
     "Busch 2015 (unperturbed haematopoiesis from stem cells)": "10.1038/nature14242",
     "Carrelha 2018 (lineage-restricted fates of multipotent HSCs)": "10.1038/nature25455",
     "Pei 2017 (Polylox, HSC fates in vivo)": "10.1038/nature23653",
+    # C17-S1T retro 2026-11-20: stage-aware memory model (memory per division vs commitment)
+    "Schiffman 2024 (PATH, phylogenetic correlations, heritability)": "10.1038/s41588-024-01920-6",
+    "Phillips 2019 (memory and relatedness of transcriptional activity)": "10.1038/s41467-019-09189-8",
+    "BMC Biol 2024 (transcriptional memory lost with differentiation)": "10.1186/s12915-024-01846-9",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -236,6 +240,10 @@ TOPICS = {
     # C17 retro 2026-11-19b: cross-system clone laws and transplant clone behaviour
     "cross_system_model": [r"universal", r"across (tissues|systems|organs|species)", r"general (model|law|principle)",
                            r"clone.size distribution", r"scaling", r"meta-analys", r"hierarchical model"],
+    # C17-S1T retro 2026-11-20: memory per division vs commitment events
+    "memory_vs_commitment": [r"transcriptional memory", r"heritab", r"commitment (time|event|point)",
+                             r"kin correlation", r"phylogenetic (correlation|auto)", r"memory.{0,30}divisions?",
+                             r"sister.{0,20}(correlation|similarity)"],
     "transplant_clonal": [r"transplant", r"engraft", r"repopulat", r"(myeloid|lymphoid|lineage).bias",
                           r"clonal (behaviou?r|output|heterogeneity)", r"daughter (cells|hscs?)"],
     "inference_identifiability": [
