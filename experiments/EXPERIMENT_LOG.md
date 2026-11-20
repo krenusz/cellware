@@ -12764,3 +12764,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 ### C17-S1PL-T amendment 1 result: gate PASS (2026-11-20; local, synthetic labels on the real train structure, simulator only)
 - Bias averaged over 200 sets, per tau x k bin (9 bins, 765-1,105 pairs each): largest |bias| 0.00075 (bar 0.01); per-bin SE 0.0003-0.0005, so all biases are within about 2 SE of 0. The per-set maximum (as pre-registered) is 0.0098 on this new seed and 0.0102 in the smoke.
 - Other checks unchanged: false pass 0.02 / 0.02, power 1.00, lambda recovery 1.00. **Gate: PASS.** Fit dispatched on Actions (sweeps/c17s1pl_t_fit.txt).
+
+### C17-S1PL-T fit: NOT SUPPORTED by the pre-registered rule (2026-11-20; run https://github.com/krenusz/cellware/actions/runs/44814968463; train founder clades only, label major_trajectory)
+- **Rule:** M_full beats both reductions in 10 of 27 eligible founder clades (needed >= 18). Pooled held-out error: full 0.0689, commitment-only 0.0693, memory-only 0.0707 (full lowest, but by 0.5% over commitment-only). **Verdict: NOT SUPPORTED.** No row goes to the parameter table.
+- Per clade: commitment-only beats memory-only in 17/27; full beats commitment-only in 16/27 and memory-only in 19/27. So commitment carries most of the fit and per-edge memory adds little beyond it, which is the outcome the pre-registration predicted as possible ("M_com within noise of M_full").
+- lambda in the full model is stable: 0.940 on all data, leave-one-out range 0.929-0.948 (it was recovered at 1.00 in the smoke, so this is identified, but it does not earn its place in held-out error). Commitment C(tau) rises 0.24 -> 0.79 -> 0.99 at tau 19 / 26 / 36 edges.
+- Fitted label noise eps 0.57 (commitment-only 0.57, memory-only 0.43): sister arms agree far less than full commitment would predict even at deep tau. So `major_trajectory` differs within committed subclades, or tau in edges from the tree root does not track commitment well. This limits what either term can be read as.
+- In-sample calibration per tau x k bin: |obs - pred| <= 0.035 (largest in the deepest-tau, short-k bin); the model under-predicts at deep tau.
+- Limits as pre-registered: one embryo, shared niche, a lineage-constrained tree (biases toward commitment), k in edges as a proxy for divisions.
+- Practice tick-list: selftest ok; 5 starts (spread <= 0.004); analytic check passed by amendment 1 (stated as post hoc); eps fitted; calibration reported; neutral wording (filter scan clean); A/B/C sealed and unspent.
+- Model lanes: Opus wrote the amendment, code and verdict; Actions ran the fit; analytic check local (synthetic only).
