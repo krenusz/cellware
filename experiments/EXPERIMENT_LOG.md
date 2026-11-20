@@ -12633,3 +12633,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Grid: lambda 0.85 power 1.00, lambda 0.97 0.68, half commitment slope 0.62 (recovery 1.00, 1.00, 0.92).
 - Reading: the test can tell the three models apart and recover lambda on these trees at the planted values; it is weak if memory is very long (lambda 0.97) or commitment rises slowly; the commitment-only false pass at 0.10 means a narrow pass (exactly 6/7) would need caution.
 - Next, pre-registered order: `fit` (train), waits for Bence's go.
+
+### C17-S1T result (2026-11-20; run https://github.com/krenusz/cellware/actions/runs/44753852098; `results_c17/c17s1t_fit.json`; Bence: "Go with 1"; 7 TRAIN embryos, nothing sealed read; EXPLORATORY)
+- **Verdict by the pre-registered rule: NOT SUPPORTED.** M_full beat both reductions in **4 of 7** embryos (E8.0-R1, E8.5-R2, E8.5-R3, E9.5-R1); the rule needed 6.
+- Held-out weighted squared error (mem / com / full): E7.5-R1 0.255 / **0.132** / 0.135; E8.0-R1 0.272 / 0.1724 / **0.1720**; E8.0-R3 0.272 / **0.1716** / 0.1718; E8.5-R2 0.189 / 0.162 / **0.160**; E8.5-R3 0.190 / 0.180 / **0.176**; E9.0-R1 **0.130** / 0.135 / 0.135; E9.5-R1 0.131 / 0.106 / **0.104**.
+- **Which reduction suffices: commitment-only.** It is within 0-2% of M_full in every embryo and beats memory-only in 6/7 (by 5-50%). Memory adds at most 2% held-out error reduction (E8.5-R3), in 4 embryos.
+- Full-data fits (start spread < 1e-7): M_full lambda **0.86** per edge (LOEO 0.84-0.88), eps 0.14, C(tau) 0.33 / 0.64 / 0.94 at tau 8 / 11 / 16 edges. M_mem alone: lambda 0.94, eps 0. M_com: eps 0.13.
+- Prediction: >= 5 embryos (met: no, 4); lambda 0.90-0.97 (no, 0.86); C rising (yes).
+- Calibration (in sample, M_full, tau x k tertiles): in the shallowest-tau tertile the observed agreement falls faster with k (0.685 -> 0.669 -> 0.553) than the model (0.648 -> 0.617 -> 0.581); in deeper tertiles the fit is within 0.03. Not pre-registered as a test; noted only.
+- Self-challenge:
+  1. Suspicious? The smoke gave power 0.94 at lambda 0.935, so a fail is informative about that setting: on these trees the k-dependence (memory) is small next to the tau-dependence (commitment). The fitted lambda (0.86) sits where the synthetic power was 1.00, yet the reductions tie, because the memory term moves agreement little over k 2-5 edges once C(tau) is fitted.
+  2. Other explanations: (a) the k range is narrow (10th-90th 2.4-3.6 edges), so memory beyond a few edges is not seen; (b) shared niche and commitment are both absorbed by C(tau); (c) E9.0-R1 prefers memory-only, so the tau-to-commitment map does not transfer perfectly between embryos (tree depth calibration differs per embryo); (d) the shallow-tau calibration gap hints that memory matters mainly before commitment, which one global lambda averages away.
+  3. Units: 7 embryos; per-embryo differences between com and full are 0.0002-0.004, small.
+  4. Used data enough? All 11,057 train pairs.
+  5. Already published? Commitment dominating fate agreement on embryo trees is in line with quantitative fate mapping (commitment without memory) and the source study's restriction timing (claims level).
+- **Table:** no row added (pre-registered: only if the rule passes). The C17-S1P row (H 0.81, stage-dependent) stands with its caveat; this result says that value is mostly commitment, not per-division memory.
