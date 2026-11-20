@@ -333,6 +333,10 @@ pre-registration dated 2026-11-13 or later without it.
   on them; train CV with a guessed shrink only when none exist (11-14; C9-S2 train 0.30 vs spent 0.26, power
   0.84 -> 0.71; adopted 2026-11-18).
 
+**Before proposing next steps**
+- An experiment offered in a next-steps list is first checked against EXPERIMENT_LOG for the same question and data, and carries a one-line feasibility note (units, rough power) or is marked "unchecked" (11-20; a C5-S2 duplicate and a power-0.29 test were both offered and chosen).
+- Every parameter-table row names its scale (memory per division, memory per event, commitment-dominated, position-dominated); a cross-system comparison uses rows of one scale only (11-20; C17-S1T: embryo-tree H is mostly commitment).
+
 **When searching for data**
 - Score candidates by the shape of past successes: lineage or clone unit; >= ~100 units per sealed partition
   after a 40/20/20/20 split; state measured before the fate readout; public now; and the source paper has not

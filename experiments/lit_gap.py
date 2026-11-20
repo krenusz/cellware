@@ -44,6 +44,8 @@ SENSITIVE += (
     r"|hyperplas|atroph|cystic|trauma|injur|vaccin|antibiotic|pharmac|fluorouracil|\b5-?fu\b"
     r"|\w+(nib|mab|ciclib|parib)\b|cholesta|ichthyo|\bdeficiency\b|\btoxicity\b|mutations? in a|cardiovascular|risk factor|immuniz"
     r"|glioma|(gli|mening|ependym|astrocyt|sarc|neur|aden)oma\b|alcohol|addict|vulnerab|injur|lesion|ischem|stroke|epilep|seizure|autis|schizo|depress|congenit|keratos|\bflu\b|h5n1|pregnan|placent|inflammat|cell-free dna"
+    # retro 2026-11-20: a drug name and a pathogen title leaked (probe of the saved map)
+    r"|infect|\bs?hiv\b|\bsiv\b|\w+(arabine|rubicin|platin|taxel|mycin)\b|resistan(ce|t) to|drug.?resist"
 )
 # Cell-line names are masked in saved titles (same pattern as c17_data_sweep.py).
 CELL_LINE = re.compile(
