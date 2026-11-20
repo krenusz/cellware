@@ -1,0 +1,714 @@
+{
+ "step": "C17-S2",
+ "date": "2026-11-20",
+ "concept": [
+  {
+   "query": "cell state heritability plasticity lineage",
+   "matches": 36,
+   "top": [
+    {
+     "title": "Evolution evolves: physiology returns to centre stage",
+     "year": 2014,
+     "cites": 159,
+     "doi": "10.1113/jphysiol.2014.273151"
+    },
+    {
+     "title": "Defining heritability, plasticity, and transition dynamics of cellular phenotypes in somatic evolution",
+     "year": 2024,
+     "cites": 62,
+     "doi": "10.1038/s41588-024-01920-6"
+    },
+    {
+     "title": "Cohort Profile: The Peri/post-natal Epigenetic Twins Study",
+     "year": 2011,
+     "cites": 56,
+     "doi": "10.1093/ije/dyr140"
+    },
+    {
+     "title": "From stem cells to the law courts: DNA methylation, the forensic epigenome and the possibility of a biosocial archive",
+     "year": 2015,
+     "cites": 41,
+     "doi": "10.1093/ije/dyv198"
+    },
+    {
+     "title": "Why evolution needs development, and medicine needs evolution",
+     "year": 2012,
+     "cites": 19,
+     "doi": "10.1093/ije/dys005"
+    },
+    {
+     "title": "Transgenerational epigenetic inheritance: from biology to society\u2014Summary Latsis Symposium Aug 28\u201330, 2017, Z\u00fcrich, Switzerland",
+     "year": 2018,
+     "cites": 8,
+     "doi": "10.1093/eep/dvy012"
+    },
+    {
+     "title": "The emergence of form: The shape of things to come",
+     "year": 2003,
+     "cites": 6,
+     "doi": "10.1002/dvdy.10361"
+    },
+    {
+     "title": "HDAC9 links epigenetics to dendrite development (Commentary on Sugo et al.)",
+     "year": 2010,
+     "cites": 1,
+     "doi": "10.1111/j.1460-9568.2010.07263.x"
+    },
+    {
+     "title": "1002 \u2013 THINKING FAST AND SLOW: ORIGINS AND CONSEQUENCES OF STEM CELL BIASES",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2026.105498"
+    },
+    {
+     "title": "Fruiting under pressure\u2014the 33rd meeting of the Fungal Genetics Conference",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1093/g3journal/jkag246"
+    },
+    {
+     "title": "In preprints \u2013 toward a holistic lineage-tracing map of mammalian embryogenesis",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1242/dev.205877"
+    },
+    {
+     "title": "The Relevance and Resilience of Evo\u2010Devo in 2025: The Biennial Meeting of the Pan American Society for Evolutionary Developmental Biology",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1002/jez.b.70020"
+    }
+   ]
+  },
+  {
+   "query": "heritable cell states phylogenetic",
+   "matches": 28,
+   "top": [
+    {
+     "title": "Why Do Flowers Vary?",
+     "year": 1999,
+     "cites": 381,
+     "doi": "10.2307/1313439"
+    },
+    {
+     "title": "Chromatin-Remodeling and Memory Factors. New Regulators of Plant Development",
+     "year": 2002,
+     "cites": 122,
+     "doi": "10.1104/pp.006791"
+    },
+    {
+     "title": "Defining heritability, plasticity, and transition dynamics of cellular phenotypes in somatic evolution",
+     "year": 2024,
+     "cites": 62,
+     "doi": "10.1038/s41588-024-01920-6"
+    },
+    {
+     "title": "The Evolution of Functional Traits in Plants: Is the Giant Still Sleeping?",
+     "year": 2019,
+     "cites": 53,
+     "doi": "10.1086/707141"
+    },
+    {
+     "title": "An approach to identifying specialized batteries of bioassays for specific classes of chemicals: Class analysis using mutagenicity and carcinogenicity relationships and phylogenetic concordance and discordance patterns 1. composition and analysis of the overall data base a report of phase II of the U.S. environmental protection agency gene-tox program (MTR 07213)",
+     "year": 1987,
+     "cites": 40,
+     "doi": "10.1016/0165-1110(87)90018-2"
+    },
+    {
+     "title": "Integrating telomere biology into the ecology and evolution of natural populations: Progress and prospects",
+     "year": 2022,
+     "cites": 23,
+     "doi": "10.1111/mec.16768"
+    },
+    {
+     "title": "ConvexML: Fast and Accurate Branch Length Estimation under Irreversible Mutation Models, Illustrated through Applications to CRISPR/Cas9-Based Lineage Tracing",
+     "year": 2025,
+     "cites": 17,
+     "doi": "10.1093/sysbio/syaf054"
+    },
+    {
+     "title": "Seeing the forest through the gene\u2010trees: What is the pattern in the human genome and what does it mean?",
+     "year": 2010,
+     "cites": 14,
+     "doi": "10.1002/evan.20286"
+    },
+    {
+     "title": "In preprints: the fast-paced field of single-cell lineage tracing",
+     "year": 2022,
+     "cites": 8,
+     "doi": "10.1242/dev.200877"
+    },
+    {
+     "title": "Computational approaches for multimodal lineage tracing",
+     "year": 2026,
+     "cites": 7,
+     "doi": "10.1038/s41576-026-00969-9"
+    },
+    {
+     "title": "Evolvability maps an adaptable research paradigm",
+     "year": 2024,
+     "cites": 1,
+     "doi": "10.1093/evolut/qpae078"
+    },
+    {
+     "title": "Applications of evolutionary science",
+     "year": 2023,
+     "cites": 1,
+     "doi": "10.1093/evolut/qpad008"
+    },
+    {
+     "title": "Biopower, Space, and Race in Asian American Studies",
+     "year": 2016,
+     "cites": 1,
+     "doi": "10.1215/00029831-3711150"
+    },
+    {
+     "title": "Fruiting under pressure\u2014the 33rd meeting of the Fungal Genetics Conference",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1093/g3journal/jkag246"
+    }
+   ]
+  },
+  {
+   "query": "transcriptional memory across cell divisions",
+   "matches": 114,
+   "top": [
+    {
+     "title": "An epigenetic road map for histone lysine methylation",
+     "year": 2003,
+     "cites": 724,
+     "doi": "10.1242/jcs.00493"
+    },
+    {
+     "title": "Selective Recognition of Acetylated Histones by Bromodomain Proteins Visualized in Living Cells",
+     "year": 2004,
+     "cites": 408,
+     "doi": "10.1016/s1097-2765(03)00482-9"
+    },
+    {
+     "title": "Brd4 Recruits P-TEFb to Chromosomes at Late Mitosis To Promote G 1 Gene Expression and Cell Cycle Progression",
+     "year": 2007,
+     "cites": 402,
+     "doi": "10.1128/mcb.01020-07"
+    },
+    {
+     "title": "Histone modifications defining active genes persist after transcriptional and mitotic inactivation",
+     "year": 2004,
+     "cites": 309,
+     "doi": "10.1038/sj.emboj.7600516"
+    },
+    {
+     "title": "Ectopic Lymphoid Organogenesis",
+     "year": 2001,
+     "cites": 159,
+     "doi": "10.1016/s0002-9440(10)61751-8"
+    },
+    {
+     "title": "Cellular Memory of Acquired Stress Resistance in Saccharomyces cerevisiae",
+     "year": 2012,
+     "cites": 155,
+     "doi": "10.1534/genetics.112.143016"
+    },
+    {
+     "title": "Polycomb Group Complexes Mediate Developmental Transitions in Plants",
+     "year": 2011,
+     "cites": 114,
+     "doi": "10.1104/pp.111.186445"
+    },
+    {
+     "title": "The Paf1 complex represses small-RNA-mediated epigenetic gene silencing",
+     "year": 2015,
+     "cites": 107,
+     "doi": "10.1038/nature14337"
+    },
+    {
+     "title": "Polycomb group genes control developmental timing of endosperm",
+     "year": 2005,
+     "cites": 104,
+     "doi": "10.1111/j.1365-313x.2005.02404.x"
+    },
+    {
+     "title": "Storing memories: the distinct phases of Polycomb-mediated silencing of Arabidopsis FLC",
+     "year": 2019,
+     "cites": 94,
+     "doi": "10.1042/bst20190255"
+    },
+    {
+     "title": "BRUSHY1/TONSOKU/MGOUN3 is required for heat stress memory",
+     "year": 2018,
+     "cites": 90,
+     "doi": "10.1111/pce.13365"
+    },
+    {
+     "title": "Developmental Epigenetics: Phenotype and the Flexible Epigenome",
+     "year": 2018,
+     "cites": 83,
+     "doi": "10.3389/fcell.2018.00130"
+    },
+    {
+     "title": "Immune reconstitution following haematopoietic stem cell transplantation",
+     "year": 2004,
+     "cites": 83,
+     "doi": "10.1046/j.1365-2141.2003.04767.x"
+    },
+    {
+     "title": "Signal-induced Brd4 release from chromatin is essential for its role transition from chromatin targeting to transcriptional regulation",
+     "year": 2011,
+     "cites": 65,
+     "doi": "10.1093/nar/gkr698"
+    },
+    {
+     "title": "Distinct Roles of Two Histone Methyltransferases in Transmitting H3K36me3-Based Epigenetic Memory Across Generations in Caenorhabditis elegans",
+     "year": 2018,
+     "cites": 48,
+     "doi": "10.1534/genetics.118.301353"
+    },
+    {
+     "title": "Small Pores with a Big Impact",
+     "year": 2017,
+     "cites": 37,
+     "doi": "10.1104/pp.17.00642"
+    },
+    {
+     "title": "Remembering the past: Mitotic bookmarking in a developing embryo",
+     "year": 2018,
+     "cites": 28,
+     "doi": "10.1016/j.coisb.2018.08.003"
+    },
+    {
+     "title": "Single-Cell Tracing Dissects Regulation of Maintenance and Inheritance of Transcriptional Reinduction Memory",
+     "year": 2020,
+     "cites": 25,
+     "doi": "10.1016/j.molcel.2020.04.016"
+    },
+    {
+     "title": "Remembering foods and foes: emerging principles of transcriptional memory",
+     "year": 2023,
+     "cites": 24,
+     "doi": "10.1038/s41418-023-01200-6"
+    },
+    {
+     "title": "Transmission of stimulus-induced epigenetic changes through cell division is coupled to continuous transcription factor activity",
+     "year": 2023,
+     "cites": 23,
+     "doi": "10.3389/fimmu.2023.1129577"
+    },
+    {
+     "title": "B cell primary immune responses",
+     "year": 2019,
+     "cites": 20,
+     "doi": "10.1111/imr.12756"
+    },
+    {
+     "title": "Molecular epigenetic understanding of winter memory in Arabidopsis",
+     "year": 2023,
+     "cites": 15,
+     "doi": "10.1093/plphys/kiad597"
+    }
+   ]
+  },
+  {
+   "query": "lineage restriction timing embryo",
+   "matches": 42,
+   "top": [
+    {
+     "title": "The allocation of epiblast cells to the embryonic heart and other mesodermal lineages: the role of ingression and tissue movement during gastrulation",
+     "year": 1997,
+     "cites": 328,
+     "doi": "10.1242/dev.124.9.1631"
+    },
+    {
+     "title": "Timing and pattern of cell fate restrictions in the neural crest lineage",
+     "year": 1997,
+     "cites": 255,
+     "doi": "10.1242/dev.124.21.4351"
+    },
+    {
+     "title": "From neural crest cells to melanocytes: cellular plasticity during development and beyond",
+     "year": 2019,
+     "cites": 146,
+     "doi": "10.1007/s00018-019-03049-w"
+    },
+    {
+     "title": "Stem cells and lineage development in the mammalian blastocyst",
+     "year": 2006,
+     "cites": 124,
+     "doi": "10.1071/rd06125"
+    },
+    {
+     "title": "Timing of initiation of muscle\u2010specific gene expression in the ascidian embryo precedes that of developmental fate restriction in lineage cells",
+     "year": 1995,
+     "cites": 93,
+     "doi": "10.1046/j.1440-169x.1995.t01-2-00010.x"
+    },
+    {
+     "title": "Retroviruses and the study of cell lineage",
+     "year": 1987,
+     "cites": 80,
+     "doi": "10.1242/dev.101.3.409"
+    },
+    {
+     "title": "Expression of engrailed can be lost and regained in cells of one clone in crustacean embryos",
+     "year": 1993,
+     "cites": 53,
+     "doi": "10.1387/ijdb.8398676"
+    },
+    {
+     "title": "Signalling in Plant Lateral Organ Development",
+     "year": 2002,
+     "cites": 40,
+     "doi": "10.1105/tpc.000828"
+    },
+    {
+     "title": "The Timing of Twinning: More Insights from X Inactivation",
+     "year": 1998,
+     "cites": 31,
+     "doi": "10.1086/301988"
+    },
+    {
+     "title": "Cell Fate Determination in the Ascidian Embryo",
+     "year": 1999,
+     "cites": 28,
+     "doi": "10.1016/b978-012505255-9/50006-7"
+    },
+    {
+     "title": "High-precision morphology: bifocal 4D-microscopy enables the comparison of detailed cell lineages of two chordate species separated for more than 525 million years",
+     "year": 2015,
+     "cites": 24,
+     "doi": "10.1186/s12915-015-0218-1"
+    },
+    {
+     "title": "Cell lineage and timing of fate restriction, determination and gene expression in ascidian embryos",
+     "year": 1997,
+     "cites": 17,
+     "doi": "10.1006/scdb.1997.0160"
+    },
+    {
+     "title": "APO2001: A sexy apomixer in como",
+     "year": 2001,
+     "cites": 13,
+     "doi": "10.1105/tpc.13.7.1480"
+    },
+    {
+     "title": "Comprehensive lineage tracing maps the landscape of cell fate decisions in mouse embryogenesis",
+     "year": 2026,
+     "cites": 12,
+     "doi": "10.1016/j.cell.2026.09.050"
+    },
+    {
+     "title": "Cux2 serves as a novel lineage marker of granule cell layer neurons from the rhombic lip in mouse and chick embryos",
+     "year": 2016,
+     "cites": 10,
+     "doi": "10.1002/dvdy.24418"
+    },
+    {
+     "title": "Totipotency and high plasticity in an embryo with an invariant, fate-specifying cleavage program",
+     "year": 2026,
+     "cites": 4,
+     "doi": "10.1016/j.cub.2026.02.014"
+    },
+    {
+     "title": "Author response: 5-Hydroxymethylcytosine-mediated active demethylation is required for mammalian neuronal differentiation and function",
+     "year": 2021,
+     "cites": 2,
+     "doi": "10.7554/elife.66973.sa2"
+    },
+    {
+     "title": "James A. Weston and the JAWsfest: A celebration of his contributions to our understanding of the neural crest",
+     "year": 2003,
+     "cites": 2,
+     "doi": "10.1002/dvdy.10452"
+    },
+    {
+     "title": "Lineage tracing reveals asynchronous fate restriction in mouse embryos and stem cell-derived embryo models",
+     "year": 2026,
+     "cites": 1,
+     "doi": "10.64898/2026.10.06.756974"
+    },
+    {
+     "title": "UPDATED PGDIS RECOMMENDATIONS FOR REPLACEMENT OF MOSAIC EMBRYOS",
+     "year": 2019,
+     "cites": 1,
+     "doi": "10.1016/j.rbmo.2019.04.032"
+    },
+    {
+     "title": "301. Vitamin A\u2013mediated Developmental Programming of Muscle and Marbling Fat in Beef Cattle.",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1093/jas/skag272.001"
+    }
+   ]
+  },
+  {
+   "query": "fate commitment developmental time clonal",
+   "matches": 41,
+   "top": [
+    {
+     "title": "Stem cells: the generation and maintenance of cellular diversity",
+     "year": 1989,
+     "cites": 610,
+     "doi": "10.1242/dev.106.4.619"
+    },
+    {
+     "title": "Adipogenesis at a glance",
+     "year": 2011,
+     "cites": 401,
+     "doi": "10.1242/jcs.079699"
+    },
+    {
+     "title": "The Moss Physcomitrella patens, Now and Then",
+     "year": 2001,
+     "cites": 176,
+     "doi": "10.1104/pp.010786"
+    },
+    {
+     "title": "Epidermal structure and differentiation",
+     "year": 2020,
+     "cites": 125,
+     "doi": "10.1016/j.cub.2020.01.004"
+    },
+    {
+     "title": "A BMP pathway regulates cell fate allocation along the sea urchin animal- vegetal embryonic axis",
+     "year": 2000,
+     "cites": 113,
+     "doi": "10.1242/dev.127.5.1105"
+    },
+    {
+     "title": "Human ESC-derived hemogenic endothelial cells undergo distinct waves of endothelial to hematopoietic transition",
+     "year": 2012,
+     "cites": 111,
+     "doi": "10.1182/blood-2012-07-444208"
+    },
+    {
+     "title": "Stepwise commitment of blast cell fates during the positional specification of the O and P cell lines in the leech embryo",
+     "year": 1984,
+     "cites": 98,
+     "doi": "10.1016/0012-1606(84)90231-8"
+    },
+    {
+     "title": "The embryonic origins of human haematopoiesis",
+     "year": 2001,
+     "cites": 90,
+     "doi": "10.1046/j.1365-2141.2001.02537.x"
+    },
+    {
+     "title": "Stem cell plasticity",
+     "year": 2003,
+     "cites": 77,
+     "doi": "10.1046/j.1365-2141.2003.04576.x"
+    },
+    {
+     "title": "Differentiation of the O and P cell lines in the embryo of the leech",
+     "year": 1987,
+     "cites": 53,
+     "doi": "10.1016/0012-1606(87)90430-1"
+    },
+    {
+     "title": "Mouse pluripotent stem cells at a glance",
+     "year": 2011,
+     "cites": 50,
+     "doi": "10.1242/jcs.074120"
+    },
+    {
+     "title": "Notch signaling in bile duct development: New insights raise new questions\u2020\u2021",
+     "year": 2008,
+     "cites": 30,
+     "doi": "10.1002/hep.22480"
+    },
+    {
+     "title": "Thymus and T\u2010lymphocyte development: what is new in the 21st century?",
+     "year": 2006,
+     "cites": 20,
+     "doi": "10.1111/j.0105-2896.2006.00368.x"
+    },
+    {
+     "title": "The Regulation of Notch Signaling Controls Satellite Cell Activation and Cell Fate Determination in Postnatal Myogenesis",
+     "year": 2006,
+     "cites": 19,
+     "doi": "10.1016/j.devcel.2006.01.003"
+    },
+    {
+     "title": "Pluripotent stem cells: private obsession and public expectation",
+     "year": 2010,
+     "cites": 18,
+     "doi": "10.1002/emmm.201000065"
+    },
+    {
+     "title": "A fly's eye view of EGF receptor signalling",
+     "year": 2002,
+     "cites": 18,
+     "doi": "10.1093/emboj/cdf679"
+    },
+    {
+     "title": "Reflections on a Path to Sexual Commitment",
+     "year": 2005,
+     "cites": 13,
+     "doi": "10.1093/genetics/169.3.1179"
+    },
+    {
+     "title": "APO2001: A sexy apomixer in como",
+     "year": 2001,
+     "cites": 13,
+     "doi": "10.1105/tpc.13.7.1480"
+    },
+    {
+     "title": "A Tribute to Seymour Benzer, 1921\u20132007",
+     "year": 2008,
+     "cites": 12,
+     "doi": "10.1534/genetics.104.97782"
+    },
+    {
+     "title": "Perspective: Genetic and Genomic Approaches in Elucidating Mechanisms of Pituitary Development",
+     "year": 2002,
+     "cites": 12,
+     "doi": "10.1210/endo.143.6.8867"
+    },
+    {
+     "title": "ZFP281 recruits polycomb repressive complex 2 to restrict extraembryonic endoderm potential in safeguarding embryonic stem cell pluripotency",
+     "year": 2020,
+     "cites": 11,
+     "doi": "10.1007/s13238-020-00775-x"
+    },
+    {
+     "title": "What we can learn from single-cell analysis in development",
+     "year": 2016,
+     "cites": 6,
+     "doi": "10.1093/molehr/gaw014"
+    },
+    {
+     "title": "The EHA Research Roadmap: Normal Hematopoiesis",
+     "year": 2021,
+     "cites": 3,
+     "doi": "10.1097/hs9.0000000000000669"
+    }
+   ]
+  }
+ ],
+ "references": {
+  "source": "10.1038/s41588-024-01920-6",
+  "n_references": 164,
+  "top": [
+   {
+    "title": "Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles",
+    "year": 2005,
+    "cites": 59124,
+    "doi": "10.1073/pnas.0506580102"
+   },
+   {
+    "title": "Integrated analysis of multimodal single-cell data",
+    "year": 2021,
+    "cites": 16824,
+    "doi": "10.1016/j.cell.2021.04.048"
+   },
+   {
+    "title": "SCANPY: large-scale single-cell gene expression data analysis",
+    "year": 2018,
+    "cites": 10151,
+    "doi": "10.1186/s13059-017-1382-0"
+   },
+   {
+    "title": "phytools: an R package for phylogenetic comparative biology (and other things)",
+    "year": 2011,
+    "cites": 10130,
+    "doi": "10.1111/j.2041-210x.2011.00169.x"
+   },
+   {
+    "title": "NOTES ON CONTINUOUS STOCHASTIC PHENOMENA",
+    "year": 1950,
+    "cites": 10096,
+    "doi": "10.1093/biomet/37.1-2.17"
+   },
+   {
+    "title": "Inferring the historical patterns of biological evolution",
+    "year": 1999,
+    "cites": 5709,
+    "doi": "10.1038/44766"
+   },
+   {
+    "title": "TESTING FOR PHYLOGENETIC SIGNAL IN COMPARATIVE DATA: BEHAVIORAL TRAITS ARE MORE LABILE",
+    "year": 2003,
+    "cites": 5092,
+    "doi": "10.1111/j.0014-3820.2003.tb00285.x"
+   },
+   {
+    "title": "Master Transcription Factors and Mediator Establish Super-Enhancers at Key Cell Identity Genes",
+    "year": 2013,
+    "cites": 4527,
+    "doi": "10.1016/j.cell.2013.03.035"
+   },
+   {
+    "title": "A Likelihood Approach to Estimating Phylogeny from Discrete Morphological Character Data",
+    "year": 2001,
+    "cites": 3182,
+    "doi": "10.1080/106351501753462876"
+   },
+   {
+    "title": "Comparison of phylogenetic trees",
+    "year": 1981,
+    "cites": 2999,
+    "doi": "10.1016/0025-5564(81)90043-2"
+   },
+   {
+    "title": "Polycomb complexes repress developmental regulators in murine embryonic stem cells",
+    "year": 2006,
+    "cites": 2877,
+    "doi": "10.1038/nature04733"
+   },
+   {
+    "title": "Guidelines and definitions for research on epithelial\u2013mesenchymal transition",
+    "year": 2020,
+    "cites": 2526,
+    "doi": "10.1038/s41580-020-0237-9"
+   },
+   {
+    "title": "Scaling accurate genetic variant discovery to tens of thousands of samples",
+    "year": 2017,
+    "cites": 2172,
+    "doi": "10.1101/201178"
+   },
+   {
+    "title": "Detecting correlated evolution on phylogenies: a general method for the comparative analysis of discrete characters",
+    "year": 1994,
+    "cites": 2038,
+    "doi": "10.1098/rspb.1994.0006"
+   },
+   {
+    "title": "Recovering Gene Interactions from Single-Cell Data Using Data Diffusion",
+    "year": 2018,
+    "cites": 1973,
+    "doi": "10.1016/j.cell.2018.05.061"
+   },
+   {
+    "title": "Single-cell RNA sequencing to explore immune cell heterogeneity",
+    "year": 2017,
+    "cites": 1968,
+    "doi": "10.1038/nri.2017.76"
+   },
+   {
+    "title": "High burden and pervasive positive selection of somatic mutations in normal human skin",
+    "year": 2015,
+    "cites": 1933,
+    "doi": "10.1126/science.aaa6806"
+   },
+   {
+    "title": "TESTING FOR PHYLOGENETIC SIGNAL IN COMPARATIVE DATA: BEHAVIORAL TRAITS ARE MORE LABILE",
+    "year": 2003,
+    "cites": 1825,
+    "doi": "10.1554/0014-3820(2003)057[0717:tfpsic]2.0.co;2"
+   },
+   {
+    "title": "Estimating a Binary Character's Effect on Speciation and Extinction",
+    "year": 2007,
+    "cites": 1240,
+    "doi": "10.1080/10635150701607033"
+   },
+   {
+    "title": "How to measure and test phylogenetic signal",
+    "year": 2012,
+    "cites": 1224,
+    "doi": "10.1111/j.2041-210x.2012.00196.x"
+   }
+  ]
+ }
+}

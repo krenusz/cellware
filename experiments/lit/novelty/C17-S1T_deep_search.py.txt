@@ -1,0 +1,113 @@
+"""Deep H25 novelty check for C17-S1T (relevance-ranked search, forward citations, references, recall gate).
+
+Metadata only (OpenAlex, no key, no account). Titles pass lit_gap.neutral before saving.
+    python -I novelty_deep.py <out.json>
+"""
+
+import json
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
+
+sys.path.insert(0, r"D:\projects\cellware\experiments")
+from lit_gap import neutral  # noqa: E402
+
+API = "https://api.openalex.org/works"
+UA = {"User-Agent": "cellware-novelty/1.0 (public metadata, research use)"}
+SEL = "id,doi,title,publication_year,cited_by_count,type"
+
+QUERIES = {
+    "field": ["heritability of cell states lineage tracing", "transcriptional memory cell divisions single-cell",
+              "sister cell correlation cell fate", "lineage correlations single cells",
+              "cell state inheritance phylogeny", "fate bias dynamics phylogenies",
+              "epigenetic memory timescale cell state", "cell fate restriction timing lineage recording",
+              "phylogenetic signal single-cell lineage", "kin correlation cell state transitions",
+              "clonal memory decay divisions", "lineage and transcriptional state fate",
+              "fate potential barcoding single-cell", "stem cell heterogeneity lineage choice",
+              "cell state fluctuations memory", "slow fluctuations cell state"],
+    "ours": ["cell state memory across systems", "commitment and memory lineage trees",
+             "heritable fate bias across tissues"],
+}
+# Known-relevant papers: the search must find every one (recall gate)
+RECALL = {
+    "PATH 2024": "10.1038/s41588-024-01920-6",
+    "FateVec 2026": "10.64898/2026.10.06.756974",
+    "Hormoz 2016 kin correlation": "10.1016/j.cels.2016.10.015",
+    "Shaffer 2020 MemorySeq": "10.1016/j.cell.2020.07.003",
+    "Weinreb 2020 LARRY": "10.1126/science.aaw3381",
+    "Chang 2008 noise lineage choice": "10.1038/nature06965",
+    "Sandler 2015 lineage correlations": "10.1038/nature14318",
+}
+CITED_TOPIC = "memory OR heritability OR heritable OR lineage OR sister OR inheritance"
+
+
+def get(params, path=""):
+    url = API + path + ("?" + urllib.parse.urlencode(params) if params else "")
+    for i in range(5):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+                return json.loads(r.read())
+        except Exception as e:  # noqa: BLE001
+            print("retry", i + 1, str(e)[:80], flush=True)
+            time.sleep(4 * (i + 1))
+    return {}
+
+
+def rows(res, src):
+    out = []
+    for w in res.get("results", []):
+        out.append({"id": w["id"].rsplit("/", 1)[-1], "doi": (w.get("doi") or "").replace("https://doi.org/", ""),
+                    "title": w.get("title") or "", "year": w.get("publication_year"),
+                    "cites": w.get("cited_by_count"), "src": src})
+    return out
+
+
+def main():
+    out_path = sys.argv[1]
+    allrows, recall_ids = [], {}
+    for name, doi in RECALL.items():
+        w = get({"select": SEL}, f"/doi:{doi}")
+        recall_ids[name] = w.get("id", "").rsplit("/", 1)[-1] if w else None
+        time.sleep(0.3)
+    for kind, qs in QUERIES.items():
+        for q in qs:
+            res = get({"filter": f"title_and_abstract.search:{q}", "sort": "relevance_score:desc",
+                       "per-page": 50, "select": SEL})
+            allrows += rows(res, f"{kind}: {q}")
+            time.sleep(0.3)
+    for name, wid in recall_ids.items():  # forward citations, topic-filtered, relevance-ranked
+        if not wid:
+            continue
+        res = get({"filter": f"cites:{wid},title_and_abstract.search:{CITED_TOPIC}",
+                   "sort": "relevance_score:desc", "per-page": 50, "select": SEL})
+        allrows += rows(res, f"cited_by: {name}")
+        time.sleep(0.3)
+    for name in ("PATH 2024", "FateVec 2026", "Hormoz 2016 kin correlation", "Shaffer 2020 MemorySeq"):  # backward references
+        w = get({"select": "referenced_works"}, f"/{recall_ids[name]}") if recall_ids.get(name) else {}
+        refs = [r.rsplit("/", 1)[-1] for r in w.get("referenced_works", [])]
+        for i in range(0, len(refs), 50):
+            res = get({"filter": "openalex:" + "|".join(refs[i : i + 50]), "per-page": 50, "select": SEL})
+            allrows += rows(res, f"refs: {name}")
+            time.sleep(0.3)
+    found = {r["id"] for r in allrows}
+    recall = {n: (wid in found) for n, wid in recall_ids.items()}
+    merged = {}
+    for r in allrows:
+        m = merged.setdefault(r["id"], {**r, "src": set()})
+        m["src"].add(r["src"])
+    kept = [dict(m, src=sorted(m["src"])) for m in merged.values() if neutral(m)]
+    dropped = len(merged) - len(kept)
+    rel = re.compile(r"memor|heritab|inherit|sister|kin |lineage correl|phylogen|fate bias|restriction|plasticity|"
+                     r"clonal|lineage", re.I)
+    kept.sort(key=lambda m: (-len(m["src"]), -bool(rel.search(m["title"])), -(m["cites"] or 0)))
+    res = {"recall": recall, "recall_valid": all(recall.values()), "n_unique": len(merged), "n_kept": len(kept),
+           "dropped_non_neutral": dropped, "queries": QUERIES, "rows": kept}
+    json.dump(res, open(out_path, "w", encoding="utf-8"), indent=1)
+    print(json.dumps({k: res[k] for k in ("recall", "recall_valid", "n_unique", "n_kept", "dropped_non_neutral")},
+                     indent=1))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,432 @@
+{
+ "step": "C17-S2",
+ "date": "2026-11-20",
+ "concept": [
+  {
+   "query": "phylogenetic correlation cell state",
+   "matches": 212,
+   "top": [
+    {
+     "title": "Lignin Biosynthesis and Structure",
+     "year": 2010,
+     "cites": 3170,
+     "doi": "10.1104/pp.110.155119"
+    },
+    {
+     "title": "The Receptive Surface of the Angiosperm Stigma",
+     "year": 1977,
+     "cites": 792,
+     "doi": "10.1093/oxfordjournals.aob.a085414"
+    },
+    {
+     "title": "Kr\u00fcppel-like Factors: Three Fingers in Many Pies",
+     "year": 2001,
+     "cites": 670,
+     "doi": "10.1074/jbc.r100043200"
+    },
+    {
+     "title": "Correlating viral phenotypes with phylogeny: Accounting for phylogenetic uncertainty",
+     "year": 2007,
+     "cites": 474,
+     "doi": "10.1016/j.meegid.2007.08.001"
+    },
+    {
+     "title": "BiolFlor \u2014 a new plant\u2010trait database as a tool for plant invasion ecology",
+     "year": 2004,
+     "cites": 408,
+     "doi": "10.1111/j.1366-9516.2004.00106.x"
+    },
+    {
+     "title": "Legume Transcription Factors: Global Regulators of Plant Development and Response to the Environment",
+     "year": 2007,
+     "cites": 357,
+     "doi": "10.1104/pp.107.098061"
+    },
+    {
+     "title": "What Makes the Rhizobia-Legume Symbiosis So Special?",
+     "year": 2001,
+     "cites": 344,
+     "doi": "10.1104/pp.010866"
+    },
+    {
+     "title": "What is the function of neuroglobin?",
+     "year": 2009,
+     "cites": 268,
+     "doi": "10.1242/jeb.000729"
+    },
+    {
+     "title": "Colonization patterns of soil microbial communities in the Atacama Desert",
+     "year": 2013,
+     "cites": 244,
+     "doi": "10.1186/2049-2618-1-28"
+    },
+    {
+     "title": "On Explaining Language",
+     "year": 1969,
+     "cites": 237,
+     "doi": "10.1126/science.164.3880.635"
+    },
+    {
+     "title": "Dimerization Controls the Activity of Fungal Elicitors That Trigger Systemic Resistance in Plants",
+     "year": 2008,
+     "cites": 124,
+     "doi": "10.1074/jbc.m802724200"
+    },
+    {
+     "title": "Linking emotion to the social brain: The role of the serotonin transporter in human social behaviour",
+     "year": 2007,
+     "cites": 111,
+     "doi": "10.1038/sj.embor.7401008"
+    },
+    {
+     "title": "Fungal endophytes of grasses: hybrids rescued by vertical transmission? An evolutionary perspective",
+     "year": 2007,
+     "cites": 104,
+     "doi": "10.1111/j.1469-8137.2007.01978.x"
+    },
+    {
+     "title": "The plant cuticle: old challenges, new perspectives",
+     "year": 2017,
+     "cites": 103,
+     "doi": "10.1093/jxb/erx389"
+    },
+    {
+     "title": "Do birds differentially distribute antimicrobial proteins within clutches of eggs?",
+     "year": 2008,
+     "cites": 95,
+     "doi": "10.1093/beheco/arn019"
+    },
+    {
+     "title": "Diversification of Life Histories in New World Birds",
+     "year": 2010,
+     "cites": 92,
+     "doi": "10.1525/auk.2010.127.2.253"
+    },
+    {
+     "title": "The primrose path to heterostyly",
+     "year": 2006,
+     "cites": 72,
+     "doi": "10.1111/j.1469-8137.2006.01833.x"
+    },
+    {
+     "title": "Successful fishing for nucleus pulposus progenitor cells of the intervertebral disc across species",
+     "year": 2018,
+     "cites": 65,
+     "doi": "10.1002/jsp2.1018"
+    },
+    {
+     "title": "Comparative population genomics reveals genetic basis underlying body size of domestic chickens",
+     "year": 2016,
+     "cites": 65,
+     "doi": "10.1093/jmcb/mjw044"
+    },
+    {
+     "title": "Defining heritability, plasticity, and transition dynamics of cellular phenotypes in somatic evolution",
+     "year": 2024,
+     "cites": 62,
+     "doi": "10.1038/s41588-024-01920-6"
+    },
+    {
+     "title": "Testing the Oxidative Stress Hypothesis of Aging in Primate Fibroblasts: Is There a Correlation Between Species Longevity and Cellular ROS Production?",
+     "year": 2012,
+     "cites": 62,
+     "doi": "10.1093/gerona/glr216"
+    }
+   ]
+  },
+  {
+   "query": "lineage restriction developmental time",
+   "matches": 155,
+   "top": [
+    {
+     "title": "Induction of bone marrow stromal cells to neurons: Differentiation, transdifferentiation, or artifact?",
+     "year": 2004,
+     "cites": 473,
+     "doi": "10.1002/jnr.20148"
+    },
+    {
+     "title": "RNA Methylation by the MIS Complex Regulates a Cell Fate Decision in Yeast",
+     "year": 2012,
+     "cites": 297,
+     "doi": "10.1371/journal.pgen.1002732"
+    },
+    {
+     "title": "Assembly and Motility of Eukaryotic Cilia and Flagella. Lessons from Chlamydomonas reinhardtii",
+     "year": 2001,
+     "cites": 292,
+     "doi": "10.1104/pp.010807"
+    },
+    {
+     "title": "Brachypodium as a Model for the Grasses: Today and the Future",
+     "year": 2011,
+     "cites": 283,
+     "doi": "10.1104/pp.111.179531"
+    },
+    {
+     "title": "Accepting Partnership by Submission? Morphological Phylogenetics in a Molecular Millennium",
+     "year": 2004,
+     "cites": 192,
+     "doi": "10.1080/10635150490423962"
+    },
+    {
+     "title": "The Evolving Complexity of the Auxin Pathway",
+     "year": 2008,
+     "cites": 176,
+     "doi": "10.1105/tpc.108.060418"
+    },
+    {
+     "title": "An Ascidian Homolog of the Mouse Brachyury (T) Gene is Expressed Exclusively in Notochord Cells at the Fate Restricted Stage",
+     "year": 1994,
+     "cites": 163,
+     "doi": "10.1111/j.1440-169x.1994.00009.x"
+    },
+    {
+     "title": "Spatial aspects of seed dispersal and seedling recruitment in orchids",
+     "year": 2007,
+     "cites": 159,
+     "doi": "10.1111/j.1469-8137.2007.02223.x"
+    },
+    {
+     "title": "POPULATION GENETIC CONSEQUENCES OF DEVELOPMENTAL EVOLUTION IN SEA URCHINS (GENUS HELIOCIDARIS )",
+     "year": 1992,
+     "cites": 155,
+     "doi": "10.1111/j.1558-5646.1992.tb01125.x"
+    },
+    {
+     "title": "Fission and Fusion of Plant Mitochondria, and Genome Maintenance",
+     "year": 2017,
+     "cites": 150,
+     "doi": "10.1104/pp.17.01025"
+    },
+    {
+     "title": "Conditional Deletion of Gremlin Causes a Transient Increase in Bone Formation and Bone Mass",
+     "year": 2007,
+     "cites": 142,
+     "doi": "10.1074/jbc.m701317200"
+    },
+    {
+     "title": "Chromatin-Remodeling and Memory Factors. New Regulators of Plant Development",
+     "year": 2002,
+     "cites": 122,
+     "doi": "10.1104/pp.006791"
+    },
+    {
+     "title": "The determination of neuronal fate in the cerebral cortex",
+     "year": 1989,
+     "cites": 119,
+     "doi": "10.1016/0166-2236(89)90041-6"
+    },
+    {
+     "title": "Plant Cell Identity. The Role of Position and Lineage",
+     "year": 2001,
+     "cites": 109,
+     "doi": "10.1104/pp.125.1.112"
+    },
+    {
+     "title": "Late Origin of Glia-Restricted Progenitors in the Developing Mouse Cerebral Cortex",
+     "year": 2009,
+     "cites": 95,
+     "doi": "10.1093/cercor/bhp046"
+    },
+    {
+     "title": "Larval ecology, life history strategies, and patterns of extinction and survivorship among Ordovician trilobites",
+     "year": 1989,
+     "cites": 90,
+     "doi": "10.1017/s0094837300009313"
+    },
+    {
+     "title": "Exploring Bioinorganic Pattern Formation in Diatoms. A Story of Polarized Trafficking",
+     "year": 2001,
+     "cites": 89,
+     "doi": "10.1104/pp.010709"
+    },
+    {
+     "title": "Retroviruses and the study of cell lineage",
+     "year": 1987,
+     "cites": 80,
+     "doi": "10.1242/dev.101.3.409"
+    },
+    {
+     "title": "The plant cell cycle in context",
+     "year": 2014,
+     "cites": 77,
+     "doi": "10.1093/jxb/eru188"
+    },
+    {
+     "title": "A role for cytoplasmic determinants in the development of the mouse early embryo?",
+     "year": 1986,
+     "cites": 77,
+     "doi": "10.1242/dev.97.supplement.97"
+    }
+   ]
+  },
+  {
+   "query": "kin correlation cell fate",
+   "matches": 1,
+   "top": [
+    {
+     "title": "Network Inference, Analysis, and Modeling in Systems Biology",
+     "year": 2007,
+     "cites": 209,
+     "doi": "10.1105/tpc.107.054700"
+    }
+   ]
+  },
+  {
+   "query": "sister clade fate stage",
+   "matches": 4,
+   "top": [
+    {
+     "title": "The Moss Physcomitrella patens, Now and Then",
+     "year": 2001,
+     "cites": 176,
+     "doi": "10.1104/pp.010786"
+    },
+    {
+     "title": "Winter Memory throughout the Plant Kingdom: Different Paths to Flowering",
+     "year": 2016,
+     "cites": 169,
+     "doi": "10.1104/pp.16.01322"
+    },
+    {
+     "title": "Ancient eudicot hexaploidy meets ancestral eurosid gene order",
+     "year": 2013,
+     "cites": 49,
+     "doi": "10.1186/1471-2164-14-s7-s3"
+    },
+    {
+     "title": "Plant structure and function: Evolutionary origins and underlying mechanisms",
+     "year": 2022,
+     "cites": 6,
+     "doi": "10.1093/plphys/kiac320"
+    }
+   ]
+  }
+ ],
+ "references": {
+  "source": "10.1016/j.cell.2026.09.050",
+  "n_references": 185,
+  "top": [
+   {
+    "title": "Scikit-learn: Machine Learning in Python",
+    "year": 2012,
+    "cites": 71934,
+    "doi": "10.48550/arxiv.1201.0490"
+   },
+   {
+    "title": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+    "year": 2019,
+    "cites": 65746,
+    "doi": "10.48550/arxiv.1912.01703"
+   },
+   {
+    "title": "Matplotlib: A 2D Graphics Environment",
+    "year": 2007,
+    "cites": 46613,
+    "doi": "10.1109/mcse.2007.55"
+   },
+   {
+    "title": "Array programming with NumPy",
+    "year": 2020,
+    "cites": 34629,
+    "doi": "10.1038/s41586-020-2649-2"
+   },
+   {
+    "title": "FastTree 2 \u2013 Approximately Maximum-Likelihood Trees for Large Alignments",
+    "year": 2010,
+    "cites": 16104,
+    "doi": "10.1371/journal.pone.0009490"
+   },
+   {
+    "title": "Data Structures for Statistical Computing in Python",
+    "year": 2010,
+    "cites": 15897,
+    "doi": "10.25080/majora-92bf1922-00a"
+   },
+   {
+    "title": "SCANPY: large-scale single-cell gene expression data analysis",
+    "year": 2018,
+    "cites": 10151,
+    "doi": "10.1186/s13059-017-1382-0"
+   },
+   {
+    "title": "seaborn: statistical data visualization",
+    "year": 2021,
+    "cites": 9115,
+    "doi": "10.21105/joss.03021"
+   },
+   {
+    "title": "Genome-wide atlas of gene expression in the adult mouse brain",
+    "year": 2006,
+    "cites": 6033,
+    "doi": "10.1038/nature05453"
+   },
+   {
+    "title": "Search-and-replace genome editing without double-strand breaks or donor DNA",
+    "year": 2019,
+    "cites": 5418,
+    "doi": "10.1038/s41586-019-1711-4"
+   },
+   {
+    "title": "The single-cell transcriptional landscape of mammalian organogenesis",
+    "year": 2019,
+    "cites": 4906,
+    "doi": "10.1038/s41586-019-0969-x"
+   },
+   {
+    "title": "The embryonic cell lineage of the nematode Caenorhabditis elegans",
+    "year": 1983,
+    "cites": 4744,
+    "doi": "10.1016/0012-1606(83)90201-4"
+   },
+   {
+    "title": "Spatially resolved, highly multiplexed RNA profiling in single cells",
+    "year": 2015,
+    "cites": 3232,
+    "doi": "10.1126/science.aaa6090"
+   },
+   {
+    "title": "Deep generative modeling for single-cell transcriptomics",
+    "year": 2018,
+    "cites": 3096,
+    "doi": "10.1038/s41592-018-0229-2"
+   },
+   {
+    "title": "Genome editing with CRISPR\u2013Cas nucleases, base editors, transposases and prime editors",
+    "year": 2020,
+    "cites": 2432,
+    "doi": "10.1038/s41587-020-0561-9"
+   },
+   {
+    "title": "Intestinal Crypt Homeostasis Results from Neutral Competition between Symmetrically Dividing Lgr5 Stem Cells",
+    "year": 2010,
+    "cites": 2107,
+    "doi": "10.1016/j.cell.2010.09.016"
+   },
+   {
+    "title": "Transgenic strategies for combinatorial expression of fluorescent proteins in the nervous system",
+    "year": 2007,
+    "cites": 2086,
+    "doi": "10.1038/nature06293"
+   },
+   {
+    "title": "Spatiotemporal transcriptomic atlas of mouse organogenesis using DNA nanoball-patterned arrays",
+    "year": 2022,
+    "cites": 1990,
+    "doi": "10.1016/j.cell.2022.04.003"
+   },
+   {
+    "title": "Isl1 Identifies a Cardiac Progenitor Population that Proliferates Prior to Differentiation and Contributes a Majority of Cells to the Heart",
+    "year": 2003,
+    "cites": 1780,
+    "doi": "10.1016/s1534-5807(03)00363-0"
+   },
+   {
+    "title": "Single-Cell Transcriptome Atlas of Murine Endothelial Cells",
+    "year": 2020,
+    "cites": 1438,
+    "doi": "10.1016/j.cell.2020.01.015"
+   }
+  ]
+ }
+}
