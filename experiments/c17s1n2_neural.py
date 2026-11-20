@@ -90,7 +90,7 @@ def prefilter(title, summary):
     return bool(NEURAL.search(t)) and bool(LINEAGE.search(t))
 
 
-def geo_query(name, q, limit=2000):
+def geo_query(name, q, limit=10000):
     r = get(EUTILS + "esearch.fcgi?" + urllib.parse.urlencode(
         {"db": "gds", "term": q, "retmax": limit, "retmode": "json", "tool": "cellware-sweep"}))["esearchresult"]
     ids, recs = r.get("idlist", []), {}
@@ -121,17 +121,19 @@ def biostudies_query(q, pages=3):
     return out
 
 
-def zenodo_query(q, pages=3):
+def zenodo_query(q, pages=8):
+    """Amendment 1: Zenodo refuses size 100 with a type filter (HTTP 400); 25 per page, type filtered here."""
     out = {}
     for p in range(1, pages + 1):
-        r = get("https://zenodo.org/api/records?" + urllib.parse.urlencode(
-            {"q": q, "size": 100, "page": p, "type": "dataset"}))
+        r = get("https://zenodo.org/api/records?" + urllib.parse.urlencode({"q": q, "size": 25, "page": p}))
         hits = r.get("hits", {}).get("hits", [])
         for h in hits:
             m = h.get("metadata", {})
+            if (m.get("resource_type") or {}).get("type") not in (None, "dataset"):
+                continue
             out[f"zenodo:{h.get('id')}"] = {"title": m.get("title", ""),
                                             "summary": re.sub(r"<[^>]+>", " ", m.get("description") or "")}
-        if len(hits) < 100:
+        if len(hits) < 25:
             break
         time.sleep(0.5)
     return out
@@ -147,7 +149,7 @@ def run():
     for name, q in GEO_QUERIES.items():
         try:
             n, recs = geo_query(name, q)
-            res["queries"][name] = {"count": n, "retrieved": len(recs)}
+            res["queries"][name] = {"count": n, "retrieved": len(recs), "complete": len(recs) >= n * 0.98}
             geo.update(recs)
         except Exception as e:  # noqa: BLE001
             res["errors"].append(f"geo {name}: {str(e)[:100]}")
