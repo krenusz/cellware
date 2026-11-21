@@ -12868,3 +12868,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Limits: one embryo; shared niche; k in edges is a proxy for divisions; edge depth, not the date clock (P1 clock with this label was not pretested).
 - Practice: selftest ok; power files asserted in the job; 5 starts with spread; eps fitted; calibration per tau x k bin; neutral wording; tick-list in the result entry.
 - Compute: GitHub Actions, sweeps/c17s1pl_t4_fit.txt (fetch by tag, sha256 checked; structure, then fit).
+
+### C17-S1PL-T4 result: NOT SUPPORTED; commitment-only is the best pooled model with the finer label (2026-11-21; run https://github.com/krenusz/cellware/actions/runs/44931512302; train founder clades only; Bence: "check all of them whom are passes")
+- Structure for `celltype`: 24 categories, 8,146 pairs, 27 eligible clades (as in P2).
+- **Rule:** M_full beats both reductions in 9 of 27 clades (needed >= 18). Pooled held-out error: commitment-only 0.05233, full 0.05242, memory-only 0.05491. **Verdict: NOT SUPPORTED** (as predicted, ~75%). Full beats commitment-only in 15/27, memory-only in 20/27.
+- lambda 0.862 on all data, leave-one-out 0.839-0.891: below the predicted 0.90-0.96 (prediction wrong on this point). C 0.39 / 0.71 / 0.95 at tau 19 / 26 / 36. Fitted eps 0.69.
+- **Caveat:** fitted eps 0.69 is above the highest noise level pretested (0.57, P6). Power at 0.57 was 1.00, but at 0.69 it is not verified; until checked, the "real negative" reading of this result is provisional.
+- Calibration (in-sample, tau x k bins): all bins within 0.03 (largest +0.029, latest commitment, fewest edges).
+- Reading: across three variants (edge depth with two labels, date clock) the memory term never carries the fit; commitment does. Stage-aware memory per division adds little beyond commitment on this embryo.
+- Practice: power files asserted in the job; start spread <= 5e-4; eps fitted; calibration reported; neutral wording; A/B/C sealed and unspent. Lanes: Opus wrote pre-registration, code and verdict; Actions ran the job.
