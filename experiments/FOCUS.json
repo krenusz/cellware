@@ -81,7 +81,8 @@
   "c17s1_params.py",
   "c17_data_sweep.py",
   "c17s1pl_tree.py",
-  "c17s1pl_fit.py"
+  "c17s1pl_fit.py",
+  "c17s1pl_pretest.py"
  ],
  "parked": [
   "#27 series gain / drug compression",
