@@ -162,6 +162,11 @@ SEEDS = {
     "Schiffman 2024 (PATH, phylogenetic correlations, heritability)": "10.1038/s41588-024-01920-6",
     "Phillips 2019 (memory and relatedness of transcriptional activity)": "10.1038/s41467-019-09189-8",
     "BMC Biol 2024 (transcriptional memory lost with differentiation)": "10.1186/s12915-024-01846-9",
+    # retro 2026-11-21: stage-aware model on the dated embryo tree (clock vs division; commitment carries the fit)
+    "DNA Typewriter mouse 2026 (dated embryo tree; sealed set source, titles and abstracts only)": "10.1126/science.ael0508",
+    "FateVec 2026 (progressive asynchronous loss of potential on embryo trees)": "10.64898/2026.10.06.756974",
+    "Curr Biol 1998 (cell-intrinsic differentiation timer)": "10.1016/s0960-9822(98)70177-0",
+    "Nat Commun 2016 (cell-cycle-independent temporal identity)": "10.1038/ncomms11349",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -235,6 +240,10 @@ TOPICS = {
     # C14 close 2026-11-16: in vivo lineage + state data with many independent units (fresh hold-outs)
     "in_vivo_lineage_state": [r"lineage recorder", r"molecular recording", r"phylogen", r"cassiopeia",
                               r"in vivo lineage", r"whole.organism lineage", r"lineage tree", r"prime editing"],
+    # retro 2026-11-21: what times commitment, a clock or the division count
+    "developmental_timer": [r"developmental timer", r"intrinsic timer", r"differentiation timer",
+                            r"cell.cycle.independent", r"mitotic (history|clock|count)", r"division (count|number)",
+                            r"temporal identity", r"timing of (commitment|differentiation|fate)"],
     "sister_split": [r"sister (cells?|wells?|clones?)", r"split.{0,30}(wells|conditions|sisters|across)",
                      r"twin", r"fluctuation test", r"same clone.{0,40}(different|two|both) (conditions|wells|environments)",
                      r"clonal (split|splitting)", r"barcod.{0,60}(divided|split)"],
