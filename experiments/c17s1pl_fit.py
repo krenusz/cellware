@@ -247,9 +247,28 @@ def gate():
     print(json.dumps(out, indent=1))
 
 
-def fit():
-    """Train founder clades only; as C17-S1T real_fit, with the 2/3 rule of the C17-S1PL-T pre-registration."""
-    if not json.loads(GATE.read_text(encoding="utf-8")).get("pass"):
+DAY_END = 13.5  # every leaf of the dated tree is at 13.5 days (C17-S1PL-T2 pre-flight)
+FIT3 = RES / "c17s1pl_t3_fit.json"
+
+
+def clock_analytic(unit, z, k, Q, pi, n1, n2):
+    """C17-S1PL-T3 gate: simulator vs closed form, bias averaged over sets (amendment 1 form), on the date covariate."""
+    S = {"emb": unit, "z": z, "k": k, "Q": Q, "pi": pi, "n1": n1.astype(int), "n2": n2.astype(int)}
+    lam, slope = T.TRUTHS["full"]
+    al, be = T.planted_c(S, slope)
+    rng = np.random.default_rng(T.SEED + 303)
+    cf = T.closed_form(lam, al, be, T.EPS, z, k, Q)
+    B = bins_of(S)
+    dlt = np.array([[np.mean(a[m]) - np.mean(cf[m]) for m in B.values()]
+                    for a in (T.simulate(S, lam, al, be, rng) for _ in range(N_ANALYTIC))])
+    return {"bins": list(B), "bias_per_bin": dlt.mean(0).tolist(), "max_abs_bias": float(np.max(np.abs(dlt.mean(0)))),
+            "pass": bool(np.max(np.abs(dlt.mean(0))) <= 0.01)}
+
+
+def fit(cov="tau"):
+    """Train founder clades only; as C17-S1T real_fit, with the 2/3 rule of the C17-S1PL-T pre-registration.
+    cov="date": C17-S1PL-T3, commitment by split date (days), memory per division edge."""
+    if cov == "tau" and not json.loads(GATE.read_text(encoding="utf-8")).get("pass"):
         raise SystemExit("gate not passed: no fit (pre-registered order)")
     d = json.loads(STRUCT.read_text(encoding="utf-8"))
     rows, pop, cats, _ = load_train()
@@ -258,12 +277,22 @@ def fit():
     assert unit.tolist() == d["pairs"]["embryo"], "pair order differs from the structure stage"
     tau = np.array([r[1] for r in rows], float)
     k = np.array([r[2] for r in rows], float)
-    z = (tau - d["tau_mean"]) / d["tau_sd"]
+    x = tau if cov == "tau" else DAY_END - np.array([r[3] for r in rows], float)
+    xm, xs = (d["tau_mean"], d["tau_sd"]) if cov == "tau" else (float(x.mean()), float(x.std()))
+    z = (x - xm) / xs
     pi = {u: v / v.sum() for u, v in pop.items()}
     Q = np.array([np.sum(pi[u] ** 2) for u in unit])
     c1 = np.array([r[4] for r in rows], float)
     c2 = np.array([r[5] for r in rows], float)
     n1, n2 = c1.sum(1), c2.sum(1)
+    extra = {}
+    if cov == "date":
+        an = clock_analytic(unit, z, k, Q, pi, n1, n2)  # before any real agreement is computed
+        extra = {"analytic_gate": an, "date_mean": xm, "date_sd": xs, "corr_date_k": float(np.corrcoef(x, k)[0, 1])}
+        T.say(json.dumps(an))
+        if not an["pass"]:
+            T.dump({"verdict": "STOPPED: analytic gate failed", **extra}, FIT3)
+            raise SystemExit("analytic gate failed: no fit (pre-registered)")
     a = np.sum((c1 / n1[:, None]) * (c2 / n2[:, None]), axis=1)
     w = T.weights(n1, n2)
     rng = np.random.default_rng(T.SEED)
@@ -275,8 +304,8 @@ def fit():
         full[m] = {"loss": loss, "start_spread": spread, "alpha": float(al), "beta_per_sd_tau": float(be),
                    "lambda": float(lam), "eps": float(eps)}
     th = T.fit("full", z, k, Q, a, w, rng)[0]
-    tq = np.percentile(tau, [10, 50, 90])
-    C_at = {f"tau_{t:.0f}": float(T.sig(th[0] + th[1] * (t - d["tau_mean"]) / d["tau_sd"])) for t in tq}
+    tq = np.percentile(x, [10, 50, 90])
+    C_at = {f"{cov}_{t:.1f}": float(T.sig(th[0] + th[1] * (t - xm) / xs)) for t in tq}
     pred = T.predict(th, "full", z, k, Q)
     calib = {b: {"n": int(m.sum()), "obs": float(np.mean(a[m])), "pred": float(np.mean(pred[m]))}
              for b, m in bins_of({"z": z, "k": k}).items()}
@@ -285,9 +314,10 @@ def fit():
            "loo": lo, "lambda_loo_quantiles": np.percentile(lam_l, [0, 10, 50, 90, 100]).tolist(),
            "full_data_fits": full, "C_at_tau_quantiles": C_at, "calibration_in_sample": calib,
            "n_pairs": len(rows), "eligible_founders": d["eligible_embryos"], "label": LABEL,
-           "note": "train founder clades of one embryo; lineage-constrained tree (biases toward M_com); "
-                   "k in edges is a proxy for divisions; calibration uses the full-data fit (in-sample)."}
-    T.dump(res, FIT)
+           "commitment_covariate": cov, **extra,
+           "note": "train founder clades of one embryo; k in edges is a proxy for divisions; calibration uses the "
+                   "full-data fit (in-sample)."}
+    T.dump(res, FIT if cov == "tau" else FIT3)
     T.say(json.dumps({k: v for k, v in res.items() if k not in ("calibration_in_sample", "loo")}, indent=1))
     T.say(json.dumps({k: lo[k] for k in ("full_beats_both", "n_eligible", "pooled", "pass")}, indent=1))
 
@@ -325,7 +355,14 @@ def selftest():
         fh.write(f"{P.ID_COL}\tx\t{LABEL}\n" + "".join(rows))
     got = train_labels([f"c{i}" for i in range(10)], np.array([i % 2 == 0 for i in range(10)]), tmp)
     assert set(got) == {f"c{i}" for i in range(0, 10, 2)} and "SEALED" not in got.values(), got
-    print("selftest ok: preorder subtree ranges, rule function, train-only label rows")
+    # C17-S1PL-T3: on an ultrametric tree, (leaf time) - (time since split) is the split date
+    parent, blen, names = P.parse_newick("((A:2,B:2)X:1,(C:1.5,D:1.5)Y:1.5)R;")
+    s = P.structure(parent, blen, np.array([nm in "ABCD" and nm != "" for nm in names]))
+    for nd in (names.index("X"), names.index("Y"), names.index("R")):
+        ch = [i for i, p in enumerate(parent) if p == nd]
+        t = sum(s["sdist"][c] for c in ch) / sum(s["lab"][c] for c in ch) - s["rdist"][nd]
+        assert abs((3.0 - t) - s["rdist"][nd]) < 1e-9, "date = leaf time - time since split"
+    print("selftest ok: preorder subtree ranges, rule function, train-only label rows, split date")
 
 
 if __name__ == "__main__":
@@ -333,4 +370,5 @@ if __name__ == "__main__":
     if stage == "smoke":
         smoke(sys.argv[2])
     else:
-        {"selftest": selftest, "structure": structure, "analytic": analytic, "gate": gate, "fit": fit}[stage]()
+        {"selftest": selftest, "structure": structure, "analytic": analytic, "gate": gate, "fit": fit,
+         "fit3": lambda: fit("date")}[stage]()
