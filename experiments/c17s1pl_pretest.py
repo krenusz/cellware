@@ -136,7 +136,7 @@ def dates():
                     "corr_k": {"constrained": float(np.corrcoef(dc, k)[0, 1]),
                                "unconstrained": float(np.corrcoef(du, k)[0, 1])}})
     T.say(json.dumps(out, indent=1))
-    T.dump(out, RES / "c17s1pl_p_dates.json")
+    T.dump(out, RES / "c17s1pl_p_dates2.json")
 
 
 if __name__ == "__main__":
