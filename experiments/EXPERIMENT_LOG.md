@@ -12774,3 +12774,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Limits as pre-registered: one embryo, shared niche, a lineage-constrained tree (biases toward commitment), k in edges as a proxy for divisions.
 - Practice tick-list: selftest ok; 5 starts (spread <= 0.004); analytic check passed by amendment 1 (stated as post hoc); eps fitted; calibration reported; neutral wording (filter scan clean); A/B/C sealed and unspent.
 - Model lanes: Opus wrote the amendment, code and verdict; Actions ran the fit; analytic check local (synthetic only).
+
+### C17-S1PL-T2 (time instead of edges): STOPPED at pre-flight, not identifiable (2026-11-21; Bence: "1"; local structure read only, no labels)
+- Plan was: replace split depth in edges by split date, and divisions since the split by time since the split.
+- Feasibility read (tree structure only, all pairs of the stratified picker, no labels): every leaf sits at 13.5 days from the root (SD 0.000; the tree is exactly ultrametric). So time since split = 13.5 - split date for every pair: corr(split date, time since split) = -1.00. Commitment by date and memory by time since split are then both functions of the split date alone, and the nested test cannot separate them. Not pre-registered, no script written.
+- What stays identifiable: split date vs divisions since the split (edges): corr -0.11 (split date 10th-90th 7.7-11.6 days); tau (edges) vs date: corr 0.55. A "commitment on a clock, memory per division" variant would be separable.
