@@ -142,8 +142,32 @@ def dates():
     T.dump(out, RES / "c17s1pl_p_dates2.json")
 
 
+def apower(n_draws=20000):
+    """P2: power of a frozen-parameter A test from the spent train per-founder LOO errors (no sealed read)."""
+    from scipy import stats
+
+    a = json.loads((RES / "c17s1pl_t_fit.json").read_text(encoding="utf-8"))["loo"]["err"]
+    b = json.loads((RES / "c17s1pl_t3_fit.json").read_text(encoding="utf-8"))["loo"]["err"]
+    d0 = np.array([a[u]["full"] - b[u]["full"] for u in sorted(a)])
+    rng = np.random.default_rng(T.SEED + 2)
+    out = {"train": {"n": len(d0), "mean": float(d0.mean()), "sd": float(d0.std(ddof=1)), "wins": int((d0 > 0).sum())}}
+    for eff, shift in (("observed", 0.0), ("half", d0.mean() / 2), ("null", d0.mean())):
+        d = d0 - shift
+        for n in (10, 12, 13, 14, 16, 19, 27):
+            x = d[rng.integers(0, len(d), (n_draws, n))]
+            m, sd = x.mean(1), x.std(1, ddof=1)
+            p = 1 - stats.t.cdf(m / (sd / np.sqrt(n)), n - 1)
+            r1 = (p < 0.05) & (m > 0)
+            r2 = (m > 0) & ((x > 0).sum(1) >= np.ceil(2 * n / 3))
+            out[f"{eff}_n{n}"] = {"R1": float(r1.mean()), "R2": float(r2.mean())}
+    T.say(json.dumps(out, indent=1))
+    T.dump(out, RES / "c17s1pl_p2_apower.json")
+
+
 if __name__ == "__main__":
-    if sys.argv[1] == "dates":
+    if sys.argv[1] == "apower":
+        apower()
+    elif sys.argv[1] == "dates":
         dates()
     else:
         power(sys.argv[1], int(sys.argv[2]), float(sys.argv[3]) if len(sys.argv) > 3 else None)

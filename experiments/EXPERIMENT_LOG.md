@@ -12826,3 +12826,27 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Reported, not tested (as pre-registered):** with commitment on the date clock, pooled held-out error of the full model is 5.4% lower than with edge depth (0.0652 vs 0.0689), and lower in 19 of 27 clades; label noise absorbed falls from 0.57 to 0.40. Exploratory: second model on the same train pairs, chosen after the first; a claim would need a sealed-partition test.
 - Calibration (in-sample, date x k bins): largest miss -0.069 in the earliest-split, fewest-division bin (observed agreement below the model); other bins within 0.025.
 - Practice: selftest (split date on toy ultrametric tree) ok; start spread <= 1e-4; analytic gate passed; eps fitted; calibration reported; neutral wording; A/B/C sealed and unspent. Lanes: Opus wrote pre-registration, code and verdict; Actions ran the job.
+
+## C17-S1PL-P2: pretest of a sealed-A test "commitment follows the date clock better than edge depth" (pre-registered 2026-11-21; Bence: "1")
+- **Serves: C17-S1PL.** Decides whether the clock-vs-edge-depth signal of C17-S1PL-T3 (reported, not tested) can be confirmed on sealed partition A at power >= 0.8. Pretest only; no sealed read of any kind.
+- **Planned A test (what is being pretested):** both full models frozen at their train full-data fits (clock: C17-S1PL-T3; edge: C17-S1PL-T), covariates standardised by train mean/sd. On A pairs, per-founder weighted held-out error of each; d_f = err_edge - err_clock per eligible A founder (>= 30 pairs). Rules evaluated: R1 one-sided paired t over founders p < 0.05 and pooled d > 0; R2 pooled d > 0 and clock lower in >= 2/3 of founders.
+- **Method:** founder heterogeneity is the binding noise (train per-founder differences: mean 0.0037, sd 0.0097, 19/27 positive, t 2.0). Resample the 27 train per-founder differences (full models, leave-one-founder-out errors of C17-S1PL-T and -T3, already computed) at n founders = 10-19 (A has 19 founder clades; ~13 eligible expected from the train ratio 27/38), 20,000 draws each. Effect at observed, half (selection after seeing T: winner's curse), and zero (centred: false pass). Also n = 27 (A+B pooled) for reference only.
+- Pre-flight:
+  1. Unit: founder clade; one embryo; no treatment (H22 n/a).
+  2. Readout: no new data read. A's eligible count is not computed from A; it is projected from the train ratio.
+  3. Used data first: train LOO errors only (spent).
+  4. Power: this entry is the power check.
+  5. Exposure: none new; A/B/C untouched.
+  6. Literature: lit/novelty/C17-S1PL.md (2026-11-21 finding).
+  7. Readout gate (H21): an A test passes only with power >= 0.8 at the half effect and false pass <= 0.05.
+- **Prediction:** underpowered on A alone (expected t on A ~ 2.0 x sqrt(13/27) ~ 1.4); about 70% that no rule reaches 0.8 at the half effect.
+- Limits: LOO refit errors stand in for frozen-parameter errors; train founders stand in for A founders.
+- Practice: seeded; neutral wording; result entry with tick-list.
+- Compute: local (spent train results, seconds), c17s1pl_pretest.py apower.
+
+### C17-S1PL-P2 result: FAIL, a sealed-A test of clock vs edge depth is underpowered; A stays sealed and unspent (2026-11-21; local; Bence: "1")
+- Train per-founder differences (edge minus clock, full models, LOO): mean 0.0037, sd 0.0097, clock lower in 19/27.
+- R1 (one-sided paired t over founders): power at the observed effect 0.43 at n = 13 (A projected), 0.52 at n = 19 (every A founder eligible), 0.63 at n = 27 (A+B pooled); at half effect 0.21 / 0.25 / 0.29. False pass 0.065-0.069 (slightly above 0.05: skewed differences).
+- R2 (pooled d > 0 and >= 2/3 founders): false pass 0.24-0.36. Invalid as a test.
+- **Verdict: FAIL** (bar: power >= 0.8 at half effect, false pass <= 0.05). No rule reaches it even with two sealed partitions pooled. As predicted (~70%). The clock-vs-edge-depth signal stays exploratory; spending A on it would waste the partition.
+- Practice: seeded (20,000 draws per cell); no sealed read; A/B/C sealed and unspent; neutral wording. Lanes: Opus wrote plan, code and verdict; run locally (seconds).
