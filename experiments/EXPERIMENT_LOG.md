@@ -12850,3 +12850,21 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - R2 (pooled d > 0 and >= 2/3 founders): false pass 0.24-0.36. Invalid as a test.
 - **Verdict: FAIL** (bar: power >= 0.8 at half effect, false pass <= 0.05). No rule reaches it even with two sealed partitions pooled. As predicted (~70%). The clock-vs-edge-depth signal stays exploratory; spending A on it would waste the partition.
 - Practice: seeded (20,000 draws per cell); no sealed read; A/B/C sealed and unspent; neutral wording. Lanes: Opus wrote plan, code and verdict; run locally (seconds).
+
+## C17-S1PL-T4: edge test with the finer label `celltype` (24 categories), TRAIN founder clades only (pre-registered 2026-11-21; Bence: "check all of them whom are passes")
+- **Serves: C17-S1PL.** The only option that passed C17-S1PL-P and has not been run (P2). Asks whether "memory per division adds little beyond commitment" (C17-S1PL-T, major_trajectory) holds with a finer fate label. Re-check of the passes first: every P1/P2/P5/P6 verdict re-read from its result file and confirmed (P2: 24 categories, 8,146 pairs, 27 eligible, gate pass; power 1.00 at eps 0.12 and 0.57, false pass 0.00).
+- **Data and model:** as C17-S1PL-T (commitment on edge depth tau, memory per edge k, nested M_mem / M_com / M_full, same weights, 5 starts, pooling rule at 1% of train labelled leaves), with label `celltype` read for train founders only. Structure recomputed for this label inside the job (c17s1pl_t4_structure.json) before any agreement.
+- **Rule (unchanged):** SUPPORTED (exploratory) if M_full has lower leave-one-founder-out error than both reductions in >= 2/3 of eligible clades AND the lowest pooled error; otherwise report which reduction suffices.
+- **Multiplicity, stated now:** third model on the same train pairs (T and T3 were NOT SUPPORTED). A pass is exploratory only; sealed A/B/C stay unspent (a sealed confirmation would need its own pretest; P2 showed the clock comparison is underpowered on A).
+- Pre-flight:
+  1. Unit: founder clade (27 eligible of 38 train); one embryo; no treatment (H22 n/a).
+  2. Readout: `celltype` column of the train rows only; gate passed in P2.
+  3. Used data first: train only.
+  4. Power: P2 and P6 (20 sets per truth): power 1.00, false pass 0.00 at eps 0.12 and 0.57; the job asserts these files before fitting.
+  5. Exposure: the agreement of these pairs under major_trajectory was used in T and T3; the finer label nests in it, so this is a robustness check, not independent evidence.
+  6. Literature: lit/novelty/C17-S1PL.md.
+  7. Readout gate (H21): met (27 >= 20 clades, 8,146 >= 1,000 pairs).
+- **Prediction:** NOT SUPPORTED again (~75%), commitment-only within 2% of full pooled; lambda 0.90-0.96; fitted eps lower than 0.57 is not expected (finer labels add mismatch).
+- Limits: one embryo; shared niche; k in edges is a proxy for divisions; edge depth, not the date clock (P1 clock with this label was not pretested).
+- Practice: selftest ok; power files asserted in the job; 5 starts with spread; eps fitted; calibration per tau x k bin; neutral wording; tick-list in the result entry.
+- Compute: GitHub Actions, sweeps/c17s1pl_t4_fit.txt (fetch by tag, sha256 checked; structure, then fit).

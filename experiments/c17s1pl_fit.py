@@ -268,7 +268,7 @@ def clock_analytic(unit, z, k, Q, pi, n1, n2):
 def fit(cov="tau"):
     """Train founder clades only; as C17-S1T real_fit, with the 2/3 rule of the C17-S1PL-T pre-registration.
     cov="date": C17-S1PL-T3, commitment by split date (days), memory per division edge."""
-    if cov == "tau" and not json.loads(GATE.read_text(encoding="utf-8")).get("pass"):
+    if cov == "tau" and LABEL == "major_trajectory" and not json.loads(GATE.read_text(encoding="utf-8")).get("pass"):
         raise SystemExit("gate not passed: no fit (pre-registered order)")
     d = json.loads(STRUCT.read_text(encoding="utf-8"))
     rows, pop, cats, _ = load_train()
@@ -322,6 +322,17 @@ def fit(cov="tau"):
     T.say(json.dumps({k: lo[k] for k in ("full_beats_both", "n_eligible", "pooled", "pass")}, indent=1))
 
 
+def fit_celltype():
+    """C17-S1PL-T4: the C17-S1PL-T edge test with label `celltype` (gate: C17-S1PL-P P2 and P6 power files)."""
+    global LABEL, STRUCT, FIT
+    LABEL, STRUCT, FIT = "celltype", RES / "c17s1pl_t4_structure.json", RES / "c17s1pl_t4_fit.json"
+    for f in ("c17s1pl_p_power_edges_celltype.json", "c17s1pl_p_power_edges_celltype_eps0.57.json"):
+        p = json.loads((RES / f).read_text(encoding="utf-8"))
+        assert p["full"]["pass_rate"] >= 0.8 and max(p["mem"]["pass_rate"], p["com"]["pass_rate"]) <= 0.05, f
+    structure()
+    fit("tau")
+
+
 def selftest():
     rng = np.random.default_rng(1)
     for _ in range(20):
@@ -371,4 +382,4 @@ if __name__ == "__main__":
         smoke(sys.argv[2])
     else:
         {"selftest": selftest, "structure": structure, "analytic": analytic, "gate": gate, "fit": fit,
-         "fit3": lambda: fit("date")}[stage]()
+         "fit3": lambda: fit("date"), "fit4": fit_celltype}[stage]()
