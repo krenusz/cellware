@@ -12799,3 +12799,22 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - P5 dating: the unconstrained-dating tree has the same clades (all 8,146 train pair nodes found by leaf set); split dates Pearson 0.995, Spearman 0.995; the age ladder shifts dates by a median of 2.4 days but keeps their order. corr(date, k) -0.11 unconstrained. **PASS: the clock variant does not hinge on the ladder.**
 - P6 power at the real label noise eps 0.57 (20 sets per truth): clock: false pass 0.00 / 0.05, power 1.00, half 0.95; celltype: 0.00 / 0.00, 1.00, 1.00; **edges with major_trajectory (the test already run): 0.00 / 0.00, 1.00, 1.00.** So C17-S1PL-T was powered for the planted effect even at the real noise. Its NOT SUPPORTED is a real negative for that model, not a power failure. The real data differ from the planted truth (full beats commitment-only by 0.5% pooled; calibration misses up to 0.035).
 - Both passing variants would be further models on the same train data that already gave NOT SUPPORTED; any pre-registration must count them (2 more looks) and say so.
+
+## C17-S1PL-T3: clock + division model, commitment by split date and memory per division, TRAIN founder clades only (pre-registered 2026-11-21; Bence: "and go 1")
+- **Serves: C17-S1PL** (novelty lit/novelty/C17-S1PL.md, finding added 2026-11-21: partly published; time vs division as the driver of differentiation timing is classic, the nested fate model on a dated embryo tree was not found). Feasibility: C17-S1PL-P (P1, P5, P6 passed).
+- **Data:** as C17-S1PL-T: the same 8,146 train pairs, 27 eligible founder clades (>= 30 pairs), label `major_trajectory`, same pooling and arm rules.
+- **Model:** a = Q + (1 - Q)(1 - eps)[C(d) + (1 - C(d)) lambda^(2k)], with C(d) = logistic(alpha + beta z_d), z_d the standardised split date d = 13.5 - (mean time from split to the pair's labelled leaves) in days. k is edges, as before. Nested reductions M_mem (C = 0) and M_com (lambda = 0); the same weights, 5 starts, fitter and simulator (c17s1t_stage).
+- **Rule (unchanged from C17-S1PL-T):** SUPPORTED (exploratory) if M_full has lower leave-one-founder-out held-out error than both reductions in >= 2/3 of eligible clades AND the lowest pooled held-out error. Otherwise report which reduction suffices.
+- **Multiplicity, stated now:** this is the second model on the same train pairs (the first, C17-S1PL-T, was NOT SUPPORTED). A pass here is exploratory only; a claim would need a confirmation on sealed partition A with Bence's OK. Also reported, not tested: the held-out error of this model vs the edge model of C17-S1PL-T (which commitment clock fits better).
+- Pre-flight:
+  1. Unit: founder clade (27 eligible of 38 train); one embryo; no treatment (H22 n/a).
+  2. Readout: same labels as C17-S1PL-T (already read, train only); split dates from the tree.
+  3. Used data first: train only; A/B/C stay sealed.
+  4. Power: C17-S1PL-P P1 and P6 (synthetic labels on this structure, 20 sets per truth): false pass 0.00 / 0.00 at eps 0.12 and 0.00 / 0.05 at eps 0.57; power 1.00 at both; half slope 1.00 / 0.95; lambda recovery 1.00. Gate also run inside the fit job before any real label agreement: analytic bias averaged over 200 sets (amendment 1 form) <= 0.01 on the clock covariate, else stop.
+  5. Exposure: the real agreement of these pairs was used in C17-S1PL-T (edge model). Its tau and date correlate 0.55, so this test is not independent of that result. Stated.
+  6. Literature: novelty file above.
+  7. Readout gate (H21): met (27 >= 20 clades, 8,146 >= 1,000 pairs).
+- **Prediction (written now):** commitment by date fits at least as well as by edge depth (dates are robust to the dating ladder, P5). The memory term again adds little, so NOT SUPPORTED is the more likely outcome (about 65%). If it passes, lambda is 0.90-0.96.
+- Limits: one embryo; shared niche; dates depend on the dating model (order robust, Spearman 0.995 vs unconstrained); k in edges is a proxy for divisions.
+- Practice: selftest extended (date = 13.5 - time since split on the toy ultrametric tree); 5 starts with spread reported; analytic bias check; eps fitted; calibration per date x k bin; neutral wording; tick-list in the result entry.
+- Compute: GitHub Actions, sweeps/c17s1pl_t3_fit.txt (fetch by tag, sha256 checked; analytic check, then fit).

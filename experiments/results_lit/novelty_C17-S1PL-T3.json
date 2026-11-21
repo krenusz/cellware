@@ -1,0 +1,392 @@
+{
+ "step": "C17-S1PL-T3",
+ "date": "2026-11-21",
+ "concept": [
+  {
+   "query": "cell division counting versus timer differentiation",
+   "matches": 0,
+   "top": [],
+   "engine": "europepmc"
+  },
+  {
+   "query": "intrinsic timer differentiation precursor cells",
+   "matches": 11,
+   "top": [
+    {
+     "title": "A cell-intrinsic timer that operates during oligodendrocyte development.",
+     "year": "2000",
+     "cites": 202,
+     "doi": "10.1002/(sici)1521-1878(200001)22:1<64::aid-bies11>3.0.co;2-q"
+    },
+    {
+     "title": "p27Kip1 alters the response of cells to mitogen and is part of a cell-intrinsic timer that arrests the cell cycle and initiates differentiation.",
+     "year": "1998",
+     "cites": 169,
+     "doi": "10.1016/s0960-9822(98)70177-0"
+    },
+    {
+     "title": "Basic helix-loop-helix proteins and the timing of oligodendrocyte differentiation.",
+     "year": "2000",
+     "cites": 126,
+     "doi": "10.1242/dev.127.14.2989"
+    },
+    {
+     "title": "Cell-intrinsic timers and thyroid hormone regulate the probability of cell-cycle withdrawal and differentiation of oligodendrocyte precursor cells.",
+     "year": "1998",
+     "cites": 86,
+     "doi": "10.1006/dbio.1998.8877"
+    },
+    {
+     "title": "Posttranscriptional regulation of p18 and p27 Cdk inhibitor proteins and the timing of oligodendrocyte differentiation.",
+     "year": "2002",
+     "cites": 61,
+     "doi": "10.1006/dbio.2002.0626"
+    },
+    {
+     "title": "An analysis of the early events when oligodendrocyte precursor cells are triggered to differentiate by thyroid hormone, retinoic acid, or PDGF withdrawal.",
+     "year": "1999",
+     "cites": 46,
+     "doi": "10.1006/dbio.1999.9397"
+    },
+    {
+     "title": "Timing cell-cycle exit and differentiation in oligodendrocyte development.",
+     "year": "2001",
+     "cites": 14,
+     "doi": "10.1002/0470846666.ch9"
+    },
+    {
+     "title": "Proliferation and differentiation of oligodendrocyte progenitor cells induced from rat embryonic neural precursor cells followed by flow cytometry.",
+     "year": "2008",
+     "cites": 13,
+     "doi": "10.1002/cyto.a.20577"
+    },
+    {
+     "title": "Developmental timers. How do embryonic cells measure time?",
+     "year": "1994",
+     "cites": 6,
+     "doi": "10.1016/s0960-9822(00)00090-7"
+    },
+    {
+     "title": "The relationship between proliferation and differentiation during oligodendrocyte development",
+     "year": "1999",
+     "cites": 0,
+     "doi": ""
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "developmental clock cell fate commitment",
+   "matches": 1,
+   "top": [
+    {
+     "title": "The Metabolic Organ Clock: A Computable Framework Linking Cell-Lineage Architecture to Emergent Organ Bioenergetics",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.64898/2026.09.29.755490"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "cell cycle independent timing of differentiation",
+   "matches": 32,
+   "top": [
+    {
+     "title": "A morphogenetic wave of p27Kip1 transcription directs cell cycle exit during organ of Corti development.",
+     "year": "2006",
+     "cites": 162,
+     "doi": "10.1242/dev.02453"
+    },
+    {
+     "title": "The Mcs4 response regulator coordinately controls the stress-activated Wak1-Wis1-Sty1 MAP kinase pathway and fission yeast cell cycle.",
+     "year": "1997",
+     "cites": 135,
+     "doi": "10.1101/gad.11.8.1008"
+    },
+    {
+     "title": "Staggered cell-intrinsic timing of ath5 expression underlies the wave of ganglion cell neurogenesis in the zebrafish retina.",
+     "year": "2005",
+     "cites": 106,
+     "doi": "10.1242/dev.01831"
+    },
+    {
+     "title": "Loss of p27Kip1 function results in increased proliferative capacity of oligodendrocyte progenitors but unaltered timing of differentiation.",
+     "year": "1999",
+     "cites": 101,
+     "doi": "10.1242/dev.126.18.4027"
+    },
+    {
+     "title": "Cell-cycle-independent transitions in temporal identity of mammalian neural progenitor cells.",
+     "year": "2016",
+     "cites": 81,
+     "doi": "10.1038/ncomms11349"
+    },
+    {
+     "title": "ATF5 regulates the proliferation and differentiation of oligodendrocytes.",
+     "year": "2005",
+     "cites": 62,
+     "doi": "10.1016/j.mcn.2005.03.004"
+    },
+    {
+     "title": "A cell-autonomous requirement for Cip/Kip cyclin-kinase inhibitors in regulating neuronal cell cycle exit but not differentiation in the developing spinal cord.",
+     "year": "2007",
+     "cites": 58,
+     "doi": "10.1016/j.ydbio.2006.10.035"
+    },
+    {
+     "title": "Protein kinase C involvement in cell cycle modulation.",
+     "year": "2014",
+     "cites": 54,
+     "doi": "10.1042/bst20140128"
+    },
+    {
+     "title": "A developmental timing switch promotes axon outgrowth independent of known guidance receptors.",
+     "year": "2010",
+     "cites": 49,
+     "doi": "10.1371/journal.pgen.1001054"
+    },
+    {
+     "title": "p57Kip2 is a repressor of Mash1 activity and neuronal differentiation in neural stem cells.",
+     "year": "2009",
+     "cites": 45,
+     "doi": "10.1038/cdd.2009.72"
+    },
+    {
+     "title": "The RNA-binding protein LIN28B regulates developmental timing in the mammalian cochlea.",
+     "year": "2015",
+     "cites": 43,
+     "doi": "10.1073/pnas.1501077112"
+    },
+    {
+     "title": "The nucleolar GTP-binding proteins Gnl2 and nucleostemin are required for retinal neurogenesis in developing zebrafish.",
+     "year": "2011",
+     "cites": 39,
+     "doi": "10.1016/j.ydbio.2011.04.028"
+    },
+    {
+     "title": "The Emerging Roles of Fox Family Transcription Factors in Chromosome Replication, Organization, and Genome Stability.",
+     "year": "2020",
+     "cites": 36,
+     "doi": "10.3390/cells9010258"
+    },
+    {
+     "title": "Endocytic pathways and biological effects induced by UVB-dependent or ligand-dependent activation of the keratinocyte growth factor receptor.",
+     "year": "2006",
+     "cites": 30,
+     "doi": "10.1096/fj.05-3934fje"
+    },
+    {
+     "title": "Gatekeeper between quiescence and differentiation: p53 in axonal outgrowth and neurogenesis.",
+     "year": "2012",
+     "cites": 26,
+     "doi": "10.1016/b978-0-12-398309-1.00005-6"
+    },
+    {
+     "title": "The transcriptomic landscape of normal and ineffective erythropoiesis at single-cell resolution.",
+     "year": "2023",
+     "cites": 24,
+     "doi": "10.1182/bloodadvances.2023010382"
+    },
+    {
+     "title": "Roles for the Histone Modifying and Exchange Complex NuA4 in Cell Cycle Progression in Drosophila melanogaster.",
+     "year": "2016",
+     "cites": 21,
+     "doi": "10.1534/genetics.116.188581"
+    },
+    {
+     "title": "The differentiation of cerebellar interneurons is independent of their mitotic history.",
+     "year": "1999",
+     "cites": 18,
+     "doi": "10.1016/s0306-4522(98)00563-6"
+    },
+    {
+     "title": "The MicroRNA, miR-18a, Regulates NeuroD and Photoreceptor Differentiation in the Retina of Zebrafish.",
+     "year": "2019",
+     "cites": 16,
+     "doi": "10.1002/dneu.22666"
+    },
+    {
+     "title": "The P-type ATPase CATP-1 is a novel regulator of C. elegans developmental timing that acts independently of its predicted pump function.",
+     "year": "2007",
+     "cites": 14,
+     "doi": "10.1242/dev.02790"
+    },
+    {
+     "title": "A gibberellin methyltransferase modulates the timing of floral transition at the Arabidopsis shoot meristem.",
+     "year": "2020",
+     "cites": 7,
+     "doi": "10.1111/ppl.13146"
+    },
+    {
+     "title": "Inactivation of PLK4-STIL Module Prevents Self-Renewal and Triggers p53-Dependent Differentiation in Human Pluripotent Stem Cells.",
+     "year": "2018",
+     "cites": 7,
+     "doi": "10.1016/j.stemcr.2018.08.008"
+    },
+    {
+     "title": "Cytoplasmic expression of the cell cycle regulator cyclin D1 in radial glial progenitor cells modulates brain cortex development",
+     "year": "2024",
+     "cites": 3,
+     "doi": "10.1101/2024.12.23.630056"
+    },
+    {
+     "title": "Expression dynamics of lymphoid enhancer-binding factor 1 in terminal Schwann cells, dermal papilla, and interfollicular epidermis.",
+     "year": "2023",
+     "cites": 2,
+     "doi": "10.1002/dvdy.562"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "number of divisions fate restriction embryo",
+   "matches": 1,
+   "top": [
+    {
+     "title": "3D cellular morphometrics of ovule primordium development in &lt;i&gt;Zea mays&lt;/i&gt; reveal differential division and growth dynamics specifying megaspore mother cell singleness.",
+     "year": "2023",
+     "cites": 6,
+     "doi": "10.3389/fpls.2023.1174171"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "temporal competence progenitors lineage",
+   "matches": 18,
+   "top": [
+    {
+     "title": "Cell fate determination in the vertebrate retina.",
+     "year": "2012",
+     "cites": 265,
+     "doi": "10.1016/j.tins.2012.05.004"
+    },
+    {
+     "title": "Neuronal subtype specification within a lineage by opposing temporal feed-forward loops.",
+     "year": "2009",
+     "cites": 142,
+     "doi": "10.1016/j.cell.2009.10.032"
+    },
+    {
+     "title": "Math5 defines the ganglion cell competence state in a subpopulation of retinal progenitor cells exiting the cell cycle.",
+     "year": "2012",
+     "cites": 135,
+     "doi": "10.1016/j.ydbio.2012.03.006"
+    },
+    {
+     "title": "Tgf\u03b2 signaling regulates temporal neurogenesis and potency of neural stem cells in the CNS.",
+     "year": "2014",
+     "cites": 86,
+     "doi": "10.1016/j.neuron.2014.10.033"
+    },
+    {
+     "title": "Direct neuronal reprogramming by temporal identity factors.",
+     "year": "2023",
+     "cites": 38,
+     "doi": "10.1073/pnas.2122168120"
+    },
+    {
+     "title": "Molecular organization and timing of Wnt1 expression define cohorts of midbrain dopamine neuron progenitors in vivo.",
+     "year": "2011",
+     "cites": 31,
+     "doi": "10.1002/cne.22710"
+    },
+    {
+     "title": "Competence of failed endocrine progenitors to give rise to acinar but not ductal cells is restricted to early pancreas development.",
+     "year": "2012",
+     "cites": 29,
+     "doi": "10.1016/j.ydbio.2011.10.025"
+    },
+    {
+     "title": "A genetic cascade involving klumpfuss, nab and castor specifies the abdominal leucokinergic neurons in the Drosophila CNS.",
+     "year": "2010",
+     "cites": 26,
+     "doi": "10.1242/dev.052233"
+    },
+    {
+     "title": "Early specification of dopaminergic phenotype during ES cell differentiation.",
+     "year": "2007",
+     "cites": 25,
+     "doi": "10.1186/1471-213x-7-86"
+    },
+    {
+     "title": "Temporal control of progenitor competence shapes maturation in GABAergic neuron development in mice.",
+     "year": "2025",
+     "cites": 21,
+     "doi": "10.1038/s41593-025-01999-y"
+    },
+    {
+     "title": "Involvement of Ath3 in CNTF-mediated differentiation of the late retinal progenitors.",
+     "year": "2004",
+     "cites": 18,
+     "doi": "10.1016/j.mcn.2004.05.004"
+    },
+    {
+     "title": "Hierarchical lineage architecture of human and avian spinal cord revealed by single-cell genomic barcoding",
+     "year": "2025",
+     "cites": 4,
+     "doi": "10.1101/2025.10.24.684328"
+    },
+    {
+     "title": "Enhancer of trithorax/polycomb, Corto, regulates timing of hunchback gene relocation and competence in Drosophila neuroblasts.",
+     "year": "2022",
+     "cites": 3,
+     "doi": "10.1186/s13064-022-00159-3"
+    },
+    {
+     "title": "Sox8 and Sox9 regulate differentiation and nuclear positioning of retinal M\u00fcller glia.",
+     "year": "2026",
+     "cites": 1,
+     "doi": "10.1242/dev.205508"
+    },
+    {
+     "title": "Lineage tracing in human cortical development.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1016/j.gde.2026.102506"
+    },
+    {
+     "title": "The emergence of neurogenic lineage motifs in building the vertebrate retina.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1016/j.gde.2026.102479"
+    },
+    {
+     "title": "Direct neuronal reprogramming by temporal identity factors",
+     "year": "2021",
+     "cites": 0,
+     "doi": "10.1101/2021.07.05.451124"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "time versus division lineage tracing",
+   "matches": 3,
+   "top": [
+    {
+     "title": "Cell cycle length of olfactory bulb neuronal progenitors in the rostral migratory stream.",
+     "year": "1998",
+     "cites": 71,
+     "doi": "10.1002/(sici)1097-0177(199810)213:2<220::aid-aja7>3.0.co;2-i"
+    },
+    {
+     "title": "Clonal heterogeneity in the early embryonic rodent cortical germinal zone and the separation of subventricular from ventricular zone lineages.",
+     "year": "1997",
+     "cites": 19,
+     "doi": "10.1002/(sici)1097-0177(199711)210:3<328::aid-aja12>3.0.co;2-6"
+    },
+    {
+     "title": "Asymmetric division sustains stem cell heterogeneity in the Drosophila testicular niche.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1038/s42003-026-10079-1"
+    }
+   ],
+   "engine": "europepmc"
+  }
+ ],
+ "references": null,
+ "engine": "europepmc"
+}

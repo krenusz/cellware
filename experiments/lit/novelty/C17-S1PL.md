@@ -46,3 +46,12 @@ Published but proceeding: Bence: "1" (2026-11-20; answer to option 1: open C17-S
 New data leads found by the search (not acted on; watch list):
 - monoclonal gastruloids with lineage recording (2025 preprint, doi 10.1101/2025.05.23.655664): pluripotent class, heritable modes of early development;
 - FateVec's stem-cell-derived embryo-model trees (same recorder).
+
+## Added 2026-11-21 (C17-S1PL-T3, Bence: "and go 1")
+- Finding: on a dated whole-embryo tree, commitment follows developmental time (split date in days) while memory is lost per division (edges since the split); a nested test separates the two (corr(date, divisions) -0.13).
+  - Verdict: partly published
+  - Papers: cell-intrinsic timer for differentiation in oligodendrocyte precursors (BioEssays 2000, doi 10.1002/(sici)1521-1878(200001)22:1<64::aid-bies11>3.0.co;2-q; Curr Biol 1998, doi 10.1016/s0960-9822(98)70177-0; Dev Biol 1998, doi 10.1006/dbio.1998.8877); cerebellar interneuron differentiation independent of mitotic history (Neuroscience 1999, doi 10.1016/s0306-4522(98)00563-6); cell-cycle-independent transitions in temporal identity of neural progenitors (Nat Commun 2016, doi 10.1038/ncomms11349); "Developmental timers: how do embryonic cells measure time?" (Curr Biol 1994). Time vs division as the driver of differentiation timing is classic, for single lineages in culture or in vivo.
+  - Not found: a fate-agreement model on a whole-embryo dated tree that fits commitment by time and memory by divisions as separate nested terms.
+  - Searched: Europe PMC (includes PubMed), no date limit, sorted by citations, title+abstract, 7 phrasings; 67 titles screened; titles read, abstracts of the 6 most relevant checked by title/venue (Opus 5.5).
+  - Source paper: DNA Typewriter mouse (doi 10.1126/science.ael0508), claims level only (as above).
+  - Classic search: `python -I experiments/novelty_search.py C17-S1PL-T3 --engine europepmc --no-refs --q "cell division counting versus timer differentiation" --q "intrinsic timer differentiation precursor cells" --q "developmental clock cell fate commitment" --q "cell cycle independent timing of differentiation" --q "number of divisions fate restriction embryo" --q "temporal competence progenitors lineage" --q "time versus division lineage tracing" --top 25`; results in results_lit/novelty_C17-S1PL-T3.json.
