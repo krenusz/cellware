@@ -12910,3 +12910,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   2. Power with systems as units: even 3 vs 3, the smallest attainable permutation p is 1/C(6,3) = 0.05, so p < 0.05 is impossible; 3 vs 4 gives 0.029 at best (power at a perfect separation only). FAIL.
 - **Verdict:** law test NOT feasible with the current table, although the count gate is met. Do not pre-register it. What would change this: a second pluripotent system with heritable_share (or rho_div) identified, and >= 4 systems in each compared class.
 - Practice: phrases checked by c17s1_params.py; neutral wording; A/B/C of every partition unchanged. Lanes: Opus.
+
+## C17-S1R-P2: pretest, can a second pluripotent system give a shared parameter for the law test? (2026-11-21; Bence: "1"; log and table only, no data read, local)
+- **Serves: C17-S1R.** Candidates: (a) heritable share (B38, sister arms) on the embryo tree's train founder clades, the estimand PEtracer has; (b) memory per division on the PEtracer trees; (c) a heritable share for the gastruloids; (d) a 4th blood system (chspctrack, serial half-well sampling, needs its own train estimate).
+- **Checks:**
+  1. (b) is already answered: C17-S1T on the PEtracer trees was NOT SUPPORTED (memory adds <= 2% beyond commitment), so rho_div is not identified there. FAIL.
+  2. Best-case power for the only shared parameter (heritable share), systems as units, one-sided permutation test on the class means. Blood values held: 0.88, 0.71, 0.66; PEtracer 0.81 lies inside the blood range. Even if every new pluripotent value were 0 (the most favourable case): 3 blood vs 2 pluripotent (PEtracer + embryo tree) p >= 0.30; 3 vs 3 (+ gastruloids) p >= 0.15; 4 vs 3 (+ chspctrack, any value) p >= 0.086. No configuration of the systems we hold or can derive reaches p < 0.05. FAIL.
+  3. Data existence: the C17-S1D sweep found no new public pluripotent clone-split or clonal-memory set; watch-list items (hESC sister wells, DeepTrack, E-MTAB-17351) are not available.
+- **Verdict: FAIL.** No candidate in hand can make the cross-class law test feasible; computing (a), (c) or (d) would add table rows but cannot change this. Not run.
+- What would change it: at least two more public pluripotent sets with sister-arm or split designs (watch list), and values that do not overlap the blood range.
+- Practice: best case computed exactly (all permutations); neutral wording; nothing sealed touched. Lanes: Opus, local, seconds.
