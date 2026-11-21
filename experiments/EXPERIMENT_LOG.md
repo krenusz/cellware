@@ -12779,3 +12779,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Plan was: replace split depth in edges by split date, and divisions since the split by time since the split.
 - Feasibility read (tree structure only, all pairs of the stratified picker, no labels): every leaf sits at 13.5 days from the root (SD 0.000; the tree is exactly ultrametric). So time since split = 13.5 - split date for every pair: corr(split date, time since split) = -1.00. Commitment by date and memory by time since split are then both functions of the split date alone, and the nested test cannot separate them. Not pre-registered, no script written.
 - What stays identifiable: split date vs divisions since the split (edges): corr -0.11 (split date 10th-90th 7.7-11.6 days); tau (edges) vs date: corr 0.55. A "commitment on a clock, memory per division" variant would be separable.
+
+### C17-S1PL-P: feasibility pretests before proposing any next step (2026-11-21; Bence: "can you just do a lot of pretest and see what could even work? before suggesting me a lot of shit that cannot??")
+- Serves: C17-S1PL. No sibling agreement computed, no fit on real labels; A/B/C untouched.
+- P1 clock + division variant (commitment by split date, memory per division): power and false pass on synthetic labels on the real train structure (same simulator and rule), few sets locally.
+- P2 finer label: label columns in the metadata header; for each candidate column, level counts and readout gate (pairs with >= 4 non-missing per arm, clades with >= 30 pairs) on train rows only.
+- P3 other trees in the source release (more embryos, a tree not built with cell types): file listing only.
+- P4 which other systems in the parameter table have split depth per pair (needed for any stage-aware test): project files only.
+- Pass bar for proposing a step: identifiable (|corr| < 0.8 between the two terms), power >= 0.8 and false pass <= 0.10 in the pretest, readout gate met.
