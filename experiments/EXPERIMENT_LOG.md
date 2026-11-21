@@ -12894,3 +12894,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Limits: planted lambda is the simulator's fixed truth, not the fitted 0.86; 40 sets give a false-pass resolution of 0.025.
 - Practice: seeded; neutral wording; result entry with tick-list.
 - Compute: GitHub Actions, sweeps/c17s1pl_p3_noise.txt.
+
+### C17-S1PL-P3 result: PASS, the celltype edge test is powered at eps 0.69; T4 is a powered negative (2026-11-21; run https://github.com/krenusz/cellware/actions/runs/44932509087; Bence: "go 1")
+- 40 sets per truth at eps 0.69: power (full) 1.00, half slope 1.00; false pass mem 0.00, com 0.025 (1/40); lambda recovery 1.00 under full.
+- **Verdict: PASS** (bar power >= 0.8, false pass <= 0.05), as predicted. The T4 caveat is resolved: NOT SUPPORTED with `celltype` is a powered negative.
+- Stage-aware conclusion for this embryo (all three variants powered at their fitted noise: T eps 0.57, T3 0.40, T4 0.69): memory lost per division adds little beyond commitment; commitment carries the fit. Train only; one embryo; exploratory, not confirmed on sealed data.
+- Practice: seeded; synthetic only; A/B/C sealed and unspent; neutral wording. Lanes: Opus wrote plan and verdict; Actions ran the job.
