@@ -159,6 +159,26 @@
    "hi": null,
    "identified": false,
    "source": "Growth/selection gamma = 0 (not identified here"
+  },
+  {
+   "system": "DNA Typewriter embryo tree (train)",
+   "cell_class": "pluripotent",
+   "parameter": "rho_div_edge",
+   "point": 0.899,
+   "lo": 0.892,
+   "hi": 0.904,
+   "identified": false,
+   "source": "lambda 0.899 on all data, leave-one-out 0.892-0.904"
+  },
+  {
+   "system": "DNA Typewriter embryo tree (train)",
+   "cell_class": "pluripotent",
+   "parameter": "commitment_C_at_9.4_days",
+   "point": 0.48,
+   "lo": null,
+   "hi": null,
+   "identified": true,
+   "source": "Commitment C rises 0.21 -> 0.48 -> 0.81"
   }
  ],
  "systems_with_identified_parameters_by_class": {
@@ -168,6 +188,7 @@
    "SIS-seq / SIS-skew"
   ],
   "pluripotent": [
+   "DNA Typewriter embryo tree (train)",
    "PEtracer embryo trees (train)",
    "Raj gastruloids"
   ],
@@ -177,7 +198,7 @@
  },
  "law_test_gate_ge_3_systems_per_class": {
   "committed blood progenitor": true,
-  "pluripotent": false,
+  "pluripotent": true,
   "neural progenitor": false
  }
 }

@@ -43,6 +43,14 @@ ROWS = [
     ("Raj gastruloids", PLURI, "rho_event_passage", 0.46, 0.23, 0.68, True, "rho_P = 0.21 per passage (retention 0.46"),
     ("Raj gastruloids", PLURI, "rho_context_gastruloid", 0.06, None, None, True, "rho_g = 0.06"),
     ("Raj gastruloids", PLURI, "gamma", None, None, None, False, "Growth/selection gamma = 0 (not identified here"),
+    # C17-S1PL-T/T3/T4 + P3, train founder clades of one embryo; added 2026-11-21 (Bence: "1").
+    # Memory per division edge: stable estimate, but the nested test is NOT SUPPORTED in all three powered variants
+    # (adds little beyond commitment), so not counted as identified; lo/hi = leave-one-out range, not a CI.
+    ("DNA Typewriter embryo tree (train)", PLURI, "rho_div_edge", 0.899, 0.892, 0.904, False,
+     "lambda 0.899 on all data, leave-one-out 0.892-0.904"),
+    # Commitment by split date (T3 clock): commitment-only beats memory-only pooled in T, T3 and T4.
+    ("DNA Typewriter embryo tree (train)", PLURI, "commitment_C_at_9.4_days", 0.48, None, None, True,
+     "Commitment C rises 0.21 -> 0.48 -> 0.81"),
 ]
 COLS = ["system", "cell_class", "parameter", "point", "lo", "hi", "identified", "source"]
 

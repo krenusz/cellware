@@ -12900,3 +12900,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Verdict: PASS** (bar power >= 0.8, false pass <= 0.05), as predicted. The T4 caveat is resolved: NOT SUPPORTED with `celltype` is a powered negative.
 - Stage-aware conclusion for this embryo (all three variants powered at their fitted noise: T eps 0.57, T3 0.40, T4 0.69): memory lost per division adds little beyond commitment; commitment carries the fit. Train only; one embryo; exploratory, not confirmed on sealed data.
 - Practice: seeded; synthetic only; A/B/C sealed and unspent; neutral wording. Lanes: Opus wrote plan and verdict; Actions ran the job.
+
+## C17-S1R-P: parameter table update with the embryo-tree result, and law-test feasibility pretest (2026-11-21; Bence: "1")
+- **Serves: C17-S1R** (build the general model system by system; law test only at >= 3 systems per class).
+- **Table (c17s1_params.py):** added "DNA Typewriter embryo tree (train)" to the pluripotent class: commitment (C 0.48 at 9.4 days, date clock) identified; memory per division edge 0.899 (leave-one-out 0.892-0.904) NOT counted as identified, because the nested test was NOT SUPPORTED in all three powered variants (C17-S1PL-T, -T3, -T4 with P3).
+- **Count gate now:** committed blood 3 (LARRY, SIS, CellTag LSK), pluripotent 3 (gastruloids, PEtracer, embryo tree), neural 1.
+- **Pretest (no data read; table only):**
+  1. Shared parameter: blood shares heritable_share across all 3 systems; every pluripotent parameter is identified in exactly 1 system (gastruloid rho_div, PEtracer heritable_share, embryo-tree commitment). A class comparison on one parameter has at most 3 blood vs 1 pluripotent. FAIL.
+  2. Power with systems as units: even 3 vs 3, the smallest attainable permutation p is 1/C(6,3) = 0.05, so p < 0.05 is impossible; 3 vs 4 gives 0.029 at best (power at a perfect separation only). FAIL.
+- **Verdict:** law test NOT feasible with the current table, although the count gate is met. Do not pre-register it. What would change this: a second pluripotent system with heritable_share (or rho_div) identified, and >= 4 systems in each compared class.
+- Practice: phrases checked by c17s1_params.py; neutral wording; A/B/C of every partition unchanged. Lanes: Opus.
