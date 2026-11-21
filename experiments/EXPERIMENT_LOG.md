@@ -12818,3 +12818,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Limits: one embryo; shared niche; dates depend on the dating model (order robust, Spearman 0.995 vs unconstrained); k in edges is a proxy for divisions.
 - Practice: selftest extended (date = 13.5 - time since split on the toy ultrametric tree); 5 starts with spread reported; analytic bias check; eps fitted; calibration per date x k bin; neutral wording; tick-list in the result entry.
 - Compute: GitHub Actions, sweeps/c17s1pl_t3_fit.txt (fetch by tag, sha256 checked; analytic check, then fit).
+
+### C17-S1PL-T3 result: NOT SUPPORTED by the rule; commitment on a clock fits better than on edge depth (reported, not tested) (2026-11-21; run https://github.com/krenusz/cellware/actions/runs/44901011964; train founder clades only; Bence: "and go 1")
+- Analytic gate inside the job: max |bias| 0.0004 (bar 0.01), PASS; corr(date, k) -0.13.
+- **Rule:** M_full beats both reductions in 12 of 27 eligible clades (needed >= 18). Pooled held-out error: full 0.0652, commitment-only 0.0659, memory-only 0.0707. **Verdict: NOT SUPPORTED** (as predicted, ~65%). Full beats commitment-only in 20/27 and memory-only in 19/27, but in different clades.
+- lambda 0.899 on all data, leave-one-out 0.892-0.904. Commitment C rises 0.21 -> 0.48 -> 0.81 at split dates 7.7 / 9.4 / 11.6 days. Fitted eps 0.40 (0.57 with edge depth).
+- **Reported, not tested (as pre-registered):** with commitment on the date clock, pooled held-out error of the full model is 5.4% lower than with edge depth (0.0652 vs 0.0689), and lower in 19 of 27 clades; label noise absorbed falls from 0.57 to 0.40. Exploratory: second model on the same train pairs, chosen after the first; a claim would need a sealed-partition test.
+- Calibration (in-sample, date x k bins): largest miss -0.069 in the earliest-split, fewest-division bin (observed agreement below the model); other bins within 0.025.
+- Practice: selftest (split date on toy ultrametric tree) ok; start spread <= 1e-4; analytic gate passed; eps fitted; calibration reported; neutral wording; A/B/C sealed and unspent. Lanes: Opus wrote pre-registration, code and verdict; Actions ran the job.
