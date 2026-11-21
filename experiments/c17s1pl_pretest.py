@@ -88,9 +88,31 @@ def dates():
     s = P.structure(parent, blen, lab)
     up, ub, un = P.parse_newick(path.read_text())
     same = len(up) == len(parent) and bool(np.all(up == parent)) and un == names
-    out = {"url": url, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw), "same_topology": same}
-    if same:
-        us = P.structure(up, ub, lab)
+    out = {"url": url, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw), "same_topology": same,
+           "nodes": [len(parent), len(up)]}
+
+    def leafset_hash(par, nm, key):  # node hash = sum of random 64-bit keys of its leaves (wraps); matches clades
+        h = np.zeros(len(par), dtype=np.uint64)
+        isl = np.ones(len(par), bool)
+        isl[par[par >= 0]] = False
+        for i in np.flatnonzero(isl):
+            h[i] = key.get(nm[i], 0)
+        for i in range(len(par) - 1, 0, -1):
+            if par[i] >= 0:
+                h[par[i]] += h[i]
+        return h, isl
+
+    rk = np.random.default_rng(7)
+    leaf = s["is_leaf"]
+    key = {names[i]: np.uint64(rk.integers(1, 2**63)) for i in np.flatnonzero(leaf)}
+    with np.errstate(over="ignore"):
+        hc, _ = leafset_hash(parent, names, key)
+        hu, isl_u = leafset_hash(up, un, key)
+    out["uncon_leaves"] = int(isl_u.sum())
+    out["uncon_leaves_named_in_backbone"] = int(sum(un[i] in key for i in np.flatnonzero(isl_u)))
+    us = P.structure(up, ub, np.array([nm in key for nm in un]))
+    pos = {int(v): i for i, v in enumerate(hu)}
+    if True:
         leaf = s["is_leaf"]
         fnd = P.founders(parent, s)
         is_f = np.zeros(len(parent), bool)
@@ -99,11 +121,13 @@ def dates():
         units = pd.DataFrame({"unit": [f"F{f}" for f in fnd], "f": fnd})
         train_f = set(train_only("dtt_founder", units, unit_col="unit")["f"].tolist())
         rows = [r for r in P.pick_pairs(parent, s, P.CAP, True) if f_of[r[0]] in train_f]
-        nd = np.array([r[0] for r in rows])
-        k = np.array([r[3] for r in rows], float)
-        dc, du = s["rdist"][nd], us["rdist"][nd]
+        nd_all = np.array([r[0] for r in rows])
+        mu = np.array([pos.get(int(hc[n]), -1) for n in nd_all])
+        out["pair_nodes_found_in_uncon"] = float(np.mean(mu >= 0))
+        nd, k = nd_all[mu >= 0], np.array([r[3] for r in rows], float)[mu >= 0]
+        dc, du = s["rdist"][nd], us["rdist"][mu[mu >= 0]]
         out.update({"n_train_pairs_structure": len(rows),
-                    "uncon_leaf_rootdist_pct_0_50_100": np.percentile(us["rdist"][leaf], [0, 50, 100]).tolist(),
+                    "uncon_leaf_rootdist_pct_0_50_100": np.percentile(us["rdist"][isl_u], [0, 50, 100]).tolist(),
                     "corr_dates": float(np.corrcoef(dc, du)[0, 1]),
                     "spearman_dates": float(pd.Series(dc).corr(pd.Series(du), method="spearman")),
                     "abs_shift_days_pct_50_90_99": np.percentile(np.abs(dc - du), [50, 90, 99]).tolist(),
