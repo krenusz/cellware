@@ -12877,3 +12877,20 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Calibration (in-sample, tau x k bins): all bins within 0.03 (largest +0.029, latest commitment, fewest edges).
 - Reading: across three variants (edge depth with two labels, date clock) the memory term never carries the fit; commitment does. Stage-aware memory per division adds little beyond commitment on this embryo.
 - Practice: power files asserted in the job; start spread <= 5e-4; eps fitted; calibration reported; neutral wording; A/B/C sealed and unspent. Lanes: Opus wrote pre-registration, code and verdict; Actions ran the job.
+
+## C17-S1PL-P3: power of the celltype edge test at its fitted label noise eps 0.69 (pre-registered 2026-11-21; Bence: "go 1")
+- **Serves: C17-S1PL.** C17-S1PL-T4 fitted eps 0.69, above the highest pretested level (0.57, P6). Decides whether T4's NOT SUPPORTED is a powered negative.
+- **Method:** c17s1pl_pretest.py edges_celltype at eps 0.69, synthetic labels on the real train structure (24 categories, 8,146 pairs, 27 clades), same planted truths as P2/P6 (mem, com, full, half), 40 sets per truth (P6 used 20). No real agreement read; train only.
+- **Bar (as P6):** power (full) >= 0.8 and false pass (mem, com) <= 0.05 -> T4 is a powered negative. Otherwise T4 is marked underpowered and the stage-aware conclusion rests on T and T3 only.
+- Pre-flight:
+  1. Unit: founder clade; one embryo; no treatment (H22 n/a).
+  2. Readout: synthetic only.
+  3. Used data first: train structure only.
+  4. Power: this entry is the power check.
+  5. Exposure: none new; A/B/C untouched.
+  6. Literature: n/a (method check).
+  7. Readout gate (H21): met (27 clades, 8,146 pairs).
+- **Prediction:** passes (power >= 0.9 at full, false pass <= 0.05), ~75%; the half-slope truth may drop below 1.00.
+- Limits: planted lambda is the simulator's fixed truth, not the fitted 0.86; 40 sets give a false-pass resolution of 0.025.
+- Practice: seeded; neutral wording; result entry with tick-list.
+- Compute: GitHub Actions, sweeps/c17s1pl_p3_noise.txt.
