@@ -1,0 +1,3 @@
+[experiments/results_c17/c17s1pl_p_power_edges_major_eps0.57.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/c17s1pl_pretest.py edges_major 20 0.57
+[experiments/results_c17/c17s1pl_p_power_clock_eps0.57.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/c17s1pl_pretest.py clock 20 0.57
+[experiments/results_c17/c17s1pl_p_power_edges_celltype_eps0.57.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/c17s1pl_pretest.py edges_celltype 20 0.57

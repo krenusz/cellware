@@ -45,14 +45,17 @@ def struct(label):
     return S, info
 
 
-def power(variant, n_sets):
-    label, cov = {"clock": ("major_trajectory", "date"), "edges_celltype": ("celltype", "tau")}[variant]
+def power(variant, n_sets, eps=None):
+    label, cov = {"clock": ("major_trajectory", "date"), "edges_celltype": ("celltype", "tau"),
+                  "edges_major": ("major_trajectory", "tau")}[variant]
+    if eps is not None:  # P6: label noise at the level fitted on real data (C17-S1PL-T eps 0.57)
+        T.EPS = eps
     S, info = struct(label)
     T.say(json.dumps(info))
     x = S[cov]
     S["z"] = (x - x.mean()) / x.std()
     w = T.weights(S["n1"], S["n2"])
-    out = {"variant": variant, "label": label, "commitment_covariate": cov, "structure": info}
+    out = {"variant": variant, "label": label, "commitment_covariate": cov, "eps": T.EPS, "structure": info}
     for truth in ("mem", "com", "full", "half"):
         lam, slope = T.TRUTHS[truth]
         al, be = T.planted_c(S, slope) if slope else (0.0, 0.0)
@@ -65,7 +68,7 @@ def power(variant, n_sets):
         out[truth] = {"pass_rate": float(np.mean([q[0] for q in res])),
                       "recovery": float(np.mean([abs(q[1] - lam) <= 0.05 for q in res])), "n_sets": n_sets}
         T.say(f"{variant} {truth} {out[truth]} {time.time() - t0:.0f}s")
-    T.dump(out, RES / f"c17s1pl_p_power_{variant}.json")
+    T.dump(out, RES / f"c17s1pl_p_power_{variant}{'_eps' + str(eps) if eps is not None else ''}.json")
 
 
 UNCON = "tree_building/results/3-dated-tree/merged_minB2h_unconstrained.nwk"
@@ -143,4 +146,4 @@ if __name__ == "__main__":
     if sys.argv[1] == "dates":
         dates()
     else:
-        power(sys.argv[1], int(sys.argv[2]))
+        power(sys.argv[1], int(sys.argv[2]), float(sys.argv[3]) if len(sys.argv) > 3 else None)

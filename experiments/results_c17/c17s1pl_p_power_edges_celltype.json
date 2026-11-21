@@ -1,0 +1,35 @@
+{
+ "variant": "edges_celltype",
+ "label": "celltype",
+ "commitment_covariate": "tau",
+ "structure": {
+  "label": "celltype",
+  "n_cats": 24,
+  "n_pairs": 8146,
+  "n_eligible": 27,
+  "readout_gate_pass": true,
+  "corr_date_k": -0.12908830921593806,
+  "corr_tau_k": -0.12472639823221289,
+  "Q_median": 0.09278086199379026
+ },
+ "mem": {
+  "pass_rate": 0.0,
+  "recovery": 1.0,
+  "n_sets": 20
+ },
+ "com": {
+  "pass_rate": 0.0,
+  "recovery": 0.0,
+  "n_sets": 20
+ },
+ "full": {
+  "pass_rate": 1.0,
+  "recovery": 1.0,
+  "n_sets": 20
+ },
+ "half": {
+  "pass_rate": 1.0,
+  "recovery": 1.0,
+  "n_sets": 20
+ }
+}

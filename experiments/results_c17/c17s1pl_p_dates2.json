@@ -1,0 +1,42 @@
+{
+ "url": "https://raw.githubusercontent.com/shendurelab/dtt-mouse/v1.1.0/tree_building/results/3-dated-tree/merged_minB2h_unconstrained.nwk",
+ "sha256": "7864614c8ce152c0a473d579a45d09629eaea7f6b5a2bc995b8463e6026d8dac",
+ "bytes": 33815589,
+ "same_topology": false,
+ "nodes": [
+  1304629,
+  1306173
+ ],
+ "uncon_leaves": 655701,
+ "uncon_leaves_named_in_backbone": 655701,
+ "pair_nodes_found_in_uncon": 1.0,
+ "n_train_pairs_structure": 8146,
+ "uncon_leaf_rootdist_pct_0_50_100": [
+  13.499950000000002,
+  13.500000000000002,
+  13.500049600000002
+ ],
+ "corr_dates": 0.9953604812945991,
+ "spearman_dates": 0.9949060490177961,
+ "abs_shift_days_pct_50_90_99": [
+  2.4193361999999934,
+  3.6628989999999937,
+  4.049727999999995
+ ],
+ "date_pct_10_50_90": {
+  "constrained": [
+   7.690110149999994,
+   9.4259268,
+   11.5947857
+  ],
+  "unconstrained": [
+   4.076120000000002,
+   6.990669499999999,
+   10.5112745
+  ]
+ },
+ "corr_k": {
+  "constrained": -0.12908832847904872,
+  "unconstrained": -0.11197290775835861
+ }
+}
