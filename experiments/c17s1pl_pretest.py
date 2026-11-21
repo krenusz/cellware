@@ -18,7 +18,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import c17s1pl_fit as F  # noqa: E402
 import c17s1t_stage as T  # noqa: E402
-from partitions import train_only  # noqa: E402,F401  (train filter applied in F.load_train)
+from partitions import train_only  # noqa: E402  (also applied inside F.load_train)
 
 RES = HERE / "results_c17"
 DAY_END = 13.5  # every leaf of the dated tree sits at 13.5 days (C17-S1PL-T2 pre-flight)
@@ -68,5 +68,55 @@ def power(variant, n_sets):
     T.dump(out, RES / f"c17s1pl_p_power_{variant}.json")
 
 
+UNCON = "tree_building/results/3-dated-tree/merged_minB2h_unconstrained.nwk"
+
+
+def dates():
+    """P5: split dates of the train pairs under constrained (age ladder) vs unconstrained dating. Structure only."""
+    import hashlib
+    import tempfile
+    import urllib.request
+
+    import c17s1pl_tree as P
+    import pandas as pd
+
+    url = P.BASE.replace("support_data/", "") + UNCON
+    raw = urllib.request.urlopen(url, timeout=300).read()
+    path = Path(tempfile.mkdtemp()) / "uncon.nwk"
+    path.write_bytes(raw)
+    parent, blen, names, lab = P.load()
+    s = P.structure(parent, blen, lab)
+    up, ub, un = P.parse_newick(path.read_text())
+    same = len(up) == len(parent) and bool(np.all(up == parent)) and un == names
+    out = {"url": url, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw), "same_topology": same}
+    if same:
+        us = P.structure(up, ub, lab)
+        leaf = s["is_leaf"]
+        fnd = P.founders(parent, s)
+        is_f = np.zeros(len(parent), bool)
+        is_f[fnd] = True
+        f_of = F.founder_of(parent, is_f)
+        units = pd.DataFrame({"unit": [f"F{f}" for f in fnd], "f": fnd})
+        train_f = set(train_only("dtt_founder", units, unit_col="unit")["f"].tolist())
+        rows = [r for r in P.pick_pairs(parent, s, P.CAP, True) if f_of[r[0]] in train_f]
+        nd = np.array([r[0] for r in rows])
+        k = np.array([r[3] for r in rows], float)
+        dc, du = s["rdist"][nd], us["rdist"][nd]
+        out.update({"n_train_pairs_structure": len(rows),
+                    "uncon_leaf_rootdist_pct_0_50_100": np.percentile(us["rdist"][leaf], [0, 50, 100]).tolist(),
+                    "corr_dates": float(np.corrcoef(dc, du)[0, 1]),
+                    "spearman_dates": float(pd.Series(dc).corr(pd.Series(du), method="spearman")),
+                    "abs_shift_days_pct_50_90_99": np.percentile(np.abs(dc - du), [50, 90, 99]).tolist(),
+                    "date_pct_10_50_90": {"constrained": np.percentile(dc, [10, 50, 90]).tolist(),
+                                          "unconstrained": np.percentile(du, [10, 50, 90]).tolist()},
+                    "corr_k": {"constrained": float(np.corrcoef(dc, k)[0, 1]),
+                               "unconstrained": float(np.corrcoef(du, k)[0, 1])}})
+    T.say(json.dumps(out, indent=1))
+    T.dump(out, RES / "c17s1pl_p_dates.json")
+
+
 if __name__ == "__main__":
-    power(sys.argv[1], int(sys.argv[2]))
+    if sys.argv[1] == "dates":
+        dates()
+    else:
+        power(sys.argv[1], int(sys.argv[2]))
