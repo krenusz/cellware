@@ -12920,3 +12920,15 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Verdict: FAIL.** No candidate in hand can make the cross-class law test feasible; computing (a), (c) or (d) would add table rows but cannot change this. Not run.
 - What would change it: at least two more public pluripotent sets with sister-arm or split designs (watch list), and values that do not overlap the blood range.
 - Practice: best case computed exactly (all permutations); neutral wording; nothing sealed touched. Lanes: Opus, local, seconds.
+
+## C17-S1R-P3: pretest of the counted-division blood design (eLife 2021) and GSE291244 provenance check (2026-11-21; Bence: "go 1 2"; metadata only, no data rows read)
+- **Serves: C17-S1R** (retro 2026-11-21 gap: a system where division count is measured, not inferred from tree edges). Lookups: Haiku lane (cellware-lookup); verdicts: Opus.
+- **1. eLife 2021 (doi 10.7554/elife.60624), blood progenitor families with division number and fate per cell:**
+  - Data existence: the availability statement says all data are in the manuscript and supporting files; no GEO/SRA/Zenodo/Dryad/GitHub accession (PMC full text). The 7 figure source-data files are summary tables (11-13 kB, <= 21 rows), not per-cell. FAIL.
+  - Units (from methods, for the record): families from index-sorted dye-labelled ancestors, cultured 24 h and 48 h, up to 6 divisions, fate by a flow marker panel; families mostly hold 1-2 recovered cells (e.g. 600 families, 648 cells in one class), so sister pairs within a family are few. Would fail the readout gate even with per-cell data.
+  - **Verdict: FAIL** (no per-cell data public; obtaining it would need contacting authors, which the project does not do). Recorded as a design reference only: counted divisions plus fate is the readout the stage-aware question needs.
+- **2. GSE291244 provenance (watch list flagged supplementary files dated 2026-09-23 / 09-28):**
+  - Our local files (data/gastruloid_gse291244, downloaded 2026-11-05/07): cell_annotation.csv.gz 7,108,297 B, srr.txt.gz 7,050 B, tot_cell_annotation.csv.gz; GEO lists the matching files at 6.8M / 6.9K, dated 2025-03.
+  - The September 2026 files (monoclonal L1-L12, polyclonal L1-L4 and multiome L1-L4 count matrices, RAW.tar 560M) predate our download and are already listed in our saved family.soft (Series_last_update_date Sep 29 2026). **Nothing changed after our download; the watch-list flag was a false alarm.** None of those matrices is held locally.
+  - Gap fixed: the folder had no SHA256SUMS; locked today (3 files, local only like every data/ folder). Any future download of the GSE291244 count matrices goes through the gse291244_founders partition (well_cluster) before any fate read.
+- Practice: no data rows read; nothing sealed touched; neutral wording.
