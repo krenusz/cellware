@@ -336,6 +336,9 @@ pre-registration dated 2026-11-13 or later without it.
 **Before proposing next steps**
 - An experiment offered in a next-steps list is first checked against EXPERIMENT_LOG for the same question and data, and carries a one-line feasibility note (units, rough power) or is marked "unchecked" (11-20; a C5-S2 duplicate and a power-0.29 test were both offered and chosen).
 - Every parameter-table row names its scale (memory per division, memory per event, commitment-dominated, position-dominated); a cross-system comparison uses rows of one scale only (11-20; C17-S1T: embryo-tree H is mostly commitment).
+- Pretest every candidate before it is listed (identifiability/collinearity, readout gate, simulated power at the real fitted noise, data exists, robustness of derived covariates); list only passes and say what failed and why (11-21; an impossible time-since-split re-run was offered on an ultrametric tree).
+- Power is simulated at the noise the real fit will meet, and the result entry compares the fitted noise with the highest pretested level; above it, the verdict is provisional until a power check at the fitted level (11-21; C17-S1PL-T4 fitted eps 0.69 against a pretest at 0.57, closed by P3).
+- A count gate is necessary, not sufficient: before calling a cross-system test open, compute the smallest attainable p with systems as units and check that a parameter is shared by the compared systems (11-21; C17-S1R-P: 3 vs 3 systems cannot reach p < 0.05).
 
 **When searching for data**
 - Score candidates by the shape of past successes: lineage or clone unit; >= ~100 units per sealed partition
