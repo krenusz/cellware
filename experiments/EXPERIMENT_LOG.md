@@ -13104,3 +13104,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Kill rule fixed now for P2 (only if mapped):** a design-level null passes only with a concrete coupling shown on train and structural counts alone (clone count tracks cells sampled per mapped mouse; train clones' bias varies with clone size) and a simulated false-positive rate of a 7-point Spearman at the source's alpha >= 0.20. The published correlation value is never read for the design study.
 - **Exposure:** the Fig. 5f clone-count column (structural, recorded under rf2020_clone prior exposure); GEO file lists. No bias value, no sealed outcome.
 - **Compute:** Actions (sweeps/candf_p1_struct.txt); URL logged at dispatch.
+
+### CAND-F-P1 result (2026-11-22; run https://github.com/krenusz/cellware/actions/runs/45071570180, after a 403 failure in run 45071348622; results_cand/candf_p1_struct.json): **units unresolved on GSE134242**
+- 9 GSE134242 recipients: barcoded clones 77-3,683; clones with >= 2 cells and >= 1 HSC-library cell 27-506. Only 1 of the 7 published counts (14-86) matches any recipient under any filter variant (best: mouse 84, 27 clones). The source's 7 mice are therefore mostly not from rf2020_clone. Per the rule, CAND-F stops at P1 on this set, and the rf2020_clone replication leg is failed.
+- **New lead (not a step yet):** the source lab's public LARRY transplant series GSE299003 (4 recipients, 8 months; barcodes, matrices, hashing table) and GSE307390 (24 samples, developmental-timepoint HSC transplants, 6 months), siblings of GSE299000 under superseries GSE307390. Not in any partition; not read beyond GEO series text. A P1b mapping of the 7 mice against these needs Bence's OK.
+- No sealed outcome read; no bias value read.
+
+## CAND-G-P1: data gate for the third system (2026-11-22; Bence: "and do them in sequence")
+- **Serves: C12 CLOSED.** Lookup only (Haiku lane): bioRxiv API, GEO E-utilities, Europe PMC, Zenodo.
+- **Result: FAIL.** The Sp9 basal-ganglia preprint (bioRxiv 10.64898/2026.05.25.727662, v2 2026-07-08) has no deposit found in GEO, Europe PMC or Zenodo (full-text data statement not checked). Without it CAND-G is chapter 2 (SIS-skew) plus CAND-E (the cortical leg), so it stops. CAND-E stays open as a single-system design study, close to the failed C17-TCORT.
+
+## CAND-D-P1: duplicate check and units (2026-11-22; Bence: "and do them in sequence")
+- **Serves: C12 CLOSED.** Log and registry read only.
+- **Result: FAIL (near-repeat).** CAND-D's question (does the cytokine condition or the clone's early state carry the human progenitor clone's fate) was already C8 K1/T2 (oracle refused on B: 32 effective units, power 0.78) and C9-S0 H1/H2 (power 0.79, failed). CAND-D's own units (conditions I/III, 46-59 serial clones per sealed partition) are no larger, and its day-3 identifiability weakness adds to that. chspctrack B and C stay sealed.
+- **Registry miss:** CAND-D's `related` described C8 as "heritable fate and readout, a different question"; the T2/H1 tests were not registered as a row, so E6 could not fire. Fixed: row DNR-HSPC-COND (dont_repropose, chspctrack, instr_select) added; CAND-D set to failed_gate.

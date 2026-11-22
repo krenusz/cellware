@@ -1,0 +1,105 @@
+{
+ "match": {
+  "clones_any": {
+   "of": 7,
+   "published_counts_matched": 1
+  },
+  "clones_ge2": {
+   "of": 7,
+   "published_counts_matched": 0
+  },
+  "clones_ge2_hsc1": {
+   "of": 7,
+   "published_counts_matched": 1
+  },
+  "clones_ge2_hsc2": {
+   "of": 7,
+   "published_counts_matched": 1
+  }
+ },
+ "n_recipients": 9,
+ "published_counts": [
+  14,
+  22,
+  24,
+  27,
+  33,
+  64,
+  86
+ ],
+ "recipients": {
+  "Sample1:84": {
+   "cells": 4919,
+   "clones_any": 86,
+   "clones_ge2": 43,
+   "clones_ge2_hsc1": 27,
+   "clones_ge2_hsc2": 22,
+   "hsc_cells": 1105
+  },
+  "Sample1:85": {
+   "cells": 7811,
+   "clones_any": 421,
+   "clones_ge2": 197,
+   "clones_ge2_hsc1": 126,
+   "clones_ge2_hsc2": 105,
+   "hsc_cells": 2820
+  },
+  "Sample2:1773": {
+   "cells": 3970,
+   "clones_any": 2258,
+   "clones_ge2": 359,
+   "clones_ge2_hsc1": 276,
+   "clones_ge2_hsc2": 202,
+   "hsc_cells": 2362
+  },
+  "Sample2:1774": {
+   "cells": 4297,
+   "clones_any": 2232,
+   "clones_ge2": 395,
+   "clones_ge2_hsc1": 351,
+   "clones_ge2_hsc2": 312,
+   "hsc_cells": 3193
+  },
+  "Sample3:1992": {
+   "cells": 3088,
+   "clones_any": 1360,
+   "clones_ge2": 431,
+   "clones_ge2_hsc1": 213,
+   "clones_ge2_hsc2": 157,
+   "hsc_cells": 1220
+  },
+  "Sample4:E2": {
+   "cells": 8749,
+   "clones_any": 99,
+   "clones_ge2": 62,
+   "clones_ge2_hsc1": 61,
+   "clones_ge2_hsc2": 58,
+   "hsc_cells": 4868
+  },
+  "Sample4:E3": {
+   "cells": 10061,
+   "clones_any": 77,
+   "clones_ge2": 49,
+   "clones_ge2_hsc1": 44,
+   "clones_ge2_hsc2": 36,
+   "hsc_cells": 3950
+  },
+  "Sample5:CropA": {
+   "cells": 12557,
+   "clones_any": 2117,
+   "clones_ge2": 643,
+   "clones_ge2_hsc1": 506,
+   "clones_ge2_hsc2": 390,
+   "hsc_cells": 6032
+  },
+  "Sample5:CropB": {
+   "cells": 9601,
+   "clones_any": 3683,
+   "clones_ge2": 480,
+   "clones_ge2_hsc1": 366,
+   "clones_ge2_hsc2": 292,
+   "hsc_cells": 5372
+  }
+ },
+ "verdict": "units unresolved"
+}

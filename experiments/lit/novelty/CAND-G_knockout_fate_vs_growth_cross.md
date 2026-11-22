@@ -16,3 +16,6 @@ Widened search (Bence: "opt two"): public clone-resolved perturbation papers 202
 
 ## Status
 Novelty: passes at first look. Units: a design study needs per-arm clone-size and cells-sampled structure; the Sp9 data may not be public. Power: not applicable to the design study; not pretested.
+
+## Pretest P1 (2026-11-22, EXPERIMENT_LOG CAND-G-P1)
+- Data gate FAILED: no public deposit found for the third system. Stops; CAND-E remains as the single-system study.

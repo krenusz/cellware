@@ -32,3 +32,7 @@ A sampling null showing whether a 2026 headline argument for extrinsic lineage b
 - Classic search on Actions (results_lit/novelty_CAND-F2.json; run 45065297120): 5 phrasings plus the source's 48 references ranked by citations.
 - **Recall check: PASS** for Dykstra 2007 (held out, found in the references); Rodriguez-Fraticelli 2020 not in the top 20 references (it is cited; the cut is by citations).
 - Found: stochastic competition models of chimeras (2004), a minimal intrinsic/extrinsic commitment model (2009), the source itself. No null model for the clone-number vs bias correlation and no re-analysis of it. Verdict: not found (holds).
+
+## Pretest P1 (2026-11-22, EXPERIMENT_LOG CAND-F-P1)
+- The source figure has 7 mice (clone counts 14-86), not the 9 GSE134242 recipients assumed above. Only 1 of the 7 matches a GSE134242 recipient: units unresolved on rf2020_clone; that leg is failed.
+- Candidate data for the 7 mice: the source lab's public transplant series GSE299003 and GSE307390 (unsealed). Mapping them is the next step, not started.
