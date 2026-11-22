@@ -37,4 +37,4 @@ CAND-F		rf2020_clone;external	sampling_artefact	correction	open	not_found		CAND-
 CAND-G		sis_skew;cortical_clone;external	ko_fate_identifiable	correction	open	not_found	CH2: done for SIS-skew; C17-TCORT and CAND-E: the cortical part	CAND-G_knockout_fate_vs_growth_cross	lit/novelty/CAND-G	Are knockout fate shifts separable from clone growth, across systems?
 H-C		petracer_embryo	state_predicts_fate	replication	parked	partly	C14: same set		claimable hypotheses	Embryo fate rules replicate out of sample.
 H-D		petracer_embryo	memory_decay	model	dont_repropose	published	C16: same family		gap_outcomes 2026-11-18	Axial progenitors mature towards neural fate (published by source).
-G11-12		raj_drug	signal_perturbation	model	parked	unchecked			DISCOVERIES 27; FOCUS parked #27	Does signalling perturbation erode the clones' division of labour (series gain)?
+G11-12	G1[12]	external	signal_perturbation	model	parked	unchecked			DISCOVERIES 27; FOCUS parked #27	Does signalling perturbation erode the clones' division of labour (series gain)?

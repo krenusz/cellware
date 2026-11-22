@@ -48,7 +48,7 @@ FAMILY = {"instr_select", "ko_fate_identifiable", "state_predicts_fate", "fate_h
           "sampling_artefact", "data_gate", "signal_perturbation"}
 GENRE = {"correction", "replication", "model", "gate"}
 SEVERITY = {"unchecked": 0, "novel": 1, "not_found": 1, "partly": 2, "published": 3}
-EXTERNAL = {"external", "larry_cytokine", "sis_skew", "raj_drug"}  # data sets outside partitions.PARTITIONED
+EXTERNAL = {"external", "larry_cytokine", "sis_skew"}  # data sets outside partitions.PARTITIONED
 HEAD_RE = re.compile(r"^## (C\d+[^\s:(]*|CAND-[A-Z]\b)", re.M)
 VERDICT_RE = re.compile(r"^\s*-?\s*Verdict:\s*(published|partly published|not found)\b", re.I | re.M)
 
@@ -80,13 +80,20 @@ def headings(log_text):
 
 def spent_looks(ledger_text):
     """{data set: set of spent partitions} from the oracle ledger's shard column ('ds:A', 'ds:AB')."""
+    return {ds: parts for ds, (parts, _) in ledger_looks(ledger_text).items()}
+
+
+def ledger_looks(ledger_text):
+    """{data set: (spent partitions, experiment ids)} from the oracle ledger."""
     out = {}
     for line in norm(ledger_text).split("\n")[1:]:
         cols = line.split("\t")
         if len(cols) < 4 or ":" not in cols[3]:
             continue
         ds, parts = cols[3].split(":", 1)
-        out.setdefault(ds, set()).update(p for p in parts if p in "ABC")
+        sp, ex = out.setdefault(ds, (set(), set()))
+        sp.update(p for p in parts if p in "ABC")
+        ex.add(cols[1])
     return out
 
 
@@ -100,8 +107,8 @@ def datasets(row):
     return {d for d in row["dataset"].split(";") if d}
 
 
-def check(rows, heads, spent, novelty_texts, partitioned):
-    """All errors as sorted strings. novelty_texts: {file stem: text}."""
+def check(rows, heads, spent, novelty_texts, partitioned, look_exps=None):
+    """All errors as sorted strings. novelty_texts: {file stem: text}; look_exps: {data set: experiment ids}."""
     errs = []
     ids = [r["id"] for r in rows]
     for i in sorted({x for x in ids if ids.count(x) > 1}):
@@ -120,8 +127,10 @@ def check(rows, heads, spent, novelty_texts, partitioned):
             errs.append(f"E1 log heading {h} maps to {len(hit)} rows {hit}")
     # E2 ledger
     for ds in sorted(spent):
-        if not any(ds in datasets(r) for r in rows):
-            errs.append(f"E2 data set {ds} has spent looks but no registry row")
+        exps = (look_exps or {}).get(ds, set())
+        by_step = any(r["steps"] and re.fullmatch(r["steps"], e) for r in rows for e in exps)
+        if not any(ds in datasets(r) for r in rows) and not by_step:
+            errs.append(f"E2 data set {ds} has spent looks but no registry row (by data set or experiment id)")
     for r in rows:
         sealed = datasets(r) & set(partitioned)
         if r["status"] == "confirmed" and sealed and not any(spent.get(d) for d in sealed):
@@ -193,10 +202,11 @@ def inputs():
 def run():
     rows = parse_registry(read(REGISTRY))
     heads = headings(read(LOG))
-    spent = spent_looks(read(LEDGER))
+    looks = ledger_looks(read(LEDGER))
+    spent = {d: p for d, (p, _) in looks.items()}
     nov = {f[:-3]: read(os.path.join(NOVELTY, f)) for f in sorted(os.listdir(NOVELTY))
            if f.endswith(".md") and f != "TEMPLATE.md"}
-    errs = check(rows, heads, spent, nov, PARTITIONED)
+    errs = check(rows, heads, spent, nov, PARTITIONED, {d: e for d, (_, e) in looks.items()})
     return rows, heads, spent, errs
 
 
