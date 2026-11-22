@@ -1,0 +1,40 @@
+id	steps	dataset	family	genre	status	novelty	related	nfiles	ref	question
+CH1	C1	larry_cytokine	instr_select	correction	confirmed	novel			DISCOVERIES 1-12; audit 2026-11-18	Do cytokines select pre-existing clone fate states or instruct them (mouse LARRY wells)?
+CH2		sis_skew	ko_fate_identifiable	correction	confirmed	novel			DISCOVERIES 13-18; audit 2026-11-18	Is the knockout fate effect identifiable beyond editing, expansion and sampling; are control wells null?
+C3	C3-S\d+	raj_morph_0831;raj_wnt	state_predicts_fate	model	confirmed	partly			DISCOVERIES 20-26	Do clone states plus sorting predict unseen gastruloid pair order?
+C4	C4-S\w+(-R)?	raj_morph_0831	mixing_rescue	model	negative	unchecked			WRITEUP_RESCUE; DISCOVERIES 22, 24	Does mixing two clones rescue elongation, and by which mechanism?
+C5	C5-S\d+	raj_atac;raj_diffassay;gse291244_founders	memory_decay	model	parked	partly			WRITEUP_MEMORY; FOCUS parked	How fast is clone memory lost over passages (chromatin, expression)?
+C6	C6-S\w+	raj_morph_0831	spatial_model	model	exploratory	published			WRITEUP_CELLS_IN_SPACE; audit 2026-11-18	Which local rules build the gastruloid axis (adhesion, long-range pull)?
+C7	C7-S\w+	celltag_lsk;celltag_reprog;chspctrack	fate_heritable	replication	confirmed	partly			DISCOVERIES 32; ledger C7-S7	Is clone fate heritable and readable early, one metric across systems?
+C8	C8-S\w+	celltag_lsk;celltag_reprog;chspctrack	state_predicts_fate	replication	confirmed	partly	C7: same sets, different readout		DISCOVERIES 33; ledger C8-S1	Does early clone RNA predict which fate a clone takes on unseen clones?
+C9	C9-S\d+	chspctrack	chromatin_vs_rna	replication	withdrawn	unchecked			FOCUS parked ch9	Does clone chromatin predict the fate split (second modality)?
+C10	C10-S\d+	resistrace	state_predicts_fate	replication	confirmed	partly			DISCOVERIES 29; ledger C10-S2	Does pre-treatment state beyond a subclone proxy predict lineage survival?
+C11	C11	external	data_gate	gate	failed_gate	published			audit 2026-11-18	Gate only (published per its gate).
+C12	C12(-S\d+)?	lsc_larry	state_predicts_fate	replication	published_closed	published	C10: same family, other set	C12-S2	DISCOVERIES 34; C12 CLOSED 2026-11-22	Does day-20 clone state predict in vivo presence beyond size?
+C13	C13(-S\w+)?	petracer_embryo	lineage_position	gate	failed_gate	not_found			C13 closed; gap_outcomes 2026-11-18	Does clone history predict where cells end up beyond type (positions only inferred)?
+C14	C14-S\w+	petracer_embryo	state_predicts_fate	replication	confirmed	partly			DISCOVERIES 31; ledger C14-S2	Does state beyond type predict relatives' fate in unseen embryos?
+C15	C15-S\w+	growth12_host_v2	state_predicts_fate	replication	underpowered	partly	C14: same readout transferred		RETRO_2026-11-17b	Does the C14 readout carry to an in vivo growth model with 32 hosts?
+C16	C16-S\w+	petracer_embryo	memory_decay	model	exploratory	published			WRITEUP_C16; DISCOVERIES 30	Is there a hidden inherited P/L state on embryo trees, and its half-life?
+C17-JOIN	C17|C17-S0[bc]|C17-S1/S2/S3	rf2020_clone;cortical_clone	cross_system_law	model	failed_gate	partly		C17-S0;C17-S1	CHAPTER17_PLAN; C17-S0/S1 entries	Plan and sealing for the joint clone model across systems.
+C17-TCORT		cortical_clone	ko_fate_identifiable	correction	underpowered	not_found			C17-S1 pretest: power 0.14-0.67	Do TF knockdowns instruct fate or select clones (sealed test)?
+C17-TSPLIT		rf2020_clone	fate_heritable	replication	failed_gate	published			C17-S1 label gate 0.52	Does lineage bias agree between the two recipients a clone was split into?
+C17-CREST	C17-S1C(-S1)?	crest_split_clone	state_predicts_fate	replication	exploratory	published			C17-S1C-S1; pandaCREST source	Does a split clone keep its identity between in vivo and organoid arms?
+C17-GATES	C17-S1[DGMN]|C17-S1N2	external	data_gate	gate	failed_gate	unchecked			C17-S1D/G/M/N/N2	Neural and other system data searches and gates.
+C17-PH	C17-S1P	petracer_embryo	fate_heritable	replication	exploratory	published	C14: same set		C17-S1P	Heritable fate share on the embryo train trees.
+C17-STAGE	C17-S1T|C17-S1PL(-[PT]\d*)?	dtt_founder;petracer_embryo	memory_decay	model	negative	partly	C16: same family on petracer_embryo	C17-S1T;C17-S1PL	C17-S1PL-T/T3/T4; RETRO_2026-11-21	Is per-division memory separable from commitment on dated trees?
+C17-LAW	C17-S1R(-P\d*)?	external	cross_system_law	model	failed_gate	partly			C17-S1R-P..P7; RETRO_2026-11-22	Is there a shared memory law across classes; within-system screens W1-W7.
+DNR-TSS		dtt_founder	memory_decay	model	dont_repropose	unchecked			C17-S1PL-P	Time-since-split instead of edges (ultrametric tree, collinear).
+DNR-W5		dtt_founder	memory_decay	model	dont_repropose	unchecked			C17-S1R-P5	Early vs late memory by split date (a commitment step mimics it).
+DNR-ELIFE60624		external	memory_decay	gate	dont_repropose	unchecked			C17-S1R-P3	Counted-division blood families (no per-cell data).
+DNR-LAWROWS		petracer_embryo	cross_system_law	model	dont_repropose	unchecked			C17-S1R-P2	Computing more law-test rows (best case p >= 0.086).
+DNR-CLOCK-A		dtt_founder	state_predicts_fate	replication	dont_repropose	unchecked			C17-S1PL-P2	Sealed-A test of clock beats edge depth (power 0.43).
+CAND-A		dtt_founder	state_predicts_fate	replication	parked	partly	C14: same claim re-tested	CAND-A_cross_recorder	lit/novelty/CAND-A	Re-test C14 in the independent DNA Typewriter embryo.
+CAND-B		external	lineage_position	model	failed_gate	published	C13: same question	CAND-B_lineage_position	lit/novelty/CAND-B	Lineage history predicts measured position outside embryos.
+CAND-C		lsc_larry	state_predicts_fate	replication	failed_gate	published	C12: same set	CAND-C_lsc_treatment_arm	lit/novelty/CAND-C	Which clone states survive treatment in vivo (source headline).
+CAND-D		chspctrack	instr_select	correction	open	partly	CH1: same question in mouse	CAND-D_cytokine_instruct_select_human	lit/novelty/CAND-D	Do cytokines instruct or select human progenitor clones (serial samples)?
+CAND-E		cortical_clone	ko_fate_identifiable	correction	open	not_found	C17-TCORT: the sealed version failed power; this is the design-level study	CAND-E_cortical_fate_vs_growth	lit/novelty/CAND-E	Are cortical knockdown fate shifts separable from clone growth (design study)?
+CAND-F		rf2020_clone;external	sampling_artefact	correction	open	not_found		CAND-F_clone_number_bias_artefact	lit/novelty/CAND-F	Is the more-clones-more-myeloid-bias correlation a sampling artefact?
+CAND-G		sis_skew;cortical_clone;external	ko_fate_identifiable	correction	open	not_found	CH2: done for SIS-skew; C17-TCORT and CAND-E: the cortical part	CAND-G_knockout_fate_vs_growth_cross	lit/novelty/CAND-G	Are knockout fate shifts separable from clone growth, across systems?
+H-C		petracer_embryo	state_predicts_fate	replication	parked	partly	C14: same set		claimable hypotheses	Embryo fate rules replicate out of sample.
+H-D		petracer_embryo	memory_decay	model	dont_repropose	published	C16: same family		gap_outcomes 2026-11-18	Axial progenitors mature towards neural fate (published by source).
+G11-12		raj_drug	signal_perturbation	model	parked	unchecked			DISCOVERIES 27; FOCUS parked #27	Does signalling perturbation erode the clones' division of labour (series gain)?

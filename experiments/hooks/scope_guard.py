@@ -113,6 +113,29 @@ def claude_prompt():
     print(json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": ctx}}))
 
 
+
+COVERAGE = os.path.join(EXP, "coverage_check.py")
+
+
+def retro_coverage_errors(added, read_staged, coverage_line):
+    """Every newly added RETRO_*.md must carry the current coverage line ('Coverage check: <hash> OK'),
+    produced by experiments/coverage_check.py --line (Bence 2026-11-22: "make a deterministic check for all
+    the retros to check already tryed exps and candidate ones to stay aligned with coverage")."""
+    retros = [p for p in added if re.fullmatch(r"experiments/RETRO_[^/]+\.md", p)]
+    if not retros:
+        return []
+    line, ok = coverage_line()
+    if not ok:
+        return [f"coverage check fails ({line}); fix COVERAGE.tsv before the retro (run "
+                f"python -I experiments/coverage_check.py)."]
+    return [f"{p}: paste the current '{line}' line (python -I experiments/coverage_check.py --line)."
+            for p in retros if line not in read_staged(p)]
+
+
+def _coverage_line():
+    r = subprocess.run([sys.executable, "-I", COVERAGE, "--line"], capture_output=True, text=True, encoding="utf-8")
+    return r.stdout.strip(), r.returncode == 0
+
 PRACTICE_FROM = "2026-11-13"  # pre-registrations from this date need a 'Practice:' line (program.md checklist)
 
 
@@ -256,6 +279,11 @@ def commit_msg(path):
                 errs.append(practice_error(exp, date, body))
             if compute_error(exp, date, body):
                 errs.append(compute_error(exp, date, body))
+    added = subprocess.run(["git", "diff", "--cached", "--name-only", "--diff-filter=A"], capture_output=True,
+                           text=True).stdout.split()
+    errs += retro_coverage_errors(
+        added, lambda p: subprocess.run(["git", "show", f":{p}"], capture_output=True, text=True,
+                                        encoding="utf-8").stdout, _coverage_line)
     if errs:
         sys.stderr.write("commit refused by scope guard:\n  " + "\n  ".join(errs) + "\n")
         sys.exit(1)

@@ -63,6 +63,7 @@ Closed chapter plans and the 2023-24 setup moved to `PROGRAM_HISTORY.md` on 2026
    checklist below), `-> memory` (tooling pitfall, saved to the assistant's memory), or `-> not adopted`
    with the reason. "Standing practice" without one of these is not allowed.
 5. Re-check the private accessions on the FOCUS.json watch list.
+6. **Coverage check** (Bence 2026-11-22: "make a deterministic check for all the retros to check already tryed exps and candidate ones to stay aligned with coverage"): register every new step, candidate and ruled-out option in `experiments/COVERAGE.tsv`, run `uv run python -I experiments/coverage_check.py`, fix every error, and paste its `Coverage check: <hash> OK` line into the retro. The commit hook refuses a new RETRO file without the current line. The check tests alignment with recorded coverage (log steps, oracle looks, novelty files, near-repeats, don't-repropose rows); it is not a novelty gate.
 
 ## Out of bounds
 - Changing the metric or the target after seeing results of the same study.

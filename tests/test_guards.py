@@ -132,6 +132,8 @@ class Box:
             '    return {"rho": 0.3}\n',
         )
         self.write("toy_counts.json", json.dumps({"clones": 100}))
+        # stub coverage script; the real check is tested below
+        self.write("coverage_check.py", "print('Coverage check: stub OK')\n")
         self.write(
             "EXPERIMENT_LOG.md",
             "# log\n\n## E1: old (pre-registered 2026-11-01)\n\n" + MARKER + "\n\n",
@@ -371,7 +373,7 @@ def test_commit_refuses_focus_change_without_bence_quote(box):
 
 
 def test_commit_refuses_new_chapter_without_value_and_literature(box):
-    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close\n")
+    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close\nCoverage check: stub OK\n")
     box.novelty("C10-S1")
     box.focus(step="C10-S1")
     res = box.commit('open chapter 10\n\nBence: "go"')
@@ -390,19 +392,22 @@ def test_commit_allows_same_chapter_step_and_pause_after_close_retro(box):
     box.focus(step="PAUSED")
     res = box.commit('pause\n\nBence: "pause"')
     assert res.returncode != 0 and "H23" in res.stderr
-    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close\n")
+    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close\nCoverage check: stub OK\n")
     assert box.commit('pause\n\nBence: "pause"').returncode == 0
 
 
 def test_commit_refuses_leaving_chapter_without_close_retro(box):
     box.write(
-        "RETRO_2026-11-13.md", "# Retro 2026-11-13: C8 closed, C9 opened\n"
+        "RETRO_2026-11-13.md", "# Retro 2026-11-13: C8 closed, C9 opened\nCoverage check: stub OK\n"
     )  # names C9, not its close
     box.novelty("C10-S1")
     box.focus(step="C10-S1", value="adds x", literature="top 5 read", headline_unit="systems: 4")
     res = box.commit('open chapter 10\n\nBence: "go"')
     assert res.returncode != 0 and "H23" in res.stderr
-    box.write("RETRO_2026-11-14.md", "# Retro 2026-11-14: C9 close (S2 look, write-up)\n")
+    box.write(
+        "RETRO_2026-11-14.md",
+        "# Retro 2026-11-14: C9 close (S2 look, write-up)\nCoverage check: stub OK\n",
+    )
     assert box.commit('open chapter 10\n\nBence: "go"').returncode == 0
 
 
@@ -638,3 +643,110 @@ def test_balanced_split_gives_equal_matched_sealed_partitions():
     tot = {p: sum(sizes[u] for u in m if m[u] == p) / n[p] for p in "ABC"}
     assert max(tot.values()) - min(tot.values()) < 0.05 * max(tot.values())
     assert m == pt.balanced_split(sizes, "salt-test", strata)
+
+
+# --- coverage check (Bence 2026-11-22): backtest on the day's known misses ---
+
+
+def _cov_rows():
+    import coverage_check as cc
+
+    return cc.parse_registry((EXP / "COVERAGE.tsv").read_text(encoding="utf-8"))
+
+
+def _cov(rows, heads=(), nov=None):
+    import coverage_check as cc
+    import partitions as pt
+
+    nov = dict(nov or {})
+    for r in rows:  # keep the registry's own file links satisfied unless a test overrides them
+        for s in [x for x in r["nfiles"].split(";") if x]:
+            nov.setdefault(s, "- Finding: x\n  - Verdict: published\n")
+    spent = cc.spent_looks((EXP / "test_ledger.tsv").read_text(encoding="utf-8"))
+    return cc.check(rows, list(heads), spent, nov, pt.PARTITIONED)
+
+
+def _row(**kw):
+    base = {
+        "id": "X",
+        "steps": "",
+        "dataset": "external",
+        "family": "data_gate",
+        "genre": "gate",
+        "status": "open",
+        "novelty": "unchecked",
+        "related": "",
+        "nfiles": "",
+        "ref": "",
+        "question": "q",
+    }
+    return {**base, **kw}
+
+
+def test_coverage_registry_is_clean():
+    import coverage_check as cc
+
+    rows, heads, spent, errs = cc.run()
+    assert errs == [], "\n".join(errs)
+    assert len(heads) > 100
+
+
+def test_coverage_flags_a_published_question_left_open():
+    """C12: a look offered although the audit said published in kind."""
+    rows = [r if r["id"] != "C12" else {**r, "status": "open"} for r in _cov_rows()]
+    assert any(e.startswith("E4 C12") for e in _cov(rows))
+
+
+def test_coverage_flags_a_softer_novelty_note():
+    """C12-S2: the note said 'partly published' while the audit said published."""
+    nov = {"C12-S2": "- Finding: x\n  - Verdict: partly published\n"}
+    assert any("E3 C12" in e and "softer" in e for e in _cov(_cov_rows(), nov=nov))
+
+
+def test_coverage_flags_a_near_repeat_without_related():
+    """CAND-E: the design study on the cortical set must name the failed sealed test C17-TCORT."""
+    rows = [r if r["id"] != "CAND-E" else {**r, "related": ""} for r in _cov_rows()]
+    assert any(e.startswith("E5 CAND-E") and "C17-TCORT" in e for e in _cov(rows))
+
+
+def test_coverage_flags_a_duplicate_of_a_closed_chapter():
+    """C5-S2 type: a memory step offered again on the same chromatin set once C5 is closed."""
+    rows = [r if r["id"] != "C5" else {**r, "status": "underpowered"} for r in _cov_rows()]
+    rows.append(_row(id="DUP", dataset="raj_atac", family="memory_decay", genre="model"))
+    assert any(e.startswith("E5 DUP") and "C5" in e for e in _cov(rows))
+
+
+def test_coverage_flags_a_dont_repropose_reoffer():
+    """Time-since-split on the dated tree was ruled out; a re-offer fails even with 'related'."""
+    extra = _row(
+        id="TSS2",
+        dataset="dtt_founder",
+        family="memory_decay",
+        genre="model",
+        related="DNR-TSS C17-STAGE",
+    )
+    rows = _cov_rows() + [extra]
+    assert any(e.startswith("E6 TSS2") and "DNR-TSS" in e for e in _cov(rows))
+
+
+def test_coverage_flags_an_unregistered_log_step():
+    assert any(e.startswith("E1 log heading C99-S1") for e in _cov(_cov_rows(), heads=["C99-S1"]))
+
+
+def test_retro_needs_the_current_coverage_line():
+    line = "Coverage check: abc123 OK"
+    ok = lambda: (line, True)  # noqa: E731
+    fail = lambda: ("Coverage check: abc FAIL 2", False)  # noqa: E731
+    errs = scope_guard.retro_coverage_errors
+    assert errs(["experiments/RETRO_x.md"], lambda p: "no line", ok)
+    assert errs(["experiments/RETRO_x.md"], lambda p: f"...{line}...", ok) == []
+    assert errs(["experiments/RETRO_x.md"], lambda p: line, fail)
+    assert errs(["experiments/other.md"], lambda p: "", ok) == []
+
+
+def test_commit_refuses_retro_without_coverage_line(box):
+    box.write("RETRO_2026-11-30.md", "# Retro 2026-11-30: block\n")
+    res = box.commit("retro")
+    assert res.returncode != 0 and "Coverage check" in res.stderr
+    box.write("RETRO_2026-11-30.md", "# Retro 2026-11-30: block\nCoverage check: stub OK\n")
+    assert box.commit("retro").returncode == 0

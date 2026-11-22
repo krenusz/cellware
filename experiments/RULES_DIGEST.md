@@ -23,6 +23,7 @@ Before a pre-registration
 Chapters and retros
 - H18 Retro before a 5th amendment within one step. H20 Before any code: source methods read, top 5 papers read, minimal published mechanism, value stated; stop reading at sealed outcomes.
 - Every retro lesson lands as a rule, a practice line, a memory item or "not adopted".
+- Every retro pastes the current `Coverage check: <hash> OK` line from coverage_check.py (COVERAGE.tsv registers every step, candidate and don't-repropose option; commit hook enforces). Before proposing a candidate, add its row and run the check (E5/E6 catch near-repeats).
 Result reports
 - Self-challenge before the conclusion: suspicious? other explanations? how many units? used data enough? already published?
 - No outreach. Authors' result tables for sealed sets stay unread. FOCUS.json changes need a commit quoting Bence.
