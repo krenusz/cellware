@@ -1,0 +1,61 @@
+{
+ "structural_units": {
+  "B": 316,
+  "A": 304,
+  "train": 712,
+  "C": 298
+ },
+ "train": {
+  "n_units": 712,
+  "positives": 101,
+  "cv_delta_auc": 0.1661,
+  "label_shuffle_delta_mean": 0.0005
+ },
+ "calibration": {
+  "target_delta": 0.0828,
+  "s_effect": 0.6715,
+  "s_planted": 1.3752
+ },
+ "selftest": {
+  "null_false_pass": {
+   "power": 0.036,
+   "mean_delta": -0.006,
+   "n_sim": 1000
+  },
+  "planted_power": {
+   "power": 1.0,
+   "mean_delta": 0.2011,
+   "n_sim": 200
+  },
+  "pass": true
+ },
+ "power": {
+  "A": {
+   "power": 0.98,
+   "mean_delta": 0.0671,
+   "n_sim": 1000
+  },
+  "B": {
+   "power": 0.976,
+   "mean_delta": 0.0678,
+   "n_sim": 1000
+  },
+  "C": {
+   "power": 0.977,
+   "mean_delta": 0.0679,
+   "n_sim": 1000
+  },
+  "A+B": {
+   "power": 1.0,
+   "mean_delta": 0.0665,
+   "n_sim": 1000
+  },
+  "A+B+C": {
+   "power": 1.0,
+   "mean_delta": 0.0673,
+   "n_sim": 1000
+  }
+ },
+ "verdict": "single partition powered: ['A', 'B', 'C']",
+ "caveat": "in-sample train PC scores used; a real look projects partition clones through train PCA (not modelled)"
+}

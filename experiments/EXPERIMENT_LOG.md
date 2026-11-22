@@ -13069,3 +13069,21 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Change (frozen test and simulation alike):** within the partition, the state PCs are regressed on the M0x covariates (linear, with intercept); the permutation shuffles the residual rows and adds them back to the fitted part (Freedman-Lane). Statistic, models, 200 permutations, p rule and alpha are unchanged. Output file results_c12/c12s2_power_a1.json; the failed run's file is kept as the record.
 - **Selftest bar unchanged** (false pass <= 0.05, planted >= 0.95). If it fails again, no power is reported and the test design goes back to Bence.
 - No sealed data read; nothing else changed.
+
+### C12-S2 result (2026-11-22; run https://github.com/krenusz/cellware/actions/runs/45050001794; results_c12/c12s2_power_a1.json): train only, no sealed read
+- **Reproduction:** 712 train clones, 101 present at D20 in vivo, train CV delta AUC 0.1661 (C12-S1: 0.166); label-shuffle mean 0.0005. Target effect 0.0828 (shrink 0.5).
+- **Selftests (amendment 1 null): PASS.** False pass at s = 0: 0.036 (bar <= 0.05; slightly above the nominal 0.025). Planted (oracle delta 0.25): power 1.00.
+- **Simulated power of the frozen test (1,000 simulations each; mean simulated delta about 0.067):**
+
+  | configuration | clones | power |
+  |---|---|---|
+  | A | 304 | 0.980 |
+  | B | 316 | 0.976 |
+  | C | 298 | 0.977 |
+  | A+B | 620 | 1.000 |
+  | A+B+C | 918 | 1.000 |
+
+- **Verdict: a single partition is powered (H19 passes for a one-partition look).** The earlier z_power figure (0.55-0.57) is withdrawn: it used a bootstrap SE of the delta that also counted label noise the permutation test conditions on, and no full-pipeline simulation.
+- **Self-challenge:** (1) suspicious? The jump from 0.56 to 0.98 is large. The null is calibrated (0.036) and the effect is already halved, so the gain is from the test design, not from a bigger effect. (2) Not modelled: in-sample train PC scores (a real look projects partition clones through train PCA), and a linear-logistic truth. Both make the simulation optimistic to an unknown degree; the margin over 0.8 is wide. (3) Mouse/well effects beyond hashtags are untested on train. (4) The source preprint's engraftment association overlaps in kind (H20).
+- **Next (needs Bence):** pre-register C12-S3, one oracle look on one partition (A), with the frozen test; B and C stay sealed. No look is made without his OK.
+- No sealed data read.
