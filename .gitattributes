@@ -1,1 +1,2 @@
 .githooks/* text eol=lf
+sweeps/lsc_clone_map_d20.tsv -text
