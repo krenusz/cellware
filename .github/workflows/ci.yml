@@ -22,3 +22,5 @@ jobs:
           uv run ruff format --check src tests
       - name: Test
         run: uv run pytest -q
+      - name: Coverage check (registry vs log, ledger, novelty files; Bence 2026-11-22)
+        run: uv run python -I experiments/coverage_check.py
