@@ -8,11 +8,13 @@ ledger, lit/novelty files and the sealed partitions). It is NOT a novelty gate: 
 published; the H25 novelty file decides that.
 
 Errors (exit 1):
-  E1 a C*/CAND-* heading in EXPERIMENT_LOG maps to no registry row, or to more than one
+  E1 a heading in EXPERIMENT_LOG maps to no registry row (explicit step ids), or to more than one; only the
+     frozen pre-chapter headings in LEGACY are exempt (printed with their count)
   E2 a data set with a spent oracle look has no registry row; a 'confirmed' row on sealed data has no look
-  E3 a lit/novelty file is missing from the registry (or listed twice), or its verdict is softer than the row's
+  E3 a lit/novelty file is missing from the registry (or listed twice), or its main (first) verdict is softer
+     than the row's
   E4 an open row marked published lacks "Published but proceeding: Bence:" in its novelty file
-  E5 an open row shares a data set and question family with a closed row and does not name it in `related`
+  E5 an open row shares a data set with any non-open row (closed or parked) and does not name it in `related`
   E6 an open row shares a data set and question family with a dont_repropose row (always an error)
   E7 unknown status / family / genre / novelty value or data set key; duplicate row id
   E8 sensitive wording in the registry (lit_gap.SENSITIVE)
@@ -42,14 +44,14 @@ COLS = ["id", "steps", "dataset", "family", "genre", "status", "novelty", "relat
 STATUS = {"confirmed", "negative", "withdrawn", "underpowered", "exploratory", "published_closed", "failed_gate",
           "dont_repropose", "open", "parked"}
 OPEN = {"open"}
-NOT_CLOSED = {"open", "parked"}
 FAMILY = {"instr_select", "ko_fate_identifiable", "state_predicts_fate", "fate_heritable", "memory_decay",
           "mixing_rescue", "spatial_model", "chromatin_vs_rna", "lineage_position", "cross_system_law",
           "sampling_artefact", "data_gate", "signal_perturbation"}
 GENRE = {"correction", "replication", "model", "gate"}
 SEVERITY = {"unchecked": 0, "novel": 1, "not_found": 1, "partly": 2, "published": 3}
-EXTERNAL = {"external", "larry_cytokine", "sis_skew"}  # data sets outside partitions.PARTITIONED
-HEAD_RE = re.compile(r"^## (C\d+[^\s:(]*|CAND-[A-Z]\b)", re.M)
+EXTERNAL = {"larry_cytokine", "sis_skew"}  # data sets outside partitions.PARTITIONED; others are 'ext:<name>'
+LEGACY = set(['Amendment', 'Audit', 'B10', 'B13', 'B14', 'B18', 'B19', 'B20', 'B21', 'B22', 'B23', 'B24', 'B25', 'B26', 'B27', 'B28', 'B29', 'B30', 'B31', 'B32', 'B33', 'B34', 'B35', 'B36', 'B37', 'B38', 'B39', 'B3l', 'B40', 'B41', 'B42', 'B43', 'Batch', 'Converged', 'E1', 'E10', 'E11', 'E12', 'E13', 'E14', 'E15', 'E16', 'E17', 'E18', 'E18b', 'E18c', 'E19', 'E2', 'E23', 'E24', 'E28', 'E29', 'E3', 'E32', 'E33', 'E35', 'E36', 'E37', 'E38', 'E39', 'E4', 'E40', 'E41', 'E41b', 'E43', 'E44', 'E45', 'E46', 'E47', 'E48', 'E49', 'E5', 'E50', 'E51', 'E53', 'E54', 'E55', 'E6', 'E6b', 'E7', 'E8', 'E9', 'G1', 'G10', 'G2', 'G2b', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'H2', 'Note', 'PAUSE', 'Planned', 'Programme', 'Proposed', 'R1', 'R2', 'R3', 'Retro', 'S1', 'S2', 'Summary', 'Track'])  # headings before chapter ids (chapters 1-3 era), frozen 2026-11-22
+HEAD_RE = re.compile(r"^## ([A-Z][A-Za-z0-9'/-]*)", re.M)
 VERDICT_RE = re.compile(r"^\s*-?\s*Verdict:\s*(published|partly published|not found)\b", re.I | re.M)
 
 
@@ -75,7 +77,8 @@ def parse_registry(text):
 
 
 def headings(log_text):
-    return sorted({m.group(1).rstrip(".,") for m in HEAD_RE.finditer(log_text)})
+    """Every heading id in the log except the frozen LEGACY ones."""
+    return sorted({m.group(1) for m in HEAD_RE.finditer(log_text)} - LEGACY)
 
 
 def spent_looks(ledger_text):
@@ -98,9 +101,10 @@ def ledger_looks(ledger_text):
 
 
 def file_severity(text):
+    """Severity of the main (first) finding's verdict; a soft main finding cannot hide behind a side finding."""
     v = [x.lower() for x in VERDICT_RE.findall(text)]
     sev = {"published": 3, "partly published": 2, "not found": 1}
-    return max((sev[x] for x in v), default=0)
+    return sev[v[0]] if v else 0
 
 
 def datasets(row):
@@ -119,16 +123,17 @@ def check(rows, heads, spent, novelty_texts, partitioned, look_exps=None):
             if r[k] not in vocab:
                 errs.append(f"E7 {r['id']}: unknown {k} '{r[k]}'")
         for d in sorted(datasets(r) - known):
-            errs.append(f"E7 {r['id']}: unknown data set '{d}'")
+            if not re.fullmatch(r"ext:[a-z0-9_]+", d):
+                errs.append(f"E7 {r['id']}: unknown data set '{d}' (use a partition key or ext:<name>)")
     # E1 log coverage
     for h in heads:
-        hit = [r["id"] for r in rows if r["steps"] and re.fullmatch(r["steps"], h)]
+        hit = [r["id"] for r in rows if h in r["steps"].split("|")]
         if len(hit) != 1:
             errs.append(f"E1 log heading {h} maps to {len(hit)} rows {hit}")
     # E2 ledger
     for ds in sorted(spent):
         exps = (look_exps or {}).get(ds, set())
-        by_step = any(r["steps"] and re.fullmatch(r["steps"], e) for r in rows for e in exps)
+        by_step = any(e in r["steps"].split("|") for r in rows for e in exps)
         if not any(ds in datasets(r) for r in rows) and not by_step:
             errs.append(f"E2 data set {ds} has spent looks but no registry row (by data set or experiment id)")
     for r in rows:
@@ -162,14 +167,14 @@ def check(rows, heads, spent, novelty_texts, partitioned, look_exps=None):
     for r in rows:
         if r["status"] not in OPEN:
             continue
-        mine = datasets(r) - {"external"}
         for o in rows:
-            if o is r or o["family"] != r["family"] or not (mine & datasets(o)):
+            if o is r or o["status"] in OPEN or not (datasets(r) & datasets(o)):
                 continue
-            if o["status"] == "dont_repropose":
+            named = re.search(rf"(?<![A-Za-z0-9-]){re.escape(o['id'])}(?![A-Za-z0-9-])", r["related"])
+            if o["status"] == "dont_repropose" and o["family"] == r["family"]:
                 errs.append(f"E6 {r['id']}: repeats dont_repropose row {o['id']} ({o['question']})")
-            elif o["status"] not in NOT_CLOSED and o["id"] not in r["related"]:
-                errs.append(f"E5 {r['id']}: same data set and family as closed {o['id']}; name it in 'related'")
+            elif o["status"] != "dont_repropose" and not named:
+                errs.append(f"E5 {r['id']}: shares a data set with {o['id']} ({o['status']}); name it in 'related'")
     # E8 wording
     sens = re.compile(SENSITIVE, re.I)
     for r in rows:
@@ -222,7 +227,7 @@ def main():
     for r in rows:
         by.setdefault(r["status"], []).append(r["id"])
     print(f"## {line}")
-    print(f"Registry rows {len(rows)}; log headings mapped {len(heads)}.")
+    print(f"Registry rows {len(rows)}; log headings mapped {len(heads)}; legacy headings exempt {len(LEGACY)}.")
     for s in sorted(by):
         print(f"- {s}: {', '.join(sorted(by[s]))}")
     print("\n### Sealed data")

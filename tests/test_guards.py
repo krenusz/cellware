@@ -670,7 +670,7 @@ def _row(**kw):
     base = {
         "id": "X",
         "steps": "",
-        "dataset": "external",
+        "dataset": "ext:toy",
         "family": "data_gate",
         "genre": "gate",
         "status": "open",
@@ -710,9 +710,8 @@ def test_coverage_flags_a_near_repeat_without_related():
 
 
 def test_coverage_flags_a_duplicate_of_a_closed_chapter():
-    """C5-S2 type: a memory step offered again on the same chromatin set once C5 is closed."""
-    rows = [r if r["id"] != "C5" else {**r, "status": "underpowered"} for r in _cov_rows()]
-    rows.append(_row(id="DUP", dataset="raj_atac", family="memory_decay", genre="model"))
+    """C5-S2 type: a memory step offered again on the parked chromatin set."""
+    rows = _cov_rows() + [_row(id="DUP", dataset="raj_atac", family="memory_decay", genre="model")]
     assert any(e.startswith("E5 DUP") and "C5" in e for e in _cov(rows))
 
 
@@ -750,3 +749,15 @@ def test_commit_refuses_retro_without_coverage_line(box):
     assert res.returncode != 0 and "Coverage check" in res.stderr
     box.write("RETRO_2026-11-30.md", "# Retro 2026-11-30: block\nCoverage check: stub OK\n")
     assert box.commit("retro").returncode == 0
+
+
+def test_coverage_flags_a_new_step_under_an_old_chapter():
+    """C12-S2 would have mapped silently to a chapter-wide pattern; explicit ids make it fail."""
+    assert any(e.startswith("E1 log heading C12-S3") for e in _cov(_cov_rows(), heads=["C12-S3"]))
+
+
+def test_coverage_flags_a_reoffer_on_an_external_set():
+    """A failed external gate (the neural sets) must count as prior coverage."""
+    extra = _row(id="NEU", dataset="ext:itracer", family="state_predicts_fate", genre="model")
+    rows = _cov_rows() + [extra]
+    assert any(e.startswith("E5 NEU") and "C17-GATES" in e for e in _cov(rows))
