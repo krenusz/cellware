@@ -13028,3 +13028,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Second pass (this plan):** lit_gap.py citation map on Actions (OpenAlex), with 3 time-lapse genealogy papers added as seeds and a new topic `timelapse_lineage`. **Recall gate:** two known positives are deliberately NOT seeds (a 2015 ESC tree study, doi 10.1038/ncb3237; a 2012 lymphocyte division-destiny study, doi 10.1126/science.1213230); both must appear in the map rows. If either is missing, the search is reported as incomplete.
 - Then: candidates with the `timelapse_lineage` topic are screened by data availability (per-cell generation + fate tables public / raw images only / on request) and the structure gate (generation and fate per cell; enough trees or founders to seal 40/20/20/20; public now).
 - Practice: titles and abstracts only; neutral-wording filter in the tool; nothing downloaded.
+
+### C17-S1R-P7 result (2026-11-22; run https://github.com/krenusz/cellware/actions/runs/45037138867; results_lit/gap_2026-11-22_c17tl.json)
+- Map: 5,904 rows (after the neutral filter), 306 with the `timelapse_lineage` topic.
+- **Recall gate: FAIL, 1 of 2 held-outs.** The 2012 division-destiny study was found; the 2015 ESC tree study was not. Per the plan, **the search is incomplete** (ESC-tree work in particular may be under-covered).
+- **Data availability of the genealogy-with-fate leads** (Europe PMC full text, eLife API, Dryad; nothing downloaded):
+  - 2018 Nat Commun blood genealogies (lineage-marker synchrony): available from the corresponding author on request.
+  - 2022 single-cell tracking plus omics of blood stem cells: raw time-lapse on reasonable request; candidate gene table only in supplements.
+  - 2024 myoblast differentiation by live imaging: code plus sample data public; no full tracked set.
+  - 2023 eLife blood-cell kinetics by long-term live imaging (an invertebrate system): data in the manuscript, scripts on GitHub; no per-cell genealogy table found.
+  - 2018 eLife adult-gut live imaging: Dryad holds one 0.57 MB figure source-data spreadsheet; units are a handful of animals (H22).
+  - Not determinable (full text 500 or no statement): 2009 PNAS lymphocyte pedigrees, 2017 PLoS Biol time-lapse plus transcription, 2016 embryoid-body imaging, 2016 Cell Syst Nanog lineage-tree inference, 2017 lineage-tree parameter inference.
+  - First-pass leads (Haiku): all on request, raw images only, or unchecked.
+- **Verdict: no public dataset with per-cell division generation plus fate found.** Pattern: imaging genealogies are kept "on request", which the project cannot use (no outreach). Leads not determinable are listed above, unverified.
+- No data read; nothing sealed touched; neutral wording.
