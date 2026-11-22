@@ -167,6 +167,11 @@ SEEDS = {
     "FateVec 2026 (progressive asynchronous loss of potential on embryo trees)": "10.64898/2026.10.06.756974",
     "Curr Biol 1998 (cell-intrinsic differentiation timer)": "10.1016/s0960-9822(98)70177-0",
     "Nat Commun 2016 (cell-cycle-independent temporal identity)": "10.1038/ncomms11349",
+    # C17-S1R-P7 2026-11-22: time-lapse lineage trees with counted divisions + fate (recall held-outs: a 2015 ESC
+    # tree study and a 2012 lymphocyte division-destiny study are NOT seeds; the map must find them)
+    "Hoppe 2016 (continuous imaging of lineage factors, blood progenitor trees)": "10.1038/nature17979",
+    "Loeffler 2019 (blood stem cell genealogies by time-lapse)": "10.1038/s41586-019-1797-y",
+    "Strasser 2018 (fate decisions inferred from time-lapse genealogies)": "10.1038/s41467-018-05068-4",
 }
 
 # Open questions, as keyword groups; a paper scores on how many groups its title/abstract hits.
@@ -244,6 +249,10 @@ TOPICS = {
     "developmental_timer": [r"developmental timer", r"intrinsic timer", r"differentiation timer",
                             r"cell.cycle.independent", r"mitotic (history|clock|count)", r"division (count|number)",
                             r"temporal identity", r"timing of (commitment|differentiation|fate)"],
+    # C17-S1R-P7 2026-11-22: imaging-tracked genealogies (division generation known per cell)
+    "timelapse_lineage": [r"time.lapse", r"live.(cell )?imaging", r"cell tracking", r"single.cell tracking",
+                          r"genealog", r"pedigree", r"continuous (single.cell )?(imaging|observation)",
+                          r"division destiny", r"\bgenerations?\b.{0,40}(divid|division|fate)"],
     "sister_split": [r"sister (cells?|wells?|clones?)", r"split.{0,30}(wells|conditions|sisters|across)",
                      r"twin", r"fluctuation test", r"same clone.{0,40}(different|two|both) (conditions|wells|environments)",
                      r"clonal (split|splitting)", r"barcod.{0,60}(divided|split)"],
