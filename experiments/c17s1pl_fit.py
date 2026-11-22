@@ -333,6 +333,82 @@ def fit_celltype():
     fit("tau")
 
 
+FIT5 = RES / "c17s1pl_t5_fit.json"
+P5_FILES = [f"c17s1r_p5_discrim_{t}_eps{e}.json" for t in ("null", "split", "cstep") for e in (0.4, 0.57)]
+
+
+def p5_gate():
+    """C17-S1PL-T5 gate (C17-S1R-P5): attribution power >= 0.8 under split, false attribution <= 0.05 under null and
+    under the matched commitment step, at both noise levels."""
+    d = {f: json.loads((RES / f).read_text(encoding="utf-8")) for f in P5_FILES}
+    ok = all(d[f]["attributed_rate"] >= 0.8 if d[f]["truth"] == "split" else d[f]["attributed_rate"] <= 0.05
+             for f in d)
+    return {f: d[f]["attributed_rate"] for f in d}, bool(ok)
+
+
+def fit_split():
+    """C17-S1PL-T5 (W5): memory per edge early vs late splits; models and fitter are the P4/P5 pretest ones."""
+    import c17s1pl_pretest as PT
+
+    rates, ok = p5_gate()
+    T.say(json.dumps(rates))
+    if not ok:
+        raise SystemExit("P5 gate not passed: no fit (pre-registered order)")
+    S, info = PT.struct("major_trajectory")
+    p5 = json.loads((RES / P5_FILES[0]).read_text(encoding="utf-8"))
+    x = S["date"]
+    med = float(np.median(x))
+    assert info["n_pairs"] == p5["structure"]["n_pairs"] and abs(med - p5["date_median"]) < 1e-9, "pairs differ"
+    S["z"] = (x - x.mean()) / x.std()
+    g = x < med
+    unit = S["emb"]
+    rows, _, _, _ = load_train()
+    c1 = np.array([r[4] for r in rows], float)
+    c2 = np.array([r[5] for r in rows], float)
+    n1, n2 = c1.sum(1), c2.sum(1)
+    assert np.array_equal(n1, S["n1"]) and np.array_equal(n2, S["n2"]), "arm sizes differ"
+    a = np.sum((c1 / n1[:, None]) * (c2 / n2[:, None]), axis=1)  # first real agreement read in this stage
+    w = T.weights(n1, n2)
+    rng = np.random.default_rng(T.SEED + 5)
+    err, lam_loo = {}, {}
+    for u in S["eligible"]:
+        tr, te = unit != u, unit == u
+        err[u] = {}
+        for arm in PT.ARMS:
+            th = PT._fit3(S["z"][tr], S["k"][tr], S["Q"][tr], a[tr], w[tr], g[tr], arm, rng)
+            r = a[te] - PT._pred3(th, S["z"][te], S["k"][te], S["Q"][te], g[te], arm)
+            err[u][arm] = float(np.sum(w[te] * r * r) / np.sum(w[te]))
+            if arm == "split":
+                lam_loo[u] = [float(T.sig(th[2])), float(T.sig(th[3]))]
+    rl = PT.rule3(err)
+    full = {}
+    for arm in PT.ARMS:
+        fits = [PT._fit3(S["z"], S["k"], S["Q"], a, w, g, arm, rng) for _ in range(3)]
+        losses = [float(np.sum(w * (a - PT._pred3(t, S["z"], S["k"], S["Q"], g, arm)) ** 2) / np.sum(w)) for t in fits]
+        th = fits[int(np.argmin(losses))]
+        full[arm] = {"theta": th.tolist(), "loss": min(losses), "loss_spread": max(losses) - min(losses),
+                     "eps": float(T.sig(th[-1]))}
+    ts = full["split"]["theta"]
+    le = np.array([v[0] for v in lam_loo.values()])
+    ll = np.array([v[1] for v in lam_loo.values()])
+    per = {u: {"early": int(np.sum((unit == u) & g)), "late": int(np.sum((unit == u) & ~g))} for u in S["eligible"]}
+    eps_fit = full["split"]["eps"]
+    verdict = ("MEMORY DIFFERS EARLY VS LATE (exploratory, train)" if rl["attributed"] else
+               "EARLY/LATE TERM HELPS, NOT ATTRIBUTABLE TO MEMORY" if rl["split_beats_one"] else "NOT SUPPORTED")
+    res = {"verdict": verdict, "provisional_noise": eps_fit > 0.57, "rule": rl, "err_loo": err,
+           "lambda_early": float(T.sig(ts[2])), "lambda_late": float(T.sig(ts[3])),
+           "lambda_early_loo_range": [float(le.min()), float(le.max())],
+           "lambda_late_loo_range": [float(ll.min()), float(ll.max())],
+           "direction": "late > early" if T.sig(ts[3]) > T.sig(ts[2]) else "early >= late",
+           "full_data_fits": full, "eps_fitted_split": eps_fit, "eps_powered": [0.40, 0.57],
+           "date_median": med, "pairs_early_late_per_clade": per, "n_pairs": int(len(a)),
+           "gate_rates": rates,
+           "note": "train founder clades of one embryo; 4th model family on these pairs; no sealed confirmation path "
+                   "without its own power pretest; k in edges is a division proxy."}
+    T.dump(res, FIT5)
+    T.say(json.dumps({k: v for k, v in res.items() if k not in ("err_loo", "pairs_early_late_per_clade")}, indent=1))
+
+
 def selftest():
     rng = np.random.default_rng(1)
     for _ in range(20):
@@ -382,4 +458,4 @@ if __name__ == "__main__":
         smoke(sys.argv[2])
     else:
         {"selftest": selftest, "structure": structure, "analytic": analytic, "gate": gate, "fit": fit,
-         "fit3": lambda: fit("date"), "fit4": fit_celltype}[stage]()
+         "fit3": lambda: fit("date"), "fit4": fit_celltype, "fit5": fit_split}[stage]()

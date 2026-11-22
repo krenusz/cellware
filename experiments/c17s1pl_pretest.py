@@ -227,6 +227,116 @@ def split_power(n_sets, eps):
     T.dump(out, RES / f"c17s1r_p4_split_eps{eps}.json")
 
 
+ARMS = ("one", "split", "cstep")  # P5: same-size control arm, commitment offset for early splits
+
+
+def _pred3(th, z, k, Q, g, arm):
+    """one: al, be, lam, eps; split: al, be, lam_e, lam_l, eps; cstep: al, be, lam, delta_early, eps."""
+    if arm == "cstep":
+        C = T.sig(th[0] + th[1] * z + th[3] * g)
+        lam, eps = T.sig(th[2]), T.sig(th[4])
+        return Q + (1 - Q) * (1 - eps) * (C + (1 - C) * lam ** (2 * k))
+    return _pred_split(th, z, k, Q, g, arm == "split")
+
+
+def _fit3(z, k, Q, a, w, g, arm, rng):
+    if arm != "cstep":
+        return _fit_split(z, k, Q, a, w, g, arm == "split", rng)
+    from scipy.optimize import minimize
+
+    def loss(th):
+        r = a - _pred3(th, z, k, Q, g, "cstep")
+        return float(np.sum(w * r * r) / np.sum(w))
+
+    best = None
+    for _ in range(T.STARTS):
+        th0 = rng.normal(0, 1.5, 5)
+        th0[2] = rng.uniform(0.5, 4.0)
+        th0[3] = rng.normal(0, 1.0)
+        th0[4] = rng.uniform(-4, -1)
+        r = minimize(loss, th0, method="L-BFGS-B")
+        if best is None or r.fun < best.fun:
+            best = r
+    return best.x
+
+
+def rule3(err):
+    """Primary W5 rule (P4) plus attribution: split beats one AND cstep, each in >= 2/3 clades and pooled."""
+    pooled = {m: float(np.mean([err[u][m] for u in err])) for m in ARMS}
+
+    def beats(m):
+        wins = sum(err[u]["split"] < err[u][m] for u in err)
+        return wins >= 2 * len(err) / 3 and pooled["split"] < pooled[m]
+
+    return {"split_beats_one": bool(beats("one")), "split_beats_cstep": bool(beats("cstep")),
+            "attributed": bool(beats("one") and beats("cstep")), "pooled": pooled}
+
+
+def matched_delta(S, g, al, be, lam_e, lam_l):
+    """Step size that gives the early pairs the same mean expected agreement as the split truth (hardest mimic)."""
+    from scipy.optimize import brentq
+
+    z, k, Q = S["z"][g], S["k"][g], S["Q"][g]
+    eps = T.EPS
+    target = np.mean(Q + (1 - Q) * (1 - eps) * (T.sig(al + be * z) + (1 - T.sig(al + be * z)) * lam_e ** (2 * k)))
+
+    def f(d):
+        C = T.sig(al + d + be * z)
+        return np.mean(Q + (1 - Q) * (1 - eps) * (C + (1 - C) * lam_l ** (2 * k))) - target
+
+    return float(brentq(f, -10, 10))
+
+
+def discrim_power(truth, n_sets, eps):
+    """P5 (W5 gate): can memory-split be told apart from a commitment step at the same split? Train structure."""
+    T.EPS = eps
+    S, info = struct("major_trajectory")
+    x = S["date"]
+    S["z"] = (x - x.mean()) / x.std()
+    med = float(np.median(x))
+    g = x < med
+    w = T.weights(S["n1"], S["n2"])
+    al, be = -0.018, 1.034  # C17-S1PL-T3 full-data fit (date clock)
+    delta = matched_delta(S, g, al, be, 0.85, 0.95)
+    lam, alv = {"null": (np.full(len(x), 0.90), al), "split": (np.where(g, 0.85, 0.95), al),
+                "cstep": (np.full(len(x), 0.95), al + delta * g)}[truth]
+    rng = np.random.default_rng(T.SEED + 500 + sum(map(ord, truth)) + int(eps * 100))
+    out = {"eps": eps, "truth": truth, "structure": info, "date_median": med, "delta_matched": delta,
+           "n_sets": n_sets, "sets": []}
+    for i in range(n_sets):
+        a = T.simulate(S, lam, alv, be, rng)
+        err = {}
+        for u in S["eligible"]:
+            tr, te = S["emb"] != u, S["emb"] == u
+            err[u] = {}
+            for arm in ARMS:
+                th = _fit3(S["z"][tr], S["k"][tr], S["Q"][tr], a[tr], w[tr], g[tr], arm, rng)
+                r = a[te] - _pred3(th, S["z"][te], S["k"][te], S["Q"][te], g[te], arm)
+                err[u][arm] = float(np.sum(w[te] * r * r) / np.sum(w[te]))
+        out["sets"].append(rule3(err))
+        T.say(f"discrim {truth} eps {eps} set {i + 1}/{n_sets} {out['sets'][-1]}")
+    for key in ("split_beats_one", "split_beats_cstep", "attributed"):
+        out[key + "_rate"] = float(np.mean([s[key] for s in out["sets"]]))
+    T.dump(out, RES / f"c17s1r_p5_discrim_{truth}_eps{eps}.json")
+
+
+def discrim_selftest():
+    rng = np.random.default_rng(2)
+    n = 4000
+    z, k, Q = rng.normal(size=n), rng.uniform(2, 8, n), np.full(n, 0.2)
+    g = z < 0
+    th = np.array([0.0, 1.0, np.log(0.95 / 0.05), -0.7, np.log(0.4 / 0.6)])
+    a = _pred3(th, z, k, Q, g, "cstep")
+    est = _fit3(z, k, Q, a, np.ones(n), g, "cstep", rng)
+    assert abs(est[3] + 0.7) < 0.05 and abs(T.sig(est[2]) - 0.95) < 0.01, est
+    err = {f"u{i}": {"one": 2.0, "cstep": 1.5, "split": 1.0} for i in range(3)}
+    assert rule3(err)["attributed"]
+    err["u0"]["split"] = 1.6
+    err["u1"]["split"] = 1.6
+    assert not rule3(err)["split_beats_cstep"]
+    print("discrim selftest ok", round(float(est[3]), 3), round(float(T.sig(est[2])), 3))
+
+
 def split_selftest():
     rng = np.random.default_rng(1)
     n = 4000
@@ -246,6 +356,10 @@ if __name__ == "__main__":
         split_power(int(sys.argv[2]), float(sys.argv[3]))
     elif sys.argv[1] == "split_selftest":
         split_selftest()
+    elif sys.argv[1] == "discrim":
+        discrim_power(sys.argv[2], int(sys.argv[3]), float(sys.argv[4]))
+    elif sys.argv[1] == "discrim_selftest":
+        discrim_selftest()
     elif sys.argv[1] == "apower":
         apower()
     elif sys.argv[1] == "dates":

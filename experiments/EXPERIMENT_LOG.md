@@ -12969,3 +12969,26 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Self-challenge: at eps 0.57 the false pass sits exactly on the bar (2/40; binomial 95% CI up to ~0.17) and power at 0.85/0.95 is 0.825, near 0.8. The real fit's noise is expected near 0.40 (T3 fitted, same label and clock), where both margins are wide. The result entry of any W5 fit will compare fitted eps with 0.40/0.57 and is provisional above 0.57.
 - Prediction (~60% FAIL) was wrong.
 - Not run: the W5 fit itself. It would be the 4th model on these train pairs; it needs its own pre-registration and Bence's OK.
+
+## C17-S1PL-T5: W5 fit, memory per edge early vs late splits, with a commitment-step control (pre-registered 2026-11-22; Bence: "1")
+- **Serves: C17-S1PL** (current FOCUS step; the W5 direction of C17-S1R-P4).
+- **Identification gap found before any real agreement was read** (advisor review): early/late is defined by split date, the same covariate that drives commitment. A second lambda could win by absorbing a misfit of the logistic commitment curve near the earliest splits (the very bin that motivated W5), with no memory difference. P4's null planted a logistic curve only, so its 0.025/0.05 false pass does not cover this.
+- **Models (all fitted with the P4 pretest fitter `_fit_split`/`_fit3`, 5 starts, same weights):**
+  - M_one: alpha, beta (date clock), lambda, eps (4 params).
+  - M_split: alpha, beta, lambda_early, lambda_late, eps (5).
+  - M_cstep (control, same size as M_split): alpha, beta, lambda, delta_early (commitment offset for early splits), eps (5).
+  - early = split date below the train median date (8,146 train pairs; the numeric median is written into the P5 files from structure only and asserted equal in the fit).
+- **Primary rule (unchanged from P4):** M_split lower leave-one-founder-out error than M_one in >= 2/3 of the 27 eligible clades AND pooled.
+- **Attribution rule:** the result is read as "memory differs early vs late" only if M_split ALSO beats M_cstep by the same 2/3-and-pooled rule. If only the primary rule passes: "an early/late term helps, not attributable to memory". Else NOT SUPPORTED.
+- **Gate before the fit (C17-S1R-P5, discrimination power):** synthetic labels on the train structure, commitment planted at the T3 fit (alpha -0.018, beta 1.034), eps 0.40 and 0.57, 40 sets per truth. Truths: null (lambda 0.90), split (0.85 early / 0.95 late), cstep (lambda 0.95 everywhere, commitment step delta chosen so early pairs have the same mean expected agreement as the split truth: the hardest mimic). Gate: attribution rate >= 0.8 under split AND <= 0.05 under null and under cstep, at both noise levels. If it fails, W5 is not identifiable on these pairs and is dropped without the fit (no 4th look spent).
+- **Report, not tested:** lambda_early, lambda_late with LOO ranges, full-data start spread, direction of the difference, early/late pair counts per clade, fitted eps vs 0.40/0.57 (provisional above 0.57).
+- Pre-flight:
+  1. Unit: founder clade (27 eligible), one embryo, no treatment.
+  2. Readout: major_trajectory agreement (gate met in T).
+  3. Used data first: train only. A/B/C sealed and untouched.
+  4. Power: P4 (primary rule) plus P5 (attribution), below.
+  5. Exposure: 4th model family on these train pairs (T, T3, T4 before). No sealed confirmation path unless a separate power pretest shows one.
+  6. Literature: lit/novelty/C17-S1PL.md (memory falls with differentiation, BMC Biol 2024); a late > early difference would be in kind with it.
+- **Predictions:** P5 gate passes at eps 0.40 but attribution is marginal at 0.57 (~50% the gate fails overall). If the fit runs, ~60% NOT SUPPORTED or not attributable.
+- Practice: seeded; selftests (split model recovers 0.80/0.95; cstep recovers delta -0.70 and lambda 0.95; rule3 truth table); neutral wording.
+- Compute: GitHub Actions, sweeps/c17s1r_p5_discrim.txt (gate), then sweeps/c17s1pl_t5_fit.txt only after the gate passes and Bence's go.
