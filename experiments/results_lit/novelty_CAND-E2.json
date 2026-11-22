@@ -1,0 +1,566 @@
+{
+ "step": "CAND-E2",
+ "date": "2026-11-22",
+ "concept": [
+  {
+   "query": "radial glia clonal fate",
+   "matches": 34,
+   "top": [
+    {
+     "title": "Radial Glia Serve as Neuronal Progenitors in All Regions of the Central Nervous System",
+     "year": 2004,
+     "cites": 951,
+     "doi": "10.1016/s0896-6273(04)00140-0"
+    },
+    {
+     "title": "Neuronal circuitry mechanism regulating adult quiescent neural stem-cell fate decision",
+     "year": 2012,
+     "cites": 589,
+     "doi": "10.1038/nature11306"
+    },
+    {
+     "title": "Oblique Radial Glial Divisions in the Developing Mouse Neocortex Induce Self-Renewing Progenitors outside the Germinal Zone That Resemble Primate Outer Subventricular Zone Progenitors",
+     "year": 2011,
+     "cites": 521,
+     "doi": "10.1523/jneurosci.4773-10.2011"
+    },
+    {
+     "title": "Lineage, arrangement, and death of clonally related motoneurons in chick spinal cord",
+     "year": 1990,
+     "cites": 272,
+     "doi": "10.1523/jneurosci.10-07-02451.1990"
+    },
+    {
+     "title": "Clonal analysis by distinct viral vectors identifies bona fide neural stem cells in the adult zebrafish telencephalon and characterizes their division properties and fate",
+     "year": 2011,
+     "cites": 220,
+     "doi": "10.1242/dev.058156"
+    },
+    {
+     "title": "Radial glia in the ventral telencephalon",
+     "year": 2017,
+     "cites": 69,
+     "doi": "10.1002/1873-3468.12829"
+    },
+    {
+     "title": "Corepressor for element-1\u2013silencing transcription factor preferentially mediates gene networks underlying neural stem cell fate decisions",
+     "year": 2010,
+     "cites": 69,
+     "doi": "10.1073/pnas.0906917107"
+    },
+    {
+     "title": "Epidermal Growth Factor Is a Neuronal Differentiation Factor for Retinal Stem Cells In Vitro",
+     "year": 2005,
+     "cites": 54,
+     "doi": "10.1634/stemcells.2005-0190"
+    },
+    {
+     "title": "Nuclear Progesterone Receptors Are Up-Regulated by Estrogens in Neurons and Radial Glial Progenitors in the Brain of Zebrafish",
+     "year": 2011,
+     "cites": 48,
+     "doi": "10.1371/journal.pone.0028375"
+    },
+    {
+     "title": "Neocortical Sox9+ radial glia generate glutamatergic neurons for all layers, but lack discernible evidence of early laminar fate restriction",
+     "year": 2017,
+     "cites": 39,
+     "doi": "10.1186/s13064-017-0091-4"
+    },
+    {
+     "title": "Radial glial cells as neuronal precursors: The next generation?",
+     "year": 2002,
+     "cites": 36,
+     "doi": "10.1002/jnr.10340"
+    },
+    {
+     "title": "Expression of a novel serine/threonine kinase gene, Ulk4, in neural progenitors during Xenopus laevis forebrain development",
+     "year": 2015,
+     "cites": 16,
+     "doi": "10.1016/j.neuroscience.2014.12.060"
+    },
+    {
+     "title": "The emerging roles of transplanted radial glial cells in regenerating the central nervous system",
+     "year": 2015,
+     "cites": 11,
+     "doi": "10.4103/1673-5374.165317"
+    },
+    {
+     "title": "Clonal lineage tracing and transcriptomics of cortical progenitor populations reveal maintenance of differentiation potential",
+     "year": 2025,
+     "cites": 6,
+     "doi": "10.1016/j.stemcr.2025.102418"
+    },
+    {
+     "title": "Astrogenesis versus astrogliosis",
+     "year": 2017,
+     "cites": 6,
+     "doi": "10.4103/1673-5374.200798"
+    },
+    {
+     "title": "Integrative analysis of the embryonic origin of adult neural stem cells in forebrain subventricular zones",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1093/nsr/nwag516"
+    },
+    {
+     "title": "Neural Stem Cell Fate Decisions: Clonal Approaches",
+     "year": 2023,
+     "cites": 0,
+     "doi": ""
+    },
+    {
+     "title": "Author response: Microcephaly-associated protein WDR62 shuttles from the Golgi apparatus to the spindle poles in human neural progenitors",
+     "year": 2023,
+     "cites": 0,
+     "doi": "10.7554/elife.81716.sa2"
+    },
+    {
+     "title": "Editor's evaluation: Microcephaly-associated protein WDR62 shuttles from the Golgi apparatus to the spindle poles in human neural progenitors",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.81716.sa0"
+    },
+    {
+     "title": "Decision letter: Microcephaly-associated protein WDR62 shuttles from the Golgi apparatus to the spindle poles in human neural progenitors",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.81716.sa1"
+    }
+   ]
+  },
+  {
+   "query": "CRISPR lineage tracing brain",
+   "matches": 41,
+   "top": [
+    {
+     "title": "Simultaneous single-cell profiling of lineages and cell types in the vertebrate brain",
+     "year": 2018,
+     "cites": 637,
+     "doi": "10.1038/nbt.4103"
+    },
+    {
+     "title": "Whole-organism clone tracing using single-cell sequencing",
+     "year": 2018,
+     "cites": 475,
+     "doi": "10.1038/nature25969"
+    },
+    {
+     "title": "Developmental barcoding of whole mouse via homing CRISPR",
+     "year": 2018,
+     "cites": 377,
+     "doi": "10.1126/science.aat9804"
+    },
+    {
+     "title": "A human tissue screen identifies a regulator of ER secretion as a brain-size determinant",
+     "year": 2020,
+     "cites": 176,
+     "doi": "10.1126/science.abb5390"
+    },
+    {
+     "title": "Large-scale reconstruction of cell lineages using single-cell readout of transcriptomes and CRISPR\u2013Cas9 barcodes by scGESTALT",
+     "year": 2018,
+     "cites": 91,
+     "doi": "10.1038/s41596-018-0058-x"
+    },
+    {
+     "title": "Ptbp1 deletion does not induce astrocyte-to-neuron conversion",
+     "year": 2023,
+     "cites": 66,
+     "doi": "10.1038/s41586-023-06066-9"
+    },
+    {
+     "title": "Highly Efficient Transgenesis in Ferrets Using CRISPR/Cas9-Mediated Homology-Independent Insertion at the ROSA26 Locus",
+     "year": 2019,
+     "cites": 55,
+     "doi": "10.1038/s41598-018-37192-4"
+    },
+    {
+     "title": "Comprehensive spatiotemporal mapping of single-cell lineages in developing mouse brain by CRISPR-based barcoding",
+     "year": 2023,
+     "cites": 41,
+     "doi": "10.1038/s41592-023-01947-3"
+    },
+    {
+     "title": "Single-Cell Profiling of Lineages and Cell Types in the Vertebrate Brain",
+     "year": 2025,
+     "cites": 5,
+     "doi": "10.1007/978-1-0716-4310-5_15"
+    },
+    {
+     "title": "What\u2019s New in Musculoskeletal Basic Science",
+     "year": 2019,
+     "cites": 4,
+     "doi": "10.2106/jbjs.19.00922"
+    },
+    {
+     "title": "New knock-in mouse lines Dmp1em1(CreERT2) and Dmp1em2(ZsGreen) enable precise osteocyte-specific targeting and visualization",
+     "year": 2026,
+     "cites": 2,
+     "doi": "10.1093/jbmrpl/ziag031"
+    },
+    {
+     "title": "Transforming growth factor \u2010\u03b2\u2010mediated regulation of atoh1\u2010expressing neural progenitors is involved in the generation of cerebellar granule cells in larval and adult zebrafish",
+     "year": 2025,
+     "cites": 2,
+     "doi": "10.1111/dgd.70002"
+    },
+    {
+     "title": "Paired Single-Cell Transcriptome and DNA Barcode Detection in Zebrafish Using ScarTrace",
+     "year": 2025,
+     "cites": 2,
+     "doi": "10.1007/978-1-0716-4310-5_11"
+    },
+    {
+     "title": "Generation and characterization of Chd7\u2010iCreERT2\u2010tdTomato mice",
+     "year": 2023,
+     "cites": 1,
+     "doi": "10.1002/dvg.23575"
+    },
+    {
+     "title": "Dense reconstruction of elongated cell lineages: overcoming suboptimum lineage encoding and sparse cell sampling",
+     "year": 2020,
+     "cites": 1,
+     "doi": "10.1101/2020.07.27.223321"
+    },
+    {
+     "title": "Lineage tracing in mouse using CRISPR",
+     "year": 2018,
+     "cites": 1,
+     "doi": "10.1126/science.361.6405.888-k"
+    },
+    {
+     "title": "Meeting Report: The Allied Genetics Conference 2016",
+     "year": 2016,
+     "cites": 1,
+     "doi": "10.1534/g3.116.036848"
+    },
+    {
+     "title": "An improved CRISPR-LICHT screen of 120 \u201cTdark\u201d genes illuminates new biologically relevant SOX2 targets in human brain organoids",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.64898/2026.10.23.761353"
+    },
+    {
+     "title": "Mechanisms Regulating Microglial Lifespan and Cannibalism During Development",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.7274/31989087"
+    },
+    {
+     "title": "Zebrafish neural regeneration: mechanistic insights into human nervous system repair",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1016/j.neuroscience.2026.01.009"
+    }
+   ]
+  },
+  {
+   "query": "perturbation lineage barcoding fate",
+   "matches": 21,
+   "top": [
+    {
+     "title": "Lineage recording in human cerebral organoids",
+     "year": 2021,
+     "cites": 216,
+     "doi": "10.1038/s41592-021-01344-8"
+    },
+    {
+     "title": "Lineage recording reveals dynamics of cerebral organoid regionalization",
+     "year": 2020,
+     "cites": 24,
+     "doi": "10.1101/2020.06.19.162032"
+    },
+    {
+     "title": "Deep Lineage: Single-cell lineage tracing and fate inference using deep learning",
+     "year": 2026,
+     "cites": 5,
+     "doi": "10.1016/j.cels.2026.101759"
+    },
+    {
+     "title": "Early lineage divergence segregates sensory and motor-associative identities in the thalamus",
+     "year": 2026,
+     "cites": 4,
+     "doi": "10.1038/s41593-026-02485-9"
+    },
+    {
+     "title": "The EHA Research Roadmap: Normal Hematopoiesis",
+     "year": 2021,
+     "cites": 3,
+     "doi": "10.1097/hs9.0000000000000669"
+    },
+    {
+     "title": "Author response: Single-cell RNA sequencing of the Strongylocentrotus purpuratus larva reveals the blueprint of major cell types and nervous system of a non-chordate deuterostome",
+     "year": 2021,
+     "cites": 3,
+     "doi": "10.7554/elife.70416.sa2"
+    },
+    {
+     "title": "In vivo multimodal lineage tracing of mammalian development by DeepTrack barcoding",
+     "year": 2026,
+     "cites": 1,
+     "doi": "10.64898/2026.08.29.748052"
+    },
+    {
+     "title": "Sensitivity analysis of cell fate trajectories from single-cell transcriptomics",
+     "year": 2026,
+     "cites": 1,
+     "doi": "10.1093/bioinformatics/btag473"
+    },
+    {
+     "title": "Lineage tracing in human cortical development",
+     "year": 2026,
+     "cites": 1,
+     "doi": "10.1016/j.gde.2026.102506"
+    },
+    {
+     "title": "Author response: Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
+     "year": 2022,
+     "cites": 1,
+     "doi": "10.7554/elife.66922.sa2"
+    },
+    {
+     "title": "Quantitating native hematopoiesis",
+     "year": 2017,
+     "cites": 1,
+     "doi": "10.1016/j.exphem.2017.06.014"
+    },
+    {
+     "title": "LOTUS: lineage-aware optimal transport reconstructs continuous clonal fate dynamics",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.64898/2026.10.28.762359"
+    },
+    {
+     "title": "CloneOT: predicting clone-specific perturbation responses with lineage-supervised neural inverse optimal transport",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.48550/arxiv.2610.16093"
+    },
+    {
+     "title": "3090 \u2013 A NOVEL HIGH-THROUGHPUT BARCODED SCREENING PLATFORM REVEALS EPIGENETIC COMPOUNDS THAT REWIRE HEMATOPOIETIC STEM CELL AGING.",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2026.105670"
+    },
+    {
+     "title": "Stoichiometric transcription factor partnerships control GABAergic neuron fate allocation",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.64898/2026.05.25.727662"
+    },
+    {
+     "title": "Uncovering epithelial lineage complexity and cell fate trajectories in human intestinal organoids through advanced single-cell genomics",
+     "year": 2025,
+     "cites": 0,
+     "doi": "10.5287/ora-y57xxpnbm"
+    },
+    {
+     "title": "The eighth International Forum on Stem Cells: virtual meeting, October 20\u201321, 2022",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.1097/bs9.0000000000000147"
+    },
+    {
+     "title": "Editor's evaluation: Single-cell RNA sequencing of the Strongylocentrotus purpuratus larva reveals the blueprint of major cell types and nervous system of a non-chordate deuterostome",
+     "year": 2021,
+     "cites": 0,
+     "doi": "10.7554/elife.70416.sa0"
+    },
+    {
+     "title": "Decision letter: Single-cell RNA sequencing of the Strongylocentrotus purpuratus larva reveals the blueprint of major cell types and nervous system of a non-chordate deuterostome",
+     "year": 2021,
+     "cites": 0,
+     "doi": "10.7554/elife.70416.sa1"
+    },
+    {
+     "title": "Decision letter: Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
+     "year": 2021,
+     "cites": 0,
+     "doi": "10.7554/elife.66922.sa1"
+    },
+    {
+     "title": "Editor's evaluation: Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
+     "year": 2021,
+     "cites": 0,
+     "doi": "10.7554/elife.66922.sa0"
+    }
+   ]
+  },
+  {
+   "query": "clone size fate bias",
+   "matches": 58,
+   "top": [
+    {
+     "title": "Linking emotion to the social brain: The role of the serotonin transporter in human social behaviour",
+     "year": 2007,
+     "cites": 113,
+     "doi": "10.1038/sj.embor.7401008"
+    },
+    {
+     "title": "Variability in the dynamics of northern peripheral versus southern populations of two clonal plant species, Helianthus divaricatus and Rhus aromatica",
+     "year": 1999,
+     "cites": 101,
+     "doi": "10.1046/j.1365-2745.1999.00388.x"
+    },
+    {
+     "title": "Genotyping an Emiliania huxleyi (prymnesiophyceae) bloom event in the North Sea reveals evidence of asexual reproduction",
+     "year": 2014,
+     "cites": 59,
+     "doi": "10.5194/bg-11-5215-2014"
+    },
+    {
+     "title": "Tracing the cellular dynamics of sebaceous gland development in normal and perturbed states",
+     "year": 2019,
+     "cites": 51,
+     "doi": "10.1038/s41556-019-0362-x"
+    },
+    {
+     "title": "The first two cell-fate decisions of preimplantation mouse embryo development are not functionally independent",
+     "year": 2015,
+     "cites": 51,
+     "doi": "10.1038/srep15034"
+    },
+    {
+     "title": "C4photosynthesis: 50 years of discovery and innovation",
+     "year": 2017,
+     "cites": 49,
+     "doi": "10.1093/jxb/erw491"
+    },
+    {
+     "title": "Systems Biology Uncovers the Foundation of Natural Genetic Diversity",
+     "year": 2009,
+     "cites": 32,
+     "doi": "10.1104/pp.109.149328"
+    },
+    {
+     "title": "Does reproductive assurance explain the incidence of polyploidy in plants and animals?",
+     "year": 2020,
+     "cites": 31,
+     "doi": "10.1111/nph.16396"
+    },
+    {
+     "title": "Trophectoderm cells of human mosaic embryos display increased apoptotic levels and impaired differentiation capacity: a molecular clue regarding their reproductive fate?",
+     "year": 2024,
+     "cites": 10,
+     "doi": "10.1093/humrep/deae009"
+    },
+    {
+     "title": "Sex allocation pattern of the diatomCyclotella meneghiniana",
+     "year": 2013,
+     "cites": 8,
+     "doi": "10.1098/rspb.2013.0503"
+    },
+    {
+     "title": "Stand UP!",
+     "year": 2010,
+     "cites": 7,
+     "doi": "10.1210/jc.2010-0608"
+    },
+    {
+     "title": "Maize Genetics 2000 and Beyond",
+     "year": 2000,
+     "cites": 7,
+     "doi": "10.2307/3871213"
+    },
+    {
+     "title": "Response: how PGS/PGT-a laboratories succeeded in losing all credibility",
+     "year": 2018,
+     "cites": 5,
+     "doi": "10.1016/j.rbmo.2018.06.021"
+    },
+    {
+     "title": "The EHA Research Roadmap: Normal Hematopoiesis",
+     "year": 2021,
+     "cites": 3,
+     "doi": "10.1097/hs9.0000000000000669"
+    },
+    {
+     "title": "Pseudodynamics+: Reconstructing Population Dynamics from Time-Resolved Single Cell Landscapes with Physics Informed Neural Networks",
+     "year": 2025,
+     "cites": 2,
+     "doi": "10.64898/2025.11.30.691399"
+    }
+   ]
+  },
+  {
+   "query": "cortical progenitor clonal output",
+   "matches": 12,
+   "top": [
+    {
+     "title": "Human-Specific NOTCH2NL Genes Expand Cortical Neurogenesis through Delta/Notch Regulation",
+     "year": 2018,
+     "cites": 497,
+     "doi": "10.1016/j.cell.2018.03.067"
+    },
+    {
+     "title": "2D and 3D Stem Cell Models of Primate Cortical Development Identify Species-Specific Differences in Progenitor Behavior Contributing to Brain Size",
+     "year": 2016,
+     "cites": 380,
+     "doi": "10.1016/j.stem.2016.03.003"
+    },
+    {
+     "title": "TBR2 coordinates neurogenesis expansion and precise microcircuit organization via Protocadherin 19 in the mammalian cortex",
+     "year": 2019,
+     "cites": 87,
+     "doi": "10.1038/s41467-019-11854-x"
+    },
+    {
+     "title": "Neocortical Sox9+ radial glia generate glutamatergic neurons for all layers, but lack discernible evidence of early laminar fate restriction",
+     "year": 2017,
+     "cites": 39,
+     "doi": "10.1186/s13064-017-0091-4"
+    },
+    {
+     "title": "Lineage-resolved atlas of the developing human cortex",
+     "year": 2025,
+     "cites": 36,
+     "doi": "10.1038/s41586-025-09033-8"
+    },
+    {
+     "title": "Clonal origins of neocortical interneurons",
+     "year": 2014,
+     "cites": 16,
+     "doi": "10.1016/j.conb.2014.01.010"
+    },
+    {
+     "title": "Stand UP!",
+     "year": 2010,
+     "cites": 7,
+     "doi": "10.1210/jc.2010-0608"
+    },
+    {
+     "title": "Lineage tracing in human cortical development",
+     "year": 2026,
+     "cites": 1,
+     "doi": "10.1016/j.gde.2026.102506"
+    },
+    {
+     "title": "Author response: Clonally related, Notch-differentiated spinal neurons integrate into distinct circuits",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.83680.sa2"
+    },
+    {
+     "title": "Editor's evaluation: Clonally related, Notch-differentiated spinal neurons integrate into distinct circuits",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.83680.sa0"
+    },
+    {
+     "title": "Decision letter: Clonally related, Notch-differentiated spinal neurons integrate into distinct circuits",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.83680.sa1"
+    },
+    {
+     "title": "Faculty Opinions recommendation of Human-Specific NOTCH2NL Genes Expand Cortical Neurogenesis through Delta/Notch Regulation.",
+     "year": 2019,
+     "cites": 0,
+     "doi": "10.3410/f.733324430.793566114"
+    }
+   ]
+  }
+ ],
+ "references": null,
+ "engine": "openalex"
+}

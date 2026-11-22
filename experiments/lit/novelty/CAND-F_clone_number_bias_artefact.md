@@ -27,3 +27,8 @@ Novelty: passes at citer level (classic search owed). Units: design-level study 
 
 ## What would be ours
 A sampling null showing whether a 2026 headline argument for extrinsic lineage bias survives; if it does not, a correction of a published inference (our strongest genre so far).
+
+## Second novelty pass (2026-11-22)
+- Classic search on Actions (results_lit/novelty_CAND-F2.json; run 45065297120): 5 phrasings plus the source's 48 references ranked by citations.
+- **Recall check: PASS** for Dykstra 2007 (held out, found in the references); Rodriguez-Fraticelli 2020 not in the top 20 references (it is cited; the cut is by citations).
+- Found: stochastic competition models of chimeras (2004), a minimal intrinsic/extrinsic commitment model (2009), the source itself. No null model for the clone-number vs bias correlation and no re-analysis of it. Verdict: not found (holds).

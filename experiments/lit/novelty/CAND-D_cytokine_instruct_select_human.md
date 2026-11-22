@@ -23,3 +23,8 @@ Novelty-first search after C12 closed (Bence: "search for something we can disco
 
 ## What would be ours
 A human, clone-level separation of instruction from selection for cytokine effects, with the same clone seen early and late, challenging or supporting the source's "cytokine-induced" reading.
+
+## Second novelty pass (2026-11-22, Bence: "do an other novelty check on the current candidates")
+- Classic search on Actions (OpenAlex, run https://github.com/krenusz/cellware/actions/runs/45065297120; results_lit/novelty_CAND-D2.json): 5 field phrasings, top 15-25 each, plus the source's 51 references ranked by citations.
+- **Recall check: PASS.** The known instruction work (Rieger 2009, held out) was found.
+- Found: the instruction literature (Rieger 2009 and its follow-ups on M-CSF instruction, the 2014 review); no human, clone-level, serial-sample test separating instruction from selection. Verdict unchanged: partly published. The day-3 weakness (instruction before the first sample looks like a pre-existing state) still stands.

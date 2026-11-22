@@ -1,0 +1,721 @@
+{
+ "step": "CAND-F2",
+ "date": "2026-11-22",
+ "concept": [
+  {
+   "query": "hematopoietic stem cell lineage bias",
+   "matches": 945,
+   "top": [
+    {
+     "title": "Human bone marrow hematopoietic stem cells are increased in frequency and myeloid-biased with age",
+     "year": 2011,
+     "cites": 1127,
+     "doi": "10.1073/pnas.1116110108"
+    },
+    {
+     "title": "Functionally Distinct Subsets of Lineage-Biased Multipotent Progenitors Control Blood Production in Normal and Regenerative Conditions",
+     "year": 2015,
+     "cites": 886,
+     "doi": "10.1016/j.stem.2015.05.003"
+    },
+    {
+     "title": "Functionally distinct hematopoietic stem cells modulate hematopoietic lineage potential during aging by a mechanism of clonal expansion",
+     "year": 2010,
+     "cites": 806,
+     "doi": "10.1073/pnas.1000834107"
+    },
+    {
+     "title": "SLAM Family Markers Resolve Functionally Distinct Subpopulations of Hematopoietic Stem Cells and Multipotent Progenitors",
+     "year": 2013,
+     "cites": 781,
+     "doi": "10.1016/j.stem.2013.05.014"
+    },
+    {
+     "title": "Distinct Hematopoietic Stem Cell Subtypes Are Differentially Regulated by TGF-\u03b21",
+     "year": 2010,
+     "cites": 683,
+     "doi": "10.1016/j.stem.2010.02.002"
+    },
+    {
+     "title": "Prolonged Fasting Reduces IGF-1/PKA to Promote Hematopoietic-Stem-Cell-Based Regeneration and Reverse Immunosuppression",
+     "year": 2014,
+     "cites": 531,
+     "doi": "10.1016/j.stem.2014.04.014"
+    },
+    {
+     "title": "A typology of organisational cultures",
+     "year": 2004,
+     "cites": 464,
+     "doi": "10.1136/qshc.2003.009522"
+    },
+    {
+     "title": "Causes and Consequences of Hematopoietic Stem Cell Heterogeneity",
+     "year": 2018,
+     "cites": 396,
+     "doi": "10.1016/j.stem.2018.04.003"
+    },
+    {
+     "title": "FateID infers cell fate bias in multipotent progenitors from single-cell RNA-seq data",
+     "year": 2018,
+     "cites": 386,
+     "doi": "10.1038/nmeth.4662"
+    },
+    {
+     "title": "An Engineered CRISPR-Cas9 Mouse Line for Simultaneous Readout of Lineage Histories and Gene Expression Profiles in Single Cells",
+     "year": 2020,
+     "cites": 365,
+     "doi": "10.1016/j.cell.2020.04.048"
+    },
+    {
+     "title": "Hematopoietic Fingerprints: An Expression Database of Stem Cells and Their Progeny",
+     "year": 2007,
+     "cites": 346,
+     "doi": "10.1016/j.stem.2007.10.003"
+    },
+    {
+     "title": "Myeloid-biased hematopoietic stem cells have extensive self-renewal capacity but generate diminished lymphoid progeny with impaired IL-7 responsiveness",
+     "year": 2004,
+     "cites": 345,
+     "doi": "10.1182/blood-2003-10-3448"
+    },
+    {
+     "title": "Lineage-Biased Hematopoietic Stem Cells Are Regulated by Distinct Niches",
+     "year": 2018,
+     "cites": 271,
+     "doi": "10.1016/j.devcel.2018.01.016"
+    },
+    {
+     "title": "High c-Kit expression identifies hematopoietic stem cells with impaired self-renewal and megakaryocytic bias",
+     "year": 2014,
+     "cites": 271,
+     "doi": "10.1084/jem.20131128"
+    },
+    {
+     "title": "MicroRNA-125b expands hematopoietic stem cells and enriches for the lymphoid-balanced and lymphoid-biased subsets",
+     "year": 2010,
+     "cites": 248,
+     "doi": "10.1073/pnas.1016218107"
+    },
+    {
+     "title": "Flk2+ common lymphoid progenitors possess equivalent differentiation potential for the B and T lineages",
+     "year": 2008,
+     "cites": 210,
+     "doi": "10.1182/blood-2007-11-126219"
+    },
+    {
+     "title": "MafB Restricts M-CSF-Dependent Myeloid Commitment Divisions of Hematopoietic Stem Cells",
+     "year": 2009,
+     "cites": 208,
+     "doi": "10.1016/j.cell.2009.04.057"
+    },
+    {
+     "title": "Mitochondrial Potentiation Ameliorates Age-Related Heterogeneity in Hematopoietic Stem Cell Function",
+     "year": 2020,
+     "cites": 199,
+     "doi": "10.1016/j.stem.2020.09.018"
+    },
+    {
+     "title": "Wnt-Related Molecules and Signaling Pathway Equilibrium in Hematopoiesis",
+     "year": 2009,
+     "cites": 198,
+     "doi": "10.1016/j.stem.2008.12.004"
+    },
+    {
+     "title": "Heterogeneity and hierarchy of hematopoietic stem cells",
+     "year": 2013,
+     "cites": 195,
+     "doi": "10.1016/j.exphem.2013.11.004"
+    },
+    {
+     "title": "Hematopoietic stem/progenitor cell commitment to the megakaryocyte lineage",
+     "year": 2016,
+     "cites": 189,
+     "doi": "10.1182/blood-2015-07-607945"
+    },
+    {
+     "title": "A mouse model with high clonal barcode diversity for joint lineage, transcriptomic, and epigenomic profiling in single cells",
+     "year": 2023,
+     "cites": 184,
+     "doi": "10.1016/j.cell.2023.09.019"
+    }
+   ]
+  },
+  {
+   "query": "clonal competition hematopoiesis",
+   "matches": 75,
+   "top": [
+    {
+     "title": "Clonal hematopoiesis: Mutation-specific adaptation to environmental change",
+     "year": 2022,
+     "cites": 142,
+     "doi": "10.1016/j.stem.2022.05.006"
+    },
+    {
+     "title": "Competitive clonal hematopoiesis in mouse chimeras explained by a stochastic model of stem cell organization",
+     "year": 2004,
+     "cites": 101,
+     "doi": "10.1182/blood-2004-01-0282"
+    },
+    {
+     "title": "Cost-Effective and Scalable Clonal Hematopoiesis Assay Provides Insight into Clonal Dynamics",
+     "year": 2024,
+     "cites": 51,
+     "doi": "10.1016/j.jmoldx.2024.03.007"
+    },
+    {
+     "title": "The lifelong natural history of clonal hematopoiesis and its links to myeloid neoplasia",
+     "year": 2023,
+     "cites": 34,
+     "doi": "10.1182/blood.2023019964"
+    },
+    {
+     "title": "SRCAP mutations drive clonal hematopoiesis through epigenetic and DNA repair dysregulation",
+     "year": 2023,
+     "cites": 30,
+     "doi": "10.1016/j.stem.2023.09.011"
+    },
+    {
+     "title": "Stem cell homeostasis regulated by hierarchy and neutral competition",
+     "year": 2022,
+     "cites": 9,
+     "doi": "10.1038/s42003-022-04218-7"
+    },
+    {
+     "title": "Long-Term Bovine Hematopoietic Engraftment with Clone-Derived Stem Cells",
+     "year": 2005,
+     "cites": 9,
+     "doi": "10.1089/clo.2005.7.95"
+    },
+    {
+     "title": "The Evolution of Polyclonal Competition in Aging Hematopoiesis",
+     "year": 2026,
+     "cites": 8,
+     "doi": "10.1158/2159-8290.cd-25-0990"
+    },
+    {
+     "title": "Dnmt3a-null hematopoietic stem and progenitor cells expand after busulfan treatment",
+     "year": 2020,
+     "cites": 8,
+     "doi": "10.1016/j.exphem.2020.09.192"
+    },
+    {
+     "title": "Type 1 interferon perturbates clonal competition by reshaping human blood development",
+     "year": 2026,
+     "cites": 5,
+     "doi": "10.1038/s41588-026-02751-3"
+    },
+    {
+     "title": "Cxcl8 Expands Hematopoietic Stem and Progenitor Cells and Alters Their Interaction with the Endothelial Niche",
+     "year": 2019,
+     "cites": 4,
+     "doi": "10.1182/blood-2019-126151"
+    },
+    {
+     "title": "Metformin Treatment Abrogates the Competitive Advantage of Dnmt3a R878H HSPCs By Enhancing DNA Methylation Activity",
+     "year": 2022,
+     "cites": 2,
+     "doi": "10.1182/blood-2022-170366"
+    },
+    {
+     "title": "Stem cell competition",
+     "year": 2026,
+     "cites": 1,
+     "doi": "10.1016/bs.ctdb.2026.03.001"
+    }
+   ]
+  },
+  {
+   "query": "barcoding sampling bias clones",
+   "matches": 74,
+   "top": [
+    {
+     "title": "More bang for the buck? Can arbuscular mycorrhizal fungal communities be characterized adequately alongside other fungi using general fungal primers?",
+     "year": 2018,
+     "cites": 196,
+     "doi": "10.1111/nph.15035"
+    },
+    {
+     "title": "Prospects for the Use of Next-Generation Sequencing Methods in Ornithology",
+     "year": 2010,
+     "cites": 71,
+     "doi": "10.1525/auk.2010.127.1.4"
+    },
+    {
+     "title": "Barcoding of Cryptic Stages of Marine Brown Algae Isolated from Incubated Substratum Reveals High Diversity in Acinetosporaceae (Ectocarpales, Phaeophyceae)1",
+     "year": 2015,
+     "cites": 66,
+     "doi": "10.7872/crya.v36.iss1.2015.3"
+    },
+    {
+     "title": "ARTISAN PCR : rapid identification of full\u2010length immunoglobulin rearrangements without primer binding bias",
+     "year": 2016,
+     "cites": 46,
+     "doi": "10.1111/bjh.14180"
+    },
+    {
+     "title": "High\u2010Throughput Assays to Assess the Functional Impact of Genetic Variants: A Road Towards Genomic\u2010Driven Medicine",
+     "year": 2017,
+     "cites": 45,
+     "doi": "10.1111/cts.12440"
+    },
+    {
+     "title": "The rapidly growing field of micro and nanotechnology to measure living cells",
+     "year": 2008,
+     "cites": 41,
+     "doi": "10.1002/aic.11615"
+    },
+    {
+     "title": "Direct high\u2010throughput amplification and sequencing of immunoglobulin genes from single human B cells",
+     "year": 2015,
+     "cites": 40,
+     "doi": "10.1002/eji.201545526"
+    },
+    {
+     "title": "Comparison of molecular surveillance methods to assess changes in the population genetics of Plasmodium falciparum in high transmission",
+     "year": 2023,
+     "cites": 26,
+     "doi": "10.3389/fpara.2023.1067966"
+    },
+    {
+     "title": "Clonal tracking of erythropoiesis in rhesus macaques",
+     "year": 2019,
+     "cites": 26,
+     "doi": "10.3324/haematol.2019.231811"
+    },
+    {
+     "title": "Environmental DNA COI barcoding for quantitative analysis of protists communities: A test using the Nebela collaris complex (Amoebozoa; Arcellinida; Hyalospheniidae)",
+     "year": 2015,
+     "cites": 24,
+     "doi": "10.1016/j.ejop.2015.06.005"
+    },
+    {
+     "title": "Dynamic clonal hematopoiesis and functional T-cell immunity in a supercentenarian",
+     "year": 2020,
+     "cites": 21,
+     "doi": "10.1038/s41375-020-01086-0"
+    },
+    {
+     "title": "Computational identification of clonal cells in single-cell CRISPR screens",
+     "year": 2022,
+     "cites": 12,
+     "doi": "10.1186/s12864-022-08359-1"
+    },
+    {
+     "title": "Error-corrected ultradeep next-generation sequencing for detection of clonal haematopoiesis and haematological neoplasms \u2013 sensitivity, specificity and accuracy",
+     "year": 2025,
+     "cites": 10,
+     "doi": "10.1371/journal.pone.0318300"
+    },
+    {
+     "title": "Dual UMIs and Dual Barcodes With Minimal PCR Amplification Removes Artifacts and Acquires Accurate Antibody Repertoire",
+     "year": 2021,
+     "cites": 6,
+     "doi": "10.3389/fimmu.2021.778298"
+    },
+    {
+     "title": "Deciphering Cell Fate and Clonal Dynamics via Integrative Single-Cell Lineage Modeling",
+     "year": 2025,
+     "cites": 4,
+     "doi": "10.1101/2025.09.01.673503"
+    },
+    {
+     "title": "A genomic dataset integrating genotyping-by-sequencing, SolCAP array and PCR marker data on tetraploid potato advanced breeding lines",
+     "year": 2024,
+     "cites": 4,
+     "doi": "10.3389/fpls.2024.1384401"
+    },
+    {
+     "title": "The EHA Research Roadmap: Normal Hematopoiesis",
+     "year": 2021,
+     "cites": 3,
+     "doi": "10.1097/hs9.0000000000000669"
+    },
+    {
+     "title": "CD90-targeted multiplex virus-like particles (MVPs) for concomitant In Vivo gene editing, transduction, and transcription factor delivery into HSCs",
+     "year": 2025,
+     "cites": 2,
+     "doi": "10.1182/blood-2025-2543"
+    },
+    {
+     "title": "Characterization of B- and T-Cell Immune Repertoires By Anchored Multiplex PCR and Next-Generation Sequencing",
+     "year": 2016,
+     "cites": 2,
+     "doi": "10.1182/blood.v128.22.4896.4896"
+    }
+   ]
+  },
+  {
+   "query": "lineage bias extrinsic regulation",
+   "matches": 35,
+   "top": [
+    {
+     "title": "Micro-environmental sensing by bone marrow stroma identifies IL-6 and TGF\u03b21 as regulators of hematopoietic ageing",
+     "year": 2020,
+     "cites": 134,
+     "doi": "10.1038/s41467-020-17942-7"
+    },
+    {
+     "title": "Integrating Extrinsic and Intrinsic Cues into a Minimal Model of Lineage Commitment for Hematopoietic Progenitors",
+     "year": 2009,
+     "cites": 32,
+     "doi": "10.1371/journal.pcbi.1000518"
+    },
+    {
+     "title": "Regulation of stress-induced hematopoiesis",
+     "year": 2020,
+     "cites": 31,
+     "doi": "10.1097/moh.0000000000000589"
+    },
+    {
+     "title": "Histone Methylation and microRNA-dependent Regulation of Epigenetic Activities in Neural Progenitor Self-Renewal and Differentiation",
+     "year": 2016,
+     "cites": 24,
+     "doi": "10.2174/1568026616666160414124456"
+    },
+    {
+     "title": "Caspase-3/NLRP3 signaling in the mesenchymal stromal niche regulates myeloid-biased hematopoiesis",
+     "year": 2021,
+     "cites": 17,
+     "doi": "10.1186/s13287-021-02640-y"
+    },
+    {
+     "title": "Epigenetic regulation of reproduction in human and in animal models",
+     "year": 2021,
+     "cites": 12,
+     "doi": "10.1093/molehr/gaab041"
+    },
+    {
+     "title": "A kinetics-based model of haematopoiesis reveals extrinsic regulation of skewed lineage output from stem cells",
+     "year": 2026,
+     "cites": 7,
+     "doi": "10.1038/s41556-026-01958-0"
+    },
+    {
+     "title": "APEX1 Nuclease and Redox Functions are Both Essential for Adult Mouse Hematopoietic Stem and Progenitor Cells",
+     "year": 2023,
+     "cites": 6,
+     "doi": "10.1007/s12015-023-10550-0"
+    },
+    {
+     "title": "Decline in Insulin-like Growth Factor-1 (IGF1) from Aged Mesenchymal Stromal Cells Is a Targetable Mechanism to Rescue Hematopoietic Stem Cell Aging",
+     "year": 2019,
+     "cites": 4,
+     "doi": "10.1182/blood-2019-124534"
+    },
+    {
+     "title": "The EHA Research Roadmap: Normal Hematopoiesis",
+     "year": 2021,
+     "cites": 3,
+     "doi": "10.1097/hs9.0000000000000669"
+    },
+    {
+     "title": "Frequent and biased odorant receptor (OR) re-selection in an olfactory placode-derived cell line",
+     "year": 2018,
+     "cites": 3,
+     "doi": "10.1371/journal.pone.0204604"
+    },
+    {
+     "title": "Unraveling Heterogeneity of Aged Hematopoietic Stem Cells By Single-Cell RNA Sequence Analysis",
+     "year": 2021,
+     "cites": 2,
+     "doi": "10.1182/blood-2021-149876"
+    },
+    {
+     "title": "Intrinsic and Extrinsic Factors Driving Hematopoietic Stem Cell Aging and Bone Marrow Failure",
+     "year": 2019,
+     "cites": 2,
+     "doi": "10.1182/blood-2019-121044"
+    },
+    {
+     "title": "Tet1 safeguards lineage allocation in intestinal stem cells",
+     "year": 2025,
+     "cites": 1,
+     "doi": "10.1101/2025.05.08.652522"
+    },
+    {
+     "title": "The EHA Research Roadmap: Hematopoietic Stem Cells and Allotransplantation",
+     "year": 2022,
+     "cites": 1,
+     "doi": "10.1097/hs9.0000000000000714"
+    },
+    {
+     "title": "Using Bayesian inference to characterize cell-size regulation across organisms",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.64898/2026.10.14.759273"
+    },
+    {
+     "title": "Glycosylation orchestrates megakaryocytic fate of hematopoietic stem cells via Wnt-MUC13 signaling",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1038/s41467-026-76246-4"
+    },
+    {
+     "title": "Clonal hematopoiesis and immune dysregulation in classic PNH",
+     "year": 2025,
+     "cites": 0,
+     "doi": "10.1182/blood-2025-3208"
+    },
+    {
+     "title": "Single-cell multi-omics uncovers transposable element regulation in hematopoietic stem and progenitor cells during aging",
+     "year": 2025,
+     "cites": 0,
+     "doi": "10.1182/blood-2025-3161"
+    },
+    {
+     "title": "1030 \u2013 CELLULAR AND MOLECULAR MECHANISMS OF HEMATOPOIETIC LINEAGE CHOICE",
+     "year": 2024,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2024.104331"
+    },
+    {
+     "title": "P-SELECTIN CONTRIBUTES TO HEMATOPOIETIC STEM CELLS AGING BY SENSING THE NICHE",
+     "year": 2023,
+     "cites": 0,
+     "doi": "10.1097/01.hs9.0000967916.21034.95"
+    }
+   ]
+  },
+  {
+   "query": "clone size sampling bias",
+   "matches": 454,
+   "top": [
+    {
+     "title": "Every base matters: assessing small subunit rRNA primers for marine microbiomes with mock communities, time series and global field samples",
+     "year": 2015,
+     "cites": 4754,
+     "doi": "10.1111/1462-2920.13023"
+    },
+    {
+     "title": "The ecology of Cytophaga\u2013Flavobacteria in aquatic environments",
+     "year": 2002,
+     "cites": 1524,
+     "doi": "10.1111/j.1574-6941.2002.tb00910.x"
+    },
+    {
+     "title": "Standardizing methods to address clonality in population studies",
+     "year": 2007,
+     "cites": 740,
+     "doi": "10.1111/j.1365-294x.2007.03535.x"
+    },
+    {
+     "title": "General Strategy to Humanize a Camelid Single-domain Antibody and Identification of a Universal Humanized Nanobody Scaffold",
+     "year": 2008,
+     "cites": 645,
+     "doi": "10.1074/jbc.m806889200"
+    },
+    {
+     "title": "Massively parallel rRNA gene sequencing exacerbates the potential for biased community diversity comparisons due to variable library sizes",
+     "year": 2011,
+     "cites": 445,
+     "doi": "10.1111/j.1462-2920.2011.02550.x"
+    },
+    {
+     "title": "Natural Variation in Arabidopsis: From Molecular Genetics to Ecological Genomics",
+     "year": 2011,
+     "cites": 438,
+     "doi": "10.1104/pp.111.189845"
+    },
+    {
+     "title": "Kinetic Bias in Estimates of Coastal Picoplankton Community Structure Obtained by Measurements of Small-Subunit rRNA Gene PCR Amplicon Length Heterogeneity",
+     "year": 1998,
+     "cites": 430,
+     "doi": "10.1128/aem.64.11.4522-4529.1998"
+    },
+    {
+     "title": "Phylogenomics \u2014 principles, opportunities and pitfalls of big\u2010data phylogenetics",
+     "year": 2019,
+     "cites": 260,
+     "doi": "10.1111/syen.12406"
+    },
+    {
+     "title": "New Insights into the Diversity of Marine Picoeukaryotes",
+     "year": 2009,
+     "cites": 249,
+     "doi": "10.1371/journal.pone.0007143"
+    },
+    {
+     "title": "Functional Genomics in Plants",
+     "year": 1998,
+     "cites": 229,
+     "doi": "10.1104/pp.118.3.725"
+    },
+    {
+     "title": "Review of Polyclonal Antibody Production Procedures in Mammals and Poultry",
+     "year": 1995,
+     "cites": 216,
+     "doi": "10.1093/ilar.37.3.93"
+    },
+    {
+     "title": "Environmentally related patterns of reproductive modes in the aphid Myzus persicae and the predominance of two \u2018superclones\u2019 in Victoria, Australia",
+     "year": 2003,
+     "cites": 197,
+     "doi": "10.1046/j.1365-294x.2003.01998.x"
+    },
+    {
+     "title": "Migration and genetic structure of the grain aphid (Sitobion avenae) in Britain related to climate and clonal fluctuation as revealed using microsatellites",
+     "year": 2002,
+     "cites": 193,
+     "doi": "10.1046/j.1365-294x.2003.01703.x"
+    },
+    {
+     "title": "Groups without Cultured Representatives Dominate Eukaryotic Picophytoplankton in the Oligotrophic South East Pacific Ocean",
+     "year": 2009,
+     "cites": 173,
+     "doi": "10.1371/journal.pone.0007657"
+    },
+    {
+     "title": "Effect of PCR amplicon size on assessments of clone library microbial diversity and community structure",
+     "year": 2009,
+     "cites": 171,
+     "doi": "10.1111/j.1462-2920.2008.01857.x"
+    },
+    {
+     "title": "The analysis of variance and the analysis of causes",
+     "year": 2006,
+     "cites": 163,
+     "doi": "10.1093/ije/dyl062"
+    },
+    {
+     "title": "Sex Steroid Treatment of Constitutionally Tall Stature",
+     "year": 1998,
+     "cites": 163,
+     "doi": "10.1210/edrv.19.5.0345"
+    },
+    {
+     "title": "Direct Estimation of Mutation Rate for 10 Microsatellite Loci in Durum Wheat, Triticum turgidum (L.) Thell. ssp durum desf",
+     "year": 2002,
+     "cites": 155,
+     "doi": "10.1093/oxfordjournals.molbev.a003977"
+    }
+   ]
+  }
+ ],
+ "references": {
+  "source": "10.1038/s41556-026-01958-0",
+  "n_references": 48,
+  "top": [
+   {
+    "title": "COPASI\u2014a COmplex PAthway SImulator",
+    "year": 2006,
+    "cites": 3026,
+    "doi": "10.1093/bioinformatics/btl485"
+   },
+   {
+    "title": "Hematopoietic Stem Cells Reversibly Switch from Dormancy to Self-Renewal during Homeostasis and Repair",
+    "year": 2008,
+    "cites": 2262,
+    "doi": "10.1016/j.cell.2008.10.048"
+   },
+   {
+    "title": "Hematopoietic stem cell: self\u2010renewal versus differentiation",
+    "year": 2010,
+    "cites": 1238,
+    "doi": "10.1002/wsbm.86"
+   },
+   {
+    "title": "Human haematopoietic stem cell lineage commitment is a continuous process",
+    "year": 2017,
+    "cites": 1091,
+    "doi": "10.1038/ncb3493"
+   },
+   {
+    "title": "From haematopoietic stem cells to complex differentiation landscapes",
+    "year": 2018,
+    "cites": 1048,
+    "doi": "10.1038/nature25022"
+   },
+   {
+    "title": "Clonal dynamics of native haematopoiesis",
+    "year": 2014,
+    "cites": 927,
+    "doi": "10.1038/nature13824"
+   },
+   {
+    "title": "Clonal Analysis Unveils Self-Renewing Lineage-Restricted Progenitors Generated Directly from Hematopoietic Stem Cells",
+    "year": 2013,
+    "cites": 916,
+    "doi": "10.1016/j.cell.2013.08.007"
+   },
+   {
+    "title": "Fundamental properties of unperturbed haematopoiesis from stem cells in vivo",
+    "year": 2015,
+    "cites": 876,
+    "doi": "10.1038/nature14242"
+   },
+   {
+    "title": "A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation",
+    "year": 2016,
+    "cites": 842,
+    "doi": "10.1182/blood-2016-05-716480"
+   },
+   {
+    "title": "Platelet-biased stem cells reside at the apex of the haematopoietic stem-cell hierarchy",
+    "year": 2013,
+    "cites": 781,
+    "doi": "10.1038/nature12495"
+   },
+   {
+    "title": "Long-Term Propagation of Distinct Hematopoietic Differentiation Programs In Vivo",
+    "year": 2007,
+    "cites": 758,
+    "doi": "10.1016/j.stem.2007.05.015"
+   },
+   {
+    "title": "Clonal analysis of lineage fate in native haematopoiesis",
+    "year": 2018,
+    "cites": 673,
+    "doi": "10.1038/nature25168"
+   },
+   {
+    "title": "Heterogeneity and hierarchy within the most primitive hematopoietic stem cell compartment",
+    "year": 2010,
+    "cites": 523,
+    "doi": "10.1084/jem.20091318"
+   },
+   {
+    "title": "Hierarchically related lineage-restricted fates of multipotent haematopoietic stem cells",
+    "year": 2018,
+    "cites": 462,
+    "doi": "10.1038/nature25455"
+   },
+   {
+    "title": "Observation of Antigen-Dependent CD8+ T-Cell/ Dendritic Cell Interactions in Vivo",
+    "year": 2001,
+    "cites": 422,
+    "doi": "10.1006/cimm.2001.1895"
+   },
+   {
+    "title": "Causes and Consequences of Hematopoietic Stem Cell Heterogeneity",
+    "year": 2018,
+    "cites": 396,
+    "doi": "10.1016/j.stem.2018.04.003"
+   },
+   {
+    "title": "Hematopoietic Stem Cell Subtypes Expand Differentially during Development and Display Distinct Lymphopoietic Programs",
+    "year": 2012,
+    "cites": 386,
+    "doi": "10.1016/j.stem.2012.02.007"
+   },
+   {
+    "title": "Homeostasis of Peripheral B Cells in the Absence of B Cell Influx from the Bone Marrow",
+    "year": 2001,
+    "cites": 371,
+    "doi": "10.1084/jem.194.8.1151"
+   },
+   {
+    "title": "Distinct classes of human stem cells that differ in proliferative and self-renewal potential",
+    "year": 2001,
+    "cites": 362,
+    "doi": "10.1038/83199"
+   },
+   {
+    "title": "Myeloid-biased hematopoietic stem cells have extensive self-renewal capacity but generate diminished lymphoid progeny with impaired IL-7 responsiveness",
+    "year": 2004,
+    "cites": 345,
+    "doi": "10.1182/blood-2003-10-3448"
+   }
+  ]
+ },
+ "engine": "openalex"
+}

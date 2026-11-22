@@ -19,3 +19,7 @@ C17's T-cortical (sealed instruction vs selection test on this set) was preteste
 
 ## Status
 Novelty: weak pass (thin search). Overlap with a failed pretest. Power: not applicable to the design study; not pretested for any sealed follow-up.
+
+## Second novelty pass (2026-11-22)
+- Classic search on Actions (results_lit/novelty_CAND-E2.json; run 45065297120), 5 phrasings; no source DOI, so no reference pass; no held-out recall target (limit).
+- Found: lineage tools (CRISPR whole-organism tracing, pandaCREST), clone-perturbation models (CloneOT 2026, LOTUS 2026), an erythropoietin study that remodels clonal composition, and a second 2026 preprint with the same kind of claim (Sp9 loss shifts clonal fate bias in basal-ganglia clones). No paper separates a knockout's fate shift from clone growth in brain clone-perturbation designs. Verdict: not found (weak recall).

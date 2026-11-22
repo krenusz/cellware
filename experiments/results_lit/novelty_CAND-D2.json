@@ -1,0 +1,625 @@
+{
+ "step": "CAND-D2",
+ "date": "2026-11-22",
+ "concept": [
+  {
+   "query": "cytokine instruction lineage choice",
+   "matches": 15,
+   "top": [
+    {
+     "title": "T helper subset development: roles of instruction, selection, and transcription",
+     "year": 2002,
+     "cites": 199,
+     "doi": "10.1172/jci15093"
+    },
+    {
+     "title": "Instruction of hematopoietic lineage choice by cytokine signaling",
+     "year": 2014,
+     "cites": 50,
+     "doi": "10.1016/j.yexcr.2014.07.011"
+    },
+    {
+     "title": "Stem Cells: A Journey into a New Frontier",
+     "year": 2001,
+     "cites": 24,
+     "doi": "10.1681/asn.v1281773"
+    },
+    {
+     "title": "Thymus and T\u2010lymphocyte development: what is new in the 21st century?",
+     "year": 2006,
+     "cites": 20,
+     "doi": "10.1111/j.0105-2896.2006.00368.x"
+    },
+    {
+     "title": "Instruction of lineage choice by hematopoietic cytokines",
+     "year": 2009,
+     "cites": 15,
+     "doi": "10.4161/cc.8.24.10261"
+    },
+    {
+     "title": "Lineage Specification: Reading the Instructions May Help!",
+     "year": 2013,
+     "cites": 6,
+     "doi": "10.1016/j.cub.2013.06.054"
+    },
+    {
+     "title": "3026 \u2013 OSTEOCLAST LINEAGE INSTRUCTION BY RANKL SIGNALING",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2022.07.082"
+    },
+    {
+     "title": "Molecular mechanism of M-CSF-mediated lineage instruction",
+     "year": 2015,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2015.06.116"
+    },
+    {
+     "title": "Integration of cell cycle control and cell fate choice in M-CSF-instructed myeloid lineage commitment of hematopoietic stem cells",
+     "year": 2014,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2014.07.053"
+    },
+    {
+     "title": "Molecular mechanism of hematopoietic lineage instruction",
+     "year": 2014,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2014.07.113"
+    },
+    {
+     "title": "Molecular mechanism of lineage choice instruction by hematopoietic cytokines",
+     "year": 2014,
+     "cites": 0,
+     "doi": "10.5282/edoc.20157"
+    },
+    {
+     "title": "Molecular mechanism of hematopoietic lineage choice instruction",
+     "year": 2013,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2013.05.137"
+    },
+    {
+     "title": "Cytokines Instruct Hematopoietic Lineage Choice",
+     "year": 2010,
+     "cites": 0,
+     "doi": "10.1182/blood.v116.21.sci-13.sci-13"
+    },
+    {
+     "title": "Continuous Single Cell Observation Proves Lineage Instruction by Hematopoietic Cytokines.",
+     "year": 2009,
+     "cites": 0,
+     "doi": "10.1182/blood.v114.22.3607.3607"
+    }
+   ]
+  },
+  {
+   "query": "hematopoietic cytokines instructive selective",
+   "matches": 14,
+   "top": [
+    {
+     "title": "Kr\u00fcppel-like Factors: Three Fingers in Many Pies",
+     "year": 2001,
+     "cites": 678,
+     "doi": "10.1074/jbc.r100043200"
+    },
+    {
+     "title": "The many faces of p53: something for everyone",
+     "year": 2019,
+     "cites": 174,
+     "doi": "10.1093/jmcb/mjz026"
+    },
+    {
+     "title": "Identification of bone morphogenetic protein 7 (BMP7) as an instructive factor for human epidermal Langerhans cell differentiation",
+     "year": 2013,
+     "cites": 110,
+     "doi": "10.1084/jem.20130275"
+    },
+    {
+     "title": "Integration of cytokine and transcription factor signals in hematopoietic stem cell commitment",
+     "year": 2011,
+     "cites": 41,
+     "doi": "10.1016/j.smim.2011.08.011"
+    },
+    {
+     "title": "Is It Safer CARs That We Need, or Safer Rules of the Road?",
+     "year": 2010,
+     "cites": 8,
+     "doi": "10.1038/mt.2010.162"
+    },
+    {
+     "title": "Transcriptional Regulation of Hematopoietic Stem Cells",
+     "year": 2004,
+     "cites": 5,
+     "doi": "10.1016/b978-012436643-5/50119-x"
+    },
+    {
+     "title": "Transcriptional Repressor Gfi-1 Integrates Cytokine-Receptor Signals Controlling B Cell Differentiation.",
+     "year": 2005,
+     "cites": 4,
+     "doi": "10.1182/blood.v106.11.204.204"
+    },
+    {
+     "title": "Correction: Transcriptional Repressor Gfi1 Integrates Cytokine-Receptor Signals Controlling B-Cell Differentiation",
+     "year": 2012,
+     "cites": 1,
+     "doi": "10.1371/annotation/4f75f09f-a8f0-4cae-b75f-30498d6b44d4"
+    },
+    {
+     "title": "1030 \u2013 CELLULAR AND MOLECULAR MECHANISMS OF HEMATOPOIETIC LINEAGE CHOICE",
+     "year": 2024,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2024.104331"
+    },
+    {
+     "title": "Engineering temporal transitions in matrix environment to regulate hematopoietic stem cell activity",
+     "year": 2016,
+     "cites": 0,
+     "doi": "10.3389/conf.fbioe.2016.01.00534"
+    },
+    {
+     "title": "Cytokines 'instruct' HSCs",
+     "year": 2013,
+     "cites": 0,
+     "doi": "10.1038/ni.2627"
+    },
+    {
+     "title": "Hematopoietic Support by Endothelium",
+     "year": 2010,
+     "cites": 0,
+     "doi": "10.1182/blood.v116.21.sci-45.sci-45"
+    },
+    {
+     "title": "Cytokines Instruct Hematopoietic Lineage Choice",
+     "year": 2010,
+     "cites": 0,
+     "doi": "10.1182/blood.v116.21.sci-13.sci-13"
+    },
+    {
+     "title": "Continuous Single Cell Observation Proves Lineage Instruction by Hematopoietic Cytokines.",
+     "year": 2009,
+     "cites": 0,
+     "doi": "10.1182/blood.v114.22.3607.3607"
+    }
+   ]
+  },
+  {
+   "query": "cytokine signaling lineage commitment",
+   "matches": 598,
+   "top": [
+    {
+     "title": "Signalling through C-type lectin receptors: shaping immune responses",
+     "year": 2009,
+     "cites": 1668,
+     "doi": "10.1038/nri2569"
+    },
+    {
+     "title": "The mTOR Kinase Differentially Regulates Effector and Regulatory T Cell Lineage Commitment",
+     "year": 2009,
+     "cites": 1611,
+     "doi": "10.1016/j.immuni.2009.04.014"
+    },
+    {
+     "title": "Molecular mechanisms of blood vessel growth",
+     "year": 2001,
+     "cites": 1278,
+     "doi": "10.1016/s0008-6363(00)00281-9"
+    },
+    {
+     "title": "Molecular Mechanisms RegulatinG Th1 Immune Responses",
+     "year": 2003,
+     "cites": 1231,
+     "doi": "10.1146/annurev.immunol.21.120601.140942"
+    },
+    {
+     "title": "Role of T-bet in Commitment of T H 1 Cells Before IL-12-Dependent Selection",
+     "year": 2001,
+     "cites": 966,
+     "doi": "10.1126/science.1059835"
+    },
+    {
+     "title": "Notch\u2013RBP-J signaling controls the homeostasis of CD8\u2212 dendritic cells in the spleen",
+     "year": 2007,
+     "cites": 960,
+     "doi": "10.1084/jem.20062648"
+    },
+    {
+     "title": "Aging activates adipogenic and suppresses osteogenic programs in mesenchymal marrow stroma/stem cells: the role of PPAR\u2010\u03b32 transcription factor and TGF\u2010\u03b2/BMP signaling pathways",
+     "year": 2004,
+     "cites": 928,
+     "doi": "10.1111/j.1474-9728.2004.00127.x"
+    },
+    {
+     "title": "Pluripotent, cytokine-dependent, hematopoietic stem cells are immortalized by constitutive Notch1 signaling",
+     "year": 2000,
+     "cites": 763,
+     "doi": "10.1038/81390"
+    },
+    {
+     "title": "Activated Type 2 Innate Lymphoid Cells Regulate Beige Fat Biogenesis",
+     "year": 2014,
+     "cites": 746,
+     "doi": "10.1016/j.cell.2014.12.011"
+    },
+    {
+     "title": "Lineage commitment in the immune system: the T helper lymphocyte grows up",
+     "year": 2000,
+     "cites": 704,
+     "doi": "10.1101/gad.14.14.1693"
+    },
+    {
+     "title": "Advances in Bone Biology: The Osteoclast*",
+     "year": 1996,
+     "cites": 664,
+     "doi": "10.1210/edrv-17-4-308"
+    },
+    {
+     "title": "Bone remodelling at a glance",
+     "year": 2011,
+     "cites": 631,
+     "doi": "10.1242/jcs.063032"
+    },
+    {
+     "title": "The Treg/Th17 Axis: A Dynamic Balance Regulated by the Gut Microbiome",
+     "year": 2015,
+     "cites": 592,
+     "doi": "10.3389/fimmu.2015.00639"
+    },
+    {
+     "title": "A role for leptin and its cognate receptor in hematopoiesis",
+     "year": 1996,
+     "cites": 527,
+     "doi": "10.1016/s0960-9822(02)70684-2"
+    },
+    {
+     "title": "Networks and hubs for the transcriptional control of osteoblastogenesis",
+     "year": 2006,
+     "cites": 509,
+     "doi": "10.1007/s11154-006-9001-5"
+    },
+    {
+     "title": "Novel Foxo1-dependent transcriptional programs control Treg cell function",
+     "year": 2012,
+     "cites": 465,
+     "doi": "10.1038/nature11581"
+    },
+    {
+     "title": "Bone morphogenetic proteins in the nervous system",
+     "year": 1997,
+     "cites": 460,
+     "doi": "10.1016/s0166-2236(96)01046-6"
+    },
+    {
+     "title": "Cell-fate conversion of lymphoid-committed progenitors by instructive actions of cytokines",
+     "year": 2000,
+     "cites": 446,
+     "doi": "10.1038/35030112"
+    },
+    {
+     "title": "Hematopoietic cytokines, transcription factors and lineage commitment",
+     "year": 2002,
+     "cites": 439,
+     "doi": "10.1038/sj.onc.1205318"
+    },
+    {
+     "title": "Inflamm-Aging of Hematopoiesis, Hematopoietic Stem Cells, and the Bone Marrow Microenvironment",
+     "year": 2016,
+     "cites": 430,
+     "doi": "10.3389/fimmu.2016.00502"
+    },
+    {
+     "title": "The transcription factor BATF operates as an essential differentiation checkpoint in early effector CD8+ T cells",
+     "year": 2014,
+     "cites": 430,
+     "doi": "10.1038/ni.2834"
+    },
+    {
+     "title": "Adipogenesis at a glance",
+     "year": 2011,
+     "cites": 408,
+     "doi": "10.1242/jcs.079699"
+    },
+    {
+     "title": "Transcriptional and Epigenetic Control of T Helper Cell Specification: Molecular Mechanisms Underlying Commitment and Plasticity",
+     "year": 2012,
+     "cites": 390,
+     "doi": "10.1146/annurev-immunol-020711-075058"
+    }
+   ]
+  },
+  {
+   "query": "single-cell tracking cytokine lineage",
+   "matches": 117,
+   "top": [
+    {
+     "title": "TrackMate: An open and extensible platform for single-particle tracking",
+     "year": 2016,
+     "cites": 3720,
+     "doi": "10.1016/j.ymeth.2016.09.016"
+    },
+    {
+     "title": "Use of Fluorescent Probes: Their Effect on Cell Biology and Limitations",
+     "year": 2012,
+     "cites": 297,
+     "doi": "10.1002/ar.22602"
+    },
+    {
+     "title": "Helios+ and Helios\u2212 Cells Coexist within the Natural FOXP3+ T Regulatory Cell Subset in Humans",
+     "year": 2013,
+     "cites": 257,
+     "doi": "10.4049/jimmunol.1201379"
+    },
+    {
+     "title": "Developmental and functional heterogeneity of white adipocytes within a single fat depot",
+     "year": 2018,
+     "cites": 126,
+     "doi": "10.15252/embj.201899291"
+    },
+    {
+     "title": "Mitotic History Reveals Distinct Stem Cell Populations and Their Contributions to Hematopoiesis",
+     "year": 2016,
+     "cites": 70,
+     "doi": "10.1016/j.celrep.2016.02.073"
+    },
+    {
+     "title": "Transcriptional regulation of adaptive and innate lymphoid lineage specification",
+     "year": 2020,
+     "cites": 59,
+     "doi": "10.1111/imr.12935"
+    },
+    {
+     "title": "Cytokine-Regulated GADD45G Induces Differentiation and Lineage Selection in Hematopoietic Stem Cells",
+     "year": 2014,
+     "cites": 50,
+     "doi": "10.1016/j.stemcr.2014.05.010"
+    },
+    {
+     "title": "Use of the bnx/hu xenograft model of human hematopoiesis to optimize methods for retroviral-mediated stem cell transduction (Review).",
+     "year": 1998,
+     "cites": 28,
+     "doi": "10.3892/ijmm.1.1.257"
+    },
+    {
+     "title": "Single-cell level analysis of megakaryocyte growth and development",
+     "year": 2012,
+     "cites": 24,
+     "doi": "10.1016/j.diff.2011.12.003"
+    },
+    {
+     "title": "Characterization of cytokine interactions by flow cytometry and factorial analysis",
+     "year": 2000,
+     "cites": 21,
+     "doi": "10.1002/1097-0320(20010101)43:1<69::aid-cyto1020>3.0.co;2-5"
+    },
+    {
+     "title": "Cell tracking in vitro reveals that the extracellular matrix glycoprotein Tenascin-C modulates cell cycle length and differentiation in neural stem/progenitor cells of the developing mouse spinal cord",
+     "year": 2018,
+     "cites": 18,
+     "doi": "10.1242/bio.027730"
+    },
+    {
+     "title": "Multiparameter analysis of timelapse imaging reveals kinetics of megakaryocytic erythroid progenitor clonal expansion and differentiation",
+     "year": 2022,
+     "cites": 14,
+     "doi": "10.1038/s41598-022-19013-x"
+    },
+    {
+     "title": "TGF-\u03b2 is insufficient to induce adipocyte state loss without concurrent PPAR\u03b3 downregulation",
+     "year": 2020,
+     "cites": 13,
+     "doi": "10.1038/s41598-020-71100-z"
+    },
+    {
+     "title": "BRAFV600E promotes DC3/monocyte differentiation in human gene-engineered HSPCs and causes multisystem histiocytosis",
+     "year": 2023,
+     "cites": 11,
+     "doi": "10.1038/s41375-023-02019-3"
+    }
+   ]
+  },
+  {
+   "query": "clonal heterogeneity cytokine differentiation",
+   "matches": 280,
+   "top": [
+    {
+     "title": "Heterogeneity of Cytokine Secretion Patterns and Functions of Helper T Cells",
+     "year": 1989,
+     "cites": 1201,
+     "doi": "10.1016/s0065-2776(08)60652-5"
+    },
+    {
+     "title": "Heterogeneity of mouse helper T cells. Evidence from bulk cultures and limiting dilution cloning for precursors of Th1 and Th2 cells.",
+     "year": 1990,
+     "cites": 416,
+     "doi": "10.4049/jimmunol.144.5.1629"
+    },
+    {
+     "title": "Heterogeneity of Human CD4 + T Cells Against Microbes",
+     "year": 2016,
+     "cites": 387,
+     "doi": "10.1146/annurev-immunol-032414-112056"
+    },
+    {
+     "title": "Vascular Biology and the Skeleton",
+     "year": 2006,
+     "cites": 370,
+     "doi": "10.1359/jbmr.050917"
+    },
+    {
+     "title": "Signal Transduction during Natural Killer Cell Activation: Inside the Mind of a Killer",
+     "year": 1997,
+     "cites": 335,
+     "doi": "10.1016/s1074-7613(00)80441-0"
+    },
+    {
+     "title": "Cell death induction by receptors of the TNF family: towards a molecular understanding",
+     "year": 1997,
+     "cites": 256,
+     "doi": "10.1016/s0014-5793(97)00553-x"
+    },
+    {
+     "title": "Single Cell Analysis Reveals Regulated Hierarchical T Cell Antigen Receptor Signaling Thresholds and Intraclonal Heterogeneity for Individual Cytokine Responses of CD4+ T Cells",
+     "year": 1997,
+     "cites": 229,
+     "doi": "10.1084/jem.186.5.757"
+    },
+    {
+     "title": "Diagnosis and treatment of systemic mastocytosis: state of the art",
+     "year": 2003,
+     "cites": 218,
+     "doi": "10.1046/j.1365-2141.2003.04575.x"
+    },
+    {
+     "title": "Ectopic Lymphoid Organogenesis",
+     "year": 2001,
+     "cites": 162,
+     "doi": "10.1016/s0002-9440(10)61751-8"
+    },
+    {
+     "title": "Exploring pathways for memory T cell generation",
+     "year": 2001,
+     "cites": 132,
+     "doi": "10.1172/jci14005"
+    },
+    {
+     "title": "Molecular immunobiology of macrophages: recent progress",
+     "year": 1995,
+     "cites": 131,
+     "doi": "10.1016/0952-7915(95)80025-5"
+    },
+    {
+     "title": "Cell Senescence and Its Implications for Nephrology",
+     "year": 2001,
+     "cites": 112,
+     "doi": "10.1681/asn.v122385"
+    }
+   ]
+  }
+ ],
+ "references": {
+  "source": "10.1182/blood.2026033834",
+  "n_references": 51,
+  "top": [
+   {
+    "title": "A clonogenic common myeloid progenitor that gives rise to all myeloid lineages",
+    "year": 2000,
+    "cites": 3293,
+    "doi": "10.1038/35004599"
+   },
+   {
+    "title": "Hematopoiesis: An Evolving Paradigm for Stem Cell Biology",
+    "year": 2008,
+    "cites": 3216,
+    "doi": "10.1016/j.cell.2008.01.025"
+   },
+   {
+    "title": "Identification of Clonogenic Common Lymphoid Progenitors in Mouse Bone Marrow",
+    "year": 1997,
+    "cites": 2886,
+    "doi": "10.1016/s0092-8674(00)80453-5"
+   },
+   {
+    "title": "Human haematopoietic stem cell lineage commitment is a continuous process",
+    "year": 2017,
+    "cites": 1091,
+    "doi": "10.1038/ncb3493"
+   },
+   {
+    "title": "Characterization of cell fate probabilities in single-cell data with Palantir",
+    "year": 2019,
+    "cites": 940,
+    "doi": "10.1038/s41587-019-0068-4"
+   },
+   {
+    "title": "Distinct routes of lineage development reshape the human blood hierarchy across ontogeny",
+    "year": 2015,
+    "cites": 939,
+    "doi": "10.1126/science.aab2116"
+   },
+   {
+    "title": "Fundamental properties of unperturbed haematopoiesis from stem cells in vivo",
+    "year": 2015,
+    "cites": 876,
+    "doi": "10.1038/nature14242"
+   },
+   {
+    "title": "Lineage tracing on transcriptional landscapes links state to fate during differentiation",
+    "year": 2020,
+    "cites": 841,
+    "doi": "10.1126/science.aaw3381"
+   },
+   {
+    "title": "Multilineage gene expression precedes commitment in the hemopoietic system.",
+    "year": 1997,
+    "cites": 818,
+    "doi": "10.1101/gad.11.6.774"
+   },
+   {
+    "title": "Hematopoietic cytokines",
+    "year": 2008,
+    "cites": 671,
+    "doi": "10.1182/blood-2007-03-079681"
+   },
+   {
+    "title": "Prospective isolation of human clonogenic common myeloid progenitors",
+    "year": 2002,
+    "cites": 643,
+    "doi": "10.1073/pnas.172384399"
+   },
+   {
+    "title": "Identification of a lineage of multipotent hematopoietic progenitors",
+    "year": 1997,
+    "cites": 618,
+    "doi": "10.1242/dev.124.10.1929"
+   },
+   {
+    "title": "Reactivation of Developmentally Silenced Globin Genes by Forced Chromatin Looping",
+    "year": 2014,
+    "cites": 497,
+    "doi": "10.1016/j.cell.2014.05.050"
+   },
+   {
+    "title": "Hematopoietic Cytokines Can Instruct Lineage Choice",
+    "year": 2009,
+    "cites": 495,
+    "doi": "10.1126/science.1171461"
+   },
+   {
+    "title": "Myeloid or Lymphoid Promiscuity as a Critical Step in Hematopoietic Lineage Commitment",
+    "year": 2002,
+    "cites": 487,
+    "doi": "10.1016/s1534-5807(02)00201-0"
+   },
+   {
+    "title": "Single-cell characterization of haematopoietic progenitors and their trajectories in homeostasis and perturbed haematopoiesis",
+    "year": 2018,
+    "cites": 402,
+    "doi": "10.1038/s41556-018-0121-4"
+   },
+   {
+    "title": "Integrative Single-Cell RNA-Seq and ATAC-Seq Analysis of Human Developmental Hematopoiesis",
+    "year": 2020,
+    "cites": 354,
+    "doi": "10.1016/j.stem.2020.11.015"
+   },
+   {
+    "title": "Single-cell lineage tracing unveils a role for TCF15 in haematopoiesis",
+    "year": 2020,
+    "cites": 293,
+    "doi": "10.1038/s41586-020-2503-6"
+   },
+   {
+    "title": "Distinct myeloid progenitor\u2013differentiation pathways identified through single-cell RNA sequencing",
+    "year": 2016,
+    "cites": 265,
+    "doi": "10.1038/ni.3412"
+   },
+   {
+    "title": "Hematopoietic Hierarchy \u2013 An Updated Roadmap",
+    "year": 2018,
+    "cites": 235,
+    "doi": "10.1016/j.tcb.2018.06.001"
+   }
+  ]
+ },
+ "engine": "openalex"
+}
