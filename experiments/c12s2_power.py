@@ -26,7 +26,7 @@ import c12s1_select as s1  # noqa: E402
 import partitions  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "results_c12", "c12s2_power.json")
+OUT = os.path.join(HERE, "results_c12", "c12s2_power_a1.json")  # amendment 1
 SIZES = {"A": 304, "B": 316, "C": 298, "A+B": 620, "A+B+C": 918}  # structural counts, C12-S1
 N_SIM, N_PERM, N_POOL, SHRINK, ALPHA = 1000, 200, 20000, 0.5, 0.025
 TRAIN_DELTA, TRAIN_N, TRAIN_POS = 0.166, 712, 101
@@ -132,7 +132,11 @@ def frozen_test(m0, m1, N, P, y, rng):
     s0 = score(m0, N)
     a0 = roc_auc_score(y, s0)
     obs = roc_auc_score(y, score(m1, np.hstack([N, P]))) - a0
-    ge = sum(roc_auc_score(y, score(m1, np.hstack([N, P[rng.permutation(len(y))]]))) - a0 >= obs for _ in range(N_PERM))
+    A = np.hstack([np.ones((len(N), 1)), N])  # amendment 1: permute state residuals given M0x covariates
+    B = np.linalg.lstsq(A, P, rcond=None)[0]
+    fitP, res = A @ B, P - A @ B
+    ge = sum(roc_auc_score(y, score(m1, np.hstack([N, fitP + res[rng.permutation(len(y))]]))) - a0 >= obs
+             for _ in range(N_PERM))
     return float(obs), (1 + ge) / (1 + N_PERM)
 
 

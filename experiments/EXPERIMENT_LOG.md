@@ -13063,3 +13063,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: D20 clone; (2) readout: D20 in vivo presence; (3) used data first: train only, as C12-S1; (4) power: this step; (5) exposure: as above; (6) literature: H20 reading done in C12-S1; (7) readout gate: passed in C12-S1 (101 positives).
 - **Compute:** Actions run (sweeps/c12s2_power.txt with the `lsc` data input; one job, ~1 h); URL logged at dispatch.
 - Practice: neutral wording; FOCUS step switched to C12-S2 (Bence: "1"); C17 left at C17-S1PL.
+
+### C12-S2 amendment 1 (2026-11-22, after the selftest, before any power figure): residual-permutation null
+- **Why:** run https://github.com/krenusz/cellware/actions/runs/45048250443 reproduced C12-S1 exactly (712 units, 101 positives, train delta 0.1661; label-shuffle mean 0.0005; target effect 0.0828) but the null selftest FAILED: false-pass rate 0.111 (bar <= 0.05) at s = 0; planted power 1.00. The script stopped before any power figure, as pre-registered. Likely cause: the state PCs are correlated with size and QC, so permuting whole PC rows breaks that link and pushes the permutation null below the observed delta even with no state effect. On synthetic data with moderate correlation the plain null gave 0.047 and the residual null 0.01 (scratchpad check, not a result).
+- **Change (frozen test and simulation alike):** within the partition, the state PCs are regressed on the M0x covariates (linear, with intercept); the permutation shuffles the residual rows and adds them back to the fitted part (Freedman-Lane). Statistic, models, 200 permutations, p rule and alpha are unchanged. Output file results_c12/c12s2_power_a1.json; the failed run's file is kept as the record.
+- **Selftest bar unchanged** (false pass <= 0.05, planted >= 0.95). If it fails again, no power is reported and the test design goes back to Bence.
+- No sealed data read; nothing else changed.
