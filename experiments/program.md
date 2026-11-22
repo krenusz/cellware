@@ -340,6 +340,7 @@ pre-registration dated 2026-11-13 or later without it.
 - Power is simulated at the noise the real fit will meet, and the result entry compares the fitted noise with the highest pretested level; above it, the verdict is provisional until a power check at the fitted level (11-21; C17-S1PL-T4 fitted eps 0.69 against a pretest at 0.57, closed by P3).
 - A count gate is necessary, not sufficient: before calling a cross-system test open, compute the smallest attainable p with systems as units and check that a parameter is shared by the compared systems (11-21; C17-S1R-P: 3 vs 3 systems cannot reach p < 0.05).
 - A new term defined by the same covariate as an existing curve (e.g. early vs late splits by date, while commitment rises with date) is powered against a same-size control that bends that curve, planted as its closest fit to the alternative; power against the nested null alone is not specificity (11-22; C17-S1R-P5: a commitment step passed the W5 rule 95%, attribution power 0.33-0.43).
+- When every pretested option of the current chapter is spent, list the owed items from other chapters (e.g. a power redo) among the next steps (RETRO_2026-11-22).
 
 **When searching for data**
 - Score candidates by the shape of past successes: lineage or clone unit; >= ~100 units per sealed partition

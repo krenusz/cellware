@@ -13042,3 +13042,24 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - First-pass leads (Haiku): all on request, raw images only, or unchecked.
 - **Verdict: no public dataset with per-cell division generation plus fate found.** Pattern: imaging genealogies are kept "on request", which the project cannot use (no outreach). Leads not determinable are listed above, unverified.
 - No data read; nothing sealed touched; neutral wording.
+
+## C12-S2: simulated power redo for a sealed C12 look (pre-registered 2026-11-22; Bence: "1")
+- **Serves: C12-S2.** Owed since RETRO_2026-11-14b: the C12-S1 power (0.55-0.57 per partition, 0.85 A+B pooled) used `z_power` on a fixed out-of-fold SE, not H17 simulation, and is provisional. This step replaces it. No look is made here.
+- **Frozen sealed test (defined before any simulation; the look itself would need its own entry and Bence's OK):**
+  - Readout: presence at D20 in vivo only (>= 1 assigned cell, highest-UMI rule). D40 ex vivo is dropped: it never reached 0.8 even under the optimistic arithmetic.
+  - Models: M0x = log D20 size + QC + library + barcode UMI + multi-clone fraction + majority hashtag; M1x = M0x + 5 PCs of clone-mean D20 expression. HVG set, PCA loadings, scaler and logistic coefficients are fit once on all train clones and frozen; partition clones are projected and scored.
+  - Statistic: delta AUC (M1x - M0x) on the partition's clones.
+  - Null: the partition's state-PC rows permuted among its clones (M0x fixed), 200 permutations; p = (1 + #null >= observed) / 201; pass if p < 0.025. This is an empirical null, so no normality or zero-centring is assumed.
+  - Pooled configurations are one AUC over the pooled clones (A+B; A+B+C).
+- **Simulation (train only; script `c12s2_power.py`, on Actions with the `lsc` data input):**
+  1. Rebuild train covariates and the D20 in vivo readout exactly as C12-S1 amendment 2. Assert 712 train units, 101 positives, train CV delta AUC within 0.005 of 0.166 (proof that the Actions data and clone map match the local ones).
+  2. Generative model: logistic M1x fit on a bootstrap of train clones each simulation (parameter uncertainty), state-PC coefficients scaled by s. s is calibrated once (on the full-train fit, large pool of 20,000 bootstrap rows) so that the oracle delta AUC (true linear predictor vs its nuisance part) equals the target effect. **Target effect = 0.5 x min(train delta, train delta net of the label-shuffle mean)** (shrink 0.5 frozen).
+  3. Each simulation: pseudo-train = 712 bootstrap train rows with outcomes drawn from the generative model; refit M0x and M1x; pseudo-partition = bootstrap rows at the partition's structural clone count with fresh outcomes; frozen test as above.
+  4. Configurations: A 304, B 316, C 298, A+B 620, A+B+C 918 clones (structural counts, C12-S1). 1,000 simulations each.
+- **Selftests (in the script, before the power run):** s = 0 gives a false-pass rate <= 0.05 (expected about 0.025); a planted large effect (s at oracle delta 0.25) gives power >= 0.95.
+- **Decision rule:** power >= 0.8 on a single partition -> a one-partition look can be proposed (C12-S3, separate entry, needs Bence). Only a pooled configuration >= 0.8 -> reported, the choice to spend two partitions in one look is Bence's and is not proposed by default (Bence: keep more sealed). Nothing >= 0.8 -> C12 stays train-only, A/B/C sealed.
+- **Known optimism (caveat):** the simulation uses in-sample train PC scores; a real look projects partition clones through train PCA. Not modelled; stated in the result.
+- **Exposure:** C12-S0 counts, train presence fractions, train QC/library/hashtag counts, per-partition structural unit counts. No sealed outcome or sealed expression is read.
+- **Pre-flight:** (1) unit: D20 clone; (2) readout: D20 in vivo presence; (3) used data first: train only, as C12-S1; (4) power: this step; (5) exposure: as above; (6) literature: H20 reading done in C12-S1; (7) readout gate: passed in C12-S1 (101 positives).
+- **Compute:** Actions run (sweeps/c12s2_power.txt with the `lsc` data input; one job, ~1 h); URL logged at dispatch.
+- Practice: neutral wording; FOCUS step switched to C12-S2 (Bence: "1"); C17 left at C17-S1PL.

@@ -1,0 +1,223 @@
+{
+ "step": "C12-S2",
+ "date": "2026-11-22",
+ "concept": [
+  {
+   "query": "clonal engraftment transcriptome",
+   "matches": 9,
+   "top": [
+    {
+     "title": "Conversion of adult endothelium to immunocompetent haematopoietic stem cells.",
+     "year": "2017",
+     "cites": 176,
+     "doi": "10.1038/nature22326"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "barcoding engraftment clones",
+   "matches": 5,
+   "top": [
+    {
+     "title": "Development of a diverse human T-cell repertoire despite stringent restriction of hematopoietic clonality in the thymus.",
+     "year": "2015",
+     "cites": 30,
+     "doi": "10.1073/pnas.1519118112"
+    },
+    {
+     "title": "DNA Barcoding in Nonhuman Primates Reveals Important Limitations in Retrovirus Integration Site Analysis.",
+     "year": "2020",
+     "cites": 17,
+     "doi": "10.1016/j.omtm.2020.03.021"
+    },
+    {
+     "title": "Harnessing DNA barcoding to enhance and sustain polyclonality in gene-edited hematopoietic stem cells.",
+     "year": "2025",
+     "cites": 1,
+     "doi": "10.1016/j.omtm.2025.101615"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "lineage tracing engraftment",
+   "matches": 23,
+   "top": [
+    {
+     "title": "Hippo pathway activity influences liver cell fate.",
+     "year": "2014",
+     "cites": 729,
+     "doi": "10.1016/j.cell.2014.03.060"
+    },
+    {
+     "title": "Fundamental properties of unperturbed haematopoiesis from stem cells in vivo.",
+     "year": "2015",
+     "cites": 620,
+     "doi": "10.1038/nature14242"
+    },
+    {
+     "title": "Reprogramming of human pancreatic exocrine cells to \u03b2-like cells.",
+     "year": "2015",
+     "cites": 70,
+     "doi": "10.1038/cdd.2014.193"
+    },
+    {
+     "title": "Vascularizing the heart.",
+     "year": "2011",
+     "cites": 60,
+     "doi": "10.1093/cvr/cvr035"
+    },
+    {
+     "title": "Murine muscle stem cell response to perturbations of the neuromuscular junction are attenuated with aging.",
+     "year": "2021",
+     "cites": 40,
+     "doi": "10.7554/elife.66749"
+    },
+    {
+     "title": "Contribution of Extra-Cardiac Cells in Murine Heart Valves is Age-Dependent.",
+     "year": "2017",
+     "cites": 38,
+     "doi": "10.1161/jaha.117.007097"
+    },
+    {
+     "title": "Bifunctional ectodermal stem cells around the nail display dual fate homeostasis and adaptive wounding response toward nail regeneration.",
+     "year": "2014",
+     "cites": 37,
+     "doi": "10.1073/pnas.1318848111"
+    },
+    {
+     "title": "Lineage tracing of cardiac explant derived cells.",
+     "year": "2008",
+     "cites": 30,
+     "doi": "10.1371/journal.pone.0001929"
+    },
+    {
+     "title": "Chondrocyte-to-osteoblast transformation in mandibular fracture repair.",
+     "year": "2021",
+     "cites": 26,
+     "doi": "10.1002/jor.24904"
+    },
+    {
+     "title": "Kidney-Derived c-Kit<sup>+</sup> Cells Possess Regenerative Potential.",
+     "year": "2018",
+     "cites": 16,
+     "doi": "10.1002/sctm.17-0232"
+    },
+    {
+     "title": "Brain-engrafted monocyte-derived macrophages from blood and skull-bone marrow exhibit distinct properties.",
+     "year": "2026",
+     "cites": 14,
+     "doi": "10.1016/j.neuron.2026.01.032"
+    },
+    {
+     "title": "Enhanced hematovascular contribution of SCL 3' enhancer expressing fetal liver cells uncovers their potential to integrate in extramedullary adult niches.",
+     "year": "2010",
+     "cites": 5,
+     "doi": "10.1002/stem.228"
+    },
+    {
+     "title": "Efficient generation of human embryonic stem cell-derived cardiac progenitors based on tissue-specific enhanced green fluorescence protein expression.",
+     "year": "2015",
+     "cites": 3,
+     "doi": "10.1089/ten.tec.2013.0646"
+    },
+    {
+     "title": "Identification of a murine CD45<sup>-</sup>F4/80<sup>lo</sup> HSC-derived marrow endosteal cell associated with donor stem cell engraftment.",
+     "year": "2017",
+     "cites": 1,
+     "doi": "10.1182/bloodadvances.2017008730"
+    },
+    {
+     "title": "Functional definition of endothelial progenitors by PROCR and PDGFRA co-expression.",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.1007/s10456-026-10078-0"
+    },
+    {
+     "title": "Hoxb5+ fetal liver hematopoietic stem cells establish lifelong hematopoiesis and exhibit enhanced ITGA4-dependent engraftment",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.64898/2026.06.30.731692"
+    },
+    {
+     "title": "Brain-Engrafted Monocyte-derived Macrophages from Blood and Skull-Bone Marrow Exhibit Distinct Identities from Microglia",
+     "year": "2024",
+     "cites": 0,
+     "doi": "10.1101/2024.08.08.606900"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "clone state engraftment",
+   "matches": 6,
+   "top": [
+    {
+     "title": "An efficient method for single hematopoietic stem cell engraftment in mice based on cell-cycle dormancy of hematopoietic stem cells.",
+     "year": "2010",
+     "cites": 9,
+     "doi": "10.1016/j.exphem.2010.03.013"
+    },
+    {
+     "title": "Th1 to Th2 immune deviation facilitates, but does not cause, islet allograft tolerance in mice.",
+     "year": "2010",
+     "cites": 7,
+     "doi": "10.1016/j.cyto.2010.06.007"
+    },
+    {
+     "title": "Studies of the mechanism of tolerance induced by short-term immunosuppression with cyclosporine in high-risk corneal allograft recipients. I. Analysis of CTL precursor frequencies.",
+     "year": "1989",
+     "cites": 3,
+     "doi": "10.1097/00007890-198912000-00018"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "clonal heterogeneity transplantation fate",
+   "matches": 12,
+   "top": [
+    {
+     "title": "High-throughput analysis of single hematopoietic stem cell proliferation in microfluidic cell culture arrays.",
+     "year": "2011",
+     "cites": 228,
+     "doi": "10.1038/nmeth.1614"
+    },
+    {
+     "title": "BMP signalling differentially regulates distinct haematopoietic stem cell types.",
+     "year": "2015",
+     "cites": 76,
+     "doi": "10.1038/ncomms9040"
+    },
+    {
+     "title": "Self-renewal of single mouse hematopoietic stem cells is reduced by JAK2V617F without compromising progenitor cell expansion.",
+     "year": "2013",
+     "cites": 73,
+     "doi": "10.1371/journal.pbio.1001576"
+    },
+    {
+     "title": "Predicting clonal self-renewal and extinction of hematopoietic stem cells.",
+     "year": "2011",
+     "cites": 43,
+     "doi": "10.1073/pnas.1011414108"
+    },
+    {
+     "title": "In Vivo Tracking of Hematopoietic Stem and Progenitor Cell Ontogeny by Cellular Barcoding.",
+     "year": "2021",
+     "cites": 3,
+     "doi": "10.1007/978-1-0716-1425-9_21"
+    },
+    {
+     "title": "Transcriptional heterogeneity predicts and enables clonal selection in ageing haematopoiesis",
+     "year": "2026",
+     "cites": 0,
+     "doi": "10.21203/rs.3.rs-10046174/v1"
+    }
+   ],
+   "engine": "europepmc"
+  }
+ ],
+ "references": null,
+ "engine": "europepmc"
+}
