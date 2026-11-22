@@ -1,0 +1,1 @@
+[experiments/results_cand/candf_p1_struct.json] python -I experiments/candf_p1_struct.py

@@ -26,6 +26,7 @@
   "Watch list (re-checked 2026-11-19 evening, Bence: \"4 also go\"; EXPERIMENT_LOG C17-S1N): GSE342607 public, all 16 sub-series are the DevMap embryos = sealed petracer_embryo (its train embryos' trees are the route to a 2nd pluripotent-class system); GSE324482 private until 2030-03-01; E-MTAB-17351 not accessible (403, still private); hESC endoderm sister-well data and DeepTrack: no GEO hit; human neuromesoderm organoid CRISPR lineage tracing (preprint 10.64898/2026.07.29.741448): data statement not read (bioRxiv rate limit), re-check. Next check about 26 Nov"
  ],
  "allowed_scripts": [
+  "candf_p1_struct.py",
   "c13s0_format.py",
   "c14s0_gate.py",
   "c14s3_region.py",
