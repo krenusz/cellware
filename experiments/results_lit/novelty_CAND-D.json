@@ -1,0 +1,103 @@
+{
+ "step": "CAND-D",
+ "date": "2026-11-22",
+ "concept": [
+  {
+   "query": "cytokine instructive selective lineage",
+   "matches": 3,
+   "top": [
+    {
+     "title": "Regulatory T cell lineage commitment in the thymus.",
+     "year": "2011",
+     "cites": 42,
+     "doi": "10.1016/j.smim.2011.06.003"
+    },
+    {
+     "title": "Integration of cytokine and transcription factor signals in hematopoietic stem cell commitment.",
+     "year": "2011",
+     "cites": 21,
+     "doi": "10.1016/j.smim.2011.08.011"
+    },
+    {
+     "title": "Hypothesis: genes which function in a stochastic lineage commitment process are subject to monoallelic expression.",
+     "year": "1999",
+     "cites": 7,
+     "doi": "10.1006/smim.1999.0193"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "cytokine instruction hematopoietic lineage choice",
+   "matches": 1,
+   "top": [
+    {
+     "title": "Instruction of hematopoietic lineage choice by cytokine signaling.",
+     "year": "2014",
+     "cites": 32,
+     "doi": "10.1016/j.yexcr.2014.07.011"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "cytokines select hematopoietic progenitors",
+   "matches": 5,
+   "top": [
+    {
+     "title": "Hematopoiesis.",
+     "year": "1994",
+     "cites": 25,
+     "doi": "10.1016/0091-6749(94)90142-2"
+    },
+    {
+     "title": "Identification of differentially expressed genes representing dendritic cell precursors and their progeny.",
+     "year": "2003",
+     "cites": 21,
+     "doi": "10.1182/blood-2002-08-2426"
+    },
+    {
+     "title": "Stem cell generation and choice of fate: role of cytokines and cellular microenvironment.",
+     "year": "2000",
+     "cites": 8,
+     "doi": "10.1111/j.1582-4934.2000.tb00123.x"
+    },
+    {
+     "title": "Human granulocyte-macrophage colony-stimulating factor (hGM-CSF)-dependent in vitro and in vivo proliferation and differentiation of all hematopoietic progenitor cells in hGM-CSF receptor transgenic mice.",
+     "year": "1997",
+     "cites": 3,
+     "doi": "10.1016/s0091-6749(97)70011-3"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "clonal tracking cytokine differentiation human",
+   "matches": 3,
+   "top": [
+    {
+     "title": "Human HSPC clones balance stochastic diversification with cytokine-induced differentiation.",
+     "year": "2026",
+     "cites": 1,
+     "doi": "10.1182/blood.2026033834"
+    }
+   ],
+   "engine": "europepmc"
+  },
+  {
+   "query": "stochastic diversification cytokine clones",
+   "matches": 1,
+   "top": [
+    {
+     "title": "Human HSPC clones balance stochastic diversification with cytokine-induced differentiation.",
+     "year": "2026",
+     "cites": 1,
+     "doi": "10.1182/blood.2026033834"
+    }
+   ],
+   "engine": "europepmc"
+  }
+ ],
+ "references": null,
+ "engine": "europepmc"
+}
