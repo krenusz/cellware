@@ -54,6 +54,34 @@ ROWS = [
 ]
 COLS = ["system", "cell_class", "parameter", "point", "lo", "hi", "identified", "source"]
 
+# Scale of each row (RETRO_2026-11-20 Went wrong 1; adopted 2026-11-22, Bence: "go 1 2 3"). A cross-system law test
+# compares rows of ONE scale only and counts systems per class per scale.
+MEM_DIV, MEM_EVENT, HERIT, COMMIT, POSITION, INSTR, SELECT = (
+    "memory_per_division", "memory_per_event", "heritable_share", "commitment_dominated", "position_dominated",
+    "instruction", "selection")
+SCALE = {
+    ("LARRY cytokine wells", "heritable_share"): HERIT,
+    ("LARRY cytokine wells", "rho_div"): MEM_DIV,
+    ("LARRY cytokine wells", "tau_G"): INSTR,
+    ("LARRY cytokine wells", "tau_M"): INSTR,
+    ("LARRY cytokine wells", "gamma"): SELECT,
+    ("SIS-seq / SIS-skew", "heritable_share"): HERIT,
+    ("SIS-seq / SIS-skew", "gamma_cDC2"): SELECT,
+    ("SIS-seq / SIS-skew", "gamma_pDC"): SELECT,
+    ("SIS-seq / SIS-skew", "tau_cDC2"): INSTR,
+    ("CellTag-multi LSK culture", "heritable_share"): HERIT,
+    ("Raj gastruloids", "rho_div"): MEM_DIV,
+    # C17-S1T: the embryo-tree H is mostly commitment, so it is not on the heritable-share scale of the blood rows
+    ("PEtracer embryo trees (train)", "heritable_share"): COMMIT,
+    # C17-S1C-S1: likely regional identity kept by descent
+    ("CRISPR brain split clones (train)", "split_predictability"): POSITION,
+    ("Raj gastruloids", "rho_event_passage"): MEM_EVENT,
+    ("Raj gastruloids", "rho_context_gastruloid"): MEM_EVENT,
+    ("Raj gastruloids", "gamma"): SELECT,
+    ("DNA Typewriter embryo tree (train)", "rho_div_edge"): MEM_DIV,
+    ("DNA Typewriter embryo tree (train)", "commitment_C_at_9.4_days"): COMMIT,
+}
+
 
 def main():
     text = open(LOG, encoding="utf-8").read()
@@ -61,18 +89,24 @@ def main():
     text = " ".join(text.split())
     missing = [r[-1] for r in ROWS if " ".join(r[-1].split()) not in text]
     assert not missing, f"source phrases not found: {missing}"
-    table = [dict(zip(COLS, r, strict=True)) for r in ROWS]
-    by_class = {}
+    assert set(SCALE) == {(r[0], r[2]) for r in ROWS} and len(SCALE) == len(ROWS), "every row needs one scale"
+    table = [{**dict(zip(COLS, r, strict=True)), "scale": SCALE[(r[0], r[2])]} for r in ROWS]
+    by_class, by_scale = {}, {}
     for r in table:
         if r["identified"]:
             by_class.setdefault(r["cell_class"], set()).add(r["system"])
+            by_scale.setdefault(r["scale"], {}).setdefault(r["cell_class"], set()).add(r["system"])
     summary = {c: sorted(s) for c, s in by_class.items()}
-    gate = {c: len(s) >= 3 for c, s in summary.items()}
+    per_scale = {sc: {c: sorted(s) for c, s in d.items()} for sc, d in sorted(by_scale.items())}
+    gate = {sc: {c: len(s) >= 3 for c, s in d.items()} for sc, d in per_scale.items()}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as fh:
         json.dump({"rows": table, "systems_with_identified_parameters_by_class": summary,
-                   "law_test_gate_ge_3_systems_per_class": gate}, fh, indent=1)
-    print(json.dumps({"by_class": summary, "gate": gate}, indent=1))
+                   "systems_by_scale_and_class": per_scale,
+                   "law_test_gate_ge_3_systems_per_class_per_scale": gate,
+                   "note": "the law-test gate counts systems per class within one scale (2026-11-22); the class-level "
+                           "list is context only"}, fh, indent=1)
+    print(json.dumps({"by_scale": per_scale, "gate": gate}, indent=1))
 
 
 if __name__ == "__main__":
