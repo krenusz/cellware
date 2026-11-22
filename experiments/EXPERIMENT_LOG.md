@@ -12993,3 +12993,21 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Practice: seeded; selftests (split model recovers 0.80/0.95; cstep recovers delta -0.70 and lambda 0.95; rule3 truth table); neutral wording.
 - Compute: GitHub Actions, sweeps/c17s1r_p5_discrim.txt (gate), then sweeps/c17s1pl_t5_fit.txt only after the gate passes and Bence's go.
 - **Amendment 1 (2026-11-22, before any P5 result; run https://github.com/krenusz/cellware/actions/runs/45025487353 crashed in setup, 0 sets simulated):** the cstep truth as written (lambda 0.95 everywhere, step matched to the early mean) has no solution on this structure: with late memory 0.95, no commitment offset brings the early mean agreement down to the split truth's (brentq: no sign change). Replaced by the hardest mimic defined directly: the M_cstep fitted (same fitter) to the split truth's noise-free expected agreement, then planted. Locally on train structure (no labels): alpha 0.91, beta 1.03, lambda 0.856, delta -0.94, weighted RMSE to the split truth 0.0064 (eps 0.40) / 0.0046 (0.57). Gate bar and rules unchanged. Exposure unchanged (synthetic labels only).
+
+### C17-S1R-P5 result (2026-11-22; run https://github.com/krenusz/cellware/actions/runs/45026085769)
+- **Gate: FAIL.** Rates over 40 sets per cell (results_c17/c17s1r_p5_discrim_*.json):
+
+  | truth | eps | split beats one | split beats cstep | attributed |
+  |---|---|---|---|---|
+  | null | 0.40 | 0.025 | 0.075 | 0.00 |
+  | null | 0.57 | 0.05 | 0.10 | 0.025 |
+  | split 0.85/0.95 | 0.40 | 1.00 | 0.425 | **0.425** |
+  | split 0.85/0.95 | 0.57 | 0.95 | 0.325 | **0.325** |
+  | cstep (closest mimic) | 0.40 | **0.95** | 0.00 | 0.00 |
+  | cstep (closest mimic) | 0.57 | **0.95** | 0.00 | 0.00 |
+
+- Attribution power 0.43 / 0.33, below 0.8; false attribution stays low (<= 0.025).
+- **The main finding:** a commitment step with no memory difference passes the P4 primary rule 95% of the time. The P4 power PASS was real but not specific: on these pairs, a better fit for early vs late splits cannot be credited to memory.
+- **Decision (pre-registered):** W5 is not identifiable on the dated-tree train pairs and is **dropped without the fit**. No real agreement was read; the 4th look on these pairs is not spent; A/B/C sealed and untouched. The fit5 stage stays in code and refuses to run (gate file shows FAIL).
+- Prediction (gate fails, ~50-60%) held.
+- Lesson: when a new term is defined by the same covariate as an existing curve, power must be checked against a same-size control that bends that curve (here added only because of a pre-fit review).
