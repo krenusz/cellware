@@ -164,8 +164,89 @@ def apower(n_draws=20000):
     T.dump(out, RES / "c17s1pl_p2_apower.json")
 
 
+def _pred_split(th, z, k, Q, g, split):
+    al, be = th[0], th[1]
+    l1 = T.sig(th[2])
+    l2 = T.sig(th[3]) if split else l1
+    eps = T.sig(th[-1])
+    lam = np.where(g, l1, l2)
+    C = T.sig(al + be * z)
+    return Q + (1 - Q) * (1 - eps) * (C + (1 - C) * lam ** (2 * k))
+
+
+def _fit_split(z, k, Q, a, w, g, split, rng):
+    from scipy.optimize import minimize
+
+    def loss(th):
+        r = a - _pred_split(th, z, k, Q, g, split)
+        return float(np.sum(w * r * r) / np.sum(w))
+
+    n = 5 if split else 4
+    best = None
+    for _ in range(T.STARTS):
+        th0 = rng.normal(0, 1.5, n)
+        th0[2:n - 1] = rng.uniform(0.5, 4.0, n - 3)
+        th0[-1] = rng.uniform(-4, -1)
+        r = minimize(loss, th0, method="L-BFGS-B")
+        if best is None or r.fun < best.fun:
+            best = r
+    return best.x
+
+
+def split_power(n_sets, eps):
+    """P4 (W5): does memory per edge differ between early and late splits? Synthetic labels, train structure."""
+    T.EPS = eps
+    S, info = struct("major_trajectory")
+    x = S["date"]
+    S["z"] = (x - x.mean()) / x.std()
+    g = x < np.median(x)
+    w = T.weights(S["n1"], S["n2"])
+    al, be = -0.018, 1.034  # C17-S1PL-T3 full-data fit (date clock)
+    out = {"eps": eps, "structure": info, "early_frac": float(g.mean()),
+           "k_pct_early": np.percentile(S["k"][g], [10, 50, 90]).tolist(),
+           "k_pct_late": np.percentile(S["k"][~g], [10, 50, 90]).tolist()}
+    for truth, (le, ll) in {"null": (0.90, 0.90), "s80_95": (0.80, 0.95), "s85_95": (0.85, 0.95)}.items():
+        rng = np.random.default_rng(T.SEED + 400 + sum(map(ord, truth)) + int(eps * 100))
+        lam = np.where(g, le, ll)
+        res = []
+        for _ in range(n_sets):
+            a = T.simulate(S, lam, al, be, rng)
+            err = {}
+            for u in S["eligible"]:
+                tr, te = S["emb"] != u, S["emb"] == u
+                err[u] = {}
+                for name, sp in (("one", False), ("split", True)):
+                    th = _fit_split(S["z"][tr], S["k"][tr], S["Q"][tr], a[tr], w[tr], g[tr], sp, rng)
+                    r = a[te] - _pred_split(th, S["z"][te], S["k"][te], S["Q"][te], g[te], sp)
+                    err[u][name] = float(np.sum(w[te] * r * r) / np.sum(w[te]))
+            wins = sum(err[u]["split"] < err[u]["one"] for u in err)
+            pooled = {m: float(np.mean([err[u][m] for u in err])) for m in ("one", "split")}
+            res.append(wins >= 2 * len(err) / 3 and pooled["split"] < pooled["one"])
+        out[truth] = {"pass_rate": float(np.mean(res)), "n_sets": n_sets}
+        T.say(f"split eps {eps} {truth} {out[truth]}")
+    T.dump(out, RES / f"c17s1r_p4_split_eps{eps}.json")
+
+
+def split_selftest():
+    rng = np.random.default_rng(1)
+    n = 4000
+    z, k, Q = rng.normal(size=n), rng.uniform(2, 8, n), np.full(n, 0.2)
+    g = rng.random(n) < 0.5
+    th = np.array([0.0, 1.0, T.logit(0.8) if hasattr(T, "logit") else np.log(0.8 / 0.2),
+                   np.log(0.95 / 0.05), np.log(0.4 / 0.6)])
+    a = _pred_split(th, z, k, Q, g, True)
+    est = _fit_split(z, k, Q, a, np.ones(n), g, True, rng)
+    l1, l2 = T.sig(est[2]), T.sig(est[3])
+    assert abs(l1 - 0.8) < 0.02 and abs(l2 - 0.95) < 0.02, (l1, l2)
+    print("split selftest ok", round(float(l1), 3), round(float(l2), 3))
+
+
 if __name__ == "__main__":
-    if sys.argv[1] == "apower":
+    if sys.argv[1] == "split":
+        split_power(int(sys.argv[2]), float(sys.argv[3]))
+    elif sys.argv[1] == "split_selftest":
+        split_selftest()
+    elif sys.argv[1] == "apower":
         apower()
     elif sys.argv[1] == "dates":
         dates()

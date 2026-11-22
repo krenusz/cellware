@@ -12932,3 +12932,27 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The September 2026 files (monoclonal L1-L12, polyclonal L1-L4 and multiome L1-L4 count matrices, RAW.tar 560M) predate our download and are already listed in our saved family.soft (Series_last_update_date Sep 29 2026). **Nothing changed after our download; the watch-list flag was a false alarm.** None of those matrices is held locally.
   - Gap fixed: the folder had no SHA256SUMS; locked today (3 files, local only like every data/ folder). Any future download of the GSE291244 count matrices goes through the gse291244_founders partition (well_cluster) before any fate read.
 - Practice: no data rows read; nothing sealed touched; neutral wording.
+
+## C17-S1R-P4: within-system directions, feasibility pretests (pre-registered 2026-11-22; Bence: "go 1")
+- **Serves: C17-S1PL** (the current FOCUS step; within C17-S1R: what C17 can still learn from held data with clades or embryos as units, while the cross-class law test waits on data).
+- **Cheap checks (log, schema and design only; no data read):**
+  - W1 clock vs division on the PEtracer trees: the trees are topology only (`obst` edges, no branch lengths; all leaves sampled together), so no split date exists. **FAIL (no time axis).**
+  - W2 commitment timing transferred between the two embryo trees: depth is in edges on PEtracer and in days on the dated tree, and the label sets differ (14 vs 12 categories); no shared time axis without a division-rate assumption. **FAIL (not identifiable).**
+  - W3 lineage-specific commitment order on the dated tree: the source study's own result (dated hierarchy of cell-type couplings, claims level). **FAIL (H25, published).**
+  - W4 stage contrast of the PEtracer heritable share: 7 train embryos over 5 stages, < 3 per arm (H22). **FAIL.**
+  - W6 strengthening the clock lead on the same train clades: no confirmation path (sealed A at power 0.43, C17-S1PL-P2); a further train look adds multiplicity only. **FAIL.**
+  - W7 within-blood division questions: done or stopped (C5-S2; CellTag LSK events vs divisions, power 0.29). **FAIL (duplicate / underpowered).**
+  - **W5 memory before vs after mid-development on the dated tree** (does memory per division edge differ between early and late splits?): train structure exists (8,146 pairs, 27 clades, corr(date, k) -0.13); the in-sample calibration miss sits in the earliest-split bin (C17-S1PL-T3), and PEtracer showed the same shallow-depth gap (C17-S1T). Not done before (log grep). Passes the cheap checks; **power simulation below decides.**
+- **W5 power plan (P4):** synthetic labels on the real train structure (`major_trajectory`, date clock as in T3), commitment planted at the T3 fit (alpha -0.018, beta 1.034 per sd of date), eps 0.40 (T3 fitted) and 0.57. Truths: null (one lambda 0.90), lambda early/late 0.80/0.95 and 0.85/0.95, early = split date below the train median. Models: M_full (one lambda) vs M_split (lambda_early, lambda_late), same weights and 5 starts. Rule of the eventual test: M_split lower leave-one-founder-out error in >= 2/3 of eligible clades AND pooled. 40 sets per truth.
+- Bar: power >= 0.8 at 0.85/0.95 and false pass <= 0.05 at the null, at both noise levels; else W5 is dropped.
+- Pre-flight:
+  1. Unit: founder clade (27 eligible train); one embryo; no treatment (H22 n/a).
+  2. Readout: synthetic only.
+  3. Used data first: train structure only.
+  4. Power: this entry.
+  5. Exposure: the real agreement of these pairs was used in T, T3, T4; an eventual W5 fit would be the 4th model on them (stated now).
+  6. Literature: lit/novelty/C17-S1PL.md (memory falls with differentiation, BMC Biol 2024; checked again before any fit).
+  7. Readout gate (H21): met.
+- **Prediction:** power falls short at 0.85/0.95 (memory moves agreement little once commitment is fitted), ~60% that W5 FAILS.
+- Practice: seeded; selftest of the split model on a toy set; neutral wording.
+- Compute: GitHub Actions, sweeps/c17s1r_p4_split.txt.

@@ -1,0 +1,2 @@
+[experiments/results_c17/c17s1r_p4_split_eps0.4.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/c17s1pl_pretest.py split 40 0.40
+[experiments/results_c17/c17s1r_p4_split_eps0.57.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/c17s1pl_pretest.py split 40 0.57
