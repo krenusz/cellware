@@ -1,0 +1,36 @@
+{
+ "eps": 0.57,
+ "structure": {
+  "label": "major_trajectory",
+  "n_cats": 12,
+  "n_pairs": 8146,
+  "n_eligible": 27,
+  "readout_gate_pass": true,
+  "corr_date_k": -0.12908830921593806,
+  "corr_tau_k": -0.12472639823221289,
+  "Q_median": 0.2370276898776154
+ },
+ "early_frac": 0.5,
+ "k_pct_early": [
+  3.5,
+  4.7058823529411775,
+  7.560714285714287
+ ],
+ "k_pct_late": [
+  3.3999999999999986,
+  4.5,
+  6.785093167701863
+ ],
+ "null": {
+  "pass_rate": 0.05,
+  "n_sets": 40
+ },
+ "s80_95": {
+  "pass_rate": 0.975,
+  "n_sets": 40
+ },
+ "s85_95": {
+  "pass_rate": 0.825,
+  "n_sets": 40
+ }
+}

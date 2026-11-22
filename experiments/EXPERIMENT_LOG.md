@@ -12956,3 +12956,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Prediction:** power falls short at 0.85/0.95 (memory moves agreement little once commitment is fitted), ~60% that W5 FAILS.
 - Practice: seeded; selftest of the split model on a toy set; neutral wording.
 - Compute: GitHub Actions, sweeps/c17s1r_p4_split.txt.
+
+### C17-S1R-P4 result (2026-11-22; run https://github.com/krenusz/cellware/actions/runs/45020761750)
+- **W5 power: PASS** at the pre-registered bar (40 sets per truth; results_c17/c17s1r_p4_split_eps0.4.json, _eps0.57.json):
+
+  | eps | null false pass | power 0.80/0.95 | power 0.85/0.95 |
+  |---|---|---|---|
+  | 0.40 | 0.025 | 1.00 | 1.00 |
+  | 0.57 | 0.05 | 0.975 | 0.825 |
+
+- Early and late halves have similar division counts (k 3.5/4.7/7.6 vs 3.4/4.5/6.8 at the 10th/50th/90th percentile), so a split effect is not just a depth difference.
+- Self-challenge: at eps 0.57 the false pass sits exactly on the bar (2/40; binomial 95% CI up to ~0.17) and power at 0.85/0.95 is 0.825, near 0.8. The real fit's noise is expected near 0.40 (T3 fitted, same label and clock), where both margins are wide. The result entry of any W5 fit will compare fitted eps with 0.40/0.57 and is provisional above 0.57.
+- Prediction (~60% FAIL) was wrong.
+- Not run: the W5 fit itself. It would be the 4th model on these train pairs; it needs its own pre-registration and Bence's OK.
