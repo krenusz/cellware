@@ -272,19 +272,16 @@ def rule3(err):
             "attributed": bool(beats("one") and beats("cstep")), "pooled": pooled}
 
 
-def matched_delta(S, g, al, be, lam_e, lam_l):
-    """Step size that gives the early pairs the same mean expected agreement as the split truth (hardest mimic)."""
-    from scipy.optimize import brentq
-
-    z, k, Q = S["z"][g], S["k"][g], S["Q"][g]
-    eps = T.EPS
-    target = np.mean(Q + (1 - Q) * (1 - eps) * (T.sig(al + be * z) + (1 - T.sig(al + be * z)) * lam_e ** (2 * k)))
-
-    def f(d):
-        C = T.sig(al + d + be * z)
-        return np.mean(Q + (1 - Q) * (1 - eps) * (C + (1 - C) * lam_l ** (2 * k))) - target
-
-    return float(brentq(f, -10, 10))
+def closest_cstep(S, g, w, al, be, lam_e, lam_l):
+    """P5 amendment 1: the M_cstep that best fits the split truth's expected agreement (hardest mimic). Noise-free
+    target at the planted eps; the fitted eps is reported, the simulator uses the planted one."""
+    lam = np.where(g, lam_e, lam_l)
+    C = T.sig(al + be * S["z"])
+    target = S["Q"] + (1 - S["Q"]) * (1 - T.EPS) * (C + (1 - C) * lam ** (2 * S["k"]))
+    th = _fit3(S["z"], S["k"], S["Q"], target, w, g, "cstep", np.random.default_rng(T.SEED + 7))
+    r = target - _pred3(th, S["z"], S["k"], S["Q"], g, "cstep")
+    return {"alpha": float(th[0]), "beta": float(th[1]), "lambda": float(T.sig(th[2])), "delta": float(th[3]),
+            "eps_fit": float(T.sig(th[4])), "rmse_to_split_truth": float(np.sqrt(np.sum(w * r * r) / np.sum(w)))}
 
 
 def discrim_power(truth, n_sets, eps):
@@ -297,14 +294,14 @@ def discrim_power(truth, n_sets, eps):
     g = x < med
     w = T.weights(S["n1"], S["n2"])
     al, be = -0.018, 1.034  # C17-S1PL-T3 full-data fit (date clock)
-    delta = matched_delta(S, g, al, be, 0.85, 0.95)
-    lam, alv = {"null": (np.full(len(x), 0.90), al), "split": (np.where(g, 0.85, 0.95), al),
-                "cstep": (np.full(len(x), 0.95), al + delta * g)}[truth]
+    cs = closest_cstep(S, g, w, al, be, 0.85, 0.95)
+    lam, alv, bev = {"null": (np.full(len(x), 0.90), al, be), "split": (np.where(g, 0.85, 0.95), al, be),
+                     "cstep": (np.full(len(x), cs["lambda"]), cs["alpha"] + cs["delta"] * g, cs["beta"])}[truth]
     rng = np.random.default_rng(T.SEED + 500 + sum(map(ord, truth)) + int(eps * 100))
-    out = {"eps": eps, "truth": truth, "structure": info, "date_median": med, "delta_matched": delta,
+    out = {"eps": eps, "truth": truth, "structure": info, "date_median": med, "cstep_planted": cs,
            "n_sets": n_sets, "sets": []}
     for i in range(n_sets):
-        a = T.simulate(S, lam, alv, be, rng)
+        a = T.simulate(S, lam, alv, bev, rng)
         err = {}
         for u in S["eligible"]:
             tr, te = S["emb"] != u, S["emb"] == u
