@@ -146,7 +146,8 @@ PARTITIONED = {
         "prior_exposure": "C17-S0b structure counts (recipients, shared clones per sample set); C17-S0c partition "
                           "counts; claims-level read of the source paper (lit/c17_source_claims_2026-11-18.md); one pooled "
                           "2020 result sentence on across-recipient clone-expansion correlation (lit/novelty/C17-S0.md); "
-                          "CAND-F-P1: the 2026 source's Fig. 5f mouse ids and clone counts only (bias columns unread)",
+                          "CAND-F-P1: the 2026 source's Fig. 5f mouse ids and clone counts only (bias columns unread); "
+                          "per-recipient clone counts under 4 filters, all partitions pooled (results_cand/candf_p1_struct.json)",
     },
     "cortical_clone": {
         "salt": "cellware-cortical-clone-v1",
