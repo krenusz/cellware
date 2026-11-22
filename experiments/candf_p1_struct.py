@@ -15,6 +15,7 @@ import gzip
 import json
 import os
 import sys
+import time
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -26,9 +27,15 @@ PUBLISHED = sorted([64, 86, 33, 22, 14, 24, 27])
 
 
 def lines(name):
-    req = urllib.request.Request(RF + name + ".txt.gz", headers={"User-Agent": "cellware/1.0"})
-    with urllib.request.urlopen(req, timeout=300) as r:
-        return gzip.decompress(r.read()).decode().splitlines()
+    req = urllib.request.Request(RF + name + ".txt.gz", headers={"User-Agent": "cellware-seal/1.0"})
+    for i in range(8):  # NCBI answers 403/5xx transiently on runners (run 45071348622)
+        try:
+            with urllib.request.urlopen(req, timeout=300) as r:
+                return gzip.decompress(r.read()).decode().splitlines()
+        except Exception as e:  # noqa: BLE001
+            print(f"retry {i + 1} {name}: {e}", flush=True)
+            time.sleep(10 * (i + 1))
+    raise RuntimeError(name)
 
 
 def recipient(sample_id):
