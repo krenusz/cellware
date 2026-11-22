@@ -1,0 +1,1 @@
+[experiments/results_lit/gap_2026-11-22_c12close.json] python experiments/lit_gap.py c12close && mkdir -p experiments/results_lit && cp experiments/lit/gap_2026-11-22_c12close.json experiments/results_lit/
