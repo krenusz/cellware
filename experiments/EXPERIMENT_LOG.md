@@ -13088,3 +13088,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Open size check (advisor, 2026-11-22):** the null selftest covers only s = 0 in both train and partition. The case a sealed look must guard against (pseudo-train at s_eff, partition at s = 0) is not simulated, and the permutation null's mean at s_eff is not reported. Both are owed before any look; if the null centre sits well below 0, the pass rule needs 'and delta > 0'.
 - **Next (needs Bence):** the size check above, then pre-register C12-S3, one oracle look on one partition (A), with the frozen test; B and C stay sealed. Novelty: published in kind (needs Bence's 'Published but proceeding' line). No look is made without his OK.
 - No sealed data read.
+
+## C12 CLOSED (2026-11-22; Bence: "we just figured that c12 objectives are published already! so we note the results and search for something we can discover and novelty")
+- **Serves: C12 CLOSED.** No look. C12's question (day-20 clone state predicts in vivo presence beyond size) is published in kind by the source preprint (novelty audit 2026-11-18; lit/novelty/C12-S2.md), so a sealed confirmation would add no new biology.
+- **Noted results (train only, no claim):** delta AUC 0.166 over size, QC, library, barcode level, multi-clone fraction and hashtag (712 clones, 101 in vivo; C12-S1, DISCOVERIES #34); C12-S2 simulated power 0.98 per partition with a residual-permutation null (size check for a train-only effect never run).
+- lsc_larry A, B, C stay sealed and unspent (reserve for a different, novel question on this set).
+- Next: a novelty-first search for a new question on unspent sealed data (Bence).
