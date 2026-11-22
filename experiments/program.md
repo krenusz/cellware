@@ -23,6 +23,7 @@ How experiments are run and logged here. An agent or a person follows these rule
   axial-identity and position controls (6/6 embryos) and looked like shared streak-exit history in
   expression; no claim (B has one usable embryo), and the biology is largely published (Colgan 2026).
   Chapter 17 (closed 2026-11-22, no claim, RETRO_2026-11-22.md) built a cross-system parameter table (blood 3, pluripotent 3, neural 1, with a scale column); the stage-aware memory model was not supported in three powered fits (commitment carries sister agreement), and the cross-class law test is blocked by data (too few systems per class on one scale).
+  Chapter 12 (reopened and closed 2026-11-22, no claim, RETRO_2026-11-22b.md): day-20 clone state predicts in vivo presence beyond size on train (delta AUC 0.17), but the question is published in kind by its source, so no sealed look was spent; lsc_larry stays sealed.
 - **Short-term question (chapter 1, answered):** do G-CSF and M-CSF instruct or select neutrophil
   vs monocyte fate, and in what proportion (instruction shifts tau, selection s and gamma)?
   Answer: mostly clone-level selection on a strong fate state, modest instruction.
