@@ -13148,3 +13148,10 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Not shown: that the 7 mice are absent from these series. The source's exact clone calling may differ from every column tried. Its LARRY re-analysis script is not in its Zenodo bundle.
 - **CAND-F set to failed_gate** as pre-registered. No P2 null study was run. No bias value or published correlation was read. No partition was created: the 19 public mice have had per-mouse cell and clone counts and an HSC flag read, and nothing else.
 - Value-shape note: the empty string is the no-barcode value in several clone columns (shown as "2"/"3" in the JSON because jsonlite names empty keys by position); it is excluded from the counts.
+
+## CAND-K-P1 and CAND-L-P1: novelty search 2026-11-23 (Bence: "go 1 and list the still open candidates by promising order")
+- **Serves: C12 CLOSED.** Literature metadata only: no data file opened, no statistic computed, no sealed data touched, nothing newly sealed.
+- Keyword scan: runs 45181379991 and 45183509360, too thin (30 records kept, one known paper missed), not used. Citation scan of 10 barcoding and recording methods: run 45186597216 failed (cursor paging needs a key), run after the paging fix succeeded (587 records kept, 618 dropped by the wording filter). Data gate: run https://github.com/krenusz/cellware/actions/runs/45192038049.
+- The known paper CAND-F's source stayed absent from the citation scan, so recall is incomplete.
+- **Failed:** CAND-K (2 culture donors, processed tables on request; page partly read through a summary). CAND-L (source already runs an in silico subsampling control).
+- **Open, not pretested:** CAND-H, CAND-I, CAND-J. Their full text could not be read (client challenge on the journal page, rate limit on the preprint server, no open text in Europe PMC). Data, units, method and novelty are unknown. No bypass was attempted.
