@@ -179,6 +179,18 @@ PARTITIONED = {
         "prior_exposure": "C17-S1PL schema (column names/types; only cell_id examples), tree topology, branch lengths, "
                           "leaf-ID join, pair and founder counts (gate 1 and 2); source abstract (claims level)",
     },
+    "germline_fish": {
+        # H24 map from candi_seal.py, run 45222067549: eligible fish (>= 6 sample indices) 8 train, 4/4/4 sealed
+        "fixed": {"1": "train", "2": "train", "4": "A", "5": "train", "8": "train", "10": "A", "12": "train", "13": "A", "14": "B", "15": "C", "16": "train", "17": "C", "18": "train", "22": "A", "26": "B", "35": "B", "37": "B", "38": "A", "40": "train", "42": "train", "44": "C", "45": "train", "50": "C", "51": "B"},
+        "unit": "numbered fish in Gagnon-lab/weber-shrader at commit 99b327c (CAND-I). The seal holds for that fish "
+                "number in every pipeline variant, table, matrix and summary. Three control fish are outside the map "
+                "and never read. Heatmap images and README figures stay unopened",
+        "files": ["source tables at the pinned commit, downloaded at run time, never copied into this repo"],
+        "sealed_on": "2026-11-23",
+        "prior_exposure": "source text at claims and methods level, including its stated median drift estimate; column "
+                          "names and sample counts (CAND-I-P1); repository tree with file names and sizes, including "
+                          "per-fish matrix sizes; sample indices per partition",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

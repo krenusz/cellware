@@ -13188,3 +13188,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: fish; (2) readout: barcode frequency over time, unread; (3) used data first: never used here; (4) power: next step, simulation only, at 4 eligible fish per sealed partition; (5) exposure: source text at claims and methods level, including its stated median drift estimate; column names and counts from P1; repository tree listing with file names and sizes, including per-fish matrix sizes; (6) literature: classic search owed, next step; (7) readout gate: replicate structure passed in P1.
 - **Compute:** Actions (sweeps/candi_seal.txt); URL logged with the result.
 - Practice: neutral wording; identifiers only; no source data copied into this repo.
+
+### CAND-I-P1 seal result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45222067549; results_cand/candi_seal.json): **sealed**
+- 24 fish: 10 train, 5 A, 5 B, 4 C. Eligible fish: 8 train, 4 A, 4 B, 4 C. Sample indices: 98 train, 50 A, 48 B, 46 C. Fixed in partitions.germline_fish.
+- No read, proportion, barcode or drift value was used. All partitions unspent.
+
+### CAND-I-P1 novelty check (2026-11-23; classic search): **no reanalysis found**
+- Europe PMC (4 queries), three web searches and the source's citing works. The only citer is a journal preprint highlight (doi 10.1242/dev.206040). No work found retests this data set with noise measured from its technical replicates.
+- Not new in general: separating drift from overdispersed measurement noise is established for lineage frequency series (doi 10.1371/journal.ppat.1012090) and barcode counts (doi 10.1371/journal.pcbi.1013946). The gap is the application to this claim. Search recall is not complete.
+
+### CAND-I-P1 power design (pre-registered 2026-11-23; Bence: "Yes, seal CAND-I")
+- **Serves: C12 CLOSED.** Script candi_power.py is simulation only and reads no germline file.
+- **Test:** one excess value per fish, exact one-sided sign-flip test on the mean, alpha 0.05, with 4, 8 or 12 eligible fish (one, two or three sealed partitions).
+- **Pass rule (fixed now):** power at least 0.8 at an effect of 1 between-fish SD, in one sealed partition (4 fish). If it fails, CAND-I stops here. Spending more than one partition needs Bence's decision.
+- **Pre-flight:** (1) unit: fish; (2) readout: simulated only; (3) used data first: no data used; (4) power: this step; (5) exposure: as in the seal entry; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
+- **Compute:** Actions (sweeps/candi_power.txt); URL logged with the result.
+- Practice: neutral wording; no train or sealed value used to set the effect size.
