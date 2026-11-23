@@ -13124,3 +13124,14 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **CAND-G-P1:** data "not found" (GEO, Europe PMC, Zenodo metadata), not "not public"; the full-text data statement was not checked.
 - **CAND-D-P1:** C9-S0 H2 (exps 1 + 7) failed at 0.78 (121 B units, 76 effective) and H1 at 0.79. CAND-D's own power was not computed. Its per-arm counts (46-59 serial clones per sealed partition, conditions I/III) are of the same order, so it is not shown to be better powered. DNR-HSPC-COND is registered as `underpowered`, not `dont_repropose`, until Bence chooses.
 - P1 per-recipient counts added to rf2020_clone prior exposure (pooled over partitions; structural).
+
+## CAND-F-P1b: do the source's 7 mice map to the public transplant series GSE299003 / GSE307390? (structural pretest, pre-registered 2026-11-23; Bence: "Yes, run P1b")
+- **Serves: C12 CLOSED** (candidate pretest).
+- **Data:** the authors' processed objects: GSE299003 (4 hashtagged recipients, 8 months) and GSE307390 (15 hashtagged recipients, donors E15, P0, P10, P20, 6 months). Neither is in a partition.
+- **Phase A (this commit):** schema only: object class, dimensions, metadata column names, column types and distinct-value counts, level names only for columns named like a mouse/sample/hashtag id. No clone id, cell-type level, per-cell value or expression value is written.
+- **Phase B (after A, same rule, columns named in an amendment before it runs):** clones per mouse under three fixed variants: any clone; >= 2 cells; >= 2 cells and >= 1 cell in the authors' HSC label. Only the HSC membership of the cell-type column is used; no other cell-type level and no bias is computed.
+- **Pass rule:** mapped = all 7 published counts (14, 22, 24, 27, 33, 64, 86) appear among the mice of one series or donor group under one variant. Else CAND-F is **units unresolved** and stops.
+- **Sealing, fixed before any statistic:** if mapped, the 7 mice are the published points (their correlation is public, so they cannot be a hold-out). Every other mouse in these series is sealed by mouse in partitions.py before any bias is computed, and is the only replication data. If fewer than 3 mice remain per arm, no replication is claimed (H22).
+- **P2 kill rule unchanged** (CAND-F-P1): coupling shown on structural counts, simulated false-positive rate >= 0.20; the published correlation value and bias columns stay unread for the design study.
+- **Exposure:** GEO series text, hashing tables, schema; phase B adds clone counts per mouse. No bias.
+- **Compute:** Actions (sweeps/candf_p1b_schema.txt); URL logged at dispatch.
