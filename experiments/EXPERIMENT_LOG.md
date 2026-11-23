@@ -13204,3 +13204,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: fish; (2) readout: simulated only; (3) used data first: no data used; (4) power: this step; (5) exposure: as in the seal entry; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
 - **Compute:** Actions (sweeps/candi_power.txt); URL logged with the result.
 - Practice: neutral wording; no train or sealed value used to set the effect size.
+
+### CAND-I-P1 power result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45223354941; results_cand/candi_power.json): **fails the pass rule**
+- One sealed partition has 4 eligible fish. The smallest possible sign-flip p is 0.0625, so power is 0 at every effect size.
+- At an effect of 1 between-fish SD, power is 0.805 with 8 fish (A+B) and 0.945 with 12 (A+B+C). The effect size is assumed, not measured.
+- CAND-I stops as underpowered for one partition. No germline value was read, and train, A, B and C are all unspent. Using two partitions needs Bence's decision.
