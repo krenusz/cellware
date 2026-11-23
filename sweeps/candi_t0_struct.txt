@@ -1,0 +1,1 @@
+[experiments/results_cand/candi_t0_struct.json] python -I experiments/candi_t0_struct.py

@@ -37,6 +37,8 @@
   "candi_p1_struct.py",
   "candi_seal.py",
   "candi_power.py",
+  "candi_t0_struct.py",
+  "candi_train.py",
   "c13s0_format.py",
   "c14s0_gate.py",
   "c14s3_region.py",

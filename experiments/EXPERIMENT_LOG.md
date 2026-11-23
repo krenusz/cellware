@@ -13209,3 +13209,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - One sealed partition has 4 eligible fish. The smallest possible sign-flip p is 0.0625, so power is 0 at every effect size.
 - At an effect of 1 between-fish SD, power is 0.805 with 8 fish (A+B) and 0.945 with 12 (A+B+C). The effect size is assumed, not measured.
 - CAND-I stops as underpowered for one partition. No germline value was read, and train, A, B and C are all unspent. Using two partitions needs Bence's decision.
+
+## CAND-I-T0: structure of the train fish (pre-registered 2026-11-23; Bence: "Yes, train look")
+- **Serves: C12 CLOSED.** Script candi_t0_struct.py keeps train fish through partitions.train_only, then counts barcodes, sample indices and replicates per eligible fish. Read and proportion columns are not parsed. These shapes set the synthetic gate of the later train test (CAND-I-T1).
+- **Pre-flight:** (1) unit: fish; (2) readout: none in this step; (3) used data first: train only; (4) power: the T1 synthetic gate will use these shapes, and if recovery is below 0.5 CAND-I stops unread; (5) exposure: as in the seal entry, plus these train counts; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
+- **Compute:** Actions (sweeps/candi_t0_struct.txt); URL logged with the result. An earlier dispatch (run 45228522314) ran on the previous commit, without this sweep file, and produced nothing.
+- Practice: neutral wording; train fish only; no source data copied into this repo.
