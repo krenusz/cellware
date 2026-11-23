@@ -1,0 +1,10 @@
+{
+ "gate": {
+  "false_positive": 0.12,
+  "passed": false,
+  "r2_under_link": 0.0,
+  "r2_under_null": 0.015,
+  "recovery": 0.585
+ },
+ "status": "synthetic_gate_failed"
+}

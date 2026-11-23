@@ -13229,3 +13229,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: fish; (2) readout: barcode reads over sample indices, train only; (3) used data first: never analysed before; (4) power: synthetic gate above; (5) exposure: as in the seal entry, plus T0 shapes; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
 - **Compute:** Actions (sweeps/candi_train.txt); URL logged with the result.
 - Practice: neutral wording; train only; no source data copied into this repo.
+
+### CAND-I-T1 result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45230091937; results_cand/candi_train.json): **stopped at the synthetic gate**
+- False positive rate 0.12 (limit 0.10), recovery 0.585 (limit 0.5), wrong R2 under a true link 0.0 (limit 0.10), R2 under the null 0.015, over 200 synthetic cohorts per condition.
+- By the pre-registered rule the table was not opened. No read count or proportion of any fish was parsed, no verdict exists, and the size and drift question is untested. Train, A, B and C are all unspent.
+- The miss is small and within simulation error of the limit (0.12 of 200 cohorts), and the gate used 30 null draws where the real test uses 300. The limit was not changed after seeing this. CAND-I is failed_gate. Any rerun needs Bence's decision and a new pre-registration.
