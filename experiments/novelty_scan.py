@@ -19,10 +19,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from lit_gap import CELL_LINE, SENSITIVE  # noqa: E402
 
-OUT = os.path.join(HERE, "results_lit", "novelty_scan_2026-11-23.json")
+OUT = os.path.join(HERE, "results_lit", "novelty_scan_2026-11-23b.json")
 API = "https://www.ebi.ac.uk/europepmc/webservices/rest/"
 UA = {"User-Agent": "cellware-novelty/1.0 (public metadata, research use)"}
-BASE = " AND FIRST_PDATE:[2023-01-01 TO 2026-11-23] AND OPEN_ACCESS:y"
+BASE = " AND FIRST_PDATE:[2023-01-01 TO 2026-11-23]"
 QUERIES = [
     'TITLE_ABS:"lineage barcoding" AND TITLE_ABS:clonal',
     'TITLE_ABS:"lineage tracing" AND TITLE_ABS:"single-cell" AND TITLE_ABS:"clone size"',
@@ -40,6 +40,12 @@ QUERIES = [
 CLAIM = re.compile(r"clone size|expansion|correlat|bias|instruct|select|heritab|memory|predict|dominan|sampling", re.I)
 ACC = re.compile(r"\b(GSE\d{5,7}|E-MTAB-\d{3,6})\b|zenodo\.(\d{6,9})", re.I)
 FILTER = re.compile(SENSITIVE, re.I)
+# Recall check: the first scan (TITLE_ABS, open access only) returned 31 hits; these known papers must come back.
+RECALL = ["10.1038/s41556-026-01958-0", "10.1038/s41587-023-01931-4"]
+
+
+def expand(q):
+    return re.sub(r'TITLE_ABS:("[^"]+"|\S+)', r"(TITLE: OR ABSTRACT:)", q)
 
 
 def get(url, as_json=True):
@@ -68,7 +74,7 @@ def accessions(pmcid):
 def main():
     kept, dropped, counts = {}, 0, {}
     for q in QUERIES:
-        params = {"query": q + BASE, "format": "json", "pageSize": 100, "resultType": "core", "sort": "CITED desc"}
+        params = {"query": expand(q) + BASE, "format": "json", "pageSize": 100, "resultType": "core", "sort": "CITED desc"}
         r = get(API + "search?" + urllib.parse.urlencode(params))
         if not r:
             raise RuntimeError(f"query failed: {q}")
@@ -89,9 +95,10 @@ def main():
         time.sleep(0.1)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as fh:
-        json.dump({"queries": counts, "dropped_by_filter": dropped, "records": kept}, fh, indent=1, sort_keys=True)
+        json.dump({"recall_missed": [d for d in RECALL if d not in kept], "queries": counts, "dropped_by_filter": dropped, "records": kept}, fh, indent=1, sort_keys=True)
+    missed = [d for d in RECALL if d not in kept]
     with_data = sum(bool(r["accessions"]) for r in kept.values())
-    print(json.dumps({"kept": len(kept), "dropped_by_filter": dropped, "with_accession": with_data}))
+    print(json.dumps({"kept": len(kept), "dropped_by_filter": dropped, "with_accession": with_data, "recall_missed": missed}))
     return 0
 
 
