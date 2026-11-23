@@ -30,11 +30,13 @@ COMMIT = "99b327ca17bfd092063dbf911e088f993e036172"
 SHA256 = "6985096f252b99bd2e53e98daef23089a40bdc52345db4eaf6095105fc08de80"
 URL = f"https://raw.githubusercontent.com/Gagnon-lab/weber-shrader/{COMMIT}/experiments/full_pipeline/final_data.csv"
 ID = re.compile(r"fish(\d+)_s(\d+)_rep(\d+)", re.I)
-MIN_T, MIN_SIZE, MIN_CLONES, ALPHA, SEED = 6, 0.005, 8, 0.05, 20261123
+MIN_T, MIN_SIZE, MIN_CLONES, MIN_FISH, ALPHA, SEED = 6, 0.005, 5, 6, 0.05, 20261123
 NE_GRID = np.logspace(1, 4.5, 15)
 N_CAL, N_NULL = 20, 300
-GATE_COHORTS, GATE_CAL, GATE_NULL = 30, 5, 40
-MAX_FALSE_POS, MIN_RECOVERY = 0.15, 0.5
+GATE_COHORTS, GATE_CAL, GATE_NULL = 200, 3, 30
+MAX_FALSE_POS, MIN_RECOVERY, MAX_R2_UNDER_LINK = 0.10, 0.5, 0.10
+# (barcodes, sample indices) of the 8 eligible train fish, from CAND-I-T0 (structure only)
+SHAPES = ((12, 11), (15, 12), (15, 6), (7, 11), (7, 16), (13, 9), (10, 17), (11, 6))
 
 
 def rank(x):
@@ -119,15 +121,21 @@ def analyse(reps, depth, rng, n_cal=N_CAL, n_null=N_NULL):
     obs = score(X)[0]
     if not np.isfinite(obs):
         return None
-    a, b = fit_noise(reps)
+    try:
+        a, b = fit_noise(reps)
+    except ValueError:
+        return None
     r = np.sum(np.isfinite(reps[0]), axis=1).clip(1)
     x0 = np.clip(X.mean(axis=1), 1e-9, None)
     x0 = x0 / x0.sum()
     cal = null_excess(X, x0, obs, lambda y, g: noise_calibrated(y, a, b, r, g), rng, n_cal, n_null)
     mul = null_excess(X, x0, obs, lambda y, g: noise_multinomial(y, depth, g), rng, n_cal, n_null)
+    edge = {float(NE_GRID[0]), float(NE_GRID[-1])}
+    present = np.isfinite(reps)
     return {"clones": int((X.mean(axis=1) >= MIN_SIZE).sum()), "samples": int(X.shape[1]), "rho": obs,
             "noise_a": a, "noise_b": b, "excess_calibrated": cal[0], "ne_calibrated": cal[1],
-            "excess_multinomial": mul[0], "ne_multinomial": mul[1]}
+            "excess_multinomial": mul[0], "ne_multinomial": mul[1], "ne_at_grid_edge": cal[1] in edge or mul[1] in edge,
+            "zero_share_replicate_cells": float((reps[present] == 0).mean())}
 
 
 def signflip(x):
@@ -136,26 +144,35 @@ def signflip(x):
     return float(((signs * x).mean(axis=1) >= x.mean() - 1e-12).mean())
 
 
-def synth(rng, extra):
-    x0 = rng.dirichlet(np.full(40, 0.5))
+def synth(rng, extra, clones=40, samples=8):
+    x0 = rng.dirichlet(np.full(clones, 0.5))
     x0 = np.clip(x0, 1e-6, None)
     x0 = x0 / x0.sum()
-    X = drift(x0, 300, 8, rng, extra)
+    X = drift(x0, 300, samples, rng, extra)
     a, b = -6.0, 1.5
-    reps = np.stack([noise_calibrated(X, a, b, np.ones(8), rng) for _ in range(3)], axis=2)
-    return reps, np.full(8, 150000)
+    reps = np.stack([noise_calibrated(X, a, b, np.ones(samples), rng) for _ in range(3)], axis=2)
+    return reps, np.full(samples, 150000)
+
+
+def usable(rows):
+    return [r for r in rows if r and "dropped" not in r and not r["ne_at_grid_edge"]]
 
 
 def gate(rng):
-    rates = {}
-    for label, extra in (("false_positive", 0.0), ("recovery", 0.8)):
-        hits = 0
+    counts = {"null": {}, "link": {}}
+    for label, extra in (("null", 0.0), ("link", 0.8)):
         for _ in range(GATE_COHORTS):
-            rows = [analyse(*synth(rng, extra), rng, GATE_CAL, GATE_NULL) for _ in range(8)]
-            vals = [r["excess_calibrated"] for r in rows if r]
-            hits += len(vals) >= 6 and signflip(vals) <= ALPHA
-        rates[label] = hits / GATE_COHORTS
-    rates["passed"] = rates["false_positive"] <= MAX_FALSE_POS and rates["recovery"] >= MIN_RECOVERY
+            rows = usable([analyse(*synth(rng, extra, b, t), rng, GATE_CAL, GATE_NULL) for b, t in SHAPES])
+            name = "R3_inconclusive"
+            if len(rows) >= MIN_FISH:
+                name = verdict([r["excess_calibrated"] for r in rows], [r["excess_multinomial"] for r in rows])["label"]
+            counts[label][name] = counts[label].get(name, 0) + 1
+    rates = {"false_positive": counts["null"].get("R1_link_survives", 0) / GATE_COHORTS,
+             "recovery": counts["link"].get("R1_link_survives", 0) / GATE_COHORTS,
+             "r2_under_link": counts["link"].get("R2_noise_lead", 0) / GATE_COHORTS,
+             "r2_under_null": counts["null"].get("R2_noise_lead", 0) / GATE_COHORTS}
+    rates["passed"] = (rates["false_positive"] <= MAX_FALSE_POS and rates["recovery"] >= MIN_RECOVERY
+                       and rates["r2_under_link"] <= MAX_R2_UNDER_LINK)
     return rates
 
 
@@ -172,7 +189,7 @@ def load_train():
     for row in rows:
         m = next((m for c in row if (m := ID.search(c))), None)
         if m:
-            ids.append({"unit": m.group(1), "sample": int(m.group(2)), "rep": int(m.group(3)), "bc": row[bc], "raw": row[rd]})
+            ids.append({"unit": str(int(m.group(1))), "sample": int(m.group(2)), "rep": int(m.group(3)), "bc": row[bc], "raw": row[rd]})
     df = train_only("germline_fish", pd.DataFrame(ids), "unit").copy()
     df["reads"] = pd.to_numeric(df.pop("raw"))
     return df.groupby(["unit", "sample", "rep", "bc"], as_index=False)["reads"].sum()
@@ -208,7 +225,7 @@ def verdict(cal, mul):
     if pc <= ALPHA:
         label = "R1_link_survives"
     elif pm <= ALPHA and mm > 0 and mc <= mm / 2:
-        label = "R2_artefact_lead"
+        label = "R2_noise_lead"
     else:
         label = "R3_inconclusive"
     sd = float(np.std(cal, ddof=1))
@@ -230,9 +247,9 @@ def main():
         reps, depth = fish_arrays(g)
         res = analyse(reps, depth, rng)
         fish[str(unit)] = res if res else {"dropped": "too few clones"}
-    used = [r for r in fish.values() if "dropped" not in r]
+    used = usable(fish.values())
     out = {"status": "done", "gate": checks, "fish": fish}
-    if len(used) >= 6:
+    if len(used) >= MIN_FISH:
         out["verdict"] = verdict([r["excess_calibrated"] for r in used], [r["excess_multinomial"] for r in used])
     else:
         out["verdict"] = {"label": "R3_inconclusive", "n_fish": len(used)}

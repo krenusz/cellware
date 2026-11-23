@@ -1,0 +1,70 @@
+{
+ "commit": "99b327ca17bfd092063dbf911e088f993e036172",
+ "fish": {
+  "1": {
+   "barcodes": 12,
+   "barcodes_per_replicate_max": 9,
+   "barcodes_per_replicate_median": 8.0,
+   "barcodes_per_replicate_min": 5,
+   "sample_replicates": 32,
+   "samples": 11
+  },
+  "12": {
+   "barcodes": 15,
+   "barcodes_per_replicate_max": 13,
+   "barcodes_per_replicate_median": 10.0,
+   "barcodes_per_replicate_min": 4,
+   "sample_replicates": 36,
+   "samples": 12
+  },
+  "16": {
+   "barcodes": 15,
+   "barcodes_per_replicate_max": 14,
+   "barcodes_per_replicate_median": 11.5,
+   "barcodes_per_replicate_min": 4,
+   "sample_replicates": 16,
+   "samples": 6
+  },
+  "18": {
+   "barcodes": 7,
+   "barcodes_per_replicate_max": 6,
+   "barcodes_per_replicate_median": 4.0,
+   "barcodes_per_replicate_min": 3,
+   "sample_replicates": 28,
+   "samples": 11
+  },
+  "2": {
+   "barcodes": 7,
+   "barcodes_per_replicate_max": 5,
+   "barcodes_per_replicate_median": 3.0,
+   "barcodes_per_replicate_min": 2,
+   "sample_replicates": 46,
+   "samples": 16
+  },
+  "42": {
+   "barcodes": 13,
+   "barcodes_per_replicate_max": 12,
+   "barcodes_per_replicate_median": 9.0,
+   "barcodes_per_replicate_min": 5,
+   "sample_replicates": 27,
+   "samples": 9
+  },
+  "5": {
+   "barcodes": 10,
+   "barcodes_per_replicate_max": 8,
+   "barcodes_per_replicate_median": 6.0,
+   "barcodes_per_replicate_min": 3,
+   "sample_replicates": 49,
+   "samples": 17
+  },
+  "8": {
+   "barcodes": 11,
+   "barcodes_per_replicate_max": 11,
+   "barcodes_per_replicate_median": 10.0,
+   "barcodes_per_replicate_min": 10,
+   "sample_replicates": 18,
+   "samples": 6
+  }
+ },
+ "n_eligible_train_fish": 8
+}

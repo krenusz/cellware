@@ -13215,3 +13215,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: fish; (2) readout: none in this step; (3) used data first: train only; (4) power: the T1 synthetic gate will use these shapes, and if recovery is below 0.5 CAND-I stops unread; (5) exposure: as in the seal entry, plus these train counts; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
 - **Compute:** Actions (sweeps/candi_t0_struct.txt); URL logged with the result. An earlier dispatch (run 45228522314) ran on the previous commit, without this sweep file, and produced nothing.
 - Practice: neutral wording; train fish only; no source data copied into this repo.
+
+### CAND-I-T0 result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45228955248; results_cand/candi_t0_struct.json)
+- 8 eligible train fish with 7 to 15 barcodes and 6 to 17 sample indices. No read or proportion was parsed.
+
+## CAND-I-T1: train-only test of the size and drift link (pre-registered 2026-11-23; Bence: "Yes, train look")
+- **Serves: C12 CLOSED.** Script candi_train.py. Train fish only, through partitions.train_only, before read counts are parsed. A, B and C stay unread.
+- **Statistic:** per fish, rank correlation of log clone size with a normalised drift score, minus its mean under a neutral null matched on mean drift. Two nulls: noise fitted on the fish's technical replicates (calibrated), and multinomial noise at the observed summed depth. The second arm is not claimed to be the source's null, because the source's full text could not be fetched.
+- **Fixed before reading:** clones need mean frequency at least 0.005, fish need at least 5 clones and 6 sample indices, a fish whose matched drift hits a grid edge is excluded, and at least 6 usable fish are needed. Exact one-sided sign-flip test across fish, alpha 0.05.
+- **Synthetic gate, run before the table is opened:** 200 cohorts with the real train shapes. False positive rate at most 0.10, recovery of a true link at least 0.5, and wrong R2 under a true link at most 0.10. If it fails, the table stays unread and CAND-I stops.
+- **Verdicts:** R1 (calibrated p <= 0.05): the link survives on train, the published claim stands, note it and move on. R2 (multinomial p <= 0.05, calibrated not, and calibrated excess at most half): a noise lead only, resting on a non-significant result at 8 fish. R3: inconclusive, stop. The train effect size informs Bence's decision on A+B and spends nothing.
+- **Assumptions:** the sample index is a time point with equal spacing. A barcode absent from a replicate counts as zero; the share of such cells is reported, because per-replicate filtering would inflate replicate noise and favour R2.
+- **Pre-flight:** (1) unit: fish; (2) readout: barcode reads over sample indices, train only; (3) used data first: never analysed before; (4) power: synthetic gate above; (5) exposure: as in the seal entry, plus T0 shapes; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
+- **Compute:** Actions (sweeps/candi_train.txt); URL logged with the result.
+- Practice: neutral wording; train only; no source data copied into this repo.
