@@ -13174,3 +13174,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: fish; (2) readout: barcode frequency over time, not read in this step; (3) used data first: never used here; (4) power: not computed, a later step if the structure passes; (5) exposure: source text at claims and methods level, including its stated median drift estimate, plus column names and counts from this step; (6) literature: source read, classic search owed; (7) readout gate: replicate structure, this step.
 - **Compute:** Actions (sweeps/candi_p1_struct.txt); URL logged at dispatch. An earlier dispatch (run 45206013431) ran before this entry was committed and failed without producing output.
 - Practice: neutral wording; structure only; seal by fish before any statistic; no data copied into the repo.
+
+### CAND-I-P1 result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45206722531; results_cand/candi_p1_struct.json): **structure passes**
+- 24 fish in the table, 20 with at least 6 time points (rule: 20, met exactly). 242 samples, 233 (96%) with at least 2 technical replicates and 217 with 3 (rule: 80%).
+- Columns: barcode, fish, sample, replicate, file, reads, proportion. Only the header and sample identifiers were parsed. No read, proportion, clone size or drift value was computed or written.
+- **Not yet shown:** novelty (classic search owed), power, and whether replicate noise differs from the source's multinomial noise. CAND-I stays open and unsealed. Next is sealing by fish before any statistic. With 20 eligible fish, sealed partitions will be small, so power may fail.
