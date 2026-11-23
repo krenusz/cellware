@@ -705,7 +705,9 @@ def test_coverage_flags_a_softer_novelty_note():
 
 def test_coverage_flags_a_near_repeat_without_related():
     """CAND-E: the design study on the cortical set must name the failed sealed test C17-TCORT."""
-    rows = [r if r["id"] != "CAND-E" else {**r, "related": ""} for r in _cov_rows()]
+    rows = [
+        r if r["id"] != "CAND-E" else {**r, "related": "", "status": "open"} for r in _cov_rows()
+    ]
     assert any(e.startswith("E5 CAND-E") and "C17-TCORT" in e for e in _cov(rows))
 
 

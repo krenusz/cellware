@@ -13160,3 +13160,17 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Serves: C12 CLOSED.** Source text read through the journal's public API (version 1); no data file opened, no statistic computed, no sealed data touched.
 - **Result: FAIL (data).** The source's data and code statement says clone tag files and code are available from the authors on request. No deposit was found in BioProject or SRA searches. Requesting them is outreach, which the project does not do.
 - The design question stays untested: clones are clustered on scaled counts per compartment, and the stem-cell share is then compared between clusters, so the comparison may be partly circular. This is a reading of the methods, not a result.
+
+## CAND-J-P1 and CAND-E-P1: gates (2026-11-23; Bence: "start to go forward with the next 3 candidates")
+- **Serves: C12 CLOSED.** Source text and project records only. No data file opened, no statistic computed, no sealed data touched.
+- **CAND-J: FAIL (data).** The source says its barcode reads will be released on publication, and its named analysis repository returned 404. It also already models neutral drift, so the correction angle is weak.
+- **CAND-E: FAIL (near-repeat).** Its planned design-level recovery study was in substance done in C17 amendments 4 and 5: the detection-aware estimator separated instruction from selection at floors 1 and 3, and power at real train arm sizes was 0.14 to 0.665 (rule 0.8), with sealed partitions smaller still.
+
+## CAND-I-P1: structure of the public germline barcode tables (pre-registered 2026-11-23; Bence: "start to go forward with the next 3 candidates")
+- **Serves: C12 CLOSED.** Question: the source reports heterogeneous clone drift and a positive link between clone size and drift rate, against a null whose technical noise is a small multinomial draw. Does the result survive a null whose noise is calibrated on the three technical replicates of each sample?
+- **This step:** script candi_p1_struct.py reads one table at pinned commit 99b327ca17bfd092063dbf911e088f993e036172 (run-time download; the repository has no licence, so nothing is copied into this repo). It writes column names and counts of fish, time points and replicates only. No frequency, clone size or drift value is computed.
+- **Pass rule (fixed now):** at least 20 fish with at least 6 time points, and at least 80% of samples with at least 2 technical replicates. Else CAND-I stops.
+- **If it passes:** seal by fish before any statistic, then a separate pre-registered power and null study. Novelty remains to be checked with the classic search.
+- **Pre-flight:** (1) unit: fish; (2) readout: barcode frequency over time, not read in this step; (3) used data first: never used here; (4) power: not computed, a later step if the structure passes; (5) exposure: source text at claims and methods level, including its stated median drift estimate, plus column names and counts from this step; (6) literature: source read, classic search owed; (7) readout gate: replicate structure, this step.
+- **Compute:** Actions (sweeps/candi_p1_struct.txt); URL logged at dispatch. An earlier dispatch (run 45206013431) ran before this entry was committed and failed without producing output.
+- Practice: neutral wording; structure only; seal by fish before any statistic; no data copied into the repo.
