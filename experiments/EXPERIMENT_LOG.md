@@ -13155,3 +13155,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - The known paper CAND-F's source stayed absent from the citation scan, so recall is incomplete.
 - **Failed:** CAND-K (2 culture donors, processed tables on request; page partly read through a summary). CAND-L (source already runs an in silico subsampling control).
 - **Open, not pretested:** CAND-H, CAND-I, CAND-J. Their full text could not be read (client challenge on the journal page, rate limit on the preprint server, no open text in Europe PMC). Data, units, method and novelty are unknown. No bypass was attempted.
+
+## CAND-H-P1: data gate (2026-11-23; Bence: "1")
+- **Serves: C12 CLOSED.** Source text read through the journal's public API (version 1); no data file opened, no statistic computed, no sealed data touched.
+- **Result: FAIL (data).** The source's data and code statement says clone tag files and code are available from the authors on request. No deposit was found in BioProject or SRA searches. Requesting them is outreach, which the project does not do.
+- The design question stays untested: clones are clustered on scaled counts per compartment, and the stem-cell share is then compared between clusters, so the comparison may be partly circular. This is a reading of the methods, not a result.
