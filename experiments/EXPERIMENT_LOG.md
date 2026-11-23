@@ -13242,3 +13242,10 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: fish; (2) readout: as T1, read only if the gate passes; (3) used data first: never analysed before; (4) power: this gate; (5) exposure: as T1, plus the failed T1 gate rates (synthetic only); (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
 - **Compute:** Actions (sweeps/candi_train_r2.txt); URL logged with the result.
 - Practice: neutral wording; train only; limits unchanged after the first gate; no source data copied into this repo.
+
+### CAND-I-T1R result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45235035556; results_cand/candi_train_r2.json): **R3, inconclusive; CAND-I closes**
+- **Gate (second attempt):** false positives 0.09 (limit 0.10), recovery 0.595 (limit 0.5), wrong R2 under a true link 0.0, R2 under the null 0.01. Passed, so the train table was read.
+- **Test not run:** 4 of 8 train fish were usable and the rule needs 6. Fish 1, 2, 5 and 16 hit the lower edge of the drift grid (Ne 10), so the neutral null could not match their drift. No p-value exists.
+- **Descriptive only, no claim:** calibrated excess in the 4 usable fish was -0.035, -0.006, 0.030 and 0.273.
+- **Self-challenge:** the gate simulated Ne 300 and noise slope 1.5, while the train fish fitted Ne 100 or lower and slopes 0.48 to 0.88, so the gate did not cover the real regime. Between 7% and 52% of replicate cells per fish were zero, so replicate noise may be overestimated if the source filters per replicate. Sample spacing remains an assumption.
+- **Decision:** by the fixed rule CAND-I stops as failed_gate. The grid was not widened after seeing this. Train has now been read; A, B and C remain unread and unspent.
