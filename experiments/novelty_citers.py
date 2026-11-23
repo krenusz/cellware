@@ -44,17 +44,19 @@ def abstract(inv):
 
 
 def citers(work_id):
-    cursor, out = "*", []
-    while cursor and len(out) < MAX_PER_METHOD:
-        params = {"filter": f"cites:{work_id},from_publication_date:2023-01-01", "per_page": 200, "cursor": cursor,
+    # plain page paging: cursor paging returns 401 without a key (run 45186597216, as in lit_citers.py)
+    page, out = 1, []
+    while len(out) < MAX_PER_METHOD:
+        params = {"filter": f"cites:{work_id},from_publication_date:2023-01-01", "per-page": 100, "page": page,
                   "select": "id,doi,display_name,publication_year,cited_by_count,abstract_inverted_index,ids"}
         r = get(f"{OA}?" + urllib.parse.urlencode(params))
         if not r:
-            raise RuntimeError(f"citers failed: {work_id}")
-        out += r.get("results", [])
-        cursor = r.get("meta", {}).get("next_cursor")
-        if not r.get("results"):
+            raise RuntimeError(f"citers failed: {work_id} page {page}")
+        rows = r.get("results", [])
+        out += rows
+        if len(rows) < 100:
             break
+        page += 1
         time.sleep(0.2)
     return out
 
