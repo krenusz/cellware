@@ -45,7 +45,7 @@ RECALL = ["10.1038/s41556-026-01958-0", "10.1038/s41587-023-01931-4"]
 
 
 def expand(q):
-    return re.sub(r'TITLE_ABS:("[^"]+"|\S+)', r"(TITLE: OR ABSTRACT:)", q)
+    return re.sub(r'TITLE_ABS:("[^"]+"|\S+)', r"(TITLE:\1 OR ABSTRACT:\1)", q)
 
 
 def get(url, as_json=True):
