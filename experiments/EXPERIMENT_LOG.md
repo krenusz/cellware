@@ -13135,3 +13135,10 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **P2 kill rule unchanged** (CAND-F-P1): coupling shown on structural counts, simulated false-positive rate >= 0.20; the published correlation value and bias columns stay unread for the design study.
 - **Exposure:** GEO series text, hashing tables, schema; phase B adds clone counts per mouse. No bias.
 - **Compute:** Actions (sweeps/candf_p1b_schema.txt); URL logged at dispatch.
+
+### CAND-F-P1b amendment 1 (2026-11-23, after the schema run https://github.com/krenusz/cellware/actions/runs/45167168973, before any count): phase B columns
+- **Schema:** GSE299003 24,733 cells; GSE307390 103,520 cells; both Seurat objects with per-cell LARRY, mouse and cell-type columns. GSE299003 also holds an authors' `bias_lineages` column: never read.
+- **Columns:** clone = GSE299003 `larry`, `larry_gfp`, `larry_gfp_filt`, `larry_unique`; GSE307390 `larry_merged`, `larry_gfp`, `larry_gfp_sample`, `larry_sapphire`. Mouse = `Mouse` or `sample_mouse` (GSE299003), `sample` (GSE307390); "Unassigned" dropped. HSC flag = level name contains "HSC" in `CellType` or `MainLineages` (GSE299003), `lineages` or `main_lineages` (GSE307390).
+- **Pass rule tightened to the grid:** mapped = all 7 published counts among the mice of **one** series under **one** clone column, mouse column, HSC column and variant. The grid is reported in full, so a partial match cannot be picked after the fact.
+- Written: per-mouse cell and clone counts, value shapes of clone columns (no ids), names of HSC-matching levels. No other cell-type level and no bias.
+- **Compute:** Actions (sweeps/candf_p1b_counts.txt).

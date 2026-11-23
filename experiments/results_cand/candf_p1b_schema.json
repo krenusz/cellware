@@ -1,0 +1,505 @@
+{
+ "GSE299003": {
+  "file": "GSE299003_Figures-Figure3.rds",
+  "schema": {
+   "assays": [
+    "RNA",
+    "Cellhashing",
+    "Larry",
+    "Larry_filt",
+    "SCT"
+   ],
+   "cells": 24733,
+   "class": "Seurat",
+   "meta": {
+    "CellType": {
+     "n_distinct": 14,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "CellType2": {
+     "n_distinct": 13,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "Cellhashing_classification": {
+     "levels": [
+      "TotalSeqMouse1",
+      "TotalSeqMouse2",
+      "TotalSeqMouse3",
+      "TotalSeqMouse4"
+     ],
+     "n_distinct": 4,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "Cellhashing_classification.global": {
+     "levels": "Singlet",
+     "n_distinct": 1,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "Cellhashing_margin": {
+     "n_distinct": 21845,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "Cellhashing_maxID": {
+     "levels": [
+      "TotalSeqMouse1",
+      "TotalSeqMouse2",
+      "TotalSeqMouse3",
+      "TotalSeqMouse4"
+     ],
+     "n_distinct": 4,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "Cellhashing_secondID": {
+     "levels": [
+      "TotalSeqMouse1",
+      "TotalSeqMouse2",
+      "TotalSeqMouse3",
+      "TotalSeqMouse4"
+     ],
+     "n_distinct": 4,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "G2M.Score": {
+     "n_distinct": 24733,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "MainLineages": {
+     "n_distinct": 9,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "Milo_DA_mice": {
+     "n_distinct": 20015,
+     "n_missing": 1248,
+     "type": "numeric"
+    },
+    "Mouse": {
+     "levels": [
+      "m12400619",
+      "m12400620",
+      "m24001617",
+      "m24001618",
+      "Unassigned"
+     ],
+     "n_distinct": 5,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "Phase": {
+     "n_distinct": 3,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "S.Score": {
+     "n_distinct": 24733,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "SCT_snn_res.0.8": {
+     "n_distinct": 18,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "SCT_snn_res.0.9": {
+     "n_distinct": 26,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "bias_lineages": {
+     "n_distinct": 7,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "hash.ID": {
+     "levels": [
+      "TotalSeqMouse1",
+      "TotalSeqMouse2",
+      "TotalSeqMouse3",
+      "TotalSeqMouse4"
+     ],
+     "n_distinct": 4,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "larry": {
+     "n_distinct": 237,
+     "n_missing": 6776,
+     "type": "character"
+    },
+    "larry_gfp": {
+     "n_distinct": 237,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "larry_gfp_filt": {
+     "n_distinct": 237,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "larry_unique": {
+     "n_distinct": 301,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "nCount_Cellhashing": {
+     "n_distinct": 1368,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nCount_Larry": {
+     "n_distinct": 227,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nCount_Larry_filt": {
+     "n_distinct": 178,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nCount_RNA": {
+     "n_distinct": 9359,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nCount_SCT": {
+     "n_distinct": 1867,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nFeature_Cellhashing": {
+     "levels": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "n_distinct": 4,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "nFeature_Larry": {
+     "n_distinct": 34,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "nFeature_Larry_filt": {
+     "n_distinct": 8,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "nFeature_RNA": {
+     "n_distinct": 3702,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "nFeature_SCT": {
+     "n_distinct": 2296,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "orig.ident": {
+     "levels": [
+      "Tppp3Neg",
+      "Tppp3Pos"
+     ],
+     "n_distinct": 2,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "percent.mt": {
+     "n_distinct": 22521,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "percent.ribo": {
+     "n_distinct": 24266,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "sample": {
+     "levels": [
+      "Tppp3Neg",
+      "Tppp3Pos"
+     ],
+     "n_distinct": 2,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "sample_mouse": {
+     "levels": [
+      "Tppp3Neg_m12400619",
+      "Tppp3Neg_m12400620",
+      "Tppp3Neg_m24001617",
+      "Tppp3Neg_m24001618",
+      "Tppp3Neg_Unassigned",
+      "Tppp3Pos_m12400619",
+      "Tppp3Pos_m12400620",
+      "Tppp3Pos_m24001617",
+      "Tppp3Pos_m24001618",
+      "Tppp3Pos_Unassigned"
+     ],
+     "n_distinct": 10,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "scDblFinder.class": {
+     "n_distinct": 1,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "scDblFinder.score": {
+     "n_distinct": 24674,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "seurat_clusters": {
+     "n_distinct": 18,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "subsample": {
+     "levels": [
+      "Receptor_m12400619",
+      "Receptor_m12400620",
+      "Receptor_m24001617",
+      "Receptor_m24001618",
+      "Unassigned_Tppp3Neg",
+      "Unassigned_Tppp3Pos"
+     ],
+     "n_distinct": 6,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "tmp": {
+     "n_distinct": 1,
+     "n_missing": 0,
+     "type": "character"
+    }
+   },
+   "reductions": [
+    "pca",
+    "umap"
+   ]
+  },
+  "sha256": "b09d758be9c2bda61e36867089b040cbe9773e7897c82b98b22c1ac3b27502d5"
+ },
+ "GSE307390": {
+  "file": "GSE307390_Figures-Figure1.rds",
+  "schema": {
+   "assays": [
+    "RNA",
+    "Multiplexing.Capture",
+    "Larry"
+   ],
+   "cells": 103520,
+   "class": "Seurat",
+   "meta": {
+    "G2M.Score": {
+     "n_distinct": 103520,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "Phase": {
+     "n_distinct": 3,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "RNA_snn_res.0.5": {
+     "n_distinct": 23,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "RNA_snn_res.0.8": {
+     "n_distinct": 38,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "S.Score": {
+     "n_distinct": 103520,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "cellhashing": {
+     "levels": [
+      "E15_S1",
+      "E15_S2",
+      "P0_S1",
+      "P0_S2",
+      "P10_S1",
+      "P10_S2",
+      "P20_S1",
+      "P20_S2"
+     ],
+     "n_distinct": 8,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "cluster": {
+     "n_distinct": 13,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "larry_gfp": {
+     "n_distinct": 1570,
+     "n_missing": 46937,
+     "type": "character"
+    },
+    "larry_gfp_sample": {
+     "n_distinct": 1752,
+     "n_missing": 58685,
+     "type": "character"
+    },
+    "larry_merged": {
+     "n_distinct": 1865,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "larry_sapphire": {
+     "n_distinct": 326,
+     "n_missing": 98379,
+     "type": "character"
+    },
+    "lineages": {
+     "n_distinct": 9,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "main_lineages": {
+     "n_distinct": 6,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "main_lineages_Benz": {
+     "n_distinct": 8,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "main_lineages_Benz_v2": {
+     "n_distinct": 7,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "nCount_Larry": {
+     "n_distinct": 298,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nCount_Multiplexing.Capture": {
+     "n_distinct": 1783,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nCount_RNA": {
+     "n_distinct": 20691,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "nFeature_Larry": {
+     "n_distinct": 66,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "nFeature_Multiplexing.Capture": {
+     "n_distinct": 5,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "nFeature_RNA": {
+     "n_distinct": 5946,
+     "n_missing": 0,
+     "type": "integer"
+    },
+    "orig.ident": {
+     "levels": [
+      "E15",
+      "P0",
+      "P10",
+      "P20"
+     ],
+     "n_distinct": 4,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "percent.mt": {
+     "n_distinct": 90995,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "percent.ribo": {
+     "n_distinct": 100953,
+     "n_missing": 0,
+     "type": "numeric"
+    },
+    "sample": {
+     "levels": [
+      "E15_S1_1L",
+      "E15_S1_2R",
+      "E15_S1_Unassigned",
+      "E15_S2_1R1L",
+      "E15_S2_2L",
+      "E15_S2_Unassigned",
+      "P0_S1_1L",
+      "P0_S1_2L",
+      "P0_S1_Unassigned",
+      "P0_S2_1R",
+      "P0_S2_1R1L",
+      "P0_S2_Unassigned",
+      "P10_S1_1L",
+      "P10_S1_2R",
+      "P10_S1_Unassigned",
+      "P10_S2_1R",
+      "P10_S2_Unassigned",
+      "P20_S1_1L",
+      "P20_S1_2L",
+      "P20_S1_Unassigned",
+      "P20_S2_1R",
+      "P20_S2_2R",
+      "P20_S2_Unassigned"
+     ],
+     "n_distinct": 23,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "scDblFinder.class": {
+     "n_distinct": 1,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "seurat_clusters": {
+     "n_distinct": 23,
+     "n_missing": 0,
+     "type": "factor"
+    },
+    "timepoint": {
+     "levels": [
+      "E15",
+      "P0",
+      "P10",
+      "P20"
+     ],
+     "n_distinct": 4,
+     "n_missing": 0,
+     "type": "character"
+    },
+    "tmp": {
+     "n_distinct": 1,
+     "n_missing": 0,
+     "type": "character"
+    }
+   },
+   "reductions": [
+    "pca",
+    "umap"
+   ]
+  },
+  "sha256": "2a59a48b19ae6ba5d1fc4ba18bd174f65fdf783a9a59fe4d64ce5dae3b4a5adc"
+ }
+}
