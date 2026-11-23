@@ -33,6 +33,7 @@
   "candf_p1b_counts.py",
   "novelty_scan.py",
   "novelty_citers.py",
+  "novelty_datagate.py",
   "c13s0_format.py",
   "c14s0_gate.py",
   "c14s3_region.py",
