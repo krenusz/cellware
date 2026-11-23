@@ -40,6 +40,7 @@
   "candi_t0_struct.py",
   "candi_train.py",
   "candi_explore.py",
+  "novelty_units.py",
   "c13s0_format.py",
   "c14s0_gate.py",
   "c14s3_region.py",
