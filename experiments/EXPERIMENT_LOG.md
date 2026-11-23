@@ -13258,3 +13258,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pre-flight:** (1) unit: fish; (2) readout: barcode reads over sample indices, train only; (3) used data first: train already read in T1R, hence exploratory; (4) power: bootstrap gate above; (5) exposure: T1R train values, including which fish hit the grid edge; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
 - **Compute:** Actions (sweeps/candi_explore.txt); URL logged with the result.
 - Practice: neutral wording; train only; exploratory label on every report; no source data copied into this repo.
+
+### CAND-I-E1 result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45240685552; results_cand/candi_explore.json): **E3, inconclusive; CAND-I stays closed**
+- **Exploratory, no claim.** All 8 train fish were usable on the wider grid (matched Ne 10 to 100, none at an edge).
+- **Bootstrap gate failed:** false positives 0.04 (limit 0.10), but recovery of a true link only 0.165 (minimum 0.5). At the real clone counts and drift this test cannot reliably detect the link, so a null result here is uninformative.
+- **Descriptive:** mean excess 0.083 calibrated (p 0.125), 0.037 with replicate zeros as missing (p 0.281), 0.125 multinomial (p 0.059). None reaches 0.05, and the effect is 0.45 fish SD.
+- **Decision:** by the fixed rule no further variants are run on this set. A+B stay sealed: at 0.45 SD and this recovery, spending them is not justified. Train has been read; A, B and C remain unread and unspent.
+
+## CAND-M-P1 and CAND-N-P1: many-unit candidate scan (2026-11-23; Bence: "search for more cands in the mt")
+- **Serves: C12 CLOSED.** novelty_units.py on Actions (https://github.com/krenusz/cellware/actions/runs/45242781299): 12 queries, 22 records kept, 62 dropped by the wording filter, 10 with open full text, 3 with both stated unit counts and accessions. A screen of the earlier 587-paper scan found no further lead from abstracts. Recall is low, so this does not show that no candidate exists.
+- **Already in the project:** the monoclonal gastruloid paper (doi 10.1016/j.cell.2026.09.057) is the source of gse291244_founders (rows C5, P-GSE291244). Not a new candidate.
+- **CAND-M fails the data gate:** expression data are public, but the microscopy that holds the per-gastruloid units is on request only. Requesting is outreach, so it is not pursued.
+- **CAND-N fails the data gate:** the source states its sample is too small for an association, and the linked deposit (0.6 MB) is titled as a different study.
+- No data file was opened. No candidate is open.
