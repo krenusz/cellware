@@ -36,3 +36,6 @@ A sampling null showing whether a 2026 headline argument for extrinsic lineage b
 ## Pretest P1 (2026-11-22, EXPERIMENT_LOG CAND-F-P1)
 - The source figure has 7 mice (clone counts 14-86), not the 9 GSE134242 recipients assumed above. Only 1 of the 7 matches a GSE134242 recipient: units unresolved on rf2020_clone; that leg is failed.
 - Candidate data for the 7 mice: the source lab's public transplant series GSE299003 and GSE307390 (unsealed). Mapping them is the next step, not started.
+
+## Pretest P1b (2026-11-23, EXPERIMENT_LOG CAND-F-P1b)
+- GSE299003 and GSE307390 (19 mice): best 3 of the 7 published counts under any tested setting; units unresolved. CAND-F stops at the units gate. The novelty verdict is unchanged; the artefact question itself remains untested.

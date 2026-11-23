@@ -1,0 +1,1506 @@
+{
+ "best": [
+  {
+   "columns": "larry_gfp_sample|sample|lineages",
+   "mice": 15,
+   "published_matched": 3,
+   "series": "GSE307390",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_gfp_sample|sample|main_lineages",
+   "mice": 15,
+   "published_matched": 3,
+   "series": "GSE307390",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_gfp|sample|lineages",
+   "mice": 15,
+   "published_matched": 3,
+   "series": "GSE307390",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_gfp|sample|main_lineages",
+   "mice": 15,
+   "published_matched": 3,
+   "series": "GSE307390",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_merged|sample|lineages",
+   "mice": 15,
+   "published_matched": 3,
+   "series": "GSE307390",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_merged|sample|main_lineages",
+   "mice": 15,
+   "published_matched": 3,
+   "series": "GSE307390",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_gfp|sample_mouse|CellType",
+   "mice": 8,
+   "published_matched": 2,
+   "series": "GSE299003",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_gfp|sample_mouse|MainLineages",
+   "mice": 8,
+   "published_matched": 2,
+   "series": "GSE299003",
+   "variant": "any"
+  },
+  {
+   "columns": "larry|sample_mouse|CellType",
+   "mice": 8,
+   "published_matched": 2,
+   "series": "GSE299003",
+   "variant": "any"
+  },
+  {
+   "columns": "larry|sample_mouse|MainLineages",
+   "mice": 8,
+   "published_matched": 2,
+   "series": "GSE299003",
+   "variant": "any"
+  },
+  {
+   "columns": "larry_gfp_sample|sample|main_lineages",
+   "mice": 15,
+   "published_matched": 2,
+   "series": "GSE307390",
+   "variant": "ge2_hsc1"
+  },
+  {
+   "columns": "larry_gfp|sample|main_lineages",
+   "mice": 15,
+   "published_matched": 2,
+   "series": "GSE307390",
+   "variant": "ge2_hsc1"
+  }
+ ],
+ "published": [
+  14,
+  22,
+  24,
+  27,
+  33,
+  64,
+  86
+ ],
+ "series": {
+  "GSE299003": {
+   "counts": {
+    "larry_gfp_filt|Mouse|CellType": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3551,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5429,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4823,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3801,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry_gfp_filt|Mouse|MainLineages": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3551,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5429,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4823,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3801,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry_gfp_filt|sample_mouse|CellType": {
+     "Tppp3Neg_m12400619": {
+      "any": 22,
+      "cells": 1246,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 55,
+      "cells": 2391,
+      "ge2": 39,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 51,
+      "cells": 2959,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 37,
+      "cells": 2014,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 8,
+      "cells": 2305,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 22,
+      "cells": 3038,
+      "ge2": 16,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 25,
+      "cells": 1864,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 26,
+      "cells": 1787,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    },
+    "larry_gfp_filt|sample_mouse|MainLineages": {
+     "Tppp3Neg_m12400619": {
+      "any": 22,
+      "cells": 1246,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 55,
+      "cells": 2391,
+      "ge2": 39,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 51,
+      "cells": 2959,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 37,
+      "cells": 2014,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 8,
+      "cells": 2305,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 22,
+      "cells": 3038,
+      "ge2": 16,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 25,
+      "cells": 1864,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 26,
+      "cells": 1787,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    },
+    "larry_gfp|Mouse|CellType": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3553,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5437,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4832,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3807,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry_gfp|Mouse|MainLineages": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3553,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5437,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4832,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3807,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry_gfp|sample_mouse|CellType": {
+     "Tppp3Neg_m12400619": {
+      "any": 23,
+      "cells": 1247,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 56,
+      "cells": 2395,
+      "ge2": 40,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 52,
+      "cells": 2960,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 38,
+      "cells": 2015,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 9,
+      "cells": 2306,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 24,
+      "cells": 3042,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 33,
+      "cells": 1872,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 31,
+      "cells": 1792,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    },
+    "larry_gfp|sample_mouse|MainLineages": {
+     "Tppp3Neg_m12400619": {
+      "any": 23,
+      "cells": 1247,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 56,
+      "cells": 2395,
+      "ge2": 40,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 52,
+      "cells": 2960,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 38,
+      "cells": 2015,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 9,
+      "cells": 2306,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 24,
+      "cells": 3042,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 33,
+      "cells": 1872,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 31,
+      "cells": 1792,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    },
+    "larry_unique|Mouse|CellType": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3551,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5429,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4823,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3801,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry_unique|Mouse|MainLineages": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3551,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5429,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4823,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3801,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry_unique|sample_mouse|CellType": {
+     "Tppp3Neg_m12400619": {
+      "any": 22,
+      "cells": 1246,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 55,
+      "cells": 2391,
+      "ge2": 39,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 51,
+      "cells": 2959,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 37,
+      "cells": 2014,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 8,
+      "cells": 2305,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 22,
+      "cells": 3038,
+      "ge2": 16,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 25,
+      "cells": 1864,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 26,
+      "cells": 1787,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    },
+    "larry_unique|sample_mouse|MainLineages": {
+     "Tppp3Neg_m12400619": {
+      "any": 22,
+      "cells": 1246,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 55,
+      "cells": 2391,
+      "ge2": 39,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 51,
+      "cells": 2959,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 37,
+      "cells": 2014,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 8,
+      "cells": 2305,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 22,
+      "cells": 3038,
+      "ge2": 16,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 25,
+      "cells": 1864,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 26,
+      "cells": 1787,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    },
+    "larry|Mouse|CellType": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3553,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5437,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4832,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3807,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry|Mouse|MainLineages": {
+     "m12400619": {
+      "any": 30,
+      "cells": 3553,
+      "ge2": 22,
+      "ge2_hsc1": 15
+     },
+     "m12400620": {
+      "any": 77,
+      "cells": 5437,
+      "ge2": 55,
+      "ge2_hsc1": 30
+     },
+     "m24001617": {
+      "any": 76,
+      "cells": 4832,
+      "ge2": 54,
+      "ge2_hsc1": 32
+     },
+     "m24001618": {
+      "any": 63,
+      "cells": 3807,
+      "ge2": 43,
+      "ge2_hsc1": 26
+     }
+    },
+    "larry|sample_mouse|CellType": {
+     "Tppp3Neg_m12400619": {
+      "any": 23,
+      "cells": 1247,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 56,
+      "cells": 2395,
+      "ge2": 40,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 52,
+      "cells": 2960,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 38,
+      "cells": 2015,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 9,
+      "cells": 2306,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 24,
+      "cells": 3042,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 33,
+      "cells": 1872,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 31,
+      "cells": 1792,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    },
+    "larry|sample_mouse|MainLineages": {
+     "Tppp3Neg_m12400619": {
+      "any": 23,
+      "cells": 1247,
+      "ge2": 15,
+      "ge2_hsc1": 9
+     },
+     "Tppp3Neg_m12400620": {
+      "any": 56,
+      "cells": 2395,
+      "ge2": 40,
+      "ge2_hsc1": 19
+     },
+     "Tppp3Neg_m24001617": {
+      "any": 52,
+      "cells": 2960,
+      "ge2": 37,
+      "ge2_hsc1": 21
+     },
+     "Tppp3Neg_m24001618": {
+      "any": 38,
+      "cells": 2015,
+      "ge2": 25,
+      "ge2_hsc1": 14
+     },
+     "Tppp3Pos_m12400619": {
+      "any": 9,
+      "cells": 2306,
+      "ge2": 7,
+      "ge2_hsc1": 6
+     },
+     "Tppp3Pos_m12400620": {
+      "any": 24,
+      "cells": 3042,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001617": {
+      "any": 33,
+      "cells": 1872,
+      "ge2": 17,
+      "ge2_hsc1": 11
+     },
+     "Tppp3Pos_m24001618": {
+      "any": 31,
+      "cells": 1792,
+      "ge2": 18,
+      "ge2_hsc1": 12
+     }
+    }
+   },
+   "hsc_levels": {
+    "CellType": "HSC",
+    "MainLineages": "HSC"
+   },
+   "sha256": "b09d758be9c2bda61e36867089b040cbe9773e7897c82b98b22c1ac3b27502d5",
+   "shapes": {
+    "larry": {
+     "<NA>": 6776,
+     "GFP_N": 17957
+    },
+    "larry_gfp": {
+     "2": 6776,
+     "GFP_N": 17957
+    },
+    "larry_gfp_filt": {
+     "2": 6803,
+     "GFP_N": 17930
+    },
+    "larry_unique": {
+     "3": 6803,
+     "GFP_N_TpppNNeg_Unassigne": 103,
+     "GFP_N_TpppNNeg_mN": 8610,
+     "GFP_N_TpppNPos_Unassigne": 223,
+     "GFP_N_TpppNPos_mN": 8994
+    }
+   }
+  },
+  "GSE307390": {
+   "counts": {
+    "larry_gfp_sample|sample|lineages": {
+     "E15_S1_1L": {
+      "any": 86,
+      "cells": 2115,
+      "ge2": 43,
+      "ge2_hsc1": 21
+     },
+     "E15_S1_2R": {
+      "any": 252,
+      "cells": 7328,
+      "ge2": 158,
+      "ge2_hsc1": 103
+     },
+     "E15_S2_1R1L": {
+      "any": 220,
+      "cells": 3488,
+      "ge2": 147,
+      "ge2_hsc1": 106
+     },
+     "E15_S2_2L": {
+      "any": 116,
+      "cells": 2123,
+      "ge2": 68,
+      "ge2_hsc1": 45
+     },
+     "P0_S1_1L": {
+      "any": 24,
+      "cells": 1243,
+      "ge2": 13,
+      "ge2_hsc1": 8
+     },
+     "P0_S1_2L": {
+      "any": 33,
+      "cells": 2494,
+      "ge2": 19,
+      "ge2_hsc1": 8
+     },
+     "P0_S2_1R": {
+      "any": 60,
+      "cells": 2032,
+      "ge2": 41,
+      "ge2_hsc1": 29
+     },
+     "P0_S2_1R1L": {
+      "any": 57,
+      "cells": 4831,
+      "ge2": 33,
+      "ge2_hsc1": 20
+     },
+     "P10_S1_1L": {
+      "any": 136,
+      "cells": 2712,
+      "ge2": 85,
+      "ge2_hsc1": 54
+     },
+     "P10_S1_2R": {
+      "any": 185,
+      "cells": 2309,
+      "ge2": 98,
+      "ge2_hsc1": 65
+     },
+     "P10_S2_1R": {
+      "any": 180,
+      "cells": 5189,
+      "ge2": 104,
+      "ge2_hsc1": 63
+     },
+     "P20_S1_1L": {
+      "any": 85,
+      "cells": 3221,
+      "ge2": 54,
+      "ge2_hsc1": 40
+     },
+     "P20_S1_2L": {
+      "any": 74,
+      "cells": 2310,
+      "ge2": 44,
+      "ge2_hsc1": 31
+     },
+     "P20_S2_1R": {
+      "any": 106,
+      "cells": 1593,
+      "ge2": 52,
+      "ge2_hsc1": 32
+     },
+     "P20_S2_2R": {
+      "any": 137,
+      "cells": 1847,
+      "ge2": 70,
+      "ge2_hsc1": 53
+     }
+    },
+    "larry_gfp_sample|sample|main_lineages": {
+     "E15_S1_1L": {
+      "any": 86,
+      "cells": 2115,
+      "ge2": 43,
+      "ge2_hsc1": 20
+     },
+     "E15_S1_2R": {
+      "any": 252,
+      "cells": 7328,
+      "ge2": 158,
+      "ge2_hsc1": 104
+     },
+     "E15_S2_1R1L": {
+      "any": 220,
+      "cells": 3488,
+      "ge2": 147,
+      "ge2_hsc1": 99
+     },
+     "E15_S2_2L": {
+      "any": 116,
+      "cells": 2123,
+      "ge2": 68,
+      "ge2_hsc1": 48
+     },
+     "P0_S1_1L": {
+      "any": 24,
+      "cells": 1243,
+      "ge2": 13,
+      "ge2_hsc1": 7
+     },
+     "P0_S1_2L": {
+      "any": 33,
+      "cells": 2494,
+      "ge2": 19,
+      "ge2_hsc1": 9
+     },
+     "P0_S2_1R": {
+      "any": 60,
+      "cells": 2032,
+      "ge2": 41,
+      "ge2_hsc1": 27
+     },
+     "P0_S2_1R1L": {
+      "any": 57,
+      "cells": 4831,
+      "ge2": 33,
+      "ge2_hsc1": 18
+     },
+     "P10_S1_1L": {
+      "any": 136,
+      "cells": 2712,
+      "ge2": 85,
+      "ge2_hsc1": 51
+     },
+     "P10_S1_2R": {
+      "any": 185,
+      "cells": 2309,
+      "ge2": 98,
+      "ge2_hsc1": 62
+     },
+     "P10_S2_1R": {
+      "any": 180,
+      "cells": 5189,
+      "ge2": 104,
+      "ge2_hsc1": 57
+     },
+     "P20_S1_1L": {
+      "any": 85,
+      "cells": 3221,
+      "ge2": 54,
+      "ge2_hsc1": 34
+     },
+     "P20_S1_2L": {
+      "any": 74,
+      "cells": 2310,
+      "ge2": 44,
+      "ge2_hsc1": 27
+     },
+     "P20_S2_1R": {
+      "any": 106,
+      "cells": 1593,
+      "ge2": 52,
+      "ge2_hsc1": 33
+     },
+     "P20_S2_2R": {
+      "any": 137,
+      "cells": 1847,
+      "ge2": 70,
+      "ge2_hsc1": 48
+     }
+    },
+    "larry_gfp|sample|lineages": {
+     "E15_S1_1L": {
+      "any": 86,
+      "cells": 2115,
+      "ge2": 43,
+      "ge2_hsc1": 21
+     },
+     "E15_S1_2R": {
+      "any": 252,
+      "cells": 7328,
+      "ge2": 158,
+      "ge2_hsc1": 103
+     },
+     "E15_S2_1R1L": {
+      "any": 220,
+      "cells": 3488,
+      "ge2": 147,
+      "ge2_hsc1": 106
+     },
+     "E15_S2_2L": {
+      "any": 116,
+      "cells": 2123,
+      "ge2": 68,
+      "ge2_hsc1": 45
+     },
+     "P0_S1_1L": {
+      "any": 24,
+      "cells": 1243,
+      "ge2": 13,
+      "ge2_hsc1": 8
+     },
+     "P0_S1_2L": {
+      "any": 33,
+      "cells": 2494,
+      "ge2": 19,
+      "ge2_hsc1": 8
+     },
+     "P0_S2_1R": {
+      "any": 60,
+      "cells": 2032,
+      "ge2": 41,
+      "ge2_hsc1": 29
+     },
+     "P0_S2_1R1L": {
+      "any": 57,
+      "cells": 4831,
+      "ge2": 33,
+      "ge2_hsc1": 20
+     },
+     "P10_S1_1L": {
+      "any": 136,
+      "cells": 2712,
+      "ge2": 85,
+      "ge2_hsc1": 54
+     },
+     "P10_S1_2R": {
+      "any": 185,
+      "cells": 2309,
+      "ge2": 98,
+      "ge2_hsc1": 65
+     },
+     "P10_S2_1R": {
+      "any": 180,
+      "cells": 5189,
+      "ge2": 104,
+      "ge2_hsc1": 63
+     },
+     "P20_S1_1L": {
+      "any": 85,
+      "cells": 3221,
+      "ge2": 54,
+      "ge2_hsc1": 40
+     },
+     "P20_S1_2L": {
+      "any": 74,
+      "cells": 2310,
+      "ge2": 44,
+      "ge2_hsc1": 31
+     },
+     "P20_S2_1R": {
+      "any": 106,
+      "cells": 1593,
+      "ge2": 52,
+      "ge2_hsc1": 32
+     },
+     "P20_S2_2R": {
+      "any": 137,
+      "cells": 1847,
+      "ge2": 70,
+      "ge2_hsc1": 53
+     }
+    },
+    "larry_gfp|sample|main_lineages": {
+     "E15_S1_1L": {
+      "any": 86,
+      "cells": 2115,
+      "ge2": 43,
+      "ge2_hsc1": 20
+     },
+     "E15_S1_2R": {
+      "any": 252,
+      "cells": 7328,
+      "ge2": 158,
+      "ge2_hsc1": 104
+     },
+     "E15_S2_1R1L": {
+      "any": 220,
+      "cells": 3488,
+      "ge2": 147,
+      "ge2_hsc1": 99
+     },
+     "E15_S2_2L": {
+      "any": 116,
+      "cells": 2123,
+      "ge2": 68,
+      "ge2_hsc1": 48
+     },
+     "P0_S1_1L": {
+      "any": 24,
+      "cells": 1243,
+      "ge2": 13,
+      "ge2_hsc1": 7
+     },
+     "P0_S1_2L": {
+      "any": 33,
+      "cells": 2494,
+      "ge2": 19,
+      "ge2_hsc1": 9
+     },
+     "P0_S2_1R": {
+      "any": 60,
+      "cells": 2032,
+      "ge2": 41,
+      "ge2_hsc1": 27
+     },
+     "P0_S2_1R1L": {
+      "any": 57,
+      "cells": 4831,
+      "ge2": 33,
+      "ge2_hsc1": 18
+     },
+     "P10_S1_1L": {
+      "any": 136,
+      "cells": 2712,
+      "ge2": 85,
+      "ge2_hsc1": 51
+     },
+     "P10_S1_2R": {
+      "any": 185,
+      "cells": 2309,
+      "ge2": 98,
+      "ge2_hsc1": 62
+     },
+     "P10_S2_1R": {
+      "any": 180,
+      "cells": 5189,
+      "ge2": 104,
+      "ge2_hsc1": 57
+     },
+     "P20_S1_1L": {
+      "any": 85,
+      "cells": 3221,
+      "ge2": 54,
+      "ge2_hsc1": 34
+     },
+     "P20_S1_2L": {
+      "any": 74,
+      "cells": 2310,
+      "ge2": 44,
+      "ge2_hsc1": 27
+     },
+     "P20_S2_1R": {
+      "any": 106,
+      "cells": 1593,
+      "ge2": 52,
+      "ge2_hsc1": 33
+     },
+     "P20_S2_2R": {
+      "any": 137,
+      "cells": 1847,
+      "ge2": 70,
+      "ge2_hsc1": 48
+     }
+    },
+    "larry_merged|sample|lineages": {
+     "E15_S1_1L": {
+      "any": 86,
+      "cells": 2115,
+      "ge2": 43,
+      "ge2_hsc1": 21
+     },
+     "E15_S1_2R": {
+      "any": 252,
+      "cells": 7328,
+      "ge2": 158,
+      "ge2_hsc1": 103
+     },
+     "E15_S2_1R1L": {
+      "any": 220,
+      "cells": 3488,
+      "ge2": 147,
+      "ge2_hsc1": 106
+     },
+     "E15_S2_2L": {
+      "any": 116,
+      "cells": 2123,
+      "ge2": 68,
+      "ge2_hsc1": 45
+     },
+     "P0_S1_1L": {
+      "any": 24,
+      "cells": 1243,
+      "ge2": 13,
+      "ge2_hsc1": 8
+     },
+     "P0_S1_2L": {
+      "any": 33,
+      "cells": 2494,
+      "ge2": 19,
+      "ge2_hsc1": 8
+     },
+     "P0_S2_1R": {
+      "any": 60,
+      "cells": 2032,
+      "ge2": 41,
+      "ge2_hsc1": 29
+     },
+     "P0_S2_1R1L": {
+      "any": 57,
+      "cells": 4831,
+      "ge2": 33,
+      "ge2_hsc1": 20
+     },
+     "P10_S1_1L": {
+      "any": 225,
+      "cells": 3202,
+      "ge2": 139,
+      "ge2_hsc1": 98
+     },
+     "P10_S1_2R": {
+      "any": 270,
+      "cells": 2565,
+      "ge2": 149,
+      "ge2_hsc1": 99
+     },
+     "P10_S2_1R": {
+      "any": 263,
+      "cells": 5712,
+      "ge2": 155,
+      "ge2_hsc1": 101
+     },
+     "P20_S1_1L": {
+      "any": 97,
+      "cells": 3451,
+      "ge2": 64,
+      "ge2_hsc1": 48
+     },
+     "P20_S1_2L": {
+      "any": 85,
+      "cells": 2513,
+      "ge2": 48,
+      "ge2_hsc1": 35
+     },
+     "P20_S2_1R": {
+      "any": 114,
+      "cells": 1602,
+      "ge2": 59,
+      "ge2_hsc1": 35
+     },
+     "P20_S2_2R": {
+      "any": 149,
+      "cells": 1877,
+      "ge2": 76,
+      "ge2_hsc1": 58
+     }
+    },
+    "larry_merged|sample|main_lineages": {
+     "E15_S1_1L": {
+      "any": 86,
+      "cells": 2115,
+      "ge2": 43,
+      "ge2_hsc1": 20
+     },
+     "E15_S1_2R": {
+      "any": 252,
+      "cells": 7328,
+      "ge2": 158,
+      "ge2_hsc1": 104
+     },
+     "E15_S2_1R1L": {
+      "any": 220,
+      "cells": 3488,
+      "ge2": 147,
+      "ge2_hsc1": 99
+     },
+     "E15_S2_2L": {
+      "any": 116,
+      "cells": 2123,
+      "ge2": 68,
+      "ge2_hsc1": 48
+     },
+     "P0_S1_1L": {
+      "any": 24,
+      "cells": 1243,
+      "ge2": 13,
+      "ge2_hsc1": 7
+     },
+     "P0_S1_2L": {
+      "any": 33,
+      "cells": 2494,
+      "ge2": 19,
+      "ge2_hsc1": 9
+     },
+     "P0_S2_1R": {
+      "any": 60,
+      "cells": 2032,
+      "ge2": 41,
+      "ge2_hsc1": 27
+     },
+     "P0_S2_1R1L": {
+      "any": 57,
+      "cells": 4831,
+      "ge2": 33,
+      "ge2_hsc1": 18
+     },
+     "P10_S1_1L": {
+      "any": 225,
+      "cells": 3202,
+      "ge2": 139,
+      "ge2_hsc1": 90
+     },
+     "P10_S1_2R": {
+      "any": 270,
+      "cells": 2565,
+      "ge2": 149,
+      "ge2_hsc1": 94
+     },
+     "P10_S2_1R": {
+      "any": 263,
+      "cells": 5712,
+      "ge2": 155,
+      "ge2_hsc1": 96
+     },
+     "P20_S1_1L": {
+      "any": 97,
+      "cells": 3451,
+      "ge2": 64,
+      "ge2_hsc1": 42
+     },
+     "P20_S1_2L": {
+      "any": 85,
+      "cells": 2513,
+      "ge2": 48,
+      "ge2_hsc1": 31
+     },
+     "P20_S2_1R": {
+      "any": 114,
+      "cells": 1602,
+      "ge2": 59,
+      "ge2_hsc1": 36
+     },
+     "P20_S2_2R": {
+      "any": 149,
+      "cells": 1877,
+      "ge2": 76,
+      "ge2_hsc1": 52
+     }
+    },
+    "larry_sapphire|sample|lineages": {
+     "E15_S1_1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "E15_S1_2R": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "E15_S2_1R1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "E15_S2_2L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S1_1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S1_2L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S2_1R": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S2_1R1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P10_S1_1L": {
+      "any": 104,
+      "cells": 1100,
+      "ge2": 63,
+      "ge2_hsc1": 48
+     },
+     "P10_S1_2R": {
+      "any": 96,
+      "cells": 554,
+      "ge2": 58,
+      "ge2_hsc1": 37
+     },
+     "P10_S2_1R": {
+      "any": 98,
+      "cells": 2083,
+      "ge2": 60,
+      "ge2_hsc1": 43
+     },
+     "P20_S1_1L": {
+      "any": 14,
+      "cells": 498,
+      "ge2": 11,
+      "ge2_hsc1": 9
+     },
+     "P20_S1_2L": {
+      "any": 15,
+      "cells": 387,
+      "ge2": 9,
+      "ge2_hsc1": 5
+     },
+     "P20_S2_1R": {
+      "any": 10,
+      "cells": 77,
+      "ge2": 9,
+      "ge2_hsc1": 4
+     },
+     "P20_S2_2R": {
+      "any": 15,
+      "cells": 234,
+      "ge2": 9,
+      "ge2_hsc1": 6
+     }
+    },
+    "larry_sapphire|sample|main_lineages": {
+     "E15_S1_1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "E15_S1_2R": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "E15_S2_1R1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "E15_S2_2L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S1_1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S1_2L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S2_1R": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P0_S2_1R1L": {
+      "any": 0,
+      "cells": 0,
+      "ge2": 0,
+      "ge2_hsc1": 0
+     },
+     "P10_S1_1L": {
+      "any": 104,
+      "cells": 1100,
+      "ge2": 63,
+      "ge2_hsc1": 42
+     },
+     "P10_S1_2R": {
+      "any": 96,
+      "cells": 554,
+      "ge2": 58,
+      "ge2_hsc1": 32
+     },
+     "P10_S2_1R": {
+      "any": 98,
+      "cells": 2083,
+      "ge2": 60,
+      "ge2_hsc1": 43
+     },
+     "P20_S1_1L": {
+      "any": 14,
+      "cells": 498,
+      "ge2": 11,
+      "ge2_hsc1": 8
+     },
+     "P20_S1_2L": {
+      "any": 15,
+      "cells": 387,
+      "ge2": 9,
+      "ge2_hsc1": 4
+     },
+     "P20_S2_1R": {
+      "any": 10,
+      "cells": 77,
+      "ge2": 9,
+      "ge2_hsc1": 4
+     },
+     "P20_S2_2R": {
+      "any": 15,
+      "cells": 234,
+      "ge2": 9,
+      "ge2_hsc1": 5
+     }
+    }
+   },
+   "hsc_levels": {
+    "lineages": "HSCs",
+    "main_lineages": "HSC"
+   },
+   "sha256": "2a59a48b19ae6ba5d1fc4ba18bd174f65fdf783a9a59fe4d64ce5dae3b4a5adc",
+   "shapes": {
+    "larry_gfp": {
+     "<NA>": 46937,
+     "GFP_N": 56583
+    },
+    "larry_gfp_sample": {
+     "<NA>": 58685,
+     "GFP_N_EN_SN_NL": 4238,
+     "GFP_N_EN_SN_NR": 7328,
+     "GFP_N_PN_SN_NL": 11980,
+     "GFP_N_PN_SN_NR": 12970,
+     "GFP_N_PN_SN_NRNL": 4831
+    },
+    "larry_merged": {
+     "2": 45220,
+     "GFP_N": 54871,
+     "Sapphire_N": 3429
+    },
+    "larry_sapphire": {
+     "<NA>": 98379,
+     "Sapphire_N": 5141
+    }
+   }
+  }
+ },
+ "verdict": "units unresolved"
+}

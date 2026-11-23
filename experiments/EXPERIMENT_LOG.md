@@ -13142,3 +13142,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Pass rule tightened to the grid:** mapped = all 7 published counts among the mice of **one** series under **one** clone column, mouse column, HSC column and variant. The grid is reported in full, so a partial match cannot be picked after the fact.
 - Written: per-mouse cell and clone counts, value shapes of clone columns (no ids), names of HSC-matching levels. No other cell-type level and no bias.
 - **Compute:** Actions (sweeps/candf_p1b_counts.txt).
+
+### CAND-F-P1b result (2026-11-23; run https://github.com/krenusz/cellware/actions/runs/45167908260; results_cand/candf_p1b_counts.json): **units unresolved, CAND-F stops**
+- **Best of the full grid: 3 of 7 published counts** (86, 33, 24 under "any clone", GSE307390, mice E15_S1_1L, P0_S1_2L, P0_S1_1L); GSE299003 best 2 of 7. The pass rule needed 7 of 7 under one setting. The three hits are the best of a searched grid across different donor ages, and their chance rate was not computed, so they are not evidence of a partial mapping.
+- Not shown: that the 7 mice are absent from these series. The source's exact clone calling may differ from every column tried. Its LARRY re-analysis script is not in its Zenodo bundle.
+- **CAND-F set to failed_gate** as pre-registered. No P2 null study was run. No bias value or published correlation was read. No partition was created: the 19 public mice have had per-mouse cell and clone counts and an HSC flag read, and nothing else.
+- Value-shape note: the empty string is the no-barcode value in several clone columns (shown as "2"/"3" in the JSON because jsonlite names empty keys by position); it is excluded from the counts.
