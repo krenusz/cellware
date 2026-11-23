@@ -13249,3 +13249,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Descriptive only, no claim:** calibrated excess in the 4 usable fish was -0.035, -0.006, 0.030 and 0.273.
 - **Self-challenge:** the gate simulated Ne 300 and noise slope 1.5, while the train fish fitted Ne 100 or lower and slopes 0.48 to 0.88, so the gate did not cover the real regime. Between 7% and 52% of replicate cells per fish were zero, so replicate noise may be overestimated if the source filters per replicate. Sample spacing remains an assumption.
 - **Decision:** by the fixed rule CAND-I stops as failed_gate. The grid was not widened after seeing this. Train has now been read; A, B and C remain unread and unspent.
+
+## CAND-I-E1: exploratory wider-grid look at the train fish (pre-registered 2026-11-23; Bence: "Exploratory wider grid")
+- **Serves: C12 CLOSED.** Exploratory and data-informed, because the T1R train values were seen first. It supports no claim. Script candi_explore.py reads train fish only, through candi_train.load_train. A, B and C stay unread.
+- **Changes from T1R:** drift grid Ne 0.316 to 10,000 (19 points). The gate is a parametric bootstrap from each fish's own clone frequencies, fitted noise and matched Ne, at the real resolution (20 calibration, 300 null draws, 200 cohorts per condition). A second noise fit treats replicate zeros as missing.
+- **Unchanged:** statistic, clone and fish filters, grid-edge exclusion, at least 6 usable fish, one-sided sign-flip test at alpha 0.05, gate limits (false positives at most 0.10, recovery at least 0.5).
+- **Readings:** E1, calibrated and zero-as-missing arms both p <= 0.05: consistent with the source, note it and move on. E2, multinomial p <= 0.05, calibrated not, calibrated excess at most half, and zero-as-missing also not significant: a noise lead, and only then may Bence decide on A+B. E3, anything else or a failed gate: CAND-I stays closed, with no further variants on this set.
+- **Pre-flight:** (1) unit: fish; (2) readout: barcode reads over sample indices, train only; (3) used data first: train already read in T1R, hence exploratory; (4) power: bootstrap gate above; (5) exposure: T1R train values, including which fish hit the grid edge; (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
+- **Compute:** Actions (sweeps/candi_explore.txt); URL logged with the result.
+- Practice: neutral wording; train only; exploratory label on every report; no source data copied into this repo.
