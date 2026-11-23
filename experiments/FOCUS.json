@@ -31,6 +31,7 @@
   "candf_p1_struct.py",
   "candf_p1b_struct.py",
   "candf_p1b_counts.py",
+  "novelty_scan.py",
   "c13s0_format.py",
   "c14s0_gate.py",
   "c14s3_region.py",
