@@ -28,7 +28,7 @@ import sealed  # noqa: E402
 PATTERN = re.compile(r"""["']heldout["']|include_heldout\s*=\s*True|heldout_stat\(|shard_of\(|sealed_rows\(""")
 SELF = {"check_sealed.py", "sealed.py", "partitions.py"}
 # H24 sealing scripts: they write the partition map itself (structure only), so they never call train_only.
-SEALERS = {"c17s0c_seal.py", "c17s1c_crest.py", "c17s1pl_tree.py"}
+SEALERS = {"c17s0c_seal.py", "c17s1c_crest.py", "c17s1pl_tree.py", "candi_seal.py"}
 
 
 def check(py_dir=HERE, data_dir=None):

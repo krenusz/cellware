@@ -13179,3 +13179,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - 24 fish in the table, 20 with at least 6 time points (rule: 20, met exactly). 242 samples, 233 (96%) with at least 2 technical replicates and 217 with 3 (rule: 80%).
 - Columns: barcode, fish, sample, replicate, file, reads, proportion. Only the header and sample identifiers were parsed. No read, proportion, clone size or drift value was computed or written.
 - **Not yet shown:** novelty (classic search owed), power, and whether replicate noise differs from the source's multinomial noise. CAND-I stays open and unsealed. Next is sealing by fish before any statistic. With 20 eligible fish, sealed partitions will be small, so power may fail.
+
+## CAND-I-P1 seal: germline set partitioned by fish (pre-registered 2026-11-23; Bence: "Yes, seal CAND-I")
+- **Serves: C12 CLOSED.** Seal before any statistic. Script candi_seal.py checks the pinned table's sha256 and parses sample identifiers only.
+- **Unit and scope:** numbered fish (24). The seal holds for that fish number across the whole source repository: every pipeline variant, truncated tables, per-fish and combined matrices, and summaries. Heatmap images and README figures show outcomes and stay unopened. The three control fish are outside the map and are never read.
+- **Rule (H24):** balanced_split, salt cellware-germline-fish-v1. Size = distinct sample indices. Strata = at least 6 indices (20 fish, dealt first) or fewer (4 fish). Expected: 10 train, 5 A, 5 B, 4 C, with 8 train and 4/4/4 eligible.
+- **Assumption, not verified:** the sample index is treated as a time point. Sample identifiers alone do not prove it.
+- **Pre-flight:** (1) unit: fish; (2) readout: barcode frequency over time, unread; (3) used data first: never used here; (4) power: next step, simulation only, at 4 eligible fish per sealed partition; (5) exposure: source text at claims and methods level, including its stated median drift estimate; column names and counts from P1; repository tree listing with file names and sizes, including per-fish matrix sizes; (6) literature: classic search owed, next step; (7) readout gate: replicate structure passed in P1.
+- **Compute:** Actions (sweeps/candi_seal.txt); URL logged with the result.
+- Practice: neutral wording; identifiers only; no source data copied into this repo.
