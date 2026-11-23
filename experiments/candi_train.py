@@ -25,15 +25,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from partitions import train_only  # noqa: E402
 
-OUT = os.path.join(HERE, "results_cand", "candi_train.json")
+OUT = os.path.join(HERE, "results_cand", "candi_train_r2.json")
 COMMIT = "99b327ca17bfd092063dbf911e088f993e036172"
 SHA256 = "6985096f252b99bd2e53e98daef23089a40bdc52345db4eaf6095105fc08de80"
 URL = f"https://raw.githubusercontent.com/Gagnon-lab/weber-shrader/{COMMIT}/experiments/full_pipeline/final_data.csv"
 ID = re.compile(r"fish(\d+)_s(\d+)_rep(\d+)", re.I)
-MIN_T, MIN_SIZE, MIN_CLONES, MIN_FISH, ALPHA, SEED = 6, 0.005, 5, 6, 0.05, 20261123
+MIN_T, MIN_SIZE, MIN_CLONES, MIN_FISH, ALPHA, SEED = 6, 0.005, 5, 6, 0.05, 20261124
 NE_GRID = np.logspace(1, 4.5, 15)
 N_CAL, N_NULL = 20, 300
-GATE_COHORTS, GATE_CAL, GATE_NULL = 200, 3, 30
+GATE_COHORTS, GATE_CAL, GATE_NULL = 200, N_CAL, N_NULL  # T1R: same resolution as the real test
 MAX_FALSE_POS, MIN_RECOVERY, MAX_R2_UNDER_LINK = 0.10, 0.5, 0.10
 # (barcodes, sample indices) of the 8 eligible train fish, from CAND-I-T0 (structure only)
 SHAPES = ((12, 11), (15, 12), (15, 6), (7, 11), (7, 16), (13, 9), (10, 17), (11, 6))

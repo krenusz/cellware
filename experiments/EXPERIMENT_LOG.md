@@ -13234,3 +13234,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - False positive rate 0.12 (limit 0.10), recovery 0.585 (limit 0.5), wrong R2 under a true link 0.0 (limit 0.10), R2 under the null 0.015, over 200 synthetic cohorts per condition.
 - By the pre-registered rule the table was not opened. No read count or proportion of any fish was parsed, no verdict exists, and the size and drift question is untested. Train, A, B and C are all unspent.
 - The miss is small and within simulation error of the limit (0.12 of 200 cohorts), and the gate used 30 null draws where the real test uses 300. The limit was not changed after seeing this. CAND-I is failed_gate. Any rerun needs Bence's decision and a new pre-registration.
+
+## CAND-I-T1R: single rerun of the synthetic gate at full resolution (pre-registered 2026-11-23; Bence: "2")
+- **Serves: C12 CLOSED.** The T1 gate used 3 calibration and 30 null draws where the real test uses 20 and 300. This rerun uses 20 and 300, a new seed (20261124) and 200 cohorts per condition. Output goes to results_cand/candi_train_r2.json; the T1 result is kept.
+- **Unchanged:** every limit (false positives at most 0.10, recovery at least 0.5, wrong R2 under a true link at most 0.10), the statistic, filters, verdict rules and train-only loading of CAND-I-T1.
+- **Rule:** this is the only rerun. If the gate fails, the table stays unread and CAND-I closes as failed_gate. If it passes, the script runs the T1 test on the 8 eligible train fish and the T1 verdicts apply. A and B stay sealed either way. This is a second gate attempt, and every report must say so.
+- **Pre-flight:** (1) unit: fish; (2) readout: as T1, read only if the gate passes; (3) used data first: never analysed before; (4) power: this gate; (5) exposure: as T1, plus the failed T1 gate rates (synthetic only); (6) literature: novelty check above; (7) readout gate: replicate structure passed in P1.
+- **Compute:** Actions (sweeps/candi_train_r2.txt); URL logged with the result.
+- Practice: neutral wording; train only; limits unchanged after the first gate; no source data copied into this repo.
