@@ -51,13 +51,14 @@ def zget(params):
 
 
 def zenodo():
-    out, dropped = {}, 0
+    out, dropped, failed = {}, 0, []
     for q in Z_QUERIES:
         hits = []
         for page in range(1, 5):  # Zenodo allows 25 per page without a key
             r = zget({"q": q, "size": 25, "page": page, "type": "dataset"})
-            if r is None:
-                raise RuntimeError(f"zenodo query failed: {q} page {page}")
+            if r is None:  # run 45357377320 died on one slow page; log it and go on
+                failed.append(f"{q} p{page}")
+                break
             got = r.get("hits", {}).get("hits", [])
             hits += got
             if len(got) < 25:
@@ -75,7 +76,7 @@ def zenodo():
                                  "total_mb": round(sum(f[1] or 0 for f in files) / 1e6, 1),
                                  "unit_words": sorted({m.group(2).lower() for m in UNITS.finditer(desc)}),
                                  "description": CELL_LINE.sub("[line]", desc[:600])}
-    return out, dropped
+    return out, dropped, failed
 
 
 def facts(pmcid):
@@ -117,17 +118,17 @@ def pmc():
 
 
 def main():
-    z, zdrop = zenodo()
+    z, zdrop, zfail = zenodo()
     p, pdrop, hits = pmc()
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as fh:
-        json.dump({"zenodo": z, "zenodo_dropped": zdrop, "pmc": p, "pmc_dropped": pdrop, "pmc_hits": hits,
+        json.dump({"zenodo": z, "zenodo_dropped": zdrop, "zenodo_failed_pages": zfail, "pmc": p, "pmc_dropped": pdrop, "pmc_hits": hits,
                    "recall_missed": [d for d in RECALL if d not in p]}, fh, indent=1, sort_keys=True)
     zlead = sum(bool(r["tables"]) for r in z.values())
     plead = sum(bool(r["facts"] and any(v >= 50 for k, v in r["facts"]["unit_counts"].items()
                                         if k in ("organoids", "gastruloids", "embryos")) and r["facts"]["accessions"])
                 for r in p.values())
-    print(json.dumps({"zenodo_kept": len(z), "zenodo_dropped": zdrop, "zenodo_with_tables": zlead, "pmc_kept": len(p),
+    print(json.dumps({"zenodo_kept": len(z), "zenodo_dropped": zdrop, "zenodo_failed_pages": zfail, "zenodo_with_tables": zlead, "pmc_kept": len(p),
                       "pmc_dropped": pdrop, "pmc_full_text": sum(bool(r["facts"]) for r in p.values()),
                       "pmc_leads": plead, "recall_missed": [d for d in RECALL if d not in p]}), flush=True)
     return 0
