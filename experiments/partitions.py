@@ -207,7 +207,9 @@ PARTITIONED = {
         "prior_exposure": "GEO series and sample metadata; column headers; cell-id columns and a whole-table tally of "
                           "r1-r3 allele tokens of the pool (no fate label); explant-pool-1 call counts; per-unit cell "
                           "counts; train-only tree pair counts, token tallies and recurrence (C17-S1R-P10, runs "
-                          "45405214801 void and 45406339352)",
+                          "45405214801 void and 45406339352); abstracts of the source (doi 10.1016/j.devcel.2024.03.024) and two "
+                          "reanalyses (Carta, doi 10.1038/s41592-025-02903-z; TROUPE, preprint 10.64898/2025.12.09.693214), "
+                          "claims level (CAND-Y-P1)",
     },
 }
 BUCKETS = 5
