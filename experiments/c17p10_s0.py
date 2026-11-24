@@ -34,15 +34,14 @@ MAX_CLADE, MIN_ARM, MIN_PAIRS = 300, 4, 30
 JOIN_FLOOR, MAX_SINGLE_CELLS = 0.30, 20000
 SALT = "c17p10"
 FORBIDDEN = ("seuratnorm", "seuratgenes", ".tar.gz", "raw.tar", ".mtx")
-SET1 = {  # GSM -> suffix of the allele table; GSM -> suffix of the cell-id list
-    "alleles": (range(3319520, 3319528), "_alleleTable.txt.gz"),
-    "barcodes": (range(3302826, 3302834), "_SeuratBarcodes.tsv.gz"),
-}
-SET2 = {  # unit label -> (GSM, file token)
-    "TLS1": ("GSM7744222", "AM-DNA-097_allele_table"),
-    "TLS2": ("GSM7744223", "AM-DNA-098_allele_table"),
-    "pool": ("GSM7744224", "AM-DNA-258_allele_table"),
-    "multiseq": ("GSM7744226", "AM-DNA-197_MultiSeqBC.tsv.gz"),
+_E = ["embryo1", "embryo2a", "embryo2b", "embryo3", "embryo4", "embryo5", "embryo6", "embryo7"]
+SET1_ALLELES = [f"GSM{3319520 + i}_{e}_alleleTable.txt.gz" for i, e in enumerate(_E)]
+SET1_BARCODES = [f"GSM{3302826 + i}_{e}_SeuratBarcodes.tsv.gz" for i, e in enumerate(_E)]
+SET2 = {  # unit label -> file name (GSM is the prefix)
+    "TLS1": "GSM7744222_AM-DNA-097_allele_table.txt.gz",
+    "TLS2": "GSM7744223_AM-DNA-098_allele_table.txt.gz",
+    "pool": "GSM7744224_AM-DNA-258_allele_table.txt.gz",
+    "multiseq": "GSM7744226_AM-DNA-197_MultiSeqBC.tsv.gz",
 }
 NOCALL = {"", "na", "nan", "none", "doublet", "negative", "unassigned", "uncalled"}
 
@@ -59,25 +58,14 @@ def _open(url):
     raise RuntimeError(f"cannot open {url}: {last}")
 
 
-def geo_dir(gsm):
-    return f"{GEO}/{gsm[:-3]}nnn/{gsm}/suppl/"
-
-
-def list_files(gsm):
-    html = _open(geo_dir(gsm)).read().decode("utf-8", "replace")
-    return sorted(set(re.findall(r'href="([^"/?][^"]*)"', html)))
-
-
-def fetch(gsm, match, dest, hashes):
-    names = [n for n in list_files(gsm) if match(n)]
-    if len(names) != 1:
-        raise RuntimeError(f"{gsm}: expected exactly 1 matching file, got {names}")
-    name = names[0]
+def fetch(name, dest, hashes):
     if any(f in name.lower() for f in FORBIDDEN):
         raise RuntimeError(f"refusing forbidden file {name}")
+    gsm = name.split("_")[0]
+    url = f"{GEO}/{gsm[:7]}nnn/{gsm}/suppl/{name}"
     path = Path(dest) / name
     h = hashlib.sha256()
-    with _open(geo_dir(gsm) + name) as r, open(path, "wb") as f:
+    with _open(url) as r, open(path, "wb") as f:
         while chunk := r.read(1 << 20):
             h.update(chunk)
             f.write(chunk)
@@ -319,14 +307,12 @@ def gate(parts, train_pairs):
 def run_set1(tmp, hashes):
     res, units = {}, collections.defaultdict(set)
     allele_files = {}
-    for g in SET1["alleles"][0]:
-        gsm = f"GSM{g}"
-        p = fetch(gsm, lambda n: n.endswith(SET1["alleles"][1]), tmp, hashes)
+    for n in SET1_ALLELES:
+        p = fetch(n, tmp, hashes)
         allele_files[_embryo(p.name)] = p
     bc_files = {}
-    for g in SET1["barcodes"][0]:
-        gsm = f"GSM{g}"
-        p = fetch(gsm, lambda n: n.endswith(SET1["barcodes"][1]), tmp, hashes)
+    for n in SET1_BARCODES:
+        p = fetch(n, tmp, hashes)
         bc_files[_embryo(p.name)] = p
     if set(allele_files) != set(bc_files):
         raise RuntimeError(
@@ -360,7 +346,7 @@ def _embryo(name):
 
 
 def run_set2(tmp, hashes):
-    files = {k: fetch(g, lambda n, t=t: t in n, tmp, hashes) for k, (g, t) in SET2.items()}
+    files = {k: fetch(n, tmp, hashes) for k, n in SET2.items()}
     ms = read_multiseq(files["multiseq"])
     data, joins = {}, {}
     for key in ("TLS1", "TLS2"):
