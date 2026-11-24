@@ -191,6 +191,24 @@ PARTITIONED = {
                           "names and sample counts (CAND-I-P1); repository tree with file names and sizes, including "
                           "per-fish matrix sizes; sample indices per partition",
     },
+    "tls_tracer": {
+        # H24 map frozen from c17p10_s0.py run 45405214801 (drawn from cell counts before any tree code; C17-S1R-P10)
+        "fixed": {"TLS1": "C", "TLS2": "B", "pool:Bar1": "A", "pool:Bar10": "C", "pool:Bar11": "C", "pool:Bar12": "A",
+                  "pool:Bar13": "C", "pool:Bar14": "train", "pool:Bar15": "train", "pool:Bar16": "train",
+                  "pool:Bar18": "train", "pool:Bar19": "B", "pool:Bar2": "train", "pool:Bar20": "B", "pool:Bar21": "B",
+                  "pool:Bar22": "train", "pool:Bar23": "C", "pool:Bar24": "A", "pool:Bar3": "train", "pool:Bar4": "B",
+                  "pool:Bar5": "A", "pool:Bar6": "train", "pool:Bar7": "train", "pool:Bar8": "A", "pool:Bar9": "train"},
+        "unit": "one trunk-like structure in GSE220949: the single-structure samples TLS1 (GSM7744222) and TLS2 "
+                "(GSM7744223), or one MULTI-seq call Bar1-Bar24 of the 24-structure pool (GSM7744224 alleles joined to "
+                "GSM7744226 calls; Bar17 has no call). Cells without a call have no unit and are dropped before "
+                "partition_of. Explant pools, the ESC time course and all scRNA archives are outside the map",
+        "files": ["GEO GSE220949 allele tables and MULTI-seq calls, downloaded at run time, never copied into this repo"],
+        "sealed_on": "2026-11-24",
+        "prior_exposure": "GEO series and sample metadata; column headers; cell-id columns and a whole-table tally of "
+                          "r1-r3 allele tokens of the pool (no fate label); explant-pool-1 call counts; per-unit cell "
+                          "counts; train-only tree pair counts, token tallies and recurrence (C17-S1R-P10, runs "
+                          "45405214801 void and 45406339352)",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)
