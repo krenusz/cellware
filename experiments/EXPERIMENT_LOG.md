@@ -13398,3 +13398,27 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - *Stage, reworded.* The structures were collected 120 h after aggregation (GEO design). Treating that as the early-stage end of C14's stage trend is an assumption, not a measured match.
   - *Review line, narrowed.* The 33 references carry no DOIs, so they were matched by keyword only (GSE117542, CARLIN, mosaic gastruloid, cell competition, proteomic landscape, the source titles), as filename hits in the log and the gap maps. The fluctuation-test paper came from the search hits, not from the review's references. The 2026 mosaic-gastruloid study (doi 10.1038/s41556-026-01923-x, a cell-competition design without a lineage recorder) was **not gated**.
   - *Scope.* The verdict covers the five things checked: CAND-Y, the C10 reopen condition, C9, lsc_larry and the review. It does not cover the 19 sealed sets with unspent partitions (coverage_check table). For most of those, no novel question has been posed.
+
+## QS1: question-first search over the sealed sets with unspent partitions (pre-registered 2026-11-24; Bence: "Yes, question search")
+- **Serves: C12 CLOSED** (A/B/C of lsc_larry and other sets kept as reserves for a different, novel question).
+- **Why:** CAND-Y-P1 showed that the constraint is now questions, not data. coverage_check lists 19 sealed sets that still have unspent partitions.
+- **No data file is opened.** Triage and gates use only counts already in this log, results JSONs, partitions.py and claims-level files in lit/. Any missing structural count becomes a separate data step (cellware-data lane, train_only, format only), and that step needs Bence's OK.
+- **Stage 1, triage of the 19 sets** (no new reads):
+  - Drop sets with too few units for H19/H22 on one partition.
+  - Drop duplicate seals (growth12_host is the same data as v2).
+  - Set aside sets where only C is left. H13 requires Bence's verbatim OK to spend it; these are listed in the report but not gated.
+- **Stage 2, questions:** at most 3 per surviving set, drawn only from three sources:
+  1. Questions written but never run (retros, PROPOSAL files, DISCOVERIES, "not tried" lines).
+  2. Design contrasts that the source's claims do not state.
+  3. Transfers of the confirmed C7, C8 and C10 readouts. C14 transfers are excluded: two failed on unit size (C15, CAND-Y).
+  - No question may be prompted by train outcomes seen in other chapters (H16). Any that slips in is labelled, and its extra look is counted.
+  - **The list is frozen in a commit before any gate runs.**
+- **Stage 3, gates in fixed order.** A question passes only if it passes all four:
+  1. *Near-repeat:* coverage_check E5/E6, plus a grep of partitions.py, c17s1_params.py and the log.
+  2. *Power:* at least 0.8 on one sealed partition alone, using power.py with effect and sd taken from named used results. If no used result supplies the sd, the question does not pass; a train-only sd fit can be offered only as a next step that needs Bence's OK.
+  3. *H22:* at least 3 treatment-assignment units per arm for any between-condition contrast.
+  4. *Novelty, at the standard that closed C12 and T-split':* "published in kind" fails. Existing lit/ claims files are used first. Any new abstract read on a sealed set's source goes into that set's prior_exposure in the same commit.
+- **Every gated question gets a COVERAGE row, pass or fail.** The report lists only the questions that pass everything.
+- Pre-flight: unit, readout and power are per question at Stage 3; used data first = the near-repeat gate; exposure = no new data read, abstracts logged to prior_exposure; literature = claims level; readout gate (H21) is checked per question from logged counts, and a question without them stops.
+- Practice: neutral wording, scanned with lit_gap.SENSITIVE before each commit; no outreach.
+- Compute: local reads of the log, partitions.py, results JSONs and lit/ files, plus Europe PMC abstract queries; no Actions run, because no data file is opened.
