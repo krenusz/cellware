@@ -13374,3 +13374,20 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Wording corrections:** "would sit on the commitment scale" (correction block) is untested, and the test stays closed on either scale. "Practice from now" there is a proposal for Bence to adopt, not a rule in force.
 - **Provenance:** sha256 of the GSE220949 files used (run 45406339352): GSM7744222 allele table 3c30ba4b9777f6225b415e322c8607df0478fa918fe72bcc5cde3ba20acf620d; GSM7744223 allele table b52ba858772c32795ac9efbeeffc0fcb9e6319f5a4888a9c3ee7fa594ed4dba3; GSM7744224 allele table 3c3dbe1c2689a66ff0d62e48669e837de6d2c03261790c50a180f205bb250c25; GSM7744226 MULTI-seq calls 020403527af99cafb559523c680769d1cab612596f9c4eec63a4a7685aa1ce3d.
 - **Guard note:** c17p10_s0.py reads this set through its own frozen constant (it agrees with partitions.tls_tracer, checked once) and does not name `tls_tracer`, so check_sealed cannot see it. Any later script must read the set through `train_only("tls_tracer", ...)`.
+
+## CAND-Y-P1: what else could give a result? Pretest of the unspent assets (2026-11-24; Bence: "so what else could actually give something?")
+- **Serves: C12 CLOSED.** Table, metadata and abstract reads only. No data file was opened, no partition was read, and no statistic was computed on any set.
+- **CAND-Y: the C14 claim (state beyond type predicts relatives' fate) in a second system, tls_tracer.** FAIL.
+  - *Power (power.py mean_power, effect 0.084 from C14-S2 on petracer_embryo:A, one-sided alpha 0.025).* Partition A holds 5 units of 218, 372, 196, 304 and 27 cells with an allele (c17p10_s0b.json). Under the C15 size gate (>= 200 leaves), 3 or 4 units are usable.
+    - At C15's between-host sd of 0.093 (C15-S1), power is 0.35 (3 units), 0.44 (4 units) and 0.52 (5 units).
+    - Only C14's embryo sd of 0.0374 gives a pass (0.97 or more), but that came from whole embryos about 10 times larger than these units.
+    - 0.8 at 4 units needs a per-unit sd of 0.06 or less. Only a train fit could measure that sd, which is the C15-S1 route, and that route ended underpowered.
+  - *Effect.* C14's effect rises with stage and is about 0 at E8.0 (C14-S2). These structures are early-stage, so 0.084 is a best case.
+  - *Novelty, claims level only (abstract of doi 10.1016/j.devcel.2024.03.024, the GSE220949 source).* The source reports subtle progenitor transcriptional signatures tied to recent differentiation, so the claim is partly published for this set. It also reports maturation toward the neural fate, which is H-D (dont_repropose).
+  - *Not checked, because the stop came first:* tree validity, and the label join.
+- **Other unspent assets checked:**
+  - *C10 reopen condition.* GSE223003 was last updated 2024-02-13, so no per-barcode variant calls have been added. The condition is not met, and resistrace B/C stay sealed.
+  - *C9 LSK chromatin test.* C9-S3 found no power rescue (best 0.71 on C). Relaxing the unit definition would be a forking path. It stays unrun.
+  - *lsc_larry A/B/C.* Simulated power is 0.98 per partition (C12-S2), but there is no novel question yet. This is a question gap, not a data gap.
+  - *Gastruloid lineage review (doi 10.1016/j.gde.2026.102498, 33 references).* Every lineage-recorder or competition data set it cites is already in the project's log or gap maps: GSE117542, tls_tracer, DNA Typewriter, the CRISPR lineage mouse line, the fluctuation-test source and mosaic gastruloids.
+- **Verdict:** no option passes. No candidate is open.
