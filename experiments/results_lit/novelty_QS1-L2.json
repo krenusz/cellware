@@ -1,0 +1,547 @@
+{
+ "step": "QS1-L2",
+ "date": "2026-11-24",
+ "concept": [
+  {
+   "query": "split clone transplantation",
+   "matches": 128,
+   "top": [
+    {
+     "title": "Efficient genome editing in plants using a CRISPR/Cas system",
+     "year": 2013,
+     "cites": 1233,
+     "doi": "10.1038/cr.2013.114"
+    },
+    {
+     "title": "Polylox barcoding reveals haematopoietic stem cell fates realized in vivo",
+     "year": 2017,
+     "cites": 472,
+     "doi": "10.1038/nature23653"
+    },
+    {
+     "title": "A pseudogene homologous to mouse transplantation antigens: Transplantation antigens are encoded by eight exons that correlate with protein domains",
+     "year": 1981,
+     "cites": 319,
+     "doi": "10.1016/0092-8674(81)90175-6"
+    },
+    {
+     "title": "A Brief History of Geriatrics",
+     "year": 2004,
+     "cites": 221,
+     "doi": "10.1093/gerona/59.11.1132"
+    },
+    {
+     "title": "Generation of induced pluripotent stem cells from bovine embryonic fibroblast cells",
+     "year": 2011,
+     "cites": 158,
+     "doi": "10.1038/cr.2011.125"
+    },
+    {
+     "title": "Cyclophosphamide-Induced Immunological Tolerance: an Overview",
+     "year": 1996,
+     "cites": 144,
+     "doi": "10.1016/s0171-2985(96)80033-7"
+    },
+    {
+     "title": "Squaring the circle of selection and allocation in liver transplantation for HCC: An adaptive approach",
+     "year": 2016,
+     "cites": 135,
+     "doi": "10.1002/hep.28420"
+    },
+    {
+     "title": "SPLIT TOLERANCE INDUCED BY ORTHOTOPIC LIVER TRANSPLANTATION IN MICE1",
+     "year": 1994,
+     "cites": 125,
+     "doi": "10.1097/00007890-199407150-00001"
+    },
+    {
+     "title": "Cypripedium calceolus L.",
+     "year": 1999,
+     "cites": 122,
+     "doi": "10.1046/j.1365-2745.1999.00407.x"
+    },
+    {
+     "title": "Approach to renal biopsy",
+     "year": 2003,
+     "cites": 83,
+     "doi": "10.1016/j.ajkd.2003.08.001"
+    },
+    {
+     "title": "A simple and reliable protocol for long-term culture of murine bone marrow stromal (mesenchymal) stem cells that retained their in vitro and in vivo stemness in long-term culture",
+     "year": 2019,
+     "cites": 42,
+     "doi": "10.1186/s12575-019-0091-3"
+    },
+    {
+     "title": "TREC-IN: gene knock-in genetic tool for genomes cloned in yeast",
+     "year": 2014,
+     "cites": 39,
+     "doi": "10.1186/1471-2164-15-1180"
+    },
+    {
+     "title": "Strategies for the production of genetically identical monkeys by embryo splitting",
+     "year": 2004,
+     "cites": 30,
+     "doi": "10.1186/1477-7827-2-38"
+    }
+   ]
+  },
+  {
+   "query": "single stem cell culture transplantation",
+   "matches": 2699,
+   "top": [
+    {
+     "title": "Investigation of multipotent postnatal stem cells from human periodontal ligament",
+     "year": 2004,
+     "cites": 3997,
+     "doi": "10.1016/s0140-6736(04)16627-0"
+    },
+    {
+     "title": "Stem Cell Properties of Human Dental Pulp Stem Cells",
+     "year": 2002,
+     "cites": 2387,
+     "doi": "10.1177/154405910208100806"
+    },
+    {
+     "title": "Direct isolation of human central nervous system stem cells",
+     "year": 2000,
+     "cites": 2050,
+     "doi": "10.1073/pnas.97.26.14720"
+    },
+    {
+     "title": "Long-Term Culture of Genome-Stable Bipotent Stem Cells from Adult Human Liver",
+     "year": 2014,
+     "cites": 1765,
+     "doi": "10.1016/j.cell.2014.11.050"
+    },
+    {
+     "title": "Substrate Elasticity Regulates Skeletal Muscle Stem Cell Self-Renewal in Culture",
+     "year": 2010,
+     "cites": 1765,
+     "doi": "10.1126/science.1191035"
+    },
+    {
+     "title": "In vitro expansion of single Lgr5+ liver stem cells induced by Wnt-driven regeneration",
+     "year": 2013,
+     "cites": 1694,
+     "doi": "10.1038/nature11826"
+    },
+    {
+     "title": "Mesenchymal stem cells",
+     "year": 2000,
+     "cites": 1674,
+     "doi": "10.1016/s0301-472x(00)00482-3"
+    },
+    {
+     "title": "Bone marrow osteogenic stem cells: in vitro cultivation and transplantation in diffusion chambers",
+     "year": 1987,
+     "cites": 1315,
+     "doi": "10.1111/j.1365-2184.1987.tb01309.x"
+    },
+    {
+     "title": "Marrow stromal stem cells",
+     "year": 1988,
+     "cites": 989,
+     "doi": "10.1242/jcs.1988.supplement_10.5"
+    },
+    {
+     "title": "Niche-Independent Symmetrical Self-Renewal of a Mammalian Tissue Stem Cell",
+     "year": 2005,
+     "cites": 980,
+     "doi": "10.1371/journal.pbio.0030283"
+    },
+    {
+     "title": "Functional engraftment of colon epithelium expanded in vitro from a single adult Lgr5+ stem cell",
+     "year": 2012,
+     "cites": 901,
+     "doi": "10.1038/nm.2695"
+    },
+    {
+     "title": "Unlimited in vitro expansion of adult bi\u2010potent pancreas progenitors through the Lgr5/R\u2010spondin axis",
+     "year": 2013,
+     "cites": 804,
+     "doi": "10.1038/emboj.2013.204"
+    },
+    {
+     "title": "Adult Spinal Cord Stem Cells Generate Neurons after Transplantation in the Adult Dentate Gyrus",
+     "year": 2000,
+     "cites": 795,
+     "doi": "10.1523/jneurosci.20-23-08727.2000"
+    },
+    {
+     "title": "Marrow stromal stem cells",
+     "year": 2000,
+     "cites": 653,
+     "doi": "10.1172/jci10413"
+    },
+    {
+     "title": "An entire functional mammary gland may comprise the progeny from a single cell",
+     "year": 1998,
+     "cites": 650,
+     "doi": "10.1242/dev.125.10.1921"
+    },
+    {
+     "title": "Stem cells: the generation and maintenance of cellular diversity",
+     "year": 1989,
+     "cites": 628,
+     "doi": "10.1242/dev.106.4.619"
+    },
+    {
+     "title": "The efficacy of mesenchymal stem cells to regenerate and repair dental structures",
+     "year": 2005,
+     "cites": 614,
+     "doi": "10.1111/j.1601-6343.2005.00331.x"
+    }
+   ]
+  },
+  {
+   "query": "clonal expansion ex vivo engraftment",
+   "matches": 122,
+   "top": [
+    {
+     "title": "Long-term ex vivo haematopoietic-stem-cell expansion allows nonconditioned transplantation",
+     "year": 2019,
+     "cites": 467,
+     "doi": "10.1038/s41586-019-1244-x"
+    },
+    {
+     "title": "Endogenous Cardiac Stem Cells",
+     "year": 2007,
+     "cites": 283,
+     "doi": "10.1016/j.pcad.2007.03.005"
+    },
+    {
+     "title": "Linear polyamine copper chelator tetraethylenepentamine augments long-term ex vivo expansion of cord blood-derived CD34+ cells and increases their engraftment potential in NOD/SCID mice",
+     "year": 2004,
+     "cites": 135,
+     "doi": "10.1016/j.exphem.2004.03.002"
+    },
+    {
+     "title": "Lentiviral gene transfer and ex vivo expansion of human primitive stem cells capable of primary, secondary, and tertiary multilineage repopulation in NOD/SCID mice",
+     "year": 2002,
+     "cites": 89,
+     "doi": "10.1182/blood.v100.13.4391"
+    },
+    {
+     "title": "The Stoichiometric Production of IL-2 and IFN-\u03b3 mRNA Defines Memory T Cells That Can Self-Renew After Adoptive Transfer in Humans",
+     "year": 2012,
+     "cites": 77,
+     "doi": "10.1126/scitranslmed.3004306"
+    },
+    {
+     "title": "Clonal dynamics after allogeneic haematopoietic cell transplantation",
+     "year": 2024,
+     "cites": 70,
+     "doi": "10.1038/s41586-024-08128-y"
+    },
+    {
+     "title": "Polyclonal fluctuation of lentiviral vector\u2013transduced and expanded murine hematopoietic stem cells",
+     "year": 2011,
+     "cites": 62,
+     "doi": "10.1182/blood-2010-08-303222"
+    },
+    {
+     "title": "Limits of the Human-PBL-SCID Mice Model: Severe Restriction of the V\u03b2 T-Cell Repertoire of Engrafted Human T Cells",
+     "year": 1997,
+     "cites": 55,
+     "doi": "10.1182/blood.v89.1.329"
+    },
+    {
+     "title": "Photochemical Treatment with S-59 Psoralen and Ultraviolet A Light to Control the Fate of Naive or Primed T Lymphocytes In Vivo After Allogeneic Bone Marrow Transplantation",
+     "year": 1999,
+     "cites": 49,
+     "doi": "10.4049/jimmunol.163.9.5145"
+    },
+    {
+     "title": "HOXC4 homeoprotein efficiently expands human hematopoietic stem cells and triggers similar molecular alterations as HOXB4",
+     "year": 2012,
+     "cites": 48,
+     "doi": "10.3324/haematol.2011.051235"
+    },
+    {
+     "title": "Hematopoietic Capability of CD34+ Cord Blood Cells: A Comparison With CD34+ Adult Bone Marrow Cells",
+     "year": 2001,
+     "cites": 48,
+     "doi": "10.1007/bf02994007"
+    },
+    {
+     "title": "Intravenous injection of a foamy virus vector to correct canine SCID-X1",
+     "year": 2014,
+     "cites": 43,
+     "doi": "10.1182/blood-2013-11-538926"
+    },
+    {
+     "title": "Memory T Cells",
+     "year": 2007,
+     "cites": 42,
+     "doi": "10.1016/j.bbmt.2007.10.013"
+    },
+    {
+     "title": "MSCs in Hematopoietic Cell Transplantation",
+     "year": 2010,
+     "cites": 37,
+     "doi": "10.1016/j.bbmt.2010.11.026"
+    },
+    {
+     "title": "Purified Recombinant TAT-Homeobox B4 Expands CD34 + Umbilical Cord Blood and Peripheral Blood Progenitor Cells Ex Vivo",
+     "year": 2009,
+     "cites": 29,
+     "doi": "10.1089/ten.tec.2009.0163"
+    },
+    {
+     "title": "Functional Cloning of IGFBP-3 From Human Microvascular Endothelial Cells Reveals its Novel Role in Promoting Proliferation of Primitive CD34+CD38\u2212 Hematopoietic Cells In Vitro",
+     "year": 2003,
+     "cites": 29,
+     "doi": "10.3727/096504003108748375"
+    },
+    {
+     "title": "Ex vivo Expansion and Clonality of CD34+ Selected Cells from Bone Marrow and Cord Blood in a Serum-free Media",
+     "year": 2002,
+     "cites": 21,
+     "doi": "10.1016/s1016-8478(23)15117-x"
+    },
+    {
+     "title": "Optimizing hematopoietic stem cell engraftment: a novel role for thrombopoietin",
+     "year": 2002,
+     "cites": 19,
+     "doi": "10.1172/jci16376"
+    }
+   ]
+  },
+  {
+   "query": "barcoded clones culture transplantation",
+   "matches": 34,
+   "top": [
+    {
+     "title": "Cellular barcoding tool for clonal analysis in the hematopoietic system",
+     "year": 2010,
+     "cites": 293,
+     "doi": "10.1182/blood-2009-06-229757"
+    },
+    {
+     "title": "Cytokine Selection of MSC Clones with Different Functionality",
+     "year": 2019,
+     "cites": 29,
+     "doi": "10.1016/j.stemcr.2019.06.001"
+    },
+    {
+     "title": "Vittaria appalachiana continues to provide insight into the biology of ferns: A commentary on two studies recently published in American Journal of Botany",
+     "year": 2016,
+     "cites": 8,
+     "doi": "10.3732/ajb.1500323"
+    },
+    {
+     "title": "Comparative engraftment and clonality of macaque HSPCs expanded on human umbilical vein endothelial cells versus non-expanded cells",
+     "year": 2021,
+     "cites": 3,
+     "doi": "10.1016/j.omtm.2021.02.009"
+    },
+    {
+     "title": "Author response: Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
+     "year": 2022,
+     "cites": 1,
+     "doi": "10.7554/elife.66922.sa2"
+    },
+    {
+     "title": "3013 \u2013 DECODING THE EMBRYONIC ORIGINS OF HIGHLY ENGRAFTABLE \u201cSUPER\u201d HSCS",
+     "year": 2026,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2026.105850"
+    },
+    {
+     "title": "Tracking clonal dynamics, tolerance, and adverse events after CD45-ADC\u2013Conditioned autologous HSPC transplantation in rhesus macaques",
+     "year": 2025,
+     "cites": 0,
+     "doi": "10.1182/blood-2025-2312"
+    },
+    {
+     "title": "Chemical Modulation of ELF1 Binding to RUNX1 Target Genes Leads to Increased Hematopoietic Stem Cell Self-Renewal",
+     "year": 2024,
+     "cites": 0,
+     "doi": "10.1182/blood-2024-208498"
+    },
+    {
+     "title": "Author response: Directed differentiation of human iPSCs to functional ovarian granulosa-like cells via transcription factor overexpression",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.83291.sa2"
+    },
+    {
+     "title": "The eighth International Forum on Stem Cells: virtual meeting, October 20\u201321, 2022",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.1097/bs9.0000000000000147"
+    },
+    {
+     "title": "Decision letter: Directed differentiation of human iPSCs to functional ovarian granulosa-like cells via transcription factor overexpression",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.83291.sa1"
+    },
+    {
+     "title": "Editor's evaluation: Directed differentiation of human iPSCs to functional ovarian granulosa-like cells via transcription factor overexpression",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.7554/elife.83291.sa0"
+    },
+    {
+     "title": "3046 \u2013 DECIPHERING THE CONNECTIONS BETWEEN CELL STATE AND CELL FATE IN HUMAN FETAL HEMATOPOIESIS",
+     "year": 2022,
+     "cites": 0,
+     "doi": "10.1016/j.exphem.2022.07.102"
+    },
+    {
+     "title": "Decision letter: Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
+     "year": 2021,
+     "cites": 0,
+     "doi": "10.7554/elife.66922.sa1"
+    },
+    {
+     "title": "Editor's evaluation: Erythropoietin directly remodels the clonal composition of murine hematopoietic multipotent progenitor cells",
+     "year": 2021,
+     "cites": 0,
+     "doi": "10.7554/elife.66922.sa0"
+    }
+   ]
+  },
+  {
+   "query": "in vitro clonal fitness engraftment",
+   "matches": 19,
+   "top": [
+    {
+     "title": "The Stoichiometric Production of IL-2 and IFN-\u03b3 mRNA Defines Memory T Cells That Can Self-Renew After Adoptive Transfer in Humans",
+     "year": 2012,
+     "cites": 77,
+     "doi": "10.1126/scitranslmed.3004306"
+    }
+   ]
+  }
+ ],
+ "references": {
+  "source": "10.64898/2026.02.24.707683",
+  "n_references": 110,
+  "top": [
+   {
+    "title": "decoupleR: ensemble of computational methods to infer biological activities from omics data",
+    "year": 2022,
+    "cites": 1405,
+    "doi": "10.1093/bioadv/vbac016"
+   },
+   {
+    "title": "Benchmark and integration of resources for the estimation of human transcription factor activities",
+    "year": 2019,
+    "cites": 1285,
+    "doi": "10.1101/gr.240663.118"
+   },
+   {
+    "title": "Pooled CRISPR screening with single-cell transcriptome readout",
+    "year": 2017,
+    "cites": 1186,
+    "doi": "10.1038/nmeth.4177"
+   },
+   {
+    "title": "Differential abundance testing on single-cell data using k-nearest neighbor graphs",
+    "year": 2021,
+    "cites": 992,
+    "doi": "10.1038/s41587-021-01033-z"
+   },
+   {
+    "title": "Functionally Distinct Subsets of Lineage-Biased Multipotent Progenitors Control Blood Production in Normal and Regenerative Conditions",
+    "year": 2015,
+    "cites": 901,
+    "doi": "10.1016/j.stem.2015.05.003"
+   },
+   {
+    "title": "Lineage tracing on transcriptional landscapes links state to fate during differentiation",
+    "year": 2020,
+    "cites": 848,
+    "doi": "10.1126/science.aaw3381"
+   },
+   {
+    "title": "Combinatorial Transcriptional Control In Blood Stem/Progenitor Cells: Genome-wide Analysis of Ten Major Transcriptional Regulators",
+    "year": 2010,
+    "cites": 829,
+    "doi": "10.1016/j.stem.2010.07.016"
+   },
+   {
+    "title": "Platelet-biased stem cells reside at the apex of the haematopoietic stem-cell hierarchy",
+    "year": 2013,
+    "cites": 783,
+    "doi": "10.1038/nature12495"
+   },
+   {
+    "title": "Long-Term Propagation of Distinct Hematopoietic Differentiation Programs In Vivo",
+    "year": 2007,
+    "cites": 769,
+    "doi": "10.1016/j.stem.2007.05.015"
+   },
+   {
+    "title": "Identification of Regulatory Networks in HSCs and Their Immediate Progeny via Integrated Proteome, Transcriptome, and DNA Methylome Analysis",
+    "year": 2014,
+    "cites": 663,
+    "doi": "10.1016/j.stem.2014.07.005"
+   },
+   {
+    "title": "Biosynthesis and function of chondroitin sulfate",
+    "year": 2013,
+    "cites": 589,
+    "doi": "10.1016/j.bbagen.2013.06.006"
+   },
+   {
+    "title": "Diverse and heritable lineage imprinting of early haematopoietic progenitors",
+    "year": 2013,
+    "cites": 490,
+    "doi": "10.1038/nature12013"
+   },
+   {
+    "title": "Hierarchically related lineage-restricted fates of multipotent haematopoietic stem cells",
+    "year": 2018,
+    "cites": 469,
+    "doi": "10.1038/nature25455"
+   },
+   {
+    "title": "Long-term ex vivo haematopoietic-stem-cell expansion allows nonconditioned transplantation",
+    "year": 2019,
+    "cites": 467,
+    "doi": "10.1038/s41586-019-1244-x"
+   },
+   {
+    "title": "Single-cell mapping of lineage and identity in direct reprogramming",
+    "year": 2018,
+    "cites": 409,
+    "doi": "10.1038/s41586-018-0744-4"
+   },
+   {
+    "title": "Single-cell lineage tracing unveils a role for TCF15 in haematopoiesis",
+    "year": 2020,
+    "cites": 290,
+    "doi": "10.1038/s41586-020-2503-6"
+   },
+   {
+    "title": "Dynamic Gene Regulatory Networks Drive Hematopoietic Specification and Differentiation",
+    "year": 2016,
+    "cites": 281,
+    "doi": "10.1016/j.devcel.2016.01.024"
+   },
+   {
+    "title": "Molecular Cloning and Expression of a Human Chondroitin Synthase",
+    "year": 2001,
+    "cites": 243,
+    "doi": "10.1074/jbc.m106871200"
+   },
+   {
+    "title": "The Branching Point in Erythro-Myeloid Differentiation",
+    "year": 2015,
+    "cites": 234,
+    "doi": "10.1016/j.cell.2015.11.059"
+   },
+   {
+    "title": "Fgd5 identifies hematopoietic stem cells in the murine bone marrow",
+    "year": 2014,
+    "cites": 215,
+    "doi": "10.1084/jem.20130428"
+   }
+  ]
+ },
+ "engine": "openalex"
+}

@@ -105,7 +105,9 @@ PARTITIONED = {
         "files": ["15 Zenodo 18444428 matrices, sha256 in data/ext_lsc_larry/SHA256SUMS", "clone_map_d20.tsv"],
         "sealed_on": "2026-11-14",
         "prior_exposure": "C12-S0: feature/cell structure; per-partition D20 unit counts (>= 3 cells); pooled assigned/ambiguous cell counts per sample; TRAIN-only presence/size of D20 clones in later samples; preprint design text (1,375 clones >= 3 cells "
-                          "ex vivo, 160 in vivo, ~13 clones/mouse in chemo); no figures/outcomes read",
+                          "ex vivo, 160 in vivo, ~13 clones/mouse in chemo); no figures/outcomes read; QS1-L2-P1 (2026-11-24): the source abstract via the preprint-server API, "
+                          "claims level (it states that clonal programs are linked with ex vivo self-renewal, in vivo initiation and treatment response); "
+                          "full text not reached (HTTP 520)",
     },
     "petracer_embryo": {
         "salt": "cellware-petracer-embryo-v1",
