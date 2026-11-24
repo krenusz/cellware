@@ -28,7 +28,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from partitions import balanced_split  # noqa: E402
 
-OUT = HERE / "results_c17" / "c17p10_s0.json"
+OUT = HERE / "results_c17" / "c17p10_s0b.json"
 GEO = "https://ftp.ncbi.nlm.nih.gov/geo/samples"
 MAX_CLADE, MIN_ARM, MIN_PAIRS = 300, 4, 30
 JOIN_FLOOR, MAX_SINGLE_CELLS = 0.30, 20000
@@ -42,6 +42,33 @@ SET2 = {  # unit label -> file name (GSM is the prefix)
     "TLS2": "GSM7744223_AM-DNA-098_allele_table.txt.gz",
     "pool": "GSM7744224_AM-DNA-258_allele_table.txt.gz",
     "multiseq": "GSM7744226_AM-DNA-197_MultiSeqBC.tsv.gz",
+}
+FROZEN = {  # split map from run 45405214801 (drawn from cell counts only); always used
+    "TLS1": "C",
+    "TLS2": "B",
+    "pool:Bar1": "A",
+    "pool:Bar10": "C",
+    "pool:Bar11": "C",
+    "pool:Bar12": "A",
+    "pool:Bar13": "C",
+    "pool:Bar14": "train",
+    "pool:Bar15": "train",
+    "pool:Bar16": "train",
+    "pool:Bar18": "train",
+    "pool:Bar19": "B",
+    "pool:Bar2": "train",
+    "pool:Bar20": "B",
+    "pool:Bar21": "B",
+    "pool:Bar22": "train",
+    "pool:Bar23": "C",
+    "pool:Bar24": "A",
+    "pool:Bar3": "train",
+    "pool:Bar4": "B",
+    "pool:Bar5": "A",
+    "pool:Bar6": "train",
+    "pool:Bar7": "train",
+    "pool:Bar8": "A",
+    "pool:Bar9": "train",
 }
 NOCALL = {"", "na", "nan", "none", "doublet", "negative", "unassigned", "uncalled"}
 
@@ -122,13 +149,30 @@ def read_multiseq(path):
     return out
 
 
-def read_set2_table(path, keep=None):
+def read_cell_ids(path):
+    """Distinct cell ids only (no site tokens parsed)."""
+    return {norm_cell(r["cellBC"]) for r in _rows(path)}
+
+
+def read_set2_table(path, keep=None, tally=None, unit_of=None):
     """Allele table -> cell_states, cell_group, n_cells. Optionally restricted to cells in `keep`.
     State per (cell, (intBC, site)) = UMI-majority allele; ties -> missing; 'None' -> '0'."""
-    return states_from_rows(_rows(path), keep)
+    return states_from_rows(_rows(path), keep, tally, unit_of)
 
 
-def states_from_rows(rows, keep=None):
+def classify(tok):
+    """Strip brackets; returns (state or None, class)."""
+    t = tok.replace("[", "").replace("]", "").strip()
+    if t == "":
+        return None, "empty"
+    if t == "None":
+        return "0", "unedited"
+    if ":" in t:
+        return t, "edited"
+    return None, "other"
+
+
+def states_from_rows(rows, keep=None, tally=None, unit_of=None):
     num, sets = collections.defaultdict(float), collections.defaultdict(set)
     grp_w = collections.defaultdict(float)
     cells = set()
@@ -145,10 +189,11 @@ def states_from_rows(rows, keep=None):
             w, numeric = 1.0, False
         grp_w[(c, str(r.get("lineageGrp", "")))] += w
         for site, col in enumerate(("r1", "r2", "r3")):
-            a = str(r.get(col, "")).strip()
-            if a in ("", "NA", "nan"):
+            a, cls = classify(str(r.get(col, "")))
+            if tally is not None:
+                tally[unit_of(c) if unit_of else "all"][cls] += 1
+            if a is None:
                 continue
-            a = "0" if a == "None" else a
             k = (c, r["intBC"], site, a)
             if numeric:
                 num[k] += w
@@ -177,7 +222,7 @@ def states_from_rows(rows, keep=None):
 
 
 # ---------------------------------------------------------------- tree
-def build_tree(cell_states):
+def build_tree(cell_states, placed=None):
     """Greedy tree. cell_states: {cell: {char: state}}. Returns edges {node: [children]}; terminal nodes with
     several cells are polytomies whose children are the cells. Iterative."""
     edges, counter = {}, [0]
@@ -232,6 +277,8 @@ def build_tree(cell_states):
                     for f, m in zip(freq, (c1, c2), strict=True)
                 )
                 (c1 if s1 > s2 else c2).append(c)
+                if placed is not None:
+                    placed.add(c)
         stack.append((sorted(c2), name))
         stack.append((sorted(c1), name))
     return {"edges": edges, "root": root}
@@ -277,14 +324,14 @@ def pairs_of(tree, lab):
     return out
 
 
-def unit_pairs(states, group):
+def unit_pairs(states, group, placed=None):
     """Trees within lineage group; returns list of pairs over all groups of one unit."""
     by_g = collections.defaultdict(dict)
     for c, s in states.items():
         by_g[group.get(c, "")][c] = s
     out = []
     for g in sorted(by_g):
-        out += pairs_of(build_tree(by_g[g]), {c: c for c in by_g[g]})
+        out += pairs_of(build_tree(by_g[g], placed), {c: c for c in by_g[g]})
     return out
 
 
@@ -352,16 +399,15 @@ def _embryo(name):
 def run_set2(tmp, hashes):
     files = {k: fetch(n, tmp, hashes) for k, n in SET2.items()}
     ms = read_multiseq(files["multiseq"])
-    data, joins = {}, {}
-    for key in ("TLS1", "TLS2"):
-        states, group, cells, ibs = read_set2_table(files[key])
-        if len(cells) > MAX_SINGLE_CELLS:
+    ids, joins = {}, {}
+    for key in ("TLS1", "TLS2"):  # enumerate: cell ids only
+        ids[key] = read_cell_ids(files[key])
+        if len(ids[key]) > MAX_SINGLE_CELLS:
             raise RuntimeError(
-                f"{key}: {len(cells)} cells > {MAX_SINGLE_CELLS} (unfiltered table?)"
+                f"{key}: {len(ids[key])} cells > {MAX_SINGLE_CELLS} (unfiltered table?)"
             )
-        data[key] = (states, group, cells, ibs, "single")
-        joins[key] = {"allele_cells": len(cells)}
-    pstates, pgroup, pcells, pibs = read_set2_table(files["pool"])
+        joins[key] = {"allele_cells": len(ids[key])}
+    pcells = read_cell_ids(files["pool"])
     called = {c for c in pcells if c in ms}
     frac = len(called) / max(len(pcells), 1)
     joins["pool"] = {
@@ -375,28 +421,56 @@ def run_set2(tmp, hashes):
     for c in called:
         by[ms[c]].add(c)
     for g, cs in by.items():
-        data[f"pool:{g}"] = ({c: pstates[c] for c in cs if c in pstates}, pgroup, cs, pibs, "pool")
-    # 1. enumerate  2. seal (before any tree code)
-    sizes = {u: len(d[2]) for u, d in data.items() if len(d[2]) > 0}
-    strata = {u: data[u][4] for u in sizes}
-    parts = balanced_split(sizes, SALT, strata)
+        ids[f"pool:{g}"] = cs
+    sizes = {u: len(c) for u, c in ids.items() if len(c) > 0}
+    strata = {u: ("pool" if u.startswith("pool:") else "single") for u in sizes}
+    redrawn = balanced_split(sizes, SALT, strata)
+    if set(sizes) != set(FROZEN):
+        raise RuntimeError("unit set differs from the frozen split map")
+    parts = dict(FROZEN)
     res = {
         "n_multiseq_groups": len(by),
         "join": joins,
         "unit_cells": sizes,
         "split_map": parts,
+        "recomputed_split_agrees_with_frozen": redrawn == parts,
         "split_sizes": dict(collections.Counter(parts.values())),
     }
-    # 3. drop non-train units, 4. trees + pairs on train only
+    # drop non-train units before any site token is parsed
     train = sorted(u for u, p in parts.items() if p == "train")
+    keep = {c: u for u in train if u.startswith("pool:") for c in ids[u]}
+    tally = collections.defaultdict(collections.Counter)
+    pstates, pgroup, _, pibs = read_set2_table(files["pool"], set(keep), tally, keep.get)
+    data = {
+        u: ({c: pstates[c] for c in ids[u] if c in pstates}, pgroup, ids[u], pibs)
+        for u in train
+        if u.startswith("pool:")
+    }
+    for key in ("TLS1", "TLS2"):
+        if parts[key] == "train":
+            st, gr, _, ib = read_set2_table(files[key], None, tally, lambda c, k=key: k)
+            data[key] = (st, gr, ids[key], ib)
+    tot = collections.Counter()
+    for u in train:
+        tot.update(tally[u])
+    res["token_tally_train"] = {"total": dict(tot), "per_unit": {u: dict(tally[u]) for u in train}}
+    if tot["other"] > 0 or tot["unedited"] == 0:
+        res["error"] = "token guard failed"
+        raise RuntimeError(f"token guard failed: {dict(tot)}")
     train_units, tp, alleles_seen = {}, 0, collections.defaultdict(set)
     for u in train:
-        states, group, cells, ibs, _ = data[u]
-        pr = unit_pairs(states, group)
+        states, group, cells, ibs = data[u]
+        placed = set()
+        pr = unit_pairs(states, group, placed)
         tp += len(pr)
-        train_units[u] = {**unit_stats(states, ibs, cells), "disjoint_pairs": len(pr)}
-        for s in states.values():
-            for (ib, site), a in s.items():
+        train_units[u] = {
+            **unit_stats(states, ibs, cells),
+            "disjoint_pairs": len(pr),
+            "lineage_groups": len({group.get(c, "") for c in cells}),
+            "share_cells_placed_by_missing_rule": len(placed) / max(len(cells), 1),
+        }
+        for s_ in states.values():
+            for (ib, site), a in s_.items():
                 if a != "0":
                     alleles_seen[(ib, site, a)].add(u)
     res["train_units"] = train_units
@@ -462,9 +536,9 @@ def _toy_rows():
             r = dict(
                 cellBC=cell,
                 intBC=ib,
-                r1=vals,
-                r2="None",
-                r3="None",
+                r1="[None]" if vals == "None" else f"[111:{vals}]",
+                r2="[None]",
+                r3="",
                 lineageGrp=grp,
                 UMI=str(umi),
                 readCount="9",
@@ -508,9 +582,9 @@ def _toy_rows():
         dict(
             cellBC="MAJ",
             intBC="IB1",
-            r1="j",
-            r2="None",
-            r3="None",
+            r1="[111:j]",
+            r2="[None]",
+            r3="",
             lineageGrp="G5",
             UMI="1",
             readCount="1",
@@ -522,9 +596,9 @@ def _toy_rows():
         dict(
             cellBC="TIE",
             intBC="IB1",
-            r1="j",
-            r2="None",
-            r3="None",
+            r1="[111:j]",
+            r2="[None]",
+            r3="",
             lineageGrp="G5",
             UMI="3",
             readCount="1",
@@ -536,8 +610,16 @@ def _toy_rows():
 
 def selftest():
     rows, planted = _toy_rows()
-    states, group, cells, ibs = states_from_rows(rows)
-    assert states["MAJ"][("IB1", 0)] == "k", states["MAJ"]  # majority by UMI sum: k has 3, j has 1
+    tally = collections.defaultdict(collections.Counter)
+    states, group, cells, ibs = states_from_rows(rows, None, tally)
+    tl = tally["all"]
+    assert tl["other"] == 0 and tl["unedited"] > 0 and tl["edited"] > 0 and tl["empty"] > 0, tl
+    assert classify("[None]") == ("0", "unedited") and classify("")[1] == "empty"
+    assert classify("[155:19D]") == ("155:19D", "edited") and classify("xyz")[1] == "other"
+    assert len(FROZEN) == 25 and collections.Counter(FROZEN.values())["train"] == 10
+    assert states["MAJ"][("IB1", 0)] == "111:k", states[
+        "MAJ"
+    ]  # majority by UMI sum: k has 3, j has 1
     # MAJ k=3 vs j=1; TIE k=3 vs j=3 -> missing
     assert ("IB1", 0) not in states["TIE"], states["TIE"]
     assert states["G4_0"][("IB1", 0)] == "0"
@@ -556,7 +638,9 @@ def selftest():
     # missing-character cell stays in its block
     assert any("G1_ap0_0" in a or "G1_ap0_0" in b for a, b in sets)
     # whole unit: G2 -> 2 pairs, G3/G4/G5 -> none; groups never mixed
-    allp = unit_pairs(states, group)
+    placed = set()
+    allp = unit_pairs(states, group, placed)
+    assert "G1_ap0_0" in placed
     assert len(allp) == 6, len(allp)
     for _, la, lb in allp:
         assert len({c.split("_")[0] for c in la + lb}) == 1, "groups mixed"
