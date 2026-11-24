@@ -107,14 +107,18 @@ def read_allele_cells(path, allele_col):
 
 
 def read_multiseq(path):
-    """cell -> MULTI-seq group, dropping Doublet / Negative / uncalled."""
+    """cell -> MULTI-seq call (Bar1..), dropping Doublet / Negative / uncalled."""
     out = {}
+    col = None
     for r in _rows(path):
-        call = str(r.get("final.calls.rescued", "")).strip().lower()
-        grp = str(r.get("MultiSeqGroup", "")).strip()
-        if call in NOCALL or grp.lower() in NOCALL:
+        if col is None:
+            col = next((c for c in ("final.calls.rescued", "final.calls") if c in r), None)
+            if col is None:
+                raise RuntimeError(f"no call column in MULTI-seq file: {list(r)}")
+        call = str(r.get(col, "")).strip()
+        if call.lower() in NOCALL:
             continue
-        out[norm_cell(r["cellBC"])] = grp
+        out[norm_cell(r["cellBC"])] = call
     return out
 
 
@@ -377,6 +381,7 @@ def run_set2(tmp, hashes):
     strata = {u: data[u][4] for u in sizes}
     parts = balanced_split(sizes, SALT, strata)
     res = {
+        "n_multiseq_groups": len(by),
         "join": joins,
         "unit_cells": sizes,
         "split_map": parts,
@@ -413,10 +418,18 @@ def main():
         selftest()
         return
     hashes = {}
-    with tempfile.TemporaryDirectory() as t1:
-        s1 = run_set1(t1, hashes)
-    with tempfile.TemporaryDirectory() as t2:
-        s2 = run_set2(t2, hashes)
+    res = {"sha256": hashes}
+    OUT.parent.mkdir(exist_ok=True)
+    try:
+        with tempfile.TemporaryDirectory() as t1:
+            s1 = run_set1(t1, hashes)
+        res["set_GSE117542"] = s1
+        with tempfile.TemporaryDirectory() as t2:
+            s2 = run_set2(t2, hashes)
+    except Exception as e:
+        res["error"] = str(e)
+        json.dump(res, open(OUT, "w", encoding="utf-8"), indent=1)
+        raise
     res = {
         "set_GSE117542": s1,
         "set_GSE220949": s2,
