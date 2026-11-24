@@ -13422,3 +13422,26 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Pre-flight: unit, readout and power are per question at Stage 3; used data first = the near-repeat gate; exposure = no new data read, abstracts logged to prior_exposure; literature = claims level; readout gate (H21) is checked per question from logged counts, and a question without them stops.
 - Practice: neutral wording, scanned with lit_gap.SENSITIVE before each commit; no outreach.
 - Compute: local reads of the log, partitions.py, results JSONs and lit/ files, plus Europe PMC abstract queries; no Actions run, because no data file is opened.
+- **QS1 stages 1-2: triage and frozen question list (2026-11-24, before any gate).** Counts come from two Haiku lookups of the log, partitions.py and the seal JSONs; no data file was opened.
+  - *Dropped, too few units on one partition:*
+    - raj_diffassay: 1 replicate per partition.
+    - raj_atac: 1 passage per partition.
+    - petracer_embryo: B has 3 embryos and C has 1; B power was 0.60 (C14-S5).
+    - tls_tracer: CAND-Y.
+    - germline_fish: 4 eligible fish per partition (CAND-I).
+    - growth12_host_v2: 5 hosts per partition (C15).
+    - raj_wnt: train has 12, 7 and 2 per hi, lo and bulk arm, so a sealed arm is likely under 3 units; sealed counts not in the log.
+  - *Dropped, outcome exposure:* gse291244_founders. The source's fate-bias categories for 26 clusters were read (prior_exposure).
+  - *Dropped, duplicate:* growth12_host (v2 is the same data).
+  - *Set aside, only C left (H13, needs Bence's verbatim OK):* celltag_lsk, celltag_reprog, raj_morph_0831. Not gated. The written-but-unrun chromatin test on celltag_lsk:C (log line ~10388) sits here.
+  - *Survivors with no question from the three permitted sources:*
+    - rf2020_clone: T-split' is published in kind, size concordance across recipients is a published sentence, and CAND-F failed.
+    - cortical_clone: T-cortical underpowered; CAND-E and CAND-G failed; C7 and C8 transfers are undefined (no sub-clones, no early time point).
+    - chspctrack: C7 and C8 already confirmed on A; T2 is DNR-HSPC-COND; a heritable-share row belongs to the blocked law family.
+    - resistrace: a B look would replicate C10 on the same set, which is not a transfer; its reopen condition is unmet (CAND-Y-P1).
+  - **Frozen questions (5):**
+    - **QS1-L1, lsc_larry (C8 transfer):** does a clone's D20 state, beyond size, predict its persistence at D40 ex vivo?
+    - **QS1-L2, lsc_larry (design contrast):** do a clone's sisters persisting at D40 ex vivo predict its presence in vivo, beyond D20 size and state? That is, does in vitro clone fitness carry to in vivo fitness, when the same clone is split across the two environments?
+    - **QS1-C1, crest_split_clone (design contrast):** is the in vivo vs organoid shift in a clone's cell-type composition clone-specific, beyond a shift shared by all clones and beyond sampling?
+    - **QS1-D1, dtt_founder (design contrast, not the memory family):** does a founder clade's first-cleavage half bias its cell-type composition?
+    - **QS1-C2, crest_split_clone (C7 transfer):** is a clone's cell-type composition heritable between its two arms, beyond regional identity? Possible near-repeat of C17-S1C-S1; gate 1 decides.
