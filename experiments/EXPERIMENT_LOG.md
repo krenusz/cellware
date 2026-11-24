@@ -13504,3 +13504,23 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - ***Decision:*** L2 is not cleared. No train-only estimate is offered. QS1-L2 stays parked; reopen only on a full-text claims read that states nothing about it.
   - *Stop record:* on this step the Opus 5.5 session was stopped twice by the safety classifier (a delegation call to a web-fetch agent, then the reroute to the data lane). The read was finished on Sonnet 5.5. See E:\classifier_stop_report_2026-11-24.md.
 - **QS1-L2-P1 check 2, retry (2026-11-24, Bence: "go again"; Sonnet data lane):** both bioRxiv full-text URLs returned HTTP 429 (rate limited). Stopped with no further retries; nothing was extracted, and no repo file was touched by the lane. L2 stays parked and the source's D40 claims stay unchecked. The next try is no earlier than one day later, on Sonnet.
+
+## CAND-Z-P1: data gate of the 2026 mosaic-gastruloid competition study (2026-11-24; Bence: "Gate mosaic study")
+- **Serves: C12 CLOSED** (a candidate question for the mixing family, related C4 and CAND-Y). Lookups only: GEO metadata and a code repository listing. No data file was opened, no partition was read, and no statistic was computed.
+- **Question gated:** is there public data with one row or image per gastruloid and a mosaic composition, so that a mixing readout (composition to outcome) could be tested on a unit of at least 3 per arm (H22)?
+- **Result: FAIL at the data gate.**
+  - *Sequencing (GSE294530, 69 samples).* Sample titles suggest sorted cell pools, not single gastruloids; this is title-based only. The GEO text page returned a reCAPTCHA, so the design text and the supplementary file names were not seen. No lineage or clone labels are described in anything read.
+  - *Code repository.* Code only: 13,536 B of data-like files in total, licence null, no per-gastruloid table or image.
+  - *Imaging and per-gastruloid data.* The data statement gives them on request. Per project rule, "on request" counts as absent and asking would be outreach.
+- **Exposure (logged here; no sealed set involved):** the data statement, GEO metadata and the unit counts in figure legends (48 gastruloids per condition from 3 experiments; 8; 12; 3 to 4 experiments). The source-data files of the paper were not opened.
+- **Decision:** not a candidate. Reopen only if a per-gastruloid table or image set appears in a public repository or in the GEO supplementary files, with a licence.
+- **Pre-flight:**
+  1. Unit: gastruloid; none public.
+  2. Readout: composition and outcome per gastruloid; none public.
+  3. Used data first: C4 (mixing rescue) and CAND-Y checked for overlap; no overlap.
+  4. Power: not applicable, no data.
+  5. Exposure: legend unit counts only, logged above.
+  6. Literature: abstract and data statement only.
+  7. Readout gate: failed, as above.
+- Practice: neutral wording, scanned with lit_gap.SENSITIVE; no outreach.
+- Compute: none (metadata lookups on the local machine, two lookup-lane agents).
