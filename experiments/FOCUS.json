@@ -43,6 +43,7 @@
   "novelty_units.py",
   "novelty_fulltext.py",
   "morph_scan.py",
+  "morph_papers.py",
   "c13s0_format.py",
   "c14s0_gate.py",
   "c14s3_region.py",
