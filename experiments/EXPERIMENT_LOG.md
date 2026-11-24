@@ -13445,3 +13445,20 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - **QS1-C1, crest_split_clone (design contrast):** is the in vivo vs organoid shift in a clone's cell-type composition clone-specific, beyond a shift shared by all clones and beyond sampling?
     - **QS1-D1, dtt_founder (design contrast, not the memory family):** does a founder clade's first-cleavage half bias its cell-type composition?
     - **QS1-C2, crest_split_clone (C7 transfer):** is a clone's cell-type composition heritable between its two arms, beyond regional identity? Possible near-repeat of C17-S1C-S1; gate 1 decides.
+- **QS1 stage 3: gates (2026-11-24).**
+  - *Gate 1 (near-repeat):*
+    - **QS1-L1 FAIL:** a repeat of C12-S1, which already fitted the D40 ex vivo readout on train (delta AUC 0.056; power 0.24-0.25 per partition).
+    - **QS1-C2 FAIL:** a repeat of C17-S1C-S1 (the arm-1 to arm-2 composition predictability is that estimand).
+    - **QS1-C1 FAIL, at the readout (H21), not near-repeat:** each arm's type set is collapsed separately (C17-S1C-S1 readout rule: at most 8 types per arm, the rest pooled), and arm 1 holds progenitor states (limits line ~12491). So a per-clone "shift" has no common type space. It also rests on about 4 cells per arm per clone (median, amendment 2 result). Not verified against the train label sets.
+    - **QS1-D1 FAIL, H22, reached out of order:** the first-cleavage half is the assignment unit, and one embryo gives 1 unit per arm (log ~12687). Power was not computed.
+    - **QS1-L2 passes gate 1** (related: C12, CAND-C).
+  - *Gate 2 (power), QS1-L2:* **not passed.** No used result gives the effect (the association between D40 ex vivo persistence and in vivo presence beyond size and state). The minimum detectable rho at power 0.8 (power.rho_power, alpha 0.025 one-sided) is 0.184 to 0.186 at 226-232 clones and 0.161 to 0.162 at 298-304 clones (A-C under the two C12 linkage rules).
+  - *Checks for whether a train-only step is worth offering (after gate 2; verdict unchanged):*
+    - **Design:** D20 ex vivo and D20 in vivo are parallel samples of one transduced pool (C12-S0 sample table). So the D20 ex vivo size is measured after the split. The split day is not stated in the text read.
+    - **Readout:** D40 ex vivo drops 80% of cells as ambiguous under the drop rule (log ~11068). Any step would use the highest-UMI rule of C12-S1 (train: 158 D40 positives).
+    - **Confound:** true abundance drives presence in both arms, so a neutral-sampling, size-only synthetic null with sampling noise must open any step, and the step stops if false positives exceed the limit.
+    - **Novelty (lit/novelty/QS1-L2.md):** partly published in kind (split-clone ex vivo vs in vivo designs exist). The source's D40 claims are unchecked.
+  - *Triage corrections:*
+    - raj_wnt is **undetermined**, not dropped: its sealed per-arm counts are not in the log, and getting them is a data step that needs Bence's OK.
+    - The celltag_lsk:C chromatin test is not waiting only on H13: C9-S3 put its best power at 0.71 (no rescue).
+  - **QS1 verdict:** of the 5 questions from 3 sets, none passes. QS1-L2 is undetermined and parked: it needs a train effect estimate behind a synthetic null, plus a claims check of the source's D40 sample. Four surviving sets gave no question from the three permitted sources. Three sets are held under H13 (only C left), and raj_wnt is undetermined.
