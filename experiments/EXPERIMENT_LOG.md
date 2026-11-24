@@ -13467,3 +13467,33 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - *Design line, reworded.* "Parallel samples of one transduced pool" is inferred from D20 ex vivo state predicting D20 in vivo presence of the same barcoded clones (C12-S1). The C12-S0 sample table holds cell counts only, and the split day is not stated in anything read.
   - *Gate order.* The L2 novelty check ran outside the pre-registered order (after gate 2 had failed), and no amendment was logged first. It is informational only.
   - *resistrace scope.* Only a B replication of C10 was considered. C7 and C8 transfers and design contrasts for this set were not drafted, so "no question" covers the replication only.
+
+## QS1-L2-P1: the two checks that decide QS1-L2, a classic novelty search and a claims-level source read (pre-registered 2026-11-24; Bence: "Yes, L2 deciders")
+- **Serves: C12 CLOSED** (QS1: a novel question for the unspent lsc_larry reserve).
+- **Bence's OK** covers both checks, including the claims-level read of the lsc_larry source, which adds exposure on a sealed set (the report listed that read as needing his OK).
+- **Order:** the search runs first. If it finds published-in-kind work, L2 fails and the source read is skipped (no extra exposure).
+- **Check 1, classic search (H25):**
+  - Command: `novelty_search.py` on Actions, OpenAlex, citation-sorted, top 25 per phrasing, plus the source's reference list (sweeps/qs1_l2_novelty.txt).
+  - Phrasings, frozen; plain words, no quotes or wildcards; the first two are in the field's own words (split-clone and single-cell culture-then-transplant assays): "split clone transplantation", "single stem cell culture transplantation", "clonal expansion ex vivo engraftment", "barcoded clones culture transplantation", "in vitro clonal fitness engraftment".
+  - *Recall gate:* at least one of two known in-kind-adjacent papers appears in any top 25 or in the source references: Wilkinson et al. Nature 2019 (doi 10.1038/s41586-019-1244-x; single-cell-derived ex vivo expansion followed by transplantation) and Sakurai et al. Nature 2023 (doi 10.1038/s41586-023-05739-9; split-clone transplantation). The JSON is checked by script after the run. If neither appears, the search is invalid and novelty stays undetermined.
+  - *Filter count:* the tool drops titles that hit the neutral-wording filter. Dropped per phrasing = min(25, matches) - kept. If any title was dropped from a screened top 25, the verdict can be "partly" or "published" but never "not found". Queries are not reworded to avoid the filter.
+  - *"In kind" (fixed now):* any paper that relates one clone's behaviour in culture to the same clone's outcome after transplantation, in any stem-cell system. Screening is by title, then up to 10 abstracts.
+- **Check 2, source read (only if check 1 finds no in-kind paper):**
+  - Source: the preprint server's abstract API first, then the web-fetch agent, for the abstract, section headings, figure titles and conclusion sentences about the culture samples only. No numbers, panels, tables or verbatim text beyond one short quote.
+  - On a rate limit, Retry-After is honoured once; then "abstract only" is recorded and the read stops.
+  - Logged in partitions.lsc_larry prior_exposure in the same commit.
+  - *Fail:* the source states that clones' persistence in culture relates to their presence in vivo.
+- **Decision:**
+  - L2 fails if either check finds it published in kind.
+  - A train-only estimate (behind a size-only synthetic null with sampling noise) is offered only if recall passes, no in-kind paper is found, and the source states nothing about it.
+- **What used results already say about the readout:** the source legend gives a D20-to-D40 clone-size correlation of about 0.06; C12-S1 train delta AUC for D40 ex vivo is 0.056; 80% of D40 cells are ambiguous under the drop rule. A readout this noisy caps the association any step could observe, against a minimum detectable rho of 0.16 to 0.19 per partition.
+- **Pre-flight:**
+  1. Unit: none; no data read.
+  2. Readout: titles and abstracts.
+  3. Used data first: the QS1 weak search, C12-S1, C12-S2.md and CAND-C.
+  4. Power: not applicable.
+  5. Exposure: source claims, logged.
+  6. Literature: this step.
+  7. Readout gate: not applicable.
+- Practice: neutral wording, scanned with lit_gap.SENSITIVE on the sweep file and on every saved text; no outreach.
+- Compute: GitHub Actions run (sweeps/qs1_l2_novelty.txt); the source read is a single metadata fetch.
