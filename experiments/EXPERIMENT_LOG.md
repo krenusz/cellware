@@ -13303,3 +13303,39 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - **GSE220949 (mouse stem-cell trunk-like structures with a continuous recorder, 2024): passes at metadata level.** Allele tables and single-cell expression for 2 single structures, a multiplexed pool and 3 explant pools with MULTI-seq sample barcodes, plus an ESC time course. Open question for S0: how many independent structures the pools hold.
   - **GSE341627 (whole-mouse prime-editing recorder, 2026): fails criterion 3.** Single-cell lineage data come from one animal (embryo 3; the other embryos have bulk amplicons only), so it cannot be sealed or resampled by unit.
 - **Next (needs Bence):** an S0 structure-only step on GSE117542 and GSE220949: counts of embryos or structures, cells with alleles, and disjoint sister pairs per unit, on the allele tables only. Expression matrices are not opened, and partitions are sealed by unit before any statistic.
+
+## C17-S1R-P10: S0 structure-only check of the two pluripotent leads (pre-registered 2026-11-24; Bence: "Yes, run S0")
+- **Serves: C12 CLOSED; C17-LAW** (third pluripotent system). Script c17p10_s0.py on Actions (sweeps/c17p10_s0.txt).
+- **Exposure before this entry:** for GSE117542, embryo3's allele table (header, 2 rows, row count) and the start and leaf count of its published tree. For GSE220949, the explant-pool-1 allele table (header, 2 rows, row count, lineage group values, number of distinct cells) and the explant-pool-1 MULTI-seq file (call values and counts). Also the GEO series and sample metadata. No expression or label file was read.
+- **Files read by the script:** allele tables, MULTI-seq call files and the per-sample cell-id lists (GSE117542 SeuratBarcodes, a list of cell ids only), with sha256 recorded. Expression matrices, cluster labels and any fate column are not opened.
+- **Units:**
+  - GSE117542: embryos. embryo2a and 2b count as one unit, because GEO metadata do not separate them and the source published a single tree for "embryo2". That gives 7 units.
+  - GSE220949: one structure is one single-structure sample (GSM7744222, TLS #1; GSM7744223, TLS #2; cells are all rows of their allele tables, which hold called cells only, checked below), or one MULTI-seq group of the 24-structure pool (GSM7744224 allele table joined to the GSM7744226 MULTI-seq calls). "Doublet" and "Negative" calls and cells without a call are excluded.
+  - **Explants excluded** (decided now from the GEO protocol): their pools hold anterior pieces and posterior outgrowths of the same dissected structures, not whole separate structures, and no group-to-structure map is deposited. The bulk ESC time course and the lenti barcode file (GSM7744225) are excluded. The scRNA archives (GSM6831757, GSM6831759, GSM6831760, GSM7744227, GSM7744230, GSM7744233) are never opened.
+  - **Stratum:** by sample only (single structure vs pool). No group-to-condition (TLS vs TLSCL) map is deposited, and condition is never inferred from data.
+  - **Join check:** cell ids are compared without a "-1" suffix. The run stops with an error if fewer than 30% of pool allele-table cells carry a MULTI-seq call, if a single-structure allele table holds more than 20,000 distinct cells (an unfiltered table), or if fewer than 30% of GSE117542 allele-table cells are in the cell-id list.
+- **Seal before any pair count:** in one run, the script (1) enumerates units and cells with an allele per unit; (2) assigns partitions with partitions.balanced_split (salt "c17p10", strata as above) and saves the map in the results JSON (the set is added to partitions.py only after a pass); (3) drops non-train units before any tree code; (4) builds trees and counts pairs on train units only. Sealed units get cell counts only, and the public log prints counts only.
+- **Split arithmetic (balanced_split order train, train, A, B, C, C, B, A):** 6, 7 or 8 units give 2 train units; 9 gives 3. GSE117542 (7 units) therefore has 2 train embryos under the standard split. The decision is left to Bence before that set is sealed: no hand-built split. GSE117542 is enumerated but not sealed or counted in this run.
+- **Characters:**
+  - A character is (intBC, cut site). GSE117542 allele1 packs three sites separated by "_"; GSE220949 has r1, r2 and r3.
+  - "None" means unedited (state 0). An intBC absent from a cell is missing.
+  - The cell's state at a site is its UMI-majority allele; ties are set missing.
+- **Tree (greedy, fixed):**
+  - At each node, an eligible (character, non-zero state) is one carried by >= 2 cells there and by fewer than all cells there that observe that character. Pick the eligible one carried by the most cells; ties go to the smallest (intBC, site, state) string.
+  - Cells with that state go to child 1, cells with a different observed state to child 2. Cells missing that character join the child whose members share most of their other observed states (ties to child 2).
+  - Stop when no state is eligible (this includes nodes of identical cells, which end as one leaf node, a polytomy) or the node has fewer than 2 cells.
+  - For GSE220949, trees are built within unit and lineage group, never across structures.
+- **Counts per train unit:** cells with an allele, intBCs per cell (median), share of edited sites, and disjoint sister pairs by the C17-S1P picker (clade <= 300 cells, two largest children >= 4 cells each, smallest first, no shared cells). For GSE117542, cells are intersected with the cell-id list; for GSE220949, cells must carry a MULTI-seq call. The count is an upper bound until fate labels exist.
+- **Gate per set:** pass only if the standard split gives >= 3 train units with A, B and C >= 1 each, and train has >= 30 disjoint pairs. A failed set stops here.
+- **Descriptive only:** the share of (intBC, site, state) alleles seen in more than one train unit (recurrence; it sank the zebrafish gate).
+- **Selftest (offline):** a toy allele table with a planted tree, two founder groups, missing intBCs and a block of identical edited cells. The greedy tree must terminate, recover the planted sister pairs, and the picker must return them disjoint.
+- **Pre-flight:**
+  1. Unit: as above.
+  2. Readout: lineage alleles only, no fate labels.
+  3. Used data first: neither set was ever read by the project, apart from the exposure above.
+  4. Power: the pair-count gate.
+  5. Exposure: as above.
+  6. Literature: a table parameter, not a claim.
+  7. Readout gate: the label source (marker-based for GSE117542) is decided only after a pass, with Bence.
+- Practice: neutral wording; downloads in their own directory on the runner; no source data committed.
+- Compute: GitHub Actions run (sweeps/c17p10_s0.txt).
