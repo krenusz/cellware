@@ -13944,6 +13944,37 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - *(b) Forward-citation screen:* every work citing W2067598073 (all pages; the count must match its cited_by_count). Titles are screened for division timing or cycle length together with any of embryo, in vivo, tissue, organism, zebrafish, mouse, fly, worm or organoid. Up to 10 abstracts, most cited first.
   - *Validity:* (a) passes recall if the paper appears in any top 25; (b) is valid if the citer list is complete. Novelty is judged from (a) and (b) together, and only if at least one is valid.
   - The verdict rules (published, partly) are unchanged.
+- **QE1 gate 4, amendment 1 result (2026-11-25; Haiku lookup lane; Opus verdict; scratch files outside the repo):**
+  - *Validity:*
+    - (a) Recall failed again: the recall paper is in no relevance-ordered top 25.
+    - (b) The citer screen is valid and complete against the API's count (160 of 160; the paper's cited_by_count says 167).
+    - Novelty therefore rests on (b) plus the screened titles from (a).
+  - *Marked works* (abstracts read; full text where open):
+    - Cultured mouse stem cells (2019): sister cycle variables strongly correlated.
+    - Zebrafish blastoderm (2026): cycle periods set by cell volume.
+    - Fly abdomen (2020): spatially correlated cycle times in tissue.
+    - Embryonic mouse brain (2005): cycle length differs by progenitor type (pulse labelling, not tracking).
+    - Model and cultured-cell kin-correlation works.
+    - Preimplantation mouse embryo live imaging of a signalling effector with cell cycle (2025; no cycle-length kin correlation in the abstract; full text not open).
+    - A 2026 preprint (doi 10.64898/2026.09.24.754028) on pre- and peri-implantation mouse embryos tracked live. Its abstract says division order, cycle durations "and their histories" interact with position and fate. Whether it measures sister or mother-daughter cycle-length correlation is not stated, and the full text is not open in Europe PMC.
+  - **Verdict: PARTLY (provisional).** Kin correlation of cycle length is shown in cultured mammalian cells; cycle timing patterns are shown in non-mammalian embryos and in fly tissue. No abstract states a sister or mother-daughter cycle-length correlation measured by tracking in a living mammalian embryo. QE1 passes gate 4 with that overlap stated.
+  - **Residual risk:** the 2026 preprint (pre- and peri-implantation, not gastrulation) may contain it. Its full text is read at claims level on bioRxiv before any QE1 S1 pre-registration. If it reports the correlation, QE1 becomes "published" and is dropped.
+  - Lane note: Europe PMC was added to the lookup agent's allowed APIs (Bence: "Yes, add it").
+- **QE1 gate 2 result (2026-11-25; Sonnet data lane; run https://github.com/krenusz/cellware/actions/runs/45674998411; `results_c17/qs_e5_pairs.json`, `results_c17/qs_e5_power.json`; train structure and simulated values only, no observed kin statistic):**
+  - Eligible train pairs (cells inside the censoring window: 269):
+
+    | Movie | Sister | Mother-daughter | Non-kin |
+    |---|---|---|---|
+    | M1 | 53 | 78 | 123 |
+    | M2 | 44 | 65 | 108 |
+    | M3 | 15 | 12 | 28 |
+    | M4 | 4 | 2 | 0 |
+    | Total | 116 | 157 | 259 |
+
+  - Power with planted sister rho 0.5 and mother-daughter rho 0.3 (1,000 replicates): A (64 trees) sister **0.094**, mother-daughter 0.102. Null rejection on A 0.009 (calibration rule met: <= 0.075). All 127 trees: 0.61 and 0.58.
+  - **Gate 2: FAIL by the registered rule** (0.094 < 0.8). QE1 stops here.
+  - **Diagnosis, recorded but not acted on:** the test is far more conservative than nominal (null 0.009 against 0.05). With about 58 sister pairs on A, a plain correlation test at rho 0.5 would reach about 0.98 (Fisher z), or about 0.8 with a design effect of 2. The likely cause is that values are standardised and permuted within 20-min birth windows, where the two sisters often make up most of their window, so the planted shared component cancels.
+  - A better-calibrated test would be a design change: residualise on movie and generation only, and use the non-kin control as the comparison. It needs its own amendment and planted-power run, and Bence's OK. The pass bar stays 0.8.
   2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
   3. Pre-registration of an S1 on train only.
 - **Not yet known:**

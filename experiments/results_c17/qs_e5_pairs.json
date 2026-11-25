@@ -1,0 +1,614 @@
+{
+ "note": "train trees only; counts of eligible cycles and pairs; nonkin_pairs per tree counts each pair once for each distinct tree of its two members",
+ "movies": {
+  "M1": {
+   "frame_interval_min": 2.0,
+   "train_units": 42,
+   "segments": 336,
+   "eligible_cells": 121,
+   "sister_pairs": 53,
+   "mother_daughter_pairs": 78,
+   "nonkin_pairs": 123,
+   "by_generation": {
+    "1": {
+     "sister_pairs": 21,
+     "nonkin_pairs": 24
+    },
+    "2": {
+     "sister_pairs": 22,
+     "mother_daughter_pairs": 55,
+     "nonkin_pairs": 56
+    },
+    "3": {
+     "sister_pairs": 10,
+     "mother_daughter_pairs": 23,
+     "nonkin_pairs": 43
+    }
+   },
+   "per_tree": {
+    "M1:1001934": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4
+    },
+    "M1:1013000": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 12
+    },
+    "M1:1019028": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M1:1024430": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 6
+    },
+    "M1:1030010": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 10
+    },
+    "M1:1031769": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 10
+    },
+    "M1:1033593": {
+     "eligible_cells": 7,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 5,
+     "nonkin_pairs": 19
+    },
+    "M1:1050596": {
+     "eligible_cells": 13,
+     "sister_pairs": 6,
+     "mother_daughter_pairs": 11,
+     "nonkin_pairs": 32
+    },
+    "M1:1059741": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M1:1061151": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 14
+    },
+    "M1:1062334": {
+     "eligible_cells": 13,
+     "sister_pairs": 6,
+     "mother_daughter_pairs": 11,
+     "nonkin_pairs": 35
+    },
+    "M1:1071176": {
+     "eligible_cells": 8,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 6,
+     "nonkin_pairs": 21
+    },
+    "M1:1075369": {
+     "eligible_cells": 4,
+     "sister_pairs": 1,
+     "mother_daughter_pairs": 2,
+     "nonkin_pairs": 13
+    },
+    "M1:1077667": {
+     "eligible_cells": 4,
+     "sister_pairs": 1,
+     "mother_daughter_pairs": 2,
+     "nonkin_pairs": 4
+    },
+    "M1:1090431": {
+     "eligible_cells": 7,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 6,
+     "nonkin_pairs": 20
+    },
+    "M1:1092511": {
+     "eligible_cells": 0
+    },
+    "M1:1092839": {
+     "eligible_cells": 0
+    },
+    "M1:1115730": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 8
+    },
+    "M1:1121452": {
+     "eligible_cells": 4,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 2
+    },
+    "M1:1126426": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M1:1136705": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M1:1142490": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 10
+    },
+    "M1:1144976": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 8
+    },
+    "M1:149447": {
+     "eligible_cells": 3,
+     "sister_pairs": 1,
+     "mother_daughter_pairs": 1
+    },
+    "M1:154300": {
+     "eligible_cells": 0
+    },
+    "M1:243492": {
+     "eligible_cells": 0
+    },
+    "M1:243507": {
+     "eligible_cells": 0
+    },
+    "M1:243512": {
+     "eligible_cells": 0
+    },
+    "M1:243517": {
+     "eligible_cells": 0
+    },
+    "M1:243522": {
+     "eligible_cells": 0
+    },
+    "M1:243532": {
+     "eligible_cells": 0
+    },
+    "M1:243537": {
+     "eligible_cells": 0
+    },
+    "M1:243547": {
+     "eligible_cells": 0
+    },
+    "M1:332808": {
+     "eligible_cells": 0
+    },
+    "M1:45408": {
+     "eligible_cells": 0
+    },
+    "M1:992133": {
+     "eligible_cells": 0
+    },
+    "M1:992148": {
+     "eligible_cells": 0
+    },
+    "M1:992159": {
+     "eligible_cells": 0
+    },
+    "M1:992169": {
+     "eligible_cells": 0
+    },
+    "M1:992179": {
+     "eligible_cells": 0
+    },
+    "M1:992254": {
+     "eligible_cells": 0
+    },
+    "M1:992259": {
+     "eligible_cells": 0
+    }
+   }
+  },
+  "M2": {
+   "frame_interval_min": 2.0,
+   "train_units": 40,
+   "segments": 302,
+   "eligible_cells": 101,
+   "sister_pairs": 44,
+   "mother_daughter_pairs": 65,
+   "nonkin_pairs": 108,
+   "by_generation": {
+    "1": {
+     "sister_pairs": 16,
+     "nonkin_pairs": 28
+    },
+    "2": {
+     "sister_pairs": 18,
+     "mother_daughter_pairs": 40,
+     "nonkin_pairs": 52
+    },
+    "3": {
+     "sister_pairs": 9,
+     "mother_daughter_pairs": 22,
+     "nonkin_pairs": 28
+    },
+    "4": {
+     "sister_pairs": 1,
+     "mother_daughter_pairs": 3
+    }
+   },
+   "per_tree": {
+    "M2:2150": {
+     "eligible_cells": 2,
+     "sister_pairs": 1,
+     "nonkin_pairs": 4
+    },
+    "M2:305304": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 4
+    },
+    "M2:323050": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 22
+    },
+    "M2:336086": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 2
+    },
+    "M2:338680": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 22
+    },
+    "M2:343799": {
+     "eligible_cells": 0
+    },
+    "M2:351853": {
+     "eligible_cells": 11,
+     "sister_pairs": 5,
+     "mother_daughter_pairs": 9,
+     "nonkin_pairs": 30
+    },
+    "M2:354688": {
+     "eligible_cells": 0
+    },
+    "M2:380796": {
+     "eligible_cells": 12,
+     "sister_pairs": 6,
+     "mother_daughter_pairs": 10,
+     "nonkin_pairs": 48
+    },
+    "M2:387932": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 8
+    },
+    "M2:391299": {
+     "eligible_cells": 1
+    },
+    "M2:402381": {
+     "eligible_cells": 0
+    },
+    "M2:402441": {
+     "eligible_cells": 0
+    },
+    "M2:405671": {
+     "eligible_cells": 4,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 2
+    },
+    "M2:405818": {
+     "eligible_cells": 0
+    },
+    "M2:406822": {
+     "eligible_cells": 0
+    },
+    "M2:406916": {
+     "eligible_cells": 0
+    },
+    "M2:407818": {
+     "eligible_cells": 1,
+     "nonkin_pairs": 2
+    },
+    "M2:409758": {
+     "eligible_cells": 0
+    },
+    "M2:411111": {
+     "eligible_cells": 0
+    },
+    "M2:423550": {
+     "eligible_cells": 2,
+     "sister_pairs": 1,
+     "nonkin_pairs": 4
+    },
+    "M2:426462": {
+     "eligible_cells": 12,
+     "sister_pairs": 5,
+     "mother_daughter_pairs": 10
+    },
+    "M2:445982": {
+     "eligible_cells": 0
+    },
+    "M2:450931": {
+     "eligible_cells": 0
+    },
+    "M2:537720": {
+     "eligible_cells": 0
+    },
+    "M2:645116": {
+     "eligible_cells": 1,
+     "nonkin_pairs": 6
+    },
+    "M2:645369": {
+     "eligible_cells": 0
+    },
+    "M2:655386": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M2:659685": {
+     "eligible_cells": 6,
+     "sister_pairs": 3,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 8
+    },
+    "M2:663646": {
+     "eligible_cells": 0
+    },
+    "M2:666529": {
+     "eligible_cells": 0
+    },
+    "M2:668994": {
+     "eligible_cells": 0
+    },
+    "M2:772767": {
+     "eligible_cells": 0
+    },
+    "M2:773456": {
+     "eligible_cells": 1
+    },
+    "M2:808569": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M2:808895": {
+     "eligible_cells": 0
+    },
+    "M2:808969": {
+     "eligible_cells": 6,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 4,
+     "nonkin_pairs": 6
+    },
+    "M2:809064": {
+     "eligible_cells": 0
+    },
+    "M2:834039": {
+     "eligible_cells": 0
+    },
+    "M2:9980": {
+     "eligible_cells": 11,
+     "sister_pairs": 5,
+     "mother_daughter_pairs": 9,
+     "nonkin_pairs": 22
+    }
+   }
+  },
+  "M3": {
+   "frame_interval_min": 2.0,
+   "train_units": 40,
+   "segments": 192,
+   "eligible_cells": 38,
+   "sister_pairs": 15,
+   "mother_daughter_pairs": 12,
+   "nonkin_pairs": 28,
+   "by_generation": {
+    "1": {
+     "sister_pairs": 11,
+     "nonkin_pairs": 24
+    },
+    "2": {
+     "sister_pairs": 4,
+     "mother_daughter_pairs": 12,
+     "nonkin_pairs": 4
+    }
+   },
+   "per_tree": {
+    "M3:11797": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M3:12129": {
+     "eligible_cells": 2,
+     "sister_pairs": 1,
+     "nonkin_pairs": 2
+    },
+    "M3:16395": {
+     "eligible_cells": 0
+    },
+    "M3:17127": {
+     "eligible_cells": 0
+    },
+    "M3:18887": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 8
+    },
+    "M3:18892": {
+     "eligible_cells": 1,
+     "nonkin_pairs": 2
+    },
+    "M3:19770": {
+     "eligible_cells": 0
+    },
+    "M3:20073": {
+     "eligible_cells": 0
+    },
+    "M3:21116": {
+     "eligible_cells": 0
+    },
+    "M3:21161": {
+     "eligible_cells": 0
+    },
+    "M3:21647": {
+     "eligible_cells": 0
+    },
+    "M3:22920": {
+     "eligible_cells": 2,
+     "sister_pairs": 1,
+     "nonkin_pairs": 4
+    },
+    "M3:23225": {
+     "eligible_cells": 0
+    },
+    "M3:25038": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 8
+    },
+    "M3:3280": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M3:34443": {
+     "eligible_cells": 0
+    },
+    "M3:38652": {
+     "eligible_cells": 0
+    },
+    "M3:40322": {
+     "eligible_cells": 1
+    },
+    "M3:43555": {
+     "eligible_cells": 2,
+     "sister_pairs": 1,
+     "nonkin_pairs": 2
+    },
+    "M3:50482": {
+     "eligible_cells": 0
+    },
+    "M3:5195": {
+     "eligible_cells": 5,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 3,
+     "nonkin_pairs": 8
+    },
+    "M3:775772": {
+     "eligible_cells": 0
+    },
+    "M3:780284": {
+     "eligible_cells": 0
+    },
+    "M3:780334": {
+     "eligible_cells": 0
+    },
+    "M3:783728": {
+     "eligible_cells": 0
+    },
+    "M3:787900": {
+     "eligible_cells": 0
+    },
+    "M3:788735": {
+     "eligible_cells": 0
+    },
+    "M3:7937": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M3:795762": {
+     "eligible_cells": 0
+    },
+    "M3:797191": {
+     "eligible_cells": 4,
+     "sister_pairs": 2,
+     "mother_daughter_pairs": 2,
+     "nonkin_pairs": 12
+    },
+    "M3:797739": {
+     "eligible_cells": 2,
+     "sister_pairs": 1,
+     "nonkin_pairs": 8
+    },
+    "M3:798095": {
+     "eligible_cells": 0
+    },
+    "M3:799967": {
+     "eligible_cells": 0
+    },
+    "M3:801136": {
+     "eligible_cells": 0
+    },
+    "M3:812604": {
+     "eligible_cells": 0
+    },
+    "M3:812614": {
+     "eligible_cells": 0
+    },
+    "M3:832518": {
+     "eligible_cells": 0
+    },
+    "M3:833190": {
+     "eligible_cells": 0
+    },
+    "M3:843873": {
+     "eligible_cells": 2,
+     "mother_daughter_pairs": 1,
+     "nonkin_pairs": 2
+    },
+    "M3:844076": {
+     "eligible_cells": 1
+    }
+   }
+  },
+  "M4": {
+   "frame_interval_min": 2.0,
+   "train_units": 5,
+   "segments": 33,
+   "eligible_cells": 9,
+   "sister_pairs": 4,
+   "mother_daughter_pairs": 2,
+   "nonkin_pairs": 0,
+   "by_generation": {
+    "1": {
+     "sister_pairs": 3
+    },
+    "2": {
+     "sister_pairs": 1,
+     "mother_daughter_pairs": 2
+    }
+   },
+   "per_tree": {
+    "M4:19181": {
+     "eligible_cells": 0
+    },
+    "M4:823284": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M4:841990": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M4:842260": {
+     "eligible_cells": 2,
+     "sister_pairs": 1
+    },
+    "M4:842449": {
+     "eligible_cells": 3,
+     "sister_pairs": 1,
+     "mother_daughter_pairs": 2
+    }
+   }
+  }
+ }
+}
