@@ -13932,6 +13932,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - **Published:** sister or mother-daughter cycle-length correlation measured by tracking in a living mammalian embryo.
   - **Partly:** the same in a non-mammalian embryo or in vivo tissue, or mammalian cultured cells only.
   - "Published" fails the gate. "Partly" passes with the overlap stated.
+- **QE1 gate 4, first run (2026-11-25, Haiku lookup lane): INVALID, recall failed.** The recall paper (OpenAlex W2067598073) is in no top 25 and in no top-25 paper's references. Sorting by citation count returned most-cited, mostly off-topic papers (22 of 75 titles withheld by the wording filter). 0 titles marked. Novelty stays undetermined; this is not a "not found".
+- **QE1 gate 4, amendment 1 (written before any further search):**
+  - *(a) Relevance search:* the same three phrasings, OpenAlex default relevance order (no sort), top 25 each. The same recall rule applies.
+  - *(b) Forward-citation screen:* every work citing W2067598073 (all pages; the count must match its cited_by_count). Titles are screened for division timing or cycle length together with any of embryo, in vivo, tissue, organism, zebrafish, mouse, fly, worm or organoid. Up to 10 abstracts, most cited first.
+  - *Validity:* (a) passes recall if the paper appears in any top 25; (b) is valid if the citer list is complete. Novelty is judged from (a) and (b) together, and only if at least one is valid.
+  - The verdict rules (published, partly) are unchanged.
   2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
   3. Pre-registration of an S1 on train only.
 - **Not yet known:**
