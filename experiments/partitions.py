@@ -224,7 +224,9 @@ PARTITIONED = {
         "prior_exposure": "BioStudies study fields (organism, imaging method, annotation type and method, the "
                           "experimental-variable and image-analysis text, genotype strings in the file list); XML "
                           "feature declarations; spot, edge, division, tree and eligible-pair counts per movie; "
-                          "presence counts of the intensity attributes (no values); study title (DS-EMB sweep)",
+                          "presence counts of the intensity attributes (no values); study title (DS-EMB sweep); "
+                          "source abstract and full-text claims (section headings, sentences on sisters, generations "
+                          "and fate restriction) of doi 10.1038/s44318-025-00441-0 (DS-EMB-N)",
     },
 }
 BUCKETS = 5

@@ -13806,6 +13806,43 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Next (needs Bence):**
   1. Novelty check of the source study at claims level; it goes into `prior_exposure`.
   2. Then, if not published in kind, pre-register S1 on the 127 train trees, with power from train structure and the reporter-channel threshold fixed before any value is read.
+
+## DS-EMB-N: novelty check for an E5 question, sister fate at counted divisions (pre-registered 2026-11-25; Bence: "Yes, novelty check")
+- **Serves: C12 CLOSED** (decides whether S1 on the sealed E5 train trees is new work; feedback rule: a published question is noted and dropped).
+- **Candidate question (ours):** in early mammalian embryos, how does fate agreement between the two daughters of a division change with the number of divisions since a reference division? In C17 terms: memory per division versus commitment, on tracked trees with exact division counts.
+- **Source:** the preprint behind S-BIAD1682 (doi 10.1101/2023.12.19.572445, Ivanovitch lab, 2023), and any journal version found by Crossref relation.
+- **In kind (fixed now):**
+  - **Published:** a paper reports, from tracked or clonally labelled early embryos, sister or sibling fate agreement as a function of division count or generation.
+  - **Partly:** it reports sister or clone fate agreement or restriction at one time or stage, without dependence on division count.
+- **Steps:**
+  1. Crossref metadata of the source: relation, journal version, licence.
+  2. Abstract (Europe PMC or Crossref), then results headings and conclusion sentences of the open full text, if available (claims level: no figures, tables or numbers beyond one short quote).
+  3. A titles-only screen of papers citing the source (OpenAlex), with up to 5 abstracts for titles that mention sister, clone, lineage or division.
+  4. A short classic search (OpenAlex, top 25, 3 frozen phrasings): "sister cell fate live imaging mouse gastrulation", "clonal fate restriction cardiac progenitors live imaging", "cell lineage tracking division generation fate mouse embryo". The recall gate is that the source itself appears in the search or its citations.
+- **Exposure:** logged in partitions.mouse_gast_tree prior_exposure in the same commit.
+- **Pre-flight:**
+  1. Unit: none.
+  2. Readout: titles, abstracts, claims.
+  3. Used data first: none.
+  4. Power: not applicable.
+  5. Exposure: as stated.
+  6. Literature: this step.
+  7. Readout gate: not applicable.
+- Practice: neutral wording in saved notes; no outreach.
+- Compute: local API calls (Crossref, Europe PMC, OpenAlex), no bioRxiv page fetch (rate limit kept clean for 26 Nov).
+
+### DS-EMB-N result (2026-11-25; claims level; no figure, table or data value read)
+- **Source:** the journal version is EMBO J 2025 (doi 10.1038/s44318-025-00441-0; Crossref is-preprint-of; open access, PMC12170898). The abstract and the full text's section headings plus its sentences on sisters, generations and fate restriction were read (Europe PMC).
+- **Claims relevant to our question:**
+  - Tracked lineage trees of up to 5 divisions (227 mother cells).
+  - Unipotent progenitors emerging at specific times, and short-lived bipotent progenitors.
+  - Fate restriction counted per generation: of 18 bipotent progenitors, 12 became single-fated after the first generation, 5 after the second and 1 after the third.
+  - Sister and cousin tracks compared.
+  - A section on sisters sharing the same fate keeping cell contacts.
+- **Verdict: PUBLISHED in kind.** The source reports fate agreement among descendants as a function of generation, on the same trees. Steps 3-4 (citer screen, classic search) were not run: the fixed rule is met by the source itself, so they could not change the verdict.
+- **What remains ours** (not a new biological claim): the same trees as an input row of the C17 parameter table (commitment and memory per division in a mammalian embryo), as DNA Typewriter entered with "published but proceeding" (C17-S1PL).
+- **Pretest of that row:** pluripotent memory per division would go from 1 system to 2. C17-LAW needs >= 4 per compared class on one scale (C17-S1R-P6), so this row cannot unblock the law test.
+- Exposure: added to partitions.mouse_gast_tree prior_exposure. A/B/C stay sealed and unspent.
   2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
   3. Pre-registration of an S1 on train only.
 - **Not yet known:**
