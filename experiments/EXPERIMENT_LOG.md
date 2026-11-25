@@ -13526,3 +13526,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   7. Readout gate: failed, as above.
 - Practice: neutral wording, scanned with lit_gap.SENSITIVE; no outreach.
 - Compute: none (metadata lookups on the local machine, two lookup-lane agents).
+
+## WL-2026-11-25: watch-list re-check (Bence: "can we go forward with the research?"; Haiku lookup lane)
+- **Serves: C12 CLOSED** (data that could reopen a parked chapter or add a system). Availability and metadata only; no data file opened, no result read.
+- GSE324482: private, release 2030-03-01. E-MTAB-17351: 403. PRJCA064621: not released.
+- DeepTrack (bioRxiv 10.64898/2026.08.29.748052): no data statement in the API record, no accession; GEO search 0. Full text not read.
+- Preprints 10.64898/2026.07.29.741448 and 10.64898/2026.05.25.727662: abstract pages (HTTP 200) carry no data statement or accession. Full text not read.
+- hESC sister-well deposit: not checked (query terms not fixed). Next time: fix the terms first.
+- **Verdict: nothing new.** No parked chapter reopens. Next check about 2026-12-02.
