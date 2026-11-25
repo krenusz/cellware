@@ -1,0 +1,684 @@
+{
+ "E1": {
+  "GSE338520": {
+   "suppl": [
+    {
+     "name": "GSE338520_RAW.tar",
+     "size": "9.2G"
+    },
+    {
+     "name": "filelist.txt",
+     "size": "622"
+    }
+   ],
+   "tar_contents": [
+    {
+     "name": "GSE338520_RAW.tar",
+     "size": "9854085120"
+    },
+    {
+     "name": "GSM9876299_RA1_Ce_fragments.tsv.gz",
+     "size": "256730268"
+    },
+    {
+     "name": "GSM9876300_RA1_Co_fragments.tsv.gz",
+     "size": "737502757"
+    },
+    {
+     "name": "GSM9876301_RA1_Pu_fragments.tsv.gz",
+     "size": "105144501"
+    },
+    {
+     "name": "GSM9876302_RA2_BM_1_fragments.tsv.gz",
+     "size": "2506810811"
+    },
+    {
+     "name": "GSM9876303_RA2_BM_2_fragments.tsv.gz",
+     "size": "2337167333"
+    },
+    {
+     "name": "GSM9876304_RA2_Ce_fragments.tsv.gz",
+     "size": "1826937595"
+    },
+    {
+     "name": "GSM9876305_RA2_PFC_fragments.tsv.gz",
+     "size": "2083784893"
+    }
+   ],
+   "n_samples": 7,
+   "organism": "Homo sapiens"
+  },
+  "GSE338484": {
+   "suppl": [
+    {
+     "name": "GSE338484_RAW.tar",
+     "size": "52G"
+    },
+    {
+     "name": "filelist.txt",
+     "size": "2.2K"
+    }
+   ],
+   "tar_contents": [
+    {
+     "name": "GSE338484_RAW.tar",
+     "size": "55773562880"
+    },
+    {
+     "name": "GSM9875058_UW1_fragments.tsv.gz",
+     "size": "1376852142"
+    },
+    {
+     "name": "GSM9875060_UW2_fragments.tsv.gz",
+     "size": "1482154829"
+    },
+    {
+     "name": "GSM9875061_UW3_fragments.tsv.gz",
+     "size": "5488881236"
+    },
+    {
+     "name": "GSM9875062_UW4_v2_fragments.tsv.gz",
+     "size": "2852450675"
+    },
+    {
+     "name": "GSM9875063_UW5_fragments.tsv.gz",
+     "size": "1211528965"
+    },
+    {
+     "name": "GSM9875064_UW6_v2_fragments.tsv.gz",
+     "size": "2148757083"
+    },
+    {
+     "name": "GSM9875065_UW6_Ce_fragments.tsv.gz",
+     "size": "2565429504"
+    },
+    {
+     "name": "GSM9875066_UW6_Pu_fragments.tsv.gz",
+     "size": "1598850524"
+    },
+    {
+     "name": "GSM9875067_UW7_fragments.tsv.gz",
+     "size": "1741036637"
+    },
+    {
+     "name": "GSM9875068_UW8_fragments.tsv.gz",
+     "size": "1508492592"
+    },
+    {
+     "name": "GSM9875070_UW9_fragments.tsv.gz",
+     "size": "2511629954"
+    },
+    {
+     "name": "GSM9875071_UW9_Pu_fragments.tsv.gz",
+     "size": "1899935711"
+    },
+    {
+     "name": "GSM9875072_UW10_fragments.tsv.gz",
+     "size": "1434980622"
+    },
+    {
+     "name": "GSM9875073_UW11_fragments.tsv.gz",
+     "size": "1284241003"
+    },
+    {
+     "name": "GSM9875074_UW12_fragments.tsv.gz",
+     "size": "1908918007"
+    },
+    {
+     "name": "GSM9875075_UW13_fragments.tsv.gz",
+     "size": "2381469088"
+    },
+    {
+     "name": "GSM9875076_UW14_fragments.tsv.gz",
+     "size": "1364994226"
+    },
+    {
+     "name": "GSM9875077_UW15_fragments.tsv.gz",
+     "size": "1811398494"
+    },
+    {
+     "name": "GSM9875078_UW15_Pu_fragments.tsv.gz",
+     "size": "1505273160"
+    },
+    {
+     "name": "GSM9875080_UW16_v2_fragments.tsv.gz",
+     "size": "2297565810"
+    },
+    {
+     "name": "GSM9875081_UW16_Ce_fragments.tsv.gz",
+     "size": "1272358918"
+    },
+    {
+     "name": "GSM9875082_UW16_Pu_fragments.tsv.gz",
+     "size": "2569148342"
+    },
+    {
+     "name": "GSM9875083_UW17_fragments.tsv.gz",
+     "size": "1816208184"
+    },
+    {
+     "name": "GSM9875084_UW18_fragments.tsv.gz",
+     "size": "2165781972"
+    },
+    {
+     "name": "GSM9875085_UW19_fragments.tsv.gz",
+     "size": "2391955164"
+    },
+    {
+     "name": "GSM9875086_UW20_fragments.tsv.gz",
+     "size": "1320962261"
+    },
+    {
+     "name": "GSM9875087_UW21_fragments.tsv.gz",
+     "size": "1606076418"
+    },
+    {
+     "name": "GSM9875088_UW22_fragments.tsv.gz",
+     "size": "1331008796"
+    },
+    {
+     "name": "GSM9875089_UW23_fragments.tsv.gz",
+     "size": "925197079"
+    }
+   ],
+   "n_samples": 29,
+   "organism": "Homo sapiens"
+  }
+ },
+ "E2": {
+  "GSE102990": {
+   "suppl": [
+    {
+     "name": "GSE102990_P1_scarclones.txt.gz",
+     "size": "37K"
+    },
+    {
+     "name": "GSE102990_P2_scarclones.txt.gz",
+     "size": "18K"
+    },
+    {
+     "name": "GSE102990_R1_R2_R4_wkm_transcriptome.txt.gz",
+     "size": "9.2M"
+    },
+    {
+     "name": "GSE102990_R1_R2_wkm_tsne.txt.gz",
+     "size": "59K"
+    },
+    {
+     "name": "GSE102990_R1_R3_head_transcriptome.txt.gz",
+     "size": "4.6M"
+    },
+    {
+     "name": "GSE102990_R1_R3_head_v2.tsv.gz",
+     "size": "55K"
+    },
+    {
+     "name": "GSE102990_R1_head_tsne.txt.gz",
+     "size": "48K"
+    },
+    {
+     "name": "GSE102990_R1_scarclones.txt.gz",
+     "size": "105K"
+    },
+    {
+     "name": "GSE102990_R2_scarclones.txt.gz",
+     "size": "48K"
+    },
+    {
+     "name": "GSE102990_R3_head_tsne.txt.gz",
+     "size": "29K"
+    },
+    {
+     "name": "GSE102990_R3_scarclones.txt.gz",
+     "size": "52K"
+    },
+    {
+     "name": "GSE102990_R4_R5_fin_transcriptome.txt.gz",
+     "size": "13M"
+    },
+    {
+     "name": "GSE102990_R4_R5_fin_tsne.txt.gz",
+     "size": "103K"
+    },
+    {
+     "name": "GSE102990_R4_scarclones.txt.gz",
+     "size": "78K"
+    },
+    {
+     "name": "GSE102990_R4_wkm_tsne.txt.gz",
+     "size": "23K"
+    },
+    {
+     "name": "GSE102990_R5_scarclones.txt.gz",
+     "size": "34K"
+    }
+   ],
+   "n_samples": 56,
+   "organism": "Danio rerio"
+  }
+ },
+ "E3": {
+  "cxg": {
+   "datasets": [
+    {
+     "cell_count": 15483,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 2215,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 6297,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 22473,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 43690,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 5441,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 20579,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 3862,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 2177,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 12914,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 16628,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 120444,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 5899,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 50271,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 6699,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 1251,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    },
+    {
+     "cell_count": 24987,
+     "assay": [
+      "10x 3' v3"
+     ],
+     "assets": [
+      "H5AD"
+     ]
+    }
+   ],
+   "links": [
+    {
+     "type": "DATA_SOURCE",
+     "url": "https://zebrahub.sf.czbiohub.org/data"
+    },
+    {
+     "type": "RAW_DATA",
+     "url": "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA940501"
+    },
+    {
+     "type": "OTHER",
+     "url": "https://cellxgene.cziscience.com/collections/d3e926d7-4bb1-4573-9b37-778f0bb2c81b"
+    }
+   ]
+  }
+ },
+ "E4": {
+  "GSE106121": {
+   "suppl": [
+    {
+     "name": "GSE106121_A5_scars_compared.csv.gz",
+     "size": "117K"
+    },
+    {
+     "name": "GSE106121_A6_scars_compared.csv.gz",
+     "size": "66K"
+    },
+    {
+     "name": "GSE106121_A7_scars_compared.csv.gz",
+     "size": "442K"
+    },
+    {
+     "name": "GSE106121_RAW.tar",
+     "size": "1.0G"
+    },
+    {
+     "name": "GSE106121_genes.tsv.gz",
+     "size": "229K"
+    },
+    {
+     "name": "filelist.txt",
+     "size": "3.1K"
+    }
+   ],
+   "tar_contents": [
+    {
+     "name": "GSE106121_RAW.tar",
+     "size": "1092218880"
+    },
+    {
+     "name": "GSM2830043_dyn_DNA_1h2h_scars.txt.gz",
+     "size": "93926224"
+    },
+    {
+     "name": "GSM2830044_dyn_DNA_3h4h6h_scars.txt.gz",
+     "size": "159832828"
+    },
+    {
+     "name": "GSM2830045_dyn_DNA_8h10h24h_scars.txt.gz",
+     "size": "189457999"
+    },
+    {
+     "name": "GSM2830046_dyn_RNA_3h6h8h_scars.txt.gz",
+     "size": "138884939"
+    },
+    {
+     "name": "GSM2830047_dyn_RNA_10h24h_scars.txt.gz",
+     "size": "150184733"
+    },
+    {
+     "name": "GSM2830048_Scar_probs.csv.gz",
+     "size": "786776"
+    },
+    {
+     "name": "GSM2830049_Z2_scars_compared.csv.gz",
+     "size": "120384"
+    },
+    {
+     "name": "GSM2830056_Z2_1_barcodes.tsv.gz",
+     "size": "26152"
+    },
+    {
+     "name": "GSM2830056_Z2_1_matrix.mtx.gz",
+     "size": "11570396"
+    },
+    {
+     "name": "GSM2830056_Z2_2_barcodes.tsv.gz",
+     "size": "26449"
+    },
+    {
+     "name": "GSM2830056_Z2_2_matrix.mtx.gz",
+     "size": "7504056"
+    },
+    {
+     "name": "GSM2830057_Z1_barcodes.tsv.gz",
+     "size": "23169"
+    },
+    {
+     "name": "GSM2830057_Z1_matrix.mtx.gz",
+     "size": "15132009"
+    },
+    {
+     "name": "GSM2830058_P5_barcodes.tsv.gz",
+     "size": "24408"
+    },
+    {
+     "name": "GSM2830058_P5_matrix.mtx.gz",
+     "size": "15236866"
+    },
+    {
+     "name": "GSM2830059_B5_barcodes.tsv.gz",
+     "size": "24532"
+    },
+    {
+     "name": "GSM2830059_B5_matrix.mtx.gz",
+     "size": "4596879"
+    },
+    {
+     "name": "GSM2830060_H5_barcodes.tsv.gz",
+     "size": "24480"
+    },
+    {
+     "name": "GSM2830060_H5_matrix.mtx.gz",
+     "size": "7853414"
+    },
+    {
+     "name": "GSM2830061_P6_barcodes.tsv.gz",
+     "size": "24609"
+    },
+    {
+     "name": "GSM2830061_P6_matrix.mtx.gz",
+     "size": "16491389"
+    },
+    {
+     "name": "GSM2830062_H6_barcodes.tsv.gz",
+     "size": "24516"
+    },
+    {
+     "name": "GSM2830062_H6_matrix.mtx.gz",
+     "size": "9119951"
+    },
+    {
+     "name": "GSM3032159_Z3_barcodes.tsv.gz",
+     "size": "22963"
+    },
+    {
+     "name": "GSM3032159_Z3_matrix.mtx.gz",
+     "size": "6609505"
+    },
+    {
+     "name": "GSM3032160_Z4_barcodes.tsv.gz",
+     "size": "57751"
+    },
+    {
+     "name": "GSM3032160_Z4_matrix.mtx.gz",
+     "size": "40116957"
+    },
+    {
+     "name": "GSM3032161_Z5_barcodes.tsv.gz",
+     "size": "79435"
+    },
+    {
+     "name": "GSM3032161_Z5_matrix.mtx.gz",
+     "size": "57014386"
+    },
+    {
+     "name": "GSM3032162_B7_barcodes.tsv.gz",
+     "size": "32018"
+    },
+    {
+     "name": "GSM3032162_B7_matrix.mtx.gz",
+     "size": "15342554"
+    },
+    {
+     "name": "GSM3032163_H7_barcodes.tsv.gz",
+     "size": "46794"
+    },
+    {
+     "name": "GSM3032163_H7_matrix.mtx.gz",
+     "size": "24775693"
+    },
+    {
+     "name": "GSM3032164_P7endo_barcodes.tsv.gz",
+     "size": "24566"
+    },
+    {
+     "name": "GSM3032164_P7endo_matrix.mtx.gz",
+     "size": "23018384"
+    },
+    {
+     "name": "GSM3032165_P7exo_barcodes.tsv.gz",
+     "size": "43308"
+    },
+    {
+     "name": "GSM3032165_P7exo_matrix.mtx.gz",
+     "size": "27908684"
+    },
+    {
+     "name": "GSM3032166_Z4_scars_compared.csv.gz",
+     "size": "428905"
+    },
+    {
+     "name": "GSM3032167_Z5_scars_compared.csv.gz",
+     "size": "650866"
+    },
+    {
+     "name": "GSM3032172_F1_1_barcodes.tsv.gz",
+     "size": "50435"
+    },
+    {
+     "name": "GSM3032172_F1_1_matrix.mtx.gz",
+     "size": "34301286"
+    },
+    {
+     "name": "GSM3032173_F1_2_barcodes.tsv.gz",
+     "size": "57650"
+    },
+    {
+     "name": "GSM3032173_F1_2_matrix.mtx.gz",
+     "size": "40298030"
+    },
+    {
+     "name": "GSM3032174_F1_1_used_scars_7Larvae.csv.gz",
+     "size": "199714"
+    },
+    {
+     "name": "GSM3032175_F1_2_used_scars_7Larvae.csv.gz",
+     "size": "200226"
+    }
+   ],
+   "n_samples": 36,
+   "organism": "Danio rerio"
+  }
+ },
+ "E5": {
+  "S-BIAD1682": {
+   "_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get issuer cert"
+  }
+ },
+ "E6": {
+  "zenodo:4973643": {
+   "files": [
+    {
+     "name": "Kim_et_al_model_simulations.ipynb",
+     "size": 172367
+    },
+    {
+     "name": "Kim_et_al_model_simulations.html",
+     "size": 450070
+    }
+   ],
+   "license": "cc-zero"
+  },
+  "doi:10.5061/dryad.4b58d": {
+   "files": [
+    {
+     "name": "Kim_et_al_model_simulations.html",
+     "size": 450070
+    },
+    {
+     "name": "Kim_et_al_model_simulations.ipynb",
+     "size": 172367
+    }
+   ],
+   "license": "https://spdx.org/licenses/CC0-1.0.html"
+  }
+ }
+}

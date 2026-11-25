@@ -1,0 +1,1968 @@
+{
+ "ext_zf_scartrace/GSE102990_P1_scarclones.txt.gz": {
+  "rows": 1255,
+  "columns": [
+   {
+    "name": "cellID",
+    "dtype": "str",
+    "examples": [
+     "9-a9-a",
+     "9-a9-a",
+     "9-a9-a"
+    ]
+   },
+   {
+    "name": "720M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M2D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M20D164M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M2D2M8D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M2D180M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M9D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M10D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M6D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "529M1D4M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "514M2D20M5D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "503M1D3M2D10M6D9M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "528M19D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M18D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M1I2M4I183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M2I177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M8D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M1I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M8I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M26D163M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M1D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M12D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "521M15D184M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M2D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M18D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M13D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M21D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M9D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M10D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M12D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M5D181M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M4D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "515M2D19M5D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "513M1D4M2D8M10D182M",
+    "dtype": "float64"
+   },
+   {
+    "name": "hclust",
+    "dtype": "str",
+    "held": "name only"
+   },
+   {
+    "name": "oclust",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "hclust",
+   "oclust"
+  ]
+ },
+ "ext_zf_scartrace/GSE102990_P2_scarclones.txt.gz": {
+  "rows": 1890,
+  "columns": [
+   {
+    "name": "Unnamed: 0",
+    "dtype": "str",
+    "examples": [
+     "9-a9-a",
+     "9-a9-a",
+     "9-a9-a"
+    ]
+   },
+   {
+    "name": "720M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M10D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M9D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "540M7D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M6I178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M24D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "513M1D7M6D14M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M10D168M",
+    "dtype": "float64"
+   },
+   {
+    "name": "hclust",
+    "dtype": "str",
+    "held": "name only"
+   },
+   {
+    "name": "oclust",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "hclust",
+   "oclust"
+  ]
+ },
+ "ext_zf_scartrace/GSE102990_R1_scarclones.txt.gz": {
+  "rows": 3416,
+  "columns": [
+   {
+    "name": "CellID",
+    "dtype": "str",
+    "examples": [
+     "9-a9-a-a9",
+     "9-a9-a-a9",
+     "9-a9-a-a9"
+    ]
+   },
+   {
+    "name": "720M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M18D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "529M17D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M4D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M9D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M2D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "523M25D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "513M1D7M2D16M6D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M6D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M3D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M7D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M6I178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M6D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M4D178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M17D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M15D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "510M11D5M6D13M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "524M25D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M19D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M4I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M9D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M4I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "504M15D17M9D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "520M24D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "540M3I180M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M2D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M10D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M10D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M6D5M1D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M10D6M1D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M5I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M12D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M5D181M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M3I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M18D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M3I182M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M10D180M",
+    "dtype": "float64"
+   },
+   {
+    "name": "533M8D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "513M1D8M2D14M7D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "526M11D183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "513M8D19M1D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M14D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M21D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M18D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M3D181M",
+    "dtype": "float64"
+   },
+   {
+    "name": "522M2D11M10D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M14D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "540M1D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M5D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M1D183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "540M2D178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M15D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M9D4M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "521M23D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M11D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M5I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M13D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M17D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "513M1D5M3D16M6D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "523M24D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M6D180M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M8D178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M1I185M",
+    "dtype": "float64"
+   },
+   {
+    "name": "526M18D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "520M2D14M1D183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M12D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M9D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M10D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "503M1D6M7D10M17D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M7D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "498M4D14M5D6M20D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "514M10D14M6D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M1I183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M4D185M",
+    "dtype": "float64"
+   },
+   {
+    "name": "540M14D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M14D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "527M1D7M3D4M2D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M2D9M1I179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "hclust",
+    "dtype": "str",
+    "held": "name only"
+   },
+   {
+    "name": "oclust",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "hclust",
+   "oclust"
+  ]
+ },
+ "ext_zf_scartrace/GSE102990_R2_scarclones.txt.gz": {
+  "rows": 1738,
+  "columns": [
+   {
+    "name": "Unnamed: 0",
+    "dtype": "str",
+    "examples": [
+     "9-a9-a-a9",
+     "9-a9-a-a9",
+     "9-a9-a-a9"
+    ]
+   },
+   {
+    "name": "720M",
+    "dtype": "float64"
+   },
+   {
+    "name": "533M11D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M18D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M2D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M1D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M9D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "523M28D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M5D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M3D9M6D161M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M1I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M14D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M8D170M",
+    "dtype": "float64"
+   },
+   {
+    "name": "529M17D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M2D12M2I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M6D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "hclust",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "hclust"
+  ]
+ },
+ "ext_zf_scartrace/GSE102990_R3_scarclones.txt.gz": {
+  "rows": 1767,
+  "columns": [
+   {
+    "name": "Unnamed: 0",
+    "dtype": "str",
+    "examples": [
+     "9-a9-a-a9",
+     "9-a9-a-a9",
+     "9-a9-a-a9"
+    ]
+   },
+   {
+    "name": "720M",
+    "dtype": "float64"
+   },
+   {
+    "name": "529M17D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M4D180M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M11D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M10D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M6D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "524M19D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M8D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M21D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "504M1I10M6D11M15D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M17D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "548M4I172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M7D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M18D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M3D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M1I3M3D4M2D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "527M18D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "520M2D19M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M15D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M12D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "546M9I174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M8D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "520M24D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M10D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M5I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M6D5M1D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "523M7D13M4D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "519M2D5M2D5M2D8M2D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M15D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M9D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M12D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "540M14D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M1I6M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "519M2D14M1D184M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M7D3M7D165M",
+    "dtype": "float64"
+   },
+   {
+    "name": "533M10D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "517M5D6M1D191M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M10D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M9D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M18D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "525M9D2M1D183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M2D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M2D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "526M5D4M1I8M4D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "523M21D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "527M12D181M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M22D2M1D154M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M1I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M5D4M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M6D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "524M25D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M4I177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M11D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M2D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "535M30D155M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M14D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "525M5D12M1D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M15D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M10D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "503M1D3M2D9M11D7M5D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "hclust",
+    "dtype": "str",
+    "held": "name only"
+   },
+   {
+    "name": "oclust",
+    "dtype": "int64",
+    "held": "name only"
+   },
+   {
+    "name": "organ",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "hclust",
+   "oclust",
+   "organ"
+  ]
+ },
+ "ext_zf_scartrace/GSE102990_R4_scarclones.txt.gz": {
+  "rows": 3688,
+  "columns": [
+   {
+    "name": "cellID",
+    "dtype": "str",
+    "examples": [
+     "9-a9-a",
+     "9-a9-a-a",
+     "9-a9-a"
+    ]
+   },
+   {
+    "name": "720M",
+    "dtype": "float64"
+   },
+   {
+    "name": "540M14D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M2D2M8D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M2D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M14D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "523M3D9M6D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M8D178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M18D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M1D10M1D4M1I162M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M21D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M9D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "524M25D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M14D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M5I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M10D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "529M22D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "520M24D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M1I8M2I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M6I177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M6D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M9D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M1D6M6I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M6D178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "508M16D13M8D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M8D6M4D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M7D183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M3D183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "544M3I176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M8D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "542M5D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M9D179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "519M2D4M1D15M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "517M5D19M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M30D151M",
+    "dtype": "float64"
+   },
+   {
+    "name": "516M5D6M1D3M13D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "533M17D170M",
+    "dtype": "float64"
+   },
+   {
+    "name": "533M7D6M2D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M17D162M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M15D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M1D178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M1I179M",
+    "dtype": "float64"
+   },
+   {
+    "name": "501M15D24M14D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "hclust",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "hclust"
+  ]
+ },
+ "ext_zf_scartrace/GSE102990_R5_scarclones.txt.gz": {
+  "rows": 2366,
+  "columns": [
+   {
+    "name": "Unnamed: 0",
+    "dtype": "str",
+    "examples": [
+     "9-a9-a-a9",
+     "9-a9-a-a9",
+     "9-a9-a-a9"
+    ]
+   },
+   {
+    "name": "720M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M6D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M18D171M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M12D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "543M3I177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M10D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M14D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M12D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "529M17D174M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M5D177M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M9D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M10D172M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M2I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M3D181M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M8D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M15D164M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M6D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "520M27D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "531M13D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "537M17D166M",
+    "dtype": "float64"
+   },
+   {
+    "name": "534M11D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "530M21D169M",
+    "dtype": "float64"
+   },
+   {
+    "name": "539M6D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "545M1I175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "533M4D183M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M9D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "503M1D4M3D10M4D6M2D2M10D175M",
+    "dtype": "float64"
+   },
+   {
+    "name": "541M3D176M",
+    "dtype": "float64"
+   },
+   {
+    "name": "532M15D173M",
+    "dtype": "float64"
+   },
+   {
+    "name": "538M23D159M",
+    "dtype": "float64"
+   },
+   {
+    "name": "536M1D4M1D178M",
+    "dtype": "float64"
+   },
+   {
+    "name": "hclust",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "hclust"
+  ]
+ },
+ "ext_zf_linnaeus/GSE106121_A5_scars_compared.csv.gz": {
+  "rows": 6107,
+  "columns": [
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   },
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "TCACAAGTCAAGAAGT",
+     "GGACGTCAGACCCACC",
+     "GTAGGCCGTATCGCAT"
+    ]
+   },
+   {
+    "name": "Library",
+    "dtype": "str"
+   },
+   {
+    "name": "Cell",
+    "dtype": "str",
+    "examples": [
+     "H5_TCACAAGTCAAGAAGT",
+     "P5_GGACGTCAGACCCACC",
+     "P5_GTAGGCCGTATCGCAT"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "112",
+     "403",
+     "423"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "75M",
+     "27M1I18M14D29M",
+     "27M1I16M21D31M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "CGCGTATAGC",
+     "TACCGACCAT",
+     "CATCTTAGCA"
+    ]
+   },
+   {
+    "name": "Presence",
+    "dtype": "int64"
+   },
+   {
+    "name": "p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Embryos",
+    "dtype": "int64",
+    "examples": [
+     "0",
+     "0",
+     "0"
+    ]
+   },
+   {
+    "name": "Scar",
+    "dtype": "str",
+    "examples": [
+     "2178:75M",
+     "2195:27M1I18M14D29M",
+     "2211:27M1I16M21D31M"
+    ]
+   }
+  ],
+  "held_columns": []
+ },
+ "ext_zf_linnaeus/GSE106121_A6_scars_compared.csv.gz": {
+  "rows": 3478,
+  "columns": [
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   },
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "GCGCGATGTCCAGTAT",
+     "AGACGTTTCTGATACG",
+     "CACCAGGGTACACCGC"
+    ]
+   },
+   {
+    "name": "Library",
+    "dtype": "str"
+   },
+   {
+    "name": "Cell",
+    "dtype": "str",
+    "examples": [
+     "H6_GCGCGATGTCCAGTAT",
+     "H6_AGACGTTTCTGATACG",
+     "H6_CACCAGGGTACACCGC"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "499",
+     "379",
+     "546"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "75M",
+     "47M6D28M",
+     "51M4I20M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "GATTCTAACA",
+     "CGGCTATATT",
+     "CATACGGAGT"
+    ]
+   },
+   {
+    "name": "Presence",
+    "dtype": "int64"
+   },
+   {
+    "name": "p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Embryos",
+    "dtype": "int64",
+    "examples": [
+     "30",
+     "16",
+     "0"
+    ]
+   },
+   {
+    "name": "Scar",
+    "dtype": "str",
+    "examples": [
+     "1788:75M",
+     "2002:47M6D28M",
+     "2203:51M4I20M"
+    ]
+   }
+  ],
+  "held_columns": []
+ },
+ "ext_zf_linnaeus/GSE106121_A7_scars_compared.csv.gz": {
+  "rows": 23802,
+  "columns": [
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   },
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "TGGTTAGGTCGGATCC",
+     "ATCGAGTTCGACGGAA",
+     "GCGAGAATCGGCGCAT"
+    ]
+   },
+   {
+    "name": "Library",
+    "dtype": "str"
+   },
+   {
+    "name": "Cell",
+    "dtype": "str",
+    "examples": [
+     "P7exo_TGGTTAGGTCGGATCC",
+     "P7exo_ATCGAGTTCGACGGAA",
+     "P7exo_GCGAGAATCGGCGCAT"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "258",
+     "301",
+     "105"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "45M4I26M",
+     "26M1D18M14D31M",
+     "24M1I18M1I4M3D27M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "GCGCGCATCC",
+     "CGCAAATACG",
+     "GGGTTATATT"
+    ]
+   },
+   {
+    "name": "Presence",
+    "dtype": "int64"
+   },
+   {
+    "name": "p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Embryos",
+    "dtype": "int64",
+    "examples": [
+     "0",
+     "0",
+     "0"
+    ]
+   },
+   {
+    "name": "Scar",
+    "dtype": "str",
+    "examples": [
+     "2181:45M4I26M",
+     "2184:26M1D18M14D31M",
+     "2187:24M1I18M1I4M3D27M"
+    ]
+   }
+  ],
+  "held_columns": []
+ },
+ "ext_zf_linnaeus/GSM2830048_Scar_probs.csv.gz": {
+  "rows": 49830,
+  "columns": [
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   },
+   {
+    "name": "p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Embryos",
+    "dtype": "int64",
+    "examples": [
+     "32",
+     "32",
+     "32"
+    ]
+   },
+   {
+    "name": "Cum.p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Bin",
+    "dtype": "int64",
+    "held": "name only"
+   }
+  ],
+  "held_columns": [
+   "Bin"
+  ]
+ },
+ "ext_zf_linnaeus/GSM2830049_Z2_scars_compared.csv.gz": {
+  "rows": 6563,
+  "columns": [
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   },
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "TGAGTCGATGCCCT",
+     "ACCACAGACACCAA",
+     "TGTATCTGGTCGAT"
+    ]
+   },
+   {
+    "name": "Library",
+    "dtype": "str"
+   },
+   {
+    "name": "Cell",
+    "dtype": "str",
+    "examples": [
+     "L22_TGAGTCGATGCCCT",
+     "L21_ACCACAGACACCAA",
+     "L21_TGTATCTGGTCGAT"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "112",
+     "86",
+     "65"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "25S50M",
+     "47M3D28M",
+     "42M7D33M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "ATTAGTCACG",
+     "AGGTACAGTT",
+     "CCGCCCTCAC"
+    ]
+   },
+   {
+    "name": "Presence",
+    "dtype": "int64"
+   },
+   {
+    "name": "p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Embryos",
+    "dtype": "int64",
+    "examples": [
+     "0",
+     "26",
+     "0"
+    ]
+   },
+   {
+    "name": "Scar",
+    "dtype": "str",
+    "examples": [
+     "743:25S50M",
+     "1914:47M3D28M",
+     "2222:42M7D33M"
+    ]
+   }
+  ],
+  "held_columns": []
+ },
+ "ext_zf_linnaeus/GSM3032166_Z4_scars_compared.csv.gz": {
+  "rows": 27202,
+  "columns": [
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   },
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "GAAATGAAGTTGTCGT",
+     "CACAAACGTCGGGTCT",
+     "AGGCCACTCAGCCTAA"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "35",
+     "256",
+     "98"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "47M3D28M",
+     "55M20S",
+     "46M5D29M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "GGGGACGCTT",
+     "CGTCTGGTTA",
+     "AGACTCGTGA"
+    ]
+   },
+   {
+    "name": "Location",
+    "dtype": "int64",
+    "held": "name only"
+   },
+   {
+    "name": "Presence",
+    "dtype": "int64"
+   },
+   {
+    "name": "p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Embryos",
+    "dtype": "int64",
+    "examples": [
+     "15",
+     "0",
+     "0"
+    ]
+   },
+   {
+    "name": "Scar",
+    "dtype": "str",
+    "examples": [
+     "2030:47M3D28M",
+     "2179:55M20S",
+     "2180:46M5D29M"
+    ]
+   }
+  ],
+  "held_columns": [
+   "Location"
+  ]
+ },
+ "ext_zf_linnaeus/GSM3032167_Z5_scars_compared.csv.gz": {
+  "rows": 43468,
+  "columns": [
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   },
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "CACAGGCTCAGGTTCA",
+     "CGTGTAACAAGAGTCG",
+     "GGATTACTCCCGGATG"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "49",
+     "34",
+     "21"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "32M18D43M",
+     "24M1I23M3D27M",
+     "41S34M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "GTACGCGATA",
+     "GGGAACATCT",
+     "TCAAATGGGC"
+    ]
+   },
+   {
+    "name": "Location",
+    "dtype": "int64",
+    "held": "name only"
+   },
+   {
+    "name": "Presence",
+    "dtype": "int64"
+   },
+   {
+    "name": "p",
+    "dtype": "float64"
+   },
+   {
+    "name": "Embryos",
+    "dtype": "int64",
+    "examples": [
+     "0",
+     "0",
+     "0"
+    ]
+   },
+   {
+    "name": "Scar",
+    "dtype": "str",
+    "examples": [
+     "2183:32M18D43M",
+     "2186:24M1I23M3D27M",
+     "741:41S34M"
+    ]
+   }
+  ],
+  "held_columns": [
+   "Location"
+  ]
+ },
+ "ext_zf_linnaeus/GSM3032174_F1_1_used_scars_7Larvae.csv.gz": {
+  "rows": 15723,
+  "columns": [
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "AAACCTGAGACCGGAT",
+     "AAACCTGAGACGACGT",
+     "AAACCTGAGACGACGT"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "221",
+     "302",
+     "159"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "47M6D28M",
+     "45M30S",
+     "48M1I1M9D25M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "CACACTACAT",
+     "GCCATCGCGG",
+     "GGCATGAACT"
+    ]
+   },
+   {
+    "name": "Location",
+    "dtype": "int64",
+    "held": "name only"
+   },
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   }
+  ],
+  "held_columns": [
+   "Location"
+  ]
+ },
+ "ext_zf_linnaeus/GSM3032175_F1_2_used_scars_7Larvae.csv.gz": {
+  "rows": 15783,
+  "columns": [
+   {
+    "name": "Barcode",
+    "dtype": "str",
+    "examples": [
+     "AAACCTGAGAGACGAA",
+     "AAACCTGAGAGACGAA",
+     "AAACCTGAGAGACGAA"
+    ]
+   },
+   {
+    "name": "Reads",
+    "dtype": "int64",
+    "examples": [
+     "298",
+     "198",
+     "215"
+    ]
+   },
+   {
+    "name": "CIGAR",
+    "dtype": "str",
+    "examples": [
+     "47M3D28M",
+     "48M4D27M",
+     "49M4I2M4D20M"
+    ]
+   },
+   {
+    "name": "UMI",
+    "dtype": "str",
+    "examples": [
+     "TGACCTACCA",
+     "GCTTGCCACC",
+     "GCTATACTGG"
+    ]
+   },
+   {
+    "name": "Location",
+    "dtype": "int64",
+    "held": "name only"
+   },
+   {
+    "name": "Sequence",
+    "dtype": "str"
+   }
+  ],
+  "held_columns": [
+   "Location"
+  ]
+ }
+}

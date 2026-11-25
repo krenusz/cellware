@@ -48,6 +48,12 @@ DATASETS = {
     "ext_zf_dev": "GEO GSE105010 RAW.tar (per-fish lineage barcode files, 5.8 MB) and GSE158142 F8-F15 GestMaster lineage "
                   "tables, downloaded 2026-11-20 (Bence: \"gate all 5 actually\"), sha256 in raw/SHA256SUMS. Structure "
                   "gate only (C17-S1G) until partitioned by clade; no expression or cell type file downloaded.",
+    "ext_zf_scartrace": "GEO GSE102990 seven *_scarclones.txt.gz per-sample scar clone tables (P1, P2, R1-R5, 0.4 MB), "
+                        "downloaded 2026-11-25 (Bence: \"2\"), sha256 in raw/SHA256SUMS. Structure gate only (DS-EMB-G) until "
+                        "partitioned; no expression or cell type file downloaded.",
+    "ext_zf_linnaeus": "GEO GSE106121 A5-A7 scars_compared tables plus GSM-level Scar_probs, Z2/Z4/Z5 scars_compared and "
+                       "F1_1/F1_2 used_scars tables (3.0 MB), downloaded 2026-11-25 (Bence: \"2\"), sha256 in raw/SHA256SUMS. "
+                       "Structure gate only (DS-EMB-G) until partitioned; no expression or cell type file downloaded.",
     "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
                     "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "

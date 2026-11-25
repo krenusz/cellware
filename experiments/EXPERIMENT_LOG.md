@@ -13685,6 +13685,48 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - E1 is adult sampling of cells of inferred embryonic origin.
 - Practice: neutral wording (titles stay out of saved files); downloads read with python -I from their own directories; no outreach.
 - Compute: local listings and small table downloads; structure counts only. Routing: Opus writes the rules and the mapping; the Sonnet data lane runs fetch and counts if a lead passes L.
+
+### DS-EMB-G stage L result (2026-11-25; `results_c17/ds_emb_gate_list.json` plus repository listings; no table opened except as stated)
+- **E1: FAIL at L.** Only per-sample chromatin fragment files are deposited (7 and 29 samples, 9.2 GB and 52 GB), with no per-cell variant call table. Calling variants from reads is out of scope by the rule.
+- **E6: FAIL at L.** The deposit holds only a modelling notebook (two files, 0.6 MB), with no tracks.
+- **E2: passes L.** 7 per-fish clone tables (`*_scarclones.txt.gz`, 0.38 MB in total).
+- **E4: passes L.** Per-larva scar tables (A5-A7, Z2, Z4, Z5; 3.0 MB with the F1 and probability tables).
+- **E3: passes L.** The atlas's lab bucket holds whole-embryo automated light-sheet tracks for embryos ZSNS001 and ZSNS003-005 (0.21-0.89 GB each, 1.82 GB for the four), plus a tail acquisition of ZSNS001 (0.49 GB).
+  - Header only, read by byte range: `track_id, t, z, y, x, id, parent_track_id, parent_id`.
+- **E5: passes L.** Mouse gastrulating embryos, light-sheet. Five movies, each with a manual tracking file (`MovieN-mamut.xml`, 20-170 MB, 399 MB in total).
+  - Header only, read by byte range: spot features are position, frame, radius, division time and two intensity channels; edge features are source and target spot.
+  - The study text names a heart-lineage reporter and an inducible clonal label (genotype strings not saved).
+- **E2 and E4 fetch and schema** (Sonnet data lane): files in `data/ext_zf_scartrace/raw` and `data/ext_zf_linnaeus/raw`, sha256 written, sealed.py entries added, schema in `results_c17/ds_emb_gate_schema.json`.
+  - Column names only were seen for the held columns (cluster, organ and location). Cell IDs in E2 embed tissue-like tokens; they were seen once by the data lane in an unmasked run, whose output was overwritten, and are never parsed.
+  - Odd formats: E2 tables are wide (cell x scar); E4 tables are long (cell x scar, with a scar probability); no table has an animal ID column.
+
+### DS-EMB-G amendment 1: column mapping (written 2026-11-25, before any gate count)
+- **E2 (tree type, C17-S1G G2 rule):**
+  - Animal = file (7 fish: P1, P2, R1-R5).
+  - Cell = the first column.
+  - Scars = all other columns except the held ones. Scar columns whose name is a pure match string (`^\d+M$`, unedited) are dropped.
+  - A cell carries a scar if its value is > 0. Full allele = the sorted set of carried scars; cells with no edited scar are dropped.
+- **E4 (tree type, same rule):**
+  - Animal = file for A5, A6, A7, Z2, Z4, Z5 (6 larvae).
+  - Excluded: F1_1 and F1_2 (7 larvae pooled; the only candidate larva column is held and unconfirmed) and the scar probability table (not per cell).
+  - Cell = `Cell` if present, else `Barcode`.
+  - Edited scar = CIGAR contains I or D. Full allele = the sorted set of a cell's edited `Scar` values.
+- **E3 (track type):**
+  - Embryo = file. ZSNS001, 003, 004 and 005 are used. The ZSNS001 tail file is excluded (same embryo, second acquisition), and ZSNS002 has no track file.
+  - A division is a track that is the `parent_track_id` of exactly 2 tracks. A sister pair is those 2 daughter tracks, and an arm is a daughter track with all its descendant tracks.
+  - Eligible:
+    - the mother track has a parent track (depth >= 1);
+    - each daughter track spans >= 5 time points (a guard against short false splits from automated tracking);
+    - both arms end in a positioned node.
+
+    No fate label is deposited, so the end position is the only label. The gate is about counted divisions, not fate.
+- **E5 (track type):**
+  - Embryo = movie (5).
+  - The spot graph is built from edges oriented forward in frame. A division is a spot with 2 forward edges; the sister pair is its two daughter branches.
+  - Eligible: the dividing spot has an earlier division on its own path back to the track root (depth >= 1), and each arm has >= 5 spots.
+  - The intensity channels (the heart-lineage reporter and the clonal label) are a readout and are not read at this gate.
+- **Gates unchanged.** Pass if 0.4 x eligible >= 30, i.e. >= 75 eligible units per lead. Tree arms need >= 4 cells.
+- **Downloads:** E3 is 4 track files, 1.82 GB (under the 2 GB OK threshold), into `data/ext_zebrahub_tracks/raw`. E5 is 5 tracking files, 399 MB, into `data/ext_mouse_gast_tracks/raw`. Both get sha256 and sealed.py entries "structure only until partitioned". No image data.
 - **Not yet known:**
   - whether each shortlisted set exposes per-cell tracks or trees with fates, and their sizes;
   - whether the questions are published in kind.
