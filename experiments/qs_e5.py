@@ -315,11 +315,404 @@ def inventory():
     return {"written": os.path.relpath(OUT, os.path.join(HERE, ".."))}
 
 
+# ---------- QE1 gate 2: pair structure and power (structure only; observed cycle lengths feed one threshold) ----------
+
+PCT = 95  # censoring window: birth frame + this percentile of the movie's complete cycle length <= last frame
+KIN_MIN, WIN_MIN = 10.0, 20.0  # non-kin birth tolerance (+-10 min) and permutation window (20 min)
+RHO_SIS, RHO_MD = 0.5, 0.3
+SEED = 20261125
+
+
+def build_cells(frame, edges, unit_of, keep, last_frame):
+    """Cell-cycle segments of the units in `keep` (same definition as cycles()). Returns numpy arrays per segment:
+    tree (unit name), gen, birth (frame), parent (segment index of the mother, -1 = none), eligible (bool).
+    Eligible = complete (born at a division, ends at a division) and birth + PCT-th percentile of the complete cycle
+    length (frames) of this movie <= last_frame. The percentile is a threshold used only to decide eligibility; no
+    cycle length is returned or saved."""
+    import numpy as np  # noqa: PLC0415
+
+    kids, parents = defaultdict(list), defaultdict(list)
+    for a, b in edges:
+        if a not in frame or b not in frame or unit_of.get(a) not in keep:
+            continue
+        s, t = (a, b) if frame[a] < frame[b] else (b, a)
+        kids[s].append(t)
+        parents[t].append(s)
+    nodes = [n for n in frame if unit_of.get(n) in keep]
+    gen = {}
+    for n in sorted(nodes, key=lambda x: frame[x]):
+        gen[n] = min((gen[p] + (len(kids[p]) == 2) for p in parents[n]), default=0)
+    starts = [n for n in nodes if len(parents[n]) != 1 or len(kids[parents[n][0]]) >= 2]
+    seg_of_end, seg = {}, []  # seg: [start, end, born_at_div]
+    for n in sorted(starts, key=lambda x: (frame[x], int(x))):
+        end = n
+        while len(kids[end]) == 1 and len(parents[kids[end][0]]) == 1:
+            end = kids[end][0]
+        born = len(parents[n]) == 1 and len(kids[parents[n][0]]) == 2
+        seg_of_end[end] = len(seg)
+        seg.append([n, end, born])
+    par = np.full(len(seg), -1)
+    for i, (n, end, born) in enumerate(seg):
+        if born:
+            par[i] = seg_of_end.get(parents[n][0], -1)
+    complete = np.array([b and len(kids[e]) == 2 for _, e, b in seg], dtype=bool)
+    length = np.array([frame[e] - frame[n] + 1 for n, e, _ in seg])
+    birth = np.array([frame[n] for n, _, _ in seg])
+    thr = np.percentile(length[complete], PCT) if complete.any() else np.inf
+    elig = complete & (birth + thr <= last_frame)
+    return {"tree": np.array([unit_of[n] for n, _, _ in seg], dtype=object),
+            "gen": np.array([gen[n] for n, _, _ in seg]), "birth": birth, "parent": par, "eligible": elig}
+
+
+def pair_index(cells, dt):
+    """Index arrays of sister pairs, mother-daughter pairs and time-matched non-kin pairs among eligible cells.
+    Sisters: both daughters of one division, both eligible. Mother-daughter: mother and a daughter both eligible.
+    Non-kin: eligible cells of the same generation with births within KIN_MIN minutes and different mothers."""
+    import numpy as np  # noqa: PLC0415
+
+    par, el, gen, birth = cells["parent"], cells["eligible"], cells["gen"], cells["birth"]
+    idx = np.flatnonzero(el & (par >= 0))
+    byp = defaultdict(list)
+    for i in idx:
+        byp[par[i]].append(i)
+    sis = np.array([v for v in byp.values() if len(v) == 2], dtype=int).reshape(-1, 2)
+    md = np.array([(par[i], i) for i in idx if el[par[i]]], dtype=int).reshape(-1, 2)
+    tol = int(KIN_MIN / dt + 1e-9)
+    nk = []
+    for g in np.unique(gen[idx]):
+        ii = idx[gen[idx] == g]
+        for k, i in enumerate(ii):
+            for j in ii[k + 1:]:
+                if abs(birth[i] - birth[j]) <= tol and par[i] != par[j]:
+                    nk.append((i, j))
+    return sis, md, np.array(nk, dtype=int).reshape(-1, 2)
+
+
+def pairs_counts(cells, dt):
+    sis, md, nk = pair_index(cells, dt)
+    tree, gen = cells["tree"], cells["gen"]
+    per_tree = defaultdict(Counter)
+    for t in set(tree):
+        per_tree[t]["eligible_cells"] = int(((tree == t) & cells["eligible"]).sum())
+    for a, b in sis:
+        per_tree[tree[a]]["sister_pairs"] += 1
+    for a, b in md:
+        per_tree[tree[a]]["mother_daughter_pairs"] += 1
+    for a, b in nk:
+        for t in {tree[a], tree[b]}:
+            per_tree[t]["nonkin_pairs"] += 1
+    by_gen = defaultdict(Counter)
+    for a, b in sis:
+        by_gen[int(gen[a])]["sister_pairs"] += 1
+    for a, b in md:
+        by_gen[int(gen[b])]["mother_daughter_pairs"] += 1
+    for a, b in nk:
+        by_gen[int(gen[a])]["nonkin_pairs"] += 1
+    return {"segments": int(len(tree)), "eligible_cells": int(cells["eligible"].sum()),
+            "sister_pairs": int(len(sis)), "mother_daughter_pairs": int(len(md)), "nonkin_pairs": int(len(nk)),
+            "by_generation": {str(g): dict(c) for g, c in sorted(by_gen.items())},
+            "per_tree": {t: dict(c) for t, c in sorted(per_tree.items())}}
+
+
+def load_train_cells(m):
+    """Download (sha256-checked), pass 1 only (spot ID, FRAME, edges), train units only."""
+    import pandas as pd  # noqa: PLC0415
+
+    frame, edges = ds_emb_seal.load(fetch_movie(m))
+    unit_of = components(frame, edges, m)
+    df = partitions.train_only("mouse_gast_tree", pd.DataFrame({"unit": sorted(set(unit_of.values()))}), "unit")
+    keep = set(df["unit"])
+    return build_cells(frame, edges, unit_of, keep, max(frame.values())), keep
+
+
+def frame_intervals():
+    tres = time_resolution(_get(LIST_URL))
+    return {m: float(tres[m][0]) for m in MOVIES}
+
+
+def pairs_stage():
+    dts = frame_intervals()
+    res = {"note": "train trees only; counts of eligible cycles and pairs; nonkin_pairs per tree counts each pair once "
+                   "for each distinct tree of its two members", "movies": {}}
+    for m in MOVIES:
+        cells, keep = load_train_cells(m)
+        v = res["movies"][f"M{m}"] = {"frame_interval_min": dts[m], "train_units": len(keep),
+                                      **pairs_counts(cells, dts[m])}
+        print(f"M{m}: trees {len(keep)}, eligible cells {v['eligible_cells']}, sister pairs {v['sister_pairs']}, "
+              f"mother-daughter pairs {v['mother_daughter_pairs']}, non-kin pairs {v['nonkin_pairs']}")
+    out = os.path.join(HERE, "results_c17", "qs_e5_pairs.json")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as fh:
+        json.dump(res, fh, indent=1)
+    return {"written": "experiments/results_c17/qs_e5_pairs.json"}
+
+
+# ---------- power ----------
+
+class Struct:
+    """Pair structure pooled over movies (arrays only; no observed cycle lengths)."""
+
+    def __init__(self, cell_sets, dts):
+        import numpy as np  # noqa: PLC0415
+
+        parts, off = [], 0
+        for m, cells in cell_sets:
+            sis, md, nk = pair_index(cells, dts[m])
+            parts.append((m, cells, sis + off, md + off, nk + off, off))
+            off += len(cells["tree"])
+        self.movie = np.concatenate([np.full(len(c["tree"]), m) for m, c, *_ in parts])
+        names = [f"M{m}|{t}" for m, c, *_ in parts for t in c["tree"]]
+        self.trees = sorted(set(names))
+        tid = {t: i for i, t in enumerate(self.trees)}
+        self.tree = np.array([tid[x] for x in names])
+        self.tree_movie = np.array([int(t.split("|")[0][1:]) for t in self.trees])
+        self.gen = np.concatenate([c["gen"] for _, c, *_ in parts])
+        self.birth = np.concatenate([c["birth"] for _, c, *_ in parts])
+        self.parent = np.concatenate([np.where(c["parent"] >= 0, c["parent"] + p[5], -1)
+                                      for (_, c, *_), p in zip(parts, parts)])
+        self.elig = np.concatenate([c["eligible"] for _, c, *_ in parts])
+        self.sis = np.concatenate([p[2] for p in parts])
+        self.md = np.concatenate([p[3] for p in parts])
+        self.nk = np.concatenate([p[4] for p in parts])
+        win = np.array([int(round(WIN_MIN / dts[m])) for m in self.movie])
+        keys = list(zip(self.movie.tolist(), self.gen.tolist(), (self.birth // win).tolist()))
+        u = {k: i for i, k in enumerate(sorted(set(keys)))}
+        self.stratum = np.array([u[k] for k in keys])
+
+
+def simulate(S, rng, rho_sis, rho_md):
+    """Gaussian log cycle lengths over every segment: x = r*mother + s*(shared by the two daughters) + e*eps,
+    unit variance, sister covariance r^2+s^2 = rho_sis, mother-daughter covariance r = rho_md, roots N(0,1)."""
+    import numpy as np  # noqa: PLC0415
+
+    r = rho_md
+    s = np.sqrt(max(rho_sis - r * r, 0.0))
+    e = np.sqrt(1.0 - r * r - s * s)
+    n = len(S.gen)
+    x = rng.standard_normal(n)
+    u = rng.standard_normal(n)
+    for g in range(1, int(S.gen.max()) + 1):
+        i = np.flatnonzero((S.gen == g) & (S.parent >= 0))
+        p = S.parent[i]
+        x[i] = r * x[p] + s * u[p] + e * x[i]
+    return x
+
+
+def _sums(z, a, b, tr, T):
+    import numpy as np  # noqa: PLC0415
+
+    return np.bincount(tr, weights=z[a] * z[b], minlength=T), np.bincount(tr, minlength=T).astype(float)
+
+
+def _ratio(S, N, w=None):
+    import numpy as np  # noqa: PLC0415
+
+    if w is None:
+        return S.sum() / max(N.sum(), 1.0)
+    return (w @ S) / np.maximum(w @ N, 1.0)
+
+
+def one_test(S, x, sel, rng, perms, boots):
+    """Returns (reject_sister, reject_mother_daughter). D = mean standardised product over kin pairs minus the same over
+    time-matched non-kin pairs. Null centre = mean D over censoring-aware permutations (cells of the same movie,
+    generation and 20-min birth window); SE = tree-cluster bootstrap; reject if |D - centre| > 1.96 SE.
+    Non-kin pairs are clustered by the tree of their first member."""
+    import numpy as np  # noqa: PLC0415
+
+    T = len(S.trees)
+    ci = np.flatnonzero(S.elig & sel[S.tree])
+    if len(ci) < 4:
+        return False, False
+    sets = {}
+    for name, P in (("sis", S.sis), ("md", S.md), ("nk", S.nk)):
+        keep = sel[S.tree[P[:, 0]]] & sel[S.tree[P[:, 1]]] if len(P) else np.zeros(0, dtype=bool)
+        sets[name] = (P[keep, 0], P[keep, 1], S.tree[P[keep, 0]])
+    if any(len(v[0]) == 0 for v in sets.values()):
+        return False, False
+    chosen = np.flatnonzero(sel)
+
+    def stats(vals):
+        z = np.zeros(len(x))
+        v = vals[ci]
+        z[ci] = (v - v.mean()) / (v.std() or 1.0)
+        return {k: _sums(z, a, b, tr, T) for k, (a, b, tr) in sets.items()}
+
+    def D(st, w=None):
+        nk = _ratio(*st["nk"], w)
+        return _ratio(*st["sis"], w) - nk, _ratio(*st["md"], w) - nk
+
+    obs = stats(x)
+    d_obs = D(obs)
+    s_ci = S.stratum[ci]
+    base = np.argsort(s_ci, kind="stable")
+    dp = []
+    for _ in range(perms):
+        rnd = np.lexsort((rng.random(len(ci)), s_ci))
+        v = np.zeros(len(x))
+        v[ci[base]] = x[ci[rnd]]
+        dp.append(D(stats(v)))
+    centre = np.mean(dp, axis=0)
+    pick = chosen[rng.integers(0, len(chosen), size=(boots, len(chosen)))]
+    w = np.stack([np.bincount(p, minlength=T) for p in pick]).astype(float)
+    nkb = _ratio(*obs["nk"], w)
+    se = [np.std(_ratio(*obs[k], w) - nkb) for k in ("sis", "md")]
+    return tuple(bool(abs(d_obs[i] - centre[i]) > 1.96 * se[i]) for i in (0, 1))
+
+
+def stratified_subsample(S, n_total, rng):
+    """Select n_total of the trees, stratified by movie (largest remainder), as the seal."""
+    import numpy as np  # noqa: PLC0415
+
+    sel = np.zeros(len(S.trees), dtype=bool)
+    movies = sorted(set(S.tree_movie.tolist()))
+    share = {m: n_total * (S.tree_movie == m).sum() / len(S.trees) for m in movies}
+    k = {m: int(share[m]) for m in movies}
+    for m in sorted(movies, key=lambda m: -(share[m] - k[m]))[: n_total - sum(k.values())]:
+        k[m] += 1
+    for m in movies:
+        sel[rng.choice(np.flatnonzero(S.tree_movie == m), size=k[m], replace=False)] = True
+    return sel
+
+
+def power_run(S, reps, n_trees, rho_sis, rho_md, seed, perms=100, boots=200):
+    import numpy as np  # noqa: PLC0415
+
+    rng = np.random.default_rng(seed)
+    hit = np.zeros(2)
+    for _ in range(reps):
+        sel = np.ones(len(S.trees), dtype=bool) if n_trees >= len(S.trees) else stratified_subsample(S, n_trees, rng)
+        hit += one_test(S, simulate(S, rng, rho_sis, rho_md), sel, rng, perms, boots)
+    return {"reps": reps, "trees": int(min(n_trees, len(S.trees))), "rho_sister": rho_sis,
+            "rho_mother_daughter": rho_md, "power_sister": float(hit[0] / reps),
+            "power_mother_daughter": float(hit[1] / reps)}
+
+
+def power_stage(reps=1000):
+    dts = frame_intervals()
+    S = Struct([(m, load_train_cells(m)[0]) for m in MOVIES], dts)
+    counts = {"trees": len(S.trees), "eligible_cells": int(S.elig.sum()), "sister_pairs": int(len(S.sis)),
+              "mother_daughter_pairs": int(len(S.md)), "nonkin_pairs": int(len(S.nk))}
+    print("train structure:", counts)
+    res = {"counts": counts,
+           "test": "D = kin product mean - non-kin product mean; permutation centre, cluster-bootstrap SE, alpha 0.05 "
+                   "two-sided; 100 permutations, 200 bootstrap resamples per replicate",
+           "partition_A_64_trees_planted": power_run(S, reps, 64, RHO_SIS, RHO_MD, SEED),
+           "partition_A_64_trees_null": power_run(S, reps, 64, 0.0, 0.0, SEED + 1),
+           "all_127_trees_planted": power_run(S, reps, len(S.trees), RHO_SIS, RHO_MD, SEED + 2)}
+    for k in ("partition_A_64_trees_planted", "partition_A_64_trees_null", "all_127_trees_planted"):
+        print(k, res[k])
+    out = os.path.join(HERE, "results_c17", "qs_e5_power.json")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as fh:
+        json.dump(res, fh, indent=1)
+    return {"written": "experiments/results_c17/qs_e5_power.json"}
+
+
+def selftest_qe1():
+    import numpy as np  # noqa: PLC0415
+    import pandas as pd  # noqa: PLC0415
+
+    frame, edges, nid = {}, [], [0]
+
+    def chain(f0, f1, parent=None):  # spots at frames f0..f1 in a chain, linked from `parent`
+        ids = []
+        for f in range(f0, f1 + 1):
+            nid[0] += 1
+            frame[str(nid[0])] = f
+            ids.append(str(nid[0]))
+        edges.extend(zip(ids[:-1], ids[1:]))
+        if parent:
+            edges.append((parent, ids[0]))
+        return ids[0], ids[-1]
+
+    # tree 1: root 0-4 divides; sisters a (5-9, len 5) and b (5-11, len 7); a divides into a1 (10-12, len 3,
+    # divides again) and a leaf; b divides into leaves
+    _, r1 = chain(0, 4)
+    _, a_e = chain(5, 9, r1)
+    _, b_e = chain(5, 11, r1)
+    _, a1_e = chain(10, 12, a_e)
+    chain(10, 16, a_e)
+    chain(13, 14, a1_e)
+    chain(13, 14, a1_e)
+    chain(12, 16, b_e)
+    chain(12, 16, b_e)
+    # tree 2: kids c (born 6, len 6, divides) and a leaf d
+    _, r2 = chain(0, 5)
+    _, c_e = chain(6, 11, r2)
+    chain(6, 8, r2)
+    chain(12, 13, c_e)
+    chain(12, 13, c_e)
+    # tree 3: kid e born 28, len 5, divides: beyond the censoring window (last frame 33)
+    _, r3 = chain(0, 27)
+    _, e_e = chain(28, 32, r3)
+    chain(28, 29, r3)
+    chain(33, 33, e_e)
+    chain(33, 33, e_e)
+    uo = components(frame, edges, 1)
+    assert len(set(uo.values())) == 3
+    real = partitions.partition_of
+    partitions.partition_of = lambda ds, unit: "train"
+    try:
+        df = partitions.train_only("mouse_gast_tree", pd.DataFrame({"unit": sorted(set(uo.values()))}), "unit")
+    finally:
+        partitions.partition_of = real
+    keep = set(df["unit"])
+    cells = build_cells(frame, edges, uo, keep, 33)
+    # complete cells a(5) b(7) a1(3) c(6) e(5); 95th percentile 6.8 -> e (28 + 6.8 > 33) is outside the window
+    assert int(cells["eligible"].sum()) == 4, int(cells["eligible"].sum())
+    pc = pairs_counts(cells, 2.0)
+    assert pc["sister_pairs"] == 1 and pc["mother_daughter_pairs"] == 1, pc  # (a,b); (a,a1)
+    assert pc["nonkin_pairs"] == 2, pc  # gen-1 cells a, b, c: a-c and b-c (different mothers, births within 5 frames)
+    assert sum(v.get("sister_pairs", 0) for v in pc["per_tree"].values()) == 1
+    # train filtering: only tree-1 train -> tree 2 and 3 cells absent
+    first = min(uo.values())
+    partitions.partition_of = lambda ds, unit: "train" if unit == first else "A"
+    try:
+        k1 = set(partitions.train_only("mouse_gast_tree", pd.DataFrame({"unit": sorted(set(uo.values()))}), "unit")["unit"])
+    finally:
+        partitions.partition_of = real
+    c1 = build_cells(frame, edges, uo, k1, 33)
+    assert set(c1["tree"]) == k1 == {first}
+
+    # power stage on a synthetic structure: 2 movies x 40 trees of perfect binary lineages (gen 0-3)
+    sets = []
+    rng = np.random.default_rng(1)
+    for m in (1, 2):
+        T, gen, birth, parent = [], [], [], []
+        for t in range(40):
+            base, start = len(T), 0
+            for g, cnt in enumerate((1, 2, 4, 8)):
+                for k in range(cnt):
+                    T.append(f"M{m}:{t}")
+                    gen.append(g)
+                    birth.append(g * 40 + int(rng.integers(0, 4)))
+                    parent.append(-1 if g == 0 else base + (2 ** (g - 1) - 1) + k // 2)
+        sets.append((m, {"tree": np.array(T, dtype=object), "gen": np.array(gen), "birth": np.array(birth),
+                         "parent": np.array(parent), "eligible": np.array(gen) >= 1}))
+    S = Struct(sets, {1: 2.0, 2: 2.0})
+    assert len(S.sis) > 0 and len(S.md) > 0 and len(S.nk) > 0
+    # simulated moments: sister covariance 0.5, mother-daughter 0.3 (large draw)
+    xs = np.array([simulate(S, np.random.default_rng(i), RHO_SIS, RHO_MD) for i in range(200)])
+    assert abs(np.mean(xs[:, S.sis[:, 0]] * xs[:, S.sis[:, 1]]) - 0.5) < 0.05
+    assert abs(np.mean(xs[:, S.md[:, 0]] * xs[:, S.md[:, 1]]) - 0.3) < 0.05
+    pw = power_run(S, 60, 64, RHO_SIS, RHO_MD, 5, perms=40, boots=100)
+    nl = power_run(S, 60, 64, 0.0, 0.0, 6, perms=40, boots=100)
+    assert pw["power_sister"] > 0.7 and nl["power_sister"] < 0.2 and nl["power_mother_daughter"] < 0.2, (pw, nl)
+    sel = stratified_subsample(S, 64, np.random.default_rng(0))
+    assert sel.sum() == 64 and sel[S.tree_movie == 1].sum() == 32
+    return {"pairs_toy": pc["sister_pairs"], "power_toy": pw["power_sister"], "null_toy": nl["power_sister"]}
+
+
 if __name__ == "__main__":
     arg = sys.argv[1:] or ["selftest"]
     if arg[0] == "selftest":
         print(json.dumps(selftest()))
+        print(json.dumps(selftest_qe1()))
+    elif arg[0] == "pairs":
+        print(json.dumps(pairs_stage()))
+    elif arg[0] == "power":
+        print(json.dumps(power_stage(int(arg[1]) if len(arg) > 1 else 1000)))
     elif arg[0] == "inventory":
         print(json.dumps(inventory()))
     else:
-        raise SystemExit("usage: qs_e5.py selftest|inventory")
+        raise SystemExit("usage: qs_e5.py selftest|inventory|pairs|power")

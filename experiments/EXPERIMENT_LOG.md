@@ -13926,6 +13926,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - test against the censoring-aware null, with tree-cluster bootstrap;
     - 1,000 replicates.
   - Pass if the primary (sister) power is >= 0.8.
+  - *Gate 2 implementation note (2026-11-25, before the run).* The Sonnet data lane wrote stages `pairs` and `power` in qs_e5.py, reviewed by Opus.
+    - Test statistic D = the mean product of standardised cycle lengths over kin pairs minus the same over non-kin pairs.
+    - Reject when |D - mean of permuted D| > 1.96 x the tree-cluster bootstrap SE (100 permutations, 200 bootstrap resamples per replicate).
+    - A is a 64-tree subsample, stratified by movie and redrawn each replicate.
+    - The censoring window uses each movie's 95th percentile of observed complete train cycle lengths. That is one threshold read from train values, never saved, and it carries no kin information.
+  - *Calibration rule (added now):* the run also reports the rejection rate under the null on A. If it is above 0.075, the power figure is unreliable and the gate does not pass.
 - **QE1 gate 4, novelty (fixed now):**
   - Lookup lane, OpenAlex, top 25 per phrasing: "sister cell cycle length correlation embryo live imaging", "kin correlation cell cycle duration in vivo", "inheritance of cell cycle duration lineage tracking mouse embryo".
   - Recall gate: the cultured-cell kin-correlation paper doi 10.1038/nature14318 must appear in a top 25 or in the citations of a screened paper.

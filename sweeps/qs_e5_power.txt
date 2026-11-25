@@ -1,0 +1,3 @@
+# QS-E5 QE1 gate 2: pair structure counts, then simulated power on the train pair structure (no observed cycle lengths saved)
+[experiments/results_c17/qs_e5_pairs.json] python experiments/qs_e5.py pairs
+[experiments/results_c17/qs_e5_power.json] python experiments/qs_e5.py power
