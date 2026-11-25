@@ -13764,6 +13764,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - *E5 fate channel.* The intensity attributes are present on every spot of Movie1 but only on part of the spots in Movies 2-4 (about 33%, 24% and 64%). Which channel is the heart-lineage reporter is inferred from the study's genotype string, not verified. Values were not read.
   - *E5 cell selection.* About 80-100 hand-tracked trees per embryo are a chosen subset. How cells were picked is unknown (the study's methods field was not read in full). If they were picked by outcome, fate may vary little.
   - *E3 validity.* "Tracks exist, validity unknown": the lab bucket also holds a `tracks_benchmark/` folder (ZSNS001 node, edge and track stores, and two dated track sets; names only), which may contain curated tracks.
+    - *Listing, 2026-11-25 (Bence: "3"; Haiku lookup lane; names, sizes and dates only, no content read).* Source: https://public.czbiohub.org/royerlab/zebrahub/imaging/single-objective/tracks_benchmark/ (HTML index).
+      - 10,997 files, 2.0 GiB, all zarr stores:
+        - ZSNS001 edges (384 MiB) and nodes (197 MiB), 2023-08-04;
+        - ZSNS001 tracks (1.1 GiB), 2023-07;
+        - an int8 track set dated 2023-07-19 (154 MiB, plus a 121 MiB zip);
+        - a 2024-03-14 track set from a second acquisition (86 MiB).
+      - No README or metadata file is listed. The index may hide dot-files such as .zattrs, so this is not proof that none exist.
+      - Nothing like it exists for ZSNS003/004/005.
+    - *Reading (Opus):*
+      - The folder covers one embryo (ZSNS001), plus one set from a different acquisition.
+      - Nothing in the names says whether the tracks are manually curated or are tracker outputs kept for benchmarking.
+      - Even if curated, one embryo leaves trees within one embryo as the only unit, so no between-embryo replication (H22 caution). E3 stays an upper bound.
+      - A claims-level read of the tracker method paper that uses this folder would settle whether it is curated. That needs Bence's OK.
 - **Process notes:**
   - The downloads (2.24 GB in total, each lead under 2 GB) and the counts ran locally, not on Actions (standing compute rule).
   - Commit 51489f9 quotes a stale coverage hash (the real one at that commit was 3a8c159d2c5f).
