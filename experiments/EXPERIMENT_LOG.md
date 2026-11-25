@@ -13843,6 +13843,49 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **What remains ours** (not a new biological claim): the same trees as an input row of the C17 parameter table (commitment and memory per division in a mammalian embryo), as DNA Typewriter entered with "published but proceeding" (C17-S1PL).
 - **Pretest of that row:** pluripotent memory per division would go from 1 system to 2. C17-LAW needs >= 4 per compared class on one scale (C17-S1R-P6), so this row cannot unblock the law test.
 - Exposure: added to partitions.mouse_gast_tree prior_exposure. A/B/C stay sealed and unspent.
+
+## QS-E5: question search on the sealed E5 track trees (pre-registered 2026-11-25; Bence: "Question search on E5")
+- **Serves: C12 CLOSED.** The sealed mouse_gast_tree set has train 127 trees and A, B and C with 64 each, all unspent. The obvious question is published (DS-EMB-N), so a different, novel question is needed.
+- **Template:** QS1 (gates in fixed order; only passes are reported; every gated question gets a COVERAGE row).
+- **Stage 0a, claims inventory (cellware-lookup, Haiku):**
+  - Input: the open full text of the source (PMC12170898, already fetched).
+  - It extracts to a UTF-8 scratch file outside the repo:
+    - every sentence on sisters, generations, divisions, cycle length, fate restriction or fate calls;
+    - the methods paragraphs on cell tracking, lineage analysis, threshold analysis and temporal alignment.
+  - Opus writes a neutral claims summary into this log. It settles:
+    - what is already published;
+    - how cells were picked and how fate was called;
+    - why the source counts 227 mother cells while the deposit holds 319 trees.
+  - The read goes into prior_exposure.
+- **Stage 0b, readout inventory (cellware-data, Sonnet; GitHub Actions):**
+  - The script downloads the 4 tracking files at run time with sha256 pinned.
+  - It assigns units from spot IDs, frames and edges only, then applies `partitions.train_only("mouse_gast_tree", ...)` before reading any other attribute.
+  - Per movie, train trees only, it counts presence:
+    - which spot, edge and track attributes are populated, and on what share;
+    - the number of distinct values of the manual colour features (counts only, no per-tree table);
+    - the frame interval (from the deposit's file list);
+    - complete and censored cell cycles per generation.
+  - No value distribution, intensity summary or position is saved. The public log shows counts only (the genotype strings carry gene names and are never printed).
+- **Stage 1, candidates (frozen in a commit after stage 0, before any gate):**
+  - Each candidate names the C17 parameter it identifies (H16), a readout that stage 0b showed exists, the unit (trees within embryos) and a pass rule.
+  - A fate question fails at once if no fate label is deposited.
+  - A timing question needs a censoring-aware null (the movie end cuts long cycles short) and a non-kin control from the same embryo and birth time.
+  - No dont_repropose row may be reopened: DNR-TSS, DNR-W5, DNR-CLOCK-A, DNR-STAGE-OTHER, DNR-WSCREEN and DNR-TOPO are checked.
+- **Stage 2, gates in fixed order:**
+  1. Near-repeat (coverage_check plus a log grep).
+  2. Power >= 0.8 on one sealed partition alone (64 trees), from train structure counts and a planted effect. No train effect is computed: an observed train effect is a train look and needs its own pre-registration and OK.
+  3. H22 if there is a between-condition contrast.
+  4. Novelty (cellware-lookup searches in the field's own words with a recall gate; Opus judges): "published in kind" fails.
+- **Pre-flight:**
+  1. Unit: track tree within embryo.
+  2. Readout: presence and structure only at stage 0.
+  3. Used data first: DS-EMB-G/S counts.
+  4. Power: stage 2.
+  5. Exposure: attribute presence and distinct-value counts on train trees; source methods and claims (logged).
+  6. Literature: stage 0a and the stage-2 novelty checks.
+  7. Readout gate (H21): per candidate at stage 1.
+- Practice: neutral wording; scan with lit_gap.SENSITIVE before commit; no outreach. The `gate` stage of ds_emb_gate.py and the scratchpad recount read all E5 trees and must not be re-run.
+- Compute: GitHub Actions for stage 0b (sweeps/qs_e5_inv.txt), dispatched by the Sonnet lane after Opus reviews and pushes the script. Local API reads for stage 0a.
   2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
   3. Pre-registration of an S1 on train only.
 - **Not yet known:**
