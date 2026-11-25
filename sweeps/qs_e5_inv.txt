@@ -1,0 +1,2 @@
+# QS-E5 stage 0b: readout inventory of E5 train trees, counts only
+[experiments/results_c17/qs_e5_inventory.json] python experiments/qs_e5.py inventory
