@@ -54,6 +54,14 @@ DATASETS = {
     "ext_zf_linnaeus": "GEO GSE106121 A5-A7 scars_compared tables plus GSM-level Scar_probs, Z2/Z4/Z5 scars_compared and "
                        "F1_1/F1_2 used_scars tables (3.0 MB), downloaded 2026-11-25 (Bence: \"2\"), sha256 in raw/SHA256SUMS. "
                        "Structure gate only (DS-EMB-G) until partitioned; no expression or cell type file downloaded.",
+    "ext_zebrahub_tracks": "public.czbiohub.org royerlab zebrahub imaging single-objective ZSNS001/003/004/005 _tracks.csv "
+                           "(per-track time points and parent track, 1.8 GB), downloaded 2026-11-25 (coordinator step, "
+                           "DS-EMB-G amendment 1), sha256 in raw/SHA256SUMS. Structure gate only (DS-EMB-G) until "
+                           "partitioned; no image data downloaded.",
+    "ext_mouse_gast_tracks": "BioStudies S-BIAD1682 Movie1-5 MaMuT tracking XML (spots and edges, 0.4 GB), downloaded "
+                             "2026-11-25 (coordinator step, DS-EMB-G amendment 1), sha256 in raw/SHA256SUMS. Structure "
+                             "gate only (DS-EMB-G) until partitioned; spot IDs, frames and edges only, intensity "
+                             "features not read; no image data downloaded.",
     "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
                     "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "

@@ -1,0 +1,186 @@
+{
+ "E2": {
+  "pairs_taken": {
+   "P1": 12,
+   "P2": 3,
+   "R1": 28,
+   "R2": 5,
+   "R3": 17,
+   "R4": 15,
+   "R5": 8
+  },
+  "eligible_by_animal": {
+   "P1": 7,
+   "P2": 2,
+   "R1": 6,
+   "R2": 4,
+   "R3": 8,
+   "R4": 12,
+   "R5": 5
+  },
+  "eligible": 44,
+  "expected_train_eligible": 17,
+  "gate_pass": false,
+  "recurrent_allele_share": 0.051,
+  "cells_with_edited_allele": {
+   "P1": 1194,
+   "P2": 1860,
+   "R1": 3125,
+   "R2": 1646,
+   "R3": 1637,
+   "R4": 2885,
+   "R5": 1034
+  },
+  "distinct_full_alleles": {
+   "P1": 79,
+   "P2": 19,
+   "R1": 182,
+   "R2": 49,
+   "R3": 113,
+   "R4": 126,
+   "R5": 55
+  }
+ },
+ "E4": {
+  "pairs_taken": {
+   "A5": 34,
+   "A6": 17,
+   "A7": 62,
+   "Z2": 55,
+   "Z4": 251,
+   "Z5": 264
+  },
+  "eligible_by_animal": {
+   "A5": 3,
+   "A6": 1,
+   "A7": 11,
+   "Z2": 0,
+   "Z4": 2,
+   "Z5": 1
+  },
+  "eligible": 18,
+  "expected_train_eligible": 7,
+  "gate_pass": false,
+  "recurrent_allele_share": 0.023,
+  "cells_with_edited_allele": {
+   "A5": 2196,
+   "A6": 1910,
+   "A7": 8539,
+   "Z2": 1664,
+   "Z4": 7776,
+   "Z5": 10018
+  },
+  "distinct_full_alleles": {
+   "A5": 478,
+   "A6": 123,
+   "A7": 1230,
+   "Z2": 941,
+   "Z4": 3302,
+   "Z5": 4947
+  }
+ },
+ "E3": {
+  "per_unit": {
+   "ZSNS001": {
+    "tracks": 1605333,
+    "tracks_reached_from_roots": 1605333,
+    "divisions": 635041,
+    "eligible": 177203,
+    "parents_with_gt2_children": 0,
+    "rows": 21697591,
+    "max_distinct_parent_per_track": 1,
+    "share_tracks_without_parent_track": 0.209
+   },
+   "ZSNS003": {
+    "tracks": 169108,
+    "tracks_reached_from_roots": 169108,
+    "divisions": 15868,
+    "eligible": 3075,
+    "parents_with_gt2_children": 0,
+    "rows": 4057611,
+    "max_distinct_parent_per_track": 1,
+    "share_tracks_without_parent_track": 0.812
+   },
+   "ZSNS004": {
+    "tracks": 397507,
+    "tracks_reached_from_roots": 397507,
+    "divisions": 30278,
+    "eligible": 6999,
+    "parents_with_gt2_children": 0,
+    "rows": 7239919,
+    "max_distinct_parent_per_track": 1,
+    "share_tracks_without_parent_track": 0.848
+   },
+   "ZSNS005": {
+    "tracks": 318204,
+    "tracks_reached_from_roots": 318204,
+    "divisions": 46026,
+    "eligible": 13164,
+    "parents_with_gt2_children": 0,
+    "rows": 6460782,
+    "max_distinct_parent_per_track": 1,
+    "share_tracks_without_parent_track": 0.711
+   }
+  },
+  "eligible_total": 200441,
+  "expected_train_eligible": 80176.40000000001,
+  "gate_pass": true
+ },
+ "E5": {
+  "per_unit": {
+   "Movie1": {
+    "spots": 162118,
+    "spots_with_edges": 162076,
+    "divisions": 379,
+    "eligible": 316,
+    "eligible_branch_only": 316,
+    "same_frame_edges_ignored": 0,
+    "spots_indegree_gt1": 0,
+    "spots_outdegree_gt2": 0
+   },
+   "Movie2": {
+    "spots": 136415,
+    "spots_with_edges": 136413,
+    "divisions": 355,
+    "eligible": 277,
+    "eligible_branch_only": 277,
+    "same_frame_edges_ignored": 0,
+    "spots_indegree_gt1": 1,
+    "spots_outdegree_gt2": 0
+   },
+   "Movie3": {
+    "spots": 72470,
+    "spots_with_edges": 72461,
+    "divisions": 152,
+    "eligible": 83,
+    "eligible_branch_only": 83,
+    "same_frame_edges_ignored": 0,
+    "spots_indegree_gt1": 0,
+    "spots_outdegree_gt2": 0
+   },
+   "Movie4": {
+    "spots": 23645,
+    "spots_with_edges": 23645,
+    "divisions": 60,
+    "eligible": 45,
+    "eligible_branch_only": 45,
+    "same_frame_edges_ignored": 0,
+    "spots_indegree_gt1": 0,
+    "spots_outdegree_gt2": 0
+   },
+   "Movie5": {
+    "spots": 72470,
+    "spots_with_edges": 72461,
+    "divisions": 152,
+    "eligible": 83,
+    "eligible_branch_only": 83,
+    "same_frame_edges_ignored": 0,
+    "spots_indegree_gt1": 0,
+    "spots_outdegree_gt2": 0
+   }
+  },
+  "eligible_total": 804,
+  "expected_train_eligible": 321.6,
+  "gate_pass": true
+ }
+}

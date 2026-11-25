@@ -13727,6 +13727,30 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The intensity channels (the heart-lineage reporter and the clonal label) are a readout and are not read at this gate.
 - **Gates unchanged.** Pass if 0.4 x eligible >= 30, i.e. >= 75 eligible units per lead. Tree arms need >= 4 cells.
 - **Downloads:** E3 is 4 track files, 1.82 GB (under the 2 GB OK threshold), into `data/ext_zebrahub_tracks/raw`. E5 is 5 tracking files, 399 MB, into `data/ext_mouse_gast_tracks/raw`. Both get sha256 and sealed.py entries "structure only until partitioned". No image data.
+
+### DS-EMB-G result (2026-11-25; `results_c17/ds_emb_gate_counts.json`; structure counts only)
+- **Run:** Sonnet data lane, run locally (downloads 2.2 GB). Selftest passed on toy trees and toy track forests. No cell ID, position or intensity was saved or read; the sealed check is OK.
+- **E2 zebrafish scar clone tracing: FAIL.** 7 fish, 88 disjoint clade pairs, 44 eligible (expected train 17 < 30). 5% of full alleles recur across fish.
+- **E4 zebrafish scar trees: FAIL.** 6 larvae, 683 pairs, 18 eligible (expected train 7). Allele diversity is very high (thousands of distinct full alleles per larva), so arms stay small, as in C17-S1G G3.
+- **E3 zebrafish whole-embryo tracks: PASS (upper bound).** 4 embryos, 727,213 divisions, 200,441 eligible sister pairs (ZSNS001 177,203; 003 3,075; 004 6,999; 005 13,164).
+  - The division count is far above a real embryo's at these stages. This is automated over-splitting, and only the 5-time-point guard filters it, so the count is an upper bound. Even the smallest embryo alone passes the line.
+  - No fate label is deposited; end position is the only label.
+- **E5 mouse gastrulation manual tracks: PASS.** Divisions 379, 355, 152, 60 and 152; eligible pairs 316, 277, 83, 45 and 83.
+  - Movie3 and Movie5 have identical tracking: the same spot and edge counts and the same frame histogram, with different file sizes. They are treated as one embryo, so Movie5 is dropped.
+  - E5 = **4 embryos, 721 eligible depth >= 1 sister pairs** (pass with or without Movie5).
+  - The arm reading (branch only or subtree) does not change any count.
+  - One spot in Movie2 has 2 incoming edges (a track merge); noted, not changed.
+  - The deposit carries a heart-lineage reporter channel per spot. That is a real fate readout at counted divisions, and it was not read.
+- **Reading:** two new counted-division embryo systems pass the structure gate. E5 is a mammalian embryo with manual tracks and a fate reporter, the closest of all the leads to human development and to what C17-STAGE needs. E3 is a vertebrate embryo with automated tracks and position only.
+- **Self-challenge:**
+  - Pairs are units, but pairs within one embryo are not independent: E5 has 4 embryos and E3 has 4. Any test must use embryo-level or lineage-level sealing and clustering.
+  - E3's count is inflated by tracking errors.
+  - E5's fate channel is an intensity, not a call; a threshold would be a new choice, to be fixed before reading.
+  - The novelty of a sister-fate or memory-per-division question on these movies is unchecked: the source study of E5 may already report sister fate coordination.
+- **Next (needs Bence):**
+  1. A novelty check on the E5 source (published in kind or not).
+  2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
+  3. Pre-registration of an S1 on train only.
 - **Not yet known:**
   - whether each shortlisted set exposes per-cell tracks or trees with fates, and their sizes;
   - whether the questions are published in kind.
