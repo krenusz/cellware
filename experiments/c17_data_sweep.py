@@ -97,8 +97,13 @@ WATCH_BIOSTUDIES = ["E-MTAB-17351"]
 WATCH_TITLE_SEARCH = {
     "hESC endoderm sister wells": '(endoderm) AND (clonal OR barcod* OR "lineage tracing") AND '
                                   '(sister OR memory OR heritable) AND ("2026"[PDAT] : "3000"[PDAT])',
+    # frozen 2026-11-25 (DS-2026-11-25): the first author of the sister-well preprint (C5-S6c), GEO contributor field
+    "hESC sister wells, author": 'Linneberg-Agerholm[AUTH] AND ("2026"[PDAT] : "3000"[PDAT])',
     "DeepTrack": 'DeepTrack AND ("2025"[PDAT] : "3000"[PDAT])',
 }
+# preprints whose data would reopen a parked chapter: a journal version (Crossref relation) is the release signal
+WATCH_PREPRINT = {"hESC sister wells preprint": "10.64898/2026.09.02.748863"}
+SINCE = None  # "YYYY/MM/DD": restrict the sweep to records released on or after this date (--since)
 
 
 def get(url, as_json=True, tries=5):
@@ -123,8 +128,14 @@ def esearch(term, retmax=300):
     return int(r.get("count", 0)), r.get("idlist", [])
 
 
+def geo_base():
+    if not SINCE:
+        return GEO_BASE
+    return GEO_BASE.replace('"2019"[PDAT]', f'"{SINCE}"[PDAT]')
+
+
 def geo_records(name, q):
-    count, ids = esearch(f"({q}) AND {GEO_BASE}")
+    count, ids = esearch(f"({q}) AND {geo_base()}", retmax=300 if not SINCE else 2000)
     recs = []
     for i in range(0, len(ids), 100):
         time.sleep(0.6)
@@ -139,7 +150,10 @@ def geo_records(name, q):
 
 
 def zenodo_records(name, q):
-    r = get("https://zenodo.org/api/records?" + urllib.parse.urlencode({"q": q, "size": 25, "sort": "mostrecent"}))
+    if SINCE:
+        q = f"({q}) AND publication_date:[{SINCE.replace('/', '-')} TO *]"
+    r = get("https://zenodo.org/api/records?" + urllib.parse.urlencode(
+        {"q": q, "size": 25, "sort": "mostrecent"}))  # 25 is the anonymous maximum; the gate catches more
     out = []
     for h in r.get("hits", {}).get("hits", []):
         m = h.get("metadata", {})
@@ -153,15 +167,32 @@ def zenodo_records(name, q):
 
 
 def biostudies_records(name, q):
-    url = "https://www.ebi.ac.uk/biostudies/api/v1/arrayexpress/search?" + urllib.parse.urlencode(
-        {"query": q, "pageSize": 100})
+    p = {"query": q, "pageSize": 100}
+    if SINCE:
+        p.update({"sortBy": "release_date", "sortOrder": "descending"})
+    url = "https://www.ebi.ac.uk/biostudies/api/v1/arrayexpress/search?" + urllib.parse.urlencode(p)
     r = get(url)
-    out = []
+    out, oldest = [], None
     for h in r.get("hits", []):
+        rel = str(h.get("release_date", ""))[:10]
+        oldest = rel if oldest is None or rel < oldest else oldest
+        if SINCE and rel < SINCE.replace("/", "-"):
+            continue
         out.append({"source": "BioStudies", "accession": h.get("accession"), "title": h.get("title", ""),
-                    "summary": h.get("content", "") or "", "year": str(h.get("release_date", ""))[:4],
+                    "summary": h.get("content", "") or "", "year": rel[:4],
                     "n_samples": None, "organism": None, "query": name})
+    if SINCE:
+        # sorted newest first: the window is covered once the page reaches a release before SINCE
+        covered = oldest is not None and oldest < SINCE.replace("/", "-")
+        return (len(out) if covered else r.get("totalHits")), out
     return r.get("totalHits"), out
+
+
+def crossref_relation(doi):
+    """Journal version of a preprint, from Crossref metadata only (no text)."""
+    m = get("https://api.crossref.org/works/" + urllib.parse.quote(doi))["message"]
+    rel = m.get("relation") or {}
+    return {"is_preprint_of": len(rel.get("is-preprint-of", [])), "has_version": len(rel.get("has-version", []))}
 
 
 # Study families already in the project (H5): GEO sub-series of these studies are not new data.
@@ -267,7 +298,19 @@ def watch():
         except Exception as e:  # noqa: BLE001
             res[name] = f"error: {str(e)[:60]}"
         time.sleep(0.6)
+    for name, doi in WATCH_PREPRINT.items():
+        try:
+            res[name] = crossref_relation(doi)
+        except Exception as e:  # noqa: BLE001
+            res[name] = f"error: {str(e)[:60]}"
     return res
+
+
+def counts_only(res):
+    """What goes to the public run log: numbers and verdicts, never titles."""
+    w = {k: ({"hits": v["hits"], "kept_titles": len(v["titles"])} if isinstance(v, dict) and "titles" in v else v)
+         for k, v in res.get("watch", {}).items()}
+    return {k: v for k, v in res.items() if k not in ("records", "watch")} | {"watch": w}
 
 
 def sweep():
@@ -292,7 +335,10 @@ def sweep():
                                          and not r["known"] for r in recs),
         "dropped_excluded_domain": dropped,
     }
-    return {"queries": counts, "errors": errors, "summary": by, "watch": watch(), "records": recs[:400]}
+    # validity gate (DS-2026-11-25): a dated sweep is exhaustive only if every query fetched all its hits
+    complete = not errors and all(c["total"] is not None and c["fetched"] >= c["total"] for c in counts.values())
+    return {"since": SINCE, "complete": complete, "queries": counts, "errors": errors, "summary": by,
+            "watch": watch(), "records": recs[:400]}
 
 
 def selftest():
@@ -334,16 +380,33 @@ def selftest():
         assert TITLE_DROP.search(t), t
     masked = CELL_LINE.sub("[line]", "E14.5 embryo, histone H1 and H9 hESC")
     assert masked == "E14.5 embryo, histone H1 and [line] hESC", masked
+    # dated mode: GEO release window and a titles-free public log
+    global SINCE
+    SINCE = "2026/11/12"
+    assert '"2026/11/12"[PDAT] : "3000"[PDAT]' in geo_base(), geo_base()
+    SINCE = None
+    assert geo_base() == GEO_BASE
+    shown = counts_only({"records": [1], "summary": {}, "watch": {"w": {"hits": 2, "titles": ["GSE9: secret"]},
+                                                                  "p": {"is_preprint_of": 0, "has_version": 0}}})
+    assert "records" not in shown and "secret" not in json.dumps(shown), shown
+    assert shown["watch"]["w"] == {"hits": 2, "kept_titles": 1}, shown
     return {"ok": True, "kept": acc, "dropped": dropped}
 
 
 def main():
-    res = selftest() if (len(sys.argv) > 1 and sys.argv[1] == "selftest") else sweep()
+    global SINCE, OUT
+    argv = sys.argv[1:]
+    if "--since" in argv:
+        SINCE = argv[argv.index("--since") + 1]
+        assert re.fullmatch(r"\d{4}/\d{2}/\d{2}", SINCE), SINCE
+    if "--out" in argv:
+        OUT = os.path.abspath(argv[argv.index("--out") + 1])
+    res = selftest() if (argv and argv[0] == "selftest") else sweep()
     if "records" in res:
         os.makedirs(os.path.dirname(OUT), exist_ok=True)
         with open(OUT, "w", encoding="utf-8") as fh:
             json.dump(res, fh, indent=1)
-    print(json.dumps({k: v for k, v in res.items() if k != "records"}, indent=1)[:4000])
+    print(json.dumps(counts_only(res), indent=1)[:4000])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,2 @@
+# DS-2026-11-25: deposits released since 2026-11-12, metadata only, counts-only log
+[experiments/results_c17/c17_data_sweep_2026-11-25.json] python experiments/c17_data_sweep.py --since 2026/11/12 --out experiments/results_c17/c17_data_sweep_2026-11-25.json

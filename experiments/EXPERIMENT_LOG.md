@@ -13534,3 +13534,31 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Preprints 10.64898/2026.07.29.741448 and 10.64898/2026.05.25.727662: abstract pages (HTTP 200) carry no data statement or accession. Full text not read.
 - hESC sister-well deposit: not checked (query terms not fixed). Next time: fix the terms first.
 - **Verdict: nothing new.** No parked chapter reopens. Next check about 2026-12-02.
+
+## DS-2026-11-25: dated deposit sweep, records released since 2026-11-12 (pre-registered 2026-11-25; Bence: "1 2 go")
+- **Serves: C12 CLOSED** (new public data that could add a system to the C17 parameter table or reopen a parked chapter; no candidate is open).
+- **Tool:** c17_data_sweep.py, unchanged queries and filters (C17-S1D), plus a dated mode (`--since 2026/11/12`, a week before the last sweep):
+  - GEO: the PDAT window starts at 2026/11/12; all ids fetched (retmax 2000).
+  - Zenodo: `publication_date:[2026-11-12 TO *]`, 25 per page (the anonymous maximum).
+  - BioStudies: sorted by release date, newest first; records before 2026-11-12 are dropped.
+- **Validity gate:** the sweep is exhaustive only if every query fetched all its hits in the window (`complete` in the output). If not, the verdict is "partial", and the queries that were cut are named.
+- **hESC sister-well watch (frozen now):**
+  - The existing GEO endoderm term.
+  - A GEO contributor search for the first author of the C5-S6c preprint.
+  - Crossref relation counts for its DOI (10.64898/2026.09.02.748863). A journal version is the release signal.
+- **Public log:** counts and verdicts only. Titles stay in the result JSON and are scanned with lit_gap.SENSITIVE before commit.
+- **Decision rule:**
+  - A new record (not `known`) with a lineage flag plus a split or memory flag goes to a structure-only gate (as C17-S1N), with Bence's OK.
+  - Anything else is listed only.
+  - Nothing is downloaded or opened.
+- **Pre-flight:**
+  1. Unit: a public dataset record.
+  2. Readout: metadata (accession, title, date, flags).
+  3. Used data first: records named anywhere in the project are flagged `known` (H5).
+  4. Power: not applicable.
+  5. Exposure: titles and design keywords only.
+  6. Literature: catalogue APIs and Crossref metadata, no key, no personal data in requests.
+  7. Readout gate: not applicable.
+- Practice: offline selftest (dated GEO window, titles-free log) and a count-only probe of the Zenodo, BioStudies and Crossref parameters before dispatch. The Zenodo page limit of 25 was found by the probe. Neutral wording; no outreach.
+- Compute: GitHub Actions run (sweeps/ds_2026_11_25.txt).
+- The QS1-L2-P1 check 2 retry stays on its logged date (no earlier than 2026-11-26, Sonnet data lane); this sweep makes no bioRxiv call.
