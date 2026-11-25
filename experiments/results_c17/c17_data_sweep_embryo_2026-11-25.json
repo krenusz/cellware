@@ -1,0 +1,4393 @@
+{
+ "scope": "embryo",
+ "complete": true,
+ "recall": {
+  "GSE105010": true
+ },
+ "queries": {
+  "GEO:embryo_lineage": {
+   "total": 362,
+   "fetched": 362,
+   "capped_screen": false
+  },
+  "GEO:embryo_model_lineage": {
+   "total": 55,
+   "fetched": 55,
+   "capped_screen": false
+  },
+  "GEO:natural_marks": {
+   "total": 89,
+   "fetched": 89,
+   "capped_screen": false
+  },
+  "GEO:imaging_lineage": {
+   "total": 36,
+   "fetched": 36,
+   "capped_screen": false
+  },
+  "Zenodo:embryo_lineage": {
+   "total": 394,
+   "fetched": 394,
+   "capped_screen": false
+  },
+  "Zenodo:natural_marks": {
+   "total": 37,
+   "fetched": 37,
+   "capped_screen": false
+  },
+  "Zenodo:imaging_lineage": {
+   "total": 7,
+   "fetched": 7,
+   "capped_screen": false
+  },
+  "arrayexpress:embryo_lineage": {
+   "total": 3,
+   "fetched": 3,
+   "capped_screen": false
+  },
+  "arrayexpress:vertebrate_lineage": {
+   "total": 5,
+   "fetched": 5,
+   "capped_screen": false
+  },
+  "arrayexpress:natural_marks": {
+   "total": 1,
+   "fetched": 1,
+   "capped_screen": false
+  },
+  "BioImages:imaging_lineage": {
+   "total": 5,
+   "fetched": 5,
+   "capped_screen": false
+  },
+  "BioImages:imaging_cell_lineage": {
+   "total": 3,
+   "fetched": 3,
+   "capped_screen": false
+  },
+  "figshare:embryo_lineage": {
+   "total": null,
+   "fetched": 500,
+   "capped_screen": true
+  },
+  "Dryad:embryo_lineage": {
+   "total": 2,
+   "fetched": 2,
+   "capped_screen": false
+  },
+  "SCP:embryo_lineage": {
+   "total": 43,
+   "fetched": 43,
+   "capped_screen": false
+  },
+  "figshare:cell_lineage_embryo": {
+   "total": null,
+   "fetched": 500,
+   "capped_screen": true
+  },
+  "Dryad:cell_lineage_embryo": {
+   "total": 4,
+   "fetched": 4,
+   "capped_screen": false
+  },
+  "SCP:cell_lineage_embryo": {
+   "total": 43,
+   "fetched": 43,
+   "capped_screen": false
+  },
+  "figshare:natural_marks": {
+   "total": null,
+   "fetched": 500,
+   "capped_screen": true
+  },
+  "Dryad:natural_marks": {
+   "total": 0,
+   "fetched": 0,
+   "capped_screen": false
+  },
+  "SCP:natural_marks": {
+   "total": 88,
+   "fetched": 88,
+   "capped_screen": false
+  },
+  "figshare:imaging_lineage": {
+   "total": null,
+   "fetched": 500,
+   "capped_screen": true
+  },
+  "Dryad:imaging_lineage": {
+   "total": 0,
+   "fetched": 0,
+   "capped_screen": false
+  },
+  "SCP:imaging_lineage": {
+   "total": 89,
+   "fetched": 89,
+   "capped_screen": false
+  },
+  "CELLxGENE:all_collections": {
+   "total": 408,
+   "fetched": 408,
+   "capped_screen": false
+  }
+ },
+ "errors": [],
+ "summary": {
+  "records_with_lineage_flag": 185,
+  "new_records": 175,
+  "new_study_families": 152,
+  "embryo_candidates_new": 36,
+  "embryo_candidates_by_rank": {
+   "1": 13,
+   "2": 2,
+   "3": 9,
+   "None": 12
+  },
+  "dropped_excluded_domain": 1256
+ },
+ "records": [
+  {
+   "source": "GEO",
+   "accession": "GSE338484",
+   "title": "",
+   "year": "2026",
+   "n_samples": 29,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "2aa344a2cea6",
+   "rank": 1,
+   "embryo_candidate": true,
+   "note": "same study as GSE338520, chromatin arm"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE338520",
+   "title": "",
+   "year": "2026",
+   "n_samples": 7,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "2aa344a2cea6",
+   "rank": 1,
+   "embryo_candidate": true,
+   "note": "human tissue, mitochondrial-variant lineage (mtscATAC) on cells of embryonic origin (natural-mark candidate)"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE81713",
+   "title": "",
+   "year": "2016",
+   "n_samples": 136,
+   "organism": "Danio rerio; Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "5003b54de52e",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE124477",
+   "title": "",
+   "year": "2020",
+   "n_samples": 483,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "bfdefaa7e136",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE124875",
+   "title": "",
+   "year": "2020",
+   "n_samples": 24,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e87f3871147f",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE214500",
+   "title": "",
+   "year": "2022",
+   "n_samples": 9,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "60a9f79b2261",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE220840",
+   "title": "",
+   "year": "2024",
+   "n_samples": 6,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "947cfc5e69c7",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE219290",
+   "title": "",
+   "year": "2024",
+   "n_samples": 33,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "947cfc5e69c7",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE219291",
+   "title": "",
+   "year": "2024",
+   "n_samples": 20,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "947cfc5e69c7",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE252206",
+   "title": "",
+   "year": "2025",
+   "n_samples": 19,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "split_or_memory",
+    "pluripotent_or_organoid"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": true,
+   "family": "dc3d15f1b675",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE339040",
+   "title": "",
+   "year": "2026",
+   "n_samples": 15,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f563b9ca404e",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE346221",
+   "title": "",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "1b27df2f1599",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE183438",
+   "title": "",
+   "year": "2022",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "blood"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "53f705631ae9",
+   "rank": 1,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE256201",
+   "title": "",
+   "year": "2024",
+   "n_samples": 13,
+   "organism": "Bos taurus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": true,
+   "family": "876316c77a78",
+   "rank": 2,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE282713",
+   "title": "",
+   "year": "2025",
+   "n_samples": 13,
+   "organism": "Danio rerio; Rattus norvegicus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "32196ac48cfa",
+   "rank": 2,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE102990",
+   "title": "",
+   "year": "2018",
+   "n_samples": 56,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "6f5770eb76ff",
+   "rank": 3,
+   "embryo_candidate": true,
+   "note": "zebrafish whole-organism scar clone tracing with single-cell RNA"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE121114",
+   "title": "",
+   "year": "2018",
+   "n_samples": 6,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "43d226a1a914",
+   "rank": 3,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299770",
+   "title": "",
+   "year": "2025",
+   "n_samples": 4,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "cfdc3ec40d53",
+   "rank": 3,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE300039",
+   "title": "",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "cfdc3ec40d53",
+   "rank": 3,
+   "embryo_candidate": true
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:051dcb93-8464-4f9a-86e5-6db84a90e425",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "4a009417bc2e",
+   "rank": 3,
+   "embryo_candidate": true,
+   "note": "zebrafish developmental atlas; the title names state transitions and the imaging flag fired; a CELLxGENE collection holds expression only, so whether public tracks exist elsewhere is unverified"
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP3862",
+   "title": "",
+   "year": null,
+   "n_samples": 87220,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "cell_lineage_embryo",
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": true,
+   "family": "3e7a67ddfc23",
+   "rank": 3,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE346550",
+   "title": "",
+   "year": "2026",
+   "n_samples": 9,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "aea5d8b2a09d",
+   "rank": 3,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE106121",
+   "title": "",
+   "year": "2018",
+   "n_samples": 36,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "0fb4823400df",
+   "rank": 3,
+   "embryo_candidate": true,
+   "note": "zebrafish scar lineage trees with single-cell RNA"
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE286280",
+   "title": "",
+   "year": "2025",
+   "n_samples": 7,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "0aabfdf36265",
+   "rank": 3,
+   "embryo_candidate": true
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:23548002",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 11,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": true,
+   "family": "198e97a782f8",
+   "rank": null,
+   "embryo_candidate": true
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:3840470",
+   "title": "",
+   "year": "2019",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 11,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": true,
+   "family": "cafb2ea0a3b2",
+   "rank": null,
+   "embryo_candidate": true,
+   "note": "C. elegans embryo, lineage-resolved single-cell atlas (invariant lineage; outside the human-close scope)"
+  },
+  {
+   "source": "Dryad",
+   "accession": "dryad:doi:10.5061/dryad.pk16b",
+   "title": "",
+   "year": "2017",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "split_or_memory",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 10,
+   "known": false,
+   "queries": [
+    "cell_lineage_embryo"
+   ],
+   "pluripotent_candidate": true,
+   "family": "73d7dc2e5f46",
+   "rank": null,
+   "embryo_candidate": true
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:5010803",
+   "title": "",
+   "year": "2017",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "ab1e39da5b0b",
+   "rank": null,
+   "embryo_candidate": true
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:23006156",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "22a51387b507",
+   "rank": null,
+   "embryo_candidate": true
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:23809302",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e26d86d16d94",
+   "rank": null,
+   "embryo_candidate": true,
+   "note": "C. elegans embryo, 4D transcriptomic atlas (invariant lineage; outside the human-close scope)"
+  },
+  {
+   "source": "BioStudies:BioImages",
+   "accession": "S-BIAD1682",
+   "title": "",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "split_or_memory"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "imaging_cell_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "1b7385cd31b6",
+   "rank": null,
+   "embryo_candidate": true,
+   "note": "mammalian gastrulation, cell migration and heart fate (species and imaging type inferred from the archive, not stated in the title)"
+  },
+  {
+   "source": "Dryad",
+   "accession": "dryad:doi:10.5061/dryad.4b58d",
+   "title": "",
+   "year": "2016",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "51efe6268a93",
+   "rank": null,
+   "embryo_candidate": true,
+   "note": "mouse pancreas imaging, cell cycle and differentiation"
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:16878148",
+   "title": "",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "split_or_memory",
+    "pluripotent_or_organoid"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": true,
+   "family": "16a768bcc31c",
+   "rank": null,
+   "embryo_candidate": true
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:4973643",
+   "title": "",
+   "year": "2016",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "51efe6268a93",
+   "rank": null,
+   "embryo_candidate": true,
+   "note": "same study as dryad 4b58d"
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:8032735",
+   "title": "",
+   "year": "2014",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "imaging",
+    "pluripotent_or_organoid"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b41b2f93b952",
+   "rank": null,
+   "embryo_candidate": true
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:3985986",
+   "title": "",
+   "year": "2020",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "28e70daa33f6",
+   "rank": null,
+   "embryo_candidate": true
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE220949",
+   "title": "",
+   "year": "2024",
+   "n_samples": 29,
+   "organism": "synthetic construct; Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": true,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "be3c55ba65fa",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE291244",
+   "title": "",
+   "year": "2025",
+   "n_samples": 56,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "split_or_memory",
+    "pluripotent_or_organoid"
+   ],
+   "score": 10,
+   "known": true,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": true,
+   "family": "57a43b22fb9e",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE341627",
+   "title": "",
+   "year": "2026",
+   "n_samples": 14,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": true,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b087f354afc7",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE315827",
+   "title": "",
+   "year": "2026",
+   "n_samples": 3,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 9,
+   "known": true,
+   "queries": [
+    "embryo_model_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "71cf0eacac5b",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE109707",
+   "title": "",
+   "year": "2018",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "bdfa6606a43f",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE128241",
+   "title": "",
+   "year": "2019",
+   "n_samples": 975,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f72979d2d3fb",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE160049",
+   "title": "",
+   "year": "2021",
+   "n_samples": 152,
+   "organism": "Mus musculus; Macaca fascicularis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "9e046e9dd908",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE289693",
+   "title": "",
+   "year": "2026",
+   "n_samples": 26,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "split_or_memory",
+    "pluripotent_or_organoid"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": true,
+   "family": "2a49bb455a24",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE289694",
+   "title": "",
+   "year": "2026",
+   "n_samples": 57,
+   "organism": "Mus musculus; Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "split_or_memory",
+    "pluripotent_or_organoid"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": true,
+   "family": "2a49bb455a24",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE312424",
+   "title": "",
+   "year": "2026",
+   "n_samples": 66,
+   "organism": "Gallus gallus; Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": true,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "fd4880bc6440",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326936",
+   "title": "",
+   "year": "2026",
+   "n_samples": 6,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f73337f82e42",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326938",
+   "title": "",
+   "year": "2026",
+   "n_samples": 10,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f73337f82e42",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE135289",
+   "title": "",
+   "year": "2019",
+   "n_samples": 8,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "090b926c5123",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE135701",
+   "title": "",
+   "year": "2019",
+   "n_samples": 2,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "090b926c5123",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE158971",
+   "title": "",
+   "year": "2021",
+   "n_samples": 3,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e8c0a3a6a8f9",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE174034",
+   "title": "",
+   "year": "2021",
+   "n_samples": 7,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e8c0a3a6a8f9",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE232715",
+   "title": "",
+   "year": "2024",
+   "n_samples": 4,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "8c3810d03468",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE280613",
+   "title": "",
+   "year": "2026",
+   "n_samples": 160,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "638a9fa4a565",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE280614",
+   "title": "",
+   "year": "2026",
+   "n_samples": 12,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "638a9fa4a565",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE289836",
+   "title": "",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "0a4f77c266c1",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE326989",
+   "title": "",
+   "year": "2026",
+   "n_samples": 14,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f73337f82e42",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE182685",
+   "title": "",
+   "year": "2021",
+   "n_samples": 22,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "9d35b0699394",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE213648",
+   "title": "",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "294f3aef4a5e",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE232634",
+   "title": "",
+   "year": "2024",
+   "n_samples": 9,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "8c3810d03468",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE282971",
+   "title": "",
+   "year": "2024",
+   "n_samples": 16,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": true,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "fb4ea2027b2f",
+   "known_as": "family of a known accession",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE314635",
+   "title": "",
+   "year": "2026",
+   "n_samples": 132,
+   "organism": "Homo sapiens; Mus musculus; Mus spretus",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "split_or_memory"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "ecbacbde9d2d",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE58476",
+   "title": "",
+   "year": "2015",
+   "n_samples": 6,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a562a49a316f",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE76639",
+   "title": "",
+   "year": "2017",
+   "n_samples": 105,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "eae781a1e83e",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE76641",
+   "title": "",
+   "year": "2017",
+   "n_samples": 123,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "86b6623c49fc",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:fc19ae6c-d7c1-4dce-b703-62c5d52061b4",
+   "title": "",
+   "year": "2024",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "8e7e648b482e",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE136089",
+   "title": "",
+   "year": "2020",
+   "n_samples": 453,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b734e5ee255c",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE149845",
+   "title": "",
+   "year": "2022",
+   "n_samples": 6,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "16fe7944fc1c",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE159456",
+   "title": "",
+   "year": "2022",
+   "n_samples": 6,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "05534b6a140d",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE188923",
+   "title": "",
+   "year": "2022",
+   "n_samples": 12,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "16fe7944fc1c",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE191029",
+   "title": "",
+   "year": "2023",
+   "n_samples": 21,
+   "organism": "Homo sapiens; Danio rerio",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "464101813ee0",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE233963",
+   "title": "",
+   "year": "2023",
+   "n_samples": 16,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "1eca96875290",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE271867",
+   "title": "",
+   "year": "2024",
+   "n_samples": 21,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "17bff5347937",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:661a402a-2a5a-4c71-9b05-b346c57bc451",
+   "title": "",
+   "year": "2023",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e0dad63252b0",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:23676187",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "split_or_memory",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "815c17342ed1",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE282358",
+   "title": "",
+   "year": "2025",
+   "n_samples": 24,
+   "organism": "Homo sapiens",
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e8dd4bbadc2e",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:a66d41a7-f1de-4b70-b983-7a4b790a0d5d",
+   "title": "",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "48d019fdfc89",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:ceb895f4-ff9f-403a-b7c3-187a9657ac2c",
+   "title": "",
+   "year": "2023",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "15858b3a6616",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:e33ffcd3-7cbf-4b8c-b0f4-85587ad5019a",
+   "title": "",
+   "year": "2022",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "c98895f9aded",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:cc431242-35ea-41e1-a100-41e0dec2665b",
+   "title": "",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "2b7df5c49c84",
+   "rank": 1,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE160043",
+   "title": "",
+   "year": "2021",
+   "n_samples": 4,
+   "organism": "Macaca fascicularis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "9e046e9dd908",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:48d354f5-a5ca-4f35-a3bb-fa3687502252",
+   "title": "",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "4d85c071a229",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE215409",
+   "title": "",
+   "year": "2023",
+   "n_samples": 195,
+   "organism": "Bos taurus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "924c1cb5cd63",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE234335",
+   "title": "",
+   "year": "2024",
+   "n_samples": 8,
+   "organism": "Bos taurus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "5f3dd6cf51c9",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE129760",
+   "title": "",
+   "year": "2021",
+   "n_samples": 12,
+   "organism": "Bos taurus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "7657ccba08db",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE201320",
+   "title": "",
+   "year": "2023",
+   "n_samples": 54,
+   "organism": "Callithrix jacchus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "4fb4193746a0",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE283673",
+   "title": "",
+   "year": "2025",
+   "n_samples": 8,
+   "organism": "Callithrix jacchus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "5e5f7207134b",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE311740",
+   "title": "",
+   "year": "2026",
+   "n_samples": 568,
+   "organism": "Rattus norvegicus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "290412520002",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE312112",
+   "title": "",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Rattus norvegicus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "290412520002",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE76267",
+   "title": "",
+   "year": "2016",
+   "n_samples": 34,
+   "organism": "Macaca fascicularis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "embryo_model_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "8287a38bc7f2",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE76305",
+   "title": "",
+   "year": "2016",
+   "n_samples": 192,
+   "organism": "Bos taurus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "78cf463aa9ee",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:a137437b-d284-4a27-b1e9-36958a8f92c1",
+   "title": "",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "blood",
+    "single_cell"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "0303ac5805b6",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE162952",
+   "title": "",
+   "year": "2021",
+   "n_samples": 2,
+   "organism": "Bos taurus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "659ec369eb60",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:0fd39ad7-5d2d-41c2-bda0-c55bde614bdb",
+   "title": "",
+   "year": "2023",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "5d48ea21545b",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE142476",
+   "title": "",
+   "year": "2019",
+   "n_samples": 9,
+   "organism": "Rattus norvegicus",
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f74bb56d604f",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE252983",
+   "title": "",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Rattus norvegicus",
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a7ede3950fd5",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE253081",
+   "title": "",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Rattus norvegicus",
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "a7ede3950fd5",
+   "rank": 2,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE158142",
+   "title": "",
+   "year": "2020",
+   "n_samples": 79,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "tree_or_natural",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 10,
+   "known": true,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "3e397b433213",
+   "known_as": "family of a known accession",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE126647",
+   "title": "",
+   "year": "2020",
+   "n_samples": 2,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "81b93602492c",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE186423",
+   "title": "",
+   "year": "2023",
+   "n_samples": 2,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b2a8bf2e2300",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE186424",
+   "title": "",
+   "year": "2023",
+   "n_samples": 1,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b2a8bf2e2300",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE186425",
+   "title": "",
+   "year": "2023",
+   "n_samples": 3,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b2a8bf2e2300",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE186427",
+   "title": "",
+   "year": "2023",
+   "n_samples": 8,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b2a8bf2e2300",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE226750",
+   "title": "",
+   "year": "2023",
+   "n_samples": 2,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b2a8bf2e2300",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE292726",
+   "title": "",
+   "year": "2025",
+   "n_samples": 21,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "9e15c63e16e7",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE112294",
+   "title": "",
+   "year": "2018",
+   "n_samples": 18,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "cc65b213d17d",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE124150",
+   "title": "",
+   "year": "2023",
+   "n_samples": 1,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "fe8a9903f7d7",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE143337",
+   "title": "",
+   "year": "2020",
+   "n_samples": 8,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "96b13c80ceff",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE223636",
+   "title": "",
+   "year": "2023",
+   "n_samples": 4,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "742d411baddf",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE241971",
+   "title": "",
+   "year": "2024",
+   "n_samples": 8,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "bb5be8221976",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE242228",
+   "title": "",
+   "year": "2023",
+   "n_samples": 6,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "92f4c52a2609",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE288578",
+   "title": "",
+   "year": "2025",
+   "n_samples": 2,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "3a4b242497fb",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE329577",
+   "title": "",
+   "year": "2026",
+   "n_samples": 2,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "c97a21f792df",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE342053",
+   "title": "",
+   "year": "2026",
+   "n_samples": 48,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "66593482f11f",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE70623",
+   "title": "",
+   "year": "2016",
+   "n_samples": 10,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "745a412fd43d",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE81717",
+   "title": "",
+   "year": "2016",
+   "n_samples": 8,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "03063053ced6",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE131136",
+   "title": "",
+   "year": "2019",
+   "n_samples": 14,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "2817dfbb4b28",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE147255",
+   "title": "",
+   "year": "2020",
+   "n_samples": 6,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "231bef7ef2c0",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE153925",
+   "title": "",
+   "year": "2021",
+   "n_samples": 15,
+   "organism": "Xenopus laevis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "7f8456a1792b",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE198378",
+   "title": "",
+   "year": "2023",
+   "n_samples": 45,
+   "organism": "Xenopus tropicalis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f7d54db77656",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE285202",
+   "title": "",
+   "year": "2025",
+   "n_samples": 16,
+   "organism": "Xenopus laevis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "d427a3eb813d",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE285204",
+   "title": "",
+   "year": "2025",
+   "n_samples": 115,
+   "organism": "Xenopus laevis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "d427a3eb813d",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE285205",
+   "title": "",
+   "year": "2025",
+   "n_samples": 94,
+   "organism": "Xenopus laevis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "d427a3eb813d",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE299653",
+   "title": "",
+   "year": "2026",
+   "n_samples": 24,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "7e26d8f82451",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE354775",
+   "title": "",
+   "year": "2026",
+   "n_samples": 456,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "50527554de4a",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE83784",
+   "title": "",
+   "year": "2016",
+   "n_samples": 23,
+   "organism": "Xenopus laevis",
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "b6cbc2c31bbc",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE105010",
+   "title": "",
+   "year": "2018",
+   "n_samples": 72,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": true,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "bf9420c805aa",
+   "known_as": "family of a known accession",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE166981",
+   "title": "",
+   "year": "2021",
+   "n_samples": 3,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "embryo",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "9a9789e84cfb",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE200756",
+   "title": "",
+   "year": "2022",
+   "n_samples": 24,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "5069b36ec4ad",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE81533",
+   "title": "",
+   "year": "2019",
+   "n_samples": 60,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "3b99b6e9c98d",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:10015442",
+   "title": "",
+   "year": "2023",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "imaging",
+    "blood",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "59b43e0202d7",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE102825",
+   "title": "",
+   "year": "2022",
+   "n_samples": 5,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "883c083de07f",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE223147",
+   "title": "",
+   "year": "2024",
+   "n_samples": 4,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "imaging",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "95486db32c51",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE235280",
+   "title": "",
+   "year": "2023",
+   "n_samples": 14,
+   "organism": "Polypterus senegalus; Acipenser ruthenus; Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "c7077499b58a",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE305059",
+   "title": "",
+   "year": "2026",
+   "n_samples": 4,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "imaging",
+    "blood"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "fd43375655c5",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE314322",
+   "title": "",
+   "year": "2025",
+   "n_samples": 5,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "imaging",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "7eef1478a5e1",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE352124",
+   "title": "",
+   "year": "2026",
+   "n_samples": 14,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e7cc05b45eee",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE352125",
+   "title": "",
+   "year": "2026",
+   "n_samples": 27,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "embryo"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e7cc05b45eee",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE89040",
+   "title": "",
+   "year": "2017",
+   "n_samples": 14,
+   "organism": "Gallus gallus; Dromaius novaehollandiae",
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e98b50a4bc9b",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE148591",
+   "title": "",
+   "year": "2020",
+   "n_samples": 3,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "34401944e707",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE182560",
+   "title": "",
+   "year": "2021",
+   "n_samples": 6,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "blood"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "89cb3f6f1062",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE234216",
+   "title": "",
+   "year": "2024",
+   "n_samples": 4,
+   "organism": "Danio rerio",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "192872e90745",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "GEO",
+   "accession": "GSE283090",
+   "title": "",
+   "year": "2025",
+   "n_samples": 8,
+   "organism": "Gallus gallus",
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "dbd4b687d52f",
+   "rank": 3,
+   "embryo_candidate": false
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP1022",
+   "title": "",
+   "year": null,
+   "n_samples": 52602,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "cell_lineage_embryo",
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "7e2c5120ad2b",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:3946154",
+   "title": "",
+   "year": "2020",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "ec01a7fe9835",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:3946361",
+   "title": "",
+   "year": "2020",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "2eba5660fa08",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:3947819",
+   "title": "",
+   "year": "2020",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood",
+    "single_cell"
+   ],
+   "score": 8,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "1a7958147654",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:BioImages",
+   "accession": "S-BIAD50",
+   "title": "",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "imaging_cell_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "812591816ab9",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Dryad",
+   "accession": "dryad:doi:10.5061/dryad.qv9s4mwm3",
+   "title": "",
+   "year": "2023",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "cell_lineage_embryo"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f60ec072c297",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP454",
+   "title": "",
+   "year": null,
+   "n_samples": 137841,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "cell_lineage_embryo",
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "bed8e636b4a8",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP815",
+   "title": "",
+   "year": null,
+   "n_samples": 0,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "cell_lineage_embryo",
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "1498a991512f",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:14753144",
+   "title": "",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "06b12494f7ec",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:18623892",
+   "title": "",
+   "year": "2023",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural",
+    "split_or_memory",
+    "blood"
+   ],
+   "score": 7,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "4bf64f036d3d",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:arrayexpress",
+   "accession": "E-GEOD-31270",
+   "title": "",
+   "year": "2011",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "vertebrate_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "3fabdb561636",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:arrayexpress",
+   "accession": "E-MTAB-6890",
+   "title": "",
+   "year": "2018",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "abb77ee6122e",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Dryad",
+   "accession": "dryad:doi:10.5061/dryad.80gb5mm5j",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "8c19387f0b7b",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Dryad",
+   "accession": "dryad:doi:10.5061/dryad.ghx3ffbmx",
+   "title": "",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "cell_lineage_embryo"
+   ],
+   "pluripotent_candidate": false,
+   "family": "56d674e79717",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Dryad",
+   "accession": "dryad:doi:10.5061/dryad.s027503",
+   "title": "",
+   "year": "2019",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "cell_lineage_embryo"
+   ],
+   "pluripotent_candidate": false,
+   "family": "42dcff4aba67",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "Zenodo",
+   "accession": "zenodo:4620550",
+   "title": "",
+   "year": "2021",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "pluripotent_or_organoid"
+   ],
+   "score": 6,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "56d674e79717",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:arrayexpress",
+   "accession": "E-GEOD-49803",
+   "title": "",
+   "year": "2014",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "embryo",
+    "blood"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "76109888d1c7",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:0dd101f7-9829-44b3-a323-18b113eabeb4",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "4a10bbeadc53",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP2892",
+   "title": "",
+   "year": null,
+   "n_samples": 215046,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "pluripotent_or_organoid",
+    "single_cell"
+   ],
+   "score": 5,
+   "known": false,
+   "queries": [
+    "cell_lineage_embryo",
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "2007c8929d77",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:28148378",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "82aa887436e2",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:33250323",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "0e24adba14d9",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:33589354",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "294fe860a8b1",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:34926442",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "6adc862bdbfc",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:34961178",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "1e25f210127b",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:35019778",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e56aa3e6072b",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:35030267",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "1968f166452e",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:35082166",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "tree_or_natural"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "79db2860587d",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP163",
+   "title": "",
+   "year": null,
+   "n_samples": 7193,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "f7940258e11b",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP1674",
+   "title": "",
+   "year": null,
+   "n_samples": 6262,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "37215d70658d",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "SCP",
+   "accession": "scp:SCP260",
+   "title": "",
+   "year": null,
+   "n_samples": 49442,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "natural_marks",
+    "imaging_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "0ea6580b46c4",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:arrayexpress",
+   "accession": "E-GEOD-40823",
+   "title": "",
+   "year": "2013",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "blood"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "vertebrate_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "af6b8df0c033",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:BioImages",
+   "accession": "S-BIAD2154",
+   "title": "",
+   "year": "2025",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "blood"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "imaging_lineage",
+    "imaging_cell_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "2878f79f396e",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:7e216a15-82df-46ee-b454-d0261d99e5f5",
+   "title": "",
+   "year": "2024",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage",
+    "single_cell"
+   ],
+   "score": 3,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "aaf7b7bbcae1",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:arrayexpress",
+   "accession": "E-GEOD-31880",
+   "title": "",
+   "year": "2012",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "vertebrate_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "51df70f695a0",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:arrayexpress",
+   "accession": "E-GEOD-31881",
+   "title": "",
+   "year": "2012",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "vertebrate_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "4ce14a136699",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "BioStudies:arrayexpress",
+   "accession": "E-MTAB-11711",
+   "title": "",
+   "year": "2022",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "embryo_lineage"
+   ],
+   "pluripotent_candidate": false,
+   "family": "e8d2413fee03",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "CELLxGENE",
+   "accession": "cxg:3db5617e-9f12-4eb4-8416-94893a0d7c46",
+   "title": "",
+   "year": "2024",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "all_collections"
+   ],
+   "pluripotent_candidate": false,
+   "family": "c5289cef4a83",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:34968898",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "embryo_lineage",
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "32e2031e6eed",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:35030067",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "05088660bfc9",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:35030073",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "8461459302bc",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:35067487",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "debdc67a2b3a",
+   "rank": null,
+   "embryo_candidate": false
+  },
+  {
+   "source": "figshare",
+   "accession": "figshare:35067499",
+   "title": "",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "natural_marks"
+   ],
+   "pluripotent_candidate": false,
+   "family": "3cb1d8e5d97d",
+   "rank": null,
+   "embryo_candidate": false
+  }
+ ],
+ "post_filter": "2026-11-25: titles removed and study families replaced by a 12-character hash of the lowercased title (neutral wording: titles carry gene and compound names); shortlisted records carry a neutral note written after a title-only screen"
+}

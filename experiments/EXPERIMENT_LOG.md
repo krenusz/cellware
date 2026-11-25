@@ -13614,3 +13614,37 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - A count-only smoke test of each new fetcher. It found Zenodo's 25 per page and figshare's full-text breadth; the EBI calls failed locally on a certificate error, while an earlier local probe of the same endpoints passed.
   - Counts-only public log; neutral wording (excluded-domain filter unchanged); no outreach.
 - Compute: GitHub Actions run (sweeps/ds_emb_2026_11_25.txt).
+
+### DS-EMB-2026-11-25 result (2026-11-25; run https://github.com/krenusz/cellware/actions/runs/45660248127; `results_c17/c17_data_sweep_embryo_2026-11-25.json`; metadata only)
+- **Gates passed:**
+  - *Complete:* every query fetched all its hits; figshare was a capped screen of 4 x 500 as pre-registered.
+  - *Recall:* GSE105010 came back.
+- **Scale:**
+  - GEO: 362, 55, 89 and 36 hits.
+  - Zenodo: 394, 37 and 7.
+  - ArrayExpress: 3, 5 and 1. BioImage Archive: 5 and 3.
+  - Dryad: 6. Single Cell Portal: 263. CELLxGENE: 408 collections.
+  - 1,256 records dropped as excluded domain.
+  - Kept: 185 lineage-flagged records, 175 of them new (152 families).
+- **36 embryo candidates by the fixed rule** (by rank: 13 human or mouse, 2 other mammals, 9 other vertebrates, 12 unranked). A title-only screen kept 10 that plausibly carry a tree, track or natural-mark design. The rest are fate-mapping or atlas studies without clone structure, or noise such as an ecology set or a software demo.
+- **Shortlist: unverified leads, not passes.**
+  - Order is the pre-registered one: rank, then score.
+  - The result file keeps neutral notes for these records. Titles were removed from all records and study families replaced by a hash, because titles carry gene and compound names. The run's public artifact still holds the unfiltered titles.
+  - The duplicate check by name (EXPERIMENT_LOG, lit notes) found none of these ids. C17-S1N2 searched GESTALT- and LINNAEUS-type sets earlier, but only those that passed its neural pre-filter.
+
+  | # | Lead | Rank | Counted divisions? |
+  |---|---|---|---|
+  | 1 | **Human mitochondrial-variant lineage** (GSE338520, chromatin arm GSE338484). Natural marks in human tissue sampled in adults; "embryonic origin" is inferred. | 1 | no (clone structure only) |
+  | 2 | **Zebrafish whole-organism scar clone tracing with single-cell RNA** (GSE102990). Same method family as GSE105010, which failed C17-S1G at 38 eligible pairs. | 3 | no (trees) |
+  | 3 | **Zebrafish developmental atlas** (CELLxGENE collection 051dcb93). A collection holds expression only; whether public tracks exist elsewhere is unverified. | 3 | only if tracks exist |
+  | 4 | **Zebrafish scar lineage trees with single-cell RNA** (GSE106121). Same caveat as lead 2. | 3 | no (trees) |
+  | 5 | **Mammalian gastrulation, cell migration and heart fate** (BioImage Archive S-BIAD1682). The species and the imaging type are inferred from the archive, not from the title. | unranked | possibly (tracks) |
+  | 6 | **Mouse pancreas imaging of cell cycle and differentiation** (Dryad 4b58d = Zenodo 4973643). | unranked | possibly |
+- **Out of the human-close scope, kept as leads:** two C. elegans embryo atlases with an invariant lineage, so divisions are exact (Zenodo 3840470, Zenodo 23809302).
+- **Not yet known:**
+  - whether each shortlisted set exposes per-cell tracks or trees with fates, and their sizes;
+  - whether the questions are published in kind.
+
+  Both come from a structure-only gate and a novelty check per set, each needing Bence's OK. Nothing was downloaded or opened.
+- Self-challenge: the screen is title-only (summaries were used only for flags); natural-mark and imaging flags are keyword-based; the human set samples adult tissue, so "embryonic origin" is inferred, not measured.
+- Model: Opus 5.5 (main session); no subagent.
