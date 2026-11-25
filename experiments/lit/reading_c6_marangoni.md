@@ -54,7 +54,7 @@ Bence: "go 2 3" (2 = read the Marangoni preprint, flagged by RETRO_2026-11-10). 
    a contradiction: the C6-S3 wave-pinning field was the signalling route, and it traded off against clone
    placement.
 5. **No new unseen prediction for our clone data.**
-   - The paper says nothing about mixing, clones or flow-defective cells.
+   - The paper says nothing about mixing, clones or flow-deviating cells.
    - Their fusion experiment (++ vs +- aggregates, fusion angles) is a literature readout, not clone data.
    - It could be a weak out-of-sample check for a model with flow. Our pull model has not been asked to predict
      it.

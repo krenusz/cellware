@@ -160,7 +160,7 @@ def main():
     pcs = Z @ V[:, ::-1][:, :5]
     for j in range(5):
         meta[f"pc{j}"] = pcs[:, j]
-    # ---- lineage table (train lineages, drug libraries) ----
+    # ---- lineage table (train lineages, compound libraries) ----
     lin = meta.dropna(subset=["unit"])
     agg = lin.groupby("unit").agg(sample=("sample", "first"), subclone=("subclone", lambda x: x.mode().iloc[0]),
                                   **{f"pc{j}": (f"pc{j}", "mean") for j in range(5)})

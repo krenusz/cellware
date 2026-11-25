@@ -4,7 +4,7 @@ Bence 2026-11-19: "do a retro citation map mand swep for data also".
 Serves: C17-S1 (C17-S1R: grow the systems; the parameter table has committed blood 2, pluripotent 1).
 
 Metadata only (H9): public catalogue records (accession, title, year, sample count, organism) and keyword flags.
-No data file is downloaded. Records whose title carries disease-domain terms, or whose summary carries
+No data file is downloaded. Records whose title carries condition-domain terms, or whose summary carries
 tumour/leukaemia/patient/drug-resistance terms, are dropped (standing exclusion); cell-line names in titles are
 masked. Summaries are used for flags only and are not stored.
 
@@ -31,7 +31,7 @@ OUT = os.path.join(HERE, "results_c17", "c17_data_sweep.json")
 UA = {"User-Agent": "cellware-data-sweep/1.0 (public metadata, research use)"}
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 
-# Further disease, pathogen and drug names (retro 2026-11-19b; same list in lit_gap.py).
+# Further condition, agent and compound names (retro 2026-11-19b; same list in lit_gap.py).
 DISEASE_EXTRA = (
     r"|anemi|anaemi|aplastic|thalass|sickle|hemophil|haemophil|penia\b|immunodeficien|dystroph|scleros|sclerotic"
     r"|fibrot|arthritis|lupus|asthma|allerg|obes(e|ity)|hypertens|ischemi|ischaemi|stroke|infarct|aneurysm"
@@ -323,7 +323,7 @@ def selftest():
     assert recs[0]["title"] == "Barcoding of [line] hESC sister clones across passages", recs[0]["title"]
     assert recs[0]["known"] and recs[0]["pluripotent_candidate"]
     assert not by["zenodo:5"]["known"] and by["zenodo:5"]["pluripotent_candidate"]
-    # extended neutral-wording filter (retro 2026-11-19b): drops disease names, keeps core biology wording
+    # extended neutral-wording filter (retro 2026-11-19b): drops condition names, keeps core biology wording
     for t in ("Sclerotome and blastomere fate", "E14.5 lentiviral barcoding of clones",
               "Inducible Cre lineage tracing after transplantation",
               "Platelet-biased HSCs and thrombopoiesis in aging knockout mice",

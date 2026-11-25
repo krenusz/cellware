@@ -29,14 +29,14 @@ unconfirmed); **locked** = in sealed.py, no reader yet; **not downloaded**.
 | `clone_bulk_chimera_08232026` | 6 / 0.7 MB | {1s2, 5, 6a}+bulk at 20/50/80%, csv + polygon JSON | **locked** |
 | `clone_bulk_chimera_3s1_08162026` | 2 / 0.3 MB | 3s1+bulk, csv + JSON | not downloaded |
 | `T_Igfbp5_09022026` | 1 / 4.4 MB | `gastruloid_T_Igfbp5.csv`: per-gastruloid X, Y, Ch0 brightfield, Ch1 T (YFP), Ch2 Igfbp5 (Cy5) line scans; 20 gastruloids: bulk 6, 5 3, 6 3, 5+6 2, bulk+5 2, bulk+6 4 | **locked** (C4-S2 descriptive) |
-| `linescans` | 42 / 16 MB | per-gastruloid raw xlsx/csv behind the curves (passages, ratios, drugs, subclones, clone+bulk) | open / sealed / spent per file (sealed.py, G1-G12) |
-| `Line Scans/07162025, 07282025, 08052025` | 4 / 5 MB | GFP-spike (2), drug 07282025 (sealed partition B), sgbc2 50% | locked / sealed |
+| `linescans` | 42 / 16 MB | per-gastruloid raw xlsx/csv behind the curves (passages, ratios, compounds, subclones, clone+bulk) | open / sealed / spent per file (sealed.py, G1-G12) |
+| `Line Scans/07162025, 07282025, 08052025` | 4 / 5 MB | GFP-spike (2), compound 07282025 (sealed partition B), sgbc2 50% | locked / sealed |
 | `Nimbus JSON/<date>` (22 dates, 09/2024-08/2025) | 227 / 8 MB | per-gastruloid morphology annotations (elongated / not) behind the morphology CSVs; 11172024: 1+3, 1+6, 3+6, clone 6, WT | not downloaded (source of the CSV) |
-| `Morphologies/` | 57 / 273 MB | 07282025 drug nd2 images (40), 08072025 drug dose JSONs per clone, 07112025 rainbow, Nimbus DrugTx | not downloaded; drug sets parked (#27) |
+| `Morphologies/` | 57 / 273 MB | 07282025 compound nd2 images (40), 08072025 compound dose JSONs per clone, 07112025 rainbow, Nimbus DrugTx | not downloaded; compound sets parked (#27) |
 | `Immunofluorescence Blob Metrics/<date>` | 54 / 0.1 MB | T+ blob metrics per gastruloid (pure 6, WT, 1+3, 1+6, 3+6, 50% 7) | summarised in `T_overlap` (G4 H3) |
 | `Immunofluorescence Intensity Measurements/04192025, 04202025, 05032025` | 25 / 2 MB | per-well DAPI/YFP/Cy3/A594 intensities | not downloaded |
 | `SG/<date>` (11 dates 12/2024-08/2025) + `Clone Combination Analysis 01292025` + `reprocessed` | 581 / 1.4 GB | seqFISH (Spatial Genomics): per ROI transcripts csv, decode hdf5, cell x gene h5ad, nuclei segmentations; pure clones, 1+3 / 1+6 chimeras; 08212025 = 6 ROIs T/Igfbp5 | not downloaded; descriptive only (2-6 per condition) |
-| `Patch Analysis` | 70 / 1.5 GB | 1+3 RA/SB nd2 images (05032025, 05242025) | drug, parked |
+| `Patch Analysis` | 70 / 1.5 GB | 1+3 RA/SB nd2 images (05032025, 05242025) | compound, parked |
 | `Incucyte_raw_test` | 222 / 3.4 GB | time-lapse tif: clone5/clone6 + Bra-GFP 72 h (3 wells, 09152025); bulk/clone1s1/bulk+clone7s1 (08272025) | not downloaded; exploratory |
 | `Differentiation Assay - 10212024` | 3 | confluency txt | partitioned (raj_diffassay), parked |
 | `Bootstrap Analysis/rainbow_distribution` | 18 | rainbow aggregate JSONs (120 h) | = extracted_data/bootstrapping_rainbow |
@@ -52,7 +52,7 @@ unconfirmed); **locked** = in sealed.py, no reader yet; **not downloaded**.
 | `ATAC/BED Files`, `Homer_Peaklists` | 38 | peak lists | not downloaded |
 | `RNAseq/Counts/VA_1..18` | 54 / 118 MB | per-sample h5 / abundance tsv (kallisto) | not downloaded |
 | `linescans` | 49 / 1.2 MB | z-scored profiles, clone+bulk per-gastruloid lines, subclones, directionality summary | **open/spent** (G1, G3, G5) |
-| `IOU` (+07282025 pngs) | 46 / 31 MB | clone overlap metrics per gastruloid (1+3, 1+6; drugs) | sealed drug partitions A/B/C, AP_CloneFraction locked |
+| `IOU` (+07282025 pngs) | 46 / 31 MB | clone overlap metrics per gastruloid (1+3, 1+6; compounds) | sealed compound partitions A/B/C, AP_CloneFraction locked |
 | `Differentiation Assay` | 1 | DiffAssay_Oct212024.csv | partitioned, parked |
 | `bootstrapping_rainbow` | 18 | rainbow distributions | on disk (`rainbow/`) |
 

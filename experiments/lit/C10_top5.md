@@ -1,8 +1,8 @@
-# C10 H20 literature read: drug instruction vs selection (2026-11-13)
+# C10 H20 literature read: compound instruction vs selection (2026-11-13)
 
 The source paper, Dai 2024 (ReSisTrace), was read in full on 2026-11-12. These five were read by a subagent and
 checked against the question: has anyone split resistance into genetic-subclone selection, non-genetic pre-state
-selection and drug instruction in one quantified model with held-out confirmation?
+selection and compound instruction in one quantified model with held-out confirmation?
 
 | paper | design | quantifies the induced share? | held-out? | read |
 |---|---|---|---|---|
@@ -14,7 +14,7 @@ selection and drug instruction in one quantified model with held-out confirmatio
 
 **Minimal published mechanism:**
 - Luria-Delbruck fluctuation logic (jackpot variance means pre-existing resistance; Kessler & Levine 2013);
-- two-state switching with drug-dependent rates (Pisco 2013; cited from memory);
+- two-state switching with compound-dependent rates (Pisco 2013; cited from memory);
 - the three-term barcode-free version closest to ours is Russo 2022.
 
 **Verdict:** the gap holds at this depth. Nobody fits the three terms jointly on sister-split lineages with a held-out
@@ -23,7 +23,7 @@ replicate. **Limits:** three of the five are abstract-only, and the search was n
 **For C10:**
 - Our instruction term must be distinguishable from the switching-rate models above. Pre-sister state predicting
   post state = selection or memory; a residual shift shared across resistant families within one post library =
-  instruction, confounded with time in culture. The **control arm** (same split and re-plating, no drug) is the
+  instruction, confounded with time in culture. The **control arm** (same split and re-plating, no compound) is the
   baseline for that shift.
 - The genetic term needs subclone calls (paper: subclone A from CNV inference), on train only.
 
@@ -41,10 +41,10 @@ replicate. **Limits:** three of the five are abstract-only, and the search was n
   - for protocol mimicry, for control-subtracted pre-signatures, and as a comparator for clone size, diversity and
     subclone proportions;
   - **no paired post-family vs pre-sister state comparison, and no within-family post spread**;
-  - "induced" appears only in a separate, non-lineage drug-vs-DMSO experiment;
+  - "induced" appears only in a separate, non-lineage compound-vs-DMSO experiment;
   - subclones were called with inferCNV v1.7.1 (subclusters, Leiden 0.5).
 - **Time per arm (inferred mapping, confirm in Supp. Data 11):** T1 3 + 10 days, T2 7 + 6 days, NK
-  1 + 7 days, control 13 days of culture. **NK is about 5 days shorter**, so a drug-vs-control spread contrast
+  1 + 7 days, control 13 days of culture. **NK is about 5 days shorter**, so a compound-vs-control spread contrast
   confounds NK with drift time.
-- **Verdict:** S (family-level post spread beyond the pre-sister prediction, drug vs control) is not done in any of
+- **Verdict:** S (family-level post spread beyond the pre-sister prediction, compound vs control) is not done in any of
   these. Caveat: control "survivors" are selected too, so F_control must use the same family matching.

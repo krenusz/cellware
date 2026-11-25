@@ -1,14 +1,14 @@
-# Chapter 10 write-up: pre-treatment state predicts which lineages survive a drug (closed 2026-11-14, confirmed narrow)
+# Chapter 10 write-up: pre-treatment state predicts which lineages survive a compound (closed 2026-11-14, confirmed narrow)
 
 ## Question
 
 ReSisTrace (Dai et al. 2024, GSE223003) labels cells of one cultured line with lentiviral barcodes, lets
 them divide once, and splits sister cells. One half is sequenced before treatment (pre). The other half gets a
-drug (T1, T2, NK cells) or a control, and the survivors are sequenced (post).
+compound (T1, T2, NK cells) or a control, and the survivors are sequenced (post).
 
 The chapter asked two things:
-1. **Instruction vs selection (primary, as planned):** does the drug *instruct* resistance in cells, or only
-   *select* lineages that were already resistant? This transfers chapters 1-2 to drugs.
+1. **Instruction vs selection (primary, as planned):** does the compound *instruct* resistance in cells, or only
+   *select* lineages that were already resistant? This transfers chapters 1-2 to compounds.
 2. **Rescue (C10-S1/S2):** within a library, does a lineage's **pre-treatment expression state** predict its
    survival beyond its genetic subclone and capture quality?
 
@@ -16,11 +16,11 @@ The chapter asked two things:
 
 | step | test | data | result | verdict |
 |---|---|---|---|---|
-| C10-S0 | instruction statistic S, drug vs time-matched control | train only; library placebo | untreated libraries already differ by 0.84 (count-matched retry 0.72; bar 0.5) | **stopped**, data-limited |
-| C10-S1 | state beyond CNV subclone + QC, train CV | 10,132 train drug lineages, 853 survived | delta AUC 0.055, SE 0.0066, power 0.83 (0.5 shrink) | GO |
+| C10-S0 | instruction statistic S, compound vs time-matched control | train only; library placebo | untreated libraries already differ by 0.84 (count-matched retry 0.72; bar 0.5) | **stopped**, data-limited |
+| C10-S1 | state beyond CNV subclone + QC, train CV | 10,132 train compound lineages, 853 survived | delta AUC 0.055, SE 0.0066, power 0.83 (0.5 shrink) | GO |
 | C10-S2 | same model, frozen, one look | **resistrace:A**, 5,194 lineages, 420 survived | AUC 0.660 -> 0.722, **delta 0.062**, lower 97.5% bound **0.046** | **confirmed** |
 
-Models are logistic regressions on drug-library lineages:
+Models are logistic regressions on compound-library lineages:
 - **M0** = library + CNV-proxy subclone (k = 3, expression-smoothed along the genome) + QC (log UMIs,
   log genes, percent mito, log number of pre cells).
 - **M1** = M0 + 5 PCs of 2,000 highly variable genes, averaged over the lineage's pre cells.
@@ -31,20 +31,20 @@ Models are logistic regressions on drug-library lineages:
 - **Expression state before treatment carries survival information** beyond a coarse genetic-subclone
   proxy, library and capture quality.
 - **The effect held from train to sealed data** (0.055 -> 0.062). T1, T2 and NK libraries are
-  pooled with the library as a fixed effect; per-drug effects were not tested.
+  pooled with the library as a fixed effect; per-compound effects were not tested.
 - **Size:** it adds about 40% to what library + subclone + QC give above chance (AUC above 0.5: 0.160 ->
   0.222). Real but modest: an AUC of 0.72 leaves most survival unpredicted.
 
 ## What we cannot say
 
-- **Instruction vs selection.** Never tested. The drug is assigned per library, with 2 libraries per arm (1
-  pair once time-matched), so no drug-vs-control quantity is replicated. This is now rule H22.
+- **Instruction vs selection.** Never tested. The compound is assigned per library, with 2 libraries per arm (1
+  pair once time-matched), so no compound-vs-control quantity is replicated. This is now rule H22.
 - **That the state is non-genetic.** The CNV proxy has 3 subclones and is inferred from expression; finer
   genetic structure would show up as "state". Separating them needs variant calls from the reads (~564 GB, not
   downloaded).
 - **Survival vs capture.** "Linked to a post family" also requires the descendants to be captured and
   barcode-matched. QC and pre-cell count are controlled, but cell cycle and cell size were not removed.
-- **Which genes or programmes carry it, or whether it is drug-specific.** One pooled model, 5 PCs, not
+- **Which genes or programmes carry it, or whether it is compound-specific.** One pooled model, 5 PCs, not
   interpreted.
 
 ## Value against the literature

@@ -25,7 +25,7 @@ interesting.
 | G5, G7 | yes: simulator + sealed test | on goal, **but built outside `core_model.py`** |
 | G6 | yes: sealed confirmation | on goal |
 | G8 | memory rate model for one sub-rule | marginal: could not move the chapter answer (stopping rule) |
-| G9-G12 | drug / Wnt compression, "series gain" | **drift**: not in the chapter test; chased because the data was there |
+| G9-G12 | compound / Wnt compression, "series gain" | **drift**: not in the chapter test; chased because the data was there |
 | G13 | DiffAssay growth bias | **drift** (cheap, but off-question) |
 | Chapter 4 work | founder memory per division, founder state, DiffAssay "domain size" | **drift**: I replaced Bence's chapter-4 question (rescue mechanism) with questions the GSE291244 data happened to allow |
 
@@ -46,7 +46,7 @@ interesting.
   naming the goal element and the chapter question, and a stopping-rule sentence (how the result
   could change the chapter answer). The oracle refuses a look without it. New questions outside the
   current chapter need Bence's OK in chat, quoted.
-- **Parked (recorded, no further work):** series gain / drug compression (#27), DiffAssay (G13),
+- **Parked (recorded, no further work):** series gain / compound compression (#27), DiffAssay (G13),
   founder memory per division and founder state (GSE291244 sections 2-4), #28 dominance.
 - **Stale text:** program.md "Fixed setup" still describes the 2023-24 PPO tissue runs; it does not
   apply to chapters 1-3 and is marked as such.

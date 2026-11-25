@@ -7,7 +7,7 @@ Bence: "Price the extraction". Note only: nothing was downloaded or run, and no 
   - No BAMs; the originals were FASTQ (R1, R2, I1, I2).
   - The SRA-normalised file (about 7.6 GB per run) is reachable anonymously on the public AWS bucket.
   - The original FASTQ.gz files were not found at the guessed public bucket names.
-- **Four extra runs (GSM7990953-56)** are a separate drug-perturbation experiment (gene expression plus Cell
+- **Four extra runs (GSM7990953-56)** are a separate compound-perturbation experiment (gene expression plus Cell
   Multiplexing libraries), not label amplicons.
 - **Label design:** from the authors' `umitools_cross_sample.py`, the construct is
   `...AAGCTTAATTAAGAATTCA NNNNTGNNNNACNNNNGANNNNGTNNNN CTAGGGCCTAGAGGGC...`; the authors use the match regex

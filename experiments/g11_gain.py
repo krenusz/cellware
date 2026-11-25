@@ -88,7 +88,7 @@ def main():
         cv = {}
         for s in series:
             th = fit(model, [i for i in its if i[0] != s])
-            if model == "R4":  # unseen pair x drug: fall back to drug gain fitted as R1
+            if model == "R4":  # unseen pair x compound: fall back to compound gain fitted as R1
                 th = {**fit("R1", [i for i in its if i[0] != s]), **th}
             cv[s] = ll(model, th, [i for i in its if i[0] == s])
         th = fit(model, its)

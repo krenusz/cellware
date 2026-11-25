@@ -22,7 +22,7 @@ gastruloid, a line scan along the axis gives each clone's signal profile.
 - **Polarity P:** profile resampled to 30 points, z-normalised, smoothed, first-half minus
   second-half mean (positive = anterior). Pairs: D = P(red clone) - P(green clone).
 - Experiments span series from Jan 2024 to Jul 2025: clone in bulk over passages, subclones, 1+3,
-  1+6, 3+7, 6+7 pairs, drug treatments (RA, SB431542, AGN193109), Wnt "hi/lo", elongation scoring
+  1+6, 3+7, 6+7 pairs, compound treatments (RA, SB431542, AGN193109), Wnt "hi/lo", elongation scoring
   (3,597 gastruloids).
 - **Hold-out.** First a sealed file set (G1-G7, rules H1-H10). After two failures (below), every
   remaining source was split into train 40% + sealed partitions A/B/C, with a train-fit selection
@@ -35,7 +35,7 @@ gastruloid, a line scan along the axis gives each clone's signal profile.
 | 20 | A clone's A-P preference is a stable clone state (clone explains 0.69 of held-out polarity; batch 0.04) | G1a sealed, G6b second sealed series | **strong** |
 | 26 | Clone states + rank sorting predict how two unseen clones order (6+7: 12/12; 3+7 barely sort, as predicted) | G7a sealed | **moderate** (magnitude off for 6+7) |
 | 23 | Preference fades over passages, but the rate depends on series x clone; no model predicts a new series | G3, G6, G7b sealed, G8 | moderate (direction); **rate unpredictable** |
-| 27 | Perturbing signalling erodes the division of labour: conditional on a series' own control, drugs multiply clone separation by ~0.35 (one shared factor); high Wnt erases propensity | G9, G11 (train + sealed A), G12 (gate) | **unconfirmed: consistent, not testable with these data** |
+| 27 | Perturbing signalling erodes the division of labour: conditional on a series' own control, compounds multiply clone separation by ~0.35 (one shared factor); high Wnt erases propensity | G9, G11 (train + sealed A), G12 (gate) | **unconfirmed: consistent, not testable with these data** |
 | 21 | Domain size is set by the gastruloid, not the clone mix | G1b open | unconfirmed |
 | 22 | Any mixing rescues elongation (+0.2-0.3), small complementarity bonus; both follow from the sorting index of clone states (C3-S2) | G2, G2b, C3-S2 open; C4-S4 sealed (Aug 2026, 5s2+6a): **not replicated** | unconfirmed |
 | 24 | Rescue is not buffering, strict complementation or T+ area | G4 open | unconfirmed (negative) |
@@ -49,16 +49,16 @@ sealed test** (G7a). The **memory part failed** (G7b): neither one fade rate nor
 predicts a new series, and no replacement qualified on train data (G8). Elongation rescue is a
 descriptive rule; its mechanism is open.
 
-### Drug compression: why it stays unconfirmed (G9, G11, G12)
+### Compound compression: why it stays unconfirmed (G9, G11, G12)
 
-- Train (Dec 2024, Feb/Mar 2025): every drug reduces 1+3 and 1+6 clone separation in 11/11
-  comparisons. Predicting each drug from its own series' control, one shared factor 0.35 wins
+- Train (Dec 2024, Feb/Mar 2025): every compound reduces 1+3 and 1+6 clone separation in 11/11
+  comparisons. Predicting each compound from its own series' control, one shared factor 0.35 wins
   leave-one-series-out CV; additive shifts and "no effect" lose by 17-32 log-likelihood units. So the
-  series' strength and the drug effect multiply.
+  series' strength and the compound effect multiply.
 - Sealed partition A (May 2025): RA 0.24, SB 0.33 of control, on the prediction (|z| <= 0.15), but
   only 3 controls; the pre-registered CI test failed. Power was ~15%, which nobody checked before
   the look.
-- Partition B (Jul 2025): 22 controls, 14 drug-treated. The new power gate (H14) gave 0.54 for the
+- Partition B (Jul 2025): 22 controls, 14 compound-treated. The new power gate (H14) gave 0.54 for the
   pooled one-sided test and refused the look; **B and C stay sealed**. Per-gastruloid SD (~1.6) is
   large relative to the effect (~0.9): reaching 80% power needs about 24 controls and 48 treated
   gastruloids in one series, more than any series here has.
@@ -92,7 +92,7 @@ descriptive rule; its mechanism is open.
 
 ## Data still sealed
 
-Raj reserve (clone3% passage 3, Jul 2024; last Raj sealed file, needs Bence's OK); drug partitions
+Raj reserve (clone3% passage 3, Jul 2024; last Raj sealed file, needs Bence's OK); compound partitions
 B (Jul 2025) and C (May 2025 overlap metrics); Wnt partitions A-C; GSE291244 partitions A-C (chapter
 4 candidate); locked: DiffAssay, AP_CloneFraction, GFP-spike, sgbc2.
 

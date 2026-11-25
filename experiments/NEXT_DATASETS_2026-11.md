@@ -250,7 +250,7 @@ E55.
   - `fluorescence_directionality_summary.csv`: clone 1 (green) vs clone 3 (red) anterior share
     by passage: red anterior 100% -> 81% -> 75% -> 65%, green posterior 100% -> 63% -> 38% -> 58%
     (propensity erodes over passages: a clone-memory decay readout).
-  - mixing ratios (clone 1:3 at 4:1 ... 1:4), drug conditions (RA, SB, AGN, ctrl) for clone pairs,
+  - mixing ratios (clone 1:3 at 4:1 ... 1:4), compound conditions (RA, SB, AGN, ctrl) for clone pairs,
     co-culture before aggregation.
 - Next download candidates (one at a time): Differentiation Assay (elongation per clone), then
   SG_kit1 (seqFISH positions) if the clone-level test needs cell positions.
@@ -260,13 +260,13 @@ E55.
 - `linescans/` (extracted, z-scored mean profiles + per-gastruloid chimera lines): G1.
 - `morph_csv/` (raw_data/Morphology CSVs): elongation counts per composition and date: G2.
   `T_overlap - Sheet1.csv` (T+ area per clone) not used yet.
-- `iou/`: per-gastruloid clone overlap / A-P clone fractions under drugs (RA, SB, AGN) for 1+3
+- `iou/`: per-gastruloid clone overlap / A-P clone fractions under compounds (RA, SB, AGN) for 1+3
   and 1+6 chimeras (`AP_CloneFraction_Drug`).
 - `diff_assay/`: confluency time courses per clone in differentiation media (growth, not
   elongation).
 - `rainbow/`: per-gastruloid JSONs (120 h aggregates, elongated vs not).
 - `raw_linescans/`, `raw_ls2/` (raw_data/linescans): **per-gastruloid raw xlsx** behind every
-  summary curve: passages 1-4 for clone 1 / clone 3 / clone 1+3, ratios, drugs, subclones,
+  summary curve: passages 1-4 for clone 1 / clone 3 / clone 1+3, ratios, compounds, subclones,
   clone+bulk chimeras. Needed for the memory-fade test (raw amplitude, not z-scored) and a
   per-gastruloid redo of G1b. Formats differ by file (Condition = clone fraction or E/X/EX
   labels; 2-3 channels); channel mapping must be read from the authors' notebooks first.

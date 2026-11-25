@@ -42,6 +42,6 @@ Does one generative clone model with shared rules and per-system scales predict 
 | Rodriguez-Fraticelli 2020 (GSE134242, Nature 2020, TCF15) | LARRY-barcoded HSCs into primary recipients (at least 4) and secondary transplants; inDrop HSC and KIT libraries; 90 samples | public | **best transplant target**: if clones are shared across recipients, recipient-split sisters test intrinsic vs extrinsic fate. Recipients are the units (H22 >= 3 per arm needs checking). Also re-analysed by the 2026 kinetics model paper. Check clone sharing across recipients from structure only (S0b). |
 | Kinetics-based haematopoiesis model (Nature Cell Biology 2026; Zenodo 14497706, CC-BY, 3 rds files) | single-HSC-derived systems plus polyclonal controls; re-analyses GSE134242 and GSE299000 | public | source of a published "extrinsic regulation" claim: read at claims level before any test (H25). |
 | GSE299000 (neonatal platelet-biased HSC fate mapping, 2026) | in situ fate mapping across development, 8 samples | public | not a split design; possible extra system for the S1 fit. |
-| Excluded | two disease-domain transplant studies found | | excluded domain (standing rule). |
+| Excluded | two condition-domain transplant studies found | | excluded domain (standing rule). |
 
 **Next (S0b):** structure-only checks: GSE284197 per-cell guide columns; GSE134242 clone sharing across recipients (counts only). Then the S1-S3 pre-registration.

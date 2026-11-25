@@ -111,7 +111,7 @@ before every look and refuses on any failure.
 - **H13 Keep a reserve.** At most one partition per look. The last unspent partition of a source
   (or the last sealed file of an unpartitioned source, e.g. the Raj reserve) needs Bence's verbatim
   OK (`--last-ok`), logged in the ledger.
-- **H14 Power before a look.** (G11 lesson: drug partition A was spent with 3 controls, about 15%
+- **H14 Power before a look.** (G11 lesson: compound partition A was spent with 3 controls, about 15%
   power.) A sealed look needs a power block in `selection/<exp>.json` (effect size and SD from
   train / open / spent data, one- or two-sided alpha, minimum power 0.8). The oracle first reads
   **counts only** from the partition (units per group, H9), computes power, and refuses the look
@@ -203,7 +203,7 @@ before every look and refuses on any failure.
   4. the number of units that carry the statistic is stated. A statistic carried by a handful of units is
      reported as exploratory and cannot be a gate.
 - **H22 Treatment-assignment unit.** (RETRO_2026-11-13; Bence 2026-11-14: "go 3 adopt h22". C10 counted
-  hundreds of lineages per library, but the drug was assigned per library, 2 per arm. Power was read at the
+  hundreds of lineages per library, but the compound was assigned per library, 2 per arm. Power was read at the
   lineage level and 4 amendments narrowed the test to one library pair before a placebo stopped it; the 2 per
   arm was visible at S0. Chapters 4 and 5 ended data-limited for design reasons visible at S0 too.)
   - Before any C*-S0 goes past structure, the pre-flight names the **treatment-assignment unit** of the primary
@@ -298,7 +298,7 @@ pre-registration dated 2026-11-13 or later without it.
 - Simulated readouts copy the measurement physics (11-09).
 - Probe whether the fit can stay at the favourable point before registering (11-05b).
 - Step 0 hygiene: at least 10 repeats, a settling check, a float tolerance (11-10).
-- Before committing an output that stores external titles (citation maps, data sweeps), probe the saved titles with the full neutral-wording filter; the filter's selftest carries a keep-list of core terms (11-19b; disease-domain titles passed a 30-stem blocklist into 34 committed maps).
+- Before committing an output that stores external titles (citation maps, data sweeps), probe the saved titles with the full neutral-wording filter; the filter's selftest carries a keep-list of core terms (11-19b; condition-domain titles passed a 30-stem blocklist into 34 committed maps).
 
 **Before a statistic**
 - Before an oracle look, estimate the sealed reader's peak RAM from the sealed file sizes, or run it once on the largest train unit locally (11-15; C14-S2 OOM).

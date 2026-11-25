@@ -54,7 +54,7 @@ population effects; for #14: editing efficiency per clone).
 | 12 | Epo-well erythroid cells come from clones absent from the G/M wells (not diversion of shared clones) | moderate, fit set | Grover 2014 (Epo instructs MPPs): **in tension** |
 | 21 | Gastruloid domain size is set by the aggregate, not by clone composition (slope 0.17 vs 1) | unconfirmed (open data) | Ayyappan 2025 notes the crossing is "not sensitive to the ratio" (qualitative). Our quantitative rejection of sorting-by-state is new |
 | 24 | Mixing rescue is not buffering, strict complementation or T+ fraction as formulated | unconfirmed negative | Regalado 2025, Braccioli 2025, Oriola 2024 proposed these |
-| 27 | RA, SB and AGN erode the clones' division of labour (11/11 comparisons) | unconfirmed (train only; sealed drug partitions unspent) | Ayyappan 2025 tested drugs on chimeras: **partly known** |
+| 27 | RA, SB and AGN erode the clones' division of labour (11/11 comparisons) | unconfirmed (train only; sealed compound partitions unspent) | Ayyappan 2025 tested compounds on chimeras: **partly known** |
 | ch5 | Gastruloid clones are chromatin-distinct at passage 1, along an A-P axis (gap 0.38, about 5.6 SE) | exploratory, 5 clones | no reference found (0 hits) |
 
 ## C. Known phenomenon, new numbers or a stricter test

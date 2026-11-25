@@ -22,7 +22,7 @@ not reachable).
   and Nodal motifs; Axin2 1.57-fold higher in anterior clones. Nodal inhibition disrupted
   propensity but kept some sorting; RA disrupted both.
 - **Their limits:** modest transcriptional differences (230 of 14,883 genes); small n for
-  seqFISH (2-5) and drugs (n = 1-3); "the majority (or even all) of these differences" may have
+  seqFISH (2-5) and compounds (n = 1-3); "the majority (or even all) of these differences" may have
   no functional consequence.
 - **Our reading so far:** the rescue is real and large; its *specificity* to opposite
   propensities is not supported (G2: +1.47 vs +1.01, difference unresolved). "Division of
@@ -74,7 +74,7 @@ published form (not verified; Cell page blocked).
 - **Braccioli et al. 2025 Dev Cell** ("Identifying cross-lineage dependencies of cell-type-
   specific regulators in mouse gastruloids"; search summary only): MSGN1-null cells form spinal
   cord only when wild-type cells are present; "inter-tissue communication" is required. A
-  defect in one lineage is complemented by another population.
+  deviation in one lineage is complemented by another population.
 - **Chimeric 3D gastruloids, 2022** (bioRxiv 2022.05.25.493377; search only): Brachyury-
   deficient cells have non-autonomous effects on Wnt3a patterning.
 - **Mosaic gastruloids, Nat Cell Biol 2026** ("Mosaic gastruloids reveal a temporal restriction
@@ -129,7 +129,7 @@ peaks at an intermediate composition and falls on both sides.
 The retest (G2b) keeps "any mixing rescues" but adds a complementarity bonus at the edge of
 significance: complementary pairs +0.09 [0.001, 0.17] over same-propensity pairs, and only they
 beat their better member. So H1 (buffering) alone is not enough; the model needs a generic term
-plus an A-P complementarity term, and H2/H3 must explain both. Clone 4 (severe defect, partly
+plus an A-P complementarity term, and H2/H3 must explain both. Clone 4 (severe deviation, partly
 rescued) is the cleanest single test case.
 
 ## Update after G4 (2026-11-06)

@@ -10,10 +10,10 @@ block on power and spent results). `files_read` is self-reported.
 |---|---|---|---|---|---|
 | K01 G11 | fault | pass | - | **miss** | flagged "no power calculation" as a note only |
 | K03 C4-S2b | fault | pass | - | **miss** | flagged "2-6 units, no inference" as notes; packet had no script |
-| K04 C5-S4 | fault | block | power, unit, spent-results, script | **catch** | named the known defect: sd not from the exact S-ratio statistic |
+| K04 C5-S4 | fault | block | power, unit, spent-results, script | **catch** | named the known deviation: sd not from the exact S-ratio statistic |
 | K06 C6-S7g | fault | pass | - | **miss** | flagged "7th sub-version" and "6 reps" as notes |
-| K07 C6-S8a | fault | pass | - | **miss** | flagged the exact defect (one rate where sealed G6 gave clone-specific rates) as a note |
-| K08 C8-S1b T2 | fault | block | power, spent-results | **catch** | power fragile, 0.46 if shrunk; did not name the subset-ratio defect |
+| K07 C6-S8a | fault | pass | - | **miss** | flagged the exact deviation (one rate where sealed G6 gave clone-specific rates) as a note |
+| K08 C8-S1b T2 | fault | block | power, spent-results | **catch** | power fragile, 0.46 if shrunk; did not name the subset-ratio deviation |
 | K02 G7 | fault | pass | - | **miss** | flagged "spends all remaining hold-out" and "single rate rejected by spent G6" as notes |
 | K09, K16 | fault | not run | | | stopped: rule unreachable |
 | K11, K12, K17, K15, K19 | sound | not run | | | stopped |
@@ -21,10 +21,10 @@ block on power and spent results). `files_read` is self-reported.
 **Score:** 2 of 7 scored fault cases caught; at most 4 of 9 reachable, so the 7 of 9 rule cannot be met. Stopped
 under the early-stop rule; no sound case was run.
 
-**Diagnosis:** detection worked: in all five misses the known defect appears in the findings, with evidence. The
-verdict threshold failed: brief v1 blocks only for a defect that would waste a sealed partition or break a rule in
+**Diagnosis:** detection worked: in all five misses the known deviation appears in the findings, with evidence. The
+verdict threshold failed: brief v1 blocks only for a deviation that would waste a sealed partition or break a rule in
 *the packet's* program.md. Steps with no sealed spend (K06, K07) and steps from before a rule existed (K01, pre-H14)
-were therefore passed with the defect as a note.
+were therefore passed with the deviation as a note.
 
 ## Revision (brief v2, the one revision BENCHMARK.md allows)
 See REVIEWER_BRIEF.md "Verdict" (v2). Run 2 reruns all 14 scored cases on the same packets and the same prompt
@@ -62,7 +62,7 @@ rule 1 ("no power computed") firing on train-only steps that spend nothing and c
 scope the power rule to looks. K11 is a closer call: the shrink argument is the same one that correctly caught K08,
 and C7-S7 happened to confirm. A reviewer that blocks 9 of 14 steps would stop most work, so as a gate it fails.
 
-**What it is still good for (advisory):** on fault cases it named the retro defect in 8 of 9, usually with the
+**What it is still good for (advisory):** on fault cases it named the retro deviation in 8 of 9, usually with the
 packet's own line as evidence. Used as a pre-look checklist, its block findings are worth reading; it is not a
 pass/fail gate.
 

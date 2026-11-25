@@ -25,8 +25,8 @@ tail). Chapter 4 asked why.
 1. **Rescue did not replicate on new clones.** On the one powered sealed test, a head-preferring plus tail-preferring
    pair of new subclones was not more elongated than its members' average, and not more than its better member. #22
    stays **unconfirmed**: it fits the 2024-25 table (G2, G2b, C3-S2) only.
-2. **What did show:** a severely defective clone (6a, round alone) improved with bulk cells. This fits "a diverse
-   partner partly makes up for a defect" (G2b already saw clone 4 only partly rescued) better than "two
+2. **What did show:** a severely deviating clone (6a, round alone) improved with bulk cells. This fits "a diverse
+   partner partly makes up for a deviation" (G2b already saw clone 4 only partly rescued) better than "two
    complementary clones rescue each other".
 3. **The mechanism is not testable with public data.** The sorting index is a model-level hypothesis, consistent with
    the 2024-25 table and untested beyond it. Spatial readouts exist only for 2-6 gastruloids per condition.

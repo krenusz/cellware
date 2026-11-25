@@ -74,7 +74,7 @@ DATASETS = {
     "orthologs": "reference table, not data",
     "ensembl_ref_human": "reference table, not data (Ensembl GRCh38 gene id -> chromosome, start; BioMart 2026-11-13; for C10-S1 CNV proxy)",
     "ensembl_ref": "reference table, not data (Ensembl 112 GRCm39 cDNA headers -> tx2gene.tsv, for C5-S5)",
-    # G9 mechanism set (sealed 2026-11-07 before any statistic; structure check only). Drug series
+    # G9 mechanism set (sealed 2026-11-07 before any statistic; structure check only). Compound series
     # partitioned by experiment series (dates from scan IDs): train = Dec 2024 + Feb/Mar 2025 files;
     # A = May 3 2025, B = July 28 2025, C = May 24 2025 (iou metrics only). Locked = not analysed yet.
     "data/gastruloid_raj/raw_ls2/1+3_ctrl_ra_sb_05032025.csv":

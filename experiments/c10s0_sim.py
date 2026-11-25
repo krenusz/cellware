@@ -1,6 +1,6 @@
 """C10-S0 amendment 2: SYNTHETIC smoke test of the candidate instruction statistic (no data read).
 
-S = log F(drug library) - log F(control library), F = between-family residual MS of post family means
+S = log F(compound library) - log F(control library), F = between-family residual MS of post family means
 (after regressing them on the pre-sister state) / (within-family post-cell MS / mean n).
 Checks: (1) invariant to a constant / scale on one library; (2) ~0 in a selection-only world with range
 restriction and one noisy pre cell per family; (3) > 0 when family-specific instruction is added.
@@ -50,7 +50,7 @@ def S(rng, n_fam, drug_keep, ctrl_keep, tau, **kw):
 
 def main():
     out = {}
-    # (1) invariance: identical seeds, transformed vs untransformed drug library
+    # (1) invariance: identical seeds, transformed vs untransformed compound library
     r1, r2 = np.random.default_rng(1), np.random.default_rng(1)
     a = S(r1, 40, 0.08, 0.15, 0.0)
     b = S(r2, 40, 0.08, 0.15, 0.0, shift=3.0, scale=2.5)
@@ -65,11 +65,11 @@ def main():
             alt = np.array([S(rng, n_fam, 0.08, 0.15, tau) for _ in range(500)])
             out[f"3_instruction_tau{tau}_n{n_fam}"] = {"mean": round(alt.mean(), 3),
                                                       "power_vs_null95": round((alt > crit).mean(), 3)}
-        # selection-only but much stronger restriction in drug (1%) vs control (50%)
+        # selection-only but much stronger restriction in compound (1%) vs control (50%)
         sel = np.array([S(rng, n_fam, 0.01, 0.5, 0.0) for _ in range(500)])
         out[f"2b_strong_restriction_n{n_fam}"] = {"mean": round(sel.mean(), 3),
                                                   "false_pos_vs_crit": round((sel > crit).mean(), 3)}
-        # selection-only, drug lowers memory (state partly reset) - is that 'instruction'? report it
+        # selection-only, compound lowers memory (state partly reset) - is that 'instruction'? report it
         mem = np.array([S(rng, n_fam, 0.08, 0.15, 0.0, memory=0.3) for _ in range(500)])
         out[f"2c_lower_memory_n{n_fam}"] = {"mean": round(mem.mean(), 3), "pos_rate": round((mem > crit).mean(), 3)}
     for k, v in out.items():

@@ -43,8 +43,8 @@ h5ad/rds files. Those closest to our design:
 | Weinreb 2020 in vitro time course and in vivo (GSE140802) | same LARRY library, no cytokine split | no | state-fate replication of day-2 priming (B11/B13-style) |
 | Rodriguez-Fraticelli 2020 (GSE134242) | LARRY HSCs, transplant, 90 samples | no | HSC-level priming |
 | Jindal 2023 CellTag-multi LSK (GSE216521/GSE216606) | in vitro LSK culture, RNA + ATAC lineage | no | chromatin priming of G vs M |
-| STRACK, Cell Stem Cell 2025 (GSE266232, GSE282755) | HSC clones in 27-day culture, with/without conditional disease-model alleles | **yes** (mutation switch) | action = mutation; same clones with and without |
-| Bowling 2020 CARLIN (GSE146972) | in vivo, 5-FU vs control | yes (drug), in vivo | perturbation response, coarse |
+| STRACK, Cell Stem Cell 2025 (GSE266232, GSE282755) | HSC clones in 27-day culture, with/without conditional condition-model alleles | **yes** (mutation switch) | action = mutation; same clones with and without |
+| Bowling 2020 CARLIN (GSE146972) | in vivo, 5-FU vs control | yes (compound), in vivo | perturbation response, coarse |
 | Li 2023 DARLIN (GSE222486), Pei 2020 PolyExpress, Wojtowicz 2023, Weng 2024 ReDeeM (human) | in vivo barcoding | no | breadth only |
 
 ### Encoders

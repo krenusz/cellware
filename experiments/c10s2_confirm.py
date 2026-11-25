@@ -3,7 +3,7 @@
 Serves: C10-S2. Bence: "go". Pre-registered in EXPERIMENT_LOG ("C10-S2").
   fit       : train only (partitions.train_only); freezes the pipeline to selection/C10-S2_model.npz and
               writes selection/C10-S2.json (power + readout blocks, model sha256).
-  counts_A  : structural count of labelled drug-library lineages in a sealed partition (no outcome column).
+  counts_A  : structural count of labelled compound-library lineages in a sealed partition (no outcome column).
   test_A    : called ONLY by test_oracle (look resistrace_c10s2 --partition A).
 """
 import glob

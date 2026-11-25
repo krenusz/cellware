@@ -69,7 +69,7 @@ The self-challenge block asks "already published?" at the result, which is too l
 | Data search scored by the shape of past successes (lineage unit, >= ~100 units per partition, state before fate, public) | RETRO_2026-11-14 | pending Bence | adopt as practice; add "source paper has not answered it" (H25) |
 | Guard hook for the `Compute:` line | RETRO_2026-11-15 | pending Bence | adopt (cheap, code) |
 | scope_guard `allowed_scripts` compares bare names to `.py` entries, so the allow-list never matches | RETRO_2026-11-17 | pending Bence | fix (one line, plus a test) |
-| `drug_resistance` topic in lit_gap.py | RETRO_2026-11-13 | owed before any drug chapter | keep owed |
+| `drug_resistance` topic in lit_gap.py | RETRO_2026-11-13 | owed before any compound chapter | keep owed |
 | C12 power redo by `sim_power` | RETRO_2026-11-14b | owed before any C12 look | keep owed |
 | DISCOVERIES.md has no entries for C7, C8, C12 or C14 | found today | the register lags 4 chapters | C14 entry added today (#31); C7, C8, C12 next |
 | Five open decisions from the 11-13 sweep (core-model LARRY refit, tissue simulator, one analysis script, Marangoni preprint, Cell Rep 2022 paper) | RETRO_SWEEP_2026-11-13 s.4 | never closed | drop all five: their chapters are closed |
@@ -84,7 +84,7 @@ The self-challenge block asks "already published?" at the result, which is too l
 6. Allow-list bug: fixed (scope_guard.allowed_script strips `.py`; test added).
 7. Housekeeping:
    - the five open decisions from RETRO_SWEEP_2026-11-13 s.4 are **dropped** (their chapters are closed);
-   - prose files rewritten in neutral wording (15 files: line, disease and agent names replaced; treatment arms now T1, T2, NK). Code keeps its data keys and the mask list; run logs and generated gap maps (public paper titles) are unchanged; git history still holds the old text;
+   - prose files rewritten in neutral wording (15 files: line, condition and agent names replaced; treatment arms now T1, T2, NK). Code keeps its data keys and the mask list; run logs and generated gap maps (public paper titles) are unchanged; git history still holds the old text;
    - the public log of run 44073504820 is deleted (API 404 since). Its two artifacts (`results`, `line-1`) were deleted on Bence's OK the same day ("Yes, delete them"); the run now has 0 artifacts.
 
 ## 5. Model ledger (since 2026-11-13)

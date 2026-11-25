@@ -5,7 +5,7 @@ Bence: "pause cellware, and do a retro / after look around for more data".
 **Method:**
 - Four extended web searches covering:
   - haematopoiesis multiome lineage;
-  - drug-resistance barcoding with replicates;
+  - compound-resistance barcoding with replicates;
   - clonal memory with sister cells;
   - new LARRY / CellTag-multi data.
 - Nine candidate pages, read for design only: accession, lineage method, replicate units per arm, and clones observed at two or more timepoints.
@@ -37,5 +37,5 @@ The watch list (from earlier today) is unchanged: GSE324482 private, E-MTAB-1735
 
 ## Not found
 - No new public same-cell RNA + ATAC clone dataset (the ch5 and ch7 reopen condition).
-- No drug lineage dataset with >= 3 libraries per arm (the ch10 reopen condition).
+- No compound lineage dataset with >= 3 libraries per arm (the ch10 reopen condition).
 - No second CellTag-multi LSK dataset (which would have rescued C9-S2's unit count).

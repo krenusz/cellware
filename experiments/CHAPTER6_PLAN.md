@@ -24,7 +24,7 @@ index H). Chapter 6 replaces both with cells in 2-D space.
 | T-e | elongation falls with the fraction of a pure clone in clone+bulk chimeras (20/50/80%), similar slope in 1.2, 5.2, 6A | **exposed**: authors' README results read; plate-confounded | `rev_chimera_elong` (175 gastruloids) |
 | T-f | complementary clone-clone rescue (#22) | **not confirmed** out of sample (C4-S4: +0.25 SD vs 0.81) | must NOT be built in |
 
-T-e and T-f together show what to aim at. The one supported mixing effect is that a defective clone gets
+T-e and T-f together show what to aim at. The one supported mixing effect is that a deviating clone gets
 partial help from a diverse partner (bulk). It is not complementarity between two clones. The model has to get
 this right without being tuned to the exposed numbers. T-e is used as a fit target and is labelled exposed.
 

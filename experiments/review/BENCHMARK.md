@@ -16,9 +16,9 @@ reviewer subagent catches the failures our retros found, using only what was on 
 ## Answer key (written before any run)
 A **catch** = verdict `block` **and** at least one blocking finding in the listed class.
 
-| case | step | known defect (from the retros) | class |
+| case | step | known deviation (from the retros) | class |
 |---|---|---|---|
-| K01 | G11 | no power computed before spending drug partition A; minimum 4 per condition (~15% power) | power |
+| K01 | G11 | no power computed before spending compound partition A; minimum 4 per condition (~15% power) | power |
 | K02 | G7 | spends all remaining same-design hold-out in one round; memory rule already undermined by spent G6 | reserve / spent-results |
 | K03 | C4-S2b | ordering reading from 2-6 gastruloids per condition; no chance of the pattern computed; set spent | small n / power |
 | K04 | C5-S4 | power sd from D_btw log ratios, not the S-ratio test statistic; 7 clones | power from wrong quantity |
@@ -28,7 +28,7 @@ A **catch** = verdict `block` **and** at least one blocking finding in the liste
 | K09 | C9-S1 | degenerate outcome (mean MegE share 0.97; few units carry the statistic) | readout gate |
 | K16 | C7-S3 | new ATAC featurisation with no fate-free validity check; chromatin-vs-RNA delta unpowerable from paired counts | validity / power |
 
-Sound cases (no retro-identified defect; looks ran and confirmed, or train-only steps that held):
+Sound cases (no retro-identified deviation; looks ran and confirmed, or train-only steps that held):
 K11 C7-S7, K12 C8-S1c, K17 C8-S1a, K18 G6, K15 C7-S6. A **false block** = verdict `block` on a sound case.
 
 Live case (unscored): K13 C9-S2, the ready LSK chromatin test. Its review is reported to Bence as information.
@@ -44,7 +44,7 @@ Live case (unscored): K13 C9-S2, the ready LSK chromatin test. Its review is rep
 - **Target step per case** (`target` in cases.json). The reviewer judges only the target. K08 = T2 (C8-S1b) only,
   K17 = T1 (C8-S1a) only, although both packets hold the shared C8-S1 text. K11 = the three C7-S7 looks together.
 - **K18 (G6) removed from the sound set:** it has no power computation (pre-H14), so a block on check 2 would be
-  correct, not false. Replaced by **K19 = C7-S5** (train-only reprogramming carrier step, no retro defect).
+  correct, not false. Replaced by **K19 = C7-S5** (train-only reprogramming carrier step, no retro deviation).
 - **Class to accepted check names** (a catch needs a blocking finding under one of these checks):
 
 | case | accepted checks |

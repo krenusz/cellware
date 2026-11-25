@@ -78,9 +78,9 @@ EXPERIMENT_LOG.md (B7, E25, proposed E26).
   attributes with Pluristyx). £7.6m seed, Jan 2024 (Octopus Ventures lead; Horizons, Verve, Air
   Street). Bence interviewed there in January 2024 (coding session 22 Jan 2024, not progressed;
   his RL presentation was shared with the team).
-- Imaging/phenomics at scale: **Recursion** (phenomics OS), **insitro** (stem-cell disease
+- Imaging/phenomics at scale: **Recursion** (phenomics OS), **insitro** (stem-cell condition
   models, CellPaint-POSH).
-- Cell-state / virtual-cell: **Cellarity** (cell-state drug discovery; CLY-124), **NewLimit**
+- Cell-state / virtual-cell: **Cellarity** (cell-state compound discovery; CLY-124), **NewLimit**
   (TF-combination rejuvenation, ~$247m raised), **Xaira** (X-Cell virtual cell model), **Tahoe**
   (perturbation datasets), **BioMap** (won Arc Virtual Cell Challenge 2025). Arc Institute's 2026
   challenge is zero-shot; organisers say models do not yet consistently beat naive baselines.

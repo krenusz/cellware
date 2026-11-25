@@ -1,7 +1,7 @@
 """G9: does signalling set the clones' division of labour? Train partitions only. See EXPERIMENT_LOG G9.
 
     uv run --with openpyxl python g9_mech.py
-Reads only train drug series (Dec 2024, Feb/Mar 2025) and train Wnt gastruloids (train_only).
+Reads only train compound series (Dec 2024, Feb/Mar 2025) and train Wnt gastruloids (train_only).
 """
 
 from __future__ import annotations
@@ -65,7 +65,7 @@ def cond_means(df):
     return m
 
 
-# ---------- G9a drug models ----------
+# ---------- G9a compound models ----------
 
 def predict(model, th, keys, train):
     """keys: list of (pair, cond). th: parameters fitted on train (dict)."""
@@ -107,7 +107,7 @@ def fit_drug(model, m):
     x0 = np.r_[[np.mean(y[(m["pair"] == p).to_numpy()]) for p in pairs], np.full(len(drugs), 1.0 if model == "D1" else 0.0)]
     res = minimize(loss, x0, method="Nelder-Mead", options={"maxiter": 40000, "xatol": 1e-6, "fatol": 1e-9})
     th = unpack(res.x)
-    for d in DRUGS:  # drug absent from training: no effect
+    for d in DRUGS:  # compound absent from training: no effect
         th.setdefault("g" if model == "D1" else "s", {}).setdefault(d, 1.0 if model == "D1" else 0.0)
     return th
 
