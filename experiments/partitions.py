@@ -213,6 +213,19 @@ PARTITIONED = {
                           "reanalyses (Carta, doi 10.1038/s41592-025-02903-z; TROUPE, preprint 10.64898/2025.12.09.693214), "
                           "claims level (CAND-Y-P1)",
     },
+    "mouse_gast_tree": {
+        "salt": "cellware-mouse-gast-tree-v1",
+        "unit": "track tree of the S-BIAD1682 manual tracks (DS-EMB-S): connected component of the spot graph, "
+                "'M<movie>:<earliest spot ID>', Movies 1-4; Movie5 repeats Movie3's tracking and is outside the map "
+                "(never read); strata = movie, size = eligible depth >= 1 sister pairs",
+        "fixed_file": "partition_maps/partition_mouse_gast_tree.tsv",
+        "files": ["BioStudies S-BIAD1682 MaMuT tracking XML, sha256 in data/ext_mouse_gast_tracks/raw/SHA256SUMS"],
+        "sealed_on": "2026-11-25",
+        "prior_exposure": "BioStudies study fields (organism, imaging method, annotation type and method, the "
+                          "experimental-variable and image-analysis text, genotype strings in the file list); XML "
+                          "feature declarations; spot, edge, division, tree and eligible-pair counts per movie; "
+                          "presence counts of the intensity attributes (no values); study title (DS-EMB sweep)",
+    },
 }
 BUCKETS = 5
 TRAIN = (0, 1)

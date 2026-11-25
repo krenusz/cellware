@@ -1,0 +1,48 @@
+{
+ "units": 319,
+ "eligible_total": 721,
+ "by_partition": {
+  "train": {
+   "trees": 127,
+   "eligible": 278
+  },
+  "A": {
+   "trees": 64,
+   "eligible": 134
+  },
+  "B": {
+   "trees": 64,
+   "eligible": 137
+  },
+  "C": {
+   "trees": 64,
+   "eligible": 172
+  }
+ },
+ "trees_by_movie": {
+  "M1": {
+   "train": 42,
+   "A": 21,
+   "B": 21,
+   "C": 20
+  },
+  "M2": {
+   "C": 22,
+   "B": 21,
+   "A": 21,
+   "train": 40
+  },
+  "M3": {
+   "train": 40,
+   "A": 19,
+   "B": 19,
+   "C": 18
+  },
+  "M4": {
+   "C": 4,
+   "B": 3,
+   "A": 3,
+   "train": 5
+  }
+ }
+}

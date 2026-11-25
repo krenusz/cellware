@@ -59,9 +59,10 @@ DATASETS = {
                            "DS-EMB-G amendment 1), sha256 in raw/SHA256SUMS. Structure gate only (DS-EMB-G) until "
                            "partitioned; no image data downloaded.",
     "ext_mouse_gast_tracks": "BioStudies S-BIAD1682 Movie1-5 MaMuT tracking XML (spots and edges, 0.4 GB), downloaded "
-                             "2026-11-25 (coordinator step, DS-EMB-G amendment 1), sha256 in raw/SHA256SUMS. Structure "
-                             "gate only (DS-EMB-G) until partitioned; spot IDs, frames and edges only, intensity "
-                             "features not read; no image data downloaded.",
+                             "2026-11-25 (coordinator step, DS-EMB-G amendment 1), sha256 in raw/SHA256SUMS. "
+                             "Partitioned by track tree (partitions.mouse_gast_tree, sealed 2026-11-25, Bence: \"Yes, "
+                             "seal E5\"): train 40%, A/B/C 20%, strata movie; Movie5 (same tracking as Movie3) outside "
+                             "the map and never read. Intensity features not read before S1; no image data downloaded.",
     "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
                     "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "

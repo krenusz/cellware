@@ -13763,6 +13763,49 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The counts JSON keeps Movie5 (804); the dropped-duplicate figure of 721 is in this log.
 - **Next (needs Bence):**
   1. A novelty check on the E5 source (published in kind or not). The study title suggests sister-fate coordination results may already be published; seal first, so the source read lands in `prior_exposure`.
+
+## DS-EMB-S: seal E5 (mouse gastrulation manual tracks) by track tree before any fate read (pre-registered 2026-11-25; Bence: "Yes, seal E5")
+- **Serves: C12 CLOSED** (E5 passed DS-EMB-G; sealing comes before any fate read or source-claims read, H1/H24).
+- **Unit:** one track tree, defined as a connected component of the spot graph, so the one merge in Movie2 cannot straddle partitions.
+  - Named `M<movie>:<earliest spot ID>` (lowest frame, ties broken by the lowest ID).
+  - Movies 1-4.
+  - Movie5 has the same tracking as Movie3. It is outside the map, never read again, and all its rows count as sealed-excluded.
+- **Split:** partitions.balanced_split (H24: 40/20/20/20 snake).
+  - Strata: movie.
+  - Size: eligible depth >= 1 sister pairs per tree (the DS-EMB-G rule; structure only).
+  - Salt: `cellware-mouse-gast-tree-v1`.
+  - The map is committed as `partition_maps/partition_mouse_gast_tree.tsv` and registered in partitions.PARTITIONED as `mouse_gast_tree`.
+- **Read for sealing:** spot ID, FRAME and edges only. No intensity, position or radius.
+- **Report:** trees and eligible pairs per partition and per movie (counts only).
+- **Pre-flight:**
+  1. Unit: track tree.
+  2. Readout: none (sealing).
+  3. Used data first: E5 is unused apart from the structure counts.
+  4. Power: the S1 power check comes later, on train structure.
+  5. Exposure: structure counts, already logged.
+  6. Literature: none yet; the source read comes after this seal and is logged in `prior_exposure`.
+  7. Readout gate: not applicable.
+- Practice: a selftest of the component naming on a toy graph with a merge; the sealed check and the guard tests before push.
+- Compute: local (0.34 GB of XML parsed for IDs, frames and edges; under a minute per movie).
+
+### DS-EMB-S result (2026-11-25; `partition_maps/partition_mouse_gast_tree.tsv`, `results_c17/ds_emb_seal_counts.json`; structure only)
+- The selftest passed: a merge joins two roots into one unit named by its earliest spot, and only a depth >= 1 division with long arms counts.
+- **319 track trees (connected components), 721 eligible pairs, sealed:**
+
+  | Partition | Trees | Eligible pairs |
+  |---|---|---|
+  | train | 127 | 278 |
+  | A | 64 | 134 |
+  | B | 64 | 137 |
+  | C | 64 | 172 |
+
+  Per movie, M1 to M3 split about 40/20/20/20; M4 splits 5/3/3/4.
+- Movie2 gives 104 components, as in the gate count; the spot with two incoming edges did not join two trees.
+- Registered: partitions.PARTITIONED `mouse_gast_tree` (fixed_file, prior_exposure listed), sealed.py entry updated, ds_emb_seal.py added to check_sealed SEALERS. Sealed check: OK.
+- From now on, E5 is read only through `partitions.train_only("mouse_gast_tree", ...)` or the oracle. The intensity features stay unread until an S1 is pre-registered.
+- **Next (needs Bence):**
+  1. Novelty check of the source study at claims level; it goes into `prior_exposure`.
+  2. Then, if not published in kind, pre-register S1 on the 127 train trees, with power from train structure and the reporter-channel threshold fixed before any value is read.
   2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
   3. Pre-registration of an S1 on train only.
 - **Not yet known:**
