@@ -1,0 +1,521 @@
+{
+ "file_list_sha256": "9dd6411fa1eb55e16972772438ab630d18b7e1b258b039ac111dfc2485e74e83",
+ "movies": {
+  "M1": {
+   "frame_interval": [
+    "2"
+   ],
+   "frames": 1010,
+   "train_units": 42,
+   "train_spots": 66692,
+   "cycles_per_generation": {
+    "0": {
+     "censored_start": 24,
+     "end_at_last_frame": 0,
+     "both_censored": 18
+    },
+    "1": {
+     "complete": 43,
+     "end_at_last_frame": 0,
+     "censored_end": 5
+    },
+    "2": {
+     "complete": 55,
+     "end_at_last_frame": 0,
+     "censored_end": 31
+    },
+    "3": {
+     "complete": 24,
+     "end_at_last_frame": 7,
+     "censored_end": 86
+    },
+    "4": {
+     "censored_end": 47,
+     "end_at_last_frame": 2,
+     "complete": 1
+    },
+    "5": {
+     "censored_end": 2,
+     "end_at_last_frame": 2
+    }
+   },
+   "spots": {
+    "n": 66692,
+    "present_share": {
+     "CELL_DIVISION_TIME": 0.4541,
+     "CONTRAST_CH1": 1.0,
+     "CONTRAST_CH2": 1.0,
+     "FRAME": 1.0,
+     "ID": 1.0,
+     "MANUAL_SPOT_COLOR": 0.9995,
+     "MAX_INTENSITY_CH1": 1.0,
+     "MAX_INTENSITY_CH2": 1.0,
+     "MEAN_INTENSITY_CH1": 1.0,
+     "MEAN_INTENSITY_CH2": 1.0,
+     "MEDIAN_INTENSITY_CH1": 1.0,
+     "MEDIAN_INTENSITY_CH2": 1.0,
+     "MIN_INTENSITY_CH1": 1.0,
+     "MIN_INTENSITY_CH2": 1.0,
+     "POSITION_T": 1.0,
+     "POSITION_X": 1.0,
+     "POSITION_Y": 1.0,
+     "POSITION_Z": 1.0,
+     "QUALITY": 1.0,
+     "RADIUS": 1.0,
+     "SNR_CH1": 1.0,
+     "SNR_CH2": 1.0,
+     "SOURCE_ID": 0.2412,
+     "STD_INTENSITY_CH1": 1.0,
+     "STD_INTENSITY_CH2": 1.0,
+     "TOTAL_INTENSITY_CH1": 1.0,
+     "TOTAL_INTENSITY_CH2": 1.0,
+     "VISIBILITY": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "MANUAL_SPOT_COLOR": 13,
+     "name": 50754
+    }
+   },
+   "edges": {
+    "n": 66650,
+    "present_share": {
+     "DIRECTIONAL_CHANGE_RATE": 1.0,
+     "DISPLACEMENT": 1.0,
+     "EDGE_TIME": 1.0,
+     "EDGE_X_LOCATION": 1.0,
+     "EDGE_Y_LOCATION": 1.0,
+     "EDGE_Z_LOCATION": 1.0,
+     "LINK_COST": 1.0,
+     "SPEED": 1.0,
+     "SPOT_SOURCE_ID": 1.0,
+     "SPOT_TARGET_ID": 1.0
+    },
+    "distinct_values": {}
+   },
+   "tracks": {
+    "n": 24,
+    "present_share": {
+     "CONFINEMENT_RATIO": 1.0,
+     "DIVISION_TIME_MEAN": 1.0,
+     "DIVISION_TIME_STD": 1.0,
+     "LINEARITY_OF_FORWARD_PROGRESSION": 1.0,
+     "LONGEST_GAP": 1.0,
+     "MAX_DISTANCE_TRAVELED": 1.0,
+     "MEAN_DIRECTIONAL_CHANGE_RATE": 1.0,
+     "MEAN_STRAIGHT_LINE_SPEED": 1.0,
+     "NUMBER_COMPLEX": 1.0,
+     "NUMBER_GAPS": 1.0,
+     "NUMBER_MERGES": 1.0,
+     "NUMBER_SPLITS": 1.0,
+     "NUMBER_SPOTS": 1.0,
+     "TOTAL_DISTANCE_TRAVELED": 1.0,
+     "TRACK_DISPLACEMENT": 1.0,
+     "TRACK_DURATION": 1.0,
+     "TRACK_ID": 1.0,
+     "TRACK_INDEX": 1.0,
+     "TRACK_MAX_SPEED": 1.0,
+     "TRACK_MEAN_QUALITY": 1.0,
+     "TRACK_MEAN_SPEED": 1.0,
+     "TRACK_MEDIAN_SPEED": 1.0,
+     "TRACK_MIN_SPEED": 1.0,
+     "TRACK_START": 1.0,
+     "TRACK_STD_SPEED": 1.0,
+     "TRACK_STOP": 1.0,
+     "TRACK_X_LOCATION": 1.0,
+     "TRACK_Y_LOCATION": 1.0,
+     "TRACK_Z_LOCATION": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "name": 24
+    }
+   },
+   "tracks_without_edges": 0
+  },
+  "M2": {
+   "frame_interval": [
+    "2"
+   ],
+   "frames": 1126,
+   "train_units": 40,
+   "train_spots": 51260,
+   "cycles_per_generation": {
+    "0": {
+     "censored_start": 30,
+     "end_at_last_frame": 0,
+     "both_censored": 10
+    },
+    "1": {
+     "censored_end": 24,
+     "end_at_last_frame": 0,
+     "complete": 36
+    },
+    "2": {
+     "complete": 40,
+     "end_at_last_frame": 0,
+     "censored_end": 32
+    },
+    "3": {
+     "censored_end": 58,
+     "end_at_last_frame": 0,
+     "complete": 22
+    },
+    "4": {
+     "complete": 3,
+     "end_at_last_frame": 0,
+     "censored_end": 41
+    },
+    "5": {
+     "censored_end": 6,
+     "end_at_last_frame": 0
+    }
+   },
+   "spots": {
+    "n": 51260,
+    "present_share": {
+     "CELL_DIVISION_TIME": 0.4475,
+     "CONTRAST_CH1": 0.329,
+     "CONTRAST_CH2": 0.329,
+     "FRAME": 1.0,
+     "ID": 1.0,
+     "MANUAL_SPOT_COLOR": 0.0041,
+     "MAX_INTENSITY_CH1": 0.329,
+     "MAX_INTENSITY_CH2": 0.329,
+     "MEAN_INTENSITY_CH1": 0.329,
+     "MEAN_INTENSITY_CH2": 0.329,
+     "MEDIAN_INTENSITY_CH1": 0.329,
+     "MEDIAN_INTENSITY_CH2": 0.329,
+     "MIN_INTENSITY_CH1": 0.329,
+     "MIN_INTENSITY_CH2": 0.329,
+     "POSITION_T": 1.0,
+     "POSITION_X": 1.0,
+     "POSITION_Y": 1.0,
+     "POSITION_Z": 1.0,
+     "QUALITY": 1.0,
+     "RADIUS": 1.0,
+     "SNR_CH1": 0.329,
+     "SNR_CH2": 0.329,
+     "SOURCE_ID": 0.2099,
+     "STD_INTENSITY_CH1": 0.329,
+     "STD_INTENSITY_CH2": 0.329,
+     "TOTAL_INTENSITY_CH1": 0.329,
+     "TOTAL_INTENSITY_CH2": 0.329,
+     "VISIBILITY": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "MANUAL_SPOT_COLOR": 1,
+     "name": 40594
+    }
+   },
+   "edges": {
+    "n": 51220,
+    "present_share": {
+     "DIRECTIONAL_CHANGE_RATE": 1.0,
+     "DISPLACEMENT": 1.0,
+     "EDGE_TIME": 1.0,
+     "EDGE_X_LOCATION": 1.0,
+     "EDGE_Y_LOCATION": 1.0,
+     "EDGE_Z_LOCATION": 1.0,
+     "LINK_COST": 1.0,
+     "MANUAL_EDGE_COLOR": 0.0011,
+     "SPEED": 1.0,
+     "SPOT_SOURCE_ID": 1.0,
+     "SPOT_TARGET_ID": 1.0
+    },
+    "distinct_values": {
+     "MANUAL_EDGE_COLOR": 1
+    }
+   },
+   "tracks": {
+    "n": 39,
+    "present_share": {
+     "CONFINEMENT_RATIO": 1.0,
+     "DIVISION_TIME_MEAN": 1.0,
+     "DIVISION_TIME_STD": 1.0,
+     "LINEARITY_OF_FORWARD_PROGRESSION": 1.0,
+     "LONGEST_GAP": 1.0,
+     "MAX_DISTANCE_TRAVELED": 1.0,
+     "MEAN_DIRECTIONAL_CHANGE_RATE": 1.0,
+     "MEAN_STRAIGHT_LINE_SPEED": 1.0,
+     "NUMBER_COMPLEX": 1.0,
+     "NUMBER_GAPS": 1.0,
+     "NUMBER_MERGES": 1.0,
+     "NUMBER_SPLITS": 1.0,
+     "NUMBER_SPOTS": 1.0,
+     "TOTAL_DISTANCE_TRAVELED": 1.0,
+     "TRACK_DISPLACEMENT": 1.0,
+     "TRACK_DURATION": 1.0,
+     "TRACK_ID": 1.0,
+     "TRACK_INDEX": 1.0,
+     "TRACK_MAX_SPEED": 1.0,
+     "TRACK_MEAN_QUALITY": 1.0,
+     "TRACK_MEAN_SPEED": 1.0,
+     "TRACK_MEDIAN_SPEED": 1.0,
+     "TRACK_MIN_SPEED": 1.0,
+     "TRACK_START": 1.0,
+     "TRACK_STD_SPEED": 1.0,
+     "TRACK_STOP": 1.0,
+     "TRACK_X_LOCATION": 1.0,
+     "TRACK_Y_LOCATION": 1.0,
+     "TRACK_Z_LOCATION": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "name": 39
+    }
+   },
+   "tracks_without_edges": 0
+  },
+  "M3": {
+   "frame_interval": [
+    "2"
+   ],
+   "frames": 950,
+   "train_units": 40,
+   "train_spots": 33741,
+   "cycles_per_generation": {
+    "0": {
+     "censored_start": 31,
+     "end_at_last_frame": 0,
+     "both_censored": 9
+    },
+    "1": {
+     "complete": 27,
+     "end_at_last_frame": 1,
+     "censored_end": 35
+    },
+    "2": {
+     "censored_end": 42,
+     "end_at_last_frame": 2,
+     "complete": 12
+    },
+    "3": {
+     "censored_end": 18,
+     "end_at_last_frame": 0,
+     "complete": 6
+    },
+    "4": {
+     "censored_end": 12,
+     "end_at_last_frame": 6
+    }
+   },
+   "spots": {
+    "n": 33741,
+    "present_share": {
+     "CELL_DIVISION_TIME": 0.3632,
+     "CONTRAST_CH1": 0.2421,
+     "CONTRAST_CH2": 0.2419,
+     "FRAME": 1.0,
+     "ID": 1.0,
+     "MAX_INTENSITY_CH1": 0.2425,
+     "MAX_INTENSITY_CH2": 0.2419,
+     "MEAN_INTENSITY_CH1": 0.2425,
+     "MEAN_INTENSITY_CH2": 0.2419,
+     "MEDIAN_INTENSITY_CH1": 0.2425,
+     "MEDIAN_INTENSITY_CH2": 0.2419,
+     "MIN_INTENSITY_CH1": 0.2425,
+     "MIN_INTENSITY_CH2": 0.2419,
+     "POSITION_T": 1.0,
+     "POSITION_X": 1.0,
+     "POSITION_Y": 1.0,
+     "POSITION_Z": 1.0,
+     "QUALITY": 1.0,
+     "RADIUS": 1.0,
+     "SNR_CH1": 0.2421,
+     "SNR_CH2": 0.2419,
+     "SOURCE_ID": 0.2125,
+     "STD_INTENSITY_CH1": 0.2425,
+     "STD_INTENSITY_CH2": 0.2419,
+     "TOTAL_INTENSITY_CH1": 0.2425,
+     "TOTAL_INTENSITY_CH2": 0.2419,
+     "VISIBILITY": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "name": 26604
+    }
+   },
+   "edges": {
+    "n": 33701,
+    "present_share": {
+     "DIRECTIONAL_CHANGE_RATE": 1.0,
+     "DISPLACEMENT": 1.0,
+     "EDGE_TIME": 1.0,
+     "EDGE_X_LOCATION": 1.0,
+     "EDGE_Y_LOCATION": 1.0,
+     "EDGE_Z_LOCATION": 1.0,
+     "LINK_COST": 1.0,
+     "SPEED": 1.0,
+     "SPOT_SOURCE_ID": 1.0,
+     "SPOT_TARGET_ID": 1.0
+    },
+    "distinct_values": {}
+   },
+   "tracks": {
+    "n": 38,
+    "present_share": {
+     "CONFINEMENT_RATIO": 1.0,
+     "DIVISION_TIME_MEAN": 1.0,
+     "DIVISION_TIME_STD": 1.0,
+     "LINEARITY_OF_FORWARD_PROGRESSION": 1.0,
+     "LONGEST_GAP": 1.0,
+     "MAX_DISTANCE_TRAVELED": 1.0,
+     "MEAN_DIRECTIONAL_CHANGE_RATE": 1.0,
+     "MEAN_STRAIGHT_LINE_SPEED": 1.0,
+     "NUMBER_COMPLEX": 1.0,
+     "NUMBER_GAPS": 1.0,
+     "NUMBER_MERGES": 1.0,
+     "NUMBER_SPLITS": 1.0,
+     "NUMBER_SPOTS": 1.0,
+     "TOTAL_DISTANCE_TRAVELED": 1.0,
+     "TRACK_DISPLACEMENT": 1.0,
+     "TRACK_DURATION": 1.0,
+     "TRACK_ID": 1.0,
+     "TRACK_INDEX": 1.0,
+     "TRACK_MAX_SPEED": 1.0,
+     "TRACK_MEAN_QUALITY": 1.0,
+     "TRACK_MEAN_SPEED": 1.0,
+     "TRACK_MEDIAN_SPEED": 1.0,
+     "TRACK_MIN_SPEED": 1.0,
+     "TRACK_START": 1.0,
+     "TRACK_STD_SPEED": 1.0,
+     "TRACK_STOP": 1.0,
+     "TRACK_X_LOCATION": 1.0,
+     "TRACK_Y_LOCATION": 1.0,
+     "TRACK_Z_LOCATION": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "name": 38
+    }
+   },
+   "tracks_without_edges": 0
+  },
+  "M4": {
+   "frame_interval": [
+    "2"
+   ],
+   "frames": 920,
+   "train_units": 5,
+   "train_spots": 5468,
+   "cycles_per_generation": {
+    "0": {
+     "censored_start": 5,
+     "end_at_last_frame": 0
+    },
+    "1": {
+     "complete": 7,
+     "end_at_last_frame": 0,
+     "censored_end": 3
+    },
+    "2": {
+     "censored_end": 12,
+     "end_at_last_frame": 4,
+     "complete": 2
+    },
+    "3": {
+     "censored_end": 4,
+     "end_at_last_frame": 3
+    }
+   },
+   "spots": {
+    "n": 5468,
+    "present_share": {
+     "CELL_DIVISION_TIME": 0.3493,
+     "CONTRAST_CH1": 0.6538,
+     "CONTRAST_CH2": 0.6527,
+     "FRAME": 1.0,
+     "ID": 1.0,
+     "MANUAL_SPOT_COLOR": 0.1906,
+     "MAX_INTENSITY_CH1": 0.6538,
+     "MAX_INTENSITY_CH2": 0.6536,
+     "MEAN_INTENSITY_CH1": 0.6538,
+     "MEAN_INTENSITY_CH2": 0.6536,
+     "MEDIAN_INTENSITY_CH1": 0.6538,
+     "MEDIAN_INTENSITY_CH2": 0.6536,
+     "MIN_INTENSITY_CH1": 0.6538,
+     "MIN_INTENSITY_CH2": 0.6536,
+     "POSITION_T": 1.0,
+     "POSITION_X": 1.0,
+     "POSITION_Y": 1.0,
+     "POSITION_Z": 1.0,
+     "QUALITY": 1.0,
+     "RADIUS": 1.0,
+     "SNR_CH1": 0.6538,
+     "SNR_CH2": 0.6527,
+     "SOURCE_ID": 0.2015,
+     "STD_INTENSITY_CH1": 0.6538,
+     "STD_INTENSITY_CH2": 0.6536,
+     "TOTAL_INTENSITY_CH1": 0.6538,
+     "TOTAL_INTENSITY_CH2": 0.6536,
+     "VISIBILITY": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "MANUAL_SPOT_COLOR": 2,
+     "name": 4469
+    }
+   },
+   "edges": {
+    "n": 5463,
+    "present_share": {
+     "DIRECTIONAL_CHANGE_RATE": 1.0,
+     "DISPLACEMENT": 1.0,
+     "EDGE_TIME": 1.0,
+     "EDGE_X_LOCATION": 1.0,
+     "EDGE_Y_LOCATION": 1.0,
+     "EDGE_Z_LOCATION": 1.0,
+     "LINK_COST": 1.0,
+     "MANUAL_EDGE_COLOR": 0.0002,
+     "SPEED": 1.0,
+     "SPOT_SOURCE_ID": 1.0,
+     "SPOT_TARGET_ID": 1.0
+    },
+    "distinct_values": {
+     "MANUAL_EDGE_COLOR": 1
+    }
+   },
+   "tracks": {
+    "n": 5,
+    "present_share": {
+     "CONFINEMENT_RATIO": 1.0,
+     "DIVISION_TIME_MEAN": 1.0,
+     "DIVISION_TIME_STD": 1.0,
+     "LINEARITY_OF_FORWARD_PROGRESSION": 1.0,
+     "LONGEST_GAP": 1.0,
+     "MAX_DISTANCE_TRAVELED": 1.0,
+     "MEAN_DIRECTIONAL_CHANGE_RATE": 1.0,
+     "MEAN_STRAIGHT_LINE_SPEED": 1.0,
+     "NUMBER_COMPLEX": 1.0,
+     "NUMBER_GAPS": 1.0,
+     "NUMBER_MERGES": 1.0,
+     "NUMBER_SPLITS": 1.0,
+     "NUMBER_SPOTS": 1.0,
+     "TOTAL_DISTANCE_TRAVELED": 1.0,
+     "TRACK_DISPLACEMENT": 1.0,
+     "TRACK_DURATION": 1.0,
+     "TRACK_ID": 1.0,
+     "TRACK_INDEX": 1.0,
+     "TRACK_MAX_SPEED": 1.0,
+     "TRACK_MEAN_QUALITY": 1.0,
+     "TRACK_MEAN_SPEED": 1.0,
+     "TRACK_MEDIAN_SPEED": 1.0,
+     "TRACK_MIN_SPEED": 1.0,
+     "TRACK_START": 1.0,
+     "TRACK_STD_SPEED": 1.0,
+     "TRACK_STOP": 1.0,
+     "TRACK_X_LOCATION": 1.0,
+     "TRACK_Y_LOCATION": 1.0,
+     "TRACK_Z_LOCATION": 1.0,
+     "name": 1.0
+    },
+    "distinct_values": {
+     "name": 5
+    }
+   },
+   "tracks_without_edges": 0
+  }
+ }
+}

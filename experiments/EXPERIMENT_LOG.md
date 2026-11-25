@@ -13886,6 +13886,52 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   7. Readout gate (H21): per candidate at stage 1.
 - Practice: neutral wording; scan with lit_gap.SENSITIVE before commit; no outreach. The `gate` stage of ds_emb_gate.py and the scratchpad recount read all E5 trees and must not be re-run.
 - Compute: GitHub Actions for stage 0b (sweeps/qs_e5_inv.txt), dispatched by the Sonnet lane after Opus reviews and pushes the script. Local API reads for stage 0a.
+
+### QS-E5 stage 0 results (2026-11-25)
+- **0a, claims inventory** (Haiku lookup lane; Opus summary, neutral wording; the extract stays in a scratch file outside the repo).
+  - Published by the source:
+    - fate restriction per generation;
+    - sister and cousin trajectory similarity, dispersion and contact time against shared or split fate;
+    - speed and dispersion by fate;
+    - progenitor birth dates and differentiation timing;
+    - the location of progenitors by potency.
+  - How the data were made:
+    - Manual tracking every 5 frames (every frame around mitosis), at 2-min frames.
+    - Tracking started when the clonal label became visible and stopped wherever cells became ambiguous, so many branches are short. The source notes that the fate of many descendants could not be called.
+    - Fate = a reporter-intensity threshold (per-movie background multiple) plus position. Movies were aligned in time by myocyte differentiation.
+  - 227 vs 319: the source counts reconstructed mother-cell trees used in its analysis; the deposit's 319 connected components include fragments.
+  - Cell-cycle length appears only as an exclusion filter and as branch length in tree plots, never as a studied quantity.
+- **0b, readout inventory** (Sonnet data lane; run https://github.com/krenusz/cellware/actions/runs/45671569786; `results_c17/qs_e5_inventory.json`; train trees only, presence and counts; the public log was checked and shows counts only).
+  - Train units by movie: 42, 40, 40 and 5. Frame interval 2 min in all; 920-1126 frames.
+  - Always present: position, frame, radius and the edge movement attributes.
+  - Intensity channels present on 1.0, 0.33, 0.24 and 0.65 of spots by movie. The division-time attribute is on 0.35-0.45 of spots.
+  - The manual colour label is on 99.9% of M1 spots (13 distinct values) but only 0.4% of M2, none of M3, and 19% of M4. No fate-label attribute at track level.
+  - Cycles (train, all movies): 278 complete, 458 censored at the end, 90 censored at the start, 37 both. Complete cycles fall off from generation 3 because the movie end cuts long cycles.
+
+### QS-E5 stage 1: frozen candidates (2026-11-25, before any gate)
+- **QE1, inheritance of cell-cycle length across divisions** (C17 parameter: heritable expansion, i.e. division rate, per division; the expansion term of the T-split' ratio).
+  - *Primary:* the sister-pair correlation of complete cycle lengths, compared with time-matched non-kin pairs of the same movie (both born within +-10 min, same generation, not sharing a mother).
+  - *Secondary:* the mother-daughter correlation, against the same control.
+  - *Censoring-aware null:* cycle lengths are permuted among cells of the same movie, generation and birth-time window (20 min). Only cycles that could have been completed before the movie end are kept: birth frame + the 95th percentile of complete cycle length <= the last frame.
+  - *Unit:* tree within movie (cluster bootstrap by tree).
+  - *Readout:* frames of births and divisions only.
+  - *Planted effects for power:* sister rho 0.5 and mother-daughter rho 0.3, the conservative ends of published cultured-cell kin correlations (to be confirmed by the novelty read).
+- **QE2, motility memory across divisions: DROPPED by H16.** Migration is not a parameter of the C17 model. Sister trajectory similarity is also published by the source.
+- **QE3, fate questions via the reporter channel or the manual colour: FAIL at readout.** No fate label exists across movies: the colour label is populated in one movie only, and the intensity channels on 24-100% of spots.
+- **QE1 gate 1, near-repeat: PASS.** coverage_check plus a grep of the log for cycle length, cycle duration, division time and kin correlation. The only hit, E19b, is about fate-state kin correlations in LARRY, not cycle length. The grep ran just before this freeze commit and reads no data.
+- **QE1 gate 2, power (fixed now):**
+  - The Sonnet lane adds a stage `pairs` to qs_e5.py (train trees only, structure). It counts sister pairs and mother-daughter pairs where both cycles are complete and inside the censoring window, plus time-matched non-kin pairs, per movie and per tree.
+  - Power on partition A is simulated on the train pair structure, scaled to A's tree count (64 of 127):
+    - plant rho 0.5 (sister) and 0.3 (mother-daughter) on Gaussian log cycle lengths;
+    - test against the censoring-aware null, with tree-cluster bootstrap;
+    - 1,000 replicates.
+  - Pass if the primary (sister) power is >= 0.8.
+- **QE1 gate 4, novelty (fixed now):**
+  - Lookup lane, OpenAlex, top 25 per phrasing: "sister cell cycle length correlation embryo live imaging", "kin correlation cell cycle duration in vivo", "inheritance of cell cycle duration lineage tracking mouse embryo".
+  - Recall gate: the cultured-cell kin-correlation paper doi 10.1038/nature14318 must appear in a top 25 or in the citations of a screened paper.
+  - **Published:** sister or mother-daughter cycle-length correlation measured by tracking in a living mammalian embryo.
+  - **Partly:** the same in a non-mammalian embryo or in vivo tissue, or mammalian cultured cells only.
+  - "Published" fails the gate. "Partly" passes with the overlap stated.
   2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
   3. Pre-registration of an S1 on train only.
 - **Not yet known:**
