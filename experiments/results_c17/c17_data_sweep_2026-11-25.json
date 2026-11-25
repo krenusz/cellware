@@ -1,0 +1,121 @@
+{
+ "since": "2026/11/12",
+ "complete": true,
+ "queries": {
+  "GEO:pluripotent_clones": {
+   "total": 6,
+   "fetched": 6
+  },
+  "GEO:sister_split": {
+   "total": 1,
+   "fetched": 1
+  },
+  "GEO:clonal_memory": {
+   "total": 0,
+   "fetched": 0
+  },
+  "GEO:organoid_clones": {
+   "total": 0,
+   "fetched": 0
+  },
+  "GEO:progenitor_clones": {
+   "total": 4,
+   "fetched": 4
+  },
+  "Zenodo:pluripotent_clones": {
+   "total": 0,
+   "fetched": 0
+  },
+  "Zenodo:sister_split": {
+   "total": 0,
+   "fetched": 0
+  },
+  "Zenodo:clonal_barcoding": {
+   "total": 0,
+   "fetched": 0
+  },
+  "BioStudies:pluripotent_clones": {
+   "total": 5,
+   "fetched": 5
+  },
+  "BioStudies:sister_split": {
+   "total": 26,
+   "fetched": 26
+  },
+  "BioStudies:organoid_clones": {
+   "total": 3,
+   "fetched": 3
+  }
+ },
+ "errors": [],
+ "summary": {
+  "records_with_lineage_flag": 2,
+  "new_records": 2,
+  "new_study_families": 2,
+  "pluripotent_candidates_new": 0,
+  "blood_split_or_memory_new": 0,
+  "dropped_excluded_domain": 15
+ },
+ "watch": {
+  "GSE324482": "not public",
+  "GSE342607": "public",
+  "E-MTAB-17351": "error: https://www.ebi.ac.uk/biostudies/api/v1/studies/E-MTAB-17351",
+  "hESC endoderm sister wells": {
+   "hits": 0,
+   "titles": []
+  },
+  "hESC sister wells, author": {
+   "hits": 0,
+   "titles": []
+  },
+  "DeepTrack": {
+   "hits": 0,
+   "titles": []
+  },
+  "hESC sister wells preprint": {
+   "is_preprint_of": 0,
+   "has_version": 0
+  }
+ },
+ "records": [
+  {
+   "source": "GEO",
+   "accession": "GSE354918",
+   "title": "The pentose phosphate pathway modulates myelo-lymphoid lineage specification",
+   "year": "2026",
+   "n_samples": 5,
+   "organism": "Mus musculus",
+   "flags": [
+    "lineage",
+    "blood",
+    "single_cell"
+   ],
+   "score": 4,
+   "known": false,
+   "queries": [
+    "progenitor_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "the pentose phosphate pathway modulates myelo-lymphoid lineage specification"
+  },
+  {
+   "source": "BioStudies",
+   "accession": "E-MTAB-16333",
+   "title": "How \u2018Sturgeon\u2019 guides the surgeon",
+   "year": "2026",
+   "n_samples": null,
+   "organism": null,
+   "flags": [
+    "lineage"
+   ],
+   "score": 2,
+   "known": false,
+   "queries": [
+    "pluripotent_clones",
+    "organoid_clones"
+   ],
+   "pluripotent_candidate": false,
+   "family": "how \u2018sturgeon\u2019 guides the surgeon"
+  }
+ ]
+}

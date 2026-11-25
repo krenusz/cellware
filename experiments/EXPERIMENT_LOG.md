@@ -13562,3 +13562,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Practice: offline selftest (dated GEO window, titles-free log) and a count-only probe of the Zenodo, BioStudies and Crossref parameters before dispatch. The Zenodo page limit of 25 was found by the probe. Neutral wording; no outreach.
 - Compute: GitHub Actions run (sweeps/ds_2026_11_25.txt).
 - The QS1-L2-P1 check 2 retry stays on its logged date (no earlier than 2026-11-26, Sonnet data lane); this sweep makes no bioRxiv call.
+
+### DS-2026-11-25 result (2026-11-25; run https://github.com/krenusz/cellware/actions/runs/45654749319; `results_c17/c17_data_sweep_2026-11-25.json`; metadata only)
+- **Validity gate passed** (`complete` true, no errors). Every query fetched all hits in the window: GEO 6, 1, 0, 0 and 4; Zenodo 0, 0 and 0; BioStudies 5, 26 and 3. 15 records were dropped as excluded domain.
+- **New records with a lineage flag: 2 (2 families), none with a split or memory flag:**
+  - GSE354918, 5 samples, blood and single-cell flags. The title names a metabolic pathway in lineage specification, so "lineage" is a fate word here, not a clone barcode.
+  - E-MTAB-16333, lineage flag only. The title gives no design.
+  - Neither meets the decision rule, so both are listed only.
+- **Watch:**
+  - GSE324482: not public.
+  - GSE342607: public (the sealed embryo set, as before).
+  - E-MTAB-17351: API error, not accessible as on 2026-11-24.
+  - hESC sister-well endoderm term: 0 hits. Contributor search: 0 hits. Crossref shows no journal version of the preprint.
+  - DeepTrack: 0 hits.
+- **Verdict: nothing new that could add a system or reopen a chapter.** The result file was scanned with lit_gap.SENSITIVE: no hits. Next dated sweep with the watch list about 2026-12-02 (`--since 2026/11/25`).
+- Model: Opus 5.5 (main session); no subagent.
