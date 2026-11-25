@@ -14029,3 +14029,14 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - exposure: the source abstract and claims were read (DS-EMB-N), cycle length appears there only as a filter, and the preprint read is pending;
     - H22: 4 embryos, unit is the tree.
   - Compute: GitHub Actions via `./run_sweep.sh`, dispatched by the Sonnet lane (about 1-2 h for 4 x 1,000 replicates at 500 bootstraps); the selftest is synthetic and runs locally in seconds.
+  - *Amendment 2 implementation note (2026-11-25, before any run):*
+    - The Sonnet data lane wrote stage `power2` and `selftest2` in qs_e5.py; Opus reviewed both and re-ran the selftest. No data file was opened.
+    - The control pairs, bootstrap and pass rule are as written above. A pair set that is empty in a subsample counts as no rejection.
+    - The synthetic selftest passed, every sister pair alone in its 20-min stratum:
+      - the old permutation centre equals the observed sister product (0.890082 both);
+      - the old test rejected 0 of 10 at sister rho 0.9, the new test 10 of 10;
+      - the no-effect smoke null rejected 0.02 for sister and 0.04 for mother-daughter;
+      - the trend-only null gave mean D -0.013 with SE 0.079;
+      - the pooling and residual checks passed.
+    - The corrected diagnosis is confirmed on synthetic structure.
+    - Sweep file `sweeps/qs_e5_power2.txt` is ready and not dispatched; it waits for the 2026-11-26 preprint read.

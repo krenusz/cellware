@@ -1,0 +1,2 @@
+# QS-E5 QE1 gate 2 amendment 2: recalibrated test, simulated power on the train pair structure (no observed cycle lengths saved). Dispatch ONLY after the 2026-11-26 preprint read is not "published".
+[experiments/results_c17/qs_e5_power2.json] python experiments/qs_e5.py power2

@@ -703,6 +703,267 @@ def selftest_qe1():
     return {"pairs_toy": pc["sister_pairs"], "power_toy": pw["power_sister"], "null_toy": nl["power_sister"]}
 
 
+# ---------- QE1 gate 2, amendment 2: recalibrated test (residualised, tested against 0) ----------
+
+POOL_MIN = 15  # minimum eligible analysed cells per movie x generation-group
+
+
+def _gen_groups(counts):
+    """counts: {generation: n cells} of one movie, sorted by generation. Merge upward until a group has >= POOL_MIN
+    cells; a short last group merges down; a movie with fewer than POOL_MIN cells in total is one group."""
+    groups, cur, cnt = [], [], 0
+    for g in sorted(counts):
+        cur.append(g)
+        cnt += counts[g]
+        if cnt >= POOL_MIN:
+            groups.append(cur)
+            cur, cnt = [], 0
+    if cur:
+        if groups:
+            groups[-1] = groups[-1] + cur
+        else:
+            groups.append(cur)
+    return groups
+
+
+def residualise(S, x, ci):
+    """Residuals of x[ci] on movie x generation-group dummies + one linear birth-frame slope per movie (OLS), standardised
+    over ci. Returns z over all cells (zeros outside ci)."""
+    import numpy as np  # noqa: PLC0415
+
+    cols = []
+    for m in np.unique(S.movie[ci]):
+        im = ci[S.movie[ci] == m]
+        cnt = Counter(S.gen[im].tolist())
+        for grp in _gen_groups(cnt):
+            cols.append(np.isin(S.gen[ci], grp) & (S.movie[ci] == m))
+        b = S.birth[ci].astype(float)
+        cols.append(np.where(S.movie[ci] == m, b - S.birth[im].mean(), 0.0))
+    A = np.column_stack(cols).astype(float)
+    y = x[ci]
+    beta = np.linalg.lstsq(A, y, rcond=None)[0]
+    r = y - A @ beta
+    z = np.zeros(len(x))
+    z[ci] = (r - r.mean()) / (r.std() or 1.0)
+    return z
+
+
+def one_test2(S, x, sel, rng, boots=500):
+    """Returns (rej_sis, rej_md, D_sis, D_md, se_sis, se_md). D = mean product of residualised, standardised values over kin
+    pairs minus the same over control pairs; SE = tree-cluster bootstrap (trees of sel resampled, pairs weighted by their
+    first member's tree); reject if |D| > 1.96 SE (tested against 0, no permutation centre)."""
+    import numpy as np  # noqa: PLC0415
+
+    nan = float("nan")
+    T = len(S.trees)
+    ci = np.flatnonzero(S.elig & sel[S.tree])
+    if len(ci) < 4:
+        return False, False, nan, nan, nan, nan
+    sets = {}
+    for name, P in (("sis", S.sis), ("md", S.md), ("nk", S.nk)):
+        keep = sel[S.tree[P[:, 0]]] & sel[S.tree[P[:, 1]]] if len(P) else np.zeros(0, dtype=bool)
+        sets[name] = (P[keep, 0], P[keep, 1], S.tree[P[keep, 0]])
+    if any(len(v[0]) == 0 for v in sets.values()):
+        return False, False, nan, nan, nan, nan
+    chosen = np.flatnonzero(sel)
+    z = residualise(S, x, ci)
+    obs = {k: _sums(z, a, b, tr, T) for k, (a, b, tr) in sets.items()}
+    nk0 = _ratio(*obs["nk"])
+    d = [_ratio(*obs[k]) - nk0 for k in ("sis", "md")]
+    pick = chosen[rng.integers(0, len(chosen), size=(boots, len(chosen)))]
+    w = np.stack([np.bincount(p, minlength=T) for p in pick]).astype(float)
+    nkb = _ratio(*obs["nk"], w)
+    se = [float(np.std(_ratio(*obs[k], w) - nkb)) for k in ("sis", "md")]
+    rej = [bool(abs(d[i]) > 1.96 * se[i]) for i in (0, 1)]
+    return rej[0], rej[1], float(d[0]), float(d[1]), se[0], se[1]
+
+
+def simulate2(S, rng, rho_sis, rho_md, trend, tree_var):
+    """simulate() plus optional nuisance: per movie 0.5 * linear rise over the frame span + 0.3 per generation + 0.3 *
+    sin(2 pi * relative frame); plus optional tree-level shared effect of variance tree_var."""
+    import numpy as np  # noqa: PLC0415
+
+    x = simulate(S, rng, rho_sis, rho_md)
+    if trend:
+        for m in np.unique(S.movie):
+            im = S.movie == m
+            lo, hi = S.birth[im].min(), S.birth[im].max()
+            u = (S.birth[im] - lo) / max(hi - lo, 1)
+            x[im] += 0.5 * u + 0.3 * S.gen[im] + 0.3 * np.sin(2 * np.pi * u)
+    if tree_var > 0:
+        x = x + np.sqrt(tree_var) * rng.standard_normal(len(S.trees))[S.tree]
+    return x
+
+
+def power_run2(S, reps, n_trees, rho_sis, rho_md, trend, tree_var, seed, boots=500):
+    import numpy as np  # noqa: PLC0415
+
+    rng = np.random.default_rng(seed)
+    out = []
+    for _ in range(reps):
+        sel = np.ones(len(S.trees), dtype=bool) if n_trees >= len(S.trees) else stratified_subsample(S, n_trees, rng)
+        out.append(one_test2(S, simulate2(S, rng, rho_sis, rho_md, trend, tree_var), sel, rng, boots))
+    a = np.array(out, dtype=float)
+    return {"reps": reps, "trees": int(min(n_trees, len(S.trees))), "rho_sister": rho_sis,
+            "rho_mother_daughter": rho_md, "trend": bool(trend), "tree_var": tree_var,
+            "reject_sister": float(a[:, 0].mean()), "reject_mother_daughter": float(a[:, 1].mean()),
+            "mean_D_sister": float(np.nanmean(a[:, 2])), "mean_D_mother_daughter": float(np.nanmean(a[:, 3])),
+            "mean_SE_sister": float(np.nanmean(a[:, 4])), "mean_SE_mother_daughter": float(np.nanmean(a[:, 5]))}
+
+
+def occupancy(S, n_sub=200, seed=SEED + 9):
+    """Counts only: eligible cells per movie x generation x 20-min window (S.stratum on eligible cells)."""
+    import numpy as np  # noqa: PLC0415
+
+    size = np.bincount(S.stratum[S.elig], minlength=int(S.stratum.max()) + 1)
+    size = size[size > 0]
+    hist = {k: int((size == k).sum()) for k in (1, 2, 3, 4)}
+    hist["5+"] = int((size >= 5).sum())
+    by = np.bincount(S.stratum[S.elig], minlength=int(S.stratum.max()) + 1)
+    sis_only = float(np.mean(size_of(S, by) == 2)) if len(S.sis) else float("nan")
+    rng = np.random.default_rng(seed)
+    cnt = []
+    for _ in range(n_sub):
+        sel = stratified_subsample(S, 64, rng)
+        cnt.append(int((sel[S.tree[S.nk[:, 0]]] & sel[S.tree[S.nk[:, 1]]]).sum()) if len(S.nk) else 0)
+    return {"strata_with_eligible_cells": int(len(size)), "stratum_size_histogram": hist,
+            "share_sister_pairs_alone_in_stratum": sis_only, "control_pairs_all_trees": int(len(S.nk)),
+            "control_pairs_mean_A64_subsample": float(np.mean(cnt)), "subsamples": n_sub}
+
+
+def size_of(S, size_by):
+    """Eligible-cell count of the stratum of each sister pair's first member."""
+    return size_by[S.stratum[S.sis[:, 0]]]
+
+
+def power2_stage(reps=1000):
+    dts = frame_intervals()
+    S = Struct([(m, load_train_cells(m)[0]) for m in MOVIES], dts)
+    counts = {"trees": len(S.trees), "eligible_cells": int(S.elig.sum()), "sister_pairs": int(len(S.sis)),
+              "mother_daughter_pairs": int(len(S.md)), "nonkin_pairs": int(len(S.nk))}
+    print("train structure:", counts)
+    occ = occupancy(S)
+    print("occupancy:", occ)
+    N = len(S.trees)
+    spec = {"a_planted_A64": (64, RHO_SIS, RHO_MD, True, 0.0), "b_null1_A64": (64, 0.0, 0.0, False, 0.0),
+            "c_null2_trend_A64": (64, 0.0, 0.0, True, 0.0), "d_tree_shared_A64": (64, 0.0, 0.0, False, 0.1),
+            "a_planted_all127": (N, RHO_SIS, RHO_MD, True, 0.0)}
+    res = {"counts": counts, "occupancy": occ,
+           "test": "residualise log value on movie x generation-group means (groups merged upward to >= 15 eligible "
+                   "analysed cells, last merges down) + one linear birth slope per movie; standardise; D = kin product "
+                   "mean - control product mean; SE = tree-cluster bootstrap (500); reject if |D| > 1.96 SE; control "
+                   "pairs as registered; d_tree_shared is descriptive",
+           "scenarios": {}}
+    for i, (k, (n, rs, rm, tr, tv)) in enumerate(spec.items()):
+        res["scenarios"][k] = power_run2(S, reps, n, rs, rm, tr, tv, SEED + 10 + i)
+        print(k, res["scenarios"][k])
+    sc = res["scenarios"]
+    nulls = [sc[k][f] for k in ("b_null1_A64", "c_null2_trend_A64") for f in ("reject_sister", "reject_mother_daughter")]
+    power = sc["a_planted_A64"]["reject_sister"]
+    res["verdict"] = {"null_rejections_le_0.075": bool(max(nulls) <= 0.075), "max_null_rejection": float(max(nulls)),
+                      "sister_power_A64_ge_0.8": bool(power >= 0.8), "sister_power_A64": float(power),
+                      "pass": bool(max(nulls) <= 0.075 and power >= 0.8)}
+    print("verdict", res["verdict"])
+    out = os.path.join(HERE, "results_c17", "qs_e5_power2.json")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as fh:
+        json.dump(res, fh, indent=1)
+    return {"written": "experiments/results_c17/qs_e5_power2.json"}
+
+
+def synth_sister_struct(n_trees, n_pairs):
+    """Synthetic structure, no data: 2 movies; each sister pair (two eligible daughters of an eligible root) sits alone in
+    its own 20-min window, and neighbouring pairs are 1-2 frames apart so that control pairs exist."""
+    import numpy as np  # noqa: PLC0415
+
+    sets = []
+    for m in (1, 2):
+        T, gen, birth, parent = [], [], [], []
+        npairs = n_pairs // 2
+        for pj in range(npairs):
+            b = 100 + 20 * (pj // 2) + (9 if pj % 2 == 0 else 10)
+            name = f"M{m}:{pj % (n_trees // 2)}"
+            r = len(T)
+            T += [name] * 3
+            gen += [0, 1, 1]
+            birth += [b - 12, b, b]
+            parent += [-1, r, r]
+        sets.append((m, {"tree": np.array(T, dtype=object), "gen": np.array(gen), "birth": np.array(birth),
+                         "parent": np.array(parent), "eligible": np.ones(len(T), dtype=bool)}))
+    return Struct(sets, {1: 2.0, 2: 2.0})
+
+
+def selftest2():
+    import time  # noqa: PLC0415
+
+    import numpy as np  # noqa: PLC0415
+
+    fails = []
+
+    def check(name, ok, info=""):
+        print(("PASS " if ok else "FAIL ") + name + (" " + info if info else ""))
+        if not ok:
+            fails.append(name)
+
+    S = synth_sister_struct(50, 250)
+    allsel = np.ones(len(S.trees), dtype=bool)
+    size = np.bincount(S.stratum[S.elig])
+    check("(i-a) structure: >= 200 sister pairs, >= 40 trees, each sister pair alone in its stratum",
+          len(S.sis) >= 200 and len(S.trees) >= 40 and bool(np.all(size_of(S, size) == 2)),
+          f"pairs {len(S.sis)} trees {len(S.trees)} md {len(S.md)} nk {len(S.nk)}")
+    # old permutation centre of the sister product mean (replicates one_test's permutation)
+    rng = np.random.default_rng(3)
+    x = simulate(S, rng, 0.9, 0.0)
+    ci = np.flatnonzero(S.elig)
+    z0 = np.zeros(len(x))
+    z0[ci] = (x[ci] - x[ci].mean()) / x[ci].std()
+    sa, sb = S.sis[:, 0], S.sis[:, 1]
+    d_sis = float(np.mean(z0[sa] * z0[sb]))
+    s_ci = S.stratum[ci]
+    base = np.argsort(s_ci, kind="stable")
+    cent = []
+    for _ in range(100):
+        rnd = np.lexsort((rng.random(len(ci)), s_ci))
+        v = np.zeros(len(x))
+        v[ci[base]] = x[ci[rnd]]
+        zp = np.zeros(len(x))
+        zp[ci] = (v[ci] - v[ci].mean()) / v[ci].std()
+        cent.append(float(np.mean(zp[sa] * zp[sb])))
+    check("(i-b) old permutation centre of the sister product equals the observed value to 1e-9",
+          abs(np.mean(cent) - d_sis) < 1e-9, f"observed {d_sis:.6f} centre {np.mean(cent):.6f}")
+    old_rej = sum(one_test(S, simulate(S, rng, 0.9, 0.0), allsel, rng, 100, 200)[0] for _ in range(10))
+    print(f"info old one_test sister rejections with rho_sis 0.9: {old_rej}/10")
+    rej = [one_test2(S, simulate(S, rng, 0.9, 0.0), allsel, rng)[0] for _ in range(10)]
+    check("(i-c) one_test2 rejects a strong planted sister effect in >= 9 of 10", sum(rej) >= 9, f"{sum(rej)}/10")
+    r0 = [one_test2(S, simulate(S, rng, 0.0, 0.0), allsel, rng) for _ in range(50)]
+    rs, rm = np.mean([r[0] for r in r0]), np.mean([r[1] for r in r0])
+    check("(ii) null: one_test2 rejection <= 0.2 over 50 reps", rs <= 0.2 and rm <= 0.2, f"sister {rs:.2f} md {rm:.2f}")
+    r1 = np.array([one_test2(S, simulate2(S, rng, 0.0, 0.0, True, 0.0), allsel, rng) for _ in range(30)])
+    md_, ms_ = float(r1[:, 2].mean()), float(r1[:, 4].mean())
+    check("(iii) trend-only null: mean D_sis within 2 mean SE of 0", abs(md_) < 2 * ms_,
+          f"mean D {md_:.4f} mean SE {ms_:.4f}")
+    g1, g2 = _gen_groups({0: 30, 1: 4, 2: 6, 3: 20}), _gen_groups({0: 20, 1: 18, 2: 3})
+    cnt = {0: 30, 1: 4, 2: 6, 3: 20}
+    s1 = [sum(cnt[g] for g in grp) for grp in g1]
+    cnt2 = {0: 20, 1: 18, 2: 3}
+    s2 = [sum(cnt2[g] for g in grp) for grp in g2]
+    check("(iv) pooling rule [30,4,6,20] -> [30,30]; [20,18,3] -> [20,21]", s1 == [30, 30] and s2 == [20, 21],
+          f"{s1} {s2}")
+    z = residualise(S, simulate2(S, rng, 0.0, 0.0, True, 0.0), ci)
+    check("(v) residuals mean ~0, SD 1 over ci", abs(z[ci].mean()) < 1e-9 and abs(z[ci].std() - 1) < 1e-9,
+          f"mean {z[ci].mean():.2e} sd {z[ci].std():.6f}")
+    St = synth_sister_struct(64, 90)
+    sel = np.ones(len(St.trees), dtype=bool)
+    t0 = time.time()
+    for _ in range(20):
+        one_test2(St, simulate2(St, rng, RHO_SIS, RHO_MD, True, 0.0), sel, rng, 500)
+    print(f"info timing: {(time.time() - t0) / 20:.3f} s per one_test2 replicate (boots 500), "
+          f"{int(St.elig.sum())} eligible cells, {len(St.trees)} trees")
+    if fails:
+        raise SystemExit("selftest2 FAILED: " + "; ".join(fails))
+    return {"selftest2": "ok"}
+
+
 if __name__ == "__main__":
     arg = sys.argv[1:] or ["selftest"]
     if arg[0] == "selftest":
@@ -712,7 +973,11 @@ if __name__ == "__main__":
         print(json.dumps(pairs_stage()))
     elif arg[0] == "power":
         print(json.dumps(power_stage(int(arg[1]) if len(arg) > 1 else 1000)))
+    elif arg[0] == "power2":
+        print(json.dumps(power2_stage(int(arg[1]) if len(arg) > 1 else 1000)))
+    elif arg[0] == "selftest2":
+        print(json.dumps(selftest2()))
     elif arg[0] == "inventory":
         print(json.dumps(inventory()))
     else:
-        raise SystemExit("usage: qs_e5.py selftest|inventory|pairs|power")
+        raise SystemExit("usage: qs_e5.py selftest|selftest2|inventory|pairs|power|power2")
