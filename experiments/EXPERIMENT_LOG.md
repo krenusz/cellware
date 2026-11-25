@@ -13641,6 +13641,50 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   | 5 | **Mammalian gastrulation, cell migration and heart fate** (BioImage Archive S-BIAD1682). The species and the imaging type are inferred from the archive, not from the title. | unranked | possibly (tracks) |
   | 6 | **Mouse pancreas imaging of cell cycle and differentiation** (Dryad 4b58d = Zenodo 4973643). | unranked | possibly |
 - **Out of the human-close scope, kept as leads:** two C. elegans embryo atlases with an invariant lineage, so divisions are exact (Zenodo 3840470, Zenodo 23809302).
+
+## DS-EMB-G: S0 structure gates for the six embryo leads of DS-EMB-2026-11-25 (pre-registered 2026-11-25; Bence: "2" = gate all six)
+- **Serves: C12 CLOSED** (a new embryo system for the C17 parameter table; counted divisions for C17-STAGE).
+- **Leads and unit types:**
+  - E1 human mitochondrial-variant lineage, GSE338520 (+ GSE338484): **clone** type.
+  - E2 zebrafish scar clone tracing, GSE102990: **tree** type.
+  - E3 zebrafish atlas, CELLxGENE 051dcb93: **track** type if tracks exist.
+  - E4 zebrafish scar trees, GSE106121: **tree** type.
+  - E5 mammalian gastrulation imaging, S-BIAD1682: **track** type.
+  - E6 pancreas imaging, Dryad 4b58d / Zenodo 4973643: **track** type.
+- **Stage L (listing, no download):**
+  - GEO: supplementary file names and sizes, sample count.
+  - Zenodo, Dryad: file names and sizes.
+  - BioImage Archive: study section types and file-list names.
+  - CELLxGENE: dataset count, cell counts and the collection's external links.
+  - Design text is reduced to flags; nothing outcome-like is saved.
+  - **Stop at L** if no lineage table, track table or per-cell clone call is deposited. Files only "on request" count as absent; a raw-image-only deposit counts as no tracks (re-tracking would be a new project, not a gate).
+- **Units and eligibility, fixed now:**
+  - *Tree type (E2, E4):* the C17-S1G G2 rule unchanged. Within one animal, a clade is the set of cells carrying an edit seen in >= 2 distinct full alleles and in < 50% of that animal's lineage-called cells. Its two largest distinct full alleles are the arms; clades are taken smallest first and must be disjoint.
+  - *Track type (E3, E5, E6):* a sister pair is the two daughters of one tracked division, and each arm is a daughter with its tracked descendants. Eligible: both arms end in a cell with a fate or position label, and the pair's mother is >= 1 tracked division below the track root (so division depth is counted).
+  - *Clone type (E1):* a clone is a set of cells sharing an informative mitochondrial variant, per donor; the arms are its cells in two different samples or regions of the same donor. Eligible: both arms >= 4 cells. If the deposit has no per-cell variant calls, the gate stops at L (calling variants from reads is out of scope).
+- **Gate per lead:** pass if 0.4 x eligible >= 30 (>= 75 eligible units). Tree and clone arms need >= 4 cells each (C7-S2 primary arm size, as every system in the table). Track arms need >= 1 labelled cell each, since a daughter lineage is small by design.
+- **Order:**
+  1. L.
+  2. Fetch of the lineage, track or clone tables only (no expression matrix), with SHA256SUMS and a sealed.py entry "structure only until partitioned". Any download over 2 GB needs Bence's OK.
+  3. Schema (column names and types; examples only for ID and lineage columns).
+  4. Column mapping written as an amendment before any count.
+  5. Gate count.
+
+  A pass leads to sealing by unit before any fate read. A fail stops that lead.
+- **Pre-flight:**
+  1. Unit: as above.
+  2. Readout: structure only.
+  3. Used data first: none of these sets is used; GSE105010 failed this rule at 38 eligible pairs.
+  4. Power: the gate.
+  5. Exposure: file names, column names, structure counts.
+  6. Literature: repository text only; source methods not read (H20 gap, recorded).
+  7. Readout gate (H21): the gate above.
+- **Limits written now:**
+  - Tree and clone arms are subclades or sampling splits, not separated sister wells, so their values are upper bounds (shared niche).
+  - Track arms in an embryo share a niche too.
+  - E1 is adult sampling of cells of inferred embryonic origin.
+- Practice: neutral wording (titles stay out of saved files); downloads read with python -I from their own directories; no outreach.
+- Compute: local listings and small table downloads; structure counts only. Routing: Opus writes the rules and the mapping; the Sonnet data lane runs fetch and counts if a lead passes L.
 - **Not yet known:**
   - whether each shortlisted set exposes per-cell tracks or trees with fates, and their sizes;
   - whether the questions are published in kind.
