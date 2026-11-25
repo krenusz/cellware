@@ -13747,8 +13747,22 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - E3's count is inflated by tracking errors.
   - E5's fate channel is an intensity, not a call; a threshold would be a new choice, to be fixed before reading.
   - The novelty of a sister-fate or memory-per-division question on these movies is unchecked: the source study of E5 may already report sister fate coordination.
+- **Descriptive checks after the gate** (advisor review; structure only; the registered verdicts are unchanged):
+  - *E5 independence.* The track rule counts every depth >= 1 division, so pairs nest: a mother pair contains its daughters' pairs.
+    - E5 holds 319 track trees in the 4 embryos (104, 104, 96, 15).
+    - 161 trees carry at least one eligible pair (58, 51, 39, 13).
+    - Non-nested eligible pairs (no eligible ancestor): 290 (112, 93, 60, 25).
+    - The eligible counts were re-derived by an independent script (main session) and match the data lane's: 316, 277, 83, 45.
+    - The independent units for any test are trees within 4 embryos.
+  - *E5 fate channel.* The intensity attributes are present on every spot of Movie1 but only on part of the spots in Movies 2-4 (about 33%, 24% and 64%). Which channel is the heart-lineage reporter is inferred from the study's genotype string, not verified. Values were not read.
+  - *E5 cell selection.* About 80-100 hand-tracked trees per embryo are a chosen subset. How cells were picked is unknown (the study's methods field was not read in full). If they were picked by outcome, fate may vary little.
+  - *E3 validity.* "Tracks exist, validity unknown": the lab bucket also holds a `tracks_benchmark/` folder (ZSNS001 node, edge and track stores, and two dated track sets; names only), which may contain curated tracks.
+- **Process notes:**
+  - The downloads (2.24 GB in total, each lead under 2 GB) and the counts ran locally, not on Actions (standing compute rule).
+  - Commit 51489f9 quotes a stale coverage hash (the real one at that commit was 3a8c159d2c5f).
+  - The counts JSON keeps Movie5 (804); the dropped-duplicate figure of 721 is in this log.
 - **Next (needs Bence):**
-  1. A novelty check on the E5 source (published in kind or not).
+  1. A novelty check on the E5 source (published in kind or not). The study title suggests sister-fate coordination results may already be published; seal first, so the source read lands in `prior_exposure`.
   2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
   3. Pre-registration of an S1 on train only.
 - **Not yet known:**
