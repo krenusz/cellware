@@ -58,7 +58,16 @@ CELL_LINE = re.compile(r"\b(hela|hek ?293[a-z]*|k562|mcf-?7|a549|hct-?116|jurkat
                        r"e14(tg2a)?(?![.]\d)|v6\.5|cgr8)\b", re.I)
 FLAGS = {
     "lineage": r"barcod|lineage[ -]trac|lineage record|clonal (trac|analys|barcod|lineage)|celltag|\blarry\b|"
-               r"polylox|carlin|darlin|lineage tree|cellular barcod|clone[ -]tracing",
+               r"polylox|carlin|darlin|lineage tree|cellular barcod|clone[ -]tracing|"
+               # embryo scope (DS-EMB-2026-11-25): recorders, natural marks and imaging lineages
+               r"gestalt|linnaeus|scartrace|tracer-?seq|lineage[ -]resolved|cell lineage|lineage reconstr|"
+               r"somatic (mutation|variant)|mitochondrial (variant|mutation)|phylogen|photoconver|zebrabow|"
+               r"brainbow|confetti",
+    "embryo": r"embryo|tadpole|larva|gastrula|blastula|neurula|fetal|foetal|somite|neural crest|blastoid|"
+              r"gastruloid|primitive streak",
+    "tree_or_natural": r"lineage tree|phylogen|gestalt|\bscars?\b|scartrace|lineage[ -]resolved|invariant|somatic (mutation|variant)|"
+                       r"mitochondrial (variant|mutation)",
+    "imaging": r"light[ -]sheet|live imaging|time[ -]lapse|cell tracking|photoconver|zebrabow|brainbow|confetti",
     "split_or_memory": r"sister|split|twin|fluctuation|passag|serial|heritab|memory",
     "pluripotent_or_organoid": r"pluripoten|embryonic stem|\b[hm]?es ?cells?\b|\b[hm]?escs?\b|\b[hm]?i?pscs?\b|"
                                r"embryoid|gastruloid|epiblast|"
@@ -66,7 +75,55 @@ FLAGS = {
     "blood": r"hematopoie|haematopoie|progenitor|\bhspc|\bhsc",
     "single_cell": r"single[ -]cell|scrna|sc-?rna-?seq|10x",
 }
-WEIGHTS = {"lineage": 2, "split_or_memory": 2, "pluripotent_or_organoid": 2, "blood": 1, "single_cell": 1}
+WEIGHTS = {"lineage": 2, "split_or_memory": 2, "pluripotent_or_organoid": 2, "blood": 1, "single_cell": 1,
+           "embryo": 2, "tree_or_natural": 2, "imaging": 1}
+
+# Embryo scope (DS-EMB-2026-11-25; Bence: "target mostly embrios that could have human aspects", "wilden the
+# search"): vertebrate embryos ranked by closeness to human development, new lineage methods, new repositories.
+MAMMALS = ["Macaca fascicularis", "Macaca mulatta", "Callithrix jacchus", "Sus scrofa", "Bos taurus", "Ovis aries",
+           "Oryctolagus cuniculus", "Rattus norvegicus"]
+OTHER_VERT = ["Gallus gallus", "Xenopus laevis", "Xenopus tropicalis", "Danio rerio", "Oryzias latipes",
+              "Ambystoma mexicanum"]
+HUMAN_MOUSE = ["Homo sapiens", "Mus musculus"]
+RANK = {**{o: 1 for o in HUMAN_MOUSE}, **{o: 2 for o in MAMMALS}, **{o: 3 for o in OTHER_VERT}}
+LIN_TERMS = ('(barcod* OR "lineage tracing" OR "lineage recording" OR "lineage tree" OR "cell lineage" OR '
+             '"lineage-resolved" OR GESTALT OR scGESTALT OR LINNAEUS OR ScarTrace OR TracerSeq OR "clonal analysis")')
+EMB_TERMS = ('(embryo* OR tadpole* OR larva* OR gastrula* OR blastula* OR neurula* OR fetal OR foetal OR somite* OR '
+             '"neural crest")')
+GEO_QUERIES_EMBRYO = {  # name: (query, organisms)
+    "embryo_lineage": (f"{LIN_TERMS} AND {EMB_TERMS}", MAMMALS + OTHER_VERT),
+    "embryo_model_lineage": (f'{LIN_TERMS} AND (blastoid* OR gastruloid* OR somitoid* OR "embryo model" OR '
+                             '"embryo models" OR "synthetic embryo" OR "primitive streak" OR amnion)',
+                             HUMAN_MOUSE + MAMMALS),
+    "natural_marks": ('("somatic mutation" OR "somatic mutations" OR "somatic variants" OR "mitochondrial variants" OR '
+                      '"mitochondrial mutations" OR mtscATAC OR MAESTER OR phylogeny OR phylogenetic) AND '
+                      '(lineage OR clonal OR clones) AND (embryo* OR fetal OR foetal OR development*)',
+                      HUMAN_MOUSE + MAMMALS + OTHER_VERT),
+    "imaging_lineage": ('("light-sheet" OR "light sheet" OR "live imaging" OR "cell tracking" OR "time-lapse" OR '
+                        'photoconversion OR photoconvertible OR Zebrabow OR Brainbow OR Confetti) AND (lineage OR clonal) '
+                        f'AND {EMB_TERMS}', HUMAN_MOUSE + MAMMALS + OTHER_VERT),
+}
+ZENODO_QUERIES_EMBRYO = {
+    "embryo_lineage": '("lineage tracing" OR "cell lineage" OR "lineage tree" OR barcoding) AND (embryo OR tadpole OR '
+                      'zebrafish OR Xenopus OR chick OR macaque OR marmoset OR pig OR rabbit OR blastoid OR gastruloid)',
+    "natural_marks": '("somatic mutations" OR "mitochondrial variants" OR phylogeny) AND lineage AND (embryo OR fetal)',
+    "imaging_lineage": '("cell tracking" OR "light-sheet" OR "live imaging") AND lineage AND embryo',
+}
+EBI_QUERIES_EMBRYO = {  # name: (collection, query)
+    "embryo_lineage": ("arrayexpress", '"lineage tracing" AND embryo'),
+    "vertebrate_lineage": ("arrayexpress", '"cell lineage" AND (zebrafish OR Xenopus OR chick OR macaque OR pig)'),
+    "natural_marks": ("arrayexpress", '"somatic mutations" AND lineage AND (fetal OR embryo)'),
+    "imaging_lineage": ("BioImages", 'lineage AND embryo AND (tracking OR "light-sheet" OR "live imaging")'),
+    "imaging_cell_lineage": ("BioImages", '"cell lineage" AND embryo'),
+}
+TEXT_QUERIES_EMBRYO = {  # figshare, Dryad and the Single Cell Portal take plain text
+    "embryo_lineage": '"lineage tracing" embryo',
+    "cell_lineage_embryo": '"cell lineage" embryo',
+    "natural_marks": '"somatic mutations" lineage embryo',
+    "imaging_lineage": '"cell tracking" lineage embryo',
+}
+RECALL_EMBRYO = ["GSE105010"]  # zebrafish embryo scar-array trees (C17-S1G): must come back, else incomplete
+SCOPE = "default"  # "embryo" with --scope embryo
 
 GEO_BASE = '("2019"[PDAT] : "3000"[PDAT]) AND gse[ETYP] AND ("Homo sapiens"[ORGN] OR "Mus musculus"[ORGN])'
 GEO_QUERIES = {
@@ -186,6 +243,186 @@ def biostudies_records(name, q):
         covered = oldest is not None and oldest < SINCE.replace("/", "-")
         return (len(out) if covered else r.get("totalHits")), out
     return r.get("totalHits"), out
+
+
+def geo_records_org(name, q, orgs):
+    base = '("2015"[PDAT] : "3000"[PDAT]) AND gse[ETYP] AND (' + " OR ".join(f'"{o}"[ORGN]' for o in orgs) + ")"
+    count, ids = esearch(f"({q}) AND {base}", retmax=5000)
+    recs = []
+    for i in range(0, len(ids), 100):
+        time.sleep(0.6)
+        q2 = {"db": "gds", "id": ",".join(ids[i : i + 100]), "retmode": "json", "tool": "cellware-sweep"}
+        res = get(EUTILS + "esummary.fcgi?" + urllib.parse.urlencode(q2))["result"]
+        for uid in res.get("uids", []):
+            d = res[uid]
+            recs.append({"source": "GEO", "accession": d.get("accession"), "title": d.get("title", ""),
+                         "summary": d.get("summary", ""), "year": (d.get("pdat") or "")[:4],
+                         "n_samples": d.get("n_samples"), "organism": d.get("taxon"), "query": name})
+    return count, recs
+
+
+def zenodo_paged(name, q, pages=24):
+    out, total = [], None
+    for page in range(1, pages + 1):
+        r = get("https://zenodo.org/api/records?" + urllib.parse.urlencode(
+            {"q": q, "size": 25, "page": page, "sort": "mostrecent"}))
+        hits = r.get("hits", {}).get("hits", [])
+        total = r.get("hits", {}).get("total")
+        for h in hits:
+            m = h.get("metadata", {})
+            out.append({"source": "Zenodo", "accession": f"zenodo:{h.get('id')}", "title": m.get("title", ""),
+                        "summary": re.sub(r"<[^>]+>", " ", m.get("description") or ""),
+                        "year": (m.get("publication_date") or "")[:4], "n_samples": None, "organism": None,
+                        "query": name, "_type": (m.get("resource_type") or {}).get("type")})
+        if len(hits) < 25 or page * 25 >= (total or 0):
+            break
+        time.sleep(1.0)
+    seen = len(out)  # every hit is counted as fetched; non-dataset records are dropped after counting
+    return total, [o for o in out if o.pop("_type") in (None, "dataset")], seen
+
+
+def ebi_paged(name, collection, q, pages=5):
+    out, total = [], None
+    for page in range(1, pages + 1):
+        r = get(f"https://www.ebi.ac.uk/biostudies/api/v1/{collection}/search?" + urllib.parse.urlencode(
+            {"query": q, "pageSize": 100, "page": page}))
+        hits = r.get("hits", [])
+        total = r.get("totalHits")
+        for h in hits:
+            out.append({"source": f"BioStudies:{collection}", "accession": h.get("accession"),
+                        "title": h.get("title", ""), "summary": h.get("content", "") or "",
+                        "year": str(h.get("release_date", ""))[:4], "n_samples": None, "organism": None,
+                        "query": name})
+        if len(hits) < 100 or page * 100 >= (total or 0):
+            break
+        time.sleep(1.0)
+    return total, out
+
+
+def figshare_records(name, q, pages=5):
+    out, done = [], False
+    for page in range(1, pages + 1):
+        req = urllib.request.Request("https://api.figshare.com/v2/articles/search", headers={
+            **UA, "Content-Type": "application/json"}, data=json.dumps(
+            {"search_for": q, "item_type": 3, "page_size": 100, "page": page}).encode())
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            hits = json.loads(resp.read())
+        for h in hits:
+            out.append({"source": "figshare", "accession": f"figshare:{h.get('id')}", "title": h.get("title", ""),
+                        "summary": "", "year": (h.get("published_date") or "")[:4], "n_samples": None,
+                        "organism": None, "query": name})
+        if len(hits) < 100:
+            done = True
+            break
+        time.sleep(1.0)
+    return (len(out) if done else None), out
+
+
+def dryad_records(name, q, pages=5):
+    out, total = [], None
+    for page in range(1, pages + 1):
+        r = get("https://datadryad.org/api/v2/search?" + urllib.parse.urlencode({"q": q, "per_page": 100,
+                                                                                  "page": page}))
+        total = r.get("total")
+        hits = (r.get("_embedded") or {}).get("stash:datasets", [])
+        for h in hits:
+            out.append({"source": "Dryad", "accession": f"dryad:{h.get('identifier')}", "title": h.get("title", ""),
+                        "summary": h.get("abstract") or "", "year": str(h.get("publicationDate") or "")[:4],
+                        "n_samples": None, "organism": None, "query": name})
+        if len(hits) < 100 or page * 100 >= (total or 0):
+            break
+        time.sleep(1.0)
+    return total, out
+
+
+def scp_records(name, q, pages=30):
+    out, total, last = [], None, False
+    for page in range(1, pages + 1):
+        url = "https://singlecell.broadinstitute.org/single_cell/api/v1/search?" + urllib.parse.urlencode(
+            {"type": "study", "terms": q, "page": page})
+        with urllib.request.urlopen(urllib.request.Request(url, headers={**UA, "Accept": "application/json"}),
+                                    timeout=90) as resp:
+            r = json.loads(resp.read())
+        total = r.get("total_studies")
+        for h in r.get("studies", []):
+            out.append({"source": "SCP", "accession": f"scp:{h.get('accession')}", "title": h.get("name", ""),
+                        "summary": h.get("description") or "", "year": None, "n_samples": h.get("cell_count"),
+                        "organism": None, "query": name})
+        if page >= (r.get("total_pages") or 0):
+            last = True
+            break
+        time.sleep(0.8)
+    return (total if last else (total or 0) + 1), out
+
+
+def cellxgene_records(name):
+    r = get("https://api.cellxgene.cziscience.com/curation/v1/collections")
+    out = [{"source": "CELLxGENE", "accession": f"cxg:{c.get('collection_id')}", "title": c.get("name", ""),
+            "summary": c.get("description") or "", "year": (c.get("published_at") or "")[:4], "n_samples": None,
+            "organism": None, "query": name} for c in r]
+    return len(out), out
+
+
+def rank_of(rec):
+    """Closeness to human development: 1 human/mouse (embryo models), 2 other mammals, 3 other vertebrates."""
+    if rec.get("organism"):
+        ranks = [RANK[o] for o in RANK if o.lower() in str(rec["organism"]).lower()]
+        if ranks:
+            return min(ranks)
+    t = (rec.get("title") or "").lower()
+    if re.search(r"human|blastoid|gastruloid|embryo model", t):
+        return 1
+    if re.search(r"macaque|monkey|primate|marmoset|pig|porcine|bovine|cattle|sheep|ovine|rabbit|\brat\b", t):
+        return 2
+    if re.search(r"zebrafish|xenopus|tadpole|frog|chick|avian|medaka|axolotl", t):
+        return 3
+    return None
+
+
+def sweep_embryo():
+    raw, counts, errors = [], {}, []
+
+    def run(key, fn):
+        try:
+            res = fn()
+            total, recs = res[0], res[1]
+            fetched = res[2] if len(res) > 2 else len(recs)
+            counts[key] = {"total": total, "fetched": fetched}
+            raw.extend(recs)
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"{key}: {str(e)[:120]}")
+        time.sleep(1.0)
+
+    for n, (q, orgs) in GEO_QUERIES_EMBRYO.items():
+        run(f"GEO:{n}", lambda q=q, orgs=orgs, n=n: geo_records_org(n, q, orgs))
+    for n, q in ZENODO_QUERIES_EMBRYO.items():
+        run(f"Zenodo:{n}", lambda q=q, n=n: zenodo_paged(n, q))
+    for n, (coll, q) in EBI_QUERIES_EMBRYO.items():
+        run(f"{coll}:{n}", lambda coll=coll, q=q, n=n: ebi_paged(n, coll, q))
+    for n, q in TEXT_QUERIES_EMBRYO.items():
+        run(f"figshare:{n}", lambda q=q, n=n: figshare_records(n, q))
+        run(f"Dryad:{n}", lambda q=q, n=n: dryad_records(n, q))
+        run(f"SCP:{n}", lambda q=q, n=n: scp_records(n, q))
+    run("CELLxGENE:all_collections", lambda: cellxgene_records("all_collections"))
+    recs, dropped = process(raw, known_accessions())
+    for r in recs:
+        r["rank"] = rank_of(r)
+        r["embryo_candidate"] = (not r["known"] and "embryo" in r["flags"] and any(
+            f in r["flags"] for f in ("split_or_memory", "tree_or_natural", "imaging")))
+    recall = {a: any(r["accession"] == a for r in recs) for a in RECALL_EMBRYO}
+    # figshare search is full text (> 1,000 hits for any phrase): a capped screen of 500 per query, outside the gate
+    for k in counts:
+        counts[k]["capped_screen"] = k.startswith("figshare:")
+    complete = not errors and all(c["capped_screen"] or (c["total"] is not None and c["fetched"] >= c["total"])
+                                  for c in counts.values())
+    by_rank = {str(k): sum(r["embryo_candidate"] and r["rank"] == k for r in recs) for k in (1, 2, 3, None)}
+    by = {"records_with_lineage_flag": len(recs), "new_records": sum(not r["known"] for r in recs),
+          "new_study_families": len({r["family"] for r in recs if not r["known"]}),
+          "embryo_candidates_new": sum(r["embryo_candidate"] for r in recs), "embryo_candidates_by_rank": by_rank,
+          "dropped_excluded_domain": dropped}
+    recs.sort(key=lambda x: (not x["embryo_candidate"], x["rank"] or 9, -x["score"], x["accession"]))
+    return {"scope": "embryo", "complete": complete, "recall": recall, "queries": counts, "errors": errors,
+            "summary": by, "records": recs[:3000]}
 
 
 def crossref_relation(doi):
@@ -390,6 +627,19 @@ def selftest():
                                                                   "p": {"is_preprint_of": 0, "has_version": 0}}})
     assert "records" not in shown and "secret" not in json.dumps(shown), shown
     assert shown["watch"]["w"] == {"hits": 2, "kept_titles": 1}, shown
+    # embryo scope (DS-EMB-2026-11-25): new method words, embryo flag, human-closeness rank
+    for t, want in (("scGESTALT lineage trees of the zebrafish embryo", {"lineage", "embryo", "tree_or_natural"}),
+                    ("Somatic mutations reconstruct fetal cell phylogenies", {"lineage", "embryo", "tree_or_natural"}),
+                    ("Light-sheet cell tracking and cell lineage of the chick gastrula", {"lineage", "embryo",
+                                                                                         "imaging"}),
+                    ("Scarce cells in adult liver", set())):
+        got = set(flags_of(t)) & {"lineage", "embryo", "tree_or_natural", "imaging"}
+        assert got == want, (t, got)
+    assert rank_of({"organism": "Macaca fascicularis", "title": ""}) == 2
+    assert rank_of({"organism": "Danio rerio", "title": ""}) == 3
+    assert rank_of({"organism": None, "title": "Human blastoid lineage tracing"}) == 1
+    assert rank_of({"organism": None, "title": "Xenopus tadpole cell lineage"}) == 3
+    assert rank_of({"organism": None, "title": "Lineage of something"}) is None
     return {"ok": True, "kept": acc, "dropped": dropped}
 
 
@@ -401,7 +651,8 @@ def main():
         assert re.fullmatch(r"\d{4}/\d{2}/\d{2}", SINCE), SINCE
     if "--out" in argv:
         OUT = os.path.abspath(argv[argv.index("--out") + 1])
-    res = selftest() if (argv and argv[0] == "selftest") else sweep()
+    embryo = "--scope" in argv and argv[argv.index("--scope") + 1] == "embryo"
+    res = selftest() if (argv and argv[0] == "selftest") else (sweep_embryo() if embryo else sweep())
     if "records" in res:
         os.makedirs(os.path.dirname(OUT), exist_ok=True)
         with open(OUT, "w", encoding="utf-8") as fh:

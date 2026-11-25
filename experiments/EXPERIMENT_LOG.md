@@ -13577,3 +13577,40 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - DeepTrack: 0 hits.
 - **Verdict: nothing new that could add a system or reopen a chapter.** The result file was scanned with lit_gap.SENSITIVE: no hits. Next dated sweep with the watch list about 2026-12-02 (`--since 2026/11/25`).
 - Model: Opus 5.5 (main session); no subagent.
+
+## DS-EMB-2026-11-25: widened sweep for vertebrate embryo lineage data close to human development (pre-registered 2026-11-25; Bence: "yes of course, but mostly embrios if its possible or tedpoles", "target mostly embrios that could have human aspects", "but wilden the search, ideas")
+- **Serves: C12 CLOSED.** It looks for a new embryo system for the C17 parameter table, above all a counted-division system for the stage-aware memory model (C17-STAGE).
+- **Why:** every earlier sweep was limited to human and mouse GEO, Zenodo and ArrayExpress, and to engineered barcodes. A count of GEO lineage deposits since 2015 found 227 zebrafish, 60 chick, 6 frog and more never screened.
+- **Tool:** c17_data_sweep.py `--scope embryo`. Queries are frozen in GEO_QUERIES_EMBRYO, ZENODO_QUERIES_EMBRYO, EBI_QUERIES_EMBRYO and TEXT_QUERIES_EMBRYO.
+- **Organisms (GEO), ranked by closeness to human development:**
+  - Rank 1: human and mouse, for embryo models, natural marks and imaging only.
+  - Rank 2: macaque (two species), marmoset, pig, cow, sheep, rabbit and rat.
+  - Rank 3: chick, the two frogs, zebrafish, medaka and axolotl.
+  - Records outside GEO are ranked from title words; otherwise the rank is left empty.
+- **Methods:**
+  - Engineered barcodes and scar recorders.
+  - Natural marks: somatic mutations, mitochondrial variants, phylogenies.
+  - Imaging lineages: light-sheet, live imaging, tracking, photoconversion, multicolour reporters.
+- **Repositories:** GEO, Zenodo, ArrayExpress, BioImage Archive, figshare, Dryad, Single Cell Portal, CELLxGENE (all collections, titles filtered).
+- **Validity:**
+  - *Completeness gate:* every query fetched all its hits.
+  - *figshare:* its search is full text and returns more than 1,000 hits for any phrase, so it is a capped screen (500 per query), named as such and outside the gate.
+  - *Recall gate:* the known zebrafish embryo scar-tree set GSE105010 (C17-S1G) must be among the records. Otherwise the search is reported as incomplete.
+- **Decision rule:**
+  - An `embryo_candidate` is a new record with lineage and embryo flags plus a split or memory, tree or natural-mark, or imaging flag.
+  - Candidates are listed by rank, then by score.
+  - Each one goes to a structure-only gate (as C17-S1N or C17-S1G) only with Bence's OK, before any download over 2 GB and before sealing.
+  - Nothing is downloaded or opened in this step.
+- **Pre-flight:**
+  1. Unit: a public dataset record.
+  2. Readout: metadata (accession, title, organism, flags).
+  3. Used data first: records named in the project are flagged `known` (H5); the zebrafish sets that failed C17-S1G are known.
+  4. Power: not applicable.
+  5. Exposure: titles and design keywords only.
+  6. Literature: public catalogue APIs, no key, no personal data in requests.
+  7. Readout gate: not applicable.
+- Practice:
+  - Offline selftest of the new flags and the rank.
+  - A count-only smoke test of each new fetcher. It found Zenodo's 25 per page and figshare's full-text breadth; the EBI calls failed locally on a certificate error, while an earlier local probe of the same endpoints passed.
+  - Counts-only public log; neutral wording (excluded-domain filter unchanged); no outreach.
+- Compute: GitHub Actions run (sweeps/ds_emb_2026_11_25.txt).

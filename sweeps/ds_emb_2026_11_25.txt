@@ -1,0 +1,2 @@
+# DS-EMB-2026-11-25: vertebrate embryo lineage deposits, widened methods and repositories, metadata only
+[experiments/results_c17/c17_data_sweep_embryo_2026-11-25.json] python experiments/c17_data_sweep.py --scope embryo --out experiments/results_c17/c17_data_sweep_embryo_2026-11-25.json
