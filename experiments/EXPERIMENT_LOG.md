@@ -13641,6 +13641,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   | 5 | **Mammalian gastrulation, cell migration and heart fate** (BioImage Archive S-BIAD1682). The species and the imaging type are inferred from the archive, not from the title. | unranked | possibly (tracks) |
   | 6 | **Mouse pancreas imaging of cell cycle and differentiation** (Dryad 4b58d = Zenodo 4973643). | unranked | possibly |
 - **Out of the human-close scope, kept as leads:** two C. elegans embryo atlases with an invariant lineage, so divisions are exact (Zenodo 3840470, Zenodo 23809302).
+- **Not yet known:**
+  - whether each shortlisted set exposes per-cell tracks or trees with fates, and their sizes;
+  - whether the questions are published in kind.
+
+  Both come from a structure-only gate and a novelty check per set, each needing Bence's OK. Nothing was downloaded or opened.
+- Self-challenge: the screen is title-only (summaries were used only for flags); natural-mark and imaging flags are keyword-based; the human set samples adult tissue, so "embryonic origin" is inferred, not measured.
+- Model: Opus 5.5 (main session); no subagent.
 
 ## DS-EMB-G: S0 structure gates for the six embryo leads of DS-EMB-2026-11-25 (pre-registered 2026-11-25; Bence: "2" = gate all six)
 - **Serves: C12 CLOSED** (a new embryo system for the C17 parameter table; counted divisions for C17-STAGE).
@@ -13763,6 +13770,8 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - The counts JSON keeps Movie5 (804); the dropped-duplicate figure of 721 is in this log.
 - **Next (needs Bence):**
   1. A novelty check on the E5 source (published in kind or not). The study title suggests sister-fate coordination results may already be published; seal first, so the source read lands in `prior_exposure`.
+  2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
+  3. Pre-registration of an S1 on train only.
 
 ## DS-EMB-S: seal E5 (mouse gastrulation manual tracks) by track tree before any fate read (pre-registered 2026-11-25; Bence: "Yes, seal E5")
 - **Serves: C12 CLOSED** (E5 passed DS-EMB-G; sealing comes before any fate read or source-claims read, H1/H24).
@@ -13975,12 +13984,48 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - **Gate 2: FAIL by the registered rule** (0.094 < 0.8). QE1 stops here.
   - **Diagnosis, recorded but not acted on:** the test is far more conservative than nominal (null 0.009 against 0.05). With about 58 sister pairs on A, a plain correlation test at rho 0.5 would reach about 0.98 (Fisher z), or about 0.8 with a design effect of 2. The likely cause is that values are standardised and permuted within 20-min birth windows, where the two sisters often make up most of their window, so the planted shared component cancels.
   - A better-calibrated test would be a design change: residualise on movie and generation only, and use the non-kin control as the comparison. It needs its own amendment and planted-power run, and Bence's OK. The pass bar stays 0.8.
-  2. Sealing by unit before any fate read (E5: by track tree, stratified by embryo; E3: by root track lineage, stratified by embryo).
-  3. Pre-registration of an S1 on train only.
-- **Not yet known:**
-  - whether each shortlisted set exposes per-cell tracks or trees with fates, and their sizes;
-  - whether the questions are published in kind.
 
-  Both come from a structure-only gate and a novelty check per set, each needing Bence's OK. Nothing was downloaded or opened.
-- Self-challenge: the screen is title-only (summaries were used only for flags); natural-mark and imaging flags are keyword-based; the human set samples adult tissue, so "embryonic origin" is inferred, not measured.
-- Model: Opus 5.5 (main session); no subagent.
+- **QE1 gate 2, amendment 2: recalibrated test (written 2026-11-25, after the gate-2 fail, before any new run; Bence: "1").**
+  - **Corrected diagnosis.** The diagnosis line above is wrong in one point: standardisation in `one_test` is global, not per window. The cancellation comes from the permutation centre.
+    - Two sisters share movie, generation and birth frame, so they always share a stratum. Where they are its only members, a permutation just swaps them and the sister product is unchanged, so the centre tracks D.
+    - The mother-daughter product survives the same swap, because both daughters carry the mother term. That fits its power of 0.10.
+    - A synthetic selftest checks this before anything else: with strata of one sister pair each, the old centre must equal D.
+  - **What changes (only the part the diagnosis implicates):**
+    1. *Null centre:* the permutation centre is dropped. D is tested against 0: reject if |D| > 1.96 x the tree-cluster bootstrap SE (500 resamples of the analysed trees; a control pair is clustered by its first member's tree, as registered).
+    2. *Adjustment:*
+       - Log cycle length is residualised on movie x generation-group means plus one linear birth-frame slope per movie.
+       - Pooling rule, fixed now: within a movie, a generation cell with fewer than 15 eligible cells merges with the next generation up (the last one merges down) until it has at least 15.
+       - Residuals are standardised over the analysed cells.
+  - **What does not change:**
+    - kin pairs (sister primary, mother-daughter secondary);
+    - the control pairs (same movie and generation, births within +-10 min, different mothers);
+    - the censoring window;
+    - the unit (tree within movie);
+    - A = 64-tree movie-stratified subsample of the train structure, redrawn each replicate;
+    - 1,000 replicates;
+    - the planted values, sister rho 0.5 and mother-daughter rho 0.3. The novelty read did not confirm them numerically: the 2019 cultured-cell work says "strongly correlated" in its abstract, with no value. They stay as registered.
+  - **Scenarios (nuisance sizes set here by statement, not from data):**
+    - *Trend:* + 0.5 SD linear rise over each movie's frame span, + 0.3 SD per generation, and a 0.3 SD sinusoid with one period over the movie span.
+    - (a) *Planted:* kin effect + trend.
+    - (b) *Null 1:* nothing.
+    - (c) *Null 2:* trend only, no kin effect.
+    - (d) Descriptive, not a gate: a tree-level shared effect of variance 0.1 with no kin effect. It shows how much a shared niche would pass for kin similarity.
+    - Saved per scenario: rejection rates for sister and mother-daughter, mean D and mean SE. Also all 127 trees for (a), as a descriptive.
+  - **Occupancy count (descriptive, same run, train structure only):**
+    - eligible cells per movie x generation x 20-min window;
+    - the share of sister pairs that are their window's only members;
+    - control pairs on an A-sized subsample.
+  - **Pass rule:** null 1 and null 2 rejection <= 0.075 for both sister and mother-daughter, **and** sister power on A >= 0.8.
+  - **Stop rule:** if either null exceeds 0.075 or sister power is below 0.8, QE1 closes. No third variant.
+  - **Order:**
+    1. Sonnet data lane writes the stage (`power2`) and its synthetic selftest. Synthetic data only, no data file opened. Opus reviews.
+    2. 2026-11-26: the full-text claims read of preprint 10.64898/2026.09.24.754028 on bioRxiv (lookup lane). Europe PMC holds the abstract only (PPR1330606, not open access). If the preprint reports a sister or mother-daughter cycle-length correlation, QE1 is "published" and closes; nothing runs.
+    3. Only if not published: the Sonnet lane dispatches `power2` on Actions.
+  - Pre-flight:
+    - unit = tree within movie (4 embryos);
+    - readout = birth and division frames;
+    - used data = train structure only, simulated values;
+    - power is this gate;
+    - exposure: the source abstract and claims were read (DS-EMB-N), cycle length appears there only as a filter, and the preprint read is pending;
+    - H22: 4 embryos, unit is the tree.
+  - Compute: GitHub Actions via `./run_sweep.sh`, dispatched by the Sonnet lane (about 1-2 h for 4 x 1,000 replicates at 500 bootstraps); the selftest is synthetic and runs locally in seconds.
