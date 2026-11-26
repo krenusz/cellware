@@ -14125,3 +14125,40 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - outreach = none.
 - Compute: GitHub Actions via `./run_sweep.sh sweeps/ds_wide_2026_11_26.txt`, dispatched by the Sonnet lane; the selftest runs locally.
 - Practice: neutral wording, with the result scrubbed at write time; scan with lit_gap.SENSITIVE before commit; selftest before the run; no outreach; the 26 Nov preprint fetch lesson applies (one GET per URL, honour Retry-After once).
+- **DS-WIDE-2026-11-26 result** (run https://github.com/krenusz/cellware/actions/runs/45790162276; `results_c17/c17_data_sweep_wide_2026-11-26.json`, scrubbed at write time: no titles, hashed families; Sonnet lane dispatched, Opus reviewed):
+  - **Complete:** yes, with no errors. figshare was a capped screen (4 x 500), as pre-registered.
+  - **Recall (regression):** GSE105010 and zenodo:3840470 both came back and were kept. Per-arm recall is untested (no known positive).
+  - **Attrition:**
+
+    | Stage | Records |
+    |---|---|
+    | Raw hits | 4,074 |
+    | Excluded domain | 1,326 |
+    | No lineage or tracking flag | 1,712 |
+    | Kept (unique) | 873 |
+
+  - **Candidates:** 500 by the fixed rule; 444 are not in yesterday's DS-EMB records.
+    - By rank: 1 = 278, 2 = 16, 3 = 48, 4 = 6, 5 = 108, unranked 44.
+    - New-only (444): rank 1 = 261 (258 via the tracking path, mostly GEO sequencing series that mention live imaging), rank 2 = 2, rank 3 = 30, rank 4 = 6, rank 5 = 105, unranked 40.
+    - By source: GEO 309, Zenodo 107, BioImage Archive 23, Dryad 4, ArrayExpress 1.
+  - **Kept by organism field** (kept / candidates), selected:
+
+    | Organism | Kept / candidates |
+    |---|---|
+    | Drosophila | 27 / 9 |
+    | Planarian | 10 / 10 |
+    | Ciona | 6 / 2 |
+    | C. elegans | 6 / 5 |
+    | Xenopus | 5 / 2 |
+    | Lamprey | 3 / 0 |
+    | Zebrafish | 56 / 23 |
+    | Chick | 12 / 6 |
+
+    The organism field is unstated for 196 records (144 candidates), most of them Zenodo and BioImage Archive.
+  - **Zero GEO hits in all three queries** (a name check, not an absence): amphioxus x2, catshark, cavefish, stickleback, quail, Hydra, rabbit, lizard, Phallusia, Parhyale, Lytechinus.
+  - **Screen order (fixed before reading any title):**
+    1. Ranks 3-5 and unranked (181).
+    2. Rank 1-2 records from Zenodo, BioImage Archive or Dryad.
+    3. Rank 1-2 GEO tracking-path records last, as they are likely sequencing studies.
+
+    Titles are fetched for candidate accessions only, into the scratchpad, by the lookup lane.
