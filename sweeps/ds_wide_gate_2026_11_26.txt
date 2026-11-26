@@ -1,0 +1,2 @@
+# DS-WIDE-G: structure gate for two track-type leads (7 tracking files, about 60 MB; fetch, sha256 and counts in one job; counts only)
+[experiments/results_c17/ds_wide_gate_counts.json] python -I experiments/ds_wide_gate.py --out experiments/results_c17/ds_wide_gate_counts.json

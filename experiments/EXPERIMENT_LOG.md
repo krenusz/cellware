@@ -14288,3 +14288,23 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - sha256 is written per file, and sealed.py gets entries "structure only until partitioned".
 - **Run:** `experiments/ds_wide_gate.py`, with a selftest on toy track forests (the count functions) and a toy zip (range-member extraction). It runs on Actions via `./run_sweep.sh`, and the output goes to `results_c17/ds_wide_gate_counts.json`.
 - **Hygiene:** the experiment folder names in the Figure 5 zip contain a gene-like word. Saved outputs refer to them only as "W2-F5". File and folder names are not copied into the results.
+
+### DS-WIDE-G stage L result for W1 (2026-11-26; Haiku lookup lane plus one `gh api` tree listing by Opus; names and sizes only)
+- **W1 (S-BIAD815 = IDR idr0051): FAIL at L.**
+  - The archive folder holds 5 image volumes (OME-Zarr zips, about 13 GB) and a 5-row file list.
+  - The IDR metadata repository (IDR/idr0051-*) holds only annotation, assay, file-path and pattern files, plus one conversion script.
+  - No track, lineage or spot table is deposited. By the rule, images only count as no tracks.
+  - Two lookup GETs failed on local TLS verification. Verification was not disabled; the `gh api` listing covered the metadata repository instead.
+
+### DS-WIDE-G amendment 3: reader validity rule (written 2026-11-26, before the reader touched any real file)
+- Amendment 1 ("every link joins a spot to a later frame") and amendment 2 ("same-frame links counted and excluded") conflict. Resolved now:
+  - **A file is valid if all of these hold:**
+    - the layout parses;
+    - link endpoints are in range;
+    - frames are non-negative;
+    - there are no self-links;
+    - the stored graph has no cycle;
+    - same-frame links are <= 1% of links. More would suggest a misread layout.
+  - **Reversed links** (target at an earlier frame) are allowed and oriented forward, as amendment 2 says. The strict amendment-1 flags are still reported.
+- `track_trees` counts components with >= 1 retained link; isolated spots are reported separately.
+- Reader note: the format developers' importer was read at commit 87eb001; one deliberate departure (a one-byte block length is read unsigned).
