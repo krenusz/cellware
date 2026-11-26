@@ -14187,3 +14187,43 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - W2 is the only regeneration track lead.
     - Per-arm recall was untested, so these lists are not exhaustive.
   - **Next (needs Bence):** a structure-only gate under the DS-EMB-G rules (eligible depth >= 1 sister pairs >= 75 per lead, tree or embryo as unit), on the leads he picks. Download only after OK, with sha256 and sealed.py entries.
+
+## DS-WIDE-G: S0 structure gates for the DS-WIDE leads W2, W3 and W1 (pre-registered 2026-11-26; Bence: "Gate W2, W3, W1")
+- **Serves: C12 CLOSED** (a counted-division system for C17-STAGE; W2 would be the first regeneration system).
+- **Leads (all track type):**
+  - W2 crustacean regenerating legs, zenodo:15181497.
+  - W3 beetle embryo, zenodo:7296222 (a Mastodon project).
+  - W1 zebrafish tailbud, S-BIAD815.
+- **Rules: DS-EMB-G unchanged** for the track type.
+  - Stage L first: file names and sizes only. Stop at L if no track table or tracking project is deposited. Raw images only, files "on request", or a format we cannot parse without new tracking count as no tracks.
+  - Sister pair = the two daughters of one tracked division; an arm = a daughter with its tracked descendants.
+  - Eligible:
+    - the dividing cell has an earlier division on its own path back to the track root (depth >= 1);
+    - each arm has >= 5 spots (time points).
+
+    The fate or position label is the end position, as for E3 and E5. No fate, intensity or expression attribute is read at this gate.
+  - Gate per lead: pass if 0.4 x eligible >= 30 (>= 75 eligible pairs).
+- **Added now (H22, from the E3 lesson):**
+  - The count of independent specimens (embryos, or legs for W2) is reported with the pairs.
+  - A lead with < 3 specimens is a "pass, low replication": pairs within one specimen are not a between-specimen test.
+- **Order:**
+  1. L.
+  2. Column or format mapping written as an amendment before any count.
+  3. Fetch of the track files only, never images, with sha256 and a sealed.py entry "structure only until partitioned". Any lead over 2 GB of track files needs Bence's OK.
+  4. Gate count, with a selftest on toy track forests.
+
+  A pass leads to sealing by specimen or tree before any fate read. A fail stops that lead.
+- **Pre-flight:**
+  1. Unit: sister pair for the gate; specimen or tree for any later test.
+  2. Readout: structure only.
+  3. Used data first: none of the three sets is used.
+  4. Power: the gate.
+  5. Exposure: file names, column names, structure counts.
+  6. Literature: repository text only; source methods not read (H20 gap, recorded).
+  7. Readout gate (H21): the gate above.
+- **Limits written now:**
+  - Arms within one embryo or leg share a niche, so any value is an upper bound.
+  - Manual track sets are a chosen subset of cells (as in E5).
+  - Automated tracks can over-split (as in E3); the 5-spot guard is the only filter.
+- Practice: neutral wording (titles stay out of saved files); downloads go to their own directories and are read with python -I; no outreach; one GET per URL, and honour Retry-After once.
+- Compute: local listings and track-file downloads (the DS-EMB-G precedent); structure counts only. Routing: Haiku lookup lane for stage L, Opus for the mapping, Sonnet data lane for fetch and counts.
