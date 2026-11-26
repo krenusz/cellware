@@ -19,7 +19,7 @@ DATASETS = {
                             "(unit = founder clone cluster); sci-RNA-seq3 and two-epoch sets: partition by "
                             "gastruloid / first-epoch clade once the authors' cell-to-gastruloid tables are rebuilt",
     "ext_celltag_multi": "partitioned by clone (partitions.celltag_lsk / celltag_reprog, sealed 2026-11-11): train 40%, A/B/C 20% each; fate columns readable only via train_only / test_oracle; files sha256 in data/ext_celltag_multi/SHA256SUMS",
-    "ext_chspctrack": "partitioned by clone (partitions.chspctrack, sealed 2026-11-11): train 40%, A/B/C 20%; cell_type / pseudotime / score columns readable only via train_only / test_oracle; files sha256 in data/ext_chspctrack/SHA256SUMS; pickles NOT downloaded",
+    "ext_chspctrack": "partitioned by clone (partitions.chspctrack, sealed 2026-11-11): train 40%, A/B/C 20%; cell_type / pseudotime / score columns readable only via train_only / test_oracle; files sha256 in data/ext_chspctrack/SHA256SUMS; pickles NOT downloaded. QS2-R1-P1 (2026-11-26, Bence: \"Yes, count R1\"): cells_with_clone_info.h5ad also fetched on GitHub Actions from the public S3 bucket (run 45864462299, sha256 OK vs sweeps/chspctrack_data.sha256), read there only by test_oracle count --test hspc_c7s7 (unit counts for A and B), never uploaded",
     "ext_methyltree": "downloaded 2026-11-11 (figshare 27288630 zip, sha256 locked); structure check only until partitioned by clone",
     "ext_resistrace": "GSE223003 processed cell_info tables (16 files), locked 2026-11-13 (data/ext_resistrace/SHA256SUMS_processed); "
                       "partitioned by pre-treatment lineage (partitions.resistrace, sealed 2026-11-13): train 40%, A/B/C 20%; "

@@ -14653,6 +14653,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
         - This is marginal, so the count decides.
         - Inputs were checked against `test_ledger.tsv` (C7-S7c, chspctrack:A, G_rna: n 122, G 0.398, CI 0.126-0.669).
         - The B count for C7's unit is not logged. The nearest logged B count is 121 units for the C9-S0 subset (exps 1 + 7), which is a different unit definition.
+        - *Correction (QS2-R1-P1):* B's count was logged. C9-S0 H2 used the same structural definition (at least 1 early cell and at least 2 day-10 cells) over every experiment with day-10 cells (1 and 7). Its train count, 265, equals C7-S7c's train n. Its 121 B units give 76 effective units.
         - *Cost:* a look spends chspctrack:B and leaves C as the last partition. It is also the partition that decision 3's T2 (DNR-HSPC-COND) would need.
       - *R2 and R3, no-data thresholds* (`power.rho_power`, Fisher sd sqrt(1.06), from the logged B results):
         - R2 (celltag_lsk:C) needs 39 units for 0.8, or 71 at 0.75 of the effect.
@@ -14706,3 +14707,30 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - It is sha256-checked against `sweeps/chspctrack_data.sha256`, which holds the same hash as data/ext_chspctrack/SHA256SUMS.
   - The file is never uploaded. The artifact holds only the two count JSONs and the logs, and the public run log shows counts only.
 - **Practice:** a cold-start control (A must reproduce a logged count before B is read); rule fixed and committed before dispatch; acceptance stated in the count function's own unit; no synthetic smoke, because no statistic is computed.
+
+### QS2-R1-P1 result (2026-11-26; run https://github.com/krenusz/cellware/actions/runs/45864462299, Sonnet lane)
+
+- **Run:** conclusion success at 94c8b26. The "cHSPCTrack data" step printed `data/ext_chspctrack/cells_with_clone_info.h5ad: OK`. `run_sweep.sh` collected 2 new files and 0 differing ones.
+- **Counts** (`results_hspc/qs2_r1_count_A.json` sha256 06dff063..., `results_hspc/qs2_r1_count_B.json` sha256 2c1faab2...):
+  - *Control A:* `{"rna": 76}`. This matches the logged A power-gate count, so the B count went ahead.
+  - *B:* `{"rna": 76}` effective units.
+- **Verdict by the registered rule: PASS** (B_eff 76 >= 73). Power at the spent A effect, with se from the A CI, is **0.82**.
+- **Thin pass; these readings are reported only and do not change the rule:**
+  - At 0.75 x the A effect: 0.58.
+  - With the train sd (1.34, `selection/C7-S7c.json`) instead of the A CI se: 0.73 at the A effect, and 0.49 at 0.75 x.
+  - The oracle's own gate would use the look's selection file. With the train effect 0.66 it gives 0.99, so it would pass trivially.
+  - Any look pre-registration must therefore **name its sd source** and report these readings.
+- **Why B equals A exactly (checked, not assumed):**
+  - The partition argument reaches `sealed_rows` (Sonnet lane's code read: `test_oracle.py` count -> `_c7s7` -> `counts_hspc(part)` -> `partitions.sealed_rows(..., part)`).
+  - The C9-S0 log gives B 121 units with the same structural definition, and floor(121 x 0.6295) = 76.
+  - A's 122 test units also floor to 76 (floor(122 x 0.6295) = 76). The floor hides a one-unit difference.
+- **Exposure:** none new. B's count was already in the log since C9-S0 (2026-11-11), so this step was redundant with the log. My pre-registration missed that.
+- **Challenge:**
+  1. *Suspicious?* The identical counts were; it is reconciled above.
+  2. *Other explanations?* An ignored partition argument is ruled out by the code path and by the independent C9-S0 count.
+  3. *How many units?* 121 clones on B, 76 effective.
+  4. *Used data enough?* Yes. The log already held the number; the run confirms it.
+  5. *Already published?* Not applicable. R1 replicates our own C7 result; the strict and contrast-level readings both make it eligible (QS2 amendment 1).
+- **Next (needs Bence):** R1's eligibility plus a look pre-registration.
+  - *Cost:* the look spends chspctrack:B, leaves C as the last partition, and takes the partition that decision 3's T2 (DNR-HSPC-COND) would need.
+  - No look pre-registration is drafted before he answers.

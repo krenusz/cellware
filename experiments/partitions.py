@@ -82,7 +82,9 @@ PARTITIONED = {
         "sealed_on": "2026-11-11",
         "prior_exposure": "obs column names, cells per clone per day / well / condition only; cell_type and "
                           "pseudotime / score columns unread; Blood 2026 abstract read (clones diversify "
-                          "stochastically, cytokines bias; clonal memory stabilises a few genes per clone)",
+                          "stochastically, cytokines bias; clonal memory stabilises a few genes per clone); "
+                          "QS2-R1-P1 (2026-11-26): B count of the C7-S7c unit, 76 effective units (= the 121 B "
+                          "units already logged by C9-S0)",
     },
     "resistrace": {
         "salt": "cellware-resistrace-v1",

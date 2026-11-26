@@ -1,0 +1,8 @@
+{
+ "test": "hspc_c7s7",
+ "partition": "B",
+ "exp": "QS2-R1-P1",
+ "counts": {
+  "rna": 76
+ }
+}
