@@ -14609,6 +14609,55 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - **N1 passes on counts.** 319 trees, of which 161 carry a depth >= 1 pair. A depth >= 0 pair exists in more trees; about 30 or more trees per partition carry the statistic, and about 60 or more as a union. Positions are present on every spot.
       - *Limit:* the hand-tracked trees are a chosen subset (DS-EMB-G), and selection for proximity would bias coherence.
     - **N2 passes on counts.** It needs a mother and a daughter division in one tree: 290 non-nested depth >= 1 pairs in 161 trees, about 32 trees per partition and about 64 as a union.
+    - *Wording fix (2026-11-26, advisor):* N1 and N2 pass **on counts only** (H21 item 2, estimated). Items 1 and 3 are owed: the outcome distribution is shown on train, and the statistic separates the models in a synthetic smoke. About 32 trees per partition sits at the 30-unit line, so a single-partition look depends on the structural count per partition, which has not been read. N3's fail is on item 3, the same item still owed by N1 and N2, but N3 fails because its counts sit in a regime where that item already failed once (QS1-C1).
     - **N3 FAILS at readout.** The median is about 4 cells per arm (C17-S1C amendment 2), the regime that failed QS1-C1. Whether rank concordance separates heritable growth from the binomial sampling null at these counts has not been shown (H21 item 3). A synthetic check could reopen it; it is not offered as the pick.
     - **N4 FAILS at readout (H21 item 4).** The within-host statistic is carried by 5 hosts per partition (10 as a union): a handful. C15 already found the between-host noise too large at this n.
   - *Survivors to gate 4 (novelty):* N1 and N2. R1-R4 are held (eligibility and counts pending Bence).
+- **QS2 stage 3, gates 4-5 (2026-11-26):**
+  - *Gate 4, novelty* (Haiku lane ran the classic-search functions from a scratchpad driver, not the repo script, so no results_lit file was written; recall passed for both):
+    - **N1: partly published, in kind.** The source states sister trajectory similarity; classic clonal analyses report dispersal and intermingling. **Held for Bence** (decision 1). `lit/novelty/QS2-N1.md`.
+    - **N2: not found, provisional.** Oriented division in gastrulation is described as tissue-level polarity, not mother-to-daughter inheritance. Two of the 10 related abstracts were unreadable (Europe PMC blocked: TLS error and 403). `lit/novelty/QS2-N2.md`. *Correction:* it was three (10.1038/nature02796 as well); all three were read later via PubMed.
+    - **N2 gate 4, second round (2026-11-26; advisor review, written before dispatch):**
+      - All 10 related abstracts are now read (3 via PubMed). All describe tissue-level orientation; none compares mother and daughter axes.
+      - The four queries were mostly tissue-level, so they did not probe the claim itself. One more round follows: abstracts of 10.1242/dev.120.2.265, 10.1126/science.1134910 and 10.1016/j.devcel.2007.01.021, plus system-agnostic queries on the mother-to-daughter comparison.
+      - **Classing rule, fixed now:** a report of mother-to-daughter division-axis persistence in **any** system or organism makes N2 "partly published", held for Bence as CAND-A was. Only none found leaves "not found".
+      - **Round 2 result (Haiku lane):**
+        - 5 claim-shaped queries were run, top 25 each.
+        - 5 more abstracts were checked: 4 read, 1 without an abstract.
+        - Source term counts: 0 sentences where an orientation term co-occurs with a division term. The terms occur on their own (sister 29, daughter 40, division 14, axis 16), so the scan did run.
+      - *Round 2 skips:* the lookup lane skipped centrosome, neuroblast and plant hits as off-topic. Under the any-system rule they are on-topic; that was the lane's call, and those titles stay unread.
+      - *Advisor correction:* the two fly stem-cell abstracts first cited (doi 10.1126/science.1134910, doi 10.1016/j.devcel.2007.01.021) do not state axis persistence. That reading was an inference, and the germline one ties orientation to the niche. Round 3 fetched two more abstracts.
+      - **N2 verdict: partly published (in kind), on round 3:**
+        - doi 10.1083/jcb.200905024: fly larval neural stem cells keep polarity and division orientation unchanged across consecutive mitoses. The abstract calls it an orientation memory that spans the last mitosis and is cell autonomous with respect to the surrounding tissue.
+        - doi 10.1083/jcb.105.5.2123: early worm embryo cells divide successively on the same axis or in an orthogonal pattern, set by centrosome movements. N2's one-sided |cos| statistic would miss an orthogonal pattern.
+        - The first two fly abstracts are kept as inferred mechanism. Zebrafish clonal strings (doi 10.1242/dev.120.2.265) are clone-level orientation tied to the tissue axis.
+        - Not found: the quantified test in gastrulating mouse tissue with a same-window neighbour control.
+        - **Held for Bence (decision 1)**, as N1 is. `lit/novelty/QS2-N2.md` was rewritten.
+        - The source's sentences with spindle (3), orient (1) and direction (4) were excluded by the co-occurrence filter and are unread. Read them at claims level first if N2 is ever taken forward.
+  - *Gate 5, power* (N2 only; computed while N2 was a candidate, kept for decision 1): no used result gives the effect or the sd.
+    - **Minimum detectable effect at power 0.8** (one-sided alpha 0.025, `power.z_power`), in sd units of the per-tree statistic: **0.50 at about 32 trees** (one partition) and **0.35 at about 64** (A+B union).
+    - The tree counts are estimates (161 trees carry a depth >= 1 pair over 5 parts); the structural counts per partition are not read.
+    - These are **lower bounds** on the detectable effect: the trees sit within 4 movies, so the effective n is below the tree count. Movie 4 has only 3-5 trees per partition (DS-EMB-S counts).
+  - *Process note:* the shell step that wrote gates 4-5 exited 127 ("p: command not found"). Every file it wrote was checked and landed correctly; the cause was not found.
+- **QS2 verdict (2026-11-26):**
+  - **Pass:** none.
+  - **Candidate:** none. N2 was a candidate until its second and third novelty rounds (gate 4 above) made it partly published (in kind).
+  - **Held for Bence:**
+    - N1 and N2: in kind, decision 1. For N2, cell-autonomous axis memory across consecutive divisions is published in fly neural stem cells. The quantified mouse-tissue test with a neighbour control is not found.
+    - R1-R4: replications of our own results, eligibility under the two readings plus the batched count ask. R2 and R3 would spend a last partition: "be precious about the holdout sets, better keep more".
+      - R1 (chspctrack:B) is the only one eligible under both readings that spends no last partition.
+      - Its next step is a structural count read (no outcome) to compute power. That needs Bence's OK.
+      - *Power threshold* (`power.z_power`, from A: G 0.398, se 0.139 from the logged 95% CI, n 122):
+        - 0.82 at A's n; power 0.8 needs **at least 116 units on B**.
+        - At 0.75 of the A effect (a winner's-curse margin), it needs 207.
+        - This is marginal, so the count decides.
+    - CAND-A: partly published.
+  - **Fail:** N3 and N4 (readout).
+  - **Stage 0:** DNR-CLOCK-A stays (union 0.63). C17-TCORT is not computed and is blocked by its estimator smoke.
+  - Coverage check: 4531b48ea17b OK (QS2 row closed as failed_gate: no pass, as QS1).
+  - **Challenge:**
+    1. *Suspicious?* Mildly. Round 1's queries were tissue-level and missed the claim-shaped literature, and only the second round found it. The classing rule was fixed before that round.
+    2. *Other explanations?* An axis "memory" could come from local tissue flow that the neighbour control misses at the chosen radius. That needs a radius sensitivity check on train.
+    3. *How many units?* About 32 trees per partition (estimate).
+    4. *Used data enough?* No used effect exists.
+    5. *Already published?* Tissue-level oriented division, yes. Cell-autonomous axis memory across consecutive mitoses is published in fly neural stem cells (doi 10.1083/jcb.200905024), so N2 is partly published. N1 is in kind too.

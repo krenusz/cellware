@@ -230,7 +230,10 @@ PARTITIONED = {
                           "feature declarations; spot, edge, division, tree and eligible-pair counts per movie; "
                           "presence counts of the intensity attributes (no values); study title (DS-EMB sweep); "
                           "source abstract and full-text claims (section headings, sentences on sisters, generations "
-                          "and fate restriction) of doi 10.1038/s44318-025-00441-0 (DS-EMB-N)",
+                          "and fate restriction) of doi 10.1038/s44318-025-00441-0 (DS-EMB-N); QS2-N2 (2026-11-26): "
+                          "the same source's section headings re-read and a keyword scan (bare per-term sentence "
+                          "counts; 0 sentences where an orientation term co-occurs with a division term; no sentence "
+                          "text read), plus a title screen of its 20 most-cited references",
     },
 }
 BUCKETS = 5
