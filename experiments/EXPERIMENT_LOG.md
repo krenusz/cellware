@@ -14162,3 +14162,28 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     3. Rank 1-2 GEO tracking-path records last, as they are likely sequencing studies.
 
     Titles are fetched for candidate accessions only, into the scratchpad, by the lookup lane.
+- **DS-WIDE title screen (2026-11-26; Opus; titles fetched by the Haiku lookup lane into the scratchpad only; no data file opened).**
+  - *Coverage:* G1 (ranks 3-5 and unranked, 181 titles) and G2 (2) were read in full. G3 (261 rank-1 GEO series) got only a keyword pass (barcode, lineage tree, clonal, tracking, recorder, phylogeny, live imaging). That pass found Cre-type population tracing and atlases, and no clone tree or track deposit; GEO holds sequencing, not tracks.
+  - **Unverified leads: deposits that state cell tracks or a traced lineage.** Order is rank, then title. Not one is confirmed to hold tracks with divisions.
+
+    | # | Accession | Rank | What the title and metadata say |
+    |---|---|---|---|
+    | W1 | S-BIAD815 | 3 | Zebrafish tailbud, in toto light-sheet cell tracking of the neuromesodermal progenitor zone. |
+    | W2 | zenodo:15181497 | 5 | Crustacean (Parhyale) **regenerating legs**: long-term live imaging, cell identification and cell tracking. |
+    | W3 | zenodo:7296222 | 5 | Beetle (Tribolium) embryo: a Mastodon project with cell tracks. |
+    | W4 | zenodo:6460303, zenodo:6460375 | 5 | Nematode (C. elegans) embryos: 3D+time nuclei tracking datasets, 3 confocal and 3 light-sheet series. |
+    | W5 | zenodo:17061487, zenodo:5132918, S-BIAD56 | 5 | Nematode embryos: cell tracking with expression; early-development TrackMate tracks; a 4D lineage-traced protein atlas. |
+    | W6 | dryad:doi:10.5061/dryad.f1vhhmh26 | unranked | Cell tracking data behind an embryonic in vivo cell-state study; organism not stated in the metadata. |
+    | W7 | dryad:doi:10.5061/dryad.nk98sf823 | 1 (mouse) | Mouse embryo 4D light-sheet reconstruction and tracking, labelled "example data". |
+
+  - **Not leads:**
+    - *Images only, no tracks deposited:* Tribolium and honeybee live-imaging series, Drosophila, zebrafish and chick time-lapses, quail, an ascidian light-sheet set. Using them would need our own whole-embryo tracking, which does not fit the compute.
+    - *Computational lineages without clone data:* planarian, Ciona and nematode atlases.
+    - *Simulations and benchmarks:* a CRISPR-recorder simulation, denoising and benchmark volumes. Also off-scope deposits such as a plant root.
+  - **Tadpoles and amphibians:** no new track or tree deposit. The Xenopus candidates were already among yesterday's DS-EMB records, none of them gate-worthy.
+  - **Self-challenge:**
+    - The nematode lineage is invariant and its division timing is heavily published, so its novelty value for a C17 question is low. It can still serve as a counted-division system.
+    - Zebrafish has only one more tailbud set (W1); E3 is already zebrafish.
+    - W2 is the only regeneration track lead.
+    - Per-arm recall was untested, so these lists are not exhaustive.
+  - **Next (needs Bence):** a structure-only gate under the DS-EMB-G rules (eligible depth >= 1 sister pairs >= 75 per lead, tree or embryo as unit), on the leads he picks. Download only after OK, with sha256 and sealed.py entries.
