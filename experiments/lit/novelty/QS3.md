@@ -11,7 +11,7 @@
   - The 2023 thesis without a DOI is OpenAlex W7132977612.
 - Source papers:
   - rf2020_clone: doi 10.1038/s41586-020-2503-6. Claims level, read 2026-11-18 (lit/c17_source_claims_2026-11-18.md section 3), plus its abstract (PMID 32669716, read 2026-11-26).
-  - cortical_clone: the source in lit/c17_source_claims_2026-11-18.md section 2, claims level. Its methods (how clone clusters are assigned) were not read.
+  - cortical_clone: the source in lit/c17_source_claims_2026-11-18.md section 2, claims level. QS3-CO1-M (Bence OK) read the preprint's (PMC12485932) methods subsection headings and one methods sentence; the published version returned HTTP 500. The sentence does not say how clone clusters are assigned.
 
 ## Planned findings
 - Finding (QS3-RF1): a clone's stem-compartment fraction agrees between the two recipients it was split into, beyond clone size.
@@ -31,4 +31,4 @@
   - Classic search: the three frozen queries above; recall weak (abstracts only, no recall gate).
 
 ## What is left that is ours
-For all three, a held-out test on a sealed set of a claim reported in kind: held for Bence (RETRO_2026-11-26 decision 1). No step opens on them. CO1 would also need its readout condition settled (a methods read, past claims level) before any count.
+For all three, a held-out test on a sealed set of a claim reported in kind: held for Bence (RETRO_2026-11-26 decision 1). No step opens on them. CO1 would also need its readout condition settled before any count. QS3-CO1-M left it unresolved; the defining sentences were not reached.

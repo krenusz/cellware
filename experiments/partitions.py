@@ -167,7 +167,9 @@ PARTITIONED = {
         "files": ["GSE284197_clones.h5ad, sha256 in results_c17/c17s0c_seal.json"],
         "sealed_on": "2026-11-18",
         "prior_exposure": "C17-S0b obs structure (columns, levels, guide and donor labels); C17-S0c partition counts; "
-                          "claims-level read of the source paper",
+                          "claims-level read of the source paper; QS3-CO1-M (2026-11-26, Bence OK): the preprint's 26 methods "
+                          "subsection headings and one methods sentence (clonal-cluster fractions compared between "
+                          "non-targeting and each knockdown by a paired rank test); no results, figures or tables",
     },
     "crest_split_clone": {
         "salt": "cellware-crest-split-clone-v1",

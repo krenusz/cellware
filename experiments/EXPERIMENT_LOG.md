@@ -14921,3 +14921,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   6. Access: Europe PMC open full text.
 - Compute: one lookup-lane fetch, no Actions run.
 - Practice: neutral wording, with gene names paraphrased and none saved; PMC IDs, not titles; no outreach; the advisor before the dispatch and before the verdict.
+- **QS3-CO1-M result (2026-11-26; lookup lane, scripted extraction):**
+  - *Served:* PMC12485932 (the preprint). PMC12999477 returned HTTP 500, and no other route was tried.
+  - *Read:* the 26 methods subsection headings (claims level) and one sentence. One heading is "Lineage coupling and clonal clustering".
+  - *Pass 1* matched 1 sentence, from that subsection. It says the source compared the mean fractions of clonal clusters between non-targeting and each knockdown with a paired two-sided rank test. It does not say how a clone is assigned to a cluster.
+  - *Pass 2* did not run, because pass 1 was not empty.
+  - **Verdict under the frozen rule: unresolved.** Nothing more is read. CO1 stays held under decision 1, with its readout condition open.
+  - **Design flaw (mine):** pass 2 was gated on pass 1 being empty, not on pass 1 defining the clusters. The definition probably sits in the "Lineage coupling and clonal clustering" subsection, in wording other than "clonal cluster" (pass 1 also covers "clonal clustering"). Reading that subsection's sentences needs a new OK and an amendment. The advisor had suggested the empty-pass-1 gate; I adopted it without checking.
+  - *Exposure:* the headings and the one sentence are added to `partitions.cortical_clone` prior_exposure.
