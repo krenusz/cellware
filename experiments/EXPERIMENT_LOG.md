@@ -14341,3 +14341,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   1. List the members of W2's unlisted zip (`Suppl_data_4_*`) and check for linked limb lineages. That is names only by range read; a gate would need a new amendment.
   2. Gate W4 and W5 (nematode). They are counted-division systems with low novelty.
   3. The dated sweep around 2026-12-02.
+
+### DS-WIDE-G stage L completion for W2 (2026-11-26; Haiku lookup lane, names and sizes only; advisor: the L listing was incomplete, so this finishes it rather than offering it)
+- This corrects the result's gap note. The unlisted material was `Suppl_data_4_*` and the two nested zips in `Suppl_data_8_*`.
+- **`Suppl_data_4_*`** (4.7 GB, 4,155 members) is a tracking trade-off study of **one recording** ("4E").
+  - It holds a ground-truth project (`4E.mastodon`, 2.0 MB) and image-quality variants of the same recording (standard, deconvolution, denoising, improved z or t), each with a project of 0.5-0.9 MB.
+  - Network-tracker outputs exist for each variant (3 batches each, 1-2.4 MB).
+  - Cell Tracking Challenge folders hold `man_track.txt` ground-truth lineage tables (4.5-4.8 KB) and `res_track.txt` results. There are also model weights.
+  - Every file here is one specimen: the variants are re-processings, and the tracker outputs are predictions.
+- **`Suppl_data_8_*` nested zips:** both are deflated (6.6 and 7.5 MB), so their members cannot be listed by range. Their names say tracking-failure tests.
+- **Top level:** the 22 .tif files (1.2-10.6 GB) are the "Suppl_data_3" limb image stacks (li15 to li52 and more). They are images only.
+- **Reading (Opus):** W2 does deposit one manual lineage with divisions, the 4E ground truth. A count on it would cover one specimen, so it could at most be a "pass, low replication", like E3. The five-limb verdict stands: FAIL, as the projects have no links.
+- **Proposed amendment 4 (not run; needs Bence's OK):**
+  - Fetch `4E.mastodon` and its `man_track.txt` by range (about 2 MB).
+  - Count with the same reader and rule; the `man_track.txt` parent column serves as a cross-check on divisions.
+  - Specimen = 1 recording.
+  - Verdict at most "pass, low replication". The variants and tracker outputs are not counted.
