@@ -14069,6 +14069,21 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - `.full-text` returned 429 (Retry-After 62 s). The lane then sent a second GET in parallel without waiting, which also returned 429. That breaks the honour-once rule; the deviation is recorded here.
   - Nothing was read. `power2` is **not** dispatched.
   - Next: one more attempt later today, with the wait actually applied before the single retry. If that also fails, the read moves to the next day.
+- **QE1 amendment 2, order step 2: preprint read, attempt 2 (2026-11-26): read; QE1 PUBLISHED, closes.**
+  - *Fetch:* the main session sent a single GET of `.full`, after an earlier 429 that had set no wait. It returned 200 (433 KB), saved to the scratchpad only.
+  - *Extraction:* Haiku lookup lane, pretested script. The page is the full article: 55 headings, 17 figure legends. 31 sentences matched; 5 are relevant, in section 2.5.4, plus one at the 32-64-cell stage.
+  - *Claims, paraphrased:*
+    - In tracked living mouse embryos, descendants of some 4-cell ancestors inherit their ancestor's cell-cycle trend over two further generations.
+    - In each generation, one sister pair differs more in cycle length than the other.
+    - Cousin cohorts split about 1:2:1 into long, medium and short cycles, which the author reads as inheritance of a cycle-determining factor.
+    - The daughters' cycle histories are analysed by their mother's cycle length.
+    - Sisters in crowded neighbourhoods have shorter cycles than their sisters from the same mother.
+    - Figure titles include "cell cycle histories within embryos".
+  - **Verdict (Opus, by the registered rule): PUBLISHED.** The preprint reports, as results, the inheritance of cycle length from mother to descendants and sister cycle comparisons, measured by tracking in living mammalian embryos.
+    - The facts that could reopen it: descriptive only, no kin correlation coefficient, and cleavage to peri-implantation stages (2-cell to over 128-cell), not gastrulation.
+    - The registered residual-risk line already said a pre- or peri-implantation report drops QE1.
+  - **QE1 closes.** `power2` is **not** dispatched. The code and sweep file stay in the repo unused.
+  - partitions.mouse_gast_tree A, B and C stay unspent. No observed cycle-length kin statistic was ever computed.
 
 ## DS-WIDE-2026-11-26: repository sweep widened to all organisms with embryo, larva or regeneration context (pre-registered 2026-11-26; Bence: "widen the search for other organisms tedpoles for examples")
 - **Serves: C12 CLOSED.** Feeds the counted-division and lineage-tree systems needed by C17-STAGE and C17-LAW.
