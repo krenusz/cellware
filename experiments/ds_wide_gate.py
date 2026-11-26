@@ -4,6 +4,7 @@ Pre-registered in EXPERIMENT_LOG (DS-WIDE-G, amendments 1 and 2). Structure coun
 No tag, feature, position, name or id is read, printed or saved. Specimens carry neutral labels only.
 
     python -I experiments/ds_wide_gate.py --out experiments/results_c17/ds_wide_gate_counts.json   # fetch + count
+    python -I experiments/ds_wide_gate.py --lead W2-4E --out experiments/results_c17/ds_wide_gate_4e_counts.json
     python -I experiments/ds_wide_gate.py --selftest                                              # toy forests + toy zip
 
 Fetch:
@@ -12,6 +13,8 @@ Fetch:
   W3: the one .mastodon file from its record (full GET, size and md5 checked against the record).
   File names are resolved at run time from the record listing, and are never printed or saved.
   Downloads go to data/ext_wide_g_tracks/raw under neutral names, with sha256 (and SHA256SUMS).
+  W2-4E (amendment 4): two members of one W2 zip by range, matched by path suffix: the single ground-truth Mastodon file
+      and the Cell Tracking Challenge man_track table (track id, begin, end, parent), used as an independent division count.
 """
 
 from __future__ import annotations
@@ -42,6 +45,9 @@ MIN_ARM = 5
 GATE_ELIGIBLE = 75  # 0.4 x eligible >= 30
 W2_REC, W3_REC = 15181497, 7296222
 W2_LIMBS = ("li13", "li15", "li48", "li51", "li52")
+E4_ZIP_PREFIX = "Suppl_data_4_"
+E4_MASTODON_SUFFIX = "Image_and_tracking_data/00_4E_ground_truth/4E.mastodon"
+E4_TRACK_SUFFIX = "CTC_tracking_results/00_4E/01_GT/TRA/man_track.txt"
 UA = {"User-Agent": "research-structure-check/1.0"}
 
 
@@ -341,6 +347,121 @@ def fetch_all(data_dir=DATA):
     return paths, log
 
 
+# ---------------------------------------------------------------- W2-4E (amendment 4)
+def member_by_suffix(members, suffix):
+    """The one member whose path ends with suffix (archive-metadata folders excluded). Names are never returned."""
+    hit = [m for m in members if not m["name"].startswith("__MACOSX") and m["name"].endswith(suffix)]
+    if len(hit) != 1:
+        raise RuntimeError(f"expected 1 member for a required path suffix, found {len(hit)}")
+    return hit[0]
+
+
+def man_track_counts(raw, min_arm=MIN_ARM):
+    """Cell Tracking Challenge table: whitespace-separated ints, one track per line (track id, begin, end, parent;
+    parent 0 = root). Division = parent track with exactly 2 daughter tracks. depth >= 1 = that parent has a parent."""
+    rows = []
+    for line in raw.decode("utf-8", "replace").splitlines():
+        if not line.strip():
+            continue
+        parts = line.split()
+        if len(parts) != 4 or not all(re.fullmatch(r"-?\d+", x) for x in parts):
+            raise RuntimeError("man_track line is not four integers")
+        rows.append(tuple(int(x) for x in parts))
+    tid = {r[0]: r for r in rows}
+    if len(tid) != len(rows):
+        raise RuntimeError("duplicate track ids in man_track")
+    daughters = collections.defaultdict(list)
+    for r in rows:
+        if r[3] != 0:
+            daughters[r[3]].append(r)
+    div = {p: d for p, d in daughters.items() if len(d) == 2}
+    deep = [p for p in div if p in tid and tid[p][3] != 0]
+    deep_long = [p for p in deep if all(d[2] - d[1] + 1 >= min_arm for d in div[p])]
+    return {"tracks": len(rows), "root_tracks": sum(1 for r in rows if r[3] == 0), "divisions": len(div),
+            "parents_with_gt2_daughters": sum(1 for d in daughters.values() if len(d) > 2),
+            "parents_with_1_daughter": sum(1 for d in daughters.values() if len(d) == 1),
+            "parent_ids_missing_from_table": sum(1 for p in daughters if p not in tid),
+            "depth_ge1_pairs": len(deep), "depth_ge1_pairs_both_daughters_ge_min_arm_frames": len(deep_long)}
+
+
+def cross_check(mastodon_divisions, track_divisions):
+    big = max(mastodon_divisions, track_divisions)
+    gap = abs(mastodon_divisions - track_divisions)
+    return {"mastodon_divisions": mastodon_divisions, "man_track_divisions": track_divisions,
+            "absolute_gap": gap, "agree_within_10pct_of_larger": gap <= 0.1 * big}
+
+
+def verdict_4e(spec):
+    if "counts" not in spec:
+        return "fail at L (reader validation)"
+    return ("pass, low replication (1 recording)" if spec["counts"]["eligible_pairs"] >= GATE_ELIGIBLE
+            else "fail (eligible pairs < 75)")
+
+
+def extract_4e(src):
+    """Both members from an open range source. Returns (mastodon bytes, man_track bytes, file log without names, size)."""
+    members, total = central_directory(src)
+    ms, tr = member_by_suffix(members, E4_MASTODON_SUFFIX), member_by_suffix(members, E4_TRACK_SUFFIX)
+    mb, tb = extract_member(src, ms), extract_member(src, tr)  # CRC32 and size verified inside
+    flog = {}
+    for lab, data in (("W2-4E", mb), ("W2-4E-man_track", tb)):
+        flog[lab] = {"bytes": len(data), "crc32_matches_directory": True, "sha256": hashlib.sha256(data).hexdigest(),
+                     "range_requests_for_archive": src.requests}
+    return mb, tb, flog, total
+
+
+def fetch_4e(data_dir=DATA):
+    data_dir.mkdir(parents=True, exist_ok=True)
+    rec = _json(f"https://zenodo.org/api/records/{W2_REC}")
+    hit = [f for f in rec["files"] if f["key"].startswith(E4_ZIP_PREFIX) and f["key"].endswith(".zip")]
+    if len(hit) != 1:
+        raise RuntimeError(f"zip with prefix {E4_ZIP_PREFIX}: {len(hit)} candidates")
+    src = HttpRange(hit[0]["links"]["self"])
+    mb, tb, flog, total = extract_4e(src)
+    if total != hit[0]["size"]:
+        raise RuntimeError("archive size differs from the record")
+    (data_dir / "W2-4E.mastodon").write_bytes(mb)
+    (data_dir / "W2-4E_man_track.txt").write_bytes(tb)
+    names = (("W2-4E", "W2-4E.mastodon"), ("W2-4E-man_track", "W2-4E_man_track.txt"))
+    (data_dir / "SHA256SUMS_4E").write_text("".join(f"{flog[k]['sha256']}  {n}\n" for k, n in names))
+    for k in sorted(flog):
+        print(f"sha256 {k} {flog[k]['sha256']} {flog[k]['bytes']} bytes")
+    return mb, tb, flog
+
+
+def count_4e(mb, tb, flog):
+    try:
+        rec = mastodon_read.read_mastodon(mb)
+        val = mastodon_read.validate(rec)
+        spec = {"validation": val}
+        if val["valid"]:
+            spec["counts"] = gate_counts(rec["frames"], rec["links"])
+    except Exception as e:  # structural detail only
+        spec = {"read_error": f"{type(e).__name__}: {str(e)[:300]}", "valid": False}
+    spec["file"] = flog["W2-4E"]
+    tr = man_track_counts(tb)
+    tr["file"] = flog["W2-4E-man_track"]
+    res = {"experiment": "DS-WIDE-G amendment 4 (W2-4E: one ground-truth recording)", "specimen": "W2-4E",
+           "recordings": 1, "min_arm_spots": MIN_ARM, "gate_eligible_pairs": GATE_ELIGIBLE,
+           "reader_pinned_commit": mastodon_read.PINNED_COMMIT, "per_specimen": {"W2-4E": spec},
+           "man_track": tr, "verdict": verdict_4e(spec),
+           "note": "counts only; no ids, positions, tags, features or file names; same-frame links are counted and excluded"}
+    if "counts" in spec:
+        res["cross_check"] = cross_check(spec["counts"]["divisions"], tr["divisions"])
+    return res
+
+
+def run_4e(out_path):
+    mb, tb, flog = fetch_4e()
+    res = count_4e(mb, tb, flog)
+    Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(out_path).write_text(json.dumps(res, indent=1), encoding="utf-8")
+    print(json.dumps({k: res[k] for k in ("verdict", "cross_check", "man_track") if k in res}, indent=1))
+    spec = res["per_specimen"]["W2-4E"]
+    print("W2-4E", json.dumps(spec.get("counts", spec.get("read_error"))))
+    return res
+
+
 # ---------------------------------------------------------------- gate
 def specimen(path):
     try:
@@ -481,6 +602,49 @@ def selftest():
             pass
         r = mastodon_read.read_mastodon(extract_member(src, sel["li13"]))
         assert gate_counts(r["frames"], r["links"])["links"] == 2
+    # W2-4E: man_track table (CRLF, blank line, a three-daughter parent, a one-daughter parent) and a toy zip with both members
+    mt = (b"1 0 5 0\r\n2 6 11 1\r\n3 6 11 1\r\n\r\n4 12 17 2\r\n5 12 14 2\r\n6 12 17 3\r\n7 12 17 3\r\n"
+          b"8 18 20 6\r\n9 18 20 6\r\n10 18 20 6\r\n11 0 9 0\r\n12 10 12 11\r\n")
+    tc = man_track_counts(mt)
+    assert (tc["tracks"], tc["root_tracks"], tc["divisions"], tc["parents_with_gt2_daughters"], tc["parents_with_1_daughter"],
+            tc["depth_ge1_pairs"], tc["depth_ge1_pairs_both_daughters_ge_min_arm_frames"],
+            tc["parent_ids_missing_from_table"]) == (12, 2, 3, 1, 1, 2, 1, 0), tc
+    try:
+        man_track_counts(b"1 0 5\n")
+        raise AssertionError("malformed row must fail")
+    except RuntimeError:
+        pass
+    assert cross_check(10, 11)["agree_within_10pct_of_larger"] and not cross_check(10, 12)["agree_within_10pct_of_larger"]
+    assert cross_check(0, 0)["agree_within_10pct_of_larger"]
+    tm = mastodon_read.toy_project(list(range(8)), [(i, i + 1) for i in range(7)])
+    base = "z/Suppl_data_4_t/"
+    mem = {base + E4_MASTODON_SUFFIX: tm, base + E4_TRACK_SUFFIX: mt,
+           "__MACOSX/" + base + E4_MASTODON_SUFFIX: b"x" * 176, "__MACOSX/" + base + E4_TRACK_SUFFIX: b"x" * 176,
+           base + "CTC_tracking_results/00_4E/02_GT/TRA/man_track.txt": b"1 0 5 0\n",
+           base + "Image_and_tracking_data/00_4E_ground_truth_x/4E.mastodon": tm, base + "other/readme.txt": b"hello" * 90}
+    buf4 = io.BytesIO()
+    with zipfile.ZipFile(buf4, "w", zipfile.ZIP_DEFLATED) as z:
+        for k, v in mem.items():
+            z.writestr(k, v)
+    zb = buf4.getvalue()
+    for variant in ("plain", "zip64"):
+        data = zb if variant == "plain" else _to_zip64(zb)
+        src = BytesRange(data)
+        mb, tb, flog, total = extract_4e(src)
+        assert total == len(data) and mb == tm and tb == mt, variant
+        assert flog["W2-4E"]["sha256"] == hashlib.sha256(tm).hexdigest() and flog["W2-4E-man_track"]["bytes"] == len(mt)
+        res = count_4e(mb, tb, flog)
+        assert res["verdict"] == "fail (eligible pairs < 75)" and res["per_specimen"]["W2-4E"]["counts"]["links"] == 7
+        assert res["cross_check"]["mastodon_divisions"] == 0 and res["cross_check"]["man_track_divisions"] == 3
+        assert not res["cross_check"]["agree_within_10pct_of_larger"], res["cross_check"]
+        txt = json.dumps(res)
+        assert "4E.mastodon" not in txt and "man_track.txt" not in txt and "Suppl_data" not in txt
+        try:
+            member_by_suffix(central_directory(src)[0], "no/such/path.txt")
+            raise AssertionError("missing suffix must fail")
+        except RuntimeError:
+            pass
+    assert verdict_4e({"counts": {"eligible_pairs": 75}}).startswith("pass") and verdict_4e({"valid": False}).startswith("fail at L")
     print("ds_wide_gate selftest: ok")
 
 
@@ -499,9 +663,12 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--out", default=str(HERE / "results_c17" / "ds_wide_gate_counts.json"))
+    ap.add_argument("--lead", choices=["W2-4E"], default=None, help="amendment 4: count the single 4E recording only")
     args = ap.parse_args()
     if args.selftest:
         mastodon_read.selftest()
         selftest()
+    elif args.lead == "W2-4E":
+        run_4e(args.out)
     else:
         run(args.out)

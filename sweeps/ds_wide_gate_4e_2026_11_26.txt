@@ -1,0 +1,2 @@
+# DS-WIDE-G amendment 4: count the single 4E ground-truth recording (2 members by HTTP range from one zip, about 2 MB; fetch, sha256 and counts in one job; counts only)
+[experiments/results_c17/ds_wide_gate_4e_counts.json] python -I experiments/ds_wide_gate.py --lead W2-4E --out experiments/results_c17/ds_wide_gate_4e_counts.json
