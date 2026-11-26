@@ -107,7 +107,11 @@ PARTITIONED = {
         "prior_exposure": "C12-S0: feature/cell structure; per-partition D20 unit counts (>= 3 cells); pooled assigned/ambiguous cell counts per sample; TRAIN-only presence/size of D20 clones in later samples; preprint design text (1,375 clones >= 3 cells "
                           "ex vivo, 160 in vivo, ~13 clones/mouse in chemo); no figures/outcomes read; QS1-L2-P1 (2026-11-24): the source abstract via the preprint-server API, "
                           "claims level (it states that clonal programs are linked with ex vivo self-renewal, in vivo initiation and treatment response); "
-                          "full text not reached (HTTP 520)",
+                          "full text not reached (HTTP 520); QS1-L2-P1 check 2 retry 3 (2026-11-26, Sonnet lane): full text read "
+                          "at claims level (46 headings, 9 figure titles, 7 matched sentences): design split of D20 cells into "
+                          "an in vivo arm and a D40 culture arm; a legend lists a clone-size correlation matrix across D20, "
+                          "in vivo and D40 (panel not read); D40 state linked to in vivo treatment response; no sentence "
+                          "relating D40 persistence to in vivo presence",
     },
     "petracer_embryo": {
         "salt": "cellware-petracer-embryo-v1",

@@ -13505,6 +13505,18 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - *Stop record:* on this step the Opus 5.5 session was stopped twice by the safety classifier (a delegation call to a web-fetch agent, then the reroute to the data lane). The read was finished on Sonnet 5.5. See E:\classifier_stop_report_2026-11-24.md.
 - **QS1-L2-P1 check 2, retry (2026-11-24, Bence: "go again"; Sonnet data lane):** both bioRxiv full-text URLs returned HTTP 429 (rate limited). Stopped with no further retries; nothing was extracted, and no repo file was touched by the lane. L2 stays parked and the source's D40 claims stay unchecked. The next try is no earlier than one day later, on Sonnet.
 - **QS1-L2-P1 check 2, retry 2 (2026-11-25, Bence: "1"; Sonnet data lane):** three GET pairs. Pair 1 returned 200 for both URLs, but the lane discarded the bodies unread. Pair 2's parser ran on a broken interpreter (a store stub), so nothing was parsed. Pair 3, with a parser pretested on a test string, returned HTTP 429 for both URLs. No page text was read or saved, so no new exposure; partitions.lsc_larry prior_exposure is unchanged. The fail criterion is still unanswered. The rate limit is intermittent (200 and 429 within minutes). Lesson for the next try: one fetch per URL into a pretested parser called with the uv Python and -I, with headers captured for Retry-After. L2 stays parked. Next try is no earlier than 2026-11-26, on Sonnet, together with the watch-list re-check.
+- **QS1-L2-P1 check 2, retry 3 (2026-11-26; Sonnet data lane, pretested parser, one GET per URL; Opus verdict):**
+  - *Fetch:* `.full-text` returned 429 (Retry-After 47 s), which was honoured; the one retry returned 302 to `.full`, whose single GET returned 200. The page was saved to the scratchpad only, never the repo.
+  - *Read:* claims level; 46 headings, 9 figure titles and 7 matched sentences, paraphrased, with no numbers or panels.
+  - *Findings:*
+    - The design splits D20 cells into an in vivo arm and a D40 culture arm.
+    - D40 state is linked to the in vivo treatment response, which is the state-mediated finding (C12, published in kind).
+    - A figure legend lists a clone-size correlation matrix across D20, in vivo and D40, shown as a panel with no interpreting sentence. The panel was not read.
+  - **Fail criterion: not met.** No sentence states that D40 persistence relates to in vivo presence.
+  - *Overlap stated:* the raw D40-to-in-vivo clone-size correlation is shown in kind as a panel. L2's "beyond D20 size and state" is not.
+  - *Decision rule:* recall passed, no in-kind paper was found, and the source states nothing about it. So the train-only estimate behind the size-only synthetic null may now be **offered**. It needs Bence's OK. L2 stays parked until then.
+  - *Exposure:* added to partitions.lsc_larry prior_exposure.
+  - The watch list was not re-run.
 - **QS1-L2-P1 check 2, mirror pretest (2026-11-25, Bence: "2"):** Europe PMC metadata only (ids and flags, no text). The two preprints are PPR944734 and PPR1059861, both with inEPMC N and isOpenAccess N; fullTextXML returned HTTP 500 for both. The mirror holds no full text, so it fails the pretest. No exposure. The next try stays on bioRxiv (2026-11-26).
 
 ## CAND-Z-P1: data gate of the 2026 mosaic-gastruloid competition study (2026-11-24; Bence: "Gate mosaic study")
@@ -14053,3 +14065,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
       - the pooling and residual checks passed.
     - The corrected diagnosis is confirmed on synthetic structure.
     - Sweep file `sweeps/qs_e5_power2.txt` is ready and not dispatched; it waits for the 2026-11-26 preprint read.
+- **QE1 amendment 2, order step 2: preprint read, attempt 1 (2026-11-26; Haiku lookup lane): UNREAD.**
+  - `.full-text` returned 429 (Retry-After 62 s). The lane then sent a second GET in parallel without waiting, which also returned 429. That breaks the honour-once rule; the deviation is recorded here.
+  - Nothing was read. `power2` is **not** dispatched.
+  - Next: one more attempt later today, with the wait actually applied before the single retry. If that also fails, the read moves to the next day.
