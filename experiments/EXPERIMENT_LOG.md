@@ -14413,3 +14413,9 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Every zip of the record has now been listed except the two deflated nested zips in `Suppl_data_8_*`, which hold tracking-failure tests.
   - **W2 FAIL is final** (4 eligible pairs across all 7 linked or spot projects).
 - **DS-WIDE-G closes:** W1, W2 and W3 all fail. There is no new counted-division system, and E5 and E3 (DS-EMB-G) remain the only passes. W4-W7 are ungated; W6 and W7 would start at stage L.
+- **Self-challenge correction (2026-11-26, advisor):** the amendment 4 self-challenge above did not use the project's fixed five questions. Answered here:
+  1. *Is anything suspicious?* No. Checked by reader validation and the three exact agreements with the deposit's lineage table.
+  2. *What else could explain it?* The recording is short (frames 18-72), so few cells divide twice inside it. Only 2 of the 56 divisions have an earlier division in their own lineage. The fail reflects recording length, not a lack of division memory.
+  3. *How many units carry it?* 1 recording, 277 trees; 1 tree carries the one eligible pair.
+  4. *Could used data have answered it?* This is an inventory gate, not a question. E5 (721 pairs) is already the used counted-division set.
+  5. *Is it already in the literature?* Not checked, as it is not needed at a structure fail.
