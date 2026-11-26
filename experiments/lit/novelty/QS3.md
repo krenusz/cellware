@@ -1,7 +1,7 @@
 # QS3 novelty check (H25, 2026-11-26)
 
 - Searched: the frozen claim-shaped queries from QS3 stage 2, run by the Haiku lookup lane on OpenAlex (15 per query, relevance) and PubMed E-utilities (up to 15 per query), 2026-11-26, returned unfiltered.
-  - All 63 abstract openings (700 characters) were read. Full abstracts were read for 19 hits in two more lookups, each with its DOI checked against the PMID.
+  - For each of the 63 hits I read the first ~400 characters of the stored 700-character opening. Full abstracts were read for 19 hits in two more lookups, each with its DOI checked against the PMID.
   - RF1 and RF2 used no queries: the source settled them at claims level (below).
   - The first run's PubMed DOI field did not match its PMIDs, so PubMed hits are listed by PMID.
   - Hit IDs, unfiltered:

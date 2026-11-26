@@ -14871,7 +14871,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - RF1 and RF2, source abstract (fetched by the lookup lane, PMID 32669716): it speaks of clones with distinct behaviour and a clone-intrinsic programme behind functional stem cell heterogeneity. It does not state the split-recipient comparison or the stem/progenitor balance, so both stay held rather than closed.
     - CO1: **partly published (in kind, other tissue).**
       - *Search:* the lookup lane ran the three frozen queries on OpenAlex and PubMed and returned 63 hits unfiltered. IDs are in lit/novelty/QS3.md.
-      - *Read:* the abstract openings of all 63, then full abstracts in two more lookups for 19. Those 19 are the most on-target hits, the 11 that came back without an abstract, and 3 whose openings stopped before their findings.
+      - *Read:* about the first 400 characters of each of the 63 abstracts (corrected after the verdict commit, which said whole openings), then full abstracts in two more lookups for 19. Those 19 are the most on-target hits, the 11 that came back without an abstract, and 3 whose openings stopped before their findings.
       - *Basis:*
         - 10.1038/nature11045 (normal heart development): the juvenile wall forms from several dozen cells in patches of variable size. The later outer muscle layer comes from about eight cells per animal that show clonal dominance. That is one fate lineage carried by a few large clones.
         - 10.64898/2026.10.01.753275 (regeneration context, preprint): a transient clonal expansion is required for cells to reach a regenerative state, so expansion is coupled to fate.
