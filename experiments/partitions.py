@@ -39,6 +39,9 @@ PARTITIONED = {
         "unit": "Annotation ID (one line scan = one gastruloid), Wnt hi/lo files of Apr/May 2025",
         "files": ["clone1_Wnt_04262025.csv", "clone3_Wnt_04262025.csv"],
         "sealed_on": "2026-11-07",
+        "prior_exposure": "tags and train counts per arm (partition step, 2026-11-07); G9b fitted Wnt models on "
+                          "train and saw the train mean polarity per clone and arm (normal / hi / lo); no sealed look logged. "
+                          "QS3 (2026-11-26, entry added then): logged counts and the 40% train share only",
     },
     "raj_morph_0831": {
         "salt": "cellware-rajmorph0831-v1",

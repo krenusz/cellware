@@ -14849,3 +14849,48 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - *H22:* arms hi and lo, assigned per gastruloid. At least 3 per arm per partition are needed.
     - *Novelty claim queries:* "Wnt level shifts clone position gastruloid axis"; "Wnt dose anterior posterior position mixed clones gastruloid"; "signalling level biases cell sorting position gastruloid".
   - *Replications:* none new. C14 on petracer:B is closed by C14-S5's power (0.60). C3 on raj_morph_0831:C is not computed (see stage 1).
+- **QS3 gates (2026-11-26; log, registry and committed lit files only; no data file opened, no count run):**
+  - *Corrections:*
+    - QS1's line "raj_wnt: train has 12, 7 and 2 per hi, lo and bulk arm" has the arm order wrong. The partition step and G9b give clone 1 normal (bulk) / hi / lo = 12 / 7 / 2. The verdicts below hold under either order.
+    - QS3 stage 1 (rf2020_clone units) ties "A 30 / B 31 / C 31; 61 as A+B" to the Kit+-filtered unit. Those are C17-S1's counts before the Kit+ drop. The Kit+-filtered unit has 36 in train (C17-S1 checks); at the 40% train share (C17-S0c: 4,774 of 11,936), that is about 18 per sealed partition and about 36 for A+B (expected, not counted).
+    - QS3 stage 1 (raj_wnt exposure) says G9 computed polarity "on the Wnt bulk files". G9b saw the train mean polarity per clone and arm (normal / hi / lo).
+  - **Gate 1, near-repeat:**
+    - RF1: not a repeat. C17-TSPLIT used the same unit with a lineage-bias readout; the source's expansion agreement is a size readout, and RF1 adjusts for size.
+    - RF2: not a repeat. No earlier question on the spread of the stem fraction.
+    - CO1: not a repeat. C17-TCORT used the non-targeting size by class only as a reference arm, and never ran on real data (smoke failed). CAND-E is a design study of knockdown shifts.
+    - **WN1: fail.** G9b already fitted Wnt models (no effect / one dose factor / clone-specific) on the same files and saw the train mean polarity per clone and arm. WN1 asks the same contrast on the same files. The frozen text noted G9 but did not catch this at stage 2.
+  - **Gate 2, H22:** RF1, RF2 and CO1 have no treatment contrast. WN1 is not reached. Its sealed per-arm counts stay undetermined, and raj_wnt leaves the batched ask.
+  - **Gate 3, readout (H21):**
+    - WN1 (recorded although gate 1 already failed): the hi versus lo split needs >= 30 per side (item 2). Train is 40% of units (partitions.py, 5 buckets), with 33 train units over three arms and two clones. Expected per sealed partition is about 5 hi and 3 lo; all three sealed partitions together give about 16 and 9. Fails under either arm order.
+    - RF1: item 4 gives about 18 per sealed partition and about 36 for A+B (expected; see corrections), and in train 30 of 36 come from one sample set (83%). Items 1 and 3 need a train-only scan and a two-model simulation, which are outside QS3's limits. **Open.**
+    - RF2: items 1 and 3 are open. A binomial null is weak, because neutral stochastic branching also overdisperses. Item 3's simulation would decide it, and none was run. **Open.**
+    - CO1: the frozen readout condition is **unresolved**. The claims-level read (lit/c17_source_claims_2026-11-18.md, section 2) describes fate-biased and dual-fate clone classes, which points to labels built from clone composition. It does not tie them to the `Clonal cluster` column. Settling it needs the source's methods text, which is past claims-level exposure for a sealed set's source, so it needs Bence.
+  - **Gate 4, novelty:**
+    - RF1: **partly published.** Basis: the source (doi 10.1038/s41586-020-2503-6), claims level, lit/c17_source_claims_2026-11-18.md section 3, which covers the split design into two secondary recipients, low-output clones, and potency as intrinsic and heritable through transplantation. Also lit/novelty/C17-S1.md on expansion and frequency agreement across split recipients (published at source) and on repopulation patterns propagating on serial transplantation (published in kind). *Not read:* how the source defines output, or whether its split comparison measured the stem/progenitor balance. Held in kind under decision 1.
+    - RF2: **partly published.** The claims file lists, for the same source, an equipotent-clone null model under design and many low-output clones under claims (section 3). It does not say that one was tested against the other, or on what readout. Clone-intrinsic heterogeneity of output is claimed in kind. Held in kind under decision 1.
+    - RF1 and RF2, source abstract (fetched by the lookup lane, PMID 32669716): it speaks of clones with distinct behaviour and a clone-intrinsic programme behind functional stem cell heterogeneity. It does not state the split-recipient comparison or the stem/progenitor balance, so both stay held rather than closed.
+    - CO1: **partly published (in kind, other tissue).**
+      - *Search:* the lookup lane ran the three frozen queries on OpenAlex and PubMed and returned 63 hits unfiltered. IDs are in lit/novelty/QS3.md.
+      - *Read:* the abstract openings of all 63, then full abstracts in two more lookups for 19. Those 19 are the most on-target hits, the 11 that came back without an abstract, and 3 whose openings stopped before their findings.
+      - *Basis:*
+        - 10.1038/nature11045 (normal heart development): the juvenile wall forms from several dozen cells in patches of variable size. The later outer muscle layer comes from about eight cells per animal that show clonal dominance. That is one fate lineage carried by a few large clones.
+        - 10.64898/2026.10.01.753275 (regeneration context, preprint): a transient clonal expansion is required for cells to reach a regenerative state, so expansion is coupled to fate.
+      - *Not stated:* neither tests clone size across fate classes, and no neural abstract read states it.
+      - Held in kind under decision 1. The readout condition stays unresolved, and the methods-read ask is moot while CO1 is held.
+      - *Other near hits:*
+        - 10.1016/j.neuron.2012.06.033: retinal clones are consistent with equipotent progenitors under stochastic lineage progression; a factor links fate choice to division mode in mutants.
+        - 10.1038/s41467-019-12791-5: cortical astrocyte clones vary in cell number and subtypes, with local environment likely setting both.
+        - 10.1111/cpr.13587: lineage trees with neuron loss in one progenitor branch.
+      - *Source:* its clone-size distributions are in extended data (claims file section 2), not read.
+      - *Recall is weak:* three queries, abstracts only.
+      - *Lookup note:* the first run's PubMed DOI field did not match its PMIDs. The second run checked each DOI against its PMID, so the DOIs above are verified.
+  - **Gate 5, power:**
+    - RF1 (for the record, since it is held): rho_power with fisher_sd sqrt(1.06) at the expected n. At about 18 per partition, 0.8 needs rho about 0.64 (0.6 gives 0.74). At about 36 for A+B, 0.8 needs rho about 0.47 (0.5 gives 0.87). The partial rho loses 2 df. No train estimate exists to compare against.
+    - RF2: not reached.
+    - CO1: not computed. The unit count (non-targeting clones with n_cells >= 5 per partition) is not in the log; the 283 non-targeting clones in A are the ceiling. Power waits on the readout condition.
+  - **QS3 verdict: no pass.**
+    - WN1 failed at near-repeat; it would fail readout too.
+    - RF1, RF2 and CO1 are partly published and held in kind under decision 1, which now holds five questions: QS2-N1, QS2-N2, QS3-RF1, QS3-RF2 and QS3-CO1.
+    - If decision 1 lets in-kind claims go ahead, CO1 first needs an OK for a methods read (how clone clusters are assigned, past claims level), then a structure count of non-targeting clones with n_cells >= 5 per partition.
+    - There is no batched data ask; raj_wnt is out of it.
+  - *Lesson:* stage 2 froze WN1 although stage 1 had recorded that G9 saw the train Wnt arms. A question whose contrast an earlier train run already computed is a near-repeat at stage 2, not at the gate.
