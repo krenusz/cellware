@@ -1,0 +1,81 @@
+{
+ "experiment": "DS-WIDE-G amendment 4 (W2-4E: one ground-truth recording)",
+ "specimen": "W2-4E",
+ "recordings": 1,
+ "min_arm_spots": 5,
+ "gate_eligible_pairs": 75,
+ "reader_pinned_commit": "87eb001fb36e1850203c30fc155928b4e21acd6a",
+ "per_specimen": {
+  "W2-4E": {
+   "validation": {
+    "n_spots": 13888,
+    "n_links": 13610,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 18,
+    "frames_max": 72,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 13888,
+    "links": 13610,
+    "same_frame_links_excluded": 0,
+    "divisions": 56,
+    "eligible_pairs": 1,
+    "track_trees": 277,
+    "isolated_spots": 1,
+    "trees_with_eligible_pair": 1,
+    "non_nested_eligible_pairs": 1,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 1,
+    "frame_range": [
+     18,
+     72
+    ],
+    "frame_hist_sha256": "b9a845399986e88ee48af46f400ec8536c5d03ae53e08c0ebdbc88ff70fd5952"
+   },
+   "file": {
+    "bytes": 1989406,
+    "crc32_matches_directory": true,
+    "sha256": "f85fc89f91618ce21a53bbe777c790e9b15cc2f49e633eb8557652ba33b73864",
+    "range_requests_for_archive": 6
+   }
+  }
+ },
+ "man_track": {
+  "tracks": 390,
+  "root_tracks": 278,
+  "divisions": 56,
+  "parents_with_gt2_daughters": 0,
+  "parents_with_1_daughter": 0,
+  "parent_ids_missing_from_table": 0,
+  "depth_ge1_pairs": 2,
+  "depth_ge1_pairs_both_daughters_ge_min_arm_frames": 1,
+  "file": {
+   "bytes": 4760,
+   "crc32_matches_directory": true,
+   "sha256": "a600c108b259f1c5bd79700a6cf4c40fd159e0a9c7c4478b1ef35c49a7612e41",
+   "range_requests_for_archive": 6
+  }
+ },
+ "verdict": "fail (eligible pairs < 75)",
+ "note": "counts only; no ids, positions, tags, features or file names; same-frame links are counted and excluded",
+ "cross_check": {
+  "mastodon_divisions": 56,
+  "man_track_divisions": 56,
+  "absolute_gap": 0,
+  "agree_within_10pct_of_larger": true
+ }
+}

@@ -14373,3 +14373,43 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Verdict:** >= 75 eligible pairs gives "pass, low replication (1 recording)"; fewer is a fail.
   - With one recording, no between-specimen test can come from W2 (H22). A pass only adds a counted-division regeneration system with one specimen to the inventory.
 - **Output and compute:** `results_c17/ds_wide_gate_4e_counts.json` holds counts only, plus sha256 per file. It runs on Actions via `./run_sweep.sh`. sealed.py `ext_wide_g_tracks` is extended to cover the two files.
+
+### DS-WIDE-G amendment 4 result (2026-11-26; run https://github.com/krenusz/cellware/actions/runs/45812685504; `results_c17/ds_wide_gate_4e_counts.json`, sha256 c3c43fda2c61; structure counts only)
+- **Lanes:** the Cellware Sonnet session wrote the `--lead W2-4E` code to the amendment and dispatched the run. It reported that no track file exists locally (repo, scratchpad and `.sweep_runs` checked by name). Opus reviewed, judged and committed.
+- **Reader:** the file is valid: version 0.3, leftover bytes 0, no same-frame, reversed or self links, acyclic. Its CRC32 matches the zip directory, as for the other seven files.
+- **Counts (W2-4E, 1 recording, frames 18-72):**
+  - 13,888 spots and 13,610 links;
+  - 277 trees and 1 isolated spot;
+  - 56 divisions;
+  - **1 eligible depth >= 1 pair**, in 1 tree; non-nested 1.
+- **Three agreements with the deposit's own lineage table:**
+  - divisions 56 = 56;
+  - root tracks 278 = 277 trees + 1 isolated spot = spots - links;
+  - tracks 390 = 278 + 2 x 56.
+
+  The table gives 2 depth >= 1 pairs, and 1 with both daughter tracks >= 5 frames, which matches the Mastodon count.
+- **Verdict: FAIL** (1 eligible pair, gate 75). There are only 56 divisions in total, below 75, so no depth or arm setting could pass. The rule is unchanged.
+  - W2 as a lead totals 4 eligible pairs (F5 3 + 4E 1), from 7 projects.
+- **Positive control for W3's zero:**
+  - The same reader in the same pipeline found F5's 16 divisions and 4E's 56.
+  - 4E's 56 match the deposit's own table exactly.
+
+  So W3's unbranched chains are in the data, not a reader fault.
+- **Self-challenge (five questions):**
+  1. *Could the result be an artefact?* Reader validation passed and three independent table agreements hold.
+  2. *Is the unit right?* One recording; trees are the only unit (277), and only 1 carries an eligible pair.
+  3. *Is the rule biased?* The 5-spot guard depends on the frame interval, which is unknown for 4E. Still, with 56 divisions in all, even a zero guard and depth 0 stay below 75.
+  4. *Is it published?* Not relevant at a fail.
+  5. *What would change the verdict?* Only a different deposit.
+- **Process note:** the advisor asked for two clarifications before the result: "fail at L" on a reader-validation failure, and the coverage status if 4E passed. They were not written before the result arrived. Neither branch was triggered (validation passed; 4E failed), so they are recorded here, not added to the amendment after the fact.
+- **Limits:**
+  - Whether 4E is a regenerating limb is unknown (the listing shows a tracking trade-off recording); the question is moot at a fail.
+  - The nested zips in `Suppl_data_8_*` are deflated and unlisted.
+- **Correction to the earlier "Next" in the DS-WIDE-G result:** item 1 (list `Suppl_data_4_*`) was done as the stage L completion and this amendment. Items 2-3 stand.
+- **W2 stage L, last two zips** (2026-11-26; Haiku lookup lane, names and sizes only; advisor: they had been set aside on their names alone):
+  - `Suppl_data_2_*` (3.6 GB, 47 members) holds 44 .tif projections and no other data.
+  - `Suppl_data_7_*` (57 MB, 23 members) holds 18 .tif files and one 166-byte counts text.
+  - Neither holds a tracking project, lineage table or track file.
+  - Every zip of the record has now been listed except the two deflated nested zips in `Suppl_data_8_*`, which hold tracking-failure tests.
+  - **W2 FAIL is final** (4 eligible pairs across all 7 linked or spot projects).
+- **DS-WIDE-G closes:** W1, W2 and W3 all fail. There is no new counted-division system, and E5 and E3 (DS-EMB-G) remain the only passes. W4-W7 are ungated; W6 and W7 would start at stage L.

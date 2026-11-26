@@ -67,7 +67,10 @@ DATASETS = {
                          "(one Mastodon project), 60 MB, downloaded only on GitHub Actions (run 45809145521, "
                          "2026-11-26, Bence: \"Gate W2, W3, W1\"), sha256 per file in results_c17/ds_wide_gate_counts.json. "
                          "Structure only (DS-WIDE-G); both leads failed the gate (no lineage links / no divisions), so "
-                         "no partition; tags and features never decoded; no image data downloaded.",
+                         "no partition; tags and features never decoded; no image data downloaded. Amendment 4 "
+                         "(Bence: \"Yes, count 4E\"): two more Zenodo 15181497 members (one ground-truth Mastodon "
+                         "project, its CTC lineage table; 2.0 MB) on Actions only (run 45812685504), sha256 in "
+                         "results_c17/ds_wide_gate_4e_counts.json; failed (1 eligible pair); no local copy of any track file.",
     "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
                     "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "
