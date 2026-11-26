@@ -14894,3 +14894,30 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - If decision 1 lets in-kind claims go ahead, CO1 first needs an OK for a methods read (how clone clusters are assigned, past claims level), then a structure count of non-targeting clones with n_cells >= 5 per partition.
     - There is no batched data ask; raj_wnt is out of it.
   - *Lesson:* stage 2 froze WN1 although stage 1 had recorded that G9 saw the train Wnt arms. A question whose contrast an earlier train run already computed is a near-repeat at stage 2, not at the gate.
+
+## QS3-CO1-M: methods read on how the cortical source assigns clone types (pre-registered 2026-11-26; Bence: "2", answering the offered "one-sentence read of how the CO1 source assigns clone types")
+- **Serves: C12 CLOSED.** It settles QS3-CO1's frozen readout condition: whether `Clonal cluster` is built from each clone's own cell composition. The answer decides whether CO1 can ever be a test, whatever decision 1 says.
+- **Exposure:** this goes past H25's claims-level limit for a sealed set's source, so it needs the OK quoted above. It is added to `partitions.cortical_clone` prior_exposure.
+- **Scope:**
+  - *Read:* the methods text only, from the published version (PMC12999477) or else the preprint (PMC12485932), via the Europe PMC full-text XML.
+  - *Extraction:* a script, not judgment, on methods sections only (`sec-type` "methods", or a section title containing "Method"). Case-insensitive.
+    - Pass 1: sentences containing "clonal cluster".
+    - Pass 2, only if pass 1 is empty: sentences matching `clon(e|es|al)|lineage|barcode` and also `cluster|classif|categor|assign`.
+    - Both passes drop sentences containing `cloned|cloning|subclon|plasmid|vector`.
+    - Returned: up to 10 sentences verbatim, the total match count, the methods subsection headings (claims level), and the PMC ID that served.
+    - The raw XML is never printed, returned or kept on disk.
+    - If both IDs give an HTTP error, it reports the status and stops: no publisher site, no workaround.
+  - *Not opened:* no results, figures, legends, tables or supplements, and no clone-size statement. The lookup lane (Haiku) runs the script and returns only those sentences.
+- **Rule, fixed now:**
+  - If the sentences say clone clusters or types come from the clone's own cells (their cell-type counts or proportions), CO1 fails its readout condition: H21 item 3, frozen at QS3 stage 2.
+  - If they come from something outside the clone's cells (for example a pre-assigned label), CO1 stays held under decision 1 and needs a structure count if decision 1 lifts.
+  - If the sentences don't settle it, CO1 stays unresolved and nothing more is read.
+- Pre-flight:
+  1. Unit: n/a (literature read).
+  2. Readout: methods sentences.
+  3. Used data first: the claims file (section 2) does not answer it.
+  4. Power: n/a.
+  5. Exposure: as above, logged.
+  6. Access: Europe PMC open full text.
+- Compute: one lookup-lane fetch, no Actions run.
+- Practice: neutral wording, with gene names paraphrased and none saved; PMC IDs, not titles; no outreach; the advisor before the dispatch and before the verdict.
