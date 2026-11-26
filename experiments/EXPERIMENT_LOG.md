@@ -14527,3 +14527,78 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - readout gate (H21) per question from logged counts.
 - Compute: local reads of the log and registry, plus lookup-lane queries (Europe PMC, OpenAlex); any power simulation goes to GitHub Actions through the Cellware Sonnet session.
 - Practice: neutral wording (SENSITIVE scan, plus a hand read because the filter misses gene names); DOIs, not titles; no outreach; advisor before the freeze commit and before the verdicts.
+- **QS2 stage 0 (2026-11-26; log reads only).** Both questions stay closed. They are reported here, not re-gated.
+  - **DNR-CLOCK-A:** its union power is already logged (C17-S1PL-P2): 0.63 at A+B pooled (27 founders), 0.29 at half effect. Below 0.8, so it stays dont_repropose.
+  - **C17-TCORT:** the 0.14-0.67 came from simulations, so union power needs a new simulation: **not computed**. It is also blocked by the estimator's failed floor-3 smoke (log ~12250), which needs an amendment 4 before any power. It stays underpowered.
+- **QS2 stage 1, re-triage under the new rules (registry and log only):**
+  - *Union possible (A, B and C unspent):* lsc_larry, crest_split_clone, rf2020_clone, cortical_clone, mouse_gast_tree, dtt_founder, germline_fish, growth12_host_v2, tls_tracer, raj_atac, raj_diffassay, raj_wnt, gse291244_founders.
+  - *No union (2 left):* chspctrack, resistrace, petracer_embryo. *Only C left:* celltag_lsk, celltag_reprog, raj_morph_0831.
+  - *Still out, world or validity:*
+    - raj_atac and raj_diffassay: 2 units even as a union, H22.
+    - germline_fish: the train readout itself was not estimable (CAND-I-T1R: 4 of 8 fish usable), so a union does not help.
+    - tls_tracer: units 70-1,000 times smaller than C14's embryos (CAND-Y).
+    - gse291244_founders: outcome exposure.
+    - growth12_host_v2: C14 transfer train effect about 0 (C15); other questions are allowed.
+  - *raj_wnt:* sealed per-arm counts are unknown. Batched into the data-step ask.
+  - *Interpretation of the replication rule (Opus, labelled, for Bence to confirm):*
+    - "Independent assignment units" is read at the level where the claim's contrast is assigned.
+    - For C7 and C8, which are clone-level claims with no treatment contrast, clones in another partition are independent units.
+    - For C10, the treatment was assigned per library, so resistrace B (same libraries) is **not** independent.
+- **QS2 stage 2, frozen question list (2026-11-26).**
+  - *Sources:* replications of our own results, a held carried item, and new questions from the gap map's open groups (`timelapse_lineage`, `sister_split`, `fate_memory`) and the long-term morphogenesis goal.
+  - *Exposure:* none of the new questions was prompted by a train outcome. mouse_gast_tree has had only structure counts and a train power run with planted effects (QE1).
+  - *Replications (all "partly", so held for Bence as one batched ask; power from the spent look's out-of-sample effect):*
+    - **QS2-R1, chspctrack:B:** C7 heritable fate share (G_early). Spent A gave G 0.398, 95% CI 0.126-0.669, n 122. B is not the last partition.
+    - **QS2-R2, celltag_lsk:C (last partition):** C8 T1, early RNA predicts the clone's later split. Spent B gave rho 0.45, 95% CI 0.32-0.57, n 153.
+    - **QS2-R3, celltag_reprog:C (last partition):** C8 T3, early RNA predicts reprogramming success. Spent B gave rho 0.59, n 105.
+    - *Not frozen:*
+      - resistrace B (C10; not independent, as above);
+      - petracer_embryo B (C14; embryos are independent, but logged B power is 0.60, C14-S5);
+      - raj_morph_0831:C (no written question).
+  - *Carried held item:* CAND-A (C14 transfer to dtt_founder founder clades; novelty "partly", lit/novelty/CAND-A_cross_recorder.md). Not re-gated; it joins the batched ask.
+  - *New questions (QS2-N):*
+    - **QS2-N1, mouse_gast_tree:** in tracked gastrulating embryos, does lineage relatedness predict where cells end up, beyond where they started? This is clonal coherence versus mixing, the long-term morphogenesis claim H-a with measured positions. Unit: track tree, stratified by movie. Contrast: within embryo.
+    - **QS2-N2, mouse_gast_tree:** is the division axis (the direction in which sisters separate) inherited from mother to daughters, beyond the local tissue axis? This is division-orientation memory across generations. Unit: track tree. Contrast: within tree.
+    - **QS2-N3, crest_split_clone:** does a clone's size in the in vivo arm track its size in the organoid arm, beyond embryo and sampling? This is growth heritability across environments for the same clone. Unit: split clone, stratified by embryo.
+    - **QS2-N4, growth12_host_v2:** do sister subtrees of one clone grow at similar rates, beyond host, i.e. growth memory along the lineage? Unit: host. Contrast: within host.
+- **QS2 amendment 1 (2026-11-26, before any gate; advisor review of the uncommitted list):**
+  - **Gate order, amended:** near-repeat, H22, readout (H21), novelty, then power. The logged-count gates run before the novelty searches, to save searches on questions that fail on counts.
+  - **Replication eligibility, both readings:**
+    - *Strict reading* (the program.md text "not the same libraries, wells or animals split by hash"):
+      - R1 is eligible: chspctrack clones are single-cell-derived clones in their own wells.
+      - R2 and R3 are not: celltag clones share libraries.
+      - resistrace B is not either.
+    - *Contrast-level reading* (Opus, labelled):
+      - R1, R2 and R3 are eligible.
+      - **resistrace B as well (added as QS2-R4).** C10-S2 is a lineage-level prediction with library as a covariate (log ~10809), so my earlier exclusion was wrong under this reading.
+    - All of R1-R4 are frozen as **"eligibility pending Bence"**.
+    - Their power is **not computed** until the sealed counts are read (batched ask below).
+  - **Batched data-step ask (Opus-added, labelled):** read structural counts only (no outcome), through the oracle's count code or the seal maps, for chspctrack:B on the C7 statistic's unit, celltag_lsk:C, celltag_reprog:C, resistrace:B and raj_wnt (per arm). This needs Bence's OK.
+  - **Cost line for R2 and R3:** each would spend a set's last partition on a confirmation. Bence: "be precious about the holdout sets, better keep more". They are not the pick.
+  - **Estimands, fixed now** (unit / readout / comparison):
+    - **N1:**
+      - *Unit:* track tree, stratified by movie.
+      - *Readout:* for each depth >= 0 sister pair, the distance between the two arms' last positioned spots (final separation).
+      - *Comparison:* the same distance for non-sister control pairs from other trees in the same movie, matched on birth frame (+-2 frames) and on birth separation (same decile).
+      - *Statistic:* the mean over trees of the log ratio of sister to matched-control final separation, one-sided < 0.
+    - **N2:**
+      - *Unit:* track tree.
+      - *Readout:* the division axis (unit vector between the daughters' first positions) for each mother division and each daughter division (depth >= 1).
+      - *Comparison:* |cos(mother axis, daughter axis)| against |cos(neighbour axis, daughter axis)|, where the neighbour is a non-relative division in the same movie within the same frame window (+-2) and the nearest-neighbour distance band. This controls for the local tissue axis.
+      - *Statistic:* the mean difference, one-sided > 0.
+    - **N3:**
+      - *Unit:* split clone, stratified by embryo.
+      - *Readout:* the log cell count in each arm.
+      - *Comparison:* Spearman rho within embryo against a sampling null, in which each clone's cells are binomially thinned from its pooled total at the arm's capture share.
+      - *Readout risk:* the median is about 4 cells per arm, the regime that failed QS1-C1.
+    - **N4:**
+      - *Unit:* host.
+      - *Readout:* the log leaf counts of the two child subtrees at each internal node of each clone tree.
+      - *Comparison:* the sister-subtree size correlation against a neutral birth-death null with the clone's own tree size and depth, within host.
+      - *Statistic:* the excess over the null, one-sided > 0.
+  - **Serves, per question** (the practice line Bence approved):
+    - **N1 and N2** serve the long-term goal's morphogenesis element: how cells sharing local rules build a patterned tissue (program.md Goal).
+      - *Reconciled with QE2:* QE2 was dropped under H16 when QS-E5 served C17's counted-division parameters. QS2 serves the reserve search toward the long-term goal, where tissue building is named.
+      - *Caution:* QE2's row notes that the source publishes sister trajectory similarity. N1 (final separation of sisters) is close to that, and the novelty gate decides it. N1's row is corrected to say so.
+    - **N3 and N4** serve the core model's selection (growth) term: chapter 1 found clone-level selection, and these test whether growth is a clone-intrinsic, heritable property. If Bence reads that as outside the goal, they stop (H16).
+  - **Correction to RETRO_2026-11-26 (registry facts, found here):** raj_diffassay has only partition A, and raj_atac has only A and B (fixed maps). So the unspent partitions are **45, not 48**, and the sets with A, B and C all unspent are **11, not 13**. The coverage table lists ABC for every set; that display is noted for a later fix.
