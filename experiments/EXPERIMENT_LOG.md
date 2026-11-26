@@ -14227,3 +14227,23 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Automated tracks can over-split (as in E3); the 5-spot guard is the only filter.
 - Practice: neutral wording (titles stay out of saved files); downloads go to their own directories and are read with python -I; no outreach; one GET per URL, and honour Retry-After once.
 - Compute: local listings and track-file downloads (the DS-EMB-G precedent); structure counts only. Routing: Haiku lookup lane for stage L, Opus for the mapping, Sonnet data lane for fetch and counts.
+
+### DS-WIDE-G amendment 1 (written 2026-11-26 during stage L, before any listing was read; advisor review)
+- **Native tracking projects (W3, maybe others):** a Mastodon or MaMuT project with no CSV or XML export passes L if its spot and link store can be read by an existing open-source reader or from the published open format. That needs a custom reader, not new tracking.
+  - The reader is validated before any count:
+    - spot and link totals must match any count stored in the project;
+    - every link must join a spot to a later frame;
+    - there must be no cycles.
+  - If no reader passes this check, the lead fails at L.
+- **Header read for the mapping:** order step 2 may use a byte-range read of a track file's header or attribute names, as in DS-EMB-G stage L. It opens a data file, so the Sonnet data lane does it, never Haiku or Opus. Only names and types are saved.
+- **Bundled archives:** if the tracks sit inside a zip with images, only the track member is fetched, by HTTP range (central directory, then the member). If the server refuses range reads and the archive is over 2 GB, the lead stops for Bence's OK.
+- **Compute:** the DS-EMB-G local run was a deviation from the standing rule, so downloads and counts run on GitHub Actions via `./run_sweep.sh`, dispatched by the Sonnet lane, with sha256 computed in the job and the run URL logged. The header reads for the mapping are small range reads and run locally.
+- **Counts fixed now, per specimen:**
+  - divisions;
+  - eligible pairs;
+  - track trees (connected components);
+  - trees with >= 1 eligible pair;
+  - non-nested eligible pairs (no eligible ancestor).
+- **Duplicates:** specimens are compared by spot and edge counts and frame histograms. An identical pair counts once (the Movie3/Movie5 lesson).
+- **W2 unit:** animals are reported as well as legs. Legs of one animal are not independent, so the low-replication line (< 3) applies to animals.
+- **W1 overlap:** W1 is checked against the E3 source family (same lab or acquisition) from repository metadata. If it overlaps, it is reported as the same family.
