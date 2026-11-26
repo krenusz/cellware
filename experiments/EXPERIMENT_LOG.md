@@ -14357,3 +14357,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Count with the same reader and rule; the `man_track.txt` parent column serves as a cross-check on divisions.
   - Specimen = 1 recording.
   - Verdict at most "pass, low replication". The variants and tracker outputs are not counted.
+
+### DS-WIDE-G amendment 4 adopted (2026-11-26; Bence: "Yes, count 4E"; written before any 4E file is fetched)
+- **Files:**
+  - `Suppl_data_4_*/Image_and_tracking_data/00_4E_ground_truth/4E.mastodon` (2.0 MB);
+  - `Suppl_data_4_*/CTC_tracking_results/00_4E/01_GT/TRA/man_track.txt` (4.8 KB).
+
+  Both are fetched by HTTP range from zenodo:15181497. Nothing else from the zip is fetched: no variants, tracker outputs, images or weights.
+- **Count:**
+  - Same reader, validation (amendment 3) and rule as W2/W3: divisions, eligible depth >= 1 pairs with arms >= 5 spots, trees, trees with an eligible pair, non-nested eligible pairs.
+  - Specimen label W2-4E, 1 recording.
+- **Cross-check:** `man_track.txt` (Cell Tracking Challenge format: track id, begin frame, end frame, parent id) gives a division count independently. It counts parents with exactly 2 daughter tracks, and depth >= 1 pairs where the parent itself has a parent.
+  - Agreement within 10% with the Mastodon count is reported.
+  - A larger gap is reported, not reconciled. The Mastodon count is the registered one.
+- **Verdict:** >= 75 eligible pairs gives "pass, low replication (1 recording)"; fewer is a fail.
+  - With one recording, no between-specimen test can come from W2 (H22). A pass only adds a counted-division regeneration system with one specimen to the inventory.
+- **Output and compute:** `results_c17/ds_wide_gate_4e_counts.json` holds counts only, plus sha256 per file. It runs on Actions via `./run_sweep.sh`. sealed.py `ext_wide_g_tracks` is extended to cover the two files.
