@@ -14455,3 +14455,29 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - readout gate (H21) = the gate.
 - Compute: listings and header reads local (small range reads); fetch and counts on GitHub Actions via `./run_sweep.sh`, sha256 printed in the job log. Routing: Haiku lookup lane for stage L and the family check; Opus for rules and mapping; the Cellware Sonnet session for header reads, code to spec, dispatch and collection.
 - Practice: neutral labels only (W6-*, W7-*) in saved outputs; scan with lit_gap.SENSITIVE; python -I on downloads in their own directories; one GET per URL, honour Retry-After once; no outreach; advisor before dispatch and before the verdict.
+
+### DS-WIDE-G2 stage L result (2026-11-26; Haiku lookup lane; record metadata and file lists only; listings and flags in the scratchpad)
+- **Access:** the Dryad record and file-list endpoints answer. The file download endpoint answered **401 Unauthorized** on the first range test (W6). By the registered rule the lane stopped: no other URL, browser, account or token was tried. The README files (W6 669 B, W7 6.6 KB) are unread for the same reason.
+- **Substitute for the READMEs:** the records' own abstract and methods fields, reduced to the registered flags. Nothing of the text was saved.
+- **W7 (dryad.nk98sf823; CC0; 2024-12-12; Gladstone Institutes, University of Pennsylvania; companion to a protocol paper): FAIL at L, no track file in this deposit.**
+  - All 31 of 31 files are listed, and none is a container archive: 10 compressed raw light-sheet stacks (`.czi.bz2`, about 2.5 GB each), 20 fused `.klb` stacks (10 time points x two series, `_s00`/`_s01`) and a README.
+  - The record text describes images only: one mouse embryo, 3 h, 18-min interval, with no tracking or lineage column described.
+  - The finding that the files are images rests on their extensions and the record text; the README is unread.
+  - *Family check against E5 (S-BIAD1682, UCL, 2025):* no on the compared fields (affiliations, related DOIs, dates). This is not a full rule-out, since the preprint's author affiliations were not fetched. No W7 byte was fetched, so it decides nothing.
+- **W6 (dryad.f1vhhmh26; CC0; 2023-04-13; Nagoya, Tokyo and Yale universities; primary article doi 10.1126/sciadv.adf1814): NOT GATED, access blocked.**
+  - 2 files: `celltracks.xlsx` (106 MB) and a README.
+  - Record flags: zebrafish tailbud; tracks from Imaris; 3-min interval for up to 3 h; embryo count not stated. No parent, division, lineage or track-id column is described.
+  - This is the second zebrafish tailbud lead (W1 failed at L).
+- **Self-challenge (fixed five, W7):**
+  1. *Anything suspicious?* No. File names, sizes and the record text agree on images only.
+  2. *Other explanations?* Tracks could sit outside this deposit. Neither related identifier (the protocol DOI 10.1016/j.xpro.2024.103515, or the PubMed-linked article 36736300) was searched.
+  3. *Units?* 1 embryo.
+  4. *Used data?* Not applicable (inventory gate).
+  5. *Literature?* The protocol paper publishes the method; not needed at a fail.
+
+### DS-WIDE-G2 amendment 1 (written 2026-11-26, before any W6 byte is seen)
+- **Fetch:** W6 is fetched only if Bence downloads `celltracks.xlsx` himself and gives the path, or names another route. A local file goes in its own directory (`data/ext_wide_g2_w6/raw`), with sha256 and a sealed.py entry "structure only until partitioned". A local count then needs his OK under the compute rule.
+- **Schema read:** sheet names, plus the first rows of each sheet up to and including the column-name row (exports often put a title or separator row above it), with at most 10 rows read per sheet. It is done by the Cellware Sonnet session with python -I. Only names are saved, and sheet names that look like a gene or a condition are masked.
+- **Early stop:** no column identifies a track or parent, or a division in some other way (for example a parent id, a split flag, or branch ids within a track) means FAIL at schema. A column mapping amendment comes before any count.
+- **If Bence declines, or no route opens:** W6 is `parked` in COVERAGE with "access blocked", not `failed_gate`.
+- **Prior, not evidence:** 3 h at a 3-min interval is about 60 frames, a frame count similar to 4E's 55. In 4E only 2 of 56 divisions had depth >= 1, but 4E's frame interval is unknown, so the two cannot be compared in time. What decides W6 is whether the table carries division links, and only the schema read shows that.
