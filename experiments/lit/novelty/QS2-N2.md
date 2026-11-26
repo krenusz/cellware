@@ -1,6 +1,6 @@
 # QS2-N2 novelty check (H25, 2026-11-26)
 
-- Searched: OpenAlex classic search (novelty_search.py functions, run by the Haiku lookup lane from a scratchpad driver), 2026-11-26, two rounds.
+- Searched: OpenAlex classic search (novelty_search.py functions, run by the Haiku lookup lane from a scratchpad driver), 2026-11-26, three rounds.
   - Round 1 queries: "division orientation inheritance", "spindle orientation daughter cells", "oriented cell division gastrulation", "cell division axis epiblast". Top 25 titles screened per query. All 10 most related abstracts read (7 via OpenAlex, 3 via PubMed).
   - Round 2 (advisor: round 1 mostly probed tissue-level orientation, not the claim) queries: "successive division orientation", "division axis memory", "mother daughter spindle orientation", "consecutive cell divisions orientation correlation", "division plane previous division". Top 25 titles screened per query. 5 more abstracts were checked: 4 were read and 1 had no abstract (doi 10.1007/bf00284884).
   - Round 2's title screen skipped the centrosome, neuroblast and plant hits as off-topic. That was the lookup lane's call; under the any-system rule they are on-topic. The rest stay unread.

@@ -14651,6 +14651,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
         - 0.82 at A's n; power 0.8 needs **at least 116 units on B**.
         - At 0.75 of the A effect (a winner's-curse margin), it needs 207.
         - This is marginal, so the count decides.
+        - Inputs were checked against `test_ledger.tsv` (C7-S7c, chspctrack:A, G_rna: n 122, G 0.398, CI 0.126-0.669).
+        - The B count for C7's unit is not logged. The nearest logged B count is 121 units for the C9-S0 subset (exps 1 + 7), which is a different unit definition.
+        - *Cost:* a look spends chspctrack:B and leaves C as the last partition. It is also the partition that decision 3's T2 (DNR-HSPC-COND) would need.
+      - *R2 and R3, no-data thresholds* (`power.rho_power`, Fisher sd sqrt(1.06), from the logged B results):
+        - R2 (celltag_lsk:C) needs 39 units for 0.8, or 71 at 0.75 of the effect.
+        - R3 (celltag_reprog:C) needs 22, or 40.
+        - Both spend a last partition and fail the strict replication reading (shared libraries), so they are put to Bence by name and are not the pick.
     - CAND-A: partly published.
   - **Fail:** N3 and N4 (readout).
   - **Stage 0:** DNR-CLOCK-A stays (union 0.63). C17-TCORT is not computed and is blocked by its estimator smoke.
