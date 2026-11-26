@@ -1,0 +1,2 @@
+# DS-WIDE-2026-11-26: repository sweep widened to all organisms with embryo, larva or regeneration context (metadata only; result scrubbed at write time)
+[experiments/results_c17/c17_data_sweep_wide_2026-11-26.json] python experiments/c17_data_sweep.py --scope wide --out experiments/results_c17/c17_data_sweep_wide_2026-11-26.json

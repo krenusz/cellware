@@ -14069,3 +14069,44 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - `.full-text` returned 429 (Retry-After 62 s). The lane then sent a second GET in parallel without waiting, which also returned 429. That breaks the honour-once rule; the deviation is recorded here.
   - Nothing was read. `power2` is **not** dispatched.
   - Next: one more attempt later today, with the wait actually applied before the single retry. If that also fails, the read moves to the next day.
+
+## DS-WIDE-2026-11-26: repository sweep widened to all organisms with embryo, larva or regeneration context (pre-registered 2026-11-26; Bence: "widen the search for other organisms tedpoles for examples")
+- **Serves: C12 CLOSED.** Feeds the counted-division and lineage-tree systems needed by C17-STAGE and C17-LAW.
+- **Why:** yesterday's DS-EMB already covered Xenopus, axolotl and the word "tadpole". It returned 6 records with a frog organism field and none of them became a candidate, so tadpoles were searched, not missed. Two filters were the bottleneck:
+  1. every imaging query required the word "lineage" or "clonal";
+  2. `process()` dropped any record without the lineage flag. Track deposits (E3 and E5 were the only gate passes) often carry neither word.
+- **Changes (`c17_data_sweep.py --scope wide`; the other scopes are unchanged and the selftest checks that):**
+  - *Organisms (rank by closeness to human, extended):*
+    - Ranks 1-3 as before, plus 8 more vertebrates at rank 3: newt, lamprey, cavefish, killifish, quail, lizard, catshark, stickleback.
+    - Rank 4, other chordates: Ciona x2, Phallusia, Oikopleura, amphioxus x2.
+    - Rank 5, other invertebrates: C. elegans, Drosophila, two sea urchins, Platynereis, Parhyale, Nematostella, planarian, Hydra, Tribolium.
+  - *Tracking path:* a new wide-only flag `tracking` (cell tracking, light-sheet, MaMuT, Mastodon, TrackMate, Ultrack, TGMM, lineage tree, time-lapse, live imaging). A record is kept with the lineage **or** the tracking flag.
+  - *Regeneration:* a new wide-only flag `regeneration` (regenerat*, blastema).
+  - *Candidate rule:* new record, with an embryo or regeneration flag, plus one of split/memory, tree/natural mark, imaging or tracking.
+  - *Queries:*
+    - GEO: lineage terms x non-mammals, tracking terms x all organisms, lineage x regeneration.
+    - Zenodo: tracking x context, lineage x named organisms, lineage x regeneration.
+    - BioImage Archive: tracking x embryo, tracking x regeneration.
+    - ArrayExpress: lineage x named organisms, lineage tracing x regeneration.
+    - figshare (capped screen 4 x 500), Dryad and SCP: four plain phrases.
+    - CELLxGENE is not repeated (its full collection list was screened yesterday).
+  - *Attrition:* raw hits, excluded domain, no keep flag and kept are saved, plus the GEO hit count per organism per query. Zero GEO hits for a major model organism is read as a possible name error, not an absence.
+  - *Hygiene at write time:* the saved result has no titles or summaries, and study families are hashed. Titles for the screen are fetched afterwards for candidate accessions only, by the lookup lane, into the scratchpad.
+- **Completeness and recall:**
+  - Complete if every non-capped query fetched all its hits with no error.
+  - Recall (regression): GSE105010 and zenodo:3840470 must come back, as both did on 2026-11-25.
+  - Per-arm positives: the lookup lane searched for one data-availability accession per new arm (amphibian, other chordate, invertebrate). It found **no known positive** in any arm, and several of its calls failed on transport errors.
+  - So the per-arm recall is untested, and an empty arm cannot be read as absence.
+- **After the run:**
+  - Candidates are listed by rank, then score; the title screen is done by Opus from the scratchpad titles.
+  - Leads go to a structure gate (DS-EMB-G rules) only with Bence's OK.
+  - Duplicates of DS-EMB records are marked by accession against `c17_data_sweep_embryo_2026-11-25.json`.
+- Pre-flight:
+  - unit = a public dataset record;
+  - readout = repository metadata only, no data file;
+  - used data = none;
+  - power = not applicable (inventory);
+  - exposure = titles and summaries of public records only, none of a sealed set's source beyond what is logged;
+  - outreach = none.
+- Compute: GitHub Actions via `./run_sweep.sh sweeps/ds_wide_2026_11_26.txt`, dispatched by the Sonnet lane; the selftest runs locally.
+- Practice: neutral wording, with the result scrubbed at write time; scan with lit_gap.SENSITIVE before commit; selftest before the run; no outreach; the 26 Nov preprint fetch lesson applies (one GET per URL, honour Retry-After once).

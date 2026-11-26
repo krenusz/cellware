@@ -17,6 +17,7 @@ Sources: NCBI GEO (E-utilities, db=gds), Zenodo (records API), EBI BioStudies (A
 from __future__ import annotations
 
 import glob
+import hashlib
 import json
 import os
 import re
@@ -123,7 +124,52 @@ TEXT_QUERIES_EMBRYO = {  # figshare, Dryad and the Single Cell Portal take plain
     "imaging_lineage": '"cell tracking" lineage embryo',
 }
 RECALL_EMBRYO = ["GSE105010"]  # zebrafish embryo scar-array trees (C17-S1G): must come back, else incomplete
-SCOPE = "default"  # "embryo" with --scope embryo
+SCOPE = "default"  # "embryo" with --scope embryo, "wide" with --scope wide
+
+# Wide scope (DS-WIDE-2026-11-26; Bence: "widen the search for other organisms tedpoles for examples"): every
+# organism with an embryo, larva or regeneration context; tracking deposits are kept even without a lineage word.
+VERT_EXTRA = ["Pleurodeles waltl", "Petromyzon marinus", "Astyanax mexicanus", "Nothobranchius furzeri",
+              "Coturnix japonica", "Anolis carolinensis", "Scyliorhinus canicula", "Gasterosteus aculeatus"]
+CHORDATE = ["Ciona intestinalis", "Ciona robusta", "Phallusia mammillata", "Oikopleura dioica",
+            "Branchiostoma floridae", "Branchiostoma lanceolatum"]
+INVERT = ["Caenorhabditis elegans", "Drosophila melanogaster", "Strongylocentrotus purpuratus", "Lytechinus variegatus",
+          "Platynereis dumerilii", "Parhyale hawaiensis", "Nematostella vectensis", "Schmidtea mediterranea",
+          "Hydra vulgaris", "Tribolium castaneum"]
+RANK.update({**{o: 3 for o in VERT_EXTRA}, **{o: 4 for o in CHORDATE}, **{o: 5 for o in INVERT}})
+NONMAMMAL = OTHER_VERT + VERT_EXTRA + CHORDATE + INVERT
+ALL_ORGS = HUMAN_MOUSE + MAMMALS + NONMAMMAL
+TRACK_TERMS = ('("cell tracking" OR "light-sheet" OR "light sheet" OR "live imaging" OR "time-lapse" OR "4D imaging" '
+               'OR MaMuT OR Mastodon OR TrackMate OR Ultrack OR TGMM OR "lineage tree" OR "cell lineage")')
+REGEN_TERMS = "(regenerat* OR blastema)"
+CTX_TERMS = f"({EMB_TERMS[1:-1]} OR regenerat* OR blastema)"
+GEO_QUERIES_WIDE = {  # name: (query, organisms)
+    "lineage_nonmammal": (f"{LIN_TERMS} AND {CTX_TERMS}", NONMAMMAL),
+    "tracking_all": (f"{TRACK_TERMS} AND {CTX_TERMS}", ALL_ORGS),
+    "regeneration_lineage": (f"{LIN_TERMS} AND {REGEN_TERMS}", ALL_ORGS),
+}
+ORG_WORDS = ("(Xenopus OR tadpole OR axolotl OR newt OR Pleurodeles OR lamprey OR Ciona OR ascidian OR amphioxus OR "
+             '"sea urchin" OR Platynereis OR Parhyale OR Nematostella OR planarian OR Hydra OR Drosophila OR '
+             '"C. elegans" OR Tribolium OR medaka OR killifish OR cavefish OR quail OR lizard OR shark)')
+ZENODO_QUERIES_WIDE = {
+    "tracking_context": '("cell tracking" OR "light-sheet" OR MaMuT OR Mastodon OR TrackMate OR Ultrack OR TGMM OR '
+                        '"lineage tree") AND (embryo OR tadpole OR larva OR regeneration OR blastema)',
+    "lineage_organisms": f'("lineage tracing" OR "cell lineage" OR "cell tracking" OR "lineage tree") AND {ORG_WORDS}',
+    "regeneration_lineage": '("lineage tracing" OR "cell lineage" OR "cell tracking") AND (regeneration OR blastema)',
+}
+EBI_QUERIES_WIDE = {
+    "tracking_embryo": ("BioImages", '(tracking OR "light-sheet" OR "live imaging") AND (embryo OR larva OR tadpole)'),
+    "tracking_regeneration": ("BioImages", "(tracking OR lineage) AND (regeneration OR blastema)"),
+    "lineage_organisms": ("arrayexpress", f'"cell lineage" AND {ORG_WORDS}'),
+    "regeneration_lineage": ("arrayexpress", '"lineage tracing" AND regeneration'),
+}
+TEXT_QUERIES_WIDE = {
+    "tracking_embryo": '"cell tracking" embryo',
+    "tracking_regeneration": '"cell tracking" regeneration',
+    "lineage_regeneration": '"lineage tracing" regeneration',
+    "lineage_tadpole": '"cell lineage" tadpole',
+}
+RECALL_WIDE = ["GSE105010", "zenodo:3840470"]  # regression checks (both came back on 2026-11-25); arm positives below
+RECALL_WIDE_ARMS = {}  # filled from the lookup lane's data-availability accessions before the run, else "none known"
 
 GEO_BASE = '("2019"[PDAT] : "3000"[PDAT]) AND gse[ETYP] AND ("Homo sapiens"[ORGN] OR "Mus musculus"[ORGN])'
 GEO_QUERIES = {
@@ -376,6 +422,15 @@ def rank_of(rec):
         return 2
     if re.search(r"zebrafish|xenopus|tadpole|frog|chick|avian|medaka|axolotl", t):
         return 3
+    if SCOPE == "wide":  # DS-WIDE-2026-11-26: further vertebrates (3), other chordates (4), other invertebrates (5)
+        if re.search(r"newt|pleurodeles|salamander|lamprey|cavefish|killifish|quail|lizard|reptile|shark|"
+                     r"stickleback", t):
+            return 3
+        if re.search(r"ciona|ascidian|tunicate|oikopleura|amphioxus|lancelet|branchiostoma", t):
+            return 4
+        if re.search(r"elegans|nematode|drosophila|\bfly\b|sea urchin|platynereis|annelid|parhyale|crustacean|"
+                     r"nematostella|cnidarian|planaria|schmidtea|\bhydra\b|tribolium|beetle", t):
+            return 5
     return None
 
 
@@ -425,6 +480,89 @@ def sweep_embryo():
             "summary": by, "records": recs[:3000]}
 
 
+def geo_org_counts():
+    """GEO hit count per organism for each wide query (count only): zero for a major model organism flags a name
+    error to check, not an absence."""
+    out = {}
+    for n, (q, orgs) in GEO_QUERIES_WIDE.items():
+        out[n] = {}
+        for o in orgs:
+            base = f'("2015"[PDAT] : "3000"[PDAT]) AND gse[ETYP] AND "{o}"[ORGN]'
+            out[n][o] = esearch(f"({q}) AND {base}", retmax=0)[0]
+            time.sleep(0.4)
+    return out
+
+
+def scrub(rec):
+    """Public form of a record (DS-WIDE): no title or summary; study family as a hash; sha1 is not a secret."""
+    keep = ("source", "accession", "year", "n_samples", "organism", "flags", "score", "known", "queries", "rank",
+            "wide_candidate", "known_as")
+    out = {k: rec[k] for k in keep if k in rec}
+    out["family"] = hashlib.sha1(str(rec.get("family", "")).encode()).hexdigest()[:12]
+    return out
+
+
+def sweep_wide():
+    raw, counts, errors = [], {}, []
+
+    def run(key, fn):
+        try:
+            res = fn()
+            total, recs = res[0], res[1]
+            fetched = res[2] if len(res) > 2 else len(recs)
+            counts[key] = {"total": total, "fetched": fetched}
+            for r in recs:
+                r["_key"] = key
+            raw.extend(recs)
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"{key}: {str(e)[:120]}")
+        time.sleep(1.0)
+
+    for n, (q, orgs) in GEO_QUERIES_WIDE.items():
+        run(f"GEO:{n}", lambda q=q, orgs=orgs, n=n: geo_records_org(n, q, orgs))
+    for n, q in ZENODO_QUERIES_WIDE.items():
+        run(f"Zenodo:{n}", lambda q=q, n=n: zenodo_paged(n, q))
+    for n, (coll, q) in EBI_QUERIES_WIDE.items():
+        run(f"{coll}:{n}", lambda coll=coll, q=q, n=n: ebi_paged(n, coll, q))
+    for n, q in TEXT_QUERIES_WIDE.items():
+        run(f"figshare:{n}", lambda q=q, n=n: figshare_records(n, q))
+        run(f"Dryad:{n}", lambda q=q, n=n: dryad_records(n, q))
+        run(f"SCP:{n}", lambda q=q, n=n: scp_records(n, q))
+    try:
+        org_counts = geo_org_counts()
+    except Exception as e:  # noqa: BLE001
+        org_counts = {}
+        errors.append(f"GEO:org_counts: {str(e)[:120]}")
+    att = {}
+    recs, dropped = process(raw, known_accessions(), keep=("lineage", "tracking"), attrition=att)
+    for r in recs:
+        r["rank"] = rank_of(r)
+        r["wide_candidate"] = (not r["known"] and any(f in r["flags"] for f in ("embryo", "regeneration")) and any(
+            f in r["flags"] for f in ("split_or_memory", "tree_or_natural", "imaging", "tracking")))
+    accs = {r["accession"] for r in recs}
+    raw_accs = {r.get("accession") for r in raw}
+    recall = {a: {"in_raw": a in raw_accs, "kept": a in accs} for a in RECALL_WIDE + list(RECALL_WIDE_ARMS.values())}
+    for k in counts:
+        counts[k]["capped_screen"] = k.startswith("figshare:")
+    complete = not errors and all(c["capped_screen"] or (c["total"] is not None and c["fetched"] >= c["total"])
+                                  for c in counts.values())
+    by_rank = {str(k): sum(r["wide_candidate"] and r["rank"] == k for r in recs) for k in (1, 2, 3, 4, 5, None)}
+    by_org = {}
+    for r in recs:
+        o = str(r.get("organism") or "unstated")
+        b = by_org.setdefault(o, {"kept": 0, "candidates": 0})
+        b["kept"] += 1
+        b["candidates"] += r["wide_candidate"]
+    by = {"records_kept": len(recs), "new_records": sum(not r["known"] for r in recs),
+          "new_study_families": len({r["family"] for r in recs if not r["known"]}),
+          "wide_candidates_new": sum(r["wide_candidate"] for r in recs), "wide_candidates_by_rank": by_rank,
+          "dropped_excluded_domain": dropped, "attrition": att, "kept_by_organism_field": by_org,
+          "geo_hits_per_organism": org_counts}
+    recs.sort(key=lambda x: (not x["wide_candidate"], x["rank"] or 9, -x["score"], x["accession"]))
+    return {"scope": "wide", "complete": complete, "recall": recall, "queries": counts, "errors": errors,
+            "summary": by, "records": [scrub(r) for r in recs[:3000]]}
+
+
 def crossref_relation(doi):
     """Journal version of a preprint, from Crossref metadata only (no text)."""
     m = get("https://api.crossref.org/works/" + urllib.parse.quote(doi))["message"]
@@ -467,24 +605,45 @@ def flags_of(text):
     return [k for k, p in FLAGS.items() if re.search(p, text, re.I)]
 
 
-def process(raw, known):
-    """Drop excluded-domain records, mask cell-line names, flag, score and deduplicate (by accession)."""
+WIDE_FLAGS = {  # wide scope only (DS-WIDE-2026-11-26); the other scopes keep FLAGS unchanged
+    "tracking": r"cell tracking|tracked (cells|nuclei)|light[ -]sheet|\bmamut\b|mastodon|trackmate|ultrack|\btgmm\b|"
+                r"lineage tree|cell lineage|4d imaging|time[ -]lapse|live imaging",
+    "regeneration": r"regenerat|blastema",
+}
+WIDE_WEIGHTS = {"tracking": 2, "regeneration": 2}
+
+
+def wide_flags_of(text):
+    return [k for k, p in WIDE_FLAGS.items() if re.search(p, text, re.I)]
+
+
+def process(raw, known, keep=("lineage",), attrition=None):
+    """Drop excluded-domain records, mask cell-line names, flag, score and deduplicate (by accession).
+    keep: a record is kept if it carries any of these flags (wide scope adds "tracking"). attrition: optional dict
+    that receives per-stage counts (raw, no_accession, excluded_domain, no_keep_flag, kept)."""
     out, dropped = {}, 0
+    att = {"raw": len(raw), "no_accession": 0, "excluded_domain": 0, "no_keep_flag": 0}
+    wide = "tracking" in keep
     for r in raw:
         acc = r.get("accession")
         if not acc:
+            att["no_accession"] += 1
             continue
         if TITLE_DROP.search(r.get("title") or "") or SUMMARY_DROP.search(r.get("summary") or ""):
             dropped += 1
+            att["excluded_domain"] += 1
             continue
-        fl = flags_of(f"{r.get('title', '')} {r.get('summary', '')}")
-        if "lineage" not in fl:
+        text = f"{r.get('title', '')} {r.get('summary', '')}"
+        fl = flags_of(text) + (wide_flags_of(text) if wide else [])
+        if not any(k in fl for k in keep):
+            att["no_keep_flag"] += 1
             continue
         rec = out.get(acc)
         if rec is None:
             rec = {"source": r["source"], "accession": acc, "title": CELL_LINE.sub("[line]", r.get("title") or ""),
                    "year": r.get("year"), "n_samples": r.get("n_samples"), "organism": r.get("organism"),
-                   "flags": fl, "score": sum(WEIGHTS[f] for f in fl), "known": acc in known, "queries": []}
+                   "flags": fl, "score": sum({**WEIGHTS, **WIDE_WEIGHTS}[f] for f in fl), "known": acc in known,
+                   "queries": []}
             rec["pluripotent_candidate"] = all(f in fl for f in ("pluripotent_or_organoid", "split_or_memory"))
             out[acc] = rec
         if r["query"] not in rec["queries"]:
@@ -500,6 +659,9 @@ def process(raw, known):
                 m["known"] = True
                 m["known_as"] = tag or "family of a known accession"
     recs = sorted(out.values(), key=lambda x: (-x["score"], -len(x["queries"]), x["accession"]))
+    if attrition is not None:
+        att["kept_unique"] = len(recs)
+        attrition.update(att)
     return recs, dropped
 
 
@@ -640,6 +802,34 @@ def selftest():
     assert rank_of({"organism": None, "title": "Human blastoid lineage tracing"}) == 1
     assert rank_of({"organism": None, "title": "Xenopus tadpole cell lineage"}) == 3
     assert rank_of({"organism": None, "title": "Lineage of something"}) is None
+    # wide scope (DS-WIDE-2026-11-26): tracking deposits kept without a lineage word, regeneration, ranks 4-5, scrub
+    global SCOPE
+    old_scope, SCOPE = SCOPE, "wide"
+    try:
+        raw = [{"source": "Zenodo", "accession": "zenodo:1", "title": "Light-sheet cell tracking of the tadpole tail",
+                "summary": "", "query": "t"},
+               {"source": "Zenodo", "accession": "zenodo:2", "title": "MaMuT tracks of a regenerating blastema",
+                "summary": "", "query": "t"},
+               {"source": "Zenodo", "accession": "zenodo:3", "title": "Light-sheet images of a tadpole", "summary": "",
+                "query": "t"}]
+        att = {}
+        kept, _ = process(raw, set(), keep=("lineage", "tracking"), attrition=att)
+        ids = {r["accession"] for r in kept}
+        assert ids == {"zenodo:1", "zenodo:2", "zenodo:3"}, ids
+        assert att["raw"] == 3 and att["kept_unique"] == 3, att
+        kept_old, _ = process(raw, set())
+        assert not kept_old, kept_old  # the lineage-only rule is unchanged for the other scopes
+        r2 = next(r for r in kept if r["accession"] == "zenodo:2")
+        assert {"tracking", "regeneration"} <= set(r2["flags"]), r2["flags"]
+        assert rank_of({"organism": "Ciona robusta", "title": ""}) == 4
+        assert rank_of({"organism": "Caenorhabditis elegans", "title": ""}) == 5
+        assert rank_of({"organism": None, "title": "Planarian regeneration cell lineage"}) == 5
+        assert rank_of({"organism": None, "title": "Newt limb blastema tracking"}) == 3
+        s = scrub({**r2, "family": "mamut tracks of a", "rank": 3, "wide_candidate": True})
+        assert "title" not in s and "summary" not in s and len(s["family"]) == 12, s
+        assert "blastema" not in json.dumps(s).lower(), s
+    finally:
+        SCOPE = old_scope
     return {"ok": True, "kept": acc, "dropped": dropped}
 
 
@@ -651,8 +841,13 @@ def main():
         assert re.fullmatch(r"\d{4}/\d{2}/\d{2}", SINCE), SINCE
     if "--out" in argv:
         OUT = os.path.abspath(argv[argv.index("--out") + 1])
-    embryo = "--scope" in argv and argv[argv.index("--scope") + 1] == "embryo"
-    res = selftest() if (argv and argv[0] == "selftest") else (sweep_embryo() if embryo else sweep())
+    global SCOPE
+    SCOPE = argv[argv.index("--scope") + 1] if "--scope" in argv else "default"
+    assert SCOPE in ("default", "embryo", "wide"), SCOPE
+    if argv and argv[0] == "selftest":
+        res = selftest()
+    else:
+        res = {"embryo": sweep_embryo, "wide": sweep_wide}.get(SCOPE, sweep)()
     if "records" in res:
         os.makedirs(os.path.dirname(OUT), exist_ok=True)
         with open(OUT, "w", encoding="utf-8") as fh:
