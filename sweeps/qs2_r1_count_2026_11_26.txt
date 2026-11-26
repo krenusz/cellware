@@ -1,0 +1,3 @@
+# QS2-R1-P1: structural count for R1's power (Bence: "Yes, count R1"). Units only, no outcome; nothing spent.
+# Control first: the spent partition A must reproduce its logged power-gate count (76 effective units); only then is B counted.
+[experiments/results_hspc/qs2_r1_count_B.json] python -I experiments/test_oracle.py count --test hspc_c7s7 --exp QS2-R1-P1 --partition A --out experiments/results_hspc/qs2_r1_count_A.json && grep -qE '^\s*"rna": 76$' experiments/results_hspc/qs2_r1_count_A.json && python -I experiments/test_oracle.py count --test hspc_c7s7 --exp QS2-R1-P1 --partition B --out experiments/results_hspc/qs2_r1_count_B.json

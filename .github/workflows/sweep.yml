@@ -24,6 +24,10 @@ on:
         description: download the LSC LARRY D20 files (Zenodo 18444428) + committed clone map (C12 train-only scripts)
         type: boolean
         default: false
+      chspctrack:
+        description: download the cHSPCTrack cells h5ad (public S3; oracle count functions only, QS2-R1-P1)
+        type: boolean
+        default: false
 
 jobs:
   plan:
@@ -97,6 +101,17 @@ jobs:
           sha256sum -c sweeps/lsc_data.sha256
           source .venv/bin/activate
           uv pip install scikit-learn pandas scipy
+      - name: cHSPCTrack data (public S3; read only through test_oracle count functions)
+        if: inputs.chspctrack
+        run: |
+          df -h . | tail -1
+          mkdir -p data/ext_chspctrack
+          for f in $(awk '{print $2}' sweeps/chspctrack_data.sha256); do
+            curl -sfL --retry 3 -o "$f" "https://chspctrack.s3.amazonaws.com/cHSPCTrack/$(basename "$f")"
+          done
+          sha256sum -c sweeps/chspctrack_data.sha256
+          source .venv/bin/activate
+          uv pip install h5py scikit-learn pandas
       - name: Run line ${{ matrix.line }}
         run: |
           source .venv/bin/activate  # lines may call plain python or uv run

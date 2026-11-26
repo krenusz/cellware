@@ -14668,3 +14668,41 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     3. *How many units?* About 32 trees per partition (estimate).
     4. *Used data enough?* No used effect exists.
     5. *Already published?* Tissue-level oriented division, yes. Cell-autonomous axis memory across consecutive mitoses is published in fly neural stem cells (doi 10.1083/jcb.200905024), so N2 is partly published. N1 is in kind too.
+
+## QS2-R1-P1: structural count of chspctrack:B for R1's power (pre-registered 2026-11-26; Bence: "Yes, count R1")
+
+- **Serves: C12 CLOSED.** This is QS2's held item R1: does the C7 heritable fate share (C7-S7c, G_early) replicate on chspctrack:B?
+- **Question:** is chspctrack:B large enough for an R1 look to reach power 0.8?
+  - This step only counts units. No outcome is read and nothing is spent.
+  - No look follows without a new pre-registration and Bence's OK. "Yes, count R1" covers the count only.
+- **What runs:** `test_oracle.py count --test hspc_c7s7 --partition A|B`.
+  - The new `--test` option calls the oracle's own H14 power-gate count function for that test, `c7s7_confirm.counts_hspc`.
+  - Sweep: `sweeps/qs2_r1_count_2026_11_26.txt`, one line.
+  - `count --test` refuses unless `--exp` names a pre-registered step (here QS2-R1-P1). The option reaches every test's count function, but only behind that check.
+- **Re-dispatch rule:** if a run fails before any count (download, checksum, import), it may be fixed and re-dispatched once. A control mismatch may not.
+- **What the count touches:**
+  - `_hspc_obs` loads the obs table for every cell, sealed rows included: clone, day, condition, cell type and experiment. The 2026-11-11 power gate on A did the same.
+  - `struct` uses only clone and day. It counts clones with at least 1 cell on days 3-5 and at least 2 cells on day 10.
+  - The returned number is in effective units: floor(struct x train ratio x train neff ratio), both ratios from `selection/C7-S7c.json`.
+  - No cell-type value is tabulated, printed or saved.
+- **Control (gates the B count):** the spent partition A is counted first and must return `{"rna": 76}`, the logged A power-gate count (C7-S7 result). If it does not, B is not counted and there is no verdict.
+- **Acceptance rule (fixed now, in the count function's own unit):**
+  - *Effect source:* the spent A result (`test_ledger.tsv` C7-S7c: G 0.398, 95% CI 0.126-0.669, n 122 units, 76 effective). The train effect (0.66) is not used, because A showed it shrinking.
+  - *Power on B* = `power.z_power(0.398, se_A * sqrt(76 / B_eff))`, with se_A 0.1385 from the A CI.
+  - **Pass: B_eff >= 73** (power >= 0.8). This is the same rule as the "at least 116 units" given to Bence, expressed in effective units.
+  - **Fail: B_eff < 73.** R1 is underpowered and closed.
+  - *Sensitivity, reported only:* at 0.75 x the A effect, B needs at least 129.
+- **After a pass:** one ask to Bence: R1's eligibility plus a look pre-registration, with the cost stated. The look spends chspctrack:B, leaves C as the last partition, and takes the partition that decision 3's T2 would need.
+- **Pre-flight:**
+  1. *Unit:* clone (the C7-S7c unit; single-cell-derived clones in their own wells).
+  2. *Readout:* unit counts only (H9).
+  3. *Used data first:* the A result and its power-gate count (76). The nearest logged B number is 121 units for the C9-S0 subset, a different unit definition.
+  4. *Power:* the rule above (`power.py`).
+  5. *Exposure:* train and A known; B and C unread. This step adds B's effective unit count to chspctrack's prior_exposure.
+  6. *Literature access:* not needed for a count.
+  7. *Readout gate (H21):* not applicable to a count; it applies to any look pre-registration.
+- **Compute:** GitHub Actions, `./run_sweep.sh sweeps/qs2_r1_count_2026_11_26.txt --chspctrack`, dispatched by the Sonnet lane (Cellware Sonnet peer session).
+  - The new workflow input `chspctrack` downloads `cells_with_clone_info.h5ad` (2.6 GB) from the authors' public S3 bucket (key `cHSPCTrack/`, no sign-in, found by the Haiku lane).
+  - It is sha256-checked against `sweeps/chspctrack_data.sha256`, which holds the same hash as data/ext_chspctrack/SHA256SUMS.
+  - The file is never uploaded. The artifact holds only the two count JSONs and the logs, and the public run log shows counts only.
+- **Practice:** a cold-start control (A must reproduce a logged count before B is read); rule fixed and committed before dispatch; acceptance stated in the count function's own unit; no synthetic smoke, because no statistic is computed.

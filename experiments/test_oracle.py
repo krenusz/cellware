@@ -399,13 +399,28 @@ def main():
     lk.add_argument("--partition", choices=["A", "B", "C", "AB"],
                     help="sealed partition (partitioned tests); AB = pre-registered union spent as one look")
     lk.add_argument("--last-ok", default="", help="Bence's verbatim OK to spend the LAST partition (H13)")
-    ct = sub.add_parser("count", help="structure only: units per tag in a sealed drug partition (H9/H14)")
+    ct = sub.add_parser("count", help="structure only: units per tag in a sealed drug partition (H9/H14); "
+                                      "with --test, that test's own power-gate count function (unit counts only)")
     ct.add_argument("--partition", choices=["A", "B"], required=True)
+    ct.add_argument("--test", choices=sorted(PARTITION_COUNTS), help="count with PARTITION_COUNTS[test] (QS2-R1-P1)")
+    ct.add_argument("--exp", help="with --test: the pre-registered count step (H15), e.g. QS2-R1-P1")
+    ct.add_argument("--out", help="also write the JSON to this path")
     args = ap.parse_args()
     if args.cmd == "count":
-        import g9_confirm
+        if args.test:  # the same counts the H14 power gate reads before a look; no look, nothing spent
+            if not args.exp or not preregistered(args.exp):
+                sys.exit("refused: count --test needs --exp naming a pre-registered step (H15)")
+            res = {"test": args.test, "partition": args.partition, "exp": args.exp,
+                   "counts": PARTITION_COUNTS[args.test](args.partition)}
+        else:
+            import g9_confirm
 
-        print(json.dumps(g9_confirm.tag_counts(args.partition), indent=1))
+            res = g9_confirm.tag_counts(args.partition)
+        print(json.dumps(res, indent=1))
+        if args.out:
+            os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
+            with open(args.out, "w", encoding="utf-8") as f:
+                json.dump(res, f, indent=1)
         return
     ledger = read_ledger()
 

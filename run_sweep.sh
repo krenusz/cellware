@@ -11,6 +11,7 @@ while [ $# -gt 0 ]; do
     --larry) args+=(-f larry=true) ;;
     --petracer) args+=(-f petracer=true) ;;
     --lsc) args+=(-f lsc=true) ;;
+    --chspctrack) args+=(-f chspctrack=true) ;;
     --lines) args+=(-f "lines=$2"); lines=$2; shift ;;
     --guard) guard=$2; shift ;;  # cancel once fewer than N seeds can pass the gate
     *) echo "unknown option $1" >&2; exit 2 ;;
