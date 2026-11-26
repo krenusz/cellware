@@ -14308,3 +14308,36 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - **Reversed links** (target at an earlier frame) are allowed and oriented forward, as amendment 2 says. The strict amendment-1 flags are still reported.
 - `track_trees` counts components with >= 1 retained link; isolated spots are reported separately.
 - Reader note: the format developers' importer was read at commit 87eb001; one deliberate departure (a one-byte block length is read unsigned).
+
+### DS-WIDE-G result (2026-11-26; run https://github.com/krenusz/cellware/actions/runs/45809145521; `results_c17/ds_wide_gate_counts.json`; structure counts only)
+- **Lanes:** the Sonnet data lane (subagent) wrote the reader and the gate script, and dispatched the run. The Cellware Sonnet session collected the artifact; the result is not committed by the workflow, and the JSON sha256 is 7a22a194a502. Opus reviewed, judged and committed.
+- **Files:**
+  - Reader validation passed on all 7 files. Each had leftover stream bytes 0 and no same-frame, reversed or self links, and each graph was acyclic.
+  - Integrity: the six W2 members match their zip CRC32, and W3 matches the record md5.
+  - There are no duplicate specimens.
+- **Counts:**
+
+  | Specimen | Spots | Links | Divisions | Eligible pairs | Trees | Isolated spots |
+  |---|---|---|---|---|---|---|
+  | W2-li13 | 344 | 0 | 0 | 0 | 0 | 344 |
+  | W2-li15 | 377 | 0 | 0 | 0 | 0 | 377 |
+  | W2-li48 | 507 | 0 | 0 | 0 | 0 | 507 |
+  | W2-li51 | 255 | 0 | 0 | 0 | 0 | 255 |
+  | W2-li52 | 424 | 0 | 0 | 0 | 0 | 424 |
+  | W2-F5 (separate) | 4,445 | 4,431 | 16 | 3 | 13 | 1 |
+  | W3-e1 | 256,609 | 243,211 | 0 | 0 | 9,832 | 3,566 |
+
+- **W2 regenerating limbs: FAIL** (0 eligible pairs, gate 75).
+  - The five `*_all-division` projects hold spots only, with no links. They mark division events per limb and carry no lineage.
+  - The one linked project (F5) has 16 divisions, of which 3 are eligible.
+- **W3 beetle embryo: FAIL** (0 eligible pairs).
+  - The tracks are linked, but no spot has 2 forward links or 2 incoming links.
+  - Spots minus links equals trees plus isolated spots (13,398), so every track is an unbranched chain. The tracking holds no divisions.
+- **Self-challenge:**
+  - *Could the reader be wrong?* The stream was consumed exactly. The links are all forward and acyclic, and the graph is a clean chain forest. A misread layout would not give that pattern. Zero links in W2 is the stored count in the header, not a decoding result.
+  - *Does stage L have a gap?* Only 3 of W2's 6 zips were listed. `Suppl_data_4_*` (4.7 GB, an analysis archive) was never listed. A "Suppl_data_3" holding the full limb lineages, which the limb file names point to, is not in the record at all. Linked limb lineages could sit in the unlisted zip; that is untested.
+- **Reading:** none of W1, W2 or W3 adds a counted-division system. DS-EMB-G's E5 (mouse gastrulation) is still the only manual-track embryo set that passed, and E3 the only automated one.
+- **Next (needs Bence):**
+  1. List the members of W2's unlisted zip (`Suppl_data_4_*`) and check for linked limb lineages. That is names only by range read; a gate would need a new amendment.
+  2. Gate W4 and W5 (nematode). They are counted-division systems with low novelty.
+  3. The dated sweep around 2026-12-02.

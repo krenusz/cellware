@@ -63,6 +63,11 @@ DATASETS = {
                              "Partitioned by track tree (partitions.mouse_gast_tree, sealed 2026-11-25, Bence: \"Yes, "
                              "seal E5\"): train 40%, A/B/C 20%, strata movie; Movie5 (same tracking as Movie3) outside "
                              "the map and never read. Intensity features not read before S1; no image data downloaded.",
+    "ext_wide_g_tracks": "Zenodo 15181497 (six Mastodon members fetched by range from two zips) and Zenodo 7296222 "
+                         "(one Mastodon project), 60 MB, downloaded only on GitHub Actions (run 45809145521, "
+                         "2026-11-26, Bence: \"Gate W2, W3, W1\"), sha256 per file in results_c17/ds_wide_gate_counts.json. "
+                         "Structure only (DS-WIDE-G); both leads failed the gate (no lineage links / no divisions), so "
+                         "no partition; tags and features never decoded; no image data downloaded.",
     "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
                     "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "

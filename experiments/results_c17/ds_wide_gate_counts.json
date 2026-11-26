@@ -1,0 +1,366 @@
+{
+ "experiment": "DS-WIDE-G structure gate (W2, W3)",
+ "min_arm_spots": 5,
+ "gate_eligible_pairs": 75,
+ "reader_pinned_commit": "87eb001fb36e1850203c30fc155928b4e21acd6a",
+ "per_specimen": {
+  "W2-li13": {
+   "validation": {
+    "n_spots": 344,
+    "n_links": 0,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 119,
+    "frames_max": 329,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 344,
+    "links": 0,
+    "same_frame_links_excluded": 0,
+    "divisions": 0,
+    "eligible_pairs": 0,
+    "track_trees": 0,
+    "isolated_spots": 344,
+    "trees_with_eligible_pair": 0,
+    "non_nested_eligible_pairs": 0,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 0,
+    "frame_range": [
+     119,
+     329
+    ],
+    "frame_hist_sha256": "451783809bdbe792386903c1dac65be0d0e69d63bd9184c4992dbc41a1bd2dd4"
+   },
+   "file": {
+    "bytes": 164346,
+    "crc32_matches_directory": true,
+    "sha256": "f3da89f1f6f605ffb18cede452f4abdabc1e745ca40836569f4a367e41ae3bc6",
+    "range_requests_for_archive": 12
+   }
+  },
+  "W2-li15": {
+   "validation": {
+    "n_spots": 377,
+    "n_links": 0,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 21,
+    "frames_max": 268,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 377,
+    "links": 0,
+    "same_frame_links_excluded": 0,
+    "divisions": 0,
+    "eligible_pairs": 0,
+    "track_trees": 0,
+    "isolated_spots": 377,
+    "trees_with_eligible_pair": 0,
+    "non_nested_eligible_pairs": 0,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 0,
+    "frame_range": [
+     21,
+     268
+    ],
+    "frame_hist_sha256": "e076d1e00b3b5333da9c10e38d6a1d226f80c5295bc2d07bf0c5063efe52848a"
+   },
+   "file": {
+    "bytes": 122307,
+    "crc32_matches_directory": true,
+    "sha256": "aeb99cdb2cb22edeb38460a15a931f120133c2fd68cff8a0dd292a666cea3019",
+    "range_requests_for_archive": 12
+   }
+  },
+  "W2-li48": {
+   "validation": {
+    "n_spots": 507,
+    "n_links": 0,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 21,
+    "frames_max": 334,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 507,
+    "links": 0,
+    "same_frame_links_excluded": 0,
+    "divisions": 0,
+    "eligible_pairs": 0,
+    "track_trees": 0,
+    "isolated_spots": 507,
+    "trees_with_eligible_pair": 0,
+    "non_nested_eligible_pairs": 0,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 0,
+    "frame_range": [
+     21,
+     334
+    ],
+    "frame_hist_sha256": "3e1334ae44439b30f050ed28ec9af9ee5f808260932442a194e5e0eb7cc436d6"
+   },
+   "file": {
+    "bytes": 136029,
+    "crc32_matches_directory": true,
+    "sha256": "2519cf85c8103b7a9cca58136229c2e65fe6f593b18ae8668785feacf3e476d9",
+    "range_requests_for_archive": 12
+   }
+  },
+  "W2-li51": {
+   "validation": {
+    "n_spots": 255,
+    "n_links": 0,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 33,
+    "frames_max": 195,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 255,
+    "links": 0,
+    "same_frame_links_excluded": 0,
+    "divisions": 0,
+    "eligible_pairs": 0,
+    "track_trees": 0,
+    "isolated_spots": 255,
+    "trees_with_eligible_pair": 0,
+    "non_nested_eligible_pairs": 0,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 0,
+    "frame_range": [
+     33,
+     195
+    ],
+    "frame_hist_sha256": "3e35fc3169a26aa63e7b77d1fde24f034d2dc6fae12866e40b4a4ec97b423796"
+   },
+   "file": {
+    "bytes": 81991,
+    "crc32_matches_directory": true,
+    "sha256": "745b8bc2c7d39d3782a5d6077fc7ad9cc03fd21d9debc1cdb069640bcfe50d3b",
+    "range_requests_for_archive": 12
+   }
+  },
+  "W2-li52": {
+   "validation": {
+    "n_spots": 424,
+    "n_links": 0,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 19,
+    "frames_max": 274,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 424,
+    "links": 0,
+    "same_frame_links_excluded": 0,
+    "divisions": 0,
+    "eligible_pairs": 0,
+    "track_trees": 0,
+    "isolated_spots": 424,
+    "trees_with_eligible_pair": 0,
+    "non_nested_eligible_pairs": 0,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 0,
+    "frame_range": [
+     19,
+     274
+    ],
+    "frame_hist_sha256": "38ab2044efb0a527085dbfaf64d78c4e9268a675bd4876740015a1867d9b8987"
+   },
+   "file": {
+    "bytes": 115186,
+    "crc32_matches_directory": true,
+    "sha256": "b5cc84f029bb3f74c96620a0ba3176b89e2a495984d87932ddf9f2c179bc3e0b",
+    "range_requests_for_archive": 12
+   }
+  },
+  "W2-F5": {
+   "validation": {
+    "n_spots": 4445,
+    "n_links": 4431,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 0,
+    "frames_max": 290,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 4445,
+    "links": 4431,
+    "same_frame_links_excluded": 0,
+    "divisions": 16,
+    "eligible_pairs": 3,
+    "track_trees": 13,
+    "isolated_spots": 1,
+    "trees_with_eligible_pair": 3,
+    "non_nested_eligible_pairs": 3,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 3,
+    "frame_range": [
+     0,
+     290
+    ],
+    "frame_hist_sha256": "65af9ce0d7bddf205f60aab965fd44c96abe7892fa3870dd44a3e2577f4d3c65"
+   },
+   "file": {
+    "bytes": 638277,
+    "crc32_matches_directory": true,
+    "sha256": "0ba713063e13dc2a8ba37cace0bc659d407c42c3c36527bb2923c22be91359b4",
+    "range_requests_for_archive": 4
+   }
+  },
+  "W3-e1": {
+   "validation": {
+    "n_spots": 256609,
+    "n_links": 243211,
+    "project_version": "0.3",
+    "stored_counts_fit_stream": true,
+    "leftover_stream_bytes": 0,
+    "bytes_after_blocks": 94,
+    "frames_min": 0,
+    "frames_max": 79,
+    "frames_nonnegative": true,
+    "endpoints_in_range": true,
+    "same_frame_links": 0,
+    "reversed_links": 0,
+    "self_links": 0,
+    "links_join_different_frames": true,
+    "links_forward_as_stored": true,
+    "cycle_free_as_stored": true,
+    "same_frame_within_1pct": true,
+    "valid": true
+   },
+   "counts": {
+    "spots": 256609,
+    "links": 243211,
+    "same_frame_links_excluded": 0,
+    "divisions": 0,
+    "eligible_pairs": 0,
+    "track_trees": 9832,
+    "isolated_spots": 3566,
+    "trees_with_eligible_pair": 0,
+    "non_nested_eligible_pairs": 0,
+    "spots_with_gt2_forward_links": 0,
+    "spots_with_gt1_incoming_link": 0,
+    "eligible_pairs_arm_by_distinct_spots": 0,
+    "frame_range": [
+     0,
+     79
+    ],
+    "frame_hist_sha256": "6a10159e0abd0b9b4ce56b9854b7c54fdf60179eb47c52331827a161dfb435c6"
+   },
+   "file": {
+    "bytes": 58700045,
+    "md5_matches_record": true,
+    "sha256": "13de896571e1870dd751e98ff2f139f0114862eb002d655d2e0fc9063362c502"
+   }
+  }
+ },
+ "duplicates": {
+  "identical_tracking_groups": [],
+  "same_spot_and_link_counts_different_histogram": []
+ },
+ "leads": {
+  "W2": {
+   "limbs_in_gate": [
+    "W2-li13",
+    "W2-li15",
+    "W2-li48",
+    "W2-li51",
+    "W2-li52"
+   ],
+   "limbs_counted": 5,
+   "animals": "unknown",
+   "replication_line": "5 limbs, animals unknown",
+   "eligible_pairs": 0,
+   "expected_train_eligible": 0.0,
+   "reader_validation_all_pass": true,
+   "verdict": "fail (eligible pairs < 75)",
+   "F5_reported_separately": 3
+  },
+  "W3": {
+   "embryos": 1,
+   "eligible_pairs": 0,
+   "expected_train_eligible": 0.0,
+   "verdict": "fail (eligible pairs < 75)"
+  }
+ },
+ "note": "counts only; no ids, positions, tags, features or file names; same-frame links are counted and excluded"
+}
