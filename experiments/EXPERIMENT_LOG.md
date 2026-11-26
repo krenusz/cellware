@@ -14247,3 +14247,44 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Duplicates:** specimens are compared by spot and edge counts and frame histograms. An identical pair counts once (the Movie3/Movie5 lesson).
 - **W2 unit:** animals are reported as well as legs. Legs of one animal are not independent, so the low-replication line (< 3) applies to animals.
 - **W1 overlap:** W1 is checked against the E3 source family (same lab or acquisition) from repository metadata. If it overlaps, it is reported as the same family.
+
+### DS-WIDE-G stage L result for W2 and W3 (2026-11-26; Haiku lookup lane; names and sizes only; listings in the scratchpad, not in the repo)
+- **W2 (zenodo:15181497, CC-BY-4.0): passes L.** The deposit is 122 GB, nearly all image stacks. The tracks sit inside zips; the server honours range reads, so members can be fetched alone.
+  - `Suppl_data_9_cell_divisions.zip` (11.6 GB) holds five limb recordings (li13, li15, li48, li51, li52), each with:
+    - an image volume (.h5);
+    - an image descriptor (.xml, 45-123 KB);
+    - a `*_all-division.mastodon` project (82-164 KB).
+
+    There is also one spreadsheet of division counts.
+  - `Suppl_data_5_*.zip` (2.8 GB) holds one more project (Figure 5 time-lapse, 0.64 MB) with its image volume.
+  - `Suppl_data_8_*.zip` holds nested zips of tracking-failure tests (not used).
+  - The track material is six Mastodon projects of about 1.3 MB in total.
+- **W3 (zenodo:7296222, CC-BY-4.0, Institut Pasteur, 2022): passes L.**
+  - One Mastodon project (58.7 MB) of one training video, plus an image descriptor (21 KB) and a picture.
+  - The file names read as a Cell Tracking Challenge training video. That is a benchmark set with one embryo, so W3 can be at most a "pass, low replication".
+- **W1 (S-BIAD815):** the files are an IDR study (idr0051, University of Dundee IDR, released 2023-07-12), not from the E3 source organisation. The subfolder listing is pending.
+
+### DS-WIDE-G amendment 2: format mapping for W2 and W3 (written 2026-11-26, before any track file is fetched)
+- **Reader:**
+  - The Sonnet lane writes a minimal reader, `experiments/mastodon_read.py`. It reads spot ids with frames, and links (source, target).
+  - It follows the open format as implemented in the format developers' importer (mastodon-sc). That source is read at a pinned commit; nothing from it is installed or run.
+  - The amendment-1 validation applies.
+  - Tag sets and feature columns (which may hold labels or intensities) are not decoded, and are not read.
+- **Graph:**
+  - Each link is oriented forward in frame. Links within one frame are counted, reported, and excluded.
+  - A division is a spot with 2 forward links. A spot with > 2 is reported as an anomaly and is not a division.
+  - A track tree is a connected component.
+  - Eligibility is the pre-registered rule: depth >= 1, and each arm >= 5 spots.
+- **Specimens:**
+  - *W2:* specimen = limb recording; the five `*_all-division` projects count.
+    - The Figure 5 project is counted and reported separately, and checked as a duplicate against the five. It is a different experiment, so it is not added to the gate total.
+    - The animal of each limb is not in the listing, so it is reported as unknown. With animals unknown, W2's replication line reads "5 limbs, animals unknown".
+  - *W3:* one embryo.
+- **Fetch:**
+  - *W2:* the six .mastodon members only, by HTTP range (local header, then the compressed member). Nothing else from the zips is fetched.
+  - *W3:* the one .mastodon file.
+  - The image descriptors are not needed. Images are never fetched.
+  - Total is under 61 MB.
+  - sha256 is written per file, and sealed.py gets entries "structure only until partitioned".
+- **Run:** `experiments/ds_wide_gate.py`, with a selftest on toy track forests (the count functions) and a toy zip (range-member extraction). It runs on Actions via `./run_sweep.sh`, and the output goes to `results_c17/ds_wide_gate_counts.json`.
+- **Hygiene:** the experiment folder names in the Figure 5 zip contain a gene-like word. Saved outputs refer to them only as "W2-F5". File and folder names are not copied into the results.
