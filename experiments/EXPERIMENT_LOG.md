@@ -14481,3 +14481,49 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Early stop:** no column identifies a track or parent, or a division in some other way (for example a parent id, a split flag, or branch ids within a track) means FAIL at schema. A column mapping amendment comes before any count.
 - **If Bence declines, or no route opens:** W6 is `parked` in COVERAGE with "access blocked", not `failed_gate`.
 - **Prior, not evidence:** 3 h at a 3-min interval is about 60 frames, a frame count similar to 4E's 55. In 4E only 2 of 56 divisions had depth >= 1, but 4E's frame interval is unknown, so the two cannot be compared in time. What decides W6 is whether the table carries division links, and only the schema read shows that.
+
+## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
+- **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
+- **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
+  - *Union looks:* H13 now matches the oracle.
+  - *Questions:* they may come from any source.
+  - *Replication of our own results:* allowed only on independent units.
+  - *Last-partition sets:* they go to Bence by name.
+- **Rules carried unchanged:** the novelty gate (H25 and the memory rule; in-kind treatment is RETRO_2026-11-26 decision 1, still open), H16, H21, H22, the 0.8 power floor, and claims-only reading of a sealed set's source.
+- **No data file is opened.** Counts come only from the log, partitions.py, results JSONs and seal records. The oracle's `count` command covers one data set only. Missing sealed counts are batched into one data step, which needs Bence's OK (Opus-added, labelled).
+- **Stage 0, existing questions closed on single-partition power alone:**
+  - C17-TCORT (0.14-0.67) and DNR-CLOCK-A (0.43) are recomputed at union counts, with `power.py`, from their logged effect and sd. Where a simulation would be needed, they are marked "not computed".
+  - They are reported, not re-gated; a don't-repropose row goes to Bence.
+  - There is no union where it would spend the last partition: chspctrack, resistrace and petracer_embryo have 2 left.
+- **Stage 1, re-triage of the 19 live sets** from the registry and the log. The single-partition count and the A+B union count are listed per set.
+- **Stage 2, questions:**
+  - At most 3 per set. The cap is Opus-added, labelled, and is there against fishing.
+  - Any source: ideas written but never run; design contrasts; transfers of the confirmed C3, C7, C8, C10 and C14 readouts; the gap map's open-question groups (`fate_memory`, `sister_split`, `timelapse_lineage`, `memory_vs_commitment`); field reviews.
+  - Replications of our own confirmed results only on independent assignment units.
+  - Last-partition sets get a question if one exists.
+  - None may be prompted by a train outcome seen in other chapters (H16); any that slips in is labelled.
+  - The list is frozen in one commit, with a COVERAGE row per question, before any gate runs. Questions are read by hand for neutral wording, and DOIs are saved, never titles.
+- **Stage 3, gates in fixed order:**
+  1. near-repeat (coverage_check E5/E6, plus greps of the log, partitions.py and c17s1_params.py);
+  2. novelty: `novelty_search.py` classic search in the field's wording, with a recall check; claims level for sealed sources, with reads added to `prior_exposure`;
+  3. H22;
+  4. readout (H21);
+  5. power, at single-partition and A+B union counts, with effect and sd from named used results.
+- **Outcome classes, fixed now:**
+  - **pass:** clears every gate, powered >= 0.8 from used results. It becomes a chapter proposal under H19, H20 and H25, not a look.
+  - **candidate:** clears gates 1-4 but has no used effect. It reports the minimum detectable effect at single and union counts; the offered next step is a train-only estimate, which needs Bence's OK.
+  - **held for Bence:**
+    - a novelty verdict "in kind" (evidence for decision 1);
+    - own-result replications: every confirmed result except CH1 and CH2 has a "partly" verdict, so one batched ask;
+    - last-partition questions.
+  - **fail:** the gate is named.
+  - *Cost note per question:* a union look leaves one partition, so the next look on that set needs Bence's verbatim OK.
+- **Carried, not re-gated:** QS1-L2 (waiting for Bence's OK), QE1 (power2 unrun), DNR-HSPC-COND (decision 3), W6 (download).
+- Pre-flight:
+  - unit, readout and power per question at Stage 3;
+  - used data first = the near-repeat gate and Stage 0;
+  - exposure = no data file read, claims-level abstracts logged to `prior_exposure`;
+  - literature = classic search with a recall check;
+  - readout gate (H21) per question from logged counts.
+- Compute: local reads of the log and registry, plus lookup-lane queries (Europe PMC, OpenAlex); any power simulation goes to GitHub Actions through the Cellware Sonnet session.
+- Practice: neutral wording (SENSITIVE scan, plus a hand read because the filter misses gene names); DOIs, not titles; no outreach; advisor before the freeze commit and before the verdicts.
