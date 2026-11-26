@@ -14602,3 +14602,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
       - *Caution:* QE2's row notes that the source publishes sister trajectory similarity. N1 (final separation of sisters) is close to that, and the novelty gate decides it. N1's row is corrected to say so.
     - **N3 and N4** serve the core model's selection (growth) term: chapter 1 found clone-level selection, and these test whether growth is a clone-intrinsic, heritable property. If Bence reads that as outside the goal, they stop (H16).
   - **Correction to RETRO_2026-11-26 (registry facts, found here):** raj_diffassay has only partition A, and raj_atac has only A and B (fixed maps). So the unspent partitions are **45, not 48**, and the sets with A, B and C all unspent are **11, not 13**. The coverage table lists ABC for every set; that display is noted for a later fix.
+- **QS2 stage 3, gates 1-3 (2026-11-26; logged counts only; amended order):**
+  - *Gate 1, near-repeat:* the coverage check is OK, with every same-set row named. N1 is close to QE2's note (the source publishes sister trajectory similarity), so gate 4 decides it. N3 differs from C17-CREST (composition, not size). N4 differs from C15 (a C14 transfer).
+  - *Gate 2, H22:* N1 and N2 are within-embryo contrasts (trees within movies), and every partition holds trees of all 4 movies. N3 is within embryo, N4 within host. All four are allowed as within-unit contrasts.
+  - *Gate 3, readout (H21):*
+    - **N1 passes on counts.** 319 trees, of which 161 carry a depth >= 1 pair. A depth >= 0 pair exists in more trees; about 30 or more trees per partition carry the statistic, and about 60 or more as a union. Positions are present on every spot.
+      - *Limit:* the hand-tracked trees are a chosen subset (DS-EMB-G), and selection for proximity would bias coherence.
+    - **N2 passes on counts.** It needs a mother and a daughter division in one tree: 290 non-nested depth >= 1 pairs in 161 trees, about 32 trees per partition and about 64 as a union.
+    - **N3 FAILS at readout.** The median is about 4 cells per arm (C17-S1C amendment 2), the regime that failed QS1-C1. Whether rank concordance separates heritable growth from the binomial sampling null at these counts has not been shown (H21 item 3). A synthetic check could reopen it; it is not offered as the pick.
+    - **N4 FAILS at readout (H21 item 4).** The within-host statistic is carried by 5 hosts per partition (10 as a union): a handful. C15 already found the between-host noise too large at this n.
+  - *Survivors to gate 4 (novelty):* N1 and N2. R1-R4 are held (eligibility and counts pending Bence).
