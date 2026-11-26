@@ -5,8 +5,9 @@ Hold-out
 - H5 Check provenance before calling a file untouched. H6 One look; code and predictions committed first; report as it comes.
 - H7 Spent is spent. H8 "moderate"/"strong" only for oracle-confirmed results.
 - H9 Format checks show columns, tags and counts, never outcomes. H10 Unsure whether data is held out: ask Bence.
-- H11 Train 40% + sealed A/B/C by unit hash; one look spends one partition. H12 Train cross-validation picks the model (selection/<exp>.json).
-- H13 The last partition needs Bence's verbatim OK.
+- H11 Train 40% + sealed A/B/C by unit hash; one look spends one partition (or two as a union, H13). H12 Train cross-validation picks the model (selection/<exp>.json).
+- H13 A look spends one partition, or two as a pre-registered union while one stays sealed (amended 2026-11-26, Bence: "Drop all four"). The last partition is never in a union and needs Bence's verbatim OK.
+- Question searches on sealed sets: any question source (frozen before gates, all gates kept); replicate own results only on independent units; last-partition sets go to Bence by name with a question and its power (2026-11-26).
 - H24 Seal new sets with balanced A/B/C (equal units +-1, size- and stratum-matched) via partitions.balanced_split; structure only, before any statistic.
 Power (one rule, three gates; arithmetic only from experiments/power.py)
 - H14 Oracle: power >= 0.8 from structural counts, or no look. H17 Selection: power from the model's own simulated statistic.

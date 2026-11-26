@@ -102,13 +102,18 @@ before every look and refuses on any failure.
   the holdout set ... we need several sealed partition". Every new data set is split before any
   statistic by a salted hash of its biological unit (`partitions.py`): train 40% (the only data
   analysis code reads, via `train_only`) + sealed partitions A, B, C (20% each). One look spends
-  one partition; it is never redrawn or reused.
+  one partition, or two as a pre-registered union look (H13); a spent partition is never redrawn or reused.
 - **H12 The train fit decides what earns a look.** Candidate models are compared by cross-validation
   on the train partition only; the winner is recorded in `selection/<exp>.json` (test, >= 2
   candidates with scores, chosen = best), committed before the look. The oracle refuses otherwise.
   A model must also be consistent with every open and spent result first (G7 lesson: a memory
   rule already undermined by G6 was spent on the last Raj files).
-- **H13 Keep a reserve.** At most one partition per look. The last unspent partition of a source
+- **H13 Keep a reserve.** A look spends one partition, or two as one pre-registered union look (e.g.
+  `--partition AB`); a union is allowed only if at least one partition stays sealed after it. The last partition is
+  never part of a union; this is how the oracle has worked since 2026-11-07 (C4-S4 spent `raj_morph_0831:AB` on Bence's "1").
+  (Amended 2026-11-26, RETRO_2026-11-26 decision 2, Bence: "Drop all four"; the earlier text said "At most one
+  partition per look". Pretests report single-partition and union power; spending two is put to Bence.)
+  The last unspent partition of a source
   (or the last sealed file of an unpartitioned source, e.g. the Raj reserve) needs Bence's verbatim
   OK (`--last-ok`), logged in the ledger.
 - **H14 Power before a look.** (G11 lesson: compound partition A was spent with 3 controls, about 15%
@@ -270,6 +275,9 @@ before every look and refuses on any failure.
   | selection | chapter opening, and after every model change | the current model's simulated test statistic at the sealed n | H17 |
   | oracle | before the look | counts only, read by the oracle; refuses below 0.8 | H14 |
 
+  "A sealed partition" in this table includes a pre-registered union of two (H13, amended 2026-11-26): its power uses the
+  union's structural counts.
+
   The arithmetic comes only from `experiments/power.py` (`mean_power`, `rho_power`, `sim_power`); new scripts
   do not write their own power formula (`tests/test_guards.py` refuses one). The oracle floors the
   minimum power at 0.8 and alpha at 0.05, whatever the selection file says.
@@ -350,6 +358,20 @@ pre-registration dated 2026-11-13 or later without it.
   after a 40/20/20/20 split; state measured before the fate readout; public now; and the source paper has not
   answered the question at claims level (H25). Replicated-condition contrasts need >= 3 per arm (H22) and rank
   second (11-14; adopted 2026-11-18).
+
+**When searching for questions on sealed sets** (RETRO_2026-11-26 decisions 4-6; Bence 2026-11-26: "Drop all four")
+- Questions may come from any source: ideas written but never run, design contrasts, transfers of confirmed
+  readouts, open questions in the literature gap map, field reviews. Only the source list widens (it replaces the
+  QS1 three-source limit). The list is still frozen in a commit before any gate, and each question is checked
+  against the `Serves:` line. Every question still passes the near-repeat, power, H22 and novelty gates. No
+  question may be prompted by train outcomes seen in other chapters (H16). Reading for question generation keeps
+  H25's claims-only limit for a sealed set's source paper, and what is read goes into that set's `prior_exposure`.
+  This line leaves the novelty gate unchanged; how "published in kind" is treated is RETRO_2026-11-26 decision 1.
+- A replication look of our own confirmed result on a second partition is allowed only when that partition holds
+  independent assignment units (H22), not the same libraries, wells or animals split by hash. Whether a confirmed
+  result with a "partly published" novelty verdict may be replicated goes to Bence.
+- A set with only its last partition left is put to Bence by name, with a written question and its power; it is
+  not set aside silently. With no qualifying question, nothing is asked.
 
 **At chapter opening**
 - Run the novelty search per planned finding (each step's expected result), not per chapter topic. While a
