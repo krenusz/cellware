@@ -14737,3 +14737,57 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Decision (2026-11-26, Bence: "Yes, park R1"):** R1 is parked. chspctrack:B stays sealed, and no look pre-registration is drafted.
   - The reason offered: an R1 look only adds precision to a confirmed claim, at 0.58-0.82 power, and spends B, which would leave C as the last partition.
   - It reopens only on his request.
+
+## QS3: question search on the sealed sets QS2 left unasked (pre-registered 2026-11-26; Bence: "1")
+- **Serves: C12 CLOSED.** Bence's "1" answers RETRO_2026-11-26b's offer: a question search on the sets QS2 left unasked.
+- **Scope correction (advisor):** growth12_host_v2 was asked in QS2 (N4, failed readout at 5 hosts per partition).
+  - So **five** sets were unasked: rf2020_clone, cortical_clone, raj_wnt, petracer_embryo and raj_morph_0831. RETRO_2026-11-26b said six and is corrected.
+  - growth12_host_v2 stays in scope, because he approved the list by name. A new question there needs a unit other than host, or it fails the same gate.
+- **What "1" covers:** the search and the gates, from the log, the registry and the literature.
+  - No data file is opened. There is no train-only estimate and no dispatch.
+  - `test_oracle.py count --test` is not used while decision 13 is open.
+  - Missing sealed counts go into one batched ask.
+- **Stage 1 (log and registry only), one line per set:**
+  - its usable partitions:
+    - an A+B union is possible on rf2020_clone, cortical_clone, raj_wnt and growth12_host_v2, because C stays sealed;
+    - petracer_embryo has only B usable, because C is a single embryo and is the last partition;
+    - raj_morph_0831 has only C, its last partition. It goes to Bence by name with a question and its power, and is never part of a union;
+  - its binding structural limit;
+  - the question families already closed there, so new questions differ in kind (E6: petracer_embryo has don't-repropose rows in cross_system_law and memory_decay);
+  - raj_wnt has no `prior_exposure` entry in `partitions.py`. It is reconstructed from the log before any question; if that is unclear, Bence is asked (H10). Its per-arm sealed counts are grepped by unit and partition letter, and if absent they join the batched ask.
+- **Stage 2, questions:**
+  - At most 3 per set. The cap is Opus-added and labelled.
+  - Any source is allowed (program.md, "When searching for questions on sealed sets").
+  - *Labelled constraint:* the same block bars questions "prompted by train outcomes seen in other chapters".
+    - Opus wrote that line under "Drop all four" (5e0552c). Its "(H16)" citation is a mislabel, because H16 is the Serves rule.
+    - The bar is kept as written and shown to Bence. As a result, exploratory train rows (C6, C16, C17-PH) are not question sources.
+  - Own-result replications are listed by name with a no-data power threshold and held under decision 12. They are not the pick. Examples: C3 on raj_morph_0831:C, and C14 on petracer_embryo:B.
+  - The freeze commit holds, for each question:
+    - its unit, readout, comparison, one-sided statistic and Serves line;
+    - its claim-shaped, system-agnostic novelty queries, fixed before any result;
+    - its COVERAGE row, with the `steps` mapping.
+  - *Classing rule, fixed now:* a report of the claim in any system makes it "partly published", held under decision 1.
+- **Stage 3, gates in QS2's amended order:**
+  1. near-repeat (coverage_check E5/E6, plus greps);
+  2. H22;
+  3. readout (H21, from logged counts; any owed items are named);
+  4. novelty:
+     - classic search plus the frozen claim queries;
+     - the lookup lane returns every hit unfiltered, and Opus reads the abstracts;
+     - a verdict cites only what an abstract states;
+     - a sealed set's source is read at claims level, with per-term counts, and logged to `prior_exposure`;
+     - if the claim queries were not run, the verdict is "undetermined";
+  5. power:
+     - from `power.py`, using named used results;
+     - the sd source is named, alongside what the oracle's gate would compute from a selection file (decision 14);
+     - single-partition and union counts are both given;
+     - where no used effect exists, the minimum detectable effect.
+- **Outcome classes:** as QS2 (pass, candidate, held for Bence, fail).
+- Pre-flight:
+  - *unit, readout and power:* per question, in Stage 3;
+  - *used data first:* the Stage 1 log greps for counts and prior questions, plus the near-repeat gate;
+  - *exposure:* no data file is read, and claims-level reads are logged to `prior_exposure`;
+  - *literature:* classic search with a recall check, plus the claim queries;
+  - *readout gate:* per question, from logged counts.
+- Compute: local reads of the log and registry, plus lookup-lane queries (OpenAlex, PubMed E-utilities). No Actions run is planned; a power simulation would need an amendment and would go to Actions through the Cellware Sonnet session.
+- Practice: neutral wording (the SENSITIVE scan plus a hand read); DOIs, not titles; no outreach; the advisor before the freeze commit and before the verdicts.
