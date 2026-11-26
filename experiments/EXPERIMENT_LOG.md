@@ -14791,3 +14791,61 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - *readout gate:* per question, from logged counts.
 - Compute: local reads of the log and registry, plus lookup-lane queries (OpenAlex, PubMed E-utilities). No Actions run is planned; a power simulation would need an amendment and would go to Actions through the Cellware Sonnet session.
 - Practice: neutral wording (the SENSITIVE scan plus a hand read); DOIs, not titles; no outreach; the advisor before the freeze commit and before the verdicts.
+- **QS3 stage 1 (2026-11-26; log and registry only):**
+  - **rf2020_clone:**
+    - *Partitions:* A, B and C unspent, 2,387 clones each (C17-S0c). An A+B union is possible.
+    - *Units:* about 30 clones per partition (A 30 / B 31 / C 31; 61 as A+B) are shared across both recipients with >= 3 Kit+-library cells in each (C17-S1 power line). In train, 30 of 36 are in sample set 5.
+    - *Closed:* C17-TSPLIT (lineage-bias agreement across the split: in kind, failed_gate), CAND-F (sampling artefact: units gate) and C17-JOIN.
+    - *Exposure:* claims-level reads of the 2020 and 2026 sources, the pooled 2020 sentence on expansion agreement across recipients, and CAND-F's mouse ids and counts.
+  - **cortical_clone:**
+    - *Partitions:* A, B and C unspent, 2,066 clones each. The clone table holds one clone type ("Clonal cluster", 5 levels), n_cells, guide target (5 targets plus non-targeting), 13 donor batches and 9 stages.
+    - *Units:* 283 non-targeting clones in A (C17-S1 pre-registration).
+    - *Closed:* C17-TCORT (the instruction/selection decomposition: underpowered at 0.14-0.67, estimator smoke failed), CAND-E and CAND-G (ko_fate_identifiable).
+    - *Exposure:* obs structure, partition counts, and a claims-level read of the source.
+  - **raj_wnt:**
+    - *Partitions:* A, B and C unspent. Unit: one gastruloid line scan. Train per arm: clone 1 bulk/hi/lo 12/7/2, clone 3 4/4/4 (G9 partition step). Sealed per-arm counts are **not in the log**.
+    - *Exposure, reconstructed from the log (partitions.py has no entry):* tags and train counts per arm; G9 computed train polarity on the Wnt bulk files. G9's train outcomes are therefore not a question source.
+  - **petracer_embryo:**
+    - *Partitions:* B has 3 embryos (E7.5-R2, E7.5-R3, E9.0-R3). C is one embryo and is the last partition.
+    - *C14 on B is already settled by used data:* C14-S5 simulated power 0.60 (dR, S-drop), so it is underpowered and **not re-asked**.
+    - *Closed families:* cross_system_law (DNR-LAWROWS) and memory_decay (H-D; C17-STAGE negative). lineage_position failed at C13 (positions only inferred).
+    - *Barred sources:* the stage trend of heritable fate share is a train outcome of C17-PH, so it is barred as a source.
+    - **No new question.**
+  - **raj_morph_0831 (last partition C only):**
+    - *Units in C:* about 11 / 5 / 10 gastruloids for the three mixtures (the totals of 27 / 14 / 29, minus C4's A+B counts of 16 / 8 / 16).
+    - *Barred or repeat:* C4's secondary results (bulk+6a rescue, the sorting-index contrast T1) are seen outcomes, so they are barred as sources or would be near-repeats.
+    - *C3 replication:* C3's sealed statistic was on the G7 pairs. Mapping it to this plate is a design question, and its power was not computed.
+    - Any per-mixture contrast fails H21 (>= 30 per side).
+    - **No new question.** Put to Bence by name as "no question with power".
+  - **growth12_host_v2:** any unit other than host (78 units, trees) nests in 5 hosts per partition (10 as a union), so any statistic is carried by at most 10 hosts (H21 item 4, as QS2-N4). **No new question.**
+- **QS3 stage 2, frozen question list (2026-11-26; 4 questions; each has its claim-shaped novelty queries fixed here):**
+  - **QS3-RF1, rf2020_clone:** is a clone's stem-compartment fraction concordant between the two recipients it was split into, beyond clone size? This is heritability of the self-renewal balance across environments.
+    - *Unit:* shared clone with >= 3 Kit+-library cells in each recipient (the C17-S1 unit; 36 in train), stratified by sample set.
+    - *Readout:* per-recipient stem fraction = HSC-library cells / (HSC-library + Kit+-library cells). The libraries are separate sorts, so the fraction carries each recipient's library depth; the within-recipient shuffle absorbs that.
+    - *Comparison:* the partial Spearman rho across recipients, given log size in each, against shuffles within recipient and sample set. One-sided > 0.
+    - *Serves:* the core model's memory term, and the long-term goal (fate heritability across environments).
+    - *H22:* no treatment contrast.
+    - *Novelty claim queries:* "stem cell fraction concordant split transplant clones"; "self-renewal balance heritable barcoded clones recipients"; "clone output balance agreement across recipients".
+  - **QS3-RF2, rf2020_clone:** within a recipient, is a clone's stem-compartment fraction overdispersed relative to binomial sampling given its size? This asks for a clone-intrinsic self-renewal balance.
+    - *Unit:* clone with >= 5 cells across the HSC and Kit+ libraries, within a recipient and stratified by sample set.
+    - *Readout:* HSC-library versus Kit+-library cell counts (the same stem fraction as RF1).
+    - *Comparison:* a beta-binomial dispersion against the binomial at the recipient's compartment share. One-sided > 0.
+    - *Serves:* the core model's selection and memory terms.
+    - *H22:* no treatment contrast.
+    - *Novelty claim queries:* "clonal heterogeneity self-renewal differentiation balance barcode"; "stem cell clone output heterogeneity overdispersion"; "low output high output stem cell clones".
+  - **QS3-CO1, cortical_clone:** in non-targeting clones, does clone size depend on clone type beyond donor batch and stage? This is a fate-coupled selection term at baseline.
+    - *Unit:* non-targeting clone with n_cells >= 5, stratified by donor batch and stage.
+    - *Readout:* log n_cells and clone type.
+    - *Comparison:* the variance in log size explained by clone type (within strata), against label permutation within strata. One-sided > 0.
+    - *Readout condition, frozen now:* how the source assigns `Clonal cluster` is not in the log. If it is assigned from the clone's own cell composition, small clones cannot take some labels, so size and type are coupled mechanically and the statistic does not separate selection from labelling (H21 item 3). In that case CO1 fails the readout gate.
+    - *Serves:* the core model's selection term (gamma).
+    - *H22:* no treatment contrast, because only non-targeting clones are used.
+    - *Novelty claim queries:* "clone size depends on fate neural progenitor lineage barcode"; "fate-coupled clone expansion cortical development"; "clone type size bias progenitor clones".
+  - **QS3-WN1, raj_wnt:** does Wnt level (hi versus lo) shift a clone's axial position, within clone?
+    - *Unit:* gastruloid.
+    - *Readout:* polarity P of the clone's channel (the G1a polarity statistic).
+    - *Comparison:* hi minus lo mean, within clone. Two-sided: no direction has a basis outside train (G9 saw train polarity), so none is chosen.
+    - *Serves:* the morphogenesis element (a signal sets a clone's place along the axis).
+    - *H22:* arms hi and lo, assigned per gastruloid. At least 3 per arm per partition are needed.
+    - *Novelty claim queries:* "Wnt level shifts clone position gastruloid axis"; "Wnt dose anterior posterior position mixed clones gastruloid"; "signalling level biases cell sorting position gastruloid".
+  - *Replications:* none new. C14 on petracer:B is closed by C14-S5's power (0.60). C3 on raj_morph_0831:C is not computed (see stage 1).
