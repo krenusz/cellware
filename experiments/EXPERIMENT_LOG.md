@@ -14734,3 +14734,6 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Next (needs Bence):** R1's eligibility plus a look pre-registration.
   - *Cost:* the look spends chspctrack:B, leaves C as the last partition, and takes the partition that decision 3's T2 (DNR-HSPC-COND) would need.
   - No look pre-registration is drafted before he answers.
+- **Decision (2026-11-26, Bence: "Yes, park R1"):** R1 is parked. chspctrack:B stays sealed, and no look pre-registration is drafted.
+  - The reason offered: an R1 look only adds precision to a confirmed claim, at 0.58-0.82 power, and spends B, which would leave C as the last partition.
+  - It reopens only on his request.
