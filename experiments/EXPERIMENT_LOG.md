@@ -14419,3 +14419,39 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   3. *How many units carry it?* 1 recording, 277 trees; 1 tree carries the one eligible pair.
   4. *Could used data have answered it?* This is an inventory gate, not a question. E5 (721 pairs) is already the used counted-division set.
   5. *Is it already in the literature?* Not checked, as it is not needed at a structure fail.
+
+## DS-WIDE-G2: S0 structure gates for the DS-WIDE leads W6 and W7 (pre-registered 2026-11-26; Bence: "go 1")
+- **Serves: C12 CLOSED** (a counted-division system for C17-STAGE).
+- **Leads (track type):**
+  - W6: dryad:10.5061/dryad.f1vhhmh26, cell tracking behind an embryonic cell-state study; organism unknown.
+  - W7: dryad:10.5061/dryad.nk98sf823, mouse embryo 4D light-sheet tracking, labelled "example data".
+  - Duplicate check: both DOIs appear in the log only in the DS-WIDE screen.
+- **Carried unchanged:**
+  - The DS-EMB-G track rule: sister pair = two daughters of one tracked division; eligible if depth >= 1 and each arm >= 5 spots; gate >= 75 eligible pairs per lead.
+  - DS-WIDE-G amendments 1-3: validated reader; header reads by the Sonnet lane; range reads for zip members; Actions compute; validity rule.
+  - Per-specimen counts: divisions, eligible pairs, trees, trees with an eligible pair, non-nested pairs. Also the duplicate-specimen check.
+  - < 3 specimens = "pass, low replication". Any pass is inventory only (H22); no test is offered from it.
+- **Lessons built in from DS-WIDE-G:**
+  - *Stage L completeness:* every file and every archive member is listed, or named as unlisted with the reason. A verdict is final only then.
+  - *Archives that cannot be range-listed* (tar, tar.gz, or a server refusing ranges): under 2 GB they are fetched and listed on Actions; over 2 GB they stop for Bence's OK.
+  - *README:* the lookup lane reduces any README to flags only: organism, file format, manual or automated tracking, frame count and interval, number of specimens. Automated tracks get the "upper bound" label (as E3).
+  - *Early stop at schema:* a track format with no parent, link or split field fails before any full fetch. The header read goes to the Cellware Sonnet session.
+  - *Reader:* MaMuT XML reuses the `ds_emb_gate.py` E5 parser; Mastodon reuses `mastodon_read.py`. Any other format needs a reader validated before any count, and a validation failure is "fail at L".
+  - *Held columns:* W6 is a cell-state study, so state, fate, cluster and intensity columns are read as names only, never values.
+  - *Descriptive, not gate-changing:* frame span, and the share of divisions with depth >= 1.
+- **W7 family check, before any fetch:** E5 (`mouse_gast_tree`, sealed, A/B/C unspent) is mouse gastrulation light-sheet tracking.
+  - From repository metadata only (authors, affiliations, related identifiers, dates), W7 is checked for a shared source with E5 (S-BIAD1682).
+  - If it shares a source, or that cannot be ruled out, the W7 fetch stops for Bence. A sealed set's source family must not be re-read around its partitions.
+  - An overlap with the QE1 preprint's embryos would be a "published" note only.
+- **Access:** Dryad is tested with one listing GET and one range GET first. A challenge page or a block means stop and report; no bypass, and no local fallback without Bence's OK.
+- **Coverage status, fixed now:** both fail = `failed_gate`; any pass = `open` with "pass (inventory)" in the text.
+- Pre-flight:
+  - unit = sister pair for the gate, specimen or tree for any later use;
+  - readout = structure only;
+  - used data = none of the two sets;
+  - power = the gate;
+  - exposure = file names, column names, structure counts, README flags;
+  - literature = repository text only (H20 gap, recorded);
+  - readout gate (H21) = the gate.
+- Compute: listings and header reads local (small range reads); fetch and counts on GitHub Actions via `./run_sweep.sh`, sha256 printed in the job log. Routing: Haiku lookup lane for stage L and the family check; Opus for rules and mapping; the Cellware Sonnet session for header reads, code to spec, dispatch and collection.
+- Practice: neutral labels only (W6-*, W7-*) in saved outputs; scan with lit_gap.SENSITIVE; python -I on downloads in their own directories; one GET per URL, honour Retry-After once; no outreach; advisor before dispatch and before the verdict.
