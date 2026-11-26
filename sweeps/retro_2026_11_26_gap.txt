@@ -1,0 +1,2 @@
+# Retro 2026-11-26 full retro: literature gap map (standing retro step 2)
+[experiments/results_lit/gap_2026-11-26_retro.json] python experiments/lit_gap.py retro && mkdir -p experiments/results_lit && cp experiments/lit/gap_2026-11-26_retro.json experiments/results_lit/
