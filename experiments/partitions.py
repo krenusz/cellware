@@ -204,7 +204,9 @@ PARTITIONED = {
                           "33 founders positive; CAND-A-P2 (2026-11-27, run 46043017245) re-read the same train UMAP "
                           "for kNN type purity: core 83%, T_core 0.105, retained 0.887 (PASS); CAND-A-L1 fit "
                           "(2026-11-27, run 46048593443) re-read train labels and UMAP to freeze the look model; "
-                          "A and B founder counts (19 / 18) from the committed map only",
+                          "A and B founder counts (19 / 18) from the committed map only; CAND-A-L1 LOOK (2026-11-27, "
+                          "run 46052967210, ledger dtt_founder:AB): A and B labels, UMAP and readout read under the "
+                          "frozen model, T 0.091, z 4.87, 29 of 34 founders positive, CONFIRMED; C unread and sealed",
     },
     "germline_fish": {
         # H24 map from candi_seal.py, run 45222067549: eligible fish (>= 6 sample indices) 8 train, 4/4/4 sealed

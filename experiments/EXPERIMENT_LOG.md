@@ -15443,3 +15443,27 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - Anything other than a result goes to Bence with that evidence, and nothing is re-dispatched without his OK.
   - Both files are also printed into the sweep log, so a copy survives a failed artifact upload.
   - *On collection:* the captured row is appended only if it reads CAND-A-L1, `dtt_founder:AB` and the dispatch commit (after a refusal, `tail -1` returns an old row). It is committed before any judgment. Judgment follows the frozen rule only: `confirmed` = sample-sd z > 1.96. The known-sd z and the core rescore are reported, not rules. An adequacy stop or an error result is a spend with no claim.
+
+### CAND-A-L1 result on dtt_founder A+B (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46052967210 at 33509d0, 59 s, dispatched once; ledger row committed in 66070cf before this judgment)
+- **Approval:** Bence's OK in this session: "Yes, look on A+B". The Sonnet lane held the dispatch for a direct OK in its own session and reports his answer there as "Yes, run it once". That quote comes through the Sonnet lane; its event view does not show the dialog answer text.
+- **Primary: CONFIRMED.** T = 0.091, z = 4.87 (sample sd 0.108), 34 usable founders of 37 (floor 20), 29 of 34 positive. Confirmed under the frozen rule.
+  - The known-sd z (sd = max(train 0.0935, sample)) equals the sample-sd z, because the sealed sd is above train's.
+  - *Descriptive, from the committed d_f list:* median 0.118; founder-bootstrap 95% CI of the mean [0.052, 0.123].
+  - d_f percentiles are spread: 5 founders negative (-0.27, -0.18, -0.08, -0.06, -0.05); the rest 0.001-0.233.
+- **Prediction (written before the look):** T 0.06-0.12, positive in >= 2/3, confirmed. Met: 0.091; 29/34 = 0.85.
+- **Readout:**
+  - 109,057 evaluable cells, 107,298 in the 35 eligible types (all 35 scored).
+  - 132 type levels in A ∪ B: 3 sealed labels are absent from train, and 3 train labels are absent from A ∪ B. The 3 unseen labels were not scored, but they count as different-type relatives, as pre-registered.
+  - No lineage is unseen.
+  - Neither count touches the primary.
+- **Secondary (reported, no rule):** core cells are 84% of cells; T_core 0.097, retained 1.07. This shares CAND-A-P2's blind spot for coherently mislabelled groups, so it removes no limit.
+- **Self-challenge:**
+  1. *Train vs sealed:* T is lower than train's 0.118 by 0.027, about one standard error of the difference (0.025). The two are not like for like either: train T is cross-validated within train, while sealed T uses all-train models. So it is lower, within noise, not shrinkage.
+  2. *Negative founders:* left unexplained. The output carries no founder sizes, so whether -0.27 and -0.18 sit near the cluster floor is unknown. Any follow-up on A or B is a new entry and exploratory.
+  3. *Leakage:* the model was frozen on train (sha checked), and founders are held out. The UMAP was computed by the authors on all cells, sealed ones included (unsupervised, with no lineage input). That stays a limit.
+  4. *Alternatives not excluded:* a shared niche, quality structure (no counts columns), coherently mislabelled groups, and the unexplained train excess over the CAND-A-P1 prediction.
+  5. *Scope:* one embryo, so the claim is within-embryo, over held-out founder clades.
+- **Claim:** in one DNA Typewriter E13.5 embryo, in founder clades never used for fitting, a cell's UMAP position adds to its annotated type, own lineage and tree position in predicting which lineage its nearest different-type relatives belong to (mean founder delta AUC 0.091, z 4.87).
+  - This re-tests C14 (H-b, confirmed on PEtracer A) in a second recorder and a later stage. **It is supporting evidence, not a new finding.**
+- **Partitions:** dtt_founder A and B are spent. C stays sealed (about 16 founders; power about 0.72 at this effect size, so no single-partition look reaches 0.8).
+- *Exposure:* A and B's founder-level result, added to partitions.dtt_founder prior_exposure. C was not read.
