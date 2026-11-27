@@ -14967,3 +14967,39 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - **QS2-N2: open again.** Its in-kind reports are in other systems (worm and fly). Before anything else it needs the same-data check: a claims-level read of the source's spindle (3), orient (1) and direction (4) sentences, which QS2 left unread. Then H21 items 1 and 3 (train outcome distribution, synthetic smoke) and power. MDE is 0.50 sd at about 32 trees and 0.35 at about 64, as lower bounds. Its one-sided |cos| statistic would also miss an orthogonal pattern (QS2 round 3).
   - *Registry convention:* novelty stays "partly" (in kind) on closed rows, with status published_closed. DS-EMB-N's "published" predates this and is left as is.
   - *Not reopened:* C12 and DS-EMB-N are published by their own sources on the same data. Other rows parked as "partly" (for example QS1-L2, CAND-A, H-C) are not re-classed here; checking them against the rule is a separate step for Bence.
+- **Decision 1 applied to the other parked in-kind rows (2026-11-27; Bence: "go 1 2 3 and 5"; log and lit files only):**
+  - **QS1-L2 (lsc_larry): closed.**
+    - *Same-data check:* the source full-text claims read (QS1-L2-P1 check 2, retry 3) and its abstract.
+      - The abstract links clonal programs to both ex vivo self-renewal and in vivo initiation.
+      - A legend lists a clone-size correlation matrix across D20, in vivo and D40, which is the raw persistence-to-presence relation on the same data, shown as a panel.
+    - That is the same bar that closed QS3-RF1 (in kind by the set's own source; the "beyond size and state" part unread or unstated). C12 on the same set is closed the same way.
+    - *Correction:* Bence's "go 2" rested on my line that the source does not state it. It states it in kind, so nothing is run.
+  - **CAND-A (dtt_founder): passes the same-data check.**
+    - The DNA Typewriter source reports that siblings share type and that relatives predict masked labels (type from relatives). The C14 claim's core, state beyond type, is not reported on this data (lit/novelty/CAND-A_cross_recorder.md).
+    - Its in-kind source, Colgan 2026, is on other data, so it does not block.
+    - *Still owed:* a pre-registration with H21 and power on dtt_founder clades. It is a within-embryo test (one embryo, H22), and its value is confirmation of our own C14 claim, as the novelty file states.
+    - Not started; it needs Bence's OK.
+  - **H-C (petracer_embryo): unchanged.** The sole blocker is power, not novelty: B has 3 embryos, power 0.60 (C14-S5). The rule frees nothing.
+
+## QS2-N2-S: same-data check of the mouse_gast_tree source for division-axis memory (pre-registered 2026-11-27; Bence: "go 1 2 3 and 5", item 1 = the N2 source check)
+- **Serves: C12 CLOSED.** Under decision 1, N2 goes forward only if its source does not report division-axis memory on the same data.
+- **Scope:**
+  - *Source:* the open full text of doi 10.1038/s44318-025-00441-0, via Europe PMC full-text XML (PMCID resolved from the DOI). On an HTTP error: report the status and stop, with no workaround.
+  - *Section rule:* body sections only. Skip <fig>, <table-wrap>, <caption> and supplementary material, and print the counts with and without legends.
+  - *Extraction:* sentences containing `spindle`, `orient` or `direction` (case-insensitive substrings), QS2's three terms. Every matching sentence is returned verbatim with its section title, digits masked as "#".
+  - *Expected counts:* 3 spindle, 1 orient, 4 direction (QS2's bare per-term counts). If neither the body-only nor the with-legend counts give 3/1/4, the script prints the counts and stops, with no text returned.
+  - The raw XML is never printed, returned or kept on disk.
+- **Rule, fixed now:**
+  - A sentence relating a division's axis or orientation to the mother cell's or the previous division's axis, on this data, closes N2: published by its own source.
+  - Tissue-level orientation, migration direction or spindle mechanics without that relation leave N2 open.
+  - If the sentences are unclear, N2 stays unresolved and nothing more is read.
+  - If N2 stays open, the next steps (the H21 items 1 and 3 train scan, and a two-sided or orthogonal-aware statistic) need a new OK.
+- Pre-flight:
+  1. Unit: n/a (literature read).
+  2. Readout: matched sentences.
+  3. Used data first: QS2's scan gave counts only.
+  4. Power: n/a.
+  5. Exposure: added to partitions.mouse_gast_tree prior_exposure.
+  6. Access: open full text.
+- Compute: one lookup-lane fetch (Haiku), no Actions run.
+- Practice: neutral wording, DOIs not titles, the advisor consulted before this entry, no outreach.
