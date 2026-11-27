@@ -169,7 +169,9 @@ PARTITIONED = {
         "prior_exposure": "C17-S0b obs structure (columns, levels, guide and donor labels); C17-S0c partition counts; "
                           "claims-level read of the source paper; QS3-CO1-M (2026-11-26, Bence OK): the preprint's 26 methods "
                           "subsection headings and one methods sentence (clonal-cluster fractions compared between "
-                          "non-targeting and each knockdown by a paired rank test); no results, figures or tables",
+                          "non-targeting and each knockdown by a paired rank test); amendment 1 (2026-11-27, Bence OK): "
+                          "the 6 matching sentences of the clonal-clustering methods subsection, published version (clone "
+                          "floor, how clones are embedded and clustered by fate bias); no results, figures or tables",
     },
     "crest_split_clone": {
         "salt": "cellware-crest-split-clone-v1",

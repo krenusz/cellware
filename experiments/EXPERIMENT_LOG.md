@@ -14945,3 +14945,15 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - From something outside the clone's cells: CO1 stays held under decision 1.
     - Not settled: unresolved, and nothing more is read.
   - The read is added to `partitions.cortical_clone` prior_exposure.
+- **QS3-CO1-M amendment 1 result (2026-11-27; lookup lane, scripted extraction):**
+  - *Served:* PMC12999477, the published version, which answered this time. Subsection matched: "Lineage coupling and clonal clustering". 6 sentences kept, all returned.
+  - *What they say (paraphrased):*
+    - Clones with fewer than three cells, or with conflicting guide calls, were removed. The clone table's floor is therefore 3 cells.
+    - Fate-biased clones were found and clustered with a published clone-embedding tool. For each labelled cell, the tool trains a network to predict the clone labels of its nearest neighbours.
+    - Five clusters "with distinct fate biases" were defined on integrated lineage-resolved data. `Clonal cluster` has 5 levels (C17-S0b); this is a count match, not a stated link.
+    - The other three sentences cover the knockdown comparison, marker genes per cluster, and pseudotime by clone.
+  - **Verdict under the frozen rule: CO1 fails its readout condition (H21 item 3).** The sentences say a clone's cluster is computed from its own labelled cells, and that the clusters have distinct fate biases. That meets the rule's trigger, "the clone's own cells". The size coupling is the frozen condition's premise (small clones have fewer cells to place); the sentences do not show it.
+  - *Self-check:* the method is a learned embedding of the clone's cells, not a count of cell types; the rule names the clone's own cells, which covers it. No CO1 parameter is changed after seeing this.
+  - QS3-CO1 is now failed_gate. Decision 1 holds four questions: QS2-N1, QS2-N2, QS3-RF1 and QS3-RF2.
+  - *Exposure:* the 6 sentences are added to `partitions.cortical_clone` prior_exposure.
+  - *Advisor:* overloaded when the amendment was committed; consulted before this verdict commit.
