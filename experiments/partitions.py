@@ -209,8 +209,9 @@ PARTITIONED = {
                           "A and B founder counts (19 / 18) from the committed map only; CAND-A-L1 LOOK (2026-11-27, "
                           "run 46052967210, ledger dtt_founder:AB): A and B labels, UMAP and readout read under the "
                           "frozen model, T 0.091, z 4.87, 29 of 34 founders positive, CONFIRMED; C unread and sealed; "
-                          "2026-11-27 novelty refresh: abstracts only, incl. doi 10.64898/2026.10.06.756974 (may "
-                          "describe this embryo; not read beyond the abstract)",
+                          "2026-11-27 novelty refresh: abstracts only (WRITEUP_C14.md DOIs); doi "
+                          "10.64898/2026.10.06.756974 known at abstract level since 2026-11-17 (before sealing), its "
+                          "trees are a different deposit (GSE324482)",
     },
     "germline_fish": {
         # H24 map from candi_seal.py, run 45222067549: eligible fish (>= 6 sample indices) 8 train, 4/4/4 sealed

@@ -79,7 +79,9 @@ Per A embryo: E8.0-R2 -0.006, E8.5-R1 +0.043, E9.0-R2 +0.115, E9.5-R2 +0.137, E9
   - **Direct in-kind sources** (cells keep a lineage-of-origin expression trace beyond type, in mouse embryos):
     - the PEtracer source paper (doi 10.1016/j.cell.2026.09.050), which reports origin traces and endothelium from several mesodermal origins;
     - doi 10.64898/2026.11.11.765433 (preprint), whole-embryo barcoding at gastrulation: endothelial cells from several mesodermal origins differ transcriptionally by clonal lineage. This is the same pattern as C14-S4.
-  - **Likely direct, resting on one abstract sentence:** doi 10.64898/2026.10.06.756974 (preprint), DNA Typewriter recording in mouse embryos. It infers "lineage-associated transcriptional programs" from the trees. Only its abstract was read; it may describe the dtt embryo, so it is not read further without Bence's OK.
+  - **Likely direct, resting on one abstract sentence:** doi 10.64898/2026.10.06.756974 (preprint, FateVec), DNA Typewriter recording in mouse embryos. It infers "lineage-associated transcriptional programs" from the trees.
+    - It has been known at abstract level since 2026-11-17 (lit/c16_map_2026-11-17.md, before dtt_founder was sealed), but the 2026-11-18 CAND-A novelty file did not cite it.
+    - Its trees are a different deposit (GSE324482, not public) from the dtt_founder embryo (GSE341627). No open methods were found.
   - **Adjacent:**
     - doi 10.48550/arxiv.2610.40447, lineage inpainting (does not pre-empt; above);
     - doi 10.64898/2026.10.19.760045, memory genes used to infer relatedness from state (the reverse direction);

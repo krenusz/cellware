@@ -1,0 +1,2 @@
+# Retro 2026-11-27 (go 1-5, CAND-A P1/P2/L1 period): literature gap map (standing retro step 2). Inputs changed per decision 15: one SEED added (whole-embryo barcoding 2026) and four DOIs added to lit/read.txt.
+[experiments/results_lit/gap_2026-11-27_retro.json] python experiments/lit_gap.py retro && mkdir -p experiments/results_lit && cp experiments/lit/gap_$(date -u +%F)_retro.json experiments/results_lit/gap_2026-11-27_retro.json && cp experiments/lit/gap_$(date -u +%F)_retro.md experiments/results_lit/gap_2026-11-27_retro.md

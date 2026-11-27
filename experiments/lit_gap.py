@@ -166,6 +166,8 @@ SEEDS = {
     "DNA Typewriter mouse 2026 (dated embryo tree; sealed set source, titles and abstracts only)": "10.1126/science.ael0508",
     "FateVec 2026 (progressive asynchronous loss of potential on embryo trees)": "10.64898/2026.10.06.756974",
     "Curr Biol 1998 (cell-intrinsic differentiation timer)": "10.1016/s0960-9822(98)70177-0",
+    # retro 2026-11-27: CAND-A confirmed; direct in-kind source for the C14 biology (abstract read)
+    "Whole-embryo barcoding 2026 (convergent mesodermal origins at gastrulation)": "10.64898/2026.11.11.765433",
     "Nat Commun 2016 (cell-cycle-independent temporal identity)": "10.1038/ncomms11349",
     # C17-S1R-P7 2026-11-22: time-lapse lineage trees with counted divisions + fate (recall held-outs: a 2015 ESC
     # tree study and a 2012 lymphocyte division-destiny study are NOT seeds; the map must find them)
