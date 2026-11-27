@@ -15050,3 +15050,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - H2's added experiment was about 0 on train.
   - *Effect:* chspctrack B stays sealed. No floor exception is built, and R1 keeps its option on B. DNR-HSPC-COND stays underpowered, waiting on Bence.
 - **Decision 14 implemented (2026-11-27; Bence: "Adopt both (Rec.)"):** from 2026-11-27 the oracle refuses a look whose pre-registration has no `Power sd:` line, two different ones, or one that differs from the selection file's `power.sources.sd` (`power.SD_SOURCE_FROM`; four guard tests). Limit: it matches the label only. It does not check that `power.sd` is that source's number, and it does not cover the effect source, so R1's three powers (0.82 / 0.73 / 0.99), which differed in effect as well as sd, would not have been reconciled by it alone.
+- **Decision 9 dry run (2026-11-27; Bence: "go 1-5"; scratch pattern, counts only; lit_gap.SENSITIVE unchanged):**
+  - *Pattern:* letters plus digits, or 3-6 capitals, minus project and accession ids. It ran on the 164 committed lit and markdown files.
+  - *Hits:* 149 files and 24,244 hits over 1,121 distinct tokens. The heaviest are the committed gap-map JSONs (about 1,400-2,500 each, which hold titles) and EXPERIMENT_LOG.md (2,250).
+  - *By hand:* about half of the 80 most common tokens are real gene or protein symbols. The rest are false positives (method names, status words) plus some disease abbreviations.
+  - *Reading:* widening the filter means a curated deny list built from these tokens, rewriting the gap-map JSONs to DOIs only, and scrubbing the log and lit text. That is a large rewrite, and git history keeps the old text.
+  - The hit list stays in the scratchpad. Nothing is reworded yet; the cleanup scope goes to Bence.
+- **R2-R4 under decision 1 (2026-11-27; Bence: "Apply decision 1 (Rec.)"):**
+  - QS2-R2 (C8 T1), QS2-R3 (C8 T3) and QS2-R4 (C10) are closed.
+  - *Same-data check:* lit/novelty_audit_2026-11-18.md. For C8 its sources report early-state fate prediction on the same data ("known; sealed confirmation"). For C10 the source reports pre-resistant states in the same data.
+  - celltag_lsk:C, celltag_reprog:C and resistrace:B stay sealed.
