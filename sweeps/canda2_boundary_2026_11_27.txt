@@ -1,0 +1,2 @@
+# CAND-A-P2 boundary check (Bence: "Yes, boundary check"): train founders only, re-reads the train UMAP already read in CAND-A-P1 train. Needs the committed canda1_s0.json and canda1_train.json. Gates in order: readout identity, core-yield gate, planted smoke, T reproduction; then the primary.
+[experiments/results_cand/canda2_boundary.json] uv pip install -q scikit-learn && python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda2_boundary.py run

@@ -15270,3 +15270,53 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     5. *C14 comparison, context only:* C14's train gain was 0.076-0.090. The unit, base and state columns all differ from C14's, so the sizes are not comparable.
   - *Exposure:* the train-founder UMAP values were read, and the result is added to partitions.dtt_founder prior_exposure.
   - *Next (needs Bence):* the boundary check entry (train only), then the union-look proposal if it passes. The look itself needs its own entry with a `Power sd:` line, and Bence's verbatim OK.
+
+## CAND-A-P2: train-only boundary check for CAND-A-P1, mirroring C14-S5 (b) (pre-registered 2026-11-27; Bence: "Yes, boundary check")
+- **Serves: C12 CLOSED.** This is CAND-A-P1 amendment 3's required check before any look proposal. It reads train founders only (UMAP already read in CAND-A-P1 train), and no sealed founder.
+- *Script:* `experiments/canda2_boundary.py` (stages `selftest`, `run`). It reuses `canda1_state.py` unchanged except that `build()` now also returns the evaluable-cell pool (type codes and UMAP) for the neighbour search. That addition changes no existing stage's output. Output: `experiments/results_cand/canda2_boundary.json`, codes and counts only.
+- **Question:** is CAND-A-P1's gain carried by cells far from a type boundary in UMAP, where an atlas-transferred label is most likely right? Or is it carried by boundary cells, where UMAP can win by correcting labels?
+- **Design, fixed now (amendment 3 plus C14-S5 (b)'s choices, read 2026-11-27 before writing this):**
+  - *Purity:* each cell's share of its k = 15 nearest neighbours with the same `celltype`. Neighbours are Euclidean in the five raw UMAP columns (C14-S5 used its raw feature PCs). The pool is all 114,178 train evaluable cells. Self is excluded by index; with duplicate coordinates, the farthest neighbour is dropped instead.
+  - *Core* = purity >= 0.9; *edge* = purity < 0.6 (C14-S5's cut-offs).
+  - *Rescore, as C14-S5 did:* the cross-validated base and state predictions are recomputed exactly as in CAND-A-P1 train. d_f is then recomputed on core cells only.
+    - The 35 eligible types and the usable-founder map stay frozen. Only the per-founder floor (>= 5 distinct clusters per class per type) is re-applied on core cells.
+    - T_core = mean d_f over founders that still score; retained_core = T_core / T_train. T_train is read from `canda1_train.json`, never typed.
+- **Order inside the run, with no real T computed before each gate passes:**
+  1. *Readout identity (amendment 1):* the four counts must match S0, else stop.
+  2. *Purity counts:* core and edge shares, plus the core share per eligible type (codes only).
+  3. *Yield gate:* usable founders on core cells, needing no model. **Below 20 = INCONCLUSIVE**: counts only, and no T at any cut-off, including the exploratory ones.
+  4. *Planted smoke (C14-S5's two tests):* synthetic columns, with the real purity and the real readout. Column 1 = 1.0 x within-type standardised y plus noise.
+     - (i) Edge cells only: must give T_all > 0 and retained_core < 0.25.
+     - (ii) All cells: must give retained_core >= 0.5.
+     - Either fails = STOP, because the check cannot separate edge from core signal. No real T is computed.
+  5. *Reproduction:* the recomputed full-cell T must equal CAND-A-P1's T within 1e-6, else stop.
+  6. *Primary:* T_core, its founder-bootstrap 95% CI (2,000 resamples), positives and n.
+- **Outcomes and consequences:**
+  - **PASS:** retained_core >= 0.5 and T_core > 0, with >= 20 scored founders. Only PASS allows the union-look proposal to Bence, which then needs its own entry and his verbatim OK.
+  - **MIXED** (0.25 <= retained_core < 0.5), **BOUNDARY-DRIVEN** (< 0.25), **INCONCLUSIVE** and **STOPPED:** no look proposal, and CAND-A stays parked.
+  - No exploratory number can substitute for the primary or change the outcome.
+- **Exploratory, reported only after the primary (no rule):**
+  - Full-cell T on the founder x type pairs that survive the core filter. This separates a drop from type-mix change from a drop from label correction.
+  - T on edge cells.
+  - Core cut-offs 0.8 and 1.0.
+  - Purity on z-scored UMAP columns.
+  - Purity with all labelled train leaves as the neighbour pool.
+  - A refit on core cells only.
+- **Prediction (written now):** C14-S5 retained 0.94 with 68% core cells. Here the labels are noisier (fitted noise 0.57-0.69) and the effect is above prediction, so I expect retained_core of 0.4-0.8. MIXED is a live outcome.
+- **Limits, written now:**
+  - Purity uses the same UMAP columns the state model uses. Core cells sit in the type's centre, so the predictor's range shrinks and the AUC gain attenuates even for a real within-type signal. **So a PASS is informative and a FAIL is doubly ambiguous:** it cannot separate mislabelled cells from genuinely transitional ones, nor label correction from range restriction.
+  - Purity is against any other type, not specifically toward the relatives' L1 / L2 lineages (as in C14-S5).
+  - *Pool:* the pool is 114,178 of 266,671 labelled train leaves. A mislabelled cell whose true-type neighbours are not evaluable can look pure, which is the very case this check targets (C14-S5 logged the same limit). The all-labelled-pool purity is reported as exploratory; the primary stays on the evaluable pool, as amendment 3 fixed it.
+  - *Write order:* the primary is written to the output before the exploratory block runs, so an exploratory error cannot lose or alter it. An inconclusive result carries counts only.
+  - Far from a boundary weakens the label-correction explanation; it does not prove inherited state. Shared niche and quality structure remain (CAND-A-P1 limits).
+- **Freeze:** k, the cut-offs, the pool, raw columns, rescore, the gates, the smoke rules and the outcome rule do not change after any output.
+- Power sd: not applicable (train-only check; no look in this entry)
+- Pre-flight:
+  1. Unit: founder clade (train 33 usable). No treatment.
+  2. Readout: CAND-A-P1's, identity-checked against S0.
+  3. Used data first: the train UMAP was read in CAND-A-P1 train. No new column and no sealed row.
+  4. Power: not a test. The yield gate at 20 founders and the planted smoke cover detectability.
+  5. Exposure: the train UMAP re-read and the purity result go into partitions.dtt_founder prior_exposure.
+  6. Access: the public GitHub release, sha256-pinned.
+- Compute: GitHub Actions, dispatched by the Sonnet lane. One line (sweeps/canda2_boundary_2026_11_27.txt) with the scikit-learn install and the tree fetch. Only the toy selftest runs locally.
+- Practice: neutral wording, codes only, no outreach. Advisor consulted before the entry, which adopted: the gate order, outcome consequences, mirroring C14-S5, raw columns, the fail-limit clause, the reproduction check, the frozen eligibility, and the surviving-pairs diagnostic. A second advisor pass before the commit added: primary written before the exploratory block, a count-only inconclusive path, the exploratory block tested in the selftest, and the pool limit with the all-labelled-pool row.

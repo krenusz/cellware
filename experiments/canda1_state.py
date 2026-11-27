@@ -274,6 +274,11 @@ def build(L, with_umap=False):
     D["t_other"] = np.array([str(other[ids[p]]) for p in pos[m]], dtype=object)
     if with_umap:
         D["Z"] = df.loc[[ids[p] for p in pos[m]], list(UMAP)].to_numpy(float)
+        # CAND-A-P2 (boundary check): the neighbour pool is every evaluable cell, not only eligible types
+        D["pool_t"], D["pool_Z"] = t_of, df.loc[[ids[p] for p in pos], list(UMAP)].to_numpy(float)
+        D["pool_row"] = np.flatnonzero(m)
+        D["pool_all_t"], D["pool_all_Z"] = tcode, df.loc[ids, list(UMAP)].to_numpy(float)  # all labelled train leaves
+        D["pool_all_row"] = pos[m]
     info = {"type_column": tcol, "levels": levels, "type_levels_used": len(tl), "lineage_levels": len(ll),
             "labelled_train_leaves": int(len(leaf_nodes)), "evaluable_cells": int(len(y)),
             "types_with_lines": len(lines), "eligible_types": len(types),
