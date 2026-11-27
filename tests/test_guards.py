@@ -261,6 +261,32 @@ def test_oracle_practice_line_not_needed_before_cutoff(box):
     assert box.look("A", exp="T0").returncode == 0
 
 
+@pytest.mark.parametrize(
+    ("named", "needle"),
+    [
+        (None, "names no 'Power sd:'"),
+        ("A CI se", "differs from the pre-registered"),
+        ("train CV\nPower sd: A CI se", "two different 'Power sd:' lines"),
+    ],
+)
+def test_oracle_refuses_sd_source_not_named_or_mismatched(box, named, needle):
+    # decision 14 (Bence 2026-11-27: "Adopt both"): from 2026-11-27 the pre-registration names the
+    # sd source and the selection file's power.sources.sd must match it
+    extra = "\nCompute: local toy." + (f"\nPower sd: {named}" if named else "")
+    box.append_log(prereg(exp="T3", date="2026-11-27", extra=extra))
+    box.write("selection/T3.json", json.dumps(selection()))
+    assert box.commit("add T3").returncode == 0
+    refused(box, box.look("A", exp="T3"), needle)
+
+
+def test_oracle_allows_matching_sd_source(box):
+    extra = "\nCompute: local toy.\nPower sd: train CV"
+    box.append_log(prereg(exp="T3", date="2026-11-27", extra=extra))
+    box.write("selection/T3.json", json.dumps(selection()))
+    assert box.commit("add T3").returncode == 0
+    assert box.look("A", exp="T3").returncode == 0
+
+
 def test_oracle_refuses_without_selection_file(box):
     (box.exp / "selection" / "T1.json").unlink()
     box.commit("drop selection")

@@ -327,6 +327,16 @@ def power_gate(exp, test, part):
     errs = power.block_errors(s, strict)  # before any count is read from the partition
     if errs:
         return f"selection/{exp}.json: " + "; ".join(errs)
+    if (prereg_date(exp) or "") >= power.SD_SOURCE_FROM:
+        named = prereg_sd_source(exp)
+        got = str((s["power"].get("sources") or {}).get("sd", "")).strip()
+        if not named:
+            return f"{exp}: the pre-registration names no 'Power sd:' source (decision 14)"
+        if named.startswith("CONFLICT: "):
+            return f"{exp}: the pre-registration has two different 'Power sd:' lines: {named[10:]} (decision 14)"
+        if named != got:
+            return (f"selection/{exp}.json: power.sources.sd {got!r} differs from the pre-registered "
+                    f"'Power sd: {named}' (decision 14)")
     n = PARTITION_COUNTS[test](part)
     pw, msg = power.gate(s, n, strict)
     if pw is not None:
@@ -360,6 +370,22 @@ def prereg_date(exp):
     m = re.search(rf"^## {re.escape(exp)}:.*pre-registered (\d{{4}}-\d{{2}}-\d{{2}}).*$",
                   open(LOG, encoding="utf-8").read(), re.M)
     return m.group(1) if m else None
+
+
+def prereg_sd_source(exp):
+    """The 'Power sd: <source>' line in the pre-registration section of <exp>, or None (decision 14)."""
+    import re
+
+    text = open(LOG, encoding="utf-8").read()
+    m = re.search(rf"^## {re.escape(exp)}:.*$", text, re.M)
+    if not m:
+        return None
+    nxt = re.search(r"^## ", text[m.end():], re.M)
+    section = text[m.end(): m.end() + nxt.start()] if nxt else text[m.end():]
+    vals = {v.strip() for v in re.findall(r"^\s*(?:[-*]\s*)?Power sd:\s*(.+?)\s*$", section, re.M)}
+    if len(vals) > 1:
+        return "CONFLICT: " + " | ".join(sorted(vals))
+    return vals.pop() if vals else None
 
 
 def preregistered(exp):

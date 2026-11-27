@@ -16,6 +16,7 @@ MIN_POWER = 0.8  # floor: a selection file may ask for more, never for less
 MAX_ALPHA = 0.05
 MIN_SIDE = 30  # H21: units on each side of a binary split
 STRICT_FROM = "2026-11-13"  # pre-registrations from this date also need sources and a readout block
+SD_SOURCE_FROM = "2026-11-27"  # decision 14: the pre-registration names the sd source; the selection file must match
 _N = NormalDist()
 
 

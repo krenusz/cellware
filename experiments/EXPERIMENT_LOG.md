@@ -15049,3 +15049,4 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - T2's power is 0.86 by train ratio, but 0.46 if the effect shrinks as it did in C7 (C8-S1 result).
     - H2's added experiment was about 0 on train.
   - *Effect:* chspctrack B stays sealed. No floor exception is built, and R1 keeps its option on B. DNR-HSPC-COND stays underpowered, waiting on Bence.
+- **Decision 14 implemented (2026-11-27; Bence: "Adopt both (Rec.)"):** from 2026-11-27 the oracle refuses a look whose pre-registration has no `Power sd:` line, two different ones, or one that differs from the selection file's `power.sources.sd` (`power.SD_SOURCE_FROM`; four guard tests). Limit: it matches the label only. It does not check that `power.sd` is that source's number, and it does not cover the effect source, so R1's three powers (0.82 / 0.73 / 0.99), which differed in effect as well as sd, would not have been reconciled by it alone.
