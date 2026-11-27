@@ -15060,3 +15060,44 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - QS2-R2 (C8 T1), QS2-R3 (C8 T3) and QS2-R4 (C10) are closed.
   - *Same-data check:* lit/novelty_audit_2026-11-18.md. For C8 its sources report early-state fate prediction on the same data ("known; sealed confirmation"). For C10 the source reports pre-resistant states in the same data.
   - celltag_lsk:C, celltag_reprog:C and resistrace:B stay sealed.
+
+## QS2-N2-A: division-axis memory, train scan with an orthogonal-aware statistic (pre-registered 2026-11-27; Bence: "go 1-5", item 1 = the N2 train scan and a statistic that also catches perpendicular divisions)
+- **Serves: C12 CLOSED.** QS2-N2-S left N2 open; this entry does its owed H21 items 1 and 3 on train only. Script: `experiments/n2_axis.py` (stages `selftest`, `all`), output `experiments/results_qs2/n2_axis.json`.
+- **Question:** is a daughter cell's division axis related to its mother's division axis, beyond the axes of unrelated divisions nearby at the same time (the local tissue field)?
+- **Definitions, fixed now:**
+  - *Division:* a train-tree spot with exactly 2 kids at one frame. Its axis is the unit vector between the two kids' first spots, and its position is their midpoint. Divisions with kids at different frames, missing positions or a zero axis are skipped and counted.
+  - *Pair:* one per mother division: the mother and the next division along the chain of its kid with the smaller spot ID that reaches a division (axis-blind). No two pairs share a mother, so there is no sister dependence.
+  - *Statistic:* P2 = 1.5 cos^2 - 0.5 of the angle between two axes (1 aligned, -0.5 orthogonal, about 0 random). It catches inheritance and an orthogonal pattern alike (the other-system report doi 10.1083/jcb.105.5.2123), replacing QS2's one-sided |cos|.
+  - *Centre:* per pair, the daughter division's position minus the movie's mean mother-to-daughter displacement, which is where a mother is expected (structure only). The residual is the true mother's distance from that centre, and R is the median residual on train.
+  - *Controls:* divisions of other trees in the same movie, within +-w min of the mother division, whose distance from the pair's centre is within +-0.25R of the true mother's residual. They sit on the true mother's shell, so neither the field nor a shared drift favours the true mother.
+  - *Pair d:* P2(daughter, true mother) minus the mean P2(daughter, controls). T = mean over trees of the tree-mean d.
+  - *Null:* a control swap. Each replicate draws one member of each pair's pool {true mother + controls} as the "mother", and the rest of the pool forms the control mean. p is two-sided, from |T*| >= |T|. A pair needs >= 2 controls (K = 2).
+- **Stage 0 (structure only, before any axis is compared):**
+  - Reports R, the movie mean displacement and the median raw displacement relative to R, the median mother-to-daughter lag, the tissue extent (median over movies of the 5-95 percentile range of division midpoints along the first principal axis), R/extent, usable pairs and trees per window, and controls per usable pair.
+  - *Window rule (structure only):* w is the smallest of 10, 20, 30 and 60 min with >= 40 usable train trees.
+  - **Stop:** R/extent > 0.25 (the control is not local), or < 40 usable train trees even at 60 min. Either one fails N2 at readout, and no P2 is computed.
+- **Smoke (H21 item 3; simulated axes on the real train structure, no real axis):**
+  - *Field:* per movie, an axis rotating in a random plane with period L along a random direction, plus noise 0.5. L is 0.5R, R, 2R, 4R and 8R, plus one null at 2R where the field also rotates in time with a period of 4 median lags.
+  - *Models:* null (field only). Memory: with probability q, the daughter axis = norm(mother axis + 0.3 noise). Orthogonal: with probability q, a random axis perpendicular to the mother's.
+  - *Look size:* n_look = round(0.5 x usable train trees), subsampled each replicate (a partition holds half of train). Controls come from all train trees.
+  - **Pass:** null rejection <= 0.08 at each of the 6 nulls (400 replicates, 500 swaps, alpha 0.05), and memory and orthogonal rejection >= 0.80 at q = 0.5, L = R, at n_look (200 replicates). No real axis is compared unless both hold. The two failures mean different things:
+    - *A null above 0.08:* this control is miscalibrated on the real structure (for example drift that differs by region or lag, which the movie-mean centre cannot remove). N2 stays open, and a different control needs a new pre-registered entry.
+    - *Memory or orthogonal below 0.80:* N2 lacks power at look size and fails at readout.
+  - *Power on a pass:* rejection over q in {0.2, 0.3, 0.5, 0.7} for both models at n_look and at the train tree count. The MDE is the smallest q with >= 0.80, with its mean T in d units.
+- **Train (H21 item 1, only after stage 0 and the smoke pass):** the pair d and tree-mean d distributions (5/25/50/75/95 percentiles), T, the two-sided p (5,000 swaps), the sd of tree-mean d, and the mean P2 to true mothers and to controls. Runs with the band halved and doubled are **exploratory only**.
+- **Freeze:** the statistic, the centre, R, the window rule, the band, K, the null, the stop rules and the pass rules do not change after any output is seen. A failed stage stops the chain, with no rescue in this entry.
+- **A later look** (if any) is a separate pre-registration with its own `Power sd:` line (decision 14). Its control pool is the train trees plus the look partition's trees, and it needs Bence's OK.
+- Pre-flight:
+  1. Unit: track tree (within-movie contrast, H22 passed at QS2 gate 2).
+  2. Readout: pair d and T, gated by stage 0 and the smoke.
+  3. Used data first: QS2 gave counts only (290 pairs in 161 trees over all partitions). Positions have never been read in an analysis.
+  4. Power: the smoke grid at look size. The sd-based MDE (2.8 sd / sqrt n) is reported as a label only.
+  5. Exposure: the train-tree positions and axes and this output go into partitions.mouse_gast_tree prior_exposure.
+  6. Access: open EBI files, sha256-pinned (qs_e5.SHA256).
+- Compute: GitHub Actions (`sweeps/qs2_n2a_2026_11_27.txt`, no input flag; the movies download at run time), dispatched by the Sonnet lane. Only the selftest (synthetic structure, toy XML) runs locally.
+- Practice: neutral wording, DOIs not titles, no outreach. The advisor was consulted four times before the commit (the fourth split the smoke's null and power failures and added the centre to the freeze):
+  - *First round (four fixes adopted):* a structure stage with stop rules, a field at R and below, swaps from the full pool without sister dependence, and look-size checks with a named control pool.
+  - *Second and third rounds, pre-freeze revisions (synthetic evidence and logged counts only):*
+    - Mother-centred controls (within R of the mother) sit farther from the daughter than the true mother does. A synthetic null with no memory rejected 0.03 at L = R, 0.11 at 4R and 0.19 at 8R (150 replicates each, 156 synthetic trees). So controls are now matched by distance to the daughter, with one pair per mother. The redesigned synthetic selftest rejects 0.067, 0.047 and 0.053 at R, 4R and 8R, and detects memory and orthogonal at q = 0.8 (1.0 each).
+    - *Third round:* distance-to-daughter controls still favour the true mother when displacements share a direction (directed migration, as the source's sentences describe). A synthetic shared drift of 1x and 2x the step gave null rejection 0.13 and 0.29 at 4R. So the shell is now centred on the daughter minus the movie's mean displacement, and R and the band use the residual. The selftest now checks nulls with and without a 2x drift: 0.033, 0.040 and 0.053 (no drift) and 0.040, 0.047 and 0.067 (drift) at R, 4R and 8R, with memory and orthogonal detected (1.0 each).
+    - The +-10 min window came from the cycle-length test. Logged train non-kin pairs within +-10 min (results_c17/qs_e5_pairs.json: M1 123 pairs over 121 eligible cells, M2 108 over 101, M3 28 over 38, M4 0 over 9) give about 2 partners per cell before any distance rule. So the window is now chosen by the structure-only rule above.

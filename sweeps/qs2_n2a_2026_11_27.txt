@@ -1,0 +1,2 @@
+# QS2-N2-A (Bence: "go 1-5", item 1): N2 division-axis train scan. Selftest first; then stage 0 -> smoke -> train, each gated (EXPERIMENT_LOG "## QS2-N2-A"). Train trees only; movies download at run time (sha256 pinned); positions never saved.
+[experiments/results_qs2/n2_axis.json] python -I experiments/n2_axis.py selftest | grep -q '"pass": true' && python -I experiments/n2_axis.py all
