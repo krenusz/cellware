@@ -15227,3 +15227,6 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - If it is a function of `celltype`, it is constant within type and harmless. If not, UMAP may partly stand in for it, which weakens "beyond type".
     - Added to the Limits; the models are unchanged.
   - partitions.dtt_founder prior_exposure now records S0's read of all three label columns.
+- **CAND-A-P1 smoke, first dispatch failed on infrastructure (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46005782573 at df251cc):** all 14 lines stopped on the first replicate with "No module named sklearn".
+  - The workflow installs scikit-learn only inside its input-flag data steps, and this sweep uses no flag. No replicate completed and no output landed.
+- **CAND-A-P1 amendment 2 (infrastructure only; no rule, statistic or parameter changed):** each smoke line now starts with `uv pip install -q scikit-learn`, the same install the flag-gated steps use. The train sweep will do the same. The sweep is re-dispatched unchanged otherwise.
