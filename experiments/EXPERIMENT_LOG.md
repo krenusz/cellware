@@ -15042,3 +15042,10 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - a two-sided or orthogonal-aware statistic in place of the one-sided |cos|;
     - power (MDE 0.50 sd at about 32 trees, 0.35 at about 64, lower bounds).
   - *Exposure:* the 8 sentences, digit-masked, are added to partitions.mouse_gast_tree prior_exposure.
+- **Decision 3 put on hold (2026-11-27; Bence: "go 1", answering "Hold B for now"):**
+  - *Why it went back to him:* his answer ("Floor change, one look", then "One primary + 2 secondary") rested on powers of 0.78-0.79.
+  - *What the log shows:*
+    - H1 is the same test as C8 T2: exp 7, 32 effective units on B.
+    - T2's power is 0.86 by train ratio, but 0.46 if the effect shrinks as it did in C7 (C8-S1 result).
+    - H2's added experiment was about 0 on train.
+  - *Effect:* chspctrack B stays sealed. No floor exception is built, and R1 keeps its option on B. DNR-HSPC-COND stays underpowered, waiting on Bence.
