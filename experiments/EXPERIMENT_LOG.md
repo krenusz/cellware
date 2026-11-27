@@ -15430,3 +15430,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - Power: effect 0.0589, sd 0.0935.
     - Readout sides: 37,491 / 18,657 clusters.
   - *Next:* the look needs Bence's verbatim OK. Its sweep line is written only then, and it must carry the runner's ledger row out in the results directory.
+- **CAND-A-L1 look approved (2026-11-27; Bence: "Yes, look on A+B").**
+  - The local gate pre-check before the ask: pre-registered; selection gate OK; power gate 0.97 at {"AB": 37}; no dtt_founder ledger row.
+  - A alone (19) would be 0.78 and refused, so the union is the only look >= 0.8.
+  - *Command correction (syntax only, no rule change):* the test name is positional: `test_oracle.py look dtt_canda --exp CAND-A-L1 --partition AB`, not `--test dtt_canda`.
+  - *Sweep:* sweeps/canda_look_ab_2026_11_27.txt, one line. It writes stdout and stderr to results_cand/canda_look_AB.out and the runner's last ledger row to results_cand/canda_look_AB_ledger.tsv. The Actions artifact keeps `results_*/` only, and the runner's own ledger is discarded.
+  - *Run once, with outcomes read from evidence:*
+    - No `.out` file means the look never started (install or fetch failed).
+    - `refused:` means a gate stopped it before the sealed read.
+    - An uncaught traceback is pre-read unless it was raised after `test_AB` returned (the ledger append or the print). `test_AB` catches everything after its sealed read.
+    - A killed job is the only unclear case.
+    - Anything other than a result goes to Bence with that evidence, and nothing is re-dispatched without his OK.
+  - Both files are also printed into the sweep log, so a copy survives a failed artifact upload.
+  - *On collection:* the captured row is appended only if it reads CAND-A-L1, `dtt_founder:AB` and the dispatch commit (after a refusal, `tail -1` returns an old row). It is committed before any judgment. Judgment follows the frozen rule only: `confirmed` = sample-sd z > 1.96. The known-sd z and the core rescore are reported, not rules. An adequacy stop or an error result is a spend with no claim.
