@@ -201,7 +201,8 @@ PARTITIONED = {
                           "46004387055) read all three label columns for train founders and built per-type and "
                           "per-founder outcome counts (codes only in the output); CAND-A-P1 train (2026-11-27, run "
                           "46009758197) read the five UMAP columns of train founders: T 0.118 [0.086, 0.149], 30 of "
-                          "33 founders positive",
+                          "33 founders positive; CAND-A-P2 (2026-11-27, run 46043017245) re-read the same train UMAP "
+                          "for kNN type purity: core 83%, T_core 0.105, retained 0.887 (PASS)",
     },
     "germline_fish": {
         # H24 map from candi_seal.py, run 45222067549: eligible fish (>= 6 sample indices) 8 train, 4/4/4 sealed

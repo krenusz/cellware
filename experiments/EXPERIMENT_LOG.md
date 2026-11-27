@@ -15320,3 +15320,42 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   6. Access: the public GitHub release, sha256-pinned.
 - Compute: GitHub Actions, dispatched by the Sonnet lane. One line (sweeps/canda2_boundary_2026_11_27.txt) with the scikit-learn install and the tree fetch. Only the toy selftest runs locally.
 - Practice: neutral wording, codes only, no outreach. Advisor consulted before the entry, which adopted: the gate order, outcome consequences, mirroring C14-S5, raw columns, the fail-limit clause, the reproduction check, the frozen eligibility, and the surviving-pairs diagnostic. A second advisor pass before the commit added: primary written before the exploratory block, a count-only inconclusive path, the exploratory block tested in the selftest, and the pool limit with the all-labelled-pool row.
+- **CAND-A-P2 result (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46043017245 at 3c7c262, 93 s; collected by the Sonnet lane; results_cand/canda2_boundary.json sha256 339cfcb9..., codes and counts only, checked for label strings): PASS.**
+  - *Gates:*
+    - The readout identity matches S0 on all four counts.
+    - Purity: median 1.0; core 83.2% of cells, edge 7.3%. 33 usable founders on core cells (floor 20).
+    - The full-cell T reproduces 0.117834 exactly.
+  - *Planted smoke (passed by rule):*
+    - Everywhere arm: retained 0.94 (T_all 0.340, T_core 0.320).
+    - Edge-only arm: T_all 0.0032 > 0, T_core -0.016, ratio -4.9.
+    - **The edge-only arm passed at the noise floor.** Its T_all is about the null penalty of five uninformative columns seen in the P1 smoke (about 0.003), because only 7% of cells are edge cells. So its ratio carries no meaning. It shows that an edge-only signal does not leak into the core rescore. It does not show that the check could detect an edge-carried effect of the observed size. Logged; no rule changed.
+  - **Primary: T_core 0.105, 95% CI [0.077, 0.132], z 7.3, 31 of 33 founders positive; retained_core 0.887 (>= 0.5, same sign) = PASS.**
+  - *Exploratory (no rule):*
+
+| Row | T | 95% CI | Founders (positive / n) |
+|---|---|---|---|
+| Full cells on the surviving founder x type pairs | 0.110 | [0.080, 0.139] | 30 / 33 |
+| Edge cells (purity < 0.6) | 0.089 | [0.063, 0.115] | 21 / 23 |
+| Core cut-off 0.8 | 0.114 | [0.080, 0.148] | 30 / 33 |
+| Core cut-off 1.0 | 0.103 | [0.071, 0.132] | 30 / 33 |
+| Purity on z-scored UMAP | 0.105 | [0.077, 0.132] | 31 / 33 |
+| All-labelled pool (core share 0.82) | 0.104 | [0.075, 0.131] | 31 / 33 |
+| Refit on core cells | 0.109 | [0.082, 0.137] | 31 / 33 |
+
+  - **Reading:**
+    - Within the surviving pairs, core cells keep about 0.95 of the gain (0.105 of 0.110). About 0.008 of the drop from 0.118 is type-mix change.
+    - Edge cells are not higher than core (0.089 on 23 founders). That is the most direct evidence against a gain carried by boundary cells.
+    - Every variant lies in 0.103-0.114. So label correction at type boundaries does not carry CAND-A-P1's gain.
+  - **Premise correction (read at source, C17-S1PL-T result and T4):** amendment 3 called 0.57-0.69 "fitted label noise for `celltype`". It is the eps term of the sister-arm agreement model: 0.57 for `major_trajectory`, and 0.69 for `celltype` pooled to 24 categories. It absorbs any disagreement between sister arms, not a per-cell mislabel rate. So the label-correction suspect was weaker than amendment 3 assumed.
+  - **Added limit:** labels transferred through expression neighbourhoods would be smooth in UMAP, and purity is blind to coherently mislabelled groups. The PASS rules out isolated boundary mislabels only.
+  - *Self-challenge:*
+    1. *Predictions missed twice:* retained 0.887 is above the predicted 0.4-0.8, and T stays above the CAND-A-P1 prediction of 0.02-0.07. With the leading suspect weakened, the excess is unexplained, not resolved. Finer structure within a label, quality structure and a shared niche all remain.
+    2. *Circularity:* purity uses the same columns as the state model. Range restriction on core cells would lower T_core, yet it stayed at 0.89 of T, so that bias did not bite.
+    3. *Smoke:* the edge-only arm is at the noise floor (above). The everywhere arm and the reproduction gate are solid.
+    4. *Coherent mislabels:* not excluded (added limit).
+    5. *Scope:* one embryo, train founders, re-test of C14 in a second recorder: supporting evidence, not a new finding.
+  - *Exposure:* the train UMAP was re-read for purity, and the result is added to partitions.dtt_founder prior_exposure. Sealed founders were not read.
+  - **Consequence under the frozen rules:** the CAND-A-P1 look-proposal branch is open: a union look on A + B. Power at half the train T is 0.95 on a projected 32 founders (16 + 16; projections, not counts).
+    - The look spends A and B and leaves only C sealed.
+    - It needs its own entry with a `Power sd:` line, and Bence's verbatim OK.
+    - The CAND-A COVERAGE row must first be opened, which trips E6 against DNR-CLOCK-A (its family label looks wrong). That relabel is Bence's call.
