@@ -24,3 +24,7 @@ Candidate from lit/gap_outcomes_2026-11-18.md. Not a FOCUS step yet; rename to t
 
 ## What is left that is ours
 A within-embryo, held-out-clade re-test of C14 in an independent recorder. **That is a stronger confirmation of a partly published claim, not a discovery.** Its value is as supporting evidence if C14 is written up; it does not answer an open biological question. Do not open a chapter on it for discovery.
+
+## Refresh 2026-11-27 (after the CAND-A-L1 look)
+- OpenAlex claim-shaped queries (Haiku lane, all hits returned unfiltered; abstracts read by the orchestrator). New in-kind sources for the C14 biology: doi 10.64898/2026.10.06.756974, doi 10.64898/2026.11.11.765433, doi 10.64898/2026.10.19.760045; plus the known doi 10.48550/arxiv.2610.40447.
+- CAND-A-L1 confirmed the C14 claim on dtt_founder A+B (T 0.091, z 4.87). Verdict unchanged: stronger confirmation of a partly published claim, not a discovery. See WRITEUP_C14.md, Value against the literature.

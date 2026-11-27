@@ -127,7 +127,9 @@ PARTITIONED = {
         "files": ["4 Zenodo 19892784 files (trees.h5td, cells.csv, characters.csv, spatial_scores.csv), "
                   "sha256 in data/ext_petracer/SHA256SUMS"],
         "sealed_on": "2026-11-15",
-        "prior_exposure": "C13-S0: GEO/Zenodo metadata only (sample titles, stages, file names and sizes); abstract",
+        "prior_exposure": "C13-S0: GEO/Zenodo metadata only (sample titles, stages, file names and sizes); abstract; "
+                          "2026-11-27 novelty refresh: abstracts only of the DOIs in WRITEUP_C14.md (Value against the "
+                          "literature)",
     },
     "growth12_host": {  # A/B/C VOID 2026-11-17 (amendment 1); train identical to v2
         "salt": "cellware-growth12-host-v1",
@@ -206,7 +208,9 @@ PARTITIONED = {
                           "(2026-11-27, run 46048593443) re-read train labels and UMAP to freeze the look model; "
                           "A and B founder counts (19 / 18) from the committed map only; CAND-A-L1 LOOK (2026-11-27, "
                           "run 46052967210, ledger dtt_founder:AB): A and B labels, UMAP and readout read under the "
-                          "frozen model, T 0.091, z 4.87, 29 of 34 founders positive, CONFIRMED; C unread and sealed",
+                          "frozen model, T 0.091, z 4.87, 29 of 34 founders positive, CONFIRMED; C unread and sealed; "
+                          "2026-11-27 novelty refresh: abstracts only, incl. doi 10.64898/2026.10.06.756974 (may "
+                          "describe this embryo; not read beyond the abstract)",
     },
     "germline_fish": {
         # H24 map from candi_seal.py, run 45222067549: eligible fish (>= 6 sample indices) 8 train, 4/4/4 sealed
