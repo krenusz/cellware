@@ -15024,3 +15024,4 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - **Decisions 14 and 15: "Adopt both (Rec.)".**
     - 14: power gates use the sd source the pre-registration names, written into the selection file so the oracle agrees. Needs an oracle change and a guard test.
     - 15: the gap map is rerun only when its seeds or read list changed; otherwise the last map is cited.
+- **QS2-N2-S amendment 1 (2026-11-27, before any text was read):** the first run printed "PMCID lookup status: ERR" and stopped, as the rule says. A one-call diagnosis returned HTTP 200 with hitCount 1 and PMCID PMC12170898, so the stop was a parsing bug in the script, not a block. The extraction reruns unchanged with the PMCID fixed to PMC12170898. Every other rule stands, including the 3/1/4 count gate and the closing rule.
