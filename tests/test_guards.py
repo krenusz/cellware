@@ -355,6 +355,28 @@ def test_partition_is_spent_once_and_last_needs_ok(box):
     assert box.ledger_rows() == 3
 
 
+def _count(box, *extra):
+    cmd = [sys.executable, "experiments/test_oracle.py", "count", "--partition", "A"]
+    cmd += ["--test", TEST, *extra]
+    return subprocess.run(cmd, cwd=box.root, capture_output=True, text=True)
+
+
+def test_count_test_refuses_without_preregistration(box):
+    # decision 13 (Bence 2026-11-27: "Keep + guard test"): count --test needs a pre-registered --exp
+    for extra in ((), ("--exp", "T9")):
+        res = _count(box, *extra)
+        assert res.returncode != 0 and "refused: count --test" in (res.stderr + res.stdout)
+    assert box.looked() == [] and box.ledger_rows() == 0
+
+
+def test_count_test_returns_counts_only(box):
+    res = _count(box, "--exp", "T1")
+    assert res.returncode == 0, res.stderr
+    assert json.loads(res.stdout)["counts"] == {"clones": 100}
+    assert box.looked() == [], "count --test ran the sealed test function"
+    assert box.ledger_rows() == 0, "count --test wrote a ledger row"
+
+
 def test_union_look_refused_when_part_of_it_is_spent(box):
     assert box.look("A").returncode == 0
     res = box.look("AB")  # a union that contains a spent partition

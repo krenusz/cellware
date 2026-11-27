@@ -52,7 +52,7 @@ Closed chapter plans and the 2023-24 setup moved to `PROGRAM_HISTORY.md` on 2026
 
 ## Retro (standing steps, from 2026-11-04)
 1. Write `RETRO_<date>.md`: what went well, what went badly, decisions.
-2. **Literature gap map:** run `uv run python experiments/lit_gap.py`. It maps the citation
+2. **Literature gap map:** run `uv run python experiments/lit_gap.py`. (Decision 15, Bence 2026-11-27: "Adopt both (Rec.)": rerun it only when its SEEDS or `lit/read.txt` changed since the last map; otherwise cite that map.) It maps the citation
    neighbourhood of the core papers (SEEDS in the script) through the free OpenAlex API, ranks
    unread papers by how many open questions they touch, and marks each open access or paywalled
    (by publisher). Read the top open-access ones, add DOIs read to `experiments/lit/read.txt`,
@@ -74,6 +74,8 @@ Closed chapter plans and the 2023-24 setup moved to `PROGRAM_HISTORY.md` on 2026
 ## Test oracle (from 2026-11-01)
 
 Held-out statistics are computed only by `experiments/test_oracle.py look <test> --exp <id>`. It refuses without a pre-registration heading, with uncommitted experiment code, or for a (test, shard) already seen, and logs every look in `experiments/test_ledger.tsv`. Parallel tracks use disjoint clone shards (`--shard i --shards K`) or one joint look. Agents working a track get the oracle, never the raw test statistic code paths.
+
+`test_oracle.py count --partition <P> --test <t> --exp <id>` returns only the unit counts that test's power gate uses (`PARTITION_COUNTS[t]`), behind a pre-registration check; no outcome is read (decision 13, Bence 2026-11-27: "Keep + guard test (Rec.)"). Guard tests cover its refusal without a pre-registered `--exp` and that it reads counts only (no look, no ledger row).
 
 
 ## Hold-out rules (Bence, 2026-11-06: "be really careful with the holdout data")
@@ -299,6 +301,7 @@ pre-registration dated 2026-11-13 or later without it.
 
 **Before a model run**
 - Every pre-registration has a `Compute:` line; any run over about 2 minutes goes through `run_sweep.sh` on GitHub Actions; only the oracle look and private-file jobs stay local (11-15).
+- Decision 11 (Bence 2026-11-27: "local if under 1 minute and the pc resources are checked against"; reading: checked against the job's needs): a structure count on public data expected to finish in under 1 minute may run locally on the Sonnet lane, after the PC's free RAM and disk are checked against the job's file sizes. Synthetic runs, fits and anything longer stay on Actions.
 - Run the whole fit or test path on a tiny synthetic input before dispatching it to Actions or to the oracle (11-15).
 - Smoke tests use synthetic outcomes and write to the scratchpad, never to real results (11-04b).
 - Cold start after any structural model change (11-04).
@@ -330,6 +333,12 @@ pre-registration dated 2026-11-13 or later without it.
 - Primary-test power at pre-registration comes from simulating the actual estimator at the measured regime, not from an analytic formula (11-19b; C17 cortical analytic 0.80 vs simulated 0.14-0.67).
 - The S0 inventory lists, per unit, the file that carries its outcome and its coverage; and it names and counts the unit of the chapter's headline claim (a cross-system claim counts systems) (11-19b; labels existed for 2 of 5 transplant sample sets; 3 systems cannot carry a law).
 - Every 'not found' novelty verdict includes a no-date concept search (OpenAlex or PubMed, sorted by citations) with the top 10 abstracts read; recent work and the source papers alone are not enough (11-19b; C17 split test was published in kind in 2002, 2007 and 2016).
+- Decision 10 (Bence 2026-11-27: "Adopt all five (Rec.)"):
+  - a lead's verdict is final only once every file and archive member is listed, or named as unlisted with a reason;
+  - amendments the advisor asks for are committed before the dispatch;
+  - every watch-list item carries an identifier (accession, DOI or URL);
+  - novelty queries are claim-shaped, and lookup returns come back unfiltered (Opus filters);
+  - before any count step, the log is grepped for an existing count by unit definition and partition.
 - Scans of a sealed set's source paper print headings and design sentences only; any sentence with statistics words (r =, P =, correlation of, n =) is dropped (11-19; C17 novelty scan slip).
 - Result writers get a 1-rep local run before dispatch (11-19; C17-S1 numpy-bool crash twice).
 - A planted smoke signal goes on a direction orthogonal to the base features (residualised, or a synthetic
@@ -372,6 +381,12 @@ pre-registration dated 2026-11-13 or later without it.
   read at claims level. If any paper reports it on the same data, it is closed as published: note it and move on.
   An in-kind report on other data or another system does not block. The verdict line names the same-data check
   and what was read for it.
+- **Data access and screens (Bence 2026-11-27):**
+  - *Decision 7 ("Ask Bence to download (Rec.)"):* a blocked download (401, 403, a challenge page) stops the
+    step. The standard route is to ask Bence to download it into the named folder. There are no workarounds and
+    no outreach.
+  - *Decision 8 ("Keep, write it down (Rec.)"):* a new data set needs >= 75 eligible units in total at S0 before
+    it is sealed (origin: C17-S1C, 2026-11-20). This is an early screen only; the power gate decides every look.
 - A replication look of our own confirmed result on a second partition is allowed only when that partition holds
   independent assignment units (H22), not the same libraries, wells or animals split by hash. Whether a confirmed
   result with a "partly published" novelty verdict may be replicated goes to Bence.

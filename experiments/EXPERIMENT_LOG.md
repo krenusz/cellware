@@ -15003,3 +15003,24 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   6. Access: open full text.
 - Compute: one lookup-lane fetch (Haiku), no Actions run.
 - Practice: neutral wording, DOIs not titles, the advisor consulted before this entry, no outreach.
+- **Open retro decisions answered (2026-11-27; Bence in three dialogs, after "go 1 2 3 and 5"):**
+  - **Decision 3, DNR-HSPC-COND: "Floor change, one look".**
+    - *Which test:* "all". Asked how, he answered "One primary + 2 secondary (Rec.)".
+    - The one look on chspctrack B has C9-S0 H1 (power 0.79) as primary, uncorrected; C8 T2 and C9-S0 H2 are reported as secondary and exploratory.
+    - B is spent by it, so QS2-R1 (C7 replication on B) can no longer run there. C stays sealed.
+    - *Needs:* an oracle floor exception for this one named look plus a guard test, then a pre-registration and the look.
+  - **Decision 7: "Ask Bence to download (Rec.)".** The stop on download blocks stays; the standard route is Bence downloading into the named folder. No outreach.
+  - **Decision 8: "Keep, write it down (Rec.)"** (after "elaborate on this"). The >= 75 eligible-unit S0 screen from C17-S1C goes into program.md with its origin. The power gate still decides every look.
+  - **Decision 9: "Widen + re-check (Rec.)".** The neutral-wording filter gets a gene-name pattern, and the committed gap maps and lit files are re-checked and reworded where hit.
+  - **Decision 10: "Adopt all five (Rec.)".** Five practice lines go into program.md:
+    - stage L completeness before a verdict;
+    - advisor-requested amendments committed before a dispatch;
+    - an identifier on every watch item;
+    - claim-shaped novelty queries with unfiltered lookup returns;
+    - a grep of the log for existing counts before any count step.
+  - **Decision 11: "local if under 1 minute and the pc resources are checked against".** Sub-minute structure counts on public data may run locally on the Sonnet lane once the PC's free RAM and disk are checked against the job's needs. Everything else stays on Actions.
+  - **Decision 12:** "elaborate on this as well". Asked again with more detail; not decided yet.
+  - **Decision 13: "Keep + guard test (Rec.)".** `count --test` is described in program.md's oracle section and gets a guard test.
+  - **Decisions 14 and 15: "Adopt both (Rec.)".**
+    - 14: power gates use the sd source the pre-registration names, written into the selection file so the oracle agrees. Needs an oracle change and a guard test.
+    - 15: the gap map is rerun only when its seeds or read list changed; otherwise the last map is cited.
