@@ -244,7 +244,10 @@ PARTITIONED = {
                           "counts; 0 sentences where an orientation term co-occurs with a division term; no sentence "
                           "text read), plus a title screen of its 20 most-cited references; QS2-N2-S (2026-11-27, Bence OK): the 8 body "
                           "sentences with spindle / orient / direction (digits masked): migration direction, cell shape, "
-                          "tissue-level growth; none on division-axis inheritance",
+                          "tissue-level growth; none on division-axis inheritance; QS2-N2-A stage 0 (2026-11-27, "
+                          "Bence OK, run 45998996908): train-tree spot positions read on the runner for structure "
+                          "only (R, extent, displacement ratios, usable pairs and trees per window); stage 0 failed "
+                          "(18 usable trees < 40), so no division axis was compared and nothing was simulated",
     },
 }
 BUCKETS = 5

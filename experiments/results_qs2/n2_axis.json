@@ -1,0 +1,75 @@
+{
+ "note": "train trees only; positions never saved; stages gated in order",
+ "movies": {
+  "M1": {
+   "train_units": 42,
+   "frame_interval_min": 2.0,
+   "divisions": 147,
+   "pairs": 70
+  },
+  "M2": {
+   "train_units": 40,
+   "frame_interval_min": 2.0,
+   "divisions": 131,
+   "pairs": 57
+  },
+  "M3": {
+   "train_units": 40,
+   "frame_interval_min": 2.0,
+   "divisions": 76,
+   "pairs": 27
+  },
+  "M4": {
+   "train_units": 5,
+   "frame_interval_min": 2.0,
+   "divisions": 14,
+   "pairs": 5
+  }
+ },
+ "skipped_divisions": {},
+ "stage0": {
+  "R": 182.4412793163649,
+  "mean_displacement_over_R": {
+   "1": 0.4671961222208261,
+   "2": 0.4532033340535732,
+   "3": 0.9928176007526699,
+   "4": 1.0327566922148372
+  },
+  "median_raw_displacement_over_R": 1.190412364145813,
+  "median_lag_min": 460.0,
+  "extent": 1280.00358335021,
+  "R_over_extent": 0.1425318504490849,
+  "pairs_all": 159,
+  "trees_with_pairs": 62,
+  "by_window_min": {
+   "10.0": {
+    "usable_pairs": 3,
+    "usable_trees": 3
+   },
+   "20.0": {
+    "usable_pairs": 7,
+    "usable_trees": 7
+   },
+   "30.0": {
+    "usable_pairs": 10,
+    "usable_trees": 10
+   },
+   "60.0": {
+    "usable_pairs": 25,
+    "usable_trees": 18
+   }
+  },
+  "window_min": null,
+  "usable_pairs": 25,
+  "usable_trees": 18,
+  "controls_per_usable_pair": {
+   "median": 2.0,
+   "p10": 2.0,
+   "p90": 4.600000000000001
+  },
+  "pass": false,
+  "fails": [
+   "usable trees 18 < 40 at every window up to 60.0 min"
+  ]
+ }
+}
