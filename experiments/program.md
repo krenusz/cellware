@@ -124,6 +124,17 @@ before every look and refuses on any failure.
   **counts only** from the partition (units per group, H9), computes power, and refuses the look
   below 0.8 without computing any statistic or spending the partition. `test_oracle.py count`
   shows a partition's tag counts (structure only, never outcomes).
+  - **Look asks quote the novelty verdict** (decision 16, Bence 2026-11-27: "1"; reading: next step 1, adopt
+    decisions 16 and 17; RETRO_2026-11-27 lesson 1). Every ask for a sealed look quotes the step's novelty-file
+    `Verdict:` line(s) verbatim (one per finding), next to the power and the partitions it spends. Hook proxy: a
+    pre-registration from 2026-11-27 with a `Power sd:` line (other than `not applicable`; train stages that plan
+    a look count too) has a line
+    `Novelty verdict: experiments/lit/novelty/<file>.md "Verdict: ..." "Verdict: ..."` quoting every distinct
+    `Verdict:` line of that file whole. The commit-msg hook refuses a missing line, a missing file, a missing or
+    partial verdict, or a quote that is not one of the file's lines (`scope_guard.novelty_verdict_error`, guard
+    test). Limits: the chat ask itself is practice only; the hook checks new log sections only (a `Power sd:` line
+    added later by amendment escapes it); it reads the working-tree novelty file, not the staged one; verdict
+    lines with embedded double quotes cannot be quoted.
 - **H15 Pre-flight before pre-registering.** (Retro 2026-11-07b: wrong unit, mislabelled file,
   unpowered look, sealed data proposed where used data sufficed.) Every pre-registration has a
   `Pre-flight:` block covering (1) unit verified from the source, quoted; (2) readout verified by a
@@ -268,6 +279,9 @@ before every look and refuses on any failure.
     one (rank 18). `novelty_search.py backtest` re-checks this.
   - Bookkeeping steps (PAUSED, CLOSED, close, retro) are exempt.
   - **Enforced by the commit-msg hook** (scope_guard.novelty_gate_errors); tests in test_guards.py.
+  - **Novelty reversals propagate** (decision 17, Bence 2026-11-27: "1"; reading: next step 1, adopt decisions
+    16 and 17; RETRO_2026-11-27 lesson 2). A novelty audit that changes a verdict edits every write-up and registry
+    note that carries the old verdict, in the same commit. Limit: practice only, not hook-enforced.
 - **Power: one rule at three gates** (H14, H17 and H19.2 read together; numbers kept because code and log
   cite them).
 
@@ -301,6 +315,7 @@ pre-registration dated 2026-11-13 or later without it.
 
 **Before a model run**
 - Every pre-registration has a `Compute:` line; any run over about 2 minutes goes through `run_sweep.sh` on GitHub Actions; only the oracle look and private-file jobs stay local (11-15).
+- A pre-registration with a `Power sd:` line also has a `Novelty verdict:` line quoting every `Verdict:` line of its novelty file (decision 16, 11-27; H14 sub-bullet).
 - Decision 11 (Bence 2026-11-27: "local if under 1 minute and the pc resources are checked against"; reading: checked against the job's needs): a structure count on public data expected to finish in under 1 minute may run locally on the Sonnet lane, after the PC's free RAM and disk are checked against the job's file sizes. Synthetic runs, fits and anything longer stay on Actions.
 - Run the whole fit or test path on a tiny synthetic input before dispatching it to Actions or to the oracle (11-15).
 - Smoke tests use synthetic outcomes and write to the scratchpad, never to real results (11-04b).

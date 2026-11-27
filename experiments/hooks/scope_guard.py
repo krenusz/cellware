@@ -244,6 +244,44 @@ def compute_error(exp, date, body):
     return None
 
 
+NOVELTY_VERDICT_FROM = "2026-11-27"  # decision 16 (Bence 2026-11-27: "1"; RETRO_2026-11-27 section 8)
+NOVELTY_VERDICT_RE = re.compile(r"^\s*(?:[-*]\s*)?Novelty verdict:\s*(experiments/lit/novelty/\S+\.md)\s+(.*)$", re.M)
+
+
+def _verdict_lines(text):
+    """The novelty file's Verdict lines, bullet and outer whitespace stripped."""
+    return {ln.strip().lstrip("-* ").strip() for ln in text.splitlines() if VERDICT_RE.match(ln)}
+
+
+def novelty_verdict_error(exp, date, body, read=None):
+    """Decision 16 proxy: a pre-registration with a 'Power sd:' line (other than 'not applicable') quotes its
+    novelty verdicts as 'Novelty verdict: experiments/lit/novelty/<file>.md "Verdict: ..." "Verdict: ..."'.
+    Every distinct Verdict line of that file must be quoted whole, and every quote must be one of them. The chat
+    ask for the look quotes the same lines (practice; not checkable here)."""
+    sd = re.findall(r"^\s*(?:[-*]\s*)?Power sd:\s*(.*)$", body, re.M)
+    if date < NOVELTY_VERDICT_FROM or not any(not v.lower().startswith("not applicable") for v in sd):
+        return None
+    if read is None:
+        def read(p):
+            full = os.path.join(os.path.dirname(EXP), p)
+            return open(full, encoding="utf-8").read() if os.path.exists(full) else None
+    quoted = {}
+    for path, rest in NOVELTY_VERDICT_RE.findall(body):
+        quoted.setdefault(path, set()).update(q.strip() for q in re.findall(r'"(Verdict:[^"]*)"', rest))
+    if not quoted:
+        return (f"{exp}: a pre-registration with 'Power sd:' needs 'Novelty verdict: "
+                f"experiments/lit/novelty/<file>.md \"Verdict: ...\"' quoting each verdict line (decision 16).")
+    for path, quotes in quoted.items():
+        text = read(path)
+        if text is None:
+            return f"{exp}: 'Novelty verdict:' names {path}, which does not exist (decision 16)."
+        lines = _verdict_lines(text)
+        if not lines or quotes != lines:
+            return (f"{exp}: 'Novelty verdict:' must quote every Verdict line of {path} whole and nothing else "
+                    f"(file has {len(lines)}, quoted {len(quotes)} matching {len(quotes & lines)}) (decision 16).")
+    return None
+
+
 def commit_msg(path):
     msg = open(path, encoding="utf-8").read()
     staged = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True).stdout.split()
@@ -279,6 +317,8 @@ def commit_msg(path):
                 errs.append(practice_error(exp, date, body))
             if compute_error(exp, date, body):
                 errs.append(compute_error(exp, date, body))
+            if novelty_verdict_error(exp, date, body):
+                errs.append(novelty_verdict_error(exp, date, body))
     added = subprocess.run(["git", "diff", "--cached", "--name-only", "--diff-filter=A"], capture_output=True,
                            text=True).stdout.split()
     errs += retro_coverage_errors(

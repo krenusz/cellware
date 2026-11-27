@@ -261,6 +261,10 @@ def test_oracle_practice_line_not_needed_before_cutoff(box):
     assert box.look("A", exp="T0").returncode == 0
 
 
+# decision 16: a look pre-registration from 2026-11-27 quotes its novelty verdict
+LOOK_NOVELTY = '\nNovelty verdict: experiments/lit/novelty/T3.md "Verdict: not found"'
+
+
 @pytest.mark.parametrize(
     ("named", "needle"),
     [
@@ -272,7 +276,8 @@ def test_oracle_practice_line_not_needed_before_cutoff(box):
 def test_oracle_refuses_sd_source_not_named_or_mismatched(box, named, needle):
     # decision 14 (Bence 2026-11-27: "Adopt both"): from 2026-11-27 the pre-registration names the
     # sd source and the selection file's power.sources.sd must match it
-    extra = "\nCompute: local toy." + (f"\nPower sd: {named}" if named else "")
+    extra = "\nCompute: local toy." + (f"\nPower sd: {named}" if named else "") + LOOK_NOVELTY
+    box.write("lit/novelty/T3.md", "- Finding: x\n  - Verdict: not found\n")
     box.append_log(prereg(exp="T3", date="2026-11-27", extra=extra))
     box.write("selection/T3.json", json.dumps(selection()))
     assert box.commit("add T3").returncode == 0
@@ -280,7 +285,8 @@ def test_oracle_refuses_sd_source_not_named_or_mismatched(box, named, needle):
 
 
 def test_oracle_allows_matching_sd_source(box):
-    extra = "\nCompute: local toy.\nPower sd: train CV"
+    extra = "\nCompute: local toy.\nPower sd: train CV" + LOOK_NOVELTY
+    box.write("lit/novelty/T3.md", "- Finding: x\n  - Verdict: not found\n")
     box.append_log(prereg(exp="T3", date="2026-11-27", extra=extra))
     box.write("selection/T3.json", json.dumps(selection()))
     assert box.commit("add T3").returncode == 0
@@ -491,6 +497,34 @@ def test_novelty_gate_needs_classic_search_for_open_verdicts():
     assert any("Classic search" in e for e in errs)
     ok = base + "  - Classic search: field words, no date; source references top 20\n"
     assert sg.novelty_gate_errors({"step": "C9-S2"}, {"step": "C9-S3"}, read=lambda p: ok) == []
+
+
+def test_look_prereg_quotes_novelty_verdict():
+    """Decision 16: a look pre-registration ('Power sd:') quotes its novelty Verdict line."""
+    sys.path.insert(0, str(EXP / "hooks"))
+    import scope_guard as sg
+
+    nov = "- Finding: x\n  - Verdict: partly published (src)\n"
+    read = lambda p: nov if p == "experiments/lit/novelty/X.md" else None  # noqa: E731
+    look = "Serves: C9-S2\nPower sd: train CV\n"
+    assert "decision 16" in sg.novelty_verdict_error("L1", "2026-11-27", look, read)
+    ok = look + 'Novelty verdict: experiments/lit/novelty/X.md "Verdict: partly published (src)"\n'
+    assert sg.novelty_verdict_error("L1", "2026-11-27", ok, read) is None
+    wrong = look + 'Novelty verdict: experiments/lit/novelty/X.md "Verdict: not found"\n'
+    assert "every Verdict line" in sg.novelty_verdict_error("L1", "2026-11-27", wrong, read)
+    cut = look + 'Novelty verdict: experiments/lit/novelty/X.md "Verdict: partly"\n'
+    assert "every Verdict line" in sg.novelty_verdict_error("L1", "2026-11-27", cut, read)
+    two = nov + "- Finding: y\n  - Verdict: not found\n"
+    read2 = lambda p: two  # noqa: E731
+    assert "every Verdict line" in sg.novelty_verdict_error("L1", "2026-11-27", ok, read2)
+    both = ok.rstrip("\n") + ' "Verdict: not found"\n'
+    assert sg.novelty_verdict_error("L1", "2026-11-27", both, read2) is None
+    na = "Serves: C9-S2\nPower sd: not applicable (train only)\n"
+    assert sg.novelty_verdict_error("P1", "2026-11-27", na, read) is None
+    missing = look + 'Novelty verdict: experiments/lit/novelty/Y.md "Verdict: not found"\n'
+    assert "does not exist" in sg.novelty_verdict_error("L1", "2026-11-27", missing, read)
+    assert sg.novelty_verdict_error("T1", "2026-11-27", "Serves: C9-S2\n", read) is None  # no look
+    assert sg.novelty_verdict_error("L0", "2026-11-26", look, read) is None  # before adoption
 
 
 def test_novelty_gate_skips_bookkeeping_steps():
