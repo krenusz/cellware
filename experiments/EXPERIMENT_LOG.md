@@ -14929,3 +14929,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - **Verdict under the frozen rule: unresolved.** Nothing more is read. CO1 stays held under decision 1, with its readout condition open.
   - **Design flaw (mine):** pass 2 was gated on pass 1 being empty, not on pass 1 defining the clusters. The definition probably sits in the "Lineage coupling and clonal clustering" subsection, in wording other than "clonal cluster" (pass 1 also covers "clonal clustering"). Reading that subsection's sentences needs a new OK and an amendment. The advisor had suggested the empty-pass-1 gate; I adopted it without checking.
   - *Exposure:* the headings and the one sentence are added to `partitions.cortical_clone` prior_exposure.
+- **QS3-CO1-M amendment 1 (2026-11-27; Bence: "Yes, read it", answering "Read the clustering subsection with the wider patterns (up to 10 sentences)?"):**
+  - *Why:* the first read returned one sentence that does not define the clusters. Pass 2 never ran, because its gate (pass 1 empty) was a design flaw.
+  - *Scope:* only the methods subsection whose title contains "clonal clustering" (case-insensitive), in the preprint read before ("Lineage coupling and clonal clustering").
+    - The script tries PMC12999477 first, then PMC12485932, with the same no-workaround rule.
+    - If the served version has no such subsection, it reports that and stops.
+    - Nothing outside that subsection is read. The text of <fig>, <table-wrap> and <caption> inside it is skipped.
+  - *Extraction (pass 2's frozen patterns, now run directly):*
+    - Keep sentences matching `clon(e|es|al)|lineage|barcode` and also `cluster|classif|categor|assign`, case-insensitive.
+    - Drop sentences containing `cloned|cloning|subclon|plasmid|vector`.
+    - Return up to 10 sentences verbatim, in order, plus the total match count and the PMC ID that served.
+    - The raw XML is never printed, returned or kept on disk.
+  - *Rule:* unchanged from the entry above.
+    - Clusters or types from the clone's own cell composition: CO1 fails its readout condition.
+    - From something outside the clone's cells: CO1 stays held under decision 1.
+    - Not settled: unresolved, and nothing more is read.
+  - The read is added to `partitions.cortical_clone` prior_exposure.
