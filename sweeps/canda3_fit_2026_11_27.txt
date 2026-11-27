@@ -1,0 +1,2 @@
+# CAND-A-L1 fit stage (Bence: "Yes, relabel + entry"): TRAIN founders only. Readout identity vs S0, train dry run of the oracle path (fold 0 must reproduce CAND-A-P1's CV d_f within 1e-6), then the frozen model and selection/CAND-A-L1.json. No sealed read; the look is a separate ask.
+[experiments/results_cand/canda3_fit.json] uv pip install -q scikit-learn && python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda3_look.py fit

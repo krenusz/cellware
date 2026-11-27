@@ -15359,3 +15359,65 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - The look spends A and B and leaves only C sealed.
     - It needs its own entry with a `Power sd:` line, and Bence's verbatim OK.
     - The CAND-A COVERAGE row must first be opened, which trips E6 against DNR-CLOCK-A (its family label looks wrong). That relabel is Bence's call.
+    - *Done 2026-11-27 (Bence: "Yes, relabel + entry"; 9a63373):* DNR-CLOCK-A relabelled to memory_decay and CAND-A opened; E5/E6 clean.
+
+## CAND-A-L1: union look on dtt_founder A + B: cell state beyond type predicts relatives' lineage in held-out founder clades (pre-registered 2026-11-27; Bence: "Yes, relabel + entry")
+- **Serves: C12 CLOSED.** This is CAND-A-P1's look branch, opened by CAND-A-P2's PASS.
+  - Bence's "Yes, relabel + entry" covers this entry and the train-only `fit` stage only.
+  - **The look itself (spending A and B) needs a separate verbatim OK from Bence.**
+- *Script:* `experiments/canda3_look.py`.
+  - Stages: `selftest`; `fit` (train only, Actions); and the oracle functions `counts_AB` / `test_AB`, called only by `test_oracle look --test dtt_canda --exp CAND-A-L1 --partition AB`.
+  - Registered in sealed.HELDOUT_READERS. `sealed_rows` is called only inside `test_AB`, once per letter.
+- **Claim if confirmed:** in one DNA Typewriter embryo, in founder clades never used for fitting, a cell's UMAP position adds to its annotated type, own lineage and tree position in predicting which of its type's two lineages its nearest different-type relatives belong to.
+  - This replicates C14 (H-b) in a second recorder: supporting evidence, not a new finding.
+- **Model frozen by `fit` (train only):**
+  - The CAND-A-P1 features and settings: base = own-lineage one-hot, log ancestor leaves, depth, date; state = base + the five UMAP columns; logistic C = 1, max_iter 200, standardised on train.
+  - One base model and one state model per eligible type, fitted on all train cells of the 35 eligible types.
+  - The per-type lineage pair (L1, L2) is frozen from train.
+  - Types and lineages are stored as salted sha256 codes (`cellware-canda-code-v1`), never as label strings. The file `results_cand/canda3_model.json` carries its sha256 in `selection/CAND-A-L1.json`, and the look checks it.
+- **Sealed readout (identical rule, sealed labels):**
+  - Leaves of A ∪ B founders with a missing type, lineage or UMAP value are dropped first, as in train.
+  - Types are coded from the sealed labels themselves, so a label unseen in train is still its own type for "different-type relatives". Only cells whose type matches a frozen eligible type are scored.
+  - y uses the frozen L1 / L2 for that type: >= 3 relatives in L1 or L2, ties dropped.
+  - A lineage unseen in train enters the base one-hot as all zeros.
+  - *Usable founder:* >= 1 frozen eligible type with >= 5 distinct clusters per class inside it.
+- **Primary statistic (CAND-A-P1's, frozen):**
+  - d_f = cell-weighted AUC(state) - AUC(base) over the founder's usable types, under the frozen models. T = mean of d_f over usable A ∪ B founders.
+  - **Confirmed if z = T / (sd(d_f) / sqrt(n)) > 1.96, one-sided, with the sample sd.** The known-sd variant (sd = max(train 0.0935, sample sd), as C14-S2) is reported and is not the rule.
+  - *Adequacy:* fewer than 20 usable founders (power 0.81 at half T) = STOP with no claim. The partitions are still spent.
+- **Secondary (reported, no rule):** the core-cell rescore on A ∪ B.
+  - Purity is computed as in CAND-A-P2: raw UMAP, k = 15, core >= 0.9.
+  - The neighbour pool is the A ∪ B evaluable cells.
+  - It is computed after the primary is fixed, inside try/except, so it cannot crash the look.
+- **Power (counts from structure only):** `counts_AB` returns one group {"AB": founder clades in A ∪ B}, which is 37 structurally.
+  - At half the train T (0.0589) and sd 0.0935: 37 founders 0.97; the projected 32 usable 0.95; the floor of 20 0.81.
+- **After this look:** C alone projects about 16 usable founders, power about 0.72 at half T. So no single-partition look on this embryo reaches 0.8 at this effect size, and C stays sealed for a different question or a larger effect.
+- **Prediction (written now):** T of 0.06-0.12, positive in >= 2/3 of usable founders, confirmed. A not-confirmed result with T > 0 would mean the train effect was inflated (winner's curse or train-specific structure). T <= 0 would mean the train gain does not transfer across founder clades.
+- **Limits (carried from CAND-A-P1 and -P2):**
+  - One embryo; founders share an environment.
+  - The UMAP was computed by the authors on all cells, sealed ones included (unsupervised, with no lineage input).
+  - There are no counts or detection-rate columns, so quality structure is uncontrolled.
+  - A shared niche is not excluded.
+  - Coherently mislabelled groups are not excluded (CAND-A-P2).
+  - The T excess over the CAND-A-P1 prediction is unexplained.
+- **Train dry run of the oracle path (inside `fit`, before the selection file is written; the look is not asked for unless it passes):**
+  - Fold 0 of the CAND-A-P1 folds is held out. Models are fitted on the other folds, written to a model file, read back, and applied through the same test function used on sealed data, on fold 0's founders.
+  - Per-founder d_f must equal CAND-A-P1's cross-validated values for those founders within 1e-6, and the full-train readout counts must equal S0's. Otherwise `fit` stops and writes no selection file.
+  - The dry run reads fold 0's rows with the same `read_rows` call `test_AB` uses. It also runs the shared `finish` step (adequacy, primary, guarded secondary) through plain `json.dumps`, and its T must equal the mean of the reference d_f.
+  - In `test_AB`, any error after the sealed read is returned in the result (confirmed false), so the spend is always ledgered.
+- **Run-once rule for the look:** dispatched once on Actions; the runner's ledger row is captured with the output and committed locally.
+  - Any failure after the sealed read goes to Bence, with no code change and no rerun.
+  - The primary is deterministic (no random draws).
+- Power sd: train founder-level delta AUC sd (CAND-A-P1 train stage)
+- Pre-flight:
+  1. Unit: founder clade; A ∪ B = 37 structurally; one embryo; no treatment (H22 n/a).
+  2. Readout: CAND-A-P1's, gated by S0 / smoke / train, with the identity check and the dry run above.
+  3. Used data first: CAND-A-P1 and -P2 on train. A and B have never been read.
+  4. Power: the selection file's power block, gated by the oracle (H14), with the effect at half the train T.
+  5. Exposure: partitions.dtt_founder prior_exposure lists all reads. The look adds A and B's result.
+  6. Access: the public GitHub release, sha256-pinned; fetched at run time.
+- Compute: GitHub Actions, dispatched by the Sonnet lane.
+  - `fit`: sweeps/canda3_fit_2026_11_27.txt (train only).
+  - Its outputs (model JSON and selection file) are committed before any look. The artifact keeps `results_*/` only, so `fit` also writes `results_cand/canda3_selection.json`, which is copied byte-identical to `selection/CAND-A-L1.json`.
+  - The look line is written only after Bence's OK. Only the toy selftest runs locally.
+- Practice: neutral wording, codes only, no outreach. The advisor was consulted before the entry, and these were adopted: the train dry run of the oracle path, the one-group count, sealed-label type coding, the run-once rule, a guarded secondary, and the C-alone power note.

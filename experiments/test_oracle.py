@@ -314,6 +314,20 @@ PARTITION_TESTS["petracer_c14s2"] = (_c14s2("test"), "petracer_embryo", "C14-S2:
 PARTITION_COUNTS["petracer_c14s2"] = _c14s2("counts")
 
 
+def _canda(what):
+    def f(part):
+        import canda3_look
+
+        return getattr(canda3_look, f"{what}_AB")(part)
+
+    return f
+
+
+PARTITION_TESTS["dtt_canda"] = (_canda("test"), "dtt_founder", "CAND-A-L1: UMAP state beyond type predicts relatives' "
+                                "lineage in held-out founder clades; mean founder dAUC, sample-sd z > 1.96 (union AB)")
+PARTITION_COUNTS["dtt_canda"] = _canda("counts")
+
+
 def power_gate(exp, test, part):
     """H14: power of the pre-registered contrast from counts only; refuse below the minimum (never below
     0.8). Pre-registrations from power.STRICT_FROM also need power sources and a readout block (H21).
