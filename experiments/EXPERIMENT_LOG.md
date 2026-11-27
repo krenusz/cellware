@@ -15142,3 +15142,75 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - *Exposure:* none. No data file was read; only the logged counts were used.
 - Compute: local, synthetic, about 2 minutes (the deviation above).
 - Practice: neutral wording, the advisor consulted before the design and before this entry, no outreach.
+
+## CAND-A-P1: C14 re-test on the DNA Typewriter embryo, train founder clades only: readout, smoke, train estimate and power (pre-registered 2026-11-27; Bence: "Yes, pre-register CAND-A")
+- **Serves: C12 CLOSED.** CAND-A passed decision 1's same-data check (2026-11-27). This entry covers the train-only stages. A look on a sealed partition is a separate entry and needs Bence's OK.
+- *Script:* `experiments/canda1_state.py` (stages `selftest`, `s0`, `smoke <model> <chunk>`, `combine`, `train`). Outputs go to `experiments/results_cand/`.
+- **Question (C14, H-b):** does a cell's expression state beyond its annotated type predict the lineage of its nearest tree relatives, in founder clades the model never saw? This is one embryo, so the claim is within-embryo, over held-out clades.
+- **Data:**
+  - *Tree:* dtt_founder, the dated backbone tree from shendurelab/dtt-mouse v1.1.0 (sha256-pinned in c17s1pl_tree.py).
+  - *Partitions:* founder clades, train 38 and A / B / C 19 / 18 / 18.
+  - *Metadata:* 9 columns, with names and dtypes read 2026-11-27 (structure only): `cell_id`, `major_trajectory`, `celltype`, `UMAP_1`, `UMAP_2`, `UMAP_3`, `UMAP_2d_1`, `UMAP_2d_2`, `celltype_from_which_major_trajectory`.
+  - *Train only:* metadata rows are parsed for train-founder leaves only (c17s1pl_fit.train_labels pattern).
+  - *Topology:* the backbone is NJ on barcode edits; "lineage constrained" is a minimum-age dating ladder (C17-S1PL-P correction). So expression does not shape this tree.
+- **Labels, fixed now before any level is seen:**
+  - *Type:* whichever of `celltype` and `celltype_from_which_major_trajectory` has more distinct levels among train leaves. That way "beyond type" means beyond the finest released label.
+  - *Lineage:* `major_trajectory`. Missing values are dropped.
+- **Readout (C14's, unchanged):**
+  - *Relatives of cell c:* the leaves of the smallest ancestor whose other labelled leaves include >= 5 cells of a type different from c's. Ancestors with > 300 leaves are not used, and c is then skipped. Any such ancestor lies inside c's founder clade, since every node above a founder has > 20,000 leaves.
+  - *Per type:* L1 and L2 are the two commonest lineages among different-type relatives, each >= 20% of them.
+  - *Outcome:* y = 1 if L1 relatives outnumber L2 relatives. It needs >= 3 relatives in L1 or L2; ties are dropped. Cluster = the ancestor.
+  - *Eligible type (H21):* >= 200 evaluable train cells and >= 30 clusters per side.
+- **Models:** logistic regression per eligible type, with features standardised on the training folds.
+  - *Base:* own lineage (one-hot), log ancestor leaves, ancestor depth (edges) and ancestor date (root distance). The date was added because T3 found the clock fitting better.
+  - *State:* base plus the five UMAP columns.
+- **Statistic:**
+  - *Cross-validation:* 5 folds grouped by founder clade, fold = sha256("cellware-canda-fold-v1:" + founder) mod 5.
+  - *Per held-out founder f:* d_f = AUC(state) - AUC(base), cell-weighted over the eligible types that have >= 5 distinct clusters (ancestors) in each outcome class inside f. The outcome is constant per ancestor and type, so clusters, not cells, carry the information.
+  - *Statistic:* T = the mean of d_f over usable founders (founder = unit).
+  - *Test (a later look's test, also used in the smoke):* z = T / (sd(d_f) / sqrt(n)), one-sided, z > 1.96.
+- **Stage S0 (readout and structure; no UMAP column read):**
+  - Reports the level counts of both type columns and of lineage, the chosen type column, eligible types with cells and clusters per side, and usable train founders. A usable founder has >= 1 eligible type with >= 5 clusters in each class inside it. Cells and clusters per side are reported for each usable founder, unnamed and sorted by size. Type levels are reported by code only: no label string goes into a committed file.
+  - **Stop:** < 20 usable train founders, or a projected A yield (usable share x 19) below 10. Either one fails CAND-A at readout.
+- **Stage smoke (H21 item 3; Actions):** synthetic values replace the five UMAP columns, on the real readout, labels and structure. No real UMAP value is read.
+  - *Nulls (200 replicates each):*
+    - N1: independent noise.
+    - N2 (founder offset): each founder gets an offset in all five columns, with its first column set to the founder's train mean y, plus noise. Columns and outcome shift by founder, with nothing within founder.
+    - N3 (base leak): the first column = standardised log ancestor leaves plus noise, a copy of a base feature.
+  - *Planted (100 replicates), a sanity check only:* column 1 = 0.5 x (y - type mean) / type sd plus noise. That strength gives T of about 0.26 on the toy data, far above the predicted effect, so it checks the pipeline, not power. Power comes from the train stage.
+  - *Look size:* z is computed on a random subset of usable founders of the projected A size each replicate.
+  - **Pass:** each null rejects in <= 0.08, and the planted signal rejects in >= 0.80 at A size. The two failures mean different things:
+    - *A null above 0.08:* the statistic is miscalibrated here. CAND-A stays parked, and a fix needs a new entry.
+    - *Planted below 0.80:* the pipeline is broken (a bug), and nothing proceeds until it is fixed and logged.
+- **Stage train (only after S0 and smoke pass; a second dispatch):**
+  - Reports T, the d_f distribution (5/25/50/75/95), positives out of usable founders, a founder-bootstrap 95% CI (2,000 resamples), the base AUC, and the train sd of d_f.
+  - *Power:* power.mean_power at half the train T with the train sd, for the projected A count and for A + B.
+  - **Rule to propose a look (Bence decides):**
+    - The CI excludes 0 and power for A is >= 0.8: propose a look on A.
+    - Only A + B reaches 0.8: propose a union look.
+    - Otherwise CAND-A stops as underpowered.
+  - The 3D-only and 2D-only coordinate sets are **exploratory only**.
+- **Label-resolution check before any look:** the source transferred 138 labels. If the chosen type column has far fewer levels, a gain may partly be finer type. The source reports that siblings share type and that labels can be predicted from cousins, at a resolution not yet read. So if S0 shows fewer than 100 type levels, a claims-level read of the source's resolution (with Bence's OK) comes before any look proposal, under decision 1.
+- **Prediction (written now):** C14's author UMAP plus cycle phase gave +0.076 on its train (C14-S1a); no UMAP-only figure is logged. Here there is UMAP only, a finer base label and a later stage (C14's gain rose with stage). I expect T of 0.02-0.07, positive in >= 2/3 of usable founders.
+- **Limits, written now:**
+  - One embryo, so founders share an environment and there is no between-embryo replication.
+  - UMAP is a coarse expression embedding (C14 confirmed 30 PCs). The authors computed it on all cells, sealed founders included. It is unsupervised and uses no lineage, but it saw those cells.
+  - There are no counts or detection-rate columns, so quality effects carried by UMAP are uncontrolled.
+  - A shared local niche is not excluded, as in C14.
+  - The UMAP columns are taken to be expression-derived from their names and the source pipeline. The README does not state their computation.
+- **Freeze:** the label rule, the readout, the models, the folds, the statistic, the stop rules and the smoke rules do not change after any output is seen.
+- Power sd: train founder-level delta AUC sd (CAND-A-P1 train stage)
+- Pre-flight:
+  1. Unit: founder clade (train 38). No treatment, so H22 does not apply; one embryo.
+  2. Readout: C14's relatives' lineage outcome, gated by S0 and the smoke.
+  3. Used data first: train `major_trajectory` and `celltype` were read in C17-S1PL-T / T3 / T4. The UMAP columns and `celltype_from_which_major_trajectory` were never read.
+  4. Power: the smoke at A size, then power.mean_power at half the train effect.
+  5. Exposure (corrected): the source preprint abstract, Results headings and figure titles (CAND-A novelty read, 2026-11-18, before sealing); the README re-read 2026-11-27; and the label reads above. partitions.dtt_founder prior_exposure is updated to say so.
+  6. Access: the public GitHub release, sha256-pinned.
+- Compute: GitHub Actions, dispatched by the Sonnet lane, in this order:
+  1. The S0 line alone (sweeps/canda1_s0_2026_11_27.txt). Its counts size the smoke chunks. If S0 fails, the smoke is moot.
+  2. The smoke lines (sweeps/canda1_smoke_2026_11_27.txt; each recomputes S0 and stops if it fails).
+  3. `combine`, a local aggregation of the committed chunk JSONs (no data read).
+  4. The S0 JSON, the chunk JSONs and canda1_smoke.json are committed before the train sweep, which reads them from the runner's checkout.
+  - Only the toy selftest runs locally.
+- Practice: neutral wording, DOIs not titles, no outreach. The advisor was consulted before the entry and before the commit, and these were adopted: the provenance checks, founder-level yield in clusters, a hard founder-offset null, split fail meanings (planted = sanity check), a date covariate, the exposure correction, codes-only type output, the S0-first dispatch and no local simulations.

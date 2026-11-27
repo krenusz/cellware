@@ -1,0 +1,15 @@
+# CAND-A-P1 (Bence: "Yes, pre-register CAND-A"): S0 readout gate and the synthetic smoke on the real train readout (EXPERIMENT_LOG "## CAND-A-P1"). Each smoke line recomputes S0 and stops if it fails. No UMAP column is read. Train founders only.
+[experiments/results_cand/canda1_smoke_N1_0.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N1 0
+[experiments/results_cand/canda1_smoke_N1_1.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N1 1
+[experiments/results_cand/canda1_smoke_N1_2.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N1 2
+[experiments/results_cand/canda1_smoke_N1_3.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N1 3
+[experiments/results_cand/canda1_smoke_N2_0.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N2 0
+[experiments/results_cand/canda1_smoke_N2_1.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N2 1
+[experiments/results_cand/canda1_smoke_N2_2.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N2 2
+[experiments/results_cand/canda1_smoke_N2_3.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N2 3
+[experiments/results_cand/canda1_smoke_N3_0.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N3 0
+[experiments/results_cand/canda1_smoke_N3_1.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N3 1
+[experiments/results_cand/canda1_smoke_N3_2.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N3 2
+[experiments/results_cand/canda1_smoke_N3_3.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke N3 3
+[experiments/results_cand/canda1_smoke_P_0.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke P 0
+[experiments/results_cand/canda1_smoke_P_1.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py smoke P 1

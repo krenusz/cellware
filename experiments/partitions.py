@@ -192,7 +192,12 @@ PARTITIONED = {
         "files": ["shendurelab/dtt-mouse v1.1.0 tree + cell metadata, sha256 pinned in c17s1pl_tree.py"],
         "sealed_on": "2026-11-20",
         "prior_exposure": "C17-S1PL schema (column names/types; only cell_id examples), tree topology, branch lengths, "
-                          "leaf-ID join, pair and founder counts (gate 1 and 2); source abstract (claims level)",
+                          "leaf-ID join, pair and founder counts (gate 1 and 2); source abstract (claims level); "
+                          "correction 2026-11-27 (CAND-A-P1): the source preprint's abstract, Results headings and "
+                          "figure titles were read 2026-11-18 before sealing (lit/novelty/CAND-A_cross_recorder.md); "
+                          "TRAIN founders' major_trajectory and celltype labels were read in C17-S1PL-T, T3 and T4 "
+                          "(sister-arm label counts and fits); the repo README re-read 2026-11-27; the UMAP columns "
+                          "and celltype_from_which_major_trajectory were never read before CAND-A-P1",
     },
     "germline_fish": {
         # H24 map from candi_seal.py, run 45222067549: eligible fish (>= 6 sample indices) 8 train, 4/4/4 sealed

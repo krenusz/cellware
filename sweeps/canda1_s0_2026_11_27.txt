@@ -1,0 +1,2 @@
+# CAND-A-P1 (Bence: "Yes, pre-register CAND-A"): S0 readout gate alone, first (EXPERIMENT_LOG "## CAND-A-P1"). No UMAP column read; train founders only; type levels reported by code.
+[experiments/results_cand/canda1_s0.json] python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py s0
