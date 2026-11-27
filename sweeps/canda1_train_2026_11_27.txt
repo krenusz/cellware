@@ -1,0 +1,2 @@
+# CAND-A-P1 train stage (Bence: "Yes, pre-register CAND-A"): first read of the UMAP columns, TRAIN founders only. Needs the committed canda1_s0.json and canda1_smoke.json (both pass). Stops if the readout differs from S0 (amendment 1).
+[experiments/results_cand/canda1_train.json] uv pip install -q scikit-learn && python -I experiments/c17s1pl_tree.py fetch && python -I experiments/canda1_state.py train

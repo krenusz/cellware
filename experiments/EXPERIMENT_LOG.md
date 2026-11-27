@@ -15230,3 +15230,23 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **CAND-A-P1 smoke, first dispatch failed on infrastructure (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46005782573 at df251cc):** all 14 lines stopped on the first replicate with "No module named sklearn".
   - The workflow installs scikit-learn only inside its input-flag data steps, and this sweep uses no flag. No replicate completed and no output landed.
 - **CAND-A-P1 amendment 2 (infrastructure only; no rule, statistic or parameter changed):** each smoke line now starts with `uv pip install -q scikit-learn`, the same install the flag-gated steps use. The train sweep will do the same. The sweep is re-dispatched unchanged otherwise.
+- **CAND-A-P1 smoke result (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46007140504 at 87a6bdc, 10 min, 14 lines of about 7-9 min each; collected by the Sonnet lane; combined locally into results_cand/canda1_smoke.json): PASS.**
+
+| Model | Rejection (z > 1.96) | Mean T | Replicates |
+|---|---|---|---|
+| N1 independent noise | 0 / 200 | -0.003 | 200 |
+| N2 founder offset | 0 / 200 | -0.009 | 200 |
+| N3 base leak | 0 / 200 | -0.003 | 200 |
+| Planted (sanity check) | 100 / 100 | +0.19 | 100 |
+
+  - Every replicate used n = 16 founders (the projected A size). There were no NaN replicates, and the logs show no ConvergenceWarning.
+  - **Reading:** calibrated and conservative. Five uninformative columns cost about 0.003 AUC (about 0.009 under a founder offset), so a real gain must exceed that penalty.
+  - The planted strength is a pipeline check, not a power estimate.
+  - *Next, as registered:* the train sweep (the first UMAP read), after the advisor, then the power and the look-proposal rule.
+- **CAND-A-P1 amendment 3 (2026-11-27; entry text only, written before the train stage and before any UMAP read):**
+  - *Limit, label accuracy:* the labels are transferred from an atlas, and the fitted label noise for `celltype` was 0.57-0.69 (C17-S1PL-T4 / P3). A mislabelled cell sits in UMAP with its true type, and its relatives follow that true type's lineage. So UMAP can raise the AUC by correcting labels, with no state beyond type, and a positive T cannot by itself tell the two apart.
+  - *Added pre-look requirement*, next to the label-resolution clause: before any look is proposed, a train-only boundary check with its own entry, as C14-S5 was. It is fixed now:
+    - kNN type purity is measured in the five UMAP columns, with k = 15 neighbours among train evaluable cells, as the share sharing the cell's `celltype`.
+    - The check recomputes T on cells with purity >= 0.9 only.
+    - The look proposal also needs that T to retain >= 50% of the full T, with the same sign.
+  - The frozen statistic, the train rule and the look-proposal rule are otherwise unchanged.
