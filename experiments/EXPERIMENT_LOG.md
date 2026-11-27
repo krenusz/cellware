@@ -15025,3 +15025,20 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - 14: power gates use the sd source the pre-registration names, written into the selection file so the oracle agrees. Needs an oracle change and a guard test.
     - 15: the gap map is rerun only when its seeds or read list changed; otherwise the last map is cited.
 - **QS2-N2-S amendment 1 (2026-11-27, before any text was read):** the first run printed "PMCID lookup status: ERR" and stopped, as the rule says. A one-call diagnosis returned HTTP 200 with hitCount 1 and PMCID PMC12170898, so the stop was a parsing bug in the script, not a block. The extraction reruns unchanged with the PMCID fixed to PMC12170898. Every other rule stands, including the 3/1/4 count gate and the closing rule.
+- **Decision 12 answered (2026-11-27; Bence: "Contrast-level", after the re-ask stating that R2 to R4 share libraries with the confirmed looks and that R2 and R3 spend last partitions):**
+  - For a clone-level prediction with library as a covariate, hash-split clones from the same libraries count as independent units. The program.md replication line is amended.
+  - QS2-R4 (C10 on resistrace:B) can go to the gates.
+  - QS2-R2 (C8 T1 on celltag_lsk:C) and QS2-R3 (C8 T3 on celltag_reprog:C) can too, but each spends a last partition and still needs Bence's verbatim OK (H13). From QS2: R2 needs 39 units for 0.8 and R3 needs 22.
+- **QS2-N2-S result (2026-11-27; lookup lane; amendment 1 plus an exception-print fix with one retry):**
+  - *Fetch:* PMC12170898 full text served. Counts were spindle 3, orient 1, direction 4 in both the body-only and the with-legend sets, so the 3/1/4 gate passed and the body-only set was used.
+  - *The 8 sentences (paraphrased, no author names or years):*
+    - Three Introduction sentences on directed cell migration: possible regulation of migration direction toward progenitor domains, an earlier report of directed mesoderm migration, and directed migration of related heart progenitors in another chordate.
+    - Three sentences on spindle-like cell shapes in endothelial-like and endocardial cells.
+    - Two Discussion sentences: later clonal spreading during oriented growth of the heart tube, and some regulation of movement direction and fate allocation in early mesoderm.
+  - **Verdict under the frozen rule: N2 stays open.** None of the 8 matched sentences relates a division's axis or orientation to the mother cell's or the previous division's axis; they are about migration direction, cell shape or tissue-level growth. With QS2's count of 0 sentences where an orientation term co-occurs with a division term, that is the same-data check. The source's 16 sentences with "axis" stay unread.
+  - *Fetch failures:* the first two runs stopped at "ERR" because the script hid the exception. The third run (exception printing, one retry) printed no exception, so the cause is unknown. The second script change went out without a logged amendment; it touched only error handling.
+  - **Next steps need a new OK** (the rule fixed in the pre-registration):
+    - the train scan for H21 items 1 and 3;
+    - a two-sided or orthogonal-aware statistic in place of the one-sided |cos|;
+    - power (MDE 0.50 sd at about 32 trees, 0.35 at about 64, lower bounds).
+  - *Exposure:* the 8 sentences, digit-masked, are added to partitions.mouse_gast_tree prior_exposure.

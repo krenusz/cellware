@@ -26,3 +26,5 @@
 
 ## What is left that is ours
 The quantified, held-out test in gastrulating mouse tissue (mother-to-daughter axis similarity beyond same-window neighbours). The phenomenon (axis memory across consecutive divisions, cell autonomous) is published in fly neural stem cells. Held for Bence under RETRO_2026-11-26 decision 1 (in-kind items), as QS2-N1 was. Decided 2026-11-27 (Bence: "Only if source differs"): the in-kind reports are in other systems, so N2 may go ahead, pending the same-data check (the source's unread spindle, orient and direction sentences, read at claims level).
+
+Same-data check (QS2-N2-S, 2026-11-27): the source's 8 body sentences with spindle, orient or direction were read (digits masked). They concern migration direction, cell shape and tissue-level growth; none relates a division's axis to the mother's; QS2 found 0 orientation-division co-occurrences; the 16 "axis" sentences stay unread. N2 stays open under decision 1.

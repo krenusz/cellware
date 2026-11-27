@@ -242,7 +242,9 @@ PARTITIONED = {
                           "and fate restriction) of doi 10.1038/s44318-025-00441-0 (DS-EMB-N); QS2-N2 (2026-11-26): "
                           "the same source's section headings re-read and a keyword scan (bare per-term sentence "
                           "counts; 0 sentences where an orientation term co-occurs with a division term; no sentence "
-                          "text read), plus a title screen of its 20 most-cited references",
+                          "text read), plus a title screen of its 20 most-cited references; QS2-N2-S (2026-11-27, Bence OK): the 8 body "
+                          "sentences with spindle / orient / direction (digits masked): migration direction, cell shape, "
+                          "tissue-level growth; none on division-axis inheritance",
     },
 }
 BUCKETS = 5

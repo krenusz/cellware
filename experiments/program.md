@@ -387,8 +387,10 @@ pre-registration dated 2026-11-13 or later without it.
     no outreach.
   - *Decision 8 ("Keep, write it down (Rec.)"):* a new data set needs >= 75 eligible units in total at S0 before
     it is sealed (origin: C17-S1C, 2026-11-20). This is an early screen only; the power gate decides every look.
-- A replication look of our own confirmed result on a second partition is allowed only when that partition holds
-  independent assignment units (H22), not the same libraries, wells or animals split by hash. Whether a confirmed
+- A replication look of our own confirmed result on a second partition is allowed when that partition holds
+  independent assignment units (H22). Decision 12 (Bence 2026-11-27: "Contrast-level"): for a clone-level
+  prediction with library as a covariate, clones split by hash from the same libraries count as
+  independent units. A last partition still needs Bence's verbatim OK. Whether a confirmed
   result with a "partly published" novelty verdict may be replicated goes to Bence.
 - A set with only its last partition left is put to Bence by name, with a written question and its power; it is
   not set aside silently. With no qualifying question, nothing is asked.
