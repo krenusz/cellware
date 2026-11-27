@@ -15053,7 +15053,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Decision 9 dry run (2026-11-27; Bence: "go 1-5"; scratch pattern, counts only; lit_gap.SENSITIVE unchanged):**
   - *Pattern:* letters plus digits, or 3-6 capitals, minus project and accession ids. It ran on the 164 committed lit and markdown files.
   - *Hits:* 149 files and 24,244 hits over 1,121 distinct tokens. The heaviest are the committed gap-map JSONs (about 1,400-2,500 each, which hold titles) and EXPERIMENT_LOG.md (2,250).
-  - *By hand:* about half of the 80 most common tokens are real gene or protein symbols. The rest are false positives (method names, status words) plus some disease abbreviations.
+  - *By hand:* about half of the 80 most common tokens are real gene or protein symbols. The rest are false positives (method names, status words) plus some other domain abbreviations.
   - *Reading:* widening the filter means a curated deny list built from these tokens, rewriting the gap-map JSONs to DOIs only, and scrubbing the log and lit text. That is a large rewrite, and git history keeps the old text.
   - The hit list stays in the scratchpad. Nothing is reworded yet; the cleanup scope goes to Bence.
 - **R2-R4 under decision 1 (2026-11-27; Bence: "Apply decision 1 (Rec.)"):**
