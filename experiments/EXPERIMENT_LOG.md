@@ -14957,3 +14957,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - QS3-CO1 is now failed_gate. Decision 1 holds four questions: QS2-N1, QS2-N2, QS3-RF1 and QS3-RF2.
   - *Exposure:* the 6 sentences are added to `partitions.cortical_clone` prior_exposure.
   - *Advisor:* overloaded when the amendment was committed; consulted before this verdict commit.
+- **RETRO_2026-11-26 decision 1, decided 2026-11-27 (Bence: "Only if source differs"):**
+  - *Asked:* when a question is reported in kind, what happens? Options: keep move-on; go ahead only if no paper reports it on the same data; or offer case by case.
+  - *Rule (program.md, question-search section):* an in-kind question may go ahead only when no paper reports it on the same data, including the set's own source (claims level). A same-data report closes it as published. An in-kind report on other data or another system does not block.
+  - *Applied to the four held questions:*
+    - QS2-N1: closed. The mouse_gast_tree source states sister trajectory similarity.
+    - QS3-RF1: closed. The rf2020_clone source reports potency intrinsic and heritable across split recipients, in kind.
+    - QS3-RF2: closed. The same source claims clone-intrinsic output heterogeneity.
+    - **QS2-N2: open again.** Its in-kind reports are in other systems (worm and fly). Before anything else it needs the same-data check: a claims-level read of the source's spindle (3), orient (1) and direction (4) sentences, which QS2 left unread. Then H21 items 1 and 3 (train outcome distribution, synthetic smoke) and power. MDE is 0.50 sd at about 32 trees and 0.35 at about 64, as lower bounds. Its one-sided |cos| statistic would also miss an orthogonal pattern (QS2 round 3).
+  - *Registry convention:* novelty stays "partly" (in kind) on closed rows, with status published_closed. DS-EMB-N's "published" predates this and is left as is.
+  - *Not reopened:* C12 and DS-EMB-N are published by their own sources on the same data. Other rows parked as "partly" (for example QS1-L2, CAND-A, H-C) are not re-classed here; checking them against the rule is a separate step for Bence.

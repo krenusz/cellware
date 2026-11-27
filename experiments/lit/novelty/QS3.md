@@ -31,4 +31,4 @@
   - Classic search: the three frozen queries above; recall weak (abstracts only, no recall gate).
 
 ## What is left that is ours
-For all three, a held-out test on a sealed set of a claim reported in kind: held for Bence (RETRO_2026-11-26 decision 1). No step opens on them. CO1 is closed regardless: QS3-CO1-M amendment 1 found that its clone clusters are computed from each clone's own cells and defined by fate bias, so it fails its readout condition. From this file, decision 1 holds RF1 and RF2.
+For all three, a held-out test on a sealed set of a claim reported in kind. Decided 2026-11-27 (decision 1, Bence: "Only if source differs"): RF1 and RF2 are closed, because the same-data check is the source's claims-level read (lit/c17_source_claims_2026-11-18.md section 3) and its abstract, which report them in kind on the same data. The unread parts stay as noted above. CO1 is closed regardless: QS3-CO1-M amendment 1 found that its clone clusters are computed from each clone's own cells and defined by fate bias, so it fails its readout condition. From this file, decision 1 holds RF1 and RF2.

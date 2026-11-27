@@ -366,7 +366,12 @@ pre-registration dated 2026-11-13 or later without it.
   against the `Serves:` line. Every question still passes the near-repeat, power, H22 and novelty gates. No
   question may be prompted by train outcomes seen in other chapters (H16). Reading for question generation keeps
   H25's claims-only limit for a sealed set's source paper, and what is read goes into that set's `prior_exposure`.
-  This line leaves the novelty gate unchanged; how "published in kind" is treated is RETRO_2026-11-26 decision 1.
+  This line leaves the novelty gate unchanged.
+- **"Published in kind"** (RETRO_2026-11-26 decision 1; Bence 2026-11-27: "Only if source differs"): an in-kind
+  question may go ahead only when no paper reports it on the same data. That includes the data set's own source,
+  read at claims level. If any paper reports it on the same data, it is closed as published: note it and move on.
+  An in-kind report on other data or another system does not block. The verdict line names the same-data check
+  and what was read for it.
 - A replication look of our own confirmed result on a second partition is allowed only when that partition holds
   independent assignment units (H22), not the same libraries, wells or animals split by hash. Whether a confirmed
   result with a "partly published" novelty verdict may be replicated goes to Bence.

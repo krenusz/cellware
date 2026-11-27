@@ -13,3 +13,5 @@
 
 ## What is left that is ours
 A held-out, start-matched quantification of sister coherence, as a test. The source states sister trajectory similarity descriptively, so this is "in kind": held for Bence (RETRO_2026-11-26 decision 1). No step opens on it.
+
+Closed 2026-11-27 under decision 1 (Bence: "Only if source differs"): the same-data check is the source's claims-level statement of sister trajectory similarity (above), so the claim is reported in kind on the same data.
