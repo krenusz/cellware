@@ -15250,3 +15250,23 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
     - The check recomputes T on cells with purity >= 0.9 only.
     - The look proposal also needs that T to retain >= 50% of the full T, with the same sign.
   - The frozen statistic, the train rule and the look-proposal rule are otherwise unchanged.
+- **CAND-A-P1 train result (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46009758197 at 2179e97, 76 s; collected by the Sonnet lane; results_cand/canda1_train.json sha256 adc747e5...; first UMAP read, train founders only):**
+  - *Readout identity (amendment 1):* matches S0 on all four counts (114,178 evaluable cells, 35 eligible types, 33 usable founders, 112,288 cells in eligible types).
+  - **T = 0.118, 95% founder-bootstrap CI [0.086, 0.149], z 7.2; 30 of 33 founders positive.**
+    - d_f percentiles 5 / 25 / 50 / 75 / 95: -0.031 / 0.059 / 0.118 / 0.193 / 0.241; sd 0.093.
+    - Base AUC 0.67, pooled across types and founders (not on the statistic's within-founder, within-type scale).
+  - *Third label column:* it varies within 0 of the 35 eligible types, so it is a function of `celltype` and harmless (amendment 1 check).
+  - *Exploratory:* 3D UMAP only gives T 0.116; 2D only gives 0.075.
+  - *Power at half T (sd 0.093):* A (16 projected founders) 0.71; A + B (32) 0.95.
+  - **Verdict under the frozen rule:**
+    - The CI excludes 0, but A's power is 0.71 < 0.8 and A + B's is 0.95. So the rule's branch is "propose a union look".
+    - Amendment 3 comes first: no look is proposed before the train-only boundary check passes (kNN purity >= 0.9 in UMAP, k = 15; >= 50% of T retained, same sign).
+    - The label-resolution clause is not triggered (132 levels).
+  - *Self-challenge:*
+    1. *Above prediction:* T is above the predicted 0.02-0.07, the advisor's flag for label correction. Mislabelled cells sit in UMAP with their true type, and the boundary check targets exactly that.
+    2. *Leakage:* folds are grouped by founder; UMAP is unsupervised with no lineage input, but the authors' embedding saw all cells.
+    3. *Base model:* the base has no counts or detection rate, so part of the gain may be quality structure in UMAP. That is not separable here.
+    4. *Shared niche:* not excluded, as in C14.
+    5. *C14 comparison, context only:* C14's train gain was 0.076-0.090. The unit, base and state columns all differ from C14's, so the sizes are not comparable.
+  - *Exposure:* the train-founder UMAP values were read, and the result is added to partitions.dtt_founder prior_exposure.
+  - *Next (needs Bence):* the boundary check entry (train only), then the union-look proposal if it passes. The look itself needs its own entry with a `Power sd:` line, and Bence's verbatim OK.
