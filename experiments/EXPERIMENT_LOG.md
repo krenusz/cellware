@@ -15214,3 +15214,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   4. The S0 JSON, the chunk JSONs and canda1_smoke.json are committed before the train sweep, which reads them from the runner's checkout.
   - Only the toy selftest runs locally.
 - Practice: neutral wording, DOIs not titles, no outreach. The advisor was consulted before the entry and before the commit, and these were adopted: the provenance checks, founder-level yield in clusters, a hard founder-offset null, split fail meanings (planted = sanity check), a date covariate, the exposure correction, codes-only type output, the S0-first dispatch and no local simulations.
+- **CAND-A-P1 S0 result (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46004387055 at 4237c3b, 70 s; collected by the Sonnet lane; results_cand/canda1_s0.json sha256 ef278586..., codes and counts only, checked for label strings): PASS.**
+  - *Labels:* `celltype` has 132 levels on train and `celltype_from_which_major_trajectory` has 25, so the type column is `celltype` (132 levels). `major_trajectory` has 25 levels.
+    - 132 is close to the source's 138 transferred labels, so the pre-registered label-resolution read (required below 100 levels) is not triggered. That is consistent with the source's own fine label set, not verified as it.
+    - *Reconciled:* C17-S1PL-T4's "24 categories" for `celltype` counted levels after its 1% pooling rule.
+  - *Readout:* 266,671 labelled train leaves; 114,178 evaluable cells; 72 types with two qualifying lineages; **35 eligible types** (112,288 cells).
+  - *Yield:* **33 of 38 train founders usable**, giving a projected A yield of 16.5 (floor 10). Clusters per usable founder, over its usable types: y = 1 min 5 / median 653 / max 2,220; y = 0 min 9 / median 460 / max 1,212.
+  - *Next, as registered:* the smoke sweep, with chunks unchanged at 50 replicates. The chunk runtime is unmeasured: S0 took 23 s but fits no model, while a replicate is about 350 logistic fits. Then the local combine, the commit, and the train sweep.
+- **CAND-A-P1 amendment 1 (2026-11-27; reports only, no rule changed; written before any smoke output or UMAP read):**
+  - *Readout identity:* the train stage drops leaves with a missing UMAP value before the readout. It now writes its evaluable cells, eligible types, usable founders and cells in eligible types next to S0's, and stops with a report on any mismatch.
+  - *Third label column:* `celltype_from_which_major_trajectory` (25 levels) is not in the base. The train stage counts the eligible types where it takes more than one level.
+    - If it is a function of `celltype`, it is constant within type and harmless. If not, UMAP may partly stand in for it, which weakens "beyond type".
+    - Added to the Limits; the models are unchanged.
+  - partitions.dtt_founder prior_exposure now records S0's read of all three label columns.

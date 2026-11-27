@@ -1,0 +1,687 @@
+{
+ "type_column": "celltype",
+ "levels": {
+  "celltype": 132,
+  "celltype_from_which_major_trajectory": 25,
+  "major_trajectory": 25
+ },
+ "type_levels_used": 132,
+ "lineage_levels": 25,
+ "labelled_train_leaves": 266671,
+ "evaluable_cells": 114178,
+ "types_with_lines": 72,
+ "eligible_types": 35,
+ "per_type_by_code": {
+  "t001": {
+   "cells": 25,
+   "clusters_y1": 14,
+   "clusters_y0": 11,
+   "eligible": false
+  },
+  "t004": {
+   "cells": 44,
+   "clusters_y1": 31,
+   "clusters_y0": 9,
+   "eligible": false
+  },
+  "t005": {
+   "cells": 13,
+   "clusters_y1": 7,
+   "clusters_y0": 4,
+   "eligible": false
+  },
+  "t006": {
+   "cells": 26,
+   "clusters_y1": 20,
+   "clusters_y0": 5,
+   "eligible": false
+  },
+  "t007": {
+   "cells": 711,
+   "clusters_y1": 497,
+   "clusters_y0": 133,
+   "eligible": true
+  },
+  "t009": {
+   "cells": 2,
+   "clusters_y1": 1,
+   "clusters_y0": 1,
+   "eligible": false
+  },
+  "t010": {
+   "cells": 23,
+   "clusters_y1": 9,
+   "clusters_y0": 11,
+   "eligible": false
+  },
+  "t012": {
+   "cells": 24,
+   "clusters_y1": 3,
+   "clusters_y0": 12,
+   "eligible": false
+  },
+  "t016": {
+   "cells": 1534,
+   "clusters_y1": 459,
+   "clusters_y0": 264,
+   "eligible": true
+  },
+  "t017": {
+   "cells": 3982,
+   "clusters_y1": 1442,
+   "clusters_y0": 1400,
+   "eligible": true
+  },
+  "t018": {
+   "cells": 2441,
+   "clusters_y1": 950,
+   "clusters_y0": 235,
+   "eligible": true
+  },
+  "t020": {
+   "cells": 336,
+   "clusters_y1": 157,
+   "clusters_y0": 77,
+   "eligible": true
+  },
+  "t021": {
+   "cells": 3,
+   "clusters_y1": 2,
+   "clusters_y0": 1,
+   "eligible": false
+  },
+  "t023": {
+   "cells": 42,
+   "clusters_y1": 24,
+   "clusters_y0": 18,
+   "eligible": false
+  },
+  "t024": {
+   "cells": 2,
+   "clusters_y1": 2,
+   "clusters_y0": 0,
+   "eligible": false
+  },
+  "t025": {
+   "cells": 3,
+   "clusters_y1": 1,
+   "clusters_y0": 2,
+   "eligible": false
+  },
+  "t027": {
+   "cells": 7687,
+   "clusters_y1": 3150,
+   "clusters_y0": 1264,
+   "eligible": true
+  },
+  "t034": {
+   "cells": 121,
+   "clusters_y1": 57,
+   "clusters_y0": 59,
+   "eligible": false
+  },
+  "t035": {
+   "cells": 524,
+   "clusters_y1": 242,
+   "clusters_y0": 143,
+   "eligible": true
+  },
+  "t040": {
+   "cells": 457,
+   "clusters_y1": 180,
+   "clusters_y0": 152,
+   "eligible": true
+  },
+  "t044": {
+   "cells": 212,
+   "clusters_y1": 138,
+   "clusters_y0": 47,
+   "eligible": true
+  },
+  "t045": {
+   "cells": 56,
+   "clusters_y1": 24,
+   "clusters_y0": 14,
+   "eligible": false
+  },
+  "t046": {
+   "cells": 13931,
+   "clusters_y1": 3634,
+   "clusters_y0": 2314,
+   "eligible": true
+  },
+  "t047": {
+   "cells": 11775,
+   "clusters_y1": 5553,
+   "clusters_y0": 1228,
+   "eligible": true
+  },
+  "t049": {
+   "cells": 24341,
+   "clusters_y1": 6763,
+   "clusters_y0": 4005,
+   "eligible": true
+  },
+  "t050": {
+   "cells": 796,
+   "clusters_y1": 409,
+   "clusters_y0": 185,
+   "eligible": true
+  },
+  "t054": {
+   "cells": 295,
+   "clusters_y1": 188,
+   "clusters_y0": 52,
+   "eligible": true
+  },
+  "t057": {
+   "cells": 993,
+   "clusters_y1": 562,
+   "clusters_y0": 75,
+   "eligible": true
+  },
+  "t059": {
+   "cells": 2552,
+   "clusters_y1": 1679,
+   "clusters_y0": 340,
+   "eligible": true
+  },
+  "t060": {
+   "cells": 252,
+   "clusters_y1": 122,
+   "clusters_y0": 68,
+   "eligible": true
+  },
+  "t065": {
+   "cells": 450,
+   "clusters_y1": 64,
+   "clusters_y0": 7,
+   "eligible": false
+  },
+  "t068": {
+   "cells": 826,
+   "clusters_y1": 438,
+   "clusters_y0": 128,
+   "eligible": true
+  },
+  "t069": {
+   "cells": 83,
+   "clusters_y1": 32,
+   "clusters_y0": 26,
+   "eligible": false
+  },
+  "t070": {
+   "cells": 5,
+   "clusters_y1": 4,
+   "clusters_y0": 1,
+   "eligible": false
+  },
+  "t072": {
+   "cells": 98,
+   "clusters_y1": 55,
+   "clusters_y0": 35,
+   "eligible": false
+  },
+  "t074": {
+   "cells": 85,
+   "clusters_y1": 55,
+   "clusters_y0": 21,
+   "eligible": false
+  },
+  "t078": {
+   "cells": 75,
+   "clusters_y1": 52,
+   "clusters_y0": 21,
+   "eligible": false
+  },
+  "t079": {
+   "cells": 1127,
+   "clusters_y1": 455,
+   "clusters_y0": 321,
+   "eligible": true
+  },
+  "t080": {
+   "cells": 234,
+   "clusters_y1": 63,
+   "clusters_y0": 45,
+   "eligible": true
+  },
+  "t082": {
+   "cells": 1426,
+   "clusters_y1": 677,
+   "clusters_y0": 460,
+   "eligible": true
+  },
+  "t083": {
+   "cells": 5,
+   "clusters_y1": 3,
+   "clusters_y0": 2,
+   "eligible": false
+  },
+  "t085": {
+   "cells": 1119,
+   "clusters_y1": 439,
+   "clusters_y0": 129,
+   "eligible": true
+  },
+  "t086": {
+   "cells": 160,
+   "clusters_y1": 54,
+   "clusters_y0": 51,
+   "eligible": false
+  },
+  "t087": {
+   "cells": 472,
+   "clusters_y1": 236,
+   "clusters_y0": 167,
+   "eligible": true
+  },
+  "t088": {
+   "cells": 1262,
+   "clusters_y1": 529,
+   "clusters_y0": 309,
+   "eligible": true
+  },
+  "t089": {
+   "cells": 548,
+   "clusters_y1": 309,
+   "clusters_y0": 166,
+   "eligible": true
+  },
+  "t090": {
+   "cells": 34,
+   "clusters_y1": 26,
+   "clusters_y0": 6,
+   "eligible": false
+  },
+  "t092": {
+   "cells": 218,
+   "clusters_y1": 92,
+   "clusters_y0": 70,
+   "eligible": true
+  },
+  "t094": {
+   "cells": 898,
+   "clusters_y1": 259,
+   "clusters_y0": 149,
+   "eligible": true
+  },
+  "t097": {
+   "cells": 25,
+   "clusters_y1": 17,
+   "clusters_y0": 8,
+   "eligible": false
+  },
+  "t099": {
+   "cells": 210,
+   "clusters_y1": 56,
+   "clusters_y0": 74,
+   "eligible": true
+  },
+  "t100": {
+   "cells": 3,
+   "clusters_y1": 2,
+   "clusters_y0": 1,
+   "eligible": false
+  },
+  "t101": {
+   "cells": 58,
+   "clusters_y1": 17,
+   "clusters_y0": 13,
+   "eligible": false
+  },
+  "t102": {
+   "cells": 2,
+   "clusters_y1": 1,
+   "clusters_y0": 1,
+   "eligible": false
+  },
+  "t103": {
+   "cells": 202,
+   "clusters_y1": 51,
+   "clusters_y0": 65,
+   "eligible": true
+  },
+  "t104": {
+   "cells": 1,
+   "clusters_y1": 1,
+   "clusters_y0": 0,
+   "eligible": false
+  },
+  "t105": {
+   "cells": 4,
+   "clusters_y1": 2,
+   "clusters_y0": 2,
+   "eligible": false
+  },
+  "t107": {
+   "cells": 9,
+   "clusters_y1": 4,
+   "clusters_y0": 2,
+   "eligible": false
+  },
+  "t108": {
+   "cells": 24,
+   "clusters_y1": 19,
+   "clusters_y0": 2,
+   "eligible": false
+  },
+  "t110": {
+   "cells": 2580,
+   "clusters_y1": 679,
+   "clusters_y0": 493,
+   "eligible": true
+  },
+  "t112": {
+   "cells": 9,
+   "clusters_y1": 5,
+   "clusters_y0": 4,
+   "eligible": false
+  },
+  "t115": {
+   "cells": 503,
+   "clusters_y1": 221,
+   "clusters_y0": 124,
+   "eligible": true
+  },
+  "t116": {
+   "cells": 44,
+   "clusters_y1": 19,
+   "clusters_y0": 21,
+   "eligible": false
+  },
+  "t117": {
+   "cells": 136,
+   "clusters_y1": 44,
+   "clusters_y0": 79,
+   "eligible": false
+  },
+  "t121": {
+   "cells": 444,
+   "clusters_y1": 313,
+   "clusters_y0": 100,
+   "eligible": true
+  },
+  "t122": {
+   "cells": 138,
+   "clusters_y1": 112,
+   "clusters_y0": 23,
+   "eligible": false
+  },
+  "t125": {
+   "cells": 536,
+   "clusters_y1": 195,
+   "clusters_y0": 117,
+   "eligible": true
+  },
+  "t126": {
+   "cells": 45,
+   "clusters_y1": 33,
+   "clusters_y0": 11,
+   "eligible": false
+  },
+  "t127": {
+   "cells": 22563,
+   "clusters_y1": 5561,
+   "clusters_y0": 2914,
+   "eligible": true
+  },
+  "t128": {
+   "cells": 4301,
+   "clusters_y1": 793,
+   "clusters_y0": 844,
+   "eligible": true
+  },
+  "t129": {
+   "cells": 6,
+   "clusters_y1": 1,
+   "clusters_y0": 1,
+   "eligible": false
+  },
+  "t130": {
+   "cells": 7,
+   "clusters_y1": 4,
+   "clusters_y0": 3,
+   "eligible": false
+  }
+ },
+ "usable_founder_table": [
+  {
+   "types": 21,
+   "cells_y1": 5980,
+   "cells_y0": 3054,
+   "clusters_y1": 2220,
+   "clusters_y0": 1212
+  },
+  {
+   "types": 25,
+   "cells_y1": 4924,
+   "cells_y0": 2788,
+   "clusters_y1": 1957,
+   "clusters_y0": 1081
+  },
+  {
+   "types": 31,
+   "cells_y1": 4589,
+   "cells_y0": 2825,
+   "clusters_y1": 1736,
+   "clusters_y0": 1117
+  },
+  {
+   "types": 23,
+   "cells_y1": 4617,
+   "cells_y0": 2515,
+   "clusters_y1": 1748,
+   "clusters_y0": 1147
+  },
+  {
+   "types": 25,
+   "cells_y1": 4684,
+   "cells_y0": 2303,
+   "clusters_y1": 1671,
+   "clusters_y0": 963
+  },
+  {
+   "types": 25,
+   "cells_y1": 4500,
+   "cells_y0": 2291,
+   "clusters_y1": 1634,
+   "clusters_y0": 1043
+  },
+  {
+   "types": 24,
+   "cells_y1": 3895,
+   "cells_y0": 2848,
+   "clusters_y1": 1575,
+   "clusters_y0": 981
+  },
+  {
+   "types": 23,
+   "cells_y1": 4059,
+   "cells_y0": 2311,
+   "clusters_y1": 1608,
+   "clusters_y0": 954
+  },
+  {
+   "types": 27,
+   "cells_y1": 4248,
+   "cells_y0": 2114,
+   "clusters_y1": 1616,
+   "clusters_y0": 905
+  },
+  {
+   "types": 17,
+   "cells_y1": 3885,
+   "cells_y0": 1417,
+   "clusters_y1": 1265,
+   "clusters_y0": 612
+  },
+  {
+   "types": 26,
+   "cells_y1": 2916,
+   "cells_y0": 1971,
+   "clusters_y1": 1126,
+   "clusters_y0": 828
+  },
+  {
+   "types": 16,
+   "cells_y1": 2803,
+   "cells_y0": 1855,
+   "clusters_y1": 1033,
+   "clusters_y0": 663
+  },
+  {
+   "types": 17,
+   "cells_y1": 2474,
+   "cells_y0": 985,
+   "clusters_y1": 947,
+   "clusters_y0": 460
+  },
+  {
+   "types": 21,
+   "cells_y1": 2122,
+   "cells_y0": 1265,
+   "clusters_y1": 800,
+   "clusters_y0": 511
+  },
+  {
+   "types": 18,
+   "cells_y1": 1830,
+   "cells_y0": 1447,
+   "clusters_y1": 747,
+   "clusters_y0": 659
+  },
+  {
+   "types": 12,
+   "cells_y1": 1554,
+   "cells_y0": 1229,
+   "clusters_y1": 653,
+   "clusters_y0": 482
+  },
+  {
+   "types": 18,
+   "cells_y1": 1677,
+   "cells_y0": 978,
+   "clusters_y1": 671,
+   "clusters_y0": 470
+  },
+  {
+   "types": 13,
+   "cells_y1": 1845,
+   "cells_y0": 577,
+   "clusters_y1": 639,
+   "clusters_y0": 287
+  },
+  {
+   "types": 10,
+   "cells_y1": 1630,
+   "cells_y0": 546,
+   "clusters_y1": 544,
+   "clusters_y0": 219
+  },
+  {
+   "types": 9,
+   "cells_y1": 965,
+   "cells_y0": 506,
+   "clusters_y1": 340,
+   "clusters_y0": 201
+  },
+  {
+   "types": 8,
+   "cells_y1": 915,
+   "cells_y0": 390,
+   "clusters_y1": 304,
+   "clusters_y0": 170
+  },
+  {
+   "types": 14,
+   "cells_y1": 802,
+   "cells_y0": 333,
+   "clusters_y1": 298,
+   "clusters_y0": 165
+  },
+  {
+   "types": 6,
+   "cells_y1": 592,
+   "cells_y0": 263,
+   "clusters_y1": 222,
+   "clusters_y0": 106
+  },
+  {
+   "types": 5,
+   "cells_y1": 130,
+   "cells_y0": 231,
+   "clusters_y1": 72,
+   "clusters_y0": 77
+  },
+  {
+   "types": 3,
+   "cells_y1": 123,
+   "cells_y0": 159,
+   "clusters_y1": 52,
+   "clusters_y0": 51
+  },
+  {
+   "types": 2,
+   "cells_y1": 83,
+   "cells_y0": 158,
+   "clusters_y1": 38,
+   "clusters_y0": 70
+  },
+  {
+   "types": 6,
+   "cells_y1": 150,
+   "cells_y0": 85,
+   "clusters_y1": 84,
+   "clusters_y0": 54
+  },
+  {
+   "types": 2,
+   "cells_y1": 85,
+   "cells_y0": 61,
+   "clusters_y1": 29,
+   "clusters_y0": 19
+  },
+  {
+   "types": 2,
+   "cells_y1": 63,
+   "cells_y0": 73,
+   "clusters_y1": 30,
+   "clusters_y0": 46
+  },
+  {
+   "types": 2,
+   "cells_y1": 67,
+   "cells_y0": 62,
+   "clusters_y1": 29,
+   "clusters_y0": 20
+  },
+  {
+   "types": 1,
+   "cells_y1": 77,
+   "cells_y0": 44,
+   "clusters_y1": 19,
+   "clusters_y0": 17
+  },
+  {
+   "types": 2,
+   "cells_y1": 77,
+   "cells_y0": 34,
+   "clusters_y1": 28,
+   "clusters_y0": 15
+  },
+  {
+   "types": 1,
+   "cells_y1": 17,
+   "cells_y0": 16,
+   "clusters_y1": 5,
+   "clusters_y0": 9
+  }
+ ],
+ "train_founders": 38,
+ "usable_founders": 33,
+ "projected_A_yield": 16.5,
+ "pass": true,
+ "fails": [],
+ "evaluable_cells_in_eligible_types": 112288
+}

@@ -270,6 +270,8 @@ def build(L, with_umap=False):
     own = np.eye(len(ll))[lcode[pos]]
     base = np.column_stack([own, np.log(s["leaves"][anc]), s["depth"][anc], s["rdist"][anc]])
     D = {"base": base[m], "t": t_of[m], "y": y[m], "fnd": fnd[m], "anc": anc[m], "types": types, "use": use}
+    other = clean(df[[c for c in TYPE_COLS if c != tcol][0]])
+    D["t_other"] = np.array([str(other[ids[p]]) for p in pos[m]], dtype=object)
     if with_umap:
         D["Z"] = df.loc[[ids[p] for p in pos[m]], list(UMAP)].to_numpy(float)
     info = {"type_column": tcol, "levels": levels, "type_levels_used": len(tl), "lineage_levels": len(ll),
@@ -395,6 +397,14 @@ def stage_train():
     if not (s0.get("pass") and sm.get("pass")):
         raise SystemExit("S0 and smoke must both pass first")
     D, info = build(load_train(), with_umap=True)
+    # amendment 1 (report only): the readout scored here must be the one S0 and the smoke certified
+    keys = ("evaluable_cells", "eligible_types", "usable_founders", "evaluable_cells_in_eligible_types")
+    info["evaluable_cells_in_eligible_types"] = int(len(D["y"]))
+    same = {k: (s0[k], info[k]) for k in keys}
+    multi = sum(len(set(D["t_other"][D["t"] == t].tolist())) > 1 for t in D["types"])
+    if any(a != b for a, b in same.values()):
+        write("canda1_train.json", {"stopped": "readout differs from S0 (amendment 1)", "s0_vs_train": same})
+        raise SystemExit(f"readout differs from S0: {same}")
     rng = np.random.default_rng(SEED + 1)
     d, sb, sf = d_by_founder(D, D["Z"])
     v = np.array(list(d.values()))
@@ -409,7 +419,8 @@ def stage_train():
            "base_auc_pooled": float(auc(sb[~np.isnan(sb)], D["y"][~np.isnan(sb)])),
            "power_half_T": {"A": power.mean_power(T / 2, sd, {"A": nA}) if T > 0 else 0.0,
                             "A+B": power.mean_power(T / 2, sd, {"AB": nA + nB}) if T > 0 else 0.0},
-           "n_projected": {"A": nA, "A+B": nA + nB}, "exploratory": {}}
+           "n_projected": {"A": nA, "A+B": nA + nB}, "exploratory": {}, "s0_vs_train": same,
+           "eligible_types_with_several_other_label_levels": int(multi)}
     for name, ix in (("umap3d_only", [0, 1, 2]), ("umap2d_only", [3, 4])):
         de, *_ = d_by_founder(D, D["Z"][:, ix])
         res["exploratory"][name] = dict(zip(("T", "z"), ztest(de.values()), strict=True))
