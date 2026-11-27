@@ -1,0 +1,31 @@
+{
+ "s0_vs_fit": {
+  "evaluable_cells": [
+   114178,
+   114178
+  ],
+  "eligible_types": [
+   35,
+   35
+  ],
+  "usable_founders": [
+   33,
+   33
+  ],
+  "evaluable_cells_in_eligible_types": [
+   112288,
+   112288
+  ]
+ },
+ "dry_run": {
+  "fold": 0,
+  "founders": 6,
+  "founders_match": true,
+  "max_abs_diff": 0.0,
+  "finish_T_matches": true,
+  "finish_secondary_ok": true
+ },
+ "model_sha256": "e174354d233590554d9315e3636768809bffee4e8b3947acfe8836989e5a5d8e",
+ "models": 35,
+ "selection": "written"
+}

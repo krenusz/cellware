@@ -1,0 +1,50 @@
+{
+ "test": "dtt_canda",
+ "higher_is_better": true,
+ "candidates": {
+  "state_umap5": 0.11783401868583597,
+  "umap3d_only": 0.11604410272963663,
+  "umap2d_only": 0.07453105254592268,
+  "base_only": 0.0
+ },
+ "chosen": "state_umap5",
+ "note": "candidates = CAND-A-P1 train founder-grouped CV T; primary = mean of A+B founder d_f, sample-sd z > 1.96 one-sided; adequacy >= 20 usable founders; CAND-A-P2 boundary check PASS (retained 0.887)",
+ "model_sha256": "e174354d233590554d9315e3636768809bffee4e8b3947acfe8836989e5a5d8e",
+ "train": {
+  "evaluable_cells": 114178,
+  "eligible_types": 35,
+  "usable_founders": 33,
+  "evaluable_cells_in_eligible_types": 112288,
+  "type_levels_here": 132,
+  "type_levels_unseen_in_train": 0,
+  "lineage_levels_unseen_in_train": 0,
+  "models": 35,
+  "dry_run": {
+   "fold": 0,
+   "founders": 6,
+   "founders_match": true,
+   "max_abs_diff": 0.0,
+   "finish_T_matches": true,
+   "finish_secondary_ok": true
+  }
+ },
+ "power": {
+  "effect": 0.058917009342917985,
+  "sd": 0.09347699720303737,
+  "alpha": 0.025,
+  "one_sided": true,
+  "min_power": 0.8,
+  "sources": {
+   "effect": "CAND-A-P1 train T x 0.5",
+   "sd": "train founder-level delta AUC sd (CAND-A-P1 train stage)"
+  }
+ },
+ "readout_gate": {
+  "pass": true,
+  "sides": {
+   "y1_clusters": 37491,
+   "y0_clusters": 18657
+  }
+ },
+ "exposure": "train labels and UMAP (CAND-A-P1, -P2); source preprint headings; README; A and B never read"
+}

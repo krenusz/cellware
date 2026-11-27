@@ -15421,3 +15421,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Its outputs (model JSON and selection file) are committed before any look. The artifact keeps `results_*/` only, so `fit` also writes `results_cand/canda3_selection.json`, which is copied byte-identical to `selection/CAND-A-L1.json`.
   - The look line is written only after Bence's OK. Only the toy selftest runs locally.
 - Practice: neutral wording, codes only, no outreach. The advisor was consulted before the entry, and these were adopted: the train dry run of the oracle path, the one-group count, sealed-label type coding, the run-once rule, a guarded secondary, and the C-alone power note.
+- **CAND-A-L1 fit result (2026-11-27; run https://github.com/krenusz/cellware/actions/runs/46048593443 at 07f0a6c, 70 s; collected by the Sonnet lane; train only, no sealed read): PASS.**
+  - *Readout identity:* matches S0 on all four counts (114,178 / 35 / 33 / 112,288). 132 type levels; no type or lineage is unseen against itself.
+  - *Dry run of the oracle path on train fold 0 (6 founders):* the founder sets match, and the max |d_f difference| vs CAND-A-P1's CV values is 0.0. The shared `finish` step's T matches, and its secondary ran without error.
+  - *Frozen model:* 35 per-type model pairs; results_cand/canda3_model.json sha256 e174354d..., equal to model_sha256 in the fit and selection files. Strings are 16-hex codes, plus the column name `celltype`.
+  - *Selection:* selection/CAND-A-L1.json is copied byte-identical from results_cand/canda3_selection.json (sha256 0ff26652...).
+    - Candidates: state 0.118 > 3D-only 0.116 > 2D-only 0.075 > base 0, and state is chosen.
+    - Power: effect 0.0589, sd 0.0935.
+    - Readout sides: 37,491 / 18,657 clusters.
+  - *Next:* the look needs Bence's verbatim OK. Its sweep line is written only then, and it must carry the runner's ledger row out in the results directory.
