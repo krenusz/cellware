@@ -14530,6 +14530,21 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Gate: >= 75 eligible sister pairs across the wild-type sheets. Status: no split anywhere, or < 75 = `failed_gate`; otherwise `open`, inventory, upper bound (automated or unknown curation).
   - If the run cannot finish in 60 s, it stops and the compute question goes to Bence (no splitting into short runs).
 
+### DS-WIDE-G2 amendment 3: W6 count rules fixed before any count (written 2026-11-28, after the Sonnet lane's timing read and before any count; no Time or TrackID value printed or seen)
+- **Stop:** the timing estimate for the read alone is 63.7 s, over the 60 s local limit (decision 11). One longer local run with the same reader needs Bence's own answer in the Cellware Sonnet session (not relayed). A new reader would need its own validation, so the reader stays openpyxl read_only.
+- **Pre-checks logged:** workbook sha256 matches. Flag (a): no "one sheet per embryo" phrase found by pattern, so sheet = embryo stays inference. Flag (b): the seven-sheet group's word is a generic control word; it is called the **control group** below (it may be a vehicle control, not wild type). The timing read passed sheet 1's Time and TrackID through code, nothing printed or saved; Position cells pass through the library's parser and never reach the script (limit).
+- **Rules (replacing the stage 3 spec's single gate):**
+  - R0: a row counts if Time or TrackID is non-blank; blank or non-numeric values are left out of track logic; integral floats are integers.
+  - R1 (observed split): along a track's sorted Times, each rise in rows per Time from k to k+1 that is held for >= 5 consecutive sheet frames (a gap breaks the run) is one sister pair. Reported as pairs (all rises) and as trees carrying >= 1 pair. Tracks that start at >= 2 rows are counted separately ("starts at >= 2") and are not pairs.
+  - R2 (depth >= 1): a rise to >= 3 rows that follows an R1 pair in the same track, reported with and without the 5-frame hold.
+  - R3 (quality flag): rows per Time rise and later fall along a track's own Times; a gap or track end is not a fall.
+  - Control group only for R1-R3; the other ten sheets report rows, tracks and frame span only.
+- **Two gates, fixed now:**
+  - DS-WIDE-G2 (C17 inventory): R2 pairs with the 5-frame hold >= 75 -> DS-WIDE-G2 W6 `open` (inventory, upper bound); else W6 `failed_gate` for C17.
+  - W6-C3: R1 pairs >= 75 -> W6-C3 stays `open` (still blocked by its validity stop); no split anywhere or < 75 -> W6-C3 `failed_gate`.
+- **Proxy label:** row counts cannot assign arms, so "both arms >= 5 spots" is approximated by the 5-frame hold; every count is an upper bound (automated or unknown curation). ID and Position stay unread.
+- The two script edits (watchdog ceiling, header whitespace strip) are allowed; the new script sha256 is reported before the run.
+
 ## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
 - **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
 - **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
