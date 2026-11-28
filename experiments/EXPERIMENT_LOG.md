@@ -14512,6 +14512,24 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - Compute: lookups by the Haiku lane; any count local on the Sonnet lane under decision 11.
 - Practice: neutral wording; advisor before each stage verdict; no outreach.
 
+### DS-WIDE-G2 amendment 2, stages 1-2 result (2026-11-28; Haiku lookup lane, claims level; no W6 value read)
+- **Source (doi 10.1126/sciadv.adf1814, open PMC text; abstract, headings, figure titles, tracking methods, data statement):** the tracks give a motion-based state axis beside expression states: displacement and speed define three motion states that map onto each embryo as high-, intermediate- and low-motion regions; the time-averaged pattern is reproducible across embryos; single embryos show transient left-right asymmetry. Tracking: a named imaging tool; manual, automated or corrected is not stated; division linking is not described.
+- **Inference, not stated:** one sheet = one embryo; the seven-sheet group = wild type (4 for the pseudotime + 3 mapped onto it); the other three groups = signalling-inhibition conditions (arm sizes unconfirmed). Two yes/no flags go to the Sonnet lane with the count (README specimen phrase; control-like word for the seven-sheet group), words stay masked.
+- **No public per-track or per-cell state keyed to TrackID or ID** (data statement names only the expression series and this deposit).
+- **Frozen candidates (before any value):**
+  - **W6-C1, division-memory carrier for C17-STAGE: FAIL at readout (H21).** No per-cell state is public; a state built from position or motion is the source's own motion states, in kind on the same data.
+  - **W6-C2, condition contrast: FAIL** (in kind on the same data: the source's own perturbation design; arm sizes unconfirmed).
+  - **W6-C3, lineage relatedness and final position (clonal coherence vs mixing; the QS2-N1 question, claim H-a) in wild-type tailbud: survives stage 2, provisionally.**
+    - H16: as QS2-N1 (the reserve search toward tissue building), and on Bence's "anything"; it sits outside C17. QE2 was dropped under H16 only because QS-E5 served C17's counted-division parameters.
+    - In kind on the same data: no. The W6 source claims regional motion states, not relatives (decision 1, Bence 2026-11-27: "Only if source differs"; QS2-N1 closed because the E5 source states sister trajectory similarity). Classic clonal dispersal in other data is in kind elsewhere (partly).
+    - H22: contrast within embryo (related vs unrelated pairs), wild-type sheets only; unit = track tree, strata embryo (as E5).
+    - **Validity stop, registered now:** a shared TrackID is the only evidence of sisterhood; an automated merge joins two close cells under one TrackID and inflates any coherence statistic. Curation is not stated. No test runs unless a validation rule, registered separately with Bence's OK, can separate divisions from merges inside the deposit; if none can, W6-C3 stops at inventory.
+- **Stage 3 count spec (fixed before the run; Sonnet lane, local, streamed, stop at 60 s):** rows per (TrackID, Time) only; per-sheet aggregates, no per-track output.
+  - All 17 sheets: rows, tracks, frame span.
+  - Wild-type (seven-sheet) group only: tracks reaching two rows at one Time for >= 5 frames (a division with both arms >= 5 spots), tracks reaching three (depth >= 1), and tracks whose rows per Time drop (quality flag). A division count by condition would be an outcome and is not computed.
+  - Gate: >= 75 eligible sister pairs across the wild-type sheets. Status: no split anywhere, or < 75 = `failed_gate`; otherwise `open`, inventory, upper bound (automated or unknown curation).
+  - If the run cannot finish in 60 s, it stops and the compute question goes to Bence (no splitting into short runs).
+
 ## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
 - **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
 - **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
