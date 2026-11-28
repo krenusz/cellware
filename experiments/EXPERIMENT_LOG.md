@@ -15152,6 +15152,11 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - *By hand:* about half of the 80 most common tokens are real gene or protein symbols. The rest are false positives (method names, status words) plus some other domain abbreviations.
   - *Reading:* widening the filter means a curated deny list built from these tokens, rewriting the gap-map JSONs to DOIs only, and scrubbing the log and lit text. That is a large rewrite, and git history keeps the old text.
   - The hit list stays in the scratchpad. Nothing is reworded yet; the cleanup scope goes to Bence.
+- **Decision 9 resolved, reversed (2026-11-28; Bence, verbatim: "if its only about de sensitive isisng thn we dont care we seems to be able to solve it now we dont se stops already"):**
+  - Asked with three scopes (maps only, maps + lit notes, forward only), he chose none.
+  - *Reading (Opus):* the cleanup was for de-sensitising only, so it is dropped. No committed file is rewritten, no gene list is added, and new gap maps are saved as before. The earlier answer ("Widen + re-check (Rec.)") stands above as the record of what changed.
+  - *Checked before recording:* the recorded reasons for the neutral-wording rule are the classifier stops and not storing sensitive content (feedback memory, 2026-11-14), both de-sensitising, so his condition holds.
+  - *Unchanged:* the standing neutral-wording rule for new saved text and the pre-commit scan with lit_gap.SENSITIVE; the 2026-11-19 deferral of the older map rows (RETRO_2026-11-19b).
 - **R2-R4 under decision 1 (2026-11-27; Bence: "Apply decision 1 (Rec.)"):**
   - QS2-R2 (C8 T1), QS2-R3 (C8 T3) and QS2-R4 (C10) are closed.
   - *Same-data check:* lit/novelty_audit_2026-11-18.md. For C8 its sources report early-state fate prediction on the same data ("known; sealed confirmation"). For C10 the source reports pre-resistant states in the same data.
