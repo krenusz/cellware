@@ -14545,6 +14545,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Proxy label:** row counts cannot assign arms, so "both arms >= 5 spots" is approximated by the 5-frame hold; every count is an upper bound (automated or unknown curation). ID and Position stay unread.
 - The two script edits (watchdog ceiling, header whitespace strip) are allowed; the new script sha256 is reported before the run.
 
+### DS-WIDE-G2 amendment 4: W6 count readings and the boundary rule (written 2026-11-28, before any count; script read by Opus, never run on the workbook)
+- **Readings where amendment 3 is silent (fixed now):**
+  - A held step of 2 or more rows (e.g. 1 to 3) is not an R1 pair; it is counted as a **held jump** (and as a held jump after a pair when it follows an R1 pair in the same track).
+  - A held re-rise after a fall counts again (literal "each rise"); a **strict** variant counts a held one-step rise only the first time the track holds that level (one dropout frame, 2-1-2, is the commonest automated-tracking artefact).
+  - R2 is a subset of R1: an R1 pair (one-step, held) ending at >= 3 rows, after an earlier R1 pair in the same track. "Without the hold" drops the hold on that rise only. R2 strict as for R1.
+  - A track that starts at 2 and later has a held rise to 3 has an R1 pair, not an R2 rise.
+  - Hold: rows stay >= the new level for 5 adjacent sheet frames, the rise frame first; a missing frame breaks it. A rise is read between a track's consecutive observed Times, also across a gap.
+- **Boundary rule for both gates (replaces the pass/fail lines of amendment 3):**
+  - W6-C3: `failed_gate` only if R1 pairs + held jumps < 75. Pass if R1 pairs >= 75 and R1 strict >= 75. Anything between = `open`, labelled "count-rule dependent".
+  - DS-WIDE-G2 C17 inventory: `failed_gate` only if R2 with hold + held jumps after a pair < 75. Pass if R2 with hold >= 75 and R2 strict >= 75. Anything between = `open`, "count-rule dependent".
+  - Every pass stays inventory only, upper bound; W6-C3 stays blocked by its validity stop.
+- **Script:** one run only; if the watchdog fires the lane stops and reports, with no retry and no second run without a new ask. The ceiling is the one Bence states in the Sonnet session. This is the 4th amendment of DS-WIDE-G2; a 5th needs a retro first (H18).
+
 ## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
 - **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
 - **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
