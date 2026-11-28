@@ -358,6 +358,12 @@ pre-registration dated 2026-11-13 or later without it.
 - Result writers get a 1-rep local run before dispatch (11-19; C17-S1 numpy-bool crash twice).
 - A planted smoke signal goes on a direction orthogonal to the base features (residualised, or a synthetic
   column), never on a raw top PC: real PC1 often tracks depth, and the base absorbs it (11-17b; C15-S1b).
+- Decision 10 addition (Bence 2026-11-28: "decision 10 yes"; RETRO_2026-11-27 lesson 9): a planted smoke arm
+  states its expected T before the run, and counts as a detection check only if it clears 3x the null penalty;
+  an arm below that bar is reported as a leakage check only. *Reading (Opus):* T is the test's own statistic;
+  the null penalty is that statistic with uninformative planted columns in the same smoke run (as the CAND-A-P1
+  smoke, about 0.003 AUC for five columns). Applies to pre-registrations from 2026-11-28; earlier results are not
+  re-judged. Limit: practice only, not hook-enforced.
 - Presence-type outcomes: count expected positives per sealed partition, not units (11-14b).
 - Selection power only by `sim_power` on the refit pipeline at the sealed n (H17); never `z_power` on a
   fixed out-of-fold SE (11-14b; C12-S1 power is provisional until redone).
