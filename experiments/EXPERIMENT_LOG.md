@@ -14558,6 +14558,13 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
   - Every pass stays inventory only, upper bound; W6-C3 stays blocked by its validity stop.
 - **Script:** one run only; if the watchdog fires the lane stops and reports, with no retry and no second run without a new ask. The ceiling is the one Bence states in the Sonnet session. This is the 4th amendment of DS-WIDE-G2; a 5th needs a retro first (H18).
 
+### DS-WIDE-G2 amendment 4 reading note: final W6 count script (2026-11-28, before the run; no rule or gate text changed)
+- **Two readings of amendment 4's own text** ("a strict variant counts a held one-step rise only the first time the track holds that level"; "a track that starts at 2 and later has a held rise to 3 has an R1 pair, not an R2 rise"):
+  - A start that meets the 5-frame hold has held its level, so strict starts from it (start at 2, dropout, back to 2: pairs 1, strict 0).
+  - R2 strict needs the rise itself strict and an earlier strict R1 pair.
+- **Residual, accepted as literal:** a level reached without a held start or held rise (e.g. an unheld jump that settles lower) does not count as held, so a later dropout and return there is strict. It can only raise the strict count.
+- **Script:** `w6_count.py` (Cellware Sonnet session scratchpad), sha256 `8963c911b24ee249acaded0daa34805b131ae11f1a6e90c4766897f02e433cdc`, read and hashed by Opus; selftest 22 made-up track cases passed under the run's interpreter (openpyxl 3.1.5, python -I); watchdog 180 s. One run only, after Bence's own yes in that session.
+
 ## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
 - **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
 - **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
