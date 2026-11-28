@@ -78,7 +78,8 @@ DATASETS = {
                       "intensity columns as names only, never values. Amendment 2 (Bence: \"check wehether this "
                       "data can give us anything\"): Time and TrackID values only, as per-sheet aggregates (rows, "
                       "tracks, frame span; division counts for the wild-type sheets only); Position values unread "
-                      "until sealing.",
+                      "until sealing. Result 2026-11-28: failed gate (0 held splits on the 7 control sheets, "
+                      "results_c17/ds_wide_g2_w6_counts.json); no partition; Position and ID never read by code.",
     "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
                     "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "

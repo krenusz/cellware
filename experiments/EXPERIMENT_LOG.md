@@ -14565,6 +14565,19 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Residual, accepted as literal:** a level reached without a held start or held rise (e.g. an unheld jump that settles lower) does not count as held, so a later dropout and return there is strict. It can only raise the strict count.
 - **Script:** `w6_count.py` (Cellware Sonnet session scratchpad), sha256 `8963c911b24ee249acaded0daa34805b131ae11f1a6e90c4766897f02e433cdc`, read and hashed by Opus; selftest 22 made-up track cases passed under the run's interpreter (openpyxl 3.1.5, python -I); watchdog 180 s. One run only, after Bence's own yes in that session.
 
+### DS-WIDE-G2 W6 count result (2026-11-28; Cellware Sonnet session, one local run; Bence's own answer in that session: "Yes, run once (Recommended)")
+- **Run:** `ds_wide_g2_w6_count.py` (stored copy of the confirmed script, sha256 `8963c911b24ee249acaded0daa34805b131ae11f1a6e90c4766897f02e433cdc`, unchanged after the run); workbook sha256 matched; 66.2 s, peak RAM 55 MB, watchdog (180 s) did not fire; output `results_c17/ds_wide_g2_w6_counts.json` (sha256 `a7ecd40d2e84b03a732ef6652f48d7cb87c6f4a30e013cc299a5f7ae491b1cbf`, hashed and read by Opus). Time and TrackID are integers on every sheet.
+- **All 17 sheets (structure):** 44,387 to 262,091 rows, 2,771 to 8,317 tracks, 28 to 78 frames per sheet (two sheets have 77 and 78 frames, more than the about 60 the record implies).
+- **Control group (7 sheets): every split column is 0 on every sheet:** pairs_R1 0, strict 0, trees 0, starts at >= 2 rows 0, R2 (all variants) 0, held jumps 0, rise-then-fall 0.
+- **Planted check (no W6 read):** the frozen script on a made-up 17-sheet workbook in the same layout counted the planted held splits in two control sheets exactly as expected (pairs 3, strict 3, R2 with hold 1) and gave no split columns for the non-control sheet carrying the same plant. The zeros are not a loop or group-selection fault.
+- **Verdict (amendment 4 boundary rule, the most inclusive count is 0 < 75):**
+  - **W6-C3 (relatedness vs final position): `failed_gate`.**
+  - **DS-WIDE-G2 for C17: `failed_gate`.** W6 fails the count; W7 failed at listing (2026-11-26); "both fail = failed_gate" was fixed in the entry.
+- **What the zeros show, and what not:** in the seven control sheets no track holds two rows at one Time for 5 frames, none starts with two rows, and none rises and later falls. Not shown: that no track ever has two rows at one Time (an unheld rise with no later fall shows in no column; such a short split could not be eligible, so no status would change, and the direct check is not run). Reading, not finding: the export probably gives each tracked cell its own TrackID with no division links.
+- **Self-challenge:** (1) suspicious? All zeros could be a bug; the planted check rules that out. (2) other explanations? Divisions may live in the source software's native files, not this export; daughters may carry new TrackIDs with no link. (3) units? 7 control sheets, about 36,000 tracks, 0 eligible pairs. (4) used data enough? E5 remains the only used counted-division set; nothing here changes that. (5) literature? Not needed at a structure fail.
+- **Consequence:** the C17 stage-aware model stays closed; it reopens only on the watch list (a public lineage with counted divisions and per-cell fate). Position and ID were never read by code; no partition.
+- Model: Sonnet 5.5 (run, planted check), Opus 5.5 (rules, script review, verdict).
+
 ## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
 - **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
 - **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
