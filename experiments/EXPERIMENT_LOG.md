@@ -15218,7 +15218,7 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 
 ## QS2-N3-B: boundary check of N3's frozen statistic (2026-11-27; Bence: "go 1-5", item 4 = the N3 synthetic check; synthetic only, no data read; NOT pre-registered, see deviations)
 - **Serves: C12 CLOSED.** QS2 failed N3 at readout (H21 item 3: separation from the sampling null not shown at about 4 cells per arm). This check asks whether the frozen statistic can show tracking at all.
-- *Script:* `experiments/n3_boundary.py` sits **uncommitted** at that path, pending Bence's OK.
+- *Script:* `experiments/n3_boundary.py`, committed unchanged from the run on 2026-11-28 (Bence: "go 1 also"); it ran locally without pre-registration (deviation above).
   - *Setup:* fully synthetic. 39 / 38 / 46 eligible clones per embryo (the logged train counts), eligibility >= 3 in vivo and >= 4 organoid cells.
   - *Statistic (N3's frozen one):* the mean within-embryo Spearman rho of log arm counts against a binomial-thinning null from each clone's pooled total, conditioned on eligibility. 199 draws, 60 replicates, alpha 0.05 per tail.
 - *Argument (advisor, before any script):* conditioned on their total, two Poisson captures of one shared clone size are exactly a binomial split. So the thinning null is the full-tracking model with pure sampling noise, not a no-tracking model. Extra independent noise pushes rho below it, and rho can rise above it only if the split is tighter than binomial.
