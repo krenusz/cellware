@@ -14502,6 +14502,16 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **Self-challenge:** (1) suspicious? No: 17 identical headers, a standard spot-position export. (2) other explanations? Division links may exist only in the source software's native files, not in this export. (3) units? Unknown: 17 sheets, one embryo per the README. (4) used data? E5 is the used counted-division set; it has no fate label either (QE3). (5) literature? Not checked; not needed before the gate.
 - Model: Sonnet 5.5 (schema read), Opus 5.5 (rules, reading).
 
+### DS-WIDE-G2 amendment 2: what can W6 answer? (written 2026-11-28, before any W6 value is read; Bence: "check wehether this data can give us anything")
+- **Reading of his message:** find out whether W6 supports any project question; it covers claims-level source reading and, if a frozen question survives the gates, a structure-only count. It does not cover reading Position values or any group comparison (those wait for sealing and his OK).
+- **Stage 1, source at claims level (Haiku lookup lane):** the article doi 10.1126/sciadv.adf1814 and the record's related identifiers, open copies only, stop on any block. Three questions: (a) what a sheet is and what the four sheet groups are, returned as a neutral category (specimen, region, stage, condition, population), not the word; (b) what the source already claims from these tracks; (c) whether any public file carries a per-track state value keyed by TrackID or ID. No gene names in saved text.
+- **Stage 2, at most three candidate questions frozen before any value,** from what six columns can carry (division timing, movement, position among relatives, plus any state found in (c)). Each is matched against QE1, QE2, QE3 and the position row of c17s1_params.py, gets a COVERAGE row, then the gates in order: H16, in kind on the same data, H22 (decided by what a sheet is), H21.
+- **Stage 3, only if one survives:** a structure count limited to Time and TrackID per sheet (rows, tracks, frame span, tracks with two rows at one Time), Sonnet lane, streamed, stop at 60 s (decision 11); the sealed.py entry is widened in the same commit.
+- **If none survives:** W6 is `parked` (no per-cell label, gate undecided), not `failed_gate`.
+- Pre-flight: unit = sheet or track tree (decided in stage 1); readout = source claims, then structure only; used data = E5 (QE1-QE3), W6 schema; power = not applicable before a question exists; exposure = column names, README flags, source claims; literature = source article claims level; readout gate = stage 2.
+- Compute: lookups by the Haiku lane; any count local on the Sonnet lane under decision 11.
+- Practice: neutral wording; advisor before each stage verdict; no outreach.
+
 ## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
 - **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
 - **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
