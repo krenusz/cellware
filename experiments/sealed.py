@@ -71,6 +71,11 @@ DATASETS = {
                          "(Bence: \"Yes, count 4E\"): two more Zenodo 15181497 members (one ground-truth Mastodon "
                          "project, its CTC lineage table; 2.0 MB) on Actions only (run 45812685504), sha256 in "
                          "results_c17/ds_wide_gate_4e_counts.json; failed (1 eligible pair); no local copy of any track file.",
+    "ext_wide_g2_w6": "Dryad 10.5061/dryad.f1vhhmh26 (CC0) W6: the record's dataset zip (celltracks.xlsx plus README, "
+                      "106 MB), downloaded by Bence 2026-11-28 (Bence: \"I'll download W6\"; DS-WIDE-G2 amendment 1), "
+                      "sha256 in data/ext_wide_g2_w6/raw/SHA256SUMS. Structure only until partitioned: member list, "
+                      "sheet names and column-name rows (at most 10 rows per sheet); state, fate, cluster and "
+                      "intensity columns as names only, never values.",
     "ext_zf_adult": "GEO GSE246714 lineage replicates 1-2, 10 filtered_scars tables, downloaded 2026-11-20 (Bence: \"gate "
                     "all 5 actually\"), sha256 in raw/SHA256SUMS. Structure gate only (C17-S1G) until partitioned.",
     "ext_itracer": "ArrayExpress E-MTAB-10971/10973/10974 per-cell meta tables (4.6 MB), downloaded 2026-11-20 (Bence: "

@@ -14482,6 +14482,12 @@ SG_kit1 holds 25 spatial tables (labeller header check). `clone_id` there is lik
 - **If Bence declines, or no route opens:** W6 is `parked` in COVERAGE with "access blocked", not `failed_gate`.
 - **Prior, not evidence:** 3 h at a 3-min interval is about 60 frames, a frame count similar to 4E's 55. In 4E only 2 of 56 divisions had depth >= 1, but 4E's frame interval is unknown, so the two cannot be compared in time. What decides W6 is whether the table carries division links, and only the schema read shows that.
 
+### DS-WIDE-G2 W6 fetch note (2026-11-28, before any member is listed or opened; zip hashed only; Bence: "I'll download W6")
+- **Fetch:** Bence downloaded the record's dataset zip in his browser (`doi_10_5061_dryad_f1vhhmh26__v20230413.zip`, 106,237,001 bytes; name matches the record DOI and its 2023-04-13 version). It was moved unopened to `data/ext_wide_g2_w6/raw`; zip sha256 in `raw/SHA256SUMS`; sealed.py entry `ext_wide_g2_w6` (structure only until partitioned).
+- **Deviation from amendment 1, wording only:** amendment 1 named `celltracks.xlsx`; Dryad bundles both record files into one zip. The rules are unchanged.
+- **Stage L completeness first:** the Cellware Sonnet session lists every zip member (name, size), extracts into `raw/unzipped` and adds each member's sha256 to `SHA256SUMS`. If the members are not exactly the two listed files (`celltracks.xlsx`, README), it stops and reports.
+- **Then the amendment 1 schema read** (Sonnet, python -I, local, no count): sheet names, rows up to and including the column-name row (at most 10 per sheet), names only saved, gene- or condition-like sheet names masked; README reduced to the DS-WIDE-G2 flags. Early stop as amendment 1. Any count needs Bence's OK under the compute rule.
+
 ## QS2: question search over the sealed sets under the 2026-11-26 rules (pre-registered 2026-11-26; Bence: "Yes, run QS2")
 - **Serves: C12 CLOSED.** It looks for a novel, powered question on the sealed reserve: 19 live sets, 48 unspent partitions.
 - **Why:** RETRO_2026-11-26 showed that the reserve is bound partly by four constraints that Opus wrote into QS1. Bence dropped them ("Drop all four").
