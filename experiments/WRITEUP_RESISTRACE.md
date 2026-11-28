@@ -46,6 +46,12 @@ Models are logistic regressions on compound-library lineages:
   barcode-matched. QC and pre-cell count are controlled, but cell cycle and cell size were not removed.
 - **Which genes or programmes carry it, or whether it is compound-specific.** One pooled model, 5 PCs, not
   interpreted.
+- **Survival vs growth fitness (added 2026-11-28).** No model was fitted on the untreated (control) libraries,
+  so the increment is not distinguished from growth fitness: a lineage linked to a post family may simply grow
+  well. A same-data preprint (doi 10.21203/rs.3.rs-11337829/v1, v1, abstract read) claims that most of what pre-treatment state
+  predicts in this data set is growth fitness: a fitness model trained only on the untreated arm comes close to
+  the treatment-arm predictors, and the treatment-specific gain is small and not reliably above zero. The sealed
+  statistic stands; its reading as treatment survival is what is in doubt.
 
 ## Value against the literature
 
@@ -56,12 +62,19 @@ Models are logistic regressions on compound-library lineages:
   - a frozen model confirmed on a sealed lineage partition that it never saw.
 - This is a disciplined replication with a sharper control, not a new mechanism (H20 value statement, as
   flagged at C10-S1).
+- **2026-11-28 (decision 17 check):** doi 10.21203/rs.3.rs-11337829/v1 re-analyses this data set with the untreated arm as a
+  fitness control (see above). Its abstract states no subclone or copy-number control and no sealed held-out
+  partition, so the C10 verdict stays **partly published, unchanged**: ours remains the increment beyond a
+  subclone proxy + QC, confirmed on a sealed partition. Its fitness reading applies to our result too.
 
 ## Exposure (accepted, Bence 2026-11-13)
 
 Pooled per-library counts were seen before sealing: pre-resistant families and cells, and matched post cells
 (column-shift bug). They are library totals with no lineage-level state link. They could not have shaped the
 model, but they are stated in every C10 report.
+
+2026-11-28: the abstract of doi 10.21203/rs.3.rs-11337829/v1 (a same-data re-analysis) was read at claims level by the lookup
+lane; its PDF and supplements are unopened.
 
 ## Partitions after chapter 10
 

@@ -100,7 +100,8 @@ PARTITIONED = {
         "prior_exposure": "column names; per-sample cell counts; via a 2026-11-12 column-shift bug, per-sample number "
                           "aggregates: distinct prer_r_group IDs (pre-resistant families; whether singletons were included is unverified), cells carrying prer_r_group (perfect-match pre-resistant cells), family size spread, and post cells carrying prer_r_group (matched post cells); all pooled across partitions (outcome aggregates) "
                           "and two example rows; no per-lineage outcome; Dai 2024 full text read "
-                          "(design, label accuracy, subclone A enrichment reported in the paper)",
+                          "(design, label accuracy, subclone A enrichment reported in the paper); 2026-11-28: abstract of the same-data "
+                          "re-analysis doi 10.21203/rs.3.rs-11337829/v1 read at claims level (lookup lane; PDF and supplements unopened)",
     },
     "lsc_larry": {
         "salt": "cellware-lsc-larry-v1",
